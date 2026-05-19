@@ -215,15 +215,15 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
             {word.uzbek}
           </p>
 
-          {word.example && (
-            <p className="text-xs text-gray-400 mt-3 italic px-2">
-              {word.example}
-            </p>
-          )}
-
           {flash === 'correct' && (
-            <div className="flex items-center justify-center gap-1.5 mt-4 text-green-600 font-semibold text-sm">
-              <CheckCircle size={18} /> To'g'ri!
+            <div className="mt-4">
+              <div className="flex items-center justify-center gap-1.5 text-green-600 font-semibold text-sm">
+                <CheckCircle size={18} /> To'g'ri!
+              </div>
+              <p className="font-bold text-gray-900 mt-1">{word.english}</p>
+              {word.example && (
+                <p className="text-xs text-gray-400 mt-2 italic px-2">{word.example}</p>
+              )}
             </div>
           )}
           {flash === 'wrong' && (
@@ -235,6 +235,9 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
                 To'g'ri javob:{' '}
                 <span className="font-bold text-gray-900">{word.english}</span>
               </p>
+              {word.example && (
+                <p className="text-xs text-gray-400 mt-2 italic px-2">{word.example}</p>
+              )}
             </div>
           )}
         </div>
@@ -332,6 +335,9 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
                       To'g'ri:{' '}
                       <span className="font-bold">{r.word.english}</span>
                     </p>
+                    {r.word.example && (
+                      <p className="text-xs text-gray-400 mt-1 italic">{r.word.example}</p>
+                    )}
                   </div>
                 </div>
               ))}
