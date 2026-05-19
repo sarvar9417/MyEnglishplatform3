@@ -29,30 +29,30 @@ export interface SessionWordResult {
 
 export type Rating = 'bildim' | 'qiynaldim' | 'bilmadim' | 'yodladim'
 
+// SRS intervallar: Box 1→1kun, 2→3kun, 3→7kun, 4→14kun, 5→30kun, 6→90kun
+const SRS_INTERVALS = [1, 3, 7, 14, 30, 90]
+const MAX_BOX = 6
+
 export function computeNextReview(
   box: number,
   rating: Rating
 ): { box: number; next_review: string; is_learned: boolean } {
+  let newBox: number
+
   if (rating === 'yodladim') {
-    return { box: 5, next_review: addDaysTashkent(30), is_learned: true }
-  }
-
-  let newBox = box
-  let intervalDays: number
-
-  if (rating === 'bildim') {
-    newBox = Math.min(box + 1, 5)
-    const intervals = [0, 1, 2, 4, 7, 14]
-    intervalDays = intervals[newBox]
+    newBox = Math.min(box + 2, MAX_BOX) // bir qadam o'tkazib yuborish
+  } else if (rating === 'bildim') {
+    newBox = Math.min(box + 1, MAX_BOX) // keyingi qadamga
   } else if (rating === 'qiynaldim') {
-    const intervals = [0, 1, 2, 4, 7, 14]
-    intervalDays = Math.round(intervals[box] * 1.5)
+    newBox = Math.max(box, 1)           // shu qadamda qolish
   } else {
-    newBox = 1
-    intervalDays = 1
+    newBox = 1                          // boshidan boshlash
   }
 
-  return { box: newBox, next_review: addDaysTashkent(intervalDays), is_learned: false }
+  const intervalDays = SRS_INTERVALS[newBox - 1]
+  const isLearned = newBox >= MAX_BOX
+
+  return { box: newBox, next_review: addDaysTashkent(intervalDays), is_learned: isLearned }
 }
 
 export async function fetchDailyWords(

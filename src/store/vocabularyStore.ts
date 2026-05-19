@@ -22,7 +22,8 @@ export interface GameWord {
 
 export interface VocabState {
   dailyWords:     GameWord[]
-  currentBatch:   number   // 1-4
+  reviewWords:    GameWord[]  // bugun takrorlanishi kerak bo'lgan so'zlar
+  currentBatch:   number   // 1-4 yangi, 0 takrorlash
   batchWords:     GameWord[]
   currentIdx:     number
   viewMode:       ViewMode
@@ -33,10 +34,12 @@ export interface VocabState {
   sessionTime:    number   // seconds
 
   setDailyWords:  (words: DailyWordRow[]) => void
+  setReviewWords: (words: DailyWordRow[]) => void
   setViewMode:    (mode: ViewMode) => void
   setLoading:     (v: boolean) => void
 
   selectBatch:    (batch: number) => void
+  selectReview:   () => void
   nextWord:       () => void
 
   rateWord:       (wordId: number, rating: Rating) => { newBox: number; nextReview: string }
@@ -55,6 +58,7 @@ export function getBatchWords(all: GameWord[], batch: number): GameWord[] {
 
 export const useVocabStore = create<VocabState>()((set, get) => ({
   dailyWords:    [],
+  reviewWords:   [],
   currentBatch:  1,
   batchWords:    [],
   currentIdx:    0,
@@ -78,6 +82,9 @@ export const useVocabStore = create<VocabState>()((set, get) => ({
       batchWords: getBatchWords(words, 1),
     }),
 
+  setReviewWords: (words) =>
+    set({ reviewWords: words }),
+
   setViewMode: (mode) => set({ viewMode: mode, currentIdx: 0 }),
 
   setLoading: (v) => set({ loading: v }),
@@ -86,6 +93,17 @@ export const useVocabStore = create<VocabState>()((set, get) => ({
     set({
       currentBatch: batch,
       batchWords: getBatchWords(get().dailyWords, batch),
+      currentIdx: 0,
+      viewMode: 'catalog',
+      batchResults: {},
+      correctCount: 0,
+      totalAnswered: 0,
+    }),
+
+  selectReview: () =>
+    set({
+      currentBatch: 0,
+      batchWords: get().reviewWords,
       currentIdx: 0,
       viewMode: 'catalog',
       batchResults: {},
@@ -106,9 +124,7 @@ export const useVocabStore = create<VocabState>()((set, get) => ({
     const isCorrect = rating === 'bildim' || rating === 'yodladim'
 
     set((s) => {
-      const newCorrect = word.correct_count + (isCorrect ? 1 : 0)
-      const autoLearned = (rating === 'bildim' || rating === 'yodladim') && !srs.is_learned && srs.box >= 5 && newCorrect >= 3
-      const isLearned = srs.is_learned || autoLearned
+      const isLearned = srs.is_learned
       const base = { box: srs.box, next_review: srs.next_review, is_learned: isLearned, is_new: false, last_rating: rating }
       const upd = (w: GameWord) =>
         w.word_id === wordId
@@ -133,6 +149,7 @@ export const useVocabStore = create<VocabState>()((set, get) => ({
   reset: () =>
     set({
       dailyWords:    [],
+      reviewWords:   [],
       currentBatch:  1,
       batchWords:    [],
       currentIdx:    0,

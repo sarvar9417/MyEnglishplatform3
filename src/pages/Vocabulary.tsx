@@ -26,10 +26,10 @@ const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2']
 export default function Vocabulary() {
   const { addXP, addLearnedWords, updateSkillProgress } = useStore()
   const {
-    dailyWords, currentBatch, batchWords, currentIdx, viewMode,
+    dailyWords, reviewWords, currentBatch, batchWords, currentIdx, viewMode,
     loading, correctCount,
-    setDailyWords, setLoading,
-    selectBatch, nextWord, rateWord, finishBatch, tick, reset,
+    setDailyWords, setReviewWords, setLoading,
+    selectBatch, selectReview, nextWord, rateWord, finishBatch, tick, reset,
   } = useVocabStore()
 
   const [sessionStart, setSessionStart] = useState<number>(0)
@@ -135,10 +135,10 @@ export default function Vocabulary() {
         .limit(ALL_LIMIT)
       if (we) setRpcError(`words query error: ${we.message}`)
 
-      // ── 3. Build dailyWords — today's words first, then review from previous days ──
+      // ── 3. Bugungi yangi so'zlar va takrorlash so'zlarini ajratish ──
       const todayWords: DailyWordRow[] = []
-      const reviewWords: DailyWordRow[] = []
-      const learnedCounts: Record<string, number> = {}
+      const reviewDueWords: DailyWordRow[] = []
+      const learnedCountsMap: Record<string, number> = {}
       const wordList = allWords ?? []
       for (let i = 0; i < wordList.length; i++) {
         const w = wordList[i]
@@ -153,28 +153,29 @@ export default function Vocabulary() {
             is_new: true, is_learned: false, example: w.example ?? '',
             last_rating: undefined,
           })
-        } else if (prog.is_learned && (!prog.last_rating || prog.last_rating === 'bildim' || prog.last_rating === 'yodladim')) {
-          learnedCounts[w.level] = (learnedCounts[w.level] || 0) + 1
-          ;(inToday ? todayWords : reviewWords).push({
-            word_id: w.id, english: w.english, uzbek: w.uzbek,
-            level: w.level, box: prog.box, next_review: prog.next_review,
-            correct_count: prog.correct_count, wrong_count: prog.wrong_count,
-            is_new: false, is_learned: true, example: w.example ?? '',
-            last_rating: prog.last_rating,
-          })
         } else {
-          ;(inToday ? todayWords : reviewWords).push({
+          if (prog.is_learned) {
+            learnedCountsMap[w.level] = (learnedCountsMap[w.level] || 0) + 1
+          }
+          const row: DailyWordRow = {
             word_id: w.id, english: w.english, uzbek: w.uzbek,
             level: w.level, box: prog.box, next_review: prog.next_review,
             correct_count: prog.correct_count, wrong_count: prog.wrong_count,
-            is_new: false, is_learned: false, example: w.example ?? '',
+            is_new: false, is_learned: prog.is_learned, example: w.example ?? '',
             last_rating: prog.last_rating,
-          })
+          }
+          if (inToday) {
+            todayWords.push(row)
+          } else if (prog.next_review <= today) {
+            // Oldingi kunlardan: takrorlash vaqti kelgan so'zlar
+            reviewDueWords.push(row)
+          }
         }
       }
 
-      const learned = LEVEL_ORDER.map(lvl => ({ level: lvl, learned: learnedCounts[lvl] || 0 }))
-      setDailyWords([...todayWords, ...reviewWords])
+      const learned = LEVEL_ORDER.map(lvl => ({ level: lvl, learned: learnedCountsMap[lvl] || 0 }))
+      setDailyWords(todayWords)
+      setReviewWords(reviewDueWords)
       setLevelCounts(totalsMap)
       setLearnedCounts(new Map(learned.map((l) => [l.level, l.learned])))
       setSessionStart(Date.now())
@@ -215,7 +216,10 @@ export default function Vocabulary() {
 
   function enterStudyMode(mode: ViewMode) {
     const s = useVocabStore.getState()
-    const studyWords = s.batchWords.filter(w => !w.is_learned)
+    // Takrorlash rejimida (batch=0) yodlangan so'zlar ham ko'rsatiladi (ular qayta ko'rib chiqilishi kerak)
+    const studyWords = s.currentBatch === 0
+      ? s.batchWords
+      : s.batchWords.filter(w => !w.is_learned)
     if (studyWords.length === 0) return
     useVocabStore.setState({
       viewMode: mode,
@@ -234,13 +238,13 @@ export default function Vocabulary() {
     if (!uid) { console.error('saveProgressToDB: no uid'); return }
 
     const srs = computeNextReview(box, rating)
-    const w = dailyWords.find((d) => d.word_id === wordId)
+    const allWords = [...dailyWords, ...reviewWords]
+    const w = allWords.find((d) => d.word_id === wordId)
     const correct = rating === 'bildim' || rating === 'yodladim'
     const newCorrect = (w?.correct_count ?? 0) + (correct ? 1 : 0)
     const newWrong = (w?.wrong_count ?? 0) + (correct ? 0 : 1)
 
-    const autoLearned = (rating === 'bildim' || rating === 'yodladim') && srs.box >= 5 && newCorrect >= 3
-    const isLearned = srs.is_learned || autoLearned
+    const isLearned = srs.is_learned
 
     const { error } = await supabase.from('vocabulary_progress').upsert({
       user_id: uid,
@@ -446,12 +450,13 @@ export default function Vocabulary() {
 
   if (viewMode === 'complete') {
     const pct = batchWords.length > 0 ? Math.round((correctCount / batchWords.length) * 100) : 0
-    const isLastBatch = currentBatch >= 4
+    const isReviewMode = currentBatch === 0
+    const isLastBatch = isReviewMode || currentBatch >= 4
     return (
       <div className="p-3 sm:p-6 max-w-md mx-auto flex flex-col items-center justify-center min-h-[60vh] text-center">
         <div className="text-6xl mb-4">{pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪'}</div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
-          {isLastBatch ? "Bugungi mashq tugadi!" : `${currentBatch}-Batch tugadi!`}
+          {isReviewMode ? "Takrorlash tugadi!" : isLastBatch ? "Bugungi mashq tugadi!" : `${currentBatch}-Batch tugadi!`}
         </h2>
         <p className="text-gray-500 mb-6">
           {batchWords.length} so'zdan <span className="font-semibold text-gray-800">{correctCount}</span> tasini to'g'ri topding
@@ -665,6 +670,43 @@ export default function Vocabulary() {
                 Bugungi so'zlarni boshlash
                 <span className="text-sm opacity-75">({batchWords.filter(w => !w.is_learned).length} ta)</span>
               </button>
+          )}
+
+          {/* ── Takrorlash bo'limi ── */}
+          {reviewWords.length > 0 && (
+            <div className="mt-4 rounded-2xl border border-orange-200 bg-orange-50 p-4">
+              <div className="flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="font-bold text-orange-700 flex items-center gap-1.5">
+                    <span>🔄</span> Takrorlash vaqti keldi
+                  </p>
+                  <p className="text-xs text-orange-600 mt-0.5">
+                    {reviewWords.length} ta so'z takrorlanishi kerak
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    selectReview()
+                    setTimeout(() => enterStudyMode('flashcard'), 0)
+                  }}
+                  className="shrink-0 px-4 py-2 bg-orange-500 text-white font-bold rounded-xl text-sm hover:bg-orange-600 transition-all"
+                >
+                  Boshlash
+                </button>
+              </div>
+              <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                {[
+                  { label: 'Box 1–2', count: reviewWords.filter(w => w.box <= 2).length, color: 'text-red-500' },
+                  { label: 'Box 3–4', count: reviewWords.filter(w => w.box === 3 || w.box === 4).length, color: 'text-yellow-600' },
+                  { label: 'Box 5–6', count: reviewWords.filter(w => w.box >= 5).length, color: 'text-green-600' },
+                ].map(({ label, count, color }) => (
+                  <div key={label} className="bg-white rounded-xl py-2">
+                    <p className={`text-sm font-bold ${color}`}>{count}</p>
+                    <p className="text-[10px] text-gray-400">{label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
 
           {/* Batch tabs */}

@@ -7,6 +7,16 @@ const BOX_COLORS: Record<number, string> = {
   3: 'bg-blue-50 border-blue-200',
   4: 'bg-purple-50 border-purple-200',
   5: 'bg-yellow-50 border-yellow-200',
+  6: 'bg-orange-50 border-orange-300',
+}
+
+const BOX_LABELS: Record<number, string> = {
+  1: '1 kun',
+  2: '3 kun',
+  3: '7 kun',
+  4: '14 kun',
+  5: '30 kun',
+  6: '90 kun',
 }
 
 const LEVEL_BADGES: Record<string, string> = {
@@ -45,15 +55,25 @@ export default function FlashCard({
               Yangi
             </span>
           )}
-          <div className="flex items-center gap-2 mt-4">
-            {[1, 2, 3, 4, 5].map((n) => (
+          <div className="flex items-center gap-1.5 mt-4">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
               <div
                 key={n}
                 className={`w-2 h-2 rounded-full ${
-                  n <= word.box ? (word.box >= 4 ? 'bg-yellow-500' : word.box >= 3 ? 'bg-purple-500' : word.box >= 2 ? 'bg-blue-500' : 'bg-green-500') : 'bg-gray-200'
+                  n <= word.box
+                    ? word.box >= 6 ? 'bg-orange-500'
+                    : word.box >= 5 ? 'bg-yellow-500'
+                    : word.box >= 4 ? 'bg-purple-500'
+                    : word.box >= 3 ? 'bg-blue-500'
+                    : word.box >= 2 ? 'bg-green-500'
+                    : 'bg-gray-400'
+                    : 'bg-gray-200'
                 }`}
               />
             ))}
+            <span className="text-[10px] text-gray-400 ml-1">
+              Box {word.box}/6 · {BOX_LABELS[word.box] ?? '90 kun'}
+            </span>
           </div>
           {!flipped && (
             <button
