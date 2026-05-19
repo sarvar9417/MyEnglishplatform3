@@ -46,6 +46,8 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
   const [flash, setFlash] = useState<'correct' | 'wrong' | null>(null)
   const [locked, setLocked] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const pendingRef = useRef<{ results: QuizResult[]; nextIdx: number; finished: boolean } | null>(null)
 
   useEffect(() => {
     if (phase === 'playing' && !locked) {
@@ -79,6 +81,22 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
     setLoading(false)
   }
 
+  function goNext() {
+    if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null }
+    const pending = pendingRef.current
+    if (!pending) return
+    pendingRef.current = null
+    setFlash(null)
+    setLocked(false)
+    setResults(pending.results)
+    setInput('')
+    if (pending.finished) {
+      setPhase('result')
+    } else {
+      setCurrentIdx(pending.nextIdx)
+    }
+  }
+
   function handleSubmit() {
     const trimmed = input.trim()
     if (!trimmed || locked) return
@@ -90,18 +108,14 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
     setLocked(true)
 
     const newResults = [...results, { word, userAnswer: trimmed, correct }]
+    const nextIdx = currentIdx + 1
+    pendingRef.current = {
+      results: newResults,
+      nextIdx,
+      finished: nextIdx >= words.length,
+    }
 
-    setTimeout(() => {
-      setFlash(null)
-      setLocked(false)
-      setResults(newResults)
-      setInput('')
-      if (currentIdx + 1 >= words.length) {
-        setPhase('result')
-      } else {
-        setCurrentIdx(currentIdx + 1)
-      }
-    }, 800)
+    timerRef.current = setTimeout(goNext, 3000)
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
@@ -266,9 +280,18 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
-        <p className="text-center text-[11px] text-gray-300 mt-3">
-          Enter tugmasini bosing
-        </p>
+        {locked ? (
+          <button
+            onClick={goNext}
+            className="w-full mt-3 py-2.5 border-2 border-indigo-200 text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-all text-sm flex items-center justify-center gap-2"
+          >
+            Keyingi <ArrowRight size={15} />
+          </button>
+        ) : (
+          <p className="text-center text-[11px] text-gray-300 mt-3">
+            Enter tugmasini bosing
+          </p>
+        )}
       </div>
     )
   }
