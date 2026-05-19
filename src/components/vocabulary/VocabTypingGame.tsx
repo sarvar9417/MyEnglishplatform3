@@ -10,6 +10,7 @@ interface Word {
   english: string
   uzbek: string
   level: string
+  example?: string
 }
 
 interface QuizResult {
@@ -58,7 +59,7 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
 
     const { data, error } = await supabase
       .from('words')
-      .select('id, english, uzbek, level')
+      .select('id, english, uzbek, level, example')
       .eq('level', level)
       .limit(300)
 
@@ -213,6 +214,12 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
           <p className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
             {word.uzbek}
           </p>
+
+          {word.example && (
+            <p className="text-xs text-gray-400 mt-3 italic px-2">
+              {word.example}
+            </p>
+          )}
 
           {flash === 'correct' && (
             <div className="flex items-center justify-center gap-1.5 mt-4 text-green-600 font-semibold text-sm">
