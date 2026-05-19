@@ -111,7 +111,7 @@ const MODES: { id: TutorMode; label: string; color: string }[] = [
 
 function ApiKeyBanner() {
   return (
-    <div className="mx-4 my-3 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm">
+    <div className="mx-3 sm:mx-4 my-3 p-3 sm:p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm">
       <p className="font-semibold text-amber-800 flex items-center gap-2">
         <AlertCircle size={16} /> API kaliti sozlanmagan
       </p>
@@ -331,7 +331,7 @@ export default function Chat() {
       {API_KEY_MISSING && <ApiKeyBanner />}
 
       {/* ── Messages ── */}
-      <div className="flex-1 overflow-y-auto px-5 py-5 space-y-5 scrollbar-hide">
+      <div className="flex-1 overflow-y-auto px-3 sm:px-5 py-3 sm:py-5 space-y-5 scrollbar-hide">
         {messages.map((msg) => (
           <MessageBubble key={msg.id} msg={msg} />
         ))}
@@ -339,7 +339,7 @@ export default function Chat() {
       </div>
 
       {/* ── Quick prompts ── */}
-      <div className="flex gap-2 px-5 pb-2 overflow-x-auto scrollbar-hide flex-shrink-0">
+      <div className="flex gap-2 px-3 sm:px-5 pb-2 overflow-x-auto scrollbar-hide flex-shrink-0">
         {QUICK_PROMPTS.map((qp) => (
           <button
             key={qp.label}
@@ -360,7 +360,7 @@ export default function Chat() {
       </div>
 
       {/* ── Input ── */}
-      <div className="px-5 pb-5 flex-shrink-0">
+      <div className="px-3 sm:px-5 pb-5 flex-shrink-0">
         <div className="flex gap-3 bg-white border border-gray-200
           rounded-2xl shadow-sm focus-within:border-primary-400
           focus-within:ring-2 focus-within:ring-primary-100 transition-all p-3">

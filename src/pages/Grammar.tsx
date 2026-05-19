@@ -62,7 +62,7 @@ function TopicCard({
   return (
     <button
       onClick={onSelect}
-      className="card-hover text-left flex flex-col gap-3 p-5 group"
+      className="card-hover text-left flex flex-col gap-3 p-3 sm:p-5 group"
     >
       <div className="flex items-start justify-between gap-2">
         <div className={`badge border text-xs font-semibold ${LEVEL_COLORS[topic.level] ?? ''}`}>
@@ -94,18 +94,18 @@ function TopicCard({
 
 function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect: (t: GrammarTopic) => void }) {
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
           <BookOpen size={20} className="text-primary-600" />
         </div>
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Grammar Darslar</h1>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900">Grammar Darslar</h1>
           <p className="text-xs text-gray-500">Mavzuni tanlang va mashqlarni bajaring</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {topics.map((t) => (
           <TopicCard key={t.id} topic={t} onSelect={() => onSelect(t)} />
         ))}
@@ -134,9 +134,9 @@ function ExplanationCard({
   topic, onStart, onBack,
 }: { topic: GrammarTopic; onStart: () => void; onBack: () => void }) {
   return (
-    <div className="p-6 max-w-3xl mx-auto space-y-5">
+    <div className="p-3 sm:p-6 max-w-3xl mx-auto space-y-4 sm:space-y-5">
       {/* Nav */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <button onClick={onBack} className="btn-ghost flex items-center gap-1 text-sm">
           <ArrowLeft size={16} /> Orqaga
         </button>
@@ -147,12 +147,12 @@ function ExplanationCard({
 
       {/* Title */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">{topic.title}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{topic.title}</h2>
         <p className="text-gray-500 text-sm mt-1">{topic.subtitle}</p>
       </div>
 
       {/* Formula box */}
-      <div className="bg-gradient-to-br from-primary-600 to-b2-600 rounded-2xl p-5 text-white">
+      <div className="bg-gradient-to-br from-primary-600 to-b2-600 rounded-2xl p-3 sm:p-5 text-white">
         <p className="text-xs font-semibold opacity-70 mb-2 uppercase tracking-wider">Formula</p>
         <p className="text-2xl font-mono font-bold tracking-wide">{topic.formula}</p>
         <div className="grid grid-cols-1 gap-2 mt-4">
@@ -297,7 +297,7 @@ function MCQuestion({
         🔘 To'g'ri variantni tanlang
       </p>
       <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{ex.question}</p>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {ex.options.map((opt, i) => {
           const isSelected = selected === opt
           const isCorrectOpt = opt === ex.correct
@@ -681,7 +681,7 @@ export default function Grammar() {
       {/* ── Topic select ── */}
       {phase === 'select' && (
         loading ? (
-          <div className="p-6 max-w-4xl mx-auto flex items-center justify-center min-h-[300px]">
+          <div className="p-3 sm:p-6 max-w-4xl mx-auto flex items-center justify-center min-h-[300px]">
             <div className="text-gray-400 animate-pulse">Mavzular yuklanmoqda...</div>
           </div>
         ) : (
@@ -700,7 +700,7 @@ export default function Grammar() {
 
       {/* ── Exercise ── */}
       {(phase === 'exercise' || (phase === 'result' && submitted)) && topic && (
-        <div className="p-6 max-w-3xl mx-auto space-y-4">
+        <div className="p-3 sm:p-6 max-w-3xl mx-auto space-y-3 sm:space-y-4">
           {/* Header */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -796,7 +796,7 @@ export default function Grammar() {
               <AIFeedbackPanel topic={topic} results={results} />
 
               {/* Action buttons */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                 <button
                   onClick={handleRetry}
                   className="btn-secondary flex items-center justify-center gap-1.5 text-sm"

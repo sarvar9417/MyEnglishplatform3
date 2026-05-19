@@ -3,11 +3,13 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useStore } from './store/useStore'
 import { useAuth } from './hooks/useAuth'
 import Sidebar from './components/layout/Sidebar'
+import { Menu, X } from 'lucide-react'
 import Dashboard from './pages/Dashboard'
 import Roadmap from './pages/Roadmap'
 import Lesson from './pages/Lesson'
 import Grammar from './pages/Grammar'
 import Vocabulary from './pages/Vocabulary'
+import Dictionary from './pages/Dictionary'
 import Progress from './pages/Progress'
 import MockTest from './pages/MockTest'
 import Chat from './pages/Chat'
@@ -158,15 +160,47 @@ function Onboarding() {
 // ─── App Shell ────────────────────────────────────────────────────────────────
 
 function AppShell() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
-      <Sidebar />
-      <main className="flex-1 overflow-y-auto">
+      {/* Mobile overlay */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/40 lg:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      <Sidebar
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+      />
+
+      <main className="flex-1 overflow-y-auto flex flex-col">
+        {/* Mobile top bar with hamburger */}
+        <div className="sticky top-0 z-20 flex items-center gap-3 px-4 py-3 bg-white border-b border-gray-100 lg:hidden">
+          <button
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            className="p-1.5 rounded-lg text-gray-500 hover:text-primary-600 hover:bg-primary-50 transition-colors"
+            aria-label="Menyu"
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 bg-primary-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-xs">EP</span>
+            </div>
+            <span className="font-bold text-gray-900 text-sm">EnglishPath</span>
+          </div>
+        </div>
+
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/lesson" element={<Lesson />} />
           <Route path="/grammar" element={<Grammar />} />
+          <Route path="/dictionary" element={<Dictionary />} />
           <Route path="/vocabulary" element={<Vocabulary />} />
           <Route path="/progress" element={<Progress />} />
           <Route path="/mock-test" element={<MockTest />} />

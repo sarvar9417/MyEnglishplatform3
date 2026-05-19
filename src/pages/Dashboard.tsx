@@ -44,35 +44,36 @@ function TopBar() {
     hour < 18 ? 'Xayrli kun'  : 'Xayrli kech'
 
   return (
-    <header className="bg-white border-b border-gray-100 px-6 py-3.5 flex items-center justify-between flex-shrink-0">
+    <header className="bg-white border-b border-gray-100 px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between flex-shrink-0 gap-2">
       {/* Left: greeting */}
-      <div>
-        <p className="text-xs text-gray-400 font-medium">{greeting}</p>
-        <h1 className="text-base font-bold text-gray-900 leading-tight">
+      <div className="min-w-0">
+        <p className="text-[10px] sm:text-xs text-gray-400 font-medium">{greeting}</p>
+        <h1 className="text-sm sm:text-base font-bold text-gray-900 leading-tight truncate">
           {userName || 'Foydalanuvchi'} 👋
         </h1>
       </div>
 
       {/* Center: level pill */}
-      <div className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border font-semibold text-sm ${levelColor}`}>
+      <div className={`flex items-center gap-1 px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-full border font-semibold text-[11px] sm:text-sm flex-shrink-0 ${levelColor}`}>
         <span>{currentLevel}</span>
-        <span className="text-xs opacity-60">·</span>
-        <span className="text-xs font-medium opacity-80">{currentWeek}-hafta</span>
-        <span className="text-xs opacity-60">·</span>
+        <span className="text-xs opacity-60 hidden sm:inline">·</span>
+        <span className="text-xs font-medium opacity-80 hidden sm:inline">{currentWeek}-hafta</span>
+        <span className="text-xs opacity-60 hidden sm:inline">·</span>
         <span className="text-xs font-medium opacity-80">{dayInWeek}-kun</span>
       </div>
 
       {/* Right: streak + days left + sign out */}
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-1.5">
-          <span className="text-lg leading-none">🔥</span>
-          <div>
+      <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-1 sm:gap-1.5">
+          <span className="text-base sm:text-lg leading-none">🔥</span>
+          <div className="hidden sm:block">
             <p className="text-sm font-bold text-gray-900 leading-tight">{streak} kun</p>
             <p className="text-[10px] text-gray-400">streak</p>
           </div>
+          <span className="text-xs font-bold text-gray-900 sm:hidden">{streak}</span>
         </div>
-        <div className="h-7 w-px bg-gray-100" />
-        <div className="text-right">
+        <div className="h-7 w-px bg-gray-100 hidden sm:block" />
+        <div className="text-right hidden sm:block">
           <p className="text-sm font-bold text-gray-900 leading-tight">{daysLeft} kun</p>
           <p className="text-[10px] text-gray-400">maqsadgacha</p>
         </div>
@@ -105,15 +106,14 @@ interface RingConfig {
 }
 
 function SkillRing({ pct, stroke, track, label, hours, Icon, iconColor }: RingConfig) {
-  const SIZE = 96
-  const R    = 38
+  const SIZE = typeof window !== 'undefined' && window.innerWidth < 640 ? 72 : 96
+  const R    = SIZE === 72 ? 28 : 38
   const C    = 2 * Math.PI * R
   const offset = C * (1 - Math.min(pct, 100) / 100)
 
   return (
-    <div className="flex flex-col items-center gap-2.5">
+    <div className="flex flex-col items-center gap-1.5 sm:gap-2.5">
       <div className="relative" style={{ width: SIZE, height: SIZE }}>
-        {/* Background glow when >80% */}
         {pct >= 80 && (
           <div
             className="absolute inset-0 rounded-full opacity-20 blur-md"
@@ -121,24 +121,24 @@ function SkillRing({ pct, stroke, track, label, hours, Icon, iconColor }: RingCo
           />
         )}
         <svg width={SIZE} height={SIZE} className="-rotate-90 relative z-10">
-          <circle cx={SIZE/2} cy={SIZE/2} r={R} fill="none" stroke={track}  strokeWidth={9} />
+          <circle cx={SIZE/2} cy={SIZE/2} r={R} fill="none" stroke={track}  strokeWidth={SIZE === 72 ? 6 : 9} />
           <circle
             cx={SIZE/2} cy={SIZE/2} r={R} fill="none"
-            stroke={stroke} strokeWidth={9} strokeLinecap="round"
+            stroke={stroke} strokeWidth={SIZE === 72 ? 6 : 9} strokeLinecap="round"
             strokeDasharray={C} strokeDashoffset={offset}
             style={{ transition: 'stroke-dashoffset 0.7s cubic-bezier(0.34,1.56,0.64,1)' }}
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-          <Icon size={14} className={iconColor} />
-          <span className="text-sm font-bold text-gray-800 mt-0.5 leading-none">
+          <Icon size={SIZE === 72 ? 11 : 14} className={iconColor} />
+          <span className="text-[10px] sm:text-sm font-bold text-gray-800 mt-0.5 leading-none">
             {Math.round(pct)}%
           </span>
         </div>
       </div>
       <div className="text-center">
-        <p className="text-xs font-semibold text-gray-700">{label}</p>
-        <p className="text-[10px] text-gray-400">{hours}</p>
+        <p className="text-[10px] sm:text-xs font-semibold text-gray-700">{label}</p>
+        <p className="text-[8px] sm:text-[10px] text-gray-400">{hours}</p>
       </div>
     </div>
   )
@@ -210,7 +210,7 @@ function TodayProgress() {
           O'rtacha {avg}%
         </span>
       </div>
-      <div className="grid grid-cols-6 gap-2">
+      <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-2">
         {rings.map((r) => <SkillRing key={r.key} pct={r.pct} stroke={r.stroke} track={r.track} label={r.label} hours={r.hours} Icon={r.Icon} iconColor={r.iconColor} />)}
       </div>
     </section>
@@ -588,19 +588,19 @@ function QuickStats() {
   ]
 
   return (
-    <section className="grid grid-cols-4 gap-3">
+    <section className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
       {stats.map((s) => (
         <div
           key={s.label}
-          className={`card ${s.bg} border ${s.border} flex items-center gap-3 py-3.5`}
+          className={`card ${s.bg} border ${s.border} flex items-center gap-2 sm:gap-3 py-2.5 sm:py-3.5`}
         >
-          <div className={`w-10 h-10 rounded-xl ${s.bg} border ${s.border} flex items-center justify-center flex-shrink-0`}>
-            <s.Icon size={20} className={s.color} />
+          <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-xl ${s.bg} border ${s.border} flex items-center justify-center flex-shrink-0`}>
+            <s.Icon size={16} className={s.color} />
           </div>
           <div className="min-w-0">
-            <p className="text-lg font-bold text-gray-900 leading-tight truncate">{s.value}</p>
-            <p className="text-[10px] text-gray-500 leading-tight">{s.label}</p>
-            <p className="text-[10px] text-gray-400">{s.sub}</p>
+            <p className="text-sm sm:text-lg font-bold text-gray-900 leading-tight truncate">{s.value}</p>
+            <p className="text-[9px] sm:text-[10px] text-gray-500 leading-tight">{s.label}</p>
+            <p className="text-[8px] sm:text-[10px] text-gray-400 hidden sm:block">{s.sub}</p>
           </div>
         </div>
       ))}
@@ -690,7 +690,7 @@ export default function Dashboard() {
 
       {/* Scroll area */}
       <div className="flex-1 overflow-y-auto scrollbar-hide">
-        <div className="p-5 space-y-4 max-w-5xl mx-auto">
+        <div className="p-3 sm:p-5 space-y-3 sm:space-y-4 max-w-5xl mx-auto">
 
           {/* 2. Skill progress rings */}
           <TodayProgress />
@@ -699,11 +699,11 @@ export default function Dashboard() {
           <LessonProgressCard />
 
           {/* 4. Time tracker + 5. Today plan — side by side */}
-          <div className="grid grid-cols-5 gap-4">
-            <div className="col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 sm:gap-4">
+            <div className="lg:col-span-2">
               <TimeTracker />
             </div>
-            <div className="col-span-3">
+            <div className="lg:col-span-3">
               <TodayPlan />
             </div>
           </div>

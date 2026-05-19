@@ -68,24 +68,24 @@ export default function Lesson() {
   const navigate = useNavigate()
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
           <Sparkles size={20} className="text-primary-600" />
         </div>
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Dars tanlang</h1>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900">Dars tanlang</h1>
           <p className="text-xs text-gray-500">Qaysi soha bo'yicha mashq qilmoqchisiz?</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {LESSON_TYPES.map((type) => (
           <button
             key={type.id}
             onClick={() => type.to ? navigate(type.to) : undefined}
             disabled={!type.to}
-            className={`relative flex flex-col gap-3 p-5 rounded-2xl border text-left
+             className={`relative flex flex-col gap-3 p-3 sm:p-5 rounded-2xl border text-left
               transition-all duration-200 group
               ${type.to
                 ? `${type.bg} cursor-pointer hover:shadow-md hover:-translate-y-0.5`

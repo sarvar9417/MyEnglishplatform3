@@ -187,13 +187,13 @@ export default function Reading() {
 
   if (phase === 'select') {
     return (
-      <div className="p-6 max-w-2xl mx-auto">
-        <div className="flex items-center gap-3 mb-6">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <div className="flex items-center gap-3 mb-4 sm:mb-6">
           <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
             <BookOpen size={20} className="text-green-600" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">Reading</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900">Reading</h1>
             <p className="text-xs text-gray-500">Timed reading · Comprehension · Vocabulary</p>
           </div>
         </div>
@@ -241,10 +241,10 @@ export default function Reading() {
     const pct     = Math.round((correct / text.questions.length) * 100)
 
     return (
-      <div className="p-6 max-w-2xl mx-auto">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
         <div className="text-center mb-6">
           <div className="text-5xl mb-3">{pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '💪'}</div>
-          <h2 className="text-xl font-bold text-gray-900">Natija</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Natija</h2>
           <p className="text-sm text-gray-500 mt-0.5">{text.title}</p>
         </div>
 
@@ -298,12 +298,12 @@ export default function Reading() {
     const allAnswered = answers.every((a) => a !== null)
 
     return (
-      <div className="p-6 max-w-2xl mx-auto">
-        <div className="flex items-center gap-3 mb-5">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
           <button onClick={() => setPhase('read')} className="btn-ghost p-2 rounded-xl">
             <ChevronLeft size={18} />
           </button>
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <p className="text-xs text-gray-500 truncate">{text.title}</p>
             <p className="text-sm font-semibold text-gray-900">Comprehension savollar</p>
           </div>
@@ -358,7 +358,7 @@ export default function Reading() {
   if (!text) return null
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">

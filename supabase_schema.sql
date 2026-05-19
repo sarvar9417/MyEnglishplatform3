@@ -328,6 +328,36 @@ create policy "Mock test writing are public read"
   on public.mocktest_writing for select
   using (true);
 
+-- ─── User words (personal dictionary additions) ───────────────────────────────
+create table if not exists public.user_words (
+  id       bigserial primary key,
+  user_id  uuid        not null references auth.users(id) on delete cascade,
+  english  text        not null,
+  uzbek    text        not null,
+  level    text        not null default 'A2' check (level in ('A1','A2','B1','B2')),
+  example  text        not null default '',
+  phonetic text        not null default '',
+  created_at timestamptz not null default now(),
+  unique (user_id, english)
+);
+
+alter table public.user_words enable row level security;
+
+drop policy if exists "Users can read own words" on public.user_words;
+create policy "Users can read own words"
+  on public.user_words for select
+  using (auth.uid() = user_id);
+
+drop policy if exists "Users can insert own words" on public.user_words;
+create policy "Users can insert own words"
+  on public.user_words for insert
+  with check (auth.uid() = user_id);
+
+drop policy if exists "Users can delete own words" on public.user_words;
+create policy "Users can delete own words"
+  on public.user_words for delete
+  using (auth.uid() = user_id);
+
 -- ─── Auto-create user profile on signup ──────────────────────────────────────
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path = public as $$

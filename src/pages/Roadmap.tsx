@@ -15,11 +15,11 @@ export default function Roadmap() {
   const { currentWeek, currentDay, currentLevel } = useStore()
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <Map className="text-primary-600" size={28} />
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">90-Kunlik Yo'l Xaritasi</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">90-Kunlik Yo'l Xaritasi</h1>
           <p className="text-sm text-gray-500">A2+ → B2 • Hozirgi holat: <span className="font-semibold text-primary-600">{currentLevel}</span></p>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function Roadmap() {
                   </div>
                 )}
               </div>
-              <div className="text-sm text-gray-400 font-mono">
+              <div className="text-sm text-gray-400 font-mono hidden sm:block">
                 {week * 7 - 6}–{week * 7} kun
               </div>
             </div>

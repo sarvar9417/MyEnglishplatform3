@@ -114,7 +114,7 @@ function ExerciseCard({
             🔘 To'g'ri variantni tanlang
           </p>
           <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{ex.question}</p>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {ex.options.map((opt, i) => {
               const selected = answers[0] === opt
               const correctOpt = opt === ex.correct
@@ -431,7 +431,7 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
           onClick={() => setFlipped(!flipped)}
           className="cursor-pointer select-none"
         >
-          <div className={`relative w-full min-h-[200px] rounded-2xl border-2 transition-all duration-300 flex flex-col items-center justify-center p-6 ${
+          <div className={`relative w-full min-h-[200px] rounded-2xl border-2 transition-all duration-300 flex flex-col items-center justify-center p-3 sm:p-6 ${
             flipped
               ? 'bg-primary-50 border-primary-300'
               : 'bg-white border-gray-200 hover:border-primary-300 hover:shadow-md'
@@ -639,7 +639,7 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
           <div className="progress-fill bg-primary-500" style={{ width: `${(quizIndex / vocab.length) * 100}%` }} />
         </div>
 
-        <div className="rounded-2xl border-2 border-primary-200 bg-primary-50 p-6 text-center">
+        <div className="rounded-2xl border-2 border-primary-200 bg-primary-50 p-3 sm:p-6 text-center">
           <p className="text-xs text-gray-400 mb-2">{quizMode === 'en2uz' ? '🇬🇧 Inglizcha' : '🇺🇿 O\'zbekcha'}</p>
           <p className="text-2xl font-bold text-gray-900 mb-2">
             {quizMode === 'en2uz' ? currentQ.en : currentQ.uz}
@@ -651,7 +651,7 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {allOptions.map((opt, i) => {
             const correct = quizMode === 'en2uz' ? currentQ.uz : currentQ.en
             let cls = 'border border-gray-200 bg-white text-gray-800 hover:border-primary-400 hover:bg-primary-50'
@@ -785,7 +785,7 @@ function SpecialCaseCard({ sc, addXP }: { sc: import('../data/dailyLessons').Spe
                   <div>
                     <p className="text-[10px] font-bold text-violet-600 uppercase tracking-wider mb-2">🔘 To'g'ri variantni tanlang</p>
                     <p className="text-xs font-semibold text-gray-800 mb-2">{ex.question}</p>
-                    <div className="grid grid-cols-2 gap-1.5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                       {ex.options.map((opt, oi) => {
                         const selected = answers[0] === opt
                         const correctOpt = opt === ex.correct
@@ -934,9 +934,9 @@ function LessonView({
   ] as const
 
   return (
-    <div className="p-6 max-w-4xl mx-auto space-y-5">
+    <div className="p-3 sm:p-6 max-w-4xl mx-auto space-y-4 sm:space-y-5">
       {/* Header */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <button onClick={onBack} className="btn-ghost flex items-center gap-1 text-sm">
           <ArrowLeft size={16} /> Boshqa dars
         </button>
@@ -955,24 +955,23 @@ function LessonView({
       </div>
 
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">{lesson.title}</h1>
-        <p className="text-gray-500 text-sm mt-1">{lesson.subtitle}</p>
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">{lesson.title}</h1>
+        <p className="text-gray-500 text-xs sm:text-sm mt-1">{lesson.subtitle}</p>
       </div>
 
-      {/* Tabs */}
-      <div className="flex gap-2 border-b border-gray-100 pb-0">
+      {/* Tabs — scrollable on mobile */}
+      <div className="flex gap-2 border-b border-gray-100 pb-0 overflow-x-auto scrollbar-hide -mx-3 px-3 sm:mx-0 sm:px-0">
         {tabs.map((t) => (
           <button
             key={t.id}
             onClick={() => { setTab(t.id); setSubmitted(false) }}
-            className={`pb-3 px-4 text-sm font-semibold border-b-2 transition-all ${
+            className={`pb-3 px-3 sm:px-4 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
               tab === t.id
                 ? 'border-primary-600 text-primary-700'
                 : 'border-transparent text-gray-400 hover:text-gray-600'
             }`}
           >
-            <span className="hidden sm:inline">{t.label}</span>
-            <span className="sm:hidden">{t.desc}</span>
+            {t.label}
           </button>
         ))}
       </div>
@@ -1240,7 +1239,7 @@ export default function DailyLesson() {
 
   if (lessonsLoading) {
     return (
-      <div className="p-6 max-w-4xl mx-auto flex items-center justify-center min-h-[300px]">
+      <div className="p-3 sm:p-6 max-w-4xl mx-auto flex items-center justify-center min-h-[300px]">
         <div className="text-gray-400 animate-pulse">Darslar yuklanmoqda...</div>
       </div>
     )
@@ -1248,20 +1247,20 @@ export default function DailyLesson() {
 
   if (lessons.length === 0) {
     return (
-      <div className="p-6 max-w-4xl mx-auto flex items-center justify-center min-h-[300px]">
+      <div className="p-3 sm:p-6 max-w-4xl mx-auto flex items-center justify-center min-h-[300px]">
         <p className="text-gray-400">Hozircha darslar mavjud emas. Supabase seed SQL'ni ishga tushiring.</p>
       </div>
     )
   }
 
   return (
-    <div className="p-6 max-w-4xl mx-auto space-y-5">
+    <div className="p-3 sm:p-6 max-w-4xl mx-auto space-y-5">
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
           <Sparkles size={20} className="text-primary-600" />
         </div>
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Kunlik Darslar</h1>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900">Kunlik Darslar</h1>
           <p className="text-xs text-gray-500">Har kuni yangi mavzu — qoida, so'zlar va mashqlar</p>
         </div>
       </div>
@@ -1273,7 +1272,7 @@ export default function DailyLesson() {
           <button
             key={lesson.id}
             onClick={() => setSelected(lesson.id)}
-            className="card-hover text-left flex flex-col gap-3 p-5 group"
+            className="card-hover text-left flex flex-col gap-3 p-3 sm:p-5 group"
           >
             <div className="flex items-start justify-between gap-2">
               <div className="flex items-center gap-2">

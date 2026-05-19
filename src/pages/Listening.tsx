@@ -107,13 +107,13 @@ export default function Listening() {
 
   if (phase === 'select') {
     return (
-      <div className="p-6 max-w-2xl mx-auto">
-        <div className="flex items-center gap-3 mb-6">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <div className="flex items-center gap-3 mb-4 sm:mb-6">
           <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
             <Headphones size={20} className="text-orange-600" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">Listening</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900">Listening</h1>
             <p className="text-xs text-gray-500">YouTube darslar · Mashqlar · Shadowing</p>
           </div>
         </div>
@@ -161,9 +161,9 @@ export default function Listening() {
     const xp      = fillCorrect * 10 + tfCorrect * 6 + (summaryText.trim().split(/\s+/).length >= 30 ? 20 : 0)
 
     return (
-      <div className="p-6 max-w-md mx-auto flex flex-col items-center justify-center min-h-[60vh] text-center">
+      <div className="p-3 sm:p-6 max-w-md mx-auto flex flex-col items-center justify-center min-h-[60vh] text-center">
         <div className="text-6xl mb-4">{pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪'}</div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-1">Dars tugadi!</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Dars tugadi!</h2>
         <p className="text-sm text-gray-500 mb-6 line-clamp-1">{lesson.title}</p>
 
         <div className="flex gap-3 mb-8">
@@ -210,13 +210,13 @@ export default function Listening() {
     const stepLabels = ['Fill-blank', 'True/False', 'Summary']
 
     return (
-      <div className="p-6 max-w-2xl mx-auto">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
         {/* Header */}
-        <div className="flex items-center gap-3 mb-5">
+        <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
           <button onClick={() => setPhase('lesson')} className="btn-ghost p-2 rounded-xl">
             <ChevronLeft size={18} />
           </button>
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <p className="text-xs text-gray-500 truncate">{lesson.title}</p>
             <p className="text-sm font-semibold text-gray-900">Mashqlar</p>
           </div>
@@ -370,9 +370,9 @@ export default function Listening() {
   const shadowSrc  = `https://www.youtube.com/embed/${lesson.youtubeId}?start=${segment.startSec}&rel=0&modestbranding=1&autoplay=1`
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4">
         <button onClick={() => setPhase('select')} className="btn-ghost p-2 rounded-xl">
           <ChevronLeft size={18} />
         </button>

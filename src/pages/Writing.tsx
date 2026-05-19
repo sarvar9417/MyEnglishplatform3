@@ -144,13 +144,13 @@ export default function Writing() {
     const avg = Math.round((scores.taskAchievement + scores.coherence + scores.vocabulary + scores.grammar) / 4)
 
     return (
-      <div className="p-6 max-w-2xl mx-auto">
-        <div className="flex items-center gap-3 mb-5">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
           <div className="w-10 h-10 bg-b2-100 rounded-xl flex items-center justify-center">
             <PenLine size={20} className="text-b2-600" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">Writing natijasi</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900">Writing natijasi</h1>
             <p className="text-xs text-gray-500">{wc} so'z · {formatTimer(timer)}</p>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function Writing() {
         </div>
 
         {/* Score grid */}
-        <div className="grid grid-cols-2 gap-2 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
           <ScoreCard label="Task Achievement" score={scores.taskAchievement} color="text-primary-600" />
           <ScoreCard label="Coherence"         score={scores.coherence}       color="text-b1-600"     />
           <ScoreCard label="Vocabulary"        score={scores.vocabulary}      color="text-orange-600" />
@@ -226,14 +226,14 @@ export default function Writing() {
 
   if (!promptsLoaded || !prompt) {
     return (
-      <div className="p-4 max-w-2xl mx-auto flex items-center justify-center min-h-[300px]">
-        <div className="text-gray-400 animate-pulse">Vazifa yuklanmoqda...</div>
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto flex items-center justify-center min-h-[300px]">
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-b2-600 border-t-transparent" />
       </div>
     )
   }
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
@@ -241,7 +241,7 @@ export default function Writing() {
             <PenLine size={20} className="text-b2-600" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">Writing</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900">Writing</h1>
             <p className="text-xs text-gray-500">Bugungi vazifa · {currentDay}-kun</p>
           </div>
         </div>

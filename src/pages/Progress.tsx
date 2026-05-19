@@ -280,27 +280,27 @@ export default function Progress() {
 
   if (loading) {
     return (
-      <div className="p-6 max-w-4xl mx-auto flex items-center justify-center h-64">
+      <div className="p-3 sm:p-6 max-w-4xl mx-auto flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary-600 border-t-transparent" />
       </div>
     )
   }
 
   return (
-    <div className="p-4 max-w-4xl mx-auto space-y-4">
+    <div className="p-3 sm:p-6 max-w-4xl mx-auto space-y-4">
       {/* Header */}
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-b2-100 rounded-xl flex items-center justify-center">
           <BarChart2 size={20} className="text-b2-600" />
         </div>
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Tahlil va Statistika</h1>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900">Tahlil va Statistika</h1>
           <p className="text-xs text-gray-500">{currentDay}/90 kun · {startDate} dan</p>
         </div>
       </div>
 
       {/* Top stat cards */}
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
         {[
           { icon: <Award size={16} />,   color: 'text-b2-600',     label: 'Jami XP',     value: totalXP.toLocaleString()        },
           { icon: <Flame size={16} />,   color: 'text-orange-500', label: 'Streak',      value: `${bestStreak} kun`             },

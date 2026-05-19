@@ -185,13 +185,13 @@ export default function Speaking() {
 
   if (view === 'select') {
     return (
-      <div className="p-6 max-w-2xl mx-auto">
-        <div className="flex items-center gap-3 mb-6">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <div className="flex items-center gap-3 mb-4 sm:mb-6">
           <div className="w-10 h-10 bg-b2-100 rounded-xl flex items-center justify-center">
             <Mic size={20} className="text-b2-600" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">Speaking</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900">Speaking</h1>
             <p className="text-xs text-gray-500">Kundalik 3 ta savol · Web Speech API · Claude baholaydi</p>
           </div>
         </div>
@@ -273,7 +273,7 @@ export default function Speaking() {
     const avg = Math.round((scores.fluency + scores.grammar + scores.vocabulary) / 3)
 
     return (
-      <div className="p-6 max-w-lg mx-auto">
+      <div className="p-3 sm:p-6 max-w-lg mx-auto">
         <div className="flex items-center gap-3 mb-5">
           <button onClick={() => setView('select')} className="btn-ghost p-2 rounded-xl">
             <ChevronLeft size={18} />
@@ -289,7 +289,7 @@ export default function Speaking() {
         </div>
 
         {/* Score cards */}
-        <div className="grid grid-cols-3 gap-2 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-4">
           <ScoreCard label="Fluency"    score={scores.fluency}    color="text-orange-600" />
           <ScoreCard label="Grammar"    score={scores.grammar}    color="text-green-600"  />
           <ScoreCard label="Vocabulary" score={scores.vocabulary} color="text-b2-600"     />
@@ -338,7 +338,7 @@ export default function Speaking() {
   const secs         = timer % 60
 
   return (
-    <div className="p-6 max-w-lg mx-auto">
+    <div className="p-3 sm:p-6 max-w-lg mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3 mb-5">
         <button

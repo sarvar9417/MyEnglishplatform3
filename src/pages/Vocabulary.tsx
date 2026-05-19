@@ -338,7 +338,7 @@ export default function Vocabulary() {
 
   if (loading) {
     return (
-      <div className="p-6 max-w-2xl mx-auto flex items-center justify-center h-60">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto flex items-center justify-center h-60">
         <div className="flex flex-col items-center gap-3">
           <Loader2 size={28} className="animate-spin text-b1-500" />
           <p className="text-sm text-gray-500">So'zlar yuklanmoqda...</p>
@@ -354,17 +354,17 @@ export default function Vocabulary() {
 
     if (rpcError) {
       return (
-        <div className="p-6 max-w-2xl mx-auto">
-          <VocabProgress
-            stats={levelStats}
-            totalLearned={totalLearned}
-            totalWords={levelStats.reduce((a, s) => a + s.total, 0)}
-            dueCount={dueCount}
-            streak={useStore.getState().streak}
-          />
-          <div className="mt-6 flex flex-col items-center gap-4 py-16 text-center">
+        <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <VocabProgress
+          stats={levelStats}
+          totalLearned={totalLearned}
+          totalWords={levelStats.reduce((a, s) => a + s.total, 0)}
+          dueCount={dueCount}
+          streak={useStore.getState().streak}
+        />
+        <div className="mt-6 flex flex-col items-center gap-4 py-16 text-center">
             <div className="text-6xl mb-2">⚠️</div>
-            <h2 className="text-xl font-bold text-gray-900">RPC funksiyalari topilmadi</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900">RPC funksiyalari topilmadi</h2>
             <p className="text-sm text-gray-500 max-w-sm">
               {rpcError}
             </p>
@@ -380,7 +380,7 @@ export default function Vocabulary() {
     }
 
     return (
-      <div className="p-6 max-w-2xl mx-auto">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
         <VocabProgress
           stats={levelStats}
           totalLearned={totalLearned}
@@ -392,7 +392,7 @@ export default function Vocabulary() {
           {hasWordsInDB ? (
             <>
               <div className="text-6xl mb-2">🎉</div>
-              <h2 className="text-xl font-bold text-gray-900">Bugungi so'zlar tugadi</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">Bugungi so'zlar tugadi</h2>
               <p className="text-sm text-gray-500 max-w-xs">
                 Barcha so'zlar o'rganildi! Ertaga yangi so'zlar avtomatik keladi.
               </p>
@@ -400,7 +400,7 @@ export default function Vocabulary() {
           ) : (
             <>
               <div className="text-6xl mb-2">📚</div>
-              <h2 className="text-xl font-bold text-gray-900">So'zlar yuklanmadi</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">So'zlar yuklanmadi</h2>
               <p className="text-sm text-gray-500 max-w-xs">
                 So'zlar bazasi bo'sh. Terminalda yugurting:
               </p>
@@ -426,9 +426,9 @@ export default function Vocabulary() {
     const pct = batchWords.length > 0 ? Math.round((correctCount / batchWords.length) * 100) : 0
     const isLastBatch = currentBatch >= 4
     return (
-      <div className="p-6 max-w-md mx-auto flex flex-col items-center justify-center min-h-[60vh] text-center">
+      <div className="p-3 sm:p-6 max-w-md mx-auto flex flex-col items-center justify-center min-h-[60vh] text-center">
         <div className="text-6xl mb-4">{pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪'}</div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-1">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
           {isLastBatch ? "Bugungi mashq tugadi!" : `${currentBatch}-Batch tugadi!`}
         </h2>
         <p className="text-gray-500 mb-6">
@@ -464,7 +464,7 @@ export default function Vocabulary() {
 
   if (viewMode === 'flashcard' && currentWord) {
     return (
-      <div className="p-4 max-w-lg mx-auto select-none">
+      <div className="p-3 sm:p-6 max-w-lg mx-auto select-none">
         <div className="flex items-center justify-between mb-4">
           <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">
             ← Chiqish
@@ -521,7 +521,7 @@ export default function Vocabulary() {
 
   if (viewMode === 'test' && currentWord) {
     return (
-      <div className="p-4 max-w-lg mx-auto">
+      <div className="p-3 sm:p-6 max-w-lg mx-auto">
         <div className="flex items-center justify-between mb-4">
           <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">
             ← Chiqish
@@ -549,7 +549,7 @@ export default function Vocabulary() {
 
   if (viewMode === 'game') {
     return (
-      <div className="p-4 max-w-lg mx-auto">
+      <div className="p-3 sm:p-6 max-w-lg mx-auto">
         <div className="flex items-center justify-between mb-4">
           <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">
             ← Chiqish
@@ -571,14 +571,14 @@ export default function Vocabulary() {
   // ── Catalog (default) view ─────────────────────────────────
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-b1-100 rounded-xl flex items-center justify-center">
             <BookMarked size={20} className="text-b1-600" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">Vocabulary</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900">Vocabulary</h1>
             <p className="text-xs text-gray-500">SRS Spaced Repetition</p>
           </div>
         </div>

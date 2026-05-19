@@ -111,7 +111,7 @@ function SectionBar({ label, pct, band }: { label: string; pct: number; band: nu
 function SelectScreen({ onStart, loading }: { onStart: (t: TestType) => void; loading?: boolean }) {
   if (loading) {
     return (
-      <div className="p-6 max-w-2xl mx-auto flex items-center justify-center min-h-[300px]">
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto flex items-center justify-center min-h-[300px]">
         <div className="text-gray-400 animate-pulse">Test ma'lumotlari yuklanmoqda...</div>
       </div>
     )
@@ -128,13 +128,13 @@ function SelectScreen({ onStart, loading }: { onStart: (t: TestType) => void; lo
       color:'bg-purple-50 border-purple-100', tc:'text-purple-700' },
   ]
   return (
-    <div className="p-6 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
           <ClipboardList size={20} className="text-primary-600" />
         </div>
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Mock Imtihon</h1>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900">Mock Imtihon</h1>
           <p className="text-xs text-gray-500">Daraja aniqlash va IELTS tayyorgarlik</p>
         </div>
       </div>
@@ -215,7 +215,7 @@ function WeeklyTest({ questions, level, mins, onDone }: {
   const sectionLabel = { grammar: '📚 Grammar', vocabulary: '📝 Vocabulary', reading: '📖 Reading' }
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div>
@@ -311,7 +311,7 @@ function IELTSReading({ texts, onDone }: { texts: import('@/data/readingTexts').
   const current   = globalIdx + 1
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-3">
         <div>
           <span className="text-xs font-semibold text-b1-600">📖 Reading  ·  Matn {textIdx + 1}/{texts.length}</span>
@@ -377,7 +377,7 @@ function IELTSListening({ data, onDone }: { data: MockTestData | null; onDone: (
   }
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-3">
         <span className="text-xs font-semibold text-orange-600">🎧 Listening (Matn asosida)</span>
         <Timer fmt={timer.fmt} pct={timer.pct} warn={timer.left < 120} />
@@ -478,7 +478,7 @@ function IELTSWriting({ data, onDone }: { data: MockTestData | null; onDone: (t1
   const canSubmit  = wc >= minWords && !(task === 1 ? loading1 : loading2)
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-3">
         <div>
           <span className="text-xs font-semibold text-b2-600">✍️ Writing</span>
@@ -578,7 +578,7 @@ function IELTSSpeaking({ prompts, onDone }: { prompts: import('@/services/speaki
   const noSpeech = !((window.SpeechRecognition || window.webkitSpeechRecognition))
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-3">
         <div>
           <span className="text-xs font-semibold text-purple-600">🎤 Speaking · Prompt {pIdx + 1}/2</span>
@@ -659,7 +659,7 @@ function ResultScreen({ data, onRetry }: { data: ResultData; onRetry: () => void
   })()
 
   return (
-    <div className="p-5 max-w-2xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       {/* Overall score */}
       <div className="card bg-gradient-to-br from-primary-50 to-b2-50 border-primary-100 text-center mb-5">
         <CheckCircle size={36} className="text-primary-600 mx-auto mb-2" />
