@@ -501,9 +501,6 @@ export default function Dictionary() {
           Barcha{!query.trim() ? '' : <span className="opacity-60 ml-0.5">({displayCount})</span>}
         </button>
         {['A1', 'A2', 'B1', 'B2'].map((lvl) => {
-          const count = query.trim()
-            ? results.filter((w) => w.level === lvl).length
-            : allWords.filter((w) => w.level === lvl).length
           const total = query.trim() ? 0 : allWords.filter((w) => w.level === lvl).length
           return (
             <button
