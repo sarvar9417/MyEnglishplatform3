@@ -17,6 +17,7 @@ import WordTest from '../components/vocabulary/WordTest'
 import WordGame from '../components/vocabulary/WordGame'
 import VocabProgress from '../components/vocabulary/VocabProgress'
 import VocabCalendar from '../components/vocabulary/VocabCalendar'
+import VocabTypingGame from '../components/vocabulary/VocabTypingGame'
 
 const BATCH_SIZE = 25
 const WORDS_PER_DAY = 100
@@ -43,6 +44,7 @@ export default function Vocabulary() {
 
   const [selectedDate, setSelectedDate] = useState(todayStr)
   const [showCalendar, setShowCalendar] = useState(false)
+  const [showTypingGame, setShowTypingGame] = useState(false)
   const [monthSessions, setMonthSessions] = useState<Map<string, DaySession>>(new Map())
 
   useEffect(() => {
@@ -595,6 +597,16 @@ export default function Vocabulary() {
     )
   }
 
+  // ── Typing Game view ──────────────────────────────────────────
+
+  if (showTypingGame) {
+    return (
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <VocabTypingGame onClose={() => setShowTypingGame(false)} />
+      </div>
+    )
+  }
+
   // ── Catalog (default) view ─────────────────────────────────
 
   return (
@@ -610,6 +622,12 @@ export default function Vocabulary() {
           </div>
         </div>
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => setShowTypingGame(true)}
+            className="btn-secondary text-xs flex items-center gap-1.5 px-3 py-2 transition-all"
+          >
+            🎮 O'yin
+          </button>
           <button
             onClick={() => {
               setShowCalendar(!showCalendar)
