@@ -50,9 +50,10 @@ const LEVEL_COLORS: Record<string, string> = {
 }
 
 const TAG_COLORS: Record<string, string> = {
-  Conditionals: 'bg-violet-100 text-violet-700',
-  Tenses:       'bg-blue-100 text-blue-700',
-  Passive:      'bg-teal-100 text-teal-700',
+  Conditionals:  'bg-violet-100 text-violet-700',
+  Tenses:        'bg-blue-100 text-blue-700',
+  Passive:       'bg-teal-100 text-teal-700',
+  Comparatives:  'bg-amber-100 text-amber-700',
 }
 
 function TopicCard({
