@@ -432,4 +432,29 @@ EXAMPLE: [One natural ${level}-level English sentence using the word]`
   }
 }
 
+// ─── Vocab game: so'z javobini tekshirish ────────────────────────────────────
+
+export async function checkVocabAnswer(
+  uzbek: string,
+  correctEnglish: string,
+  userAnswer: string
+): Promise<boolean> {
+  const client = getClient()
+
+  const response = await client.messages.create({
+    model: MODEL,
+    max_tokens: 5,
+    system: 'You are a strict vocabulary checker. Reply ONLY with CORRECT or WRONG.',
+    messages: [{
+      role: 'user',
+      content: `Uzbek word: "${uzbek}" | Expected English: "${correctEnglish}" | Student wrote: "${userAnswer}"\nIs the student's answer a valid English translation of this Uzbek word? Consider synonyms and alternate forms. Reply ONLY: CORRECT or WRONG`,
+    }],
+  })
+
+  const text = response.content[0]?.type === 'text'
+    ? response.content[0].text.trim().toUpperCase()
+    : 'WRONG'
+  return text.startsWith('CORRECT')
+}
+
 export { MODEL }

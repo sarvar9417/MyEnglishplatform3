@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { CheckCircle, XCircle, ArrowRight, RotateCcw, X, Loader2 } from 'lucide-react'
 import { supabase } from '../../db/supabase'
+import { checkVocabAnswer } from '../../lib/claude'
 
 type Level = 'A1' | 'A2' | 'B1' | 'B2'
 type Phase = 'level-select' | 'playing' | 'result'
@@ -45,6 +46,7 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
   const [loading, setLoading] = useState(false)
   const [flash, setFlash] = useState<'correct' | 'wrong' | null>(null)
   const [locked, setLocked] = useState(false)
+  const [checking, setChecking] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pendingRef = useRef<{ results: QuizResult[]; nextIdx: number; finished: boolean } | null>(null)
@@ -97,25 +99,38 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
     }
   }
 
-  function handleSubmit() {
+  function processResult(word: Word, userAnswer: string, correct: boolean) {
+    setChecking(false)
+    setFlash(correct ? 'correct' : 'wrong')
+    setLocked(true)
+    const newResults = [...results, { word, userAnswer, correct }]
+    const nextIdx = currentIdx + 1
+    pendingRef.current = { results: newResults, nextIdx, finished: nextIdx >= words.length }
+    timerRef.current = setTimeout(goNext, 3000)
+  }
+
+  async function handleSubmit() {
     const trimmed = input.trim()
     if (!trimmed || locked) return
 
     const word = words[currentIdx]
-    const correct = trimmed.toLowerCase() === word.english.toLowerCase()
-
-    setFlash(correct ? 'correct' : 'wrong')
     setLocked(true)
 
-    const newResults = [...results, { word, userAnswer: trimmed, correct }]
-    const nextIdx = currentIdx + 1
-    pendingRef.current = {
-      results: newResults,
-      nextIdx,
-      finished: nextIdx >= words.length,
+    // Aniq mos kelsa — API chaqirmasdan darhol to'g'ri
+    if (trimmed.toLowerCase() === word.english.toLowerCase()) {
+      processResult(word, trimmed, true)
+      return
     }
 
-    timerRef.current = setTimeout(goNext, 3000)
+    // Mos kelmasa — Claude orqali tekshirish (bir nechta ma'no bo'lishi mumkin)
+    setChecking(true)
+    try {
+      const correct = await checkVocabAnswer(word.uzbek, word.english, trimmed)
+      processResult(word, trimmed, correct)
+    } catch {
+      // API ishlamasa — noto'g'ri deb hisoblash
+      processResult(word, trimmed, false)
+    }
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
@@ -215,7 +230,9 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
         {/* Savol kartochkasi */}
         <div
           className={`rounded-2xl border-2 py-10 px-6 text-center mb-5 transition-all duration-300 ${
-            flash === 'correct'
+            checking
+              ? 'bg-yellow-50 border-yellow-200'
+              : flash === 'correct'
               ? 'bg-green-50 border-green-300'
               : flash === 'wrong'
               ? 'bg-red-50 border-red-300'
@@ -229,7 +246,13 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
             {word.uzbek}
           </p>
 
-          {flash === 'correct' && (
+          {checking && (
+            <div className="flex items-center justify-center gap-2 mt-4 text-yellow-600 text-sm font-medium">
+              <Loader2 size={16} className="animate-spin" /> Tekshirilmoqda...
+            </div>
+          )}
+
+          {!checking && flash === 'correct' && (
             <div className="mt-4">
               <div className="flex items-center justify-center gap-1.5 text-green-600 font-semibold text-sm">
                 <CheckCircle size={18} /> To'g'ri!
@@ -240,7 +263,7 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
               )}
             </div>
           )}
-          {flash === 'wrong' && (
+          {!checking && flash === 'wrong' && (
             <div className="mt-4">
               <p className="text-red-500 text-sm font-semibold flex items-center justify-center gap-1.5">
                 <XCircle size={16} /> Noto'g'ri
