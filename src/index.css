@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #1a56db;
+    --color-b1: #0f766e;
+    --color-b2: #7c3aed;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans;
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" 32;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-gray-100 p-5;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-card-hover hover:-translate-y-0.5 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 active:bg-primary-800
+           text-white font-semibold px-5 py-2.5 rounded-xl
+           transition-all duration-150 shadow-sm hover:shadow-md
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 active:bg-gray-300
+           text-gray-700 font-medium px-5 py-2.5 rounded-xl
+           transition-all duration-150
+           focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-gray-100 active:bg-gray-200
+           text-gray-600 font-medium px-4 py-2 rounded-lg
+           transition-all duration-150;
+  }
+
+  .skill-ring {
+    @apply relative flex items-center justify-center;
+  }
+
+  .progress-bar {
+    @apply h-2 bg-gray-100 rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-700;
+  }
+
+  .badge-b1 {
+    @apply badge bg-b1-100 text-b1-700;
+  }
+
+  .badge-b2 {
+    @apply badge bg-b2-100 text-b2-700;
+  }
+
+  .stat-card {
+    @apply card flex flex-col gap-1;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl
+           text-gray-600 font-medium text-sm
+           transition-all duration-150
+           hover:bg-primary-50 hover:text-primary-700;
+  }
+
+  .sidebar-link.active {
+    @apply bg-primary-100 text-primary-700 font-semibold;
+  }
+
+  .input {
+    @apply w-full px-4 py-2.5 rounded-xl border border-gray-200
+           bg-white text-gray-900 placeholder-gray-400
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+           transition-all duration-150;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary-600 to-b2-600 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* Pomodoro ring animatsiyasi */
+@keyframes countdown-ring {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: 283; }
+}
+
+.pomodoro-ring {
+  animation: countdown-ring linear;
+  transform-origin: center;
+  transform: rotate(-90deg);
+}
+
+/* XP progress animatsiyasi */
+@keyframes xp-fill {
+  from { width: 0%; }
+}
+
+.xp-bar-animate {
+  animation: xp-fill 1s ease-out forwards;
+}
+
+/* ── Flashcard 3D flip ────────────────────────────────────────────────────── */
+.flashcard-scene {
+  perspective: 1200px;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flashcard-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.flashcard-face.is-back {
+  transform: rotateY(180deg);
+  overflow-y: auto;
+}

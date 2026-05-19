@@ -1,0 +1,219 @@
+import { supabase } from '../db/supabase'
+import { addDaysTashkent } from '../utils/tashkentDate'
+
+export type WordLevel = 'A1' | 'A2' | 'B1' | 'B2'
+
+export interface DailyWordRow {
+  word_id:      number
+  english:      string
+  uzbek:        string
+  level:        WordLevel
+  box:          number
+  next_review:  string
+  is_learned:   boolean
+  correct_count: number
+  wrong_count:   number
+  is_new:       boolean
+  example?:    string
+  last_rating?: string
+}
+
+export interface SessionWordResult {
+  word_id:  number
+  english:  string
+  uzbek:    string
+  level:    WordLevel
+  box:      number
+  result:   'correct' | 'wrong'
+}
+
+export type Rating = 'bildim' | 'qiynaldim' | 'bilmadim' | 'yodladim'
+
+export function computeNextReview(
+  box: number,
+  rating: Rating
+): { box: number; next_review: string; is_learned: boolean } {
+  if (rating === 'yodladim') {
+    return { box: 5, next_review: addDaysTashkent(30), is_learned: true }
+  }
+
+  let newBox = box
+  let intervalDays: number
+
+  if (rating === 'bildim') {
+    newBox = Math.min(box + 1, 5)
+    const intervals = [0, 1, 2, 4, 7, 14]
+    intervalDays = intervals[newBox]
+  } else if (rating === 'qiynaldim') {
+    const intervals = [0, 1, 2, 4, 7, 14]
+    intervalDays = Math.round(intervals[box] * 1.5)
+  } else {
+    newBox = 1
+    intervalDays = 1
+  }
+
+  return { box: newBox, next_review: addDaysTashkent(intervalDays), is_learned: false }
+}
+
+export async function fetchDailyWords(
+  userId: string,
+  newCount: number = 70
+): Promise<DailyWordRow[]> {
+  const { data, error } = await supabase
+    .rpc('get_daily_words', { user_uuid: userId, new_count: newCount })
+
+  if (error) {
+    console.error('fetchDailyWords error:', error)
+    return []
+  }
+  return (data ?? []) as DailyWordRow[]
+}
+
+export async function upsertProgress(
+  userId: string,
+  wordId: number,
+  box: number,
+  nextReview: string,
+  correctCount: number,
+  wrongCount: number,
+  isLearned: boolean
+) {
+  const { error } = await supabase.from('vocabulary_progress').upsert({
+    user_id: userId,
+    word_id: wordId,
+    box,
+    next_review: nextReview,
+    correct_count: correctCount,
+    wrong_count: wrongCount,
+    is_learned: isLearned,
+    last_reviewed: new Date().toISOString(),
+  } as never, { onConflict: 'user_id,word_id' })
+
+  if (error) console.error('upsertProgress error:', error)
+}
+
+export async function saveSession(
+  userId: string,
+  batchNumber: number,
+  wordsJson: Record<string, Rating>,
+  score: number,
+  timeSpent: number,
+  sessionDate?: string
+) {
+  const payload: Record<string, unknown> = {
+    user_id: userId,
+    batch_number: batchNumber,
+    words_json: wordsJson,
+    score,
+    time_spent: timeSpent,
+    completed: true,
+  }
+  if (sessionDate) payload.session_date = sessionDate
+
+  const { error } = await supabase.from('vocabulary_sessions').insert(payload as never)
+
+  if (error) console.error('saveSession error:', error)
+}
+
+export interface DaySession {
+  session_date: string
+  completed_batches: number
+  total_score: number
+  total_words: number
+  all_completed: boolean
+}
+
+export async function fetchMonthSessions(
+  userId: string,
+  year: number,
+  month: number
+): Promise<Map<string, DaySession>> {
+  const startDate = `${year}-${String(month + 1).padStart(2, '0')}-01`
+  const endDateStr = month === 11
+    ? `${year + 1}-01-01`
+    : `${year}-${String(month + 2).padStart(2, '0')}-01`
+
+  const { data, error } = await supabase
+    .from('vocabulary_sessions')
+    .select('id, session_date, batch_number, score, words_json')
+    .gte('session_date', startDate)
+    .lt('session_date', endDateStr)
+    .eq('user_id', userId)
+    .order('id', { ascending: true })
+
+  if (error) {
+    console.error('fetchMonthSessions error:', error)
+    return new Map()
+  }
+
+  // Group rows by (date, batch_number), keep only the LAST row for each batch
+  const byDayBatch = new Map<string, Map<number, (typeof data)['0']>>()
+  for (const row of data ?? []) {
+    const d = row.session_date
+    if (!byDayBatch.has(d)) byDayBatch.set(d, new Map())
+    const batchMap = byDayBatch.get(d)!
+    if (row.batch_number != null) {
+      batchMap.set(row.batch_number, row) // keeps last occurrence
+    }
+  }
+
+  const result = new Map<string, DaySession>()
+  for (const [d, batchMap] of byDayBatch) {
+    let totalScore = 0
+    let totalWords = 0
+    for (const [, row] of batchMap) {
+      totalScore += row.score ?? 0
+      totalWords += row.words_json ? Object.keys(row.words_json as Record<string, unknown>).length : 0
+    }
+    const completedBatches = batchMap.size
+    result.set(d, {
+      session_date: d,
+      completed_batches: completedBatches,
+      total_score: totalScore,
+      total_words: totalWords,
+      all_completed: completedBatches >= 4,
+    })
+  }
+  return result
+}
+
+export async function fetchProgressStats(userId: string) {
+  const { data, error } = await supabase
+    .from('vocabulary_progress')
+    .select('word_id, box, is_learned, correct_count')
+    .eq('user_id', userId)
+
+  if (error) {
+    console.error('fetchProgressStats error:', error)
+    return []
+  }
+  return data ?? []
+}
+
+export interface LevelTotal {
+  level: string
+  total: number
+}
+
+export interface LevelLearned {
+  level: string
+  learned: number
+}
+
+export async function fetchLevelCounts(): Promise<LevelTotal[]> {
+  const { data, error } = await supabase.rpc('get_word_counts_by_level')
+  if (error) {
+    console.error('fetchLevelCounts error:', error)
+    return []
+  }
+  return (data ?? []) as LevelTotal[]
+}
+
+export async function fetchLearnedCounts(userId: string): Promise<LevelLearned[]> {
+  const { data, error } = await supabase.rpc('get_learned_counts_by_level', { user_uuid: userId })
+  if (error) {
+    console.error('fetchLearnedCounts error:', error)
+    return []
+  }
+  return (data ?? []) as LevelLearned[]
+}

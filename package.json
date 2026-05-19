@@ -1,0 +1,37 @@
+{
+  "name": "englishpath",
+  "version": "1.0.0",
+  "description": "A2+ dan B2 darajasiga 90 kunda yetish uchun intensiv ingliz tili o'quv platformasi",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "seed": "tsx scripts/seed-vocabulary.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0",
+    "@supabase/supabase-js": "^2.105.4",
+    "dexie": "^3.2.7",
+    "lucide-react": "^0.447.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "recharts": "^2.13.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.2",
+    "autoprefixer": "^10.4.20",
+    "dotenv": "^16.3.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "tsx": "^3.12.7",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  }
+}

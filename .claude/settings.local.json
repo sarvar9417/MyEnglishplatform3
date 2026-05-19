@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(Start-Sleep -Seconds 4)",
+      "Bash(Get-Content \"C:\\\\Users\\\\admin\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-admin-Desktop-English-myplatform\\\\158b51a2-d0bd-4a8d-af70-29bfbb8c8c2a\\\\tasks\\\\bkg917651.output\")",
+      "Bash(dir /s /b src)",
+      "Bash(npx vite *)",
+      "Bash(findstr supabase *)",
+      "Bash(echo \"# MyEnglishplatform3\")",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git branch *)"
+    ]
+  }
+}
