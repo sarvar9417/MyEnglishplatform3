@@ -46,9 +46,28 @@ export default function Vocabulary() {
   const [monthSessions, setMonthSessions] = useState<Map<string, DaySession>>(new Map())
 
   useEffect(() => {
-    loadDailyData()
+    const today = getTodayTashkent()
+    setStudyDate(today)
+    setSelectedDate(today)
+    loadDailyData(today)
     return () => { reset() }
   }, [])
+
+  // Sahifa orqaga qaytganda yoki ko'rinib qolganda sanani yangilash
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        const today = getTodayTashkent()
+        if (studyDate !== today) {
+          setStudyDate(today)
+          setSelectedDate(today)
+          loadDailyData(today)
+        }
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => document.removeEventListener('visibilitychange', handleVisibility)
+  }, [studyDate])
 
   useEffect(() => {
     if (viewMode === 'flashcard' || viewMode === 'test') {
@@ -69,7 +88,7 @@ export default function Vocabulary() {
   }
 
   async function loadDailyData(targetDate?: string) {
-    const sd = targetDate ?? studyDate
+    const sd = targetDate ?? getTodayTashkent()
     const dayNum = startDate
       ? Math.max(1, Math.round((Date.parse(sd + 'T00:00:00Z') - Date.parse(startDate + 'T00:00:00Z')) / 86400000) + 1)
       : 1
@@ -331,7 +350,10 @@ export default function Vocabulary() {
   }
 
   function handleBatchComplete() {
-    loadDailyData()
+    const today = getTodayTashkent()
+    setStudyDate(today)
+    setSelectedDate(today)
+    loadDailyData(today)
   }
 
   // ── Loading ────────────────────────────────────────────────
@@ -620,10 +642,11 @@ export default function Vocabulary() {
               setTimeout(() => enterStudyMode('flashcard'), 0)
             }}
             onClose={() => {
+              const today = getTodayTashkent()
               setShowCalendar(false)
-              setSelectedDate(getTodayTashkent())
-              setStudyDate(getTodayTashkent())
-              loadDailyData()
+              setSelectedDate(today)
+              setStudyDate(today)
+              loadDailyData(today)
             }}
           />
         </div>
