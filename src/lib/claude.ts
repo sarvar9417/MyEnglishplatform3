@@ -469,13 +469,14 @@ export async function generateUzbekSentence(
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 100,
-    system: `Sen ingliz tili o'qituvchisisiz. ${level} darajasidagi o'quvchi uchun
-o'zbekcha gap tuzasan. Gap ichida "${uzbekWord}" so'zi ishtirok etishi kerak.
-Gap ${level} darajasiga mos, tabiiy va sodda bo'lsin.
-FAQAT o'zbekcha gapni yoz, boshqa hech narsa yozma.`,
+    system: `Sen ${level} darajasidagi o'quvchiga o'zbek tili o'rgatuvchisisan.
+Vazifang: berilgan inglizcha so'zdan foydalanib, sodda va tabiiy o'zbekcha gap tuzish.
+Gap ichida "${uzbekWord}" so'zi albatta ishtirok etishi kerak.
+Gap ${level} darajasiga mos bo'lsin: sodda, qisqa, kundalik hayotga oid.
+MUHIM: FAQAT o'zbekcha gapni yoz. Hech qanday izoh, tarjima, qo'shimcha matn yozma.`,
     messages: [{
       role: 'user',
-      content: `"${englishWord}" (${uzbekWord}) so'zi ishtirokida ${level} darajasida o'zbekcha gap tuz.`,
+      content: `"${englishWord}" (o'zbekcha: ${uzbekWord}) so'zi ishtirokida ${level} darajasida bitta sodda o'zbekcha gap tuz.`,
     }],
   })
 
@@ -504,32 +505,44 @@ export async function checkSentenceTranslation(
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 300,
-    system: `Sen ingliz tili o'qituvchisisiz. ${level} darajasidagi o'quvchi
-o'zbekcha gapni ingliz tiliga tarjima qildi. Sen tekshirib, baho berasan.
+    system: `Sen ${level} darajasidagi o'quvchi uchun ingliz tili o'qituvchisisiz.
+O'quvchi o'zbekcha gapni ingliz tiliga tarjima qildi. Sen tekshirib baho berasan.
 
-FORMAT (shu formatda javob ber, boshqa hech narsa yozma):
-CORRECT: yes/no
-EXPLANATION: (agar xato bo'lsa, nima xato ekanini tushuntir, o'zbekcha)
-CORRECT_ANSWER: (agar xato bo'lsa, to'g'ri tarjimani yoz)`,
+MUHIM: Quyidagi FORMATDA javob ber. Har bir qatorni yangi qatordan boshlab yoz.
+FORMAT:
+CORRECT: yes yoki no
+EXPLANATION: (agar no bo'lsa, nima xato — o'zbekcha tushuntirish; yes bo'lsa bo'sh qoldir)
+CORRECT_ANSWER: (agar no bo'lsa, to'g'ri tarjimani yoz; yes bo'lsa bo'sh qoldir)`,
     messages: [{
       role: 'user',
       content: `O'zbekcha gap: "${uzbekSentence}"
-Maqsadli so'z: "${targetWord}"
-O'quvchining inglizcha tarjimasi: "${userTranslation}"
+Tarjima qilinishi kerak bo'lgan so'z: "${targetWord}"
+O'quvchining tarjimasi: "${userTranslation}"
 
-O'quvchi gapida "${targetWord}" so'zi ishlatilganmi? Gap ma'nosi to'g'ri tarjima qilinganmi? Grammatikasi to'g'rimi?`,
+Tekshir:
+1. "${targetWord}" so'zi o'quvchi gapida ishlatilganmi?
+2. Gap ma'nosi o'zbekcha gapga mos keladimi?
+3. Grammatikasi to'g'rimi? (${level} darajasiga mos)
+
+Agar 3 ta shart ham bajarilsa → CORRECT: yes
+Agar bittasi xato bo'lsa → CORRECT: no + tushuntirish + to'g'ri javob`,
     }],
   })
 
   const text = response.content[0]?.type === 'text' ? response.content[0].text : ''
-  const get = (key: string) => text.match(new RegExp(`${key}:\\s*(.+)`))?.[1]?.trim() ?? ''
 
-  const correctStr = get('CORRECT').toLowerCase()
-  return {
-    correct: correctStr === 'yes' || correctStr === 'true',
-    explanation: get('EXPLANATION'),
-    correctAnswer: get('CORRECT_ANSWER'),
+  const getValue = (key: string): string => {
+    const regex = new RegExp(`^${key}:\\s*(.+)$`, 'm')
+    const match = text.match(regex)
+    return match ? match[1].trim() : ''
   }
+
+  const correctRaw = getValue('CORRECT').toLowerCase()
+  const correct = correctRaw === 'yes' || correctRaw === 'true' || correctRaw === 'ha'
+  const explanation = getValue('EXPLANATION')
+  const correctAnswer = getValue('CORRECT_ANSWER')
+
+  return { correct, explanation, correctAnswer }
 }
 
 export { MODEL }

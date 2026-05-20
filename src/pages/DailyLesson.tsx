@@ -11,6 +11,7 @@ import {
   loadLessonSessionFromDB, saveExerciseAnswersToDB,
   saveViewedTabsToDB, loadViewedTabsFromDB,
   loadLessonVocabProgressFromDB, saveLessonVocabProgressToDB,
+  loadExerciseAnswersFromDB,
 } from '../services/lessonService'
 import { getTodayTashkent } from '../utils/tashkentDate'
 
@@ -398,28 +399,30 @@ function VocabLearner({ vocab, addXP, lessonId }: { vocab: { en: string; uz: str
   const storageKey = `vocab-progress-${lessonId}`
 
   useEffect(() => {
+    // 1. LocalStorage'dan tezda yuklash
+    let localKnownIds = new Set<number>()
     try {
       const saved = localStorage.getItem(storageKey)
-      if (!saved) {
-        // Fallback: load known words from Supabase
-        loadLessonVocabProgressFromDB(lessonId).then(items => {
-          if (items.length > 0) {
-            const knownIdsArr = items.filter(i => i.known).map(i => i.wordIndex)
-            if (knownIdsArr.length > 0) setKnownIds(new Set(knownIdsArr))
-          }
-        })
-        return
+      if (saved) {
+        const data = JSON.parse(saved)
+        if (data.knownIds) { localKnownIds = new Set(data.knownIds); setKnownIds(localKnownIds) }
+        if (data.testScore != null) setTestScore(data.testScore)
+        if (data.testSectionIdx != null) setTestSectionIdx(data.testSectionIdx)
+        if (data.testIdx != null) setTestIdx(data.testIdx)
+        if (data.testResults) setTestResults(data.testResults)
+        if (data.testSubmitted) setTestSubmitted(data.testSubmitted)
+        if (data.testDone != null) setTestDone(data.testDone)
+        if (data.testShuffleKey != null) setTestShuffleKey(data.testShuffleKey)
       }
-      const data = JSON.parse(saved)
-      if (data.knownIds) setKnownIds(new Set(data.knownIds))
-      if (data.testScore != null) setTestScore(data.testScore)
-      if (data.testSectionIdx != null) setTestSectionIdx(data.testSectionIdx)
-      if (data.testIdx != null) setTestIdx(data.testIdx)
-      if (data.testResults) setTestResults(data.testResults)
-      if (data.testSubmitted) setTestSubmitted(data.testSubmitted)
-      if (data.testDone != null) setTestDone(data.testDone)
-      if (data.testShuffleKey != null) setTestShuffleKey(data.testShuffleKey)
-    } catch { /* ignore parse errors */ }
+    } catch { /* ignore */ }
+
+    // 2. Supabase'dan yuklash va birlashtirish (boshqa qurilmada o'rganilgan so'zlar)
+    loadLessonVocabProgressFromDB(lessonId).then(items => {
+      if (items.length === 0) return
+      const remoteKnown = new Set(items.filter(i => i.known).map(i => i.wordIndex))
+      const merged = new Set([...localKnownIds, ...remoteKnown])
+      if (merged.size > localKnownIds.size) setKnownIds(merged)
+    })
   }, [storageKey, lessonId])
 
   const prevStateRef = useRef({ knownIds, testScore, testSectionIdx, testIdx, testResults, testSubmitted, testDone, testShuffleKey })
@@ -1261,23 +1264,112 @@ function LessonView({
     })
   }, [lesson.id])
 
-  // Boshqa qurilmadagi sessiyani yuklash (agar yangiroq bo'lsa)
+  // ── Supabase'dan barcha ma'lumotlarni yuklash (cross-device resume) ──
   useEffect(() => {
-    loadLessonSessionFromDB(lesson.id).then((remote) => {
-      if (!remote) return
-      const localUpdated = savedSession?.updatedAt ?? 0
-      if (remote.updatedAt <= localUpdated) return
-      setTab(remote.tab as any)
-      setCurrentSection(remote.currentSection)
-      setTestSection(remote.testSection)
-      setCompletedSections(remote.completedSections)
-      setCompletedTestSections(remote.completedTestSections)
-    })
-  }, [lesson.id])
+    Promise.all([
+      loadLessonSessionFromDB(lesson.id),
+      loadExerciseAnswersFromDB(lesson.id),
+      loadViewedTabsFromDB(lesson.id),
+    ]).then(([remote, dbAnswers, tabs]) => {
+      // 1. Session tiklash
+      let resolvedSection = savedSession?.currentSection ?? 0
+      let resolvedTestSection = savedSession?.testSection ?? 0
+      let resolvedCompletedSections: Record<number, number> = savedSession?.completedSections ?? {}
+      let resolvedCompletedTestSections: Record<number, number> = savedSession?.completedTestSections ?? {}
 
-  // Yuklash: viewed tabs
-  useEffect(() => {
-    loadViewedTabsFromDB(lesson.id).then((tabs) => {
+      if (remote) {
+        const localUpdated = savedSession?.updatedAt ?? 0
+        if (remote.updatedAt > localUpdated) {
+          setTab(remote.tab as any)
+          setCurrentSection(remote.currentSection)
+          setTestSection(remote.testSection)
+          setCompletedSections(remote.completedSections)
+          setCompletedTestSections(remote.completedTestSections)
+          resolvedSection = remote.currentSection
+          resolvedTestSection = remote.testSection
+          resolvedCompletedSections = remote.completedSections
+          resolvedCompletedTestSections = remote.completedTestSections
+        }
+      }
+
+      // 2. Exercise va test javoblarini tiklash
+      if (dbAnswers.length > 0) {
+        const exMap: Answers = {}
+        const tMap: Record<number, string> = {}
+        const tRes: Record<number, boolean> = {}
+        let hasExercise = false
+        let hasTest = false
+
+        for (const a of dbAnswers) {
+          if (a.sectionType === 'exercise') {
+            exMap[a.exerciseId] = a.answer
+            hasExercise = true
+          } else if (a.sectionType === 'test') {
+            tMap[a.exerciseId] = a.answer[0] ?? ''
+            tRes[a.exerciseId] = a.isCorrect
+            hasTest = true
+          }
+        }
+
+        // Joriy bo'lim tugallangan bo'lsa — javoblarni ko'rsatish
+        if (hasExercise && resolvedSection in resolvedCompletedSections) {
+          setAnswers(exMap)
+          setSubmitted(true)
+          setScore(resolvedCompletedSections[resolvedSection] ?? 0)
+        } else if (!hasExercise) {
+          // Supabase'da yo'q — localStorage'dan (davom etayotgan bo'lim)
+          try {
+            const saved = localStorage.getItem(`exercise-answers-${lesson.id}-${resolvedSection}`)
+            if (saved) {
+              const data = JSON.parse(saved)
+              if (data.answers) setAnswers(data.answers)
+              if (data.submitted != null) setSubmitted(data.submitted)
+              if (data.score != null) setScore(data.score)
+            }
+          } catch { /* ignore */ }
+        }
+
+        if (hasTest && resolvedTestSection in resolvedCompletedTestSections) {
+          setTestAnswers(tMap)
+          setTestResults(tRes)
+          setTestSubmitted(true)
+          setTestScore(resolvedCompletedTestSections[resolvedTestSection] ?? 0)
+        } else if (!hasTest) {
+          try {
+            const saved = localStorage.getItem(`test-state-${lesson.id}-${resolvedTestSection}`)
+            if (saved) {
+              const data = JSON.parse(saved)
+              if (data.testAnswers) setTestAnswers(data.testAnswers)
+              if (data.testSubmitted != null) setTestSubmitted(data.testSubmitted)
+              if (data.testScore != null) setTestScore(data.testScore)
+              if (data.testResults) setTestResults(data.testResults)
+            }
+          } catch { /* ignore */ }
+        }
+      } else {
+        // Supabase'da hech narsa yo'q — faqat localStorage
+        try {
+          const saved = localStorage.getItem(`exercise-answers-${lesson.id}-${resolvedSection}`)
+          if (saved) {
+            const data = JSON.parse(saved)
+            if (data.answers) setAnswers(data.answers)
+            if (data.submitted != null) setSubmitted(data.submitted)
+            if (data.score != null) setScore(data.score)
+          }
+        } catch { /* ignore */ }
+        try {
+          const saved = localStorage.getItem(`test-state-${lesson.id}-${resolvedTestSection}`)
+          if (saved) {
+            const data = JSON.parse(saved)
+            if (data.testAnswers) setTestAnswers(data.testAnswers)
+            if (data.testSubmitted != null) setTestSubmitted(data.testSubmitted)
+            if (data.testScore != null) setTestScore(data.testScore)
+            if (data.testResults) setTestResults(data.testResults)
+          }
+        } catch { /* ignore */ }
+      }
+
+      // 3. Ko'rilgan tablar
       if (tabs.length > 0) setViewedTabs(tabs)
     })
   }, [lesson.id])
@@ -1302,18 +1394,8 @@ function LessonView({
     })
   }, [tab, currentSection, testSection, completedSections, completedTestSections])
 
-  // ── Exercise answers persistence ──
+  // ── Exercise answers persistence (faqat saqlash — yuklash yuqorida) ──
   const exerciseStorageKey = `exercise-answers-${lesson.id}-${currentSection}`
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(exerciseStorageKey)
-      if (!saved) return
-      const data = JSON.parse(saved)
-      if (data.answers) setAnswers(data.answers)
-      if (data.submitted != null) setSubmitted(data.submitted)
-      if (data.score != null) setScore(data.score)
-    } catch { /* ignore */ }
-  }, [exerciseStorageKey])
 
   const prevExerciseStateRef = useRef({ answers, submitted, score })
   useEffect(() => {
@@ -1325,19 +1407,8 @@ function LessonView({
     } catch { /* ignore */ }
   }, [answers, submitted, score, exerciseStorageKey])
 
-  // ── Test answers persistence ──
+  // ── Test answers persistence (faqat saqlash — yuklash yuqorida) ──
   const testStorageKey = `test-state-${lesson.id}-${testSection}`
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(testStorageKey)
-      if (!saved) return
-      const data = JSON.parse(saved)
-      if (data.testAnswers) setTestAnswers(data.testAnswers)
-      if (data.testSubmitted != null) setTestSubmitted(data.testSubmitted)
-      if (data.testScore != null) setTestScore(data.testScore)
-      if (data.testResults) setTestResults(data.testResults)
-    } catch { /* ignore */ }
-  }, [testStorageKey])
 
   const prevTestStateRef = useRef({ testAnswers, testSubmitted, testScore, testResults })
   useEffect(() => {
