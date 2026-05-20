@@ -457,4 +457,79 @@ export async function checkVocabAnswer(
   return text.startsWith('CORRECT')
 }
 
+// ─── Vocab sentence game: AI tuzgan o'zbekcha gap ────────────────────────────
+
+export async function generateUzbekSentence(
+  englishWord: string,
+  uzbekWord: string,
+  level: string
+): Promise<string> {
+  const client = getClient()
+
+  const response = await client.messages.create({
+    model: MODEL,
+    max_tokens: 100,
+    system: `Sen ingliz tili o'qituvchisisiz. ${level} darajasidagi o'quvchi uchun
+o'zbekcha gap tuzasan. Gap ichida "${uzbekWord}" so'zi ishtirok etishi kerak.
+Gap ${level} darajasiga mos, tabiiy va sodda bo'lsin.
+FAQAT o'zbekcha gapni yoz, boshqa hech narsa yozma.`,
+    messages: [{
+      role: 'user',
+      content: `"${englishWord}" (${uzbekWord}) so'zi ishtirokida ${level} darajasida o'zbekcha gap tuz.`,
+    }],
+  })
+
+  const text = response.content[0]?.type === 'text'
+    ? response.content[0].text.trim()
+    : `${uzbekWord} — bu juda muhim so'z.`
+  return text
+}
+
+// ─── Vocab sentence game: foydalanuvchi gapini tekshirish ────────────────────
+
+export interface SentenceCheckResult {
+  correct: boolean
+  explanation: string
+  correctAnswer: string
+}
+
+export async function checkSentenceTranslation(
+  uzbekSentence: string,
+  targetWord: string,
+  userTranslation: string,
+  level: string
+): Promise<SentenceCheckResult> {
+  const client = getClient()
+
+  const response = await client.messages.create({
+    model: MODEL,
+    max_tokens: 300,
+    system: `Sen ingliz tili o'qituvchisisiz. ${level} darajasidagi o'quvchi
+o'zbekcha gapni ingliz tiliga tarjima qildi. Sen tekshirib, baho berasan.
+
+FORMAT (shu formatda javob ber, boshqa hech narsa yozma):
+CORRECT: yes/no
+EXPLANATION: (agar xato bo'lsa, nima xato ekanini tushuntir, o'zbekcha)
+CORRECT_ANSWER: (agar xato bo'lsa, to'g'ri tarjimani yoz)`,
+    messages: [{
+      role: 'user',
+      content: `O'zbekcha gap: "${uzbekSentence}"
+Maqsadli so'z: "${targetWord}"
+O'quvchining inglizcha tarjimasi: "${userTranslation}"
+
+O'quvchi gapida "${targetWord}" so'zi ishlatilganmi? Gap ma'nosi to'g'ri tarjima qilinganmi? Grammatikasi to'g'rimi?`,
+    }],
+  })
+
+  const text = response.content[0]?.type === 'text' ? response.content[0].text : ''
+  const get = (key: string) => text.match(new RegExp(`${key}:\\s*(.+)`))?.[1]?.trim() ?? ''
+
+  const correctStr = get('CORRECT').toLowerCase()
+  return {
+    correct: correctStr === 'yes' || correctStr === 'true',
+    explanation: get('EXPLANATION'),
+    correctAnswer: get('CORRECT_ANSWER'),
+  }
+}
+
 export { MODEL }
