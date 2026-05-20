@@ -5,7 +5,7 @@ import {
 } from 'lucide-react'
 import type { DailyLesson, DailyExercise } from '../data/dailyLessons'
 import { useStore } from '../store/useStore'
-import { pushLessonProgress, getLessonProgress } from '../services/lessonService'
+import { pushLessonProgress, pushTestProgress, getLessonProgress } from '../services/lessonService'
 import { getTodayTashkent } from '../utils/tashkentDate'
 
 const COLOR_STYLES: Record<string, { bg: string; text: string; border: string }> = {
@@ -1206,42 +1206,111 @@ function LessonView({
                 </div>
 
                 {testSubmitted ? (
-                  <div className={`card border text-center py-5 ${
-                    testScore >= 8 ? 'bg-green-50 border-green-200' :
-                    testScore >= 5 ? 'bg-yellow-50 border-yellow-200' :
-                    'bg-red-50 border-red-200'
-                  }`}>
-                    <p className={`text-3xl font-bold font-mono ${testScore >= 8 ? 'text-green-600' : testScore >= 5 ? 'text-yellow-600' : 'text-red-500'} mb-1`}>
-                      {testScore}<span className="text-lg text-gray-400">/{sectionTests.length}</span>
-                    </p>
-                    <p className="text-sm text-gray-600 mb-2">
-                      {testScore === sectionTests.length ? '🎯 Mukammal! Barcha savollarga to\'g\'ri javob berdingiz!' :
-                       testScore >= 8 ? '👍 Zo\'r! Davom eting!' :
-                       testScore >= 5 ? '📚 Yaxshi, biroz ko\'proq takrorlash kerak' :
-                       '💪 Qayta urinib ko\'ring — qoidalarni takrorlang'}
-                    </p>
-                    <div className="flex items-center justify-center gap-3 text-xs">
-                      <span className="flex items-center gap-1 text-yellow-600 font-bold">
-                        <Trophy size={14} /> +{testScore * 10} XP
-                      </span>
-                      <span className="flex items-center gap-1 text-green-600">
-                        <CheckCircle size={14} /> {testScore}
-                      </span>
-                      <span className="flex items-center gap-1 text-red-500">
-                        <XCircle size={14} /> {sectionTests.length - testScore}
-                      </span>
-                    </div>
-                    <div className="flex gap-2 mt-4">
-                      <button onClick={() => { setTestAnswers({}); setTestSubmitted(false); setTestScore(0); setTestResults({}) }} className="btn-secondary flex-1 text-sm py-2">
-                        <RotateCcw size={14} /> Qayta urinish
-                      </button>
-                      {testSection < lesson.testSections.length - 1 && (
-                        <button onClick={() => { setTestSection((p) => p + 1); setTestAnswers({}); setTestSubmitted(false); setTestScore(0); setTestResults({}); setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50) }} className="btn-primary flex-1 text-sm py-2">
-                          Keyingi bosqich <ChevronRight size={14} />
+                  <>
+                    {/* Bali xulosasi */}
+                    <div className={`card border text-center py-5 ${
+                      testScore >= 8 ? 'bg-green-50 border-green-200' :
+                      testScore >= 5 ? 'bg-yellow-50 border-yellow-200' :
+                      'bg-red-50 border-red-200'
+                    }`}>
+                      <p className={`text-3xl font-bold font-mono ${testScore >= 8 ? 'text-green-600' : testScore >= 5 ? 'text-yellow-600' : 'text-red-500'} mb-1`}>
+                        {testScore}<span className="text-lg text-gray-400">/{sectionTests.length}</span>
+                      </p>
+                      <p className="text-sm text-gray-600 mb-2">
+                        {testScore === sectionTests.length ? '🎯 Mukammal! Barcha savollarga to\'g\'ri javob berdingiz!' :
+                         testScore >= 8 ? '👍 Zo\'r! Davom eting!' :
+                         testScore >= 5 ? '📚 Yaxshi, biroz ko\'proq takrorlash kerak' :
+                         '💪 Qayta urinib ko\'ring — qoidalarni takrorlang'}
+                      </p>
+                      <div className="flex items-center justify-center gap-3 text-xs">
+                        <span className="flex items-center gap-1 text-yellow-600 font-bold">
+                          <Trophy size={14} /> +{testScore * 10} XP
+                        </span>
+                        <span className="flex items-center gap-1 text-green-600">
+                          <CheckCircle size={14} /> {testScore}
+                        </span>
+                        <span className="flex items-center gap-1 text-red-500">
+                          <XCircle size={14} /> {sectionTests.length - testScore}
+                        </span>
+                      </div>
+                      <div className="flex gap-2 mt-4">
+                        <button onClick={() => { setTestAnswers({}); setTestSubmitted(false); setTestScore(0); setTestResults({}) }} className="btn-secondary flex-1 text-sm py-2">
+                          <RotateCcw size={14} /> Qayta urinish
                         </button>
-                      )}
+                        {testSection < lesson.testSections.length - 1 && (
+                          <button onClick={() => { setTestSection((p) => p + 1); setTestAnswers({}); setTestSubmitted(false); setTestScore(0); setTestResults({}); setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50) }} className="btn-primary flex-1 text-sm py-2">
+                            Keyingi bosqich <ChevronRight size={14} />
+                          </button>
+                        )}
+                      </div>
                     </div>
-                  </div>
+
+                    {/* Batafsil natija jadvali */}
+                    <div className="card border-gray-200 overflow-hidden">
+                      <div className="flex items-center justify-between mb-4">
+                        <p className="text-xs font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1.5">
+                          <Trophy size={14} className="text-yellow-600" /> Batafsil natija
+                        </p>
+                        <span className="text-[10px] text-gray-400">{sectionTests.length} ta savol</span>
+                      </div>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="border-b-2 border-gray-100 text-left text-[10px] text-gray-500 uppercase tracking-wider">
+                              <th className="pb-2 pr-2 font-semibold w-8">#</th>
+                              <th className="pb-2 pr-3 font-semibold">Savol</th>
+                              <th className="pb-2 pr-3 font-semibold">Sizning javobingiz</th>
+                              <th className="pb-2 pr-3 font-semibold">To\'g\'ri javob</th>
+                              <th className="pb-2 pr-3 font-semibold w-10">Natija</th>
+                              <th className="pb-2 font-semibold hidden sm:table-cell">Izoh</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {sectionTests.map((t, i) => {
+                              const ans = testAnswers[t.id] || ''
+                              const ok = testResults[t.id]
+                              return (
+                                <tr key={t.id} className={`border-b border-gray-50 ${
+                                  ok ? 'bg-green-50/40' : 'bg-red-50/40'
+                                }`}>
+                                  <td className="py-2.5 pr-2 text-xs font-bold text-gray-600">{i + 1}</td>
+                                  <td className="py-2.5 pr-3">
+                                    <p className="text-xs text-gray-800 font-medium leading-snug line-clamp-2">{t.question}</p>
+                                  </td>
+                                  <td className="py-2.5 pr-3">
+                                    <span className={`inline-block text-xs font-mono font-semibold px-1.5 py-0.5 rounded ${
+                                      ok
+                                        ? 'text-green-700'
+                                        : ans
+                                          ? 'bg-red-100 text-red-700'
+                                          : 'bg-gray-100 text-gray-500'
+                                    }`}>
+                                      {ans || '(tanlanmadi)'}
+                                    </span>
+                                  </td>
+                                  <td className="py-2.5 pr-3">
+                                    <span className="inline-block text-xs font-mono font-semibold text-green-700 bg-green-100 px-1.5 py-0.5 rounded">
+                                      {t.correct}
+                                    </span>
+                                  </td>
+                                  <td className="py-2.5 pr-3">
+                                    <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
+                                      ok ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'
+                                    }`}>
+                                      {ok ? '✓' : '✗'}
+                                    </span>
+                                  </td>
+                                  <td className="py-2.5 hidden sm:table-cell">
+                                    <p className="text-[11px] text-gray-500 leading-snug line-clamp-2">{t.explanation}</p>
+                                  </td>
+                                </tr>
+                              )
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </>
                 ) : (
                   <>
                     <div className="space-y-4">
@@ -1316,8 +1385,14 @@ function LessonView({
                         setTestScore(correct)
                         setTestResults(results)
                         setTestSubmitted(true)
-                        setCompletedTestSections((prev) => ({ ...prev, [testSection]: correct }))
+                        const newCompleted = { ...completedTestSections, [testSection]: correct }
+                        setCompletedTestSections(newCompleted)
                         addXP(correct * 10)
+                        pushTestProgress(lesson.id, section.title, correct, sectionTests.length)
+                        if (Object.keys(newCompleted).length === lesson.testSections.length) {
+                          const totalCorrect = Object.values(newCompleted).reduce((a, b) => a + b, 0)
+                          pushTestProgress(lesson.id, '__all__', totalCorrect, lesson.tests.length)
+                        }
                       }}
                       disabled={Object.keys(testAnswers).length < sectionTests.length}
                       className={`btn-primary w-full flex items-center justify-center gap-2 py-3 ${
@@ -1389,48 +1464,130 @@ function LessonView({
           )}
 
           {submitted ? (
-            /* Bosqich natijasi */
-            <div className={`card border text-center py-5 ${
-              score >= 8 ? 'bg-green-50 border-green-200' :
-              score >= 5 ? 'bg-yellow-50 border-yellow-200' :
-              'bg-red-50 border-red-200'
-            }`}>
-              <p className={`text-3xl font-bold font-mono ${
-                score >= 8 ? 'text-green-600' :
-                score >= 5 ? 'text-yellow-600' :
-                'text-red-500'
-              } mb-1`}>
-                {score}<span className="text-lg text-gray-400">/{sectionExercises.length}</span>
-              </p>
-              <p className="text-sm text-gray-600 mb-2">
-                {score === sectionExercises.length ? '🎯 Mukammal! Hech qanday xato yo\'q!' :
-                 score >= 8 ? '👍 Zo\'r! Davom eting!' :
-                 score >= 5 ? '📚 Yaxshi, biroz ko\'proq e\'tibor kerak' :
-                 '💪 Qiyin bo\'ldimi? Qayta urinib ko\'ring'}
-              </p>
-              <div className="flex items-center justify-center gap-3 text-xs">
-                <span className="flex items-center gap-1 text-yellow-600 font-bold">
-                  <Trophy size={14} /> +{score * 10} XP
-                </span>
-                <span className="flex items-center gap-1 text-green-600">
-                  <CheckCircle size={14} /> {score}
-                </span>
-                <span className="flex items-center gap-1 text-red-500">
-                  <XCircle size={14} /> {sectionExercises.length - score}
-                </span>
+            <>
+              {/* Bosqich natijasi */}
+              <div className={`card border text-center py-5 ${
+                score >= 8 ? 'bg-green-50 border-green-200' :
+                score >= 5 ? 'bg-yellow-50 border-yellow-200' :
+                'bg-red-50 border-red-200'
+              }`}>
+                <p className={`text-3xl font-bold font-mono ${
+                  score >= 8 ? 'text-green-600' :
+                  score >= 5 ? 'text-yellow-600' :
+                  'text-red-500'
+                } mb-1`}>
+                  {score}<span className="text-lg text-gray-400">/{sectionExercises.length}</span>
+                </p>
+                <p className="text-sm text-gray-600 mb-2">
+                  {score === sectionExercises.length ? '🎯 Mukammal! Hech qanday xato yo\'q!' :
+                   score >= 8 ? '👍 Zo\'r! Davom eting!' :
+                   score >= 5 ? '📚 Yaxshi, biroz ko\'proq e\'tibor kerak' :
+                   '💪 Qiyin bo\'ldimi? Qayta urinib ko\'ring'}
+                </p>
+                <div className="flex items-center justify-center gap-3 text-xs">
+                  <span className="flex items-center gap-1 text-yellow-600 font-bold">
+                    <Trophy size={14} /> +{score * 10} XP
+                  </span>
+                  <span className="flex items-center gap-1 text-green-600">
+                    <CheckCircle size={14} /> {score}
+                  </span>
+                  <span className="flex items-center gap-1 text-red-500">
+                    <XCircle size={14} /> {sectionExercises.length - score}
+                  </span>
+                </div>
+
+                <div className="flex gap-2 mt-4">
+                  <button onClick={handleRetrySection} className="btn-secondary flex-1 text-sm py-2">
+                    <RotateCcw size={14} /> Qayta urinish
+                  </button>
+                  {!isLastSection && (
+                    <button onClick={handleNextSection} className="btn-primary flex-1 text-sm py-2">
+                      Keyingi bosqich <ChevronRight size={14} />
+                    </button>
+                  )}
+                </div>
               </div>
 
-              <div className="flex gap-2 mt-4">
-                <button onClick={handleRetrySection} className="btn-secondary flex-1 text-sm py-2">
-                  <RotateCcw size={14} /> Qayta urinish
-                </button>
-                {!isLastSection && (
-                  <button onClick={handleNextSection} className="btn-primary flex-1 text-sm py-2">
-                    Keyingi bosqich <ChevronRight size={14} />
-                  </button>
-                )}
+              {/* Batafsil natija jadvali */}
+              <div className="card border-gray-200 overflow-hidden">
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-xs font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1.5">
+                    <Trophy size={14} className="text-yellow-600" /> Batafsil natija
+                  </p>
+                  <span className="text-[10px] text-gray-400">{sectionExercises.length} ta mashq</span>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b-2 border-gray-100 text-left text-[10px] text-gray-500 uppercase tracking-wider">
+                        <th className="pb-2 pr-2 font-semibold w-8">#</th>
+                        <th className="pb-2 pr-3 font-semibold">Savol</th>
+                        <th className="pb-2 pr-3 font-semibold">Sizning javobingiz</th>
+                        <th className="pb-2 pr-3 font-semibold">To\'g\'ri javob</th>
+                        <th className="pb-2 font-semibold w-10">Natija</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sectionExercises.map((ex, i) => {
+                        const userAnsArr = answers[ex.id] ?? []
+                        const ok = checkAnswer(ex, userAnsArr)
+                        let userAnsStr: string
+                        let correctStr: string
+                        if (ex.type === 'fill-blank') {
+                          userAnsStr = userAnsArr.join(' / ') || "(bo'sh)"
+                          correctStr = ex.blanks.join(' / ')
+                        } else if (ex.type === 'fill-table') {
+                          const parts = ex.rows.map((r, idx) => {
+                            const ci = idx * 2
+                            const si = ci + 1
+                            return `${r.adj}: C=${userAnsArr[ci] ?? '—'} S=${userAnsArr[si] ?? '—'}`
+                          })
+                          userAnsStr = parts.join('; ')
+                          const correctParts = ex.rows.map((r) => `${r.adj}: C=${r.comp || '—'} S=${r.sup || '—'}`)
+                          correctStr = correctParts.join('; ')
+                        } else {
+                          userAnsStr = userAnsArr[0] || "(bo'sh)"
+                          correctStr = ex.correct
+                        }
+                        return (
+                          <tr key={ex.id} className={`border-b border-gray-50 ${
+                          ok ? 'bg-green-50/40' : 'bg-red-50/40'
+                          }`}>
+                            <td className="py-2.5 pr-2 text-xs font-bold text-gray-600">{i + 1}</td>
+                            <td className="py-2.5 pr-3">
+                              <p className="text-xs text-gray-800 font-medium leading-snug line-clamp-2">
+                                {ex.type === 'fill-blank' ? ex.question.replace(/_{3,}/g, '___') :
+                                 ex.type === 'fill-table' ? ex.instruction :
+                                 ex.question}
+                              </p>
+                            </td>
+                            <td className="py-2.5 pr-3">
+                              <span className={`inline-block text-xs font-mono font-semibold px-1.5 py-0.5 rounded max-w-[180px] truncate ${
+                                ok ? 'text-green-700' : 'bg-red-100 text-red-700'
+                              }`}>
+                                {userAnsStr}
+                              </span>
+                            </td>
+                            <td className="py-2.5 pr-3">
+                              <span className="inline-block text-xs font-mono font-semibold text-green-700 bg-green-100 px-1.5 py-0.5 rounded max-w-[180px] truncate">
+                                {correctStr}
+                              </span>
+                            </td>
+                            <td className="py-2.5">
+                              <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
+                                ok ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'
+                              }`}>
+                                {ok ? '✓' : '✗'}
+                              </span>
+                            </td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+            </>
           ) : (
             <>
               {/* Mashqlar */}

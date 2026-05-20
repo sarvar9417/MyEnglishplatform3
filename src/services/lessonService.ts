@@ -121,7 +121,49 @@ export async function pushLessonProgress(
   })
 }
 
-export async function getLessonProgress(lessonId: string, date?: string): Promise<number | null> {
+export async function pushTestProgress(
+  lessonId: string,
+  _sectionTitle: string,
+  correctCount: number,
+  totalQuestions: number
+): Promise<void> {
+  const testLessonId = `${lessonId}__test`
+  const pct = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0
+  const date = getTodayTashkent()
+
+  const { data: { session } } = await supabase.auth.getSession()
+  if (session) {
+    await supabase
+      .from('lesson_progress')
+      .upsert({
+        user_id: session.user.id,
+        date,
+        lesson_id: testLessonId,
+        score: pct,
+        correct_count: correctCount,
+        total_exercises: totalQuestions,
+        xp_earned: correctCount * 10,
+        completed_at: new Date().toISOString(),
+      }, { onConflict: 'user_id,date,lesson_id' })
+  }
+
+  await dbUpsert({
+    lessonId: testLessonId,
+    date,
+    score: pct,
+    correctCount,
+    totalExercises: totalQuestions,
+    xpEarned: correctCount * 10,
+    completedAt: Date.now(),
+  })
+}
+
+export async function getTestProgress(lessonId: string, date?: string): Promise<number | null> {
+  const testLessonId = `${lessonId}__test`
+  return getLessonProgressRaw(testLessonId, date)
+}
+
+async function getLessonProgressRaw(lessonId: string, date?: string): Promise<number | null> {
   const d = date ?? getTodayTashkent()
 
   const { data: { session } } = await supabase.auth.getSession()
@@ -139,4 +181,8 @@ export async function getLessonProgress(lessonId: string, date?: string): Promis
 
   const local = await dbGet(lessonId, d)
   return local?.score ?? null
+}
+
+export async function getLessonProgress(lessonId: string, date?: string): Promise<number | null> {
+  return getLessonProgressRaw(lessonId, date)
 }
