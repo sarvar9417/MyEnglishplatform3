@@ -5,7 +5,7 @@ import {
 } from 'lucide-react'
 import type { DailyLesson, DailyExercise } from '../data/dailyLessons'
 import { useStore } from '../store/useStore'
-import { pushLessonProgress, getLessonProgress } from '../services/lessonService'
+import { pushLessonProgress, pushTestProgress, getLessonProgress } from '../services/lessonService'
 import { getTodayTashkent } from '../utils/tashkentDate'
 
 const COLOR_STYLES: Record<string, { bg: string; text: string; border: string }> = {
@@ -75,7 +75,7 @@ function ExerciseCard({
             📝 Bo'sh joyni to'ldiring
           </p>
           <p className="text-sm text-gray-700 leading-loose">
-            {ex.question.split('_____').map((part, i, arr) => (
+            {ex.question.split(/_{3,}/).map((part, i, arr) => (
               <span key={i}>
                 {part}
                 {i < arr.length - 1 && (
@@ -100,8 +100,12 @@ function ExerciseCard({
           {submitted && (
             <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
               {!isCorrect && (
-                <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{ex.blanks.join(' / ')}</span></p>
+                <>
+                  <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{answers.join(' / ') || "(bo'sh)"}</span></p>
+                  <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{ex.blanks.join(' / ')}</span></p>
+                </>
               )}
+              {isCorrect && <p className="font-semibold">✅ To'g'ri! +10 XP</p>}
               <p className="mt-1 text-gray-600">💡 {ex.explanation}</p>
             </div>
           )}
@@ -141,8 +145,17 @@ function ExerciseCard({
               )
             })}
           </div>
-          {submitted && !isCorrect && (
-            <p className="mt-3 text-xs text-gray-600">💡 {ex.explanation}</p>
+          {submitted && (
+            <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
+              {!isCorrect && (
+                <>
+                  <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{answers[0] || "(tanlanmadi)"}</span></p>
+                  <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{ex.correct}</span></p>
+                </>
+              )}
+              {isCorrect && <p className="font-semibold">✅ To'g'ri! +10 XP</p>}
+              <p className="mt-1 text-gray-600">💡 {ex.explanation}</p>
+            </div>
           )}
         </div>
       )}
@@ -177,8 +190,12 @@ function ExerciseCard({
           {submitted && (
             <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
               {!isCorrect && (
-                <p className="font-semibold">✅ To'g'ri variant: <span className="font-mono">{ex.correct}</span></p>
+                <>
+                  <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{answers[0] || "(bo'sh)"}</span></p>
+                  <p className="font-semibold">✅ To'g'ri variant: <span className="font-mono">{ex.correct}</span></p>
+                </>
               )}
+              {isCorrect && <p className="font-semibold">✅ To'g'ri! +10 XP</p>}
               <p className="mt-1 text-gray-600">💡 {ex.explanation}</p>
             </div>
           )}
@@ -208,8 +225,12 @@ function ExerciseCard({
           {submitted && (
             <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
               {!isCorrect && (
-                <p className="font-semibold">✅ Namuna javob: <span className="font-mono">{ex.correct}</span></p>
+                <>
+                  <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{answers[0] || "(bo'sh)"}</span></p>
+                  <p className="font-semibold">✅ Namuna javob: <span className="font-mono">{ex.correct}</span></p>
+                </>
               )}
+              {isCorrect && <p className="font-semibold">✅ To'g'ri! +10 XP</p>}
               <p className="mt-1 text-gray-600">💡 {ex.explanation}</p>
             </div>
           )}
@@ -289,23 +310,44 @@ function ExerciseCard({
             </table>
           </div>
           {submitted && (
-            <div className="mt-3 text-xs text-gray-600">
-              <p>💡 {ex.explanation}</p>
-              <div className="mt-2 flex flex-wrap gap-4">
-                {ex.rows.map((row, rowIdx) => {
-                  if (!row.comp && !row.sup) return null
-                  const compOk = normalizeAnswer(answers[rowIdx * 2] ?? '') === normalizeAnswer(row.comp)
-                  const supOk = normalizeAnswer(answers[rowIdx * 2 + 1] ?? '') === normalizeAnswer(row.sup)
-                  if (compOk && supOk) return null
-                  return (
-                    <div key={rowIdx} className="text-xs">
-                      <span className="font-semibold text-gray-800">{row.adj}</span>
-                      {!compOk && <span className="ml-1 text-red-500">C: {row.comp}</span>}
-                      {!supOk && <span className="ml-1 text-red-500">S: {row.sup}</span>}
-                    </div>
-                  )
-                })}
-              </div>
+            <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
+              {!isCorrect && (
+                <>
+                  <p className="font-semibold">✍️ Sizning javobingiz:</p>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {ex.rows.map((row, rowIdx) => {
+                      const compAns = answers[rowIdx * 2] ?? ''
+                      const supAns = answers[rowIdx * 2 + 1] ?? ''
+                      const compOk = normalizeAnswer(compAns) === normalizeAnswer(row.comp)
+                      const supOk = normalizeAnswer(supAns) === normalizeAnswer(row.sup)
+                      return (
+                        <div key={rowIdx} className={`text-xs px-2 py-1 rounded ${(!compOk || !supOk) ? 'bg-red-50' : 'bg-green-50'}`}>
+                          <span className="font-semibold">{row.adj}</span>
+                          {row.comp && <span className={`ml-1 ${compOk ? 'text-green-600' : 'text-red-500'}`}>C: {compAns || '—'}</span>}
+                          {row.sup && <span className={`ml-1 ${supOk ? 'text-green-600' : 'text-red-500'}`}>S: {supAns || '—'}</span>}
+                        </div>
+                      )
+                    })}
+                  </div>
+                  <p className="font-semibold mt-2">✅ To'g'ri javob:</p>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {ex.rows.map((row, rowIdx) => {
+                      const compOk = normalizeAnswer(answers[rowIdx * 2] ?? '') === normalizeAnswer(row.comp)
+                      const supOk = normalizeAnswer(answers[rowIdx * 2 + 1] ?? '') === normalizeAnswer(row.sup)
+                      if (compOk && supOk) return null
+                      return (
+                        <div key={rowIdx} className="text-xs px-2 py-1 rounded bg-green-50">
+                          <span className="font-semibold text-gray-800">{row.adj}</span>
+                          {!compOk && <span className="ml-1 text-green-600">C: {row.comp}</span>}
+                          {!supOk && <span className="ml-1 text-green-600">S: {row.sup}</span>}
+                        </div>
+                      )
+                    })}
+                  </div>
+                </>
+              )}
+              {isCorrect && <p className="font-semibold">✅ To'g'ri! +10 XP</p>}
+              <p className="mt-1 text-gray-600">💡 {ex.explanation}</p>
             </div>
           )}
         </div>
@@ -337,9 +379,16 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
   const [flipped, setFlipped] = useState(false)
   const [knownIds, setKnownIds] = useState<Set<number>>(new Set())
 
-  const grouped = RULE_ORDER
-    .filter((r) => vocab.some((v) => v.rule === r))
-    .map((r) => ({ rule: r, words: vocab.filter((v) => v.rule === r) }))
+  const mappedRules = new Set(RULE_ORDER)
+  const allRules = [...new Set(vocab.map((v) => v.rule))]
+  const grouped = [
+    ...RULE_ORDER
+      .filter((r) => vocab.some((v) => v.rule === r))
+      .map((r) => ({ rule: r, words: vocab.filter((v) => v.rule === r) })),
+    ...allRules
+      .filter((r) => !mappedRules.has(r))
+      .map((r) => ({ rule: r, words: vocab.filter((v) => v.rule === r) })),
+  ]
 
   // ── Browse (guruhlangan jadval) ──
   if (mode === 'browse') {
@@ -767,7 +816,7 @@ function SpecialCaseCard({ sc, addXP }: { sc: import('../data/dailyLessons').Spe
                   <div>
                     <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-2">📝 Bo'sh joyni to'ldiring</p>
                     <p className="text-xs text-gray-700 leading-loose">
-                      {ex.question.split('_____').map((part, pi, arr) => (
+                      {ex.question.split(/_{3,}/).map((part, pi, arr) => (
                         <span key={pi}>
                           {part}
                           {pi < arr.length - 1 && (
@@ -841,8 +890,21 @@ function SpecialCaseCard({ sc, addXP }: { sc: import('../data/dailyLessons').Spe
                 </button>
               ) : (
                 <div className={`mt-2 text-xs ${ok ? 'text-green-700' : 'text-red-700'}`}>
-                  {ok ? '✅ To\'g\'ri! +10 XP' : <><span className="font-semibold">❌ Xato. </span><span className="text-gray-600">{ex.explanation}</span></>}
-                  <button onClick={() => handleRetry(ex.id)} className="ml-2 text-primary-600 underline hover:no-underline">Qayta urinish</button>
+                  <div className="flex items-center gap-2">
+                    {ok ? (
+                      <span className="font-semibold">✅ To\'g\'ri! +10 XP</span>
+                    ) : (
+                      <span className="font-semibold">❌ Xato.</span>
+                    )}
+                    <button onClick={() => handleRetry(ex.id)} className="text-primary-600 underline hover:no-underline">Qayta urinish</button>
+                  </div>
+                  {!ok && (
+                    <div className="flex flex-wrap gap-3 mt-1">
+                      <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{answers.length > 0 ? answers.join(' / ') : "(bo'sh)"}</span></p>
+                      <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{ex.type === 'fill-blank' ? ex.blanks.join(' / ') : (ex.type !== 'fill-table' ? ex.correct : '')}</span></p>
+                    </div>
+                  )}
+                  {!ok && <p className="text-gray-600 mt-1">💡 {ex.explanation}</p>}
                 </div>
               )}
             </div>
@@ -862,8 +924,14 @@ function LessonView({
   onBack: () => void
 }) {
   const { addXP, updateSkillProgress, setLessonProgress } = useStore()
-  const [tab, setTab] = useState<'grammar' | 'vocab' | 'examples' | 'special' | 'exercises'>('grammar')
+  const [tab, setTab] = useState<'grammar' | 'vocab' | 'examples' | 'special' | 'exercises' | 'tests'>('grammar')
   const [currentSection, setCurrentSection] = useState(0)
+  const [testSection, setTestSection] = useState(0)
+  const [testAnswers, setTestAnswers] = useState<Record<number, string>>({})
+  const [testSubmitted, setTestSubmitted] = useState(false)
+  const [testScore, setTestScore] = useState(0)
+  const [testResults, setTestResults] = useState<Record<number, boolean>>({})
+  const [completedTestSections, setCompletedTestSections] = useState<Record<number, number>>({})
   const [answers, setAnswers] = useState<Answers>({})
   const [submitted, setSubmitted] = useState(false)
   const [score, setScore] = useState(0)
@@ -931,6 +999,7 @@ function LessonView({
     { id: 'examples', label: '📖 Misollar',  desc: `${lesson.examples.length} ta gap` },
     { id: 'special',  label: '🎯 Maxsus',    desc: `${lesson.specialCases.length} ta mavzu` },
     { id: 'exercises', label: '✍️ Mashqlar', desc: `${lesson.exercises.length} ta` },
+    { id: 'tests', label: '🧪 Testlar', desc: `${lesson.tests.length} ta` },
   ] as const
 
   return (
@@ -1015,40 +1084,43 @@ function LessonView({
             </ul>
           </div>
 
-          <div className="card border-primary-200">
-            <p className="text-xs font-bold text-primary-600 uppercase tracking-wider mb-3 flex items-center gap-1">
-              <Star size={14} /> Tezkor eslatma — yodda saqlash uchun
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b-2 border-primary-200 text-left text-xs text-primary-700 uppercase tracking-wider">
-                    <th className="pb-2 pr-3">Sifat turi</th>
-                    <th className="pb-2 pr-3">Comparative</th>
-                    <th className="pb-2 pr-3">Superlative</th>
-                    <th className="pb-2">Misol</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { type: '1 bo\'g\'in (qisqa)', comp: 'adj + -er', sup: 'the adj + -est', ex: 'tall → taller → the tallest' },
-                    { type: '-y bilan tugagan',   comp: '-y → -i + -er', sup: 'the -y → -i + -est', ex: 'happy → happier → the happiest' },
-                    { type: 'CVC (undosh+unli+undosh)', comp: 'undosh ikki marta + -er', sup: 'the undosh×2 + -est', ex: 'big → bigger → the biggest' },
-                    { type: '-e bilan tugagan',   comp: 'adj + -r', sup: 'the adj + -st', ex: 'large → larger → the largest' },
-                    { type: '2+ bo\'g\'in (uzun)', comp: 'more + adj', sup: 'the most + adj', ex: 'expensive → more expensive → the most expensive' },
-                    { type: 'Noto\'g\'ri', comp: 'maxsus shakl', sup: 'maxsus shakl', ex: 'good → better → the best' },
-                  ].map((r) => (
-                    <tr key={r.type} className="border-b border-gray-50">
-                      <td className="py-1.5 pr-3 font-semibold text-gray-800 text-xs">{r.type}</td>
-                      <td className="py-1.5 pr-3 font-mono text-xs text-purple-700">{r.comp}</td>
-                      <td className="py-1.5 pr-3 font-mono text-xs text-indigo-700">{r.sup}</td>
-                      <td className="py-1.5 font-mono text-xs text-gray-600">{r.ex}</td>
+          {/* Tezkor eslatma — faqat Comparatives & Superlatives darsiga tegishli */}
+          {lesson.id === 'comparatives-superlatives' && (
+            <div className="card border-primary-200">
+              <p className="text-xs font-bold text-primary-600 uppercase tracking-wider mb-3 flex items-center gap-1">
+                <Star size={14} /> Tezkor eslatma — yodda saqlash uchun
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b-2 border-primary-200 text-left text-xs text-primary-700 uppercase tracking-wider">
+                      <th className="pb-2 pr-3">Sifat turi</th>
+                      <th className="pb-2 pr-3">Comparative</th>
+                      <th className="pb-2 pr-3">Superlative</th>
+                      <th className="pb-2">Misol</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {[
+                      { type: '1 bo\'g\'in (qisqa)', comp: 'adj + -er', sup: 'the adj + -est', ex: 'tall → taller → the tallest' },
+                      { type: '-y bilan tugagan',   comp: '-y → -i + -er', sup: 'the -y → -i + -est', ex: 'happy → happier → the happiest' },
+                      { type: 'CVC (undosh+unli+undosh)', comp: 'undosh ikki marta + -er', sup: 'the undosh×2 + -est', ex: 'big → bigger → the biggest' },
+                      { type: '-e bilan tugagan',   comp: 'adj + -r', sup: 'the adj + -st', ex: 'large → larger → the largest' },
+                      { type: '2+ bo\'g\'in (uzun)', comp: 'more + adj', sup: 'the most + adj', ex: 'expensive → more expensive → the most expensive' },
+                      { type: 'Noto\'g\'ri', comp: 'maxsus shakl', sup: 'maxsus shakl', ex: 'good → better → the best' },
+                    ].map((r) => (
+                      <tr key={r.type} className="border-b border-gray-50">
+                        <td className="py-1.5 pr-3 font-semibold text-gray-800 text-xs">{r.type}</td>
+                        <td className="py-1.5 pr-3 font-mono text-xs text-purple-700">{r.comp}</td>
+                        <td className="py-1.5 pr-3 font-mono text-xs text-indigo-700">{r.sup}</td>
+                        <td className="py-1.5 font-mono text-xs text-gray-600">{r.ex}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="card bg-gradient-to-r from-primary-50 to-b2-50 border-primary-100">
             <p className="text-sm text-primary-800 font-medium flex items-center gap-2">
@@ -1090,6 +1162,262 @@ function LessonView({
           {lesson.specialCases.map((sc) => (
             <SpecialCaseCard key={sc.id} sc={sc} addXP={addXP} />
           ))}
+        </div>
+      )}
+
+      {/* ── Tab: Tests ── */}
+      {tab === 'tests' && (
+        <div className="space-y-4">
+          {/* Test bosqichlari progress */}
+          <div className="flex items-center gap-1.5">
+            {lesson.testSections.map((s, i) => {
+              const done = completedTestSections[i] !== undefined
+              const active = i === testSection
+              return (
+                <div key={s.title} className="flex-1">
+                  <div className={`h-1.5 rounded-full transition-all ${done ? 'bg-green-500' : active ? 'bg-yellow-500' : 'bg-gray-200'}`} />
+                  <p className={`text-[9px] mt-0.5 text-center font-medium ${active ? 'text-yellow-700' : done ? 'text-green-600' : 'text-gray-400'}`}>
+                    {s.icon} {active && <span className="hidden sm:inline">{s.title}</span>}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Test bosqich sarlavhasi */}
+          {(() => {
+            const section = lesson.testSections[testSection]
+            if (!section) return null
+            const sectionTests = lesson.tests.filter((t): t is Extract<DailyExercise, { type: 'multiple-choice' }> => section.ids.includes(t.id))
+            return (
+              <>
+                <div className={`rounded-xl p-4 text-white ${section.color}`}>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-xs font-semibold opacity-80">Test {testSection + 1} / {lesson.testSections.length}</p>
+                      <p className="font-bold text-lg">{section.icon} {section.title}</p>
+                      <p className="text-sm opacity-80">{section.desc}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-2xl font-bold">{sectionTests.length}</p>
+                      <p className="text-xs opacity-80">savol</p>
+                    </div>
+                  </div>
+                </div>
+
+                {testSubmitted ? (
+                  <>
+                    {/* Bali xulosasi */}
+                    <div className={`card border text-center py-5 ${
+                      testScore >= 8 ? 'bg-green-50 border-green-200' :
+                      testScore >= 5 ? 'bg-yellow-50 border-yellow-200' :
+                      'bg-red-50 border-red-200'
+                    }`}>
+                      <p className={`text-3xl font-bold font-mono ${testScore >= 8 ? 'text-green-600' : testScore >= 5 ? 'text-yellow-600' : 'text-red-500'} mb-1`}>
+                        {testScore}<span className="text-lg text-gray-400">/{sectionTests.length}</span>
+                      </p>
+                      <p className="text-sm text-gray-600 mb-2">
+                        {testScore === sectionTests.length ? '🎯 Mukammal! Barcha savollarga to\'g\'ri javob berdingiz!' :
+                         testScore >= 8 ? '👍 Zo\'r! Davom eting!' :
+                         testScore >= 5 ? '📚 Yaxshi, biroz ko\'proq takrorlash kerak' :
+                         '💪 Qayta urinib ko\'ring — qoidalarni takrorlang'}
+                      </p>
+                      <div className="flex items-center justify-center gap-3 text-xs">
+                        <span className="flex items-center gap-1 text-yellow-600 font-bold">
+                          <Trophy size={14} /> +{testScore * 10} XP
+                        </span>
+                        <span className="flex items-center gap-1 text-green-600">
+                          <CheckCircle size={14} /> {testScore}
+                        </span>
+                        <span className="flex items-center gap-1 text-red-500">
+                          <XCircle size={14} /> {sectionTests.length - testScore}
+                        </span>
+                      </div>
+                      <div className="flex gap-2 mt-4">
+                        <button onClick={() => { setTestAnswers({}); setTestSubmitted(false); setTestScore(0); setTestResults({}) }} className="btn-secondary flex-1 text-sm py-2">
+                          <RotateCcw size={14} /> Qayta urinish
+                        </button>
+                        {testSection < lesson.testSections.length - 1 && (
+                          <button onClick={() => { setTestSection((p) => p + 1); setTestAnswers({}); setTestSubmitted(false); setTestScore(0); setTestResults({}); setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50) }} className="btn-primary flex-1 text-sm py-2">
+                            Keyingi bosqich <ChevronRight size={14} />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Batafsil natija jadvali */}
+                    <div className="card border-gray-200 overflow-hidden">
+                      <div className="flex items-center justify-between mb-4">
+                        <p className="text-xs font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1.5">
+                          <Trophy size={14} className="text-yellow-600" /> Batafsil natija
+                        </p>
+                        <span className="text-[10px] text-gray-400">{sectionTests.length} ta savol</span>
+                      </div>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="border-b-2 border-gray-100 text-left text-[10px] text-gray-500 uppercase tracking-wider">
+                              <th className="pb-2 pr-2 font-semibold w-8">#</th>
+                              <th className="pb-2 pr-3 font-semibold">Savol</th>
+                              <th className="pb-2 pr-3 font-semibold">Sizning javobingiz</th>
+                              <th className="pb-2 pr-3 font-semibold">To\'g\'ri javob</th>
+                              <th className="pb-2 pr-3 font-semibold w-10">Natija</th>
+                              <th className="pb-2 font-semibold hidden sm:table-cell">Izoh</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {sectionTests.map((t, i) => {
+                              const ans = testAnswers[t.id] || ''
+                              const ok = testResults[t.id]
+                              return (
+                                <tr key={t.id} className={`border-b border-gray-50 ${
+                                  ok ? 'bg-green-50/40' : 'bg-red-50/40'
+                                }`}>
+                                  <td className="py-2.5 pr-2 text-xs font-bold text-gray-600">{i + 1}</td>
+                                  <td className="py-2.5 pr-3">
+                                    <p className="text-xs text-gray-800 font-medium leading-snug line-clamp-2">{t.question}</p>
+                                  </td>
+                                  <td className="py-2.5 pr-3">
+                                    <span className={`inline-block text-xs font-mono font-semibold px-1.5 py-0.5 rounded ${
+                                      ok
+                                        ? 'text-green-700'
+                                        : ans
+                                          ? 'bg-red-100 text-red-700'
+                                          : 'bg-gray-100 text-gray-500'
+                                    }`}>
+                                      {ans || '(tanlanmadi)'}
+                                    </span>
+                                  </td>
+                                  <td className="py-2.5 pr-3">
+                                    <span className="inline-block text-xs font-mono font-semibold text-green-700 bg-green-100 px-1.5 py-0.5 rounded">
+                                      {t.correct}
+                                    </span>
+                                  </td>
+                                  <td className="py-2.5 pr-3">
+                                    <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
+                                      ok ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'
+                                    }`}>
+                                      {ok ? '✓' : '✗'}
+                                    </span>
+                                  </td>
+                                  <td className="py-2.5 hidden sm:table-cell">
+                                    <p className="text-[11px] text-gray-500 leading-snug line-clamp-2">{t.explanation}</p>
+                                  </td>
+                                </tr>
+                              )
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="space-y-4">
+                      {sectionTests.map((t, i) => {
+                        const selected = testAnswers[t.id] || ''
+                        const isCorrect = testResults[t.id]
+                        const correctOpt = t.correct
+                        return (
+                          <div key={t.id} className={`relative rounded-2xl border p-4 transition-colors ${
+                            testSubmitted
+                              ? isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+                              : ''
+                          }`}>
+                            <div className={`absolute -left-3 -top-3 z-10 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-sm ${
+                              testSubmitted
+                                ? isCorrect ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+                                : 'bg-yellow-600 text-white'
+                            }`}>
+                              {i + 1}
+                            </div>
+                            <p className="text-[11px] font-bold text-yellow-600 uppercase tracking-wider mb-3">🧪 Test savoli</p>
+                            <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{t.question}</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                              {t.options.map((opt, oi) => {
+                                const sel = selected === opt
+                                let cls = 'border border-gray-200 bg-white text-gray-700 hover:border-yellow-400 hover:bg-yellow-50'
+                                if (testSubmitted) {
+                                  if (opt === correctOpt) cls = 'border-green-400 bg-green-100 text-green-800 font-bold'
+                                  else if (sel) cls = 'border-red-400 bg-red-100 text-red-700'
+                                  else cls = 'border-gray-100 bg-gray-50 text-gray-400'
+                                } else if (sel) {
+                                  cls = 'border-yellow-500 bg-yellow-100 text-yellow-800 font-semibold'
+                                }
+                                return (
+                                  <button
+                                    key={opt}
+                                    disabled={testSubmitted}
+                                    onClick={() => setTestAnswers((prev) => ({ ...prev, [t.id]: opt }))}
+                                    className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-all ${cls}`}
+                                  >
+                                    <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+                                      {['A','B','C','D'][oi]}
+                                    </span>
+                                    {opt}
+                                  </button>
+                                )
+                              })}
+                            </div>
+                            {testSubmitted && (
+                              <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
+                                <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{selected || "(tanlanmadi)"}</span></p>
+                                {!isCorrect && <p className="font-semibold">✅ To\'g\'ri javob: <span className="font-mono">{correctOpt}</span></p>}
+                                {isCorrect && <p className="font-semibold">✅ To\'g\'ri! +10 XP</p>}
+                                <p className="mt-1 text-gray-600">💡 {t.explanation}</p>
+                              </div>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        let correct = 0
+                        const results: Record<number, boolean> = {}
+                        for (const t of sectionTests) {
+                          const ans = testAnswers[t.id] || ''
+                          const ok = ans === t.correct
+                          results[t.id] = ok
+                          if (ok) correct++
+                        }
+                        setTestScore(correct)
+                        setTestResults(results)
+                        setTestSubmitted(true)
+                        const newCompleted = { ...completedTestSections, [testSection]: correct }
+                        setCompletedTestSections(newCompleted)
+                        addXP(correct * 10)
+                        pushTestProgress(lesson.id, section.title, correct, sectionTests.length)
+                        if (Object.keys(newCompleted).length === lesson.testSections.length) {
+                          const totalCorrect = Object.values(newCompleted).reduce((a, b) => a + b, 0)
+                          pushTestProgress(lesson.id, '__all__', totalCorrect, lesson.tests.length)
+                        }
+                      }}
+                      disabled={Object.keys(testAnswers).length < sectionTests.length}
+                      className={`btn-primary w-full flex items-center justify-center gap-2 py-3 ${
+                        Object.keys(testAnswers).length < sectionTests.length ? 'opacity-50 cursor-not-allowed' : ''
+                      }`}
+                    >
+                      <CheckCircle size={18} />
+                      Testni tekshirish (+{sectionTests.length * 10} XP)
+                    </button>
+                  </>
+                )}
+
+                {/* Umumiy progress */}
+                {Object.keys(completedTestSections).length > 0 && (
+                  <div className="card bg-gray-50 border-gray-100 text-center">
+                    <p className="text-xs text-gray-500">
+                      Umumiy: {Object.values(completedTestSections).reduce((a, b) => a + b, 0) + (testSubmitted && testSection >= 0 ? testScore : 0)} / {lesson.tests.length} ta to\'g\'ri
+                      {' · '}
+                      {lesson.testSections.filter((_, i) => completedTestSections[i] !== undefined).length + (testSubmitted ? 1 : 0)} / {lesson.testSections.length} bosqich
+                    </p>
+                  </div>
+                )}
+              </>
+            )
+          })()}
         </div>
       )}
 
@@ -1136,48 +1464,130 @@ function LessonView({
           )}
 
           {submitted ? (
-            /* Bosqich natijasi */
-            <div className={`card border text-center py-5 ${
-              score >= 8 ? 'bg-green-50 border-green-200' :
-              score >= 5 ? 'bg-yellow-50 border-yellow-200' :
-              'bg-red-50 border-red-200'
-            }`}>
-              <p className={`text-3xl font-bold font-mono ${
-                score >= 8 ? 'text-green-600' :
-                score >= 5 ? 'text-yellow-600' :
-                'text-red-500'
-              } mb-1`}>
-                {score}<span className="text-lg text-gray-400">/{sectionExercises.length}</span>
-              </p>
-              <p className="text-sm text-gray-600 mb-2">
-                {score === sectionExercises.length ? '🎯 Mukammal! Hech qanday xato yo\'q!' :
-                 score >= 8 ? '👍 Zo\'r! Davom eting!' :
-                 score >= 5 ? '📚 Yaxshi, biroz ko\'proq e\'tibor kerak' :
-                 '💪 Qiyin bo\'ldimi? Qayta urinib ko\'ring'}
-              </p>
-              <div className="flex items-center justify-center gap-3 text-xs">
-                <span className="flex items-center gap-1 text-yellow-600 font-bold">
-                  <Trophy size={14} /> +{score * 10} XP
-                </span>
-                <span className="flex items-center gap-1 text-green-600">
-                  <CheckCircle size={14} /> {score}
-                </span>
-                <span className="flex items-center gap-1 text-red-500">
-                  <XCircle size={14} /> {sectionExercises.length - score}
-                </span>
+            <>
+              {/* Bosqich natijasi */}
+              <div className={`card border text-center py-5 ${
+                score >= 8 ? 'bg-green-50 border-green-200' :
+                score >= 5 ? 'bg-yellow-50 border-yellow-200' :
+                'bg-red-50 border-red-200'
+              }`}>
+                <p className={`text-3xl font-bold font-mono ${
+                  score >= 8 ? 'text-green-600' :
+                  score >= 5 ? 'text-yellow-600' :
+                  'text-red-500'
+                } mb-1`}>
+                  {score}<span className="text-lg text-gray-400">/{sectionExercises.length}</span>
+                </p>
+                <p className="text-sm text-gray-600 mb-2">
+                  {score === sectionExercises.length ? '🎯 Mukammal! Hech qanday xato yo\'q!' :
+                   score >= 8 ? '👍 Zo\'r! Davom eting!' :
+                   score >= 5 ? '📚 Yaxshi, biroz ko\'proq e\'tibor kerak' :
+                   '💪 Qiyin bo\'ldimi? Qayta urinib ko\'ring'}
+                </p>
+                <div className="flex items-center justify-center gap-3 text-xs">
+                  <span className="flex items-center gap-1 text-yellow-600 font-bold">
+                    <Trophy size={14} /> +{score * 10} XP
+                  </span>
+                  <span className="flex items-center gap-1 text-green-600">
+                    <CheckCircle size={14} /> {score}
+                  </span>
+                  <span className="flex items-center gap-1 text-red-500">
+                    <XCircle size={14} /> {sectionExercises.length - score}
+                  </span>
+                </div>
+
+                <div className="flex gap-2 mt-4">
+                  <button onClick={handleRetrySection} className="btn-secondary flex-1 text-sm py-2">
+                    <RotateCcw size={14} /> Qayta urinish
+                  </button>
+                  {!isLastSection && (
+                    <button onClick={handleNextSection} className="btn-primary flex-1 text-sm py-2">
+                      Keyingi bosqich <ChevronRight size={14} />
+                    </button>
+                  )}
+                </div>
               </div>
 
-              <div className="flex gap-2 mt-4">
-                <button onClick={handleRetrySection} className="btn-secondary flex-1 text-sm py-2">
-                  <RotateCcw size={14} /> Qayta urinish
-                </button>
-                {!isLastSection && (
-                  <button onClick={handleNextSection} className="btn-primary flex-1 text-sm py-2">
-                    Keyingi bosqich <ChevronRight size={14} />
-                  </button>
-                )}
+              {/* Batafsil natija jadvali */}
+              <div className="card border-gray-200 overflow-hidden">
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-xs font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1.5">
+                    <Trophy size={14} className="text-yellow-600" /> Batafsil natija
+                  </p>
+                  <span className="text-[10px] text-gray-400">{sectionExercises.length} ta mashq</span>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b-2 border-gray-100 text-left text-[10px] text-gray-500 uppercase tracking-wider">
+                        <th className="pb-2 pr-2 font-semibold w-8">#</th>
+                        <th className="pb-2 pr-3 font-semibold">Savol</th>
+                        <th className="pb-2 pr-3 font-semibold">Sizning javobingiz</th>
+                        <th className="pb-2 pr-3 font-semibold">To\'g\'ri javob</th>
+                        <th className="pb-2 font-semibold w-10">Natija</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sectionExercises.map((ex, i) => {
+                        const userAnsArr = answers[ex.id] ?? []
+                        const ok = checkAnswer(ex, userAnsArr)
+                        let userAnsStr: string
+                        let correctStr: string
+                        if (ex.type === 'fill-blank') {
+                          userAnsStr = userAnsArr.join(' / ') || "(bo'sh)"
+                          correctStr = ex.blanks.join(' / ')
+                        } else if (ex.type === 'fill-table') {
+                          const parts = ex.rows.map((r, idx) => {
+                            const ci = idx * 2
+                            const si = ci + 1
+                            return `${r.adj}: C=${userAnsArr[ci] ?? '—'} S=${userAnsArr[si] ?? '—'}`
+                          })
+                          userAnsStr = parts.join('; ')
+                          const correctParts = ex.rows.map((r) => `${r.adj}: C=${r.comp || '—'} S=${r.sup || '—'}`)
+                          correctStr = correctParts.join('; ')
+                        } else {
+                          userAnsStr = userAnsArr[0] || "(bo'sh)"
+                          correctStr = ex.correct
+                        }
+                        return (
+                          <tr key={ex.id} className={`border-b border-gray-50 ${
+                          ok ? 'bg-green-50/40' : 'bg-red-50/40'
+                          }`}>
+                            <td className="py-2.5 pr-2 text-xs font-bold text-gray-600">{i + 1}</td>
+                            <td className="py-2.5 pr-3">
+                              <p className="text-xs text-gray-800 font-medium leading-snug line-clamp-2">
+                                {ex.type === 'fill-blank' ? ex.question.replace(/_{3,}/g, '___') :
+                                 ex.type === 'fill-table' ? ex.instruction :
+                                 ex.question}
+                              </p>
+                            </td>
+                            <td className="py-2.5 pr-3">
+                              <span className={`inline-block text-xs font-mono font-semibold px-1.5 py-0.5 rounded max-w-[180px] truncate ${
+                                ok ? 'text-green-700' : 'bg-red-100 text-red-700'
+                              }`}>
+                                {userAnsStr}
+                              </span>
+                            </td>
+                            <td className="py-2.5 pr-3">
+                              <span className="inline-block text-xs font-mono font-semibold text-green-700 bg-green-100 px-1.5 py-0.5 rounded max-w-[180px] truncate">
+                                {correctStr}
+                              </span>
+                            </td>
+                            <td className="py-2.5">
+                              <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
+                                ok ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'
+                              }`}>
+                                {ok ? '✓' : '✗'}
+                              </span>
+                            </td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+            </>
           ) : (
             <>
               {/* Mashqlar */}
@@ -1265,52 +1675,76 @@ export default function DailyLesson() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4">
-        {lessons.map((lesson) => {
-          const pct = lessonScores[lesson.id]
-          return (
-          <button
-            key={lesson.id}
-            onClick={() => setSelected(lesson.id)}
-            className="card-hover text-left flex flex-col gap-3 p-3 sm:p-5 group"
-          >
-            <div className="flex items-start justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <span className="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center font-bold text-primary-700 text-sm">
-                  {lesson.day}
-                </span>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-base leading-tight">{lesson.title}</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">{lesson.subtitle}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                {pct !== undefined && (
-                  <span className={`badge text-xs font-bold ${
-                    pct >= 80 ? 'bg-green-100 text-green-700' :
-                    pct >= 50 ? 'bg-yellow-100 text-yellow-700' :
-                    'bg-red-100 text-red-700'
-                  }`}>
-                    {pct}%
-                  </span>
-                )}
-                <span className="badge border bg-gray-100 text-gray-600 border-gray-200">{lesson.level}</span>
-              </div>
+      <div className="grid grid-cols-1 gap-6">
+        {(() => {
+          const groups: { category: string; label: string; lessons: typeof lessons }[] = []
+          const uncategorized = lessons.filter(l => !l.category)
+          if (uncategorized.length > 0) {
+            groups.push({ category: '', label: 'Asosiy', lessons: uncategorized })
+          }
+          const tenses = lessons.filter(l => l.category === 'tenses')
+          if (tenses.length > 0) {
+            groups.push({ category: 'tenses', label: "Zamonlar", lessons: tenses })
+          }
+          return groups
+        })().map(group => (
+          <div key={group.category || 'default'} className="space-y-3">
+            <div className="flex items-center gap-2 px-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
+                {group.label}
+              </span>
+              <div className="h-px flex-1 bg-gray-100" />
+              <span className="text-xs text-gray-400">{group.lessons.length} ta dars</span>
             </div>
+            <div className="grid grid-cols-1 gap-3">
+              {group.lessons.map((lesson) => {
+                const pct = lessonScores[lesson.id]
+                return (
+                <button
+                  key={lesson.id}
+                  onClick={() => setSelected(lesson.id)}
+                  className="card-hover text-left flex flex-col gap-3 p-3 sm:p-5 group"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center font-bold text-primary-700 text-sm">
+                        {lesson.day}
+                      </span>
+                      <div>
+                        <h3 className="font-bold text-gray-900 text-base leading-tight">{lesson.title}</h3>
+                        <p className="text-xs text-gray-500 mt-0.5">{lesson.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {pct !== undefined && (
+                        <span className={`badge text-xs font-bold ${
+                          pct >= 80 ? 'bg-green-100 text-green-700' :
+                          pct >= 50 ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-red-100 text-red-700'
+                        }`}>
+                          {pct}%
+                        </span>
+                      )}
+                      <span className="badge border bg-gray-100 text-gray-600 border-gray-200">{lesson.level}</span>
+                    </div>
+                  </div>
 
-            <div className="flex items-center gap-4 text-xs text-gray-400">
-              <span>📚 {lesson.formulas.length} formula</span>
-              <span>📝 {lesson.vocabulary.length} ta so'z</span>
-              <span>✍️ {lesson.exercises.length} ta mashq</span>
-              <span>+{lesson.exercises.length * 10} XP</span>
-            </div>
+                  <div className="flex items-center gap-4 text-xs text-gray-400">
+                    <span>📚 {lesson.formulas.length} formula</span>
+                    <span>📝 {lesson.vocabulary.length} ta so'z</span>
+                    <span>✍️ {lesson.exercises.length} ta mashq</span>
+                    <span>+{lesson.exercises.length * 10} XP</span>
+                  </div>
 
-            <div className="flex items-center gap-1.5 text-primary-600 font-semibold text-sm group-hover:gap-3 transition-all">
-              {pct !== undefined ? 'Davom etish' : 'Boshlash'} <ChevronRight size={15} />
+                  <div className="flex items-center gap-1.5 text-primary-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                    {pct !== undefined ? 'Davom etish' : 'Boshlash'} <ChevronRight size={15} />
+                  </div>
+                </button>
+                )
+              })}
             </div>
-          </button>
-          )
-        })}
+          </div>
+        ))}
       </div>
 
       <div className="card bg-gradient-to-r from-primary-50 to-b2-50 border-primary-100">

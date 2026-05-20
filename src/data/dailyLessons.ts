@@ -14,6 +14,7 @@ export interface DailyLesson {
   subtitle: string
   level: string
   day: number
+  category?: string
   formulas: { label: string; structure: string; color: string }[]
   rules: string[]
   vocabulary: { en: string; uz: string; example: string; rule: string }[]
@@ -21,6 +22,8 @@ export interface DailyLesson {
   specialCases: SpecialCase[]
   exercises: DailyExercise[]
   exerciseSections: { title: string; desc: string; color: string; icon: string; ids: number[] }[]
+  tests: DailyExercise[]
+  testSections: { title: string; desc: string; color: string; icon: string; ids: number[] }[]
 }
 
 export type DailyExercise =
@@ -824,6 +827,42 @@ const comparativesSuperlatives: DailyLesson = {
     },
   ],
   // ═══════════════════════════════════════════════════════════════════════
+  // TESTLAR — 25 ta multiple-choice test, oddiydan murakkabga
+  // ═══════════════════════════════════════════════════════════════════════
+  tests: [
+    { id: 1, type: 'multiple-choice', instruction: "Asosiy qoidalar — oson", question: 'Qisqa sifatlarning comparative shakli qanday yasaladi?', options: ['more + adj', 'adj + -er', 'the + adj + -est', 'adj + -ing'], correct: 'adj + -er', explanation: 'Qisqa sifatlar (1 bo\'g\'in) + -er: tall → taller.' },
+    { id: 2, type: 'multiple-choice', instruction: "Asosiy qoidalar — oson", question: 'Uzun sifatlarning comparative shakli qanday yasaladi?', options: ['adj + -er', 'the + adj + -est', 'more + adj', 'adj + -ing'], correct: 'more + adj', explanation: 'Uzun sifatlar (2+ bo\'g\'in) → more + adj: more expensive.' },
+    { id: 3, type: 'multiple-choice', instruction: "Asosiy qoidalar — oson", question: '"Tall" so\'zining comparative shaklini toping:', options: ['tall', 'taller', 'tallest', 'more tall'], correct: 'taller', explanation: 'Tall → qisqa sifat (1 bo\'g\'in) → taller.' },
+    { id: 4, type: 'multiple-choice', instruction: "Asosiy qoidalar — oson", question: '"Expensive" so\'zining superlative shaklini toping:', options: ['the most expensive', 'the expensivest', 'more expensive', 'expensiver'], correct: 'the most expensive', explanation: 'Expensive → uzun sifat → the most expensive.' },
+    { id: 5, type: 'multiple-choice', instruction: "Asosiy qoidalar — oson", question: '"Good" so\'zining comparative shaklini toping:', options: ['gooder', 'more good', 'better', 'best'], correct: 'better', explanation: 'Good → noto\'g\'ri sifat → better (comparative).' },
+    { id: 6, type: 'multiple-choice', instruction: "Asosiy qoidalar — oson", question: '"Bad" so\'zining superlative shaklini toping:', options: ['badder', 'the worst', 'the baddest', 'worse'], correct: 'the worst', explanation: 'Bad → noto\'g\'ri sifat → the worst (superlative).' },
+    { id: 7, type: 'multiple-choice', instruction: "O'rtacha — qoidani qo'llash", question: 'She is ___ (tall) than her brother.', options: ['tall', 'taller', 'tallest', 'more tall'], correct: 'taller', explanation: 'Than bilan solishtirish → comparative: taller.' },
+    { id: 8, type: 'multiple-choice', instruction: "O'rtacha — qoidani qo'llash", question: 'This is ___ (beautiful) city in the world.', options: ['the most beautiful', 'more beautiful', 'beautifulest', 'the beautifulest'], correct: 'the most beautiful', explanation: 'Beautiful → uzun sifat → the most beautiful.' },
+    { id: 9, type: 'multiple-choice', instruction: "O'rtacha — qoidani qo'llash", question: 'She is ___ (happy) than before.', options: ['happyer', 'happier', 'more happy', 'happy'], correct: 'happier', explanation: 'Happy → -y bilan tugagan → y→i+er: happier.' },
+    { id: 10, type: 'multiple-choice', instruction: "O'rtacha — qoidani qo'llash", question: 'This box is ___ (big) than that one.', options: ['bigger', 'more big', 'biger', 'biggest'], correct: 'bigger', explanation: 'Big → CVC → undosh ikki marta: bigger.' },
+    { id: 11, type: 'multiple-choice', instruction: "O'rtacha — qoidani qo'llash", question: 'Which sentence is CORRECT?', options: ['She is more smarter', 'She is smarter', 'She is smartest', 'She is more smart'], correct: 'She is smarter', explanation: 'Smart qisqa sifat → smarter. More smarter = double comparative xato.' },
+    { id: 12, type: 'multiple-choice', instruction: "O'rtacha — qoidani qo'llash", question: 'Uzbekistan is ___ (large) than Kazakhstan?', options: ['larger', 'more large', 'largest', 'more larger'], correct: 'larger', explanation: 'Large → -e bilan tugagan → larger. More large deyilmaydi.' },
+    { id: 13, type: 'multiple-choice', instruction: "Qiyin — murakkab holatlar", question: 'Which sentence is correct?', options: ['She is the most cleverest', 'She is the cleverest', 'She is more cleverer', 'She is clever'], correct: 'She is the cleverest', explanation: 'Clever 2 bo\'g\'inli istisno → cleverest (most clever ham mumkin).' },
+    { id: 14, type: 'multiple-choice', instruction: "Qiyin — murakkab holatlar", question: 'This road is ___ (narrow) than the highway.', options: ['narrower', 'more narrow', 'narrow', 'narrowest'], correct: 'narrower', explanation: 'Narrow 2 bo\'g\'inli → narrower (more narrow ham mumkin).' },
+    { id: 15, type: 'multiple-choice', instruction: "Qiyin — murakkab holatlar", question: 'Which is correct? "First I eat, ___ I sleep."', options: ['than', 'then', 'from', 'after'], correct: 'then', explanation: 'Vaqt ketma-ketligi → then (keyin). Than = solishtirish.' },
+    { id: 16, type: 'multiple-choice', instruction: "Qiyin — murakkab holatlar", question: 'This is ___ restaurant in town.', options: ['the best', 'the better', 'the goodest', 'the most best'], correct: 'the best', explanation: 'Good → the best (superlative). Most best xato.' },
+    { id: 17, type: 'multiple-choice', instruction: "Qiyin — murakkab holatlar", question: 'My English is getting ___ (good) every day.', options: ['better', 'gooder', 'more good', 'best'], correct: 'better', explanation: 'Good → comparative: better. Getting better = yaxshilanmoqda.' },
+    { id: 18, type: 'multiple-choice', instruction: "Qiyin — murakkab holatlar", question: 'Which is the superlative of "far"?', options: ['farthest', 'furthest', 'farest', 'both farthest and furthest'], correct: 'both farthest and furthest', explanation: 'Far → farther/further → farthest/furthest. Ikkisi ham to\'g\'ri.' },
+    { id: 19, type: 'multiple-choice', instruction: "Murakkab — yuqori daraja", question: 'She speaks English ___ than before.', options: ['more fluently', 'fluentlier', 'most fluently', 'fluently'], correct: 'more fluently', explanation: 'Fluently ravish → more fluently. -ly bilan tugaganlar → more.' },
+    { id: 20, type: 'multiple-choice', instruction: "Murakkab — yuqori daraja", question: 'Which sentence uses "as...as" correctly?', options: ['She is as tall as me', 'She is as taller as me', 'She is as more tall as me', 'She is as tallest as me'], correct: 'She is as tall as me', explanation: 'As + adj (base) + as. As taller/as more tall xato.' },
+    { id: 21, type: 'multiple-choice', instruction: "Murakkab — yuqori daraja", question: 'This is by far ___ hotel in the city.', options: ['the best', 'better', 'the better', 'best'], correct: 'the best', explanation: 'By far + superlative: the best. Eng yuqori darajani kuchaytiradi.' },
+    { id: 22, type: 'multiple-choice', instruction: "Murakkab — yuqori daraja", question: 'Which sentence contains a double comparative error?', options: ['She is more taller than me', 'She is taller than me', 'She is the tallest', 'She is as tall as me'], correct: 'She is more taller than me', explanation: 'More taller = double comparative. Faqat taller yoki more tall.' },
+    { id: 23, type: 'multiple-choice', instruction: "Murakkab — yuqori daraja", question: 'The more you study, ___ your English becomes.', options: ['the better', 'better', 'the best', 'gooder'], correct: 'the better', explanation: 'The more... the better... → double comparative structure.' },
+    { id: 24, type: 'multiple-choice', instruction: "Murakkab — yuqori daraja", question: 'She is the ___ (polite) person I have ever met.', options: ['politest', 'most polite', 'more polite', 'both politest and most polite'], correct: 'both politest and most polite', explanation: 'Polite 2 bo\'g\'inli istisno → politest va most polite ikkisi ham to\'g\'ri.' },
+    { id: 25, type: 'multiple-choice', instruction: "Murakkab — yuqori daraja", question: 'Which sentence is grammatically correct?', options: ['He is the most richest', 'He is the richest', 'He is richer', 'He is more richer'], correct: 'He is the richest', explanation: 'Rich qisqa sifat → the richest (the + -est). Most richest xato.' },
+  ],
+  testSections: [
+    { title: "Oson", desc: "Asosiy qoidalar — boshlang'ich test", color: 'bg-emerald-500', icon: '🌱', ids: [1, 2, 3, 4, 5, 6] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash — o'rganish", color: 'bg-blue-500', icon: '📘', ids: [7, 8, 9, 10, 11, 12] },
+    { title: "Qiyin", desc: "Murakkab holatlar — tahlil", color: 'bg-violet-500', icon: '💪', ids: [13, 14, 15, 16, 17, 18] },
+    { title: "Murakkab", desc: "Yuqori daraja — sinov", color: 'bg-rose-500', icon: '🏆', ids: [19, 20, 21, 22, 23, 24, 25] },
+  ],
+  // ═══════════════════════════════════════════════════════════════════════
   // BOSQICHLAR — 45 ta mashqni qismlarga bo'lib berish
   // ═══════════════════════════════════════════════════════════════════════
   exerciseSections: [
@@ -835,6 +874,9 @@ const comparativesSuperlatives: DailyLesson = {
   ],
 }
 
+import { TENSES_LESSONS } from './tensesLessons'
+
 export const DAILY_LESSONS: DailyLesson[] = [
   comparativesSuperlatives,
+  ...TENSES_LESSONS,
 ]
