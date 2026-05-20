@@ -186,3 +186,236 @@ async function getLessonProgressRaw(lessonId: string, date?: string): Promise<nu
 export async function getLessonProgress(lessonId: string, date?: string): Promise<number | null> {
   return getLessonProgressRaw(lessonId, date)
 }
+
+// ─── Lesson sessions (cross-device resume) ───────────────────────────────
+
+interface SessionPayload {
+  tab: string
+  currentSection: number
+  testSection: number
+  completedSections: Record<number, number>
+  completedTestSections: Record<number, number>
+}
+
+export async function saveLessonSessionToDB(
+  lessonId: string,
+  data: SessionPayload
+): Promise<void> {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return
+
+  await supabase.from('lesson_sessions').upsert({
+    user_id: session.user.id,
+    lesson_id: lessonId,
+    tab: data.tab,
+    current_section: data.currentSection,
+    test_section: data.testSection,
+    completed_sections: data.completedSections as never,
+    completed_test_sections: data.completedTestSections as never,
+    updated_at: new Date().toISOString(),
+  }, { onConflict: 'user_id,lesson_id' })
+}
+
+export async function clearLessonSessionFromDB(lessonId: string): Promise<void> {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return
+
+  await supabase
+    .from('lesson_sessions')
+    .delete()
+    .eq('user_id', session.user.id)
+    .eq('lesson_id', lessonId)
+}
+
+export interface LoadedLessonSession {
+  tab: string
+  currentSection: number
+  testSection: number
+  completedSections: Record<number, number>
+  completedTestSections: Record<number, number>
+  updatedAt: number
+}
+
+export async function loadLessonSessionFromDB(lessonId: string): Promise<LoadedLessonSession | null> {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return null
+
+  const { data } = await supabase
+    .from('lesson_sessions')
+    .select('*')
+    .eq('user_id', session.user.id)
+    .eq('lesson_id', lessonId)
+    .maybeSingle()
+
+  if (!data) return null
+
+  return {
+    tab: data.tab as string,
+    currentSection: data.current_section as number,
+    testSection: data.test_section as number,
+    completedSections: data.completed_sections as Record<number, number>,
+    completedTestSections: data.completed_test_sections as Record<number, number>,
+    updatedAt: new Date(data.updated_at as string).getTime(),
+  }
+}
+
+// ─── Exercise answers (per-exercise granularity) ─────────────────────────
+
+export interface ExerciseAnswerPayload {
+  exerciseId: number
+  exerciseType: string
+  answer: string[]
+  isCorrect: boolean
+}
+
+export async function saveExerciseAnswersToDB(
+  lessonId: string,
+  sectionIndex: number,
+  sectionType: 'exercise' | 'test' | 'drill',
+  answers: ExerciseAnswerPayload[]
+): Promise<void> {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return
+
+  const rows = answers.map(a => ({
+    user_id: session.user.id,
+    lesson_id: lessonId,
+    section_index: sectionIndex,
+    exercise_id: a.exerciseId,
+    exercise_type: a.exerciseType,
+    section_type: sectionType,
+    answer: JSON.stringify(a.answer),
+    is_correct: a.isCorrect,
+    submitted_at: new Date().toISOString(),
+  }))
+
+  if (rows.length === 0) return
+
+  await supabase.from('lesson_exercise_answers').upsert(
+    rows as never,
+    { onConflict: 'user_id,lesson_id,exercise_id,section_type', ignoreDuplicates: false }
+  )
+}
+
+export interface LoadedExerciseAnswer {
+  exerciseId: number
+  exerciseType: string
+  answer: string[]
+  isCorrect: boolean
+  sectionIndex: number
+  sectionType: string
+}
+
+export async function loadExerciseAnswersFromDB(lessonId: string): Promise<LoadedExerciseAnswer[]> {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return []
+
+  const { data } = await supabase
+    .from('lesson_exercise_answers')
+    .select('*')
+    .eq('user_id', session.user.id)
+    .eq('lesson_id', lessonId)
+    .order('exercise_id', { ascending: true })
+
+  if (!data) return []
+
+  return (data as any[]).map(d => ({
+    exerciseId: d.exercise_id,
+    exerciseType: d.exercise_type,
+    answer: typeof d.answer === 'string' ? JSON.parse(d.answer) : d.answer,
+    isCorrect: d.is_correct,
+    sectionIndex: d.section_index,
+    sectionType: d.section_type,
+  }))
+}
+
+// ─── Lesson vocab progress ───────────────────────────────────────────────
+
+export interface VocabProgressPayload {
+  wordIndex: number
+  known: boolean
+  quizCorrect: number
+  quizWrong: number
+}
+
+export async function saveLessonVocabProgressToDB(
+  lessonId: string,
+  items: VocabProgressPayload[]
+): Promise<void> {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return
+
+  for (const item of items) {
+    await supabase.from('lesson_vocab_progress').upsert({
+      user_id: session.user.id,
+      lesson_id: lessonId,
+      word_index: item.wordIndex,
+      known: item.known,
+      quiz_correct: item.quizCorrect,
+      quiz_wrong: item.quizWrong,
+      updated_at: new Date().toISOString(),
+    } as never, { onConflict: 'user_id,lesson_id,word_index' })
+  }
+}
+
+export interface LoadedVocabProgress {
+  wordIndex: number
+  known: boolean
+  quizCorrect: number
+  quizWrong: number
+}
+
+export async function loadLessonVocabProgressFromDB(lessonId: string): Promise<LoadedVocabProgress[]> {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return []
+
+  const { data } = await supabase
+    .from('lesson_vocab_progress')
+    .select('*')
+    .eq('user_id', session.user.id)
+    .eq('lesson_id', lessonId)
+    .order('word_index', { ascending: true })
+
+  if (!data) return []
+
+  return (data as any[]).map(d => ({
+    wordIndex: d.word_index,
+    known: d.known,
+    quizCorrect: d.quiz_correct,
+    quizWrong: d.quiz_wrong,
+  }))
+}
+
+// ─── Viewed tabs ─────────────────────────────────────────────────────────
+
+export async function saveViewedTabsToDB(
+  lessonId: string,
+  viewedTabs: string[]
+): Promise<void> {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return
+
+  await supabase.from('lesson_viewed_tabs').upsert({
+    user_id: session.user.id,
+    lesson_id: lessonId,
+    viewed_tabs: JSON.stringify(viewedTabs),
+    updated_at: new Date().toISOString(),
+  } as never, { onConflict: 'user_id,lesson_id' })
+}
+
+export async function loadViewedTabsFromDB(lessonId: string): Promise<string[]> {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return []
+
+  const { data } = await supabase
+    .from('lesson_viewed_tabs')
+    .select('viewed_tabs')
+    .eq('user_id', session.user.id)
+    .eq('lesson_id', lessonId)
+    .maybeSingle()
+
+  if (!data) return []
+
+  const tabs = typeof data.viewed_tabs === 'string' ? JSON.parse(data.viewed_tabs) : data.viewed_tabs
+  return Array.isArray(tabs) ? tabs : []
+}
