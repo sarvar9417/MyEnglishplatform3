@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { Mic, MicOff, RotateCcw, ChevronLeft, Loader2, Volume2 } from 'lucide-react'
 import { CATEGORY_LABEL, CATEGORY_COLOR } from '@/data/speakingPrompts'
-import { fetchSpeakingPrompts, getDailyPrompts } from '@/services/speakingService'
+import { fetchSpeakingPrompts, getDailyPrompts, saveSpeakingResult } from '@/services/speakingService'
 import type { SpeakingPrompt } from '@/services/speakingService'
 import { evaluateSpeech } from '@/lib/claude'
 import { useStore } from '@/store/useStore'
+import { supabase } from '@/db/supabase'
 
 // ── Web Speech API types ───────────────────────────────────────────────────────
 
@@ -174,6 +175,22 @@ export default function Speaking() {
         const avg = Math.round((s.fluency + s.grammar + s.vocabulary) / 3)
         addXP(avg * 3)
         updateSkillProgress('todaySpeakingPct', avg * 10)
+        // Save to Supabase
+        supabase.auth.getSession().then(({ data: { session } }) => {
+          if (session?.user.id && prompt) {
+            saveSpeakingResult({
+              userId:          session.user.id,
+              promptId:        prompt.id,
+              promptText:      prompt.prompt,
+              fluencyScore:    s.fluency,
+              grammarScore:    s.grammar,
+              vocabularyScore: s.vocabulary,
+              avgScore:        avg,
+              xpEarned:        avg * 3,
+              feedback:        f,
+            })
+          }
+        })
         setRecordState('done')
         setView('result')
       },

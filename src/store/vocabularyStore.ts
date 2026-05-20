@@ -42,7 +42,7 @@ export interface VocabState {
   selectReview:   () => void
   nextWord:       () => void
 
-  rateWord:       (wordId: number, rating: Rating) => { newBox: number; nextReview: string }
+  rateWord:       (wordId: number, rating: Rating) => { newBox: number; nextReview: string; isLearned: boolean }
   finishBatch:    () => void
 
   tick:           () => void
@@ -118,7 +118,7 @@ export const useVocabStore = create<VocabState>()((set, get) => ({
 
   rateWord: (wordId, rating) => {
     const word = get().batchWords.find((w) => w.word_id === wordId)
-    if (!word) return { newBox: 1, nextReview: getTodayTashkent() }
+    if (!word) return { newBox: 1, nextReview: getTodayTashkent(), isLearned: false }
 
     const srs = computeNextReview(word.box, rating)
     const isCorrect = rating === 'bildim' || rating === 'yodladim'
@@ -139,7 +139,7 @@ export const useVocabStore = create<VocabState>()((set, get) => ({
       }
     })
 
-    return { newBox: srs.box, nextReview: srs.next_review }
+    return { newBox: srs.box, nextReview: srs.next_review, isLearned: srs.is_learned }
   },
 
   finishBatch: () => set({ viewMode: 'complete' }),

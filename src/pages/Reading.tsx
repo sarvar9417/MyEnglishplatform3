@@ -4,9 +4,10 @@ import {
   CheckCircle2, XCircle, Sparkles, Loader2,
 } from 'lucide-react'
 import { type ReadingText, type VocabWord, type CompQuestion } from '@/data/readingTexts'
-import { fetchReadingTexts } from '@/services/readingService'
+import { fetchReadingTexts, saveReadingResult } from '@/services/readingService'
 import { generateReadingQuestions } from '@/lib/claude'
 import { useStore } from '@/store/useStore'
+import { supabase } from '@/db/supabase'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -164,6 +165,19 @@ export default function Reading() {
     const xp      = correct * 12
     addXP(xp)
     updateSkillProgress('todayReadingPct', Math.round((correct / text.questions.length) * 100))
+    // Save to Supabase
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user.id) {
+        saveReadingResult({
+          userId:         session.user.id,
+          textId:         text.id,
+          textTitle:      text.title,
+          correctCount:   correct,
+          totalQuestions: text.questions.length,
+          xpEarned:       xp,
+        })
+      }
+    })
     setSubmitted(true)
     setPhase('result')
   }
