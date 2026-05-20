@@ -55,7 +55,6 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
   const [checking, setChecking] = useState(false)
   const [feedback, setFeedback] = useState<{ explanation: string; correctAnswer: string } | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pendingRef = useRef<{ rounds: RoundData[]; nextIdx: number; finished: boolean } | null>(null)
   const wordsRef = useRef<Word[]>([])
 
