@@ -2,6 +2,7 @@ import { supabase } from '../db/supabase'
 import { upsertLessonProgress as dbUpsert, getLessonProgress as dbGet } from '../db/database'
 import { getTodayTashkent } from '../utils/tashkentDate'
 import type { DailyLesson, SpecialCase } from '../data/dailyLessons'
+import { DAILY_LESSONS } from '../data/dailyLessons'
 
 interface LessonRow {
   id: string
@@ -17,6 +18,8 @@ interface LessonRow {
     specialCases: SpecialCase[]
     exercises: import('../data/dailyLessons').DailyExercise[]
     exerciseSections: { title: string; desc: string; color: string; icon: string; ids: number[] }[]
+    tests: import('../data/dailyLessons').DailyExercise[]
+    testSections: { title: string; desc: string; color: string; icon: string; ids: number[] }[]
   }
 }
 
@@ -34,6 +37,8 @@ function castLesson(row: LessonRow): DailyLesson {
     specialCases: row.data.specialCases ?? [],
     exercises: row.data.exercises ?? [],
     exerciseSections: row.data.exerciseSections ?? [],
+    tests: row.data.tests ?? [],
+    testSections: row.data.testSections ?? [],
   }
 }
 
@@ -44,11 +49,25 @@ export async function fetchLessons(): Promise<DailyLesson[]> {
     .order('day', { ascending: true })
 
   if (error) {
-    console.warn('Supabase lessons fetch failed, using IndexedDB fallback:', error.message)
-    return []
+    console.warn('Supabase lessons fetch failed, using local fallback:', error.message)
+    return DAILY_LESSONS
   }
 
-  return (data as unknown as LessonRow[]).map(castLesson)
+  if (!data || data.length === 0) {
+    console.warn('No lessons found in Supabase, using local fallback')
+    return DAILY_LESSONS
+  }
+
+  const supabaseLessons = (data as unknown as LessonRow[]).map(castLesson)
+  const supabaseIds = new Set(supabaseLessons.map(l => l.id))
+  const localExtraLessons = DAILY_LESSONS.filter(l => !supabaseIds.has(l.id))
+  
+  if (localExtraLessons.length > 0) {
+    console.warn(`Adding ${localExtraLessons.length} local lessons not found in Supabase`)
+    return [...supabaseLessons, ...localExtraLessons]
+  }
+
+  return supabaseLessons
 }
 
 export async function fetchLesson(id: string): Promise<DailyLesson | null> {
@@ -59,8 +78,9 @@ export async function fetchLesson(id: string): Promise<DailyLesson | null> {
     .maybeSingle()
 
   if (error || !data) {
-    console.warn('Supabase lesson fetch failed:', error?.message)
-    return null
+    console.warn('Supabase lesson fetch failed, searching local lessons:', error?.message)
+    // Search in local DAILY_LESSONS array
+    return DAILY_LESSONS.find(l => l.id === id) || null
   }
 
   return castLesson(data as unknown as LessonRow)
