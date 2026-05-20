@@ -4,16 +4,16 @@ import {
   BarChart, Bar, LineChart, Line, AreaChart, Area,
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  ReferenceLine, Legend,
+  ReferenceLine,
 } from 'recharts'
-import { db, type DailyProgress, type MockTest } from '@/db/database'
-import { useStore } from '@/store/useStore'
+import { supabase } from '../db/supabase'
+import { useStore } from '../store/useStore'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 interface DayData {
   date:         string
-  label:        string   // "Kun N" or short date
+  label:        string
   day:          number
   hours:        number
   xp:           number
@@ -26,38 +26,16 @@ interface DayData {
   cumulativeXP: number
   newWords:     number
   totalWords:   number
-  mockScore:    number   // 0 = no test
+  mockScore:    number
   hasReal:      boolean
 }
 
-// ── Seeded sample data (fills empty days so charts look meaningful) ────────────
-
-const HOUR_PATTERN = [9, 12, 13, 14, 11, 14, 8, 13, 14, 10, 12, 14, 11, 13, 14, 9, 12, 14]
-const WORD_PATTERN = [8, 12, 15, 10, 18, 14, 6, 12, 16, 11, 9, 14, 18, 10, 12, 15, 13, 8]
-const SKILL_PATTERNS = {
-  grammar:   [70, 80, 75, 85, 60, 90, 50, 80, 85, 75, 70, 80, 90, 65, 80, 85, 75, 90],
-  vocab:     [60, 75, 80, 70, 85, 65, 90, 70, 75, 80, 85, 60, 75, 90, 65, 80, 75, 85],
-  listening: [50, 70, 60, 80, 75, 65, 70, 80, 85, 60, 70, 75, 80, 65, 90, 70, 80, 75],
-  writing:   [65, 55, 75, 70, 80, 75, 60, 85, 70, 80, 65, 75, 70, 85, 65, 80, 75, 70],
-  speaking:  [55, 65, 70, 75, 60, 80, 65, 75, 80, 60, 70, 75, 65, 80, 70, 75, 80, 65],
-  reading:   [70, 75, 80, 65, 75, 80, 70, 85, 75, 70, 80, 65, 75, 80, 85, 70, 75, 80],
+interface SkillSummary {
+  date:  string
+  score: number
 }
 
-function sampleDay(i: number, base = 0) {
-  const p = i % HOUR_PATTERN.length
-  return {
-    hours:        HOUR_PATTERN[p],
-    xp:           Math.round(HOUR_PATTERN[p] * 22 + base),
-    newWords:     WORD_PATTERN[p],
-    grammarPct:   SKILL_PATTERNS.grammar[p],
-    vocabPct:     SKILL_PATTERNS.vocab[p],
-    listeningPct: SKILL_PATTERNS.listening[p],
-    writingPct:   SKILL_PATTERNS.writing[p],
-    speakingPct:  SKILL_PATTERNS.speaking[p],
-    readingPct:   SKILL_PATTERNS.reading[p],
-    mockScore:    0,
-  }
-}
+// ── Helpers ───────────────────────────────────────────────────────────────────
 
 function addDays(dateStr: string, n: number) {
   const d = new Date(dateStr + 'T00:00:00Z')
@@ -70,13 +48,14 @@ function addDays(dateStr: string, n: number) {
 function buildTimeline(
   startDate: string,
   currentDay: number,
-  dbRows: DailyProgress[],
-  mockTests: MockTest[],
+  dbRows: any[],
+  mockTests: any[],
+  skillMap: Record<string, SkillSummary[]>,
 ): DayData[] {
-  const rowMap = new Map<string, DailyProgress>()
+  const rowMap = new Map<string, any>()
   dbRows.forEach((r) => rowMap.set(r.date, r))
   const testMap = new Map<string, number>()
-  mockTests.forEach((t) => testMap.set(t.date, t.totalScore))
+  mockTests.forEach((t) => testMap.set(t.date, t.total_score))
 
   const days: DayData[] = []
   let cumXP = 0
@@ -85,13 +64,19 @@ function buildTimeline(
   for (let d = 1; d <= Math.min(currentDay, 90); d++) {
     const date = addDays(startDate, d - 1)
     const real = rowMap.get(date)
-    const sample = sampleDay(d - 1)
 
-    const hours    = real ? real.totalMinutes / 60 : sample.hours
-    const xp       = real ? real.xpEarned          : sample.xp
-    const newWords = real ? 0                       : sample.newWords  // vocab count not in DailyProgress
-    cumXP    += xp
-    cumWords += newWords
+    const g = skillMap.grammar?.filter((s) => s.date === date)
+    const l = skillMap.listening?.filter((s) => s.date === date)
+    const r = skillMap.reading?.filter((s) => s.date === date)
+    const s = skillMap.speaking?.filter((s) => s.date === date)
+    const w = skillMap.writing?.filter((s) => s.date === date)
+
+    const avg = (arr: SkillSummary[] | undefined): number =>
+      arr && arr.length > 0 ? Math.round(arr.reduce((a, b) => a + b.score, 0) / arr.length) : 0
+
+    const hours = real ? real.total_minutes / 60 : 0
+    const xp    = real ? real.xp_earned : 0
+    cumXP += xp
 
     days.push({
       date,
@@ -99,14 +84,14 @@ function buildTimeline(
       day:          d,
       hours:        parseFloat(hours.toFixed(1)),
       xp,
-      grammarPct:   real ? real.grammarPct   : sample.grammarPct,
-      vocabPct:     real ? real.vocabPct     : sample.vocabPct,
-      listeningPct: real ? real.listeningPct : sample.listeningPct,
-      writingPct:   real ? real.writingPct   : sample.writingPct,
-      speakingPct:  sample.speakingPct,
-      readingPct:   sample.readingPct,
+      grammarPct:   real?.grammar_pct ?? avg(g),
+      vocabPct:     real?.vocab_pct ?? 0,
+      listeningPct: real?.listening_pct ?? avg(l),
+      writingPct:   real?.writing_pct ?? avg(w),
+      speakingPct:  avg(s),
+      readingPct:   avg(r),
       cumulativeXP: cumXP,
-      newWords,
+      newWords:     0,
       totalWords:   cumWords,
       mockScore:    testMap.get(date) ?? 0,
       hasReal:      !!real,
@@ -212,63 +197,98 @@ export default function Progress() {
   const [radarData, setRadarData] = useState<{ subject: string; value: number }[]>([])
   const [mockData,  setMockData]  = useState<{ week: string; score: number }[]>([])
   const [loading,   setLoading]   = useState(true)
+  const [supaStreak, setSupaStreak] = useState(0)
 
   useEffect(() => {
     async function load() {
-      const [dbRows, dbTests] = await Promise.all([
-        db.dailyProgress.toArray(),
-        db.mockTests.toArray(),
-      ])
-      const tl = buildTimeline(startDate, currentDay, dbRows, dbTests)
-      setTimeline(tl)
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session) { setLoading(false); return }
+        const uid = session.user.id
 
-      // Radar: average of last 14 days
-      const recent = tl.slice(-14)
-      const avg = (key: keyof DayData) =>
-        recent.length ? Math.round(recent.reduce((s, d) => s + (d[key] as number), 0) / recent.length) : 0
-      setRadarData([
-        { subject: 'Grammar',   value: avg('grammarPct')   },
-        { subject: 'Vocab',     value: avg('vocabPct')      },
-        { subject: 'Listening', value: avg('listeningPct')  },
-        { subject: 'Speaking',  value: avg('speakingPct')   },
-        { subject: 'Reading',   value: avg('readingPct')    },
-        { subject: 'Writing',   value: avg('writingPct')    },
-      ])
-
-      // Mock test line
-      const tests = dbTests
-        .sort((a, b) => a.day - b.day)
-        .map((t) => ({ week: `H${t.week}`, score: t.totalScore }))
-      if (tests.length === 0) {
-        setMockData([
-          { week: 'H1', score: 42 }, { week: 'H2', score: 51 },
-          { week: 'H3', score: 58 }, { week: 'H4', score: 65 },
-          { week: 'H5', score: 71 }, { week: 'H6', score: 74 },
+        // Fetch all data in parallel
+        const [
+          { data: profile },
+          { data: daily },
+          { data: mocks },
+          { data: grammarRows },
+          { data: listeningRows },
+          { data: readingRows },
+          { data: speakingRows },
+          { data: writingRows },
+        ] = await Promise.all([
+          supabase.from('users').select('*').eq('id', uid).single(),
+          supabase.from('daily_progress').select('*').eq('user_id', uid).order('date'),
+          supabase.from('mock_tests').select('*').eq('user_id', uid).order('created_at'),
+          supabase.from('grammar_progress').select('date, score').eq('user_id', uid).order('completed_at'),
+          supabase.from('listening_progress').select('date, score').eq('user_id', uid).order('completed_at'),
+          supabase.from('reading_progress').select('date, score').eq('user_id', uid).order('completed_at'),
+          supabase.from('speaking_progress').select('date, avg_score').eq('user_id', uid).order('completed_at'),
+          supabase.from('writings').select('date, score').eq('user_id', uid).order('created_at'),
         ])
-      } else {
-        setMockData(tests)
+
+        const start = profile?.start_date ?? startDate
+        const day   = profile?.current_day ?? currentDay
+        const streakVal = profile?.streak ?? streak
+
+        setSupaStreak(streakVal)
+
+        const skillMap: Record<string, SkillSummary[]> = {
+          grammar:   (grammarRows ?? []).map((r: any) => ({ date: r.date, score: r.score })),
+          listening: (listeningRows ?? []).map((r: any) => ({ date: r.date, score: r.score })),
+          reading:   (readingRows ?? []).map((r: any) => ({ date: r.date, score: r.score })),
+          speaking:  (speakingRows ?? []).map((r: any) => ({ date: r.date, score: (r.avg_score ?? 0) * 10 })),
+          writing:   (writingRows ?? []).map((r: any) => ({ date: r.date, score: (r.score ?? 0) * 10 })),
+        }
+
+        const tl = buildTimeline(start, day, daily ?? [], mocks ?? [], skillMap)
+        setTimeline(tl)
+
+        // Radar: average of last 14 available skill records
+        function avgSkill(arr: SkillSummary[]): number {
+          const recent = arr.slice(-14)
+          return recent.length ? Math.round(recent.reduce((s, d) => s + d.score, 0) / recent.length) : 0
+        }
+        setRadarData([
+          { subject: 'Grammar',   value: avgSkill(skillMap.grammar)   },
+          { subject: 'Vocab',     value: 0 },
+          { subject: 'Listening', value: avgSkill(skillMap.listening) },
+          { subject: 'Speaking',  value: avgSkill(skillMap.speaking)  },
+          { subject: 'Reading',   value: avgSkill(skillMap.reading)   },
+          { subject: 'Writing',   value: avgSkill(skillMap.writing)   },
+        ])
+
+        // Mock test line
+        const tests = (mocks ?? [])
+          .sort((a: any, b: any) => a.day - b.day)
+          .map((t: any) => ({ week: `H${t.week}`, score: t.total_score }))
+        if (tests.length === 0) {
+          // Placeholder so chart doesn't break
+          setMockData([
+            { week: 'H1', score: 0 }, { week: 'H2', score: 0 },
+            { week: 'H3', score: 0 }, { week: 'H4', score: 0 },
+          ])
+        } else {
+          setMockData(tests)
+        }
+      } catch (e) {
+        console.error('Progress load error:', e)
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
     load()
-  }, [startDate, currentDay])
+  }, [startDate, currentDay, totalXP, streak])
 
   // Top stats
   const avgHours = timeline.length
     ? (timeline.reduce((s, d) => s + d.hours, 0) / timeline.length).toFixed(1)
     : '0.0'
-  const bestStreak = streak
 
-  // Visible days for charts (label every 7th)
+  // Visible days for charts
   const barData = timeline.map((d, i) => ({
     ...d,
     label: i % 7 === 0 ? `K${d.day}` : '',
-  }))
-
-  const vocabData = timeline.map((d) => ({
-    label:     d.label || '',
-    newWords:  d.newWords,
-    totalWords: d.totalWords,
   }))
 
   const xpData = timeline.map((d) => ({
@@ -303,7 +323,7 @@ export default function Progress() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
         {[
           { icon: <Award size={16} />,   color: 'text-b2-600',     label: 'Jami XP',     value: totalXP.toLocaleString()        },
-          { icon: <Flame size={16} />,   color: 'text-orange-500', label: 'Streak',      value: `${bestStreak} kun`             },
+          { icon: <Flame size={16} />,   color: 'text-orange-500', label: 'Streak',      value: `${supaStreak || streak} kun`   },
           { icon: <BarChart2 size={16}/>, color: 'text-primary-600',label: "O'rtacha",   value: `${avgHours}h/kun`              },
           { icon: <TrendingUp size={16}/>,color: 'text-green-600',  label: 'Joriy daraja',value: `Kun ${currentDay}`            },
         ].map((s) => (
@@ -339,7 +359,7 @@ export default function Progress() {
         </div>
 
         {/* 2. Skill Radar */}
-        <ChartCard title="Skill Radar" sub="So'nggi 14 kun o'rtachasi">
+        <ChartCard title="Skill Radar" sub="Real natijalar bo'yicha">
           <ResponsiveContainer width="100%" height={200}>
             <RadarChart data={radarData} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
               <PolarGrid stroke="#e5e7eb" />
@@ -361,29 +381,8 @@ export default function Progress() {
         </ChartCard>
       </div>
 
-      {/* Row 2: Vocab growth + Mock test */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* 3. Vocabulary o'sishi */}
-        <ChartCard title="Vocabulary o'sishi" sub="Yangi va jami so'zlar">
-          <ResponsiveContainer width="100%" height={180}>
-            <LineChart data={vocabData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis dataKey="label" tick={{ fontSize: 10 }} tickLine={false} axisLine={false} />
-              <YAxis tick={{ fontSize: 10 }} tickLine={false} axisLine={false} />
-              <Tooltip contentStyle={{ fontSize: 11, borderRadius: 8 }} />
-              <Legend iconType="circle" wrapperStyle={{ fontSize: 10 }} />
-              <Line
-                type="monotone" dataKey="totalWords" name="Jami so'z"
-                stroke="#0694a2" strokeWidth={2} dot={false}
-              />
-              <Line
-                type="monotone" dataKey="newWords" name="Yangi so'z"
-                stroke="#84e1bc" strokeWidth={1.5} dot={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </ChartCard>
-
+      {/* Row 2: Mock test */}
+      <div className="grid grid-cols-1 lg:grid-cols-1 gap-4">
         {/* 4. Mock test natijalari */}
         <ChartCard title="Mock test natijalari" sub="Haftalik ball o'zgarishi">
           <ResponsiveContainer width="100%" height={180}>
@@ -447,7 +446,7 @@ export default function Progress() {
           <table className="w-full text-xs">
             <thead>
               <tr className="border-b border-gray-100">
-                {['Sana', 'Soat', "O'tilgan mavzular", 'XP', 'Ball'].map((h) => (
+                {['Sana', 'Soat', "O'tilgan mavzular", 'XP'].map((h) => (
                   <th key={h} className="text-left py-2 pr-4 text-gray-400 font-medium whitespace-nowrap">
                     {h}
                   </th>
@@ -468,20 +467,12 @@ export default function Progress() {
                   <tr key={d.date} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
                     <td className="py-2 pr-4 text-gray-600 whitespace-nowrap">
                       {d.date}
-                      {!d.hasReal && (
-                        <span className="ml-1 text-[9px] text-gray-300">(namuna)</span>
-                      )}
                     </td>
                     <td className="py-2 pr-4 font-semibold text-gray-800">{d.hours}h</td>
                     <td className="py-2 pr-4 text-gray-600">
                       {topics.length > 0 ? topics.join(' · ') : <span className="text-gray-300">—</span>}
                     </td>
-                    <td className="py-2 pr-4 font-semibold text-primary-600">{d.xp}</td>
-                    <td className="py-2 text-gray-600">
-                      {d.mockScore > 0
-                        ? <span className="font-semibold text-b2-600">{d.mockScore}%</span>
-                        : <span className="text-gray-300">—</span>}
-                    </td>
+                    <td className="py-2 font-semibold text-primary-600">{d.xp}</td>
                   </tr>
                 )
               })}

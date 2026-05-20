@@ -683,6 +683,12 @@ function LessonProgressCard() {
 // ═══════════════════════════════════════════════════════════════════════════
 
 export default function Dashboard() {
+  const { fetchAndSetLessons } = useStore()
+
+  useEffect(() => {
+    fetchAndSetLessons()
+  }, [fetchAndSetLessons])
+
   return (
     <div className="flex flex-col h-full">
       {/* 1. TopBar — sticky */}

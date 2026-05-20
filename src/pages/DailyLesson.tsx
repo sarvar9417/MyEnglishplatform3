@@ -927,6 +927,7 @@ function LessonView({
   const [tab, setTab] = useState<'grammar' | 'vocab' | 'examples' | 'special' | 'exercises' | 'tests'>('grammar')
   const [currentSection, setCurrentSection] = useState(0)
   const [testSection, setTestSection] = useState(0)
+  const [testShuffleKey, setTestShuffleKey] = useState(0)
   const [testAnswers, setTestAnswers] = useState<Record<number, string>>({})
   const [testSubmitted, setTestSubmitted] = useState(false)
   const [testScore, setTestScore] = useState(0)
@@ -942,6 +943,23 @@ function LessonView({
   const section = lesson.exerciseSections[currentSection]
   const sectionExercises = lesson.exercises.filter((ex) => section?.ids.includes(ex.id))
   const isLastSection = currentSection === lesson.exerciseSections.length - 1
+
+  // Test variantlarini har safar aralashtirish (shuffle)
+  const shuffledTestOptionsMap = useMemo(() => {
+    const map = new Map<number, string[]>()
+    const sec = lesson.testSections[testSection]
+    if (!sec) return map
+    const tests = lesson.tests.filter((t): t is Extract<DailyExercise, { type: 'multiple-choice' }> => sec.ids.includes(t.id))
+    for (const t of tests) {
+      const opts = [...t.options]
+      for (let i = opts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[opts[i], opts[j]] = [opts[j], opts[i]]
+      }
+      map.set(t.id, opts)
+    }
+    return map
+  }, [lesson.id, lesson.tests, lesson.testSections, testSection, testShuffleKey])
 
   useEffect(() => {
     getLessonProgress(lesson.id, getTodayTashkent()).then((p) => {
@@ -1234,7 +1252,7 @@ function LessonView({
                         </span>
                       </div>
                       <div className="flex gap-2 mt-4">
-                        <button onClick={() => { setTestAnswers({}); setTestSubmitted(false); setTestScore(0); setTestResults({}) }} className="btn-secondary flex-1 text-sm py-2">
+                        <button onClick={() => { setTestAnswers({}); setTestSubmitted(false); setTestScore(0); setTestResults({}); setTestShuffleKey((k) => k + 1) }} className="btn-secondary flex-1 text-sm py-2">
                           <RotateCcw size={14} /> Qayta urinish
                         </button>
                         {testSection < lesson.testSections.length - 1 && (
@@ -1334,7 +1352,7 @@ function LessonView({
                             <p className="text-[11px] font-bold text-yellow-600 uppercase tracking-wider mb-3">🧪 Test savoli</p>
                             <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{t.question}</p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                              {t.options.map((opt, oi) => {
+                              {(shuffledTestOptionsMap.get(t.id) ?? t.options).map((opt, oi) => {
                                 const sel = selected === opt
                                 let cls = 'border border-gray-200 bg-white text-gray-700 hover:border-yellow-400 hover:bg-yellow-50'
                                 if (testSubmitted) {

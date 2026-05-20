@@ -4,8 +4,9 @@ import {
   CheckCircle2, XCircle, Clock, BookOpen, Mic,
 } from 'lucide-react'
 import { type ListeningLesson } from '@/data/listeningLessons'
-import { fetchListeningLessons } from '@/services/listeningService'
+import { fetchListeningLessons, saveListeningResult } from '@/services/listeningService'
 import { useStore } from '@/store/useStore'
+import { supabase } from '@/db/supabase'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -100,6 +101,22 @@ export default function Listening() {
     updateSkillProgress('todayListeningPct',
       Math.round(((fc + tc + summaryBonus) / (lesson.fillBlanks.length + lesson.trueFalse.length + 1)) * 100)
     )
+    // Save to Supabase
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user.id) {
+        saveListeningResult({
+          userId:      session.user.id,
+          lessonId:    lesson.id,
+          lessonTitle: lesson.title,
+          fillCorrect: fc,
+          fillTotal:   lesson.fillBlanks.length,
+          tfCorrect:   tc,
+          tfTotal:     lesson.trueFalse.length,
+          summaryDone: summaryBonus === 1,
+          xpEarned:    xp,
+        })
+      }
+    })
     setPhase('result')
   }
 
@@ -241,7 +258,7 @@ export default function Listening() {
               Bo'sh joylarni to'ldiring
             </p>
             {lesson.fillBlanks.map((q, i) => {
-              const parts = q.sentence.split('_____')
+              const parts = q.sentence.split(/_{3,}/)
               return (
                 <div key={q.id} className="card">
                   <div className="flex items-start gap-2">

@@ -129,7 +129,7 @@ export default function Vocabulary() {
       const progressByWord = new Map(progressRows.map(p => [p.word_id, p]))
 
       const today = getTodayTashkent()
-      const ALL_LIMIT = 1000
+      const ALL_LIMIT = 5000
       const { data: allWords, error: we } = await supabase
         .from('words')
         .select('*')
@@ -234,28 +234,29 @@ export default function Vocabulary() {
     })
   }
 
-  async function saveProgressToDB(wordId: number, rating: Rating, box: number) {
+  async function saveProgressToDB(
+    wordId: number,
+    rating: Rating,
+    srsResult: { box: number; next_review: string; is_learned: boolean }
+  ) {
     const { data: { session } } = await supabase.auth.getSession()
     const uid = session?.user?.id
     if (!uid) { console.error('saveProgressToDB: no uid'); return }
 
-    const srs = computeNextReview(box, rating)
     const allWords = [...dailyWords, ...reviewWords]
     const w = allWords.find((d) => d.word_id === wordId)
     const correct = rating === 'bildim' || rating === 'yodladim'
     const newCorrect = (w?.correct_count ?? 0) + (correct ? 1 : 0)
     const newWrong = (w?.wrong_count ?? 0) + (correct ? 0 : 1)
 
-    const isLearned = srs.is_learned
-
     const { error } = await supabase.from('vocabulary_progress').upsert({
       user_id: uid,
       word_id: wordId,
-      box: srs.box,
-      next_review: srs.next_review,
+      box: srsResult.box,
+      next_review: srsResult.next_review,
       correct_count: newCorrect,
       wrong_count: newWrong,
-      is_learned: isLearned,
+      is_learned: srsResult.is_learned,
       last_rating: rating,
       last_reviewed: new Date().toISOString(),
     } as never, { onConflict: 'user_id,word_id' })
@@ -267,7 +268,7 @@ export default function Vocabulary() {
     }
 
     if (w) {
-      if (isLearned && !w.is_learned) {
+      if (srsResult.is_learned && !w.is_learned) {
         addLearnedWords(1)
         addXP(5)
         setLearnedCounts((prev) => {
@@ -275,7 +276,7 @@ export default function Vocabulary() {
           next.set(w.level, (next.get(w.level) ?? 0) + 1)
           return next
         })
-      } else if (!isLearned && w.is_learned) {
+      } else if (!srsResult.is_learned && w.is_learned) {
         setLearnedCounts((prev) => {
           const next = new Map(prev)
           next.set(w.level, Math.max(0, (next.get(w.level) ?? 0) - 1))
@@ -304,8 +305,8 @@ export default function Vocabulary() {
     const word = batchWords[currentIdx]
     if (word) {
       const rating = correct ? 'bildim' : 'bilmadim'
-      rateWord(word.word_id, rating)
-      await saveProgressToDB(word.word_id, rating, word.box)
+      const srs = rateWord(word.word_id, rating)
+      await saveProgressToDB(word.word_id, rating, { box: srs.newBox, next_review: srs.nextReview, is_learned: srs.isLearned })
     }
 
     const totalInBatch = batchWords.length
@@ -341,7 +342,8 @@ export default function Vocabulary() {
       for (const w of batchWords.slice(0, total)) {
         const rating = store.batchResults[w.word_id]
         if (rating) {
-          await saveProgressToDB(w.word_id, rating, w.box)
+          const srs = computeNextReview(w.box, rating)
+          await saveProgressToDB(w.word_id, rating, { box: srs.box, next_review: srs.next_review, is_learned: srs.is_learned })
         }
       }
       // Save session for calendar tracking
@@ -514,18 +516,8 @@ export default function Vocabulary() {
           onRate={async (wordId, rating) => {
             const word = batchWords.find((w) => w.word_id === wordId)
             if (!word) return
-            rateWord(wordId, rating)
-            await saveProgressToDB(wordId, rating, word.box)
-            // Yodladim → progressni darhol yangilash
-            if (rating === 'yodladim') {
-              addLearnedWords(1)
-              addXP(5)
-              setLearnedCounts((prev) => {
-                const next = new Map(prev)
-                next.set(word.level, (next.get(word.level) ?? 0) + 1)
-                return next
-              })
-            }
+            const srs = rateWord(wordId, rating)
+            await saveProgressToDB(wordId, rating, { box: srs.newBox, next_review: srs.nextReview, is_learned: srs.isLearned })
             const answered = useVocabStore.getState().totalAnswered + 1
             updateSkillProgress('todayVocabPct', Math.round((answered / Math.max(batchWords.length, 1)) * 100))
             if (currentIdx + 1 >= batchWords.length) {
@@ -533,8 +525,8 @@ export default function Vocabulary() {
               if (session?.user?.id) {
                 const uid = session.user.id
                 await saveBatchSession(uid)
-      const tk = getTodayTashkent().split('-').map(Number)
-      reloadMonthSessions(uid, tk[0], tk[1] - 1)
+                const tk = getTodayTashkent().split('-').map(Number)
+                reloadMonthSessions(uid, tk[0], tk[1] - 1)
               }
               finishBatch()
             } else {
@@ -841,8 +833,8 @@ export default function Vocabulary() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation()
-                        rateWord(w.word_id, 'yodladim')
-                        saveProgressToDB(w.word_id, 'yodladim', w.box)
+                        const srsRate = rateWord(w.word_id, 'yodladim')
+                        saveProgressToDB(w.word_id, 'yodladim', { box: srsRate.newBox, next_review: srsRate.nextReview, is_learned: srsRate.isLearned })
                         setRatingFlash({ wordId: w.word_id, rating: 'yodladim' })
                         setTimeout(() => setRatingFlash(null), 500)
                       }}
@@ -854,8 +846,8 @@ export default function Vocabulary() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation()
-                        rateWord(w.word_id, 'bildim')
-                        saveProgressToDB(w.word_id, 'bildim', w.box)
+                        const srsRate = rateWord(w.word_id, 'bildim')
+                        saveProgressToDB(w.word_id, 'bildim', { box: srsRate.newBox, next_review: srsRate.nextReview, is_learned: srsRate.isLearned })
                         setRatingFlash({ wordId: w.word_id, rating: 'bildim' })
                         setTimeout(() => setRatingFlash(null), 500)
                       }}
@@ -867,8 +859,8 @@ export default function Vocabulary() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation()
-                        rateWord(w.word_id, 'qiynaldim')
-                        saveProgressToDB(w.word_id, 'qiynaldim', w.box)
+                        const srsRate = rateWord(w.word_id, 'qiynaldim')
+                        saveProgressToDB(w.word_id, 'qiynaldim', { box: srsRate.newBox, next_review: srsRate.nextReview, is_learned: srsRate.isLearned })
                         setRatingFlash({ wordId: w.word_id, rating: 'qiynaldim' })
                         setTimeout(() => setRatingFlash(null), 500)
                       }}
@@ -880,8 +872,8 @@ export default function Vocabulary() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation()
-                        rateWord(w.word_id, 'bilmadim')
-                        saveProgressToDB(w.word_id, 'bilmadim', w.box)
+                        const srsRate = rateWord(w.word_id, 'bilmadim')
+                        saveProgressToDB(w.word_id, 'bilmadim', { box: srsRate.newBox, next_review: srsRate.nextReview, is_learned: srsRate.isLearned })
                         setRatingFlash({ wordId: w.word_id, rating: 'bilmadim' })
                         setTimeout(() => setRatingFlash(null), 500)
                       }}

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { PenLine, Clock, ChevronDown, ChevronUp, Loader2 } from 'lucide-react'
 import { TYPE_LABEL, TYPE_COLOR } from '@/data/writingPrompts'
-import { fetchWritingPrompts, getDailyWritingPrompt } from '@/services/writingService'
+import { fetchWritingPrompts, getDailyWritingPrompt, saveWritingResult } from '@/services/writingService'
 import type { WritingPrompt } from '@/services/writingService'
 import { evaluateWriting } from '@/lib/claude'
 import { useStore } from '@/store/useStore'
+import { supabase } from '@/db/supabase'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -131,6 +132,21 @@ export default function Writing() {
         const avg = Math.round((s.taskAchievement + s.coherence + s.vocabulary + s.grammar) / 4)
         addXP(avg * 4)
         updateSkillProgress('todayWritingPct', avg * 10)
+        // Save to Supabase
+        supabase.auth.getSession().then(({ data: { session } }) => {
+          if (session?.user.id) {
+            saveWritingResult({
+              userId:    session.user.id,
+              day:       currentDay,
+              prompt:    prompt.prompt,
+              essay,
+              wordCount: wc,
+              feedback:  f,
+              avgScore:  avg,
+              xpEarned:  avg * 4,
+            })
+          }
+        })
         setEvaluating(false)
         setView('result')
       },

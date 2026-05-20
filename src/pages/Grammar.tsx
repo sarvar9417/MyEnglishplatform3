@@ -5,9 +5,10 @@ import {
   Trophy, Zap, AlertCircle, Loader2,
 } from 'lucide-react'
 import { type GrammarTopic, type Exercise } from '../data/grammarTopics'
-import { fetchGrammarTopics } from '../services/grammarService'
+import { fetchGrammarTopics, saveGrammarResult } from '../services/grammarService'
 import { getGrammarFeedback, type GrammarResult } from '../lib/claude'
 import { useStore } from '../store/useStore'
+import { supabase } from '../db/supabase'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -225,7 +226,7 @@ function FillBlankQuestion({
   submitted: boolean
   isCorrect: boolean
 }) {
-  const parts = ex.question.split('_____')
+  const parts = ex.question.split(/_{3,}/)
 
   return (
     <div className={`p-4 rounded-2xl border transition-colors ${
@@ -652,6 +653,19 @@ export default function Grammar() {
     setPhase('result')
     addXP(correct * 10)
     updateSkillProgress('todayGrammarPct', Math.round((correct / topic.exercises.length) * 100))
+    // Save to Supabase
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user.id) {
+        saveGrammarResult({
+          userId:       session.user.id,
+          topicId:      topic.id,
+          topicTitle:   topic.title,
+          correctCount: correct,
+          total:        topic.exercises.length,
+          xpEarned:     correct * 10,
+        })
+      }
+    })
     scrollTop()
   }
 
