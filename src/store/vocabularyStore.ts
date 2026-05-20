@@ -136,6 +136,7 @@ export const useVocabStore = create<VocabState>()((set, get) => ({
         correctCount: s.correctCount + (isCorrect ? 1 : 0),
         totalAnswered: s.totalAnswered + 1,
         dailyWords: s.dailyWords.map(upd),
+        reviewWords: s.reviewWords.map(upd),
       }
     })
 

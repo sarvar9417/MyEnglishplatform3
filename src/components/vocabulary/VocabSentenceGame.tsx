@@ -104,7 +104,8 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
     try {
       const sentence = await generateUzbekSentence(word.english, word.uzbek, word.level)
       setUzbekSentence(sentence)
-    } catch {
+    } catch (err) {
+      console.error('[VocabSentenceGame] generateUzbekSentence xatosi:', err)
       setUzbekSegmentFallback(word)
     }
     setGenerating(false)
@@ -118,7 +119,6 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
   }
 
   function goNext() {
-    if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null }
     const pending = pendingRef.current
     if (!pending) return
     pendingRef.current = null
@@ -165,7 +165,6 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
       }]
       const nextIdx = currentIdx + 1
       pendingRef.current = { rounds: newRounds, nextIdx, finished: nextIdx >= wordsRef.current.length }
-      timerRef.current = setTimeout(goNext, 4000)
     } catch {
       setChecking(false)
       setFlash('wrong')
@@ -182,7 +181,6 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
       }]
       const nextIdx = currentIdx + 1
       pendingRef.current = { rounds: newRounds, nextIdx, finished: nextIdx >= wordsRef.current.length }
-      timerRef.current = setTimeout(goNext, 4000)
     }
   }
 

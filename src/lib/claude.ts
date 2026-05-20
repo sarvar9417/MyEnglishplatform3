@@ -459,31 +459,34 @@ export async function checkVocabAnswer(
 
 // ─── Vocab sentence game: AI tuzgan o'zbekcha gap ────────────────────────────
 
+const LEVEL_SENTENCE_GUIDE: Record<string, string> = {
+  A1: '5-7 so\'zli, juda oddiy, hozirgi zamon',
+  A2: '7-10 so\'zli, kundalik hayot mavzusi',
+  B1: '10-14 so\'zli, biroz murakkabroq, birikmali',
+  B2: '12-16 so\'zli, murakkab, qo\'shma gap mumkin',
+}
+
 export async function generateUzbekSentence(
   englishWord: string,
   uzbekWord: string,
   level: string
 ): Promise<string> {
   const client = getClient()
+  const guide = LEVEL_SENTENCE_GUIDE[level] ?? '8-12 so\'zli'
 
   const response = await client.messages.create({
     model: MODEL,
-    max_tokens: 100,
-    system: `Sen ${level} darajasidagi o'quvchiga o'zbek tili o'rgatuvchisisan.
-Vazifang: berilgan inglizcha so'zdan foydalanib, sodda va tabiiy o'zbekcha gap tuzish.
-Gap ichida "${uzbekWord}" so'zi albatta ishtirok etishi kerak.
-Gap ${level} darajasiga mos bo'lsin: sodda, qisqa, kundalik hayotga oid.
-MUHIM: FAQAT o'zbekcha gapni yoz. Hech qanday izoh, tarjima, qo'shimcha matn yozma.`,
+    max_tokens: 120,
+    system: `You are an Uzbek sentence composer. Your only job is to compose complete, natural Uzbek sentences. You never give instructions — you only write the sentence itself.`,
     messages: [{
       role: 'user',
-      content: `"${englishWord}" (o'zbekcha: ${uzbekWord}) so'zi ishtirokida ${level} darajasida bitta sodda o'zbekcha gap tuz.`,
+      content: `Compose one complete Uzbek sentence at ${level} level (${guide}) that naturally includes the Uzbek word "${uzbekWord}" (which means "${englishWord}" in English). Reply with only the Uzbek sentence — no explanations, no quotes, no labels.`,
     }],
   })
 
-  const text = response.content[0]?.type === 'text'
-    ? response.content[0].text.trim()
-    : `${uzbekWord} — bu juda muhim so'z.`
-  return text
+  const raw = response.content[0]?.type === 'text' ? response.content[0].text.trim() : ''
+  const text = raw.replace(/^["'«»\d.\-–\s]+/, '').replace(/["'»]+$/, '').trim()
+  return text || `U kecha ko'p pul ${uzbekWord}.`
 }
 
 // ─── Vocab sentence game: foydalanuvchi gapini tekshirish ────────────────────
@@ -504,43 +507,43 @@ export async function checkSentenceTranslation(
 
   const response = await client.messages.create({
     model: MODEL,
-    max_tokens: 300,
-    system: `Sen ${level} darajasidagi o'quvchi uchun ingliz tili o'qituvchisisiz.
-O'quvchi o'zbekcha gapni ingliz tiliga tarjima qildi. Sen tekshirib baho berasan.
+    max_tokens: 350,
+    system: `Siz ${level} darajasidagi ingliz tili o'qituvchisisiz. O'quvchi o'zbekcha gapni ingliz tiliga tarjima qilgan.
 
-MUHIM: Quyidagi FORMATDA javob ber. Har bir qatorni yangi qatordan boshlab yoz.
-FORMAT:
-CORRECT: yes yoki no
-EXPLANATION: (agar no bo'lsa, nima xato — o'zbekcha tushuntirish; yes bo'lsa bo'sh qoldir)
-CORRECT_ANSWER: (agar no bo'lsa, to'g'ri tarjimani yoz; yes bo'lsa bo'sh qoldir)`,
+Tekshirish QOIDALARI (uchala shart bajarilsa — to'g'ri):
+1. O'quvchi gapida "${targetWord}" so'zi yoki uning grammatik shakli (ed, ing, s, er va h.k.) bo'lishi kerak.
+2. Tarjima o'zbekcha gap ma'nosiga mos bo'lishi kerak.
+3. Grammatika ${level} darajasiga mos qabul qilinadi (kichik xatolar ok).
+
+JAVOB FORMATI — faqat quyidagi 3 qatorni yoz, boshqa hech narsa yozma:
+CORRECT: yes
+yoki:
+CORRECT: no
+EXPLANATION: [o'zbekcha — nima noto'g'ri, qisqa va aniq]
+CORRECT_ANSWER: [to'g'ri inglizcha tarjima]`,
     messages: [{
       role: 'user',
       content: `O'zbekcha gap: "${uzbekSentence}"
-Tarjima qilinishi kerak bo'lgan so'z: "${targetWord}"
-O'quvchining tarjimasi: "${userTranslation}"
-
-Tekshir:
-1. "${targetWord}" so'zi o'quvchi gapida ishlatilganmi?
-2. Gap ma'nosi o'zbekcha gapga mos keladimi?
-3. Grammatikasi to'g'rimi? (${level} darajasiga mos)
-
-Agar 3 ta shart ham bajarilsa → CORRECT: yes
-Agar bittasi xato bo'lsa → CORRECT: no + tushuntirish + to'g'ri javob`,
+Kerakli ingliz so'zi: "${targetWord}"
+O'quvchi yozdi: "${userTranslation}"`,
     }],
   })
 
-  const text = response.content[0]?.type === 'text' ? response.content[0].text : ''
+  const text = response.content[0]?.type === 'text' ? response.content[0].text.trim() : ''
 
-  const getValue = (key: string): string => {
-    const regex = new RegExp(`^${key}:\\s*(.+)$`, 'm')
-    const match = text.match(regex)
+  // Har bir kalit so'z uchun qiymatni olish (ko'p qatorli qiymatlarni ham oladi)
+  const getBlock = (key: string, nextKey?: string): string => {
+    const pattern = nextKey
+      ? new RegExp(`^${key}:\\s*(.+?)(?=\\n${nextKey}:|$)`, 'ms')
+      : new RegExp(`^${key}:\\s*(.+)`, 'm')
+    const match = text.match(pattern)
     return match ? match[1].trim() : ''
   }
 
-  const correctRaw = getValue('CORRECT').toLowerCase()
-  const correct = correctRaw === 'yes' || correctRaw === 'true' || correctRaw === 'ha'
-  const explanation = getValue('EXPLANATION')
-  const correctAnswer = getValue('CORRECT_ANSWER')
+  const correctRaw = getBlock('CORRECT', 'EXPLANATION').toLowerCase()
+  const correct = correctRaw.startsWith('yes') || correctRaw === 'ha'
+  const explanation = correct ? '' : getBlock('EXPLANATION', 'CORRECT_ANSWER')
+  const correctAnswer = correct ? '' : getBlock('CORRECT_ANSWER')
 
   return { correct, explanation, correctAnswer }
 }
