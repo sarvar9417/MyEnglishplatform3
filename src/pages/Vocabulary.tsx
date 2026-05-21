@@ -89,10 +89,6 @@ export default function Vocabulary() {
 
   async function loadDailyData(targetDate?: string) {
     const sd = targetDate ?? getTodayTashkent()
-    const dayNum = startDate
-      ? Math.max(1, Math.round((Date.parse(sd + 'T00:00:00Z') - Date.parse(startDate + 'T00:00:00Z')) / 86400000) + 1)
-      : 1
-    const wordOff = (dayNum - 1) * WORDS_PER_DAY
 
     setLoading(true)
     setRpcError(null)
@@ -103,6 +99,19 @@ export default function Vocabulary() {
       const tk = getTodayTashkent().split('-').map(Number)
       reloadMonthSessions(uid, tk[0], tk[1] - 1)
       const today = getTodayTashkent()
+
+      // startDate ni Supabase dan yuklash (localStorage emas)
+      const { data: userData } = await supabase
+        .from('users')
+        .select('start_date')
+        .eq('id', uid)
+        .single()
+      const dbStartDate = userData?.start_date ?? today
+      useStore.setState({ startDate: dbStartDate })
+      const dayNum = dbStartDate
+        ? Math.max(1, Math.round((Date.parse(sd + 'T00:00:00Z') - Date.parse(dbStartDate + 'T00:00:00Z')) / 86400000) + 1)
+        : 1
+      const wordOff = (dayNum - 1) * WORDS_PER_DAY
 
       // ── 1. Level counts (individual queries — reliable) ──
       const totalsMap = new Map<string, number>()
