@@ -1,11 +1,10 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { BookMarked, Loader2, RotateCcw, CheckCircle, ArrowLeft, CalendarDays } from 'lucide-react'
 import { supabase } from '../db/supabase'
 import { useStore } from '../store/useStore'
 import { useVocabStore, getBatchWords, type GameWord, type ViewMode } from '../store/vocabularyStore'
 import {
   saveSession,
-  computeNextReview,
   fetchMonthSessions,
   type Rating,
   type DailyWordRow,
@@ -33,6 +32,7 @@ export default function Vocabulary() {
     selectBatch, selectReview, nextWord, rateWord, finishBatch, tick, reset,
   } = useVocabStore()
 
+  const learnedTransitioned = useRef<Set<number>>(new Set())
   const [sessionStart, setSessionStart] = useState<number>(0)
   const todayStr = getTodayTashkent()
   const [studyDate, setStudyDate] = useState(todayStr)
@@ -192,6 +192,8 @@ export default function Vocabulary() {
       const learnedCountsMap = new Map<string, number>(learnedArr)
       const totalFromDb = Array.from(learnedCountsMap.values()).reduce((a, b) => a + b, 0)
 
+      // Reset transition guard after data reload
+      learnedTransitioned.current.clear()
       setDailyWords(todayWords)
       setReviewWords(reviewDueWords)
       setLevelCounts(totalsMap)
@@ -262,6 +264,10 @@ export default function Vocabulary() {
     const uid = session?.user?.id
     if (!uid) { console.error('saveProgressToDB: no uid'); return }
 
+    // Read the PRE-update word state from render-scoped variables
+    // (rateWord() hasn't triggered a re-render yet, so these are the
+    //  values BEFORE this rating was applied — exactly what we need
+    //  for correct_count/wrong_count computation)
     const allWords = [...dailyWords, ...reviewWords]
     const w = allWords.find((d) => d.word_id === wordId)
     const correct = rating === 'bildim' || rating === 'yodladim'
@@ -288,14 +294,21 @@ export default function Vocabulary() {
 
     if (w) {
       if (srsResult.is_learned && !w.is_learned) {
-        addLearnedWords(1)
-        addXP(5)
-        setLearnedCounts((prev) => {
-          const next = new Map(prev)
-          next.set(w.level, (next.get(w.level) ?? 0) + 1)
-          return next
-        })
+        // Guard: only count the transition once per word per component session.
+        // Without this, stale render-scoped state can trigger double-counting
+        // when a word is rated twice before React re-renders.
+        if (!learnedTransitioned.current.has(wordId)) {
+          learnedTransitioned.current.add(wordId)
+          addLearnedWords(1)
+          addXP(5)
+          setLearnedCounts((prev) => {
+            const next = new Map(prev)
+            next.set(w.level, (next.get(w.level) ?? 0) + 1)
+            return next
+          })
+        }
       } else if (!srsResult.is_learned && w.is_learned) {
+        learnedTransitioned.current.delete(wordId)
         setLearnedCounts((prev) => {
           const next = new Map(prev)
           next.set(w.level, Math.max(0, (next.get(w.level) ?? 0) - 1))
@@ -350,26 +363,17 @@ export default function Vocabulary() {
     addXP(score * 3)
     updateSkillProgress('todayVocabPct', Math.round((score / total) * 100))
 
-    // Update store for correct completion view
     useVocabStore.setState({ correctCount: score, totalAnswered: total })
 
-    // Save each game word progress to DB (treat matched as "bildim")
+    // Save each game word progress to DB (game completes only when all matched)
     const { data: { session } } = await supabase.auth.getSession()
     const uid = session?.user?.id
     if (uid) {
-      const store = useVocabStore.getState()
       for (const w of batchWords.slice(0, total)) {
-        const rating = store.batchResults[w.word_id]
-        if (rating) {
-          const srs = computeNextReview(w.box, rating)
-          await saveProgressToDB(w.word_id, rating, { box: srs.box, next_review: srs.next_review, is_learned: srs.is_learned })
-        }
+        const srs = rateWord(w.word_id, 'bildim')
+        await saveProgressToDB(w.word_id, 'bildim', { box: srs.newBox, next_review: srs.nextReview, is_learned: srs.isLearned })
       }
-      // Save session for calendar tracking
-      if (uid) {
-        await saveBatchSession(uid)
-      }
-      // Reload month sessions so calendar updates
+      await saveBatchSession(uid)
       reloadMonthSessions(uid, new Date().getFullYear(), new Date().getMonth())
     }
 
