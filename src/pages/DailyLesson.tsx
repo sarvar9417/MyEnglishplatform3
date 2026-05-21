@@ -1,11 +1,18 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import {
   ArrowLeft, CheckCircle, XCircle, Star,
   Sparkles, RotateCcw, ChevronRight, Lightbulb, Trophy,
+  BookOpen,
 } from 'lucide-react'
 import type { DailyLesson, DailyExercise } from '../data/dailyLessons'
 import { useStore } from '../store/useStore'
-import { pushLessonProgress, pushTestProgress, getLessonProgress } from '../services/lessonService'
+import {
+  pushLessonProgress, pushTestProgress, getLessonProgress,
+  loadLessonSessionFromDB, saveExerciseAnswersToDB,
+  saveViewedTabsToDB, loadViewedTabsFromDB,
+  loadLessonVocabProgressFromDB, saveLessonVocabProgressToDB,
+  loadExerciseAnswersFromDB,
+} from '../services/lessonService'
 import { getTodayTashkent } from '../utils/tashkentDate'
 
 const COLOR_STYLES: Record<string, { bg: string; text: string; border: string }> = {
@@ -373,11 +380,201 @@ const RULE_EMOJI: Record<string, string> = {
   qisqa: '🔤', cvc: '🔁', 'y bilan': '💛', 'e bilan': '➖', uzun: '📏', notogri: '⚡',
 }
 
-function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; example: string; rule: string }[]; addXP: (n: number) => void }) {
-  const [mode, setMode] = useState<'browse' | 'flashcard' | 'quiz'>('browse')
+function VocabLearner({ vocab, addXP, lessonId }: { vocab: { en: string; uz: string; example: string; rule: string }[]; addXP: (n: number) => void; lessonId: string }) {
+  const [mode, setMode] = useState<'browse' | 'flashcard' | 'vocabTest'>('browse')
   const [cardIdx, setCardIdx] = useState(0)
   const [flipped, setFlipped] = useState(false)
   const [knownIds, setKnownIds] = useState<Set<number>>(new Set())
+
+  // Test state (defined at top level to avoid hooks-in-conditionals issues)
+  const [testSectionIdx, setTestSectionIdx] = useState(0)
+  const [testIdx, setTestIdx] = useState(0)
+  const [testScore, setTestScore] = useState(0)
+  const [testResults, setTestResults] = useState<Record<number, boolean>>({})
+  const [testSubmitted, setTestSubmitted] = useState<Record<number, boolean>>({})
+  const [testDone, setTestDone] = useState(false)
+  const [testShuffleKey, setTestShuffleKey] = useState(0)
+
+  // Persist vocab progress to localStorage
+  const storageKey = `vocab-progress-${lessonId}`
+
+  useEffect(() => {
+    // 1. LocalStorage'dan tezda yuklash
+    let localKnownIds = new Set<number>()
+    try {
+      const saved = localStorage.getItem(storageKey)
+      if (saved) {
+        const data = JSON.parse(saved)
+        if (data.knownIds) { localKnownIds = new Set(data.knownIds); setKnownIds(localKnownIds) }
+        if (data.testScore != null) setTestScore(data.testScore)
+        if (data.testSectionIdx != null) setTestSectionIdx(data.testSectionIdx)
+        if (data.testIdx != null) setTestIdx(data.testIdx)
+        if (data.testResults) setTestResults(data.testResults)
+        if (data.testSubmitted) setTestSubmitted(data.testSubmitted)
+        if (data.testDone != null) setTestDone(data.testDone)
+        if (data.testShuffleKey != null) setTestShuffleKey(data.testShuffleKey)
+      }
+    } catch { /* ignore */ }
+
+    // 2. Supabase'dan yuklash va birlashtirish (boshqa qurilmada o'rganilgan so'zlar)
+    loadLessonVocabProgressFromDB(lessonId).then(items => {
+      if (items.length === 0) return
+      const remoteKnown = new Set(items.filter(i => i.known).map(i => i.wordIndex))
+      const merged = new Set([...localKnownIds, ...remoteKnown])
+      if (merged.size > localKnownIds.size) setKnownIds(merged)
+    })
+  }, [storageKey, lessonId])
+
+  const prevStateRef = useRef({ knownIds, testScore, testSectionIdx, testIdx, testResults, testSubmitted, testDone, testShuffleKey })
+  useEffect(() => {
+    const cur = { knownIds, testScore, testSectionIdx, testIdx, testResults, testSubmitted, testDone, testShuffleKey }
+    if (JSON.stringify(cur) === JSON.stringify(prevStateRef.current)) return
+    prevStateRef.current = cur
+    try {
+      localStorage.setItem(storageKey, JSON.stringify({
+        knownIds: [...knownIds],
+        testScore,
+        testSectionIdx,
+        testIdx,
+        testResults,
+        testSubmitted,
+        testDone,
+        testShuffleKey,
+      }))
+    } catch { /* ignore quota errors */ }
+  }, [knownIds, testScore, testSectionIdx, testIdx, testResults, testSubmitted, testDone, testShuffleKey, storageKey])
+
+  // Sync knownIds to Supabase when they change
+  useEffect(() => {
+    if (knownIds.size === 0) return
+    const items = [...knownIds].map(wordIndex => ({
+      wordIndex,
+      known: true,
+      quizCorrect: 0,
+      quizWrong: 0,
+    }))
+    saveLessonVocabProgressToDB(lessonId, items)
+  }, [knownIds, lessonId])
+
+  const testSections = useMemo(() => [
+    { title: '🇬🇧→🇺🇿', desc: 'Inglizcha so\'zni o\'zbekcha tarjimasini toping', ids: [] as number[], icon: '🌱' },
+    { title: '🇺🇿→🇬🇧', desc: 'O\'zbekcha so\'zni inglizcha tarjimasini toping', ids: [] as number[], icon: '📘' },
+    { title: '📝 Misol', desc: 'So\'zning to\'g\'ri qo\'llanilishini toping', ids: [] as number[], icon: '💪' },
+    { title: '🏆 Aralash', desc: 'Barcha turdagi savollar aralash', ids: [] as number[], icon: '🏆' },
+  ], [])
+
+  const allQuestions = useMemo(() => {
+    const qs: { section: number; stem: string; options: string[]; correct: string; word: typeof vocab[0] }[] = []
+    const shuffled = [...vocab].sort(() => Math.random() - 0.5)
+    shuffled.forEach((v) => {
+      const others = vocab.filter(o => o.uz !== v.uz).sort(() => Math.random() - 0.5)
+      const distractUz = others.slice(0, 3).map(o => o.uz)
+      const distractEn = others.slice(0, 3).map(o => o.en)
+
+      qs.push({
+        section: 0, stem: v.en,
+        options: [v.uz, ...distractUz].sort(() => Math.random() - 0.5),
+        correct: v.uz, word: v,
+      })
+      qs.push({
+        section: 1, stem: v.uz,
+        options: [v.en, ...distractEn].sort(() => Math.random() - 0.5),
+        correct: v.en, word: v,
+      })
+      const blanked = v.example.replace(v.en, '______')
+      if (blanked !== v.example) {
+        const disturbEx = others.slice(0, 3).map(o => o.en)
+        qs.push({
+          section: 2, stem: blanked,
+          options: [v.en, ...disturbEx].sort(() => Math.random() - 0.5),
+          correct: v.en, word: v,
+        })
+      }
+    })
+
+    const shuffledQs = qs.sort(() => Math.random() - 0.5)
+    const sectionSize = Math.ceil(shuffledQs.length / 4)
+    testSections.forEach((_, si) => {
+      const start = si * sectionSize
+      const end = start + sectionSize
+      testSections[si].ids = shuffledQs.slice(start, end).map((_, qi) => start + qi)
+    })
+
+    return shuffledQs
+  }, [vocab, testShuffleKey])
+
+  const currentSectionQuestions = useMemo(() => {
+    const ids = testSections[testSectionIdx]?.ids ?? []
+    return ids.map(i => allQuestions[i]).filter(Boolean)
+  }, [testSectionIdx, allQuestions, testSections])
+
+  const currentQ = currentSectionQuestions[testIdx]
+
+  const handleTestAnswer = (opt: string) => {
+    if (!currentQ || testSubmitted[testIdx]) return
+    const ok = opt === currentQ.correct
+    setTestResults(prev => ({ ...prev, [testIdx]: ok }))
+    setTestSubmitted(prev => ({ ...prev, [testIdx]: true }))
+    if (ok) {
+      setTestScore(s => s + 1)
+      addXP(5)
+    }
+  }
+
+  const nextTest = () => {
+    if (testIdx < currentSectionQuestions.length - 1) {
+      setTestIdx(i => i + 1)
+    } else if (testSectionIdx < testSections.length - 1) {
+      setTestSectionIdx(si => si + 1)
+      setTestIdx(0)
+      setTestResults({})
+      setTestSubmitted({})
+    } else {
+      setTestDone(true)
+    }
+  }
+
+  const retakeTest = () => {
+    setTestShuffleKey(k => k + 1)
+    setTestSectionIdx(0)
+    setTestIdx(0)
+    setTestScore(0)
+    setTestResults({})
+    setTestSubmitted({})
+    setTestDone(false)
+  }
+
+  const startTest = () => {
+    setMode('vocabTest')
+    setCardIdx(0)
+    setFlipped(false)
+    setTestShuffleKey(k => k + 1)
+    setTestSectionIdx(0)
+    setTestIdx(0)
+    setTestScore(0)
+    setTestResults({})
+    setTestSubmitted({})
+    setTestDone(false)
+  }
+
+  const mods = [
+    { key: 'browse', label: '📖 Ko\'rish' },
+    { key: 'flashcard', label: '🃏 Flashcard' },
+    { key: 'vocabTest', label: '✍️ Test' },
+  ] as const
+
+  const tabBar = (
+    <div className="flex items-center gap-2 mb-1">
+      {mods.map(m => (
+        <button key={m.key} onClick={m.key === 'vocabTest' ? startTest : () => { setMode(m.key); setCardIdx(0); setFlipped(false) }}
+          className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all ${
+            mode === m.key ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+          }`}>
+          {m.label}
+        </button>
+      ))}
+    </div>
+  )
 
   const mappedRules = new Set(RULE_ORDER)
   const allRules = [...new Set(vocab.map((v) => v.rule))]
@@ -390,21 +587,11 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
       .map((r) => ({ rule: r, words: vocab.filter((v) => v.rule === r) })),
   ]
 
-  // ── Browse (guruhlangan jadval) ──
+  // ── Browse ──
   if (mode === 'browse') {
     return (
       <div className="space-y-4">
-        <div className="flex items-center gap-2 mb-1">
-          {(['browse', 'flashcard', 'quiz'] as const).map((m) => (
-            <button key={m} onClick={() => { setMode(m); setCardIdx(0); setFlipped(false) }}
-              className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all ${
-                mode === m ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}>
-              {m === 'browse' ? '📖 Ko\'rish' : m === 'flashcard' ? '🃏 Flashcard' : '✍️ Test'}
-            </button>
-          ))}
-        </div>
-
+        {tabBar}
         {grouped.map((g) => {
           const rc = RULE_LABELS[g.rule] ?? { label: g.rule, color: 'bg-gray-100 text-gray-600' }
           return (
@@ -454,36 +641,18 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
 
     return (
       <div className="space-y-4">
-        <div className="flex items-center gap-2 mb-1">
-          {(['browse', 'flashcard', 'quiz'] as const).map((m) => (
-            <button key={m} onClick={() => { setMode(m); setCardIdx(0); setFlipped(false) }}
-              className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all ${
-                mode === m ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}>
-              {m === 'browse' ? '📖 Ko\'rish' : m === 'flashcard' ? '🃏 Flashcard' : '✍️ Test'}
-            </button>
-          ))}
-        </div>
-
+        {tabBar}
         <div className="flex items-center justify-between">
           <p className="text-xs text-gray-500">{cardIdx + 1} / {vocab.length}</p>
           {remaining > 0 && <p className="text-xs text-green-600 font-medium">✅ {knownIds.size} bilaman</p>}
           {remaining === 0 && <p className="text-xs text-green-600 font-bold">🎉 Hammasini bilasiz!</p>}
         </div>
-
         <div className="progress-bar">
           <div className="progress-fill bg-primary-500" style={{ width: `${(knownIds.size / vocab.length) * 100}%` }} />
         </div>
-
-        {/* Card */}
-        <div
-          onClick={() => setFlipped(!flipped)}
-          className="cursor-pointer select-none"
-        >
+        <div onClick={() => setFlipped(!flipped)} className="cursor-pointer select-none">
           <div className={`relative w-full min-h-[200px] rounded-2xl border-2 transition-all duration-300 flex flex-col items-center justify-center p-3 sm:p-6 ${
-            flipped
-              ? 'bg-primary-50 border-primary-300'
-              : 'bg-white border-gray-200 hover:border-primary-300 hover:shadow-md'
+            flipped ? 'bg-primary-50 border-primary-300' : 'bg-white border-gray-200 hover:border-primary-300 hover:shadow-md'
           }`}>
             <div className="text-center">
               {!flipped ? (
@@ -508,41 +677,18 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
             </div>
           </div>
         </div>
-
-        {/* Controls */}
         <div className="flex items-center justify-center gap-3">
-          <button
-            onClick={() => {
-              if (cardIdx > 0) { setCardIdx((i) => i - 1); setFlipped(false) }
-            }}
-            disabled={cardIdx === 0}
-            className="btn-secondary px-4 py-2 text-sm"
-          >
-            ← Oldingi
-          </button>
-
-          <button
-            onClick={() => {
-              setKnownIds((prev) => new Set(prev).add(cardIdx))
-              if (cardIdx < vocab.length - 1) { setCardIdx((i) => i + 1); setFlipped(false) }
-            }}
-            disabled={isKnown}
-            className="btn-primary px-4 py-2 text-sm"
-          >
+          <button onClick={() => { if (cardIdx > 0) { setCardIdx(i => i - 1); setFlipped(false) } }}
+            disabled={cardIdx === 0} className="btn-secondary px-4 py-2 text-sm">← Oldingi</button>
+          <button onClick={() => {
+            setKnownIds(prev => new Set(prev).add(cardIdx))
+            if (cardIdx < vocab.length - 1) { setCardIdx(i => i + 1); setFlipped(false) }
+          }} disabled={isKnown} className="btn-primary px-4 py-2 text-sm">
             {isKnown ? '✅ Bilaman' : 'Bilaman! →'}
           </button>
-
-          <button
-            onClick={() => {
-              if (cardIdx < vocab.length - 1) { setCardIdx((i) => i + 1); setFlipped(false) }
-            }}
-            disabled={cardIdx === vocab.length - 1}
-            className="btn-secondary px-4 py-2 text-sm"
-          >
-            Keyingi →
-          </button>
+          <button onClick={() => { if (cardIdx < vocab.length - 1) { setCardIdx(i => i + 1); setFlipped(false) } }}
+            disabled={cardIdx === vocab.length - 1} className="btn-secondary px-4 py-2 text-sm">Keyingi →</button>
         </div>
-
         <div className="flex flex-wrap gap-1.5 justify-center">
           {vocab.map((_, i) => (
             <button key={i} onClick={() => { setCardIdx(i); setFlipped(false) }}
@@ -550,17 +696,14 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
                 knownIds.has(i) ? 'bg-green-200 text-green-800' :
                 i === cardIdx ? 'bg-primary-600 text-white' :
                 'bg-gray-100 text-gray-400 hover:bg-gray-200'
-              }`}>
-              {i + 1}
-            </button>
+              }`}>{i + 1}</button>
           ))}
         </div>
-
         {knownIds.size === vocab.length && (
           <div className="card bg-green-50 border-green-200 text-center py-4">
             <p className="font-bold text-green-700 text-lg">🎉 Tabriklaymiz!</p>
             <p className="text-sm text-green-600">Barcha {vocab.length} ta so'zni o'zlashtirdingiz!</p>
-            <button onClick={() => { setMode('quiz'); setCardIdx(0) }} className="btn-primary mt-3 text-sm">
+            <button onClick={startTest} className="btn-primary mt-3 text-sm">
               ✍️ Test rejimida sinab ko'ring
             </button>
           </div>
@@ -569,88 +712,33 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
     )
   }
 
-  // ── Quiz ──
-  if (mode === 'quiz') {
-    const [quizMode, setQuizMode] = useState<'en2uz' | 'uz2en'>('en2uz')
-    const [quizIndex, setQuizIndex] = useState(0)
-    const [quizAnswered, setQuizAnswered] = useState(false)
-    const [quizCorrect, setQuizCorrect] = useState(false)
-    const [quizScore, setQuizScore] = useState(0)
-    const [quizDone, setQuizDone] = useState(false)
-
-    const shuffled = useMemo(() => {
-      const arr = [...vocab]
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]]
-      }
-      return arr
-    }, [vocab])
-
-    const currentQ = shuffled[quizIndex]
-    if (!currentQ) return null
-
-    const allOptions = useMemo(() => {
-      if (!currentQ) return []
-      const pool = quizMode === 'en2uz' ? vocab.map((v) => v.uz) : vocab.map((v) => v.en)
-      const correct = quizMode === 'en2uz' ? currentQ.uz : currentQ.en
-      const others = pool.filter((o) => o !== correct).sort(() => Math.random() - 0.5).slice(0, 3)
-      const opts = [correct, ...others].sort(() => Math.random() - 0.5)
-      return opts
-    }, [currentQ, quizMode, vocab])
-
-    const handleQuizAnswer = (opt: string) => {
-      if (quizAnswered) return
-      const correct = quizMode === 'en2uz' ? currentQ.uz : currentQ.en
-      const ok = opt === correct
-      setQuizCorrect(ok)
-      setQuizAnswered(true)
-      if (ok) {
-        setQuizScore((s) => s + 1)
-        addXP(5)
-      }
+  // ── VOCAB TEST ──
+  if (mode === 'vocabTest') {
+    if (vocab.length === 0) {
+      return <div className="card text-center py-6 text-gray-500">Bu darsda lug'at so'zlari mavjud emas.</div>
     }
 
-    const nextQuestion = () => {
-      if (quizIndex < shuffled.length - 1) {
-        setQuizIndex((i) => i + 1)
-        setQuizAnswered(false)
-      } else {
-        setQuizDone(true)
-      }
-    }
-
-    if (quizDone) {
+    if (testDone) {
+      const total = allQuestions.length
+      const pct = total > 0 ? Math.round((testScore / total) * 100) : 0
       return (
         <div className="space-y-4">
-          <div className="flex items-center gap-2 mb-1">
-            {(['browse', 'flashcard', 'quiz'] as const).map((m) => (
-              <button key={m} onClick={() => { setMode(m); setCardIdx(0); setFlipped(false) }}
-                className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all ${
-                  mode === m ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}>
-                {m === 'browse' ? '📖 Ko\'rish' : m === 'flashcard' ? '🃏 Flashcard' : '✍️ Test'}
-              </button>
-            ))}
-          </div>
+          {tabBar}
           <div className="card text-center py-6 bg-gradient-to-b from-green-50 to-white border-green-200">
             <p className="text-5xl mb-2">🏆</p>
-            <p className="text-2xl font-bold text-gray-900 mb-1">{quizScore}/{vocab.length}</p>
+            <p className="text-2xl font-bold text-gray-900 mb-1">{testScore}/{total}</p>
+            <p className="text-lg font-bold text-primary-600 mb-2">{pct}%</p>
             <p className="text-sm text-gray-600">
-              {quizScore === vocab.length ? 'Mukammal! Barcha so\'zlarni bilasiz!' :
-               quizScore >= 15 ? 'Zo\'r! Juda yaxshi natija!' :
-               quizScore >= 10 ? 'Yaxshi! Bir oz ko\'proq mashq kerak.' :
+              {pct === 100 ? 'Mukammal! Barcha so\'zlarni bilasiz!' :
+               pct >= 80 ? 'Zo\'r! Juda yaxshi natija!' :
+               pct >= 60 ? 'Yaxshi! Bir oz ko\'proq mashq kerak.' :
                'Qayta urinib ko\'ring — flashcard rejimida o\'rganing.'}
             </p>
             <div className="flex items-center justify-center gap-3 mt-3">
-              <button onClick={() => { setQuizIndex(0); setQuizScore(0); setQuizDone(false); setQuizAnswered(false) }}
-                className="btn-secondary text-sm">
+              <button onClick={retakeTest} className="btn-secondary text-sm">
                 <RotateCcw size={14} /> Qayta boshlash
               </button>
-              <button onClick={() => { setMode('flashcard'); setCardIdx(0); setFlipped(false) }}
-                className="btn-primary text-sm">
-                🃏 Flashcard
-              </button>
+              <button onClick={() => setMode('flashcard')} className="btn-primary text-sm">🃏 Flashcard</button>
             </div>
           </div>
         </div>
@@ -659,80 +747,85 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
 
     return (
       <div className="space-y-4">
-        <div className="flex items-center gap-2 mb-1">
-          {(['browse', 'flashcard', 'quiz'] as const).map((m) => (
-            <button key={m} onClick={() => { setMode(m); setCardIdx(0); setFlipped(false) }}
-              className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all ${
-                mode === m ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+        {tabBar}
+
+        {/* Section tabs */}
+        <div className="flex gap-1 overflow-x-auto pb-1">
+          {testSections.map((s, si) => (
+            <button key={si} onClick={() => { setTestSectionIdx(si); setTestIdx(0); setTestResults({}); setTestSubmitted({}) }}
+              className={`text-xs font-semibold px-3 py-1.5 rounded-full whitespace-nowrap transition-all ${
+                si === testSectionIdx ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'
               }`}>
-              {m === 'browse' ? '📖 Ko\'rish' : m === 'flashcard' ? '🃏 Flashcard' : '✍️ Test'}
+              {s.icon} {s.title}
             </button>
           ))}
         </div>
 
+        {/* Progress */}
         <div className="flex items-center justify-between">
-          <div className="flex gap-1">
-            <button onClick={() => setQuizMode('en2uz')}
-              className={`text-xs font-semibold px-2 py-1 rounded ${quizMode === 'en2uz' ? 'bg-primary-100 text-primary-700' : 'text-gray-400'}`}>
-              🇬🇧→🇺🇿
-            </button>
-            <button onClick={() => setQuizMode('uz2en')}
-              className={`text-xs font-semibold px-2 py-1 rounded ${quizMode === 'uz2en' ? 'bg-primary-100 text-primary-700' : 'text-gray-400'}`}>
-              🇺🇿→🇬🇧
-            </button>
-          </div>
-          <p className="text-xs text-gray-500">{quizIndex + 1} / {vocab.length}  ·  🏆 {quizScore}</p>
+          <p className="text-xs text-gray-500">{testSectionIdx + 1} / {testSections.length} bo'lim</p>
+          <p className="text-xs text-gray-500">🏆 {testScore} / {allQuestions.length}</p>
         </div>
-
         <div className="progress-bar">
-          <div className="progress-fill bg-primary-500" style={{ width: `${(quizIndex / vocab.length) * 100}%` }} />
+          <div className="progress-fill bg-primary-500" style={{ width: `${(testIdx / Math.max(currentSectionQuestions.length, 1)) * 100}%` }} />
         </div>
 
-        <div className="rounded-2xl border-2 border-primary-200 bg-primary-50 p-3 sm:p-6 text-center">
-          <p className="text-xs text-gray-400 mb-2">{quizMode === 'en2uz' ? '🇬🇧 Inglizcha' : '🇺🇿 O\'zbekcha'}</p>
-          <p className="text-2xl font-bold text-gray-900 mb-2">
-            {quizMode === 'en2uz' ? currentQ.en : currentQ.uz}
-          </p>
-          <div className="mt-2">
-            <span className={`badge text-xs ${RULE_LABELS[currentQ.rule]?.color ?? 'bg-gray-100 text-gray-600'}`}>
-              {RULE_EMOJI[currentQ.rule]} {RULE_LABELS[currentQ.rule]?.label ?? currentQ.rule}
-            </span>
+        {currentSectionQuestions.length === 0 ? (
+          <div className="card text-center py-6 text-gray-500">
+            Bu bo'limda savollar mavjud emas. Keyingi bo'limga o'ting.
+            <button onClick={nextTest} className="btn-primary mt-3 text-sm block mx-auto">Keyingi bo'lim →</button>
           </div>
-        </div>
+        ) : currentQ ? (
+          <>
+            {/* Question card */}
+            <div className="rounded-2xl border-2 border-primary-200 bg-primary-50 p-3 sm:p-6 text-center">
+              <p className="text-xs text-gray-400 mb-2">{testSections[testSectionIdx]?.title}</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">{currentQ.stem}</p>
+              {testSectionIdx === 2 && (
+                <p className="text-[11px] text-gray-500 mt-1 italic">Bo'sh joyga mos so'zni toping</p>
+              )}
+            </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {allOptions.map((opt, i) => {
-            const correct = quizMode === 'en2uz' ? currentQ.uz : currentQ.en
-            let cls = 'border border-gray-200 bg-white text-gray-800 hover:border-primary-400 hover:bg-primary-50'
-            if (quizAnswered) {
-              if (opt === correct) cls = 'border-green-400 bg-green-100 text-green-800 font-bold'
-              else cls = 'border-gray-100 bg-gray-50 text-gray-400'
-            }
-            return (
-              <button key={i} disabled={quizAnswered} onClick={() => handleQuizAnswer(opt)}
-                className={`rounded-xl px-3 py-3 text-sm font-medium transition-all ${cls}`}>
-                {opt}
-              </button>
-            )
-          })}
-        </div>
+            {/* Options */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {currentQ.options.map((opt, oi) => {
+                let cls = 'border border-gray-200 bg-white text-gray-800 hover:border-primary-400 hover:bg-primary-50'
+                if (testSubmitted[testIdx]) {
+                  if (opt === currentQ.correct) cls = 'border-green-400 bg-green-100 text-green-800 font-bold'
+                  else cls = 'border-gray-100 bg-gray-50 text-gray-400'
+                }
+                return (
+                  <button key={oi} disabled={!!testSubmitted[testIdx]} onClick={() => handleTestAnswer(opt)}
+                    className={`rounded-xl px-3 py-3 text-sm font-medium transition-all ${cls}`}>
+                    {opt}
+                  </button>
+                )
+              })}
+            </div>
 
-        {quizAnswered && (
-          <div className={`card text-center py-3 ${quizCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
-            <p className={`font-bold ${quizCorrect ? 'text-green-700' : 'text-red-700'}`}>
-              {quizCorrect ? '✅ To\'g\'ri! +5 XP' : '❌ Xato'}
-            </p>
-            {!quizCorrect && (
-              <p className="text-xs text-gray-600 mt-1">
-                To'g'ri javob: <strong>{quizMode === 'en2uz' ? currentQ.uz : currentQ.en}</strong>
-              </p>
+            {/* Feedback */}
+            {testSubmitted[testIdx] && (
+              <div className={`card text-center py-3 ${testResults[testIdx] ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+                <p className={`font-bold ${testResults[testIdx] ? 'text-green-700' : 'text-red-700'}`}>
+                  {testResults[testIdx] ? '✅ To\'g\'ri! +5 XP' : '❌ Xato'}
+                </p>
+                {!testResults[testIdx] && (
+                  <p className="text-xs text-gray-600 mt-1">
+                    To'g'ri javob: <strong>{currentQ.correct}</strong>
+                  </p>
+                )}
+                <p className="text-[11px] text-gray-500 mt-1 italic">"{currentQ.word.example}"</p>
+                <button onClick={nextTest} className="btn-primary mt-3 text-sm">
+                  {testIdx < currentSectionQuestions.length - 1
+                    ? 'Keyingi savol →'
+                    : testSectionIdx < testSections.length - 1
+                    ? `Keyingi bo'lim →`
+                    : '🏁 Yakunlash'}
+                </button>
+              </div>
             )}
-            <p className="text-[11px] text-gray-500 mt-1 italic">"{currentQ.example}"</p>
-            <button onClick={nextQuestion} className="btn-primary mt-3 text-sm">
-              {quizIndex < shuffled.length - 1 ? 'Keyingi savol →' : '🏁 Yakunlash'}
-            </button>
-          </div>
-        )}
+          </>
+        ) : null}
       </div>
     )
   }
@@ -742,7 +835,7 @@ function VocabLearner({ vocab, addXP }: { vocab: { en: string; uz: string; examp
 
 // ── Special Case Card (maxsus holatlar uchun) ──────────────────────────────────
 
-function SpecialCaseCard({ sc, addXP }: { sc: import('../data/dailyLessons').SpecialCase; addXP: (n: number) => void }) {
+function SpecialCaseCard({ sc, addXP, lessonId }: { sc: import('../data/dailyLessons').SpecialCase; addXP: (n: number) => void; lessonId: string }) {
   const [drillAnswers, setDrillAnswers] = useState<Record<number, string[]>>({})
   const [drillSubmitted, setDrillSubmitted] = useState<Record<number, boolean>>({})
   const [drillCorrect, setDrillCorrect] = useState<Record<number, boolean>>({})
@@ -761,6 +854,9 @@ function SpecialCaseCard({ sc, addXP }: { sc: import('../data/dailyLessons').Spe
     setDrillSubmitted((prev) => ({ ...prev, [ex.id]: true }))
     setDrillCorrect((prev) => ({ ...prev, [ex.id]: ok }))
     if (ok) addXP(10)
+    saveExerciseAnswersToDB(lessonId, -1, 'drill', [
+      { exerciseId: ex.id, exerciseType: ex.type, answer: userAns, isCorrect: ok },
+    ])
   }
 
   const handleRetry = (exId: number) => {
@@ -915,6 +1011,202 @@ function SpecialCaseCard({ sc, addXP }: { sc: import('../data/dailyLessons').Spe
   )
 }
 
+function RuleCard({ rule, index }: { rule: string; index: number }) {
+  const sections = rule.split('\n\n').filter(Boolean)
+  const titleRaw = sections[0]?.trim() || ''
+  const titleClean = titleRaw.replace(/^[0-9#️⃣]+️?\s*/, '').replace(/[—\-].*$/, '').replace(/\(.*?\)/, '').trim()
+
+  const subSections = sections.slice(1).filter(s => {
+    if (sections.length <= 2) return true
+    return s.length > 15 || s.startsWith('📌') || s.startsWith('🔴') || s.startsWith('🔥')
+  })
+
+  return (
+    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+      <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-100">
+        <span className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold text-white"
+          style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)' }}>
+          {index + 1}
+        </span>
+        <p className="text-sm font-bold text-gray-900 leading-tight">{titleClean || 'Qoida'}</p>
+      </div>
+
+      <div className="px-4 py-3 space-y-4">
+        {subSections.length === 0 && sections.length > 1 ? (
+          <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{sections.slice(1).join('\n\n')}</p>
+        ) : null}
+
+        {subSections.map((sec, si) => {
+          const lines = sec.split('\n').map(l => l.trim()).filter(Boolean)
+          if (lines.length === 0) return null
+
+          const firstLine = lines[0]
+          const emoji = firstLine.match(/^([📌🔴🔥🎯⭐📍])/)
+          const isErrorSection = firstLine.includes('❌') || firstLine.includes('✅')
+          const isPercentageSection = firstLine.includes('100%') || firstLine.includes('%')
+
+          if (emoji) {
+            const titleLine = lines.find(l => l.match(/^[📌🔴🔥🎯⭐📍]/))
+            const title = titleLine ? titleLine.replace(/^[📌🔴🔥🎯⭐📍]\s*/, '').trim() : ''
+
+            const exampleLines = lines.filter(l => l.startsWith('→') || l.startsWith('  →'))
+            const errorLines = lines.filter(l => l.includes('❌') || l.includes('✅'))
+            const bulletLines = lines.filter(l => l.startsWith('•') || l.startsWith('  •'))
+            const otherLines = lines.filter(l => {
+              const t = l.replace(/^[📌🔴🔥🎯⭐📍]\s*/, '')
+              return !t.startsWith('→') && !t.includes('❌') && !t.includes('✅') && !t.startsWith('•') && t !== title && !l.match(/^[📌🔴🔥🎯⭐📍]/) && !l.match(/^\d+%/)
+            })
+
+            const percentageLines = lines.filter(l => l.match(/^\d+%/) || l.match(/^  \d+%/))
+
+            return (
+              <div key={si} className="bg-blue-50/50 rounded-lg p-3 border border-blue-100">
+                {title && (
+                  <p className="font-bold text-gray-800 text-sm mb-2 flex items-center gap-1.5">
+                    <span className="text-base">{emoji[1]}</span>
+                    <span>{title}</span>
+                  </p>
+                )}
+
+                {otherLines.length > 0 && otherLines.map((l, li) => (
+                  <p key={`o-${li}`} className="text-sm text-gray-700 leading-relaxed mb-1">{l}</p>
+                ))}
+
+                {percentageLines.length > 0 && (
+                  <div className="space-y-1 mb-2">
+                    {percentageLines.map((l, li) => {
+                      const m = l.match(/^(\s*)(\d+)%\s*→\s*(.+)/)
+                      if (m) {
+                        const pct = parseInt(m[2])
+                        let barColor = 'bg-green-400'
+                        if (pct <= 20) barColor = 'bg-red-400'
+                        else if (pct <= 50) barColor = 'bg-yellow-400'
+                        else if (pct <= 80) barColor = 'bg-blue-400'
+                        else barColor = 'bg-green-500'
+                        return (
+                          <div key={li} className="flex items-center gap-2">
+                            <div className="flex-shrink-0 w-10 text-xs text-gray-500 font-mono text-right">{m[2]}%</div>
+                            <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                              <div className={`h-full rounded-full ${barColor}`} style={{ width: `${pct}%` }} />
+                            </div>
+                            <div className="text-sm text-gray-700 w-full">{m[3]}</div>
+                          </div>
+                        )
+                      }
+                      return <p key={li} className="text-sm text-gray-700">{l.replace(/^\s*/, '')}</p>
+                    })}
+                  </div>
+                )}
+
+                {bulletLines.length > 0 && (
+                  <div className="space-y-1 mb-2">
+                    {bulletLines.map((l, li) => (
+                      <p key={`b-${li}`} className="text-sm text-gray-600 flex items-start gap-2 pl-1">
+                        <span className="text-gray-400 mt-0.5 flex-shrink-0">•</span>
+                        <span>{l.replace(/^[•\s]+/, '')}</span>
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {exampleLines.length > 0 && (
+                  <div className="space-y-1.5 mt-2">
+                    {exampleLines.map((l, li) => (
+                      <div key={`e-${li}`} className="flex items-start gap-2 pl-1">
+                        <span className="text-indigo-400 font-bold flex-shrink-0 mt-0.5 text-xs">→</span>
+                        <code className="text-sm bg-white px-3 py-1.5 rounded-lg text-gray-800 font-mono w-full border border-gray-200 shadow-sm">
+                          {l.replace(/^→\s*/, '').replace(/^  →\s*/, '')}
+                        </code>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {errorLines.length > 0 && (
+                  <div className="space-y-1 mt-2">
+                    {errorLines.map((l, li) => {
+                      const parts = l.split(/([❌✅])/g)
+                      return (
+                        <div key={`er-${li}`} className="bg-red-50 rounded-lg px-3 py-2 border border-red-100">
+                          <p className="flex items-start gap-1.5 text-sm">
+                            {parts.map((part, pi2) => {
+                              if (part === '❌') return <span key={pi2} className="text-red-500 font-bold flex-shrink-0 text-lg">✕</span>
+                              if (part === '✅') return <span key={pi2} className="text-green-500 font-bold flex-shrink-0 text-lg">✓</span>
+                              return <span key={pi2} className={part.includes('noto\'g\'ri') || part.includes('NOTO\'G\'RI') ? 'line-through text-red-600' : ''}>{part}</span>
+                            })}
+                          </p>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            )
+          }
+
+          if (isErrorSection) {
+            return (
+              <div key={si} className="bg-red-50 rounded-lg p-3 border border-red-100 space-y-1">
+                {lines.map((l, li) => {
+                  const parts = l.split(/([❌✅])/g)
+                  return (
+                    <p key={li} className="flex items-start gap-1.5 text-sm">
+                      {parts.map((part, pi) => {
+                        if (part === '❌') return <span key={pi} className="text-red-500 font-bold text-lg">✕</span>
+                        if (part === '✅') return <span key={pi} className="text-green-500 font-bold text-lg">✓</span>
+                        if (l.includes('❌') && (part.includes('noto\'g\'ri') || part.includes('NOTO\'G\'RI'))) return <span key={pi} className="line-through text-red-600">{part}</span>
+                        return <span key={pi}>{part}</span>
+                      })}
+                    </p>
+                  )
+                })}
+              </div>
+            )
+          }
+
+          if (isPercentageSection) {
+            return (
+              <div key={si} className="space-y-1">
+                {lines.map((l, li) => {
+                  const m = l.match(/^(\d+)%\s*→\s*(.+)/)
+                  if (m) {
+                    const pct = parseInt(m[1])
+                    let barColor = 'bg-green-400'
+                    if (pct <= 20) barColor = 'bg-red-400'
+                    else if (pct <= 50) barColor = 'bg-yellow-400'
+                    else if (pct <= 80) barColor = 'bg-blue-400'
+                    return (
+                      <div key={li} className="flex items-center gap-2">
+                        <div className="flex-shrink-0 w-10 text-xs text-gray-500 font-mono text-right">{m[1]}%</div>
+                        <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className={`h-full rounded-full ${barColor}`} style={{ width: `${pct}%` }} />
+                        </div>
+                        <div className="text-sm text-gray-700">{m[2]}</div>
+                      </div>
+                    )
+                  }
+                  return <p key={li} className="text-sm text-gray-700">{l}</p>
+                })}
+              </div>
+            )
+          }
+
+          return (
+            <div key={si} className="space-y-1">
+              {lines.filter(l => {
+                if (lines[0] === titleClean && l === lines[0]) return false
+                return true
+              }).map((l, li) => (
+                <p key={li} className="text-sm text-gray-700 whitespace-pre-line">{l}</p>
+              ))}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 type Answers = Record<number, string[]>
 
 function LessonView({
@@ -923,22 +1215,26 @@ function LessonView({
   lesson: DailyLesson
   onBack: () => void
 }) {
-  const { addXP, updateSkillProgress, setLessonProgress } = useStore()
-  const [tab, setTab] = useState<'grammar' | 'vocab' | 'examples' | 'special' | 'exercises' | 'tests'>('grammar')
-  const [currentSection, setCurrentSection] = useState(0)
-  const [testSection, setTestSection] = useState(0)
+  const { addXP, updateSkillProgress, setLessonProgress, saveLessonSession, clearLessonSession, lessonSessions } = useStore()
+  const savedSession = lessonSessions[lesson.id]
+
+  const [tab, setTab] = useState<'grammar' | 'vocab' | 'examples' | 'special' | 'exercises' | 'tests'>(
+    (savedSession?.tab as any) ?? 'grammar'
+  )
+  const [currentSection, setCurrentSection] = useState(savedSession?.currentSection ?? 0)
+  const [testSection, setTestSection] = useState(savedSession?.testSection ?? 0)
   const [testShuffleKey, setTestShuffleKey] = useState(0)
   const [testAnswers, setTestAnswers] = useState<Record<number, string>>({})
   const [testSubmitted, setTestSubmitted] = useState(false)
   const [testScore, setTestScore] = useState(0)
   const [testResults, setTestResults] = useState<Record<number, boolean>>({})
-  const [completedTestSections, setCompletedTestSections] = useState<Record<number, number>>({})
+  const [completedTestSections, setCompletedTestSections] = useState<Record<number, number>>(savedSession?.completedTestSections ?? {})
   const [answers, setAnswers] = useState<Answers>({})
   const [submitted, setSubmitted] = useState(false)
   const [score, setScore] = useState(0)
-  const [cumulativeScore, setCumulativeScore] = useState(0)
-  const [completedSections, setCompletedSections] = useState<Record<number, number>>({})
+  const [completedSections, setCompletedSections] = useState<Record<number, number>>(savedSession?.completedSections ?? {})
   const [prevScore, setPrevScore] = useState<number | null>(null)
+  const [viewedTabs, setViewedTabs] = useState<string[]>([])
 
   const section = lesson.exerciseSections[currentSection]
   const sectionExercises = lesson.exercises.filter((ex) => section?.ids.includes(ex.id))
@@ -967,6 +1263,162 @@ function LessonView({
     })
   }, [lesson.id])
 
+  // ── Supabase'dan barcha ma'lumotlarni yuklash (cross-device resume) ──
+  useEffect(() => {
+    Promise.all([
+      loadLessonSessionFromDB(lesson.id),
+      loadExerciseAnswersFromDB(lesson.id),
+      loadViewedTabsFromDB(lesson.id),
+    ]).then(([remote, dbAnswers, tabs]) => {
+      // 1. Session tiklash
+      let resolvedSection = savedSession?.currentSection ?? 0
+      let resolvedTestSection = savedSession?.testSection ?? 0
+      let resolvedCompletedSections: Record<number, number> = savedSession?.completedSections ?? {}
+      let resolvedCompletedTestSections: Record<number, number> = savedSession?.completedTestSections ?? {}
+
+      if (remote) {
+        const localUpdated = savedSession?.updatedAt ?? 0
+        if (remote.updatedAt > localUpdated) {
+          setTab(remote.tab as any)
+          setCurrentSection(remote.currentSection)
+          setTestSection(remote.testSection)
+          setCompletedSections(remote.completedSections)
+          setCompletedTestSections(remote.completedTestSections)
+          resolvedSection = remote.currentSection
+          resolvedTestSection = remote.testSection
+          resolvedCompletedSections = remote.completedSections
+          resolvedCompletedTestSections = remote.completedTestSections
+        }
+      }
+
+      // 2. Exercise va test javoblarini tiklash
+      if (dbAnswers.length > 0) {
+        const exMap: Answers = {}
+        const tMap: Record<number, string> = {}
+        const tRes: Record<number, boolean> = {}
+        let hasExercise = false
+        let hasTest = false
+
+        for (const a of dbAnswers) {
+          if (a.sectionType === 'exercise') {
+            exMap[a.exerciseId] = a.answer
+            hasExercise = true
+          } else if (a.sectionType === 'test') {
+            tMap[a.exerciseId] = a.answer[0] ?? ''
+            tRes[a.exerciseId] = a.isCorrect
+            hasTest = true
+          }
+        }
+
+        // Joriy bo'lim tugallangan bo'lsa — javoblarni ko'rsatish
+        if (hasExercise && resolvedSection in resolvedCompletedSections) {
+          setAnswers(exMap)
+          setSubmitted(true)
+          setScore(resolvedCompletedSections[resolvedSection] ?? 0)
+        } else if (!hasExercise) {
+          // Supabase'da yo'q — localStorage'dan (davom etayotgan bo'lim)
+          try {
+            const saved = localStorage.getItem(`exercise-answers-${lesson.id}-${resolvedSection}`)
+            if (saved) {
+              const data = JSON.parse(saved)
+              if (data.answers) setAnswers(data.answers)
+              if (data.submitted != null) setSubmitted(data.submitted)
+              if (data.score != null) setScore(data.score)
+            }
+          } catch { /* ignore */ }
+        }
+
+        if (hasTest && resolvedTestSection in resolvedCompletedTestSections) {
+          setTestAnswers(tMap)
+          setTestResults(tRes)
+          setTestSubmitted(true)
+          setTestScore(resolvedCompletedTestSections[resolvedTestSection] ?? 0)
+        } else if (!hasTest) {
+          try {
+            const saved = localStorage.getItem(`test-state-${lesson.id}-${resolvedTestSection}`)
+            if (saved) {
+              const data = JSON.parse(saved)
+              if (data.testAnswers) setTestAnswers(data.testAnswers)
+              if (data.testSubmitted != null) setTestSubmitted(data.testSubmitted)
+              if (data.testScore != null) setTestScore(data.testScore)
+              if (data.testResults) setTestResults(data.testResults)
+            }
+          } catch { /* ignore */ }
+        }
+      } else {
+        // Supabase'da hech narsa yo'q — faqat localStorage
+        try {
+          const saved = localStorage.getItem(`exercise-answers-${lesson.id}-${resolvedSection}`)
+          if (saved) {
+            const data = JSON.parse(saved)
+            if (data.answers) setAnswers(data.answers)
+            if (data.submitted != null) setSubmitted(data.submitted)
+            if (data.score != null) setScore(data.score)
+          }
+        } catch { /* ignore */ }
+        try {
+          const saved = localStorage.getItem(`test-state-${lesson.id}-${resolvedTestSection}`)
+          if (saved) {
+            const data = JSON.parse(saved)
+            if (data.testAnswers) setTestAnswers(data.testAnswers)
+            if (data.testSubmitted != null) setTestSubmitted(data.testSubmitted)
+            if (data.testScore != null) setTestScore(data.testScore)
+            if (data.testResults) setTestResults(data.testResults)
+          }
+        } catch { /* ignore */ }
+      }
+
+      // 3. Ko'rilgan tablar
+      if (tabs.length > 0) setViewedTabs(tabs)
+    })
+  }, [lesson.id])
+
+  // Ko'rilgan tablarni kuzatish
+  const prevTabRef = useRef(tab)
+  useEffect(() => {
+    if (prevTabRef.current !== tab) {
+      prevTabRef.current = tab
+      const newViewed = viewedTabs.includes(tab) ? viewedTabs : [...viewedTabs, tab]
+      setViewedTabs(newViewed)
+      saveViewedTabsToDB(lesson.id, newViewed)
+    }
+  }, [tab])
+
+  // Avtomatik sessiyani saqlash
+  useEffect(() => {
+    saveLessonSession(lesson.id, {
+      tab, currentSection, testSection,
+      completedSections, completedTestSections,
+      updatedAt: Date.now(),
+    })
+  }, [tab, currentSection, testSection, completedSections, completedTestSections])
+
+  // ── Exercise answers persistence (faqat saqlash — yuklash yuqorida) ──
+  const exerciseStorageKey = `exercise-answers-${lesson.id}-${currentSection}`
+
+  const prevExerciseStateRef = useRef({ answers, submitted, score })
+  useEffect(() => {
+    const cur = { answers, submitted, score }
+    if (JSON.stringify(cur) === JSON.stringify(prevExerciseStateRef.current)) return
+    prevExerciseStateRef.current = cur
+    try {
+      localStorage.setItem(exerciseStorageKey, JSON.stringify(cur))
+    } catch { /* ignore */ }
+  }, [answers, submitted, score, exerciseStorageKey])
+
+  // ── Test answers persistence (faqat saqlash — yuklash yuqorida) ──
+  const testStorageKey = `test-state-${lesson.id}-${testSection}`
+
+  const prevTestStateRef = useRef({ testAnswers, testSubmitted, testScore, testResults })
+  useEffect(() => {
+    const cur = { testAnswers, testSubmitted, testScore, testResults }
+    if (JSON.stringify(cur) === JSON.stringify(prevTestStateRef.current)) return
+    prevTestStateRef.current = cur
+    try {
+      localStorage.setItem(testStorageKey, JSON.stringify(cur))
+    } catch { /* ignore */ }
+  }, [testAnswers, testSubmitted, testScore, testResults, testStorageKey])
+
   const handleChangeAnswer = (exId: number, blankIdx: number, val: string) => {
     setAnswers((prev) => {
       const cur = [...(prev[exId] ?? [])]
@@ -977,23 +1429,34 @@ function LessonView({
 
   const handleSubmitSection = async () => {
     let correct = 0
+    const answerPayloads: {
+      exerciseId: number
+      exerciseType: string
+      answer: string[]
+      isCorrect: boolean
+    }[] = []
     for (const ex of sectionExercises) {
       const userAns = answers[ex.id] ?? []
-      if (checkAnswer(ex, userAns)) correct++
+      const ok = checkAnswer(ex, userAns)
+      if (ok) correct++
+      answerPayloads.push({ exerciseId: ex.id, exerciseType: ex.type, answer: userAns, isCorrect: ok })
     }
     setScore(correct)
     setSubmitted(true)
     setCompletedSections((prev) => ({ ...prev, [currentSection]: correct }))
-    setCumulativeScore((prev) => prev + correct)
     addXP(correct * 10)
 
+    // Har bir mashq javobini saqlash
+    saveExerciseAnswersToDB(lesson.id, currentSection, 'exercise', answerPayloads)
+
     if (isLastSection) {
-      const totalCorrect = cumulativeScore + correct + Object.values(completedSections).reduce((a, b) => a + b, 0)
+      const totalCorrect = Object.values(completedSections).reduce((a, b) => a + b, 0) + correct
       const total = lesson.exercises.length
       const totalPct = Math.round((totalCorrect / total) * 100)
       setLessonProgress(lesson.id, totalPct)
       updateSkillProgress('todayGrammarPct', totalPct)
       await pushLessonProgress(lesson.id, totalCorrect, total)
+      clearLessonSession(lesson.id)
     }
   }
 
@@ -1088,18 +1551,13 @@ function LessonView({
             </div>
           </div>
 
-          <div className="card">
-            <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
-              Qoidalar
+          <div className="space-y-4">
+            <p className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1.5">
+              <BookOpen size={14} /> Qoidalar
             </p>
-            <ul className="space-y-2">
-              {lesson.rules.map((r, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-primary-500 mt-0.5 flex-shrink-0">✦</span>
-                  {r}
-                </li>
-              ))}
-            </ul>
+            {lesson.rules.map((r, i) => (
+              <RuleCard key={i} rule={r} index={i} />
+            ))}
           </div>
 
           {/* Tezkor eslatma — faqat Comparatives & Superlatives darsiga tegishli */}
@@ -1151,7 +1609,7 @@ function LessonView({
 
       {/* ── Tab: Vocabulary ── */}
       {tab === 'vocab' && (
-        <VocabLearner vocab={lesson.vocabulary} addXP={addXP} />
+        <VocabLearner vocab={lesson.vocabulary} addXP={addXP} lessonId={lesson.id} />
       )}
 
       {/* ── Tab: Examples ── */}
@@ -1178,7 +1636,7 @@ function LessonView({
             <Star size={14} /> Maxsus holatlar — yodda saqlash uchun alohida e'tibor
           </p>
           {lesson.specialCases.map((sc) => (
-            <SpecialCaseCard key={sc.id} sc={sc} addXP={addXP} />
+            <SpecialCaseCard key={sc.id} sc={sc} addXP={addXP} lessonId={lesson.id} />
           ))}
         </div>
       )}
@@ -1394,11 +1852,18 @@ function LessonView({
                       onClick={() => {
                         let correct = 0
                         const results: Record<number, boolean> = {}
+                        const answerPayloads: {
+                          exerciseId: number
+                          exerciseType: string
+                          answer: string[]
+                          isCorrect: boolean
+                        }[] = []
                         for (const t of sectionTests) {
                           const ans = testAnswers[t.id] || ''
                           const ok = ans === t.correct
                           results[t.id] = ok
                           if (ok) correct++
+                          answerPayloads.push({ exerciseId: t.id, exerciseType: t.type, answer: [ans], isCorrect: ok })
                         }
                         setTestScore(correct)
                         setTestResults(results)
@@ -1406,10 +1871,12 @@ function LessonView({
                         const newCompleted = { ...completedTestSections, [testSection]: correct }
                         setCompletedTestSections(newCompleted)
                         addXP(correct * 10)
+                        saveExerciseAnswersToDB(lesson.id, testSection, 'test', answerPayloads)
                         pushTestProgress(lesson.id, section.title, correct, sectionTests.length)
                         if (Object.keys(newCompleted).length === lesson.testSections.length) {
                           const totalCorrect = Object.values(newCompleted).reduce((a, b) => a + b, 0)
                           pushTestProgress(lesson.id, '__all__', totalCorrect, lesson.tests.length)
+                          clearLessonSession(lesson.id)
                         }
                       }}
                       disabled={Object.keys(testAnswers).length < sectionTests.length}
@@ -1651,6 +2118,7 @@ function LessonView({
 export default function DailyLesson() {
   const [selected, setSelected] = useState<string | null>(null)
   const lessonScores = useStore((s) => s.lessonProgress)
+  const lessonSessions = useStore((s) => s.lessonSessions)
   const lessons = useStore((s) => s.lessons)
   const lessonsLoading = useStore((s) => s.lessonsLoading)
   const lessonsFetched = useStore((s) => s.lessonsFetched)
@@ -1683,6 +2151,7 @@ export default function DailyLesson() {
 
   return (
     <div className="p-3 sm:p-6 max-w-4xl mx-auto space-y-5">
+      {/* ── Header ── */}
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
           <Sparkles size={20} className="text-primary-600" />
@@ -1693,6 +2162,83 @@ export default function DailyLesson() {
         </div>
       </div>
 
+      {/* ── Progress Overview ── */}
+      {(() => {
+        const completed = lessons.filter(l => lessonScores[l.id] !== undefined).length
+        const notStarted = lessons.filter(l => lessonScores[l.id] === undefined && !lessonSessions[l.id]).length
+        const inProgress = lessons.filter(l => lessonScores[l.id] === undefined && lessonSessions[l.id]).length
+        const total = lessons.length
+        const avgPct = total > 0 ? Math.round(lessons.reduce((a, l) => a + (lessonScores[l.id] ?? 0), 0) / total) : 0
+        const totalXp = lessons.reduce((a, l) => {
+          const s = lessonScores[l.id]
+          if (s === undefined) return a
+          return a + Math.round((s / 100) * l.exercises.length * 10)
+        }, 0)
+        return (
+          <div className="card bg-gradient-to-br from-gray-50 to-white border-gray-200">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-1.5">
+                <Trophy size={16} className="text-amber-500" />
+                <span className="text-sm font-bold text-gray-900">Umumiy progress</span>
+              </div>
+              <span className="text-xs text-gray-400">{totalXp > 0 ? `+${totalXp} XP` : ''}</span>
+            </div>
+
+            {/* Stats row */}
+            <div className="grid grid-cols-3 gap-3 mb-3">
+              <div className="text-center">
+                <p className="text-xl font-bold text-green-600">{completed}</p>
+                <p className="text-[10px] text-gray-500">Bajarildi</p>
+              </div>
+              <div className="text-center">
+                <p className="text-xl font-bold text-amber-500">{inProgress}</p>
+                <p className="text-[10px] text-gray-500">Jarayonda</p>
+              </div>
+              <div className="text-center">
+                <p className="text-xl font-bold text-gray-300">{notStarted}</p>
+                <p className="text-[10px] text-gray-500">Kutilmoqda</p>
+              </div>
+            </div>
+
+            {/* Big progress bar */}
+            <div className="mb-3">
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="text-gray-500">O'rtacha natija</span>
+                <span className={`font-bold ${
+                  avgPct >= 80 ? 'text-green-600' : avgPct >= 50 ? 'text-amber-600' : 'text-red-500'
+                }`}>{avgPct}%</span>
+              </div>
+              <div className="h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-full rounded-full bg-gradient-to-r from-red-400 via-amber-400 to-green-500 transition-all duration-500"
+                  style={{ width: `${avgPct}%` }} />
+              </div>
+            </div>
+
+            {/* Mini lesson dots */}
+            <div className="flex flex-wrap gap-1.5">
+              {lessons.map((l) => {
+                const pct = lessonScores[l.id]
+                const hasSession = !!lessonSessions[l.id]
+                const color = pct !== undefined
+                  ? pct >= 80 ? 'bg-green-500'
+                    : pct >= 50 ? 'bg-amber-400'
+                    : 'bg-red-400'
+                  : hasSession ? 'bg-blue-400'
+                  : 'bg-gray-200'
+                return (
+                  <div key={l.id}
+                    className={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold text-white cursor-help transition-transform hover:scale-125 ${color}`}
+                    title={`${l.title}: ${pct !== undefined ? pct + '%' : hasSession ? 'Jarayonda' : 'Boshlamagan'}`}>
+                    {l.day}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )
+      })()}
+
+      {/* ── Lesson list ── */}
       <div className="grid grid-cols-1 gap-6">
         {(() => {
           const groups: { category: string; label: string; lessons: typeof lessons }[] = []
@@ -1717,6 +2263,11 @@ export default function DailyLesson() {
             <div className="grid grid-cols-1 gap-3">
               {group.lessons.map((lesson) => {
                 const pct = lessonScores[lesson.id]
+                const session = lessonSessions[lesson.id]
+                const tabLabels: Record<string, string> = {
+                  grammar: '📚 Qoidalar', vocab: '📝 Lug\'at', examples: '📖 Misollar',
+                  special: '🎯 Maxsus', exercises: '✍️ Mashqlar', tests: '🧪 Testlar',
+                }
                 return (
                 <button
                   key={lesson.id}
@@ -1754,8 +2305,17 @@ export default function DailyLesson() {
                     <span>+{lesson.exercises.length * 10} XP</span>
                   </div>
 
-                  <div className="flex items-center gap-1.5 text-primary-600 font-semibold text-sm group-hover:gap-3 transition-all">
-                    {pct !== undefined ? 'Davom etish' : 'Boshlash'} <ChevronRight size={15} />
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 text-primary-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                      {pct !== undefined ? 'Davom etish' : 'Boshlash'} <ChevronRight size={15} />
+                    </div>
+                    {session && (
+                      <span className="text-[10px] text-gray-400">
+                        {tabLabels[session.tab] ?? session.tab}
+                        {session.tab === 'exercises' && ` · ${session.currentSection + 1}-bo'lim`}
+                        {session.tab === 'tests' && ` · ${session.testSection + 1}-bo'lim`}
+                      </span>
+                    )}
                   </div>
                 </button>
                 )

@@ -1,7 +1,16 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { getTodayTashkent } from '../utils/tashkentDate'
-import { fetchLessons } from '../services/lessonService'
+
+export interface LessonSessionData {
+  tab: string
+  currentSection: number
+  testSection: number
+  completedSections: Record<number, number>
+  completedTestSections: Record<number, number>
+  updatedAt: number
+}
+import { fetchLessons, saveLessonSessionToDB, clearLessonSessionFromDB } from '../services/lessonService'
 import type { DailyLesson } from '../data/dailyLessons'
 
 export type Level = 'A2+' | 'B1' | 'B1+' | 'B2'
@@ -47,6 +56,7 @@ export interface AppState {
 
   // Kunlik darslar progressi (lessonId → score 0-100)
   lessonProgress: Record<string, number>
+  lessonSessions: Record<string, LessonSessionData>
 
   // Database'dan olingan darslar
   lessons: DailyLesson[]
@@ -90,6 +100,8 @@ export interface AppState {
 
   toggleChecklistItem: (item: keyof DailyChecklist) => void
   setLessonProgress: (lessonId: string, score: number) => void
+  saveLessonSession: (lessonId: string, data: LessonSessionData) => void
+  clearLessonSession: (lessonId: string) => void
   setLastMock: (result: MockResult) => void
   addLearnedWords: (count: number) => void
   fetchAndSetLessons: () => Promise<void>
@@ -159,6 +171,7 @@ export const useStore = create<AppState>()(
 
         // Kunlik darslar progressi
         lessonProgress: {},
+        lessonSessions: {},
 
         // Bugungi progress
         todayMinutes:      0,
@@ -229,6 +242,21 @@ export const useStore = create<AppState>()(
               [lessonId]: Math.max(s.lessonProgress[lessonId] ?? 0, score),
             },
           })),
+
+        saveLessonSession: (lessonId, data) => {
+          set((s) => ({
+            lessonSessions: { ...s.lessonSessions, [lessonId]: data },
+          }))
+          saveLessonSessionToDB(lessonId, data)
+        },
+
+        clearLessonSession: (lessonId) => {
+          set((s) => {
+            const { [lessonId]: _, ...rest } = s.lessonSessions
+            return { lessonSessions: rest }
+          })
+          clearLessonSessionFromDB(lessonId)
+        },
 
         setLastMock: (result) => set({ lastMock: result }),
 

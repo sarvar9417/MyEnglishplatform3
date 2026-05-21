@@ -17,6 +17,7 @@ import WordGame from '../components/vocabulary/WordGame'
 import VocabProgress from '../components/vocabulary/VocabProgress'
 import VocabCalendar from '../components/vocabulary/VocabCalendar'
 import VocabTypingGame from '../components/vocabulary/VocabTypingGame'
+import VocabSentenceGame from '../components/vocabulary/VocabSentenceGame'
 
 const BATCH_SIZE = 25
 const WORDS_PER_DAY = 100
@@ -45,6 +46,7 @@ export default function Vocabulary() {
   const [selectedDate, setSelectedDate] = useState(todayStr)
   const [showCalendar, setShowCalendar] = useState(false)
   const [showTypingGame, setShowTypingGame] = useState(false)
+  const [showSentenceGame, setShowSentenceGame] = useState(false)
   const [monthSessions, setMonthSessions] = useState<Map<string, DaySession>>(new Map())
 
   useEffect(() => {
@@ -361,6 +363,7 @@ export default function Vocabulary() {
 
   async function handleGameComplete(score: number, total: number) {
     addXP(score * 3)
+    // addLearnedWords is handled per-word inside saveProgressToDB below
     updateSkillProgress('todayVocabPct', Math.round((score / total) * 100))
 
     useVocabStore.setState({ correctCount: score, totalAnswered: total })
@@ -612,6 +615,16 @@ export default function Vocabulary() {
     )
   }
 
+  // ── Sentence Game view ────────────────────────────────────────
+
+  if (showSentenceGame) {
+    return (
+      <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <VocabSentenceGame onClose={() => setShowSentenceGame(false)} />
+      </div>
+    )
+  }
+
   // ── Typing Game view ──────────────────────────────────────────
 
   if (showTypingGame) {
@@ -642,6 +655,12 @@ export default function Vocabulary() {
             className="btn-secondary text-xs flex items-center gap-1.5 px-3 py-2 transition-all"
           >
             🎮 O'yin
+          </button>
+          <button
+            onClick={() => setShowSentenceGame(true)}
+            className="btn-secondary text-xs flex items-center gap-1.5 px-3 py-2 transition-all"
+          >
+            🗣️ Gap tarjima
           </button>
           <button
             onClick={() => {
@@ -754,9 +773,10 @@ export default function Vocabulary() {
                 <button
                   key={batchNum}
                   onClick={() => selectBatch(batchNum)}
+                  disabled={batchWordsSlice.length === 0}
                   className={`card py-3 text-center transition-all ${
                     isCurrent ? 'ring-2 ring-b1-500 border-b1-500' : ''
-                  } ${batchWordsSlice.length === 0 ? 'opacity-40' : ''}`}
+                  } ${batchWordsSlice.length === 0 ? 'opacity-40 cursor-not-allowed' : ''}`}
                 >
                   <p className={`text-sm font-bold ${isCurrent ? 'text-b1-600' : 'text-gray-700'}`}>
                     {batchNum}
