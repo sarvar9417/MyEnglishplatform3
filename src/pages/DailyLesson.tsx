@@ -1154,7 +1154,7 @@ function RuleCard({ rule, index }: { rule: string; index: number }) {
                       {parts.map((part, pi) => {
                         if (part === '❌') return <span key={pi} className="text-red-500 font-bold text-lg">✕</span>
                         if (part === '✅') return <span key={pi} className="text-green-500 font-bold text-lg">✓</span>
-                        if (l.includes('❌') && part.includes('noto\'g\'ri') || part.includes('NOTO\'G\'RI')) return <span key={pi} className="line-through text-red-600">{part}</span>
+                        if (l.includes('❌') && (part.includes('noto\'g\'ri') || part.includes('NOTO\'G\'RI'))) return <span key={pi} className="line-through text-red-600">{part}</span>
                         return <span key={pi}>{part}</span>
                       })}
                     </p>
@@ -1232,7 +1232,6 @@ function LessonView({
   const [answers, setAnswers] = useState<Answers>({})
   const [submitted, setSubmitted] = useState(false)
   const [score, setScore] = useState(0)
-  const [cumulativeScore, setCumulativeScore] = useState(0)
   const [completedSections, setCompletedSections] = useState<Record<number, number>>(savedSession?.completedSections ?? {})
   const [prevScore, setPrevScore] = useState<number | null>(null)
   const [viewedTabs, setViewedTabs] = useState<string[]>([])
@@ -1445,14 +1444,13 @@ function LessonView({
     setScore(correct)
     setSubmitted(true)
     setCompletedSections((prev) => ({ ...prev, [currentSection]: correct }))
-    setCumulativeScore((prev) => prev + correct)
     addXP(correct * 10)
 
     // Har bir mashq javobini saqlash
     saveExerciseAnswersToDB(lesson.id, currentSection, 'exercise', answerPayloads)
 
     if (isLastSection) {
-      const totalCorrect = cumulativeScore + correct + Object.values(completedSections).reduce((a, b) => a + b, 0)
+      const totalCorrect = Object.values(completedSections).reduce((a, b) => a + b, 0) + correct
       const total = lesson.exercises.length
       const totalPct = Math.round((totalCorrect / total) * 100)
       setLessonProgress(lesson.id, totalPct)

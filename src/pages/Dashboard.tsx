@@ -303,7 +303,7 @@ function TimeTracker() {
         <h2 className="font-bold text-gray-900 text-sm">Vaqt Tracker</h2>
         {pct >= 100
           ? <span className="badge badge-b1">Maqsad bajarildi 🎉</span>
-          : <span className="text-xs text-gray-400 font-mono">{remH}s {remM}d qoldi</span>
+          : <span className="text-xs text-gray-400 font-mono">{remH} soat {remM} daqiqa qoldi</span>
         }
       </div>
 

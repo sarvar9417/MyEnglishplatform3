@@ -653,7 +653,7 @@ export default function Grammar() {
     setPhase('result')
     addXP(correct * 10)
     updateSkillProgress('todayGrammarPct', Math.round((correct / topic.exercises.length) * 100))
-    // Save to Supabase
+    // Save to Supabase (fire-and-forget, errors logged in saveGrammarResult)
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user.id) {
         saveGrammarResult({
@@ -663,9 +663,9 @@ export default function Grammar() {
           correctCount: correct,
           total:        topic.exercises.length,
           xpEarned:     correct * 10,
-        })
+        }).catch((e) => console.error('saveGrammarResult failed:', e))
       }
-    })
+    }).catch((e) => console.error('getSession failed:', e))
     scrollTop()
   }
 

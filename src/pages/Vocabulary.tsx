@@ -330,7 +330,7 @@ export default function Vocabulary() {
 
   async function handleGameComplete(score: number, total: number) {
     addXP(score * 3)
-    addLearnedWords(score)
+    // addLearnedWords is handled per-word inside saveProgressToDB below
     updateSkillProgress('todayVocabPct', Math.round((score / total) * 100))
 
     // Update store for correct completion view
@@ -749,9 +749,10 @@ export default function Vocabulary() {
                 <button
                   key={batchNum}
                   onClick={() => selectBatch(batchNum)}
+                  disabled={batchWordsSlice.length === 0}
                   className={`card py-3 text-center transition-all ${
                     isCurrent ? 'ring-2 ring-b1-500 border-b1-500' : ''
-                  } ${batchWordsSlice.length === 0 ? 'opacity-40' : ''}`}
+                  } ${batchWordsSlice.length === 0 ? 'opacity-40 cursor-not-allowed' : ''}`}
                 >
                   <p className={`text-sm font-bold ${isCurrent ? 'text-b1-600' : 'text-gray-700'}`}>
                     {batchNum}
