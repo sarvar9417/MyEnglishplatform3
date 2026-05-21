@@ -17,6 +17,7 @@ export interface GameWord {
   wrong_count:   number
   is_new:       boolean
   example?:    string
+  phonetic?:   string
   last_rating?: string
 }
 

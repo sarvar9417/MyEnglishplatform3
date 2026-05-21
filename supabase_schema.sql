@@ -293,7 +293,7 @@ create index idx_sessions_user_date on public.vocabulary_sessions (user_id, sess
 drop function if exists public.get_daily_words(uuid, int);
 create or replace function public.get_daily_words(
   user_uuid uuid,
-  new_count int default 70
+  new_count int default 100
 )
 returns table (
   word_id      bigint,

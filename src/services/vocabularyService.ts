@@ -15,6 +15,7 @@ export interface DailyWordRow {
   wrong_count:   number
   is_new:       boolean
   example?:    string
+  phonetic?:   string
   last_rating?: string
 }
 
@@ -55,20 +56,6 @@ export function computeNextReview(
   return { box: newBox, next_review: addDaysTashkent(intervalDays), is_learned: isLearned }
 }
 
-export async function fetchDailyWords(
-  userId: string,
-  newCount: number = 70
-): Promise<DailyWordRow[]> {
-  const { data, error } = await supabase
-    .rpc('get_daily_words', { user_uuid: userId, new_count: newCount })
-
-  if (error) {
-    console.error('fetchDailyWords error:', error)
-    return []
-  }
-  return (data ?? []) as DailyWordRow[]
-}
-
 export async function upsertProgress(
   userId: string,
   wordId: number,
@@ -100,15 +87,24 @@ export async function saveSession(
   timeSpent: number,
   sessionDate?: string
 ) {
+  // Avvalgi sessiyani o'chirish (dublikat oldini olish)
+  const dateToUse = sessionDate ?? new Date().toISOString().split('T')[0]
+  await supabase
+    .from('vocabulary_sessions')
+    .delete()
+    .eq('user_id', userId)
+    .eq('session_date', dateToUse)
+    .eq('batch_number', batchNumber)
+
   const payload: Record<string, unknown> = {
     user_id: userId,
+    session_date: dateToUse,
     batch_number: batchNumber,
     words_json: wordsJson,
     score,
     time_spent: timeSpent,
     completed: true,
   }
-  if (sessionDate) payload.session_date = sessionDate
 
   const { error } = await supabase.from('vocabulary_sessions').insert(payload as never)
 

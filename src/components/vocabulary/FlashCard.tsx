@@ -50,6 +50,9 @@ export default function FlashCard({
             {word.level}
           </span>
           <p className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-2">{word.english}</p>
+          {word.phonetic && (
+            <p className="text-sm text-gray-400 font-mono mb-2">/{word.phonetic}/</p>
+          )}
           {word.is_new && (
             <span className="text-[10px] font-semibold text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">
               Yangi
@@ -100,7 +103,10 @@ export default function FlashCard({
               </span>
             )}
           </div>
-          <p className="text-xl font-bold text-gray-900 mb-1">{word.english}</p>
+          <p className="text-xl font-bold text-gray-900 mb-0.5">{word.english}</p>
+          {word.phonetic && (
+            <p className="text-sm text-gray-400 font-mono mb-2">/{word.phonetic}/</p>
+          )}
           <div className="bg-white rounded-xl px-4 py-3 mt-2">
             <p className="text-base font-semibold text-b1-700">{word.uzbek}</p>
           </div>

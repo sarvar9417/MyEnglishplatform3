@@ -83,8 +83,6 @@ export default function Vocabulary() {
   const [rpcError, setRpcError] = useState<string | null>(null)
   const [ratingFlash, setRatingFlash] = useState<{ wordId: number; rating: Rating } | null>(null)
 
-  interface VP { word_id: number; box: number; next_review: string; correct_count: number; wrong_count: number; is_learned: boolean; last_rating?: string }
-
   function reloadMonthSessions(uid: string, year: number, month: number) {
     fetchMonthSessions(uid, year, month).then(setMonthSessions)
   }
@@ -104,82 +102,93 @@ export default function Vocabulary() {
       if (!uid) { setLoading(false); return }
       const tk = getTodayTashkent().split('-').map(Number)
       reloadMonthSessions(uid, tk[0], tk[1] - 1)
+      const today = getTodayTashkent()
 
-      // ── 1. Level counts (words per level) ──
+      // ── 1. Level counts (individual queries — reliable) ──
       const totalsMap = new Map<string, number>()
       for (const lvl of LEVEL_ORDER) {
-        const { count, error: ce } = await supabase
+        const { count } = await supabase
           .from('words')
           .select('*', { count: 'exact', head: true })
           .eq('level', lvl)
-        if (ce) console.error(`${lvl} count error:`, ce.message)
         totalsMap.set(lvl, count ?? 0)
       }
 
-      // ── 2. Get user's progress + words in DB order ──
-      const { data: myProgress, error: pe } = await supabase
-        .from('vocabulary_progress')
-        .select('word_id, box, next_review, correct_count, wrong_count, is_learned, last_rating')
-        .eq('user_id', uid)
-      if (pe) {
-        console.error('vocabulary_progress error:', pe.message)
-        setRpcError(`progress query error: ${pe.message}`)
-      }
-      const progressRows = (myProgress ?? []) as VP[]
-      const progressByWord = new Map(progressRows.map(p => [p.word_id, p]))
-
-      const today = getTodayTashkent()
-      const ALL_LIMIT = 5000
-      const { data: allWords, error: we } = await supabase
+      // ── 2. Faqat bugungi kun oralig'idagi so'zlar ──
+      const { data: dailyWordRows, error: we } = await supabase
         .from('words')
         .select('*')
         .order('id', { ascending: true })
-        .limit(ALL_LIMIT)
+        .range(wordOff, wordOff + WORDS_PER_DAY - 1)
       if (we) setRpcError(`words query error: ${we.message}`)
 
-      // ── 3. Bugungi yangi so'zlar va takrorlash so'zlarini ajratish ──
-      const todayWords: DailyWordRow[] = []
-      const reviewDueWords: DailyWordRow[] = []
-      const learnedCountsMap: Record<string, number> = {}
-      const wordList = allWords ?? []
-      for (let i = 0; i < wordList.length; i++) {
-        const w = wordList[i]
+      // ── 3. Shu so'zlar uchun progress ──
+      const dailyIds = (dailyWordRows ?? []).map(w => w.id)
+      const { data: dailyProgress } = dailyIds.length > 0
+        ? await supabase
+            .from('vocabulary_progress')
+            .select('word_id, box, next_review, correct_count, wrong_count, is_learned, last_rating')
+            .eq('user_id', uid)
+            .in('word_id', dailyIds)
+        : { data: [] }
+      const progressByWord = new Map((dailyProgress ?? []).map(p => [p.word_id, p]))
+
+      // ── 4. Takrorlash so'zlari (muddati kelgan, bugungidan tashqari) ──
+      const { data: reviewProgress } = await supabase
+        .from('vocabulary_progress')
+        .select('word_id, box, next_review, correct_count, wrong_count, is_learned, last_rating')
+        .eq('user_id', uid)
+        .lte('next_review', today)
+        .eq('is_learned', false)
+
+      const reviewCandidates = (reviewProgress ?? []).filter(r => !dailyIds.includes(r.word_id))
+      const reviewIds = reviewCandidates.map(r => r.word_id)
+      const { data: reviewWordRows } = reviewIds.length > 0
+        ? await supabase.from('words').select('id, english, uzbek, level, example, phonetic').in('id', reviewIds)
+        : { data: [] }
+      const reviewWordsMap = new Map((reviewWordRows ?? []).map(w => [w.id, w]))
+
+      // ── 5. DailyWordRow build ──
+      const todayWords: DailyWordRow[] = (dailyWordRows ?? []).map(w => {
         const prog = progressByWord.get(w.id)
-        const inToday = i >= wordOff && i < wordOff + WORDS_PER_DAY
-        if (!prog) {
-          if (!inToday) continue
-          todayWords.push({
-            word_id: w.id, english: w.english, uzbek: w.uzbek,
-            level: w.level, box: 1, next_review: today,
-            correct_count: 0, wrong_count: 0,
-            is_new: true, is_learned: false, example: w.example ?? '',
-            last_rating: undefined,
-          })
-        } else {
-          if (prog.is_learned) {
-            learnedCountsMap[w.level] = (learnedCountsMap[w.level] || 0) + 1
-          }
-          const row: DailyWordRow = {
+        return {
+          word_id: w.id, english: w.english, uzbek: w.uzbek,
+          level: w.level, box: prog?.box ?? 1, next_review: prog?.next_review ?? today,
+          correct_count: prog?.correct_count ?? 0, wrong_count: prog?.wrong_count ?? 0,
+          is_new: !prog, is_learned: prog?.is_learned ?? false, example: w.example ?? '',
+          phonetic: w.phonetic ?? '',
+          last_rating: prog?.last_rating,
+        }
+      })
+
+      const reviewDueWords: DailyWordRow[] = reviewCandidates
+        .map(prog => {
+          const w = reviewWordsMap.get(prog.word_id)
+          if (!w) return null
+          return {
             word_id: w.id, english: w.english, uzbek: w.uzbek,
             level: w.level, box: prog.box, next_review: prog.next_review,
             correct_count: prog.correct_count, wrong_count: prog.wrong_count,
             is_new: false, is_learned: prog.is_learned, example: w.example ?? '',
+            phonetic: w.phonetic ?? '',
             last_rating: prog.last_rating,
-          }
-          if (inToday) {
-            todayWords.push(row)
-          } else if (prog.next_review <= today) {
-            // Oldingi kunlardan: takrorlash vaqti kelgan so'zlar
-            reviewDueWords.push(row)
-          }
-        }
-      }
+          } as DailyWordRow
+        })
+        .filter((r): r is DailyWordRow => r !== null)
+        .sort((a, b) => a.next_review.localeCompare(b.next_review) || a.box - b.box)
 
-      const learned = LEVEL_ORDER.map(lvl => ({ level: lvl, learned: learnedCountsMap[lvl] || 0 }))
+      // ── 6. Learned counts ──
+      const { data: learnedData } = await supabase.rpc('get_learned_counts_by_level', { user_uuid: uid })
+      const learnedArr: [string, number][] = (learnedData ?? []).map((l: any) => [l.level, l.learned])
+      const learnedCountsMap = new Map<string, number>(learnedArr)
+      const totalFromDb = Array.from(learnedCountsMap.values()).reduce((a, b) => a + b, 0)
+
       setDailyWords(todayWords)
       setReviewWords(reviewDueWords)
       setLevelCounts(totalsMap)
-      setLearnedCounts(new Map(learned.map((l) => [l.level, l.learned])))
+      setLearnedCounts(learnedCountsMap)
+      // totalWordsLearned ni DB bilan sinxronlash
+      useStore.setState({ totalWordsLearned: totalFromDb })
       setSessionStart(Date.now())
     } catch (e) {
       console.error('loadDailyData xatosi:', e)
@@ -199,7 +208,8 @@ export default function Vocabulary() {
   }, [levelCounts, learnedCounts])
 
   const totalLearned = Array.from(learnedCounts.values()).reduce((a, b) => a + b, 0)
-  const dueCount = dailyWords.filter((w) => !w.is_new && !w.is_learned && w.next_review <= todayStr).length
+  const dueTodayCount = dailyWords.filter((w) => !w.is_new && !w.is_learned && w.next_review <= todayStr).length
+  const dueCount = dueTodayCount + reviewWords.length
 
   const currentWord = batchWords[currentIdx]
 
@@ -288,6 +298,7 @@ export default function Vocabulary() {
 
   async function saveBatchSession(uid: string) {
     const batch = currentBatch
+    if (batch <= 0 || batch > 4) return
     const allWords = dailyWords.slice((batch - 1) * BATCH_SIZE, batch * BATCH_SIZE)
     const wordsJson: Record<string, Rating> = {}
     allWords.forEach((w) => {
@@ -328,7 +339,6 @@ export default function Vocabulary() {
 
   async function handleGameComplete(score: number, total: number) {
     addXP(score * 3)
-    addLearnedWords(score)
     updateSkillProgress('todayVocabPct', Math.round((score / total) * 100))
 
     // Update store for correct completion view

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { CheckCircle, XCircle, ArrowRight, RotateCcw, X, Loader2 } from 'lucide-react'
 import { supabase } from '../../db/supabase'
 import { checkVocabAnswer } from '../../lib/claude'
+import { getTodayTashkent } from '../../utils/tashkentDate'
 
 type Level = 'A1' | 'A2' | 'B1' | 'B2'
 type Phase = 'level-select' | 'playing' | 'result'
@@ -50,6 +51,41 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
   const inputRef = useRef<HTMLInputElement>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pendingRef = useRef<{ results: QuizResult[]; nextIdx: number; finished: boolean } | null>(null)
+  const savedRef = useRef(false)
+
+  // O'yin natijalarini vocabulary_progress ga saqlash
+  useEffect(() => {
+    if (phase !== 'result' || savedRef.current || results.length === 0) return
+    savedRef.current = true
+
+    const saveResults = async () => {
+      const { data: { session } } = await supabase.auth.getSession()
+      const uid = session?.user?.id
+      if (!uid) return
+
+      const today = getTodayTashkent()
+      for (const r of results) {
+        const box = r.correct ? 2 : 1
+        const intervalDays = [1, 3, 7, 14, 30, 90][box - 1]
+        const d = new Date(today + 'T00:00:00Z')
+        d.setUTCDate(d.getUTCDate() + intervalDays)
+        const nextReview = d.toISOString().split('T')[0]
+
+        await supabase.from('vocabulary_progress').upsert({
+          user_id: uid,
+          word_id: r.word.id,
+          box,
+          next_review: nextReview,
+          correct_count: r.correct ? 1 : 0,
+          wrong_count: r.correct ? 0 : 1,
+          is_learned: false,
+          last_rating: r.correct ? 'bildim' : 'bilmadim',
+          last_reviewed: new Date().toISOString(),
+        } as never, { onConflict: 'user_id,word_id' })
+      }
+    }
+    saveResults()
+  }, [phase, results])
 
   useEffect(() => {
     if (phase === 'playing' && !locked) {
@@ -58,6 +94,7 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
   }, [phase, currentIdx, locked])
 
   async function startGame(level: Level) {
+    savedRef.current = false
     setLoading(true)
     setSelectedLevel(level)
 
