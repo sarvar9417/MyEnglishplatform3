@@ -25,6 +25,7 @@ export function normalize(s: string): string {
       /\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand)\b/g,
       m => numWords[m],
     )
+    .replace(/\b([2-9]0)\s+([1-9])\b/g, (_, t, o) => String(Number(t) + Number(o))) // "twenty five" → "20 5" → "25"
     .replace(/\s+/g, ' ')
     .trim()
 }
