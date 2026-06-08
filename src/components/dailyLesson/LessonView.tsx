@@ -379,14 +379,6 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
           context = ex.instruction
           correctStr = ex.rows.map(r => `${r.adj}: comp=${r.comp}, sup=${r.sup}`).join('; ')
           userAnsStr = ex.rows.map((r, idx) => `${r.adj}: comp=${userAns[idx * 2] || '—'}, sup=${userAns[idx * 2 + 1] || '—'}`).join('; ')
-        } else if (ex.type === 'ordering') {
-          context = ex.question
-          correctStr = ex.correctOrder.map(i => ex.words[i]).join(' ')
-          userAnsStr = (userAns[0]?.split('||').map(i => ex.words[parseInt(i)]).join(' ')) ?? ''
-        } else if (ex.type === 'dialogue-choice') {
-          context = ex.question
-          correctStr = ex.correct
-          userAnsStr = userAns[0] ?? ''
         } else {
           context = ex.type === 'vocab-match' ? ex.word : ex.question
           correctStr = ex.correct
@@ -924,15 +916,12 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
                             const parts = ex.rows.map((r, idx) => `${r.adj}: C=${userAnsArr[idx * 2] ?? '—'} S=${userAnsArr[idx * 2 + 1] ?? '—'}`)
                             userAnsStr = parts.join('; ')
                             correctStr = ex.rows.map((r) => `${r.adj}: C=${r.comp || '—'} S=${r.sup || '—'}`).join('; ')
-                          } else if (ex.type === 'ordering') {
-                            userAnsStr = (userAnsArr[0]?.split('||').map(i => ex.words[parseInt(i)]).join(' ')) || "(bo'sh)"
-                            correctStr = ex.correctOrder.map(i => ex.words[i]).join(' ')
                           } else { userAnsStr = userAnsArr[0] || "(bo'sh)"; correctStr = ex.correct }
                           return (
                             <tr key={ex.id} className={`border-b border-gray-50 dark:border-gray-800 ${ok ? 'bg-green-50/40 dark:bg-green-900/20' : 'bg-red-50/40 dark:bg-red-900/20'}`}>
                               <td className="py-2.5 pr-2 text-xs font-bold text-gray-600">{i + 1}</td>
                               <td className="py-2.5 pr-3"><p className="text-xs text-gray-800 font-medium leading-snug line-clamp-2">
-                                {ex.type === 'fill-blank' ? ex.question.replace(/_{3,}/g, '___') : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.type === 'ordering' ? ex.question : ex.question}
+                                {ex.type === 'fill-blank' ? ex.question.replace(/_{3,}/g, '___') : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.question}
                               </p></td>
                               <td className="py-2.5 pr-3"><span className={`inline-block text-xs font-mono font-semibold px-1.5 py-0.5 rounded max-w-[400px] ${ok ? 'text-green-700' : 'bg-red-100 text-red-700'}`}>{userAnsStr}</span></td>
                               <td className="py-2.5 pr-3"><span className="inline-block text-xs font-mono font-semibold text-green-700 bg-green-100 px-1.5 py-0.5 rounded max-w-[400px]">{correctStr}</span></td>

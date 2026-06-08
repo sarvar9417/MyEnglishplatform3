@@ -60,11 +60,6 @@ export function checkAnswer(ex: DailyExercise, userAns: string[]): boolean {
     }
     case 'vocab-match':
       return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
-    case 'ordering':
-      if (!userAns[0]) return false
-      return userAns[0].split('||').every((idx, pos) => parseInt(idx) === ex.correctOrder[pos])
-    case 'dialogue-choice':
-      return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
   }
 }
 

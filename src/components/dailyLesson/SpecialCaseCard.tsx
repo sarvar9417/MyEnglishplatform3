@@ -161,7 +161,7 @@ export default function SpecialCaseCard({ sc, addXP, lessonId }: { sc: SpecialCa
                   {!ok && (
                     <div className="flex flex-wrap gap-3 mt-1">
                       <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{answers.length > 0 ? answers.join(' / ') : "(bo'sh)"}</span></p>
-                      <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{ex.type === 'fill-blank' ? ex.blanks.join(' / ') : ex.type === 'ordering' ? ex.correctOrder.map(i => ex.words[i]).join(' ') : (ex.type !== 'fill-table' ? ex.correct : '')}</span></p>
+                      <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{ex.type === 'fill-blank' ? ex.blanks.join(' / ') : (ex.type !== 'fill-table' ? ex.correct : '')}</span></p>
                     </div>
                   )}
                   {!ok && <p className="text-gray-600 dark:text-gray-400 mt-1">💡 {ex.explanation}</p>}
