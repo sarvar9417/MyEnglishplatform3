@@ -718,6 +718,19 @@ export const family: DailyLesson = {
     { title: "O'rtacha", desc: "Possessives", color: 'bg-blue-500', icon: '📘', ids: [46, 47, 48, 49, 410] },
     { title: "Qiyin", desc: "Gaplar va oila munosabatlari", color: 'bg-violet-500', icon: '🎯', ids: [411, 412, 413, 414, 415] },
   ],
+  reading: {
+    passage: "My name is Aziza. I live in Tashkent with my family. I have a mother, a father, and two brothers. My mother is a doctor. My father is a teacher. My brothers are students. We have a big family. My grandmother lives with us too. She is 70 years old. I love my family very much!",
+    vocabulary: [
+      { word: 'family', definition: 'oila' },
+      { word: 'mother', definition: 'ona' },
+      { word: 'grandmother', definition: 'buvi' },
+    ],
+    questions: [
+      { id: 1010, type: 'multiple-choice', question: 'Where does Aziza live?', options: ['Samarkand', 'Tashkent', 'Bukhara', 'Fergana'], correctIndex: 1, explanation: 'She lives in Tashkent.' },
+      { id: 1011, type: 'multiple-choice', question: 'How many brothers does Aziza have?', options: ['One', 'Two', 'Three', 'Four'], correctIndex: 1, explanation: 'She has two brothers.' },
+      { id: 1012, type: 'multiple-choice', question: 'How old is her grandmother?', options: ['60', '65', '70', '75'], correctIndex: 2, explanation: 'She is 70 years old.' },
+    ],
+  },
 }
 
 export const daysAndMonths: DailyLesson = {
@@ -874,6 +887,19 @@ export const daysAndMonths: DailyLesson = {
     { title: "O'rtacha", desc: "Fasllar va was/were", color: 'bg-blue-500', icon: '📘', ids: [56, 57, 58, 59, 510] },
     { title: "Qiyin", desc: "Murakkab savollar", color: 'bg-violet-500', icon: '🎯', ids: [511, 512, 513, 514, 515] },
   ],
+  reading: {
+    passage: "My name is Rustam. I am from Samarkand, Uzbekistan. I go to school from Monday to Friday. I do not go to school on Saturday and Sunday. My favorite day is Friday. In summer, I visit my grandparents in the village. My birthday is in May. I love spring because flowers bloom.",
+    vocabulary: [
+      { word: 'Monday', definition: 'dushanba' },
+      { word: 'summer', definition: 'yoz' },
+      { word: 'spring', definition: 'bahor' },
+    ],
+    questions: [
+      { id: 1013, type: 'multiple-choice', question: 'How many days does Rustam go to school?', options: ['Five', 'Six', 'Seven', 'Four'], correctIndex: 0, explanation: 'He goes to school from Monday to Friday — five days.' },
+      { id: 1014, type: 'multiple-choice', question: 'Where does Rustam go in summer?', options: ['To the city', 'To the village', 'To the mountains', 'To the beach'], correctIndex: 1, explanation: 'He visits his grandparents in the village in summer.' },
+      { id: 1015, type: 'multiple-choice', question: 'In which season is Rustam\'s birthday?', options: ['Summer', 'Winter', 'Spring', 'Autumn'], correctIndex: 2, explanation: 'His birthday is in May. May is in spring.' },
+    ],
+  },
 }
 
 export const timeAndRoutines: DailyLesson = {
@@ -1026,6 +1052,19 @@ export const timeAndRoutines: DailyLesson = {
     { title: "O'rtacha", desc: "3-shaxs va AM/PM", color: 'bg-blue-500', icon: '📘', ids: [66, 67, 68, 69, 610] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [611, 612, 613, 614, 615] },
   ],
+  reading: {
+    passage: "My name is Jamshid. I wake up at 6 AM every day. I brush my teeth and wash my face. Then I have breakfast at 7 AM. I go to school at 8 AM. I come home at 4 PM. I have dinner at 7 PM. I do my homework at 8 PM. I go to bed at 10 PM. I have a busy day!",
+    vocabulary: [
+      { word: 'wake up', definition: "uyg'onmoq" },
+      { word: 'breakfast', definition: 'nonushta' },
+      { word: 'homework', definition: 'uy vazifasi' },
+    ],
+    questions: [
+      { id: 1016, type: 'multiple-choice', question: 'What time does Jamshid wake up?', options: ['5 AM', '6 AM', '7 AM', '8 AM'], correctIndex: 1, explanation: 'He wakes up at 6 AM.' },
+      { id: 1017, type: 'multiple-choice', question: 'What does Jamshid do at 8 PM?', options: ['Has dinner', 'Goes to bed', 'Does his homework', 'Comes home'], correctIndex: 2, explanation: 'He does his homework at 8 PM.' },
+      { id: 1018, type: 'multiple-choice', question: 'What time does Jamshid go to bed?', options: ['9 PM', '10 PM', '11 PM', '8 PM'], correctIndex: 1, explanation: 'He goes to bed at 10 PM.' },
+    ],
+  },
 }
 
 export const foodAndDrinks: DailyLesson = {
@@ -1175,6 +1214,19 @@ export const foodAndDrinks: DailyLesson = {
     { title: "O'rtacha", desc: "There is/are, a glass of", color: 'bg-blue-500', icon: '📘', ids: [76, 77, 78, 79, 710] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [711, 712, 713, 714, 715] },
   ],
+  reading: {
+    passage: "My name is Malika. I live in Tashkent. I like food! For breakfast, I eat eggs and bread. I drink a glass of milk. For lunch, I eat rice with meat. For dinner, I eat soup. I like apples and bananas. I do not like coffee. I drink tea every day. It is delicious!",
+    vocabulary: [
+      { word: 'breakfast', definition: 'nonushta' },
+      { word: 'lunch', definition: 'tushlik' },
+      { word: 'dinner', definition: 'kechki ovqat' },
+    ],
+    questions: [
+      { id: 1019, type: 'multiple-choice', question: 'What does Malika eat for breakfast?', options: ['Rice and meat', 'Eggs and bread', 'Soup', 'Apples'], correctIndex: 1, explanation: 'She eats eggs and bread for breakfast.' },
+      { id: 1020, type: 'multiple-choice', question: 'What does Malika drink every day?', options: ['Coffee', 'Juice', 'Tea', 'Water'], correctIndex: 2, explanation: 'She drinks tea every day.' },
+      { id: 1021, type: 'multiple-choice', question: 'What fruit does Malika like?', options: ['Oranges', 'Apples and bananas', 'Grapes', 'Pears'], correctIndex: 1, explanation: 'She likes apples and bananas.' },
+    ],
+  },
 }
 
 export const animals: DailyLesson = {
@@ -1321,6 +1373,19 @@ export const animals: DailyLesson = {
     { title: "O'rtacha", desc: "It/they va 3-shaxs fe'llar", color: 'bg-blue-500', icon: '📘', ids: [86, 87, 88, 89, 810] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [811, 812, 813, 814, 815] },
   ],
+  reading: {
+    passage: "My name is Bobur. I love animals! I have a cat and a dog. My cat is black. Its name is Masha. My dog is brown. Its name is Rex. I also have two fish in my room. My grandparents live in the country. They have a cow, a horse, and five sheep. I like to visit them.",
+    vocabulary: [
+      { word: 'cat', definition: 'mushuk' },
+      { word: 'dog', definition: 'it' },
+      { word: 'sheep', definition: "qo'y" },
+    ],
+    questions: [
+      { id: 1022, type: 'multiple-choice', question: 'How many pets does Bobur have?', options: ['Two', 'Three', 'Four', 'Five'], correctIndex: 2, explanation: 'He has a cat, a dog, and two fish — four pets.' },
+      { id: 1023, type: 'multiple-choice', question: 'What color is Bobur\'s cat?', options: ['Brown', 'Black', 'White', 'Gray'], correctIndex: 1, explanation: 'His cat is black.' },
+      { id: 1024, type: 'multiple-choice', question: 'What animals do his grandparents have?', options: ['Cats and dogs', 'Fish and birds', 'A cow, a horse, and sheep', 'Lions and tigers'], correctIndex: 2, explanation: 'They have a cow, a horse, and five sheep.' },
+    ],
+  },
 }
 
 export const bodyParts: DailyLesson = {
@@ -1472,6 +1537,19 @@ export const bodyParts: DailyLesson = {
     { title: "O'rtacha", desc: "Have/has va ache", color: 'bg-blue-500', icon: '📘', ids: [96, 97, 98, 99, 910] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [911, 912, 913, 914, 915] },
   ],
+  reading: {
+    passage: "My name is Dilnoza. I am 12 years old. I have a body! I have two eyes, two ears, one nose, and one mouth. I have ten fingers and ten toes. I have two hands and two feet. I brush my teeth every day. I have 24 teeth. My hair is long and black. I am healthy!",
+    vocabulary: [
+      { word: 'eyes', definition: "ko'zlar" },
+      { word: 'teeth', definition: 'tishlar' },
+      { word: 'fingers', definition: 'barmoqlar' },
+    ],
+    questions: [
+      { id: 1025, type: 'multiple-choice', question: 'How many teeth does Dilnoza have?', options: ['20', '24', '28', '32'], correctIndex: 1, explanation: 'She has 24 teeth.' },
+      { id: 1026, type: 'multiple-choice', question: 'How many fingers does Dilnoza have?', options: ['Eight', 'Ten', 'Twelve', 'Five'], correctIndex: 1, explanation: 'She has ten fingers.' },
+      { id: 1027, type: 'multiple-choice', question: 'What color is Dilnoza\'s hair?', options: ['Brown', 'Black', 'Blonde', 'Red'], correctIndex: 1, explanation: 'Her hair is long and black.' },
+    ],
+  },
 }
 
 export const clothes: DailyLesson = {
@@ -1620,4 +1698,17 @@ export const clothes: DailyLesson = {
     { title: "O'rtacha", desc: "Wear/wears", color: 'bg-blue-500', icon: '📘', ids: [106, 107, 108, 109, 1010] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1011, 1012, 1013, 1014, 1015] },
   ],
+  reading: {
+    passage: "My name is Akmal. I am from Tashkent. I wear a shirt and pants to school. My shirt is white and my pants are black. On my feet, I wear black shoes. In winter, I wear a coat, a scarf, and gloves. In summer, I wear a T-shirt and shorts. I also wear a cap on sunny days.",
+    vocabulary: [
+      { word: 'shirt', definition: "ko'ylak" },
+      { word: 'pants', definition: 'shim' },
+      { word: 'scarf', definition: 'sharf' },
+    ],
+    questions: [
+      { id: 1028, type: 'multiple-choice', question: 'What color is Akmal\'s shirt?', options: ['Black', 'Blue', 'White', 'Red'], correctIndex: 2, explanation: 'His shirt is white.' },
+      { id: 1029, type: 'multiple-choice', question: 'What does Akmal wear in winter?', options: ['A T-shirt and shorts', 'A coat, scarf, and gloves', 'A shirt and pants', 'Sandals'], correctIndex: 1, explanation: 'In winter, he wears a coat, a scarf, and gloves.' },
+      { id: 1030, type: 'multiple-choice', question: 'What does Akmal wear on his head on sunny days?', options: ['A hat', 'A cap', 'A scarf', 'Nothing'], correctIndex: 1, explanation: 'He wears a cap on sunny days.' },
+    ],
+  },
 }
