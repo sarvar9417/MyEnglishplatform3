@@ -37,6 +37,9 @@ export function useSpeechRecognition(): SpeechRecognitionState {
   const [transcript, setTranscript] = useState('')
   const [interim, setInterim] = useState('')
   const recRef = useRef<InstanceType<SrCtor> | null>(null)
+  // Final va interim natijalarni ref'da saqlaymiz — stop()/onend paytida ishlatish uchun
+  const transcriptRef = useRef('')
+  const interimRef = useRef('')
 
   useEffect(() => {
     const Ctor = window.SpeechRecognition ?? window.webkitSpeechRecognition
@@ -44,21 +47,24 @@ export function useSpeechRecognition(): SpeechRecognitionState {
   }, [])
 
   useEffect(() => {
-    return () => { recRef.current?.abort() }
+    return () => { try { recRef.current?.abort() } catch { /* noop */ } }
   }, [])
-
-  const isMobile = typeof window !== 'undefined' && 'ontouchstart' in window
 
   const start = useCallback(() => {
     const Ctor = window.SpeechRecognition ?? window.webkitSpeechRecognition
     if (!Ctor) return
 
-    // Abort previous instance to prevent duplicate recognitions
-    recRef.current?.abort()
+    // Avvalgi instansiyani to'xtatamiz (dublikat tanishni oldini olish)
+    try { recRef.current?.abort() } catch { /* noop */ }
+
+    transcriptRef.current = ''
+    interimRef.current = ''
 
     const rec = new Ctor()
     rec.lang = 'en-US'
-    rec.continuous = !isMobile
+    // continuous=true HAMMA qurilmada: foydalanuvchi STOP bosgunicha tinglaydi.
+    // (Mobil non-continuous rejimda pauzada o'z-o'zidan tugab, stop'ni buzar edi.)
+    rec.continuous = true
     rec.interimResults = true
 
     rec.onresult = (e: SrEvent) => {
@@ -69,11 +75,17 @@ export function useSpeechRecognition(): SpeechRecognitionState {
         if (r.isFinal) final += r[0].transcript + ' '
         else inter = r[0].transcript
       }
-      setTranscript(final)
+      if (final) { transcriptRef.current = final; setTranscript(final) }
+      interimRef.current = inter
       setInterim(inter)
     }
 
     rec.onend = () => {
+      // Mobil: final kelmasdan onend bo'lishi mumkin → interim'ni natija sifatida olamiz
+      if (!transcriptRef.current.trim() && interimRef.current.trim()) {
+        transcriptRef.current = interimRef.current.trim()
+        setTranscript(interimRef.current.trim())
+      }
       setInterim('')
       setIsRecording(false)
     }
@@ -83,18 +95,27 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     }
 
     recRef.current = rec
-    rec.start()
+    try { rec.start() } catch { /* noop */ }
     setIsRecording(true)
   }, [])
 
   const stop = useCallback(() => {
-    try { recRef.current?.stop() } catch {}
-    setIsRecording(false)
+    // Final hali kelmagan bo'lsa, interim'ni natija sifatida olamiz (mobil ishonchliligi)
+    if (!transcriptRef.current.trim() && interimRef.current.trim()) {
+      transcriptRef.current = interimRef.current.trim()
+      setTranscript(interimRef.current.trim())
+    }
+    // Mobil Chrome'da stop() onend'ni ishonchli ishga tushirmaydi — shuning uchun
+    // holatni darhol o'zimiz yangilaymiz (UI darrov javob beradi, natija yuboriladi).
+    try { recRef.current?.stop() } catch { /* noop */ }
     setInterim('')
+    setIsRecording(false)
   }, [])
 
   const reset = useCallback(() => {
-    recRef.current?.abort()
+    try { recRef.current?.abort() } catch { /* noop */ }
+    transcriptRef.current = ''
+    interimRef.current = ''
     setTranscript('')
     setInterim('')
     setIsRecording(false)
