@@ -2,11 +2,29 @@
 // Reja: docs/speaking-path-roadmap.md (Faza 3)
 // STT transcript yoki yozilgan matnni maqsad jumla bilan solishtiradi.
 
-/** Kichik harf, tinish belgilarsiz, bo'shliqlar normallashtirilgan */
+const numWords: Record<string, string> = {
+  zero: '0', one: '1', two: '2', three: '3', four: '4',
+  five: '5', six: '6', seven: '7', eight: '8', nine: '9',
+  ten: '10', eleven: '11', twelve: '12',
+  thirteen: '13', fourteen: '14', fifteen: '15', sixteen: '16',
+  seventeen: '17', eighteen: '18', nineteen: '19',
+  twenty: '20', thirty: '30', forty: '40', fifty: '50',
+  sixty: '60', seventy: '70', eighty: '80', ninety: '90',
+  hundred: '100', thousand: '1000',
+}
+
+/** Kichik harf, tinish belgilarsiz, raqam/so'z va vaqt normalizatsiyasi */
 export function normalize(s: string): string {
   return s
     .toLowerCase()
     .replace(/[.,!?;:'"()…—-]/g, ' ')
+    .replace(/(\d+):(\d+)/g, '$1 $2')
+    .replace(/\b(\d+)\s+00\b/g, '$1')
+    .replace(/\bo\s*clock\b/g, '')
+    .replace(
+      /\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand)\b/g,
+      m => numWords[m],
+    )
     .replace(/\s+/g, ' ')
     .trim()
 }

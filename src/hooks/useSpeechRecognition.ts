@@ -47,6 +47,8 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     return () => { recRef.current?.abort() }
   }, [])
 
+  const isMobile = typeof window !== 'undefined' && 'ontouchstart' in window
+
   const start = useCallback(() => {
     const Ctor = window.SpeechRecognition ?? window.webkitSpeechRecognition
     if (!Ctor) return
@@ -56,7 +58,7 @@ export function useSpeechRecognition(): SpeechRecognitionState {
 
     const rec = new Ctor()
     rec.lang = 'en-US'
-    rec.continuous = true
+    rec.continuous = !isMobile
     rec.interimResults = true
 
     rec.onresult = (e: SrEvent) => {
@@ -86,7 +88,7 @@ export function useSpeechRecognition(): SpeechRecognitionState {
   }, [])
 
   const stop = useCallback(() => {
-    recRef.current?.stop()
+    try { recRef.current?.stop() } catch {}
     setIsRecording(false)
     setInterim('')
   }, [])
