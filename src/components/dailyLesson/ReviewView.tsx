@@ -163,6 +163,8 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
         let context = '', correctStr = '', userAnsStr = ''
         if (ex.type === 'fill-blank') { context = ex.question; correctStr = ex.blanks.join(' / '); userAnsStr = userAns.join(' / ') }
         else if (ex.type === 'fill-table') { context = ex.instruction; correctStr = ex.rows.map(r => `${r.adj}: ${r.comp}/${r.sup}`).join('; '); userAnsStr = '' }
+        else if (ex.type === 'ordering') { context = ex.question; correctStr = ex.correctOrder.map(i => ex.words[i]).join(' '); userAnsStr = (userAns[0]?.split('||').map(i => ex.words[parseInt(i)]).join(' ')) ?? '' }
+        else if (ex.type === 'dialogue-choice') { context = ex.situation; correctStr = ex.correct; userAnsStr = userAns[0] ?? '' }
         else { context = ex.type === 'vocab-match' ? ex.word : ex.question; correctStr = ex.correct; userAnsStr = userAns[0] ?? '' }
         wrongItems.push({ id: ex.id, context, correct: correctStr, userAnswer: userAnsStr, type: ex.type })
       }
@@ -324,6 +326,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
           {wrongExercises.map((ex, i) => {
             const correctStr = ex.type === 'fill-blank' ? ex.blanks.join(' / ')
               : ex.type === 'fill-table' ? ex.rows.map(r => `${r.adj}: ${r.comp}/${r.sup}`).join('; ')
+              : ex.type === 'ordering' ? ex.correctOrder.map(i => ex.words[i]).join(' ')
               : ex.correct
             return (
               <div key={ex.id} className="rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4 animate-slide-up" style={{ animationDelay: `${i * 60}ms` }}>
@@ -331,7 +334,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
                   <span className="w-7 h-7 rounded-full bg-red-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-semibold text-gray-800 dark:text-gray-200 mb-1">
-                      {ex.type === 'fill-blank' ? ex.question : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.question}
+                      {ex.type === 'fill-blank' ? ex.question : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.type === 'ordering' ? ex.question : ex.question}
                     </p>
                     <p className="text-xs text-green-600 dark:text-green-400 font-semibold mt-1">
                       ✓ {correctStr}
@@ -653,6 +656,8 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
                     let userAnsStr: string, correctStr: string
                     if (ex.type === 'fill-blank') { userAnsStr = userAnsArr.join(' / ') || "(bo'sh)"; correctStr = ex.blanks.join(' / ') }
                     else if (ex.type === 'fill-table') { userAnsStr = '(jadval)'; correctStr = ex.rows.map(r => `${r.adj}: ${r.comp}/${r.sup}`).join('; ') }
+                    else if (ex.type === 'ordering') { userAnsStr = (userAnsArr[0]?.split('||').map(i => ex.words[parseInt(i)]).join(' ')) || "(bo'sh)"; correctStr = ex.correctOrder.map(i => ex.words[i]).join(' ') }
+                    else if (ex.type === 'dialogue-choice') { userAnsStr = userAnsArr[0] || "(bo'sh)"; correctStr = ex.correct }
                     else { userAnsStr = userAnsArr[0] || "(bo'sh)"; correctStr = ex.correct }
                     return (
                       <div key={ex.id} className={`rounded-xl border p-3 ${ok ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'}`}>
@@ -660,7 +665,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
                           <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 ${ok ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>{i + 1}</span>
                           <div className="flex-1 min-w-0">
                             <p className="text-xs text-gray-700 dark:text-gray-300 font-medium leading-snug">
-                              {ex.type === 'fill-blank' ? ex.question : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.question}
+                              {ex.type === 'fill-blank' ? ex.question : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.type === 'ordering' ? ex.question : ex.question}
                             </p>
                             {!ok && (
                               <div className="mt-1.5 space-y-0.5">

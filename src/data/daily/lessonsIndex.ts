@@ -121,8 +121,8 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 20,
-    "exercises": 25,
-    "tests": 15
+    "exercises": 26,
+    "tests": 8
   },
   {
     "id": "animals",

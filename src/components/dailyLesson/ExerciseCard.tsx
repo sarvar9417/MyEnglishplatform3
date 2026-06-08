@@ -211,6 +211,91 @@ export default function ExerciseCard({
         </div>
       )}
 
+      {ex.type === 'ordering' && (
+        <div>
+          <p className="text-[11px] font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mb-1">🔤 So'zlarni tartiblang</p>
+          {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
+          <p className="text-xs text-gray-600 dark:text-gray-400 mb-3 flex items-center gap-1">
+            <span className="text-cyan-500 font-bold">▼</span> {ex.context}
+          </p>
+          <div className="flex flex-wrap gap-2 mb-3">
+            {ex.words.map((word, i) => {
+              const selected = answers[0]?.split('||').includes(String(i)) || false
+              return (
+                <button key={i} disabled={submitted} onClick={() => {
+                  const current = answers[0] ? answers[0].split('||') : []
+                  if (selected) {
+                    const idx = current.indexOf(String(i))
+                    if (idx > -1) current.splice(idx, 1)
+                  } else {
+                    current.push(String(i))
+                  }
+                  onChange(0, current.join('||'))
+                }}
+                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all border ${
+                    selected
+                      ? 'bg-cyan-100 dark:bg-cyan-900/40 border-cyan-400 text-cyan-800 dark:text-cyan-300 ring-2 ring-cyan-300 dark:ring-cyan-600'
+                      : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-cyan-300'
+                  } ${submitted ? 'cursor-default' : 'cursor-pointer'}`}
+                >
+                  {word}
+                </button>
+              )
+            })}
+          </div>
+          {answers[0] && (
+            <div className="border border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-900/20 rounded-xl px-3 py-2 mb-3">
+              <p className="text-xs text-cyan-600 dark:text-cyan-400 font-medium mb-1">Sizning tartibingiz:</p>
+              <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                {answers[0].split('||').map(i => ex.words[parseInt(i)]).join(' ')}
+              </p>
+            </div>
+          )}
+          {submitted && feedbackBlock(ex, answers, isCorrect)}
+        </div>
+      )}
+
+      {ex.type === 'dialogue-choice' && (
+        <div>
+          <p className="text-[11px] font-bold text-pink-600 dark:text-pink-400 uppercase tracking-wider mb-1">💬 Dialogda to'g'ri javobni tanlang</p>
+          {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
+          <div className="bg-gradient-to-r from-pink-50 dark:from-pink-900/20 to-purple-50 dark:to-purple-900/20 border border-pink-200 dark:border-pink-800 rounded-xl px-4 py-3 mb-3">
+            <p className="text-xs text-pink-600 dark:text-pink-400 font-medium flex items-center gap-1 mb-1">
+              <span>🎭</span> Vaziyat
+            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{ex.situation}</p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 mb-3">
+            <p className="text-xs text-gray-500 dark:text-gray-400 font-medium mb-1">📖 Kontekst:</p>
+            <p className="text-sm text-gray-800 dark:text-gray-200 italic">"{ex.context}"</p>
+          </div>
+          <div className="grid grid-cols-1 gap-2">
+            {ex.options.map((opt, i) => {
+              const selected = answers[0] === opt
+              const correctOpt = opt === ex.correct
+              let cls = 'border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:border-pink-400 hover:bg-pink-50 dark:hover:bg-pink-900/30'
+              if (submitted) {
+                if (correctOpt) cls = 'border-green-400 bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300 font-bold'
+                else if (selected && !correctOpt) cls = 'border-red-400 bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300'
+                else cls = 'border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-400 dark:text-gray-500'
+              } else if (selected) {
+                cls = 'border-pink-500 bg-pink-100 dark:bg-pink-900/40 text-pink-800 dark:text-pink-300 font-semibold ring-2 ring-pink-300 dark:ring-pink-600 ring-offset-1'
+              }
+              return (
+                <button key={opt} disabled={submitted} onClick={() => onChange(0, opt)}
+                  className={`flex items-start gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-all ${cls}`}>
+                  <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5">
+                    {OPTION_LABELS[i]}
+                  </span>
+                  <span className="text-left">{opt}</span>
+                </button>
+              )
+            })}
+          </div>
+          {submitted && feedbackBlock(ex, answers, isCorrect)}
+        </div>
+      )}
+
       {ex.type === 'fill-table' && (
         <div>
           <p className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">📊 Jadvalni to'ldiring</p>
@@ -338,6 +423,31 @@ function submittedCheck(ex: DailyExercise, userAns: string[]): boolean {
     }
     case 'vocab-match':
       return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
+    case 'ordering':
+      if (!userAns[0]) return false
+      return userAns[0].split('||').every((idx, pos) => parseInt(idx) === ex.correctOrder[pos])
+    case 'dialogue-choice':
+      return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
+  }
+}
+
+function formatUserAnswer(ex: DailyExercise, answers: string[]): string {
+  switch (ex.type) {
+    case 'fill-blank': return answers.join(' / ') || "(bo'sh)"
+    case 'ordering': return (answers[0]?.split('||').map(i => (ex as any).words?.[parseInt(i)] ?? '').join(' ')) || "(bo'sh)"
+    default: return answers[0] || "(bo'sh)"
+  }
+}
+
+function formatCorrectAnswer(ex: DailyExercise): string {
+  switch (ex.type) {
+    case 'fill-blank': return ex.blanks.join(' / ')
+    case 'fill-table': return 'jadvalda ko\'rsatilgan'
+    case 'ordering': return (ex as any).words?.map((_: any, i: number) => {
+      const idx = (ex as any).correctOrder.indexOf(i)
+      return `${(ex as any).words[idx]}`
+    }).join(' ') || ex.explanation
+    default: return ex.correct
   }
 }
 
@@ -346,16 +456,8 @@ function feedbackBlock(ex: DailyExercise, answers: string[], isCorrect: boolean)
     <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
       {!isCorrect && (
         <>
-          <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{
-            ex.type === 'fill-blank'
-              ? (answers.join(' / ') || "(bo'sh)")
-              : (answers[0] || "(bo'sh)")
-          }</span></p>
-          <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{
-            ex.type === 'fill-blank' ? ex.blanks.join(' / ') :
-            ex.type === 'fill-table' ? 'jadvalda ko\'rsatilgan' :
-            ex.correct
-          }</span></p>
+          <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{formatUserAnswer(ex, answers)}</span></p>
+          <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{formatCorrectAnswer(ex)}</span></p>
         </>
       )}
       {isCorrect && <p className="font-semibold">✅ To'g'ri! +10 XP</p>}
