@@ -58,6 +58,8 @@ export function checkAnswer(ex: DailyExercise, userAns: string[]): boolean {
       const expected = ex.rows.flatMap((r) => [r.comp, r.sup])
       return expected.every((b, i) => normalizeAnswer(userAns[i] ?? '') === normalizeAnswer(b))
     }
+    case 'vocab-match':
+      return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
   }
 }
 

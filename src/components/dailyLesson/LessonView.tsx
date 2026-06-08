@@ -380,7 +380,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
           correctStr = ex.rows.map(r => `${r.adj}: comp=${r.comp}, sup=${r.sup}`).join('; ')
           userAnsStr = ex.rows.map((r, idx) => `${r.adj}: comp=${userAns[idx * 2] || '—'}, sup=${userAns[idx * 2 + 1] || '—'}`).join('; ')
         } else {
-          context = ex.question
+          context = ex.type === 'vocab-match' ? ex.word : ex.question
           correctStr = ex.correct
           userAnsStr = userAns[0] ?? ''
         }

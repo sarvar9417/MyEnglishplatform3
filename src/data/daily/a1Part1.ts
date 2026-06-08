@@ -1227,6 +1227,65 @@ export const foodAndDrinks: DailyLesson = {
       { id: 1021, type: 'multiple-choice', question: 'What fruit does Malika like?', options: ['Oranges', 'Apples and bananas', 'Grapes', 'Pears'], correctIndex: 1, explanation: 'She likes apples and bananas.' },
     ],
   },
+  dialogues: [
+    {
+      id: 'd-food-market',
+      title: "Bozorda — At the Market",
+      context: "Aziz and Malika are at the market. They want to buy food. (Aziz va Malika bozorda. Ular ovqat uchun mahsulot olmoqchi.)",
+      lines: [
+        { speaker: 'Aziz', text: "Hello! How much are these apples?", translation: "Assalomu alaykum! Bu olmalar qancha?" },
+        { speaker: 'Seller', text: "They are 10,000 som per kilogram.", translation: "Kilogrammi 10 000 so'm." },
+        { speaker: 'Malika', text: "Good. We want two kilograms, please.", translation: "Yaxshi. Ikki kilogramm bering, iltimos." },
+        { speaker: 'Seller', text: "Here you are. Anything else?", translation: "Mana. Yana nima kerak?" },
+        { speaker: 'Aziz', text: "Yes, do you have any bananas?", translation: "Ha, banan bormi?" },
+        { speaker: 'Seller', text: "Yes, I have some fresh bananas.", translation: "Ha, yangi bananlarim bor." },
+        { speaker: 'Malika', text: "How much is one kilogram?", translation: "Bir kilogrammi qancha?" },
+        { speaker: 'Seller', text: "15,000 som. Do you want some?", translation: "15 000 so'm. Istaysizmi?" },
+        { speaker: 'Aziz', text: "Yes, I want some. Here is 20,000 som.", translation: "Ha. Mana 20 000 so'm." },
+        { speaker: 'Seller', text: "Thank you! Here is 5,000 som change.", translation: "Rahmat! Mana 5 000 so'm qaytim." },
+      ],
+    },
+    {
+      id: 'd-food-cafe',
+      title: "Kafe'da — At the Café",
+      context: "Bobur and Laziza are at a café. They order food. (Bobur va Laziza kafeda. Ular ovqat buyurtma qilmoqda.)",
+      lines: [
+        { speaker: 'Waiter', text: "Good afternoon! What would you like?", translation: "Xayrli kun! Nima istaysiz?" },
+        { speaker: 'Bobur', text: "Hello! I would like some tea, please.", translation: "Assalomu alaykum! Bir piyola choy, iltimos." },
+        { speaker: 'Laziza', text: "And I would like a glass of juice.", translation: "Men esa bir stakan sharbat istayman." },
+        { speaker: 'Waiter', text: "We have apple juice and orange juice.", translation: "Olma va apelsin sharbatimiz bor." },
+        { speaker: 'Laziza', text: "Orange juice, please. Do you have any cake?", translation: "Apelsin sharbati, iltimos. Tort bormi?" },
+        { speaker: 'Waiter', text: "Yes, we have some chocolate cake.", translation: "Ha, shokoladli tortimiz bor." },
+        { speaker: 'Bobur', text: "Great! We want some bread with butter too.", translation: "Zo'r! Yana sariyog'li non istaymiz." },
+        { speaker: 'Waiter', text: "Excellent choice. I will bring it now.", translation: "Ajoyib tanlov. Hozir olib kelaman." },
+        { speaker: 'Bobur', text: "Thank you! How much is it?", translation: "Rahmat! Qancha bo'ldi?" },
+        { speaker: 'Waiter', text: "It is 75,000 som total.", translation: "Jami 75 000 so'm." },
+      ],
+    },
+  ],
+  culturalNotes: [
+    {
+      id: 'culture-non',
+      title: "Non — muqaddas taom",
+      description: "O'zbekistonda non muqaddas hisoblanadi. Nonni hech qachon tashlab yubormang (pastga tashlamang). Agar non yerga tushib ketsa, uni o'pib, peshonaga bosib qo'yishadi. Nonni ikki qo'l bilan sindirish odat. Non bilan bog'liq ko'plab urf-odatlar mavjud — masalan, mehmonga birinchi non uzatiladi.",
+      icon: "🍞",
+      category: "milliy taom",
+    },
+    {
+      id: 'culture-plov',
+      title: "Palov — o'zbek milliy taomi",
+      description: "Palov (osh) O'zbekistonning eng mashhur milliy taomidir. Palov guruch, sabzi, piyoz va go'shtdan tayyorlanadi. Palovni katta laganda (tovoqda) birga yeyishadi. Har bir viloyatning o'z palov retsepti bor. Palov odatda payshanba yoki yakshanba kuni tayyorlanadi. To'ylarda palov asosiy taom hisoblanadi.",
+      icon: "🍚",
+      category: "milliy taom",
+    },
+    {
+      id: 'culture-choyxona',
+      title: "Choyxona madaniyati",
+      description: "O'zbekistonda choy madaniyati juda rivojlangan. Choyxona (tea house) — bu nafaqat choy ichish joyi, balki do'stlar bilan uchrashish, gaplashish va dam olish joyi. Choy ko'k choy (green tea) va qora choy (black tea) bo'ladi. Mehmonga birinchi bo'lib choy uzatiladi. Piyolaning yarmidan kam quyiladi — 'to'kilib ketmasin' degan ma'noda.",
+      icon: "🫖",
+      category: "urf-odat",
+    },
+  ],
 }
 
 export const animals: DailyLesson = {
