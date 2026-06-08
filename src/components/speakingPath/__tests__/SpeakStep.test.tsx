@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import { render, screen, fireEvent, cleanup } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup, waitFor, act } from '@testing-library/react'
 
 const { mockGradeChunk } = vi.hoisted(() => ({ mockGradeChunk: vi.fn(() => Promise.resolve()) }))
 
@@ -68,7 +68,7 @@ describe('SpeakStep', () => {
     expect(onNext).not.toHaveBeenCalled()
   })
 
-  it('oxirgi chunk da "Yakunlash" onNext(avg) ni chaqiradi', () => {
+  it('oxirgi chunk da yakunlangach "Suhbatga o\'tish" onNext(avg) ni chaqiradi', async () => {
     const onNext = vi.fn()
     render(<SpeakStep day={makeDay()} userId="u1" onNext={onNext} />)
 
@@ -78,11 +78,17 @@ describe('SpeakStep', () => {
     fireEvent.click(screen.getByLabelText('Tekshirish'))
     fireEvent.click(screen.getByText(/Keyingi/))
 
-    // Chunk 2
+    // Chunk 2 — last chunk
     const input2 = screen.getByPlaceholderText(/yoki bu yerga yozing/)
     fireEvent.change(input2, { target: { value: 'Goodbye' } })
     fireEvent.click(screen.getByLabelText('Tekshirish'))
     fireEvent.click(screen.getByText(/Yakunlash/))
+
+    // Summary view should appear
+    await waitFor(() => expect(screen.getByText(/Mashq yakunlandi/)).toBeInTheDocument())
+
+    // Click "Suhbatga o'tish"
+    fireEvent.click(screen.getByText(/Suhbatga o'tish/))
 
     expect(onNext).toHaveBeenCalledTimes(1)
     expect(onNext.mock.calls[0][0]).toBeGreaterThanOrEqual(99)

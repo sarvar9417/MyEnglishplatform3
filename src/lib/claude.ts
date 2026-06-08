@@ -553,8 +553,27 @@ export async function startSpeakingChat(
   history: { role: 'user' | 'assistant'; content: string }[],
   onDelta: (token: string) => void,
   onDone:  (full: string)  => void,
-  onError: (err: Error)    => void
+  onError: (err: Error)    => void,
+  pronunciationFocus?: { sound: string; ipaExample: string; tipUz: string; tipEn: string; commonError?: string },
+  grammarTips?: string[]
 ): Promise<void> {
+  let pronunciationBlock = ''
+  if (pronunciationFocus) {
+    pronunciationBlock = `
+PRONUNCIATION FOCUS — Today's sound: /${pronunciationFocus.sound}/
+The student should practise this sound naturally. If they struggle, gently model it.
+Tip for the student: ${pronunciationFocus.tipEn}`
+  }
+
+  let grammarBlock = ''
+  if (grammarTips && grammarTips.length > 0) {
+    const tips = grammarTips.map((t, i) => `  ${i + 1}. ${t}`).join('\n')
+    grammarBlock = `
+GRAMMAR POINTS TO WEAVE INTO THIS CONVERSATION:
+${tips}
+Naturally model correct forms when the student uses them — do NOT explicitly teach or correct during the conversation.`
+  }
+
   const system = `You are a friendly English conversation partner for a ${level}-level learner.
 
 RULES:
@@ -563,7 +582,7 @@ RULES:
 3. Use ${level}-level English. Define any harder word immediately.
 4. End each turn with a natural follow-up question.
 5. Do NOT give scores or evaluations during conversation.
-6. Topic: ${topic}`
+6. Topic: ${topic}${pronunciationBlock}${grammarBlock}`
 
   const messages = history.length === 0
     ? [{ role: 'user' as const, content: `Let's talk about ${topic}. Start the conversation with a friendly greeting and a question to get me talking.` }]
@@ -575,8 +594,21 @@ RULES:
 /** Get overall feedback after a speaking chat session */
 export async function getSpeakingChatFeedback(
   level: string,
-  history: { role: 'user' | 'assistant'; content: string }[]
+  history: { role: 'user' | 'assistant'; content: string }[],
+  pronunciationFocus?: { sound: string; ipaExample: string; tipUz: string; tipEn: string; commonError?: string },
+  grammarTips?: string[]
 ): Promise<string> {
+  let focusBlock = ''
+  if (pronunciationFocus || (grammarTips && grammarTips.length > 0)) {
+    focusBlock = '\n\nADDITIONAL FOCUS AREAS FOR THIS SESSION — use these to give more targeted feedback:'
+    if (pronunciationFocus) {
+      focusBlock += `\n🔊 Talaffuz fokusi: /${pronunciationFocus.sound}/ (${pronunciationFocus.ipaExample})\n  - O'zbeklar uchun odatdagi xato: ${pronunciationFocus.commonError || '—'}\n  - Maslahat: ${pronunciationFocus.tipUz}\n  - Fikrda: talaffuz qanchalik to'g'ri edi?`
+    }
+    if (grammarTips && grammarTips.length > 0) {
+      focusBlock += `\n📚 Grammatika fokuslari:\n${grammarTips.map((t, i) => `  ${i + 1}. ${t}`).join('\n')}\n  - Fikrda: o'quvchi bu grammatik qoidalarni ishlata oldimi?`
+    }
+  }
+
   const system = `You are an encouraging English speaking coach for a ${level}-level UZBEK learner.
 Provide brief, constructive feedback on the conversation that just ended.
 
@@ -588,7 +620,7 @@ Use these EXACT Uzbek labels and format:
 📌 Yaxshilash kerak: [ustida ishlash kerak bo'lgan aniq bir narsa]
 💡 Maslahat: [keyingi safar uchun bitta amaliy maslahat]
 
-120 so'zdan oshmasin. Iliq va rag'batlantiruvchi bo'l. Hammasi o'zbek tilida.`
+120 so'zdan oshmasin. Iliq va rag'batlantiruvchi bo'l. Hammasi o'zbek tilida.${focusBlock}`
 
   const transcript = history.map(m => `${m.role === 'user' ? 'Student' : 'You'}: ${m.content}`).join('\n')
 

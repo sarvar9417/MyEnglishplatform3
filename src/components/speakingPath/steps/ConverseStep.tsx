@@ -3,7 +3,7 @@
 // Kunning stsenariysi bilan Claude bilan jonli suhbat → yakunda fikr.
 
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { Send, Loader2, Sparkles, ArrowRight, Bot } from 'lucide-react'
+import { Send, Loader2, Sparkles, ArrowRight, Bot, Volume2, BookOpen, ChevronDown, ChevronUp, Lightbulb } from 'lucide-react'
 import { startSpeakingChat, getSpeakingChatFeedback } from '../../../lib/claude'
 import { monitoring } from '../../../lib/monitoring'
 import MicButton from '../MicButton'
@@ -21,6 +21,8 @@ const MIN_USER_TURNS = 3
 
 export default function ConverseStep({ day, level, onNext }: Props) {
   const topic = `${day.scenario.topic}. You play ${day.scenario.aiRole}; I play ${day.scenario.userRole}.`
+  const pronunciationFocus = day.pronunciationFocus
+  const grammarTips = day.chunks.filter(c => c.grammarTip).map(c => `"${c.en}" — ${c.grammarTip}`)
 
   const [history, setHistory] = useState<Msg[]>([])
   const [streaming, setStreaming] = useState('')
@@ -29,6 +31,8 @@ export default function ConverseStep({ day, level, onNext }: Props) {
   const [typed, setTyped] = useState('')
   const [feedback, setFeedback] = useState<string | null>(null)
   const [finishing, setFinishing] = useState(false)
+  const [showTips, setShowTips] = useState(false)
+  const [showVocab, setShowVocab] = useState(false)
   const startedRef = useRef(false)
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -50,8 +54,10 @@ export default function ConverseStep({ day, level, onNext }: Props) {
         setBusy(false)
         setHistory(prev => [...prev, { role: 'assistant', content: "(Aloqa uzildi — yana urinib ko'ring)" }])
       },
+      pronunciationFocus ?? undefined,
+      grammarTips,
     )
-  }, [topic, level])
+  }, [topic, level, pronunciationFocus, grammarTips])
 
   // ochilishda AI suhbatni boshlaydi
   useEffect(() => {
@@ -77,13 +83,13 @@ export default function ConverseStep({ day, level, onNext }: Props) {
   const finish = useCallback(async () => {
     setFinishing(true)
     try {
-      const fb = await getSpeakingChatFeedback(level, history)
+      const fb = await getSpeakingChatFeedback(level, history, pronunciationFocus ?? undefined, grammarTips)
       setFeedback(fb || "Ajoyib mashq! Har bir suhbat sizni kuchaytiradi.")
     } catch (err) {
       monitoring.captureException(err instanceof Error ? err : new Error(String(err)), { context: 'ConverseStep.feedback' })
       setFeedback("Ajoyib mashq! Har bir suhbat sizni kuchaytiradi.")
     }
-  }, [level, history])
+  }, [level, history, pronunciationFocus, grammarTips])
 
   // ── Yakuniy fikr ekrani ──
   if (feedback) {
@@ -107,6 +113,79 @@ export default function ConverseStep({ day, level, onNext }: Props) {
         <p className="text-sm font-bold text-gray-900 dark:text-gray-100">🤖 AI bilan suhbat</p>
         <p className="text-xs text-primary-600 dark:text-primary-400 mt-0.5">🎯 {day.scenario.goalUz}</p>
       </div>
+
+      {/* Talaffuz fokusi banneri */}
+      {pronunciationFocus && (
+        <div className="rounded-xl p-3 bg-gradient-to-r from-violet-50 to-indigo-50 dark:from-violet-900/20 dark:to-indigo-900/20 border border-violet-200 dark:border-violet-800/30">
+          <div className="flex items-start gap-2">
+            <Volume2 size={16} className="text-violet-600 dark:text-violet-400 mt-0.5 shrink-0" />
+            <div className="min-w-0">
+              <p className="text-xs font-bold text-violet-700 dark:text-violet-300">
+                Bugungi talaffuz fokusi: /{pronunciationFocus.sound}/ — {pronunciationFocus.ipaExample}
+              </p>
+              <p className="text-xs text-violet-600/80 dark:text-violet-400/80 mt-0.5">
+                💡 {pronunciationFocus.tipUz}
+              </p>
+              {pronunciationFocus.commonError && (
+                <p className="text-xs text-amber-600 dark:text-amber-400 mt-0.5">
+                  ⚠️ {pronunciationFocus.commonError}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Just-in-time Vocabulary (yig'iladigan) */}
+      {day.vocab && day.vocab.length > 0 && (
+        <div>
+          <button
+            onClick={() => setShowVocab(v => !v)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/30 text-xs text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-colors"
+          >
+            <Lightbulb size={14} />
+            Foydali so'zlar ({day.vocab.length} ta)
+            {showVocab ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </button>
+          {showVocab && (
+            <div className="mt-2 grid grid-cols-2 gap-1.5 p-3 rounded-xl bg-amber-50/50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/40">
+              {day.vocab.map((v, i) => (
+                <div key={i} className="text-xs">
+                  <span className="font-bold text-gray-900 dark:text-gray-100">{v.en}</span>
+                  <span className="text-gray-500 dark:text-gray-400 mx-1">—</span>
+                  <span className="text-gray-600 dark:text-gray-300">{v.uz}</span>
+                  {v.example && (
+                    <p className="text-gray-400 dark:text-gray-500 italic mt-0.5">"{v.example}"</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Grammatika maslahatlari (yig'iladigan) */}
+      {grammarTips.length > 0 && (
+        <div>
+          <button
+            onClick={() => setShowTips(v => !v)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-xs text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          >
+            <BookOpen size={14} />
+            Grammatik maslahatlar ({grammarTips.length} ta)
+            {showTips ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </button>
+          {showTips && (
+            <div className="mt-2 space-y-1.5 p-3 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700">
+              {grammarTips.map((tip, i) => (
+                <p key={i} className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <span className="font-bold text-primary-600 dark:text-primary-400">{i + 1}.</span> {tip}
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Suhbat */}
       <div ref={scrollRef} className="min-h-[50vh] lg:h-72 overflow-y-auto space-y-2 p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-gray-100 dark:border-gray-700">

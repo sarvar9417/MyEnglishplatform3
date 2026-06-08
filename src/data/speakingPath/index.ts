@@ -5,7 +5,7 @@ import { SPEAKING_DAYS } from './days'
 import type { SpeakingChunk, SpeakingDay } from './types'
 
 export { SPEAKING_DAYS }
-export type { SpeakingChunk, SpeakingDay, SpeakingScenario, SpeakingDayProgress } from './types'
+export type { SpeakingChunk, SpeakingDay, SpeakingScenario, SpeakingDayProgress, PronunciationFocus, VocabItem } from './types'
 
 /** Jami kunlar soni */
 export const TOTAL_SPEAKING_DAYS = SPEAKING_DAYS.length

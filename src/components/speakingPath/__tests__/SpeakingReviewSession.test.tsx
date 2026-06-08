@@ -63,7 +63,8 @@ describe('SpeakingReviewSession', () => {
 
     expect(screen.getByText(/Takror tugadi/)).toBeInTheDocument()
     // 3 ta chunk, har biri 0.92 → round(0.92*100) = 92, avg = 92
-    expect(screen.getByText(/92%/)).toBeInTheDocument()
+    const scores = screen.getAllByText(/92%/)
+    expect(scores.length).toBeGreaterThanOrEqual(1)
     expect(screen.getByText(/3 ibora/)).toBeInTheDocument()
   })
 

@@ -18,6 +18,7 @@ interface Props {
   onToggle: (day: number) => void
   /** kun mashg'ulotini boshlash */
   onStart?: (day: number) => void
+  userId?: string
 }
 
 // ── CEFR zonalari ──────────────────────────────────────────────────────────────
@@ -74,9 +75,32 @@ const CEFR_BADGE: Record<string, string> = {
   B1: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
 }
 
+// ── SRS stability helper ────────────────────────────────────────────────────────
+
+function getChunkStability(userId: string | undefined, chunkId: string): number | null {
+  if (!userId) return null
+  try {
+    const raw = localStorage.getItem(`sp_srs_${userId}`)
+    if (!raw) return null
+    const map = JSON.parse(raw) as Record<string, { stability: number }>
+    return map[chunkId]?.stability ?? null
+  } catch {
+    return null
+  }
+}
+
+function stabilityColorClass(stability: number | null): string {
+  if (stability == null) return 'bg-gray-200 dark:bg-gray-600'
+  if (stability >= 90) return 'bg-purple-500'
+  if (stability >= 30) return 'bg-emerald-500'
+  if (stability >= 15) return 'bg-blue-500'
+  if (stability >= 5) return 'bg-amber-500'
+  return 'bg-rose-500'
+}
+
 // ── Asosiy komponent ───────────────────────────────────────────────────────────
 
-export default function SpeakingLadder({ days, unlockedDay, completed, progress, expandedDay, onToggle, onStart }: Props) {
+export default function SpeakingLadder({ days, unlockedDay, completed, progress, expandedDay, onToggle, onStart, userId }: Props) {
   // progress map for quick lookup
   const progressMap = new Map(progress.map(p => [p.day, p]))
 
@@ -230,6 +254,24 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                         <p className="text-xs font-semibold text-primary-700 dark:text-primary-300 flex items-center gap-1.5">
                           <Sparkles size={13} /> {d.goalUz}
                         </p>
+
+                        {/* SRS Stability — per-chunk mastery dots */}
+                        <div className="flex items-center gap-2 p-2 rounded-lg bg-white/40 dark:bg-gray-700/30">
+                          <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 shrink-0">SRS:</span>
+                          {d.chunks.map(c => {
+                            const stab = getChunkStability(userId, c.id)
+                            return (
+                              <div
+                                key={c.id}
+                                className={`flex-1 h-2 rounded-full ${stabilityColorClass(stab)}`}
+                                title={`${c.en}: ${stab != null ? stab.toFixed(1) : '—'}`}
+                                style={{
+                                  opacity: stab != null && stab >= 30 ? 1 : stab != null && stab >= 15 ? 0.7 : stab != null ? 0.5 : 0.3,
+                                }}
+                              />
+                            )
+                          })}
+                        </div>
 
                         {/* Bloklar ro'yxati — grammar tip bilan */}
                         <div className="space-y-1.5">

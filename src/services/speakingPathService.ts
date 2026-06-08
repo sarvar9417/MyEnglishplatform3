@@ -94,7 +94,7 @@ export async function getUnlockedDay(userId: string): Promise<number> {
 // ── Jumla darajasidagi SRS (FSRS) ─────────────────────────────────────────────
 
 /** Joriy SRS xaritasini olish (Supabase → localStorage fallback) */
-async function loadSrsMap(userId: string): Promise<SrsMap> {
+export async function loadSrsMap(userId: string): Promise<SrsMap> {
   try {
     const { data, error } = await supabase
       .from('user_speaking_chunks')
@@ -214,12 +214,78 @@ export interface SpeakingStats {
   avgChunkStability: number
 }
 
+export interface TrendPoint {
+  date: string
+  label: string
+  score: number
+  minutes: number
+}
+
+export interface SRSDistribution {
+  range: string
+  label: string
+  count: number
+  color: string
+}
+
+/** So'nggi N kundagi kunlik trend ma'lumotlari */
+export function computeTrend(
+  progress: SpeakingDayProgress[],
+  days: number,
+): TrendPoint[] {
+  const now = new Date()
+  const today = now.toISOString().split('T')[0]
+  const points: TrendPoint[] = []
+
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date(today + 'T00:00:00Z')
+    d.setUTCDate(d.getUTCDate() - i)
+    const dateStr = d.toISOString().split('T')[0]
+    const dayData = progress.find(p => (p.completedAt ?? '').slice(0, 10) === dateStr && p.completed)
+
+    const dayOfWeek = d.getUTCDay()
+    const dayNames = ['Ya', 'Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh']
+
+    points.push({
+      date: dateStr,
+      label: dayNames[dayOfWeek],
+      score: dayData?.bestSpeakScore ?? 0,
+      minutes: dayData ? Math.round((dayData.spokenSeconds || 0) / 60) : 0,
+    })
+  }
+  return points
+}
+
+/** SRS stability bo'yicha taqsimot */
+export function computeSRSDistribution(srsMap: Record<string, { stability: number }>): SRSDistribution[] {
+  const buckets = [
+    { range: '0-5', label: 'Yangi', count: 0, color: '#F87171' },
+    { range: '5-15', label: 'O\'rganilayotgan', count: 0, color: '#FBBF24' },
+    { range: '15-30', label: 'Mustahkamlanayotgan', count: 0, color: '#60A5FA' },
+    { range: '30-90', label: 'O\'zlashtirilgan', count: 0, color: '#34D399' },
+    { range: '90+', label: 'Yodda', count: 0, color: '#8B5CF6' },
+  ]
+
+  for (const entry of Object.values(srsMap)) {
+    const s = entry.stability
+    if (s < 5) buckets[0].count++
+    else if (s < 15) buckets[1].count++
+    else if (s < 30) buckets[2].count++
+    else if (s < 90) buckets[3].count++
+    else buckets[4].count++
+  }
+
+  return buckets
+}
+
 /** Dashboard ko'rsatkichi uchun jamlangan statistika */
-export async function getSpeakingStats(userId: string, allChunks: SpeakingChunk[]): Promise<SpeakingStats> {
-  const [progress, srsMap] = await Promise.all([
-    getSpeakingProgress(userId),
-    loadSrsMap(userId),
-  ])
+export async function getSpeakingStats(
+  userId: string,
+  allChunks: SpeakingChunk[],
+  preloadedSrsMap?: SrsMap,
+): Promise<SpeakingStats> {
+  const srsMap = preloadedSrsMap ?? await loadSrsMap(userId)
+  const progress = await getSpeakingProgress(userId)
   const due = await getDueChunks(userId, allChunks, srsMap)
   const completed = progress.filter(p => p.completed)
   const maxDay = completed.reduce((m, p) => Math.max(m, p.day), 0)

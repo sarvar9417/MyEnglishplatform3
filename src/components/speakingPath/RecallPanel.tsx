@@ -3,8 +3,8 @@
 // SpeakStep (kunlik) va SpeakingReviewSession (SRS takror) ikkalasi ishlatadi.
 // Parent har blokka key={chunk.id} beradi → holat avtomatik reset bo'ladi.
 
-import { useState, useCallback, useEffect, useRef } from 'react'
-import { ArrowRight, RotateCcw, Check, X, Volume2, Send, Mic, Square, BookOpen } from 'lucide-react'
+import { useState, useCallback, useEffect, useRef, useMemo } from 'react'
+import { ArrowRight, RotateCcw, Check, X, Volume2, Send, Mic, Square, BookOpen, Info } from 'lucide-react'
 import { useSpeechSynthesis } from '../../hooks/useSpeechSynthesis'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { useAudioRecorder } from '../../hooks/useAudioRecorder'
@@ -21,6 +21,30 @@ interface Props {
   onDone: (bestSim: number) => void
 }
 
+/** Normalize text for word-level comparison */
+function normalizeWord(w: string): string {
+  return w.toLowerCase().replace(/[.,!?;:'"()…—-]/g, '').trim()
+}
+
+/** Word-level comparison result */
+interface WordMatch {
+  word: string
+  correct: boolean
+  index: number
+}
+
+function compareWords(userText: string, targetText: string): WordMatch[] {
+  const targetWords = targetText.split(/\s+/).filter(Boolean)
+  const userWords = userText.toLowerCase().split(/\s+/).filter(Boolean)
+  const userSet = new Set(userWords.map(normalizeWord))
+
+  return targetWords.map((w, i) => ({
+    word: w,
+    correct: userSet.has(normalizeWord(w)),
+    index: i,
+  }))
+}
+
 export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
   const { speak, supported } = useSpeechSynthesis()
   const sr = useSpeechRecognition()
@@ -32,6 +56,7 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
   const [bestScore, setBestScore] = useState(0)
   const [typed, setTyped] = useState('')
   const [recording, setRecording] = useState(false)
+  const [showDetails, setShowDetails] = useState(false)
   const readyRef = useRef(false)
 
   const evaluate = useCallback((text: string) => {
@@ -71,18 +96,33 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
     setLastText('')
     setTyped('')
     setRecording(false)
+    setShowDetails(false)
     sr.reset()
     ar.reset()
   }, [sr, ar])
 
   const correct = isSemanticCorrect(lastResult.score)
 
+  // Word-level comparison
+  const wordMatches = useMemo(() => {
+    if (!lastText) return []
+    return compareWords(lastText, chunk.en)
+  }, [lastText, chunk.en])
+
   return (
     <div className="space-y-4">
-      {/* O'zbekcha prompt (inglizchasi yashirin) */}
+      {/* O'zbekcha prompt (inglizchasi yashirin) + stressWord */}
       <div className="rounded-2xl p-5 bg-gradient-to-br from-primary-50 to-blue-50 dark:from-primary-900/20 dark:to-blue-900/20 border border-primary-200 dark:border-primary-800/50 text-center">
         <p className="text-[11px] font-bold text-primary-500 dark:text-primary-400 uppercase tracking-wider">Buni inglizcha ayting</p>
         <p className="text-xl font-black text-gray-900 dark:text-gray-100 mt-1">{chunk.uz}</p>
+        {chunk.ipa && !attempted && (
+          <p className="text-[11px] text-primary-400 dark:text-primary-500 mt-1 font-mono">{chunk.ipa}</p>
+        )}
+        {chunk.stressWord && !attempted && !recording && (
+          <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-800/50">
+            <span className="text-[10px] font-bold text-amber-700 dark:text-amber-300">🎯 Urg'u: <span className="underline decoration-amber-400">{chunk.stressWord}</span></span>
+          </div>
+        )}
       </div>
 
       {!attempted && !recording ? (
@@ -135,15 +175,56 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
               {correct ? <Check size={18} className="text-white" /> : <X size={18} className="text-white" />}
             </div>
             <span className={`font-black text-lg ${correct ? 'text-emerald-700 dark:text-emerald-300' : 'text-rose-700 dark:text-rose-300'}`}>
-              {correct ? "To'g'ri!" : 'Yana urinib ko\'ring'} · {Math.round(lastResult.score * 100)}%
+              {correct ? "To'g'ri!" : "Yana urinib ko'ring"} · {Math.round(lastResult.score * 100)}%
             </span>
-            {!correct && lastResult.score > 0 && (
-              <p className="text-[10px] text-gray-400 text-center mt-1">
-                Kalit so'z: {Math.round(lastResult.details.keyword * 100)}% · So'z tartibi: {Math.round(lastResult.details.wordOrder * 100)}% · Uzunlik: {Math.round(lastResult.details.length * 100)}%
-              </p>
-            )}
           </div>
 
+          {/* Word-level breakdown */}
+          {lastText && wordMatches.length > 0 && (
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-1">
+              {wordMatches.map((wm) => (
+                <span
+                  key={wm.index}
+                  className={`px-1.5 py-0.5 rounded text-sm font-semibold ${
+                    wm.correct
+                      ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300'
+                      : 'bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-300 line-through decoration-rose-400'
+                  }`}
+                >
+                  {wm.word}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Score breakdown details */}
+          <div className="mt-2 flex items-center justify-center gap-3">
+            <button
+              onClick={() => setShowDetails(v => !v)}
+              className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            >
+              <Info size={12} />
+              Batafsil
+            </button>
+          </div>
+          {showDetails && (
+            <div className="mt-2 grid grid-cols-3 gap-2 text-center">
+              <div className="p-1.5 rounded-lg bg-white/60 dark:bg-gray-800/60">
+                <p className="text-[10px] text-gray-400">Kalit so'z</p>
+                <p className="text-xs font-bold text-gray-700 dark:text-gray-300">{Math.round(lastResult.details.keyword * 100)}%</p>
+              </div>
+              <div className="p-1.5 rounded-lg bg-white/60 dark:bg-gray-800/60">
+                <p className="text-[10px] text-gray-400">So'z tartibi</p>
+                <p className="text-xs font-bold text-gray-700 dark:text-gray-300">{Math.round(lastResult.details.wordOrder * 100)}%</p>
+              </div>
+              <div className="p-1.5 rounded-lg bg-white/60 dark:bg-gray-800/60">
+                <p className="text-[10px] text-gray-400">Uzunlik</p>
+                <p className="text-xs font-bold text-gray-700 dark:text-gray-300">{Math.round(lastResult.details.length * 100)}%</p>
+              </div>
+            </div>
+          )}
+
+          {/* Target answer display */}
           <div className="mt-3 flex items-center gap-2 justify-center">
             <p className="font-bold text-gray-900 dark:text-gray-100">{chunk.en}</p>
             <button onClick={() => supported && speak(chunk.en)} disabled={!supported} className="p-1.5 rounded-lg bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-300 disabled:opacity-50">
@@ -152,13 +233,39 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
           </div>
           {lastText && <p className="text-xs text-center text-gray-400 dark:text-gray-500 mt-1">Siz: "{lastText}"</p>}
 
-          {/* Grammar tip — Phase 1 */}
+          {/* IPA pronunciation hint (show on low score) */}
+          {!correct && chunk.ipa && (
+            <div className="mt-2 flex items-start gap-1.5 p-2 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/30">
+              <Volume2 size={13} className="text-amber-500 mt-0.5 shrink-0" />
+              <div>
+                <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">Talaffuz</span>
+                <p className="text-[11px] text-gray-700 dark:text-gray-300 leading-tight mt-0.5">
+                  {chunk.en}: {chunk.ipa}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Grammar tip */}
           {chunk.grammarTip && (
             <div className="mt-2 flex items-start gap-1.5 p-2 rounded-lg bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800/30">
               <BookOpen size={13} className="text-primary-500 mt-0.5 shrink-0" />
               <div>
                 <span className="text-[10px] font-bold text-primary-600 dark:text-primary-400 uppercase">Grammar</span>
                 <p className="text-[11px] text-gray-700 dark:text-gray-300 leading-tight mt-0.5">{chunk.grammarTip}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Stress word — Intonation Guide */}
+          {chunk.stressWord && (
+            <div className="mt-2 flex items-start gap-1.5 p-2 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/30">
+              <Info size={13} className="text-amber-500 mt-0.5 shrink-0" />
+              <div>
+                <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">Urg'u</span>
+                <p className="text-[11px] text-gray-700 dark:text-gray-300 leading-tight mt-0.5">
+                  <span className="underline decoration-amber-400 font-semibold">{chunk.stressWord}</span> so'ziga urg'u bering: "{chunk.en}"
+                </p>
               </div>
             </div>
           )}

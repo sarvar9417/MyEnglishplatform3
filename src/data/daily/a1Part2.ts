@@ -74,7 +74,7 @@ export const demonstratives: DailyLesson = {
     { id: 1101, type: 'fill-blank', instruction: "This/that:", question: '___ is my book. (yaqin)', blanks: ['This'], explanation: "yaqin = this" },
     { id: 1102, type: 'fill-blank', instruction: "These/those:", question: '___ are my friends. (yaqin)', blanks: ['These'], explanation: "yaqin ko'plik = these" },
     { id: 1103, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'What ___ those?', options: ['is', 'are', 'am', 'be'], correct: 'are', explanation: "Those + are" },
-    { id: 1104, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'That is a pens.', errorPart: 'a pens', correct: 'Those are pens.', explanation: "ko'plik uchun Those + are" },
+    { id: 1104, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'Those is pens.', errorPart: 'is', correct: 'Those are pens.', explanation: "Those (ko'plik) + are" },
     { id: 1105, type: 'fill-blank', instruction: "Bu yerda / u yerda:", question: 'Come ___, please! (bu yerga)', blanks: ['here'], explanation: "Come here" },
     { id: 1106, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is an apple. (yaqin)', blanks: ['This'], explanation: "yaqin birlik" },
     { id: 1107, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ is my sister over there.', options: ['This', 'That', 'These', 'Those'], correct: 'That', explanation: "Uzoq = That" },
@@ -96,7 +96,7 @@ export const demonstratives: DailyLesson = {
     { title: "Boshlang'ich", desc: "This/that, these/those", color: 'bg-emerald-500', icon: '🌱', ids: [1101, 1102, 1103, 1104, 1105] },
     { title: "O'rtacha", desc: "Is/are va here/there", color: 'bg-blue-500', icon: '📘', ids: [1106, 1107, 1108, 1109, 1110] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1111, 1112, 1113, 1114, 1115] },
-    { title: "Ko'rsatish olmoshlari+", desc: "Ko'plik, o'tgan vaqt, savollar", color: 'bg-amber-500', icon: '👉', ids: [1116, 1117, 1118, 1119, 1120] },
+    { title: "O'zgartirish", desc: "Ko'plik, o'tgan vaqt, savollar", color: 'bg-teal-500', icon: '🔄', ids: [1116, 1117, 1118, 1119, 1120] },
   ],
   tests: [
     { id: 111, type: 'fill-blank', instruction: "This/that:", question: '___ is my book.', blanks: ['This'], explanation: "yaqin = this" },
@@ -108,7 +108,7 @@ export const demonstratives: DailyLesson = {
     { id: 117, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'What are ___?', options: ['this', 'that', 'these', 'it'], correct: 'these', explanation: "ko'plik" },
     { id: 118, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'These is a car.', errorPart: 'These is', correct: 'This is a car.', explanation: "Birlik = This" },
     { id: 119, type: 'fill-blank', instruction: "Bu yerda / u yerda:", question: 'The book is ___.', blanks: ['there'], explanation: "there" },
-    { id: 1110, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is a mountain.', blanks: ['That'], explanation: "uzoq" },
+    { id: 120, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is a mountain.', blanks: ['That'], explanation: "uzoq" },
     { id: 1111, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ was a great day!', options: ['This', 'That', 'These', 'Those'], correct: 'That', explanation: "O'tgan" },
     { id: 1112, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'Those is my parents.', errorPart: 'Those is', correct: 'Those are my parents.', explanation: "Those + are" },
     { id: 1113, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ books are new.', blanks: ['These'], explanation: "yaqin ko'plik" },
@@ -117,7 +117,7 @@ export const demonstratives: DailyLesson = {
   ],
   testSections: [
     { title: 'Oson', desc: "Demonstratives", color: 'bg-emerald-500', icon: '🌱', ids: [111, 112, 113, 114, 115] },
-    { title: "O'rtacha", desc: "Is/are, here/there", color: 'bg-blue-500', icon: '📘', ids: [116, 117, 118, 119, 1110] },
+    { title: "O'rtacha", desc: "Is/are, here/there", color: 'bg-blue-500', icon: '📘', ids: [116, 117, 118, 119, 120] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1111, 1112, 1113, 1114, 1115] },
   ],
 }
@@ -242,7 +242,7 @@ export const prepositionsOfPlace: DailyLesson = {
     { title: "Boshlang'ich", desc: "IN, ON, UNDER", color: 'bg-emerald-500', icon: '🌱', ids: [1901, 1902, 1903, 1904, 1905] },
     { title: "O'rtacha", desc: "NEXT TO, BEHIND, IN FRONT OF", color: 'bg-blue-500', icon: '📘', ids: [1906, 1907, 1908, 1909, 1910] },
     { title: "Qiyin", desc: "OPPOSITE, AMONG, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [1911, 1912, 1913, 1914, 1915] },
-    { title: "Murakkab predloglar", desc: "Bed, bag, floor, opposite", color: 'bg-amber-500', icon: '🗺️', ids: [1916, 1917, 1918, 1919, 1920] },
+    { title: "O'zgartirish", desc: "Bed, bag, floor, opposite", color: 'bg-teal-500', icon: '🔄', ids: [1916, 1917, 1918, 1919, 1920] },
   ],
   tests: [
     { id: 191, type: 'multiple-choice', instruction: "To'g'ri predlogni tanlang:", question: 'The cat is ___ the box.', options: ['in', 'on', 'at', 'to'], correct: 'in', explanation: "Quti ichida — IN" },
@@ -254,7 +254,7 @@ export const prepositionsOfPlace: DailyLesson = {
     { id: 197, type: 'multiple-choice', instruction: "To'g'ri predlogni tanlang:", question: 'The teacher stands ___ the class.', options: ['in front of', 'behind', 'under', 'next to'], correct: 'in front of', explanation: "O'qituvchi sinf OLDIDA turadi — IN FRONT OF" },
     { id: 198, type: 'fill-blank', instruction: "Predlogni qo'ying:", question: 'The picture is ___ the wall.', blanks: ['on'], explanation: "Devorda — ON" },
     { id: 199, type: 'fill-blank', instruction: "Predlogni qo'ying:", question: 'He is ___ the room.', blanks: ['in'], explanation: "Xonada — IN" },
-    { id: 1910, type: 'multiple-choice', instruction: "To'g'ri predlogni tanlang:", question: "Bank maktab qarshisida. The bank is ___ the school.", options: ['opposite', 'next', 'under of', 'front'], correct: 'opposite', explanation: "Qarama-qarshi — OPPOSITE" },
+    { id: 200, type: 'multiple-choice', instruction: "To'g'ri predlogni tanlang:", question: "Bank maktab qarshisida. The bank is ___ the school.", options: ['opposite', 'next', 'under of', 'front'], correct: 'opposite', explanation: "Qarama-qarshi — OPPOSITE" },
     { id: 1911, type: 'fill-blank', instruction: "Predlogni qo'ying:", question: 'She is ___ her friends.', blanks: ['among'], explanation: "Ko'p orasi — AMONG" },
     { id: 1912, type: 'error-correction', instruction: "Xatoni toping:", question: 'The cat is on the box.', errorPart: 'on', correct: 'The cat is in the box.', explanation: "Quti ichida — IN" },
     { id: 1913, type: 'error-correction', instruction: "Xatoni toping:", question: 'He sat next the window.', errorPart: 'next', correct: 'He sat next to the window.', explanation: "'next to' — to'siq old kerak" },
@@ -263,7 +263,7 @@ export const prepositionsOfPlace: DailyLesson = {
   ],
   testSections: [
     { title: 'Oson', desc: "IN, ON, UNDER, NEXT TO", color: 'bg-emerald-500', icon: '🌱', ids: [191, 192, 193, 194, 195] },
-    { title: "O'rtacha", desc: "BEHIND, IN FRONT OF, AMONG", color: 'bg-blue-500', icon: '📘', ids: [196, 197, 198, 199, 1910] },
+    { title: "O'rtacha", desc: "BEHIND, IN FRONT OF, AMONG", color: 'bg-blue-500', icon: '📘', ids: [196, 197, 198, 199, 200] },
     { title: "Qiyin", desc: "OPPOSITE, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [1911, 1912, 1913, 1914, 1915] },
   ],
 }
@@ -387,7 +387,7 @@ export const basicAdjectives: DailyLesson = {
     { title: "Boshlang'ich", desc: "A/An, oddiy sifat", color: 'bg-emerald-500', icon: '🌱', ids: [2001, 2002, 2003, 2004, 2005] },
     { title: "O'rtacha", desc: "Yosh, his, rang", color: 'bg-blue-500', icon: '📘', ids: [2006, 2007, 2008, 2009, 2010] },
     { title: "Qiyin", desc: "Tartib, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [2011, 2012, 2013, 2014, 2015] },
-    { title: "Looks va sifat tartibi", desc: "Is vs looks, sifat tartibi", color: 'bg-amber-500', icon: '😊', ids: [2016, 2017, 2018, 2019, 2020] },
+    { title: "O'zgartirish", desc: "Is vs looks, sifat tartibi", color: 'bg-teal-500', icon: '🔄', ids: [2016, 2017, 2018, 2019, 2020] },
   ],
   tests: [
     { id: 201, type: 'fill-blank', instruction: "A/An:", question: 'I have ___ big house.', blanks: ['a'], explanation: "'big' undosh tovush" },
@@ -509,7 +509,7 @@ export const thereIsAre: DailyLesson = {
     { title: "Boshlang'ich", desc: "Is/are + joy", color: 'bg-emerald-500', icon: '🌱', ids: [1201, 1202, 1203, 1204, 1205] },
     { title: "O'rtacha", desc: "Some/any va predloglar", color: 'bg-blue-500', icon: '📘', ids: [1206, 1207, 1208, 1209, 1210] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1211, 1212, 1213, 1214, 1215] },
-    { title: "There is no", desc: "No va isn't any bir xil", color: 'bg-amber-500', icon: '🚫', ids: [1216, 1217, 1218, 1219, 1220] },
+    { title: "O'zgartirish", desc: "No va isn't any bir xil", color: 'bg-teal-500', icon: '🔄', ids: [1216, 1217, 1218, 1219, 1220] },
   ],
   tests: [
     { id: 121, type: 'fill-blank', instruction: "Is yoki are:", question: 'There ___ a dog in the park.', blanks: ['is'], explanation: "birlik" },
@@ -632,7 +632,7 @@ export const canCant: DailyLesson = {
     { title: "Boshlang'ich", desc: "Can + V1", color: 'bg-emerald-500', icon: '🌱', ids: [1301, 1302, 1303, 1304, 1305] },
     { title: "O'rtacha", desc: "Savol va ruxsat", color: 'bg-blue-500', icon: '📘', ids: [1306, 1307, 1308, 1309, 1310] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1311, 1312, 1313, 1314, 1315] },
-    { title: "Could — o'tgan zamon", desc: "Can → could, o'tgan qobiliyat", color: 'bg-amber-500', icon: '⏳', ids: [1316, 1317, 1318, 1319, 1320] },
+    { title: "O'zgartirish", desc: "Can → could, o'tgan qobiliyat", color: 'bg-teal-500', icon: '🔄', ids: [1316, 1317, 1318, 1319, 1320] },
   ],
   tests: [
     { id: 131, type: 'fill-blank', instruction: "Can + V1:", question: 'I ___ (can) swim.', blanks: ['can swim'], explanation: "can + V1" },
@@ -755,7 +755,7 @@ export const haveGot: DailyLesson = {
     { title: "Boshlang'ich", desc: "Have/has got", color: 'bg-emerald-500', icon: '🌱', ids: [1401, 1402, 1403, 1404, 1405] },
     { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [1406, 1407, 1408, 1409, 1410] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1411, 1412, 1413, 1414, 1415] },
-    { title: "Savol shakli", desc: "Have/Has got savollar", color: 'bg-amber-500', icon: '❓', ids: [1416, 1417, 1418, 1419, 1420] },
+    { title: "O'zgartirish", desc: "Have/Has got savollar", color: 'bg-teal-500', icon: '🔄', ids: [1416, 1417, 1418, 1419, 1420] },
   ],
   tests: [
     { id: 141, type: 'fill-blank', instruction: "Have/has got:", question: 'I ___ a bike.', blanks: ['have got'], explanation: "I + have got" },
@@ -878,7 +878,7 @@ export const presentSimple: DailyLesson = {
     { title: "Boshlang'ich", desc: "3-shaxs -s", color: 'bg-emerald-500', icon: '🌱', ids: [1501, 1502, 1503, 1504, 1505] },
     { title: "O'rtacha", desc: "Don't/doesn't va savol", color: 'bg-blue-500', icon: '📘', ids: [1506, 1507, 1508, 1509, 1510] },
     { title: "Qiyin", desc: "Frequency + murakkab", color: 'bg-violet-500', icon: '🎯', ids: [1511, 1512, 1513, 1514, 1515] },
-    { title: "Chastota so'zlari", desc: "Usually, often, sometimes, rarely", color: 'bg-amber-500', icon: '📊', ids: [1516, 1517, 1518, 1519, 1520] },
+    { title: "O'zgartirish", desc: "Usually, often, sometimes, rarely", color: 'bg-teal-500', icon: '🔄', ids: [1516, 1517, 1518, 1519, 1520] },
   ],
   tests: [
     { id: 151, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'He ___ (work) at a hospital.', blanks: ['works'], explanation: "work + s" },
@@ -1002,7 +1002,7 @@ export const questionWords: DailyLesson = {
     { title: "Boshlang'ich", desc: "Wh- so'zlar", color: 'bg-emerald-500', icon: '🌱', ids: [1601, 1602, 1603, 1604, 1605] },
     { title: "O'rtacha", desc: "Tartib va how", color: 'bg-blue-500', icon: '📘', ids: [1606, 1607, 1608, 1609, 1610] },
     { title: "Qiyin", desc: "Murakkab savollar", color: 'bg-violet-500', icon: '🎯', ids: [1611, 1612, 1613, 1614, 1615] },
-    { title: "Because va How", desc: "Javob berish, How many/old/much", color: 'bg-amber-500', icon: '🔍', ids: [1616, 1617, 1618, 1619, 1620] },
+    { title: "O'zgartirish", desc: "Javob berish, How many/old/much", color: 'bg-teal-500', icon: '🔄', ids: [1616, 1617, 1618, 1619, 1620] },
   ],
   tests: [
     { id: 161, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: '___ is your name?', blanks: ['What'], explanation: "What" },
@@ -1023,7 +1023,7 @@ export const questionWords: DailyLesson = {
   ],
   testSections: [
     { title: 'Oson', desc: "Wh- so'zlar", color: 'bg-emerald-500', icon: '🌱', ids: [161, 162, 163, 164, 165] },
-    { title: "O'rtacha", desc: "Tartib va how", color: 'bg-blue-500', icon: '📘', ids: [1606, 1607, 1608, 1609, 1610] },
+    { title: "O'rtacha", desc: "Tartib va how", color: 'bg-blue-500', icon: '📘', ids: [166, 167, 168, 169, 1610] },
     { title: "Qiyin", desc: "Murakkab savollar", color: 'bg-violet-500', icon: '🎯', ids: [1611, 1612, 1613, 1614, 1615] },
   ],
 }
@@ -1127,7 +1127,7 @@ export const conjunctions: DailyLesson = {
     { title: "Boshlang'ich", desc: "And, but, or, because", color: 'bg-emerald-500', icon: '🌱', ids: [1701, 1702, 1703, 1704, 1705] },
     { title: "O'rtacha", desc: "So, but, and farqlari", color: 'bg-blue-500', icon: '📘', ids: [1706, 1707, 1708, 1709, 1710] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1711, 1712, 1713, 1714, 1715] },
-    { title: "So va either...or", desc: "Natija, tanlash, travel, rain", color: 'bg-amber-500', icon: '🔗', ids: [1716, 1717, 1718, 1719, 1720] },
+    { title: "O'zgartirish", desc: "Natija, tanlash, travel, rain", color: 'bg-teal-500', icon: '🔄', ids: [1716, 1717, 1718, 1719, 1720] },
   ],
   tests: [
     { id: 171, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I like tea ___ coffee.', options: ['but', 'or', 'and', 'because'], correct: 'and', explanation: "AND" },

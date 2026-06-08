@@ -1,6 +1,14 @@
 // Speaking Path — "0 dan Gapirishgacha" bo'limi tiplari
 // Reja: docs/speaking-path-roadmap.md (3-bo'lim)
 
+/** Just-in-time vocabulary — scenario uchun kerakli qo'shimcha so'z */
+export interface VocabItem {
+  en: string
+  uz: string
+  /** ishlatilish misoli (ixtiyoriy) */
+  example?: string
+}
+
 /** Bitta o'rganiladigan "blok" — tayyor jumla qolipi yoki ibora */
 export interface SpeakingChunk {
   /** barqaror noyob id, masalan 'sp-d1-c1' */
@@ -75,6 +83,8 @@ export interface SpeakingDay {
   recycledChunkIds?: string[]
   /** True bo'lsa — faqat recycled chunklar, yangi chunk yo'q */
   isReviewDay?: boolean
+  /** Scenario uchun kerakli qo'shimcha lug'at (just-in-time vocabulary) */
+  vocab?: VocabItem[]
 }
 
 /** Foydalanuvchining bir kun bo'yicha progressi (runtime/persist) */

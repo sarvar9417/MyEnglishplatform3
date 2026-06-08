@@ -6,11 +6,12 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, Mic, Flame, Trophy, RotateCcw, ChevronRight } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import { SPEAKING_DAYS, TOTAL_SPEAKING_DAYS, getSpeakingDay, getAllChunks, type SpeakingChunk, type SpeakingDayProgress } from '../data/speakingPath'
-import { getSpeakingProgress, getDueChunks, getSpeakingStats, type SpeakingStats } from '../services/speakingPathService'
+import { getSpeakingProgress, getDueChunks, getSpeakingStats, loadSrsMap, computeTrend, computeSRSDistribution, type SpeakingStats, type TrendPoint, type SRSDistribution } from '../services/speakingPathService'
 import SpeakingLadder from '../components/speakingPath/SpeakingLadder'
 import SpeakingDaySession from '../components/speakingPath/SpeakingDaySession'
 import SpeakingReviewSession from '../components/speakingPath/SpeakingReviewSession'
 import SpeakingMetricsPanel from '../components/speakingPath/SpeakingMetricsPanel'
+import SpeakingCharts from '../components/speakingPath/SpeakingCharts'
 import FreePractice from '../components/speakingPath/FreePractice'
 
 export default function SpeakingPath() {
@@ -23,6 +24,8 @@ export default function SpeakingPath() {
   const [unlockedDay, setUnlockedDay] = useState(1)
   const [dueChunks, setDueChunks] = useState<SpeakingChunk[]>([])
   const [speakingStats, setSpeakingStats] = useState<SpeakingStats | null>(null)
+  const [trend, setTrend] = useState<TrendPoint[]>([])
+  const [srsDistribution, setSrsDistribution] = useState<SRSDistribution[]>([])
   const [expandedDay, setExpandedDay] = useState<number | null>(null)
   const [activeDay, setActiveDay] = useState<number | null>(null)
   const [reviewMode, setReviewMode] = useState(false)
@@ -34,10 +37,12 @@ export default function SpeakingPath() {
 
   const loadProgress = useCallback(async () => {
     if (!userId) return
+    // Load SRS map ONCE and share it
+    const srsMap = await loadSrsMap(userId)
     const [progress, due, stats] = await Promise.all([
       getSpeakingProgress(userId),
-      getDueChunks(userId, getAllChunks()),
-      getSpeakingStats(userId, getAllChunks()),
+      getDueChunks(userId, getAllChunks(), srsMap),
+      getSpeakingStats(userId, getAllChunks(), srsMap),
     ])
     setCompleted(new Set(progress.filter(p => p.completed).map(p => p.day)))
     setDayProgress(progress)
@@ -45,6 +50,10 @@ export default function SpeakingPath() {
     setDueChunks(due)
     setSpeakingStats(stats)
     setExpandedDay(prev => prev ?? Math.min(stats.currentDay, TOTAL_SPEAKING_DAYS))
+
+    // Compute chart data from the same SRS map
+    setTrend(computeTrend(progress, 21))
+    setSrsDistribution(computeSRSDistribution(srsMap))
   }, [userId])
 
   useEffect(() => {
@@ -151,6 +160,16 @@ export default function SpeakingPath() {
         <SpeakingMetricsPanel stats={speakingStats} />
       )}
 
+      {/* Grafiklar */}
+      {speakingStats && (
+        <SpeakingCharts
+          trend={trend}
+          srsDistribution={srsDistribution}
+          avgScore7d={speakingStats.avgSpeakScore7d}
+          avgStability={speakingStats.avgChunkStability}
+        />
+      )}
+
       {/* Narvon */}
       {loading ? (
         <div className="space-y-2">
@@ -167,6 +186,7 @@ export default function SpeakingPath() {
           expandedDay={expandedDay}
           onToggle={handleToggle}
           onStart={handleStart}
+          userId={userId}
         />
       )}
       </>

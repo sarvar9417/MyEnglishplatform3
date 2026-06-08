@@ -11,9 +11,11 @@ const { mockSaveProgress, mockEnrollChunks } = vi.hoisted(() => ({
 vi.mock('../../../services/speakingPathService', () => ({
   saveSpeakingDayProgress: mockSaveProgress,
   enrollChunks: mockEnrollChunks,
+  loadSrsMap: vi.fn(() => Promise.resolve({})),
+  computeSRSDistribution: vi.fn(() => []),
 }))
 
-// ── Mock 4 step komponentlari (level conversion testi uchun saqlaymiz) ──
+// ── Mock step komponentlari ──
 const capturedLevel = { current: '' }
 
 vi.mock('../steps/ListenStep', () => ({
@@ -48,10 +50,26 @@ vi.mock('../steps/ConverseStep', () => ({
     capturedLevel.current = level
     return (
       <div data-testid="converse-step">
-        <button data-testid="mock-converse-next" onClick={onNext}>Converse → Done</button>
+        <button data-testid="mock-converse-next" onClick={onNext}>Converse → Cooldown</button>
       </div>
     )
   },
+}))
+
+vi.mock('../steps/CooldownStep', () => ({
+  default: ({ onNext }: { onNext: () => void }) => (
+    <div data-testid="cooldown-step">
+      <button data-testid="mock-cooldown-next" onClick={onNext}>Cooldown → Done</button>
+    </div>
+  ),
+}))
+
+vi.mock('../steps/WarmupStep', () => ({
+  default: ({ onNext }: { onNext: () => void }) => (
+    <div data-testid="warmup-step">
+      <button data-testid="mock-warmup-next" onClick={onNext}>Warmup → Listen</button>
+    </div>
+  ),
 }))
 
 import SpeakingDaySession from '../SpeakingDaySession'
@@ -71,6 +89,21 @@ const makeDay = (overrides?: Partial<SpeakingDay>): SpeakingDay => ({
   ...overrides,
 })
 
+// Yordamchi: warmup'dan cooldown gacha tez o'tish
+function goToCooldown() {
+  fireEvent.click(screen.getByTestId('mock-warmup-next'))
+  fireEvent.click(screen.getByTestId('mock-listen-next'))
+  fireEvent.click(screen.getByTestId('mock-shadow-next'))
+  fireEvent.click(screen.getByTestId('mock-speak-next'))
+  fireEvent.click(screen.getByTestId('mock-converse-next'))
+}
+
+// Yordamchi: to'liq sessiyani yakunlash (cooldown → done)
+function completeSession() {
+  goToCooldown()
+  fireEvent.click(screen.getByTestId('mock-cooldown-next'))
+}
+
 afterEach(() => { cleanup(); vi.clearAllMocks() })
 beforeEach(() => { vi.useFakeTimers() })
 afterEach(() => { vi.useRealTimers() })
@@ -83,54 +116,51 @@ describe('SpeakingDaySession', () => {
     expect(screen.getByText(/Yoshingizni ayta olasiz/)).toBeInTheDocument()
   })
 
-  it('boshlang\'ich holatda ListenStep ko\'rinadi, progress bar 0/4', () => {
+  it('boshlang\'ich holatda WarmupStep ko\'rinadi, progress bar 6 qadam', () => {
     render(<SpeakingDaySession day={makeDay()} userId="u1" onExit={vi.fn()} />)
-    expect(screen.getByTestId('listen-step')).toBeInTheDocument()
-    expect(screen.getByTestId('mock-listen-next')).toBeInTheDocument()
-    // 4 qadam label
+    expect(screen.getByTestId('warmup-step')).toBeInTheDocument()
+    expect(screen.getByTestId('mock-warmup-next')).toBeInTheDocument()
+    // 6 qadam label (review yo'q)
+    expect(screen.getByText('Kirish')).toBeInTheDocument()
     expect(screen.getByText('Eshit')).toBeInTheDocument()
     expect(screen.getByText('Shadow')).toBeInTheDocument()
     expect(screen.getByText('Gapir')).toBeInTheDocument()
     expect(screen.getByText('Suhbat')).toBeInTheDocument()
+    expect(screen.getByText('Mulohaza')).toBeInTheDocument()
   })
 
-  it('Listen → Shadow → Speak → Converse ketma-ketlikda o\'tadi', () => {
+  it('Warmup → Listen → Shadow → Speak → Converse ketma-ketlikda o\'tadi', () => {
     render(<SpeakingDaySession day={makeDay()} userId="u1" onExit={vi.fn()} />)
 
-    // Qadam 1: Listen → Shadow
+    fireEvent.click(screen.getByTestId('mock-warmup-next'))
+    expect(screen.getByTestId('listen-step')).toBeInTheDocument()
+
     fireEvent.click(screen.getByTestId('mock-listen-next'))
     expect(screen.getByTestId('shadow-step')).toBeInTheDocument()
 
-    // Qadam 2: Shadow → Speak
     fireEvent.click(screen.getByTestId('mock-shadow-next'))
     expect(screen.getByTestId('speak-step')).toBeInTheDocument()
 
-    // Qadam 3: Speak → Converse (avg=85)
     fireEvent.click(screen.getByTestId('mock-speak-next'))
     expect(screen.getByTestId('converse-step')).toBeInTheDocument()
   })
 
-  it('Converse tugagandan so\'ng done ekrani ko\'rinadi', () => {
+  it('Converse → Cooldown → Done ketma-ketlikda o\'tadi', () => {
     render(<SpeakingDaySession day={makeDay()} userId="u1" onExit={vi.fn()} />)
 
-    // 4 qadamni tez o'tamiz
-    fireEvent.click(screen.getByTestId('mock-listen-next'))
-    fireEvent.click(screen.getByTestId('mock-shadow-next'))
-    fireEvent.click(screen.getByTestId('mock-speak-next'))
-    fireEvent.click(screen.getByTestId('mock-converse-next'))
+    goToCooldown()
+    expect(screen.getByTestId('cooldown-step')).toBeInTheDocument()
 
+    fireEvent.click(screen.getByTestId('mock-cooldown-next'))
     expect(screen.getByText(/3-kun yakunlandi/)).toBeInTheDocument()
-    expect(screen.getByText(/85%/)).toBeInTheDocument() // speakScore=85
+    expect(screen.getByText(/85%/)).toBeInTheDocument()
   })
 
   it('done ekranida "Narvonga qaytish" tugmasi onExit ni chaqiradi', () => {
     const onExit = vi.fn()
     render(<SpeakingDaySession day={makeDay()} userId="u1" onExit={onExit} />)
 
-    fireEvent.click(screen.getByTestId('mock-listen-next'))
-    fireEvent.click(screen.getByTestId('mock-shadow-next'))
-    fireEvent.click(screen.getByTestId('mock-speak-next'))
-    fireEvent.click(screen.getByTestId('mock-converse-next'))
+    completeSession()
 
     fireEvent.click(screen.getByText('Narvonga qaytish'))
     expect(onExit).toHaveBeenCalledTimes(1)
@@ -139,10 +169,7 @@ describe('SpeakingDaySession', () => {
   it('userId bilan tugaganda saveSpeakingDayProgress va enrollChunks chaqiriladi', () => {
     render(<SpeakingDaySession day={makeDay()} userId="u1" onExit={vi.fn()} />)
 
-    fireEvent.click(screen.getByTestId('mock-listen-next'))
-    fireEvent.click(screen.getByTestId('mock-shadow-next'))
-    fireEvent.click(screen.getByTestId('mock-speak-next'))
-    fireEvent.click(screen.getByTestId('mock-converse-next'))
+    completeSession()
 
     expect(mockSaveProgress).toHaveBeenCalledWith('u1', expect.objectContaining({
       day: 3,
@@ -155,10 +182,7 @@ describe('SpeakingDaySession', () => {
   it('userId yo\'q bo\'lsa save/enroll chaqirilmaydi', () => {
     render(<SpeakingDaySession day={makeDay()} onExit={vi.fn()} />)
 
-    fireEvent.click(screen.getByTestId('mock-listen-next'))
-    fireEvent.click(screen.getByTestId('mock-shadow-next'))
-    fireEvent.click(screen.getByTestId('mock-speak-next'))
-    fireEvent.click(screen.getByTestId('mock-converse-next'))
+    completeSession()
 
     expect(mockSaveProgress).not.toHaveBeenCalled()
     expect(mockEnrollChunks).not.toHaveBeenCalled()
@@ -167,7 +191,6 @@ describe('SpeakingDaySession', () => {
   it('X tugmasi onExit ni chaqiradi', () => {
     const onExit = vi.fn()
     const { container } = render(<SpeakingDaySession day={makeDay()} userId="u1" onExit={onExit} />)
-    // X icon — header'dagi birinchi button (X ikonka svg)
     const xButton = container.querySelector('button')
     expect(xButton).not.toBeNull()
     fireEvent.click(xButton!)
@@ -176,9 +199,8 @@ describe('SpeakingDaySession', () => {
 
   it('A0 level → level="A1" sifatida uzatiladi', () => {
     render(<SpeakingDaySession day={makeDay({ cefr: 'A0' })} userId="u1" onExit={vi.fn()} />)
-    // ShadowStep ga level="A1" (A0 → A1 konvertatsiyasi) uzatilgan
-    // capturedLevel ShadowStep mock'i render bo'lganda saqlangan
-    fireEvent.click(screen.getByTestId('mock-listen-next'))
+    fireEvent.click(screen.getByTestId('mock-warmup-next')) // warmup → listen
+    fireEvent.click(screen.getByTestId('mock-listen-next')) // listen → shadow, level saqlanadi
     expect(capturedLevel.current).toBe('A1')
   })
 })

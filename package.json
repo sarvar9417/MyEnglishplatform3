@@ -17,6 +17,7 @@
     "seed:tenses": "tsx scripts/insert-tenses-seed.mjs",
     "seed:reviews": "tsx scripts/seed-review-lessons.ts",
     "seed:all": "tsx scripts/seed-supabase.ts",
+    "seed:sql": "tsx scripts/generate-seed-sql.ts",
     "gen-types": "python3 scripts/gen_supabase_types.py",
     "fix-lessons": "tsx scripts/fix-lessons.ts",
     "fix-lessons:dry": "tsx scripts/fix-lessons.ts --dry-run"

@@ -1,11 +1,12 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import { render, screen, fireEvent, cleanup, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup, waitFor, act } from '@testing-library/react'
+import type { SpeakingDay } from '../../../data/speakingPath/types'
 
 const { mockSpeak, mockAnalyzePronunciation, mockCaptureException, mockTrackErrors } = vi.hoisted(() => ({
   mockSpeak: vi.fn(),
   mockAnalyzePronunciation: vi.fn(),
   mockCaptureException: vi.fn(),
-  mockTrackErrors: vi.fn(),
+  mockTrackErrors: vi.fn(() => Promise.resolve()),  // Must return Promise for .catch() chain
 }))
 
 vi.mock('../../../hooks/useSpeechSynthesis', () => ({
@@ -13,39 +14,36 @@ vi.mock('../../../hooks/useSpeechSynthesis', () => ({
   SPEED_OPTIONS: [],
 }))
 
-// Mock MicButton as a simple text input so we can test shadow step flow without STT
-vi.mock('../MicButton', () => ({
-  default: ({ onResult, onSupportChange }: {
-    onResult: (text: string) => void
-    onSupportChange?: (supported: boolean) => void
-    label?: string
-  }) => {
-    // Notify parent that STT is supported
-    onSupportChange?.(true)
-    return (
-      <div data-testid="mock-mic">
-        <input
-          data-testid="mic-text-input"
-          placeholder="…yoki bu yerga yozing"
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (e.key === 'Enter' && (e.target as HTMLInputElement).value.trim()) {
-              onResult((e.target as HTMLInputElement).value.trim())
-            }
-          }}
-        />
-        <button
-          data-testid="mic-submit"
-          onClick={() => {
-            const input = document.querySelector<HTMLInputElement>('[data-testid="mic-text-input"]')
-            if (input?.value.trim()) onResult(input.value.trim())
-          }}
-          aria-label="Tekshirish"
-        >
-          Tekshirish
-        </button>
-      </div>
-    )
-  },
+// Mutable SR mock — changes trigger re-evaluation only when React re-renders (via rerender)
+const srState = { isRecording: false, transcript: '', interim: '' }
+
+vi.mock('../../../hooks/useSpeechRecognition', () => ({
+  useSpeechRecognition: () => ({
+    isSupported: true,
+    isRecording: srState.isRecording,
+    transcript: srState.transcript,
+    interim: srState.interim,
+    start: vi.fn(() => { srState.isRecording = true }),
+    stop: vi.fn(() => { srState.isRecording = false }),
+    reset: vi.fn(() => { srState.transcript = ''; srState.interim = ''; srState.isRecording = false }),
+  }),
+}))
+
+vi.mock('../../../hooks/useAudioRecorder', () => ({
+  useAudioRecorder: () => ({
+    isSupported: true,
+    isRecording: false,
+    duration: 0,
+    audioUrl: null,
+    audioBlob: null,
+    start: vi.fn(),
+    stop: vi.fn(),
+    reset: vi.fn(),
+  }),
+}))
+
+vi.mock('../../../hooks/useAudioAnalyser', () => ({
+  analyzeAudio: vi.fn(() => Promise.resolve({ pitchMean: 150, pitchStddev: 30, fluency: { avgEnergy: 0.5, energyVariation: 0.2 } })),
 }))
 
 vi.mock('../../../lib/claude', () => ({
@@ -53,9 +51,7 @@ vi.mock('../../../lib/claude', () => ({
 }))
 
 vi.mock('../../../lib/monitoring', () => ({
-  monitoring: {
-    captureException: mockCaptureException,
-  },
+  monitoring: { captureException: mockCaptureException },
 }))
 
 vi.mock('../../../services/pronunciationErrorService', () => ({
@@ -63,7 +59,6 @@ vi.mock('../../../services/pronunciationErrorService', () => ({
 }))
 
 import ShadowStep from '../steps/ShadowStep'
-import type { SpeakingDay } from '../../../data/speakingPath/types'
 
 const makeDay = (overrides?: Partial<SpeakingDay>): SpeakingDay => ({
   day: 1,
@@ -80,7 +75,27 @@ const makeDay = (overrides?: Partial<SpeakingDay>): SpeakingDay => ({
   ...overrides,
 })
 
-afterEach(() => { cleanup(); vi.clearAllMocks() })
+afterEach(() => {
+  cleanup()
+  vi.clearAllMocks()
+  srState.isRecording = false
+  srState.transcript = ''
+  srState.interim = ''
+})
+
+function startRecording(component: HTMLElement) {
+  // Find the circular (rounded-full) icon-only button inside the mic area
+  const allBtns = component.querySelectorAll('button')
+  for (const btn of allBtns) {
+    if (btn.className.includes('rounded-full') && !btn.textContent?.trim()) {
+      fireEvent.click(btn)
+      return
+    }
+  }
+  // Fallback: just click any icon-only button
+  const svgBtns = Array.from(allBtns).filter(b => b.querySelector('svg') && !b.textContent?.trim())
+  if (svgBtns.length > 0) fireEvent.click(svgBtns[0])
+}
 
 describe('ShadowStep', () => {
   it('joriy chunk ni en/uz/ipa bilan ko\'rsatadi', () => {
@@ -101,20 +116,31 @@ describe('ShadowStep', () => {
     expect(mockSpeak).toHaveBeenCalledWith('Hello')
   })
 
-  it('matn yozib tekshirish analyzePronunciation ni chaqiradi', async () => {
+  it('mikrofon orqali yozib olish analyzePronunciation ni chaqiradi', async () => {
     mockAnalyzePronunciation.mockResolvedValueOnce({
       score: 90,
       issues: [],
       encouragement: "Zo'r!",
     })
 
-    render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
-    const input = screen.getByTestId('mic-text-input')
-    fireEvent.change(input, { target: { value: 'Hello' } })
-    fireEvent.click(screen.getByLabelText('Tekshirish'))
+    const { container, rerender } = render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
+    expect(screen.getByText('Bosib gapiring')).toBeInTheDocument()
+
+    // Click mic → starts recording
+    startRecording(container)
+
+    // Simulate SR completion: transcript ready, isRecording stops
+    await act(async () => {
+      srState.transcript = 'Hello'
+      srState.isRecording = false
+      // Force re-render so the effect re-evaluates with new srState values
+      rerender(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
+    })
 
     await waitFor(() => {
-      expect(mockAnalyzePronunciation).toHaveBeenCalledWith('Hello', 'Hello', '/həˈloʊ/', 'A1')
+      expect(mockAnalyzePronunciation).toHaveBeenCalledWith(
+        expect.stringContaining('Hello'), 'Hello', '/həˈloʊ/', 'A1', undefined
+      )
     })
     await waitFor(() => {
       expect(screen.getByText('90')).toBeInTheDocument()
@@ -124,15 +150,18 @@ describe('ShadowStep', () => {
   it('analyzePronunciation xato bersa monitoring chaqiriladi', async () => {
     mockAnalyzePronunciation.mockRejectedValueOnce(new Error('API error'))
 
-    render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
-    const input = screen.getByTestId('mic-text-input')
-    fireEvent.change(input, { target: { value: 'Hello' } })
-    fireEvent.click(screen.getByLabelText('Tekshirish'))
+    const { container, rerender } = render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
+    startRecording(container)
+
+    await act(async () => {
+      srState.transcript = 'Hello'
+      srState.isRecording = false
+      rerender(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
+    })
 
     await waitFor(() => {
       expect(mockCaptureException).toHaveBeenCalled()
     })
-    // Xatodan keyin score 0 va fallback matni
     await waitFor(() => {
       expect(screen.getByText('0')).toBeInTheDocument()
     })
@@ -145,14 +174,18 @@ describe('ShadowStep', () => {
       encouragement: 'Yaxshi!',
     })
 
-    render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
-    const input = screen.getByTestId('mic-text-input')
-    fireEvent.change(input, { target: { value: 'Hello' } })
-    fireEvent.click(screen.getByLabelText('Tekshirish'))
+    const { container, rerender } = render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
+    startRecording(container)
+
+    await act(async () => {
+      srState.transcript = 'Hello'
+      srState.isRecording = false
+      rerender(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
+    })
 
     await waitFor(() => expect(screen.getByText('80')).toBeInTheDocument())
-
     fireEvent.click(screen.getByText(/Keyingi/))
+
     expect(screen.getByText('Goodbye')).toBeInTheDocument()
     expect(screen.getByText('2 / 2')).toBeInTheDocument()
   })
@@ -166,11 +199,14 @@ describe('ShadowStep', () => {
 
     const singleDay = makeDay({ chunks: [{ id: 'c1', en: 'Hello', uz: 'Salom' }] })
     const onNext = vi.fn()
-    render(<ShadowStep day={singleDay} level="A1" onNext={onNext} />)
+    const { container, rerender } = render(<ShadowStep day={singleDay} level="A1" onNext={onNext} />)
+    startRecording(container)
 
-    const input = screen.getByTestId('mic-text-input')
-    fireEvent.change(input, { target: { value: 'Hello' } })
-    fireEvent.click(screen.getByLabelText('Tekshirish'))
+    await act(async () => {
+      srState.transcript = 'Hello'
+      srState.isRecording = false
+      rerender(<ShadowStep day={singleDay} level="A1" onNext={onNext} />)
+    })
 
     await waitFor(() => expect(screen.getByText('85')).toBeInTheDocument())
     fireEvent.click(screen.getByText(/Yakunlash/))
@@ -178,26 +214,35 @@ describe('ShadowStep', () => {
   })
 
   it('"Qayta" tugmasi natijani tozalab qayta urinishga ruxsat beradi', async () => {
-    mockAnalyzePronunciation.mockResolvedValueOnce({
+    mockAnalyzePronunciation.mockResolvedValue({
       score: 50,
       issues: [{ word: 'Hello', heard: 'Hallo', ipa: '/həˈloʊ/', tip: 'E diqqat' }],
       encouragement: "Yana urinib ko'ring",
     })
 
-    render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
-    const input = screen.getByTestId('mic-text-input')
-    fireEvent.change(input, { target: { value: 'Hallo' } })
-    fireEvent.click(screen.getByLabelText('Tekshirish'))
+    const { container, rerender } = render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
+    startRecording(container)
 
-    await waitFor(() => expect(screen.getByText('50')).toBeInTheDocument())
+    await act(async () => {
+      srState.transcript = 'Hello'
+      srState.isRecording = false
+      rerender(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
+    })
+
+    await waitFor(() => {
+      expect(screen.getByText('50')).toBeInTheDocument()
+    })
 
     fireEvent.click(screen.getByText(/Qayta/))
-    // Qayta dan keyin Mock MicButton qayta ko'rinishi kerak
-    expect(screen.getByTestId('mock-mic')).toBeInTheDocument()
+
+    await waitFor(() => {
+      expect(screen.getByText('Bosib gapiring')).toBeInTheDocument()
+    })
   })
 
-  it('"Takrorladim" tugmasi mavjud (natija bo\'lmasa)', () => {
+  it('STT qo\'llab-quvvatlanganda "Takrorladim" tugmasi ko\'rinmaydi', () => {
     render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
-    expect(screen.getByText(/Takrorladim/)).toBeInTheDocument()
+    // With sr.isSupported=true, the "Takrorladim" button should NOT appear
+    expect(screen.queryByText(/Takrorladim/)).not.toBeInTheDocument()
   })
 })
