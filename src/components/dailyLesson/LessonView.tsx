@@ -921,7 +921,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
                             <tr key={ex.id} className={`border-b border-gray-50 dark:border-gray-800 ${ok ? 'bg-green-50/40 dark:bg-green-900/20' : 'bg-red-50/40 dark:bg-red-900/20'}`}>
                               <td className="py-2.5 pr-2 text-xs font-bold text-gray-600">{i + 1}</td>
                               <td className="py-2.5 pr-3"><p className="text-xs text-gray-800 font-medium leading-snug line-clamp-2">
-                                {ex.type === 'fill-blank' ? ex.question.replace(/_{3,}/g, '___') : ex.type === 'fill-table' ? ex.instruction : ex.question}
+                                {ex.type === 'fill-blank' ? ex.question.replace(/_{3,}/g, '___') : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.question}
                               </p></td>
                               <td className="py-2.5 pr-3"><span className={`inline-block text-xs font-mono font-semibold px-1.5 py-0.5 rounded max-w-[400px] ${ok ? 'text-green-700' : 'bg-red-100 text-red-700'}`}>{userAnsStr}</span></td>
                               <td className="py-2.5 pr-3"><span className="inline-block text-xs font-mono font-semibold text-green-700 bg-green-100 px-1.5 py-0.5 rounded max-w-[400px]">{correctStr}</span></td>
@@ -1064,7 +1064,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
                                     return (
                                       <tr key={t.id} className={`border-b border-gray-50 dark:border-gray-800 ${ok ? 'bg-green-50/40 dark:bg-green-900/20' : 'bg-red-50/40 dark:bg-red-900/20'}`}>
                                         <td className="py-2.5 pr-2 text-xs font-bold text-gray-600">{i + 1}</td>
-                                        <td className="py-2.5 pr-3"><p className="text-xs text-gray-800 dark:text-gray-200 font-medium leading-snug line-clamp-2">{t.type === 'fill-table' ? t.instruction : t.question}</p></td>
+                                        <td className="py-2.5 pr-3"><p className="text-xs text-gray-800 dark:text-gray-200 font-medium leading-snug line-clamp-2">{t.type === 'fill-table' ? t.instruction : t.type === 'vocab-match' ? t.word : t.question}</p></td>
                                         <td className="py-2.5 pr-3">
                                           <span className={`inline-block text-xs font-mono font-semibold px-1.5 py-0.5 rounded ${ok ? 'text-green-700' : ans ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-500'}`}>
                                             {ans || '(tanlanmadi)'}
@@ -1104,7 +1104,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
                                     {t.instruction}
                                   </p>
                                 )}
-                                <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{t.type === 'fill-blank' ? t.question.replace(/_{3,}/g, '___') : t.type === 'fill-table' ? t.instruction : t.question}</p>
+                                <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{t.type === 'fill-blank' ? t.question.replace(/_{3,}/g, '___') : t.type === 'fill-table' ? t.instruction : t.type === 'vocab-match' ? t.word : t.question}</p>
                                 {t.type === 'multiple-choice' ? (
                                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                     {(shuffledTestOptionsMap.get(t.id) ?? t.options).map((opt, oi) => {
