@@ -33,13 +33,14 @@ export default function MicButton({ onResult, onSupportChange, label = 'Gapiring
     wasRecording.current = isRecording
   }, [isRecording, transcript, onResult])
 
-  const toggle = () => {
-    if (isRecording) {
-      stop()
-    } else {
-      reset()
-      start()
-    }
+  // Bosib-turib-gapirish (push-to-talk): bosib turing → gapiring → qo'yib yuboring
+  const startRec = () => {
+    if (disabled || isRecording) return
+    reset()
+    start()
+  }
+  const stopRec = () => {
+    if (isRecording) stop()
   }
 
   if (!isSupported) {
@@ -53,19 +54,23 @@ export default function MicButton({ onResult, onSupportChange, label = 'Gapiring
   return (
     <div className="flex flex-col items-center gap-2">
       <button
-        onClick={toggle}
+        onPointerDown={(e) => { e.preventDefault(); startRec() }}
+        onPointerUp={stopRec}
+        onPointerLeave={stopRec}
+        onPointerCancel={stopRec}
+        onContextMenu={(e) => e.preventDefault()}
         disabled={disabled}
-        className={`w-16 h-16 rounded-full flex items-center justify-center transition-all shadow-lg active:scale-95
+        className={`w-16 h-16 rounded-full flex items-center justify-center transition-all shadow-lg select-none touch-none active:scale-95
           ${isRecording
             ? 'bg-rose-500 animate-pulse ring-4 ring-rose-200 dark:ring-rose-900'
             : 'bg-gradient-to-br from-primary-500 to-primary-700 hover:from-primary-600 hover:to-primary-800'}
           ${disabled ? 'opacity-40 cursor-not-allowed' : ''}`}
-        aria-label={isRecording ? "To'xtatish" : label}
+        aria-label={isRecording ? "Yozilmoqda — qo'yib yuboring" : label}
       >
         {isRecording ? <Square size={22} className="text-white" fill="white" /> : <Mic size={26} className="text-white" />}
       </button>
       <p className="text-xs font-medium text-gray-500 dark:text-gray-400 min-h-[16px] text-center">
-        {isRecording ? (interim || 'Tinglayapman…') : label}
+        {isRecording ? (interim || "Gapiring… (qo'yib yuboring)") : `${label} (bosib turib)`}
       </p>
     </div>
   )

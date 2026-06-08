@@ -58,6 +58,13 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
   const [recording, setRecording] = useState(false)
   const [showDetails, setShowDetails] = useState(false)
   const readyRef = useRef(false)
+  const stopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const clearStopTimer = () => {
+    if (stopTimerRef.current) { clearTimeout(stopTimerRef.current); stopTimerRef.current = null }
+  }
+  // unmount'da timer'ni tozalaymiz
+  useEffect(() => () => clearStopTimer(), [])
 
   const evaluate = useCallback((text: string) => {
     const result = semanticSimilarity(text, chunk.en)
@@ -71,27 +78,40 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
   // STT transcript tayyor bo'lganda baholash
   useEffect(() => {
     if (!recording || sr.isRecording || !sr.transcript.trim() || !readyRef.current) return
+    clearStopTimer()
     readyRef.current = false
     setRecording(false)
     evaluate(sr.transcript.trim())
   }, [recording, sr.isRecording, sr.transcript, evaluate])
 
-  const toggleRecord = useCallback(() => {
-    if (recording) {
-      sr.stop()
-      ar.stop()
-    } else {
-      setAttempted(false)
-      sr.reset()
-      ar.reset()
-      sr.start()
-      ar.start()
-      setRecording(true)
-      readyRef.current = true
-    }
+  // ── Bosib-turib-gapirish (push-to-talk) ──
+  const startRecord = useCallback(() => {
+    if (recording) return
+    clearStopTimer()
+    setAttempted(false)
+    sr.reset()
+    ar.reset()
+    sr.start()
+    ar.start()
+    setRecording(true)
+    readyRef.current = true
+  }, [recording, sr, ar])
+
+  const stopRecord = useCallback(() => {
+    if (!recording) return
+    sr.stop()
+    ar.stop()
+    // Transcript kelsa — yuqoridagi effect baholaydi. Jim turilgan bo'lsa (transcript yo'q),
+    // 1.2s dan keyin idle holatga qaytaramiz (tugma "yopishib" qolmasin).
+    clearStopTimer()
+    stopTimerRef.current = setTimeout(() => {
+      readyRef.current = false
+      setRecording(false)
+    }, 1200)
   }, [recording, sr, ar])
 
   const retry = useCallback(() => {
+    clearStopTimer()
     setAttempted(false)
     setLastText('')
     setTyped('')
@@ -125,48 +145,51 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
         )}
       </div>
 
-      {!attempted && !recording ? (
+      {!attempted ? (
         <div className="space-y-3">
-          {/* Microphone button with audio recording */}
+          {/* Bosib-turib-gapirish (push-to-talk): bosib turing → gapiring → qo'yib yuboring */}
           <div className="flex flex-col items-center gap-2">
             <button
-              onClick={toggleRecord}
-              className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow-lg active:scale-95 transition hover:from-primary-600 hover:to-primary-800 flex items-center justify-center"
+              onPointerDown={(e) => { e.preventDefault(); startRecord() }}
+              onPointerUp={stopRecord}
+              onPointerLeave={stopRecord}
+              onPointerCancel={stopRecord}
+              onContextMenu={(e) => e.preventDefault()}
+              className={`w-20 h-20 rounded-full text-white shadow-lg transition flex items-center justify-center select-none touch-none ${
+                recording
+                  ? 'bg-rose-500 scale-110 animate-pulse ring-4 ring-rose-200 dark:ring-rose-900'
+                  : 'bg-gradient-to-br from-primary-500 to-primary-700 active:scale-95 hover:from-primary-600 hover:to-primary-800'
+              }`}
+              aria-label={recording ? "Yozilmoqda — qo'yib yuboring" : 'Bosib turib gapiring'}
             >
-              <Mic size={26} className="text-white" />
+              {recording ? <Square size={24} fill="white" /> : <Mic size={28} className="text-white" />}
             </button>
-            <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Inglizcha ayting</p>
+            <p className={`text-xs font-semibold text-center ${recording ? 'text-rose-500 animate-pulse' : 'text-gray-500 dark:text-gray-400'}`}>
+              {recording ? "🎤 Gapiring… (qo'yib yuboring)" : '🎤 Bosib turib gapiring'}
+            </p>
+            {recording && sr.interim && <p className="text-xs text-gray-400 italic">"{sr.interim}"</p>}
           </div>
 
-          {/* type-to-recall fallback */}
-          <div className="flex items-center gap-2">
-            <input
-              value={typed}
-              onChange={e => setTyped(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter' && typed.trim()) evaluate(typed.trim()) }}
-              placeholder="…yoki bu yerga yozing"
-              className="flex-1 px-3 py-2.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-400"
-            />
-            <button
-              onClick={() => typed.trim() && evaluate(typed.trim())}
-              disabled={!typed.trim()}
-              className="p-2.5 rounded-xl bg-primary-600 text-white disabled:opacity-40"
-              aria-label="Tekshirish"
-            >
-              <Send size={18} />
-            </button>
-          </div>
-        </div>
-      ) : recording ? (
-        <div className="flex flex-col items-center gap-2">
-          <button
-            onClick={toggleRecord}
-            className="w-16 h-16 rounded-full bg-rose-500 text-white shadow-lg active:scale-95 transition animate-pulse flex items-center justify-center"
-          >
-            <Square size={22} fill="white" />
-          </button>
-          <p className="text-xs text-rose-500 font-semibold animate-pulse">🎤 Gapiring…</p>
-          {sr.interim && <p className="text-xs text-gray-400 italic">"{sr.interim}"</p>}
+          {/* type-to-recall fallback (faqat yozmaganda) */}
+          {!recording && (
+            <div className="flex items-center gap-2">
+              <input
+                value={typed}
+                onChange={e => setTyped(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter' && typed.trim()) evaluate(typed.trim()) }}
+                placeholder="…yoki bu yerga yozing"
+                className="flex-1 px-3 py-2.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-400"
+              />
+              <button
+                onClick={() => typed.trim() && evaluate(typed.trim())}
+                disabled={!typed.trim()}
+                className="p-2.5 rounded-xl bg-primary-600 text-white disabled:opacity-40"
+                aria-label="Tekshirish"
+              >
+                <Send size={18} />
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <div className={`rounded-2xl p-4 border ${correct ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800/50' : 'bg-rose-50 dark:bg-rose-900/20 border-rose-200 dark:border-rose-800/50'}`}>
