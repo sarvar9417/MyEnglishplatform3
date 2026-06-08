@@ -177,6 +177,40 @@ export default function ExerciseCard({
         </div>
       )}
 
+      {ex.type === 'vocab-match' && (
+        <div>
+          <p className="text-[11px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider mb-1">📖 So'zni moslang</p>
+          {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
+          <div className="bg-white dark:bg-gray-800 border border-orange-200 dark:border-orange-800 rounded-xl px-4 py-3 mb-3 text-center">
+            <p className="text-lg font-black text-gray-900 dark:text-gray-100">{ex.word}</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {ex.options.map((opt, i) => {
+              const selected = answers[0] === opt
+              const correctOpt = opt === ex.correct
+              let cls = 'border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:border-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/30'
+              if (submitted) {
+                if (correctOpt) cls = 'border-green-400 bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300 font-bold'
+                else if (selected && !correctOpt) cls = 'border-red-400 bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300'
+                else cls = 'border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-400 dark:text-gray-500'
+              } else if (selected) {
+                cls = 'border-orange-500 bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-300 font-semibold ring-2 ring-orange-300 dark:ring-orange-600 ring-offset-1'
+              }
+              return (
+                <button key={opt} disabled={submitted} onClick={() => onChange(0, opt)}
+                  className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-all ${cls}`}>
+                  <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+                    {String.fromCharCode(97 + i)}
+                  </span>
+                  {opt}
+                </button>
+              )
+            })}
+          </div>
+          {submitted && feedbackBlock(ex, answers, isCorrect)}
+        </div>
+      )}
+
       {ex.type === 'fill-table' && (
         <div>
           <p className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">📊 Jadvalni to'ldiring</p>
@@ -302,6 +336,8 @@ function submittedCheck(ex: DailyExercise, userAns: string[]): boolean {
       const expected = ex.rows.flatMap((r) => [r.comp, r.sup])
       return expected.every((b, i) => b === '' || normalizeAnswer(userAns[i] ?? '') === normalizeAnswer(b))
     }
+    case 'vocab-match':
+      return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
   }
 }
 

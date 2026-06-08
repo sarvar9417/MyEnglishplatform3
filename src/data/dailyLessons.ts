@@ -134,6 +134,7 @@ export type DailyExercise =
   | { id: number; type: 'error-correction'; instruction: string; question: string; errorPart: string; correct: string; explanation: string }
   | { id: number; type: 'transformation'; instruction: string; question: string; hint: string; correct: string; explanation: string }
   | { id: number; type: 'fill-table'; instruction: string; rows: { adj: string; comp: string; sup: string }[]; explanation: string }
+  | { id: number; type: 'vocab-match'; instruction: string; word: string; options: string[]; correct: string; explanation: string }
 
 export const comparativesSuperlatives: DailyLesson = {
   id: 'comparatives-superlatives',
