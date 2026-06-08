@@ -192,6 +192,19 @@ export const alphabetAndGreetings: DailyLesson = {
     { title: "Qiyin", desc: "Vaqt va tarjima", color: 'bg-violet-500', icon: '🎯', ids: [21, 22, 23, 24, 25] },
     { title: "Qisqartma/Inkor", desc: "I'm, isn't, aren't", color: 'bg-pink-500', icon: '✂️', ids: [26, 27, 28, 29, 30] },
   ],
+  reading: {
+    passage: "Hello! My name is Bobur. I am from Tashkent, Uzbekistan. I am 25 years old. I am a student. I have a sister. Her name is Lola. She is 20 years old. She is a student too. Goodbye! Nice to meet you!",
+    vocabulary: [
+      { word: 'name', definition: 'ism' },
+      { word: 'sister', definition: 'opa/singil' },
+      { word: 'student', definition: 'talaba' },
+    ],
+    questions: [
+      { id: 1001, type: 'multiple-choice', question: "What is Bobur's name?", options: ['Lola', 'Bobur', 'Ali', 'Zafar'], correctIndex: 1, explanation: "His name is Bobur." },
+      { id: 1002, type: 'multiple-choice', question: 'How old is Bobur?', options: ['20', '22', '25', '30'], correctIndex: 2, explanation: "He is 25 years old." },
+      { id: 1003, type: 'multiple-choice', question: 'Who is Lola?', options: ["Bobur's mother", "Bobur's sister", "Bobur's friend", "Bobur's teacher"], correctIndex: 1, explanation: "Lola is Bobur's sister." },
+    ],
+  },
 }
 
 export const numbers: DailyLesson = {
@@ -359,6 +372,19 @@ export const numbers: DailyLesson = {
     { title: "O'rtacha", desc: "Yosh, telefon, narx", color: 'bg-blue-500', icon: '📘', ids: [26, 27, 28, 29, 210] },
     { title: "Qiyin", desc: "Katta sonlar", color: 'bg-violet-500', icon: '🎯', ids: [211, 212, 213, 214, 215] },
   ],
+  reading: {
+    passage: "My name is Kamola. I am 22 years old. I have three brothers and one sister. My brothers are 18, 15, and 10 years old. My sister is 25 years old. My phone number is 555-1234. I have 2 cats and 1 dog. I love animals!",
+    vocabulary: [
+      { word: 'brothers', definition: 'akalar/ukalar' },
+      { word: 'phone number', definition: 'telefon raqam' },
+      { word: 'animals', definition: 'hayvonlar' },
+    ],
+    questions: [
+      { id: 1004, type: 'multiple-choice', question: 'How old is Kamola?', options: ['18', '22', '25', '30'], correctIndex: 1, explanation: "She is 22 years old." },
+      { id: 1005, type: 'multiple-choice', question: 'How many brothers does she have?', options: ['One', 'Two', 'Three', 'Four'], correctIndex: 2, explanation: "She has three brothers." },
+      { id: 1006, type: 'multiple-choice', question: 'How many cats does she have?', options: ['1', '2', '3', '4'], correctIndex: 1, explanation: "She has 2 cats." },
+    ],
+  },
 }
 
 export const colorsAndShapes: DailyLesson = {
@@ -517,6 +543,19 @@ export const colorsAndShapes: DailyLesson = {
     { title: "O'rtacha", desc: "Artikl va shakllar", color: 'bg-blue-500', icon: '📘', ids: [36, 37, 38, 39, 40] },
     { title: "Qiyin", desc: "Ko'plik va gaplar", color: 'bg-violet-500', icon: '🎯', ids: [311, 312, 313, 314, 315] },
   ],
+  reading: {
+    passage: "My favorite color is blue. The sky is blue and the ocean is blue too. I have a blue bag and a blue pen. My room has blue walls. My brother's favorite color is red. He has a red car and a red shirt. My sister's favorite color is green. Grass is green and trees are green.",
+    vocabulary: [
+      { word: 'favorite', definition: 'eng yoqtirgan' },
+      { word: 'ocean', definition: 'okean' },
+      { word: 'wall', definition: 'devor' },
+    ],
+    questions: [
+      { id: 1007, type: 'multiple-choice', question: "What is the speaker's favorite color?", options: ['Red', 'Blue', 'Green', 'Yellow'], correctIndex: 1, explanation: "My favorite color is blue." },
+      { id: 1008, type: 'multiple-choice', question: "What is the brother's favorite color?", options: ['Blue', 'Red', 'Green', 'White'], correctIndex: 1, explanation: "My brother's favorite color is red." },
+      { id: 1009, type: 'multiple-choice', question: 'What color is grass?', options: ['Blue', 'Red', 'Green', 'Yellow'], correctIndex: 2, explanation: "Grass is green." },
+    ],
+  },
 }
 
 export const family: DailyLesson = {

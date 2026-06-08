@@ -54,10 +54,9 @@ export default function MicButton({ onResult, onSupportChange, label = 'Gapiring
   return (
     <div className="flex flex-col items-center gap-2">
       <button
-        onPointerDown={(e) => { e.preventDefault(); startRec() }}
-        onPointerUp={stopRec}
-        onPointerLeave={stopRec}
-        onPointerCancel={stopRec}
+        onPointerDown={(e) => { e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId) } catch { /* noop */ } startRec() }}
+        onPointerUp={(e) => { try { e.currentTarget.releasePointerCapture(e.pointerId) } catch { /* noop */ } stopRec() }}
+        onPointerCancel={(e) => { try { e.currentTarget.releasePointerCapture(e.pointerId) } catch { /* noop */ } stopRec() }}
         onContextMenu={(e) => e.preventDefault()}
         disabled={disabled}
         className={`w-16 h-16 rounded-full flex items-center justify-center transition-all shadow-lg select-none touch-none active:scale-95
