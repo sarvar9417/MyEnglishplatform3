@@ -156,9 +156,9 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 11,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 21,
-    "exercises": 25,
-    "tests": 15
+    "vocabulary": 38,
+    "exercises": 31,
+    "tests": 20
   },
   {
     "id": "auto-review-2",
