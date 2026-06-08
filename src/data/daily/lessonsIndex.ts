@@ -1327,7 +1327,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Advanced Grammar",
     "formulas": 4,
     "vocabulary": 10,
-    "exercises": 29,
+    "exercises": 32,
     "tests": 18
   },
   {

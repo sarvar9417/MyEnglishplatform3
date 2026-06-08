@@ -297,6 +297,9 @@ export const advancedConditionalsB2: DailyLesson = {
     { id: 5527, type: 'fill-blank', instruction: "Otherwise — aks holda:", question: "I studied hard. Otherwise, I _____ (fail) the exam.", blanks: ['would have failed'], explanation: "Otherwise = if I hadn't studied. Implied conditional → would have + V₃." },
     { id: 5528, type: 'fill-blank', instruction: "In case — ehtiyot chorasi:", question: "Take an umbrella in case it _____ (rain).", blanks: ['rains'], explanation: "In case + present simple = agar ... bo'lsa (ehtiyot chorasi). In case it rains = yomg'ir yog'sa deb." },
     { id: 5529, type: 'transformation', instruction: "Were to — rasmiy, kam ehtimolli shart:", question: "Situation: It's very unlikely, but if someone asked you to become president, would you accept?", hint: "If you ___ ___ asked to become president, would you accept?", correct: 'If you were to be asked to become president, would you accept?', explanation: "If + were to + V = kam ehtimolli rasmiy shart. If you were to be asked = agar so'ralsangiz (ehtimol kam)." },
+    { id: 5530, type: 'fill-blank', instruction: "Mixed conditional — present→past:", question: "If I _____ (be) more careful, I wouldn't have made that mistake.", blanks: ['were'], explanation: "Present condition (If I were) → past result (wouldn't have made). Bu present→past mixed conditional." },
+    { id: 5531, type: 'multiple-choice', instruction: "3rd vs Mixed conditional farqini aniqlang:", question: "Qaysi gap MIXED conditional (past→present)?", options: ['If I had studied, I would have passed the exam.', 'If I had studied, I would be a doctor now.', 'If I were rich, I would travel.', 'If it rains, I will stay home.'], correct: 'If I had studied, I would be a doctor now.', explanation: "Past condition (had studied) → present result (would be) = mixed. 1-variant 3rd conditional (past→past)." },
+    { id: 5532, type: 'error-correction', instruction: "Mixed conditional xatosini toping:", question: "If I would have studied harder, I would have a better job now.", errorPart: 'would have studied', correct: 'had studied', explanation: "If dan keyin would ishlatilmaydi: 'If I had studied harder, I would have a better job now.' = mixed conditional (past→present)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Conditionals asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5501, 5502, 5503, 5504, 5505] },
@@ -305,6 +308,7 @@ export const advancedConditionalsB2: DailyLesson = {
     { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5520, 5516, 5517, 5518, 5519] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5521, 5522, 5523, 5524, 5525] },
     { title: "Qo'shimcha", desc: 'As long as, Otherwise, In case, Were to', color: 'bg-amber-500', icon: '📌', ids: [5526, 5527, 5528, 5529] },
+    { title: "Mixed qo'shimcha", desc: "Present→past mixed + 3rd vs Mixed", color: 'bg-rose-500', icon: '🔀', ids: [5530, 5531, 5532] },
   ],
   tests: [
     { id: 551, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Mixed conditional qanday?", options: ['past→past', 'past→present', 'present→present', 'future→past'], correct: 'past→present', explanation: "If + had → would + V" },

@@ -150,10 +150,9 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
           {/* Bosib-turib-gapirish (push-to-talk): bosib turing → gapiring → qo'yib yuboring */}
           <div className="flex flex-col items-center gap-2">
             <button
-              onPointerDown={(e) => { e.preventDefault(); startRecord() }}
-              onPointerUp={stopRecord}
-              onPointerLeave={stopRecord}
-              onPointerCancel={stopRecord}
+              onPointerDown={(e) => { e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId) } catch { /* noop */ } startRecord() }}
+              onPointerUp={(e) => { try { e.currentTarget.releasePointerCapture(e.pointerId) } catch { /* noop */ } stopRecord() }}
+              onPointerCancel={(e) => { try { e.currentTarget.releasePointerCapture(e.pointerId) } catch { /* noop */ } stopRecord() }}
               onContextMenu={(e) => e.preventDefault()}
               className={`w-20 h-20 rounded-full text-white shadow-lg transition flex items-center justify-center select-none touch-none ${
                 recording
