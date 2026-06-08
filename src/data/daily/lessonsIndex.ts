@@ -29,7 +29,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 1,
     "isReview": false,
     "formulas": 3,
-    "vocabulary": 34,
+    "vocabulary": 44,
     "exercises": 41,
     "tests": 20
   },
@@ -41,7 +41,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 2,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 26,
+    "vocabulary": 38,
     "exercises": 35,
     "tests": 15
   },
@@ -53,7 +53,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 3,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 21,
+    "vocabulary": 22,
     "exercises": 34,
     "tests": 15
   },
@@ -65,7 +65,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 4,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 22,
+    "vocabulary": 32,
     "exercises": 32,
     "tests": 15
   },
@@ -77,7 +77,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 5,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 29,
+    "vocabulary": 37,
     "exercises": 25,
     "tests": 15
   },
@@ -108,7 +108,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 7,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 21,
+    "vocabulary": 26,
     "exercises": 25,
     "tests": 15
   },
@@ -120,7 +120,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 8,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 20,
+    "vocabulary": 37,
     "exercises": 25,
     "tests": 15
   },
@@ -132,7 +132,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 9,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 19,
+    "vocabulary": 38,
     "exercises": 25,
     "tests": 15
   },
@@ -144,7 +144,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 10,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 24,
+    "vocabulary": 38,
     "exercises": 25,
     "tests": 15
   },
@@ -156,7 +156,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "day": 11,
     "isReview": false,
     "formulas": 4,
-    "vocabulary": 38,
+    "vocabulary": 39,
     "exercises": 31,
     "tests": 20
   },
