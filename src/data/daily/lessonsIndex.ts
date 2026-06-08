@@ -790,7 +790,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Tenses",
     "formulas": 4,
     "vocabulary": 13,
-    "exercises": 20,
+    "exercises": 25,
     "tests": 15
   },
   {
@@ -1327,7 +1327,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Advanced Grammar",
     "formulas": 4,
     "vocabulary": 10,
-    "exercises": 25,
+    "exercises": 29,
     "tests": 18
   },
   {

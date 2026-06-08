@@ -293,6 +293,10 @@ export const advancedConditionalsB2: DailyLesson = {
     { id: 5523, type: 'fill-blank', instruction: "Mixed conditional:", question: "If he ___ the course, he would be qualified now.", blanks: ['had completed'], explanation: "Past condition → had + V3; present result → would + V" },
     { id: 5524, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "___ she need any assistance, please contact HR.", options: ['If', 'Should', 'Had', 'Were'], correct: 'Should', explanation: "First conditional inversion: Should + S + V" },
     { id: 5525, type: 'transformation', instruction: "Implied conditional:", question: "If it hadn't been for the coach, we would have lost. → ___ the coach, we would have lost.", hint: "But for yoki Without?", correct: 'But for the coach, we would have lost.', explanation: "But for = if not for (implied conditional)" },
+    { id: 5526, type: 'fill-blank', instruction: "As long as — shartli ruxsat:", question: "You can borrow my car as long as you _____ carefully.", blanks: ['drive'], explanation: "As long as + present = shart. As long as you drive carefully = agar ehtiyot haydasangiz." },
+    { id: 5527, type: 'fill-blank', instruction: "Otherwise — aks holda:", question: "I studied hard. Otherwise, I _____ (fail) the exam.", blanks: ['would have failed'], explanation: "Otherwise = if I hadn't studied. Implied conditional → would have + V₃." },
+    { id: 5528, type: 'fill-blank', instruction: "In case — ehtiyot chorasi:", question: "Take an umbrella in case it _____ (rain).", blanks: ['rains'], explanation: "In case + present simple = agar ... bo'lsa (ehtiyot chorasi). In case it rains = yomg'ir yog'sa deb." },
+    { id: 5529, type: 'transformation', instruction: "Were to — rasmiy, kam ehtimolli shart:", question: "Situation: It's very unlikely, but if someone asked you to become president, would you accept?", hint: "If you ___ ___ asked to become president, would you accept?", correct: 'If you were to be asked to become president, would you accept?', explanation: "If + were to + V = kam ehtimolli rasmiy shart. If you were to be asked = agar so'ralsangiz (ehtimol kam)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Conditionals asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5501, 5502, 5503, 5504, 5505] },
@@ -300,6 +304,7 @@ export const advancedConditionalsB2: DailyLesson = {
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5511, 5512, 5513, 5514, 5515] },
     { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5520, 5516, 5517, 5518, 5519] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5521, 5522, 5523, 5524, 5525] },
+    { title: "Qo'shimcha", desc: 'As long as, Otherwise, In case, Were to', color: 'bg-amber-500', icon: '📌', ids: [5526, 5527, 5528, 5529] },
   ],
   tests: [
     { id: 551, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Mixed conditional qanday?", options: ['past→past', 'past→present', 'present→present', 'future→past'], correct: 'past→present', explanation: "If + had → would + V" },

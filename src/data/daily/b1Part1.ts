@@ -112,13 +112,20 @@ export const futureFormsReview: DailyLesson = {
     { id: 4018, type: 'transformation', instruction: "Present Simple bilan ifodalang:", question: "According to the schedule, the film starts at 8 PM.", hint: "The film ...", correct: "The film starts at 8 PM.", explanation: "Jadval (timetable) ? Present Simple. 'According to the schedule' ? Present Simple." },
     { id: 4019, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "If it _____ tomorrow, I will stay at home.", blanks: ['rains'], explanation: "Shart gapida (if) kelasi zamonda Present Simple ishlatiladi." },
     { id: 4020, type: 'transformation', instruction: "Berilgan vaziyatga mos kelasi zamon shaklini tanlang va gap yozing:", question: "Situation: You and your friend decided yesterday to go to the cinema tonight.", hint: "We ...", correct: "We are going to the cinema tonight.", explanation: "Oldindan kelishilgan reja (yesterday) ? Present Continuous." },
+
+    { id: 4021, type: 'fill-blank', instruction: "Vaqt belgisiga qarab to'g'ri shaklni qo'llang:", question: "I think she _____ (be) a great doctor one day.", blanks: ['will be'], explanation: "'I think' va 'one day' — Will bilan ishlatiladi (bashorat)." },
+    { id: 4022, type: 'multiple-choice', instruction: "Vaqt belgisiga qarab to'g'ri variantni tanlang:", question: "Listen! The president _____ an important announcement.", options: ['will make', 'is going to make', 'makes', 'is making'], correct: 'is going to make', explanation: "'Listen!' diqqatni tortadi → aniq dalil → Going to." },
+    { id: 4023, type: 'fill-blank', instruction: "Jadval yoki tartibni ifodalovchi vaqt belgisiga e'tibor bering:", question: "According to the schedule, the conference _____ (open) at 9 AM on Monday.", blanks: ['opens'], explanation: "'According to the schedule' va 'at 9 AM on Monday' — Present Simple for Future (jadval)." },
+    { id: 4024, type: 'error-correction', instruction: "Vaqt belgisiga mos kelmaydigan shaklni toping va tuzating:", question: "We will go to the restaurant tonight. I have already booked a table.", errorPart: 'will go', correct: "We are going to the restaurant tonight. I have already booked a table.", explanation: "'Tonight' + 'I have already booked' → kelishilgan reja, Present Continuous: 'are going'." },
+    { id: 4025, type: 'multiple-choice', instruction: "Eng mos kelasi zamon shaklini tanlang:", question: "She _____ definitely _____ the exam. She has studied very hard.", options: ['will / pass', 'is / passing', 'is going to / pass', 'passes'], correct: 'will / pass', explanation: "'Definitely' Will bilan ishlatiladi: will definitely + V1." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Will va Going to — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4001, 4002, 4003, 4004] },
     { title: "O'rtacha", desc: "Kontekstga qarab to'g'ri shakl tanlash", color: 'bg-blue-500', icon: '📘', ids: [4005, 4006, 4007, 4008] },
     { title: "Qiyin", desc: "Xatolarni topish va tuzatish", color: 'bg-violet-500', icon: '🎯', ids: [4009, 4010, 4011, 4012] },
     { title: "Inkor", desc: "Gapni qayta yozish va o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [4013, 4014, 4015, 4016] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4019, 4017, 4018, 4020] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4019, 4017, 4018, 4020, 4021, 4022] },
+    { title: "Vaqt belgilari", desc: "Time Expressions — har bir shaklga mos vaqt belgilarini aniqlash", color: 'bg-amber-500', icon: '⏰', ids: [4023, 4024, 4025] },
   ],
   tests: [
     { id: 401, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kelasi zamon shakli spontan qarorlar uchun ishlatiladi?", options: ['will', 'going to', 'Present Continuous', 'Present Simple'], correct: 'will', explanation: "Will + V1 — spontan qarorlar, bashoratlar va va'dalar uchun." },
