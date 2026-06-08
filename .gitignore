@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Coverage
+coverage/
+
+
+# Environment — NEVER commit secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+nul
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Supabase CLI
+supabase/
+
+# Claude agent settings — local machine config
+.claude/
+
+# DB migration scripts (contain secrets)
+scripts/*.mjs
+scripts/*.sql
+!scripts/sync_listening_supabase.mjs
+!scripts/*.ts
+!scripts/create_tandem_tables.sql
+
+# Backup files
+*.bak
