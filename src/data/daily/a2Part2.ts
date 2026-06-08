@@ -33,6 +33,8 @@ export const adjectiveAdverb: DailyLesson = {
     { en: 'politely', uz: 'muloyimlik bilan', example: 'He answered politely.', rule: '-ly adverb' },
     { en: 'luckily', uz: 'yaxshiyamki', example: 'Luckily, we won the match.', rule: 'sentence adverb' },
     { en: 'unfortunately', uz: 'afsuski', example: 'Unfortunately, I cannot come.', rule: 'sentence adverb' },
+    { en: 'adjective', uz: 'sifat', example: 'Happy, fast, and good are adjectives.', rule: 'adjective definition' },
+    { en: 'adverb', uz: 'ravish', example: 'Quickly, well, and very are adverbs.', rule: 'adverb definition' },
   ],
   examples: [
     { en: 'She is a good student. She studies well.', uz: "U yaxshi o'quvchi. U yaxshi o'qiydi." },
@@ -186,6 +188,8 @@ export const gerundsInfinitives: DailyLesson = {
     { en: 'practice', uz: 'mashq qilmoq', example: 'Practice speaking every day.', rule: '+ gerund' },
     { en: 'learn', uz: "o'rganmoq", example: 'I am learning to drive.', rule: '+ infinitive' },
     { en: 'would like', uz: "xohlayman (xushmuomala)", example: 'I would like to see you.', rule: '+ infinitive' },
+    { en: 'gerund', uz: 'gerundiy', example: 'Swimming is fun. I enjoy reading.', rule: 'gerund definition' },
+    { en: 'infinitive', uz: 'infinitiv', example: 'I want to go. She needs to study.', rule: 'infinitive definition' },
   ],
   examples: [
     { en: 'I enjoy swimming in the sea.', uz: "Men dengizda suzishni yoqtiraman." },
@@ -338,6 +342,8 @@ export const passiveVoice: DailyLesson = {
     { en: 'grow', uz: "o'stirmoq, yetishtirilmoq", example: 'Rice is grown in China.', rule: 'irregular verb' },
     { en: 'deliver', uz: "yetkazib bermoq", example: 'The letters are delivered every day.', rule: 'regular verb' },
     { en: 'elected', uz: "saylangan (V3)", example: 'The President was elected.', rule: 'regular V3' },
+    { en: 'passive', uz: 'majhul nisbat', example: 'The room is cleaned every day (passive).', rule: 'passive voice' },
+    { en: 'active', uz: "fa'l nisbat", example: 'John cleans the room every day (active).', rule: 'active voice' },
   ],
   examples: [
     { en: 'English is spoken in many countries around the world.', uz: "Ingliz tili dunyoning ko'plab mamlakatlarida gapiriladi." },
@@ -488,6 +494,8 @@ export const reportedSpeech: DailyLesson = {
     { en: 'then', uz: "o'shanda (now → then)", example: 'He said he was tired then.', rule: 'time word backshift' },
     { en: 'the next day', uz: "ertasi kuni", example: 'She said she would come the next day.', rule: 'time word backshift' },
     { en: 'deny', uz: 'inkor etmoq', example: 'He denied stealing the money.', rule: 'reporting verb' },
+    { en: 'reported speech', uz: "o'zlashtirma gaplar", example: 'She said that she was tired (reported speech).', rule: 'reported speech' },
+    { en: 'direct speech', uz: "to'g'ridan-to'g'ri nutq", example: 'She said: "I am tired" (direct speech).', rule: 'direct speech' },
   ],
   examples: [
     { en: "She said: 'I am tired.' → She said (that) she was tired.", uz: "U charchaganini aytdi." },
@@ -638,6 +646,7 @@ export const firstConditional: DailyLesson = {
     { en: 'succeed', uz: "muvaffaqiyat qozonmoq", example: 'If you work hard, you will succeed.', rule: 'result verb' },
     { en: 'catch', uz: 'yetib olmoq (transport)', example: 'If you hurry, you will catch the bus.', rule: 'action verb' },
     { en: 'sunny', uz: 'quyoshli', example: 'If it is sunny, we will go out.', rule: 'adjective' },
+    { en: 'conditional', uz: 'shart gaplar', example: 'First conditional: If it rains, I will stay home.', rule: 'conditional' },
   ],
   examples: [
     { en: 'If it rains tomorrow, I will stay at home.', uz: "Agar ertaga yomg'ir yog'sa, uyda qolaman." },

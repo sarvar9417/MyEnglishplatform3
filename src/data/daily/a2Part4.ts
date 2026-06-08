@@ -174,6 +174,7 @@ export const quantifiers: DailyLesson = {
     { en: 'lots of', uz: "ko'p (norasmiy)", example: 'Lots of people came to the event.', rule: 'large quantity (informal)' },
     { en: 'plenty of', uz: "mo'l-ko'l, yetarlicha", example: "Don't worry, we have plenty of time.", rule: 'more than enough' },
     { en: 'experience', uz: 'tajriba', example: "She doesn't have any experience for this job.", rule: 'uncountable noun' },
+    { en: 'quantifier', uz: "miqdor so'zi", example: 'Much, many, and a lot of are quantifiers.', rule: 'quantifiers' },
   ],
   examples: [
     { en: 'How much sugar do you need for the cake?', uz: "Kek uchun qancha shakar kerak?" },

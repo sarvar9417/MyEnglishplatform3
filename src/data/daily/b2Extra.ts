@@ -111,6 +111,24 @@ export const inversionB2: DailyLesson = {
       "uz": "ajoyib, diqqatga sazovor",
       "rule": "Sifat, B2 darajasi",
       "example": "Seldom do we see such remarkable progress in students."
+    },
+    {
+      "en": "emphatic structure",
+      "uz": "kuchaytirilgan tuzilma",
+      "rule": "Uslubiy atama",
+      "example": "Inversion creates an emphatic structure in formal writing."
+    },
+    {
+      "en": "not only...but also",
+      "uz": "nafaqat...balki",
+      "rule": "inversiya: Not only + aux + S + V",
+      "example": "Not only does he speak English, but he also speaks French."
+    },
+    {
+      "en": "hardly...when / no sooner...than",
+      "uz": "zo'rg'a...qachonki / bilanoq",
+      "rule": "inversiya: Hardly + had + S + V₃ + when",
+      "example": "Hardly had we arrived when the phone rang."
     }
   ],
   "examples": [
@@ -934,6 +952,24 @@ export const cleftSentencesB2: DailyLesson = {
       "uz": "farqlamoq, ajratmoq",
       "rule": "Fe'l, B2 darajasi",
       "example": "Cleft sentences help distinguish the main point."
+    },
+    {
+      "en": "it-cleft",
+      "uz": "it-gapli bo'lak",
+      "rule": "It + be + X + that/who...",
+      "example": "It was John who won the prize."
+    },
+    {
+      "en": "wh-cleft",
+      "uz": "wh-gapli bo'lak",
+      "rule": "What/All + clause + be + X",
+      "example": "What I need is a break."
+    },
+    {
+      "en": "pseudo-cleft",
+      "uz": "soxta bo'lak",
+      "rule": "The reason why / What / All + ...",
+      "example": "The reason why I left was the noise."
     }
   ],
   "examples": [
@@ -1765,6 +1801,30 @@ export const advancedPassiveB2: DailyLesson = {
       "uz": "nazorat qilmoq, boshqarmoq",
       "rule": "Fe'l, B2 darajasi",
       "example": "The project was overseen by the senior architect."
+    },
+    {
+      "en": "passive voice",
+      "uz": "majhul nisbat",
+      "rule": "be + V₃",
+      "example": "The report was written by the assistant."
+    },
+    {
+      "en": "impersonal passive",
+      "uz": "shaxssiz majhul",
+      "rule": "It + be + V₃ + that + clause",
+      "example": "It is believed that the project will succeed."
+    },
+    {
+      "en": "personal passive",
+      "uz": "shaxsli majhul",
+      "rule": "S + be + V₃ + to V",
+      "example": "She is said to be the best candidate."
+    },
+    {
+      "en": "have/get something done",
+      "uz": "biror narsani qildirtirmoq",
+      "rule": "have/get + obj + V₃",
+      "example": "I had my car repaired yesterday."
     }
   ],
   "examples": [
@@ -2830,6 +2890,24 @@ export const academicVocabularyB2: DailyLesson = {
       "uz": "ustuvorlik",
       "rule": "AWL 10, formal",
       "example": "Education should be a top priority for any government."
+    },
+    {
+      "en": "academic vocabulary",
+      "uz": "akademik lug'at",
+      "rule": "AWL so'zlari",
+      "example": "Analysis, concept, evidence, factor, method."
+    },
+    {
+      "en": "academic word list",
+      "uz": "akademik so'zlar ro'yxati",
+      "rule": "AWL 1-10",
+      "example": "The AWL contains 570 word families for academic study."
+    },
+    {
+      "en": "formal synonym",
+      "uz": "rasmiy sinonim",
+      "rule": "AWL so'zi = kundalik so'z",
+      "example": "Obtain = get, demonstrate = show, sufficient = enough."
     }
   ],
   "examples": [

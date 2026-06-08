@@ -37,6 +37,8 @@ export const futureFormsReview: DailyLesson = {
     { en: 'shall', uz: "... qilaymi? (taklif)", example: 'Shall I open the window? It is too hot.', rule: "Shall I/we — taklif so'rash" },
     { en: 'probably', uz: "ehtimol, balkim", example: 'She will probably call later.', rule: "Will + probably — bashorat" },
     { en: 'definitely', uz: "albatta, aniq", example: 'I will definitely come to the party.', rule: "Will + definitely — ishonchli va'da" },
+    { en: 'plan', uz: "reja", example: 'I have a plan for the weekend.', rule: "Going to (plans & intentions)" },
+    { en: 'offer', uz: "taklif", example: 'I will help you — that is an offer.', rule: "Will (offers)" },
   ],
   examples: [
     { en: 'I think it will rain tomorrow.', uz: "Menimcha, ertaga yomg'ir yog'adi." },
@@ -193,6 +195,8 @@ export const modalsObligation: DailyLesson = {
     { en: 'supposed to', uz: "kutilmoqda, qoida bo'yicha", example: 'You are supposed to sign the form.', rule: "Be supposed to + V1" },
     { en: 'uniform', uz: "forma (kiyim)", example: 'She has to wear a uniform at school.', rule: "Have to bilan (ish/maktab qoidasi)" },
     { en: 'needn\'t', uz: "shart emas (kuchsiz)", example: "You needn't worry about the test.", rule: "Needn't = don't have to (rasmiyroq)" },
+    { en: 'ought to', uz: "kerak (rasmiy maslahat)", example: 'You ought to respect your elders.', rule: "Should bilan sinonim" },
+    { en: 'advice', uz: "maslahat", example: 'My advice is to see a doctor.', rule: "Should/ought to" },
   ],
   examples: [
     { en: 'I must finish my homework before watching TV.', uz: "Men televizor ko'rishdan oldin uy vazifamni tugatishim kerak." },
@@ -318,6 +322,9 @@ export const modalsSpeculation: DailyLesson = {
     { en: 'definitely', uz: "albatta, shubhasiz", example: 'She is definitely at home — I just saw her.', rule: "100% ishonch" },
     { en: 'perhaps', uz: "balkim, ehtimol", example: 'Perhaps he forgot about the meeting.', rule: "~40-50% ehtimollik" },
     { en: 'maybe', uz: "balki, ehtimol", example: 'Maybe she is at the gym.', rule: "~40-50% ehtimollik (norasmiy)" },
+    { en: 'certainty', uz: "ishonch, aniq bilish", example: 'I can say with certainty that she is at home.', rule: "must be (90-100%)" },
+    { en: 'likely', uz: "ehtimol, bo'lishi mumkin", example: 'She is likely to come early.', rule: "~70-80% ehtimollik" },
+    { en: 'unlikely', uz: "ehtimolsiz", example: 'It is unlikely that he will come.', rule: "can't be bilan" },
   ],
   examples: [
     { en: 'She must be at home. The lights are on.', uz: "U uyda bo'lsa kerak. Chiroqlar yoniq." },
@@ -439,6 +446,8 @@ export const pastHabits: DailyLesson = {
     { en: 'nowadays', uz: "hozirgi kunda", example: 'Nowadays, I don\'t have time.', rule: "used to farqi" },
     { en: 'quit', uz: "tashlamoq", example: 'I quit smoking last year.', rule: "used to bilan" },
     { en: 'memories', uz: "xotiralar", example: 'I have fond memories of my childhood.', rule: "would bilan" },
+    { en: 'be used to', uz: "o'rganib qolgan", example: 'I am used to waking up early.', rule: "be used to + V-ing" },
+    { en: 'get used to', uz: "o'rganib qolyapman", example: 'I am getting used to my new job.', rule: "get used to + V-ing" },
   ],
   examples: [
     { en: 'I used to play football every day when I was a child.', uz: "Bolaligimda har kuni futbol o'ynardim." },
@@ -559,6 +568,8 @@ export const causatives: DailyLesson = {
     { en: 'install', uz: "o'rnatmoq", example: 'I got the software installed.', rule: "causative get" },
     { en: 'persuade', uz: "ko'ndirmoq", example: 'I got him to help me.', rule: "get + person + to V1" },
     { en: 'arrange', uz: "tashkil qilmoq", example: 'I had my assistant arrange everything.', rule: "have + person + V1" },
+    { en: 'causative', uz: "qildirish (grammatik struktura)", example: 'Causative means arranging for someone to do something.', rule: "have/get + object + V3" },
+    { en: 'authority', uz: "hokimiyat, vakolat", example: 'I had my assistant do it — that is authority.', rule: "have + person + V1" },
   ],
   examples: [
     { en: 'I had my car repaired at the garage.', uz: "Men mashinamni ta'mirlatdim." },
@@ -681,6 +692,9 @@ export const questionTags: DailyLesson = {
     { en: 'rhetorical', uz: "ritorik savol", example: 'Falling intonation is rhetorical.', rule: "falling intonation" },
     { en: 'contradiction', uz: "qarama-qarshilik", example: 'Tags can show contradiction.', rule: "use" },
     { en: 'verify', uz: "tekshirmoq", example: 'Use rising intonation to verify.', rule: "rising intonation" },
+    { en: 'statement', uz: "gap, bayon", example: 'A positive statement needs a negative tag.', rule: "question tags" },
+    { en: 'rising intonation', uz: "ko'tarilgan ohang", example: 'Rising intonation shows a real question.', rule: "question tags" },
+    { en: 'falling intonation', uz: "tushgan ohang", example: 'Falling intonation is for checking.', rule: "question tags" },
   ],
   examples: [
     { en: 'You are a student, aren\'t you?', uz: "Siz talabasiz, shunday emasmi?" },
@@ -803,6 +817,7 @@ export const bothEitherNeither: DailyLesson = {
     { en: 'option', uz: "variant, tanlov", example: 'You have two options.', rule: "either/or bilan" },
     { en: 'alternative', uz: "muqobil", example: 'Is there an alternative?', rule: "either bilan" },
     { en: 'choice', uz: "tanlov", example: 'The choice is yours.', rule: "either/neither bilan" },
+    { en: 'correlative conjunction', uz: "juft bog'lovchi", example: 'Both... and... is a correlative conjunction.', rule: "both/either/neither" },
   ],
   examples: [
     { en: 'Both students passed the exam.', uz: "Ikkala talaba ham imtihondan o'tdi." },
@@ -924,6 +939,8 @@ export const timeClauses: DailyLesson = {
     { en: 'the moment', uz: "zahoti", example: 'The moment I saw her, I knew.', rule: "as soon as" },
     { en: 'every time', uz: "har safar", example: 'Every time I see you, I am happy.', rule: "time clause" },
     { en: 'as', uz: "sifatida, -ganda", example: 'As I was leaving, she called.', rule: "while bilan sinonim" },
+    { en: 'time clause', uz: "vaqt ergash gapi", example: 'A time clause uses Present Simple for future meaning.', rule: "vaqt bog'lovchilari" },
+    { en: 'main clause', uz: "bosh gap", example: 'The main clause has will + V1.', rule: "time clause structure" },
   ],
   examples: [
     { en: 'When she arrives, we will start the meeting.', uz: "U kelganda, majlisni boshlaymiz." },
@@ -1044,6 +1061,9 @@ export const indirectQuestions: DailyLesson = {
     { en: 'polite request', uz: "muloyim so'roq", example: 'Could you tell me... is a polite request.', rule: "could/would" },
     { en: 'direct question', uz: "to'g'ri so'roq", example: 'Where is it? is a direct question.', rule: "verb + subject" },
     { en: 'phrase', uz: "ibora", example: 'The introductory phrase changes the word order.', rule: "intro phrase" },
+    { en: 'wh-word', uz: "wh- so'zi", example: 'What, where, when are wh-words.', rule: "indirect questions" },
+    { en: 'introductory phrase', uz: "kirish iborasi", example: 'Can you tell me is an introductory phrase.', rule: "indirect questions" },
+    { en: 'embedded question', uz: "ichiga joylashtirilgan so'roq", example: 'The embedded question has subject + verb order.', rule: "indirect questions" },
   ],
   examples: [
     { en: 'Can you tell me where the station is?', uz: "Stansiya qayerda ekanligini ayta olasizmi?" },
@@ -1165,6 +1185,9 @@ export const soNeitherAuxiliaries: DailyLesson = {
     { en: 'response', uz: "javob", example: 'Short responses use auxiliaries.', rule: "responses" },
     { en: 'match', uz: "mos kelmoq", example: 'The tense must match.', rule: "auxiliary agreement" },
     { en: 'neither', uz: "ham emas", example: 'Neither do I.', rule: "negative agreement" },
+    { en: 'nor', uz: "ham emas (rasmiy)", example: "Nor do I.", rule: "neither bilan sinonim" },
+    { en: 'me too', uz: "men ham", example: "A: I love it. B: Me too!", rule: "qisqa rozi (norasmiy)" },
+    { en: 'me neither', uz: "men ham emas", example: "A: I don't like it. B: Me neither.", rule: "qisqa inkor rozi (norasmiy)" },
   ],
   examples: [
     { en: 'A: I love coffee. B: So do I.', uz: "A: Men kofeni yaxshi ko'raman. B: Men ham." },
@@ -1287,6 +1310,7 @@ export const wishesRegrets: DailyLesson = {
     { en: 'mistake', uz: "xato", example: 'I regret my mistake.', rule: "regret + noun" },
     { en: 'opportunity', uz: "imkoniyat", example: 'I missed a great opportunity.', rule: "regret not V-ing" },
     { en: 'hypothetical', uz: "faraziy", example: 'Wish sentences are hypothetical.', rule: "unreal past" },
+    { en: 'would', uz: "...sa edi (wish + would)", example: "I wish it would stop raining.", rule: "wish + would (shikoyat)" },
   ],
   examples: [
     { en: 'I wish I knew the answer to this question.', uz: "Bu savolga javobni bilishni istardim." },

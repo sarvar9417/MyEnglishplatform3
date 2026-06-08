@@ -38,6 +38,7 @@ export const verbPatterns: DailyLesson = {
     { en: 'expect', uz: 'kutmoq', example: 'I expect you to do your best.', rule: '+ person + to V1' },
     { en: 'advise', uz: "maslahat bermoq", example: 'The doctor advised me to rest.', rule: '+ person + to V1' },
     { en: 'remind', uz: 'eslatmoq', example: 'Please remind me to call her.', rule: '+ person + to V1' },
+    { en: 'verb pattern', uz: "fe'l shakli", example: 'Enjoy + V-ing and want + to V1 are verb patterns.', rule: 'verb pattern definition' },
   ],
   examples: [
     { en: 'I enjoy reading books in my free time.', uz: "Men bo'sh vaqtimda kitob o'qishdan zavqlanaman." },
@@ -441,6 +442,8 @@ export const possessives: DailyLesson = {
     { en: 'hers', uz: "uniki (ayol)", example: 'That bag is hers.', rule: 'Possessive pronoun — 3rd person feminine' },
     { en: 'ours', uz: 'bizniki', example: 'This house is ours.', rule: 'Possessive pronoun — 1st person plural' },
     { en: 'theirs', uz: 'ularniki', example: 'Those seats are theirs.', rule: 'Possessive pronoun — 3rd person plural' },
+    { en: 'possessive adjective', uz: 'egalik sifati', example: 'My, your, his, her, its, our, their are possessive adjectives.', rule: 'possessive adjective' },
+    { en: 'possessive pronoun', uz: 'egalik olmoshi', example: 'Mine, yours, his, hers, its, ours, theirs are possessive pronouns.', rule: 'possessive pronoun' },
   ],
   examples: [
     { en: 'This is my book. That book is yours.', uz: "Bu mening kitobim. U kitob sizniki." },

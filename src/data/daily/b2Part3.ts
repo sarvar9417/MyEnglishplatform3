@@ -34,6 +34,12 @@ export const argumentStructureB2: DailyLesson = {
     { en: 'cogent', uz: 'ishonchli, qat\'iy', example: 'She presented a cogent argument for reform.', rule: 'clear and convincing' },
     { en: 'fallacy', uz: 'xato fikr, yanglishlik', example: 'That is a logical fallacy — correlation is not causation.', rule: 'false reasoning' },
     { en: 'stance', uz: 'pozitsiya, nuqtai nazar', example: 'The paper adopts a critical stance on globalisation.', rule: 'attitude toward a topic' },
+    { en: 'argument structure', uz: 'bahs tuzilishi', example: 'Claim + Evidence + Explanation + Rebuttal.', rule: 'akademik argument formati' },
+    { en: 'claim', uz: 'da\'vo, asosiy fikr', example: 'Technology improves education.', rule: 'main point of an argument' },
+    { en: 'evidence', uz: 'dalil, isbot', example: 'Studies show 20% score improvement.', rule: 'facts supporting a claim' },
+    { en: 'concession', uz: 'tan olish', example: 'Admittedly, technology can be distracting.', rule: 'acknowledging opponent\'s point' },
+    { en: 'rebuttal', uz: 'rad etish', example: 'The benefits far outweigh the drawbacks.', rule: 'countering with stronger point' },
+    { en: 'counterargument', uz: 'qarshi fikr', example: 'While some argue X, the evidence shows Y.', rule: 'opposing viewpoint' },
   ],
   examples: [
     { en: 'It is widely argued that regular exercise significantly reduces the risk of chronic illness.', uz: 'Muntazam jismoniy mashq surunkali kasalliklar xavfini sezilarli darajada kamaytiradi deb keng tan olinadi.' },
@@ -223,6 +229,10 @@ export const stanceMarkersB2: DailyLesson = {
     { en: 'overwhelmingly', uz: 'katta aksariyati bilan', example: 'The evidence overwhelmingly supports this conclusion.', rule: 'degree adverb: very strong majority' },
     { en: 'presumably', uz: 'ehtimol, taxminan', example: 'This is presumably due to the change in policy.', rule: 'epistemic: assumed based on logic' },
     { en: 'strikingly', uz: 'keskin, yorqin ravishda', example: 'Strikingly, no adverse effects were observed.', rule: 'evaluative: noteworthy/contrasting' },
+    { en: 'stance marker', uz: 'munosabat belgisi', example: 'Clearly, unfortunately, approximately, tend to', rule: 'shows writer\'s attitude/certainty' },
+    { en: 'epistemic stance', uz: 'ishonch darajasi', example: 'Certainly, probably, possibly, perhaps', rule: 'expresses certainty/uncertainty' },
+    { en: 'approximator', uz: 'taxmin so\'zi', example: 'Approximately 40% of participants...', rule: 'approximate numbers in academic writing' },
+    { en: 'evaluative stance', uz: 'baholovchi munosabat', example: 'Unfortunately, Surprisingly, Importantly', rule: 'expresses judgement/attitude' },
   ],
   examples: [
     { en: 'Crucially, the government must increase investment in renewable energy.', uz: 'Juda muhim masala shundaki, hukumat qayta tiklanadigan energiyaga investitsiyani oshirishi kerak.' },
@@ -413,6 +423,8 @@ export const paraphrasingB2: DailyLesson = {
     { en: 'nominalization', uz: 'fe\'ldan ot yasash', example: 'develop → development; achieve → achievement', rule: 'turning a verb into a noun (common in academic writing)' },
     { en: 'plagiarism', uz: 'intellektual o\'g\'rilik', example: 'Submitting copied work is considered plagiarism.', rule: 'using others\' ideas without credit' },
     { en: 'synthesize', uz: 'umumlashtirmoq', example: 'The review synthesizes findings from 50 studies.', rule: 'combine multiple sources into one coherent argument' },
+    { en: 'restatement', uz: 'qayta bayon qilish', example: 'The main point can be restated as follows:', rule: 'same meaning, new words' },
+    { en: 'synonym', uz: 'sinonim', example: 'increase → rise, significant → notable', rule: 'word with same meaning' },
   ],
   examples: [
     { en: 'According to Smith (2023), regular exercise tends to reduce anxiety in most adults.', uz: 'Smith (2023) ga ko\'ra, muntazam jismoniy mashq aksariyat kattalarda xavotirni kamaytirish tendentsiyasiga ega.' },
@@ -604,6 +616,11 @@ export const advancedVerbPatternsB2: DailyLesson = {
     { en: 'avoid', uz: 'qochmoq', example: 'Try to avoid making the same mistake.', rule: 'avoid + gerund only' },
     { en: 'involve', uz: "o'z ichiga olmoq", example: 'The job involves travelling frequently.', rule: 'involve + gerund only' },
     { en: 'tend', uz: "moyil bo'lmoq", example: 'Prices tend to rise in winter.', rule: 'tend + to-infinitive' },
+    { en: 'verb pattern', uz: 'fe\'l andozasi', example: 'V + obj + to-inf / V + gerund / V + bare inf', rule: 'which form follows which verb' },
+    { en: 'catenative verb', uz: 'zanjir fe\'l', example: 'want to go, need to do, hope to see', rule: 'V + to-inf / gerund sequence' },
+    { en: 'to-infinitive', uz: 'to\'liq infinitiv', example: 'I want to go. She needs to study.', rule: 'to + base verb' },
+    { en: 'gerund', uz: 'gerundiy', example: 'I enjoy reading. He avoids driving.', rule: 'V-ing form as noun' },
+    { en: 'bare infinitive', uz: 'to\'liqsiz infinitiv', example: 'She made me go. I saw him leave.', rule: 'base verb without to' },
   ],
   examples: [
     { en: "She stopped to check her phone, then went on talking.", uz: "U telefonini ko'rish uchun to'xtadi, keyin gapirish davom etdi." },
@@ -796,6 +813,7 @@ export const b2ComprehensiveReview: DailyLesson = {
     { en: 'proficiency', uz: 'mahorat, bilim darajasi', example: 'B2 proficiency means comfortable use of complex language.', rule: 'high level of skill' },
     { en: 'autonomous', uz: 'mustaqil', example: 'B2 learners can use grammar autonomously.', rule: 'independent' },
     { en: 'repertoire', uz: "imkoniyatlar to'plami", example: 'She has a wide repertoire of grammatical structures.', rule: 'range of available skills' },
+    { en: 'comprehensive review', uz: 'to\'liq takrorlash', example: 'This lesson is a comprehensive review of B2 grammar.', rule: 'covers all topics from the unit' },
   ],
   examples: [
     { en: 'Never have I encountered such a complex grammatical structure before this level.', uz: "Men hech qachon bu darajaga qadar bunday murakkab grammatik tuzilmani uchratmagan edim." },

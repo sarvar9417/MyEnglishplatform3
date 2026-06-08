@@ -33,6 +33,11 @@ export const complexSentencesB2: DailyLesson = {
     { en: 'who', uz: 'kim (odam uchun)', example: 'The man who called is my friend.', rule: 'relative pronoun (people)' },
     { en: 'which', uz: 'qaysi (narsa uchun)', example: 'The book which I read was good.', rule: 'relative pronoun (things)' },
     { en: 'whose', uz: 'kimning', example: 'The girl whose bag was stolen cried.', rule: 'possessive relative' },
+    { en: 'complex sentence', uz: 'murakkab gap', example: 'Although it rained, we went out.', rule: 'main + subordinate clause' },
+    { en: 'subordination', uz: 'tobe bog\'lanish', example: 'When I arrived, they had left.', rule: 'subordinator + clause' },
+    { en: 'coordination', uz: 'teng bog\'lanish', example: 'I came home and she made dinner.', rule: 'coordinator + clause' },
+    { en: 'dependent clause', uz: 'tobe gap', example: 'Although it rained...', rule: 'needs main clause' },
+    { en: 'independent clause', uz: 'mustaqil gap', example: 'I went to the store.', rule: 'can stand alone' },
   ],
   examples: [
     { en: 'Although he studied very hard, he didn\'t pass the exam.', uz: 'Garchi u juda ko\'p o\'qigan bo\'lsa ham, imtihondan o\'ta olmadi.' },
@@ -222,6 +227,8 @@ export const advancedModalsB2: DailyLesson = {
     { en: 'I dare say', uz: 'ehtimol, menimcha', example: 'I dare say you are right.', rule: 'Fixed expression' },
     { en: "you'd better not", uz: 'qilmaganingiz ma\'qul', example: "You'd better not go.", rule: '+ not + V' },
     { en: 'was supposed to', uz: '...ishi kerak edi (lekin...)', example: 'I was supposed to call.', rule: 'Past obligation' },
+    { en: 'modal', uz: 'modal fe\'l', example: 'must, can, may, might, should', rule: 'helper verb + base V' },
+    { en: 'semi-modal', uz: 'yarim-modal', example: 'need to, dare to, used to, ought to', rule: 'behave like modals' },
   ],
   examples: [
     { en: "I needn't have taken so many clothes. I only wore half of them.", uz: "Shuncha ko'p kiyim olmaganimda ham bo'lardi. Faqat yarmini kiy-dim." },
@@ -411,6 +418,8 @@ export const contrastiveStructuresB2: DailyLesson = {
     { en: 'conversely', uz: 'aksincha (rasmiy)', example: 'Conversely, the south experienced growth.', rule: 'formal connector' },
     { en: 'however', uz: 'biroq', example: 'It was hard. However, we succeeded.', rule: 'contrast connector' },
     { en: 'nevertheless', uz: 'shunga qaramay', example: 'It was cold. Nevertheless, we went out.', rule: 'concession connector' },
+    { en: 'contrastive structure', uz: 'qarama-qarshilik strukturasi', example: 'While/whereas/unlike/by contrast', rule: 'shows difference between things' },
+    { en: 'concession', uz: 'qaramaylik munosabati', example: 'Although it rained, we continued.', rule: 'despite obstacles' },
   ],
   examples: [
     { en: 'While some people enjoy the hustle and bustle of city life, others prefer the peace of the countryside.', uz: 'Ba\'zilar shaharning gavjum hayotidan zavqlansa, boshqalar qishloq tinchligini afzal ko\'radi.' },
@@ -606,6 +615,8 @@ export const punctuationB2: DailyLesson = {
     { en: 'en dash', uz: 'en tire', example: '1990\u20132000', rule: 'ranges' },
     { en: 'em dash', uz: 'em tire', example: 'He was \u2014 I can\'t believe it \u2014 late.', rule: 'strong break' },
     { en: 'comma splice', uz: 'vergul xatosi', example: 'I came, I saw.', rule: 'error: comma without coordinator' },
+    { en: 'punctuation', uz: 'tinish belgilari', example: ', ; : - \u2014 () \u201c\u201d \'', rule: 'helps clarify meaning' },
+    { en: 'apostrophe', uz: 'apostrof', example: "John's car / It's raining.", rule: 'possession / contraction' },
   ],
   examples: [
     { en: 'There are three things I need from the store: milk, eggs, and butter.', uz: 'Do\'kondan menga kerak bo\'lgan uch narsa: sut, tuxum va sariyog\'.' },
@@ -795,6 +806,8 @@ export const academicCollocationsB2: DailyLesson = {
     { en: 'serve a function', uz: 'funksiya bajarish', example: 'This device serves multiple functions.', rule: 'verb + function' },
     { en: 'challenge an assumption', uz: 'taxminni shubha ostiga olish', example: 'Researchers challenged this assumption.', rule: 'verb + assumption' },
     { en: 'refute an argument', uz: 'dalilni inkor qilish', example: 'He refuted the argument with data.', rule: 'verb + argument' },
+    { en: 'collocation', uz: 'so\'z birikmasi', example: 'conduct research, reach a conclusion', rule: 'natural word pairings' },
+    { en: 'academic collocation', uz: 'akademik so\'z birikmasi', example: 'draw a conclusion, put forward an argument', rule: 'formal verb + noun pairs' },
   ],
   examples: [
     { en: 'The university is conducting research into renewable energy sources.', uz: 'Universitet qayta tiklanuvchi energiya manbalari bo\'yicha tadqiqot o\'tkazmoqda.' },
@@ -984,6 +997,8 @@ export const criticalThinkingB2: DailyLesson = {
     { en: 'maintain', uz: 'fikrni saqlamoq', example: 'He maintains his original position.', rule: '+ that + clause' },
     { en: 'contend', uz: 'ta\'kidlamoq', example: 'The author contends that...', rule: '+ that + clause' },
     { en: 'acknowledge', uz: 'tan olmoq', example: 'She acknowledged the limitations.', rule: '+ noun / that' },
+    { en: 'critical thinking', uz: 'tanqidiy fikrlash', example: 'Argue, claim, refute, imply, infer.', rule: 'analysis and evaluation of ideas' },
+    { en: 'concede', uz: 'tan olmoq (istamay)', example: 'He conceded that the opponent had a point.', rule: '+ that + clause' },
   ],
   examples: [
     { en: 'Many environmentalists argue that governments must take immediate action to combat climate change.', uz: 'Ko\'plab ekologlar hukumatlar iqlim o\'zgarishiga qarshi zudlik bilan chora ko\'rishi kerak deb ta\'kidlaydilar.' },
@@ -1173,6 +1188,7 @@ export const b2Review: DailyLesson = {
     { en: 'conduct research', uz: 'tadqiqot o\'tkazish', example: 'We conducted research on cancer.', rule: 'collocation' },
     { en: 'imply vs infer', uz: 'ishora qilish vs xulosa chiqarish', example: 'What are you implying? I infer that...', rule: 'speaker/listener' },
     { en: 'dare', uz: 'jur\'at qilmoq', example: 'How dare you! / I daren\'t ask.', rule: 'modal verb' },
+    { en: 'grammar review', uz: 'grammatik takrorlash', example: 'Review of all B2 grammar topics.', rule: 'practice and revision' },
   ],
   examples: [
     { en: 'If I had studied medicine, I would be a doctor now instead of a lawyer.', uz: 'Agar tibbiyotni o\'qiganimda, hozir huquqshunos emas, shifokor bo\'lardim.' },

@@ -37,6 +37,8 @@ export const modalVerbs: DailyLesson = {
     { en: 'may', uz: "bo'lishi mumkin (rasmiy)", example: 'May I come in?', rule: 'formal possibility' },
     { en: 'seatbelt', uz: 'xavfsizlik kamari', example: 'You must wear a seatbelt.', rule: 'noun' },
     { en: 'helmet', uz: "dubulg'a", example: 'You must wear a helmet when cycling.', rule: 'noun' },
+    { en: 'obligation', uz: 'majburiyat', example: 'You have an obligation to wear a seatbelt.', rule: 'must concept' },
+    { en: 'prohibition', uz: 'taqiq', example: 'Smoking is a prohibition here.', rule: 'mustn\'t concept' },
   ],
   examples: [
     { en: 'I can swim very well because I learned when I was a child.', uz: "Men juda yaxshi suza olaman, chunki bolaligimda o'rganganman." },
@@ -204,6 +206,9 @@ export const articles: DailyLesson = {
     { en: 'sun', uz: 'quyosh', example: 'The sun rises in the east.', rule: 'the + unique' },
     { en: 'engineer', uz: 'muhandis', example: 'She is an engineer.', rule: 'profession a/an' },
     { en: 'east', uz: 'sharq', example: 'The sun rises in the east.', rule: 'geography' },
+    { en: 'article', uz: 'artikl', example: 'English uses articles before nouns.', rule: 'article introduction' },
+    { en: 'indefinite', uz: 'noaniq', example: 'A/an is the indefinite article.', rule: 'indefinite article' },
+    { en: 'definite', uz: 'aniq', example: 'The is the definite article.', rule: 'definite article' },
   ],
   examples: [
     { en: 'I saw a bird in the garden. The bird was singing.', uz: "Men bog'da bir qushni ko'rdim. Qush qo'shiq aytayotgan edi." },
@@ -372,6 +377,7 @@ export const prepositions: DailyLesson = {
     { en: 'entrance', uz: 'kirish joyi', example: 'We met at the entrance.', rule: 'at + specific point' },
     { en: 'evening', uz: 'kechqurun', example: 'I walk in the evening.', rule: 'in the evening' },
     { en: 'plane', uz: 'samolyot', example: 'We travelled by plane.', rule: 'by + transport' },
+    { en: 'preposition', uz: 'predlog', example: 'At, in, and on are prepositions of time and place.', rule: 'preposition introduction' },
   ],
   examples: [
     { en: 'I wake up at 7 AM in the morning.', uz: "Men ertalab soat 7 da uyg'onaman." },
@@ -538,6 +544,8 @@ export const questionsLesson: DailyLesson = {
     { en: 'how far', uz: 'qancha uzoq', example: 'How far is the school?', rule: 'distance question' },
     { en: 'how often', uz: 'qanchalik tez-tez', example: 'How often do you exercise?', rule: 'frequency question' },
     { en: 'how long', uz: 'qancha vaqt', example: 'How long is the lesson?', rule: 'duration question' },
+    { en: 'subject question', uz: 'ega savoli', example: 'Who lives here? (no auxiliary)', rule: 'subject question' },
+    { en: 'object question', uz: 'obyekt savoli', example: 'Who did you call? (with auxiliary)', rule: 'object question' },
   ],
   examples: [
     { en: "A: 'Do you like coffee?'  B: 'Yes, I do.'", uz: "A: 'Kofe yoqtirasizmi?' B: 'Ha.'" },
@@ -700,6 +708,8 @@ export const countableUncountable: DailyLesson = {
     { en: 'salt', uz: 'tuz', example: 'Add a little salt to the soup.', rule: 'uncountable' },
     { en: 'a lot of', uz: "juda ko'p", example: 'I have a lot of friends.', rule: 'large quantity' },
     { en: 'furniture', uz: 'mebel', example: 'The furniture is expensive.', rule: 'uncountable' },
+    { en: 'countable', uz: 'sanaladigan', example: 'Apples and books are countable nouns.', rule: 'countable nouns' },
+    { en: 'uncountable', uz: 'sanalmaydigan', example: 'Water and rice are uncountable nouns.', rule: 'uncountable nouns' },
   ],
   examples: [
     { en: 'How many apples do you want? I want a few.', uz: "Nechta olma kerak? Bir nechta." },

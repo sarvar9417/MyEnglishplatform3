@@ -126,6 +126,24 @@ export const relativeClausesB1: DailyLesson = {
       "uz": "bo'lak, gap qismi",
       "rule": "part of sentence",
       "example": "A clause has subject and verb."
+    },
+    {
+      "en": "subject",
+      "uz": "ega",
+      "rule": "grammar term",
+      "example": "The subject of the relative clause cannot be omitted."
+    },
+    {
+      "en": "object",
+      "uz": "obekt, to'ldiruvchi",
+      "rule": "grammar term",
+      "example": "The object of the relative clause can be omitted."
+    },
+    {
+      "en": "omission",
+      "uz": "tushirib qoldirish",
+      "rule": "relative clause",
+      "example": "Omission of the pronoun is possible for objects."
     }
   ],
   "examples": [
@@ -1174,6 +1192,30 @@ export const phrasalVerbsB1: DailyLesson = {
       "uz": "tarbiyalamoq, gap ochmoq",
       "rule": "separable",
       "example": "She brought up three children."
+    },
+    {
+      "en": "phrasal verb",
+      "uz": "fraza fe'l",
+      "rule": "core concept",
+      "example": "A phrasal verb is a verb + particle."
+    },
+    {
+      "en": "particle",
+      "uz": "yuklama (preposition/adverb)",
+      "rule": "phrasal verb",
+      "example": "The particle can be up, off, on, etc."
+    },
+    {
+      "en": "separable",
+      "uz": "ajratiladigan",
+      "rule": "separable",
+      "example": "Pick up is separable — pick my friend up."
+    },
+    {
+      "en": "inseparable",
+      "uz": "ajratilmaydigan",
+      "rule": "inseparable",
+      "example": "Look after is inseparable — look after him."
     }
   ],
   "examples": [

@@ -178,6 +178,9 @@ export const comparativesSuperlatives: DailyLesson = {
     { en: 'hot', uz: 'issiq', example: 'July is the hottest month of the year.', rule: 'cvc' },
     { en: 'cold', uz: 'sovuq', example: 'Winter is colder than autumn.', rule: 'qisqa' },
     { en: 'interesting', uz: 'qiziqarli', example: 'This book is more interesting than the film.', rule: 'uzun' },
+    { en: 'comparative', uz: 'qiyosiy daraja', example: 'Taller and more expensive are comparatives.', rule: 'comparative degree' },
+    { en: 'superlative', uz: 'ustun daraja', example: 'The tallest and the most expensive are superlatives.', rule: 'superlative degree' },
+    { en: 'irregular', uz: "noto'g'ri", example: 'Good/better/best and bad/worse/worst are irregular forms.', rule: 'irregular forms' },
   ],
   examples: [
     { en: 'My house is bigger than yours.', uz: "Mening uyim siznikidan kattaroq." },
