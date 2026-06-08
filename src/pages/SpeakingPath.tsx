@@ -12,7 +12,9 @@ import SpeakingDaySession from '../components/speakingPath/SpeakingDaySession'
 import SpeakingReviewSession from '../components/speakingPath/SpeakingReviewSession'
 import SpeakingMetricsPanel from '../components/speakingPath/SpeakingMetricsPanel'
 import SpeakingCharts from '../components/speakingPath/SpeakingCharts'
+import SpeakingAchievements from '../components/speakingPath/SpeakingAchievements'
 import FreePractice from '../components/speakingPath/FreePractice'
+import { useStore } from '../store/useStore'
 
 export default function SpeakingPath() {
   const navigate = useNavigate()
@@ -29,6 +31,7 @@ export default function SpeakingPath() {
   const [expandedDay, setExpandedDay] = useState<number | null>(null)
   const [activeDay, setActiveDay] = useState<number | null>(null)
   const [reviewMode, setReviewMode] = useState(false)
+  const unlockedAchievements = useStore(s => s.unlockedAchievements)
   const [loading, setLoading] = useState(true)
 
   // Tab: 'path' (narvon) | 'free' (erkin amaliyot). /speaking → ?tab=free redirect.
@@ -167,6 +170,20 @@ export default function SpeakingPath() {
           srsDistribution={srsDistribution}
           avgScore7d={speakingStats.avgSpeakScore7d}
           avgStability={speakingStats.avgChunkStability}
+        />
+      )}
+
+      {/* Yutuqlar */}
+      {userId && (
+        <SpeakingAchievements
+          unlockedIds={unlockedAchievements}
+          progress={{
+            daysCompleted: speakingStats?.totalCompleted ?? 0,
+            speakingStreak: speakingStats?.streakDays ?? 0,
+            chunksMastered: speakingStats?.chunksMastered ?? 0,
+            bestSpeakScore: speakingStats?.avgSpeakScore7d ?? 0,
+            cefr: unlockedDay >= 64 ? 'B2' : unlockedDay >= 36 ? 'B1' : unlockedDay >= 19 ? 'A2' : unlockedDay >= 7 ? 'A1' : 'A0',
+          }}
         />
       )}
 

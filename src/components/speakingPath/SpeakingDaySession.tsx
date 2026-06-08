@@ -8,6 +8,10 @@ import CooldownStep from './steps/CooldownStep'
 import WarmupStep from './steps/WarmupStep'
 import RecallPanel from './RecallPanel'
 import { saveSpeakingDayProgress, enrollChunks, loadSrsMap, computeSRSDistribution, type SRSDistribution } from '../../services/speakingPathService'
+import { checkSpeakingAchievements, unlockSpeakingAchievements } from '../../services/speakingAchievementService'
+import { useToastStore } from '../../utils/toastStore'
+import { ACHIEVEMENTS } from '../../data/achievements'
+import { useStore } from '../../store/useStore'
 import { getSpeakingDay, getChunkById, TOTAL_SPEAKING_DAYS } from '../../data/speakingPath'
 import type { SpeakingDay, SpeakingChunk } from '../../data/speakingPath/types'
 
@@ -65,6 +69,36 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
     setSpokenSeconds(secs)
     setStep('cooldown')
   }, [])
+
+  // Achievementlarni tekshirish (session yakunida, progress saqlangandan keyin)
+  const checkAchRef = useRef(false)
+  useEffect(() => {
+    if (step === 'cooldown' && userId && !checkAchRef.current) {
+      checkAchRef.current = true
+      const run = async () => {
+        const srsMap = await loadSrsMap(userId)
+        const mastered = Object.values(srsMap).filter(st => st.stability >= 30).length
+        const { unlockedAchievements } = useStore.getState()
+        const result = await checkSpeakingAchievements(userId, unlockedAchievements, {
+          completedCount: day.day, // session progress saqlangach, day.day = exact count
+          streakDays: 0,
+          chunksMastered: mastered,
+          bestSpeakScore: speakScore,
+          cefr: day.cefr,
+        })
+        if (result.newlyUnlocked.length > 0) {
+          await unlockSpeakingAchievements(userId, result.newlyUnlocked)
+          for (const id of result.newlyUnlocked) {
+            const ach = ACHIEVEMENTS.find(a => a.id === id)
+            if (ach) {
+              useToastStore.getState().toast(`🏆 ${ach.icon} ${ach.title}`, 'success', 5000)
+            }
+          }
+        }
+      }
+      run()
+    }
+  }, [step, userId, day.cefr, speakScore, day.day])
 
   // Cool-down dan keyin → done (SRS va progressni saqlaymiz)
   const handleCooldownDone = useCallback(() => {

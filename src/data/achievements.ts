@@ -1,4 +1,4 @@
-export type AchievementCategory = 'day' | 'xp' | 'streak' | 'words' | 'games' | 'mocktest' | 'special'
+export type AchievementCategory = 'day' | 'xp' | 'streak' | 'words' | 'games' | 'mocktest' | 'speaking' | 'special'
 
 export interface Achievement {
   id: string
@@ -345,6 +345,88 @@ export const ACHIEVEMENTS: Achievement[] = [
     requirement: { type: 'battle_win', value: 1 },
     color: 'from-red-400 to-orange-500', order: 53,
   },
+
+  // ── Speaking Path Achievements ─────────────────────────────────────────
+  {
+    id: 'sp-first-words',
+    title: "Birinchi So'zlar",
+    description: "Speaking Pathda 1-kunni tugating",
+    icon: '🎤', category: 'speaking',
+    requirement: { type: 'speaking_days', value: 1 },
+    color: 'from-teal-100 to-emerald-300', order: 54,
+  },
+  {
+    id: 'sp-streak-7',
+    title: "7 Kunlik Nutq",
+    description: "7 kun ketma-ket speaking qiling",
+    icon: '🔥', category: 'speaking',
+    requirement: { type: 'speaking_streak', value: 7 },
+    color: 'from-orange-200 to-orange-400', order: 55,
+  },
+  {
+    id: 'sp-streak-30',
+    title: "Bir Oylik Nutq",
+    description: "30 kun ketma-ket speaking qiling",
+    icon: '🔥🔥🔥🔥', category: 'speaking',
+    requirement: { type: 'speaking_streak', value: 30 },
+    color: 'from-red-200 to-red-400', order: 56,
+  },
+  {
+    id: 'sp-chunk-master-50',
+    title: "50 ta Iborani O'zlashtirish",
+    description: "50 ta iborani SRSda mustahkamlang",
+    icon: '🧠', category: 'speaking',
+    requirement: { type: 'chunks_mastered', value: 50 },
+    color: 'from-violet-200 to-purple-400', order: 57,
+  },
+  {
+    id: 'sp-chunk-master-200',
+    title: "200 ta Iborani O'zlashtirish",
+    description: "200 ta iborani SRSda mustahkamlang",
+    icon: '🧠🧠', category: 'speaking',
+    requirement: { type: 'chunks_mastered', value: 200 },
+    color: 'from-violet-400 to-purple-500', order: 58,
+  },
+  {
+    id: 'sp-perfect-day',
+    title: "Mukammal Kun",
+    description: "Speaking Pathda 90%+ ball bilan kunni tugating",
+    icon: '⭐', category: 'speaking',
+    requirement: { type: 'speaking_perfect_day', value: 1 },
+    color: 'from-yellow-200 to-amber-400', order: 59,
+  },
+  {
+    id: 'sp-conversation-10',
+    title: "Suhbat Muhbiri",
+    description: "10 ta speaking sessionni yakunlang",
+    icon: '💬', category: 'speaking',
+    requirement: { type: 'speaking_conversations', value: 10 },
+    color: 'from-blue-200 to-blue-400', order: 60,
+  },
+  {
+    id: 'sp-conversation-50',
+    title: "Mohir Suhbatdosh",
+    description: "50 ta speaking sessionni yakunlang",
+    icon: '🎙️', category: 'speaking',
+    requirement: { type: 'speaking_conversations', value: 50 },
+    color: 'from-blue-400 to-indigo-500', order: 61,
+  },
+  {
+    id: 'sp-b1-graduate',
+    title: "B1 Bitiruvchi",
+    description: "B1 darajasiga yeting (36+ kun)",
+    icon: '🥉', category: 'speaking',
+    requirement: { type: 'speaking_cefr', value: 36 },
+    color: 'from-green-300 to-teal-500', order: 62,
+  },
+  {
+    id: 'sp-b2-graduate',
+    title: "B2 Bitiruvchi 👑",
+    description: "B2 darajasiga yeting (64+ kun)",
+    icon: '👑', category: 'speaking',
+    requirement: { type: 'speaking_cefr', value: 64 },
+    color: 'from-yellow-300 to-amber-500', order: 63,
+  },
 ]
 
 export const CATEGORY_INFO: Record<AchievementCategory, { label: string; icon: string }> = {
@@ -355,4 +437,5 @@ export const CATEGORY_INFO: Record<AchievementCategory, { label: string; icon: s
   games:    { label: 'O\'yinlar',  icon: '🎮' },
   mocktest: { label: 'Mock Test',  icon: '📋' },
   special:  { label: 'Maxsus',     icon: '🎖️' },
+  speaking: { label: 'Speaking',   icon: '🎤' },
 }

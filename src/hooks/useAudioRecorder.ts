@@ -82,14 +82,28 @@ export function useAudioRecorder(): AudioRecorderState {
   }, [isSupported])
 
   const stop = useCallback(async () => {
-    if (!mediaRecorderRef.current || mediaRecorderRef.current.state === 'inactive') return null
+    const recorder = mediaRecorderRef.current
+    if (!recorder || recorder.state === 'inactive') return null
+
+    // 👇 Darhol UI yangilanadi — mobil brauzerlarda onstop kechikib keladi (1-3s)
+    setIsRecording(false)
+    timerRef.current && clearInterval(timerRef.current)
+    timerRef.current = null
 
     return new Promise<string | null>((resolve) => {
-      if (!mediaRecorderRef.current) return resolve(null)
-
-      const recorder = mediaRecorderRef.current
+      // Fallback: agar onstop 3 soniyada kelmasa, mavjud chunk'lardan blob yaratamiz
+      const fallbackTimer = setTimeout(() => {
+        const blob = new Blob(chunksRef.current, { type: getMimeType() || 'audio/webm' })
+        const url = URL.createObjectURL(blob)
+        setAudioBlob(blob)
+        setAudioUrl(url)
+        streamRef.current?.getTracks().forEach(t => t.stop())
+        streamRef.current = null
+        resolve(url)
+      }, 3000)
 
       recorder.onstop = () => {
+        clearTimeout(fallbackTimer)
         const blob = new Blob(chunksRef.current, { type: getMimeType() || 'audio/webm' })
         const url = URL.createObjectURL(blob)
         setAudioBlob(blob)
@@ -97,9 +111,6 @@ export function useAudioRecorder(): AudioRecorderState {
 
         streamRef.current?.getTracks().forEach(t => t.stop())
         streamRef.current = null
-        setIsRecording(false)
-        timerRef.current && clearInterval(timerRef.current)
-
         resolve(url)
       }
 
