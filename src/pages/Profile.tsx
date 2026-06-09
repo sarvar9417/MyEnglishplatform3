@@ -816,7 +816,7 @@ export default function Profile() {
     return (
       <div className="card">
         <h3 className="font-semibold text-sm text-gray-900 mb-3 flex items-center gap-2">
-          🤝 Study Buddy
+          🤝 Birga o'qish
         </h3>
         {loading ? (
           <div className="text-sm text-gray-400">Yuklanmoqda...</div>
@@ -931,8 +931,8 @@ export default function Profile() {
               <Bot size={14} className="text-white" />
             </div>
             <div className="flex-1">
-              <p className="text-xs font-bold text-gray-800 dark:text-gray-200">AI Study Buddy</p>
-              <p className="text-[11px] text-gray-400">Knows your weak spots, gives tips, voice chat</p>
+              <p className="text-xs font-bold text-gray-800 dark:text-gray-200">AI bilan o'qish</p>
+              <p className="text-[11px] text-gray-400">Zaif tomonlaringizni tahlil qiladi, maslahat beradi, ovozli suhbat</p>
             </div>
           </div>
           <button
@@ -940,7 +940,7 @@ export default function Profile() {
             className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 text-xs font-semibold hover:bg-purple-50 dark:hover:bg-purple-900/30 border border-purple-200 dark:border-purple-700 transition-colors"
           >
             <MessageCircle size={14} />
-            Chat with AI Buddy
+            AI bilan suhbatlashish
           </button>
         </div>
       </div>

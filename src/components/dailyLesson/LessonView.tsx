@@ -4,12 +4,13 @@ import type { DailyLesson, DailyExercise } from '../../data/dailyLessons'
 import type { ReadingSection as ReadingSectionType, WritingSection as WritingSectionType, ListeningSection as ListeningSectionType } from '../../data/dailyLessons'
 
 import { useStore } from '../../store/useStore'
-import { COLOR_STYLES, checkAnswer } from './helpers'
+import { checkAnswer } from './helpers'
 import { checkDailyExerciseAnswers } from '../../lib/claude'
 import type { DailyExerciseCheckItem } from '../../lib/claude'
 import { getStoryBeat, ACT_DISPLAY } from '../../data/narrative/storyline'
 import { getStoryForLesson } from '../../data/narrative/storyLessonMapping'
 import ExerciseCard from './ExerciseCard'
+import FormulaRecallCard from './FormulaRecallCard'
 import RuleCard from './RuleCard'
 import VocabLearner from './VocabLearner'
 import SpecialCaseCard from './SpecialCaseCard'
@@ -80,6 +81,8 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
   const [isAiChecking, setIsAiChecking] = useState(false)
   const [vocabDone, setVocabDone] = useState(savedSession?.vocabDone ?? false)
   const [vocabPushedCount, setVocabPushedCount] = useState(savedSession?.vocabPushedCount ?? 0)
+  const [sectionCelebration, setSectionCelebration] = useState<'idle' | 'visible' | 'fading'>('idle')
+  const celebrationTimerRef = useRef<ReturnType<typeof setTimeout>>()
   // Boshlang'ich yuklash (local + Supabase merge) tugamaguncha saqlamaymiz —
   // aks holda mount'dagi save-effekt saqlangan sessiyani default qiymat bilan
   // ustidan yozib yuborardi (resume buziladigan poyga).
@@ -346,6 +349,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
       if (exerciseDBSaveTimerRef.current) clearTimeout(exerciseDBSaveTimerRef.current)
       if (testDBSaveTimerRef.current) clearTimeout(testDBSaveTimerRef.current)
       if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current)
+      if (celebrationTimerRef.current) clearTimeout(celebrationTimerRef.current)
     }
   }, [])
 
@@ -418,6 +422,18 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
       addXP(correct * 10)
     }
     saveExerciseAnswersToDB(lesson.id, currentSection, 'exercise', answerPayloads)
+
+    if (correct === sectionExercises.length && correct > 0) {
+      setSectionCelebration('visible')
+      if (celebrationTimerRef.current) clearTimeout(celebrationTimerRef.current)
+      celebrationTimerRef.current = setTimeout(() => {
+        setSectionCelebration('fading')
+        setTimeout(() => {
+          setSectionCelebration('idle')
+          if (!isLastSection) handleNextSection()
+        }, 300)
+      }, 3000)
+    }
     } finally {
       setIsAiChecking(false)
     }
@@ -488,6 +504,8 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
   }
 
   const handleNextSection = () => {
+    if (celebrationTimerRef.current) { clearTimeout(celebrationTimerRef.current); celebrationTimerRef.current = undefined }
+    setSectionCelebration('idle')
     if (exerciseDBSaveTimerRef.current) { clearTimeout(exerciseDBSaveTimerRef.current); exerciseDBSaveTimerRef.current = undefined }
     const payloads = sectionExercises.filter(ex => (answers[ex.id] ?? []).some(a => a.trim())).map(ex => ({
       exerciseId: ex.id, exerciseType: ex.type, answer: answers[ex.id] ?? [], isCorrect: false,
@@ -506,6 +524,8 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
 
   // "Tozlash" — shu bo'lim javoblarini ekran + localStorage + DB dan butunlay o'chiradi
   const handleClearSection = () => {
+    if (celebrationTimerRef.current) { clearTimeout(celebrationTimerRef.current); celebrationTimerRef.current = undefined }
+    setSectionCelebration('idle')
     if (exerciseDBSaveTimerRef.current) { clearTimeout(exerciseDBSaveTimerRef.current); exerciseDBSaveTimerRef.current = undefined }
     setAnswers({}); setSubmitted(false); setScore(0); setAiResults({})
     try { localStorage.removeItem(exerciseStorageKey) } catch { /* ignore */ }
@@ -514,6 +534,8 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
 
   const handleJumpToSection = (idx: number) => {
     if (idx === currentSection) return
+    if (celebrationTimerRef.current) { clearTimeout(celebrationTimerRef.current); celebrationTimerRef.current = undefined }
+    setSectionCelebration('idle')
     if (exerciseDBSaveTimerRef.current) { clearTimeout(exerciseDBSaveTimerRef.current); exerciseDBSaveTimerRef.current = undefined }
     const payloads = sectionExercises.filter(ex => (answers[ex.id] ?? []).some(a => a.trim())).map(ex => ({
       exerciseId: ex.id, exerciseType: ex.type, answer: answers[ex.id] ?? [], isCorrect: false,
@@ -547,7 +569,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
     { id: 'drill',     label: 'Mashqlar',  icon: '⚡' },
     ...(lesson.reading ? [{ id: 'reading' as Tab, label: "O'qish", icon: '📰' }] : []),
     { id: 'speaking' as Tab, label: 'Gapirish', icon: '🎤' },  // AI tomonidan mavzuga oid generatsiya
-    ...(lesson.writing ? [{ id: 'writing' as Tab, label: 'Yozish', icon: '✍️' }] : []),
+    { id: 'writing' as Tab, label: 'Yozish', icon: '✍️' },
     ...(lesson.listening ? [{ id: 'listening' as Tab, label: 'Tinglash', icon: '🎧' }] : []),
   ]
 
@@ -695,15 +717,9 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
           <div className="bg-gradient-to-br from-primary-600 to-b2-600 rounded-2xl p-5 text-white">
             <p className="text-xs font-semibold opacity-70 mb-3 uppercase tracking-wider">Formulalar</p>
             <div className="grid grid-cols-1 gap-2">
-              {lesson.formulas.map((row) => {
-                const s = COLOR_STYLES[row.color] ?? COLOR_STYLES.blue
-                return (
-                  <div key={row.label} className={`flex items-center gap-3 ${s.bg} ${s.border} border rounded-xl px-3 py-2`}>
-                    <span className={`text-xs font-semibold ${s.text} w-32 flex-shrink-0`}>{row.label}</span>
-                    <span className={`font-mono text-sm font-bold ${s.text}`}>{row.structure}</span>
-                  </div>
-                )
-              })}
+              {lesson.formulas.map((row) => (
+                <FormulaRecallCard key={row.label} label={row.label} structure={row.structure} color={row.color} />
+              ))}
             </div>
           </div>
 
@@ -882,6 +898,13 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
                     <span className="flex items-center gap-1 text-green-600"><CheckCircle size={14} /> {score}</span>
                     <span className="flex items-center gap-1 text-red-500"><XCircle size={14} /> {sectionExercises.length - score}</span>
                   </div>
+                  {sectionCelebration !== 'idle' && (
+                    <div className={`bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-3 text-center animate-slide-down transition-opacity duration-300 ${sectionCelebration === 'fading' ? 'opacity-0' : 'opacity-100'}`}>
+                      <p className="text-base font-bold text-green-800">
+                        🎉 Ajoyib! {section?.title} bo'limi yakunlandi! +50 XP
+                      </p>
+                    </div>
+                  )}
                   <div className="flex gap-2 mt-4">
                     <button onClick={handleClearSection} className="btn-secondary flex-1 text-sm py-2"><RotateCcw size={14} /> Tozlash</button>
                     {!isLastSection && <button onClick={handleNextSection} className="btn-primary flex-1 text-sm py-2">Keyingi bosqich <ChevronRight size={14} /></button>}
@@ -1218,14 +1241,22 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
             level={lesson.level}
             addXP={addXP}
             onSkillProgress={(pct) => updateSkillProgress('todaySpeakingPct', pct)}
+            formulas={lesson.formulas}
+            rules={lesson.rules}
+            vocabulary={lesson.vocabulary}
           />
         </div>
       )}
 
       {/* ── WRITING TAB ── */}
-      {tab === 'writing' && lesson.writing && (
+      {tab === 'writing' && (
         <div className="pt-2">
-          <WritingSection section={lesson.writing} level={lesson.level} addXP={addXP} />
+          <WritingSection
+            section={lesson.writing}
+            level={lesson.level}
+            addXP={addXP}
+            lesson={{ title: lesson.title, level: lesson.level, formulas: lesson.formulas, rules: lesson.rules, vocabulary: lesson.vocabulary }}
+          />
         </div>
       )}
 

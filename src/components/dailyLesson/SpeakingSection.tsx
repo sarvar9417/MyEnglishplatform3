@@ -10,6 +10,9 @@ interface SpeakingSectionProps {
   level: string
   addXP: (n: number) => void
   onSkillProgress?: (pct: number) => void
+  formulas?: { label: string; structure: string; color?: string }[]
+  rules?: string[]
+  vocabulary?: { en: string; uz: string; example?: string; rule?: string }[]
 }
 
 function parseScores(text: string) {
@@ -20,7 +23,7 @@ function parseFeedback(text: string) {
   return text.split('FEEDBACK:')[1]?.trim() ?? ''
 }
 
-export default function SpeakingSection({ topic, level, addXP, onSkillProgress }: SpeakingSectionProps) {
+export default function SpeakingSection({ topic, level, addXP, onSkillProgress, formulas, rules, vocabulary }: SpeakingSectionProps) {
   const [task, setTask] = useState<SpeakingTask | null>(null)
   const [loadingTask, setLoadingTask] = useState(true)
   const [evaluating, setEvaluating] = useState(false)
@@ -32,12 +35,12 @@ export default function SpeakingSection({ topic, level, addXP, onSkillProgress }
   useEffect(() => {
     let active = true
     setLoadingTask(true)
-    generateSpeakingTask(topic, level)
+    generateSpeakingTask(topic, level, formulas, rules, vocabulary)
       .then(t => { if (active) setTask(t) })
       .finally(() => { if (active) setLoadingTask(false) })
     return () => { active = false; if (sr.isRecording) sr.stop() }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [topic, level])
+  }, [topic, level, formulas, rules, vocabulary])
 
   function toggleMic() {
     if (sr.isRecording) sr.stop()

@@ -114,8 +114,7 @@ export const complexSentencesB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Bog\'lovchilar va relative pronoun', color: 'bg-emerald-500', icon: '🌱', ids: [6201, 6202, 6203, 6204, 6205] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6206, 6207, 6208, 6209, 6210] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6211, 6212, 6213, 6214, 6215] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [6216, 6217, 6218, 6219, 6220] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6221, 6222, 6223, 6224, 6225] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6220, 6218, 6221, 6217, 6225, 6219, 6216, 6224, 6223, 6222] },
   ],
   tests: [
     { id: 621, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Complex sentence nima?', options: ['bitta clause', 'main + subordinate clause', 'faqat subordinate clause', 'ikki so\'z'], correct: 'main + subordinate clause', explanation: 'Complex = main + subordinate' },
@@ -305,8 +304,7 @@ export const advancedModalsB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Needn\'t have va didn\'t need to', color: 'bg-emerald-500', icon: '🌱', ids: [6301, 6302, 6303, 6304, 6305] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6306, 6307, 6308, 6309, 6310] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6311, 6312, 6313, 6314, 6315] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [6316, 6317, 6318, 6319, 6320] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6321, 6322, 6323, 6324, 6325] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6325, 6321, 6323, 6319, 6324, 6320, 6318, 6316, 6322, 6317] },
   ],
   tests: [
     { id: 631, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Needn't have + V\u2083 nima ma'no?", options: ['kerak edi, qildim', 'kerak emas edi, qildim', 'kerak edi, qilmadim', 'kerak emas edi, qilmadim'], correct: 'kerak emas edi, qildim', explanation: "Needn't have = I did it (unnecessary)" },
@@ -501,8 +499,7 @@ export const contrastiveStructuresB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'While, whereas, unlike', color: 'bg-emerald-500', icon: '🌱', ids: [6401, 6402, 6403, 6404, 6405] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6406, 6407, 6408, 6409, 6410] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6411, 6412, 6413, 6414, 6415] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [6416, 6417, 6418, 6419, 6420] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6421, 6422, 6423, 6424, 6425] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6418, 6416, 6420, 6419, 6417, 6424, 6423, 6425, 6421, 6422] },
     { title: "Conversely", desc: "Rasmiy zidlik — conversely", color: 'bg-orange-500', icon: '↔️', ids: [6426, 6427, 6428, 6429, 6430] },
   ],
   tests: [
@@ -693,8 +690,7 @@ export const punctuationB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Colon, semicolon, dash', color: 'bg-emerald-500', icon: '🌱', ids: [6501, 6502, 6503, 6504, 6505] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6506, 6507, 6508, 6509, 6510] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6511, 6512, 6513, 6514, 6515] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [6516, 6517, 6518, 6519, 6520] },
-    { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6521, 6522, 6523, 6524, 6525] },
+    { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6516, 6520, 6521, 6523, 6524, 6519, 6517, 6522, 6525, 6518] },
   ],
   tests: [
     { id: 651, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Colon nima uchun ishlatiladi?', options: ['gapni tugatish', 'ro\'yxat/tushuntirish kiritish', 'savol qo\'yish', 'qo\'shtirnoq'], correct: 'ro\'yxat/tushuntirish kiritish', explanation: 'Colon introduces list/explanation' },
@@ -884,8 +880,7 @@ export const academicCollocationsB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Research va conclusion collocations', color: 'bg-emerald-500', icon: '🌱', ids: [6601, 6602, 6603, 6604, 6605] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6606, 6607, 6608, 6609, 6610] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6611, 6612, 6613, 6614, 6615] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [6616, 6617, 6618, 6619, 6620] },
-    { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6621, 6622, 6623, 6624, 6625] },
+    { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6617, 6620, 6622, 6616, 6624, 6621, 6625, 6618, 6623, 6619] },
   ],
   tests: [
     { id: 661, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Research bilan qaysi verb ishlatiladi?', options: ['make', 'conduct', 'create', 'build'], correct: 'conduct', explanation: 'Conduct research' },
@@ -1075,8 +1070,7 @@ export const criticalThinkingB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Argue, claim, refute', color: 'bg-emerald-500', icon: '🌱', ids: [6701, 6702, 6703, 6704, 6705] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6706, 6707, 6708, 6709, 6710] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6711, 6712, 6713, 6714, 6715] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [6716, 6717, 6718, 6719, 6720] },
-    { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6721, 6722, 6723, 6724, 6725] },
+    { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6718, 6721, 6719, 6717, 6716, 6720, 6723, 6724, 6725, 6722] },
   ],
   tests: [
     { id: 671, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Argue va Claim farqi?', options: ['farqi yo\'q', 'argue = dalil bilan, claim = tasdiqlash', 'argue = yumshoq, claim = kuchli', 'argue = rasmiy, claim = norasmiy'], correct: 'argue = dalil bilan, claim = tasdiqlash', explanation: 'Argue = with evidence. Claim = assertion.' },
@@ -1265,8 +1259,7 @@ export const b2Review: DailyLesson = {
     { title: "Boshlang'ich", desc: 'All B2 topics mixed', color: 'bg-emerald-500', icon: '🌱', ids: [6801, 6802, 6803, 6804, 6805] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6806, 6807, 6808, 6809, 6810] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6811, 6812, 6813, 6814, 6815] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [6816, 6817, 6818, 6819, 6820] },
-    { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6821, 6822, 6823, 6824, 6825] },
+    { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6825, 6819, 6818, 6821, 6817, 6824, 6822, 6823, 6816, 6820] },
   ],
   tests: [
     { id: 681, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct for unreal past?', options: ['I wish I know', 'I wish I knew', 'I wish I would know', 'I wish I had knew'], correct: 'I wish I knew', explanation: 'Present unreal \u2192 past simple' },

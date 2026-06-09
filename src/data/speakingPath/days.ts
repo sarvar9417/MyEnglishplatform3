@@ -1728,7 +1728,7 @@ const day41: SpeakingDay = {
   stressWord: 'MEETING'},
     { id: 'sp-d41-c2', en: "Shall we meet on Monday?", uz: "Dushanba kuni uchrashaylikmi?", grammarTip: "'Shall we + V?' = taklif (Britaniya). 'Shall' = 'will' ning varianti, taklif uchun. 'On Monday' = dushanba kuni. 'On' + kun.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'MONDAY'},
-    { id: 'sp-d41-c3', en: "That works for me.", uz: "Bu menga to'g'ri keladi.", grammarTip: "'That works for me' = bu menga mos keladi. 'Works' = ishlaydi/mos keladi. Turg'un ibora. 'For me' = men uchun.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d41-c3', en: "That works for me.", uz: "Bu menga mos keladi.", grammarTip: "'That works for me' = bu menga mos keladi. 'Works' = ishlaydi/mos keladi. Turg'un ibora. 'For me' = men uchun.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'WORKS'},
     { id: 'sp-d41-c4', en: "Can we change the time?", uz: "Vaqtni o'zgartira olamizmi?", grammarTip: "'Can we change …?' = o'zgartira olamizmi? 'Change the time' = vaqtni o'zgartirmoq. 'The time' = belgilangan vaqt.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'CAN'},

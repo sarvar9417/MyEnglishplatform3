@@ -2,6 +2,7 @@ import { useMemo, useEffect, useRef } from 'react'
 import type { DailyExercise } from '../../data/dailyLessons'
 import { normalizeAnswer, OPTION_LABELS } from './helpers'
 import { feelAnswer } from '../../lib/gameFeel'
+import { AudioButton } from '../ui/AudioButton'
 
 export default function ExerciseCard({
   ex, num, total, answers, onChange, submitted,
@@ -83,7 +84,9 @@ export default function ExerciseCard({
         <div>
           <p className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">📝 Bo'sh joyni to'ldiring</p>
           {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-loose">
+          <div className="flex items-start gap-1.5 mb-1">
+            <AudioButton text={ex.question.replace(/_{3,}/g, '___ ')} size="sm" />
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-loose">
             {ex.question.split(/_{3,}/).map((part, i, arr) => (
               <span key={i}>
                 {part}
@@ -102,6 +105,7 @@ export default function ExerciseCard({
               </span>
             ))}
           </p>
+          </div>
           {submitted && feedbackBlock(ex, answers, isCorrect)}
         </div>
       )}
@@ -110,7 +114,10 @@ export default function ExerciseCard({
         <div>
           <p className="text-[11px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider mb-1">🔘 To'g'ri variantni tanlang</p>
           {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
-          <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-3 leading-relaxed">{ex.question}</p>
+          <div className="flex items-start gap-1.5 mb-3">
+            <AudioButton text={ex.question} size="sm" />
+            <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">{ex.question}</p>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {shuffledOptions.map((opt, i) => {
               const selected = answers[0] === opt
@@ -143,7 +150,9 @@ export default function ExerciseCard({
           <p className="text-[11px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-1">🔍 Xatoni toping va to'g'irlang</p>
           {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
           <div className="bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-800 rounded-xl px-3 py-2 mb-3">
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+            <div className="flex items-start gap-1.5 mb-1">
+              <AudioButton text={ex.question} size="sm" />
+              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               {ex.question.split(ex.errorPart).map((part, i, arr) => (
                 <span key={i}>
                   {part}
@@ -153,6 +162,7 @@ export default function ExerciseCard({
                 </span>
               ))}
             </p>
+            </div>
           </div>
           <input type="text" value={answers[0] ?? ''} onChange={(e) => onChange(0, e.target.value)} disabled={submitted}
             placeholder="To'g'ri gapni yozing..." className="input text-sm" autoFocus={!submitted} />
@@ -165,7 +175,10 @@ export default function ExerciseCard({
           <p className="text-[11px] font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider mb-1">🔄 Gapni o'zgartiring</p>
           {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
           <div className="bg-white dark:bg-gray-800 border border-teal-200 dark:border-teal-800 rounded-xl px-3 py-2 mb-2">
-            <p className="text-sm text-gray-800 dark:text-gray-200 font-medium">{ex.question}</p>
+            <div className="flex items-start gap-1.5">
+              <AudioButton text={ex.question} size="sm" />
+              <p className="text-sm text-gray-800 dark:text-gray-200 font-medium">{ex.question}</p>
+            </div>
           </div>
           <p className="text-xs text-teal-600 dark:text-teal-400 mb-2 font-medium flex items-center gap-1">
             <span>Boshlang'ich:</span>

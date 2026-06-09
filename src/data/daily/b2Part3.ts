@@ -114,8 +114,7 @@ export const argumentStructureB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Argument tuzilmasi va vocabulary', color: 'bg-emerald-500', icon: '🌱', ids: [6901, 6902, 6903, 6904, 6905] },
     { title: "O'rtacha", desc: 'Xatolarni toping', color: 'bg-blue-500', icon: '📘', ids: [6906, 6907, 6908, 6909, 6910] },
     { title: "Qiyin", desc: 'Transformatsiya va PEEL', color: 'bg-violet-500', icon: '🎯', ids: [6911, 6912, 6913, 6914, 6915] },
-    { title: "Inkor", desc: 'Linking va akademik uslub', color: 'bg-red-500', icon: '🚫', ids: [6916, 6917, 6918, 6919, 6920] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6921, 6922, 6923, 6924, 6925] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6920, 6916, 6922, 6924, 6918, 6921, 6923, 6919, 6925, 6917] },
   ],
   tests: [
     { id: 6931, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'PEEL nima?', options: ['Paragraph, Essay, Edit, Link', 'Point, Evidence, Explanation, Link', 'Plan, Execute, Edit, Launch', 'Premise, Example, Evaluate, List'], correct: 'Point, Evidence, Explanation, Link', explanation: 'PEEL = argument paragraph tuzilmasi' },
@@ -307,8 +306,7 @@ export const stanceMarkersB2: DailyLesson = {
     { title: "Boshlang'ich", desc: "Stance marker turlari", color: 'bg-emerald-500', icon: '🌱', ids: [7001, 7002, 7003, 7004, 7005] },
     { title: "O'rtacha", desc: 'Xatolarni toping', color: 'bg-blue-500', icon: '📘', ids: [7006, 7007, 7008, 7009, 7010] },
     { title: "Qiyin", desc: 'Transformatsiya', color: 'bg-violet-500', icon: '🎯', ids: [7011, 7012, 7013, 7014, 7015] },
-    { title: "Inkor", desc: "Tahlil va farqlash", color: 'bg-red-500', icon: '🚫', ids: [7016, 7017, 7018, 7019, 7020] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7021, 7022, 7023, 7024, 7025] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7021, 7020, 7023, 7016, 7025, 7019, 7024, 7018, 7022, 7017] },
   ],
   tests: [
     { id: 7031, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Approximately' qanday stance marker?", options: ['Epistemic', 'Evaluative', 'Approximator', 'Hedge verb'], correct: 'Approximator', explanation: 'Approximately = approximator' },
@@ -499,8 +497,7 @@ export const paraphrasingB2: DailyLesson = {
     { title: "Boshlang'ich", desc: "Paraphrasing asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [7101, 7102, 7103, 7104, 7105] },
     { title: "O'rtacha", desc: 'Xatolarni toping', color: 'bg-blue-500', icon: '📘', ids: [7106, 7107, 7108, 7109, 7110] },
     { title: "Qiyin", desc: 'Transformatsiya', color: 'bg-violet-500', icon: '🎯', ids: [7111, 7112, 7113, 7114, 7115] },
-    { title: "Inkor", desc: "Tahlil va farqlash", color: 'bg-red-500', icon: '🚫', ids: [7116, 7117, 7118, 7119, 7120] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7121, 7122, 7123, 7124, 7125] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7123, 7124, 7120, 7118, 7119, 7121, 7116, 7125, 7117, 7122] },
   ],
   tests: [
     { id: 7131, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Paraphrase bilan plagiarism o'rtasida farq nima?", options: ['Farq yo\'q', 'Paraphrase = boshqa so\'z + tuzilma + manba; plagiarism = o\'g\'irlash', 'Plagiarism = tarjima', "Paraphrase = faqat so'z o'zgartirish"], correct: 'Paraphrase = boshqa so\'z + tuzilma + manba; plagiarism = o\'g\'irlash', explanation: 'Good paraphrase: vocabulary + structure + citation' },
@@ -697,8 +694,7 @@ export const advancedVerbPatternsB2: DailyLesson = {
     { title: "Boshlang'ich", desc: "Gerund vs infinitive asosi", color: 'bg-emerald-500', icon: '🌱', ids: [7201, 7202, 7203, 7204, 7205] },
     { title: "O'rtacha", desc: 'Causative va passive reporting', color: 'bg-blue-500', icon: '📘', ids: [7206, 7207, 7208, 7209, 7210] },
     { title: "Qiyin", desc: 'Xatolarni toping', color: 'bg-violet-500', icon: '🎯', ids: [7211, 7212, 7213, 7214, 7215] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [7216, 7217, 7218, 7219, 7220] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7221, 7222, 7223, 7224, 7225] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7221, 7217, 7224, 7223, 7225, 7219, 7216, 7220, 7218, 7222] },
   ],
   tests: [
     { id: 7231, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Stop + gerund' nima ma'no?", options: ["To'xtadi va qildi", "Qilishni to'xtatdi", "Urinib ko'rdi", 'Yodga tushirdi'], correct: "Qilishni to'xtatdi", explanation: "'Stop + gerund' = qilishni tugatish" },
@@ -888,8 +884,7 @@ export const b2ComprehensiveReview: DailyLesson = {
     { title: "Boshlang'ich", desc: "B2 asosiy tuzilmalar takrori", color: 'bg-emerald-500', icon: '🌱', ids: [7301, 7302, 7303, 7304, 7305] },
     { title: "O'rtacha", desc: 'Modal va discourse takrori', color: 'bg-blue-500', icon: '📘', ids: [7306, 7307, 7308, 7309, 7310] },
     { title: "Qiyin", desc: "B2 xatolar va tuzatish", color: 'bg-violet-500', icon: '🎯', ids: [7311, 7312, 7313, 7314, 7315] },
-    { title: "Inkor", desc: 'Transformatsiya va PEEL', color: 'bg-red-500', icon: '🚫', ids: [7316, 7317, 7318, 7319, 7320] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7321, 7322, 7323, 7324, 7325] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7323, 7316, 7318, 7322, 7321, 7317, 7320, 7324, 7325, 7319] },
   ],
   tests: [
     { id: 7331, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Inversion qaysi tuzilmada ishlatiladi?", options: ['Oddiy gap', "Negative adverbial gapni ta'kidlashda", 'Passive voice da', 'Conditional da'], correct: "Negative adverbial gapni ta'kidlashda", explanation: "Inversion: Never/Rarely/Not only/Hardly + aux + subject" },

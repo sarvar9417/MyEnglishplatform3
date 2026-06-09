@@ -53,5 +53,27 @@
   "seo.conversation": "Беседа",
   "seo.pronunciation": "Произношение",
   "seo.review": "Обзор грамматики",
-  "seo.desc": "Интенсивная платформа английского для перехода с A2+ на B2 за 90 дней"
+  "seo.desc": "Интенсивная платформа английского для перехода с A2+ на B2 за 90 дней",
+
+  "grammar.presentSimple": "Present Simple — Настоящее простое время",
+  "grammar.presentContinuous": "Present Continuous — Настоящее длительное время",
+  "grammar.presentPerfect": "Present Perfect — Настоящее совершенное время",
+  "grammar.presentPerfectContinuous": "Present Perfect Continuous — Настоящее совершенное длительное время",
+  "grammar.pastSimple": "Past Simple — Прошедшее простое время",
+  "grammar.pastContinuous": "Past Continuous — Прошедшее длительное время",
+  "grammar.pastPerfect": "Past Perfect — Прошедшее совершенное время",
+  "grammar.pastPerfectContinuous": "Past Perfect Continuous — Прошедшее совершенное длительное время",
+  "grammar.futureSimple": "Future Simple — Будущее простое время",
+  "grammar.futureContinuous": "Future Continuous — Будущее длительное время",
+  "grammar.futurePerfect": "Future Perfect — Будущее совершенное время",
+  "grammar.modalVerbs": "Модальные глаголы",
+  "grammar.conditionals": "Conditionals — Условные предложения",
+  "grammar.passiveVoice": "Passive Voice — Страдательный залог",
+  "grammar.reportedSpeech": "Reported Speech — Косвенная речь",
+  "grammar.comparatives": "Comparatives — Степени сравнения",
+  "grammar.articles": "Articles — Артикли",
+  "grammar.prepositions": "Prepositions — Предлоги",
+  "grammar.conjunctions": "Conjunctions — Союзы",
+  "grammar.causative": "Causative — Каузативная форма",
+  "grammar.gerundInfinitive": "Gerund & Infinitive — Герундий и инфинитив"
 }

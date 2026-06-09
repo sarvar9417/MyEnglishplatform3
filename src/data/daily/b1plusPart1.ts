@@ -104,8 +104,7 @@ export const narrativeTensesB1plus: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Har bir tense alohida', color: 'bg-emerald-500', icon: '🌱', ids: [3601, 3602, 3603, 3604, 3605] },
     { title: "O'rtacha", desc: 'Tense tanlash', color: 'bg-blue-500', icon: '📘', ids: [3606, 3607, 3608, 3609, 3610] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [3611, 3612, 3613, 3614, 3615] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [3620, 3616, 3617, 3618, 3619] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3613, 3615, 3617, 3618, 3620] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3619, 3620, 3613, 3618, 3617, 3616, 3618, 3620, 3615, 3617] },
   ],
   tests: [
     { id: 361, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Narrative tenses nechta?', options: ['2 ta', '3 ta', '4 ta', '5 ta'], correct: '4 ta', explanation: '4 ta: Past Simple, Past Continuous, Past Perfect, Past Perfect Continuous' },
@@ -247,8 +246,7 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Relative pronouns asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3701, 3702, 3703, 3704, 3705] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3706, 3707, 3708, 3709, 3710] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [3711, 3712, 3713, 3714, 3715] },
-    { title: "Inkor", desc: 'Gap birlashtirish', color: 'bg-red-500', icon: '🚫', ids: [3720, 3716, 3717, 3718, 3719] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3713, 3715, 3717, 3718, 3720] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3720, 3717, 3715, 3716, 3713, 3720, 3718, 3718, 3717, 3719] },
   ],
   tests: [
     { id: 371, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Relative clauses necha turga bolinadi?', options: ['1 ta', '2 ta', '3 ta', '4 ta'], correct: '2 ta', explanation: '2 tur: defining va non-defining' },
@@ -380,8 +378,7 @@ export const participleClausesB1plus: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Participle turlari', color: 'bg-emerald-500', icon: '🌱', ids: [3801, 3802, 3803, 3804, 3805] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3806, 3807, 3808, 3809, 3810] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [3811, 3812, 3813, 3814, 3815] },
-    { title: "Inkor", desc: 'Gap o\'zgartirish', color: 'bg-red-500', icon: '🚫', ids: [3820, 3816, 3817, 3818, 3819] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3813, 3815, 3817, 3818, 3820] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3816, 3815, 3819, 3813, 3818, 3820, 3820, 3818, 3817, 3817] },
   ],
   tests: [
     { id: 381, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Present Participle qanday yasaladi?', options: ['V3', 'V-ing', 'Having + V3', 'To + V'], correct: 'V-ing', explanation: "Present Participle = V-ing" },
@@ -514,8 +511,7 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Gerund yoki Infinitive', color: 'bg-emerald-500', icon: '🌱', ids: [3901, 3902, 3903, 3904, 3905] },
     { title: "O'rtacha", desc: 'Ma\'no farqlari', color: 'bg-blue-500', icon: '📘', ids: [3906, 3907, 3908, 3909, 3910] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [3911, 3912, 3913, 3914, 3915] },
-    { title: "Inkor", desc: 'Gap o\'zgartirish', color: 'bg-red-500', icon: '🚫', ids: [3920, 3916, 3917, 3918, 3919] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3913, 3915, 3917, 3918, 3920] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3919, 3913, 3920, 3915, 3917, 3916, 3918, 3920, 3918, 3917] },
   ],
   tests: [
     { id: 391, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Enjoy dan keyin nima keladi?", options: ['to V', 'V-ing', 'V', 'V3'], correct: 'V-ing', explanation: 'Enjoy + V-ing' },
@@ -653,8 +649,7 @@ export const modalPerfectsB1plus: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Modal perfect turlari', color: 'bg-emerald-500', icon: '🌱', ids: [4001, 4002, 4003, 4004, 4005] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4006, 4007, 4008, 4009, 4010] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4011, 4012, 4013, 4014, 4015] },
-    { title: "Inkor", desc: 'Gap o\'zgartirish', color: 'bg-red-500', icon: '🚫', ids: [4020, 4016, 4017, 4018, 4019] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4013, 4015, 4017, 4018, 4020] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4020, 4016, 4015, 4019, 4013, 4018, 4018, 4017, 4017, 4020] },
   ],
   tests: [
     { id: 401, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Must have + V3 qanday ma'noni ifodalaydi?", options: ['majburiyat', 'ishonch (deduction)', 'taxmin', 'afsus'], correct: 'ishonch (deduction)', explanation: "Must have = ishonch" },
@@ -786,8 +781,7 @@ export const emphasisDoesB1plus: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Do/Does/Did urg\'usi', color: 'bg-emerald-500', icon: '🌱', ids: [4101, 4102, 4103, 4104, 4105] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4106, 4107, 4108, 4109, 4110] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4111, 4112, 4113, 4114, 4115] },
-    { title: "Inkor", desc: 'Gap o\'zgartirish', color: 'bg-red-500', icon: '🚫', ids: [4120, 4116, 4117, 4118, 4119] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4113, 4115, 4117, 4118, 4120] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4118, 4117, 4115, 4119, 4120, 4116, 4113, 4118, 4117, 4120] },
   ],
   tests: [
     { id: 411, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Emphatic do qanday gaplarda ishlatiladi?', options: ['savol gaplarda', 'inkor gaplarda', 'tasdiq gaplarda (urg\'u)', "buyruq gaplarda"], correct: 'tasdiq gaplarda (urg\'u)', explanation: 'Emphatic do \u2014 tasdiq gaplarda kuch berish uchun' },
@@ -919,8 +913,7 @@ export const frontingB1plus: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Fronting turlari', color: 'bg-emerald-500', icon: '🌱', ids: [4201, 4202, 4203, 4204, 4205] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4206, 4207, 4208, 4209, 4210] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4211, 4212, 4213, 4214, 4215] },
-    { title: "Inkor", desc: 'Gap o\'zgartirish', color: 'bg-red-500', icon: '🚫', ids: [4220, 4216, 4217, 4218, 4219] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4213, 4215, 4217, 4218, 4220] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4218, 4213, 4218, 4217, 4216, 4220, 4215, 4220, 4219, 4217] },
   ],
   tests: [
     { id: 421, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Fronting nima?', options: ["gap bo'lagini oxiriga qo'yish", "gap bo'lagini oldinga chiqarish", "fe'lni o'zgartirish", "savol yasash"], correct: "gap bo'lagini oldinga chiqarish", explanation: 'Fronting = oldinga chiqarish' },
@@ -1052,8 +1045,7 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Ellipsis va substitution asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [4301, 4302, 4303, 4304, 4305] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4306, 4307, 4308, 4309, 4310] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4311, 4312, 4313, 4314, 4315] },
-    { title: "Inkor", desc: 'Gap o\'zgartirish', color: 'bg-red-500', icon: '🚫', ids: [4320, 4316, 4317, 4318, 4319] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4313, 4315, 4317, 4318, 4320] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4317, 4317, 4320, 4316, 4315, 4313, 4319, 4320, 4318, 4318] },
   ],
   tests: [
     { id: 431, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Ellipsis nima?', options: ["so'z qo'shish", "so'z tushirib qoldirish", "so'z o'zgartirish", "gap uzaytirish"], correct: "so'z tushirib qoldirish", explanation: 'Ellipsis = tushirib qoldirish' },
@@ -1185,8 +1177,7 @@ export const concessionB1plus: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Concession turlari', color: 'bg-emerald-500', icon: '🌱', ids: [4401, 4402, 4403, 4404, 4405] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4406, 4407, 4408, 4409, 4410] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4411, 4412, 4413, 4414, 4415] },
-    { title: "Inkor", desc: 'Gap o\'zgartirish', color: 'bg-red-500', icon: '🚫', ids: [4420, 4416, 4417, 4418, 4419] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4413, 4415, 4417, 4418, 4420] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4417, 4418, 4420, 4420, 4417, 4416, 4418, 4413, 4419, 4415] },
   ],
   tests: [
     { id: 441, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Concession nima?", options: ["sabab", "qaramay, qarama-qarshilik", "natija", "shart"], correct: "qaramay, qarama-qarshilik", explanation: "Concession = qaramay" },

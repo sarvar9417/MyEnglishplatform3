@@ -5,6 +5,7 @@ import {
   Copy, Check, RefreshCw,
 } from 'lucide-react'
 import { sendMessageStream, type ChatMessage, MODEL } from '../lib/claude'
+import { AiLoadingOverlay } from '../components/ui/AiLoadingOverlay'
 import { QUICK_PROMPTS, type TutorMode } from '../lib/prompts'
 import { useNavigationGuard } from '../hooks/useNavigationGuard'
 import { useStore } from '../store/useStore'
@@ -279,6 +280,11 @@ export default function Chat() {
   useNavigationGuard(input.trim().length > 0)
 
   const bottomRef = useRef<HTMLDivElement>(null)
+  const abortRef = useRef<AbortController | null>(null)
+
+  useEffect(() => {
+    return () => abortRef.current?.abort()
+  }, [])
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const { addXP, incrementStreak, updateSkillProgress, todayGrammarPct } = useStore()
@@ -334,6 +340,9 @@ export default function Chat() {
     setMessages((prev) => [...prev, userMsg, assistantMsg])
     setIsStreaming(true)
 
+    const controller = new AbortController()
+    abortRef.current = controller
+
     // Build history for API (skip the initial greeting)
     const history: ChatMessage[] = messages
       .slice(1)
@@ -368,17 +377,29 @@ export default function Chat() {
         }
       },
       (err) => {
-        setMessages((prev) =>
-          prev.map((m) =>
-            m.id === assistantId
-              ? { ...m, content: err.message, isStreaming: false, error: true }
-              : m
+        if (err.name === 'AbortError') {
+          setMessages((prev) => prev.filter((m) => m.id !== assistantId))
+        } else {
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === assistantId
+                ? { ...m, content: err.message, isStreaming: false, error: true }
+                : m
+            )
           )
-        )
+        }
         setIsStreaming(false)
-      }
+      },
+      controller.signal
     )
+
+    if (abortRef.current === controller) abortRef.current = null
   }, [input, isStreaming, messages, mode, addXP, incrementStreak, updateSkillProgress, todayGrammarPct])
+
+  const handleCancel = () => {
+    abortRef.current?.abort()
+    abortRef.current = null
+  }
 
   const clearChat = () => {
     setMessages([INITIAL_MESSAGE])
@@ -550,6 +571,8 @@ export default function Chat() {
           Enter — yuborish &nbsp;·&nbsp; Shift+Enter — yangi qator
         </p>
       </div>
+
+      {isStreaming && <AiLoadingOverlay onCancel={handleCancel} />}
     </div>
   )
 }

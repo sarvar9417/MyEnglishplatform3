@@ -12,7 +12,7 @@ import type { Level } from './store/types'
 import Sidebar from './components/layout/Sidebar'
 import MobileBottomNav from './components/layout/MobileBottomNav'
 import { OnboardingFlow } from './components/onboarding/OnboardingFlow'
-import { Menu, X, WifiOff } from 'lucide-react'
+import { Menu, X, WifiOff, Eye, LogIn } from 'lucide-react'
 import { I18nProvider, useI18n } from './i18n'
 import ErrorBoundary from './components/ErrorBoundary'
 import ToastContainer from './components/Toast'
@@ -75,6 +75,9 @@ const NotFound = lazyWithReload(() => import('./pages/NotFound'))
 
 function AppShell() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [demoBannerDismissed, setDemoBannerDismissed] = useState(
+    () => localStorage.getItem('demo-banner-dismissed') === 'true'
+  )
   const isOnline = useOnlineStatus()
   const levelUpPending = useStore((s) => s.levelUpPending)
   const clearLevelUp = useStore((s) => s.clearLevelUp)
@@ -131,6 +134,30 @@ function AppShell() {
           </div>
           <div className="w-10" />
         </div>
+
+        {/* Demo mode banner */}
+        {!demoBannerDismissed && localStorage.getItem('demo-mode') === 'true' && (
+          <div className="bg-gradient-to-r from-primary-500 to-b2-500 text-white text-center text-xs font-semibold py-2 px-4 shadow-md">
+            <div className="flex items-center justify-center gap-2 flex-wrap">
+              <Eye size={14} className="shrink-0" />
+              <span>Demo rejimi — ma'lumotlar saqlanmaydi</span>
+              <button
+                onClick={() => { localStorage.removeItem('demo-mode'); window.location.href = '/' }}
+                className="bg-white/20 hover:bg-white/30 px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1 shrink-0"
+              >
+                <LogIn size={12} />
+                Ro'yxatdan o'tish
+              </button>
+              <button
+                onClick={() => { localStorage.setItem('demo-banner-dismissed', 'true'); setDemoBannerDismissed(true) }}
+                className="text-white/70 hover:text-white shrink-0"
+                aria-label="Yopish"
+              >
+                <X size={14} />
+              </button>
+            </div>
+          </div>
+        )}
 
         <Suspense fallback={<SimpleLoadingSkeleton />}>
           <div className="animate-page-enter">
@@ -189,6 +216,13 @@ function AppRouter() {
   const { session, loading, user } = useAuth()
   const onboardingComplete = useStore((s) => s.onboardingComplete)
   const hydrated = useStore((s) => s._hydrated)
+  const isDemo = localStorage.getItem('demo-mode') === 'true'
+
+  useEffect(() => {
+    if (isDemo) {
+      useStore.setState({ onboardingComplete: true, _hydrated: true, userName: 'Demo foydalanuvchi' })
+    }
+  }, [isDemo])
 
   // ── Clear lesson progress when user changes (prevents cross-user data leakage) ──
   const clearAllLessonProgress = useStore((s) => s.clearAllLessonProgress)
@@ -313,7 +347,8 @@ function AppRouter() {
     return <SimpleLoadingSkeleton />
   }
 
-  if (!session) return <Auth />
+  if (!session && !isDemo) return <Auth />
+  if (isDemo) return <AppShell />
   if (!onboardingComplete) return <OnboardingFlow />
   return <AppShell />
 }

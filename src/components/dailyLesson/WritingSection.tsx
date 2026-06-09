@@ -1,15 +1,17 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { 
   Sparkles, ChevronDown, ChevronUp, CheckCircle, AlertCircle, 
-  Lightbulb, PenLine, Layout, Quote,
+  Lightbulb, PenLine, Layout, Quote, Loader2,
 } from 'lucide-react'
 import type { WritingSection as WritingSectionType } from '../../data/dailyLessons'
-import { evaluateWriting } from '../../lib/claude'
+import { evaluateWriting, generateWritingTask } from '../../lib/claude'
+import type { LessonContent } from '../../lib/aiPrompts'
 
 interface Props {
-  section: WritingSectionType
+  section?: WritingSectionType
   level?: string
   addXP?: (amount: number) => void
+  lesson?: LessonContent
 }
 
 interface ParsedFeedback {
@@ -59,7 +61,7 @@ function ScorePill({ label, score }: { label: string; score: number }) {
   )
 }
 
-export default function WritingSection({ section, level = 'A2', addXP }: Props) {
+export default function WritingSection({ section, level = 'A2', addXP, lesson }: Props) {
   const [text, setText] = useState('')
   const [showTips, setShowTips] = useState(false)
   const [showKeyPhrases, setShowKeyPhrases] = useState(false)
@@ -69,16 +71,32 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
   const [parsed, setParsed] = useState<ParsedFeedback | null>(null)
   const [showImproved, setShowImproved] = useState(false)
   const [error, setError] = useState('')
+  const [aiTask, setAiTask] = useState<{ prompt: string; wordLimit: number; tips: string[]; keyPhrases: { phrase: string; translation: string }[]; structure: string[] } | null>(null)
+  const [loadingAi, setLoadingAi] = useState(false)
   const hasEvaluated = useRef(false)
 
+  const activeSection = section ?? aiTask
+  const wordLimit = activeSection?.wordLimit ?? 100
   const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0
-  const pct = Math.min(100, Math.round((wordCount / section.wordLimit) * 100))
-  const isUnder = wordCount < Math.round(section.wordLimit * 0.6)
-  const isOver = wordCount > section.wordLimit
-  const canSubmit = wordCount >= Math.round(section.wordLimit * 0.6) && !isEvaluating
+  const pct = Math.min(100, Math.round((wordCount / wordLimit) * 100))
+  const isUnder = wordCount < Math.round(wordLimit * 0.6)
+  const isOver = wordCount > wordLimit
+  const canSubmit = wordCount >= Math.round(wordLimit * 0.6) && !isEvaluating
+
+  useEffect(() => {
+    if (section) return
+    if (!lesson) return
+    let active = true
+    setLoadingAi(true)
+    generateWritingTask(lesson.title, lesson.level, lesson.formulas, lesson.rules, lesson.vocabulary)
+      .then(t => { if (active) setAiTask(t) })
+      .finally(() => { if (active) setLoadingAi(false) })
+    return () => { active = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [section, lesson?.title, lesson?.level])
 
   const handleEvaluate = async () => {
-    if (!canSubmit) return
+    if (!canSubmit || !activeSection) return
     setIsEvaluating(true)
     setStreamText('')
     setParsed(null)
@@ -87,7 +105,7 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
 
     let full = ''
     await evaluateWriting(
-      section.prompt,
+      activeSection.prompt,
       text,
       level,
       (token) => {
@@ -114,6 +132,17 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
     ? Math.round((parsed.taskAchievement.score + parsed.coherence.score + parsed.vocabulary.score + parsed.grammar.score) / 4)
     : 0
 
+  if (loadingAi) {
+    return (
+      <div className="flex flex-col items-center justify-center py-12 text-gray-400">
+        <Loader2 size={28} className="animate-spin mb-2" />
+        <p className="text-sm">AI writing topshirig'i tayyorlamoqda…</p>
+      </div>
+    )
+  }
+
+  if (!activeSection) return null
+
   return (
     <div className="space-y-5">
       {/* Task card */}
@@ -121,11 +150,11 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
         <p className="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2 flex items-center gap-1.5">
           <PenLine size={12} /> Writing Task
         </p>
-        <p className="text-sm leading-relaxed font-medium">{section.prompt}</p>
+        <p className="text-sm leading-relaxed font-medium">{activeSection.prompt}</p>
         <div className="flex items-center gap-3 mt-3 text-xs opacity-80">
-          <span>Target: {section.wordLimit} words</span>
+          <span>Target: {wordLimit} words</span>
           <span className="w-px h-3 bg-white/40" />
-          <span>~{Math.round(section.wordLimit / 80 * 10)} min</span>
+          <span>~{Math.round(wordLimit / 80 * 10)} min</span>
         </div>
       </div>
 
@@ -141,7 +170,7 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
         {showTips && (
           <div className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700 space-y-3">
             <ul className="space-y-2">
-              {section.tips.map((tip, i) => (
+              {activeSection.tips.map((tip, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                   <span className="text-amber-500 font-bold mt-0.5 shrink-0">→</span>
                   {tip}
@@ -150,7 +179,7 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
             </ul>
 
             {/* Key Phrases */}
-            {section.keyPhrases && section.keyPhrases.length > 0 && (
+            {activeSection.keyPhrases && activeSection.keyPhrases.length > 0 && (
               <div className="border-t border-gray-100 dark:border-gray-700 pt-3">
                 <button
                   onClick={() => setShowKeyPhrases(p => !p)}
@@ -164,7 +193,7 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
                 </button>
                 {showKeyPhrases && (
                   <div className="mt-2 space-y-2">
-                    {section.keyPhrases.map((kp, i) => (
+                    {activeSection.keyPhrases.map((kp, i) => (
                       <div key={i} className="flex items-center justify-between bg-emerald-50 dark:bg-emerald-900/20 rounded-xl px-3 py-2">
                         <span className="text-sm font-medium text-emerald-800 dark:text-emerald-300">{kp.phrase}</span>
                         <span className="text-xs text-gray-500 dark:text-gray-400 ml-2 shrink-0">{kp.translation}</span>
@@ -176,7 +205,7 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
             )}
 
             {/* Structure */}
-            {section.structure && section.structure.length > 0 && (
+            {activeSection.structure && activeSection.structure.length > 0 && (
               <div className="border-t border-gray-100 dark:border-gray-700 pt-3">
                 <button
                   onClick={() => setShowStructure(p => !p)}
@@ -190,7 +219,7 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
                 </button>
                 {showStructure && (
                   <ol className="mt-2 space-y-1.5">
-                    {section.structure.map((step, i) => (
+                    {activeSection.structure.map((step, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                         <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-[10px] font-bold shrink-0 mt-0.5">
                           {i + 1}
@@ -211,7 +240,7 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
         <div className="flex items-center justify-between mb-2">
           <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Your Response</p>
           <span className={`text-xs font-semibold tabular-nums ${isOver ? 'text-red-500' : isUnder ? 'text-gray-400' : 'text-green-600 dark:text-green-400'}`}>
-            {wordCount} / {section.wordLimit} words
+            {wordCount} / {wordLimit} words
           </span>
         </div>
 
@@ -238,7 +267,7 @@ export default function WritingSection({ section, level = 'A2', addXP }: Props) 
         )}
         {isOver && (
           <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
-            <AlertCircle size={12} /> Over limit by {wordCount - section.wordLimit} words — try to reduce
+            <AlertCircle size={12} /> Over limit by {wordCount - wordLimit} words — try to reduce
           </p>
         )}
       </div>

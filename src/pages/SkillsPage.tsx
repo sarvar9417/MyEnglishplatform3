@@ -50,7 +50,7 @@ const SKILL_CARDS: SkillCardData[] = [
   {
     key: 'speaking',
     icon: Mic,
-    label: 'Speaking',
+    label: 'Gapirish',
     description: 'IELTS format savollar, cue cards, Claude AI bilan suhbat',
     gradient: 'from-rose-50 to-pink-50 dark:from-rose-950/20 dark:to-pink-950/20',
     iconBg: 'bg-rose-100 dark:bg-rose-900/30',
@@ -63,8 +63,8 @@ const SKILL_CARDS: SkillCardData[] = [
   {
     key: 'reading',
     icon: BookOpen,
-    label: 'Reading',
-    description: 'Timed reading, comprehension, lug\'at, AI savollar',
+    label: 'O\'qish',
+    description: 'Vaqtli o\'qish, tushunish, lug\'at, AI savollar',
     gradient: 'from-emerald-50 to-teal-50 dark:from-emerald-950/20 dark:to-teal-950/20',
     iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
     iconColor: 'text-emerald-600',
@@ -76,7 +76,7 @@ const SKILL_CARDS: SkillCardData[] = [
   {
     key: 'writing',
     icon: PenLine,
-    label: 'Writing',
+    label: 'Yozish',
     description: 'IELTS Task 1/2, akademik, ijodiy, xato tahlili',
     gradient: 'from-violet-50 to-purple-50 dark:from-violet-950/20 dark:to-purple-950/20',
     iconBg: 'bg-violet-100 dark:bg-violet-900/30',
@@ -89,8 +89,8 @@ const SKILL_CARDS: SkillCardData[] = [
   {
     key: 'listening',
     icon: Headphones,
-    label: 'Listening',
-    description: 'BBC, TED, fill-blanks, true/false, transcript',
+    label: 'Tinglash',
+    description: 'BBC, TED, to\'ldirish, true/false, transcript',
     gradient: 'from-orange-50 to-amber-50 dark:from-orange-950/20 dark:to-amber-950/20',
     iconBg: 'bg-orange-100 dark:bg-orange-900/30',
     iconColor: 'text-orange-600',
