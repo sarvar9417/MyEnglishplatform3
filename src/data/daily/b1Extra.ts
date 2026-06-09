@@ -476,9 +476,9 @@ export const relativeClausesB1: DailyLesson = {
     {
       "id": 2613,
       "type": "error-correction",
-      "correct": "The man who lives next door is a doctor.",
-      "question": "The man lives next door is a doctor.",
-      "errorPart": "lives",
+      "correct": "The woman who won the prize is my aunt.",
+      "question": "The woman won the prize is my aunt.",
+      "errorPart": "won",
       "explanation": "Ega -> who kerak",
       "instruction": "Xato:"
     },
