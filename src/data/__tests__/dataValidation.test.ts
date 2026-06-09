@@ -76,6 +76,43 @@ describe('daily lessons data', () => {
       expect(l.vocabulary.length).toBeGreaterThanOrEqual(10)
     }
   })
+
+  it('no duplicate exercise IDs within each lesson', () => {
+    for (const l of ALL_LESSONS) {
+      const ids = l.exercises.map((ex: { id: number }) => ex.id)
+      const unique = new Set(ids)
+      if (unique.size !== ids.length) {
+        const dup = ids.filter((id, i) => ids.indexOf(id) !== i)
+        console.warn(`[WARN] Lesson "${l.id}" has duplicate exercise IDs: ${[...new Set(dup)].join(', ')}`)
+      }
+      expect(unique.size).toBe(ids.length)
+    }
+  })
+
+  it('no duplicate test IDs within each lesson', () => {
+    for (const l of ALL_LESSONS) {
+      if (l.tests) {
+        const ids = l.tests.map((t: { id: number }) => t.id)
+        const unique = new Set(ids)
+        if (unique.size !== ids.length) {
+          const dup = ids.filter((id, i) => ids.indexOf(id) !== i)
+          console.warn(`[WARN] Lesson "${l.id}" has duplicate test IDs: ${[...new Set(dup)].join(', ')}`)
+        }
+        expect(unique.size).toBe(ids.length)
+      }
+    }
+  })
+
+  it('every exercise ID in exerciseSections exists in exercises array', () => {
+    for (const l of ALL_LESSONS) {
+      const exerciseIds = new Set(l.exercises.map((ex: { id: number }) => ex.id))
+      for (const section of l.exerciseSections || []) {
+        for (const id of section.ids) {
+          expect(exerciseIds.has(id)).toBe(true)
+        }
+      }
+    }
+  })
 })
 
 describe('grammar topics data', () => {

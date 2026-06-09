@@ -123,8 +123,7 @@ export const adjectiveAdverb: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Adj vs Adv asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1901, 1902, 1903, 1904, 1905] },
     { title: "O'rtacha", desc: '-ly qo\'shimchasi', color: 'bg-blue-500', icon: '📘', ids: [1906, 1907, 1908, 1909, 1910] },
     { title: "Qiyin", desc: 'Good/Well, Hard/Hardly', color: 'bg-violet-500', icon: '🎯', ids: [1912, 1914, 1911, 1913, 1915] },
-    { title: "Inkor", desc: 'Transformatsiya va joylashuv', color: 'bg-red-500', icon: '🚫', ids: [1917, 1920, 1919, 1918, 1916] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1913, 1915, 1916, 1918, 1920] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1918, 1920, 1919, 1917, 1915, 1913, 1916, 1918, 1920, 1916] },
   ],
   tests: [
     { id: 191, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Adjective nima vazifasini bajaradi?", options: ['otni tavsiflaydi', 'fe\'lni tavsiflaydi', 'sifatni tavsiflaydi', 'ravishni tavsiflaydi'], correct: 'otni tavsiflaydi', explanation: "Adjective — otni tavsiflaydi" },
@@ -276,8 +275,7 @@ export const gerundsInfinitives: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Gerund asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [2001, 2002, 2003, 2004, 2005] },
     { title: "O'rtacha", desc: 'Infinitive asoslari', color: 'bg-blue-500', icon: '📘', ids: [2006, 2007, 2008, 2009, 2010] },
     { title: "Qiyin", desc: 'Stop, Remember, Forget', color: 'bg-violet-500', icon: '🎯', ids: [2013, 2014, 2011, 2012, 2015] },
-    { title: "Inkor", desc: 'Predlog + gerund', color: 'bg-red-500', icon: '🚫', ids: [2017, 2020, 2019, 2018, 2016] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2012, 2015, 2016, 2018, 2020] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2020, 2016, 2015, 2018, 2018, 2020, 2017, 2012, 2019, 2016] },
   ],
   tests: [
     { id: 201, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Gerund qanday yasaladi?", options: ['to + V1', 'V + -ing', 'V + -ed', 'V + -s'], correct: 'V + -ing', explanation: "Gerund = V + -ing" },
@@ -426,8 +424,7 @@ export const passiveVoice: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Present Passive', color: 'bg-emerald-500', icon: '🌱', ids: [2101, 2102, 2103, 2104, 2105] },
     { title: "O'rtacha", desc: 'Past Passive', color: 'bg-blue-500', icon: '📘', ids: [2106, 2107, 2108, 2109, 2110] },
     { title: "Qiyin", desc: 'Inkor va savol shakllari', color: 'bg-violet-500', icon: '🎯', ids: [2113, 2114, 2111, 2115, 2112] },
-    { title: "Inkor", desc: 'Active ↔ Passive', color: 'bg-red-500', icon: '🚫', ids: [2118, 2120, 2119, 2116, 2117] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2112, 2115, 2117, 2119, 2120] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2115, 2120, 2120, 2117, 2112, 2116, 2119, 2117, 2118, 2119] },
   ],
   tests: [
     { id: 211, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Passive Voice nima?", options: ['bajaruvchi muhim', 'harakat muhim', 'vaqt muhim', 'joy muhim'], correct: 'harakat muhim', explanation: "Passive — harakat muhim" },
@@ -576,8 +573,7 @@ export const reportedSpeech: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Say va Tell', color: 'bg-emerald-500', icon: '🌱', ids: [2201, 2202, 2203, 2204, 2205] },
     { title: "O'rtacha", desc: 'Tense backshift', color: 'bg-blue-500', icon: '📘', ids: [2206, 2207, 2208, 2209, 2210] },
     { title: "Qiyin", desc: 'Reported questions', color: 'bg-violet-500', icon: '🎯', ids: [2213, 2214, 2211, 2212, 2215] },
-    { title: "Inkor", desc: 'Buyruq va transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [2218, 2220, 2219, 2216, 2217] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2212, 2215, 2217, 2219, 2220] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2220, 2215, 2219, 2219, 2217, 2218, 2212, 2216, 2220, 2217] },
   ],
   tests: [
     { id: 221, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Say va Tell farqi?", options: ['say + person, tell + that', 'tell + person, say + (that)', 'ikkalasi bir xil', 'say + to + person, tell + to + person'], correct: 'tell + person, say + (that)', explanation: "Tell + person, say + (that)" },
@@ -725,8 +721,7 @@ export const firstConditional: DailyLesson = {
     { title: "Boshlang'ich", desc: 'If + Present, will + V1', color: 'bg-emerald-500', icon: '🌱', ids: [2301, 2302, 2303, 2304, 2305] },
     { title: "O'rtacha", desc: 'Inkor shakllari', color: 'bg-blue-500', icon: '📘', ids: [2306, 2307, 2308, 2309, 2310] },
     { title: "Qiyin", desc: 'Unless va savol shakli', color: 'bg-violet-500', icon: '🎯', ids: [2313, 2314, 2311, 2312, 2315] },
-    { title: "Inkor", desc: 'Transformatsiya va xatolar', color: 'bg-red-500', icon: '🚫', ids: [2318, 2320, 2319, 2316, 2317] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2312, 2315, 2317, 2319, 2320] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2319, 2320, 2320, 2312, 2317, 2316, 2318, 2319, 2315, 2317] },
   ],
   tests: [
     { id: 231, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "First Conditional formulas?", options: ['If + will, will', 'If + Present, will + V1', 'If + Past, would + V1', 'If + will, V1'], correct: 'If + Present, will + V1', explanation: "If + Present Simple, will + V1" },

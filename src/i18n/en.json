@@ -53,5 +53,27 @@
   "seo.conversation": "Conversation",
   "seo.pronunciation": "Pronunciation",
   "seo.review": "Grammar Review",
-  "seo.desc": "Intensive English platform to go from A2+ to B2 in 90 days"
+  "seo.desc": "Intensive 90-day English course from A2+ to B2 level",
+
+  "grammar.presentSimple": "Present Simple",
+  "grammar.presentContinuous": "Present Continuous",
+  "grammar.presentPerfect": "Present Perfect",
+  "grammar.presentPerfectContinuous": "Present Perfect Continuous",
+  "grammar.pastSimple": "Past Simple",
+  "grammar.pastContinuous": "Past Continuous",
+  "grammar.pastPerfect": "Past Perfect",
+  "grammar.pastPerfectContinuous": "Past Perfect Continuous",
+  "grammar.futureSimple": "Future Simple",
+  "grammar.futureContinuous": "Future Continuous",
+  "grammar.futurePerfect": "Future Perfect",
+  "grammar.modalVerbs": "Modal Verbs",
+  "grammar.conditionals": "Conditionals",
+  "grammar.passiveVoice": "Passive Voice",
+  "grammar.reportedSpeech": "Reported Speech",
+  "grammar.comparatives": "Comparatives",
+  "grammar.articles": "Articles",
+  "grammar.prepositions": "Prepositions",
+  "grammar.conjunctions": "Conjunctions",
+  "grammar.causative": "Causative",
+  "grammar.gerundInfinitive": "Gerund & Infinitive"
 }

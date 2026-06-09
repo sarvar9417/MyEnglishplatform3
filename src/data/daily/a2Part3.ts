@@ -103,8 +103,7 @@ export const verbPatterns: DailyLesson = {
     { title: "Boshlang'ich", desc: "V-ing va to V1 asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2701, 2702, 2703, 2704, 2705] },
     { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [2706, 2707, 2708, 2709, 2710] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2713, 2714, 2715, 2711, 2712] },
-    { title: "Inkor", desc: "Transformatsiya", color: 'bg-red-500', icon: '🚫', ids: [2719, 2720, 2716, 2717, 2718] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2721, 2722, 2723, 2724, 2725] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2720, 2724, 2721, 2722, 2718, 2717, 2716, 2725, 2723, 2719] },
   ],
   tests: [
     { id: 271, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Enjoy dan keyin qanday shakl keladi?", options: ['V1', 'to V1', 'V-ing', 'V3'], correct: 'V-ing', explanation: "'Enjoy' + V-ing: 'enjoy reading'." },
@@ -233,8 +232,7 @@ export const timePrepositions: DailyLesson = {
     { title: "Boshlang'ich", desc: "At / In / On asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2801, 2802, 2803, 2804, 2805] },
     { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [2806, 2807, 2808, 2809, 2810] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2813, 2814, 2815, 2811, 2812] },
-    { title: "Inkor", desc: "Transformatsiya", color: 'bg-red-500', icon: '🚫', ids: [2819, 2820, 2816, 2817, 2818] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2821, 2822, 2823, 2824, 2825] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2817, 2820, 2821, 2823, 2825, 2818, 2819, 2816, 2824, 2822] },
   ],
   tests: [
     { id: 281, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "AT qaysi vaqt bilan ishlatiladi?", options: ['oylar bilan', 'kunlar bilan', 'aniq vaqt bilan', 'fasllar bilan'], correct: 'aniq vaqt bilan', explanation: "AT + aniq vaqt: at 5 o'clock, at midnight." },
@@ -376,8 +374,7 @@ export const thereIsThereAre: DailyLesson = {
     { title: "Boshlang'ich", desc: "There is / There are asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2401, 2402, 2403, 2404, 2405] },
     { title: "O'rtacha", desc: "So'roq va tanlov", color: 'bg-blue-500', icon: '📘', ids: [2406, 2407, 2408, 2409, 2410] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [2413, 2414, 2415, 2411, 2412] },
-    { title: "Inkor", desc: "Transformatsiya", color: 'bg-red-500', icon: '🚫', ids: [2419, 2420, 2416, 2417, 2418] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2421, 2422, 2423, 2424, 2425] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2422, 2424, 2417, 2419, 2423, 2421, 2418, 2416, 2420, 2425] },
   ],
   tests: [
     { id: 241, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "There is ___ qachon ishlatiladi?", options: ['birlik otlar bilan', 'ko\'plik otlar bilan', 'hamma vaqt', 'savollarda'], correct: 'birlik otlar bilan', explanation: "There is — birlik otlar va sanalmaydigan otlar bilan." },
@@ -519,8 +516,7 @@ export const possessives: DailyLesson = {
     { title: "Boshlang'ich", desc: "Possessive adjectives", color: 'bg-emerald-500', icon: '🌱', ids: [2501, 2502, 2503, 2504, 2505] },
     { title: "O'rtacha", desc: "Pronoun va tanlov", color: 'bg-blue-500', icon: '📘', ids: [2506, 2507, 2508, 2509, 2510] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2513, 2514, 2515, 2511, 2512] },
-    { title: "Inkor", desc: "Transformatsiya", color: 'bg-red-500', icon: '🚫', ids: [2519, 2520, 2516, 2517, 2518] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2521, 2522, 2523, 2524, 2525] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2517, 2521, 2516, 2519, 2522, 2520, 2523, 2525, 2524, 2518] },
   ],
   tests: [
     { id: 251, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'My' qanday ma'noda?", options: ['mening', 'sening', 'uning', 'bizning'], correct: 'mening', explanation: "My = mening (1st person singular)." },
@@ -662,8 +658,7 @@ export const someAnyNoEvery: DailyLesson = {
     { title: "Boshlang'ich", desc: "Some / Any / No asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2601, 2602, 2603, 2604, 2605] },
     { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [2606, 2607, 2608, 2609, 2610] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2613, 2614, 2615, 2611, 2612] },
-    { title: "Inkor", desc: "Transformatsiya", color: 'bg-red-500', icon: '🚫', ids: [2619, 2620, 2616, 2617, 2618] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2621, 2622, 2623, 2624, 2625] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2622, 2621, 2620, 2616, 2618, 2624, 2623, 2619, 2625, 2617] },
   ],
   tests: [
     { id: 261, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Some qanday gaplarda ishlatiladi?", options: ['faqat ijobiy', 'faqat inkor', 'ijobiy va takliflarda', 'faqat savollarda'], correct: 'ijobiy va takliflarda', explanation: "Some — ijobiy gaplar va taklif/iltimos savollarida." },

@@ -111,8 +111,7 @@ export const presentContinuousFuture: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Ijobiy shakl asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [2901, 2902, 2903, 2904, 2905] },
     { title: "O'rtacha", desc: 'Savol va tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [2906, 2907, 2908, 2909, 2910] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [2914, 2915, 2913, 2911, 2912] },
-    { title: "Inkor", desc: 'Transformatsiya va farqlar', color: 'bg-red-500', icon: '🚫', ids: [2918, 2920, 2919, 2916, 2917] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [2912, 2915, 2916, 2919, 2920] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [2920, 2916, 2915, 2912, 2917, 2919, 2916, 2918, 2920, 2919] },
   ],
   tests: [
     { id: 291, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Present Continuous kelasi zamonda nima uchun ishlatiladi?", options: ['Rejalashtirilgan ishlar', 'Jadvallar', 'Bashoratlar', 'Takroriy harakatlar'], correct: 'Rejalashtirilgan ishlar', explanation: "Present Continuous — aniq rejalar uchun" },
@@ -249,8 +248,7 @@ export const quantifiers: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Much/Many asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3001, 3002, 3003, 3004, 3005] },
     { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3006, 3007, 3008, 3009, 3010] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3015, 3013, 3014, 3011, 3012] },
-    { title: "Inkor", desc: 'Transformatsiya va farqlar', color: 'bg-red-500', icon: '🚫', ids: [3017, 3019, 3020, 3018, 3016] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3012, 3015, 3016, 3019, 3020] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3019, 3019, 3020, 3017, 3018, 3016, 3020, 3015, 3012, 3016] },
   ],
   tests: [
     { id: 301, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Much qanday otlar bilan ishlatiladi?", options: ['sanalmaydigan', 'sanaluvchi', 'ikkala', "faqat ko'plik"], correct: 'sanalmaydigan', explanation: "Much — sanalmaydigan otlar bilan" },
@@ -387,8 +385,7 @@ export const tooEnough: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Too va Enough asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3101, 3102, 3103, 3104, 3105] },
     { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3106, 3107, 3108, 3109, 3110] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3113, 3111, 3112, 3114, 3115] },
-    { title: "Inkor", desc: 'Transformatsiya va farqlar', color: 'bg-red-500', icon: '🚫', ids: [3116, 3119, 3120, 3117, 3118] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3112, 3115, 3117, 3119, 3120] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3117, 3120, 3117, 3118, 3119, 3120, 3116, 3112, 3115, 3119] },
   ],
   tests: [
     { id: 311, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Too qanday ma'noni bildiradi?", options: ['juda (ortiqcha)', 'yetarli', 'juda (neytral)', 'bir oz'], correct: 'juda (ortiqcha)', explanation: "Too — keragidan ortiq" },
@@ -525,8 +522,7 @@ export const soSuch: DailyLesson = {
     { title: "Boshlang'ich", desc: 'So va Such asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3201, 3202, 3203, 3204, 3205] },
     { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3206, 3207, 3208, 3209, 3210] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3213, 3214, 3211, 3212, 3215] },
-    { title: "Inkor", desc: 'Transformatsiya va farqlar', color: 'bg-red-500', icon: '🚫', ids: [3218, 3219, 3220, 3217, 3216] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3212, 3215, 3218, 3219, 3220] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3216, 3218, 3215, 3217, 3220, 3220, 3219, 3219, 3218, 3212] },
   ],
   tests: [
     { id: 321, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "So qanday so'z turkumlari bilan ishlatiladi?", options: ['sifat/ravishdosh', 'ot', "fe'l", 'son'], correct: 'sifat/ravishdosh', explanation: "So + adjective/adverb" },
@@ -644,8 +640,7 @@ export const a2Review2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Asosiy qoidalar', color: 'bg-emerald-500', icon: '🌱', ids: [3301, 3302, 3303, 3304, 3305] },
     { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3306, 3307, 3308, 3309, 3310] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3315, 3311, 3312, 3313, 3314] },
-    { title: "Inkor", desc: 'Transformatsiya va farqlar', color: 'bg-red-500', icon: '🚫', ids: [3318, 3320, 3319, 3316, 3317] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3312, 3315, 3317, 3319, 3320] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3319, 3319, 3320, 3317, 3320, 3316, 3318, 3312, 3317, 3315] },
   ],
   tests: [
     { id: 331, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Present Continuous kelasi zamonda nima uchun?", options: ['rejalar uchun', 'jadvallar uchun', 'bashoratlar uchun', 'odatlar uchun'], correct: 'rejalar uchun', explanation: "Rejalashtirilgan ishlar" },

@@ -117,8 +117,7 @@ export const futureFormsReview: DailyLesson = {
     { title: "Boshlang'ich", desc: "Will va Going to — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4001, 4002, 4003, 4004] },
     { title: "O'rtacha", desc: "Kontekstga qarab to'g'ri shakl tanlash", color: 'bg-blue-500', icon: '📘', ids: [4005, 4006, 4007, 4008] },
     { title: "Qiyin", desc: "Xatolarni topish va tuzatish", color: 'bg-violet-500', icon: '🎯', ids: [4009, 4010, 4011, 4012] },
-    { title: "Inkor", desc: "Gapni qayta yozish va o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [4013, 4014, 4015, 4016] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4019, 4017, 4018, 4020] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4017, 4019, 4015, 4020, 4016, 4018, 4014, 4013] },
   ],
   tests: [
     { id: 401, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kelasi zamon shakli spontan qarorlar uchun ishlatiladi?", options: ['will', 'going to', 'Present Continuous', 'Present Simple'], correct: 'will', explanation: "Will + V1 — spontan qarorlar, bashoratlar va va'dalar uchun." },
@@ -161,7 +160,7 @@ export const modalsObligation: DailyLesson = {
   rules: [
     "1️⃣ MUST — SHAXSIY MAJBURIYAT\n\nMust + V1 — kuchli majburiyat, ichki his-tuyg'u yoki shaxsiy qaror asosida qilinadigan ishlar.\n\n📍 ICHKI MAJBURIYAT (Personal obligation): O'z-o'ziga qo'yilgan talab.\n  📍 I must finish this project by Friday. (Men bu loyihani jumagacha tugatishim kerak — o'zimga yuklatilgan majburiyat)\n  📍 I must exercise more. I am getting fat. (Men ko'proq mashq qilishim kerak — shaxsiy qaror)\n  📍 I must call my mother. It's her birthday today. (Men onamga qo'ng'iroq qilishim kerak — shaxsiy majburiyat)\n\n📍 QAT'IY QOIDA (Strong rule): Rasmiy qoidalar, qonunlar.\n  📍 You must wear a helmet when riding a motorcycle. (Mototsikl haydashda dubulg'a kiyish shart)\n  📍 All passengers must fasten their seatbelts. (Barcha yo'lovchilar kamar taqishlari shart)\n  📍 You must not park here. It's a fire zone. (Bu yerga mashina qo'yish taqiqlangan)\n\n📍 MUHIM: Must ning o'tgan zamon shakli YO'Q. O'tgan zamonda 'had to' ishlatiladi.\n  📍 I had to work yesterday. (Kecha ishlashim kerak edi / ishladim)\n  📍 She had to wake up early. (U erta turishi kerak edi)",
     "2️⃣ HAVE TO — TASHQI MAJBURIYAT\n\nHave to + V1 — tashqi omillar (qonun, qoidalar, boshqalar) tomonidan yuklatilgan majburiyat.\n\n📍 TASHQI MAJBURIYAT (External obligation): Qonun, qoidalar, ish, maktab talablari.\n  📍 I have to wear a uniform at my job. (Ishda uniforma kiyishim kerak — ish qoidasi)\n  📍 She has to wake up at 6 AM every day. (U har kuni 6 da turishi kerak — maktab/ish talabi)\n  📍 We have to pay taxes every year. (Biz har yili soliq to'lashimiz kerak — qonun talabi)\n\n📍 SO'ROQ VA INKOR SHAKLLARI:\n  📍 Do I have to attend the meeting? (Majlisda qatnashishim shartmi?)\n  📍 She doesn't have to work on weekends. (U dam olish kunlari ishlashi shart emas)\n  📍 Did you have to wait long? (Ko'p kutishingizga to'g'ri keldimi?)\n\n📍 HAVE TO = MUST (tashqi majburiyat uchun):\n  Ko'p hollarda must va have to o'rnakdosh. Ammo:\n  📍 Must = shaxsiy majburiyat (I must study harder — o'zim shunday qaror qilganman)\n  📍 Have to = tashqi majburiyat (I have to study because the exam is coming — imtihon majbur qiladi)",
-    "3️⃣ MUSTN'T VS DON'T HAVE TO — MUHIM FARQ\n\nBu ikki shaklni farqlash eng muhim qoidalardan biri. Bir-biriga o'xshasa ham, ma'nosi butunlay boshqacha.\n\n📍 MUST NOT (mustn't) = TAQIQ (Prohibition): Hech narsa qilish mumkin emas.\n  📍 You must not smoke here. (Bu yerda chekish mumkin EMAS ? qat'iy taqiq)\n  📍 Students must not cheat during exams. (Talabalar imtihonda aldashlari mumkin EMAS)\n  📍 You must not tell anyone about this. (Bu haqda hech kimga aytmang ? qat'iy buyruq)\n\n📍 DON'T HAVE TO = SHAKT EMAS (No obligation): Majburiyat yo'q, lekin taqiq ham emas.\n  📍 You don't have to come if you are tired. (Agar charchagan bo'lsangiz, kelishingiz shart emas — lekin kelishingiz mumkin)\n  📍 She doesn't have to wear a uniform at her job. (U ishda uniforma kiyishi shart emas — xohlasa kiymasligi mumkin)\n  📍 We don't have to pay for the tickets. They are free. (Biz chiptalar uchun to'lashimiz shart emas — ular bepul)\n\n📍 AMALIY QOIDA:\n  📍 Mustn't = NO! You CAN'T do it! (Mumkin emas!)\n  📍 Don't have to = You CAN do it, but it's NOT NECESSARY. (Qilishingiz mumkin, lekin shart emas)\n  📍 You mustn't drive without a license. (Litsenziyasiz haydash MUMKIN EMAS)\n  📍 You don't have to drive. We can take the bus. (Haydashingiz shart emas. Avtobusga o'tirsak bo'ladi)",
+    "3️⃣ MUSTN'T VS DON'T HAVE TO — MUHIM FARQ\n\nBu ikki shaklni farqlash eng muhim qoidalardan biri. Bir-biriga o'xshasa ham, ma'nosi butunlay boshqacha.\n\n📍 MUST NOT (mustn't) = TAQIQ (Prohibition): Hech narsa qilib bo'lmaydi.\n  📍 You must not smoke here. (Bu yerda chekish mumkin EMAS ? qat'iy taqiq)\n  📍 Students must not cheat during exams. (Talabalar imtihonda aldashlari mumkin EMAS)\n  📍 You must not tell anyone about this. (Bu haqda hech kimga aytmang ? qat'iy buyruq)\n\n📍 DON'T HAVE TO = SHAKT EMAS (No obligation): Majburiyat yo'q, lekin taqiq ham emas.\n  📍 You don't have to come if you are tired. (Agar charchagan bo'lsangiz, kelishingiz shart emas — lekin kelishingiz mumkin)\n  📍 She doesn't have to wear a uniform at her job. (U ishda uniforma kiyishi shart emas — xohlasa kiymasligi mumkin)\n  📍 We don't have to pay for the tickets. They are free. (Biz chiptalar uchun to'lashimiz shart emas — ular bepul)\n\n📍 AMALIY QOIDA:\n  📍 Mustn't = NO! You CAN'T do it! (Mumkin emas!)\n  📍 Don't have to = You CAN do it, but it's NOT NECESSARY. (Qilishingiz mumkin, lekin shart emas)\n  📍 You mustn't drive without a license. (Litsenziyasiz haydash MUMKIN EMAS)\n  📍 You don't have to drive. We can take the bus. (Haydashingiz shart emas. Avtobusga o'tirsak bo'ladi)",
     "4️⃣ SHOULD / OUGHT TO — MASLAHAT VA TAVSIYALAR\n\nShould + V1 — maslahat, tavsiya, kuchsiz majburiyat. Ought to — should ga o'xshash, ammo rasmiyroq.\n\n📍 MASLAHAT (Advice): Biror kishiga nima qilishni maslahat berish.\n  📍 You should see a doctor. You look ill. (Shifokorga ko'rinishingiz kerak. Bemor ko'rinasiz)\n  📍 She should study more if she wants to pass the exam. (Agar imtihondan o'tmoqchi bo'lsa, ko'proq o'qishi kerak)\n  📍 He should apologize for his behaviour. (U o'z xatti-harakati uchun kechirim so'rashi kerak)\n\n📍 OUGHT TO = SHOULD (rasmiyroq):\n  📍 You ought to respect your elders. (Kattalarni hurmat qilishingiz kerak)\n  📍 We ought to help those in need. (Muhtojlarga yordam berishimiz kerak)\n\n📍 SHOULDN'T = MASLAHAT EMAS:\n  📍 You shouldn't eat too much sugar. (Ko'p shakar iste'mol qilmasligingiz kerak)\n  📍 Children shouldn't watch too much TV. (Bolalar ko'p televizor ko'rmasligi kerak)\n\n📍 SHOULD VS MUST:\n  📍 Should = yumshoq, maslahat (tavsiya, lekin majburiy emas)\n  📍 Must = kuchli, majburiy (bajarilmasa, salbiy oqibatlar bor)\n  📍 You should exercise. (Mashq qilishingiz kerak — maslahat)\n  📍 You must exercise. (Mashq qilishingiz shart — shifokor buyurgan)",
     "5️⃣ MUST VS HAVE TO — BATAFSIL TAQQOSLASH\n\nMust va have to o'rtasidagi farqlarni tushunish B1 darajasida muhim.\n\n📍 MUST (shaxsiy):\n  — So'zlovchining ichki hissi, shaxsiy qarori\n  — Rasmiy yozma qoidalarda (signs, notices)\n  — O'tgan zamon shakli yo'q\n  — Inkor shakli: mustn't (taqiq)\n  📍 I must stop smoking. (Men chekishni tashlashim kerak — o'zim xohlayman)\n\n📍 HAVE TO (tashqi):\n  — Qonun, qoidalar, tashqi talablar\n  — Kundalik hayotda ko'proq ishlatiladi\n  — O'tgan zamon shakli bor: had to\n  — Inkor shakli: don't have to (shart emas)\n  📍 I have to stop at the red light. (Qizil chiroqda to'xtashim kerak — qonun talabi)\n\n📍 SO'ROQ SHAKLI:\n  — Must you...? (kam uchraydi, rasmiy)\n  — Do I have to...? (keng tarqalgan, kundalik)\n  📍 Must I attend? ? Do I have to attend? (Qatnashishim shartmi? — ikkinchisi tabiiyroq)",
     "6️⃣ NEED TO, NEEDN'T — EHTIYOJ FE'LLARI\n\nNeed to + V1 — zaruriyatni ifodalaydi. Needn't + V1 — zaruriyat yo'q.\n\n📍 NEED TO = HAVE TO ga o'xshash:\n  📍 You need to finish this by Monday. (Buni dushanbagacha tugatishingiz kerak)\n  📍 She needs to get a visa before travelling. (U sayohat qilishdan oldin viza olishi kerak)\n\n📍 NEEDN'T (need not) = DON'T HAVE TO:\n  📍 You needn't worry about the test. (Imtihon haqida qayg'urishingiz shart emas)\n  📍 She needn't come to the meeting. (U majlisga kelishi shart emas)\n\n📍 NEEDN'T HAVE DONE: O'tgan zamonda qilingan, ammo keraksiz ish.\n  📍 You needn't have bought flowers. (Gul sotib olishingiz shart emas edi — baribir sotib oldingiz)\n  📍 I needn't have worried. Everything went well. (Qayg'urishim shart emas edi. Hammasi yaxshi o'tdi)",
@@ -242,8 +241,7 @@ export const modalsObligation: DailyLesson = {
     { title: "Boshlang'ich", desc: "Must / Have to — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4101, 4102, 4103, 4104, 4105] },
     { title: "O'rtacha", desc: "Mustn't vs Don't have to", color: 'bg-blue-500', icon: '📘', ids: [4106, 4107, 4108, 4109, 4110] },
     { title: "Qiyin", desc: "Xatolarni topish va tuzatish", color: 'bg-violet-500', icon: '🎯', ids: [4111, 4112, 4113, 4114] },
-    { title: "Inkor", desc: "Gapni o'zgartirish va qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4115, 4116, 4117, 4118] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4119, 4120] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4118, 4119, 4115, 4116, 4117, 4120] },
   ],
   tests: [
     { id: 411, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi modal fe'l shaxsiy majburiyatni ifodalaydi?", options: ['have to', 'must', 'should', 'ought to'], correct: 'must', explanation: "Must = shaxsiy majburiyat, ichki his." },
@@ -367,8 +365,7 @@ export const modalsSpeculation: DailyLesson = {
     { title: "Boshlang'ich", desc: "Must / Might / Can't be asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4201, 4202, 4203, 4204] },
     { title: "O'rtacha", desc: "Taxmin shakllarini qo'llash", color: 'bg-blue-500', icon: '📘', ids: [4205, 4206, 4207, 4208] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4209, 4210, 4211] },
-    { title: "Inkor", desc: "Gapni qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4212, 4213, 4214, 4215] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄',       ids: [4216, 4217, 4218, 4219, 4220] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4220, 4213, 4218, 4215, 4216, 4212, 4217, 4214, 4219] },
   ],
   tests: [
     { id: 421, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi modal fe'l ishonchli taxminni ifodalaydi?", options: ['must', 'might', 'can\'t', 'could'], correct: 'must', explanation: "Must = ishonchli taxmin (bo'lsa kerak)." },
@@ -487,8 +484,7 @@ export const pastHabits: DailyLesson = {
     { title: "Boshlang'ich", desc: "Used to va Would — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4301, 4302, 4303, 4304] },
     { title: "O'rtacha", desc: "Used to va Would ni qo'llash", color: 'bg-blue-500', icon: '📘',       ids: [4305, 4306, 4307, 4308] },
     { title: "Qiyin", desc: "Xatolarni topish va tuzatish", color: 'bg-violet-500', icon: '🎯', ids: [4309, 4310, 4311, 4312] },
-    { title: "Inkor", desc: "Gapni qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4313, 4314, 4315, 4316] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4318, 4317, 4319, 4320] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4315, 4320, 4313, 4318, 4319, 4316, 4317, 4314] },
   ],
   tests: [
     { id: 431, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi shakl o'tgan odatlar va holatlar uchun ishlatiladi?", options: ['used to', 'would', 'be used to', 'get used to'], correct: 'used to', explanation: "Used to = o'tgan odatlar va holatlar." },
@@ -609,8 +605,7 @@ export const causatives: DailyLesson = {
     { title: "Boshlang'ich", desc: "Have/Get + object + V3", color: 'bg-emerald-500', icon: '🌱', ids: [4401, 4402, 4403, 4404] },
     { title: "O'rtacha", desc: "Have/Get person variantlari", color: 'bg-blue-500', icon: '📘', ids: [4405, 4406, 4407, 4408] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4409, 4410, 4411, 4412] },
-    { title: "Inkor", desc: "Gapni o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [4413, 4414, 4415, 4416] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4418, 4417, 4419, 4420] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4414, 4419, 4415, 4416, 4420, 4418, 4417, 4413] },
   ],
   tests: [
     { id: 441, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Causative 'have' qanday tuzilishga ega?", options: ['have + V3', 'have + object + V1', 'have + object + V3', 'have + V-ing'], correct: 'have + object + V3', explanation: "Causative have: have + object + V3." },
@@ -731,8 +726,7 @@ export const questionTags: DailyLesson = {
     { title: "Boshlang'ich", desc: "Asosiy qoida — musbat/inkor", color: 'bg-emerald-500', icon: '🌱', ids: [4501, 4502, 4503, 4504] },
     { title: "O'rtacha", desc: "Turli fe'llar bilan", color: 'bg-blue-500', icon: '📘', ids: [4505, 4506, 4507, 4508] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4509, 4510, 4511, 4512] },
-    { title: "Inkor", desc: "Gapga tag qo'shish", color: 'bg-red-500', icon: '🚫', ids: [4513, 4514, 4515, 4516] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4518, 4517, 4519, 4520] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4520, 4513, 4518, 4517, 4515, 4516, 4519, 4514] },
   ],
   tests: [
     { id: 451, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Musbat gapga qanday tag qo'shiladi?", options: ['musbat tag', 'inkor tag', 'bir xil', 'tag qo\'shilmaydi'], correct: 'inkor tag', explanation: "Musbat gap ? inkor tag." },
@@ -852,8 +846,7 @@ export const bothEitherNeither: DailyLesson = {
     { title: "Boshlang'ich", desc: "Both, Either, Neither farqlari", color: 'bg-emerald-500', icon: '🌱', ids: [4601, 4602, 4603, 4604] },
     { title: "O'rtacha", desc: "Both/Either/Neither of bilan", color: 'bg-blue-500', icon: '📘', ids: [4605, 4606, 4607, 4608] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4609, 4610, 4611] },
-    { title: "Inkor", desc: "Juft bog'lovchilar bilan", color: 'bg-red-500', icon: '🚫', ids: [4615, 4616, 4612, 4613, 4614] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4617, 4619, 4618, 4620] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4620, 4619, 4613, 4612, 4615, 4614, 4618, 4617, 4616] },
   ],
   tests: [
     { id: 461, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z 'ikkalasi' ma'nosini bildiradi?", options: ['both', 'either', 'neither', 'none'], correct: 'both', explanation: "Both = ikkalasi." },
@@ -972,8 +965,7 @@ export const timeClauses: DailyLesson = {
     { title: "Boshlang'ich", desc: "Vaqt ergash gaplari asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4701, 4702, 4703, 4704] },
     { title: "O'rtacha", desc: "Present Simple vs Future", color: 'bg-blue-500', icon: '📘', ids: [4705, 4706, 4707, 4708] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4709, 4710, 4711] },
-    { title: "Inkor", desc: "Gapni bog'lash", color: 'bg-red-500', icon: '🚫', ids: [4712, 4713, 4714, 4715] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4717, 4716, 4718, 4719, 4720] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4718, 4714, 4717, 4716, 4719, 4713, 4720, 4715, 4712] },
   ],
   tests: [
     { id: 471, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Vaqt ergash gapida kelasi zamonda qanday zamon ishlatiladi?", options: ['Future Simple', 'Present Simple', 'Present Continuous', 'Past Simple'], correct: 'Present Simple', explanation: "Vaqt ergash gapida Present Simple, will emas." },
@@ -1093,8 +1085,7 @@ export const indirectQuestions: DailyLesson = {
     { title: "Boshlang'ich", desc: "Indirect so'roq asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4801, 4802, 4803, 4804] },
     { title: "O'rtacha", desc: "If / Whether bilan", color: 'bg-blue-500', icon: '📘', ids: [4805, 4806, 4807, 4808] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4809, 4810, 4811, 4812] },
-    { title: "Inkor", desc: "Direct ? Indirect", color: 'bg-red-500', icon: '🚫', ids: [4813, 4814, 4815, 4816] },
-    { title: "O'zgartirish", desc: "Muloyim so'roqlar", color: 'bg-teal-500', icon: '🔄', ids: [4818, 4817, 4819, 4820] },
+    { title: "O'zgartirish", desc: "Muloyim so'roqlar", color: 'bg-teal-500', icon: '🔄', ids: [4820, 4815, 4817, 4816, 4813, 4818, 4814, 4819] },
   ],
   tests: [
     { id: 481, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Indirect question da so'z tartibi qanday?", options: ['verb + subject', 'subject + verb', 'wh-word + verb + subject', 'subject + wh-word'], correct: 'subject + verb', explanation: "Indirect ? subject + verb (darak gap tartibi)." },
@@ -1215,8 +1206,7 @@ export const soNeitherAuxiliaries: DailyLesson = {
     { title: "Boshlang'ich", desc: "So va Neither asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4901, 4902, 4903, 4904] },
     { title: "O'rtacha", desc: "Turli yordamchi fe'llar", color: 'bg-blue-500', icon: '📘', ids: [4905, 4906, 4907, 4908] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4909, 4910, 4911, 4912] },
-    { title: "Inkor", desc: "Javob yozish", color: 'bg-red-500', icon: '🚫', ids: [4913, 4914, 4915, 4916] },
-    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4919, 4917, 4918, 4920] },
+    { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4914, 4919, 4920, 4917, 4915, 4916, 4913, 4918] },
   ],
   tests: [
     { id: 491, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Musbat gapga rozilik bildirish uchun nima ishlatiladi?", options: ['So + auxiliary + I', 'Neither + auxiliary + I', 'I don\'t either', 'Nor + auxiliary + I'], correct: 'So + auxiliary + I', explanation: "So + auxiliary + I — musbat rozilik." },
@@ -1336,8 +1326,7 @@ export const wishesRegrets: DailyLesson = {
     { title: "Boshlang'ich", desc: "I wish + Past Simple — hozirgi orzular", color: 'bg-emerald-500', icon: '🌱', ids: [5001, 5002, 5003, 5004] },
     { title: "O'rtacha", desc: "I wish + Past Perfect — pushaymonlik", color: 'bg-blue-500', icon: '📘', ids: [5005, 5006, 5007, 5008] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [5009, 5010, 5011, 5012] },
-    { title: "Inkor", desc: "Gapni o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [5013, 5014, 5015, 5016] },
-    { title: "O'zgartirish", desc: "Would, Could, Regret", color: 'bg-teal-500', icon: '🔄', ids: [5018, 5017, 5019, 5020] },
+    { title: "O'zgartirish", desc: "Would, Could, Regret", color: 'bg-teal-500', icon: '🔄', ids: [5020, 5019, 5016, 5018, 5014, 5013, 5017, 5015] },
   ],
   tests: [
     { id: 501, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Hozirgi orzular uchun I wish dan keyin qanday zamon ishlatiladi?", options: ['Present Simple', 'Past Simple', 'Past Perfect', 'Future Simple'], correct: 'Past Simple', explanation: "Hozirgi orzu ? Past Simple (zamon orqaga)." },

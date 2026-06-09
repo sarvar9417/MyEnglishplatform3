@@ -340,7 +340,7 @@ function DailyIdiomCard() {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[11px] font-bold uppercase tracking-wider text-yellow-600 dark:text-yellow-400">
-              Idiom of the Day
+              Kunning Idiomasi
             </span>
             <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 ${
               idiom.level === 'B2'

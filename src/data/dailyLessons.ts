@@ -164,7 +164,7 @@ export const comparativesSuperlatives: DailyLesson = {
     { en: 'expensive', uz: 'qimmat', example: 'The most expensive hotel in the city.', rule: 'uzun' },
     { en: 'young', uz: 'yosh', example: 'My sister is younger than me.', rule: 'qisqa' },
     { en: 'old', uz: 'keksa, eski', example: 'This is the oldest building in town.', rule: 'qisqa' },
-    { en: 'good', uz: 'yaxshi', example: 'Her English is better than mine.', rule: 'notogri' },
+    { en: 'good', uz: "yaxshi (sifat)", example: 'Her English is better than mine.', rule: 'notogri' },
     { en: 'bad', uz: 'yomon', example: 'This is the worst weather we have ever had.', rule: 'notogri' },
     { en: 'easy', uz: 'oson', example: 'This task is easier than the previous one.', rule: 'y bilan' },
     { en: 'difficult', uz: 'qiyin', example: 'Math is more difficult for me than English.', rule: 'uzun' },

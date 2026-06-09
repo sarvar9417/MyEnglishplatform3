@@ -193,7 +193,7 @@ export const DEMO_LESSON: DemoLesson = {
         { en: 'paint',  uz: 'rasm chizmoq' },
         { en: 'repair', uz: "ta'mirlamoq" },
         { en: "can't",  uz: 'qila olmaslik' },
-        { en: 'well',   uz: 'yaxshi' },
+        { en: 'well',   uz: "yaxshi (ravish)" },
       ],
       explanation: "So'z-ma'no juftliklarini eslab qoling.",
     },

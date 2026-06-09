@@ -109,8 +109,7 @@ export const linkingWordsAdvanced: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Linking words asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [4501, 4502, 4503, 4504, 4505] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [4506, 4507, 4508, 4509, 4510] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4511, 4512, 4513, 4514, 4515] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [4520, 4516, 4517, 4518, 4519] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4513, 4515, 4517, 4518, 4520] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4517, 4519, 4515, 4513, 4520, 4518, 4516, 4520, 4517, 4518] },
   ],
   tests: [
     { id: 451, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z qo'shimcha ma'lumot uchun?", options: ['However', 'Therefore', 'Furthermore', 'Nevertheless'], correct: 'Furthermore', explanation: "Furthermore = qo'shimcha" },
@@ -246,8 +245,7 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Make/Do tanlash', color: 'bg-emerald-500', icon: '🌱', ids: [4601, 4602, 4603, 4604, 4605] },
     { title: "O'rtacha", desc: "Have/Take tanlash", color: 'bg-blue-500', icon: '📘', ids: [4606, 4607, 4608, 4609, 4610] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4611, 4612, 4613, 4614, 4615] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [4620, 4616, 4617, 4618, 4619] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4613, 4615, 4617, 4618, 4620] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4619, 4613, 4617, 4620, 4617, 4615, 4616, 4620, 4618, 4618] },
   ],
   tests: [
     { id: 461, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya MAKE bilan?", options: ['homework', 'business', 'a decision', 'research'], correct: 'a decision', explanation: "Make a decision" },
@@ -378,8 +376,7 @@ export const advancedPhrasalVerbs: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Common phrasal verbs', color: 'bg-emerald-500', icon: '🌱', ids: [4701, 4702, 4703, 4704, 4705] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [4706, 4707, 4708, 4709, 4710] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4711, 4712, 4713, 4714, 4715] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [4720, 4716, 4717, 4718, 4719] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4713, 4715, 4717, 4718, 4720] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4718, 4717, 4719, 4720, 4718, 4716, 4720, 4713, 4717, 4715] },
   ],
   tests: [
     { id: 471, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Put up with' ma'nosi nima?", options: ["o'ylab topmoq", 'chidamoq', 'tugatmoq', 'qidirmoq'], correct: 'chidamoq', explanation: "Put up with = chidamoq" },
@@ -510,8 +507,7 @@ export const idiomsCommon: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Common idioms', color: 'bg-emerald-500', icon: '🌱', ids: [4801, 4802, 4803, 4804, 4805] },
     { title: "O'rtacha", desc: "Idiom ma'nolari", color: 'bg-blue-500', icon: '📘', ids: [4806, 4807, 4808, 4809, 4810] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4811, 4812, 4813, 4814, 4815] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [4820, 4816, 4817, 4818, 4819] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4813, 4815, 4817, 4818, 4820] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4815, 4818, 4813, 4817, 4819, 4820, 4820, 4818, 4816, 4817] },
   ],
   tests: [
     { id: 481, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Break the ice' ma'nosi nima?", options: ['muzni sindirish', 'suhbatni boshlash', 'muz ustida yurish', 'sovuq ob-havo'], correct: 'suhbatni boshlash', explanation: "Break the ice = suhbatni boshlash" },
@@ -642,8 +638,7 @@ export const prepositionalPhrases: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Prepositional phrases asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [4901, 4902, 4903, 4904, 4905] },
     { title: "O'rtacha", desc: "Predlog tanlash", color: 'bg-blue-500', icon: '📘', ids: [4906, 4907, 4908, 4909, 4910] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4911, 4912, 4913, 4914, 4915] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [4920, 4916, 4917, 4918, 4919] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4913, 4915, 4917, 4918, 4920] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4918, 4920, 4916, 4920, 4915, 4918, 4917, 4913, 4917, 4919] },
   ],
   tests: [
     { id: 491, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '"By accident" ma\'nosi nima?', options: ['ataylab', 'tasodifan', 'xato bilan', 'tezda'], correct: 'tasodifan', explanation: 'By accident = tasodifan' },
@@ -774,8 +769,7 @@ export const wordFormation: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Suffix qo\'shish', color: 'bg-emerald-500', icon: '🌱', ids: [5001, 5002, 5003, 5004, 5005] },
     { title: "O'rtacha", desc: "Suffix tanlash", color: 'bg-blue-500', icon: '📘', ids: [5006, 5007, 5008, 5009, 5010] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5011, 5012, 5013, 5014, 5015] },
-    { title: "Inkor", desc: 'So\'z yasash', color: 'bg-red-500', icon: '🚫', ids: [5020, 5016, 5017, 5018, 5019] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5013, 5015, 5017, 5018, 5020] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5020, 5017, 5016, 5013, 5018, 5020, 5015, 5017, 5019, 5018] },
   ],
   tests: [
     { id: 501, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Education' qanday yasalgan?", options: ['educate + -tion', 'educate + -sion', 'educate + -ment', 'educate + -ness'], correct: 'educate + -tion', explanation: 'Educate + -tion = education' },
@@ -921,8 +915,7 @@ export const reportingVerbs: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Reporting verbs asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5101, 5102, 5103, 5104, 5105] },
     { title: "O'rtacha", desc: "To'g'ri fe'l tanlash", color: 'bg-blue-500', icon: '📘', ids: [5106, 5107, 5108, 5109, 5110] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5111, 5112, 5113, 5114, 5115] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5120, 5116, 5117, 5118, 5119] },
-    { title: "O'zgartirish", desc: 'Prepositions + advanced verbs', color: 'bg-teal-500', icon: '🔄', ids: [5121, 5122, 5123, 5124, 5125, 5126, 5127, 5128, 5129, 5130] },
+    { title: "O'zgartirish", desc: 'Prepositions + advanced verbs', color: 'bg-teal-500', icon: '🔄', ids: [5117, 5126, 5118, 5128, 5127, 5124, 5125, 5116, 5119, 5129, 5122, 5121, 5130, 5120, 5123] },
   ],
   tests: [
     { id: 511, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Admit' dan keyin nima keladi?", options: ['to + infinitive', '-ing / that', 'object + to', 'on + -ing'], correct: '-ing / that', explanation: 'Admit + -ing / that' },
@@ -1063,8 +1056,7 @@ export const determinersAdvanced: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Determiners asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5201, 5202, 5203, 5204, 5205] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5206, 5207, 5208, 5209, 5210] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5211, 5212, 5213, 5214, 5215] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5220, 5216, 5217, 5218, 5219] },
-    { title: "O'zgartirish", desc: 'None/No va Either/Neither chuqurlashtirilgan', color: 'bg-teal-500', icon: '🔄', ids: [5221, 5222, 5223, 5224, 5225, 5226, 5227, 5228, 5229, 5230] },
+    { title: "O'zgartirish", desc: 'None/No va Either/Neither chuqurlashtirilgan', color: 'bg-teal-500', icon: '🔄', ids: [5223, 5228, 5225, 5226, 5219, 5224, 5217, 5222, 5216, 5230, 5229, 5220, 5227, 5218, 5221] },
   ],
   tests: [
     { id: 521, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'All' nechta narsa uchun?", options: ['2', '3+', '1', 'har qanday'], correct: '3+', explanation: 'All = 3+' },
@@ -1195,8 +1187,7 @@ export const b1plusReview: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Grammar va vocab review', color: 'bg-emerald-500', icon: '🌱', ids: [5301, 5302, 5303, 5304, 5305] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5306, 5307, 5308, 5309, 5310] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5311, 5312, 5313, 5314, 5315] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5320, 5316, 5317, 5318, 5319] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5313, 5315, 5317, 5318, 5320] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5318, 5317, 5317, 5313, 5316, 5320, 5320, 5318, 5315, 5319] },
   ],
   tests: [
     { id: 531, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Narrative tenses' qaysi zamonlarni o'z ichiga oladi?", options: ['Present tenses', 'Past tenses', 'Future tenses', 'All tenses'], correct: 'Past tenses', explanation: "Narrative = Past Simple/Cont/Perfect/Perf Cont" },

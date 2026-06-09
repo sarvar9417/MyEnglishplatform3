@@ -136,16 +136,16 @@ function SelectScreen({ onStart, loading }: { onStart: (t: TestType) => void; lo
   }
   const tests = [
     { type:'a1' as TestType, title:'A1 darajasi testi', emoji:'🌱',
-      sub:'Asosiy Grammar + Vocabulary + Reading', qs:20, mins:25,
+      sub:'Asosiy grammatika, lug\'at va o\'qish', qs:20, mins:25,
       color:'bg-emerald-50 border-emerald-100', tc:'text-emerald-700' },
     { type:'b1' as TestType, title:'Haftalik B1 testi', emoji:'📝',
-      sub:'Grammar + Vocabulary + Reading', qs:30, mins:45,
+      sub:'Grammatika, lug\'at va o\'qish', qs:30, mins:45,
       color:'bg-primary-50 border-primary-100', tc:'text-primary-700' },
     { type:'b2' as TestType, title:'Haftalik B2 testi', emoji:'📋',
-      sub:'Advanced Grammar + Vocabulary', qs:30, mins:60,
+      sub:'Yuqori daraja grammatika va lug\'at', qs:30, mins:60,
       color:'bg-b2-50 border-b2-100', tc:'text-b2-700' },
     { type:'ielts' as TestType, title:"To'liq IELTS Simulatsiya", emoji:'🎓',
-      sub:'Reading · Listening · Writing · Speaking', qs:4, mins:120,
+      sub:'O\'qish · Tinglash · Yozish · Gapirish', qs:4, mins:120,
       color:'bg-purple-50 border-purple-100', tc:'text-purple-700' },
   ]
   return (
@@ -185,10 +185,10 @@ function SelectScreen({ onStart, loading }: { onStart: (t: TestType) => void; lo
       <div className="card bg-purple-50 border-purple-100 mt-4">
         <p className="text-xs font-semibold text-purple-700 mb-2">🎓 IELTS Simulatsiya bo'limlari:</p>
         {[
-          ['📖 Reading',   '30 daqiqa', '10 savol — 2 matn'],
-          ['🎧 Listening', '20 daqiqa', 'Audio (ovoz) — eshitib javob bering'],
-          ['✍️ Writing',   '40 daqiqa', 'Task 1 + Task 2 (Claude baholaydi)'],
-          ['🎤 Speaking',  '15 daqiqa', '2 ta prompt — Web Speech + Claude'],
+          ['📖 O\'qish (Reading)',   '30 daqiqa', '10 savol — 2 matn'],
+          ['🎧 Tinglash (Listening)', '20 daqiqa', 'Audio (ovoz) — eshitib javob bering'],
+          ['✍️ Yozish (Writing)',   '40 daqiqa', 'Task 1 + Task 2 (Claude baholaydi)'],
+          ['🎤 Gapirish (Speaking)',  '15 daqiqa', '2 ta prompt — Web Speech + Claude'],
         ].map(([name, time, desc]) => (
           <div key={name} className="flex items-center justify-between py-1.5 border-b border-purple-100 last:border-0">
             <span className="text-xs font-medium text-purple-800">{name}</span>

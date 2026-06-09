@@ -71,11 +71,11 @@ function normalizeBlock(blockText: string): string {
     const std = STANDARD[slotMap[i]]
     lines[lineIdx] = lines[lineIdx]
       // title: "..." or title: '...'
-      .replace(/title:\s*(?:"[^"]*"|'[^']*')/, `title: "${std.title}"`)
+      .replace(/title:\s*(?:"[^"]*"|'(?:[^'\\]|\\.)*')/, `title: "${std.title}"`)
       // color: "..." or color: '...'
-      .replace(/color:\s*(?:"[^"]*"|'[^']*')/, `color: '${std.color}'`)
+      .replace(/color:\s*(?:"[^"]*"|'(?:[^'\\]|\\.)*')/, `color: '${std.color}'`)
       // icon: "..." or icon: '...'  (handles unicode escapes \uXXXX too)
-      .replace(/icon:\s*(?:"[^"]*"|'[^']*')/, `icon: '${std.icon}'`)
+      .replace(/icon:\s*(?:"[^"]*"|'(?:[^'\\]|\\.)*')/, `icon: '${std.icon}'`)
   }
 
   return lines.join('\n')

@@ -140,8 +140,7 @@ export const modalVerbs: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Can va Can\'t asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1401, 1402, 1403, 1404, 1405] },
     { title: "O'rtacha", desc: 'Must va Should', color: 'bg-blue-500', icon: '📘', ids: [1406, 1407, 1408, 1409, 1410] },
     { title: "Qiyin", desc: 'Might va inkor shakllari', color: 'bg-violet-500', icon: '🎯', ids: [1412, 1414, 1413, 1415, 1411] },
-    { title: "Inkor", desc: 'Transformatsiya va farqlar', color: 'bg-red-500', icon: '🚫', ids: [1418, 1420, 1419, 1416, 1417] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1421, 1422, 1423, 1424, 1425, 1426, 1427, 1428, 1429, 1430] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1422, 1421, 1426, 1419, 1423, 1428, 1418, 1427, 1425, 1430, 1424, 1429, 1416, 1417, 1420] },
   ],
   tests: [
     { id: 141, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Qaysi gap TO\'G\'RI?', options: ['I can swim', 'I cans swim', 'I can swims', 'I can to swim'], correct: 'I can swim', explanation: "Modal + V1" },
@@ -307,8 +306,7 @@ export const articles: DailyLesson = {
     { title: "Boshlang'ich", desc: 'A va An qoidalari', color: 'bg-emerald-500', icon: '🌱', ids: [1501, 1502, 1503, 1504, 1505] },
     { title: "O'rtacha", desc: 'The ishlatilishi', color: 'bg-blue-500', icon: '📘', ids: [1506, 1507, 1508, 1509, 1510] },
     { title: "Qiyin", desc: 'Zero article', color: 'bg-violet-500', icon: '🎯', ids: [1511, 1514, 1512, 1513, 1515] },
-    { title: "Inkor", desc: 'Artikl farqlari', color: 'bg-red-500', icon: '🚫', ids: [1517, 1520, 1519, 1518, 1516] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1521, 1522, 1523, 1524, 1525, 1526, 1527, 1528, 1529, 1530] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1530, 1520, 1526, 1518, 1519, 1523, 1521, 1525, 1517, 1528, 1527, 1529, 1524, 1522, 1516] },
   ],
   tests: [
     { id: 151, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z oldidan 'an' keladi?", options: ['dog', 'university', 'apple', 'house'], correct: 'apple', explanation: "Apple — unli tovush" },
@@ -475,8 +473,7 @@ export const prepositions: DailyLesson = {
     { title: "Boshlang'ich", desc: 'At, In, On asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1601, 1602, 1603, 1604, 1605] },
     { title: "O'rtacha", desc: 'Joy predloglari', color: 'bg-blue-500', icon: '📘', ids: [1606, 1607, 1608, 1609, 1610] },
     { title: "Qiyin", desc: 'Vaqt va joy birga', color: 'bg-violet-500', icon: '🎯', ids: [1613, 1614, 1611, 1612, 1615] },
-    { title: "Inkor", desc: 'Transport va istisnolar', color: 'bg-red-500', icon: '🚫', ids: [1617, 1620, 1619, 1618, 1616] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1621, 1622, 1623, 1624, 1625, 1626, 1627, 1628, 1629, 1630] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1625, 1616, 1620, 1630, 1622, 1618, 1626, 1619, 1623, 1627, 1621, 1628, 1617, 1629, 1624] },
   ],
   tests: [
     { id: 161, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Vaqt predlogi: ___ 5 o'clock", options: ['At', 'In', 'On', 'By'], correct: 'At', explanation: "Aniq soat — at" },
@@ -639,8 +636,7 @@ export const questionsLesson: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Yes/No savollari', color: 'bg-emerald-500', icon: '🌱', ids: [1701, 1702, 1703, 1704, 1705] },
     { title: "O'rtacha", desc: 'Wh- savollari', color: 'bg-blue-500', icon: '📘', ids: [1706, 1707, 1708, 1709, 1710] },
     { title: "Qiyin", desc: 'Tag questions', color: 'bg-violet-500', icon: '🎯', ids: [1713, 1714, 1711, 1712, 1715] },
-    { title: "Inkor", desc: 'Subject/Object farqi', color: 'bg-red-500', icon: '🚫', ids: [1718, 1719, 1720, 1716, 1717] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1721, 1722, 1723, 1724, 1725, 1726, 1727, 1728, 1729, 1730] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1725, 1723, 1724, 1717, 1719, 1727, 1722, 1720, 1718, 1728, 1730, 1721, 1716, 1726, 1729] },
   ],
   tests: [
     { id: 171, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "___ you like tea?", options: ['Do', 'Does', 'Are', 'Is'], correct: 'Do', explanation: "You bilan Do" },
@@ -802,8 +798,7 @@ export const countableUncountable: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Much/Many', color: 'bg-emerald-500', icon: '🌱', ids: [1801, 1802, 1803, 1804, 1805] },
     { title: "O'rtacha", desc: 'Some/Any qoidalari', color: 'bg-blue-500', icon: '📘', ids: [1806, 1807, 1808, 1809, 1810] },
     { title: "Qiyin", desc: 'A few/A little', color: 'bg-violet-500', icon: '🎯', ids: [1813, 1814, 1811, 1812, 1815] },
-    { title: "Inkor", desc: 'Uncountable tuzoqlar', color: 'bg-red-500', icon: '🚫', ids: [1817, 1820, 1819, 1818, 1816] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1821, 1822, 1823, 1824, 1825, 1826, 1827, 1828, 1829, 1830] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1817, 1821, 1826, 1825, 1819, 1823, 1828, 1829, 1818, 1830, 1816, 1827, 1824, 1820, 1822] },
   ],
   tests: [
     { id: 181, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "How ___ books do you have?", options: ['much', 'many', 'a little', 'little'], correct: 'many', explanation: "Books — sanaladigan" },

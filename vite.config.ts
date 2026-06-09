@@ -101,9 +101,8 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id: string) {
-          // Vendor chunks (node_modules)
+          // Vendor chunks (node_modules) — single vendor chunk to avoid circular deps
           if (id.includes('node_modules')) {
-            if (id.includes('react')) return 'react-vendor'
             if (id.includes('recharts')) return 'charts'
             if (id.includes('dexie'))   return 'db'
             if (id.includes('lucide-react')) return 'icons'
