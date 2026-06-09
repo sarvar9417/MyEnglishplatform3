@@ -196,7 +196,7 @@ export const timePrepositions: DailyLesson = {
         { en: 'What are you doing tomorrow?', uz: 'Ertaga nima qilasiz?' },
       ],
       drills: [
-        { id: 45001, type: 'fill-blank', instruction: "Prepozitsiya kerakmi yoki yo'qmi? Agar kerak bo'lmasa, chiziqcha qo'ying:", question: "I will see you ___ next Monday.", blanks: ['—'], explanation: "'Next' bilan prepozitsiya KERAK EMAS. 'Next Monday' yetarli." },
+        { id: 45001, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I will see you ___ next Monday.', options: ['in', 'on', 'at', '—'], correct: '—', explanation: "'Next' bilan prepozitsiya KERAK EMAS. 'Next Monday' yetarli." },
         { id: 45002, type: 'fill-blank', instruction: "To'g'ri prepozitsiya bilan to'ldiring yoki chiziqcha qo'ying:", question: 'She was born ___ 1995.', blanks: ['in'], explanation: "Yil bilan 'in': 'in 1995'." },
         { id: 45003, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'We go to the gym ___ every morning.', options: ['in', 'on', 'at', '—'], correct: '—', explanation: "'Every morning' bilan prepozitsiya kerak emas." },
       ],

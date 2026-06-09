@@ -3,7 +3,7 @@
 export const narrativeTensesB1plus: DailyLesson = {
   id: 'narrative-tenses-b1plus',
   title: 'Narrative Tenses',
-  subtitle: "Past Simple, Past Continuous, Past Perfect, Past Perfect Continuous � hikoya qilish san'ati",
+  subtitle: "Past Simple, Past Continuous, Past Perfect, Past Perfect Continuous — hikoya qilish san'ati",
   level: 'B1+',
   day: 64,
   category: 'Storytelling',
