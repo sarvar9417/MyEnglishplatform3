@@ -75,7 +75,7 @@ export default function ShadowStep({ day, level, onNext }: Props) {
         setAnalyzing(false)
       }
     })()
-  }, [recording, sr.isRecording, sr.transcript, level])
+  }, [recording, sr.isRecording, sr.transcript, level, ar.audioUrl])
 
   const toggleRecord = useCallback(() => {
     if (recording) {

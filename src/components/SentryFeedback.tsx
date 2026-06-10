@@ -15,10 +15,6 @@ export default function SentryFeedback() {
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
 
-  // Check if Sentry is enabled at build time (DSN exists in env)
-  const sentryEnabled = !!import.meta.env.VITE_SENTRY_DSN
-  if (!sentryEnabled) return null
-
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
     if (!message.trim()) return
@@ -47,6 +43,9 @@ export default function SentryFeedback() {
       setSending(false)
     }
   }, [name, email, message])
+
+  const sentryEnabled = !!import.meta.env.VITE_SENTRY_DSN
+  if (!sentryEnabled) return null
 
   return (
     <>

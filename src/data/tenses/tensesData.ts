@@ -2117,7 +2117,7 @@ export const futurePerfect: DailyLesson = {
     { id: 17, type: 'fill-blank', instruction: 'by bilan:', question: "We will have reached the airport ___ 7 AM.", blanks: ['by'], explanation: 'by + time' },
     { id: 18, type: 'fill-blank', instruction: 'before bilan:', question: "The guests will have arrived ___ midnight.", blanks: ['before'], explanation: 'before + time' },
     { id: 19, type: 'fill-blank', instruction: 'by the time bilan:', question: "___ ___ ___ he proposes, she will have already guessed.", blanks: ['By the time'], explanation: 'By the time + sentence' },
-    { id: 20, type: 'fill-blank', instruction: 'already bilan:', question: "Don\'t call at noon — I will have ___ (already) left for lunch.", blanks: ['already'], explanation: 'will have + already + V3' },
+    { id: 20, type: 'fill-blank', instruction: 'already bilan:', question: "Don't call at noon — I will have ___ (already) left for lunch.", blanks: ['already'], explanation: 'will have + already + V3' },
     { id: 21, type: 'multiple-choice', instruction: "To'g'ri variant:", question: 'Which preposition commonly introduces FP?', options: ['by', 'at', 'every', 'usually'], correct: 'by', explanation: 'By + time is the main FP time marker' },
     { id: 22, type: 'multiple-choice', instruction: "FP vs FS:", question: "I ___ at 5 PM. (specific time)", options: ['will finish', 'will have finished', 'finish', 'finished'], correct: 'will finish', explanation: 'At 5 PM → Future Simple' },
     { id: 23, type: 'multiple-choice', instruction: "FP vs FS:", question: "I ___ by 5 PM. (deadline)", options: ['will have finished', 'will finish', 'finish', 'finished'], correct: 'will have finished', explanation: 'By 5 PM → Future Perfect' },

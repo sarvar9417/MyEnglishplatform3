@@ -58,7 +58,7 @@ export function mergeObjects<T extends Record<string, unknown>>(
   }
   for (const key of booleanKeys) {
     if (key in local || key in remote) {
-      ;(result as Record<string, unknown>)[key] = Boolean(local[key] || remote[key])
+      (result as Record<string, unknown>)[key] = Boolean(local[key] || remote[key])
     }
   }
   return result

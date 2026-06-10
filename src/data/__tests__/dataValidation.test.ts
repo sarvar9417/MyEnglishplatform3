@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { SEED_WORDS } from '../vocabularyWords'
-import { A2_LESSONS } from '../daily'
+import { A2_LESSONS } from '../daily/lessonsA2'
 import { B1_LESSONS_NEW as B1_LESSONS } from '../daily/lessonsB1'
 import { B1PLUS_LESSONS_NEW as B1PLUS_LESSONS } from '../daily/lessonsB1plus'
 import { B2_LESSONS_NEW as B2_LESSONS } from '../daily/lessonsB2'
@@ -83,6 +83,7 @@ describe('daily lessons data', () => {
       const unique = new Set(ids)
       if (unique.size !== ids.length) {
         const dup = ids.filter((id, i) => ids.indexOf(id) !== i)
+        // eslint-disable-next-line no-console
         console.warn(`[WARN] Lesson "${l.id}" has duplicate exercise IDs: ${[...new Set(dup)].join(', ')}`)
       }
       expect(unique.size).toBe(ids.length)
@@ -128,6 +129,7 @@ describe('daily lessons data', () => {
         const unique = new Set(ids)
         if (unique.size !== ids.length) {
           const dup = ids.filter((id, i) => ids.indexOf(id) !== i)
+          // eslint-disable-next-line no-console
           console.warn(`[WARN] Lesson "${l.id}" has duplicate test IDs: ${[...new Set(dup)].join(', ')}`)
         }
         expect(unique.size).toBe(ids.length)

@@ -35,6 +35,7 @@ window.addEventListener('unhandledrejection', (event) => {
       monitoring.captureException(reason, { type: 'unhandledrejection' })
     ).catch(() => {
       // monitoring module loaded bo'lmasa, hech bo'lmaganda console'ga yozamiz
+      // eslint-disable-next-line no-console
       console.error('[unhandledrejection]', reason)
     })
   }

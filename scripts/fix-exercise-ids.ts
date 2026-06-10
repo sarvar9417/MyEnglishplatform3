@@ -50,10 +50,10 @@ function assignIds(content: string, range: [number, number]): string {
   let nextId = start
   let usedCount = 0
 
-  // Match id: NNNN only when it's a property (preceded by { or , and followed by , or })
-  // This avoids matching id: inside strings
+  // Match id: NNNN only when it's a property value (preceded by { or , and followed by , or })
+  // This avoids matching id: inside strings or comments
   const result = content.replace(
-    /([{,]\s*)(id:\s*)(\d+)(?=\s*[,}])/g,
+    /([{\,]\s*)(id:\s*)(\d+)(?=\s*[,}])/g,
     (match, prefix, idPrefix, oldId) => {
       const oldIdNum = parseInt(oldId, 10)
       if (idMap.has(oldIdNum)) {

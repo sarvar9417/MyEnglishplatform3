@@ -6,7 +6,6 @@ import {
   getScheduledCount,
   getReviewStatus,
   strengthToPercent,
-  daysUntilReview,
   getAllReviews,
   getWeakGrammarLessonIds,
 } from '../grammarSrs'

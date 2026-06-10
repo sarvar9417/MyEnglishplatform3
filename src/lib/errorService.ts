@@ -138,6 +138,7 @@ export function deprecated(message: string) {
   return <T, Args extends unknown[]>(fn: (...args: Args) => T): (...args: Args) => T => {
     return (...args: Args) => {
       if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
         console.warn(`[DEPRECATED] ${message}`)
       }
       return fn(...args)

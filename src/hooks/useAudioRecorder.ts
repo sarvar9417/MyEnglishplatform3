@@ -37,10 +37,27 @@ export function useAudioRecorder(): AudioRecorderState {
 
   useEffect(() => {
     return () => {
-      timerRef.current && clearInterval(timerRef.current)
+      if (timerRef.current) clearInterval(timerRef.current)
       streamRef.current?.getTracks().forEach(t => t.stop())
       if (audioUrl) URL.revokeObjectURL(audioUrl)
     }
+  }, [audioUrl])
+
+  const reset = useCallback(() => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      mediaRecorderRef.current.stop()
+    }
+    streamRef.current?.getTracks().forEach(t => t.stop())
+    streamRef.current = null
+    mediaRecorderRef.current = null
+    chunksRef.current = []
+    if (timerRef.current) clearInterval(timerRef.current)
+    if (audioUrl) URL.revokeObjectURL(audioUrl)
+
+    setIsRecording(false)
+    setDuration(0)
+    setAudioUrl(null)
+    setAudioBlob(null)
   }, [audioUrl])
 
   const start = useCallback(async () => {
@@ -79,19 +96,17 @@ export function useAudioRecorder(): AudioRecorderState {
     } catch {
       setIsRecording(false)
     }
-  }, [isSupported])
+  }, [isSupported, reset])
 
   const stop = useCallback(async () => {
     const recorder = mediaRecorderRef.current
     if (!recorder || recorder.state === 'inactive') return null
 
-    // 👇 Darhol UI yangilanadi — mobil brauzerlarda onstop kechikib keladi (1-3s)
     setIsRecording(false)
-    timerRef.current && clearInterval(timerRef.current)
+    if (timerRef.current) clearInterval(timerRef.current)
     timerRef.current = null
 
     return new Promise<string | null>((resolve) => {
-      // Fallback: agar onstop 3 soniyada kelmasa, mavjud chunk'lardan blob yaratamiz
       const fallbackTimer = setTimeout(() => {
         const blob = new Blob(chunksRef.current, { type: getMimeType() || 'audio/webm' })
         const url = URL.createObjectURL(blob)
@@ -117,23 +132,6 @@ export function useAudioRecorder(): AudioRecorderState {
       recorder.stop()
     })
   }, [])
-
-  const reset = useCallback(() => {
-    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
-      mediaRecorderRef.current.stop()
-    }
-    streamRef.current?.getTracks().forEach(t => t.stop())
-    streamRef.current = null
-    mediaRecorderRef.current = null
-    chunksRef.current = []
-    timerRef.current && clearInterval(timerRef.current)
-    if (audioUrl) URL.revokeObjectURL(audioUrl)
-
-    setIsRecording(false)
-    setDuration(0)
-    setAudioUrl(null)
-    setAudioBlob(null)
-  }, [audioUrl])
 
   return { isSupported, isRecording, duration, audioUrl, audioBlob, start, stop, reset }
 }

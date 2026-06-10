@@ -53,7 +53,7 @@ describe('syncUserState', () => {
   it('smart-merges when remote state exists with higher values', async () => {
     mockSupabaseInstance.auth.getSession.mockResolvedValue(session)
     // First from() call: select existing state (remote has higher XP)
-    const qb1 = queueQB({ state: { totalXP: 1000, streak: 30 } }, null)
+    const _qb1 = queueQB({ state: { totalXP: 1000, streak: 30 } }, null)
     // Second from() call: update with merged state
     const qb2 = queueQB(null, null)
     await syncUserState({ totalXP: 500, streak: 20 })
@@ -69,7 +69,7 @@ describe('syncUserState', () => {
   it('preserves local higher values when remote has lower', async () => {
     mockSupabaseInstance.auth.getSession.mockResolvedValue(session)
     // First from() call: select existing state (local has higher XP)
-    const qb1 = queueQB({ state: { totalXP: 200, streak: 5 } }, null)
+    const _qb1 = queueQB({ state: { totalXP: 200, streak: 5 } }, null)
     // Second from() call: update with merged state
     const qb2 = queueQB(null, null)
     await syncUserState({ totalXP: 500, streak: 10 })

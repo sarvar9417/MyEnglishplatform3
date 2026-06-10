@@ -175,7 +175,7 @@ export default function AudioPlayback({
 
     return () => {
       cancelled = true
-      animRef.current && cancelAnimationFrame(animRef.current)
+      if (animRef.current) cancelAnimationFrame(animRef.current)
     }
   }, [audioUrl])
 

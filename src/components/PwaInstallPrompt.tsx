@@ -15,8 +15,7 @@ export default function PwaInstallPrompt() {
   const handleInstall = async () => {
     const accepted = await promptInstall()
     if (accepted) {
-      // Optionally track install event
-      console.log('[PWA] App installed successfully')
+      // App installed successfully
     }
   }
 
