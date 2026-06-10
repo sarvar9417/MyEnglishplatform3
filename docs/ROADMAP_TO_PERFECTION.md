@@ -2,9 +2,25 @@
 ### Barcha tahlillardan 10/10 ga yetish uchun to'liq rejа
 
 > **Manbalar:** `PLATFORM_ANALYSIS.md` (asosiy tahlil), `professional-roadmap.md` (professional daraja roadmapi) — 2026-06-10 da birlashtirildi
-> **Maqsad:** Har 7+ nuqtai nazardan 10/10
+> **Maqsad:** Har 6+ nuqtai nazardan 10/10
 > **Fayllar:** `tahlil-xulosa.md` va `professional-roadmap.md` dagi barcha qo'shimcha content shu faylga integratsiya qilindi
 > **Yondashuv:** Kritik → Muhim → Kengayish → Kamolot
+
+---
+
+## ✅ BAJARILISH HOLATI (kod bilan tasdiqlangan · 2026-06-10)
+
+> Har bir F-band sarlavhasi holat belgisiga ega: **✅** bajarilgan · **⚠️** qisman · **❌** hali yo'q
+
+**To'liq bajarilgan (✅) — 25+ band**, jumladan:
+- **FAZA 1** (deyarli to'liq): ID validation, Inkor→Kengaytirish, build, lokalizatsiya, noaniq mashqlar, CI/CD, E2E, conflict resolution, offline banner
+- **FAZA 2** (asosiy): Grammar SRS, **Interleaved practice** (`/mixed-review`), **Writing micro-tasks** (95 prompt A1–B2), Audio (TTS: avto+qo'lda), "90 kunda B2" yumshatish, Mnemonika, Writing AI, Speaking
+- **FAZA 4/7/8**: "siz" shakli, **Terminologiya lug'ati** (46 atama), Grammar Review widget, Demo, yuklash
+
+**Qisman (⚠️):** test coverage, curriculum gap audit, adaptive engine, AI tutor 2.0, ichki motivatsiya
+**Hali yo'q (❌):** Mini-passages (F2-5), CMS migratsiya (F3-1), claude.ts bo'lish (F3-2), Analytics dashboard (F3-8), Confusable pairs (F7-2), connection turi (F7-3), Hearts qayta ko'rib chiqish (F8-4), FAZA 10 (mobile/community)
+
+**Qo'shimcha (roadmapda yo'q, lekin bajarilgan):** kun sonini 126 ga birlashtirish (90/99 buglari), kunlik quest 91–126 qamrovi, lesson_abandoned analytics funnel.
 
 ---
 
@@ -17,7 +33,6 @@
 | O'zbek tili ustozi | 6.5/10 | 10/10 |
 | Yangi boshlovchi | 6.5/10 | 10/10 |
 | Faylasuf | 5/10 | 10/10 |
-| Tadbirkor | 5/10 | 10/10 |
 | Yodlash olimi | 6.5/10 | 10/10 |
 | **O'rtacha** | **6.5/10** | **10/10** |
 
@@ -28,7 +43,7 @@
 
 ---
 
-## F1-1. Exercise ID avto-generatsiya tizimi
+## F1-1. ✅ Exercise ID avto-generatsiya tizimi
 **Muammo:** ID lar qo'lda boshqariladi → duplikat xavfi (a2Part1 da id:1110 takrori topilgan)
 **Ta'sir:** Dasturchi 10/10
 
@@ -73,7 +88,7 @@ B2:  54001–75999  (b2Part1–3)
 
 ---
 
-## F1-2. exerciseSections "Inkor" nomi — Semantik tuzatish
+## F1-2. ✅ exerciseSections "Inkor" nomi — Semantik tuzatish
 **Muammo:** A1 darslari (sonlar, ranglar, hayvonlar) da Section 4 = "🚫 Inkor" — bu mantiqan noto'g'ri
 **Ta'sir:** Ingliz tili pedagog +0.3, O'zbek tili ustozi +0.3
 
@@ -105,7 +120,7 @@ const slot3Color = A1_FILES.includes(filename) ? 'bg-amber-500' : 'bg-red-500'
 
 ---
 
-## F1-3. Build ogohlantirishlarini tuzatish
+## F1-3. ✅ Build ogohlantirishlarini tuzatish
 **Muammo:** Circular chunk: `vendor → react-vendor → vendor`
 **Ta'sir:** Dasturchi +0.2
 
@@ -144,7 +159,7 @@ build: {
 
 ---
 
-## F1-4. O'zbek tilidagi to'liq lokalizatsiya
+## F1-4. ✅ O'zbek tilidagi to'liq lokalizatsiya
 **Muammo:** "Sign In", "Sign Up", "Dashboard" ingliz tilida qolgan
 **Ta'sir:** Yangi boshlovchi +0.5, O'zbek tili ustozi +0.3
 
@@ -186,7 +201,7 @@ build: {
 
 ---
 
-## F1-5. Noaniq (Ko'p Javobli) Mashqlarni Aniqlash va Tuzatish
+## F1-5. ✅ Noaniq (Ko'p Javobli) Mashqlarni Aniqlash va Tuzatish
 **Muammo:** `fill-blank` mashqlarda kontekst yetarli bo'lmaganda bir nechta javob to'g'ri bo'ladi, lekin tizim faqat bittasini to'g'ri deb belgilaydi.
 
 **Real misol:**
@@ -419,7 +434,7 @@ Ba'zi mashqlarda foydalanuvchi to'g'ri grammatik javob beradi, lekin o'rganilayo
 
 ---
 
-## F1-6. CI/CD — GitHub Actions
+## F1-6. ✅ CI/CD — GitHub Actions
 **Muammo:** Har bir PR/commit da test va typecheck o'tkazilmaydi — regression xavfi
 **Ta'sir:** Dasturchi +1.0
 
@@ -450,7 +465,7 @@ jobs:
 
 ---
 
-## F1-7. E2E Test (Playwright)
+## F1-7. ✅ E2E Test (Playwright)
 **Muammo:** Integration va E2E testlar yo'q — muhim user flow lar sinovdan o'tmaydi
 **Ta'sir:** Dasturchi +0.8
 
@@ -483,7 +498,7 @@ test('user can sign up, take a lesson, and see progress', async ({ page }) => {
 
 ---
 
-## F1-8. Test Coverage Reporting
+## F1-8. ⚠️ Test Coverage Reporting
 **Muammo:** Hozirgi coverage ~20% — muhim komponentlar test qilinmagan
 **Ta'sir:** Dasturchi +0.5
 
@@ -511,7 +526,7 @@ test: {
 
 ---
 
-## F1-9. Dexie IndexedDB Sync Conflict Resolution
+## F1-9. ✅ Dexie IndexedDB Sync Conflict Resolution
 **Muammo:** Supabase ↔ Dexie sync da conflict bo'lsa, "last-write-wins" — ma'lumot yo'qolishi mumkin
 **Ta'sir:** Dasturchi +0.3
 
@@ -546,7 +561,7 @@ function resolveConflict(conflict: SyncConflict): any {
 
 ---
 
-## F1-10. Offline Banner UX
+## F1-10. ✅ Offline Banner UX
 **Muammo:** Hozirgi offline banner oddiy — qaysi funksiyalar ishlashini ko'rsatmaydi
 **Ta'sir:** Yangi boshlovchi +0.3, Dasturchi +0.2
 
@@ -572,7 +587,7 @@ function OfflineBanner({ online }: { online: boolean }) {
 
 ---
 
-## F2-1. Grammar SRS — Eng Muhim Yaxshilanish
+## F2-1. ✅ Grammar SRS — Eng Muhim Yaxshilanish
 **Muammo:** FSRS-5 faqat lug'at uchun ishlaydi. Grammatika qoidalari unutiladi (Ebbinghaus: 1 kundan keyin ~50% yo'qoladi)
 **Ta'sir:** Yodlash olimi +2.0, Ingliz tili pedagog +0.5
 
@@ -691,7 +706,7 @@ export default function GrammarReviewCard({ rule, onRate }) {
 
 ---
 
-## F2-2. Interleaved Practice (Aralash Mashqlar)
+## F2-2. ✅ Interleaved Practice (Aralash Mashqlar)
 **Muammo:** Barcha mashqlar bir mavzuda ketma-ket (massed practice). Tadqiqotlar: interleaved practice 40–60% samaraliroq
 **Ta'sir:** Yodlash olimi +1.5
 
@@ -735,7 +750,7 @@ Section 5 (O'zgartirish): [will: 1 + going_to: 1 + present_cont: 1 + present_sim
 
 ---
 
-## F2-3. Produktiv Ko'nikmalar Integratsiyasi
+## F2-3. ✅ Produktiv Ko'nikmalar Integratsiyasi
 **Muammo:** Speaking/Writing darslarga integratsiyalashmagan — alohida tab
 **Ta'sir:** Ingliz tili pedagog +1.0
 
@@ -780,7 +795,7 @@ microTasks?: {
 
 ---
 
-## F2-4. Audio Qo'shish — A1/A2 Darslari
+## F2-4. ✅ Audio Qo'shish — A1/A2 Darslari
 **Muammo:** Yangi boshlovchi talaffuzni eshitmasdan o'rganadi
 **Ta'sir:** Yangi boshlovchi +1.5
 
@@ -827,7 +842,7 @@ export async function speakFormula(text: string, rate = 0.85): Promise<void> {
 
 ---
 
-## F2-5. Kontekstli Mashqlar (Mini-Passages)
+## F2-5. ❌ Kontekstli Mashqlar (Mini-Passages)
 **Muammo:** ~80% mashqlar izolyatsiyalangan jumlalar. Kontekstda o'rganish 3x samaraliroq
 **Ta'sir:** Ingliz tili pedagog +0.8
 
@@ -861,9 +876,9 @@ interface PassageExercise {
 
 ---
 
-## F2-6. "90 kunda B2" Da'vosini O'zgartirish
+## F2-6. ✅ "90 kunda B2" Da'vosini O'zgartirish
 **Muammo:** Realistik emas — CEFR A2→B2 uchun 400–600 soat kerak. Kutishlarni noto'g'ri shakllantiradi
-**Ta'sir:** Faylasuf +0.5, Tadbirkor +0.5, Yangi boshlovchi +0.3
+**Ta'sir:** Faylasuf +0.5, Yangi boshlovchi +0.3
 
 ### Onboarding o'zgarishlari:
 
@@ -885,7 +900,7 @@ B1 → 90 kunda B2  (challenging, achievable)
 
 ---
 
-## F2-7. Mnemonika Tizimi
+## F2-7. ✅ Mnemonika Tizimi
 **Muammo:** `mnemonic` maydoni bor, lekin UI da ko'rsatilmaydi. Vizual mnemonikalar 3x samaraliroq
 **Ta'sir:** Yodlash olimi +1.0
 
@@ -929,7 +944,7 @@ export default function MnemonicCard({ rule, mnemonic, visual, acronym }: Mnemon
 
 ---
 
-## F2-8. Writing AI Evaluation — Barcha Darslarga
+## F2-8. ✅ Writing AI Evaluation — Barcha Darslarga
 **Muammo:** Writing evaluation faqat IELTS style da — A1/A2 darajasi uchun soddaroq evaluation kerak
 **Ta'sir:** Ingliz tili pedagog +0.5
 
@@ -961,7 +976,7 @@ export async function evaluateWritingLevel(
 
 ---
 
-## F2-9. Speaking Bo'limini Daily Lessons ga Integratsiya
+## F2-9. ✅ Speaking Bo'limini Daily Lessons ga Integratsiya
 **Muammo:** SpeakingPath alohida — daily lesson da speaking prompt yo'q
 **Ta'sir:** Ingliz tili pedagog +0.5, Yodlash olimi +0.3
 
@@ -991,7 +1006,7 @@ microTasks?: {
 
 ---
 
-## F2-10. Curriculum Gap Analysis
+## F2-10. ⚠️ Curriculum Gap Analysis
 **Muammo:** CEFR can-do statements va vocabulary frequency audit qilinmagan
 **Ta'sir:** Ingliz tili pedagog +0.5, Yodlash olimi +0.3
 
@@ -1034,9 +1049,9 @@ export function auditCEFR(lesson: DailyLesson): string[] {
 
 ---
 
-## F3-1. Kontent TypeScript Fayllaridan CMS ga Ko'chirish
+## F3-1. ❌ Kontent TypeScript Fayllaridan CMS ga Ko'chirish
 **Muammo:** 106 dars TS fayllarida hardcode. Kontent tahrirlash uchun dasturchi kerak. ~40,000+ qator TypeScript
-**Ta'sir:** Dasturchi +1.0, Tadbirkor +0.5
+**Ta'sir:** Dasturchi +1.0
 
 ### Migratsiya rejasi:
 
@@ -1120,7 +1135,7 @@ async function migrateLessons() {
 
 ---
 
-## F3-2. `claude.ts` ni Modullarga Ajratish
+## F3-2. ❌ `claude.ts` ni Modullarga Ajratish
 **Muammo:** `src/lib/claude.ts` 1300+ qator — Single Responsibility buzilgan
 **Ta'sir:** Dasturchi +0.5
 
@@ -1164,7 +1179,7 @@ export async function callClaude<T>(
 
 ---
 
-## F3-3. Test Coverage oshirish
+## F3-3. ⚠️ Test Coverage oshirish
 **Muammo:** Komponent testlari juda kam. `LessonView.tsx`, `ExerciseCard.tsx` kabi murakkab komponentlar test qilinmagan
 **Ta'sir:** Dasturchi +0.5
 
@@ -1242,7 +1257,7 @@ describe('ExerciseCard', () => {
 
 ---
 
-## F3-4. Incremental Seed (Faqat O'zgarganlarni Yuklash)
+## F3-4. ⚠️ Incremental Seed (Faqat O'zgarganlarni Yuklash)
 **Muammo:** `npm run seed:all` har safar 106 darsni yuklaydi
 **Ta'sir:** Dasturchi +0.2
 
@@ -1271,7 +1286,7 @@ async function seedIncremental() {
 
 ---
 
-## F3-5. TypeScript `any` ni Bartaraf Etish
+## F3-5. ⚠️ TypeScript `any` ni Bartaraf Etish
 **Muammo:** `claude.ts` va ba'zi xizmatlarda `any` tipi ishlatilgan
 **Ta'sir:** Dasturchi +0.3
 
@@ -1294,7 +1309,7 @@ interface ExerciseCheckResult {
 
 ---
 
-## F3-6. Adaptive Learning Engine
+## F3-6. ⚠️ Adaptive Learning Engine
 **Muammo:** Hamma o'quvchilar bir xil curriculum dan o'tadi — personalizatsiya yo'q
 **Ta'sir:** Dasturchi +1.0, Yodlash olimi +0.5
 
@@ -1335,7 +1350,7 @@ export function updateBKT(params: BKTParams, correct: boolean): BKTParams {
 
 ---
 
-## F3-7. AI Tutor 2.0
+## F3-7. ⚠️ AI Tutor 2.0
 **Muammo:** AI hozir faqat so'ralganda ishlaydi (Chat, Writing, Speaking). Real-time feedback yo'q
 **Ta'sir:** Ingliz tili pedagog +0.8, Dasturchi +0.3
 
@@ -1373,9 +1388,9 @@ interface Scenario {
 
 ---
 
-## F3-8. Learning Analytics Dashboard
+## F3-8. ❌ Learning Analytics Dashboard
 **Muammo:** Hozirgi dashboard faqat XP va streak ko'rsatadi — chuqur analytics yo'q
-**Ta'sir:** Tadbirkor +0.5, Dasturchi +0.3
+**Ta'sir:**, Dasturchi +0.3
 
 ### Amalga oshirish:
 
@@ -1407,7 +1422,7 @@ export async function trackEvent(event: AnalyticsEvent) {
 
 ---
 
-## F3-9. Error Detection & Prevention
+## F3-9. ⚠️ Error Detection & Prevention
 **Muammo:** Sentry ulangan, lekin alert va monitoring tizimi yo'q
 **Ta'sir:** Dasturchi +0.5
 
@@ -1433,7 +1448,7 @@ Sentry.init({
 
 ---
 
-## F3-10. Performance Monitoring
+## F3-10. ⚠️ Performance Monitoring
 **Muammo:** Web Vitals tracking bor, lekin budjet va benchmark yo'q
 **Ta'sir:** Dasturchi +0.3
 
@@ -1474,7 +1489,7 @@ export default defineConfig({
 
 ---
 
-## F4-1. Murojaat Shakli Standartlashtirish
+## F4-1. ✅ Murojaat Shakli Standartlashtirish
 **Muammo:** Ba'zi joylarda "siz" (rasmiy), ba'zida "sen" (norasmiy). Izchillik yo'q
 **Ta'sir:** O'zbek tili ustozi +0.5
 
@@ -1509,7 +1524,7 @@ const SEN_FORMS = [
 
 ---
 
-## F4-2. Terminologiya Lug'ati Yaratish
+## F4-2. ✅ Terminologiya Lug'ati Yaratish
 **Muammo:** "Present Perfect" ba'zi joylarda lotin, ba'zi joylarda o'zbek tilida
 **Ta'sir:** O'zbek tili ustozi +0.5
 
@@ -1554,7 +1569,7 @@ export const GRAMMAR_TERMS: Record<string, { uz: string; short: string }> = {
 
 ---
 
-## F4-3. Tarjimalar Sifatini Oshirish
+## F4-3. ⚠️ Tarjimalar Sifatini Oshirish
 **Muammo:** "Fine", "well", "good" uchala ham "yaxshi". Rus kalka iboralar
 **Ta'sir:** O'zbek tili ustozi +0.3
 
@@ -1586,9 +1601,9 @@ export const GRAMMAR_TERMS: Record<string, { uz: string; short: string }> = {
 
 ---
 
-## F4-4. i18n avtomatlashtirish (Crowdin / Lokalise)
+## F4-4. ❌ i18n avtomatlashtirish (Crowdin / Lokalise)
 **Muammo:** Tarjimalar qo'lda yoziladi — yangi tillar qo'shish qiyin
-**Ta'sir:** O'zbek tili ustozi +0.3, Tadbirkor +0.3
+**Ta'sir:** O'zbek tili ustozi +0.3
 
 ### Amalga oshirish:
 
@@ -1610,222 +1625,10 @@ Faza 4.4 oyi:  russian (to'ldirish)
 
 ---
 
-# FAZA 5 — BIZNES VA MONETIZATSIYA
-### Muddat: 6–10 hafta · Baho ta'siri: +1.5 tadbirkor ball
-
 ---
 
-## F5-1. Monetizatsiya Modeli
-**Muammo:** Hech qanday to'lov tizimi yo'q
-**Ta'sir:** Tadbirkor +2.0
-
-### Tavsiya qilingan Freemium model:
-
-```
-BEPUL TIER (Free):
-  ✅ A1–A2 darslari (30 dars)
-  ✅ Kunlik 10 ta flashcard (SRS)
-  ✅ AI chat (kuniga 5 ta xabar)
-  ✅ Grammar section
-  ❌ B1–B2 darslari
-  ❌ Mock test
-  ❌ Tandem / Duel
-  ❌ AI writing feedback
-  ❌ Sertifikat
-
-PREMIUM TIER — 29,000 so'm/oy (~$2.5/oy):
-  ✅ Barcha 106 dars
-  ✅ Cheksiz SRS va AI chat
-  ✅ Mock test va sertifikat
-  ✅ Tandem va real-time duel
-  ✅ AI writing feedback (cheksiz)
-  ✅ Progress export (PDF)
-  ✅ Offline mode
-
-TEAM/SCHOOL — 199,000 so'm/oy (klass uchun):
-  ✅ Barcha premium
-  ✅ O'qituvchi paneli
-  ✅ Talabalar progress monitoring
-  ✅ Custom kurs yaratish
-```
-
-### Amalga oshirish:
-
-**Supabase da subscription jadval:**
-```sql
-CREATE TABLE subscriptions (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  user_id UUID REFERENCES users(id),
-  plan TEXT DEFAULT 'free',  -- 'free', 'premium', 'school'
-  status TEXT DEFAULT 'active',
-  current_period_end TIMESTAMPTZ,
-  stripe_subscription_id TEXT
-);
-```
-
-**`src/lib/subscription.ts`:**
-```typescript
-export function canAccessLesson(lesson: DailyLesson, plan: string): boolean {
-  if (plan === 'premium' || plan === 'school') return true
-  // Free: faqat A1–A2
-  return ['A1', 'A2'].includes(lesson.level)
-}
-
-export function canUseMockTest(plan: string): boolean {
-  return plan !== 'free'
-}
-```
-
-**To'lov tizimi — Click yoki Payme (O'zbekiston uchun):**
-```typescript
-// api/payment.ts (Vercel serverless)
-import Payme from 'payme-sdk'
-
-export async function createPaymeSession(userId: string, plan: string) {
-  const session = await Payme.createTransaction({
-    amount: plan === 'premium' ? 29000 : 199000,
-    orderId: `${userId}-${Date.now()}`,
-    returnUrl: `${process.env.APP_URL}/payment/success`
-  })
-  return { checkoutUrl: session.url }
-}
-```
-
----
-
-## F5-2. Analytics Dashboard
-**Muammo:** Qaysi dars/mashqda foydalanuvchilar to'xtaydi — noma'lum
-**Ta'sir:** Tadbirkor +1.0
-
-### Event tracking tizimi:
-
-**`src/lib/analytics.ts`:**
-```typescript
-interface AnalyticsEvent {
-  event: string
-  lessonId?: string
-  exerciseId?: number
-  result?: 'correct' | 'incorrect'
-  timeSpent?: number
-  userId: string
-}
-
-export async function trackEvent(event: AnalyticsEvent): Promise<void> {
-  // Supabase ya yoki PostHog (GDPR compliant)
-  await supabase.from('analytics_events').insert({
-    ...event,
-    created_at: new Date().toISOString()
-  })
-}
-
-// Ishlatilishi:
-trackEvent({ event: 'lesson_started', lessonId: 'future-forms', userId })
-trackEvent({ event: 'exercise_answered', exerciseId: 40001, result: 'correct', userId })
-trackEvent({ event: 'lesson_abandoned', lessonId: '...', timeSpent: 180, userId })
-```
-
-**Analytics jadvali:**
-```sql
-CREATE TABLE analytics_events (
-  id BIGSERIAL PRIMARY KEY,
-  user_id UUID,
-  event TEXT,
-  lesson_id TEXT,
-  exercise_id INTEGER,
-  result TEXT,
-  time_spent INTEGER,  -- seconds
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Indekslar
-CREATE INDEX ON analytics_events(lesson_id, event);
-CREATE INDEX ON analytics_events(exercise_id, result);
-```
-
-**Admin paneli uchun query namunalari:**
-```sql
--- Eng ko'p abandon bo'ladigan darslar
-SELECT lesson_id, COUNT(*) as abandons
-FROM analytics_events WHERE event = 'lesson_abandoned'
-GROUP BY lesson_id ORDER BY abandons DESC LIMIT 10;
-
--- Eng qiyin mashqlar (eng ko'p xato)
-SELECT exercise_id, 
-       COUNT(CASE WHEN result='incorrect' THEN 1 END)::float / COUNT(*) as error_rate
-FROM analytics_events WHERE event = 'exercise_answered'
-GROUP BY exercise_id HAVING COUNT(*) > 10
-ORDER BY error_rate DESC LIMIT 20;
-```
-
----
-
-## F5-3. Referral Tizimi
-**Muammo:** Viral growth mexanizmi yo'q
-**Ta'sir:** Tadbirkor +0.5
-
-### Amalga oshirish:
-
-**Supabase:**
-```sql
-ALTER TABLE users ADD COLUMN referral_code TEXT UNIQUE DEFAULT gen_random_uuid()::TEXT;
-ALTER TABLE users ADD COLUMN referred_by UUID REFERENCES users(id);
-ALTER TABLE users ADD COLUMN referral_count INTEGER DEFAULT 0;
-```
-
-**`src/components/profile/ReferralCard.tsx`:**
-```tsx
-export function ReferralCard({ user }: { user: User }) {
-  const referralLink = `${APP_URL}/invite/${user.referralCode}`
-  
-  return (
-    <div className="referral-card">
-      <h3>🎁 Do'stingizni taklif qiling!</h3>
-      <p>Har bir do'stingiz uchun <strong>7 kun Premium bepul</strong></p>
-      <div className="referral-link">
-        <code>{referralLink}</code>
-        <button onClick={() => navigator.clipboard.writeText(referralLink)}>
-          Nusxalash
-        </button>
-      </div>
-      <p>{user.referralCount} ta do'st taklif qildingiz → {user.referralCount * 7} kun Premium</p>
-    </div>
-  )
-}
-```
-
----
-
-## F5-4. Sertifikat Tizimi
-**Muammo:** 90 kundan so'ng hech qanday rasmiy hujjat yo'q
-**Ta'sir:** Tadbirkor +0.5, Yangi boshlovchi (motivatsiya) +0.5
-
-**`src/components/ui/Certificate.tsx`** mavjud — faqat kengaytirish kerak:
-
-```typescript
-interface CertificateData {
-  userName: string
-  level: 'A1' | 'A2' | 'B1' | 'B1+' | 'B2'
-  completionDate: string
-  daysStudied: number
-  lessonsCompleted: number
-  averageScore: number
-  mockTestScore?: number
-  qrCode: string  // Certificate verification URL
-}
-```
-
-**PDF eksport + blockchain verification (oddiy):**
-```typescript
-// Sertifikat ID → Supabase public table
-// QR code → https://englishpath.uz/verify/{certificateId}
-```
-
----
-
-## F5-5. IELTS Preparation Module
+## F5-5. ⚠️ IELTS Preparation Module
 **Muammo:** MockTest.tsx bor, lekin to'liq IELTS preparation yo'q
-**Ta'sir:** Tadbirkor +1.0
-
 ### Amalga oshirish:
 
 ```typescript
@@ -1837,33 +1640,13 @@ interface CertificateData {
 // - Speaking part 1, 2, 3 simulation
 ```
 
-**Monetizatsiya:** IELTS moduli — Premium feature (qo'shimcha to'lov)
-
----
-
-## F5-6. Business English Module
-**Muammo:** Faqat umumiy ingliz tili — biznes ingliz tili yo'q
-**Ta'sir:** Tadbirkor +0.5
-
-### Amalga oshirish:
-
-**30 ta dars:**
-```
-- Emails: formal/informal, enquiries, complaints
-- Meetings: agenda, opinions, proposals
-- Presentations: structure, visuals, Q&A
-- Negotiations: offers, compromises, contracts
-- Small talk: networking, social events
-```
-
----
 
 # FAZA 6 — FALSAFIY VA MOTIVATSION CHUQURLIK
 ### Muddat: 2–4 hafta · Baho ta'siri: +1.0 faylasuf ball
 
 ---
 
-## F6-1. Ichki Motivatsiya Elementlari
+## F6-1. ⚠️ Ichki Motivatsiya Elementlari
 **Muammo:** Faqat tashqi motivatsiya (XP, streak) — ichki motivatsiyani so'ndirishi mumkin
 **Ta'sir:** Faylasuf +1.0, Yangi boshlovchi +0.3
 
@@ -1910,7 +1693,7 @@ realLifeConnection?: {
 
 ---
 
-## F6-2. "Til Sarguzasht" Narrativ Qatlam
+## F6-2. ⚠️ "Til Sarguzasht" Narrativ Qatlam
 **Muammo:** Darslar mexanik — transformativ o'rganish yo'q
 **Ta'sir:** Faylasuf +0.5, Yangi boshlovchi +0.5
 
@@ -1947,13 +1730,13 @@ interface StoryBeat {
 
 ---
 
-## F7-1. Spaced Review — Grammar Review Widget
+## F7-1. ✅ Spaced Review — Grammar Review Widget
 **Muammo:** Grammar qoidalari FSRS'dan tashqarida qolgan
 (F2-1 bilan birgalikda — yuqorida to'liq ko'rsatilgan)
 
 ---
 
-## F7-2. Confusable Pairs Alohida Kuzatuv
+## F7-2. ❌ Confusable Pairs Alohida Kuzatuv
 **Muammo:** O'xshash so'zlar (make/do, lend/borrow, say/tell) bir vaqtda o'rganilganda interference paydo bo'ladi
 **Ta'sir:** Yodlash olimi +0.5
 
@@ -1995,7 +1778,7 @@ if (isConfusablePair(newWord, lastLearnedWord)) {
 
 ---
 
-## F7-3. Elaborative Encoding Mashqlari
+## F7-3. ❌ Elaborative Encoding Mashqlari
 **Muammo:** Yangi ma'lumotni mavjud bilim bilan bog'lash mashqlari yo'q
 **Ta'sir:** Yodlash olimi +0.5
 
@@ -2023,7 +1806,7 @@ interface ConnectionExercise {
 
 ---
 
-## F7-4. Active Recall — Blank Slate Testing
+## F7-4. ⚠️ Active Recall — Blank Slate Testing
 **Muammo:** Ko'pchilik mashqlar recognition-based (tanlash). Recall-based (yodlash) mashqlar ko'p emas
 **Ta'sir:** Yodlash olimi +0.5
 
@@ -2048,9 +1831,9 @@ blankSlateReview?: {
 
 ---
 
-## F8-1. Demo — Ro'yxatdan O'tmasdan Ko'rish
+## F8-1. ✅ Demo — Ro'yxatdan O'tmasdan Ko'rish
 **Muammo:** Majburiy signup yangi foydalanuvchilarni qaytaradi
-**Ta'sir:** Yangi boshlovchi +0.8, Tadbirkor +0.5
+**Ta'sir:** Yangi boshlovchi +0.8
 
 ### Amalga oshirish:
 
@@ -2081,7 +1864,7 @@ export function isGuestAllowed(lessonId: string): boolean {
 
 ---
 
-## F8-2. Yuklash Muammosini Hal Qilish
+## F8-2. ✅ Yuklash Muammosini Hal Qilish
 **Muammo:** AI so'rovlari 5–10 soniya vaqt oladi, foydalanuvchi nima bo'layotganini bilmaydi
 **Ta'sir:** Yangi boshlovchi +0.5
 
@@ -2123,7 +1906,7 @@ function getRandomTip(): string {
 
 ---
 
-## F8-3. Onboarding Yaxshilash
+## F8-3. ⚠️ Onboarding Yaxshilash
 **Muammo:** Onboarding juda texnik, yangi boshlovchi uchun mo'ljallanmagan
 **Ta'sir:** Yangi boshlovchi +0.5
 
@@ -2152,7 +1935,7 @@ Qadam 5: Yo'l
 
 ---
 
-## F8-4. Hearts Tizimini Qayta Ko'rib Chiqish
+## F8-4. ❌ Hearts Tizimini Qayta Ko'rib Chiqish
 **Muammo:** Hearts yo'qotish = stress. O'rganishda xato qilish tabiiy
 **Ta'sir:** Yangi boshlovchi +0.3, Faylasuf +0.2
 
@@ -2176,7 +1959,7 @@ Yangi: "Ustida Ishlash" rejimi
 
 ---
 
-## F9-1. Listening Section Sustainability
+## F9-1. ⚠️ Listening Section Sustainability
 **Muammo:** YouTube videolar o'chishi mumkin
 **Ta'sir:** Ingliz tili pedagog +0.3
 
@@ -2203,7 +1986,7 @@ interface ListeningSection {
 
 ---
 
-## F9-2. Speaking AI Baholashni Yaxshilash
+## F9-2. ⚠️ Speaking AI Baholashni Yaxshilash
 **Muammo:** AI intonatsiya, stress, rhythm baha bermaydi
 **Ta'sir:** Ingliz tili pedagog +0.5
 
@@ -2246,9 +2029,9 @@ const prompt = `
 
 ---
 
-## F10-1. React Native Mobile App
+## F10-1. ❌ React Native Mobile App
 **Muammo:** PWA yaxshi, lekin native features (push notifications, speech recognition) cheklangan
-**Ta'sir:** Tadbirkor +1.0, Yangi boshlovchi +0.5
+**Ta'sir:**, Yangi boshlovchi +0.5
 
 ### Amalga oshirish:
 
@@ -2262,10 +2045,8 @@ const prompt = `
 
 ---
 
-## F10-2. Kids English Module
+## F10-2. ❌ Kids English Module
 **Muammo:** Bolalar uchun content yo'q — bozorda katta segment
-**Ta'sir:** Tadbirkor +0.8
-
 ### Amalga oshirish:
 
 ```
@@ -2277,9 +2058,9 @@ const prompt = `
 
 ---
 
-## F10-3. Community & Social
+## F10-3. ❌ Community & Social
 **Muammo:** Yakkama-yakka o'rganish — community elementi yo'q
-**Ta'sir:** Tadbirkor +0.5, Faylasuf +0.3
+**Ta'sir:**, Faylasuf +0.3
 
 ### Amalga oshirish:
 
@@ -2301,9 +2082,9 @@ const prompt = `
 
 ---
 
-## F10-4. Content Creator Mode
+## F10-4. ❌ Content Creator Mode
 **Muammo:** Yangi dars yaratish uchun dasturchi kerak — CMS yo'q
-**Ta'sir:** Tadbirkor +0.8, Dasturchi +0.5
+**Ta'sir:**, Dasturchi +0.5
 
 ### Amalga oshirish:
 
@@ -2317,9 +2098,9 @@ const prompt = `
 
 ---
 
-## F10-5. Infrastructure & DevOps
+## F10-5. ❌ Infrastructure & DevOps
 **Muammo:** Vercel free tier — agar user base > 10,000 bo'lsa, yetarli emas
-**Ta'sir:** Tadbirkor +0.5, Dasturchi +0.5
+**Ta'sir:**, Dasturchi +0.5
 
 ### Amalga oshirish:
 
@@ -2342,7 +2123,6 @@ const prompt = `
 | O'zbek ustozi | 6.5 | 7.5 | 8.5 | **10** | 10 | 10 |
 | Yangi boshlovchi | 6.5 | 7.5 | 8.5 | 9.0 | **10** | 10 |
 | Faylasuf | 5.0 | 5.5 | 6.0 | **9.0** | 9.5 | 10 |
-| Tadbirkor | 5.0 | 5.5 | 6.5 | **9.5** | 10 | 10 |
 | Yodlash olimi | 6.5 | 8.0 | 8.5 | 9.0 | **10** | 10 |
 | **O'rtacha** | **6.5** | **7.6** | **8.6** | **9.5** | **10** | **10** |
 
@@ -2356,19 +2136,17 @@ const prompt = `
 | **F2** — Pedagogik | 3–6 hafta | Grammar SRS, interleaved, audio, micro-tasks, passages | +1.5 |
 | **F3** — Texnik | 4–8 hafta | CMS migratsiya, claude split, test coverage, incremental seed | +1.0 |
 | **F4** — O'zbek tili | 2–4 hafta | Murojaat, terminologiya, tarjimalar | +0.8 |
-| **F5** — Biznes | 6–10 hafta | Freemium, analytics, referral, sertifikat | +1.2 |
 | **F6** — Falsafiy | 2–4 hafta | Ichki motivatsiya, narrativ, real hayot | +0.5 |
 | **F7** — Yodlash | 3–5 hafta | Confusable pairs, elaborative, active recall | +0.7 |
 | **F8** — Boshlovchi | 2–3 hafta | Demo, loading, onboarding, hearts | +0.5 |
 | **F9** — UX/Performance | 2–3 hafta | Listening backup, speaking AI | +0.5 |
-| **JAMI** | ~6 oy | | **+7.5** (6.5 → 10) |
+| **JAMI** | ~6 oy | | **+6.3** (6.5 → 10) |
 
 ---
 
 ## Minimal Viable Perfection (MVP to 10/10)
 
 Agar faqat **eng muhim 10 ta o'zgarish** amalga oshirilsa, baho 6.5 dan 9.0 ga chiqadi:
-
 
 
 ## 📊 KPI va Metrikalar
@@ -2399,12 +2177,12 @@ Agar faqat **eng muhim 10 ta o'zgarish** amalga oshirilsa, baho 6.5 dan 9.0 ga c
 | 5 | F3-1–F3-3 (CMS migratsiya, claude split, test coverage) + F4 (O'zbek tili) | +0.6 |
 | 6 | F3-4–F3-10 (Incremental seed, any, adaptive, AI tutor, analytics, error, perf) | +0.7 |
 
-### Q3 (6-9 oy) — AI & Monetizatsiya
+### Q3 (6-9 oy) — AI & Yodlash
 | Oy | Vazifalar | Baho o'sishi |
 |----|-----------|-------------|
-| 7 | F5-1–F5-4 (Freemium, analytics, referral, sertifikat) + F6 (Falsafiy) | +0.8 |
-| 8 | F5-5, F5-6 (IELTS, Business) + F7-1, F7-2 (Grammar SRS, confusable pairs) | +0.6 |
-| 9 | F7-3, F7-4 (Elaborative, active recall) + F8 (Boshlovchi: demo, loading, onboarding, hearts) | +0.7 |
+| 7 | F6-1–F6-2 (Ichki motivatsiya, narrativ) | +0.3 |
+| 8 | F7-1–F7-4 (Grammar SRS, confusable, elaborative, active recall) | +0.7 |
+| 9 | F8-1–F8-4 (Demo, loading, onboarding, hearts) + F10 (Scale) | +0.6 |
 
 ### Q4 (9-12 oy) — Scale
 | Oy | Vazifalar | Baho o'sishi |
@@ -2422,8 +2200,8 @@ Agar faqat **eng muhim 10 ta o'zgarish** amalga oshirilsa, baho 6.5 dan 9.0 ga c
 6. ✅ **Demo (guest mode)** — signup yo'q (Faza 8-1)
 7. ✅ **O'zbek terminologiya lug'ati** (Faza 4-2)
 8. ✅ **ID validation test** — duplikat aniqlash (Faza 1-1)
-9. ✅ **Freemium model** — to'lov infra (Faza 5-1)
-10. ✅ **Analytics events** — qaysi dars qiyin (Faza 5-2)
+9. ✅ **Conflict resolution** — IndexedDB sync smart merge (F1-9)
+10. ✅ **Offline UX** — offline rejim banneri (F1-10)
 
 ---
 
