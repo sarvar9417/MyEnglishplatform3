@@ -1,13 +1,17 @@
 /**
  * Auto-generate unique exercise IDs for all lessons.
  * 
- * ID Schema (non-overlapping ranges per file):
+ * ID Schema (non-overlapping ranges per level, unique across ALL files):
  * - A1 files:  1001-4999
  * - A2 files: 14001-38999
  * - B1 files: 40001-49999
  * - B1+ files: 50001-53999
  * - B2 files: 54001-75999
  * - Review:    80001-89999
+ * 
+ * Each file within a level gets a non-overlapping sub-range to ensure
+ * no cross-file duplicate IDs. Within each file, IDs are assigned
+ * sequentially to eliminate all duplicates.
  */
 
 import { readFileSync, writeFileSync } from 'node:fs'
@@ -44,40 +48,33 @@ const LESSON_FILES: LessonFile[] = [
   { path: 'src/data/daily/reviewLessons.ts', level: 'REVIEW', idRange: [80001, 89999] },
 ]
 
-function assignIds(content: string, range: [number, number]): string {
-  const [start, end] = range
-  const idMap = new Map<number, number>()
-  let nextId = start
-  let usedCount = 0
+function collectOldIds(content: string): number[] {
+  const ids: number[] = []
+  const regex = /([{\,]\s*)(id:\s*)(\d+)(?=\s*[,}])/g
+  let match: RegExpExecArray | null
+  while ((match = regex.exec(content)) !== null) {
+    ids.push(parseInt(match[3], 10))
+  }
+  return ids
+}
 
-  // Match id: NNNN only when it's a property value (preceded by { or , and followed by , or })
-  // This avoids matching id: inside strings or comments
+function replaceIdsSequentially(content: string, startId: number): string {
+  let nextId = startId
+  let replaceCount = 0
   const result = content.replace(
     /([{\,]\s*)(id:\s*)(\d+)(?=\s*[,}])/g,
-    (match, prefix, idPrefix, oldId) => {
-      const oldIdNum = parseInt(oldId, 10)
-      if (idMap.has(oldIdNum)) {
-        return `${prefix}${idPrefix}${idMap.get(oldIdNum)}`
-      }
-      if (nextId > end) {
-        throw new Error(`ID range exhausted for ${range[0]}-${range[1]}`)
-      }
-      idMap.set(oldIdNum, nextId)
-      usedCount++
-      const assigned = nextId
-      nextId++
-      return `${prefix}${idPrefix}${assigned}`
+    (match, prefix, idPrefix) => {
+      replaceCount++
+      return `${prefix}${idPrefix}${nextId++}`
     }
   )
 
-  console.log(`  Assigned ${usedCount} unique IDs (${start}-${nextId - 1})`)
   return result
 }
 
 function main(): void {
-  console.log('🔧 Exercise ID auto-generation\n')
+  console.log('🔧 Exercise ID auto-generation (sequential per file, non-overlapping ranges)\\n')
 
-  // Group files by level to share ID ranges
   const byLevel = new Map<string, LessonFile[]>()
   for (const file of LESSON_FILES) {
     const existing = byLevel.get(file.level) ?? []
@@ -86,33 +83,42 @@ function main(): void {
   }
 
   for (const [level, files] of byLevel) {
-    console.log(`\n📚 ${level} lessons:`)
-    const range: [number, number] = files[0].idRange
-    const globalNextId = { value: range[0] }
-
-    for (const file of files) {
+    console.log(`\\n📚 ${level} lessons:`)
+    const [rangeStart, rangeEnd] = files[0].idRange
+    const totalRange = rangeEnd - rangeStart + 1
+    const filesCount = files.length
+    
+    // Calculate sub-range size for each file (divide range equally)
+    const subRangeSize = Math.floor(totalRange / filesCount)
+    
+    // Process each file with its own non-overlapping sub-range
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i]
       const fullPath = join(process.cwd(), file.path)
-      console.log(`  Processing ${file.path}...`)
-
-      let content: string
+      
+      // Calculate this file's sub-range
+      const fileRangeStart = rangeStart + (i * subRangeSize)
+      const fileRangeEnd = i === files.length - 1 
+        ? rangeEnd 
+        : rangeStart + ((i + 1) * subRangeSize) - 1
+      
       try {
-        content = readFileSync(fullPath, 'utf-8')
-      } catch (err) {
-        console.warn(`    ⚠️  File not found, skipping`)
-        continue
-      }
+        const content = readFileSync(fullPath, 'utf-8')
+        const oldIds = collectOldIds(content)
+        console.log(`  Found ${oldIds.length} IDs in ${file.path}`)
 
-      try {
-        const newContent = assignIds(content, file.idRange)
+        // Replace IDs sequentially starting from this file's sub-range
+        const newContent = replaceIdsSequentially(content, fileRangeStart)
         writeFileSync(fullPath, newContent, 'utf-8')
-        console.log(`    ✅ Updated`)
+        console.log(`  Processing ${file.path}...`)
+        console.log(`    ✅ Updated (${oldIds.length} exercises, range ${fileRangeStart}-${fileRangeEnd})`)
       } catch (err) {
-        console.error(`    ❌ Error: ${err}`)
+        console.error(`    ❌ Error processing ${file.path}: ${err}`)
       }
     }
   }
 
-  console.log('\n✅ Done! Run validate:ids to verify.')
+  console.log('\\n✅ Done! Run validate:ids to verify.')
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

@@ -76,6 +76,7 @@ const TandemPage = lazyWithReload(() => import('./pages/TandemPage'))
 const InvitePage = lazyWithReload(() => import('./pages/InvitePage'))
 const PhrasalVerbs = lazyWithReload(() => import('./pages/PhrasalVerbs'))
 const Idioms = lazyWithReload(() => import('./pages/Idioms'))
+const Confusable = lazyWithReload(() => import('./pages/Confusable'))
 const SpeakingPath = lazyWithReload(() => import('./pages/SpeakingPath'))
 const PlacementTest = lazyWithReload(() => import('./pages/PlacementTest'))
 const NotFound = lazyWithReload(() => import('./pages/NotFound'))
@@ -187,6 +188,7 @@ function AppShell() {
               <Route path="/add/:code"      element={<SafePage><InvitePage /></SafePage>} />
               <Route path="/phrasal-verbs"  element={<SafePage><PhrasalVerbs /></SafePage>} />
               <Route path="/idioms"         element={<SafePage><Idioms /></SafePage>} />
+              <Route path="/confusable-pairs" element={<SafePage><Confusable /></SafePage>} />
               <Route path="/chat"           element={<SafePage><Chat /></SafePage>} />
               <Route path="/conversation"   element={<SafePage><Conversation /></SafePage>} />
               <Route path="/pronunciation"  element={<SafePage><Pronunciation /></SafePage>} />
@@ -388,6 +390,7 @@ function RouteMetaUpdater() {
       '/tandem': 'seo.tandem',
       '/phrasal-verbs': 'seo.phrasalVerbs',
       '/idioms': 'seo.idioms',
+      '/confusable-pairs': 'seo.confusablePairs',
       '/chat': 'seo.chat',
       '/conversation': 'seo.conversation',
       '/listening': 'seo.listening',

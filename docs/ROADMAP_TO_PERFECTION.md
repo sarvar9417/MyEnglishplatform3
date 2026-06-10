@@ -8,19 +8,62 @@
 
 ---
 
-## ✅ BAJARILISH HOLATI (kod bilan tasdiqlangan · 2026-06-10)
+## ✅ BAJARILISH HOLATI (2026-06-10 — kod bazasida ikki marta tekshirilgan)
 
 > Har bir F-band sarlavhasi holat belgisiga ega: **✅** bajarilgan · **⚠️** qisman · **❌** hali yo'q
 
-**To'liq bajarilgan (✅) — 25+ band**, jumladan:
-- **FAZA 1** (deyarli to'liq): ID validation, Inkor→Kengaytirish, build, lokalizatsiya, noaniq mashqlar, CI/CD, E2E, conflict resolution, offline banner
-- **FAZA 2** (asosiy): Grammar SRS, **Interleaved practice** (`/mixed-review`), **Writing micro-tasks** (95 prompt A1–B2), Audio (TTS: avto+qo'lda), "90 kunda B2" yumshatish, Mnemonika, Writing AI, Speaking
-- **FAZA 4/7/8**: "siz" shakli, **Terminologiya lug'ati** (46 atama), Grammar Review widget, Demo, yuklash
+**To'liq bajarilgan (✅) — 12 ta**
+- **F1-3** Build fix (manualChunks vite.config.ts)
+- **F1-5** Noaniq mashqlar audit (skript mavjud)
+- **F1-6** CI/CD GitHub Actions
+- **F1-7** E2E Playwright (auth + lesson spec)
+- **F1-9** Conflict resolution (smart merge)
+- **F1-10** Offline banner
+- **F2-1** Grammar SRS (FSRS-5, `/review` page, WeakAreasCard, localStorage)
+- **F2-3** Produktiv ko'nikmalar (107 writing section, AI evaluation, speech rec, 75d path)
+- **F2-4** Audio TTS (AudioButton + useSpeechSynthesis)
+- **F2-6** "90 kunda B2" yumshatish (kod bazasida olib tashlangan)
+- **F7-1** Grammar Review widget (GrammarReview.tsx + grammarSrs)
+- **F8-4** Hearts qayta ko'rib chiqish (darslardan olib tashlangan, dead code qolgan)
 
-**Qisman (⚠️):** test coverage, curriculum gap audit, adaptive engine, AI tutor 2.0, ichki motivatsiya
-**Hali yo'q (❌):** Mini-passages (F2-5), CMS migratsiya (F3-1), claude.ts bo'lish (F3-2), Analytics dashboard (F3-8), Confusable pairs (F7-2), connection turi (F7-3), Hearts qayta ko'rib chiqish (F8-4), FAZA 10 (mobile/community)
+**Qisman bajarilgan (⚠️) — 18 ta**
+- **F1-1** ID validation (skript bor, lekin auto-generatsiya yo'q)
+- **F1-2** Inkor→Kengaytish (faqat b1/b2Part1 da, qolganlarida yo'q)
+- **F1-4** Lokalizatsiya (i18n tizimi bor, 3 til, lekin auth page hardcode)
+- **F2-2** Interleaved (MixedReview page bor, lekin Section 4-5 interleaved emas)
+- **F2-5** Mini-passages (faqat B1 va A2 da, boshqa level'larda yo'q)
+- **F2-7** Mnemonika UI (MnemonicCard mavjud, faqat SpecialCases da)
+- **F2-8** Writing AI (level-based eval)
+- **F2-9** Speaking integratsiya (LessonView da tab bor)
+- **F3-6** Adaptive engine (adaptiveService.ts + AdaptivePlan.tsx bor, lekin BKT/IRT yo'q)
+- **F3-8** Analytics dashboard (AiInsightsWidget, WeakSpotsWidget bor, lekin AnalyticsSection.tsx yo'q)
+- **F4-2** Terminologiya lug'ati (terminology-uz.ts mavjud — 274q, 37+ atama, lekin import qilinmagan)
+- **F6-2** Narrativ (storyline.ts bor, lekin kengaytirilmagan)
+- **F8-1** Demo (LessonDemoPage + onboarding tutorial bor, lekin guest mode yo'q)
+- **F8-3** Onboarding (OnboardingFlow.tsx bor, lekin 5-step roadmap spec'iga mos emas)
+- **F3-9** Error detection (sentryProvider, ErrorDisplay bor)
+- **F3-10** Performance monitoring (monitoring.ts + chunk limits bor)
+- **F9-1** Listening section sustainability (backup URL, monitoring script yo'q)
+- **F9-2** Speaking AI baholash (prosodik tahlil yo'q)
 
-**Qo'shimcha (roadmapda yo'q, lekin bajarilgan):** kun sonini 126 ga birlashtirish (90/99 buglari), kunlik quest 91–126 qamrovi, lesson_abandoned analytics funnel.
+**Bajarilmagan (❌) — 15 ta**
+- **F1-8** Test coverage (30% threshold, codecov CI da, lekin haqiqiy coverage noma'lum)
+- **F2-10** Curriculum gap (CEFR audit skripti yo'q)
+- **F3-1** CMS migratsiya (lessons_content jadvali yo'q)
+- **F3-2** claude.ts split (src/lib/ai/ yo'q)
+- **F3-3** Test coverage oshirish (lessonData.test.ts yo'q)
+- **F3-4** Incremental seed
+- **F3-5** `any` tipidan voz kechish (claude.ts va boshqa xizmatlarda hali `any` ishlatiladi)
+- **F3-7** AI Tutor 2.0 (real-time feedback, weekly report yo'q)
+- **F4-1** Murojaat (check-murojaat.ts yo'q; lekin "siz" allaqachon ishlatiladi)
+- **F4-4** i18n avtomatlashtirish (Crowdin yo'q)
+- **F6-1** Ichki motivatsiya (Personal Why, Progress Journal yo'q)
+- **F7-2** Confusable pairs (confusable-pairs.ts yo'q)
+- **F7-3** Elaborative encoding (ConnectionExercise yo'q)
+- **F7-4** Active recall (Blank Slate section yo'q)
+- **F10** (React Native, Kids, Community — hammasi yo'q)
+
+**Qo'shimcha (roadmapda yo'q, lekin bajarilgan):** kun sonini 126 ga birlashtirish, kunlik quest 91–126 qamrovi, lesson_abandoned analytics funnel, AdaptivePlan dashboard widget, AiInsightsWidget, WeakSpotsWidget.
 
 ---
 
@@ -43,7 +86,7 @@
 
 ---
 
-## F1-1. ✅ Exercise ID avto-generatsiya tizimi
+## F1-1. ⚠️ Exercise ID validation (auto-generatsiya hali yo'q)
 **Muammo:** ID lar qo'lda boshqariladi → duplikat xavfi (a2Part1 da id:1110 takrori topilgan)
 **Ta'sir:** Dasturchi 10/10
 
@@ -88,7 +131,7 @@ B2:  54001–75999  (b2Part1–3)
 
 ---
 
-## F1-2. ✅ exerciseSections "Inkor" nomi — Semantik tuzatish
+## F1-2. ⚠️ exerciseSections "Inkor" nomi — Semantik tuzatish
 **Muammo:** A1 darslari (sonlar, ranglar, hayvonlar) da Section 4 = "🚫 Inkor" — bu mantiqan noto'g'ri
 **Ta'sir:** Ingliz tili pedagog +0.3, O'zbek tili ustozi +0.3
 
@@ -159,11 +202,13 @@ build: {
 
 ---
 
-## F1-4. ✅ O'zbek tilidagi to'liq lokalizatsiya
+## F1-4. ⚠️ O'zbek tilidagi to'liq lokalizatsiya
 **Muammo:** "Sign In", "Sign Up", "Dashboard" ingliz tilida qolgan
 **Ta'sir:** Yangi boshlovchi +0.5, O'zbek tili ustozi +0.3
 
-**`src/i18n/uz.json`** ga qo'shing:
+**Bajarilgan:** `src/i18n/` to'liq tizim (3 til, provider, hook, LanguageSwitcher). `uz.json` da auth/nav/loading kalitlari bor. Navigation, Sidebar, OfflineBanner, PWA, SEO `t()` ishlatadi. **Qolgan:** Auth.tsx butunlay hardcode, `auth.*` kalitlari `TranslationStrings` interface da yo'q, hech qayerda ishlatilmaydi.
+
+**`src/i18n/uz.json`** ga qo'shimcha (allaqachon bor):
 ```json
 {
   "auth": {
@@ -498,7 +543,7 @@ test('user can sign up, take a lesson, and see progress', async ({ page }) => {
 
 ---
 
-## F1-8. ⚠️ Test Coverage Reporting
+## F1-8. ❌ Test Coverage Reporting
 **Muammo:** Hozirgi coverage ~20% — muhim komponentlar test qilinmagan
 **Ta'sir:** Dasturchi +0.5
 
@@ -591,7 +636,9 @@ function OfflineBanner({ online }: { online: boolean }) {
 **Muammo:** FSRS-5 faqat lug'at uchun ishlaydi. Grammatika qoidalari unutiladi (Ebbinghaus: 1 kundan keyin ~50% yo'qoladi)
 **Ta'sir:** Yodlash olimi +2.0, Ingliz tili pedagog +0.5
 
-### Loyiha arxitekturasi:
+**Bajarilgan:** `grammarSrs.ts` FSRS-5 bilan, `/review` page, WeakAreasCard, MixedReview, 138 test. localStorage da ishlaydi (Supabase emas).
+
+### Loyiha arxitekturasi (kelajakdagi yaxshilanish uchun):
 
 **Supabase da yangi jadval:**
 ```sql
@@ -706,7 +753,7 @@ export default function GrammarReviewCard({ rule, onRate }) {
 
 ---
 
-## F2-2. ✅ Interleaved Practice (Aralash Mashqlar)
+## F2-2. ⚠️ Interleaved Practice (Aralash Mashqlar)
 **Muammo:** Barcha mashqlar bir mavzuda ketma-ket (massed practice). Tadqiqotlar: interleaved practice 40–60% samaraliroq
 **Ta'sir:** Yodlash olimi +1.5
 
@@ -754,7 +801,11 @@ Section 5 (O'zgartirish): [will: 1 + going_to: 1 + present_cont: 1 + present_sim
 **Muammo:** Speaking/Writing darslarga integratsiyalashmagan — alohida tab
 **Ta'sir:** Ingliz tili pedagog +1.0
 
-### Har bir darsga mini-production task qo'shing:
+**Bajarilgan:** 107 writing section + AI evaluation (IELTS-style 4 criteria), speech recognition + AI evaluation (acoustic analysis), 75 kunlik speaking path, har darsda writing/speaking tab.
+
+### Kelajakdagi yaxshilanish (microTasks):
+
+
 
 **`DailyLesson` interfeysi ga yangi maydon:**
 ```typescript
@@ -842,7 +893,7 @@ export async function speakFormula(text: string, rate = 0.85): Promise<void> {
 
 ---
 
-## F2-5. ❌ Kontekstli Mashqlar (Mini-Passages)
+## F2-5. ⚠️ Kontekstli Mashqlar (Mini-Passages)
 **Muammo:** ~80% mashqlar izolyatsiyalangan jumlalar. Kontekstda o'rganish 3x samaraliroq
 **Ta'sir:** Ingliz tili pedagog +0.8
 
@@ -900,8 +951,8 @@ B1 → 90 kunda B2  (challenging, achievable)
 
 ---
 
-## F2-7. ✅ Mnemonika Tizimi
-**Muammo:** `mnemonic` maydoni bor, lekin UI da ko'rsatilmaydi. Vizual mnemonikalar 3x samaraliroq
+## F2-7. ⚠️ Mnemonika UI
+**Muammo:** `mnemonic` maydoni bor, lekin faqat SpecialCases da ko'rsatiladi. Rules/Exercises uchun yo'q. Vizual mnemonikalar 3x samaraliroq
 **Ta'sir:** Yodlash olimi +1.0
 
 ### Amalga oshirish:
@@ -944,7 +995,7 @@ export default function MnemonicCard({ rule, mnemonic, visual, acronym }: Mnemon
 
 ---
 
-## F2-8. ✅ Writing AI Evaluation — Barcha Darslarga
+## F2-8. ⚠️ Writing AI Evaluation — Barcha Darslarga
 **Muammo:** Writing evaluation faqat IELTS style da — A1/A2 darajasi uchun soddaroq evaluation kerak
 **Ta'sir:** Ingliz tili pedagog +0.5
 
@@ -976,7 +1027,7 @@ export async function evaluateWritingLevel(
 
 ---
 
-## F2-9. ✅ Speaking Bo'limini Daily Lessons ga Integratsiya
+## F2-9. ⚠️ Speaking Bo'limini Daily Lessons ga Integratsiya
 **Muammo:** SpeakingPath alohida — daily lesson da speaking prompt yo'q
 **Ta'sir:** Ingliz tili pedagog +0.5, Yodlash olimi +0.3
 
@@ -1006,7 +1057,7 @@ microTasks?: {
 
 ---
 
-## F2-10. ⚠️ Curriculum Gap Analysis
+## F2-10. ❌ Curriculum Gap Analysis
 **Muammo:** CEFR can-do statements va vocabulary frequency audit qilinmagan
 **Ta'sir:** Ingliz tili pedagog +0.5, Yodlash olimi +0.3
 
@@ -1257,7 +1308,7 @@ describe('ExerciseCard', () => {
 
 ---
 
-## F3-4. ⚠️ Incremental Seed (Faqat O'zgarganlarni Yuklash)
+## F3-4. ❌ Incremental Seed (Faqat O'zgarganlarni Yuklash)
 **Muammo:** `npm run seed:all` har safar 106 darsni yuklaydi
 **Ta'sir:** Dasturchi +0.2
 
@@ -1286,7 +1337,7 @@ async function seedIncremental() {
 
 ---
 
-## F3-5. ⚠️ TypeScript `any` ni Bartaraf Etish
+## F3-5. ❌ TypeScript `any` ni Bartaraf Etish
 **Muammo:** `claude.ts` va ba'zi xizmatlarda `any` tipi ishlatilgan
 **Ta'sir:** Dasturchi +0.3
 
@@ -1311,6 +1362,7 @@ interface ExerciseCheckResult {
 
 ## F3-6. ⚠️ Adaptive Learning Engine
 **Muammo:** Hamma o'quvchilar bir xil curriculum dan o'tadi — personalizatsiya yo'q
+**Ta'sir:** Dasturchi +1.0, Yodlash olimi +0.5
 **Ta'sir:** Dasturchi +1.0, Yodlash olimi +0.5
 
 ### Amalga oshirish:
@@ -1350,7 +1402,7 @@ export function updateBKT(params: BKTParams, correct: boolean): BKTParams {
 
 ---
 
-## F3-7. ⚠️ AI Tutor 2.0
+## F3-7. ❌ AI Tutor 2.0
 **Muammo:** AI hozir faqat so'ralganda ishlaydi (Chat, Writing, Speaking). Real-time feedback yo'q
 **Ta'sir:** Ingliz tili pedagog +0.8, Dasturchi +0.3
 
@@ -1489,7 +1541,7 @@ export default defineConfig({
 
 ---
 
-## F4-1. ✅ Murojaat Shakli Standartlashtirish
+## F4-1. ❌ Murojaat Shakli Standartlashtirish
 **Muammo:** Ba'zi joylarda "siz" (rasmiy), ba'zida "sen" (norasmiy). Izchillik yo'q
 **Ta'sir:** O'zbek tili ustozi +0.5
 
@@ -1524,11 +1576,13 @@ const SEN_FORMS = [
 
 ---
 
-## F4-2. ✅ Terminologiya Lug'ati Yaratish
+## F4-2. ⚠️ Terminologiya Lug'ati Yaratish
 **Muammo:** "Present Perfect" ba'zi joylarda lotin, ba'zi joylarda o'zbek tilida
 **Ta'sir:** O'zbek tili ustozi +0.5
 
-**`src/data/terminology-uz.ts`** fayl yarating:
+**Bajarilgan:** `src/data/terminology-uz.ts` mavjud (274q, 37+ atama) + `grammarGlossary.ts`, lekin hech qayerda import qilinmagan.
+
+**`src/data/terminology-uz.ts`** fayl mavjud, quyidagi ma'lumotlar bilan:
 ```typescript
 export const GRAMMAR_TERMS: Record<string, { uz: string; short: string }> = {
   'Present Simple':        { uz: "Oddiy hozirgi zamon",          short: "hozirgi oddiy" },
@@ -1621,23 +1675,6 @@ Faza 4.4 oyi:  russian (to'ldirish)
 3 oy:           korean (Koreya O'zbekiston bozorida kuchli)
 6 oy:           turkish, chinese
 12 oy:          qoraqalpoq, tojik, qozoq (markaziy Osiyo ekspansiyasi)
-```
-
----
-
----
-
-## F5-5. ⚠️ IELTS Preparation Module
-**Muammo:** MockTest.tsx bor, lekin to'liq IELTS preparation yo'q
-### Amalga oshirish:
-
-```typescript
-// Yangi modul: IELTS Academic / General Training
-// - Full mock tests (Listening, Reading, Writing, Speaking)
-// - Timed mode
-// - Band score prediction
-// - Writing task 1 & 2 with AI evaluation
-// - Speaking part 1, 2, 3 simulation
 ```
 
 
@@ -1806,7 +1843,7 @@ interface ConnectionExercise {
 
 ---
 
-## F7-4. ⚠️ Active Recall — Blank Slate Testing
+## F7-4. ❌ Active Recall — Blank Slate Testing
 **Muammo:** Ko'pchilik mashqlar recognition-based (tanlash). Recall-based (yodlash) mashqlar ko'p emas
 **Ta'sir:** Yodlash olimi +0.5
 
@@ -1831,7 +1868,7 @@ blankSlateReview?: {
 
 ---
 
-## F8-1. ✅ Demo — Ro'yxatdan O'tmasdan Ko'rish
+## F8-1. ⚠️ Demo — Ro'yxatdan O'tmasdan Ko'rish
 **Muammo:** Majburiy signup yangi foydalanuvchilarni qaytaradi
 **Ta'sir:** Yangi boshlovchi +0.8
 
@@ -1938,6 +1975,8 @@ Qadam 5: Yo'l
 ## F8-4. ✅ Hearts Tizimini Qayta Ko'rib Chiqish
 **Muammo:** Hearts yo'qotish = stress. O'rganishda xato qilish tabiiy
 **Ta'sir:** Yangi boshlovchi +0.3, Faylasuf +0.2
+
+**Bajarilgan:** `loseHeart` hech qayerda chaqirilmaydi, darslarda hearts tekshirilmaydi. "Xatolar ustida ishlash" (LessonDemo.tsx L68-77, L286-303) o'rnatilgan. Hearts kodi dead code sifatida qolgan.
 
 ### Yangi model: "Ustida Ishlash" sistema
 
@@ -2148,6 +2187,16 @@ const prompt = `
 
 Agar faqat **eng muhim 10 ta o'zgarish** amalga oshirilsa, baho 6.5 dan 9.0 ga chiqadi:
 
+1. ⚠️ **Grammar SRS** — Ebbinghaus egri chizig'iga qarshi (F2-1) — qisman, GrammarReviewCard + Supabase jadvali kerak
+2. ✅ **Audio** — A1/A2 da talaffuz (F2-4)
+3. ⚠️ **Interleaved practice** — MixedReview page bor (F2-2)
+4. ⚠️ **Writing & Speaking** — darslarda integratsiya qilingan (F2-3, F2-8, F2-9)
+5. ❌ **Mnemonika UI** — `mnemonic` maydon ko'rsatilmaydi (F2-7)
+6. ⚠️ **Demo** — LessonDemoPage + onboarding tutorial bor, lekin guest mode yo'q (F8-1)
+7. ❌ **O'zbek terminologiya lug'ati** — terminology-uz.ts yo'q (F4-2)
+8. ⚠️ **ID validation** — skript bor, lekin auto-generatsiya yo'q (F1-1)
+9. ✅ **Conflict resolution** — IndexedDB sync smart merge (F1-9)
+10. ✅ **Offline UX** — offline rejim banneri (F1-10)
 
 ## 📊 KPI va Metrikalar
 
@@ -2192,16 +2241,7 @@ Agar faqat **eng muhim 10 ta o'zgarish** amalga oshirilsa, baho 6.5 dan 9.0 ga c
 | 12 | F10-5 (Infrastructure) + Yakuniy audit + 10/10 sertifikatsiya | +0.4 |
 
 ---
-1. ✅ **Grammar SRS** — Ebbinghaus egri chizig'iga qarshi (Faza 2-1)
-2. ✅ **Audio** — A1/A2 da talaffuz (Faza 2-4)
-3. ✅ **Interleaved practice** — Section 4–5 aralash (Faza 2-2)
-4. ✅ **Micro-tasks** — har darsda 1 writing prompt (Faza 2-3)
-5. ✅ **Mnemonika UI** — `mnemonic` maydon ko'rsatilishi (Faza 2-7)
-6. ✅ **Demo (guest mode)** — signup yo'q (Faza 8-1)
-7. ✅ **O'zbek terminologiya lug'ati** (Faza 4-2)
-8. ✅ **ID validation test** — duplikat aniqlash (Faza 1-1)
-9. ✅ **Conflict resolution** — IndexedDB sync smart merge (F1-9)
-10. ✅ **Offline UX** — offline rejim banneri (F1-10)
+
 
 ---
 

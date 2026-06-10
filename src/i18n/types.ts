@@ -24,6 +24,7 @@ export interface TranslationStrings {
   'nav.skills': string
   'nav.phrasalVerbs': string
   'nav.idioms': string
+  'nav.confusablePairs': string
 
   /* ── Sidebar misc ── */
   'sidebar.levelRange': string
@@ -91,6 +92,7 @@ export interface TranslationStrings {
   'seo.conversation': string
   'seo.pronunciation': string
   'seo.review': string
+  'seo.confusablePairs': string
   'seo.desc': string
 
   /* ── Grammar page titles ── */
@@ -123,4 +125,41 @@ export interface TranslationStrings {
   'pwa.dismiss': string
   'pwa.notNow': string
   'pwa.installed': string
+
+  /* ── Auth page ── */
+  'auth.tabLogin': string
+  'auth.tabSignup': string
+  'auth.signupSuccess': string
+  'auth.signupResent': string
+  'auth.checkEmailStep1': string
+  'auth.checkEmailStep2': string
+  'auth.checkEmailStep3': string
+  'auth.spamTip': string
+  'auth.resendButton': string
+  'auth.resendCooldown': string
+  'auth.backToLogin': string
+  'auth.nameLabel': string
+  'auth.namePlaceholder': string
+  'auth.emailLabel': string
+  'auth.emailPlaceholder': string
+  'auth.passwordLabel': string
+  'auth.passwordPlaceholder': string
+  'auth.forgotPassword': string
+  'auth.submitLoading': string
+  'auth.submitLogin': string
+  'auth.submitSignup': string
+  'auth.demoButton': string
+  'auth.supportText': string
+  'auth.resetTitle': string
+  'auth.resetSubtitle': string
+  'auth.resetSentTitle': string
+  'auth.resetSentBody': string
+  'auth.resetSentOk': string
+  'auth.resetLoading': string
+  'auth.resetSubmit': string
+  'auth.closeModal': string
+  'auth.errorInvalidCredentials': string
+  'auth.errorEmailNotConfirmed': string
+  'auth.errorAlreadyRegistered': string
+  'auth.errorEmailNotFound': string
 }

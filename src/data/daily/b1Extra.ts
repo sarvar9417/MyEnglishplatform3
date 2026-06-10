@@ -187,7 +187,7 @@ export const relativeClausesB1: DailyLesson = {
       title: "Defining va Non-defining farqi",
       drills: [
         {
-          id: 26001,
+          id: 45000,
           type: "fill-blank",
           blanks: [
             "who"
@@ -197,7 +197,7 @@ export const relativeClausesB1: DailyLesson = {
           instruction: "That or who:"
         },
         {
-          id: 26002,
+          id: 45001,
           type: "multiple-choice",
           correct: "who (commas)",
           options: [
@@ -211,7 +211,7 @@ export const relativeClausesB1: DailyLesson = {
           instruction: "Defining/non-defining:"
         },
         {
-          id: 26003,
+          id: 45002,
           type: "error-correction",
           correct: "My mother, who is a doctor, works hard.",
           question: "My mother, that is a doctor, works hard.",
@@ -239,7 +239,7 @@ export const relativeClausesB1: DailyLesson = {
       title: "Relative pronounni tushirish",
       drills: [
         {
-          id: 26004,
+          id: 45003,
           type: "fill-blank",
           blanks: [
             "that"
@@ -249,7 +249,7 @@ export const relativeClausesB1: DailyLesson = {
           instruction: "Pronounni tushir:"
         },
         {
-          id: 26005,
+          id: 45004,
           type: "error-correction",
           correct: "The man who lives next door is a doctor.",
           question: "The man lives next door is a doctor.",
@@ -258,7 +258,7 @@ export const relativeClausesB1: DailyLesson = {
           instruction: "Error correction:"
         },
         {
-          id: 26006,
+          id: 45005,
           type: "multiple-choice",
           correct: "which",
           options: [
@@ -291,7 +291,7 @@ export const relativeClausesB1: DailyLesson = {
       title: "Whose va Whom",
       drills: [
         {
-          id: 26007,
+          id: 45006,
           type: "fill-blank",
           blanks: [
             "whose"
@@ -301,7 +301,7 @@ export const relativeClausesB1: DailyLesson = {
           instruction: "Whose:"
         },
         {
-          id: 26008,
+          id: 45007,
           type: "fill-blank",
           blanks: [
             "whom"
@@ -311,7 +311,7 @@ export const relativeClausesB1: DailyLesson = {
           instruction: "Fill in the blank with 'whom':"
         },
         {
-          id: 26009,
+          id: 45008,
           type: "error-correction",
           correct: "The man whose phone rang left.",
           question: "The man his phone rang left.",
@@ -336,7 +336,7 @@ export const relativeClausesB1: DailyLesson = {
   ],
   exercises: [
     {
-      id: 2601,
+      id: 45009,
       type: "fill-blank",
       blanks: [
         "who"
@@ -346,7 +346,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Who/which:"
     },
     {
-      id: 2602,
+      id: 45010,
       type: "fill-blank",
       blanks: [
         "which"
@@ -356,7 +356,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Who/which:"
     },
     {
-      id: 2603,
+      id: 45011,
       type: "fill-blank",
       blanks: [
         "that"
@@ -366,7 +366,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "That:"
     },
     {
-      id: 2604,
+      id: 45012,
       type: "fill-blank",
       blanks: [
         "where"
@@ -376,7 +376,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Where:"
     },
     {
-      id: 2605,
+      id: 45013,
       type: "fill-blank",
       blanks: [
         "when"
@@ -386,7 +386,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "When:"
     },
     {
-      id: 2606,
+      id: 45014,
       type: "multiple-choice",
       correct: "who",
       options: [
@@ -400,7 +400,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2607,
+      id: 45015,
       type: "multiple-choice",
       correct: "which",
       options: [
@@ -414,7 +414,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2608,
+      id: 45016,
       type: "multiple-choice",
       correct: "who",
       options: [
@@ -428,7 +428,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2609,
+      id: 45017,
       type: "multiple-choice",
       correct: "whose",
       options: [
@@ -442,7 +442,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2610,
+      id: 45018,
       type: "multiple-choice",
       correct: "My mother, who is kind",
       options: [
@@ -456,7 +456,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2611,
+      id: 45019,
       type: "error-correction",
       correct: "The book which I read was interesting.",
       question: "The book who I read was interesting.",
@@ -465,7 +465,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Error correction:"
     },
     {
-      id: 2612,
+      id: 45020,
       type: "error-correction",
       correct: "My father, who is 60, still works.",
       question: "My father, that is 60, still works.",
@@ -474,7 +474,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Error correction:"
     },
     {
-      id: 2613,
+      id: 45021,
       type: "error-correction",
       correct: "The woman who won the prize is my aunt.",
       question: "The woman won the prize is my aunt.",
@@ -483,7 +483,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Error correction:"
     },
     {
-      id: 2614,
+      id: 45022,
       type: "error-correction",
       correct: "The woman whose car was stolen called police.",
       question: "The woman her car was stolen called police.",
@@ -492,7 +492,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Error correction:"
     },
     {
-      id: 2615,
+      id: 45023,
       hint: "I know a girl who...",
       type: "transformation",
       correct: "I know a girl who can speak five languages.",
@@ -501,7 +501,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Combine the sentences:"
     },
     {
-      id: 2616,
+      id: 45024,
       hint: "The book which...",
       type: "transformation",
       correct: "The book which I bought was expensive.",
@@ -510,7 +510,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Relative clause:"
     },
     {
-      id: 2617,
+      id: 45025,
       hint: "My brother, who...",
       type: "transformation",
       correct: "My brother, who lives in Tashkent, is a doctor.",
@@ -519,7 +519,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Non-defining:"
     },
     {
-      id: 2618,
+      id: 45026,
       type: "fill-blank",
       blanks: [
         "that"
@@ -529,7 +529,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Pronoun tushir:"
     },
     {
-      id: 2619,
+      id: 45027,
       type: "fill-blank",
       blanks: [
         "whose"
@@ -539,7 +539,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Whose:"
     },
     {
-      id: 2620,
+      id: 45028,
       type: "multiple-choice",
       correct: "The man who lives next door is kind",
       options: [
@@ -553,7 +553,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-    id: 2621,
+    id: 45029,
     type: "fill-blank",
     blanks: [
         "whose"
@@ -563,7 +563,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Whose:"
 },
     {
-    id: 2622,
+    id: 45030,
     type: "fill-blank",
     blanks: [
         "whom"
@@ -573,7 +573,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Fill in the blank with 'whom':"
 },
     {
-    id: 2623,
+    id: 45031,
     type: "fill-blank",
     blanks: [
         "that"
@@ -583,7 +583,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "That:"
 },
     {
-    id: 2624,
+    id: 45032,
     type: "fill-blank",
     blanks: [
         "where"
@@ -593,7 +593,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Where:"
 },
     {
-    id: 2625,
+    id: 45033,
     type: "fill-blank",
     blanks: [
         "when"
@@ -603,7 +603,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "When:"
 },
     {
-    id: 2626,
+    id: 45034,
     type: "multiple-choice",
     correct: "who",
     options: [
@@ -617,7 +617,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Tanlang:"
 },
     {
-    id: 2627,
+    id: 45035,
     type: "multiple-choice",
     correct: "which",
     options: [
@@ -631,7 +631,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Tanlang:"
 },
     {
-    id: 2628,
+    id: 45036,
     type: "multiple-choice",
     correct: "The house which I bought",
     options: [
@@ -645,7 +645,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Tanlang:"
 },
     {
-    id: 2629,
+    id: 45037,
     type: "multiple-choice",
     correct: "My uncle, who lives in Samarkand, is a doctor",
     options: [
@@ -659,7 +659,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Tanlang:"
 },
     {
-    id: 2630,
+    id: 45038,
     type: "error-correction",
     correct: "The person who called you is waiting.",
     question: "The person called you is waiting.",
@@ -668,7 +668,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Error correction:"
 },
     {
-    id: 2631,
+    id: 45039,
     type: "error-correction",
     correct: "I liked the film which you recommended.",
     question: "I liked the film who you recommended.",
@@ -677,7 +677,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Error correction:"
 },
     {
-    id: 2632,
+    id: 45040,
     type: "error-correction",
     correct: "Tashkent, where I was born, is beautiful.",
     question: "Tashkent, that I was born, is beautiful.",
@@ -686,7 +686,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Error correction:"
 },
     {
-    id: 2633,
+    id: 45041,
     type: "transformation",
     hint: "The man who...",
     correct: "The man who fixed my car was very professional.",
@@ -695,7 +695,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Combine the sentences:"
 },
     {
-    id: 2634,
+    id: 45042,
     type: "transformation",
     hint: "The restaurant where...",
     correct: "The restaurant where we ate had excellent service.",
@@ -704,7 +704,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Combine the sentences:"
 },
     {
-    id: 2635,
+    id: 45043,
     type: "transformation",
     hint: "The children whose...",
     correct: "The children whose parents volunteered got a prize.",
@@ -713,7 +713,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Combine the sentences:"
 },
     {
-    id: 2636,
+    id: 45044,
     type: "multiple-choice",
     correct: "whom",
     options: [
@@ -727,7 +727,7 @@ export const relativeClausesB1: DailyLesson = {
     instruction: "Tanlang:"
 },
     {
-    id: 2637,
+    id: 45045,
     type: "fill-blank",
     blanks: [
         "which"
@@ -810,7 +810,7 @@ export const relativeClausesB1: DailyLesson = {
   ],
   tests: [
     {
-      id: 261,
+      id: 45046,
       type: "multiple-choice",
       correct: "who",
       options: [
@@ -824,7 +824,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 262,
+      id: 45047,
       type: "multiple-choice",
       correct: "which",
       options: [
@@ -838,7 +838,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 263,
+      id: 45048,
       type: "multiple-choice",
       correct: "defining",
       options: [
@@ -852,7 +852,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 264,
+      id: 45049,
       type: "multiple-choice",
       correct: "vergul bilan",
       options: [
@@ -866,7 +866,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 265,
+      id: 45050,
       type: "multiple-choice",
       correct: "joy",
       options: [
@@ -880,7 +880,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 266,
+      id: 45051,
       type: "multiple-choice",
       correct: "who",
       options: [
@@ -894,7 +894,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 267,
+      id: 45052,
       type: "multiple-choice",
       correct: "which",
       options: [
@@ -908,7 +908,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 268,
+      id: 45053,
       type: "multiple-choice",
       correct: "who",
       options: [
@@ -922,7 +922,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 269,
+      id: 45054,
       type: "multiple-choice",
       correct: "whose",
       options: [
@@ -936,7 +936,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 270,
+      id: 45055,
       type: "multiple-choice",
       correct: "where",
       options: [
@@ -950,7 +950,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 271,
+      id: 45056,
       type: "multiple-choice",
       correct: "that",
       options: [
@@ -964,7 +964,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Qiyin"
     },
     {
-      id: 272,
+      id: 45057,
       type: "multiple-choice",
       correct: "whom",
       options: [
@@ -978,7 +978,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Qiyin"
     },
     {
-      id: 273,
+      id: 45058,
       type: "multiple-choice",
       correct: "Students who study pass.",
       options: [
@@ -992,7 +992,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Qiyin"
     },
     {
-      id: 274,
+      id: 45059,
       type: "multiple-choice",
       correct: "My mother, who is kind, helps me",
       options: [
@@ -1006,7 +1006,7 @@ export const relativeClausesB1: DailyLesson = {
       instruction: "Murakkab"
     },
     {
-      id: 275,
+      id: 45060,
       type: "multiple-choice",
       correct: "The book which I bought",
       options: [
@@ -1072,11 +1072,11 @@ export const relativeClausesB1: DailyLesson = {
   reading: {
     passage: "My Neighbourhood\n\nI live in a wonderful neighbourhood. The people who live next door are very friendly. There is a park where children play every evening. The cafe which opened last month serves the best coffee.\n\nMy best friend is someone whose family moved here from Japan. We often play football together. The teacher who taught me English lives on the same street.\n\nThere is a library that has many books in different languages. I go there every weekend. The librarian, whose name is Ms. Karimova, is very kind. She always recommends books that I might enjoy.\n\nMy neighbourhood has a market where you can buy fresh fruits and vegetables. The shop that sells the freshest bread is near my house. I know many people who live in this area. It is a place where everyone knows each other.",
     questions: [
-      { id: 1, type: 'multiple-choice' as const, question: "What kind of people live next door?", options: ["Quiet people", "Very friendly people", "Noisy people", "Old people"], correctIndex: 1, explanation: "Who is used for people in relative clauses." },
-      { id: 2, type: 'multiple-choice' as const, question: "What is special about the park?", options: ["It has a cafe", "Children play there every evening", "It is very big", "It has a library"], correctIndex: 1, explanation: "Where is used for places in relative clauses." },
-      { id: 3, type: 'multiple-choice' as const, question: "Which relative pronoun is used for the cafe?", options: ["Who", "Which", "Where", "Whose"], correctIndex: 1, explanation: "Which is used for things in relative clauses." },
-      { id: 4, type: 'multiple-choice' as const, question: "What does the librarian do?", options: ["Sells books", "Recommends books", "Teaches English", "Serves coffee"], correctIndex: 1, explanation: "The relative clause gives extra information about the librarian." },
-      { id: 5, type: 'multiple-choice' as const, question: "What relative pronoun is used for the market?", options: ["Who", "Which", "Where", "Whose"], correctIndex: 2, explanation: "Where is used for places in relative clauses." },
+      { id: 45061, type: 'multiple-choice' as const, question: "What kind of people live next door?", options: ["Quiet people", "Very friendly people", "Noisy people", "Old people"], correctIndex: 1, explanation: "Who is used for people in relative clauses." },
+      { id: 45062, type: 'multiple-choice' as const, question: "What is special about the park?", options: ["It has a cafe", "Children play there every evening", "It is very big", "It has a library"], correctIndex: 1, explanation: "Where is used for places in relative clauses." },
+      { id: 45063, type: 'multiple-choice' as const, question: "Which relative pronoun is used for the cafe?", options: ["Who", "Which", "Where", "Whose"], correctIndex: 1, explanation: "Which is used for things in relative clauses." },
+      { id: 45064, type: 'multiple-choice' as const, question: "What does the librarian do?", options: ["Sells books", "Recommends books", "Teaches English", "Serves coffee"], correctIndex: 1, explanation: "The relative clause gives extra information about the librarian." },
+      { id: 45065, type: 'multiple-choice' as const, question: "What relative pronoun is used for the market?", options: ["Who", "Which", "Where", "Whose"], correctIndex: 2, explanation: "Where is used for places in relative clauses." },
     ]
   }
 }
@@ -1269,7 +1269,7 @@ export const phrasalVerbsB1: DailyLesson = {
       title: "Separable va Inseparable farqi",
       drills: [
         {
-          id: 28001,
+          id: 45066,
           type: "fill-blank",
           blanks: [
             "him up"
@@ -1279,7 +1279,7 @@ export const phrasalVerbsB1: DailyLesson = {
           instruction: "Pronoun:"
         },
         {
-          id: 28002,
+          id: 45067,
           type: "error-correction",
           correct: "Please pick me up at 5.",
           question: "Please pick up me at 5.",
@@ -1288,7 +1288,7 @@ export const phrasalVerbsB1: DailyLesson = {
           instruction: "Error correction:"
         },
         {
-          id: 28003,
+          id: 45068,
           type: "multiple-choice",
           correct: "I look after him",
           options: [
@@ -1321,7 +1321,7 @@ export const phrasalVerbsB1: DailyLesson = {
       title: "Three-word phrasal verbs",
       drills: [
         {
-          id: 28004,
+          id: 45069,
           type: "fill-blank",
           blanks: [
             "to"
@@ -1331,7 +1331,7 @@ export const phrasalVerbsB1: DailyLesson = {
           instruction: "Three-word:"
         },
         {
-          id: 28005,
+          id: 45070,
           type: "error-correction",
           correct: "I look forward to meeting you.",
           question: "I look forward to meet you.",
@@ -1340,7 +1340,7 @@ export const phrasalVerbsB1: DailyLesson = {
           instruction: "Error correction:"
         },
         {
-          id: 28006,
+          id: 45071,
           type: "multiple-choice",
           correct: "with",
           options: [
@@ -1373,7 +1373,7 @@ export const phrasalVerbsB1: DailyLesson = {
       title: "Phrasal verb vs Single word verb",
       drills: [
         {
-          id: 28007,
+          id: 45072,
           type: "fill-blank",
           blanks: [
             "investigate"
@@ -1383,7 +1383,7 @@ export const phrasalVerbsB1: DailyLesson = {
           instruction: "Formal:"
         },
         {
-          id: 28008,
+          id: 45073,
           type: "multiple-choice",
           correct: "looked into",
           options: [
@@ -1397,7 +1397,7 @@ export const phrasalVerbsB1: DailyLesson = {
           instruction: "Tanlang:"
         },
         {
-          id: 28009,
+          id: 45074,
           type: "error-correction",
           correct: "The CEO examined the report.",
           question: "The CEO looked into the report formally. (too informal)",
@@ -1422,7 +1422,7 @@ export const phrasalVerbsB1: DailyLesson = {
   ],
   exercises: [
     {
-      id: 2801,
+      id: 45075,
       type: "fill-blank",
       blanks: [
         "look"
@@ -1432,7 +1432,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Phrasal verb:"
     },
     {
-      id: 2802,
+      id: 45076,
       type: "fill-blank",
       blanks: [
         "the light"
@@ -1442,7 +1442,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Object:"
     },
     {
-      id: 2803,
+      id: 45077,
       type: "fill-blank",
       blanks: [
         "him"
@@ -1452,7 +1452,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Pronoun:"
     },
     {
-      id: 2804,
+      id: 45078,
       type: "fill-blank",
       blanks: [
         "after"
@@ -1462,7 +1462,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Inseparable:"
     },
     {
-      id: 2805,
+      id: 45079,
       type: "fill-blank",
       blanks: [
         "to"
@@ -1472,7 +1472,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Three-word:"
     },
     {
-      id: 2806,
+      id: 45080,
       type: "multiple-choice",
       correct: "into",
       options: [
@@ -1486,7 +1486,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2807,
+      id: 45081,
       type: "multiple-choice",
       correct: "up",
       options: [
@@ -1500,7 +1500,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2808,
+      id: 45082,
       type: "multiple-choice",
       correct: "on",
       options: [
@@ -1514,7 +1514,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2809,
+      id: 45083,
       type: "multiple-choice",
       correct: "up",
       options: [
@@ -1528,7 +1528,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2810,
+      id: 45084,
       type: "multiple-choice",
       correct: "after",
       options: [
@@ -1542,7 +1542,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-      id: 2811,
+      id: 45085,
       type: "error-correction",
       correct: "I look after my grandmother on weekends.",
       question: "I look my grandmother after on weekends.",
@@ -1551,7 +1551,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Error correction:"
     },
     {
-      id: 2812,
+      id: 45086,
       type: "error-correction",
       correct: "Please pick me up at 5.",
       question: "Please pick up me at 5.",
@@ -1560,7 +1560,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Error correction:"
     },
     {
-      id: 2813,
+      id: 45087,
       type: "error-correction",
       correct: "I look forward to meeting you.",
       question: "I look forward to meet you.",
@@ -1569,7 +1569,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Error correction:"
     },
     {
-      id: 2814,
+      id: 45088,
       type: "error-correction",
       correct: "Turn it off before leaving.",
       question: "Turn off it before leaving.",
@@ -1578,7 +1578,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Error correction:"
     },
     {
-      id: 2815,
+      id: 45089,
       hint: "Please...",
       type: "transformation",
       correct: "Please care for the children.",
@@ -1587,7 +1587,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "O'zgartiring:"
     },
     {
-      id: 2816,
+      id: 45090,
       hint: "He gave...",
       type: "transformation",
       correct: "He gave up smoking.",
@@ -1596,7 +1596,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "O'zgartiring:"
     },
     {
-      id: 2817,
+      id: 45091,
       hint: "I ran...",
       type: "transformation",
       correct: "I ran into her yesterday.",
@@ -1605,7 +1605,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "O'zgartiring:"
     },
     {
-      id: 2818,
+      id: 45092,
       type: "fill-blank",
       blanks: [
         "up"
@@ -1615,7 +1615,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Separable:"
     },
     {
-      id: 2819,
+      id: 45093,
       type: "fill-blank",
       blanks: [
         "over"
@@ -1625,7 +1625,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Phrasal:"
     },
     {
-      id: 2820,
+      id: 45094,
       type: "multiple-choice",
       correct: "I look forward to meeting you",
       options: [
@@ -1639,7 +1639,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Tanlang:"
     },
     {
-    id: 2821,
+    id: 45095,
     type: "fill-blank",
     blanks: [
         "into"
@@ -1649,7 +1649,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Inseparable:"
 },
     {
-    id: 2822,
+    id: 45096,
     type: "fill-blank",
     blanks: [
         "out"
@@ -1659,7 +1659,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Separable:"
 },
     {
-    id: 2823,
+    id: 45097,
     type: "fill-blank",
     blanks: [
         "through"
@@ -1669,7 +1669,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Phrasal:"
 },
     {
-    id: 2824,
+    id: 45098,
     type: "multiple-choice",
     correct: "off",
     options: [
@@ -1683,7 +1683,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Tanlang:"
 },
     {
-    id: 2825,
+    id: 45099,
     type: "multiple-choice",
     correct: "out",
     options: [
@@ -1697,7 +1697,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Tanlang:"
 },
     {
-    id: 2826,
+    id: 45100,
     type: "multiple-choice",
     correct: "bring up",
     options: [
@@ -1711,7 +1711,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Tanlang:"
 },
     {
-    id: 2827,
+    id: 45101,
     type: "error-correction",
     correct: "He takes after his father.",
     question: "He takes his father after.",
@@ -1720,7 +1720,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Error correction:"
 },
     {
-    id: 2828,
+    id: 45102,
     type: "error-correction",
     correct: "Turn off the lights before leaving.",
     question: "Turn the lights before leaving off.",
@@ -1729,7 +1729,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Error correction:"
 },
     {
-    id: 2829,
+    id: 45103,
     type: "transformation",
     hint: "I put on...",
     correct: "I put on my jacket because it was cold.",
@@ -1738,7 +1738,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "O'zgartiring:"
 },
     {
-    id: 2830,
+    id: 45104,
     type: "transformation",
     hint: "She came up with...",
     correct: "She came up with a brilliant idea.",
@@ -1747,7 +1747,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "O'zgartiring:"
 },
     {
-    id: 2831,
+    id: 45105,
     type: "fill-blank",
     blanks: [
         "along"
@@ -1757,7 +1757,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Phrasal:"
 },
     {
-    id: 2832,
+    id: 45106,
     type: "fill-blank",
     blanks: [
         "away"
@@ -1767,7 +1767,7 @@ export const phrasalVerbsB1: DailyLesson = {
     instruction: "Separable:"
 },
     {
-    id: 2833,
+    id: 45107,
     type: "fill-blank",
     blanks: [
         "down"
@@ -1846,7 +1846,7 @@ export const phrasalVerbsB1: DailyLesson = {
   ],
   tests: [
     {
-      id: 281,
+      id: 45108,
       type: "multiple-choice",
       correct: "qaramoq",
       options: [
@@ -1860,7 +1860,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 282,
+      id: 45109,
       type: "multiple-choice",
       correct: "tashlamoq",
       options: [
@@ -1874,7 +1874,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 283,
+      id: 45110,
       type: "multiple-choice",
       correct: "uchratib qolmoq",
       options: [
@@ -1888,7 +1888,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 284,
+      id: 45111,
       type: "multiple-choice",
       correct: "ha",
       options: [
@@ -1902,7 +1902,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 285,
+      id: 45112,
       type: "multiple-choice",
       correct: "inseparable",
       options: [
@@ -1916,7 +1916,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Asosiy"
     },
     {
-      id: 286,
+      id: 45113,
       type: "multiple-choice",
       correct: "into",
       options: [
@@ -1930,7 +1930,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 287,
+      id: 45114,
       type: "multiple-choice",
       correct: "up",
       options: [
@@ -1944,7 +1944,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 288,
+      id: 45115,
       type: "multiple-choice",
       correct: "on",
       options: [
@@ -1958,7 +1958,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 289,
+      id: 45116,
       type: "multiple-choice",
       correct: "with",
       options: [
@@ -1972,7 +1972,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 290,
+      id: 45117,
       type: "multiple-choice",
       correct: "after",
       options: [
@@ -1986,7 +1986,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Ortacha"
     },
     {
-      id: 291,
+      id: 45118,
       type: "multiple-choice",
       correct: "Yes, pronoun",
       options: [
@@ -2000,7 +2000,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Qiyin"
     },
     {
-      id: 292,
+      id: 45119,
       type: "multiple-choice",
       correct: "look after him",
       options: [
@@ -2014,7 +2014,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Qiyin"
     },
     {
-      id: 293,
+      id: 45120,
       type: "multiple-choice",
       correct: "look forward to",
       options: [
@@ -2028,7 +2028,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Qiyin"
     },
     {
-      id: 294,
+      id: 45121,
       type: "multiple-choice",
       correct: "Pick me up",
       options: [
@@ -2042,7 +2042,7 @@ export const phrasalVerbsB1: DailyLesson = {
       instruction: "Murakkab"
     },
     {
-      id: 295,
+      id: 45122,
       type: "multiple-choice",
       correct: "The CEO investigated the matter",
       options: [
@@ -2108,11 +2108,11 @@ export const phrasalVerbsB1: DailyLesson = {
   reading: {
     passage: "A Difficult Decision\n\nAkbar is thinking about buying a new car. \"If I save enough money, I will buy a car next year,\" he says. \"This is a zero conditional fact: if you have money, you can buy things.\"\n\nHis friend says: \"If you buy a car now, you will spend less on taxis. That is a first conditional - a real possibility.\"\n\nBut Akbar is not sure. \"If I bought a car, I would have to pay for petrol and maintenance. That is a second conditional - an unreal situation in the present. I don't have the car yet.\"\n\nHis wife adds: \"If we had bought a car last year, we would have saved money on transport. But we didn't, so that is a third conditional - an unreal situation in the past.\"\n\nAkbar thinks for a long time. \"If I were rich, I would buy two cars! But I am not rich. I think I will save money first and buy a car next year.\"",
     questions: [
-      { id: 1, type: 'multiple-choice' as const, question: "What type of conditional is: 'If you have money, you can buy things'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 0, explanation: "Zero conditional is used for general truths and facts." },
-      { id: 2, type: 'multiple-choice' as const, question: "What type of conditional is: 'If you buy a car now, you will spend less'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 1, explanation: "First conditional uses if + present simple, will + base verb for real possibilities." },
-      { id: 3, type: 'multiple-choice' as const, question: "What type of conditional is: 'If I bought a car, I would have to pay for petrol'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 2, explanation: "Second conditional uses if + past simple, would + base verb for unreal present situations." },
-      { id: 4, type: 'multiple-choice' as const, question: "What type of conditional is: 'If we had bought a car, we would have saved money'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 3, explanation: "Third conditional uses if + past perfect, would have + past participle for unreal past." },
-      { id: 5, type: 'multiple-choice' as const, question: "What verb form is used in the second conditional if-clause?", options: ["Present simple", "Past simple", "Past perfect", "Would + verb"], correctIndex: 1, explanation: "Second conditional uses past simple in the if-clause." },
+      { id: 45123, type: 'multiple-choice' as const, question: "What type of conditional is: 'If you have money, you can buy things'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 0, explanation: "Zero conditional is used for general truths and facts." },
+      { id: 45124, type: 'multiple-choice' as const, question: "What type of conditional is: 'If you buy a car now, you will spend less'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 1, explanation: "First conditional uses if + present simple, will + base verb for real possibilities." },
+      { id: 45125, type: 'multiple-choice' as const, question: "What type of conditional is: 'If I bought a car, I would have to pay for petrol'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 2, explanation: "Second conditional uses if + past simple, would + base verb for unreal present situations." },
+      { id: 45126, type: 'multiple-choice' as const, question: "What type of conditional is: 'If we had bought a car, we would have saved money'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 3, explanation: "Third conditional uses if + past perfect, would have + past participle for unreal past." },
+      { id: 45127, type: 'multiple-choice' as const, question: "What verb form is used in the second conditional if-clause?", options: ["Present simple", "Past simple", "Past perfect", "Would + verb"], correctIndex: 1, explanation: "Second conditional uses past simple in the if-clause." },
     ]
   }
 }

@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import AiInsightsWidget from '../components/dashboard/AiInsightsWidget'
 import TandemCard from '../components/dashboard/TandemCard'
+import ConfusablePairsCard from '../components/dashboard/ConfusablePairsCard'
 import { ReviewOverview } from './GrammarReview'
 import StreakWarning from '../components/notifications/StreakWarning'
 import ReviewReminder from '../components/notifications/ReviewReminder'
@@ -654,6 +655,7 @@ export default function Dashboard() {
               <div className="space-y-3 sm:space-y-4 mt-2 animate-slide-up">
                 <TandemCard />
                 <DailyIdiomCard />
+                <ConfusablePairsCard />
                 <StoryBeatCard />
                 <ProgressMap />
               </div>

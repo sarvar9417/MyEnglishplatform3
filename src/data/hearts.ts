@@ -46,6 +46,23 @@ export function buyHearts(amount: number, totalXp: number): { success: boolean; 
   return { success: true, heartsAdded: canAdd, remainingXp: totalXp - item.xpCost }
 }
 
+/** 'Ustida Ishlash' (Practice Mode) — darslarda hearts sarflanmaydi, faqat Challenge/Duel da */
+export const PRACTICE_MODE_KEY = 'practice_mode_enabled'
+
+export function isPracticeMode(): boolean {
+  if (typeof window === 'undefined') return true
+  return localStorage.getItem(PRACTICE_MODE_KEY) !== 'false'
+}
+
+export function setPracticeMode(enabled: boolean): void {
+  if (typeof window === 'undefined') return
+  if (enabled) {
+    localStorage.removeItem(PRACTICE_MODE_KEY)
+  } else {
+    localStorage.setItem(PRACTICE_MODE_KEY, 'false')
+  }
+}
+
 export function getRegenTimeRemaining(hearts: number, lastLostAt: string): number {
   if (hearts >= MAX_HEARTS || !lastLostAt) return 0
   const elapsed = Date.now() - new Date(lastLostAt).getTime()

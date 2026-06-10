@@ -1439,7 +1439,7 @@ export const cleftSentencesB2: DailyLesson = {
         "Gapni qisqartirish",
         "Biror bo'lakni ta'kidlash",
         "Savol berish",
-        "Inkor qilish"
+        "Kengaytirish qilish"
       ],
       "question": "Cleft sentence nima uchun ishlatiladi?",
       "explanation": "Cleft sentences gapning biror qismini ta'kidlash uchun ishlatiladi.",

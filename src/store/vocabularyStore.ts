@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import type { DailyWordRow, Rating } from '../services/vocabularyService'
-import { computeNextReview, upsertProgress } from '../services/vocabularyService'
+import { computeNextReview, upsertProgress, delayConfusablePartners } from '../services/vocabularyService'
 import { monitoring } from '../lib/monitoring'
 import { getTodayTashkent } from '../utils/tashkentDate'
 import { BATCH_SIZE } from '../utils/vocabConfig'
@@ -154,6 +154,11 @@ export const useVocabStore = create<VocabState>()(
                 word.wrong_count + (isCorrect ? 0 : 1),
                 srs.is_learned
               ).catch((e) => monitoring.captureMessage('rateWord sync error: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
+
+              // Confusable partnerlarni kechiktirish
+              delayConfusablePartners(session.user.id, [word.english]).catch((e) =>
+                monitoring.captureMessage('rateWord delayConfusable error: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+              )
             }
           }).catch((e) => monitoring.captureMessage('rateWord getSession error: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
         }).catch((e) => monitoring.captureMessage('rateWord supabase import error: ' + (e instanceof Error ? e.message : String(e)), 'warn'))

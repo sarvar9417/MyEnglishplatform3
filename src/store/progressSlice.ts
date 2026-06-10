@@ -4,7 +4,7 @@ import { monitoring } from '../lib/monitoring'
 import type { DailyChecklist, MockResult } from './types'
 import type { AppState } from './appState'
 import { ACHIEVEMENTS } from '../data/achievements'
-import { MAX_HEARTS, regenerateHearts } from '../data/hearts'
+import { MAX_HEARTS, regenerateHearts, isPracticeMode } from '../data/hearts'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Streak Bonus Milestones
@@ -236,6 +236,10 @@ export const createProgressSlice: StateCreator<AppState, [], [], ProgressSlice> 
   },
 
   loseHeart: () => {
+    // Practice Mode ("Ustida Ishlash") — darslarda hearts sarflanmaydi, faqat Challenge/Duel da
+    if (isPracticeMode()) {
+      return get().hearts  // hearts sarflanmaydi
+    }
     const cur = get().hearts
     if (cur <= 0) return 0
     const next = cur - 1

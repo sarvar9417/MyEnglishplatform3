@@ -43,10 +43,6 @@ export default function SpecialCaseCard({ sc, addXP, lessonId }: { sc: SpecialCa
         <p className="text-xs font-semibold text-orange-700 uppercase tracking-wider mb-1.5">Qoida</p>
         <p className="text-sm text-gray-800 dark:text-gray-200 font-medium leading-relaxed">{sc.rule}</p>
         <div className="mt-2 flex items-start gap-2">
-          <span className="text-xs bg-orange-200 text-orange-800 font-bold px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5">🧠 Eslab qol</span>
-          <p className="text-xs text-orange-700 italic">{sc.mnemonic}</p>
-        </div>
-        <div className="mt-2 flex items-start gap-2">
           <span className="text-xs bg-red-100 text-red-700 font-bold px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5">⚠️ Xato</span>
           <p className="text-xs text-red-600">{sc.commonMistakes}</p>
         </div>

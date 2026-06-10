@@ -4,6 +4,7 @@ import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
 import { computeNextReviewFSRS, createDefaultFSRSState, type FSRSState } from '../lib/srs'
 import { mergeVocabProgress } from './conflictResolution'
+import { getConfusablePartnerWords } from '../data/confusable-pairs'
 
 export type WordLevel = 'A1' | 'A2' | 'B1' | 'B2'
 
@@ -478,5 +479,78 @@ export async function pushWordsToSRS_FSRS(
     }, { onConflict: 'user_id,word_id' })
   }
 
+  // Confusable partnerlarni kechiktirish
+  const reviewedEnglish = words.map(w => w.english)
+  await delayConfusablePartners(userId, reviewedEnglish)
+
   monitoring.captureMessage(`pushWordsToSRS_FSRS: ${words.length} words processed for user ${userId}`, 'info')
+}
+
+// ─── Confusable Pairs SRS kechiktirish ─────────────────────────────────────
+
+const CONFUSABLE_DELAY_DAYS = 3
+
+/**
+ * Confusable pair'dagi sherik so'zlarning next_review ni kechiktiradi.
+ * Bu bilan o'quvchi bir vaqtning o'zida chalkash so'zlarni o'rganmaydi.
+ */
+export async function delayConfusablePartners(
+  userId: string,
+  reviewedWords: string[]
+): Promise<void> {
+  // Barcha confusable partnerlarni yig'ish
+  const allPartners = new Set<string>()
+  for (const word of reviewedWords) {
+    const partners = getConfusablePartnerWords(word)
+    for (const p of partners) {
+      if (!reviewedWords.some(rw => rw.toLowerCase() === p.toLowerCase())) {
+        allPartners.add(p)
+      }
+    }
+  }
+
+  if (allPartners.size === 0) return
+
+  // Har bir partner so'zning word_id sini topish
+  for (const partnerEnglish of allPartners) {
+    const { data: wordRow } = await supabase
+      .from('words')
+      .select('id')
+      .eq('english', partnerEnglish)
+      .limit(1)
+      .maybeSingle()
+
+    if (!wordRow) continue
+
+    const wordId = wordRow.id
+
+    // Foydalanuvchining ushbu so'zdagi progressini olish
+    const { data: existing } = await supabase
+      .from('vocabulary_progress')
+      .select('next_review')
+      .eq('user_id', userId)
+      .eq('word_id', wordId)
+      .limit(1)
+      .maybeSingle()
+
+    if (!existing) continue
+
+    // next_review ni CONFUSABLE_DELAY_DAYS kunga kechiktirish
+    const currentDue = new Date(existing.next_review + 'T00:00:00')
+    const now = new Date()
+    const baseDate = currentDue > now ? currentDue : now
+    baseDate.setDate(baseDate.getDate() + CONFUSABLE_DELAY_DAYS)
+    const newDue = baseDate.toISOString().split('T')[0]
+
+    await supabase
+      .from('vocabulary_progress')
+      .update({ next_review: newDue })
+      .eq('user_id', userId)
+      .eq('word_id', wordId)
+
+    monitoring.captureMessage(
+      `delayConfusablePartners: "${partnerEnglish}" delayed to ${newDue} (user ${userId.slice(0, 8)}...)`,
+      'info'
+    )
+  }
 }

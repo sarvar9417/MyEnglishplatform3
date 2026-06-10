@@ -9,7 +9,7 @@ import {
   ClipboardList, MessageSquare, BarChart3,
   ChevronLeft, ChevronRight, ChevronDown, Zap, Flame,
   Trophy, Sun, Moon, Monitor, X, User, Users,
-  BookText, MessageCircle, Mic,
+  BookText, MessageCircle, Mic, Brain,
 } from 'lucide-react'
 import { cycleTheme, getThemePreference, subscribeToTheme } from '../../utils/theme'
 
@@ -34,6 +34,7 @@ const RESOURCES_SUBITEMS: NavItem[] = [
   { to: '/skills',        icon: <BarChart3 size={20} />,       label: "Ko'nikmalar" },
   { to: '/phrasal-verbs', icon: <BookText size={20} />,        label: 'Phrasal Verbs' },
   { to: '/idioms',        icon: <MessageCircle size={20} />,   label: 'Idioms' },
+  { to: '/confusable-pairs', icon: <Brain size={20} />,       label: 'Confusable Pairs' },
 ]
 
 const LEVEL_COLORS: Record<string, string> = {
@@ -56,6 +57,7 @@ const ROUTE_T_KEY: Record<string, keyof import('../../i18n').TranslationStrings>
   '/skills': 'nav.skills',
   '/phrasal-verbs': 'nav.phrasalVerbs',
   '/idioms': 'nav.idioms',
+  '/confusable-pairs': 'nav.confusablePairs',
 }
 
 export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose?: () => void }) {

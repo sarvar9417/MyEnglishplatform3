@@ -14,6 +14,7 @@ import FormulaRecallCard from './FormulaRecallCard'
 import RuleCard from './RuleCard'
 import VocabLearner from './VocabLearner'
 import SpecialCaseCard from './SpecialCaseCard'
+import MnemonicCard from './MnemonicCard'
 import ReadingSection from './ReadingSection'
 import WritingSection from './WritingSection'
 import ListeningSection from './ListeningSection'
@@ -24,6 +25,8 @@ import LessonDemo from './LessonDemo'
 import { DEMO_LESSONS } from '../../data/lessonDemoContent'
 
 import { AudioButton } from '../ui/AudioButton'
+import { findConfusablePair } from '../../data/confusable-pairs'
+import { useNavigate } from 'react-router-dom'
 import DialogueCard from './DialogueCard'
 import CulturalNoteCard from './CulturalNoteCard'
 import LessonChallengeButton from './LessonChallengeButton'
@@ -50,7 +53,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
       monitoring.captureMessage('Failed to fetch lesson skills from DB', 'warn')
     })
   }, [])
-  const { addXP, addLearnedWords, updateSkillProgress, setLessonProgress, saveLessonSession, clearLessonSession, lessonSessions } = useStore()
+  const { addXP, addLearnedWords, updateSkillProgress, setLessonProgress, saveLessonSession, clearLessonSession, lessonSessions, loseHeart } = useStore()
   const savedSession = lessonSessions[lesson.id]
 
   type Tab = 'theory' | 'drill' | 'reading' | 'speaking' | 'writing' | 'listening'
@@ -95,6 +98,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
   const lessonProgressRef = useRef<{ section: number; tab: Tab }>({ section: 0, tab: 'theory' })
 
   // Namunaviy (yangi ko'rinish) dars — agar shu dars uchun demo mavjud bo'lsa
+  const navigate = useNavigate()
   const demoLesson = DEMO_LESSONS[lesson.id]
   const [demoMode, setDemoMode] = useState(false)
 
@@ -433,6 +437,8 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
     try {
     const newAiResults: Record<number, boolean> = {}
     if (wrongItems.length > 0) {
+      // Xato qilingan mashqlar uchun hearts sarflanadi (practice mode bloklaydi)
+      loseHeart()
       try {
         const aiResultsList = await checkDailyExerciseAnswers(wrongItems)
         for (let i = 0; i < wrongItems.length; i++) {
@@ -806,6 +812,54 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
             </div>
           )}
 
+          {/* Confusable ogohlantirish banneri */}
+          {(() => {
+            const seen = new Set<string>()
+            const confusableVocab: { pairId: string; uzTitle: string; words: string[] }[] = []
+            for (const v of lesson.vocabulary) {
+              const pair = findConfusablePair(v.en)
+              if (pair && !seen.has(pair.id)) {
+                seen.add(pair.id)
+                confusableVocab.push({ pairId: pair.id, uzTitle: pair.uzTitle, words: pair.words })
+              }
+            }
+            if (confusableVocab.length === 0) return null
+            return (
+              <div className="rounded-xl border border-indigo-200 dark:border-indigo-800 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-800 flex items-center justify-center text-lg shrink-0">
+                    <span role="img" aria-label="warning">⚠️</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold text-indigo-700 dark:text-indigo-300 mb-1">
+                      Diqqat! Bu darsda chalkash so'zlar bor
+                    </p>
+                    <p className="text-xs text-indigo-600 dark:text-indigo-400 mb-2">
+                      Quyidagi so'zlar o'zbek talabalar uchun eng ko'p chalkashlik tug'diradigan so'zlar qatoriga kiradi:
+                    </p>
+                    <div className="space-y-1.5 mb-3">
+                      {confusableVocab.map((c) => (
+                        <div key={c.pairId} className="flex items-center gap-2 text-xs">
+                          <span className="font-semibold text-indigo-700 dark:text-indigo-300">
+                            {c.words.join(' / ')}
+                          </span>
+                          <span className="text-indigo-400 dark:text-indigo-500">—</span>
+                          <span className="text-gray-600 dark:text-gray-400">{c.uzTitle}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => navigate('/confusable-pairs')}
+                      className="text-xs font-semibold text-white bg-indigo-500 hover:bg-indigo-600 px-3 py-1.5 rounded-lg transition-colors active:scale-[0.97]"
+                    >
+                      Batafsil →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )
+          })()}
+
           {/* Vocabulary */}
           <div className="pt-2 border-t border-gray-100 dark:border-gray-700">
             <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">📝 Lug'at — {lesson.vocabulary.length} ta so'z</p>
@@ -847,7 +901,18 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
               <p className="text-xs font-bold text-primary-600 uppercase tracking-wider mb-3 flex items-center gap-1">
                 <Star size={14} /> Maxsus holatlar — yodda saqlash uchun alohida e'tibor
               </p>
-              {lesson.specialCases.map((sc) => <SpecialCaseCard key={sc.id} sc={sc} addXP={addXP} lessonId={lesson.id} />)}
+              {lesson.specialCases.map((sc) => (
+                <div key={sc.id} className="space-y-3">
+                  {/* Mnemonic card — first, if exists */}
+                  {sc.mnemonic && (
+                    <MnemonicCard
+                      rule={sc.title}
+                      mnemonic={sc.mnemonic}
+                    />
+                  )}
+                  <SpecialCaseCard sc={sc} addXP={addXP} lessonId={lesson.id} />
+                </div>
+              ))}
             </div>
           )}
 
@@ -1272,7 +1337,53 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
 
       {/* ── SPEAKING TAB (AI mavzuga oid generatsiya) ── */}
       {tab === 'speaking' && (
-        <div className="pt-2">
+        <div className="pt-2 space-y-4">
+          {(() => {
+            const seen = new Set<string>()
+            const confusableVocab: { pairId: string; uzTitle: string; words: string[] }[] = []
+            for (const v of lesson.vocabulary) {
+              const pair = findConfusablePair(v.en)
+              if (pair && !seen.has(pair.id)) {
+                seen.add(pair.id)
+                confusableVocab.push({ pairId: pair.id, uzTitle: pair.uzTitle, words: pair.words })
+              }
+            }
+            if (confusableVocab.length === 0) return null
+            return (
+              <div className="rounded-xl border border-indigo-200 dark:border-indigo-800 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-800 flex items-center justify-center text-lg shrink-0">
+                    <span role="img" aria-label="warning">⚠️</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold text-indigo-700 dark:text-indigo-300 mb-1">
+                      Diqqat! Bu darsda chalkash so'zlar bor
+                    </p>
+                    <p className="text-xs text-indigo-600 dark:text-indigo-400 mb-2">
+                      Quyidagi so'zlarni ishlatishda e'tiborli bo'ling. Ular o'zbek talabalar uchun eng ko'p chalkashlik tug'diradi:
+                    </p>
+                    <div className="space-y-1.5 mb-3">
+                      {confusableVocab.map((c) => (
+                        <div key={c.pairId} className="flex items-center gap-2 text-xs">
+                          <span className="font-semibold text-indigo-700 dark:text-indigo-300">
+                            {c.words.join(' / ')}
+                          </span>
+                          <span className="text-indigo-400 dark:text-indigo-500">—</span>
+                          <span className="text-gray-600 dark:text-gray-400">{c.uzTitle}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => navigate('/confusable-pairs')}
+                      className="text-xs font-semibold text-white bg-indigo-500 hover:bg-indigo-600 px-3 py-1.5 rounded-lg transition-colors active:scale-[0.97]"
+                    >
+                      Batafsil →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )
+          })()}
           <SpeakingSection
             topic={lesson.title}
             level={lesson.level}
@@ -1287,7 +1398,53 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
 
       {/* ── WRITING TAB ── */}
       {tab === 'writing' && (
-        <div className="pt-2">
+        <div className="pt-2 space-y-4">
+          {(() => {
+            const seen = new Set<string>()
+            const confusableVocab: { pairId: string; uzTitle: string; words: string[] }[] = []
+            for (const v of lesson.vocabulary) {
+              const pair = findConfusablePair(v.en)
+              if (pair && !seen.has(pair.id)) {
+                seen.add(pair.id)
+                confusableVocab.push({ pairId: pair.id, uzTitle: pair.uzTitle, words: pair.words })
+              }
+            }
+            if (confusableVocab.length === 0) return null
+            return (
+              <div className="rounded-xl border border-indigo-200 dark:border-indigo-800 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-800 flex items-center justify-center text-lg shrink-0">
+                    <span role="img" aria-label="warning">⚠️</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold text-indigo-700 dark:text-indigo-300 mb-1">
+                      Diqqat! Bu darsda chalkash so'zlar bor
+                    </p>
+                    <p className="text-xs text-indigo-600 dark:text-indigo-400 mb-2">
+                      Quyidagi so'zlarni ishlatishda e'tiborli bo'ling. Ular o'zbek talabalar uchun eng ko'p chalkashlik tug'diradi:
+                    </p>
+                    <div className="space-y-1.5 mb-3">
+                      {confusableVocab.map((c) => (
+                        <div key={c.pairId} className="flex items-center gap-2 text-xs">
+                          <span className="font-semibold text-indigo-700 dark:text-indigo-300">
+                            {c.words.join(' / ')}
+                          </span>
+                          <span className="text-indigo-400 dark:text-indigo-500">—</span>
+                          <span className="text-gray-600 dark:text-gray-400">{c.uzTitle}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => navigate('/confusable-pairs')}
+                      className="text-xs font-semibold text-white bg-indigo-500 hover:bg-indigo-600 px-3 py-1.5 rounded-lg transition-colors active:scale-[0.97]"
+                    >
+                      Batafsil →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )
+          })()}
           <WritingSection
             section={lesson.writing}
             level={lesson.level}
