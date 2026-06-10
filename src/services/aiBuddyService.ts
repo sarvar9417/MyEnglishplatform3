@@ -46,7 +46,7 @@ ${ctx.grammarWeakTopics.map(t => `  • ${t.topicTitle} (avg score: ${t.avgScore
 ABOUT THE STUDENT:
 • Name: ${ctx.userName}
 • Current Level: ${ctx.currentLevel}
-• Program Day: ${ctx.currentDay}/90
+• Program Day: ${ctx.currentDay}/126
 • Streak: ${ctx.streak} days 🔥
 • Total XP: ${ctx.totalXP}
 • Today's XP: ${ctx.todayXP}

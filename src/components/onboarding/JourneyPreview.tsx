@@ -36,7 +36,7 @@ export function JourneyPreview({ currentLevel, startDay, onNext }: JourneyPrevie
           Sizning yo'lingiz
         </h2>
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          {currentLevel} → B2 ga 99 kunlik sayohat
+          {currentLevel} → B2 ga 126 kunlik sayohat
         </p>
       </div>
 
@@ -135,8 +135,8 @@ export function JourneyPreview({ currentLevel, startDay, onNext }: JourneyPrevie
         {/* Stats cards */}
         <div className="grid grid-cols-3 gap-2.5 mt-2">
           {[
-            { label: 'Davomiylik', value: '99 kun', icon: '📅', color: 'from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20' },
-            { label: 'Darslar', value: '99 ta', icon: '📚', color: 'from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20' },
+            { label: 'Davomiylik', value: '126 kun', icon: '📅', color: 'from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20' },
+            { label: 'Darslar', value: '126 ta', icon: '📚', color: 'from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20' },
             { label: 'Maqsad', value: 'B2 🇬🇧', icon: '🎯', color: 'from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20' },
           ].map(stat => (
             <div key={stat.label} className={`card text-center py-3 bg-gradient-to-br ${stat.color}`}>
@@ -154,7 +154,7 @@ export function JourneyPreview({ currentLevel, startDay, onNext }: JourneyPrevie
             { day: 28, text: 'B1 darajasiga ko\'tarilasiz — mustaqil so\'zlashuvchi' },
             { day: 56, text: 'B1+ darajasiga yetasiz — professional til' },
             { day: 79, text: 'B2 darajasiga o\'tasiz — yuqori daraja' },
-            { day: 99, text: '🎉 B2 ni yakunlaysiz — 99 kunlik sayohat muvaffaqiyatli!' },
+            { day: 126, text: '🎉 B2 ni yakunlaysiz — 126 kunlik sayohat muvaffaqiyatli!' },
           ].map((milestone, i) => {
             const reached = milestone.day <= startDay
             return (

@@ -39,9 +39,9 @@ function lessonForLevel(level: string): DemoLesson {
 // Get placement level-based greeting
 function levelGreeting(level: string): { emoji: string; headline: string; sub: string } {
   const greetings: Record<string, { emoji: string; headline: string; sub: string }> = {
-    'A1':  { emoji: '🌱', headline: 'Ajoyib boshlanish!', sub: 'Asoslardan boshlaymiz — 99 kunlik B2 sari intensiv yo\'l' },
-    'A2':  { emoji: '🌿', headline: 'Yaxshi asos bor ekan!', sub: 'A2 dan B2 sari — 90 kunlik intensiv sayohat' },
-    'A2+': { emoji: '🌿', headline: 'Yaxshi asos bor ekan!', sub: 'A2+ dan B2 sari — 90 kunlik intensiv sayohat' },
+    'A1':  { emoji: '🌱', headline: 'Ajoyib boshlanish!', sub: 'Asoslardan boshlaymiz — 126 kunlik B2 sari intensiv yo\'l' },
+    'A2':  { emoji: '🌿', headline: 'Yaxshi asos bor ekan!', sub: 'A2 dan B2 sari — 126 kunlik intensiv sayohat' },
+    'A2+': { emoji: '🌿', headline: 'Yaxshi asos bor ekan!', sub: 'A2+ dan B2 sari — 126 kunlik intensiv sayohat' },
     'B1':  { emoji: '🌳', headline: 'Ishonchli bilim!', sub: 'B1 dan B2 ga ko\'tarilish — 9 hafta qoldi' },
     'B1+': { emoji: '🌲', headline: 'Kuchli tayyorgarlik!', sub: 'B1+ dan B2 ga — 6 hafta qoldi, deyarli yetdingiz' },
     'B2':  { emoji: '🚀', headline: 'Ajoyib natija!', sub: 'B2 darajasidasiz — marraga 3 hafta qoldi' },
@@ -161,7 +161,7 @@ export function OnboardingFlow() {
               {[
                 { emoji: '📅', value: `${placementResult.startDay}-kun`, label: 'Boshlanish' },
                 { emoji: '🎯', value: 'B2', label: 'Maqsad' },
-                { emoji: '⏱️', value: `${99 - placementResult.startDay + 1} kun`, label: 'Qolgan' },
+                { emoji: '⏱️', value: `${126 - placementResult.startDay + 1} kun`, label: 'Qolgan' },
               ].map(stat => (
                 <div key={stat.label} className="card text-center py-3">
                   <p className="text-lg">{stat.emoji}</p>
@@ -205,7 +205,7 @@ export function OnboardingFlow() {
                   {[
                     'Haftalik testlar va AI feedback',
                     'Spaced Repetition lug\'at tizimi',
-                    '90 kunlik yo\'l xaritasi',
+                    '126 kunlik yo\'l xaritasi',
                     'Voice recognition — talaffuz mashqlari',
                     'Real-time gamification va leaderboard',
                   ].map((item, i) => (
@@ -303,14 +303,14 @@ export function OnboardingFlow() {
               Tayyor, {name || 'do\'st'}! 💪
             </h2>
             <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
-              Bugundan boshlaymiz. 99 kun ichida B2 sari katta yo'l bosasiz!
+              Bugundan boshlaymiz. 126 kun ichida B2 sari katta yo'l bosasiz!
             </p>
 
             <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
               {[
                 { emoji: '📚', label: 'Kunlik dars', desc: '14 daqiqa' },
                 { emoji: '🎯', label: 'Maqsad', desc: 'B2 🇬🇧' },
-                { emoji: '⏱️', label: 'Vaqt', desc: `${99 - placementResult.startDay + 1} kun` },
+                { emoji: '⏱️', label: 'Vaqt', desc: `${126 - placementResult.startDay + 1} kun` },
                 { emoji: '🌟', label: 'XP ga tayyor', desc: `${Math.min(5000, placementResult.startDay * 50)} XP'ga yaqin'` },
               ].map(item => (
                 <div key={item.label} className="card text-center py-3">

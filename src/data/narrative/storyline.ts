@@ -12,7 +12,7 @@ export const STORY_BEATS: StoryBeat[] = [
   {
     dayRange: [1, 4], act: 'prologue',
     title: 'Boshlanish',
-    context: 'Bugun safaringiz boshlanadi. 99 kun ichida A1 dan B2 sari katta yo\'l bosasiz!',
+    context: 'Bugun safaringiz boshlanadi. 126 kun ichida A1 dan B2 sari katta yo\'l bosasiz!',
     lessonHint: 'Ingliz tilini asoslaridan o\'rganishni boshladingiz.',
     location: '1-bosqich', emoji: '✉️',
   },
@@ -38,7 +38,7 @@ export const STORY_BEATS: StoryBeat[] = [
     location: 'B1+ daraja', emoji: '🏙️',
   },
   {
-    dayRange: [79, 99], act: 'act4',
+    dayRange: [79, 126], act: 'act4',
     title: 'B2 — Yuqori Daraja',
     context: 'Endi murakkab muhokamalar, akademik yozish va IELTS darajasidasiz!',
     lessonHint: 'Siz B2 darajasiga yetib bormoqdasiz — deyarli maqsadingizdasiz!',

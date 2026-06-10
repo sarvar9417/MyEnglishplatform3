@@ -14,7 +14,7 @@
 
   "sidebar.levelRange": "A2+ → B2",
   "sidebar.userFallback": "Пользователь",
-  "sidebar.dayCount": "День {day}/90",
+  "sidebar.dayCount": "День {day}/126",
   "sidebar.daysLeft": "осталось {days} дн.",
   "sidebar.xpProgress": "{current} / {total} XP",
   "sidebar.themeLight": "Ночной режим",
@@ -73,7 +73,7 @@
   "seo.conversation": "Беседа",
   "seo.pronunciation": "Произношение",
   "seo.review": "Обзор грамматики",
-  "seo.desc": "Интенсивный 90-дневный курс английского для подготовки к уровню B2 (с A2+)",
+  "seo.desc": "Интенсивный 126-дневный курс английского для подготовки к уровню B2 (с A2+)",
 
   "grammar.presentSimple": "Present Simple — Настоящее простое время",
   "grammar.presentContinuous": "Present Continuous — Настоящее длительное время",

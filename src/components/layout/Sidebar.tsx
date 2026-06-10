@@ -240,7 +240,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
           <div className="progress-bar mt-1.5">
             <div
               className="progress-fill bg-primary-500"
-              style={{ width: `${(currentDay / 90) * 100}%` }}
+              style={{ width: `${(currentDay / 126) * 100}%` }}
             />
           </div>
         </div>
@@ -436,7 +436,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
           <div className="progress-bar mt-1.5">
             <div
               className="progress-fill bg-primary-500"
-              style={{ width: `${(currentDay / 90) * 100}%` }}
+              style={{ width: `${(currentDay / 126) * 100}%` }}
             />
           </div>
 

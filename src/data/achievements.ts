@@ -111,10 +111,10 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
   {
     id: 'day-99',
-    title: '90-kun Bitiruvchi',
-    description: '99 kunda kursni tugating',
+    title: '126-kun Bitiruvchi',
+    description: '126 kunda kursni tugating',
     icon: '🎓', category: 'day',
-    requirement: { type: 'day', value: 99 },
+    requirement: { type: 'day', value: 126 },
     color: 'from-yellow-400 to-yellow-600', order: 52,
   },
 

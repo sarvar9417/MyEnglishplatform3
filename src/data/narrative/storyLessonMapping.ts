@@ -1,6 +1,6 @@
 // ─── Lesson-to-Story Mapping ──────────────────────────────────────────────
 // Har bir dars o'rganish yo'lining qaysi bosqichiga to'g'ri keladi.
-// storyDay: 1–99 — 99 kunlik safaringizning kuni.
+// storyDay: 1–126 — 126 kunlik safaringizning kuni.
 
 import { STORY_BEATS } from './storyline'
 
@@ -47,7 +47,7 @@ export const STORY_LESSON_LINKS: StoryLessonLink[] = [
   { lessonId: 'modal-perfects-b1plus', storyDay: 75, storyAct: 'act3',     scene: '"I should have..." — o\'tmish tahlilini o\'rganasiz' },
   { lessonId: 'first-conditional-full', storyDay: 78, storyAct: 'act3',    scene: 'Murakkab shart gaplari bilan prezentatsiya tayyorlaysiz' },
 
-  // ─── Act 4 (kun 79–99): B2 — Professional daraja ──────────────────
+  // ─── Act 4 (kun 79–126): B2 — Professional daraja ──────────────────
   { lessonId: 'advanced-conditionals-b2', storyDay: 80, storyAct: 'act4',  scene: 'Murakkab fikrlarni ifodalaysiz — mixed conditionals' },
   { lessonId: 'advanced-modals-b2',    storyDay: 83, storyAct: 'act4',     scene: 'Professional muzokara tilini o\'rganasiz' },
   { lessonId: 'complex-prepositions-b2', storyDay: 86, storyAct: 'act4',   scene: 'Akademik yozishda murakkab predloglarni ishlatasiz' },

@@ -28,7 +28,7 @@ export interface TranslationStrings {
   /* ── Sidebar misc ── */
   'sidebar.levelRange': string
   'sidebar.userFallback': string
-  'sidebar.dayCount': string        // "Kun {day}/90"
+  'sidebar.dayCount': string        // "Kun {day}/126"
   'sidebar.daysLeft': string        // "{days} kun qoldi"
   'sidebar.xpProgress': string      // "{current} / {total} XP"
   'sidebar.themeLight': string

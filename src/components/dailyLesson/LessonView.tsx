@@ -643,7 +643,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
           {/* O'rganish yo'li konteksti — dars boshida */}
           {storyBeat && (() => {
             const act = ACT_DISPLAY[storyBeat.act] ?? ACT_DISPLAY.prologue
-            const progress = Math.min(100, Math.round(((lesson.day ?? 1) / 99) * 100))
+            const progress = Math.min(100, Math.round(((lesson.day ?? 1) / 126) * 100))
             const link = getStoryForLesson(lesson.id)
             return (
               <div className={`rounded-xl border ${act.borderClass} overflow-hidden`}>
@@ -671,7 +671,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
                         </span>
                         <span className="text-[11px] font-medium text-gray-300 dark:text-gray-600">·</span>
                         <span className="text-[11px] font-medium text-gray-400 dark:text-gray-500">
-                          Kun {lesson.day}/99
+                          Kun {lesson.day}/126
                         </span>
                       </div>
 

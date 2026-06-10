@@ -530,12 +530,12 @@ export default function ProgressMap() {
           </span>
           <div className="flex items-center gap-1">
             <span className="text-[10px] text-gray-400">
-              Kun {currentDay}/90
+              Kun {currentDay}/126
             </span>
             <div className="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-primary-500 to-b1-500 transition-all duration-500"
-                style={{ width: `${(currentDay / 90) * 100}%` }}
+                style={{ width: `${(currentDay / 126) * 100}%` }}
               />
             </div>
           </div>

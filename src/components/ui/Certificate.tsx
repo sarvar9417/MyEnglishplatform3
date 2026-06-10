@@ -30,7 +30,7 @@ export function Certificate({ userName, completionDate, totalXP, onClose }: Cert
   }
 
   async function handleShare() {
-    const text = `Men EnglishPath platformasida 99 kunlik B2 intensiv kursini yakunladim! 🎉 #EnglishPath #B2`
+    const text = `Men EnglishPath platformasida 126 kunlik B2 intensiv kursini yakunladim! 🎉 #EnglishPath #B2`
     if (navigator.share) {
       await navigator.share({ title: 'EnglishPath B2 Certificate', text })
     } else {
@@ -74,7 +74,7 @@ export function Certificate({ userName, completionDate, totalXP, onClose }: Cert
 
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4 mb-6">
               <p className="text-base font-semibold text-gray-700 leading-relaxed">
-                99 kunlik intensiv o'quv jarayonini muvaffaqiyatli yakunlab,
+                126 kunlik intensiv o'quv jarayonini muvaffaqiyatli yakunlab,
                 <span className="font-black text-blue-600"> B2 darajasi</span>ga
                 erishganligi tasdiqlandi.
               </p>
@@ -83,7 +83,7 @@ export function Certificate({ userName, completionDate, totalXP, onClose }: Cert
             <div className="grid grid-cols-3 gap-4 mb-6">
               {[
                 { label: 'Daraja', value: 'B2' },
-                { label: 'Davomiyligi', value: '99 kun' },
+                { label: 'Davomiyligi', value: '126 kun' },
                 { label: 'Jami XP', value: totalXP.toLocaleString() },
               ].map(item => (
                 <div key={item.label} className="bg-gray-50 rounded-xl p-3">

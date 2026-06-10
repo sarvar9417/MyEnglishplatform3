@@ -972,7 +972,7 @@ export default function Profile() {
           {[
             { icon: Flame, value: `${streak}`, label: 'Streak', color: 'text-orange-500', bg: 'bg-orange-50' },
             { icon: Trophy, value: totalXP.toLocaleString(), label: 'Jami XP', color: 'text-b2-600', bg: 'bg-b2-50' },
-            { icon: Target, value: `Kun ${currentDay}/90`, label: 'Kun', color: 'text-primary-600', bg: 'bg-primary-50' },
+            { icon: Target, value: `Kun ${currentDay}/126`, label: 'Kun', color: 'text-primary-600', bg: 'bg-primary-50' },
             { icon: Calendar, value: `${daysLeft}`, label: 'Kun qoldi', color: 'text-b1-600', bg: 'bg-b1-50' },
           ].map((stat) => (
             <div key={stat.label} className="card !p-3 sm:!p-4 flex items-center gap-3">
@@ -1124,13 +1124,13 @@ export default function Profile() {
                 <span className="font-semibold text-sm text-gray-900">Maqsad</span>
               </div>
               <span className="text-xs font-bold text-primary-600">
-                {currentDay}/90 kun
+                {currentDay}/126 kun
               </span>
             </div>
             <div className="progress-bar">
               <div
                 className="progress-fill bg-gradient-to-r from-primary-500 to-b1-500"
-                style={{ width: `${(currentDay / 90) * 100}%` }}
+                style={{ width: `${(currentDay / 126) * 100}%` }}
               />
             </div>
             <div className="flex justify-between text-[11px] text-gray-500 mt-1.5">
@@ -1145,8 +1145,8 @@ export default function Profile() {
             </div>
           )}
 
-          {/* 99-kun sertifikat tugmasi */}
-          {currentDay >= 99 && (
+          {/* 126-kun sertifikat tugmasi */}
+          {currentDay >= 126 && (
             <button
               type="button"
               onClick={() => setShowCert(true)}
@@ -1296,7 +1296,7 @@ export default function Profile() {
   }
 
   function PredictionCard() {
-    const totalDays = 99
+    const totalDays = 126
     const remaining = totalDays - currentDay
     const weeksWithData = Math.max(1, Math.ceil(timeline.length / 7))
     const daysWithActivity = timeline.filter(d => d.hours > 0).length

@@ -113,9 +113,9 @@ const AVATARS: AvatarDef[] = [
     emoji: '🎓',
     label: 'Usta',
     personality: 'Tajribali va yetuk',
-    trait: "Kursni deyarli tugatdingiz — 90 kun sabr va intizom. Siz haqiqiy ustasiz",
+    trait: "Kursni deyarli tugatdingiz — 126 kun sabr va intizom. Siz haqiqiy ustasiz",
     isSpecial: true,
-    achievementHint: '🎓 90-kunga yeting — kurs bitiruvchisi bo\'ling',
+    achievementHint: '🎓 126-kunga yeting — kurs bitiruvchisi bo\'ling',
   },
   {
     id: 'legacy',

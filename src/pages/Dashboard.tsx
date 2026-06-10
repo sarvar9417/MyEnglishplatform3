@@ -454,14 +454,14 @@ function StoryBeatCard() {
   const { currentDay } = useStore()
   const beat = getStoryBeat(currentDay)
   const act = ACT_DISPLAY[beat.act] ?? ACT_DISPLAY.prologue
-  const progress = Math.min(100, Math.round((currentDay / 99) * 100))
+  const progress = Math.min(100, Math.round((currentDay / 126) * 100))
 
   const currentActIndex = STORY_BEATS.findIndex(b => b.act === beat.act)
   const actZoneStart = currentActIndex >= 0
-    ? Math.round((STORY_BEATS[currentActIndex].dayRange[0] / 99) * 100)
+    ? Math.round((STORY_BEATS[currentActIndex].dayRange[0] / 126) * 100)
     : 0
   const actZoneEnd = currentActIndex >= 0
-    ? Math.round((STORY_BEATS[currentActIndex].dayRange[1] / 99) * 100)
+    ? Math.round((STORY_BEATS[currentActIndex].dayRange[1] / 126) * 100)
     : 100
 
   const STOPS = [
@@ -469,7 +469,7 @@ function StoryBeatCard() {
     { day: 27, label: 'A2 ✓',     emoji: '📚', x: 27 },
     { day: 55, label: 'B1 ✓',     emoji: '💼', x: 55 },
     { day: 78, label: 'B1+ ✓',    emoji: '✈️',  x: 78 },
-    { day: 99, label: 'London',   emoji: '🏙️', x: 94 },
+    { day: 126, label: 'London',   emoji: '🏙️', x: 94 },
   ]
 
   return (
@@ -557,7 +557,7 @@ function StoryBeatCard() {
       <div className="flex items-center justify-between text-[11px] text-gray-400 mt-1 pt-2 border-t border-gray-50 dark:border-gray-700">
         <span>🏁 {progress}% yakunlandi</span>
         <span className="font-medium text-gray-500 dark:text-gray-400">
-          Kun {currentDay}/99
+          Kun {currentDay}/126
         </span>
       </div>
     </section>
