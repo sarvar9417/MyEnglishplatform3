@@ -30,7 +30,7 @@ export function Certificate({ userName, completionDate, totalXP, onClose }: Cert
   }
 
   async function handleShare() {
-    const text = `Men EnglishPath platformasida 99 kunda B2 darajasiga yetdim! 🎉 #EnglishPath #B2`
+    const text = `Men EnglishPath platformasida 99 kunlik B2 intensiv kursini yakunladim! 🎉 #EnglishPath #B2`
     if (navigator.share) {
       await navigator.share({ title: 'EnglishPath B2 Certificate', text })
     } else {

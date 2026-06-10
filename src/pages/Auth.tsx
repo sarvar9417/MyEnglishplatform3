@@ -138,7 +138,7 @@ export default function Auth() {
         <div className="text-center mb-8">
           <div className="text-5xl mb-3">📚</div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">EnglishPath</h1>
-          <p className="text-gray-500 text-sm mt-1">A2+ dan B2 ga — 90 kunlik intensiv yo'l</p>
+          <p className="text-gray-500 text-sm mt-1">A2+ dan B2 sari — 90 kunlik intensiv yo'l</p>
         </div>
 
         <div className="card shadow-xl">

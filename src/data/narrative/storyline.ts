@@ -12,7 +12,7 @@ export const STORY_BEATS: StoryBeat[] = [
   {
     dayRange: [1, 4], act: 'prologue',
     title: 'Boshlanish',
-    context: 'Bugun safaringiz boshlanadi. 99 kun ichida A1 dan B2 darajasiga yetasiz!',
+    context: 'Bugun safaringiz boshlanadi. 99 kun ichida A1 dan B2 sari katta yo\'l bosasiz!',
     lessonHint: 'Ingliz tilini asoslaridan o\'rganishni boshladingiz.',
     location: '1-bosqich', emoji: '✉️',
   },

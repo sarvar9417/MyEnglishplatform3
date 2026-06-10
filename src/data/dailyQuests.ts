@@ -128,7 +128,7 @@ export const DAILY_QUESTS: DailyQuest[] = [
   },
   {
     dayRange: [78, 81],
-    mainQuest:  { narrative: "B2 darajasiga yetdingiz!", task: { type: 'lesson', count: 1, label: 'B2 darsini boshlash' }, xpReward: 100 },
+    mainQuest:  { narrative: "B2 darajasiga yaqinlashdingiz!", task: { type: 'lesson', count: 1, label: 'B2 darsini boshlash' }, xpReward: 100 },
     sideQuest:  { narrative: "So'z boyligini B2 ga ko'tarish.", task: { type: 'vocabulary', count: 20, label: "20 ta B2 so'z o'rganish" }, xpReward: 35 },
     challenge:  { narrative: "Reading advanced texts.", task: { type: 'reading', count: 2, label: '2 ta B2 matn o\'qish' }, xpReward: 75 },
   },
@@ -146,7 +146,7 @@ export const DAILY_QUESTS: DailyQuest[] = [
   },
   {
     dayRange: [90, 90],
-    mainQuest:  { narrative: "90 kun yakunlandi! B2 sertifikat sizniki!", task: { type: 'lesson', count: 1, label: "Yakuniy darsni tugatish" }, xpReward: 200 },
+    mainQuest:  { narrative: "90 kun yakunlandi! B2 imtihoniga tayyorsiz!", task: { type: 'lesson', count: 1, label: "Yakuniy darsni tugatish" }, xpReward: 200 },
     sideQuest:  { narrative: "Barcha so'zlarni takrorlash.", task: { type: 'vocabulary', count: 30, label: "30 ta so'zni takrorlash" }, xpReward: 50 },
     challenge:  { narrative: "Final mock test.", task: { type: 'drill', count: 50, label: '50 ta yakuniy mashq' }, xpReward: 100 },
   },

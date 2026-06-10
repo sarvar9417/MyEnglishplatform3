@@ -39,9 +39,9 @@ function lessonForLevel(level: string): DemoLesson {
 // Get placement level-based greeting
 function levelGreeting(level: string): { emoji: string; headline: string; sub: string } {
   const greetings: Record<string, { emoji: string; headline: string; sub: string }> = {
-    'A1':  { emoji: '🌱', headline: 'Ajoyib boshlanish!', sub: 'Asoslardan boshlaymiz — 99 kunda B2 ga yetasiz' },
-    'A2':  { emoji: '🌿', headline: 'Yaxshi asos bor ekan!', sub: 'A2 dan B2 ga — 90 kunlik intensiv sayohat' },
-    'A2+': { emoji: '🌿', headline: 'Yaxshi asos bor ekan!', sub: 'A2+ dan B2 ga — 90 kunlik intensiv sayohat' },
+    'A1':  { emoji: '🌱', headline: 'Ajoyib boshlanish!', sub: 'Asoslardan boshlaymiz — 99 kunlik B2 sari intensiv yo\'l' },
+    'A2':  { emoji: '🌿', headline: 'Yaxshi asos bor ekan!', sub: 'A2 dan B2 sari — 90 kunlik intensiv sayohat' },
+    'A2+': { emoji: '🌿', headline: 'Yaxshi asos bor ekan!', sub: 'A2+ dan B2 sari — 90 kunlik intensiv sayohat' },
     'B1':  { emoji: '🌳', headline: 'Ishonchli bilim!', sub: 'B1 dan B2 ga ko\'tarilish — 9 hafta qoldi' },
     'B1+': { emoji: '🌲', headline: 'Kuchli tayyorgarlik!', sub: 'B1+ dan B2 ga — 6 hafta qoldi, deyarli yetdingiz' },
     'B2':  { emoji: '🚀', headline: 'Ajoyib natija!', sub: 'B2 darajasidasiz — marraga 3 hafta qoldi' },
@@ -303,7 +303,7 @@ export function OnboardingFlow() {
               Tayyor, {name || 'do\'st'}! 💪
             </h2>
             <p className="text-sm text-gray-500 dark:text-gray-400 max-w-xs">
-              Bugundan boshlaymiz. 99 kun ichida B2 darajasiga yetasiz!
+              Bugundan boshlaymiz. 99 kun ichida B2 sari katta yo'l bosasiz!
             </p>
 
             <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
