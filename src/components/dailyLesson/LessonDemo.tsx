@@ -5,7 +5,6 @@ import { DEMO_LESSON, type DemoStep, type DemoLesson } from '../../data/lessonDe
 import { useStore } from '../../store/useStore'
 import { feelAnswer, feelLevelUp, feelTap, rollCritical } from '../../lib/gameFeel'
 import { emitXpBurst } from '../ui/XpBurst'
-import { HeartsIndicator } from '../ui/HeartsIndicator'
 import { speak } from '../../lib/tts'
 import { scheduleReview } from '../../lib/grammarSrs'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
@@ -35,7 +34,7 @@ function stepCorrectText(step: DemoStep): string {
 }
 
 export default function LessonDemo({ onExit, lesson = DEMO_LESSON }: { onExit: () => void; lesson?: DemoLesson }) {
-  const { addXP, loseHeart } = useStore()
+  const { addXP } = useStore()
   const navigate = useNavigate()
 
   const [phase, setPhase] = useState<Phase>('context')
@@ -89,9 +88,10 @@ export default function LessonDemo({ onExit, lesson = DEMO_LESSON }: { onExit: (
       setSessionXp(x => x + earned)
       addXP(earned)
     } else {
+      // O'rganishda xato uchun jon yo'qotilmaydi — xato qilish o'rganishning
+      // tabiiy qismi (audit tavsiyasi). Ijobiy mustahkamlash combo orqali beriladi.
       setCombo(0)
       feelAnswer({ correct: false })
-      loseHeart()
     }
   }
 
@@ -339,14 +339,13 @@ export default function LessonDemo({ onExit, lesson = DEMO_LESSON }: { onExit: (
   // ═══ PRACTICE (mashqlar) ═══
   return (
     <Shell onExit={onExit}>
-      {/* Progress + combo + hearts */}
+      {/* Progress + combo (jon tizimi o'rganishdan olib tashlandi — xatoga xavfsiz) */}
       <div className="flex items-center gap-3 mb-6">
         <div className="flex-1 h-3 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
           <div className="h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full transition-all duration-300"
             style={{ width: `${(idx / total) * 100}%` }} />
         </div>
         {combo >= 2 && <span className="text-orange-500 font-bold text-sm animate-combo-pop">🔥{combo}</span>}
-        <HeartsIndicator size="sm" />
       </div>
 
       <StepRenderer key={idx} step={step} stepIndex={idx} rule={lesson.rule} onAnswer={onAnswer} onNext={nextStep} isLast={idx === total - 1} />
