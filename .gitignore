@@ -48,5 +48,9 @@ scripts/*.sql
 !scripts/*.ts
 !scripts/create_tandem_tables.sql
 
+# Playwright E2E
+playwright-report/
+test-results/
+
 # Backup files
 *.bak

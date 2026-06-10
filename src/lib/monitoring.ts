@@ -2,7 +2,7 @@ type EventPayload = Record<string, unknown>
 
 export interface MonitoringProvider {
   captureException(error: Error, context?: EventPayload): void
-  captureMessage(message: string, level?: 'info' | 'warn' | 'error'): void
+  captureMessage(message: string, level?: 'info' | 'warn' | 'error', context?: EventPayload): void
   identifyUser(userId: string, traits?: EventPayload): void
   trackEvent(name: string, properties?: EventPayload): void
 }
@@ -13,10 +13,10 @@ const consoleProvider: MonitoringProvider = {
       console.warn('[monitoring] Exception:', error.message, context ?? '')
     }
   },
-  captureMessage(message, level = 'info') {
+  captureMessage(message, level = 'info', context) {
     if (import.meta.env.DEV) {
       const fn = level === 'error' ? console.error : level === 'warn' ? console.warn : console.log
-      fn('[monitoring]', message)
+      fn('[monitoring]', message, context ?? '')
     }
   },
   identifyUser(_userId, _traits) {
@@ -41,8 +41,8 @@ export const monitoring = {
   captureException(error: Error, context?: EventPayload) {
     provider.captureException(error, context)
   },
-  captureMessage(message: string, level?: 'info' | 'warn' | 'error') {
-    provider.captureMessage(message, level)
+  captureMessage(message: string, level?: 'info' | 'warn' | 'error', context?: EventPayload) {
+    provider.captureMessage(message, level, context)
   },
   identifyUser(userId: string, traits?: EventPayload) {
     provider.identifyUser(userId, traits)

@@ -38,10 +38,47 @@ describe('syncUserState', () => {
 
   it('updates users.state when authenticated', async () => {
     mockSupabaseInstance.auth.getSession.mockResolvedValue(session)
-    const qb = queueQB(null, null)
+    // First from() call: select existing state (returns null — no existing state)
+    const qb1 = queueQB(null, null)
+    // Second from() call: update with merged state
+    const qb2 = queueQB(null, null)
     await syncUserState({ xp: 42 })
-    expect(qb.update).toHaveBeenCalledWith(expect.objectContaining({ state: { xp: 42 } }))
-    expect(qb.eq).toHaveBeenCalledWith('id', 'u1')
+    // First query: select('state')
+    expect(qb1.select).toHaveBeenCalledWith('state')
+    // Second query: update with state
+    expect(qb2.update).toHaveBeenCalledWith(expect.objectContaining({ state: { xp: 42 } }))
+    expect(qb2.eq).toHaveBeenCalledWith('id', 'u1')
+  })
+
+  it('smart-merges when remote state exists with higher values', async () => {
+    mockSupabaseInstance.auth.getSession.mockResolvedValue(session)
+    // First from() call: select existing state (remote has higher XP)
+    const qb1 = queueQB({ state: { totalXP: 1000, streak: 30 } }, null)
+    // Second from() call: update with merged state
+    const qb2 = queueQB(null, null)
+    await syncUserState({ totalXP: 500, streak: 20 })
+    // Merged state should keep the higher values
+    expect(qb2.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        state: expect.objectContaining({ totalXP: 1000, streak: 30 }),
+      }),
+    )
+    expect(qb2.eq).toHaveBeenCalledWith('id', 'u1')
+  })
+
+  it('preserves local higher values when remote has lower', async () => {
+    mockSupabaseInstance.auth.getSession.mockResolvedValue(session)
+    // First from() call: select existing state (local has higher XP)
+    const qb1 = queueQB({ state: { totalXP: 200, streak: 5 } }, null)
+    // Second from() call: update with merged state
+    const qb2 = queueQB(null, null)
+    await syncUserState({ totalXP: 500, streak: 10 })
+    // Merged state should keep the higher local values
+    expect(qb2.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        state: expect.objectContaining({ totalXP: 500, streak: 10 }),
+      }),
+    )
   })
 })
 

@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabase'
 import { upsertLessonProgress as dbUpsert, cacheLesson, getCachedLessons, getCachedLesson } from '../db/database'
 import { getTodayTashkent } from '../utils/tashkentDate'
 import { monitoring } from '../lib/monitoring'
+import { mergeLessonProgress, mergeLessonSession } from './conflictResolution'
 import type { DailyLesson, SpecialCase, ReviewLesson, ReadingSection, WritingSection, ListeningSection } from '../data/dailyLessons'
 
 interface LessonRow {
@@ -196,23 +197,51 @@ export async function pushLessonProgress(
 ): Promise<void> {
   const pct = totalExercises > 0 ? Math.round((correctCount / totalExercises) * 100) : 0
   const date = getTodayTashkent()
+  const now = Date.now()
 
   const { data: { session } } = await supabase.auth.getSession()
   const userId = session?.user?.id ?? 'anonymous'
   
   if (session) {
-    await supabase
+    // Smart merge: fetch existing row and merge scores/counts
+    const { data: existing } = await supabase
+      .from('lesson_progress')
+      .select('score, correct_count, total_exercises, xp_earned, completed_at')
+      .eq('user_id', session.user.id)
+      .eq('lesson_id', lessonId)
+      .eq('date', date)
+      .maybeSingle()
+
+    let merged = { score: pct, correctCount, totalExercises, xpEarned: correctCount * 10, completedAt: now }
+    if (existing) {
+      merged = mergeLessonProgress({
+        localScore: pct,
+        remoteScore: existing.score ?? 0,
+        localCorrectCount: correctCount,
+        remoteCorrectCount: existing.correct_count ?? 0,
+        localTotalExercises: totalExercises,
+        remoteTotalExercises: existing.total_exercises ?? 0,
+        localXpEarned: correctCount * 10,
+        remoteXpEarned: existing.xp_earned ?? 0,
+        localCompletedAt: now,
+        remoteCompletedAt: new Date(existing.completed_at as string).getTime(),
+      })
+    }
+
+    const { error } = await supabase
       .from('lesson_progress')
       .upsert({
         user_id: session.user.id,
         date,
         lesson_id: lessonId,
-        score: pct,
-        correct_count: correctCount,
-        total_exercises: totalExercises,
-        xp_earned: correctCount * 10,
-        completed_at: new Date().toISOString(),
+        score: merged.score,
+        correct_count: merged.correctCount,
+        total_exercises: merged.totalExercises,
+        xp_earned: merged.xpEarned,
+        completed_at: new Date(merged.completedAt).toISOString(),
       }, { onConflict: 'user_id,date,lesson_id' })
+
+    if (error) monitoring.captureMessage('pushLessonProgress upsert error: ' + error.message, 'warn')
   }
 
   await dbUpsert({
@@ -223,7 +252,7 @@ export async function pushLessonProgress(
     correctCount,
     totalExercises,
     xpEarned: correctCount * 10,
-    completedAt: Date.now(),
+    completedAt: now,
   })
 }
 
@@ -236,23 +265,51 @@ export async function pushTestProgress(
   const testLessonId = `${lessonId}__test`
   const pct = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0
   const date = getTodayTashkent()
+  const now = Date.now()
 
   const { data: { session } } = await supabase.auth.getSession()
   const userId = session?.user?.id ?? 'anonymous'
   
   if (session) {
-    await supabase
+    // Smart merge: fetch existing row
+    const { data: existing } = await supabase
+      .from('lesson_progress')
+      .select('score, correct_count, total_exercises, xp_earned, completed_at')
+      .eq('user_id', session.user.id)
+      .eq('lesson_id', testLessonId)
+      .eq('date', date)
+      .maybeSingle()
+
+    let merged = { score: pct, correctCount, totalExercises: totalQuestions, xpEarned: correctCount * 10, completedAt: now }
+    if (existing) {
+      merged = mergeLessonProgress({
+        localScore: pct,
+        remoteScore: existing.score ?? 0,
+        localCorrectCount: correctCount,
+        remoteCorrectCount: existing.correct_count ?? 0,
+        localTotalExercises: totalQuestions,
+        remoteTotalExercises: existing.total_exercises ?? 0,
+        localXpEarned: correctCount * 10,
+        remoteXpEarned: existing.xp_earned ?? 0,
+        localCompletedAt: now,
+        remoteCompletedAt: new Date(existing.completed_at as string).getTime(),
+      })
+    }
+
+    const { error } = await supabase
       .from('lesson_progress')
       .upsert({
         user_id: session.user.id,
         date,
         lesson_id: testLessonId,
-        score: pct,
-        correct_count: correctCount,
-        total_exercises: totalQuestions,
-        xp_earned: correctCount * 10,
-        completed_at: new Date().toISOString(),
+        score: merged.score,
+        correct_count: merged.correctCount,
+        total_exercises: merged.totalExercises,
+        xp_earned: merged.xpEarned,
+        completed_at: new Date(merged.completedAt).toISOString(),
       }, { onConflict: 'user_id,date,lesson_id' })
+
+    if (error) monitoring.captureMessage('pushTestProgress upsert error: ' + error.message, 'warn')
   }
 
   await dbUpsert({
@@ -263,7 +320,7 @@ export async function pushTestProgress(
     correctCount,
     totalExercises: totalQuestions,
     xpEarned: correctCount * 10,
-    completedAt: Date.now(),
+    completedAt: now,
   })
 }
 
@@ -350,17 +407,54 @@ export async function saveLessonSessionToDB(
 ): Promise<void> {
   const { data: { session } } = await supabase.auth.getSession()
   if (!session) return
+  const now = Date.now()
 
-  await supabase.from('lesson_sessions').upsert({
-    user_id: session.user.id,
-    lesson_id: lessonId,
-    tab: data.tab,
-    current_section: data.currentSection,
-    test_section: data.testSection,
-    completed_sections: data.completedSections,   
-    completed_test_sections: data.completedTestSections,   
-    updated_at: new Date().toISOString(),
-  }, { onConflict: 'user_id,lesson_id' })
+  // Smart merge: fetch existing session and merge tab/section/progress
+  const { data: existing } = await supabase
+    .from('lesson_sessions')
+    .select('tab, current_section, test_section, completed_sections, completed_test_sections, updated_at')
+    .eq('user_id', session.user.id)
+    .eq('lesson_id', lessonId)
+    .maybeSingle()
+
+  if (existing) {
+    const merged = mergeLessonSession({
+      localTab: data.tab,
+      remoteTab: existing.tab as string,
+      localCurrentSection: data.currentSection,
+      remoteCurrentSection: existing.current_section as number,
+      localTestSection: data.testSection,
+      remoteTestSection: existing.test_section as number,
+      localCompletedSections: data.completedSections,
+      remoteCompletedSections: existing.completed_sections as Record<number, number>,
+      localCompletedTestSections: data.completedTestSections,
+      remoteCompletedTestSections: existing.completed_test_sections as Record<number, number>,
+      localUpdatedAt: now,
+      remoteUpdatedAt: new Date(existing.updated_at as string).getTime(),
+    })
+
+    await supabase.from('lesson_sessions').upsert({
+      user_id: session.user.id,
+      lesson_id: lessonId,
+      tab: merged.tab,
+      current_section: merged.currentSection,
+      test_section: merged.testSection,
+      completed_sections: merged.completedSections,
+      completed_test_sections: merged.completedTestSections,
+      updated_at: new Date(merged.updatedAt).toISOString(),
+    }, { onConflict: 'user_id,lesson_id' })
+  } else {
+    await supabase.from('lesson_sessions').upsert({
+      user_id: session.user.id,
+      lesson_id: lessonId,
+      tab: data.tab,
+      current_section: data.currentSection,
+      test_section: data.testSection,
+      completed_sections: data.completedSections,
+      completed_test_sections: data.completedTestSections,
+      updated_at: new Date(now).toISOString(),
+    }, { onConflict: 'user_id,lesson_id' })
+  }
 }
 
 export async function clearLessonSessionFromDB(lessonId: string): Promise<void> {

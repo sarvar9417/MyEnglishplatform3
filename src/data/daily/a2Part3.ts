@@ -129,6 +129,16 @@ export const verbPatterns: DailyLesson = {
     { title: 'Qiyin', desc: 'Stop/Remember/Forget', color: 'bg-violet-500', icon: '💪', ids: [281, 282, 283] },
     { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [284, 285] },
   ],
+  reading: {
+    passage: "My Hobbies and Dreams\n\nI really enjoy reading books in my free time. My favourite hobby is reading fantasy novels. I also like listening to music while I read. My friend Akbar enjoys playing football. He wants to become a famous footballer one day. He practises every day because he hopes to join a professional club.\n\nMy sister Lola loves drawing. She can draw very beautifully. Her teacher told her to enter an art competition. Lola decided to take part in it. She promised to do her best. I also want to learn how to draw, so she agreed to teach me.\n\nOur parents want us to study hard. They expect us to get good grades at school. My father advised me to spend less time on video games. He said I should practise English more. I promised him to study at least one hour every day. My mother reminded me to call my grandmother every week. I enjoy talking to her — she always gives me good advice!",
+    questions: [
+      { id: 1, type: 'multiple-choice', question: 'What does the writer enjoy doing?', options: ['Playing football', 'Reading books', 'Watching TV', 'Drawing'], correctIndex: 1, explanation: 'I really enjoy reading books in my free time.' },
+      { id: 2, type: 'multiple-choice', question: 'What does Akbar want to become?', options: ['A doctor', 'A teacher', 'A famous footballer', 'An artist'], correctIndex: 2, explanation: 'He wants to become a famous footballer one day.' },
+      { id: 3, type: 'multiple-choice', question: "What did Lola's teacher tell her to do?", options: ['To study more', 'To enter an art competition', 'To play sports', 'To read books'], correctIndex: 1, explanation: 'Her teacher told her to enter an art competition.' },
+      { id: 4, type: 'multiple-choice', question: 'What did the father advise the writer to do?', options: ['To play more sports', 'To spend less time on video games', 'To watch more English films', 'To sleep more'], correctIndex: 1, explanation: 'My father advised me to spend less time on video games.' },
+      { id: 5, type: 'multiple-choice', question: 'What did the mother remind the writer to do?', options: ['To do homework', 'To call his grandmother', 'To clean his room', 'To eat vegetables'], correctIndex: 1, explanation: 'My mother reminded me to call my grandmother every week.' },
+    ],
+  },
 }
 
 // ─── LESSON 5: TIME PREPOSITIONS ──────────────────────────────────────
@@ -631,10 +641,10 @@ export const someAnyNoEvery: DailyLesson = {
     },
   ],
   exercises: [
-    { id: 2601, type: 'fill-blank', instruction: "Some yoki any bilan to'ldiring:", question: 'I have ___ good friends.', blanks: ['some'], explanation: "Ijobiy gap → 'some'." },
-    { id: 2602, type: 'fill-blank', instruction: "Some yoki any:", question: 'Do you have ___ questions?', blanks: ['any'], explanation: "Savol → 'any'." },
+    { id: 2601, type: 'fill-blank', instruction: "Some yoki any bilan to'ldiring:", question: 'I have ___ good friends.', blanks: ['some'], acceptedAnswers: [['some', 'a lot of']], explanation: "Ijobiy gap → 'some' (lekin 'a lot of' ham to'g'ri)." },
+    { id: 2602, type: 'fill-blank', instruction: "Some yoki any:", question: 'Do you have ___ questions?', blanks: ['any'], acceptedAnswers: [['any', 'some']], explanation: "Savol → 'any' (lekin 'some' ham to'g'ri, chunki bu taklif/iltimos)." },
     { id: 2603, type: 'fill-blank', instruction: "Some yoki any:", question: "There isn't ___ milk in the fridge.", blanks: ['any'], explanation: "Inkor → 'any'." },
-    { id: 2604, type: 'fill-blank', instruction: "Some yoki any:", question: 'Would you like ___ tea?', blanks: ['some'], explanation: "Taklif → 'some' (savol bo'lsa ham)." },
+    { id: 2604, type: 'fill-blank', instruction: "Some yoki any:", question: 'Would you like ___ tea?', blanks: ['some'], acceptedAnswers: [['some', 'any']], explanation: "Taklif → 'some' (lekin 'any' ham grammatik to'g'ri)." },
     { id: 2605, type: 'fill-blank', instruction: "No bilan to'ldiring:", question: 'I have ___ money. (I am broke.)', blanks: ['no'], explanation: "'No money' = hech qanday pul yo'q." },
     { id: 2606, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'There are ___ apples in the basket.', options: ['some', 'any', 'no', 'every'], correct: 'some', explanation: "Ijobiy gap, ko'plik → 'some'." },
     { id: 2607, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I don\'t have ___ money.', options: ['some', 'any', 'no', 'every'], correct: 'any', explanation: "Inkor → 'any'. 'I don't have any money.'" },

@@ -51,6 +51,27 @@ export interface TranslationStrings {
   'app.offlineMessage': string
   'app.menuLabel': string
 
+  /* ── Offline banner ── */
+  'offline.title': string
+  'offline.subtitle': string
+  'offline.available': string
+  'offline.unavailable': string
+  'offline.lessons': string
+  'offline.vocabulary': string
+  'offline.progress': string
+  'offline.mockTests': string
+  'offline.writing': string
+  'offline.speakingPath': string
+  'offline.dictionary': string
+  'offline.aiFeatures': string
+  'offline.tandem': string
+  'offline.supabase': string
+  'offline.syncPending': string
+  'offline.reconnected': string
+  'offline.dismiss': string
+  'offline.showDetails': string
+  'offline.hideDetails': string
+
   /* ── SEO page titles ── */
   'seo.dashboard': string
   'seo.lessons': string
@@ -71,4 +92,35 @@ export interface TranslationStrings {
   'seo.pronunciation': string
   'seo.review': string
   'seo.desc': string
+
+  /* ── Grammar page titles ── */
+  'grammar.presentSimple': string
+  'grammar.presentContinuous': string
+  'grammar.presentPerfect': string
+  'grammar.presentPerfectContinuous': string
+  'grammar.pastSimple': string
+  'grammar.pastContinuous': string
+  'grammar.pastPerfect': string
+  'grammar.pastPerfectContinuous': string
+  'grammar.futureSimple': string
+  'grammar.futureContinuous': string
+  'grammar.futurePerfect': string
+  'grammar.modalVerbs': string
+  'grammar.conditionals': string
+  'grammar.passiveVoice': string
+  'grammar.reportedSpeech': string
+  'grammar.comparatives': string
+  'grammar.articles': string
+  'grammar.prepositions': string
+  'grammar.conjunctions': string
+  'grammar.causative': string
+  'grammar.gerundInfinitive': string
+
+  /* ── PWA install prompt ── */
+  'pwa.installTitle': string
+  'pwa.installDesc': string
+  'pwa.install': string
+  'pwa.dismiss': string
+  'pwa.notNow': string
+  'pwa.installed': string
 }

@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabase'
 import { addDaysTashkent } from '../utils/tashkentDate'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
+import { mergeVocabProgress } from './conflictResolution'
 import type { DailyPhraseRow, PhraseRating } from '../types/phrases'
 
 const SRS_INTERVALS = [1, 3, 7, 14, 30, 90]
@@ -76,15 +77,37 @@ export async function upsertPhraseProgress(
   isLearned: boolean,
   lastRating?: string
 ) {
+  // Smart merge: fetch existing row to prevent SRS regression across devices
+  const { data: existing } = await supabase
+    .from('phrase_progress')
+    .select('box, correct_count, wrong_count, is_learned')
+    .eq('user_id', userId)
+    .eq('phrase_id', phraseId)
+    .maybeSingle()
+
+  let merged = { box, correctCount, wrongCount, isLearned }
+  if (existing) {
+    merged = mergeVocabProgress({
+      localBox: box,
+      remoteBox: existing.box ?? 0,
+      localCorrectCount: correctCount,
+      remoteCorrectCount: existing.correct_count ?? 0,
+      localWrongCount: wrongCount,
+      remoteWrongCount: existing.wrong_count ?? 0,
+      localIsLearned: isLearned,
+      remoteIsLearned: existing.is_learned ?? false,
+    })
+  }
+
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const { error } = await supabase.from('phrase_progress').upsert({
     user_id: userId,
     phrase_id: phraseId,
-    box,
+    box: merged.box,
     next_review: nextReview,
-    correct_count: correctCount,
-    wrong_count: wrongCount,
-    is_learned: isLearned,
+    correct_count: merged.correctCount,
+    wrong_count: merged.wrongCount,
+    is_learned: merged.isLearned,
     last_rating: lastRating,
     last_reviewed: new Date().toISOString(),
   } as any, { onConflict: 'user_id,phrase_id' })

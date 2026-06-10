@@ -71,26 +71,26 @@ export const demonstratives: DailyLesson = {
     },
   ],
   exercises: [
-    { id: 1101, type: 'fill-blank', instruction: "This/that:", question: '___ is a cat. (yaqin)', blanks: ['This'], explanation: "yaqin = this" },
-    { id: 1102, type: 'fill-blank', instruction: "These/those:", question: '___ are my parents. (uzoq)', blanks: ['Those'], explanation: "uzoq ko'plik = those" },
+    { id: 1101, type: 'fill-blank', instruction: "This/that:", question: '___ is a cat. (yaqin)', blanks: ['This'], acceptedAnswers: [['This', 'That']], explanation: "yaqin = this (lekin that ham grammatik to'g'ri)" },
+    { id: 1102, type: 'fill-blank', instruction: "These/those:", question: '___ are my parents. (uzoq)', blanks: ['Those'], acceptedAnswers: [['These', 'Those']], explanation: "uzoq ko'plik = those (lekin these ham grammatik to'g'ri)" },
     { id: 1103, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'What ___ those?', options: ['is', 'are', 'am', 'be'], correct: 'are', explanation: "Those + are" },
     { id: 1104, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'Those is pens.', errorPart: 'is', correct: 'Those are pens.', explanation: "Those (ko'plik) + are" },
     { id: 1105, type: 'fill-blank', instruction: "Bu yerda / u yerda:", question: 'Come ___, please! (bu yerga)', blanks: ['here'], explanation: "Come here" },
-    { id: 1106, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is an apple. (yaqin)', blanks: ['This'], explanation: "yaqin birlik" },
+    { id: 1106, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is an apple. (yaqin)', blanks: ['This'], acceptedAnswers: [['This', 'That']], explanation: "yaqin birlik (lekin that ham grammatik to'g'ri)" },
     { id: 1107, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ is my sister over there.', options: ['This', 'That', 'These', 'Those'], correct: 'That', explanation: "Uzoq = That" },
     { id: 1108, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'These is a car.', errorPart: 'These is', correct: 'This is a car.', explanation: "Birlik = This" },
     { id: 1109, type: 'fill-blank', instruction: "Bu yerda / u yerda:", question: 'The book is ___. (uzoq)', blanks: ['there'], explanation: "U yerda = there" },
-    { id: 1110, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is a mountain. (uzoq)', blanks: ['That'], explanation: "uzoq birlik" },
+    { id: 1110, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is a mountain. (uzoq)', blanks: ['That'], acceptedAnswers: [['This', 'That']], explanation: "uzoq birlik (lekin this ham grammatik to'g'ri)" },
     { id: 1111, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ was a great day!', options: ['This', 'That', 'These', 'Those'], correct: 'That', explanation: "O'tgan = that" },
     { id: 1112, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'Those is my parents.', errorPart: 'Those is', correct: 'Those are my parents.', explanation: "Those + are" },
-    { id: 1113, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ books are new. (yaqin)', blanks: ['These'], explanation: "yaqin ko'plik" },
+    { id: 1113, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ books are new. (yaqin)', blanks: ['These'], acceptedAnswers: [['These', 'Those']], explanation: "yaqin ko'plik (lekin those ham grammatik to'g'ri)" },
     { id: 1114, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'This is an apple. It ___ red.', options: ['am', 'is', 'are', 'be'], correct: 'is', explanation: "It + is" },
     { id: 1115, type: 'fill-blank', instruction: "Bu yerda / u yerda:", question: 'Put the pen ___. (bu yerga)', blanks: ['here'], explanation: "bu yerda = here" },
     { id: 1116, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Those ___ beautiful mountains.', blanks: ['are'], explanation: "Those + are (ko'plik)" },
     { id: 1117, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'This books are new.', errorPart: 'This', correct: 'These books are new.', explanation: "ko'plik uchun These" },
     { id: 1118, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'That was a great party!' — 'that' = ?", options: ["bu yerda", "hozir", "o'tgan voqea", "kelajak"], correct: "o'tgan voqea", explanation: "That = o'tgan vaqt/voqeaga ishora" },
-    { id: 1119, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'What are ___? (bular, yaqin)', blanks: ['these'], explanation: "yaqin ko'plik = these" },
-    { id: 1120, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'What is ___? (u, uzoq, birlik)', blanks: ['that'], explanation: "uzoq birlik = that" },
+    { id: 1119, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'What are ___? (bular, yaqin)', blanks: ['these'], acceptedAnswers: [['these', 'those']], explanation: "yaqin ko'plik = these (lekin those ham grammatik to'g'ri)" },
+    { id: 1120, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'What is ___? (u, uzoq, birlik)', blanks: ['that'], acceptedAnswers: [['this', 'that']], explanation: "uzoq birlik = that (lekin this ham grammatik to'g'ri)" },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "This/that, these/those", color: 'bg-emerald-500', icon: '🌱', ids: [1101, 1102, 1103, 1104, 1105] },
@@ -99,19 +99,19 @@ export const demonstratives: DailyLesson = {
     { title: "O'zgartirish", desc: "Ko'plik, o'tgan vaqt, savollar", color: 'bg-teal-500', icon: '🔄', ids: [1116, 1117, 1118, 1119, 1120] },
   ],
   tests: [
-    { id: 111, type: 'fill-blank', instruction: "This/that:", question: '___ is my book.', blanks: ['This'], explanation: "yaqin = this" },
-    { id: 112, type: 'fill-blank', instruction: "These/those:", question: '___ are my friends.', blanks: ['These'], explanation: "yaqin ko'plik" },
+    { id: 111, type: 'fill-blank', instruction: "This/that:", question: '___ is my book.', blanks: ['This'], acceptedAnswers: [['this', 'that']], explanation: "yaqin = this (lekin that ham grammatik to'g'ri)" },
+    { id: 112, type: 'fill-blank', instruction: "These/those:", question: '___ are my friends.', blanks: ['These'], acceptedAnswers: [['these', 'those']], explanation: "yaqin ko'plik (lekin those ham grammatik to'g'ri)" },
     { id: 113, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'What ___ this?', options: ['is', 'are', 'am', 'be'], correct: 'is', explanation: "This + is" },
     { id: 114, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'That is a pens.', errorPart: 'a pens', correct: 'Those are pens.', explanation: "ko'plik = Those + are" },
     { id: 115, type: 'fill-blank', instruction: "Bu yerda / u yerda:", question: 'Come ___!', blanks: ['here'], explanation: "here" },
-    { id: 116, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is an apple.', blanks: ['This'], explanation: "yaqin" },
+    { id: 116, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is an apple.', blanks: ['This'], acceptedAnswers: [['this', 'that']], explanation: "yaqin (lekin that ham grammatik to'g'ri)" },
     { id: 117, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'What are ___?', options: ['this', 'that', 'these', 'it'], correct: 'these', explanation: "ko'plik" },
     { id: 118, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'These is a car.', errorPart: 'These is', correct: 'This is a car.', explanation: "Birlik = This" },
     { id: 119, type: 'fill-blank', instruction: "Bu yerda / u yerda:", question: 'The book is ___.', blanks: ['there'], explanation: "there" },
-    { id: 120, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is a mountain.', blanks: ['That'], explanation: "uzoq" },
+    { id: 120, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ is a mountain.', blanks: ['That'], acceptedAnswers: [['this', 'that']], explanation: "uzoq (lekin this ham grammatik to'g'ri)" },
     { id: 1111, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ was a great day!', options: ['This', 'That', 'These', 'Those'], correct: 'That', explanation: "O'tgan" },
     { id: 1112, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'Those is my parents.', errorPart: 'Those is', correct: 'Those are my parents.', explanation: "Those + are" },
-    { id: 1113, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ books are new.', blanks: ['These'], explanation: "yaqin ko'plik" },
+    { id: 1113, type: 'fill-blank', instruction: "This/that/these/those:", question: '___ books are new.', blanks: ['These'], acceptedAnswers: [['these', 'those']], explanation: "yaqin ko'plik (lekin those ham grammatik to'g'ri)" },
     { id: 1114, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'This is an apple. It ___ red.', options: ['am', 'is', 'are', 'be'], correct: 'is', explanation: "It + is" },
     { id: 1115, type: 'fill-blank', instruction: "Bu yerda / u yerda:", question: 'Put it ___.', blanks: ['here'], explanation: "here" },
   ],
@@ -120,6 +120,49 @@ export const demonstratives: DailyLesson = {
     { title: "O'rtacha", desc: "Is/are, here/there", color: 'bg-blue-500', icon: '📘', ids: [116, 117, 118, 119, 120] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1111, 1112, 1113, 1114, 1115] },
   ],
+  reading: {
+    passage: "My name is Saida. I am in a big classroom. This is my desk. That is the teacher's desk. These are my books, and those are my friend's books on the table over there. This pen is blue. That pencil is red. These pencils are new. Those notebooks are old. What is this? It is a ruler. What is that? It is a bag. I like this classroom!",
+    vocabulary: [
+      { word: 'this', definition: 'bu (yaqin)' },
+      { word: 'that', definition: 'u (uzoq)' },
+      { word: 'these', definition: 'bular (yaqin ko\'plik)' },
+    ],
+    questions: [
+      { id: 11101, type: 'multiple-choice', question: 'Where is Saida?', options: ['At home', 'In a classroom', 'In a park', 'At a shop'], correctIndex: 1, explanation: 'She is in a big classroom.' },
+      { id: 11102, type: 'multiple-choice', question: 'What is on the teacher\'s desk?', options: ['Books', 'A desk', 'A pen', 'Not mentioned'], correctIndex: 3, explanation: 'The passage does not say what is on the teacher\'s desk.' },
+      { id: 11103, type: 'multiple-choice', question: 'What color is this pen?', options: ['Red', 'Black', 'Blue', 'Green'], correctIndex: 2, explanation: 'This pen is blue.' },
+    ],
+  },
+  listening: {
+    transcript: "Teacher: Look around the classroom! What is this?\nStudent: This is a book.\nTeacher: Good! And what is that on the wall?\nStudent: That is a picture.\nTeacher: Correct! Now look at these pencils. What color are these?\nStudent: These pencils are blue.\nTeacher: Great! And what about those pens over there?\nStudent: Those pens are red.\nTeacher: Perfect! This book here is new. That book there is old. These are my glasses, and those are your bags. You understand this and that very well!",
+    vocabulary: [
+      { word: "this", definition: "bu (yaqin)" },
+      { word: "that", definition: "u (uzoq)" },
+      { word: "these", definition: "bular (yaqin)" },
+    ],
+    questions: [
+      { id: 21001, type: "multiple-choice", question: "What is 'this' in the classroom?", options: ["A picture", "A pen", "A book", "A bag"], correctIndex: 2, explanation: "The teacher shows a book and says 'This is a book.'" },
+      { id: 21002, type: "multiple-choice", question: "What color are 'these' pencils?", options: ["Red", "Blue", "Green", "Yellow"], correctIndex: 1, explanation: "The student says 'These pencils are blue.'" },
+      { id: 21003, type: "multiple-choice", question: "Where are 'those' pens?", options: ["On the desk", "Over there", "In the bag", "On the wall"], correctIndex: 1, explanation: "The teacher says 'those pens over there.'" },
+    ],
+    difficulty: "easy",
+    topic: "This, that, these, those",
+  },
+  writing: {
+    prompt: "Look around the room where you are. Write about things that are near you and things that are far from you. Use \"this\", \"that\", \"these\", and \"those\" in your sentences.",
+    wordLimit: 50,
+    tips: [
+      "Use \"this\" and \"these\" for things near you",
+      "Use \"that\" and \"those\" for things far from you",
+      "Example: \"This is my phone. That is the window.\"",
+    ],
+  },
+  speaking: {
+    prompt: "Point to things near you and far from you. Use 'This is...' for things close and 'That is...' for things far. Use 'These are...' and 'Those are...' for plural things.",
+    tips: ["Use 'this' for things close to you", "Use 'that' for things far from you", "Use 'these' and 'those' for more than one thing"],
+    keyPhrases: [{ phrase: "This is my book.", translation: "Bu mening kitobim." }, { phrase: "That is a window.", translation: "Bu deraza." }, { phrase: "These are my pens.", translation: "Bular mening ruchkalarim." }],
+    sampleAnswer: "This is my phone. That is the door. These are my books. Those are the chairs. This pen is blue. That bag is black.",
+  },
 }
 
 export const prepositionsOfPlace: DailyLesson = {
@@ -266,6 +309,49 @@ export const prepositionsOfPlace: DailyLesson = {
     { title: "O'rtacha", desc: "BEHIND, IN FRONT OF, AMONG", color: 'bg-blue-500', icon: '📘', ids: [196, 197, 198, 199, 200] },
     { title: "Qiyin", desc: "OPPOSITE, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [1911, 1912, 1913, 1914, 1915] },
   ],
+  reading: {
+    passage: "This is my room. The bed is in the corner. The desk is next to the window. A lamp is on the desk. My school bag is under the desk. The bookshelf is between the bed and the door. There is a picture on the wall. The cat is behind the door. My shoes are in front of the bookshelf. The mirror is opposite my bed. I love my room!",
+    vocabulary: [
+      { word: 'next to', definition: 'yonida' },
+      { word: 'between', definition: 'orasida' },
+      { word: 'behind', definition: 'ortida' },
+    ],
+    questions: [
+      { id: 11201, type: 'multiple-choice', question: 'Where is the desk?', options: ['In the corner', 'Next to the window', 'Behind the door', 'Under the bed'], correctIndex: 1, explanation: 'The desk is next to the window.' },
+      { id: 11202, type: 'multiple-choice', question: 'Where is the school bag?', options: ['On the desk', 'Under the desk', 'On the bed', 'Behind the door'], correctIndex: 1, explanation: 'My school bag is under the desk.' },
+      { id: 11203, type: 'multiple-choice', question: 'What is on the wall?', options: ['A mirror', 'A lamp', 'A picture', 'A shelf'], correctIndex: 2, explanation: 'There is a picture on the wall.' },
+    ],
+  },
+  listening: {
+    transcript: "Mother: Where is your school bag, Aziz?\nAziz: It is under the desk.\nMother: Good. And where is your cat?\nAziz: The cat is on the chair.\nMother: Where are my keys?\nAziz: Your keys are in your bag, next to the phone.\nMother: Thank you! Where is your brother?\nAziz: He is behind the door!\nMother: Oh! And where is the dog?\nAziz: The dog is in front of the house.\nMother: And where is our car?\nAziz: The car is between the tree and the gate.\nMother: Great! You know prepositions well!",
+    vocabulary: [
+      { word: "in", definition: "ichida" },
+      { word: "on", definition: "ustida" },
+      { word: "under", definition: "ostida" },
+    ],
+    questions: [
+      { id: 21004, type: "multiple-choice", question: "Where is the school bag?", options: ["On the desk", "Under the desk", "Next to the desk", "Behind the door"], correctIndex: 1, explanation: "The bag is under the desk." },
+      { id: 21005, type: "multiple-choice", question: "Where are the mother's keys?", options: ["In the bag, next to the phone", "On the table", "Under the bed", "Behind the door"], correctIndex: 0, explanation: "The keys are in the bag, next to the phone." },
+      { id: 21006, type: "multiple-choice", question: "Where is the cat?", options: ["Under the chair", "Behind the door", "On the chair", "In the bag"], correctIndex: 2, explanation: "The cat is on the chair." },
+    ],
+    difficulty: "easy",
+    topic: "Joy old predloglari",
+  },
+  writing: {
+    prompt: "Describe your room or your house. Where are things? Use prepositions like \"in\", \"on\", \"under\", \"next to\", \"behind\", and \"in front of\". Write at least six sentences.",
+    wordLimit: 60,
+    tips: [
+      "Use \"in\" for inside things: \"The book is in my bag\"",
+      "Use \"on\" for surfaces: \"The lamp is on the desk\"",
+      "Use \"next to\" and \"between\" for positions",
+    ],
+  },
+  speaking: {
+    prompt: "Describe where things are in your room. Use 'on', 'in', 'under', 'next to', 'behind'. Say 'The book is on the table' or 'The cat is under the chair'.",
+    tips: ["Use \"on\" for surfaces: on the table", "Use \"in\" for inside: in the bag", "Use \"under\" for below: under the bed"],
+    keyPhrases: [{ phrase: "The book is on the table.", translation: "Kitob stol ustida." }, { phrase: "My phone is in my bag.", translation: "Telefonim sumkachada." }, { phrase: "The cat is under the chair.", translation: "Mushuk stul tagida." }],
+    sampleAnswer: "My book is on the table. My phone is in my bag. The cat is under the chair. The lamp is next to the bed. My shoes are under the bed.",
+  },
 }
 
 export const basicAdjectives: DailyLesson = {
@@ -411,6 +497,49 @@ export const basicAdjectives: DailyLesson = {
     { title: "O'rtacha", desc: "Yosh, his, tartib", color: 'bg-blue-500', icon: '📘', ids: [206, 207, 208, 209, 2010] },
     { title: "Qiyin", desc: "Error-correction, A/An", color: 'bg-violet-500', icon: '🎯', ids: [2011, 2012, 2013, 2014, 2015] },
   ],
+  reading: {
+    passage: "My family is big and happy. My father is a tall man. He has a new car. My mother is a young woman. She is beautiful. I have a small brother. He is five years old. He is very cute. My sister is older than me. She has long hair. Our house is big. It has a large garden. We have a small dog. Its name is Bobik. I am happy because I have a wonderful family!",
+    vocabulary: [
+      { word: 'tall', definition: 'baland bo\'yli' },
+      { word: 'young', definition: 'yosh' },
+      { word: 'small', definition: 'kichik' },
+    ],
+    questions: [
+      { id: 11301, type: 'multiple-choice', question: 'How is the father described?', options: ['Short', 'Tall', 'Young', 'Old'], correctIndex: 1, explanation: 'My father is a tall man.' },
+      { id: 11302, type: 'multiple-choice', question: 'How old is the small brother?', options: ['Three', 'Four', 'Five', 'Six'], correctIndex: 2, explanation: 'He is five years old.' },
+      { id: 11303, type: 'multiple-choice', question: 'What is the dog\'s name?', options: ['Rex', 'Masha', 'Bobik', 'Tom'], correctIndex: 2, explanation: 'Its name is Bobik.' },
+    ],
+  },
+  listening: {
+    transcript: "Girl: Let me tell you about my family!\nFriend: Tell me about your house first.\nGirl: Our house is big. It has a large garden.\nFriend: What about your father?\nGirl: My father is a tall man. He is very strong.\nFriend: And your mother?\nGirl: My mother is beautiful. She is young.\nFriend: Do you have siblings?\nGirl: Yes! I have a small brother. He is five years old. He is very cute. I also have an old cat. It is 12 years old!\nFriend: You have a happy family!\nGirl: Yes, I am very happy!",
+    vocabulary: [
+      { word: "big", definition: "katta" },
+      { word: "small", definition: "kichik" },
+      { word: "happy", definition: "xursand" },
+    ],
+    questions: [
+      { id: 21007, type: "multiple-choice", question: "How is the girl's house?", options: ["Small", "Old", "Big", "New"], correctIndex: 2, explanation: "The girl says 'Our house is big.'" },
+      { id: 21008, type: "multiple-choice", question: "How old is the girl's brother?", options: ["Three years old", "Four years old", "Five years old", "Six years old"], correctIndex: 2, explanation: "Her brother is five years old." },
+      { id: 21009, type: "multiple-choice", question: "How old is the cat?", options: ["5 years old", "10 years old", "12 years old", "15 years old"], correctIndex: 2, explanation: "The cat is 12 years old." },
+    ],
+    difficulty: "easy",
+    topic: "Asosiy sifatlar",
+  },
+  writing: {
+    prompt: "Describe a person you know well, like your mother, father, or friend. What do they look like? What is their personality? Use adjectives like \"tall\", \"young\", \"happy\", \"kind\", and \"beautiful\".",
+    wordLimit: 60,
+    tips: [
+      "Use size adjectives: tall, short, big, small",
+      "Use age adjectives: young, old, new",
+      "Use feeling adjectives: happy, sad, kind, nice",
+    ],
+  },
+  speaking: {
+    prompt: "Describe a person you know (family member or friend). Use adjectives like 'tall', 'short', 'kind', 'funny', 'smart'. Say 'My mother is kind and beautiful'.",
+    tips: ["Use adjectives to describe: tall, short, kind, funny", "Use \"is\" for one person: \"She is tall\"", "Use \"and\" to connect adjectives: \"kind and smart\""],
+    keyPhrases: [{ phrase: "My mother is kind.", translation: "Mening onam mehribon." }, { phrase: "My father is tall.", translation: "Mening otam baland bo'yli." }, { phrase: "My friend is funny.", translation: "Mening do'stim kulgili." }],
+    sampleAnswer: "My mother is kind and beautiful. My father is tall and smart. My friend is funny and friendly. My sister is young but she is very clever. I am happy.",
+  },
 }
 
 export const thereIsAre: DailyLesson = {
@@ -533,6 +662,49 @@ export const thereIsAre: DailyLesson = {
     { title: "O'rtacha", desc: "Some/any va joy", color: 'bg-blue-500', icon: '📘', ids: [126, 127, 128, 129, 1210] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1211, 1212, 1213, 1214, 1215] },
   ],
+  reading: {
+    passage: "There is a park near my house. There are many trees in the park. There is a playground for children. There are three benches next to the path. There is a fountain in the middle. There are some flowers around the fountain. There is a small café next to the park. There is no swimming pool in the park. There are some birds in the trees. There is a big dog under a bench. Is there a toilet? Yes, there is one near the café. The park is very nice!",
+    vocabulary: [
+      { word: 'park', definition: 'park' },
+      { word: 'fountain', definition: 'fontan' },
+      { word: 'bench', definition: 'skameyka' },
+    ],
+    questions: [
+      { id: 11401, type: 'multiple-choice', question: 'What is near the house?', options: ['A school', 'A park', 'A shop', 'A hospital'], correctIndex: 1, explanation: 'There is a park near my house.' },
+      { id: 11402, type: 'multiple-choice', question: 'How many benches are there?', options: ['One', 'Two', 'Three', 'Four'], correctIndex: 2, explanation: 'There are three benches next to the path.' },
+      { id: 11403, type: 'multiple-choice', question: 'Is there a swimming pool?', options: ['Yes, there is', 'No, there is not', 'There are two', 'Not mentioned'], correctIndex: 1, explanation: 'There is no swimming pool in the park.' },
+    ],
+  },
+  listening: {
+    transcript: "Tourist: Excuse me, is there a hotel near here?\nLocal: Yes, there is a nice hotel on the next street.\nTourist: Great! Is there a restaurant in the hotel?\nLocal: Yes, there is a restaurant. It serves good food.\nTourist: Are there any shops nearby?\nLocal: Yes, there are many shops. There is a supermarket and a pharmacy.\nTourist: Is there a park?\nLocal: Yes, there is a beautiful park. There are many trees in the park.\nTourist: Are there any museums?\nLocal: Yes, there are two museums near the hotel.\nTourist: Thank you very much!\nLocal: You're welcome! Enjoy your stay!",
+    vocabulary: [
+      { word: "there is", definition: "bor (bitta)" },
+      { word: "there are", definition: "bor (ko'p)" },
+      { word: "near", definition: "yaqin" },
+    ],
+    questions: [
+      { id: 21010, type: "multiple-choice", question: "Is there a hotel near here?", options: ["No, there isn't", "Yes, there is", "There are two", "Not mentioned"], correctIndex: 1, explanation: "The local says 'Yes, there is a nice hotel.'" },
+      { id: 21011, type: "multiple-choice", question: "Are there any museums?", options: ["No, there aren't", "Yes, there is one", "Yes, there are two", "Not mentioned"], correctIndex: 2, explanation: "There are two museums near the hotel." },
+      { id: 21012, type: "multiple-choice", question: "What is in the park?", options: ["A museum", "A hotel", "Many trees", "A pharmacy"], correctIndex: 2, explanation: "There are many trees in the park." },
+    ],
+    difficulty: "easy",
+    topic: "There is / There are",
+  },
+  writing: {
+    prompt: "Describe your favorite place, like a park, a cafe, or a classroom. What is there? What is not there? Use \"There is\", \"There are\", \"There is no\", and \"There are no\".",
+    wordLimit: 60,
+    tips: [
+      "Use \"There is\" for one thing: \"There is a fountain\"",
+      "Use \"There are\" for many things: \"There are many trees\"",
+      "Use \"There is no\" and \"There are no\" for negatives",
+    ],
+  },
+  speaking: {
+    prompt: "Describe your favorite place (your room, a park, or a café). Use 'There is...' for one thing and 'There are...' for many things. Say 'There is a bed in my room'.",
+    tips: ["Use \"There is\" + singular noun", "Use \"There are\" + plural noun", "Use negatives: \"There isn't\" and \"There aren't\""],
+    keyPhrases: [{ phrase: "There is a bed in my room.", translation: "Mening xonamda karavot bor." }, { phrase: "There are two chairs.", translation: "Ikkita stul bor." }, { phrase: "There isn't a TV in my room.", translation: "Mening xonamda televizor yo'q." }],
+    sampleAnswer: "There is a bed in my room. There is a desk and a chair. There are two windows. There are many books on the shelf. There isn't a TV in my room. There is a lamp next to my bed.",
+  },
 }
 
 export const canCant: DailyLesson = {
@@ -656,6 +828,49 @@ export const canCant: DailyLesson = {
     { title: "O'rtacha", desc: "Can/can't, savol", color: 'bg-blue-500', icon: '📘', ids: [136, 137, 138, 139, 1310] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1311, 1312, 1313, 1314, 1315] },
   ],
+  reading: {
+    passage: "My name is Sanjar. I can do many things. I can swim very well. I can play football, but I cannot play basketball. My sister Malika can sing beautifully. She can also dance. My father can drive a car. He can speak Russian and English. My mother can cook delicious plov. I cannot cook, but I can help her in the kitchen. My little brother cannot read yet. He is only three years old. Can you swim? Can you play football? I can teach you!",
+    vocabulary: [
+      { word: 'swim', definition: 'suzmoq' },
+      { word: 'sing', definition: "qo'shiq aytmoq" },
+      { word: 'cook', definition: 'ovqat pishirmoq' },
+    ],
+    questions: [
+      { id: 11501, type: 'multiple-choice', question: 'What can Sanjar do well?', options: ['Sing', 'Dance', 'Swim', 'Cook'], correctIndex: 2, explanation: 'I can swim very well.' },
+      { id: 11502, type: 'multiple-choice', question: 'What can Sanjar\'s mother do?', options: ['Drive a car', 'Sing beautifully', 'Cook plov', 'Speak English'], correctIndex: 2, explanation: 'My mother can cook delicious plov.' },
+      { id: 11503, type: 'multiple-choice', question: 'How old is Sanjar\'s little brother?', options: ['Two', 'Three', 'Four', 'Five'], correctIndex: 1, explanation: 'He is only three years old.' },
+    ],
+  },
+  listening: {
+    transcript: "Friend: What can you do, Aziz?\nAziz: I can swim very well! I can also play football.\nFriend: Can you play basketball?\nAziz: No, I cannot play basketball. But I can run fast!\nFriend: Can you cook?\nAziz: No, I cannot cook. But my mother can cook delicious plov.\nFriend: Can your father drive a car?\nAziz: Yes, he can. He can speak Russian and English too!\nFriend: Can you sing?\nAziz: No, I cannot sing. But my sister can sing beautifully.\nFriend: Can you teach me to swim?\nAziz: Yes, I can! Let's go swimming!",
+    vocabulary: [
+      { word: "can", definition: "qila olmoq" },
+      { word: "can't", definition: "qila olmaslik" },
+      { word: "swim", definition: "suzmoq" },
+    ],
+    questions: [
+      { id: 21013, type: "multiple-choice", question: "What can Aziz do very well?", options: ["Play basketball", "Cook", "Swim", "Sing"], correctIndex: 2, explanation: "Aziz says 'I can swim very well!'" },
+      { id: 21014, type: "multiple-choice", question: "What can Aziz's father do?", options: ["Swim", "Cook plov", "Sing", "Drive a car"], correctIndex: 3, explanation: "His father can drive a car." },
+      { id: 21015, type: "multiple-choice", question: "Who can sing beautifully?", options: ["Aziz", "Aziz's mother", "Aziz's sister", "Aziz's father"], correctIndex: 2, explanation: "Aziz's sister can sing beautifully." },
+    ],
+    difficulty: "easy",
+    topic: "Can / Can't qobiliyat",
+  },
+  writing: {
+    prompt: "Write about things you can do and things you cannot do. What are your skills? What can your family members do? Use \"can\" and \"can't\" (cannot) in your sentences.",
+    wordLimit: 60,
+    tips: [
+      "Use \"can\" for abilities: \"I can swim\"",
+      "Use \"can't\" for things you cannot do: \"I can't play the piano\"",
+      "Write about family too: \"My brother can sing\"",
+    ],
+  },
+  speaking: {
+    prompt: "Talk about what you can and can't do. Say 'I can swim', 'I can speak English', 'I can't fly'. Ask your partner: 'Can you play football?'",
+    tips: ["Use \"I can\" for abilities", "Use \"I can't\" for things you cannot do", "Ask \"Can you...?\" questions to your partner"],
+    keyPhrases: [{ phrase: "I can swim.", translation: "Men suza olaman." }, { phrase: "I can't play the guitar.", translation: "Men gitara chala olmayman." }, { phrase: "Can you speak English?", translation: "Siz ingliz tilida gapira olasizmi?" }],
+    sampleAnswer: "I can swim and I can ride a bike. I can speak a little English. I can't play the guitar, but I can sing. Can you play football? I can cook eggs. I can't fly a plane.",
+  },
 }
 
 export const haveGot: DailyLesson = {
@@ -779,6 +994,49 @@ export const haveGot: DailyLesson = {
     { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [146, 147, 148, 149, 1410] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1411, 1412, 1413, 1414, 1415] },
   ],
+  reading: {
+    passage: "Hello! My name is Gulnora. I have got a big family. I have got two brothers and one sister. My brothers have got a bicycle. My sister has got a beautiful doll. I have got a new phone. My mother has got a car. She has got a blue car. My father has got a job at a bank. We have got a big house with a garden. I have not got a pet, but I want a cat. Have you got any pets? What have you got? Tell me!",
+    vocabulary: [
+      { word: 'have got', definition: 'ega bo\'lmoq' },
+      { word: 'bicycle', definition: 'velosiped' },
+      { word: 'pet', definition: 'uy hayvoni' },
+    ],
+    questions: [
+      { id: 11601, type: 'multiple-choice', question: 'How many siblings does Gulnora have?', options: ['One', 'Two', 'Three', 'Four'], correctIndex: 2, explanation: 'I have got two brothers and one sister.' },
+      { id: 11602, type: 'multiple-choice', question: 'What color is mother\'s car?', options: ['Red', 'Blue', 'Black', 'White'], correctIndex: 1, explanation: 'She has got a blue car.' },
+      { id: 11603, type: 'multiple-choice', question: 'What does Gulnora want?', options: ['A dog', 'A cat', 'A bird', 'A fish'], correctIndex: 1, explanation: 'I want a cat.' },
+    ],
+  },
+  listening: {
+    transcript: "Aziz: I have got a new bicycle!\nLola: Wow! What color is it?\nAziz: It is red. Have you got a bicycle?\nLola: No, I haven't got a bicycle. But I have got a scooter.\nAziz: That's cool! I have also got a pet. I have got a dog.\nLola: What is its name?\nAziz: Its name is Rex. Have you got any pets?\nLola: Yes, I have got two cats and a fish.\nAziz: Has your brother got any pets?\nLola: No, he hasn't got any pets. But he has got a computer.\nAziz: Cool! I haven't got a computer, but I have got a phone!",
+    vocabulary: [
+      { word: "have got", definition: "ega bo'lmoq" },
+      { word: "has got", definition: "ega bo'lmoq (3-shaxs)" },
+      { word: "pet", definition: "uy hayvoni" },
+    ],
+    questions: [
+      { id: 21016, type: "multiple-choice", question: "What has Aziz got?", options: ["A computer", "A scooter", "A new bicycle", "A cat"], correctIndex: 2, explanation: "Aziz says 'I have got a new bicycle!'" },
+      { id: 21017, type: "multiple-choice", question: "Has Lola got a bicycle?", options: ["Yes, she has", "No, she hasn't", "She has got two", "Not mentioned"], correctIndex: 1, explanation: "Lola says 'No, I haven't got a bicycle.'" },
+      { id: 21018, type: "multiple-choice", question: "What has Lola's brother got?", options: ["A pet", "A bicycle", "A computer", "A phone"], correctIndex: 2, explanation: "Her brother has got a computer." },
+    ],
+    difficulty: "easy",
+    topic: "Have got / Has got",
+  },
+  writing: {
+    prompt: "Write about things you have and things you do not have. What possessions do you have? What do your family members have? Use \"have got\", \"has got\", \"haven't got\", and \"hasn't got\".",
+    wordLimit: 60,
+    tips: [
+      "Use \"have got\" for I/you/we/they: \"I have got a phone\"",
+      "Use \"has got\" for he/she/it: \"My sister has got a cat\"",
+      "Use \"haven't got\" and \"hasn't got\" for negatives",
+    ],
+  },
+  speaking: {
+    prompt: "Talk about what you have and don't have. Use 'I have got' or 'I've got' for your possessions. Say 'I have got a phone', 'I haven't got a car'. Ask your partner: 'Have you got a pet?'",
+    tips: ["Use \"I have got\" or \"I've got\" for possessions", "Use \"I haven't got\" for things you don't have", "Ask \"Have you got...?\" questions"],
+    keyPhrases: [{ phrase: "I have got a new phone.", translation: "Mening yangi telefonim bor." }, { phrase: "I haven't got a car.", translation: "Mening mashinam yo'q." }, { phrase: "Have you got a sister?", translation: "Sizning singlingiz bormi?" }],
+    sampleAnswer: "I have got a phone and a computer. I have got one brother. I haven't got a pet, but I want a cat. I have got many books. Have you got a pet?",
+  },
 }
 
 export const presentSimple: DailyLesson = {
@@ -902,6 +1160,49 @@ export const presentSimple: DailyLesson = {
     { title: "O'rtacha", desc: "Do/Does, frequency", color: 'bg-blue-500', icon: '📘', ids: [156, 157, 158, 159, 1510] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1511, 1512, 1513, 1514, 1515] },
   ],
+  reading: {
+    passage: "My name is Lola. I get up at 7 o'clock every day. I have breakfast at 7:30. I go to university at 8 o'clock. My classes start at 9 AM. I study English every day. My friend Dilshod studies with me. He speaks English very well. In the evening, I do my homework. I watch TV at 9 PM. I go to bed at 11 PM. My mother works at a hospital. She starts work at 8 AM. She does not work on Sundays. My father drives a bus. He loves his job. Every weekend, we visit my grandmother. She makes delicious plov for us.",
+    vocabulary: [
+      { word: 'get up', definition: 'turmoq (uyqudan)' },
+      { word: 'study', definition: "o'qimoq" },
+      { word: 'visit', definition: 'borib turmoq' },
+    ],
+    questions: [
+      { id: 11701, type: 'multiple-choice', question: "What time does Lola get up?", options: ["At 6 o'clock", "At 7 o'clock", "At 8 o'clock", "At 9 o'clock"], correctIndex: 1, explanation: "I get up at 7 o'clock every day." },
+      { id: 11702, type: 'multiple-choice', question: "What does Lola's mother do?", options: ['She is a teacher', 'She works at a hospital', 'She drives a bus', 'She is a student'], correctIndex: 1, explanation: "My mother works at a hospital." },
+      { id: 11703, type: 'multiple-choice', question: "When does Lola visit her grandmother?", options: ['Every day', 'Every weekend', 'On Mondays', 'In summer'], correctIndex: 1, explanation: "Every weekend, we visit my grandmother." },
+    ],
+  },
+  listening: {
+    transcript: "Interviewer: Lola, what do you do every day?\nLola: I wake up at 7 o'clock. I have breakfast at 7:30.\nInterviewer: What does your mother make for breakfast?\nLola: She makes eggs and bread. Sometimes she makes pancakes.\nInterviewer: Where do you study?\nLola: I study at university. My classes start at 9 AM.\nInterviewer: What does your father do?\nLola: He works at a hospital. He starts work at 8 AM.\nInterviewer: What do you do in the evening?\nLola: I do my homework. Then I watch TV at 9 PM.\nInterviewer: Does your brother watch TV with you?\nLola: No, he doesn't. He plays football every evening.",
+    vocabulary: [
+      { word: "wake up", definition: "uyg'onmoq" },
+      { word: "work", definition: "ishlamoq" },
+      { word: "study", definition: "o'qimoq" },
+    ],
+    questions: [
+      { id: 21019, type: "multiple-choice", question: "What time does Lola wake up?", options: ["At 6:30", "At 7:00", "At 7:30", "At 8:00"], correctIndex: 1, explanation: "Lola wakes up at 7 o'clock." },
+      { id: 21020, type: "multiple-choice", question: "What does Lola's mother make for breakfast?", options: ["Rice and meat", "Soup", "Eggs and bread", "Fruit"], correctIndex: 2, explanation: "She makes eggs and bread for breakfast." },
+      { id: 21021, type: "multiple-choice", question: "What does Lola's brother do every evening?", options: ["Watches TV", "Does homework", "Plays football", "Goes to bed early"], correctIndex: 2, explanation: "He plays football every evening." },
+    ],
+    difficulty: "easy",
+    topic: "Present Simple — kun tartibi",
+  },
+  writing: {
+    prompt: "Write about what a family member or friend does every day. Describe their daily routine from morning to evening. Use present simple verbs and third person (-s) correctly.",
+    wordLimit: 80,
+    tips: [
+      "Use third person -s: \"He wakes up\", \"She goes to work\"",
+      "Use adverbs: always, usually, sometimes, never",
+      "Use time expressions: every day, in the morning, at night",
+    ],
+  },
+  speaking: {
+    prompt: "Pretend you are Lola from the reading passage. Talk about your daily routine using 'I get up', 'I eat', 'I go', 'I study'. Then ask your partner about their daily routine.",
+    tips: ["Use \"I + verb\" for your daily actions", "Add time: \"at 7 o'clock\", \"in the morning\"", "Use adverbs: always, usually, sometimes, never"],
+    keyPhrases: [{ phrase: "I get up at 7 o'clock every day.", translation: "Men har kuni soat 7 da uyg'onaman." }, { phrase: "I study English every day.", translation: "Men har kuni ingliz tilini o'rganaman." }, { phrase: "She goes to university at 8 AM.", translation: "U soat 8 da universitetga boradi." }],
+    sampleAnswer: "My name is Lola. I get up at 7 o'clock every day. I have breakfast at 7:30. I go to university at 8 o'clock. My classes start at 9 AM. I study English every day. My friend Dilshod studies with me. In the evening, I do my homework. I watch TV sometimes. I go to bed at 10 PM. What do you do every day?",
+  },
 }
 
 
@@ -989,7 +1290,7 @@ export const questionWords: DailyLesson = {
     { id: 1610, type: 'fill-blank', instruction: "To'g'ri tartibda yozing:", question: 'What / she / does / do', blanks: ['What does she do'], explanation: "Wh- + does" },
     { id: 1611, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ is your favourite color?', options: ['What', 'Where', 'How', 'Why'], correct: 'What', explanation: "What = nima" },
     { id: 1612, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'What he does?', errorPart: 'What he', correct: 'What does he do?', explanation: "does kerak" },
-    { id: 1613, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: 'How ___ is this book?', blanks: ['much'], explanation: "How much = qancha" },
+    { id: 1613, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: 'How ___ is this book?', blanks: ['much'], acceptedAnswers: [['much', 'many']], explanation: "How much = qancha (lekin many ham to'g'ri, lekin bu yerda much kutilgan)" },
     { id: 1614, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ is your best friend?', options: ['What', 'Where', 'Who', 'How'], correct: 'Who', explanation: "Who = kim" },
     { id: 1615, type: 'fill-blank', instruction: "To'g'ri tartibda yozing:", question: 'Why / are / you / sad', blanks: ['Why are you sad'], explanation: "Wh- + are (be fe'li)" },
     { id: 1616, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: "___ is your name? (ism so'ramoq)", blanks: ['What'], explanation: "What = nima (ism uchun)" },
@@ -1017,7 +1318,7 @@ export const questionWords: DailyLesson = {
     { id: 1610, type: 'fill-blank', instruction: "To'g'ri tartibda yozing:", question: 'What / he / does / do', blanks: ['What does he do'], explanation: "Wh- + does" },
     { id: 1611, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ is your favourite food?', options: ['What', 'Where', 'How', 'Why'], correct: 'What', explanation: "What" },
     { id: 1612, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'Why she is sad?', errorPart: 'Why she', correct: 'Why is she sad?', explanation: "is kerak" },
-    { id: 1613, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: 'How ___ water do you want?', blanks: ['much'], explanation: "much" },
+    { id: 1613, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: 'How ___ water do you want?', blanks: ['much'], acceptedAnswers: [['much', 'many']], explanation: "much (lekin many ham to'g'ri, lekin bu yerda much kutilgan)" },
     { id: 1614, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ is your favourite singer?', options: ['What', 'Where', 'Who', 'How'], correct: 'Who', explanation: "Who" },
     { id: 1615, type: 'fill-blank', instruction: "To'g'ri tartibda yozing:", question: 'How / you / are', blanks: ['How are you'], explanation: "How are you" },
   ],
@@ -1026,6 +1327,49 @@ export const questionWords: DailyLesson = {
     { title: "O'rtacha", desc: "Tartib va how", color: 'bg-blue-500', icon: '📘', ids: [166, 167, 168, 169, 1610] },
     { title: "Qiyin", desc: "Murakkab savollar", color: 'bg-violet-500', icon: '🎯', ids: [1611, 1612, 1613, 1614, 1615] },
   ],
+  reading: {
+    passage: "Hello! My name is Tom. I am a student from England. I have some questions for you. What is your name? Where are you from? How old are you? When is your birthday? Why do you study English? Who is your teacher? Which subjects do you like? How many languages do you speak? These are important questions! Now let me answer for myself. My name is Tom. I am from London. I am 22 years old. My birthday is in March. I study English because I want to be a teacher. My teacher is Mr. Brown. I like Math and History. I speak two languages: English and French.",
+    vocabulary: [
+      { word: 'question', definition: 'savol' },
+      { word: 'important', definition: 'muhim' },
+      { word: 'language', definition: 'til' },
+    ],
+    questions: [
+      { id: 11801, type: 'multiple-choice', question: 'Where is Tom from?', options: ['America', 'England', 'Uzbekistan', 'France'], correctIndex: 1, explanation: 'I am a student from England.' },
+      { id: 11802, type: 'multiple-choice', question: 'Why does Tom study English?', options: ['He likes England', 'He wants to be a teacher', 'He lives in London', 'He speaks two languages'], correctIndex: 1, explanation: 'I study English because I want to be a teacher.' },
+      { id: 11803, type: 'multiple-choice', question: 'How many languages does Tom speak?', options: ['One', 'Two', 'Three', 'Four'], correctIndex: 1, explanation: 'I speak two languages: English and French.' },
+    ],
+  },
+  listening: {
+    transcript: "Teacher: I have some questions for you! What is your name?\nStudent: My name is Aziz.\nTeacher: Where are you from?\nStudent: I am from Tashkent.\nTeacher: How old are you?\nStudent: I am 20 years old.\nTeacher: When is your birthday?\nStudent: My birthday is in May.\nTeacher: Why do you study English?\nStudent: I study English because I want to travel.\nTeacher: Who is your English teacher?\nStudent: Mr. Johnson is my teacher.\nTeacher: How many languages do you speak?\nStudent: I speak two languages: Uzbek and English.\nTeacher: Excellent! You answered all my questions well!",
+    vocabulary: [
+      { word: "what", definition: "nima" },
+      { word: "where", definition: "qayer" },
+      { word: "why", definition: "nega" },
+    ],
+    questions: [
+      { id: 21022, type: "multiple-choice", question: "Where is Aziz from?", options: ["Samarkand", "Bukhara", "Tashkent", "Fergana"], correctIndex: 2, explanation: "Aziz says 'I am from Tashkent.'" },
+      { id: 21023, type: "multiple-choice", question: "Why does Aziz study English?", options: ["He likes the teacher", "He wants to travel", "He must pass an exam", "His father wants him to"], correctIndex: 1, explanation: "He studies English because he wants to travel." },
+      { id: 21024, type: "multiple-choice", question: "How many languages does Aziz speak?", options: ["One", "Two", "Three", "Four"], correctIndex: 1, explanation: "He speaks two languages: Uzbek and English." },
+    ],
+    difficulty: "easy",
+    topic: "So'roq so'zlari",
+  },
+  writing: {
+    prompt: "Write six questions you want to ask a new friend. Use different question words: what, where, when, who, why, how. Then write short answers for each question.",
+    wordLimit: 60,
+    tips: [
+      "Use \"What\" for things: \"What is your favorite food?\"",
+      "Use \"Where\" for places: \"Where do you live?\"",
+      "Use \"Why\" for reasons: \"Why do you study English?\"",
+    ],
+  },
+  speaking: {
+    prompt: "Ask your partner questions using Wh- words. Use 'What', 'Where', 'When', 'Why', 'Who', 'How'. Take turns asking and answering.",
+    tips: ["Use \"What\" for things: \"What is your name?\"", "Use \"Where\" for places: \"Where are you from?\"", "Use \"How\" for manner/quantity: \"How old are you?\""],
+    keyPhrases: [{ phrase: "What is your name?", translation: "Ismingiz nima?" }, { phrase: "Where are you from?", translation: "Qayerdansiz?" }, { phrase: "How old are you?", translation: "Yoshingiz nechada?" }],
+    sampleAnswer: "Hello! My name is Tom. I am from England. What is your name? How old are you? Where are you from? What is your favorite color? When is your birthday? How many brothers do you have? Why do you study English?",
+  },
 }
 
 export const conjunctions: DailyLesson = {
@@ -1151,6 +1495,49 @@ export const conjunctions: DailyLesson = {
     { title: "O'rtacha", desc: "So, but, and farqlari", color: 'bg-blue-500', icon: '📘', ids: [176, 177, 178, 179, 1710] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1711, 1712, 1713, 1714, 1715] },
   ],
+  reading: {
+    passage: "My name is Anna. I like tea and coffee, but I prefer tea. I get up early so I can study. I study English because I want to travel. I can play the guitar and the piano, but I cannot sing. Do you like cats or dogs? I like cats because they are cute. My brother likes dogs, so we have a cat and a dog. I want to visit Paris or London next summer. I am happy because I have good friends. I study hard so I can pass my exams.",
+    vocabulary: [
+      { word: 'because', definition: 'chunki' },
+      { word: 'but', definition: 'lekin' },
+      { word: 'so', definition: 'shuning uchun' },
+    ],
+    questions: [
+      { id: 11901, type: 'multiple-choice', question: "Which drink does Anna prefer?", options: ['Coffee', 'Tea', 'Milk', 'Juice'], correctIndex: 1, explanation: "I like tea and coffee, but I prefer tea." },
+      { id: 11902, type: 'multiple-choice', question: "Why does Anna study English?", options: ['She likes books', 'She wants to travel', 'She has a test', 'Her teacher is nice'], correctIndex: 1, explanation: "I study English because I want to travel." },
+      { id: 11903, type: 'multiple-choice', question: "What pets do they have?", options: ['Two cats', 'A cat and a dog', 'Two dogs', 'A dog and a bird'], correctIndex: 1, explanation: "My brother likes dogs, so we have a cat and a dog." },
+    ],
+  },
+  listening: {
+    transcript: "Anna: I like tea and coffee, but I prefer tea.\nFriend: Why do you prefer tea?\nAnna: Because tea is good for health. I drink tea every morning so I feel great!\nFriend: Do you like cats or dogs?\nAnna: I like cats because they are cute, but my brother likes dogs.\nFriend: So what pets do you have?\nAnna: We have a cat and a dog!\nFriend: Can you play any instruments?\nAnna: I can play the guitar and the piano, but I cannot sing.\nFriend: What do you want to do this weekend?\nAnna: I want to visit the park or go to the cinema.",
+    vocabulary: [
+      { word: "because", definition: "chunki" },
+      { word: "but", definition: "lekin" },
+      { word: "so", definition: "shuning uchun" },
+    ],
+    questions: [
+      { id: 21025, type: "multiple-choice", question: "Which drink does Anna prefer?", options: ["Coffee", "Tea", "Juice", "Milk"], correctIndex: 1, explanation: "Anna says 'I like tea and coffee, but I prefer tea.'" },
+      { id: 21026, type: "multiple-choice", question: "Why does Anna like cats?", options: ["They are funny", "They are cute", "They are small", "They are fast"], correctIndex: 1, explanation: "Anna likes cats because they are cute." },
+      { id: 21027, type: "multiple-choice", question: "What instruments can Anna play?", options: ["Guitar only", "Piano only", "Guitar and piano", "She cannot play any"], correctIndex: 2, explanation: "Anna can play the guitar and the piano." },
+    ],
+    difficulty: "easy",
+    topic: "Bog'lovchilar",
+  },
+  writing: {
+    prompt: "Write about your preferences and choices. Use conjunctions \"and\", \"but\", \"or\", \"so\", and \"because\" to connect your ideas. Write at least six compound sentences.",
+    wordLimit: 60,
+    tips: [
+      "Use \"and\" to add information: \"I like tea and coffee\"",
+      "Use \"but\" to show contrast: \"I like cats but I prefer dogs\"",
+      "Use \"because\" to give reasons: \"I study because I want to learn\"",
+    ],
+  },
+  speaking: {
+    prompt: "Make longer sentences using 'and', 'but', 'so', 'because', 'or'. Talk about what you like and don't like, give reasons, and offer choices.",
+    tips: ["Use 'and' to add information", "Use 'but' to show contrast", "Use 'because' to give a reason"],
+    keyPhrases: [{ phrase: "I like tea and coffee.", translation: "Menga choy va kofe yoqadi." }, { phrase: "I like tea, but I prefer coffee.", translation: "Menga choy yoqadi, lekin kofeni afzal ko'raman." }, { phrase: "I study English because I want to travel.", translation: "Men ingliz tilini o'rganyapman, chunki sayohat qilishni xohlayman." }],
+    sampleAnswer: "My name is Anna. I like tea and coffee, but I prefer tea. I like cats, but I don't like dogs because they are noisy. I study English because I want to travel. I can play football and basketball, but I can't swim. Do you like tea or coffee?",
+  },
 }
 
 export const a1Review: DailyLesson = {
@@ -1265,4 +1652,48 @@ export const a1Review: DailyLesson = {
     { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [186, 187, 188, 189, 1810] },
     { title: "Qiyin", desc: "Review va murakkab", color: 'bg-violet-500', icon: '🎯', ids: [1811, 1812, 1813, 1814, 1815] },
   ],
+  reading: {
+    passage: "Hello! I am Dilshod. I am from Uzbekistan. I am 18 years old. I have a big family. There are five people in my family: my mother, my father, my two sisters, and me. I have got a dog. Its name is Rex. I can swim, but I cannot play football. There is a park near my house. There are many trees in the park. Every morning, I get up at 6 o'clock and go to the park. I like my city because it is beautiful. This is my life. What about you?",
+    vocabulary: [
+      { word: 'family', definition: 'oila' },
+      { word: 'near', definition: 'yaqin' },
+      { word: 'beautiful', definition: 'chiroyli' },
+    ],
+    questions: [
+      { id: 12001, type: 'multiple-choice', question: "How many people are in Dilshod's family?", options: ['Three', 'Four', 'Five', 'Six'], correctIndex: 2, explanation: "There are five people in my family." },
+      { id: 12002, type: 'multiple-choice', question: "What is the dog's name?", options: ['Bobik', 'Rex', 'Masha', 'Tom'], correctIndex: 1, explanation: "Its name is Rex." },
+      { id: 12003, type: 'multiple-choice', question: "What time does Dilshod get up?", options: ["At 5 o'clock", "At 6 o'clock", "At 7 o'clock", "At 8 o'clock"], correctIndex: 1, explanation: "Every morning, I get up at 6 o'clock." },
+    ],
+  },
+  listening: {
+    transcript: "Teacher: Let's review everything we learned! Aziz, tell me about yourself.\nAziz: Hello! I am Aziz. I am from Uzbekistan. I am 20 years old.\nTeacher: Great! Tell me about your family.\nAziz: I have a big family. There are five people in my family.\nTeacher: What can you do?\nAziz: I can swim, but I cannot play basketball.\nTeacher: What have you got?\nAziz: I have got a dog. Its name is Rex.\nTeacher: What do you do every morning?\nAziz: I get up at 7 o'clock and go to the park.\nTeacher: Why do you like the park?\nAziz: Because there are many trees and it is beautiful.\nTeacher: Excellent, Aziz! You learned a lot!",
+    vocabulary: [
+      { word: "family", definition: "oila" },
+      { word: "park", definition: "park" },
+      { word: "beautiful", definition: "chiroyli" },
+    ],
+    questions: [
+      { id: 21028, type: "multiple-choice", question: "How old is Aziz?", options: ["18 years old", "20 years old", "22 years old", "25 years old"], correctIndex: 1, explanation: "Aziz says 'I am 20 years old.'" },
+      { id: 21029, type: "multiple-choice", question: "What pet has Aziz got?", options: ["A cat", "A fish", "A dog", "A bird"], correctIndex: 2, explanation: "Aziz says 'I have got a dog. Its name is Rex.'" },
+      { id: 21030, type: "multiple-choice", question: "Why does Aziz like the park?", options: ["It has a playground", "It has many trees and is beautiful", "It is near his house", "His friends are there"], correctIndex: 1, explanation: "He likes the park because there are many trees and it is beautiful." },
+    ],
+    difficulty: "easy",
+    topic: "A1 darajasi takrori",
+  },
+  writing: {
+    prompt: "Write a paragraph about yourself and your life. Include: your name and where you are from, your family, things you can do, what you have, your daily routine, and why you like your city or town. Use everything you learned!",
+    wordLimit: 100,
+    tips: [
+      "Introduce yourself: name, age, city",
+      "Describe your family and pets",
+      "Use \"can\", \"have got\", and present simple",
+      "End with a conclusion about your life",
+    ],
+  },
+  speaking: {
+    prompt: "Introduce yourself completely. Talk about: your name, age, country, family, what you can do, what you have, what you do every day, your favorite things. Use everything you learned in A1 level.",
+    tips: ["Introduce yourself: name, age, country", "Talk about family and pets using \"have got\"", "Talk about abilities using \"can\" and daily routine using present simple"],
+    keyPhrases: [{ phrase: "Hello! I am Dilshod from Uzbekistan.", translation: "Salom! Men O'zbekistondan Dilshodman." }, { phrase: "I have got one brother and one sister.", translation: "Mening bir akam va bir singlim bor." }, { phrase: "I can speak Uzbek, and I am learning English.", translation: "Men o'zbek tilida gaplasha olaman va ingliz tilini o'rganyapman." }],
+    sampleAnswer: "Hello! My name is Dilshod. I am from Uzbekistan. I am 22 years old. I have got one brother and one sister. I haven't got a pet, but I want a dog. I can speak Uzbek and Russian. I am learning English. Every day I go to university. I like football and books. There are four people in my family. My mother is kind and my father is funny. Nice to meet you!",
+  },
 }

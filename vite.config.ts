@@ -3,8 +3,9 @@ import type { ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import type { IncomingMessage, ServerResponse } from 'http'
-import 'dotenv/config'  // .env ni process.env ga yuklaydi (dev proxy uchun)
+import 'dotenv/config'
 import viteCompression from 'vite-plugin-compression'
+import { VitePWA } from 'vite-plugin-pwa'
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || process.env.VITE_ANTHROPIC_API_KEY || ''
 
@@ -84,6 +85,22 @@ export default defineConfig({
     react(),
     anthropicProxyPlugin(),
     viteCompression({ algorithm: 'gzip', threshold: 10240 }),
+    VitePWA({
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.ts',
+      registerType: 'autoUpdate',
+      includeAssets: [
+        'favicon.svg',
+        'icon-192.png',
+        'icon-512.png',
+        'icon-maskable-512.png',
+        'apple-touch-icon.png',
+      ],
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,gif,webp,woff2,ttf,eot,ico}'],
+      },
+    }),
   ],
   resolve: {
     alias: {
@@ -96,10 +113,14 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: process.env.NODE_ENV !== 'production',
+    // Enable hidden sourcemaps in production for Sentry error tracking.
+    // The .map files stay in dist/ but are NOT served to browsers.
+    // Upload to Sentry: npx sentry-cli sourcemaps inject ./dist && npx sentry-cli sourcemaps upload --release=<release> ./dist
+    sourcemap: true,
     chunkSizeWarningLimit: 900,
     rollupOptions: {
       output: {
+        sourcemapIgnoreList: (relativeSourcePath: string) => relativeSourcePath.includes('node_modules'),
         manualChunks(id: string) {
           // Vendor chunks (node_modules) — single vendor chunk to avoid circular deps
           if (id.includes('node_modules')) {
@@ -150,11 +171,11 @@ export default defineConfig({
     css: false,
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'html'],
+      reporter: ['text', 'html', 'lcov'],
       thresholds: {
-        lines: 20,
-        functions: 20,
-        branches: 20,
+        lines: 30,
+        functions: 30,
+        branches: 30,
       },
       include: ['src/services/**', 'src/store/**', 'src/lib/**'],
       exclude: ['src/data/**', 'src/**/*.test.ts', 'src/lib/monitoring.ts'],

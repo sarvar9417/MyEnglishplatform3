@@ -32,8 +32,28 @@
   "bottomNav.profile": "Профиль",
   "bottomNav.speaking": "Говорение",
 
-  "app.offlineMessage": "Нет подключения к интернету — некоторые данные могут не загрузиться",
+  "app.offlineMessage": "Нет подключения к интернету",
   "app.menuLabel": "Меню",
+
+  "offline.title": "Вы офлайн",
+  "offline.subtitle": "Ограниченный режим — изменения синхронизируются при восстановлении связи",
+  "offline.available": "Доступно офлайн",
+  "offline.unavailable": "Требуется интернет",
+  "offline.lessons": "Просмотр кэшированных уроков и упражнений",
+  "offline.vocabulary": "Повторение словаря (FSRS интервальное повторение)",
+  "offline.progress": "Дашборд и статистика обучения",
+  "offline.mockTests": "Тесты и результаты",
+  "offline.writing": "Практика письма",
+  "offline.speakingPath": "Уроки SpeakingPath",
+  "offline.dictionary": "Поиск в словаре (кэш)",
+  "offline.aiFeatures": "AI Чат, Беседа, Insights",
+  "offline.tandem": "Поиск партнёра Tandem",
+  "offline.supabase": "Облачная синхронизация и новые уроки",
+  "offline.syncPending": "Изменения сохранены локально, синхронизируются при подключении",
+  "offline.reconnected": "Соединение восстановлено! Синхронизация данных...",
+  "offline.dismiss": "Понятно",
+  "offline.showDetails": "Показать что работает",
+  "offline.hideDetails": "Скрыть",
 
   "seo.dashboard": "Дашборд",
   "seo.lessons": "Уроки",
@@ -75,5 +95,12 @@
   "grammar.prepositions": "Prepositions — Предлоги",
   "grammar.conjunctions": "Conjunctions — Союзы",
   "grammar.causative": "Causative — Каузативная форма",
-  "grammar.gerundInfinitive": "Gerund & Infinitive — Герундий и инфинитив"
+  "grammar.gerundInfinitive": "Gerund & Infinitive — Герундий и инфинитив",
+
+  "pwa.installTitle": "Установить приложение",
+  "pwa.installDesc": "Установите для быстрого доступа и работы офлайн",
+  "pwa.install": "Установить",
+  "pwa.notNow": "Не сейчас",
+  "pwa.dismiss": "Закрыть",
+  "pwa.installed": "Приложение установлено"
 }

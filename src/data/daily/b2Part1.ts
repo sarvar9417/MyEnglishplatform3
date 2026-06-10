@@ -109,13 +109,14 @@ export const unrealPastB2: DailyLesson = {
     { id: 5423, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: "If only she ___ harder for the test!", blanks: ['had studied'], explanation: "Past regret → if only + had + V3" },
     { id: 5424, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "It's high time we ___ something about this problem.", options: ['do', 'did', 'have done', 'would do'], correct: 'did', explanation: "It's high time + past tense" },
     { id: 5425, type: 'transformation', instruction: "Ifodalang:", question: "I regret not learning Chinese. → I wish...", hint: "I wish I ___", correct: "I wish I had learned Chinese.", explanation: "Past regret → wish + had + V3" },
+    { id: 5426, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I wish I can speak English fluently.", errorPart: 'can', correct: 'could', explanation: "Wish + past simple: 'I wish I could' (can → could present unreal)" },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Unreal Past asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5401, 5402, 5403, 5404, 5405] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5406, 5407, 5408, 5409, 5410] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5411, 5412, 5413, 5414, 5415] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5420, 5416, 5417, 5418, 5419] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5421, 5422, 5423, 5424, 5425] },
+    { title: "Kengaytirish", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5420, 5416, 5417, 5418, 5419] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5421, 5422, 5423, 5424, 5425, 5426] },
   ],
   tests: [
     { id: 541, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Wish + past simple nima uchun?", options: ["o'tgan xayol", 'hozirgi xayol', 'shikoyat', 'kelasi xayol'], correct: 'hozirgi xayol', explanation: "Wish + past = present unreal" },
@@ -310,15 +311,17 @@ export const advancedConditionalsB2: DailyLesson = {
     { id: 5530, type: 'fill-blank', instruction: "Mixed conditional — present→past:", question: "If I _____ (be) more careful, I wouldn't have made that mistake.", blanks: ['were'], explanation: "Present condition (If I were) → past result (wouldn't have made). Bu present→past mixed conditional." },
     { id: 5531, type: 'multiple-choice', instruction: "3rd vs Mixed conditional farqini aniqlang:", question: "Qaysi gap MIXED conditional (past→present)?", options: ['If I had studied, I would have passed the exam.', 'If I had studied, I would be a doctor now.', 'If I were rich, I would travel.', 'If it rains, I will stay home.'], correct: 'If I had studied, I would be a doctor now.', explanation: "Past condition (had studied) → present result (would be) = mixed. 1-variant 3rd conditional (past→past)." },
     { id: 5532, type: 'error-correction', instruction: "Mixed conditional xatosini toping:", question: "If I would have studied harder, I would have a better job now.", errorPart: 'would have studied', correct: 'had studied', explanation: "If dan keyin would ishlatilmaydi: 'If I had studied harder, I would have a better job now.' = mixed conditional (past→present)." },
+    { id: 5533, type: 'error-correction', instruction: "Present→past mixed conditional xatosini toping:", question: "If I am more organized, I wouldn't have lost my keys yesterday.", errorPart: 'am', correct: 'were', explanation: "Present→past mixed: If + were (present condition), would have + V3 (past result). 'Am' present tense emas, 'were' kerak — chunki bu xayoliy vaziyat." },
+    { id: 5534, type: 'transformation', instruction: "Present condition → past result: Mixed conditional bilan ifodalang:", question: "You are not careful with money, so you spent all your savings.", hint: "If you ___ careful with money, you ___ all your savings.", correct: "If you were more careful with money, you wouldn't have spent all your savings.", explanation: "Present condition (If + were = ehtiyotkor emas) → past result (wouldn't have spent = sarflamagan bo'larding). Present→past mixed conditional." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Conditionals asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5501, 5502, 5503, 5504, 5505] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5506, 5507, 5508, 5509, 5510] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5511, 5512, 5513, 5514, 5515] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5520, 5516, 5517, 5518, 5519] },
+    { title: "Kengaytirish", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5520, 5516, 5517, 5518, 5519] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5521, 5522, 5523, 5524, 5525] },
     { title: "Qo'shimcha", desc: 'As long as, Otherwise, In case, Were to', color: 'bg-amber-500', icon: '📌', ids: [5526, 5527, 5528, 5529] },
-    { title: "Mixed qo'shimcha", desc: "Present→past mixed + 3rd vs Mixed", color: 'bg-rose-500', icon: '🔀', ids: [5530, 5531, 5532] },
+    { title: "Mixed qo'shimcha", desc: "Present→past mixed + 3rd vs Mixed", color: 'bg-rose-500', icon: '🔀', ids: [5530, 5531, 5532, 5533, 5534] },
   ],
   tests: [
     { id: 551, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Mixed conditional qanday?", options: ['past→past', 'past→present', 'present→present', 'future→past'], correct: 'past→present', explanation: "If + had → would + V" },
@@ -514,7 +517,7 @@ export const nominalizationB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Noun yasash asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5601, 5602, 5603, 5604, 5605] },
     { title: "O'rtacha", desc: "To'g'ri noun tanlash", color: 'bg-blue-500', icon: '📘', ids: [5606, 5607, 5608, 5609, 5610] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5611, 5612, 5613, 5614, 5615] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5620, 5616, 5617, 5618, 5619] },
+    { title: "Kengaytirish", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5620, 5616, 5617, 5618, 5619] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5621, 5622, 5623, 5624, 5625] },
   ],
   tests: [
@@ -706,7 +709,7 @@ export const subjunctiveB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Subjunctive asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5701, 5702, 5703, 5704, 5705] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5706, 5707, 5708, 5709, 5710] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5711, 5712, 5713, 5714, 5715] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5720, 5716, 5717, 5718, 5719] },
+    { title: "Kengaytirish", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5720, 5716, 5717, 5718, 5719] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5721, 5722, 5723, 5724, 5725] },
   ],
   tests: [
@@ -893,7 +896,7 @@ export const hedgingB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'May, might, could', color: 'bg-emerald-500', icon: '🌱', ids: [5801, 5802, 5803, 5804] },
     { title: "O'rtacha", desc: 'Seem, appear, tend', color: 'bg-blue-500', icon: '📘', ids: [5805, 5806, 5810, 5807, 5809, 5811, 5808, 5812] },
     { title: "Qiyin", desc: 'Adverb hedging + suggest', color: 'bg-violet-500', icon: '🎯', ids: [5813, 5817, 5814, 5815, 5816] },
-    { title: "Inkor", desc: 'Academic hedging', color: 'bg-red-500', icon: '🚫', ids: [5820, 5818, 5819] },
+    { title: "Kengaytirish", desc: 'Academic hedging', color: 'bg-red-500', icon: '🚫', ids: [5820, 5818, 5819] },
     { title: "O'zgartirish", desc: 'Essay hedging practice', color: 'bg-teal-500', icon: '🔄', ids: [5820, 5818, 5816] },
   ],
   tests: [
@@ -1076,7 +1079,7 @@ export const complexPrepositionsB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Despite, in spite of, on behalf of', color: 'bg-emerald-500', icon: '🌱', ids: [5901, 5903, 5902, 5904] },
     { title: "O'rtacha", desc: 'In terms of, by means of', color: 'bg-blue-500', icon: '📘', ids: [5905, 5907, 5911, 5906, 5910, 5908, 5912, 5909] },
     { title: "Qiyin", desc: 'With regard to, in the event of', color: 'bg-violet-500', icon: '🎯', ids: [5914, 5913, 5916, 5915, 5917] },
-    { title: "Inkor", desc: 'Formal prepositions master', color: 'bg-red-500', icon: '🚫', ids: [5918, 5919, 5920] },
+    { title: "Kengaytirish", desc: 'Formal prepositions master', color: 'bg-red-500', icon: '🚫', ids: [5918, 5919, 5920] },
     { title: "O'zgartirish", desc: 'Business letter practice', color: 'bg-teal-500', icon: '🔄', ids: [5909, 5915, 5920] },
   ],
   tests: [
@@ -1261,7 +1264,7 @@ export const cohesionB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Reference, one/do substitution', color: 'bg-emerald-500', icon: '🌱', ids: [6001, 6003, 6002, 6004] },
     { title: "O'rtacha", desc: 'Ellipsis, conjunctions', color: 'bg-blue-500', icon: '📘', ids: [6005, 6007, 6010, 6006, 6011, 6009, 6008, 6012] },
     { title: "Qiyin", desc: 'Anaphora, so/not substitution', color: 'bg-violet-500', icon: '🎯', ids: [6013, 6014, 6017, 6015, 6016] },
-    { title: "Inkor", desc: 'Lexical chains, text analysis', color: 'bg-red-500', icon: '🚫', ids: [6018, 6020, 6019] },
+    { title: "Kengaytirish", desc: 'Lexical chains, text analysis', color: 'bg-red-500', icon: '🚫', ids: [6018, 6020, 6019] },
     { title: "O'zgartirish", desc: 'Cohesion in paragraphs', color: 'bg-teal-500', icon: '🔄', ids: [6018, 6020, 6016] },
   ],
   tests: [
@@ -1444,7 +1447,7 @@ export const registerB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Formal vs Informal, contractions', color: 'bg-emerald-500', icon: '🌱', ids: [6101, 6103, 6102, 6104] },
     { title: "O'rtacha", desc: 'Phrasal → Latinate, discourse markers', color: 'bg-blue-500', icon: '📘', ids: [6105, 6109, 6106, 6111, 6107, 6112, 6108, 6110] },
     { title: "Qiyin", desc: 'Academic vocabulary, formality levels', color: 'bg-violet-500', icon: '🎯', ids: [6113, 6117, 6114, 6116, 6115] },
-    { title: "Inkor", desc: 'Full register transformation', color: 'bg-red-500', icon: '🚫', ids: [6120, 6119, 6118] },
+    { title: "Kengaytirish", desc: 'Full register transformation', color: 'bg-red-500', icon: '🚫', ids: [6120, 6119, 6118] },
     { title: "O'zgartirish", desc: 'Formal letter/essay practice', color: 'bg-teal-500', icon: '🔄', ids: [6120, 6116, 6118] },
   ],
   tests: [

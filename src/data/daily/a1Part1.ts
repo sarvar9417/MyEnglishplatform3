@@ -236,6 +236,36 @@ export const alphabetAndGreetings: DailyLesson = {
       { id: 1003, type: 'multiple-choice', question: 'Who is Lola?', options: ["Bobur's mother", "Bobur's sister", "Bobur's friend", "Bobur's teacher"], correctIndex: 1, explanation: "Lola is Bobur's sister." },
     ],
   },
+  listening: {
+    transcript: "Teacher: Hello, class! Good morning!\nStudents: Good morning, teacher!\nTeacher: My name is Ms. Johnson. What is your name?\nStudent: My name is Aziz.\nTeacher: Nice to meet you, Aziz!\nStudent: Nice to meet you too!\nTeacher: And what is your name?\nStudent 2: My name is Lola.\nTeacher: Hello, Lola! How are you today?\nStudent 2: I am fine, thank you! And you?\nTeacher: I am very well, thank you! Welcome to English class!",
+    vocabulary: [
+      { word: "hello", definition: "salom" },
+      { word: "goodbye", definition: "xayr" },
+      { word: "teacher", definition: "o'qituvchi" },
+    ],
+    questions: [
+      { id: 3101, type: "multiple-choice", question: "What does the teacher say at the beginning?", options: ["Goodbye", "Good morning", "Good night", "See you later"], correctIndex: 1, explanation: "The teacher says 'Good morning, class!'" },
+      { id: 3102, type: "multiple-choice", question: "What is the first student's name?", options: ["Lola", "Ms. Johnson", "Aziz", "Bobur"], correctIndex: 2, explanation: "The first student says 'My name is Aziz.'" },
+      { id: 3103, type: "multiple-choice", question: "How does Lola answer 'How are you?'", options: ["I am sad", "I am fine, thank you", "I am tired", "I am hungry"], correctIndex: 1, explanation: "Lola says 'I am fine, thank you!'" },
+    ],
+    difficulty: "easy",
+    topic: "Salomlashish va o'zini tanishtirish",
+  },
+  writing: {
+    prompt: "Introduce yourself in English. Write your name, where you are from, how old you are, and say hello and goodbye. Use \"Hello\", \"My name is\", \"I am from\", \"Goodbye\".",
+    wordLimit: 50,
+    tips: [
+      "Start with \"Hello! My name is ...\"",
+      "Use \"I am from ...\" for your city or country",
+      "End with \"Goodbye!\" or \"Nice to meet you!\"",
+    ],
+  },
+  speaking: {
+    prompt: "Introduce yourself to a partner. Say your name, where you are from, and how you are feeling. Use 'Hello', 'My name is', 'I am from', and 'Nice to meet you'.",
+    tips: ["Start with \"Hello\" or \"Hi\"", "Say your name: \"My name is...\"", "Say how you feel: \"I am fine\" or \"I am good\""],
+    keyPhrases: [{ phrase: "Hello! My name is...", translation: "Salom! Mening ismim..." }, { phrase: "Nice to meet you!", translation: "Tanishganimdan xursandman!" }, { phrase: "I am from...", translation: "Men...danman" }],
+    sampleAnswer: "Hello! My name is Aziz. I am from Tashkent. I am fine, thank you! Nice to meet you!",
+  },
 }
 
 export const numbers: DailyLesson = {
@@ -428,6 +458,36 @@ export const numbers: DailyLesson = {
       { id: 1006, type: 'multiple-choice', question: 'How many cats does she have?', options: ['1', '2', '3', '4'], correctIndex: 1, explanation: "She has 2 cats." },
     ],
   },
+  listening: {
+    transcript: "Shopkeeper: Hello! Welcome to our shop!\nCustomer: Hello! How much is this book?\nShopkeeper: This book is 15,000 soms.\nCustomer: And how much is that pen?\nShopkeeper: That pen is 5,000 soms.\nCustomer: I want one book and two pens. How much is that?\nShopkeeper: One book is 15,000. Two pens are 10,000. Total is 25,000 soms.\nCustomer: Here is 30,000 soms.\nShopkeeper: Thank you! Your change is 5,000 soms.\nCustomer: Thank you! Goodbye!",
+    vocabulary: [
+      { word: "how much", definition: "qancha" },
+      { word: "total", definition: "jami" },
+      { word: "change", definition: "qaytim" },
+    ],
+    questions: [
+      { id: 3104, type: "multiple-choice", question: "How much is the book?", options: ["5,000 soms", "10,000 soms", "15,000 soms", "25,000 soms"], correctIndex: 2, explanation: "The book is 15,000 soms." },
+      { id: 3105, type: "multiple-choice", question: "How many pens does the customer want?", options: ["One", "Two", "Three", "Four"], correctIndex: 1, explanation: "The customer wants two pens." },
+      { id: 3106, type: "multiple-choice", question: "How much change does the customer get?", options: ["3,000 soms", "5,000 soms", "10,000 soms", "15,000 soms"], correctIndex: 1, explanation: "The change is 5,000 soms (30,000 - 25,000)." },
+    ],
+    difficulty: "easy",
+    topic: "Raqamlar va narxlarni so'rash",
+  },
+  writing: {
+    prompt: "Write about things in your bag or room. How many books do you have? How many pens? How many pencils? Use numbers and \"There is / There are\" or \"I have\".",
+    wordLimit: 50,
+    tips: [
+      "Use \"I have [number] [things]\" — e.g. \"I have three books\"",
+      "Use \"There is\" for one thing and \"There are\" for many",
+      "Count different items: books, pens, notebooks, etc.",
+    ],
+  },
+  speaking: {
+    prompt: "Count objects around you and tell your partner how many there are. Say things like 'I have one book', 'There are three chairs'. Then ask your partner about their things.",
+    tips: ["Use numbers 1-20 to count things", "\"I have...\" or \"There is/are...\"", "Ask \"How many... do you have?\""],
+    keyPhrases: [{ phrase: "I have two books.", translation: "Mening ikkita kitobim bor." }, { phrase: "How many pens do you have?", translation: "Sizda nechta ruchka bor?" }, { phrase: "There are five chairs.", translation: "Beshta stul bor." }],
+    sampleAnswer: "I have one phone and two books. There are three chairs in the room. How many pens do you have?",
+  },
 }
 
 export const colorsAndShapes: DailyLesson = {
@@ -599,6 +659,36 @@ export const colorsAndShapes: DailyLesson = {
       { id: 1008, type: 'multiple-choice', question: "What is the brother's favorite color?", options: ['Blue', 'Red', 'Green', 'White'], correctIndex: 1, explanation: "My brother's favorite color is red." },
       { id: 1009, type: 'multiple-choice', question: 'What color is grass?', options: ['Blue', 'Red', 'Green', 'Yellow'], correctIndex: 2, explanation: "Grass is green." },
     ],
+  },
+  listening: {
+    transcript: "Mother: Let's paint a picture together! What color is the sky?\nChild: The sky is blue!\nMother: That's right! Now, what color is the sun?\nChild: The sun is yellow!\nMother: Great! What color is the grass?\nChild: The grass is green!\nMother: Perfect! You know your colors well!",
+    vocabulary: [
+      { word: "blue", definition: "ko'k" },
+      { word: "yellow", definition: "sariq" },
+      { word: "green", definition: "yashil" },
+    ],
+    questions: [
+      { id: 3107, type: "multiple-choice", question: "What color is the sky?", options: ["Green", "Yellow", "Red", "Blue"], correctIndex: 3, explanation: "The sky is blue." },
+      { id: 3108, type: "multiple-choice", question: "What color is the sun?", options: ["Blue", "Yellow", "Green", "Red"], correctIndex: 1, explanation: "The sun is yellow." },
+      { id: 3109, type: "multiple-choice", question: "What color is the grass?", options: ["Blue", "Yellow", "Green", "Red"], correctIndex: 2, explanation: "The grass is green." },
+    ],
+    difficulty: "easy",
+    topic: "Ranglar va shakllar",
+  },
+  writing: {
+    prompt: "Describe your favorite things and their colors. What is your favorite color? What things do you have in that color? Describe your room or clothes using color words.",
+    wordLimit: 50,
+    tips: [
+      "Use color words: blue, red, yellow, green, black, white",
+      "Make sentences like \"My bag is blue\" or \"I have a red pen\"",
+      "Say why you like your favorite color",
+    ],
+  },
+  speaking: {
+    prompt: "Point to things in your room and describe their colors. Say 'This is red', 'That is blue'. Also describe shapes like 'The ball is round'.",
+    tips: ["Use color words: red, blue, green, yellow, black, white", "Say \"This is...\" and \"That is...\"", "Describe shapes: round, square, big, small"],
+    keyPhrases: [{ phrase: "This book is blue.", translation: "Bu kitob ko'k." }, { phrase: "My favorite color is green.", translation: "Mening sevimli rangim yashil." }, { phrase: "The ball is round.", translation: "To'p dumaloq." }],
+    sampleAnswer: "My bag is black. This book is blue. My favorite color is green. The table is square. That ball is round.",
   },
 }
 
@@ -785,6 +875,36 @@ export const family: DailyLesson = {
       { id: 1012, type: 'multiple-choice', question: 'How old is her grandmother?', options: ['60', '65', '70', '75'], correctIndex: 2, explanation: 'She is 70 years old.' },
     ],
   },
+  listening: {
+    transcript: "Girl: Hello! This is my family photo!\nFriend: Wow! Who is this man?\nGirl: He is my father. He is a doctor.\nFriend: And who is this woman?\nGirl: She is my mother. She is a teacher.\nFriend: Is this your brother?\nGirl: Yes! He is my brother. His name is Davron. He is 15 years old.\nFriend: And who is this little girl?\nGirl: She is my sister. Her name is Nilufar. She is 8 years old.\nFriend: You have a beautiful family!\nGirl: Thank you! My grandmother lives with us too.",
+    vocabulary: [
+      { word: "father", definition: "ota" },
+      { word: "mother", definition: "ona" },
+      { word: "sister", definition: "singil/opa" },
+    ],
+    questions: [
+      { id: 3110, type: "multiple-choice", question: "What does the girl's father do?", options: ["He is a teacher", "He is a doctor", "He is a student", "He is a driver"], correctIndex: 1, explanation: "Her father is a doctor." },
+      { id: 3111, type: "multiple-choice", question: "How old is the girl's brother Davron?", options: ["8 years old", "10 years old", "15 years old", "20 years old"], correctIndex: 2, explanation: "Her brother Davron is 15 years old." },
+      { id: 3112, type: "multiple-choice", question: "Who else lives with the family?", options: ["The grandfather", "The grandmother", "The uncle", "The cousin"], correctIndex: 1, explanation: "Her grandmother lives with them too." },
+    ],
+    difficulty: "easy",
+    topic: "Oila a'zolari",
+  },
+  writing: {
+    prompt: "Write about your family. Who is in your family? What are their names? How old are they? What do they do? Write at least five sentences about different family members.",
+    wordLimit: 60,
+    tips: [
+      "Use family words: mother, father, brother, sister, grandmother",
+      "Say ages: \"My brother is 10 years old\"",
+      "Say what they do: \"My mother is a doctor\"",
+    ],
+  },
+  speaking: {
+    prompt: "Talk about your family. Say who they are and describe them. Use 'mother', 'father', 'brother', 'sister'. Tell how old they are or what they do.",
+    tips: ["Use family words: mother, father, brother, sister", "Say how old: \"My brother is ten years old\"", "Use \"has\" or \"have\": \"I have one sister\""],
+    keyPhrases: [{ phrase: "I have one brother and one sister.", translation: "Mening bir akam va bir singlim bor." }, { phrase: "My mother is a doctor.", translation: "Mening onam shifokor." }, { phrase: "She is 35 years old.", translation: "U 35 yoshda." }],
+    sampleAnswer: "I have two brothers and one sister. My mother is a teacher. My father is a doctor. My brother is 10 years old. My sister is 15 years old.",
+  },
 }
 
 export const daysAndMonths: DailyLesson = {
@@ -962,6 +1082,36 @@ export const daysAndMonths: DailyLesson = {
       { id: 1015, type: 'multiple-choice', question: 'In which season is Rustam\'s birthday?', options: ['Summer', 'Winter', 'Spring', 'Autumn'], correctIndex: 2, explanation: 'His birthday is in May. May is in spring.' },
     ],
   },
+  listening: {
+    transcript: "Teacher: Let's talk about days and months! What day is it today?\nStudent: Today is Monday.\nTeacher: Good! What day comes after Monday?\nStudent 2: Tuesday!\nTeacher: Correct! Now, what month is it now?\nStudent: It is April.\nTeacher: Great! Which month comes after April?\nStudent 2: May!\nTeacher: When is your birthday, Aziz?\nStudent: My birthday is in July.\nTeacher: And yours, Lola?\nStudent 2: My birthday is in December.\nTeacher: How many days are in a week?\nStudents: Seven days!",
+    vocabulary: [
+      { word: "Monday", definition: "dushanba" },
+      { word: "birthday", definition: "tug'ilgan kun" },
+      { word: "month", definition: "oy" },
+    ],
+    questions: [
+      { id: 3113, type: "multiple-choice", question: "What day comes after Monday?", options: ["Sunday", "Tuesday", "Wednesday", "Friday"], correctIndex: 1, explanation: "Tuesday comes after Monday." },
+      { id: 3114, type: "multiple-choice", question: "When is Aziz's birthday?", options: ["In May", "In June", "In July", "In December"], correctIndex: 2, explanation: "Aziz says his birthday is in July." },
+      { id: 3115, type: "multiple-choice", question: "How many days are in a week?", options: ["Five", "Six", "Seven", "Eight"], correctIndex: 2, explanation: "There are seven days in a week." },
+    ],
+    difficulty: "easy",
+    topic: "Hafta kunlari va oylar",
+  },
+  writing: {
+    prompt: "Write about your favorite day of the week and your favorite month. What do you do on that day? Why do you like it? When is your birthday? What is your favorite season?",
+    wordLimit: 60,
+    tips: [
+      "Use day names: Monday, Tuesday, etc.",
+      "Use month names: January, February, etc.",
+      "Use season words: spring, summer, autumn, winter",
+    ],
+  },
+  speaking: {
+    prompt: "Tell your partner about your favorite day of the week and favorite month. Say what you do on that day. Ask your partner for their favorites.",
+    tips: ["Use day names: Monday, Tuesday, Wednesday...", "Use month names: January, February...", "Say what you do: \"On Friday I play football\""],
+    keyPhrases: [{ phrase: "My favorite day is Saturday.", translation: "Mening sevimli kunim shanba." }, { phrase: "On Monday I go to school.", translation: "Dushanba kuni men maktabga boraman." }, { phrase: "My favorite month is June.", translation: "Mening sevimli oyim iyun." }],
+    sampleAnswer: "My favorite day is Saturday. On Saturday I play with my friends. My favorite month is June. In June it is summer and I am happy! What is your favorite day?",
+  },
 }
 
 export const timeAndRoutines: DailyLesson = {
@@ -1132,6 +1282,36 @@ export const timeAndRoutines: DailyLesson = {
       { id: 1018, type: 'multiple-choice', question: 'What time does Jamshid go to bed?', options: ['9 PM', '10 PM', '11 PM', '8 PM'], correctIndex: 1, explanation: 'He goes to bed at 10 PM.' },
     ],
   },
+  listening: {
+    transcript: "Mother: Aziz, what time do you wake up?\nAziz: I wake up at 7 o'clock every morning.\nMother: Good! What do you do after that?\nAziz: I brush my teeth and wash my face. Then I have breakfast at 7:30.\nMother: What time do you go to school?\nAziz: I go to school at 8:30.\nMother: And what time do you come home?\nAziz: I come home at 4 o'clock. I do my homework at 5 PM.\nMother: Great! What time do we have dinner?\nAziz: We have dinner at 7 PM.\nMother: And what time do you go to bed?\nAziz: I go to bed at 9:30 PM. I have a busy day!",
+    vocabulary: [
+      { word: "wake up", definition: "uyg'onmoq" },
+      { word: "breakfast", definition: "nonushta" },
+      { word: "dinner", definition: "kechki ovqat" },
+    ],
+    questions: [
+      { id: 3116, type: "multiple-choice", question: "What time does Aziz wake up?", options: ["At 6:30", "At 7:00", "At 7:30", "At 8:00"], correctIndex: 1, explanation: "Aziz wakes up at 7 o'clock." },
+      { id: 3117, type: "multiple-choice", question: "What time does Aziz have breakfast?", options: ["At 7:00", "At 7:30", "At 8:00", "At 8:30"], correctIndex: 1, explanation: "He has breakfast at 7:30." },
+      { id: 3118, type: "multiple-choice", question: "What does Aziz do at 5 PM?", options: ["Goes to school", "Has dinner", "Does his homework", "Goes to bed"], correctIndex: 2, explanation: "He does his homework at 5 PM." },
+    ],
+    difficulty: "easy",
+    topic: "Kun tartibi",
+  },
+  writing: {
+    prompt: "Write about what you do every day from morning to evening. What time do you wake up? When do you eat breakfast? What do you do during the day? Write at least six sentences.",
+    wordLimit: 80,
+    tips: [
+      "Use time words: in the morning, at 7 o'clock, in the evening",
+      "Use daily routine verbs: wake up, have breakfast, go to school, come home",
+      "Put events in order from morning to night",
+    ],
+  },
+  speaking: {
+    prompt: "Describe your daily routine. Say what you do every morning, afternoon, and evening. Use 'I wake up at...', 'I eat breakfast', 'I go to school'.",
+    tips: ["Use time: at 7 AM, at 8 o'clock", "Use sequence: first, then, after that", "Use daily verbs: wake up, eat, go, study, sleep"],
+    keyPhrases: [{ phrase: "I wake up at 7 o'clock.", translation: "Men soat 7 da uyg'onaman." }, { phrase: "Then I eat breakfast.", translation: "Keyin nonushta qilaman." }, { phrase: "I go to bed at 10 PM.", translation: "Men soat 10 da uxlayman." }],
+    sampleAnswer: "I wake up at 7 AM. First, I brush my teeth. Then I eat breakfast at 7:30. I go to school at 8 AM. I study at school. I come home at 3 PM. I do my homework. I go to bed at 10 PM.",
+  },
 }
 
 export const foodAndDrinks: DailyLesson = {
@@ -1244,14 +1424,14 @@ export const foodAndDrinks: DailyLesson = {
   ],
   exercises: [
     { id: 701, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I need ___ butter for the cake.', options: ['a', 'some', 'an', 'two'], correct: 'some', explanation: "Sanalmas + some" },
-    { id: 702, type: 'fill-blank', instruction: "Some yoki any:", question: 'She wants ___ oranges.', blanks: ['some'], explanation: "Ijobiy — some" },
+    { id: 702, type: 'fill-blank', instruction: "Some yoki any:", question: 'She wants ___ oranges.', blanks: ['some'], acceptedAnswers: [['some', 'any']], explanation: "Ijobiy — some (lekin any ham grammatik to'g'ri, lekin kamroq muntazir)" },
     { id: 703, type: 'fill-blank', instruction: "Some yoki any:", question: `There isn't ___ cheese in the fridge.`, blanks: ['any'], explanation: "Inkor — any" },
     { id: 704, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'There ___ some milk in the cup.', options: ['is', 'are', 'am', 'have'], correct: 'is', explanation: "Sanalmas + is" },
     { id: 705, type: 'fill-blank', instruction: "Is there yoki are there:", question: '___ any chairs in the room?', blanks: ['Are there'], explanation: "Ko'plik = are there" },
     { id: 706, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I need a money.', errorPart: 'a money', correct: 'I need some money.', explanation: "Sanalmas -siz, some ishlatiladi" },
     { id: 707, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I like ___ (apple).', blanks: ['apples'], explanation: "apple + s" },
     { id: 708, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She ___ apples.', options: ['like', 'likes', 'liking', 'is like'], correct: 'likes', explanation: "She + likes" },
-    { id: 709, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Would you like ___ coffee?', blanks: ['some'], explanation: "Taklif — some" },
+    { id: 709, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Would you like ___ coffee?', blanks: ['some'], acceptedAnswers: [['some', 'any']], explanation: "Taklif — some (lekin any ham grammatik to'g'ri)" },
     { id: 710, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I have a ___ of tea.', blanks: ['cup'], explanation: "a cup of tea" },
     { id: 711, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ there any milk?', options: ['Is', 'Are', 'Do', 'Have'], correct: 'Is', explanation: "Sanalmas + is" },
     { id: 712, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I have many homeworks.', errorPart: 'homeworks', correct: 'I have much homework.', explanation: "homework sanalmas" },
@@ -1278,14 +1458,14 @@ export const foodAndDrinks: DailyLesson = {
   ],
   tests: [
     { id: 71, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I want ___ rice.', options: ['a', 'some', 'an', 'two'], correct: 'some', explanation: "Sanalmas + some" },
-    { id: 72, type: 'fill-blank', instruction: "Some yoki any:", question: 'I have ___ cookies.', blanks: ['some'], explanation: "Ijobiy — some" },
-    { id: 73, type: 'fill-blank', instruction: "Some yoki any:", question: 'I don\'t have ___ eggs.', blanks: ['any'], explanation: "Inkor — any" },
+    { id: 72, type: 'fill-blank', instruction: "Some yoki any:", question: 'I have ___ cookies.', blanks: ['some'], acceptedAnswers: [['some', 'any']], explanation: "Ijobiy — some (lekin any ham grammatik to'g'ri)" },
+    { id: 73, type: 'fill-blank', instruction: "Some yoki any:", question: 'I don\'t have ___ eggs.', blanks: ['any'], acceptedAnswers: [['any', 'some']], explanation: "Inkor — any (lekin some ham kamroq muntazir)" },
     { id: 74, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'There ___ five bananas.', options: ['is', 'are', 'am', 'have'], correct: 'are', explanation: "Ko'plik + are" },
     { id: 75, type: 'fill-blank', instruction: "Is there yoki are there:", question: '___ any cookies?', blanks: ['Are there'], explanation: "Ko'plik — are there" },
     { id: 76, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I drink three milks.', errorPart: 'three milks', correct: 'I drink three glasses of milk.', explanation: "Sanalmas -siz" },
     { id: 77, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'She likes ___ (banana).', blanks: ['bananas'], explanation: "banana + s" },
     { id: 78, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He ___ tea in the morning.', options: ['drink', 'drinks', 'drinking', 'drinked'], correct: 'drinks', explanation: "He + drinks" },
-    { id: 79, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Would you like ___ juice?', blanks: ['some'], explanation: "Taklif — some" },
+    { id: 79, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Would you like ___ juice?', blanks: ['some'], acceptedAnswers: [['some', 'any']], explanation: "Taklif — some (lekin any ham grammatik to'g'ri)" },
     { id: 710, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I drink a ___ of water.', blanks: ['glass'], explanation: "a glass of water" },
     { id: 711, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ there any water?', options: ['Is', 'Are', 'Do', 'Have'], correct: 'Is', explanation: "Sanalmas + is" },
     { id: 712, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I have many rices.', errorPart: 'rices', correct: 'I have much rice.', explanation: "rice sanalmas" },
@@ -1310,6 +1490,36 @@ export const foodAndDrinks: DailyLesson = {
       { id: 1020, type: 'multiple-choice', question: 'What does Malika drink every day?', options: ['Coffee', 'Juice', 'Tea', 'Water'], correctIndex: 2, explanation: 'She drinks tea every day.' },
       { id: 1021, type: 'multiple-choice', question: 'What fruit does Malika like?', options: ['Oranges', 'Apples and bananas', 'Grapes', 'Pears'], correctIndex: 1, explanation: 'She likes apples and bananas.' },
     ],
+  },
+  listening: {
+    transcript: "Mother: What do you want for breakfast today?\nChild: I want eggs and bread, please!\nMother: Good! What do you want to drink?\nChild: I want a glass of milk.\nMother: OK. And for lunch, what do you like?\nChild: I like rice with meat. It is delicious!\nMother: Do you like fruit?\nChild: Yes! I like apples and bananas.\nMother: What about dinner?\nChild: I like soup for dinner. And I drink tea every evening.\nMother: Do you like coffee?\nChild: No, I do not like coffee. It is too bitter!",
+    vocabulary: [
+      { word: "eggs", definition: "tuxum" },
+      { word: "rice", definition: "guruch" },
+      { word: "soup", definition: "o'sho'rva" },
+    ],
+    questions: [
+      { id: 3119, type: "multiple-choice", question: "What does the child want for breakfast?", options: ["Rice and meat", "Soup and bread", "Eggs and bread", "Apples and bananas"], correctIndex: 2, explanation: "The child wants eggs and bread for breakfast." },
+      { id: 3120, type: "multiple-choice", question: "What does the child want to drink?", options: ["Tea", "Coffee", "Juice", "A glass of milk"], correctIndex: 3, explanation: "The child wants a glass of milk." },
+      { id: 3121, type: "multiple-choice", question: "Does the child like coffee?", options: ["Yes, very much", "Sometimes", "No, not at all", "Only in the morning"], correctIndex: 2, explanation: "The child says 'I do not like coffee.'" },
+    ],
+    difficulty: "easy",
+    topic: "Ovqat va ichimliklar",
+  },
+  writing: {
+    prompt: "Write about your favorite foods and drinks. What do you like to eat for breakfast, lunch, and dinner? What fruits do you like? What do you drink every day? What foods do you not like?",
+    wordLimit: 60,
+    tips: [
+      "Use food words: bread, eggs, rice, meat, soup, fruit",
+      "Use drink words: tea, milk, juice, coffee, water",
+      "Use \"I like\" and \"I do not like\"",
+    ],
+  },
+  speaking: {
+    prompt: "Talk about food and drinks you like and don't like. Say what you eat for breakfast, lunch, and dinner. Ask your partner what they like.",
+    tips: ["Use \"I like...\" and \"I don't like...\"", "Use food words: bread, rice, fruit, vegetables, meat", "Use drink words: tea, water, milk, juice"],
+    keyPhrases: [{ phrase: "I like tea and bread.", translation: "Menga choy va non yoqadi." }, { phrase: "I don't like coffee.", translation: "Menga kofe yoqmaydi." }, { phrase: "For breakfast I eat eggs.", translation: "Nonushtaga tuxum yeyman." }],
+    sampleAnswer: "I like bread and milk. For breakfast, I eat eggs and bread. I like plov for lunch. I don't like coffee, but I like tea. My favorite drink is juice. What do you like?",
   },
 }
 
@@ -1489,6 +1699,36 @@ export const animals: DailyLesson = {
       { id: 1024, type: 'multiple-choice', question: 'What animals do his grandparents have?', options: ['Cats and dogs', 'Fish and birds', 'A cow, a horse, and sheep', 'Lions and tigers'], correctIndex: 2, explanation: 'They have a cow, a horse, and five sheep.' },
     ],
   },
+  listening: {
+    transcript: "Girl: I love animals! Let me tell you about my pets.\nFriend: What pets do you have?\nGirl: I have a cat and a dog. My cat is black. Its name is Masha.\nFriend: That is a nice name! And your dog?\nGirl: My dog is brown. Its name is Rex.\nFriend: What other animals do you like?\nGirl: I like horses and sheep. My grandparents live in the country.\nFriend: Do you visit them?\nGirl: Yes! I visit them every summer. They have a cow and five sheep.",
+    vocabulary: [
+      { word: "cat", definition: "mushuk" },
+      { word: "dog", definition: "it" },
+      { word: "horse", definition: "ot" },
+    ],
+    questions: [
+      { id: 3122, type: "multiple-choice", question: "What color is the girl's cat?", options: ["Brown", "White", "Black", "Gray"], correctIndex: 2, explanation: "The cat is black." },
+      { id: 3123, type: "multiple-choice", question: "What is the dog's name?", options: ["Masha", "Rex", "Bobik", "Tom"], correctIndex: 1, explanation: "The dog's name is Rex." },
+      { id: 3124, type: "multiple-choice", question: "Where do the grandparents live?", options: ["In the city", "In the country", "In Tashkent", "In Samarkand"], correctIndex: 1, explanation: "They live in the country." },
+    ],
+    difficulty: "easy",
+    topic: "Hayvonlar",
+  },
+  writing: {
+    prompt: "Write about animals you like. Do you have a pet? What animals do you like? What animals live on a farm? What color are they? Why do you like them?",
+    wordLimit: 60,
+    tips: [
+      "Use animal words: cat, dog, horse, cow, sheep, bird, fish",
+      "Describe colors: black, white, brown",
+      "Say what animals can do: \"A cat can climb\" or \"A bird can fly\"",
+    ],
+  },
+  speaking: {
+    prompt: "Talk about animals you know. Say what animals you like and don't like. Describe them: 'A cat is small', 'A dog is big'. Ask your partner about their pets or favorite animals.",
+    tips: ["Use animal names: cat, dog, bird, fish, horse", "Describe: big, small, fast, beautiful", "Ask \"Do you have a pet?\" and \"What is your favorite animal?\""],
+    keyPhrases: [{ phrase: "I like dogs because they are friendly.", translation: "Menga itlar yoqadi, chunki ular do'stona." }, { phrase: "I have a cat.", translation: "Mening mushugim bor." }, { phrase: "My favorite animal is a horse.", translation: "Mening sevimli hayvonim ot." }],
+    sampleAnswer: "I like cats and dogs. A cat is small and cute. A dog is big and friendly. I have a cat at home. Her name is Mosh. What is your favorite animal? Do you have a pet?",
+  },
 }
 
 export const bodyParts: DailyLesson = {
@@ -1666,6 +1906,36 @@ export const bodyParts: DailyLesson = {
       { id: 1026, type: 'multiple-choice', question: 'How many fingers does Dilnoza have?', options: ['Eight', 'Ten', 'Twelve', 'Five'], correctIndex: 1, explanation: 'She has ten fingers.' },
       { id: 1027, type: 'multiple-choice', question: 'What color is Dilnoza\'s hair?', options: ['Brown', 'Black', 'Blonde', 'Red'], correctIndex: 1, explanation: 'Her hair is long and black.' },
     ],
+  },
+  listening: {
+    transcript: "Teacher: Let's learn about our body! Touch your nose!\nStudents: Here is my nose!\nTeacher: Great! Now touch your ears!\nStudents: These are my ears!\nTeacher: Wonderful! How many eyes do you have?\nStudent: I have two eyes!\nTeacher: Yes! And how many fingers do you have?\nStudent 2: I have ten fingers!\nTeacher: Correct! Now, what do you use to see?\nStudent: I use my eyes to see!\nTeacher: Good! What do you use to smell?\nStudent 2: I use my nose to smell!\nTeacher: Excellent! You know your body parts!",
+    vocabulary: [
+      { word: "eyes", definition: "ko'zlar" },
+      { word: "nose", definition: "burun" },
+      { word: "fingers", definition: "barmoqlar" },
+    ],
+    questions: [
+      { id: 3125, type: "multiple-choice", question: "How many eyes do we have?", options: ["One", "Two", "Three", "Four"], correctIndex: 1, explanation: "We have two eyes." },
+      { id: 3126, type: "multiple-choice", question: "How many fingers do we have?", options: ["Five", "Eight", "Ten", "Twelve"], correctIndex: 2, explanation: "We have ten fingers." },
+      { id: 3127, type: "multiple-choice", question: "What do we use to smell?", options: ["Eyes", "Ears", "Mouth", "Nose"], correctIndex: 3, explanation: "We use our nose to smell." },
+    ],
+    difficulty: "easy",
+    topic: "Tana a'zolari",
+  },
+  writing: {
+    prompt: "Describe yourself. What color are your eyes and hair? How tall are you? Describe your face and body using body part words. Write at least five sentences.",
+    wordLimit: 60,
+    tips: [
+      "Use body words: eyes, ears, nose, mouth, hair, hands, feet",
+      "Use adjectives: long, short, big, small",
+      "Use \"I have\" and \"My ... is/are\"",
+    ],
+  },
+  speaking: {
+    prompt: "Point to parts of your body and say their names in English: 'This is my head', 'These are my hands'. Describe yourself using 'I have'.",
+    tips: ["Use body words: head, eyes, ears, nose, mouth, hands, feet", "Say \"I have...\" for what you have", "Use \"this is\" (singular) and \"these are\" (plural)"],
+    keyPhrases: [{ phrase: "I have two eyes and one nose.", translation: "Mening ikkita ko'zim va bitta burnim bor." }, { phrase: "This is my hand.", translation: "Bu mening qo'lim." }, { phrase: "These are my feet.", translation: "Bular mening oyoqlarim." }],
+    sampleAnswer: "This is my head. These are my eyes. I have two eyes and one nose. This is my mouth. I have two hands and two feet. I am tall.",
   },
 }
 
@@ -1858,5 +2128,35 @@ export const clothes: DailyLesson = {
       { id: 1029, type: 'multiple-choice', question: 'What does Akmal wear in winter?', options: ['A T-shirt and shorts', 'A coat, scarf, and gloves', 'A shirt and pants', 'Sandals'], correctIndex: 1, explanation: 'In winter, he wears a coat, a scarf, and gloves.' },
       { id: 1030, type: 'multiple-choice', question: 'What does Akmal wear on his head on sunny days?', options: ['A hat', 'A cap', 'A scarf', 'Nothing'], correctIndex: 1, explanation: 'He wears a cap on sunny days.' },
     ],
+  },
+  listening: {
+    transcript: "Mother: What do you wear to school today?\nChild: I wear a shirt and pants. My shirt is white and my pants are blue.\nMother: Nice! What about your shoes?\nChild: I wear black shoes.\nMother: Great! What do you wear in winter?\nChild: In winter, I wear a coat, a scarf, and gloves. It is very cold!\nMother: And in summer?\nChild: In summer, I wear a T-shirt and shorts.\nMother: Do you wear a hat on sunny days?\nChild: Yes, I wear a cap on my head!\nMother: Good! You are ready for school!",
+    vocabulary: [
+      { word: "shirt", definition: "ko'ylak" },
+      { word: "coat", definition: "palto" },
+      { word: "shoes", definition: "oyoq kiyim" },
+    ],
+    questions: [
+      { id: 3128, type: "multiple-choice", question: "What color is the child's shirt?", options: ["Blue", "Black", "White", "Red"], correctIndex: 2, explanation: "The shirt is white." },
+      { id: 3129, type: "multiple-choice", question: "What does the child wear in winter?", options: ["A T-shirt and shorts", "A shirt and pants", "A coat, scarf, and gloves", "A cap and sandals"], correctIndex: 2, explanation: "The child wears a coat, scarf, and gloves in winter." },
+      { id: 3130, type: "multiple-choice", question: "What does the child wear on the head on sunny days?", options: ["A scarf", "A hat", "A cap", "A coat"], correctIndex: 2, explanation: "The child wears a cap on sunny days." },
+    ],
+    difficulty: "easy",
+    topic: "Kiyimlar",
+  },
+  writing: {
+    prompt: "Describe what you wear to school or work. What clothes do you wear? What colors are they? What do you wear in summer? What do you wear in winter? Write at least five sentences.",
+    wordLimit: 60,
+    tips: [
+      "Use clothing words: shirt, pants, dress, shoes, coat, hat, scarf",
+      "Use colors: white, black, blue, red",
+      "Write about different seasons: summer, winter",
+    ],
+  },
+  speaking: {
+    prompt: "Describe what you are wearing today. Say the color and name of each item: 'I am wearing a blue shirt', 'I have black shoes'. Ask your partner what they are wearing.",
+    tips: ["Use clothing words: shirt, dress, shoes, hat, jacket, pants", "Use colors to describe: \"a red shirt\"", "Use \"I am wearing...\" and \"He/She is wearing...\""],
+    keyPhrases: [{ phrase: "I am wearing a white shirt.", translation: "Men oq ko'ylak kiyganman." }, { phrase: "She is wearing a blue dress.", translation: "U ko'k ko'ylak kiygan." }, { phrase: "I have black shoes.", translation: "Mening qora tuflilarim bor." }],
+    sampleAnswer: "I am wearing a blue shirt and black pants. I have white shoes. My friend is wearing a red jacket. What are you wearing today?",
   },
 }

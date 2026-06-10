@@ -120,12 +120,17 @@ export const adjectiveAdverb: DailyLesson = {
     { id: 1918, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I feel badly today.', errorPart: 'badly', correct: 'I feel bad today.', explanation: "Sezgi fe'lidan keyin adjective: bad" },
     { id: 1919, type: 'fill-blank', instruction: "Intensifier:", question: 'It is ___ hot today. (very/really)', blanks: ['very'], explanation: "Sifatdan oldin intensifier" },
     { id: 1920, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['She sings good', 'She sings well', 'She sings goodly', 'She sings wellly'], correct: 'She sings well', explanation: "Fe'ldan keyin — well" },
+    { id: 50009, type: 'vocab-match', instruction: "Sifat (adjective) yoki ravish (adverb) ekanini aniqlang:", word: 'quick (tez)', options: ['adjective', 'adverb', 'ikkala', 'fe\'l'], correct: 'adjective', explanation: "Quick — sifat: a quick car (tez mashina)." },
+    { id: 50010, type: 'vocab-match', instruction: "Sifat (adjective) yoki ravish (adverb) ekanini aniqlang:", word: 'quickly (tezda)', options: ['adjective', 'adverb', 'ikkala', 'fe\'l'], correct: 'adverb', explanation: "Quickly — ravish: He runs quickly (tez yuguradi). -ly qo'shimchasi." },
+    { id: 50011, type: 'vocab-match', instruction: "To'g'ri shaklni tanlang (adjective yoki adverb):", word: 'She sings ____ (beautiful)', options: ['beautiful', 'beautifully', 'beauty', 'beautify'], correct: 'beautifully', explanation: "Fe'ldan keyin adverb: sings beautifully." },
+    { id: 50012, type: 'vocab-match', instruction: "To'g'ri shaklni tanlang (adjective yoki adverb):", word: 'He is a ____ driver (careful)', options: ['careful', 'carefully', 'carefulness', 'care'], correct: 'careful', explanation: "Ot oldidan adjective: a careful driver." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Adj vs Adv asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1901, 1902, 1903, 1904, 1905] },
     { title: "O'rtacha", desc: '-ly qo\'shimchasi', color: 'bg-blue-500', icon: '📘', ids: [1906, 1907, 1908, 1909, 1910] },
     { title: "Qiyin", desc: 'Good/Well, Hard/Hardly', color: 'bg-violet-500', icon: '🎯', ids: [1912, 1914, 1911, 1913, 1915] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1918, 1920, 1919, 1917, 1915, 1913, 1916, 1918, 1920, 1916] },
+    { title: "So'z moslash", desc: 'Adj vs Adv farqi', color: 'bg-orange-500', icon: '🔗', ids: [50009, 50010, 50011, 50012] },
   ],
   tests: [
     { id: 191, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Adjective nima vazifasini bajaradi?", options: ['otni tavsiflaydi', 'fe\'lni tavsiflaydi', 'sifatni tavsiflaydi', 'ravishni tavsiflaydi'], correct: 'otni tavsiflaydi', explanation: "Adjective — otni tavsiflaydi" },
@@ -455,6 +460,16 @@ export const passiveVoice: DailyLesson = {
     { title: 'Qiyin', desc: 'V3 va agent', color: 'bg-violet-500', icon: '💪', ids: [221, 222, 223] },
     { title: 'Murakkab', desc: 'Active ↔ Passive', color: 'bg-rose-500', icon: '🏆', ids: [224, 225] },
   ],
+  reading: {
+    passage: "How Things Are Made\n\nCoffee is grown in many countries around the world. It is picked from coffee plants when the berries are red. Then the beans are dried and roasted. After that, they are packed and sent to different countries. Coffee is drunk all over the world. In the morning, coffee is made in millions of homes. It is often served with milk and sugar.\n\nIn Uzbekistan, plov is cooked every day in many homes. Rice is washed first, and then it is cooked with meat, carrots, and oil. The dish is prepared in a large pot called a 'kazan'. Plov is served on a large plate. It is eaten with the whole family. My grandmother's plov is made with love, and it is always the most delicious! English is also spoken in many countries. In fact, English is used by people all over the world for business and travel.",
+    questions: [
+      { id: 1, type: 'multiple-choice', question: 'What is grown in many countries?', options: ['Tea', 'Coffee', 'Rice', 'Wheat'], correctIndex: 1, explanation: 'Coffee is grown in many countries around the world.' },
+      { id: 2, type: 'multiple-choice', question: 'When are coffee beans picked?', options: ['When they are green', 'When the berries are red', 'When they are dry', 'In winter'], correctIndex: 1, explanation: 'It is picked from coffee plants when the berries are red.' },
+      { id: 3, type: 'multiple-choice', question: 'What is plov cooked in?', options: ['A frying pan', 'A large pot called a kazan', 'An oven', 'A microwave'], correctIndex: 1, explanation: 'The dish is prepared in a large pot called a \'kazan\'.' },
+      { id: 4, type: 'multiple-choice', question: 'Who is plov eaten with?', options: ['Friends', 'The whole family', 'Neighbours', 'Colleagues'], correctIndex: 1, explanation: 'It is eaten with the whole family.' },
+      { id: 5, type: 'multiple-choice', question: 'What language is used by people all over the world?', options: ['Uzbek', 'Russian', 'English', 'Chinese'], correctIndex: 2, explanation: 'English is used by people all over the world for business and travel.' },
+    ],
+  },
 }
 
 export const reportedSpeech: DailyLesson = {
@@ -606,6 +621,16 @@ export const reportedSpeech: DailyLesson = {
     { title: 'Qiyin', desc: 'Murakkab backshift', color: 'bg-violet-500', icon: '💪', ids: [231, 232, 233] },
     { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [234, 235] },
   ],
+  reading: {
+    passage: "What My Friends Said\n\nYesterday I talked to my friends about their weekend plans. This is what they told me.\n\nAli said that he was going to visit his grandmother on Saturday. He said his grandmother lived in the countryside and he loved going there. He told me that she always cooked delicious food for him.\n\nMadina said that she had already finished her homework. She told me that she would go to the cinema on Sunday. She asked if I wanted to join her. I told her that I was busy on Sunday.\n\nThe teacher told us that we must finish our projects by Friday. She said that the projects were very important for our grade. She asked if everyone understood the task. We all said that we did.\n\nMy mother told me that I should clean my room. She said that my room was very messy. I promised her that I would clean it after lunch.",
+    questions: [
+      { id: 1, type: 'multiple-choice', question: 'Where did Ali say he was going?', options: ['To the cinema', 'To visit his grandmother', 'To the park', 'To the library'], correctIndex: 1, explanation: 'Ali said that he was going to visit his grandmother on Saturday.' },
+      { id: 2, type: 'multiple-choice', question: 'What did Madina say she had already finished?', options: ['Her project', 'Her homework', 'Her book', 'Her lunch'], correctIndex: 1, explanation: 'Madina said that she had already finished her homework.' },
+      { id: 3, type: 'multiple-choice', question: 'What did the teacher say about the projects?', options: ['They were optional', 'They were very important for our grade', 'They could be late', 'They were easy'], correctIndex: 1, explanation: 'The teacher said that the projects were very important for our grade.' },
+      { id: 4, type: 'multiple-choice', question: 'What did the writer\'s mother say about his room?', options: ['It was clean', 'It was very messy', 'It was big', 'It was small'], correctIndex: 1, explanation: 'His mother said that his room was very messy.' },
+      { id: 5, type: 'multiple-choice', question: 'What did the writer promise his mother?', options: ['That he would clean his room after lunch', 'That he would study more', 'That he would go out', 'That he would call his grandmother'], correctIndex: 0, explanation: 'He promised her that he would clean it after lunch.' },
+    ],
+  },
 }
 
 export const firstConditional: DailyLesson = {
@@ -755,5 +780,15 @@ export const firstConditional: DailyLesson = {
     { title: 'Qiyin', desc: 'Unless va comma', color: 'bg-violet-500', icon: '💪', ids: [241, 242, 243] },
     { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [244, 245] },
   ],
+  reading: {
+    passage: "A Promise for the Future\n\nIf Aziz studies hard, he will pass all his exams. He wants to become a doctor. If he works hard, he will get into a good university. His parents say they will be very proud if he becomes a doctor.\n\nBut if Aziz doesn't study, he won't pass his exams. He will fail if he plays video games all day. His mother told him: 'If you waste your time now, you will regret it later.'\n\nAziz made a plan. If he studies every day for two hours, he will improve his grades. He will go to the library if it is quiet. He won't watch TV unless he finishes his homework first. If everything goes well, he will become a doctor in ten years!\n\nHis sister Nilufar also has plans. If she saves enough money, she will travel to Europe next summer. She will visit Paris and London. She says: 'If I learn French, I will communicate better in Paris.'",
+    questions: [
+      { id: 1, type: 'multiple-choice', question: 'What will happen if Aziz studies hard?', options: ['He will play games', 'He will pass his exams', 'He will travel', 'He will watch TV'], correctIndex: 1, explanation: 'If Aziz studies hard, he will pass all his exams.' },
+      { id: 2, type: 'multiple-choice', question: 'What does Aziz want to become?', options: ['A teacher', 'A doctor', 'An engineer', 'A writer'], correctIndex: 1, explanation: 'He wants to become a doctor.' },
+      { id: 3, type: 'multiple-choice', question: 'What will happen if Aziz wastes his time?', options: ['He will still pass', 'He will get a scholarship', 'He will regret it', 'He will travel'], correctIndex: 2, explanation: 'If you waste your time now, you will regret it later.' },
+      { id: 4, type: 'multiple-choice', question: "When won't Aziz watch TV?", options: ['On weekends', 'Unless he finishes his homework first', 'If he studies', 'In the morning'], correctIndex: 1, explanation: "He won't watch TV unless he finishes his homework first." },
+      { id: 5, type: 'multiple-choice', question: 'What will Nilufar do if she saves enough money?', options: ['Buy a car', 'Travel to Europe', 'Move to a new house', 'Start a business'], correctIndex: 1, explanation: 'If she saves enough money, she will travel to Europe next summer.' },
+    ],
+  },
 }
 

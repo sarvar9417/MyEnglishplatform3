@@ -11,13 +11,16 @@ import { monitoring } from './lib/monitoring'
 import type { Level } from './store/types'
 import Sidebar from './components/layout/Sidebar'
 import MobileBottomNav from './components/layout/MobileBottomNav'
+import OfflineBanner from './components/layout/OfflineBanner'
 import { OnboardingFlow } from './components/onboarding/OnboardingFlow'
-import { Menu, X, WifiOff, Eye, LogIn } from 'lucide-react'
+import { Menu, X, Eye, LogIn } from 'lucide-react'
 import { I18nProvider, useI18n } from './i18n'
 import ErrorBoundary from './components/ErrorBoundary'
 import ToastContainer from './components/Toast'
 import { useOnlineStatus } from './hooks/useOnlineStatus'
 import NotificationInitializer from './components/notifications/NotificationInitializer'
+import PwaInstallPrompt from './components/PwaInstallPrompt'
+import SentryFeedback from './components/SentryFeedback'
 import { LevelUpCelebration } from './components/ui/LevelUpCelebration'
 import { XpBurstOverlay } from './components/ui/XpBurst'
 
@@ -27,6 +30,11 @@ import { XpBurstOverlay } from './components/ui/XpBurst'
 function lazyWithReload<T extends { default: React.ComponentType<unknown> }>(factory: () => Promise<T>) {
   return lazy(() =>
     factory().catch((err: unknown) => {
+      // Chunk error'ini monitoring'ga yuboramiz
+      import('./lib/errorService').then(({ captureError }) =>
+        captureError(err, { type: 'chunk-load-failure', url: location.href })
+      ).catch(() => {})
+
       const last = Number(sessionStorage.getItem('lastChunkReload') || 0)
       if (Date.now() - last > 10_000) {
         sessionStorage.setItem('lastChunkReload', String(Date.now()))
@@ -80,11 +88,24 @@ function AppShell() {
   )
   const isOnline = useOnlineStatus()
   const levelUpPending = useStore((s) => s.levelUpPending)
+
+  // Track page navigation as a Sentry performance event
+  const location = useLocation()
+  useEffect(() => {
+    monitoring.trackEvent('page.view', {
+      path: location.pathname,
+      search: location.search,
+      timestamp: Date.now(),
+    })
+  }, [location.pathname, location.search])
   const clearLevelUp = useStore((s) => s.clearLevelUp)
   const { t } = useI18n()
 
   return (
     <>
+      <OfflineBanner isOnline={isOnline} />
+      <PwaInstallPrompt />
+      <SentryFeedback />
       <NotificationInitializer />
       {levelUpPending && (
         <LevelUpCelebration
@@ -95,14 +116,6 @@ function AppShell() {
         />
       )}
       <div className="flex h-screen bg-gray-50 dark:bg-gray-950 overflow-hidden" style={{ height: 'calc(var(--vh, 1vh) * 100)' }}>
-      {!isOnline && (
-        <div className="fixed top-0 left-0 right-0 z-[9999] bg-gradient-to-r from-orange-500 to-amber-500 text-white text-center text-xs font-semibold py-1.5 shadow-md">
-          <div className="flex items-center justify-center gap-1.5">
-            <WifiOff size={12} className="inline" />
-            <span>{t('app.offlineMessage')}</span>
-          </div>
-        </div>
-      )}
       {/* Mobile overlay */}
       {mobileMenuOpen && (
         <div

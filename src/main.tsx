@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import { initTheme } from './utils/theme'
-import { monitoring, setMonitoringProvider } from './lib/monitoring'
+import { setMonitoringProvider } from './lib/monitoring'
 import { createSentryProvider, initSentry } from './lib/sentryProvider'
 
 initTheme()
@@ -17,27 +17,32 @@ window.addEventListener('vite:preloadError', () => {
   }
 })
 
+// ─── Sentry initialization ────────────────────────────────────────────────
+// VITE_SENTRY_DSN ni .env faylida belgilang.
+// Sourcemap yuklash: npx sentry-cli sourcemaps inject ./dist && npx sentry-cli sourcemaps upload --release=<release> ./dist
+
 const dsn = import.meta.env.VITE_SENTRY_DSN
 if (dsn && typeof dsn === 'string') {
   initSentry(dsn)
   setMonitoringProvider(createSentryProvider())
 }
 
-// ─── Register Service Worker (production only) ────────────────────────────
-if ('serviceWorker' in navigator) {
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    // Dev mode: unregister any existing service worker to avoid stale cache issues
-    navigator.serviceWorker.getRegistrations().then((regs) => {
-      regs.forEach((reg) => reg.unregister())
-    })
-  } else {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(() => {
-        monitoring.captureMessage('Service worker registration failed', 'warn')
-      })
+// Global unhandled rejection handler — console'ga ham, monitoring'ga ham yozadi
+window.addEventListener('unhandledrejection', (event) => {
+  const reason = event.reason
+  if (reason instanceof Error) {
+    import('./lib/monitoring').then(({ monitoring }) =>
+      monitoring.captureException(reason, { type: 'unhandledrejection' })
+    ).catch(() => {
+      // monitoring module loaded bo'lmasa, hech bo'lmaganda console'ga yozamiz
+      console.error('[unhandledrejection]', reason)
     })
   }
-}
+})
+
+// ─── Service Worker auto-register (via vite-plugin-pwa / Workbox) ─────────
+// The VitePWA plugin injects SW registration during build.
+// In dev mode, the SW is not registered (handled by the plugin).
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

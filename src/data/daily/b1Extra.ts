@@ -1068,7 +1068,17 @@ export const relativeClausesB1: DailyLesson = {
       color: "bg-rose-500",
       title: "Murakkab"
     }
-  ]
+  ],
+  reading: {
+    passage: "My Neighbourhood\n\nI live in a wonderful neighbourhood. The people who live next door are very friendly. There is a park where children play every evening. The cafe which opened last month serves the best coffee.\n\nMy best friend is someone whose family moved here from Japan. We often play football together. The teacher who taught me English lives on the same street.\n\nThere is a library that has many books in different languages. I go there every weekend. The librarian, whose name is Ms. Karimova, is very kind. She always recommends books that I might enjoy.\n\nMy neighbourhood has a market where you can buy fresh fruits and vegetables. The shop that sells the freshest bread is near my house. I know many people who live in this area. It is a place where everyone knows each other.",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What kind of people live next door?", options: ["Quiet people", "Very friendly people", "Noisy people", "Old people"], correctIndex: 1, explanation: "Who is used for people in relative clauses." },
+      { id: 2, type: 'multiple-choice' as const, question: "What is special about the park?", options: ["It has a cafe", "Children play there every evening", "It is very big", "It has a library"], correctIndex: 1, explanation: "Where is used for places in relative clauses." },
+      { id: 3, type: 'multiple-choice' as const, question: "Which relative pronoun is used for the cafe?", options: ["Who", "Which", "Where", "Whose"], correctIndex: 1, explanation: "Which is used for things in relative clauses." },
+      { id: 4, type: 'multiple-choice' as const, question: "What does the librarian do?", options: ["Sells books", "Recommends books", "Teaches English", "Serves coffee"], correctIndex: 1, explanation: "The relative clause gives extra information about the librarian." },
+      { id: 5, type: 'multiple-choice' as const, question: "What relative pronoun is used for the market?", options: ["Who", "Which", "Where", "Whose"], correctIndex: 2, explanation: "Where is used for places in relative clauses." },
+    ]
+  }
 }
 
 export const phrasalVerbsB1: DailyLesson = {
@@ -2094,5 +2104,15 @@ export const phrasalVerbsB1: DailyLesson = {
       color: "bg-rose-500",
       title: "Murakkab"
     }
-  ]
+  ],
+  reading: {
+    passage: "A Difficult Decision\n\nAkbar is thinking about buying a new car. \"If I save enough money, I will buy a car next year,\" he says. \"This is a zero conditional fact: if you have money, you can buy things.\"\n\nHis friend says: \"If you buy a car now, you will spend less on taxis. That is a first conditional - a real possibility.\"\n\nBut Akbar is not sure. \"If I bought a car, I would have to pay for petrol and maintenance. That is a second conditional - an unreal situation in the present. I don't have the car yet.\"\n\nHis wife adds: \"If we had bought a car last year, we would have saved money on transport. But we didn't, so that is a third conditional - an unreal situation in the past.\"\n\nAkbar thinks for a long time. \"If I were rich, I would buy two cars! But I am not rich. I think I will save money first and buy a car next year.\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What type of conditional is: 'If you have money, you can buy things'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 0, explanation: "Zero conditional is used for general truths and facts." },
+      { id: 2, type: 'multiple-choice' as const, question: "What type of conditional is: 'If you buy a car now, you will spend less'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 1, explanation: "First conditional uses if + present simple, will + base verb for real possibilities." },
+      { id: 3, type: 'multiple-choice' as const, question: "What type of conditional is: 'If I bought a car, I would have to pay for petrol'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 2, explanation: "Second conditional uses if + past simple, would + base verb for unreal present situations." },
+      { id: 4, type: 'multiple-choice' as const, question: "What type of conditional is: 'If we had bought a car, we would have saved money'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 3, explanation: "Third conditional uses if + past perfect, would have + past participle for unreal past." },
+      { id: 5, type: 'multiple-choice' as const, question: "What verb form is used in the second conditional if-clause?", options: ["Present simple", "Past simple", "Past perfect", "Would + verb"], correctIndex: 1, explanation: "Second conditional uses past simple in the if-clause." },
+    ]
+  }
 }

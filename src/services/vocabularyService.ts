@@ -3,6 +3,7 @@ import { addDaysTashkent } from '../utils/tashkentDate'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
 import { computeNextReviewFSRS, createDefaultFSRSState, type FSRSState } from '../lib/srs'
+import { mergeVocabProgress } from './conflictResolution'
 
 export type WordLevel = 'A1' | 'A2' | 'B1' | 'B2'
 
@@ -76,14 +77,37 @@ export async function upsertProgress(
   wrongCount: number,
   isLearned: boolean
 ) {
+  // Smart merge: fetch existing row and merge box/correct/wrong counts
+  // to prevent SRS regression (e.g. device A has box=3, device B has box=1)
+  const { data: existing } = await supabase
+    .from('vocabulary_progress')
+    .select('box, correct_count, wrong_count, is_learned')
+    .eq('user_id', userId)
+    .eq('word_id', wordId)
+    .maybeSingle()
+
+  let merged = { box, correctCount, wrongCount, isLearned }
+  if (existing) {
+    merged = mergeVocabProgress({
+      localBox: box,
+      remoteBox: existing.box ?? 0,
+      localCorrectCount: correctCount,
+      remoteCorrectCount: existing.correct_count ?? 0,
+      localWrongCount: wrongCount,
+      remoteWrongCount: existing.wrong_count ?? 0,
+      localIsLearned: isLearned,
+      remoteIsLearned: existing.is_learned ?? false,
+    })
+  }
+
   const { error } = await supabase.from('vocabulary_progress').upsert({
     user_id: userId,
     word_id: wordId,
-    box,
+    box: merged.box,
     next_review: nextReview,
-    correct_count: correctCount,
-    wrong_count: wrongCount,
-    is_learned: isLearned,
+    correct_count: merged.correctCount,
+    wrong_count: merged.wrongCount,
+    is_learned: merged.isLearned,
     last_reviewed: new Date().toISOString(),
   }, { onConflict: 'user_id,word_id' })
 

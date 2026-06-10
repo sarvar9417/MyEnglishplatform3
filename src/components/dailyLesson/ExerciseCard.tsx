@@ -333,14 +333,34 @@ function checkAnswer(ex: DailyExercise, userAns: string[]): boolean {
   return submittedCheck(ex, userAns)
 }
 
+/**
+ * Check if an answer is in the accepted answers list
+ */
+function isAcceptedAnswer(userAnswer: string, accepted: string[]): boolean {
+  return accepted.some(a => normalizeAnswer(a) === normalizeAnswer(userAnswer))
+}
+
 function submittedCheck(ex: DailyExercise, userAns: string[]): boolean {
   if (!userAns || userAns.length === 0) return false
   switch (ex.type) {
-    case 'fill-blank':
-      return ex.blanks.every((b, i) => {
-        const cleaned = normalizeAnswer(userAns[i] ?? '')
+    case 'fill-blank': {
+      // Check if all answers are correct, considering acceptedAnswers
+      const allCorrect = ex.blanks.every((b, i) => {
+        const userAnswer = userAns[i] ?? ''
+        const cleaned = normalizeAnswer(userAnswer)
+        
+        // Check against acceptedAnswers first (if provided)
+        if (ex.acceptedAnswers && ex.acceptedAnswers[i]) {
+          if (isAcceptedAnswer(userAnswer, ex.acceptedAnswers[i])) {
+            return true
+          }
+        }
+        
+        // Fall back to original logic (blanks with / separator)
         return b.split('/').some(alt => normalizeAnswer(alt) === cleaned)
       })
+      return allCorrect
+    }
     case 'multiple-choice':
     case 'error-correction':
     case 'transformation':
@@ -354,7 +374,32 @@ function submittedCheck(ex: DailyExercise, userAns: string[]): boolean {
   }
 }
 
+/**
+ * Check if user gave an alternative (but still correct) answer
+ */
+function hasAlternativeAnswer(ex: DailyExercise, answers: string[]): boolean {
+  if (ex.type !== 'fill-blank' || !ex.acceptedAnswers) return false
+  return answers.some((ans, i) => {
+    if (!ex.acceptedAnswers || !ex.acceptedAnswers[i]) return false
+    const isMain = normalizeAnswer(ans) === normalizeAnswer(ex.blanks[i] ?? '')
+    const isAlt = isAcceptedAnswer(ans, ex.acceptedAnswers[i])
+    return !isMain && isAlt
+  })
+}
+
+/**
+ * Get blanks array for fill-blank exercise
+ */
+function getBlanks(ex: DailyExercise): string[] {
+  if (ex.type === 'fill-blank') return ex.blanks
+  return []
+}
+
 function feedbackBlock(ex: DailyExercise, answers: string[], isCorrect: boolean) {
+  // Check if user gave alternative correct answer
+  const isAlternative = isCorrect && hasAlternativeAnswer(ex, answers)
+  const blanks = getBlanks(ex)
+  
   return (
     <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
       {!isCorrect && (
@@ -365,13 +410,21 @@ function feedbackBlock(ex: DailyExercise, answers: string[], isCorrect: boolean)
               : (answers[0] || "(bo'sh)")
           }</span></p>
           <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{
-            ex.type === 'fill-blank' ? ex.blanks.join(' / ') :
+            ex.type === 'fill-blank' ? blanks.join(' / ') :
             ex.type === 'fill-table' ? 'jadvalda ko\'rsatilgan' :
             ex.correct
           }</span></p>
         </>
       )}
-      {isCorrect && <p className="font-semibold">✅ To'g'ri! +10 XP</p>}
+      {isCorrect && (
+        <>
+          {isAlternative ? (
+            <p className="font-semibold">✅ To'g'ri! ({blanks.join(', ')} ham ishlatish mumkin) +10 XP</p>
+          ) : (
+            <p className="font-semibold">✅ To'g'ri! +10 XP</p>
+          )}
+        </>
+      )}
       <p className="mt-1 text-gray-600 dark:text-gray-400">💡 {ex.explanation}</p>
     </div>
   )

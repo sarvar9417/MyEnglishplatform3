@@ -89,6 +89,38 @@ describe('daily lessons data', () => {
     }
   })
 
+  // ── Lesson data quality ──
+
+  const VALID_EXERCISE_TYPES = ['fill-blank', 'multiple-choice', 'error-correction', 'transformation', 'fill-table', 'vocab-match']
+
+  it('every exercise has a valid type', () => {
+    for (const l of ALL_LESSONS) {
+      for (const ex of l.exercises) {
+        expect(VALID_EXERCISE_TYPES.includes(ex.type)).toBe(true)
+      }
+      if (l.tests) {
+        for (const t of l.tests) {
+          expect(VALID_EXERCISE_TYPES.includes(t.type)).toBe(true)
+        }
+      }
+    }
+  })
+
+  it('every exercise has a non-empty explanation', () => {
+    for (const l of ALL_LESSONS) {
+      for (const ex of l.exercises) {
+        expect(ex.explanation).toBeTruthy()
+        expect(ex.explanation.length).toBeGreaterThanOrEqual(3)
+      }
+      if (l.tests) {
+        for (const t of l.tests) {
+          expect(t.explanation).toBeTruthy()
+          expect(t.explanation.length).toBeGreaterThanOrEqual(3)
+        }
+      }
+    }
+  })
+
   it('no duplicate test IDs within each lesson', () => {
     for (const l of ALL_LESSONS) {
       if (l.tests) {

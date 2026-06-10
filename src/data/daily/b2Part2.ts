@@ -109,12 +109,13 @@ export const complexSentencesB2: DailyLesson = {
     { id: 6223, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'The girl ___ bag was stolen went to the police.', options: ['who', 'which', 'whose', 'whom'], correct: 'whose', explanation: "Whose = possessive relative pronoun (girl's bag)" },
     { id: 6224, type: 'transformation', instruction: 'Birlashtiring:', question: 'She is the scientist. She won the Nobel Prize. Combine with relative clause.', hint: 'She is the scientist who/that...', correct: 'She is the scientist who/that won the Nobel Prize.', explanation: 'Defining relative clause for people: who / that' },
     { id: 6225, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence uses a NON-DEFINING relative clause CORRECTLY?", options: ['The man who lives next door is my uncle', 'My father, who is 60, is retiring', 'The book which I read was good', 'The student that passed was clever'], correct: 'My father, who is 60, is retiring', explanation: 'Non-defining: commas + who (adds extra info, not identifying)' },
+    { id: 6226, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I love reading books I read every day.", errorPart: 'I read every day', correct: ', and I read every day.', explanation: "Run-on sentence: ikki independent clause bog'lovchisiz yozilgan. 'and' yoki 'so' kabi coordinator kerak." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Bog\'lovchilar va relative pronoun', color: 'bg-emerald-500', icon: '🌱', ids: [6201, 6202, 6203, 6204, 6205] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6206, 6207, 6208, 6209, 6210] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6211, 6212, 6213, 6214, 6215] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6220, 6218, 6221, 6217, 6225, 6219, 6216, 6224, 6223, 6222] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6220, 6218, 6221, 6217, 6225, 6219, 6216, 6224, 6223, 6222, 6226] },
   ],
   tests: [
     { id: 621, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Complex sentence nima?', options: ['bitta clause', 'main + subordinate clause', 'faqat subordinate clause', 'ikki so\'z'], correct: 'main + subordinate clause', explanation: 'Complex = main + subordinate' },

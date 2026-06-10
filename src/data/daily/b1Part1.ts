@@ -155,6 +155,16 @@ export const futureFormsReview: DailyLesson = {
     { title: "Qiyin", desc: "Murakkab holatlar — tahlil", color: 'bg-purple-500', icon: '??', ids: [411, 412, 413] },
     { title: "Murakkab", desc: "Yuqori daraja — sinov", color: 'bg-rose-500', icon: '??', ids: [414, 415] },
   ],
+  reading: {
+    passage: "Planning a Trip to Samarkand\n\nLola and her friend Madina are planning a trip to Samarkand. They have different ideas about what to do. \"What are we going to do in Samarkand?\" asks Madina. \"I think we will visit Registan Square first,\" Lola replies. \"I am meeting a tour guide at 10 AM on Saturday.\"\n\nMadina checks the train schedule. \"The train leaves at 7:30 AM from Tashkent,\" she says. \"So we will have to wake up early!\"\n\nLola looks at the sky. \"Look at those clouds! I think it is going to rain tomorrow. We will take our umbrellas.\"\n\nMadina makes a list. \"I am going to book a hotel near the old city. I will call them tonight,\" she says. \"I promise I will arrange everything!\"\n\nLola smiles. \"Don't worry, I am sure we will have a wonderful time. I am really looking forward to it!\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "Why does Lola say she thinks they will visit Registan Square?", options: ["She made a plan", "She is predicting", "She arranged it", "She is not sure"], correctIndex: 1, explanation: "Will is used for predictions based on opinion." },
+      { id: 2, type: 'multiple-choice' as const, question: "What does Madina's sentence about the train show?", options: ["Future intention", "Timetable/schedule", "Prediction", "Arrangement"], correctIndex: 1, explanation: "Present Simple is used for scheduled events like train times." },
+      { id: 3, type: 'multiple-choice' as const, question: "What tense does Lola use for meeting the tour guide?", options: ["Present Simple", "Will", "Going to", "Present Continuous"], correctIndex: 3, explanation: "Present Continuous is used for fixed arrangements." },
+      { id: 4, type: 'multiple-choice' as const, question: "Which future form does Madina use for booking a hotel?", options: ["Will", "Going to", "Present Simple", "Present Continuous"], correctIndex: 1, explanation: "Going to is used for plans and intentions." },
+      { id: 5, type: 'multiple-choice' as const, question: "Why does Lola say she will have some water?", options: ["She planned it", "She decided now", "She arranged it", "She does it daily"], correctIndex: 1, explanation: "Will is used for decisions made at the moment of speaking." },
+    ]
+  }
 }
 
 export const modalsObligation: DailyLesson = {
@@ -236,7 +246,7 @@ export const modalsObligation: DailyLesson = {
     { id: 4103, type: 'multiple-choice', instruction: "To'g'ri modal felni tanlang:", question: "I _____ work every day from 9 to 5.", options: ['must', 'have to', 'ought to', 'should'], correct: 'have to', explanation: "Ish jadvali ? tashqi majburiyat ? have to." },
     { id: 4104, type: 'multiple-choice', instruction: "To'g'ri modal felni tanlang:", question: "You _____ smoke in the hospital. It is forbidden.", options: ['mustn\'t', 'don\'t have to', 'shouldn\'t', 'needn\'t'], correct: 'mustn\'t', explanation: "Taqiqlangan ? mustn't. 'Forbidden' so'zi buni ko'rsatadi." },
     { id: 4105, type: 'multiple-choice', instruction: "To'g'ri modal felni tanlang:", question: "You _____ come to the meeting if you don't want to. It's optional.", options: ['mustn\'t', 'don\'t have to', 'shouldn\'t', 'can\'t'], correct: 'don\'t have to', explanation: "Optional ? shart emas ? don't have to." },
-    { id: 4106, type: 'fill-blank', instruction: "Must yoki Have to bilan to'ldiring:", question: "I _____ stop eating so much sugar. My health is getting worse.", blanks: ['must'], explanation: "Shaxsiy qaror/majburiyat ? must. O'zim xohlayman." },
+    { id: 4106, type: 'fill-blank', instruction: "Must yoki Have to bilan to'ldiring:", question: "I _____ stop eating so much sugar. My health is getting worse.", blanks: ['must'], acceptedAnswers: [['must', 'have to']], explanation: "Shaxsiy qaror/majburiyat ? must (lekin have to ham to'g'ri)." },
     { id: 4107, type: 'fill-blank', instruction: "Must yoki Have to bilan to'ldiring:", question: "She _____ wear glasses because she can't see well.", blanks: ['has to'], explanation: "Tashqi sabab (ko'rmaydi) ? tashqi majburiyat ? has to." },
     { id: 4108, type: 'fill-blank', instruction: "Mustn't yoki Don't have to:", question: "You _____ tell anyone. This is a secret!", blanks: ['mustn\'t'], explanation: "Sir ? hech kimga aytish mumkin emas ? mustn't." },
     { id: 4109, type: 'fill-blank', instruction: "Mustn't yoki Don't have to:", question: "We _____ rush. We have plenty of time.", blanks: ['don\'t have to'], explanation: "Vaqt ko'p ? shoshilish shart emas ? don't have to." },
@@ -282,6 +292,16 @@ export const modalsObligation: DailyLesson = {
     { title: "Qiyin", desc: "Murakkab holatlar", color: 'bg-purple-500', icon: '??', ids: [419, 420, 421] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [422, 423, 424, 425] },
   ],
+  reading: {
+    passage: "School and Work Rules\n\nAziz is a student at Tashkent International School. He has many rules to follow. \"You must listen to the teacher during lessons,\" the principal says. \"You must not use your phone in class.\"\n\nAt home, Aziz helps his parents. He does not have to work on Sundays, but he should help with cleaning. His mother says, \"You should study more if you want good grades.\"\n\nAt his part-time job at a cafe, Aziz has different rules. He must wear a uniform. He must not be late. But he does not have to work on weekends if he does not want to.\n\nAziz thinks about all these rules. \"I have to follow many rules,\" he says. \"But I know they are good for me.\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What must students do during lessons?", options: ["Use phones", "Listen to the teacher", "Sleep", "Eat snacks"], correctIndex: 1, explanation: "Must shows a strong rule they have to follow." },
+      { id: 2, type: 'multiple-choice' as const, question: "What is Aziz not allowed to do during lessons?", options: ["Read books", "Use his phone", "Write notes", "Ask questions"], correctIndex: 1, explanation: "Must not means something is prohibited." },
+      { id: 3, type: 'multiple-choice' as const, question: "Does Aziz have to work on Sundays?", options: ["Yes, always", "No, he does not have to", "Only if he wants", "He is not allowed"], correctIndex: 1, explanation: "Does not have to means it is not necessary." },
+      { id: 4, type: 'multiple-choice' as const, question: "What advice does Aziz get from his mother?", options: ["He should study more", "He should quit school", "He should work harder", "He should sleep more"], correctIndex: 0, explanation: "Should is used to give advice." },
+      { id: 5, type: 'multiple-choice' as const, question: "What does Aziz decide he ought to do?", options: ["Quit school", "Be more responsible", "Sleep more", "Play games"], correctIndex: 1, explanation: "Ought to is similar to should and shows duty." },
+    ]
+  }
 }
 
 export const modalsSpeculation: DailyLesson = {
@@ -410,6 +430,16 @@ export const modalsSpeculation: DailyLesson = {
     { title: "Qiyin", desc: "Murakkab farqlar", color: 'bg-purple-500', icon: '??', ids: [429, 430, 431] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [432, 433, 434, 435] },
   ],
+  reading: {
+    passage: "The Mystery of the Missing Keys\n\nAkbar cannot find his car keys. He is looking everywhere. \"Where could they be?\" he asks himself.\n\nHis wife Gulnora says, \"They must be in the kitchen. You had them after breakfast.\" Akbar checks the kitchen but does not find them. \"They might be in your jacket pocket,\" Gulnora suggests. Still nothing.\n\nAkbar thinks, \"I might have left them at work yesterday. They could be on my desk.\" But he remembers locking his office. \"They cannot be at work then,\" he says.\n\nSuddenly, his daughter says, \"Daddy, your keys are in the car! The door is open.\" Akbar laughs. \"They must have fallen from my pocket this morning. I must be more careful!\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "Why does Gulnora say the keys must be in the kitchen?", options: ["She saw them there", "Akbar had them after breakfast", "She put them there", "The kitchen is safe"], correctIndex: 1, explanation: "Must be shows a logical deduction based on evidence." },
+      { id: 2, type: 'multiple-choice' as const, question: "What does Akbar say might be true about the keys?", options: ["He lost them forever", "They might be in his jacket", "Someone stole them", "They are in the car"], correctIndex: 1, explanation: "Might be shows a possibility, not a certainty." },
+      { id: 3, type: 'multiple-choice' as const, question: "Why does Akbar say the keys cannot be at work?", options: ["He did not go to work", "He locked his office", "His colleague has them", "The office is closed"], correctIndex: 1, explanation: "Cannot be shows the speaker believes something is impossible." },
+      { id: 4, type: 'multiple-choice' as const, question: "Where were the keys actually found?", options: ["In the kitchen", "In the jacket", "In the car", "At work"], correctIndex: 2, explanation: "Akbar's daughter found them in the car." },
+      { id: 5, type: 'multiple-choice' as const, question: "What does Akbar say must have happened?", options: ["Someone took them", "They fell from his pocket", "He lost them forever", "His wife hid them"], correctIndex: 1, explanation: "Must have + past participle shows a past deduction." },
+    ]
+  }
 }
 
 export const pastHabits: DailyLesson = {
@@ -532,6 +562,16 @@ export const pastHabits: DailyLesson = {
     { title: "Qiyin", desc: "Murakkab farqlar", color: 'bg-purple-500', icon: '??', ids: [439, 440, 441] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [442, 443, 444, 445] },
   ],
+  reading: {
+    passage: "Grandfather's Childhood\n\nMy grandfather often tells me about his childhood. \"Life was very different when I was young,\" he says. \"We used to play outside all day. We would run in the fields and climb trees. There didn't use to be any video games!\n\nI used to walk to school every day. It would take about 30 minutes. My sister and I would go together. We didn't use to have a car, so we walked everywhere.\n\nIn winter, we would make snowmen and have snowball fights. I used to love winter the most. But we didn't use to have warm jackets like you have now.\n\nMy grandfather smiles. \"I wouldn't change my childhood for anything. We didn't have much, but we were happy.\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What did Grandfather use to do as a child?", options: ["Play video games", "Play outside all day", "Watch TV", "Read books"], correctIndex: 1, explanation: "Used to shows past habits that no longer happen." },
+      { id: 2, type: 'multiple-choice' as const, question: "How did Grandfather use to go to school?", options: ["By bus", "By car", "He walked", "By bike"], correctIndex: 2, explanation: "Used to + infinitive describes a past routine." },
+      { id: 3, type: 'multiple-choice' as const, question: "What does Grandfather say about winter?", options: ["He hated it", "He used to love it", "He stayed inside", "He was cold"], correctIndex: 1, explanation: "Would is used to describe repeated past actions." },
+      { id: 4, type: 'multiple-choice' as const, question: "What did Grandfather and his sister use to do?", options: ["Fight", "Walk to school together", "Play video games", "Watch movies"], correctIndex: 1, explanation: "Would + base verb describes past habitual actions." },
+      { id: 5, type: 'multiple-choice' as const, question: "Which sentence shows a past state, not an action?", options: ["We would make snowmen", "We used to walk to school", "We didn't use to have a car", "We would go together"], correctIndex: 2, explanation: "Used to can describe past states; would only describes actions." },
+    ]
+  }
 }
 
 export const causatives: DailyLesson = {
@@ -656,6 +696,16 @@ export const causatives: DailyLesson = {
     { title: "Qiyin", desc: "Person vs Object", color: 'bg-purple-500', icon: '??', ids: [449, 450, 451] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [452, 453, 454, 455] },
   ],
+  reading: {
+    passage: "Getting Ready for the Wedding\n\nSevara is getting married next month. She is very busy getting everything ready. \"I need to have my dress made by a professional tailor,\" she says. \"I am going to get my hair done at a salon.\n\nHer brother helps too. \"I will get the invitations printed at a local shop,\" he says. \"I also need to have the car washed before the big day.\n\nSevara's parents are helping with the food. They have the traditional dishes prepared by a catering company. They also get the house decorated with flowers.\n\nSevara's fiance, Jamshid, is responsible for the music. \"I had the sound system checked last week,\" he says. \"I will get a photographer hired for the ceremony.\"\n\nOn the wedding day, everything is perfect. Sevara has her makeup done by a professional. She is happy that she got everything organised in time.",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What does Sevara need to have made?", options: ["Her hair", "Her dress", "Her cake", "Her shoes"], correctIndex: 1, explanation: "Have something done means you arrange for someone else to do it." },
+      { id: 2, type: 'multiple-choice' as const, question: "Who is getting the invitations printed?", options: ["Sevara", "Her brother", "Her mother", "Jamshid"], correctIndex: 1, explanation: "Get something done is similar to have something done." },
+      { id: 3, type: 'multiple-choice' as const, question: "What did Jamshid have checked?", options: ["The car", "The food", "The sound system", "The flowers"], correctIndex: 2, explanation: "Had something checked uses the past form of have causative." },
+      { id: 4, type: 'multiple-choice' as const, question: "Who are the traditional dishes prepared by?", options: ["Sevara", "Her parents", "A catering company", "Her brother"], correctIndex: 2, explanation: "The causative structure focuses on the action, not who does it." },
+      { id: 5, type: 'multiple-choice' as const, question: "What does Sevara have done on the wedding day?", options: ["Her dress made", "Her makeup done", "Her hair cut", "Her nails painted"], correctIndex: 1, explanation: "Have something done in present tense for services arranged." },
+    ]
+  }
 }
 
 export const questionTags: DailyLesson = {
@@ -781,6 +831,16 @@ export const questionTags: DailyLesson = {
     { title: "Qiyin", desc: "Inkor ma'noli so'zlar", color: 'bg-purple-500', icon: '??', ids: [459, 460, 461] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [462, 463, 464, 465] },
   ],
+  reading: {
+    passage: "A Conversation at the Cafe\n\nTwo colleagues, Rustam and Davron, are having coffee at a cafe near their office.\n\nRustam: \"You are from Samarkand, aren't you?\"\nDavron: \"Yes, I am. I moved here two years ago. You have been to Samarkand, haven't you?\"\nRustam: \"Yes, I have. It is a beautiful city. But you don't go back very often, do you?\"\nDavron: \"No, I don't. I am too busy with work. Your brother lives there, doesn't he?\"\nRustam: \"That's right. He works at the university. He can give you a tour if you want.\"\nDavron: \"That would be great! Let's plan a trip together, shall we?\"\nRustam: \"Good idea! I will call him tonight.\"\n\nTheir colleague Munira joins them. \"You two look excited. You are planning something, aren't you?\" she asks.\n\"We are thinking about a trip to Samarkand,\" says Rustam. \"You should come too!\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What question tag does Rustam use to confirm Davron is from Samarkand?", options: ["isn't it?", "aren't you?", "don't you?", "haven't you?"], correctIndex: 1, explanation: "With 'you are', the positive statement takes a negative tag 'aren't you?'." },
+      { id: 2, type: 'multiple-choice' as const, question: "How does Davron respond to Rustam's question tag?", options: ["No, I'm not", "Yes, I am", "Maybe", "I don't know"], correctIndex: 1, explanation: "A positive answer to a positive statement tag is confirmed with yes." },
+      { id: 3, type: 'multiple-choice' as const, question: "What question tag follows 'You don't go back very often'?", options: ["isn't it?", "don't you?", "do you?", "aren't you?"], correctIndex: 2, explanation: "A negative statement takes a positive question tag." },
+      { id: 4, type: 'multiple-choice' as const, question: "Which auxiliary is used in the tag 'doesn't he?'?", options: ["do", "does", "is", "has"], correctIndex: 1, explanation: "'Does' is used because the main verb is in present simple third person." },
+      { id: 5, type: 'multiple-choice' as const, question: "What tag does Davron use for 'Let's plan a trip together'?", options: ["will you?", "shall we?", "don't we?", "aren't we?"], correctIndex: 1, explanation: "'Let's' suggestions use 'shall we?' as the question tag." },
+    ]
+  }
 }
 
 export const bothEitherNeither: DailyLesson = {
@@ -903,6 +963,16 @@ export const bothEitherNeither: DailyLesson = {
     { title: "Qiyin", desc: "Juft bog'lovchilar", color: 'bg-purple-500', icon: '??', ids: [469, 470, 471] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [472, 473, 474, 475] },
   ],
+  reading: {
+    passage: "Choosing Between Two Jobs\n\nAlisher has two job offers. One is at a bank, and the other is at a university. Both jobs pay well, but they are very different.\n\nThe bank offers a high salary and a company car. The university offers a lower salary but more free time. Alisher is not sure which to choose.\n\nHis friend Kamola says: \"Both jobs have good points. But neither job offers everything you want. You need to decide what is more important.\n\nThe bank is in the city centre, and the university is near your home. Both are convenient. Alisher can walk to the university, but he would need to drive to the bank. Neither option requires him to move house.\n\nAlisher thinks: \"Either job would be good for my career. But I can only choose one. I think I will take the university job. The free time is more important to me than money.\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "How many jobs is Alisher choosing between?", options: ["One", "Two", "Three", "Four"], correctIndex: 1, explanation: "Either is used when choosing between two options." },
+      { id: 2, type: 'multiple-choice' as const, question: "What does Kamola say about the two jobs?", options: ["Both are perfect", "Both have good points", "Neither is good", "Either is bad"], correctIndex: 1, explanation: "Both refers to two things together." },
+      { id: 3, type: 'multiple-choice' as const, question: "What does Alisher say about moving house?", options: ["Both options require it", "Neither option requires it", "Either option requires it", "He must move"], correctIndex: 1, explanation: "Neither means not one nor the other." },
+      { id: 4, type: 'multiple-choice' as const, question: "Which word shows Alisher can choose any of the two?", options: ["Both", "Neither", "Either", "None"], correctIndex: 2, explanation: "Either means one or the other of two." },
+      { id: 5, type: 'multiple-choice' as const, question: "Why does Alisher choose the university job?", options: ["Higher salary", "Free time is more important", "Company car", "Closer to his family"], correctIndex: 1, explanation: "He values free time more than money." },
+    ]
+  }
 }
 
 export const timeClauses: DailyLesson = {
@@ -1025,6 +1095,16 @@ export const timeClauses: DailyLesson = {
     { title: "Qiyin", desc: "Murakkab tuzilmalar", color: 'bg-purple-500', icon: '??', ids: [479, 480, 481] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [482, 483, 484, 485] },
   ],
+  reading: {
+    passage: "A Day in the Life of a Doctor\n\nDr. Karimov works at a hospital in Tashkent. His day starts early. As soon as he wakes up at 6 AM, he drinks a cup of coffee. While he is having breakfast, he checks his messages.\n\nBefore he leaves for work, he kisses his children goodbye. He arrives at the hospital at 7:30. By the time his first patient arrives, he has already reviewed their files.\n\nDr. Karimov works until 5 PM. After he finishes work, he goes home. When he gets home, he plays with his children. He stays with them until they go to bed.\n\nLater in the evening, after his children have gone to sleep, he reads medical journals. He says: \"I will keep learning as long as I am a doctor.\"\n\nHis wife often tells him: \"You work too hard!\" But Dr. Karimov smiles and says: \"I love my job. I will continue working until I retire.\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What does Dr. Karimov do as soon as he wakes up?", options: ["Checks messages", "Drinks coffee", "Kisses his children", "Goes to work"], correctIndex: 1, explanation: "'As soon as' shows an action that happens immediately after another." },
+      { id: 2, type: 'multiple-choice' as const, question: "What happens while he is having breakfast?", options: ["He sleeps", "He checks messages", "He exercises", "He reads"], correctIndex: 1, explanation: "'While' shows two actions happening at the same time." },
+      { id: 3, type: 'multiple-choice' as const, question: "By the time the first patient arrives, what has Dr. Karimov done?", options: ["Had lunch", "Reviewed their files", "Gone home", "Eaten dinner"], correctIndex: 1, explanation: "'By the time' shows an action completed before another action." },
+      { id: 4, type: 'multiple-choice' as const, question: "How long does Dr. Karimov work?", options: ["Until 5 PM", "Until noon", "Until 3 PM", "Until 8 PM"], correctIndex: 0, explanation: "'Until' shows duration up to a specific time." },
+      { id: 5, type: 'multiple-choice' as const, question: "What does Dr. Karimov say he will do as long as he is a doctor?", options: ["Work harder", "Keep learning", "Sleep more", "Take a break"], correctIndex: 1, explanation: "'As long as' shows a condition that must continue for something to happen." },
+    ]
+  }
 }
 
 export const indirectQuestions: DailyLesson = {
@@ -1149,6 +1229,16 @@ export const indirectQuestions: DailyLesson = {
     { title: "Qiyin", desc: "Do/Does/Did tushirish", color: 'bg-purple-500', icon: '??', ids: [489, 490, 491] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [492, 493, 494, 495] },
   ],
+  reading: {
+    passage: "At the Tourist Information Centre\n\nA tourist named Paul is visiting Tashkent for the first time. He goes to a tourist information centre.\n\nPaul: \"Hello. Can you tell me where the Amir Timur Museum is?\"\nAssistant: \"Of course. It is in the city centre, near the hotel you are staying at.\"\nPaul: \"Could you tell me how much the entrance fee is?\"\nAssistant: \"It is about 50,000 som for adults. Would you like to know what time it opens?\"\nPaul: \"Yes, please. I wonder if it is open on Mondays.\"\nAssistant: \"It is open every day from 9 AM to 6 PM.\"\nPaul: \"Do you know if there is a guided tour in English?\"\nAssistant: \"Yes, there is a tour at 11 AM. Let me check what other museums are nearby. I can tell you which ones are worth visiting.\"\nPaul: \"That would be very helpful. Could you also tell me where I can try traditional Uzbek food?\"\nAssistant: \"There is a great restaurant called Plov Centre near the museum.\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What indirect question does Paul use to ask about the museum?", options: ["Where is the museum?", "Can you tell me where the museum is?", "Is the museum nearby?", "Where can I find it?"], correctIndex: 1, explanation: "Indirect questions use a polite phrase followed by the question in statement word order." },
+      { id: 2, type: 'multiple-choice' as const, question: "What is the word order in the second part of indirect questions?", options: ["Question word order", "Statement word order", "Negative order", "Imperative order"], correctIndex: 1, explanation: "Indirect questions use statement word order, not question word order." },
+      { id: 3, type: 'multiple-choice' as const, question: "What phrase does Paul use to show he is wondering about something?", options: ["Can you tell me", "Could you tell me", "I wonder if", "Do you know"], correctIndex: 2, explanation: "'I wonder if' is a polite way to ask an indirect question." },
+      { id: 4, type: 'multiple-choice' as const, question: "Which verb form is used correctly in: 'Do you know if there is a tour?'", options: ["Is there", "There is", "There are", "There will"], correctIndex: 1, explanation: "Indirect questions keep the auxiliary in its normal statement position." },
+      { id: 5, type: 'multiple-choice' as const, question: "What does the assistant offer to tell Paul about?", options: ["Other nearby museums", "Bus schedules", "Hotel prices", "Weather forecast"], correctIndex: 0, explanation: "She offers to tell him which museums are worth visiting." },
+    ]
+  }
 }
 
 export const soNeitherAuxiliaries: DailyLesson = {
@@ -1239,7 +1329,7 @@ export const soNeitherAuxiliaries: DailyLesson = {
     { id: 4914, type: 'transformation', instruction: "Neither bilan javob yozing:", question: 'A: He doesn\'t smoke. B: (agree — I)', hint: 'Neither ...', correct: 'Neither do I', explanation: "Doesn't ? do. Neither do I." },
     { id: 4915, type: 'transformation', instruction: "Too bilan javob yozing:", question: 'A: I will be there. B: (agree — I)', hint: 'I ...', correct: 'I will too', explanation: "Will ? will. I will too." },
     { id: 4916, type: 'transformation', instruction: "Either bilan javob yozing:", question: 'A: She hasn\'t called. B: (agree — I)', hint: 'I ...', correct: 'I haven\'t either', explanation: "Haven't ? haven't. I haven't either." },
-    { id: 4917, type: 'fill-blank', instruction: "To'g'ri yordamchi fe'l bilan:", question: 'A: They must study. B: So _____ I.', blanks: ['must'], explanation: "Must ? must. So must I." },
+    { id: 4917, type: 'fill-blank', instruction: "To'g'ri yordamchi fe'l bilan:", question: 'A: They must study. B: So _____ I.', blanks: ['must'], acceptedAnswers: [['must', 'have to']], explanation: "Must ? must (lekin have to ham to'g'ri). So must I." },
     { id: 4918, type: 'fill-blank', instruction: "Noto'g'ri javobni toping:", question: 'A: I like coffee. Which is WRONG? B: ___', blanks: ['So am I'], explanation: "Like ? do. 'So am I' noto'g'ri." },
     { id: 4919, type: 'multiple-choice', instruction: "To'g'ri variant:", question: 'A: I should go. B: ___', options: ['So should I', 'So do I', 'So am I', 'So go I'], correct: 'So should I', explanation: "Should ? should. So should I." },
     { id: 4920, type: 'transformation', instruction: "So yoki Neither bilan javob bering:", question: 'A: I have never been to London. B: (agree — I)', hint: 'Neither ...', correct: 'Neither have I', explanation: "Never ? inkor. Neither have I." },
@@ -1274,6 +1364,16 @@ export const soNeitherAuxiliaries: DailyLesson = {
     { title: "Qiyin", desc: "Murakkab zamonlar", color: 'bg-purple-500', icon: '??', ids: [499, 500, 501] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [502, 503, 504, 505] },
   ],
+  reading: {
+    passage: "Opinions About City Life\n\nTwo friends, Kamola and Sevara, are discussing city life.\n\nKamola: \"I love living in Tashkent. There is always something to do.\"\nSevara: \"So do I! The restaurants and parks are wonderful.\"\nKamola: \"I don't like the traffic though.\"\nSevara: \"Neither do I. It gets worse every year.\"\n\nTheir friend Aziz joins them.\nAziz: \"I prefer smaller cities. I don't enjoy the noise.\"\nSevara: \"Really? I do enjoy the energy of a big city.\"\nKamola: \"Me too. And I have never been bored here.\"\nAziz: \"I haven't either. But I would like to live somewhere quieter.\"\nSevara: \"I wouldn't. I can't imagine leaving Tashkent.\"\nKamola: \"Nor can I. This city is my home.\"\n\nLater, they talk about hobbies. Kamola says she can swim well. Sevara says: \"So can I! Let's go swimming this weekend.\" Aziz says he can't swim. Sevara says: \"Neither can he? That's a shame.\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What does Sevara say to agree with Kamola's positive statement?", options: ["Neither do I", "So do I", "I don't either", "Nor do I"], correctIndex: 1, explanation: "'So + auxiliary + I' is used to agree with a positive statement." },
+      { id: 2, type: 'multiple-choice' as const, question: "What does Sevara say to agree with Kamola's negative statement about traffic?", options: ["So do I", "Neither do I", "I do too", "Me too"], correctIndex: 1, explanation: "'Neither + auxiliary + I' is used to agree with a negative statement." },
+      { id: 3, type: 'multiple-choice' as const, question: "What is Kamola's negative statement that Aziz agrees with?", options: ["I don't like noise", "I have never been bored", "I can't imagine leaving", "I don't enjoy traffic"], correctIndex: 1, explanation: "'Haven't either' matches the present perfect negative statement." },
+      { id: 4, type: 'multiple-choice' as const, question: "What does 'Nor can I' mean?", options: ["I can agree", "I cannot either", "I can do it", "I don't know"], correctIndex: 1, explanation: "'Nor' is a formal way to agree with a negative statement." },
+      { id: 5, type: 'multiple-choice' as const, question: "When Aziz says he can't swim, what is the correct agreement?", options: ["So can I", "Neither can he", "I do too", "He can too"], correctIndex: 1, explanation: "'Neither + auxiliary' agrees with a negative statement." },
+    ]
+  }
 }
 
 export const wishesRegrets: DailyLesson = {
@@ -1363,7 +1463,7 @@ export const wishesRegrets: DailyLesson = {
     { id: 5016, type: 'transformation', instruction: "If only bilan ifodalang:", question: 'I am not rich.', hint: 'If only ...', correct: 'If only I were rich!', explanation: "Hozirgi orzu ? if only + past." },
     { id: 5017, type: 'fill-blank', instruction: "I wish + would (shikoyat):", question: 'I wish the children _____ quiet. I can\'t concentrate.', blanks: ['would be'], explanation: "Shikoyat ? would be." },
     { id: 5018, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "I regret ___ him about the surprise.", options: ['tell', 'telling', 'to tell', 'told'], correct: 'telling', explanation: "Regret + V-ing." },
-    { id: 5019, type: 'fill-blank', instruction: "I wish + could:", question: 'I wish I _____ speak Chinese.', blanks: ['could'], explanation: "Can ? could (past). 'I wish I could speak Chinese.'" },
+    { id: 5019, type: 'fill-blank', instruction: "I wish + could:", question: 'I wish I _____ speak Chinese.', blanks: ['could'], acceptedAnswers: [['could', 'knew']], explanation: "Can ? could (past) (lekin knew ham to'g'ri - 'I wish I knew Chinese')." },
     { id: 5020, type: 'transformation', instruction: "Wish + would bilan shikoyat:", question: 'You never help with the housework.', hint: 'I wish ...', correct: 'I wish you would help with the housework.', explanation: "Shikoyat ? wish + would." },
   ],
   exerciseSections: [
@@ -1396,4 +1496,14 @@ export const wishesRegrets: DailyLesson = {
     { title: "Qiyin", desc: "Wish + Past vs Would", color: 'bg-purple-500', icon: '??', ids: [509, 510, 511] },
     { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [512, 513, 514, 515] },
   ],
+  reading: {
+    passage: "Things I Would Change\n\nDilnoza often thinks about her past and wishes things were different. She says: \"I wish I had studied harder at university. If only I had chosen a different career! I regret not learning English earlier.\n\nNow, Dilnoza wishes she could travel more. She wishes she lived closer to her family. She wishes she had more time for her hobbies. 'I wish I didn't work so much,' she often tells her friends.\n\nHer friend Aziz has different regrets. He wishes he hadn't spent so much money on things he didn't need. He regrets not saving money for the future. If only he had started a business earlier!\n\nAziz says: \"I wish I were more confident when I was younger. I would have achieved more.\" But Dilnoza replies: \"We can't change the past. We can only learn from it. I wish I could accept that more easily!\"",
+    questions: [
+      { id: 1, type: 'multiple-choice' as const, question: "What does Dilnoza wish she had done at university?", options: ["Had more friends", "Studied harder", "Traveled more", "Learned cooking"], correctIndex: 1, explanation: "I wish + past perfect shows regret about a past action." },
+      { id: 2, type: 'multiple-choice' as const, question: "What does 'If only I had chosen a different career' express?", options: ["A future hope", "A past regret", "A present wish", "A possibility"], correctIndex: 1, explanation: "If only + past perfect expresses strong regret about the past." },
+      { id: 3, type: 'multiple-choice' as const, question: "Dilnoza wishes she lived closer to her family. What time does this refer to?", options: ["Past", "Present", "Future", "All time"], correctIndex: 1, explanation: "I wish + past simple shows a wish about the present." },
+      { id: 4, type: 'multiple-choice' as const, question: "What does Aziz regret not doing?", options: ["Getting married", "Starting a business", "Traveling", "Learning English"], correctIndex: 1, explanation: "He wishes he had started a business earlier." },
+      { id: 5, type: 'multiple-choice' as const, question: "Why is 'were' used instead of 'was' after 'I wish'?", options: ["It's past tense", "It's the subjunctive form", "It's future tense", "It's a mistake"], correctIndex: 1, explanation: "'Were' is the subjunctive form used after 'wish' for all subjects." },
+    ]
+  }
 }

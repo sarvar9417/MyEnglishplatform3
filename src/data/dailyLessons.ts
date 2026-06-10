@@ -129,7 +129,7 @@ export interface ListeningQuestion {
 }
 
 export type DailyExercise =
-  | { id: number; type: 'fill-blank'; instruction: string; question: string; blanks: string[]; explanation: string }
+  | { id: number; type: 'fill-blank'; instruction: string; question: string; blanks: string[]; acceptedAnswers?: string[][]; explanation: string }
   | { id: number; type: 'multiple-choice'; instruction: string; question: string; options: [string, string, string, string]; correct: string; explanation: string }
   | { id: number; type: 'error-correction'; instruction: string; question: string; errorPart: string; correct: string; explanation: string }
   | { id: number; type: 'transformation'; instruction: string; question: string; hint: string; correct: string; explanation: string }
