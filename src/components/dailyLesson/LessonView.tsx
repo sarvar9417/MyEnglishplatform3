@@ -88,6 +88,12 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
   // ustidan yozib yuborardi (resume buziladigan poyga).
   const [hydrated, setHydrated] = useState(false)
 
+  // Analytics: dars boshlanishi va tugatmasdan tashlab ketilishini kuzatish.
+  // Ref'lar unmount cleanup'da eng so'nggi qiymatni olishi uchun (closure stale bo'lmasin).
+  const lessonStartRef = useRef(Date.now())
+  const lessonDoneRef = useRef(false)
+  const lessonProgressRef = useRef<{ section: number; tab: Tab }>({ section: 0, tab: 'theory' })
+
   // Namunaviy (yangi ko'rinish) dars — agar shu dars uchun demo mavjud bo'lsa
   const demoLesson = DEMO_LESSONS[lesson.id]
   const [demoMode, setDemoMode] = useState(false)
@@ -99,6 +105,37 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
   const allExercisesDone = Object.keys(completedSections).length === lesson.exerciseSections.length
   const allTestsDone = Object.keys(completedTestSections).length === lesson.testSections.length
   const allDone = allExercisesDone && allTestsDone && vocabDone
+
+  // Analytics ref'larini har renderda yangilab turamiz (unmount cleanup uchun).
+  useEffect(() => {
+    lessonDoneRef.current = allDone
+    lessonProgressRef.current = { section: currentSection, tab }
+  })
+
+  // Dars ochilganda 'lesson_started', tugatmasdan chiqilganda 'lesson_abandoned'.
+  useEffect(() => {
+    lessonStartRef.current = Date.now()
+    lessonDoneRef.current = false
+    monitoring.trackEvent('lesson_started', {
+      lessonId: lesson.id,
+      day: lesson.day ?? null,
+      level: lesson.level ?? null,
+      timestamp: Date.now(),
+    })
+    return () => {
+      if (!lessonDoneRef.current) {
+        monitoring.trackEvent('lesson_abandoned', {
+          lessonId: lesson.id,
+          day: lesson.day ?? null,
+          level: lesson.level ?? null,
+          currentSection: lessonProgressRef.current.section,
+          currentTab: lessonProgressRef.current.tab,
+          timeSpentSec: Math.round((Date.now() - lessonStartRef.current) / 1000),
+          timestamp: Date.now(),
+        })
+      }
+    }
+  }, [lesson.id, lesson.day, lesson.level])
 
   // Darsdagi umumiy foiz natija (LessonChallengeButton uchun)
   const testStarted = lesson.tests.length > 0 && Object.keys(completedTestSections).length > 0
