@@ -6,6 +6,16 @@ export const linkingWordsAdvanced: DailyLesson = {
   subtitle: "Furthermore, moreover, consequently, hence, nevertheless � bog'lovchi so'zlar",
   level: 'B1+',
   day: 73,
+  writing: {
+    prompt: "Write a short formal paragraph giving your opinion on a topic such as technology, study, or city life. Connect your ideas with advanced linkers: 'furthermore', 'moreover', 'consequently', 'hence', and 'nevertheless'.",
+    wordLimit: 95,
+    tips: [
+      "Add ideas: 'furthermore', 'moreover'",
+      "Show results: 'consequently', 'hence', 'therefore'",
+      "Show contrast: 'nevertheless', 'nonetheless'",
+      "Use a comma after these linkers",
+    ],
+  },
   category: 'Linking Words',
   formulas: [
     { label: 'Adding Information', structure: 'Furthermore, Moreover, In addition,\nFurthermore, the project was successful.', color: 'green' },
@@ -142,6 +152,16 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
   subtitle: "Make a decision, do business, have a rest, take a break — kollokatsiyalar",
   level: 'B1+',
   day: 74,
+  writing: {
+    prompt: "Write about a typical working or study day. Use natural collocations with 'make', 'do', 'have', and 'take' (for example make a decision, do business, have a rest, take a break).",
+    wordLimit: 85,
+    tips: [
+      "'make' + decision/mistake/plan/progress",
+      "'do' + business/homework/exercise/research",
+      "'have' + rest/meeting/shower/conversation",
+      "'take' + break/photo/risk/notes",
+    ],
+  },
   category: 'Collocations',
   formulas: [
     { label: 'Make', structure: 'Make + noun (create/produce)\nmake a decision, make progress', color: 'green' },
@@ -308,6 +328,16 @@ export const advancedPhrasalVerbs: DailyLesson = {
   subtitle: "Run out of, look forward to, put up with, come up with — murakkab phrasal verbs",
   level: 'B1+',
   day: 75,
+  writing: {
+    prompt: "Tell a story or describe a project where things went wrong and then improved. Use phrasal verbs like 'run out of', 'look forward to', 'put up with', and 'come up with'.",
+    wordLimit: 90,
+    tips: [
+      "'run out of' = have no more: 'We ran out of time.'",
+      "'look forward to' + -ing",
+      "'put up with' = tolerate",
+      "'come up with' = think of an idea",
+    ],
+  },
   category: 'Phrasal Verbs',
   formulas: [
     { label: 'Transitive', structure: 'Verb + particle + object\nI came up with a great idea.', color: 'green' },
@@ -439,6 +469,16 @@ export const idiomsCommon: DailyLesson = {
   subtitle: "Break the ice, hit the nail on the head, once in a blue moon — 20 ta idiom",
   level: 'B1+',
   day: 76,
+  writing: {
+    prompt: "Write a short personal story and include at least four English idioms naturally (for example 'break the ice', 'hit the nail on the head', 'once in a blue moon').",
+    wordLimit: 85,
+    tips: [
+      "Use idioms only where they fit the meaning",
+      "'break the ice' = start a conversation",
+      "'once in a blue moon' = very rarely",
+      "Do not translate idioms word for word",
+    ],
+  },
   category: 'Idioms',
   formulas: [
     { label: 'Body Idioms', structure: "Body part + meaning\nIt cost an arm and a leg = very expensive", color: 'green' },
@@ -579,6 +619,16 @@ export const prepositionalPhrases: DailyLesson = {
   subtitle: "By accident, in advance, on purpose, at once — predlogli iboralar",
   level: 'B1+',
   day: 77,
+  writing: {
+    prompt: "Describe how you organise your time and handle surprises. Use fixed prepositional phrases such as 'by accident', 'in advance', 'on purpose', and 'at once'.",
+    wordLimit: 80,
+    tips: [
+      "'in advance' = before the time",
+      "'by accident' vs 'on purpose'",
+      "'at once' = immediately",
+      "Learn these as fixed phrases",
+    ],
+  },
   category: 'Prepositional Phrases',
   formulas: [
     { label: 'By + noun', structure: 'By + noun (method/circumstance)\nby accident, by chance, by heart', color: 'green' },
@@ -745,6 +795,16 @@ export const wordFormation: DailyLesson = {
   subtitle: "Suffixes: -tion, -ment, -ness, -ity, -ous, -al, -ize, -ful — so'z yasash",
   level: 'B1+',
   day: 78,
+  writing: {
+    prompt: "Write about a personal achievement or goal. Show your vocabulary range by using words built with suffixes like -tion, -ment, -ness, -ity, -ous, and -al.",
+    wordLimit: 85,
+    tips: [
+      "Nouns: 'decision', 'development', 'happiness'",
+      "Adjectives: 'famous', 'natural', 'creative'",
+      "Keep the spelling correct when adding suffixes",
+      "Use a variety of word forms",
+    ],
+  },
   category: 'Word Formation',
   formulas: [
     { label: 'Noun suffixes', structure: 'Verb/Adj + suffix = Noun\neducate + tion = education', color: 'green' },
@@ -876,6 +936,16 @@ export const reportingVerbs: DailyLesson = {
   subtitle: "Suggest, recommend, admit, deny, insist, claim, warn — boshqalarning gapini aytish",
   level: 'B1+',
   day: 79,
+  writing: {
+    prompt: "Report a conversation or a meeting you had. Instead of only 'said', use reporting verbs like 'suggest', 'recommend', 'admit', 'deny', 'insist', and 'warn'.",
+    wordLimit: 90,
+    tips: [
+      "'suggest/recommend' + -ing or a 'that' clause",
+      "'admit/deny' + -ing: 'He denied taking it.'",
+      "'insist on' + -ing",
+      "'warn someone (not) to do something'",
+    ],
+  },
   category: 'Reporting Verbs',
   formulas: [
     { label: 'Verb + that + clause', structure: 'Verb + that + subject + verb\nHe admitted that he was wrong.', color: 'green' },
@@ -1022,6 +1092,16 @@ export const determinersAdvanced: DailyLesson = {
   subtitle: "All, both, each, every, either, neither, none, no — aniqlovchilar",
   level: 'B1+',
   day: 80,
+  writing: {
+    prompt: "Compare groups of people or things you know — classmates, choices, options. Use determiners precisely: 'all', 'both', 'each', 'every', 'either', 'neither', 'none', and 'no'.",
+    wordLimit: 85,
+    tips: [
+      "'each/every' + singular noun",
+      "'both/either/neither' for two things",
+      "'none of' + plural: 'None of them came.'",
+      "'all (of) the' for the whole group",
+    ],
+  },
   category: 'Determiners',
   formulas: [
     { label: 'All / Both', structure: 'All/Both + of + determiner + noun\nAll of the students passed.', color: 'green' },
@@ -1163,6 +1243,16 @@ export const b1plusReview: DailyLesson = {
   subtitle: 'Narrative Tenses, Participle Clauses, Modal Perfects, Linking Words, Phrasal Verbs va boshqalar',
   level: 'B1+',
   day: 81,
+  writing: {
+    prompt: "Write a reflective paragraph about what you have learned at B1+ level. Combine several structures: narrative tenses, modal perfects, participle clauses, and advanced linking words.",
+    wordLimit: 100,
+    tips: [
+      "Use narrative tenses to describe your progress",
+      "Use modal perfects for what you 'should have' done",
+      "Join ideas with participle clauses",
+      "Connect with 'furthermore', 'consequently', 'nevertheless'",
+    ],
+  },
   category: 'Review',
   formulas: [
     { label: 'Narrative Tenses', structure: 'Past Simple / Past Cont / Past Perfect / Past Perfect Cont\nShe had already left when I arrived.', color: 'green' },

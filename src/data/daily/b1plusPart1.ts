@@ -6,6 +6,16 @@ export const narrativeTensesB1plus: DailyLesson = {
   subtitle: "Past Simple, Past Continuous, Past Perfect, Past Perfect Continuous — hikoya qilish san'ati",
   level: 'B1+',
   day: 64,
+  writing: {
+    prompt: "Tell a short story about a memorable day or an unexpected event. Set the scene, describe what was happening, and explain what had happened before. Use Past Simple, Past Continuous, and Past Perfect.",
+    wordLimit: 100,
+    tips: [
+      "Past Continuous for background: 'The sun was shining...'",
+      "Past Simple for the main events: 'Suddenly, the phone rang.'",
+      "Past Perfect for earlier events: 'I had already left when...'",
+      "Use time linkers: 'while', 'when', 'by the time'",
+    ],
+  },
   category: 'Storytelling',
   formulas: [
     { label: 'Past Simple', structure: 'Subject + V2 (V+ed / irregular)\nI walked to the store.\nShe saw a strange man.', color: 'green' },
@@ -137,6 +147,16 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
   subtitle: 'Defining, Non-defining, Whom, Whose, Where, When \u2014 murakkab gap qurilishi',
   level: 'B1+',
   day: 65,
+  writing: {
+    prompt: "Describe a person, a place, and an object that are important to you. Add extra information using defining and non-defining relative clauses with 'who', 'whom', 'whose', 'where', and 'when'.",
+    wordLimit: 90,
+    tips: [
+      "Defining (no commas): 'the teacher who helped me'",
+      "Non-defining (commas): 'My mother, who lives in Bukhara, ...'",
+      "'whose' for possession: 'the man whose car...'",
+      "'where/when' for places and times",
+    ],
+  },
   category: 'Complex Structures',
   formulas: [
     { label: 'Defining', structure: 'Subject + who/which/that + V\nThe woman who lives next door is a doctor.', color: 'green' },
@@ -279,6 +299,16 @@ export const participleClausesB1plus: DailyLesson = {
   subtitle: 'Present Participle, Past Participle, Perfect Participle \u2014 qisqa va samarali gap tuzish',
   level: 'B1+',
   day: 66,
+  writing: {
+    prompt: "Describe a busy scene or a process. Make your writing shorter and more elegant by joining ideas with participle clauses (-ing, -ed, having + past participle).",
+    wordLimit: 90,
+    tips: [
+      "Present participle for active actions: 'Walking home, I saw...'",
+      "Past participle for passive: 'Built in 1990, the bridge...'",
+      "Perfect participle for an earlier action: 'Having finished, she left.'",
+      "Make sure the subject matches",
+    ],
+  },
   category: 'Complex Structures',
   formulas: [
     { label: 'Present Participle', structure: 'V-ing + ... (active)\nWalking home, I saw an accident.\nBeing tired, he went to bed early.', color: 'green' },
@@ -411,6 +441,16 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
   subtitle: 'To + V, V-ing \u2014 murakkab verb patternlar va ma\u2019no farqlari',
   level: 'B1+',
   day: 67,
+  writing: {
+    prompt: "Write about choices and changes in your life. Use verbs whose meaning changes with -ing or 'to' — for example 'remember', 'stop', 'try', 'regret', and 'forget'.",
+    wordLimit: 85,
+    tips: [
+      "'remember to do' (duty) vs 'remember doing' (memory)",
+      "'stop to do' (purpose) vs 'stop doing' (end)",
+      "'try to do' (attempt) vs 'try doing' (experiment)",
+      "'regret to say' vs 'regret doing'",
+    ],
+  },
   category: 'Verb Patterns',
   formulas: [
     { label: 'Gerund (V-ing)', structure: 'Verb + V-ing (general/liking)\nI enjoy reading.\nShe avoids going there.\nHe suggested taking a break.', color: 'green' },
@@ -544,6 +584,16 @@ export const modalPerfectsB1plus: DailyLesson = {
   subtitle: 'Must have, Might have, Should have, Could have, Would have \u2014 o\u2018tmish haqida taxmin va afsus',
   level: 'B1+',
   day: 68,
+  writing: {
+    prompt: "Think about a past situation that did not go as planned. Speculate about what happened and express regret using 'must have', 'might have', 'should have', 'could have', and 'would have'.",
+    wordLimit: 90,
+    tips: [
+      "'must have' = you are sure: 'He must have forgotten.'",
+      "'might/could have' = possibility",
+      "'should have' = regret or criticism: 'I should have called.'",
+      "'would have' for unreal past results",
+    ],
+  },
   category: 'Modals',
   formulas: [
     { label: 'Must have + V3', structure: 'Must have + V3 \u2014 strong certainty about past\nSubject + must have + past participle\nShe must have left early.\nIt must have rained last night.', color: 'green' },
@@ -682,6 +732,16 @@ export const emphasisDoesB1plus: DailyLesson = {
   subtitle: 'Do, Does, Did \u2014 gapga kuch va urg\u2018u berish san\u2018ati',
   level: 'B1+',
   day: 69,
+  writing: {
+    prompt: "Write a paragraph defending an opinion or correcting a misunderstanding. Use emphatic 'do/does/did' to make your statements stronger.",
+    wordLimit: 80,
+    tips: [
+      "Add 'do/does/did' before the base verb: 'I do like it!'",
+      "Use it to contradict: 'You think I forgot, but I did remember.'",
+      "Keep the main verb in the base form",
+      "Use it for strong agreement or insistence",
+    ],
+  },
   category: 'Emphasis',
   formulas: [
     { label: 'Present Emphasis', structure: 'Subject + do/does + V1\nI do understand your point.\nShe does work very hard.\nWe do want to help.', color: 'green' },
@@ -814,6 +874,16 @@ export const frontingB1plus: DailyLesson = {
   subtitle: 'Gap bo\u2018laklarini oldinga chiqarish \u2014 urg\u2018u va stilistik ta\u2019sir',
   level: 'B1+',
   day: 70,
+  writing: {
+    prompt: "Write a descriptive or dramatic paragraph. Move some phrases to the front of your sentences for emphasis and style (place, time, or negative adverbials).",
+    wordLimit: 85,
+    tips: [
+      "Front a place phrase: 'On the hill stood an old house.'",
+      "Front for drama: 'Never had I seen such a view.'",
+      "After negative fronting, invert: 'Rarely do we...'",
+      "Use it carefully, not in every sentence",
+    ],
+  },
   category: 'Emphasis',
   formulas: [
     { label: 'Object Fronting', structure: 'Object + Subject + Verb\nThat book I have already read.\nThis problem we must solve first.\nHis name I can\u2019t remember.', color: 'green' },
@@ -946,6 +1016,16 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
   subtitle: "So'zlarni tushirib qoldirish va o'rniga boshqa so'z ishlatish \u2014 qisqa va tabiiy gap",
   level: 'B1+',
   day: 71,
+  writing: {
+    prompt: "Write a natural dialogue between two friends making plans. Avoid repeating words by using ellipsis and substitution ('one', 'so', 'do', 'too').",
+    wordLimit: 80,
+    tips: [
+      "Substitute with 'one/ones': 'I'll take the red one.'",
+      "'so/do' replace clauses: 'I think so.', 'So do I.'",
+      "Leave out repeated words: 'I can go, but she can't.'",
+      "Keep it natural, like real speech",
+    ],
+  },
   category: 'Discourse',
   formulas: [
     { label: 'Ellipsis', structure: "Omitting repeated words\nA: Are you coming? B: Yes, I am (coming).\nShe went home and (she) went to bed.\nHe can swim faster than I can (swim).", color: 'green' },
@@ -1078,6 +1158,16 @@ export const concessionB1plus: DailyLesson = {
   subtitle: "Although, Even though, Despite, In spite of, However \u2014 qarama-qarshilik va to'siqsizlik",
   level: 'B1+',
   day: 72,
+  writing: {
+    prompt: "Write about a difficult decision with arguments on both sides. Show contrast using 'although', 'even though', 'despite', 'in spite of', and 'however'.",
+    wordLimit: 90,
+    tips: [
+      "'although/even though' + clause: 'Although it was hard...'",
+      "'despite/in spite of' + noun or -ing: 'Despite the rain...'",
+      "'however' starts a new sentence: '...; however, ...'",
+      "Balance both sides of the argument",
+    ],
+  },
   category: 'Linking Words',
   formulas: [
     { label: 'Although / Though / Even though', structure: 'Although/Though/Even though + clause, main clause\nAlthough it rained, we went out.\nThough he was tired, he kept working.\nEven though she was ill, she came to work.', color: 'green' },
