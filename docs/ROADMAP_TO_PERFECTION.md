@@ -1935,7 +1935,7 @@ Qadam 5: Yo'l
 
 ---
 
-## F8-4. ❌ Hearts Tizimini Qayta Ko'rib Chiqish
+## F8-4. ✅ Hearts Tizimini Qayta Ko'rib Chiqish
 **Muammo:** Hearts yo'qotish = stress. O'rganishda xato qilish tabiiy
 **Ta'sir:** Yangi boshlovchi +0.3, Faylasuf +0.2
 
