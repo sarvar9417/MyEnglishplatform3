@@ -14,6 +14,7 @@ import { useStore } from '../store/useStore'
 import { monitoring } from '../lib/monitoring'
 import { supabase } from '../lib/supabase'
 import { GrammarDNAMap } from '../components/grammar/GrammarDNAMap'
+import GrammarGlossary from '../components/grammar/GrammarGlossary'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -133,6 +134,10 @@ function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect:
         {topics.map((t) => (
           <TopicCard key={t.id} topic={t} onSelect={() => onSelect(t)} />
         ))}
+      </div>
+
+      <div className="mt-6">
+        <GrammarGlossary />
       </div>
 
       <div className="mt-6 card bg-primary-50 border-primary-100">
