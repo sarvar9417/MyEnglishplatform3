@@ -145,9 +145,39 @@ export const DAILY_QUESTS: DailyQuest[] = [
     challenge:  { narrative: "Speaking final practice.", task: { type: 'speaking', count: 2, label: '2 ta final speaking' }, xpReward: 85 },
   },
   {
-    dayRange: [90, 90],
-    mainQuest:  { narrative: "90 kun yakunlandi! B2 imtihoniga tayyorsiz!", task: { type: 'lesson', count: 1, label: "Yakuniy darsni tugatish" }, xpReward: 200 },
-    sideQuest:  { narrative: "Barcha so'zlarni takrorlash.", task: { type: 'vocabulary', count: 30, label: "30 ta so'zni takrorlash" }, xpReward: 50 },
+    dayRange: [90, 96],
+    mainQuest:  { narrative: "B1+ ni yakunlayapsiz — professional til mustahkamlanmoqda.", task: { type: 'lesson', count: 1, label: 'B1+ yakuniy darsi' }, xpReward: 115 },
+    sideQuest:  { narrative: "Professional lug'atni mustahkamlash.", task: { type: 'vocabulary', count: 20, label: "20 ta B1+ so'z" }, xpReward: 45 },
+    challenge:  { narrative: "Yig'ilish va prezentatsiya amaliyoti.", task: { type: 'speaking', count: 2, label: '2 ta speaking' }, xpReward: 85 },
+  },
+  {
+    dayRange: [97, 104],
+    mainQuest:  { narrative: "B2 boshlandi! Murakkab muhokamalar va akademik til.", task: { type: 'lesson', count: 1, label: 'B2 darsi' }, xpReward: 120 },
+    sideQuest:  { narrative: "Akademik so'z boyligini oshirish.", task: { type: 'vocabulary', count: 20, label: "20 ta B2 so'z" }, xpReward: 50 },
+    challenge:  { narrative: "Argumentli yozish amaliyoti.", task: { type: 'writing', count: 1, label: '1 ta argumentli matn' }, xpReward: 60 },
+  },
+  {
+    dayRange: [105, 112],
+    mainQuest:  { narrative: "B2 — murakkab grammatik tuzilmalarni egallayapsiz.", task: { type: 'lesson', count: 1, label: 'B2 grammatika darsi' }, xpReward: 125 },
+    sideQuest:  { narrative: "Idiomalar va kollokatsiyalar.", task: { type: 'vocabulary', count: 20, label: "20 ta ibora" }, xpReward: 50 },
+    challenge:  { narrative: "Murakkab mavzularda gapirish.", task: { type: 'speaking', count: 2, label: '2 ta speaking' }, xpReward: 90 },
+  },
+  {
+    dayRange: [113, 120],
+    mainQuest:  { narrative: "B2 — akademik mahoratni sayqallayapsiz.", task: { type: 'lesson', count: 1, label: 'B2 darsi' }, xpReward: 125 },
+    sideQuest:  { narrative: "Tinglab tushunish amaliyoti.", task: { type: 'listening', count: 1, label: '1 ta listening' }, xpReward: 45 },
+    challenge:  { narrative: "Esse yozish — IELTS uslubida.", task: { type: 'writing', count: 1, label: '1 ta esse' }, xpReward: 70 },
+  },
+  {
+    dayRange: [121, 125],
+    mainQuest:  { narrative: "Yakuniy sprint! B2 imtihoniga tayyorgarlik.", task: { type: 'lesson', count: 1, label: 'B2 takror darsi' }, xpReward: 130 },
+    sideQuest:  { narrative: "Barcha qiyin so'zlarni takrorlash.", task: { type: 'vocabulary', count: 25, label: "25 ta so'z" }, xpReward: 55 },
+    challenge:  { narrative: "Final speaking amaliyoti.", task: { type: 'speaking', count: 3, label: '3 ta speaking' }, xpReward: 95 },
+  },
+  {
+    dayRange: [126, 126],
+    mainQuest:  { narrative: "126 kun yakunlandi! B2 imtihoniga tayyorsiz! 🎉", task: { type: 'lesson', count: 1, label: "Yakuniy darsni tugatish" }, xpReward: 200 },
+    sideQuest:  { narrative: "Barcha so'zlarni yakuniy takrorlash.", task: { type: 'vocabulary', count: 30, label: "30 ta so'zni takrorlash" }, xpReward: 50 },
     challenge:  { narrative: "Final mock test.", task: { type: 'drill', count: 50, label: '50 ta yakuniy mashq' }, xpReward: 100 },
   },
 ]
