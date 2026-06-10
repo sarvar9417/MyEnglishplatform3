@@ -30,9 +30,14 @@ export default function GrammarReview() {
             ? 'Ajoyib! Bilimingiz mustahkamlandi. Ertaga yana takrorlash bo\'lishi mumkin.'
             : 'Hamma narsa o\'z vaqtida. Yangi dars o\'rganing — keyin u takrorlash jadvaliga qo\'shiladi.'}
         </p>
-        <button onClick={() => navigate('/lesson')} className="btn-primary px-8 py-3 font-bold">
-          Darslarga o'tish →
-        </button>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button onClick={() => navigate('/lesson')} className="btn-primary px-8 py-3 font-bold">
+            Darslarga o'tish →
+          </button>
+          <button onClick={() => navigate('/mixed-review')} className="btn-ghost px-8 py-3 font-bold border border-gray-200 dark:border-gray-700 rounded-xl">
+            🔀 Aralash takror
+          </button>
+        </div>
       </div>
     )
   }

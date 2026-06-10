@@ -58,6 +58,7 @@ const VocabHub = lazyWithReload(() => import('./pages/VocabHub'))
 const LearnHub = lazyWithReload(() => import('./pages/LearnHub'))
 const Grammar = lazyWithReload(() => import('./pages/Grammar'))
 const MockTest = lazyWithReload(() => import('./pages/MockTest'))
+const MixedReview = lazyWithReload(() => import('./pages/MixedReview'))
 const Chat = lazyWithReload(() => import('./pages/Chat'))
 const Listening = lazyWithReload(() => import('./pages/Listening'))
 const Reading = lazyWithReload(() => import('./pages/Reading'))
@@ -180,6 +181,7 @@ function AppShell() {
               <Route path="/grammar" element={<SafePage><Grammar /></SafePage>} />
               <Route path="/vocabulary" element={<SafePage><VocabHub /></SafePage>} />
               <Route path="/mock-test" element={<SafePage><MockTest /></SafePage>} />
+              <Route path="/mixed-review" element={<SafePage><MixedReview /></SafePage>} />
               <Route path="/vocab-battle"   element={<SafePage><VocabBattle /></SafePage>} />
               <Route path="/tandem"         element={<SafePage><TandemPage /></SafePage>} />
               <Route path="/add/:code"      element={<SafePage><InvitePage /></SafePage>} />
