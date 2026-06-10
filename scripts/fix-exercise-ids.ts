@@ -1,13 +1,13 @@
 /**
  * Auto-generate unique exercise IDs for all lessons.
  * 
- * ID Schema:
- * - A1:      1001-4999   (a1Part1, a1Part2, tensesData)
- * - A2:    14001-38999   (a2Part1-4)
- * - B1:    40001-54999   (b1Part1, b1Extra)
- * - B1+:   50001-64999   (b1plusPart1-2)
- * - B2:    54001-75999   (b2Part1-3, b2Extra)
- * - Review: 80001-89999  (reviewLessons)
+ * ID Schema (non-overlapping ranges per file):
+ * - A1 files:  1001-4999
+ * - A2 files: 14001-38999
+ * - B1 files: 40001-49999
+ * - B1+ files: 50001-53999
+ * - B2 files: 54001-75999
+ * - Review:    80001-89999
  */
 
 import { readFileSync, writeFileSync } from 'node:fs'
@@ -30,11 +30,11 @@ const LESSON_FILES: LessonFile[] = [
   { path: 'src/data/daily/a2Part3.ts', level: 'A2', idRange: [14001, 38999] },
   { path: 'src/data/daily/a2Part4.ts', level: 'A2', idRange: [14001, 38999] },
   // B1
-  { path: 'src/data/daily/b1Part1.ts', level: 'B1', idRange: [40001, 54999] },
-  { path: 'src/data/daily/b1Extra.ts', level: 'B1', idRange: [40001, 54999] },
+  { path: 'src/data/daily/b1Part1.ts', level: 'B1', idRange: [40001, 49999] },
+  { path: 'src/data/daily/b1Extra.ts', level: 'B1', idRange: [40001, 49999] },
   // B1+
-  { path: 'src/data/daily/b1plusPart1.ts', level: 'B1+', idRange: [50001, 64999] },
-  { path: 'src/data/daily/b1plusPart2.ts', level: 'B1+', idRange: [50001, 64999] },
+  { path: 'src/data/daily/b1plusPart1.ts', level: 'B1+', idRange: [50001, 53999] },
+  { path: 'src/data/daily/b1plusPart2.ts', level: 'B1+', idRange: [50001, 53999] },
   // B2
   { path: 'src/data/daily/b2Part1.ts', level: 'B2', idRange: [54001, 75999] },
   { path: 'src/data/daily/b2Part2.ts', level: 'B2', idRange: [54001, 75999] },
@@ -50,20 +50,23 @@ function assignIds(content: string, range: [number, number]): string {
   let nextId = start
   let usedCount = 0
 
-  // Replace exercise/test IDs sequentially
+  // Match id: NNNN only when it's a property (preceded by { or , and followed by , or })
+  // This avoids matching id: inside strings
   const result = content.replace(
-    /(id:\s*)(\d+)/g,
-    (match, prefix, oldId) => {
+    /([{,]\s*)(id:\s*)(\d+)(?=\s*[,}])/g,
+    (match, prefix, idPrefix, oldId) => {
       const oldIdNum = parseInt(oldId, 10)
       if (idMap.has(oldIdNum)) {
-        return `${prefix}${idMap.get(oldIdNum)}`
+        return `${prefix}${idPrefix}${idMap.get(oldIdNum)}`
       }
       if (nextId > end) {
         throw new Error(`ID range exhausted for ${range[0]}-${range[1]}`)
       }
       idMap.set(oldIdNum, nextId)
       usedCount++
-      return `${prefix}${nextId++}`
+      const assigned = nextId
+      nextId++
+      return `${prefix}${idPrefix}${assigned}`
     }
   )
 
@@ -74,24 +77,38 @@ function assignIds(content: string, range: [number, number]): string {
 function main(): void {
   console.log('🔧 Exercise ID auto-generation\n')
 
+  // Group files by level to share ID ranges
+  const byLevel = new Map<string, LessonFile[]>()
   for (const file of LESSON_FILES) {
-    const fullPath = join(process.cwd(), file.path)
-    console.log(`Processing ${file.path} (${file.level})...`)
+    const existing = byLevel.get(file.level) ?? []
+    existing.push(file)
+    byLevel.set(file.level, existing)
+  }
 
-    let content: string
-    try {
-      content = readFileSync(fullPath, 'utf-8')
-    } catch (err) {
-      console.warn(`  ⚠️  File not found, skipping`)
-      continue
-    }
+  for (const [level, files] of byLevel) {
+    console.log(`\n📚 ${level} lessons:`)
+    const range: [number, number] = files[0].idRange
+    const globalNextId = { value: range[0] }
 
-    try {
-      const newContent = assignIds(content, file.idRange)
-      writeFileSync(fullPath, newContent, 'utf-8')
-      console.log(`  ✅ Updated`)
-    } catch (err) {
-      console.error(`  ❌ Error: ${err}`)
+    for (const file of files) {
+      const fullPath = join(process.cwd(), file.path)
+      console.log(`  Processing ${file.path}...`)
+
+      let content: string
+      try {
+        content = readFileSync(fullPath, 'utf-8')
+      } catch (err) {
+        console.warn(`    ⚠️  File not found, skipping`)
+        continue
+      }
+
+      try {
+        const newContent = assignIds(content, file.idRange)
+        writeFileSync(fullPath, newContent, 'utf-8')
+        console.log(`    ✅ Updated`)
+      } catch (err) {
+        console.error(`    ❌ Error: ${err}`)
+      }
     }
   }
 
