@@ -7,6 +7,16 @@ export const verbPatterns: DailyLesson = {
   subtitle: "Fe'llardan keyin keladigan shakllar — V-ing, to V1, V1",
   level: 'A2',
   day: 35,
+  writing: {
+    prompt: "Write about your daily choices and feelings. Combine verbs correctly using -ing, 'to + verb', or the base verb after modals.",
+    wordLimit: 60,
+    tips: [
+      "'enjoy/avoid' + -ing",
+      "'hope/plan/want' + to + V1",
+      "After modals use the base verb: 'can swim'",
+      "'make/let' + person + base verb",
+    ],
+  },
   formulas: [
     { label: 'Verb + V-ing', structure: 'Subject + verb + V-ing\nI enjoy reading books.\nShe avoids going out late.', color: 'green' },
     { label: 'Verb + to V1', structure: 'Subject + verb + to + V1\nI want to learn English.\nShe needs to study more.', color: 'blue' },
@@ -148,6 +158,16 @@ export const timePrepositions: DailyLesson = {
   subtitle: "Vaqt old ko'makchilari — at, in, on, before, after, during va boshqalar",
   level: 'A2',
   day: 36,
+  writing: {
+    prompt: "Describe a typical day from morning to night. Use time prepositions: 'at', 'in', 'on', 'before', 'after', and 'during'.",
+    wordLimit: 60,
+    tips: [
+      "'in the morning', 'at night'",
+      "'before/after' + noun or -ing",
+      "'during' + an event: 'during the lesson'",
+      "'on' + days and dates",
+    ],
+  },
   formulas: [
     { label: 'AT', structure: 'AT + specific time / night / weekend\nat 5 o\'clock\nat midnight\nat the weekend', color: 'green' },
     { label: 'IN', structure: 'IN + months / years / seasons / parts of day\nin May\nin 2024\nin summer\nin the morning', color: 'blue' },
@@ -276,6 +296,16 @@ export const thereIsThereAre: DailyLesson = {
   subtitle: "Mavjudlik — biror narsaning bor yoki yo'qligini aytish",
   level: 'A2',
   day: 37,
+  writing: {
+    prompt: "Describe your room or your street. Say what there is and what there isn't. Use 'there is' for singular and 'there are' for plural.",
+    wordLimit: 55,
+    tips: [
+      "'There is' + singular/uncountable: 'There is a table.'",
+      "'There are' + plural: 'There are two windows.'",
+      "Negative: 'There isn't / aren't'",
+      "Question: 'Is there...? Are there...?'",
+    ],
+  },
   formulas: [
     { label: 'There is (birlik)', structure: 'There is + a/an + singular noun\nThere is a book on the table.', color: 'green' },
     { label: 'There are (ko\'plik)', structure: 'There are + plural noun\nThere are books on the table.', color: 'blue' },
@@ -419,6 +449,16 @@ export const possessives: DailyLesson = {
   subtitle: "Egalikni ifodalash — my, your, 's, whose va boshqalar",
   level: 'A2',
   day: 38,
+  writing: {
+    prompt: "Describe your family and their belongings. Show possession using 'my/your/his/her', the apostrophe 's', and 'whose'.",
+    wordLimit: 55,
+    tips: [
+      "Possessive adjectives: 'my, your, his, her, our, their'",
+      "Apostrophe 's' for people: 'Ali's book'",
+      "Possessive pronouns: 'mine, yours, hers'",
+      "'Whose' to ask: 'Whose bag is this?'",
+    ],
+  },
   formulas: [
     { label: 'Possessive Adjectives', structure: 'my / your / his / her / its / our / their + noun\nThis is my book.', color: 'green' },
     { label: "Possessive 's", structure: "Noun + 's + noun\nJohn's car\nMy mother's house", color: 'blue' },
@@ -563,6 +603,16 @@ export const someAnyNoEvery: DailyLesson = {
   subtitle: "Noaniq miqdor va mavjudlik — some, any, no, every va ularning hosilalari",
   level: 'A2',
   day: 39,
+  writing: {
+    prompt: "Write about a party or a busy place. Use 'some', 'any', 'no', and 'every' (and words like 'someone', 'anything', 'everywhere').",
+    wordLimit: 60,
+    tips: [
+      "'some' in positives, 'any' in questions/negatives",
+      "'no' means 'not any': 'There is no time.'",
+      "'every' + singular noun: 'every person'",
+      "Compounds: 'someone, anything, nowhere, everybody'",
+    ],
+  },
   formulas: [
     { label: 'Some', structure: 'Some + countable/uncountable (ijobiy)\nI have some books.\nThere is some milk.', color: 'green' },
     { label: 'Any', structure: 'Any + countable/uncountable (inkor/savol)\nI don\'t have any books.\nIs there any milk?', color: 'blue' },

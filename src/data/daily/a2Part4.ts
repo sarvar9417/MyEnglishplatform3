@@ -6,6 +6,16 @@ export const presentContinuousFuture: DailyLesson = {
   subtitle: "Present Continuous (be + V-ing) — kelasi zamonda rejalashtirilgan ish-harakatlar uchun",
   level: 'A2',
   day: 40,
+  writing: {
+    prompt: "Write about your arrangements for next week. Use the present continuous (be + V-ing) for fixed future plans you have already made.",
+    wordLimit: 60,
+    tips: [
+      "Structure: 'I am meeting...', 'She is travelling...'",
+      "Use it for arrangements with a time or place",
+      "Add a future time word: 'tomorrow', 'next week'",
+      "It is more certain than 'will'",
+    ],
+  },
   formulas: [
     { label: 'Ijobiy', structure: 'Subject + am/is/are + V-ing\nI am meeting him tomorrow.\nShe is leaving at 5.', color: 'green' },
     { label: 'Inkor', structure: "Subject + am/is/are + not + V-ing\nI am not coming tonight.\nThey aren't going.", color: 'red' },
@@ -144,6 +154,16 @@ export const quantifiers: DailyLesson = {
   subtitle: "Much, many, a lot of, a few, a little, some, any, no — miqdor so'zlari",
   level: 'A2',
   day: 41,
+  writing: {
+    prompt: "Describe how much free time, money, and how many friends you have. Use quantifiers: 'much', 'many', 'a lot of', 'a few', 'a little', 'some', 'any'.",
+    wordLimit: 60,
+    tips: [
+      "'many/a few' + countable: 'a few friends'",
+      "'much/a little' + uncountable: 'a little money'",
+      "'a lot of' works with both",
+      "'much' is common in questions and negatives",
+    ],
+  },
   formulas: [
     { label: 'Much (sanalmaydigan)', structure: 'much + uncountable noun\nmuch water, much time, much money\nHow much sugar do you need?', color: 'green' },
     { label: 'Many (sanaluvchi)', structure: 'many + countable plural\nmany books, many people, many cars\nHow many apples do you want?', color: 'blue' },
@@ -282,6 +302,16 @@ export const tooEnough: DailyLesson = {
   subtitle: "Too — juda (ortiqcha), Enough — yetarli — sifat va ravishdosh bilan ishlatilishi",
   level: 'A2',
   day: 42,
+  writing: {
+    prompt: "Write about problems and solutions in your daily life. Use 'too' (more than you want) and 'enough' (the right amount).",
+    wordLimit: 55,
+    tips: [
+      "'too' + adjective: 'too expensive'",
+      "'enough' after an adjective: 'big enough'",
+      "'enough' before a noun: 'enough time'",
+      "'too much/many' + noun",
+    ],
+  },
   formulas: [
     { label: 'Too + adjective', structure: 'too + adjective\nThis coffee is too hot.\nThe bag is too heavy.\nShe is too young to drive.', color: 'red' },
     { label: 'Too + adverb', structure: 'too + adverb\nYou speak too fast.\nHe drives too slowly.\nShe arrived too late.', color: 'orange' },
@@ -419,6 +449,16 @@ export const soSuch: DailyLesson = {
   subtitle: "So va Such — kuchli daraja bildiruvchi so'zlar: so + adjective, such + (a/an) + adjective + noun",
   level: 'A2',
   day: 43,
+  writing: {
+    prompt: "Describe a memorable day or place using strong feelings. Use 'so' + adjective and 'such' + (a/an) + adjective + noun.",
+    wordLimit: 55,
+    tips: [
+      "'so' + adjective/adverb: 'so beautiful'",
+      "'such a' + adjective + singular noun: 'such a nice day'",
+      "'such' + adjective + plural/uncountable: 'such kind people'",
+      "They make the meaning stronger",
+    ],
+  },
   formulas: [
     { label: 'So + adjective', structure: "so + adjective\nShe is so kind.\nThe movie is so boring.\nIt was so hot yesterday.", color: 'green' },
     { label: 'So + adverb', structure: "so + adverb\nHe runs so fast.\nYou speak so quietly.\nShe sings so beautifully.", color: 'blue' },
@@ -556,6 +596,16 @@ export const a2Review2: DailyLesson = {
   subtitle: "Present Continuous for Future, Quantifiers, Too/Enough, So/Such — takrorlash va mustahkamlash",
   level: 'A2',
   day: 44,
+  writing: {
+    prompt: "Write a short diary entry about your week. Try to use several A2 structures you have learned: future plans, quantifiers, 'too/enough', and 'so/such'.",
+    wordLimit: 70,
+    tips: [
+      "Use present continuous for plans: 'I am visiting...'",
+      "Use quantifiers: 'a few', 'a little'",
+      "Use 'too/enough' for problems",
+      "Use 'so/such' for strong feelings",
+    ],
+  },
   formulas: [
     { label: 'Present Continuous Future', structure: 'Subject + am/is/are + V-ing + future time\nI am meeting John tomorrow.', color: 'green' },
     { label: 'Quantifiers', structure: 'much + uncountable / many + countable\na few + countable / a little + uncountable\nsome/any/no + noun', color: 'blue' },

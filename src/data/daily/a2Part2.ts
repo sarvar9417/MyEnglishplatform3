@@ -5,6 +5,16 @@ export const adjectiveAdverb: DailyLesson = {
   subtitle: "Sifat va ravish — qanday va qanchalik farqi",
   level: 'A2',
   day: 30,
+  writing: {
+    prompt: "Describe a person you know and how they do things. Use adjectives to describe the person and adverbs to describe their actions.",
+    wordLimit: 60,
+    tips: [
+      "Adjective describes a noun: 'a careful driver'",
+      "Adverb describes a verb: 'drives carefully'",
+      "Many adverbs end in -ly",
+      "Irregular: 'good' -> 'well', 'fast' -> 'fast'",
+    ],
+  },
   formulas: [
     { label: 'Adjective (Sifat)', structure: 'Subject + be + adjective\nShe is happy.\nadjective + noun\na happy girl', color: 'green' },
     { label: 'Adverb (Ravish)', structure: 'Subject + verb + adverb\nShe sings beautifully.\nadverb + adjective\nvery happy', color: 'blue' },
@@ -163,6 +173,16 @@ export const gerundsInfinitives: DailyLesson = {
   subtitle: "V+ing va to+V1 — qachon qanday ishlatiladi",
   level: 'A2',
   day: 31,
+  writing: {
+    prompt: "Write about your hobbies and goals. Say what you enjoy doing and what you want to do. Use both -ing forms and 'to + verb'.",
+    wordLimit: 60,
+    tips: [
+      "After 'enjoy/like/finish' use -ing: 'I enjoy reading.'",
+      "After 'want/need/decide' use to + V1: 'I want to learn.'",
+      "After prepositions use -ing: 'good at cooking'",
+      "Some verbs take both forms",
+    ],
+  },
   formulas: [
     { label: 'Gerund (V+ing)', structure: 'verb + -ing (as noun)\nI enjoy reading.\nSwimming is fun.', color: 'green' },
     { label: 'Infinitive (to+V1)', structure: 'to + base verb\nI want to go.\nShe needs to study.', color: 'blue' },
@@ -317,6 +337,16 @@ export const passiveVoice: DailyLesson = {
   subtitle: "Simple Present va Past — ish-harakatning kim tomonidan bajarilishi muhim emas",
   level: 'A2',
   day: 32,
+  writing: {
+    prompt: "Describe how a simple thing is made, or where products in your home come from. Use the passive voice in the present or past.",
+    wordLimit: 60,
+    tips: [
+      "Structure: be + past participle: 'Tea is grown in...'",
+      "Use the passive when the doer is not important",
+      "Present: 'is/are made'",
+      "Past: 'was/were built'",
+    ],
+  },
   formulas: [
     { label: 'Present Passive', structure: 'am/is/are + V3 (past participle)\nEnglish is spoken here.\nThe room is cleaned daily.', color: 'green' },
     { label: 'Past Passive', structure: 'was/were + V3 (past participle)\nThe car was repaired.\nThe letters were sent.', color: 'blue' },
@@ -478,6 +508,16 @@ export const reportedSpeech: DailyLesson = {
   subtitle: "Say/tell va tense backshift — kimningdir gapini aytib berish",
   level: 'A2',
   day: 33,
+  writing: {
+    prompt: "Tell a friend what someone said to you yesterday. Report at least four statements using 'said' and 'told'.",
+    wordLimit: 60,
+    tips: [
+      "Use 'told' + person: 'She told me...'",
+      "Use 'said' without a person: 'He said that...'",
+      "Shift the tense back: 'I am tired' -> 'she was tired'",
+      "Change pronouns: 'I' -> 'he/she'",
+    ],
+  },
   formulas: [
     { label: 'Say vs Tell', structure: 'say + (that) + clause\nHe said (that) he was tired.\ntell + person + (that) + clause\nHe told me (that) he was tired.', color: 'green' },
     { label: 'Tense Backshift', structure: 'present → past\npast → past perfect\nwill → would\ncan → could', color: 'blue' },
@@ -639,6 +679,16 @@ export const firstConditional: DailyLesson = {
   subtitle: "If + Present Simple, will + V1 — real va mumkin bo'lgan shartlar",
   level: 'A2',
   day: 34,
+  writing: {
+    prompt: "Write about your plans for the weekend and their conditions. Use the first conditional: 'If + present simple, will + verb'.",
+    wordLimit: 60,
+    tips: [
+      "Structure: 'If it is sunny, I will go out.'",
+      "Use present simple after 'if' (not 'will')",
+      "You can swap the order: 'I will... if...'",
+      "Use 'unless' for 'if not'",
+    ],
+  },
   formulas: [
     { label: 'First Conditional', structure: 'If + Present Simple, will + V1\nIf it rains, I will stay home.\nIf you study, you will pass.', color: 'green' },
     { label: 'Negative Condition', structure: "If + don't/doesn't + V1, won't + V1\nIf you don't study, you won't pass.", color: 'red' },

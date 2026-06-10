@@ -5,6 +5,16 @@ export const modalVerbs: DailyLesson = {
   subtitle: "Can, must, should, might — imkoniyat, majburiyat, maslahat va ehtimollik",
   level: 'A2',
   day: 25,
+  writing: {
+    prompt: "Write about your abilities, rules, and advice. Say what you can do, what you must do at home or school, and give one piece of advice using 'should'.",
+    wordLimit: 60,
+    tips: [
+      "Use 'can' for ability: 'I can swim.'",
+      "Use 'must' / 'have to' for rules: 'I must do my homework.'",
+      "Use 'should' for advice: 'You should sleep early.'",
+      "Use 'might' for possibility: 'It might rain.'",
+    ],
+  },
   formulas: [
     { label: 'Can (qobiliyat/ruxsat)', structure: 'Subject + can + V1\nSubject + cannot/can\'t + V1\nCan + subject + V1?', color: 'green' },
     { label: 'Must (majburiyat)', structure: "Subject + must + V1\nSubject + must not/mustn't + V1\nMust + subject + V1?", color: 'red' },
@@ -190,6 +200,16 @@ export const articles: DailyLesson = {
   subtitle: "A, an, the va zero article — aniqlik va noaniqlik",
   level: 'A2',
   day: 26,
+  writing: {
+    prompt: "Describe your favourite place in your city. Use 'a/an' for the first mention of a thing and 'the' for specific things. Remember zero article for general ideas.",
+    wordLimit: 60,
+    tips: [
+      "Use 'a/an' for one non-specific thing: 'a park'",
+      "Use 'the' for something specific: 'the park near my house'",
+      "No article for general plurals: 'I like books.'",
+      "Use 'an' before vowel sounds: 'an apple'",
+    ],
+  },
   formulas: [
     { label: 'Indefinite (A/An)', structure: 'a + undosh tovush oldidan\nan + unli tovush oldidan', color: 'green' },
     { label: 'Definite (The)', structure: "the + har qanday ot (aniq narsa)\nthe + unique things (quyosh, oy)", color: 'blue' },
@@ -374,6 +394,16 @@ export const prepositions: DailyLesson = {
   subtitle: "At, in, on — vaqt va joy predloglari",
   level: 'A2',
   day: 27,
+  writing: {
+    prompt: "Describe your weekly schedule and where you go. Use 'at', 'in', and 'on' for times and places.",
+    wordLimit: 55,
+    tips: [
+      "'at' for clock times: 'at 7 o'clock'",
+      "'on' for days: 'on Monday'",
+      "'in' for months and years: 'in July'",
+      "'at' a point, 'in' an area, 'on' a surface",
+    ],
+  },
   formulas: [
     { label: 'AT (vaqt)', structure: 'at + specific time (soat, kechasi)\nat 5 PM, at midnight, at night', color: 'green' },
     { label: 'IN (vaqt)', structure: 'in + months, years, seasons, parts of day\nin June, in 2024, in summer, in the morning', color: 'blue' },
@@ -552,6 +582,16 @@ export const questionsLesson: DailyLesson = {
   subtitle: "Yes/No, Wh- va Tag questions — so'roq gaplar",
   level: 'A2',
   day: 28,
+  writing: {
+    prompt: "Write five questions you would ask a new classmate. Use Yes/No questions, Wh- questions, and at least one tag question.",
+    wordLimit: 55,
+    tips: [
+      "Yes/No: 'Do you...?', 'Are you...?'",
+      "Wh-: 'Where do you live?'",
+      "Tag: 'You like music, don't you?'",
+      "Put the auxiliary before the subject",
+    ],
+  },
   formulas: [
     { label: 'Yes/No Questions', structure: 'Auxiliary + subject + V1?\nDo you like tea?\nIs she a teacher?', color: 'green' },
     { label: 'Wh- Questions', structure: 'Wh + auxiliary + subject + V1?\nWhere do you live?\nWhat is your name?', color: 'blue' },
@@ -717,6 +757,16 @@ export const countableUncountable: DailyLesson = {
   subtitle: "Some/any, much/many, a few/a little — sanaladigan va sanalmaydigan otlar",
   level: 'A2',
   day: 29,
+  writing: {
+    prompt: "Describe what is in your kitchen or fridge. Use 'some', 'any', 'much', 'many', 'a few', and 'a little'.",
+    wordLimit: 60,
+    tips: [
+      "'many' / 'a few' for countable: 'a few eggs'",
+      "'much' / 'a little' for uncountable: 'a little milk'",
+      "'some' in positives: 'There is some bread.'",
+      "'any' in questions and negatives: 'Is there any juice?'",
+    ],
+  },
   formulas: [
     { label: 'Countable (Sanaladigan)', structure: 'a/an + singular\nmany/few + plural\nHow many + plural?', color: 'green' },
     { label: 'Uncountable (Sanalmaydigan)', structure: 'some/any + uncountable\nmuch/little + uncountable\nHow much + uncountable?', color: 'blue' },
