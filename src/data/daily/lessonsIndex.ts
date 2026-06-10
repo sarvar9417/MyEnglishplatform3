@@ -790,7 +790,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Tenses",
     "formulas": 4,
     "vocabulary": 15,
-    "exercises": 37,
+    "exercises": 27,
     "tests": 15
   },
   {
