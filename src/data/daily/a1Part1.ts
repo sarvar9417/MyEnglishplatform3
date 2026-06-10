@@ -192,7 +192,7 @@ export const alphabetAndGreetings: DailyLesson = {
     { title: "Qiyin", desc: "Vaqtga qarab salom", color: 'bg-violet-500', icon: '🎯', ids: [111, 112, 113, 114, 115] },
     { title: "Alifbo", desc: "Unli va undosh harflar", color: 'bg-amber-500', icon: '🔤', ids: [116, 117, 118, 119, 120] },
     { title: "Qisqartma", desc: "I'm, She's, You're", color: 'bg-pink-500', icon: '✂️', ids: [121, 122, 123, 124, 125] },
-    { title: "Inkor", desc: "Am not, isn't, aren't", color: 'bg-red-500', icon: '🚫', ids: [126, 127, 128, 129, 130] },
+    { title: "Kengaytirish", desc: "Kengaytirilgan mashqlar", color: 'bg-red-500', icon: '🚫', ids: [126, 127, 128, 129, 130] },
     { title: "O'zgartirish", desc: "Transformation — gapni o'zgartirish", color: 'bg-teal-500', icon: '🔄', ids: [131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141] },
   ],
   tests: [
