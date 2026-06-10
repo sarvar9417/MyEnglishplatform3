@@ -6,6 +6,16 @@ export const futureFormsReview: DailyLesson = {
   subtitle: "Will, Going to, Present Continuous va Present Simple — kelasi zamon shakllarini taqqoslash",
   level: 'B1',
   day: 48,
+  writing: {
+    prompt: "Write about your plans and predictions for next weekend. Include one fixed arrangement, one plan or intention, and one prediction. Use 'will', 'going to', Present Continuous, and Present Simple for a timetable.",
+    wordLimit: 80,
+    tips: [
+      "Use 'going to' for decided plans: 'I am going to...'",
+      "Use Present Continuous for arrangements: 'I am meeting...'",
+      "Use 'will' for predictions: 'I think it will...'",
+      "Use Present Simple for timetables: 'The film starts at 8 PM.'",
+    ],
+  },
   category: 'Tenses',
   formulas: [
     { label: 'Will + V1', structure: 'Will + V1 (predictions, spontaneous decisions, promises)\nShe will help you tomorrow.\nI think it will rain later.', color: 'blue' },
@@ -173,6 +183,16 @@ export const modalsObligation: DailyLesson = {
   subtitle: "Must, Have to, Should, Ought to — majburiyat va maslahat fe'llari",
   level: 'B1',
   day: 49,
+  writing: {
+    prompt: "Describe the rules at your school or workplace. Write what people must do, what they have to do, and what they should or shouldn't do. Mention at least one thing that is not necessary.",
+    wordLimit: 80,
+    tips: [
+      "Use 'must' / 'have to' for strong obligation",
+      "Use 'should' / 'ought to' for advice",
+      "Use 'don't have to' for something not necessary",
+      "Use 'mustn't' for prohibition",
+    ],
+  },
   category: 'Modals',
   formulas: [
     { label: 'Must + V1', structure: 'Must + V1 (personal obligation, strong necessity)\nI must finish this report today.\nYou must wear a seatbelt.', color: 'red' },
@@ -310,6 +330,16 @@ export const modalsSpeculation: DailyLesson = {
   subtitle: "Must be, Might/May/Could be, Can't be — taxmin va ehtimollik fe'llari",
   level: 'B1',
   day: 50,
+  writing: {
+    prompt: "Imagine you see a stranger on the street or an unknown object in a room. Make three or four guesses about it: what it might be, what it must be, and what it can't be.",
+    wordLimit: 70,
+    tips: [
+      "Use 'must be' when you are almost sure",
+      "Use 'might / may / could be' when it is possible",
+      "Use 'can't be' when it is impossible",
+      "Give a reason: 'He must be tired because...'",
+    ],
+  },
   category: 'Modals',
   formulas: [
     { label: 'Must be', structure: 'Must + be / V1 (certain — ishonchli taxmin)\nShe must be at home. The lights are on.\nHe must know the answer.', color: 'green' },
@@ -448,6 +478,16 @@ export const pastHabits: DailyLesson = {
   subtitle: "Used to, Would, Past Simple — o'tgan odatlar va takrorlanadigan harakatlar",
   level: 'B1',
   day: 51,
+  writing: {
+    prompt: "Write about your childhood. Describe habits and things that were true in the past but are different now. Use 'used to' and 'would' for repeated past actions.",
+    wordLimit: 80,
+    tips: [
+      "Use 'used to' for past states and habits: 'I used to live in...'",
+      "Use 'would' for repeated past actions: 'Every summer we would...'",
+      "Do not use 'would' for past states",
+      "Contrast with now: 'but now I...'",
+    ],
+  },
   category: 'Tenses',
   formulas: [
     { label: 'Used to + V1', structure: 'Used to + V1 (past habits & states — o\'tgan odatlar va holatlar)\nI used to play football every weekend.\nShe used to live in Tashkent.', color: 'blue' },
@@ -580,6 +620,16 @@ export const causatives: DailyLesson = {
   subtitle: "Have/Get something done — biror ishni boshqaga qildirish",
   level: 'B1',
   day: 52,
+  writing: {
+    prompt: "Write about services you arrange for yourself. Describe things you have done by other people — a haircut, a car repair, a delivery — using 'have / get something done'.",
+    wordLimit: 70,
+    tips: [
+      "Structure: have + object + past participle: 'I have my hair cut.'",
+      "'Get' is more informal: 'I got my phone fixed.'",
+      "Use the past for finished actions: 'I had my car repaired last week.'",
+      "Mention who does it or where if you like",
+    ],
+  },
   category: 'Grammar',
   formulas: [
     { label: 'Have + object + V3', structure: 'Have + object + V3 (biror ishni boshqaga qildirish)\nI had my car repaired.\nShe had her hair cut.', color: 'blue' },
@@ -714,6 +764,16 @@ export const questionTags: DailyLesson = {
   subtitle: "To'g'ri va inkor savol qo'shimchalari — tasdiqni tekshirish",
   level: 'B1',
   day: 53,
+  writing: {
+    prompt: "Write a short dialogue in which you check information with a friend. Use at least four question tags to confirm what you think is true.",
+    wordLimit: 70,
+    tips: [
+      "Positive sentence -> negative tag: 'You're coming, aren't you?'",
+      "Negative sentence -> positive tag: 'She doesn't smoke, does she?'",
+      "Match the auxiliary verb and tense",
+      "Remember: 'I am ...' -> 'aren't I?'",
+    ],
+  },
   category: 'Grammar',
   formulas: [
     { label: 'Positive ? Negative tag', structure: 'Positive statement, negative tag?\nYou are a student, aren\'t you?\nShe likes coffee, doesn\'t she?', color: 'blue' },
@@ -849,6 +909,16 @@ export const bothEitherNeither: DailyLesson = {
   subtitle: "Both, Either, Neither — ikki narsa haqida gapirish",
   level: 'B1',
   day: 54,
+  writing: {
+    prompt: "Compare two friends, two cities, or two films you know. Write about their similarities and differences using 'both', 'either', and 'neither'.",
+    wordLimit: 70,
+    tips: [
+      "'Both' + plural verb: 'Both cities are beautiful.'",
+      "'Neither' + singular verb: 'Neither film was boring.'",
+      "Use 'either ... or' and 'neither ... nor'",
+      "Use 'both of them', 'neither of them'",
+    ],
+  },
   category: 'Vocabulary',
   formulas: [
     { label: 'Both + noun/pronoun', structure: 'Both + noun (ikkala)\nBoth students passed the exam.\nBoth of them are here.', color: 'blue' },
@@ -981,6 +1051,16 @@ export const timeClauses: DailyLesson = {
   subtitle: "When, While, As soon as, Until, Before, After, By the time — vaqt ergash gaplari",
   level: 'B1',
   day: 55,
+  writing: {
+    prompt: "Describe your morning routine and your plans for tomorrow. Connect your actions using time clauses: 'when', 'while', 'as soon as', 'before', 'after', 'until', and 'by the time'.",
+    wordLimit: 85,
+    tips: [
+      "Use Present Simple after time words for the future: 'When I arrive, I will...'",
+      "'As soon as' means immediately after",
+      "'By the time' + Past or Present Perfect",
+      "Do not use 'will' right after 'when' or 'as soon as'",
+    ],
+  },
   category: 'Grammar',
   formulas: [
     { label: 'When / While', structure: 'When/While + Present Simple (future meaning)\nWhen she arrives, we will start.\nWhile you are out, I will clean the house.', color: 'blue' },
@@ -1113,6 +1193,16 @@ export const indirectQuestions: DailyLesson = {
   subtitle: "Can you tell me, Do you know, I wonder — egri so'roq gaplari",
   level: 'B1',
   day: 56,
+  writing: {
+    prompt: "Imagine you are a polite tourist in a new city. Write four indirect questions to ask for directions, the time, prices, and a recommendation.",
+    wordLimit: 70,
+    tips: [
+      "Start with 'Could you tell me...', 'Do you know...', 'I wonder...'",
+      "Use normal word order: 'where the station is'",
+      "No 'do / does' in the indirect part",
+      "Use 'if / whether' for yes/no questions",
+    ],
+  },
   category: 'Grammar',
   formulas: [
     { label: 'Can you tell me + wh-word', structure: 'Can you tell me + wh-word + subject + verb\nCan you tell me where the station is?\nCan you tell me what time it is?', color: 'blue' },
@@ -1247,6 +1337,16 @@ export const soNeitherAuxiliaries: DailyLesson = {
   subtitle: "So do I, Neither do I — rozi bo'lish va rozi bo'lmaslik",
   level: 'B1',
   day: 57,
+  writing: {
+    prompt: "Write a conversation in which you and a friend discover things you have in common, and a few differences. Agree and disagree using 'So do I', 'Neither do I', and similar structures.",
+    wordLimit: 70,
+    tips: [
+      "Agree with positive: 'So do I', 'So am I', 'So can I'",
+      "Agree with negative: 'Neither do I', 'Neither have I'",
+      "Match the auxiliary and the tense",
+      "Disagree: 'Oh, I do', 'Really? I don't'",
+    ],
+  },
   category: 'Grammar',
   formulas: [
     { label: 'So + auxiliary + I', structure: 'So + auxiliary + subject (agree with positive)\nA: I love coffee. B: So do I.\nA: She is a teacher. B: So am I.', color: 'blue' },
@@ -1382,6 +1482,16 @@ export const wishesRegrets: DailyLesson = {
   subtitle: "I wish, If only, I regret — orzu-niyatlar va pushaymonliklar",
   level: 'B1',
   day: 58,
+  writing: {
+    prompt: "Write about things you wish were different in your life now and things you regret about the past. Use 'I wish', 'If only', and 'I regret'.",
+    wordLimit: 80,
+    tips: [
+      "Wish about now: 'I wish' + past simple: 'I wish I had more time.'",
+      "Regret about the past: 'I wish' + past perfect: 'I wish I had studied harder.'",
+      "'If only' is stronger than 'I wish'",
+      "'I regret' + -ing: 'I regret not travelling more.'",
+    ],
+  },
   category: 'Grammar',
   formulas: [
     { label: 'I wish + Past Simple', structure: 'I wish + Past Simple (present wishes — hozirgi orzular)\nI wish I knew the answer.\nI wish I were taller.', color: 'blue' },

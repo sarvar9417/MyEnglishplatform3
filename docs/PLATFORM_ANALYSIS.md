@@ -3,6 +3,7 @@
 > **Tahlilchilar:** Ingliz tili ustozi · Dasturchi · O'zbek tili ustozi · Yangi boshlovchi · Faylasuf · Tadbirkor · Yodlash olimi
 > **Tahlil sanasi:** 2026-06-09
 > **Daraja:** A1 → B2, 90+ kun, 106 asosiy dars + 17 takrorlash darsi = 123 dars
+> **Eslatma:** `tahlil-xulosa.md` ning 6 nuqtai nazardan tahlili (Ingliz ustozi, Dasturchi, O'zbek ustozi, Yangi boshlovchi, Faylasuf, Yodlash olimi) ushbu faylga integratsiya qilindi — 2026-06-10
 
 ---
 

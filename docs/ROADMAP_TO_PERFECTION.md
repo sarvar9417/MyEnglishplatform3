@@ -1,8 +1,9 @@
 # EnglishPath — Mukammallik Yo'l Xaritasi
 ### Barcha tahlillardan 10/10 ga yetish uchun to'liq rejа
 
-> **Manbalar:** `PLATFORM_ANALYSIS.md` + `tahlil-xulosa.md`
-> **Maqsad:** Har 7 nuqtai nazardan 10/10
+> **Manbalar:** `PLATFORM_ANALYSIS.md` (asosiy tahlil), `professional-roadmap.md` (professional daraja roadmapi) — 2026-06-10 da birlashtirildi
+> **Maqsad:** Har 7+ nuqtai nazardan 10/10
+> **Fayllar:** `tahlil-xulosa.md` va `professional-roadmap.md` dagi barcha qo'shimcha content shu faylga integratsiya qilindi
 > **Yondashuv:** Kritik → Muhim → Kengayish → Kamolot
 
 ---
@@ -418,6 +419,154 @@ Ba'zi mashqlarda foydalanuvchi to'g'ri grammatik javob beradi, lekin o'rganilayo
 
 ---
 
+## F1-6. CI/CD — GitHub Actions
+**Muammo:** Har bir PR/commit da test va typecheck o'tkazilmaydi — regression xavfi
+**Ta'sir:** Dasturchi +1.0
+
+### Amalga oshirish:
+
+**`.github/workflows/ci.yml`** yarating:
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      - run: npm test -- --run
+      - run: npm run build
+```
+
+**`package.json`** ga qo'shing:
+```json
+"validate:all": "npm run lint && npx tsc --noEmit && npm test -- --run && npm run build"
+```
+
+---
+
+## F1-7. E2E Test (Playwright)
+**Muammo:** Integration va E2E testlar yo'q — muhim user flow lar sinovdan o'tmaydi
+**Ta'sir:** Dasturchi +0.8
+
+### Amalga oshirish:
+
+**`e2e/`** papkasi yarating:
+```typescript
+// e2e/auth-flow.spec.ts
+import { test, expect } from '@playwright/test'
+
+test('user can sign up, take a lesson, and see progress', async ({ page }) => {
+  await page.goto('/')
+  await page.click('text=Ro'yxatdan o'tish')
+  await page.fill('[name=email]', 'test@test.com')
+  await page.fill('[name=password]', 'Test123!')
+  await page.click('text=Yaratish')
+  
+  await expect(page.locator('text=Bosh sahifa')).toBeVisible()
+  await page.click('text=Kun 1')
+  await page.waitForSelector('.exercise-card')
+  
+  // Complete an exercise
+  await page.fill('input[type=text]', 'am')
+  await page.click('text=Tekshirish')
+  await expect(page.locator('.feedback-correct')).toBeVisible()
+})
+```
+
+**`playwright.config.ts`** yarating va CI ga qo'shing.
+
+---
+
+## F1-8. Test Coverage Reporting
+**Muammo:** Hozirgi coverage ~20% — muhim komponentlar test qilinmagan
+**Ta'sir:** Dasturchi +0.5
+
+### Amalga oshirish:
+
+**`vitest.config.ts`** ga qo'shing:
+```typescript
+test: {
+  coverage: {
+    provider: 'v8',
+    reporter: ['text', 'lcov', 'html'],
+    include: ['src/**/*.{ts,tsx}'],
+    exclude: ['src/**/*.test.*', 'src/data/**', 'src/types/**'],
+    thresholds: {
+      statements: 30,
+      branches: 20,
+      functions: 25,
+      lines: 30
+    }
+  }
+}
+```
+
+**CI ga codecov integratsiyasi:** PR larda coverage o'zgarishi ko'rsatilsin.
+
+---
+
+## F1-9. Dexie IndexedDB Sync Conflict Resolution
+**Muammo:** Supabase ↔ Dexie sync da conflict bo'lsa, "last-write-wins" — ma'lumot yo'qolishi mumkin
+**Ta'sir:** Dasturchi +0.3
+
+### Amalga oshirish:
+
+**`src/lib/sync.ts`** da smart merge strategiyasi:
+```typescript
+interface SyncConflict {
+  local: any
+  remote: any
+  field: string
+}
+
+function resolveConflict(conflict: SyncConflict): any {
+  // 1. If one is null → other wins
+  // 2. If timestamps differ by > 5s → latest wins
+  // 3. If close → merge (max of progress fields)
+  const timeDiff = Math.abs(
+    new Date(conflict.local.updated_at).getTime() - 
+    new Date(conflict.remote.updated_at).getTime()
+  )
+  if (timeDiff > 5000) {
+    return timeDiff > 0 ? conflict.remote : conflict.local
+  }
+  // Smart merge: take max of numeric fields, union of arrays
+  return { ...conflict.local, ...conflict.remote,
+    xp: Math.max(conflict.local.xp, conflict.remote.xp),
+    streak: Math.max(conflict.local.streak, conflict.remote.streak)
+  }
+}
+```
+
+---
+
+## F1-10. Offline Banner UX
+**Muammo:** Hozirgi offline banner oddiy — qaysi funksiyalar ishlashini ko'rsatmaydi
+**Ta'sir:** Yangi boshlovchi +0.3, Dasturchi +0.2
+
+### Amalga oshirish:
+
+```tsx
+// src/components/OfflineBanner.tsx
+function OfflineBanner({ online }: { online: boolean }) {
+  if (online) return null
+  return (
+    <div className="offline-banner fixed bottom-20 left-4 right-4 z-50">
+      <p>❌ Internet yo'q</p>
+      <small>✅ Darslar ishlaydi · ❌ AI Chat · ❌ Tandem · ✅ Lug'at</small>
+    </div>
+  )
+}
+```
+
+---
+
 # FAZA 2 — PEDAGOGIK MUKAMMALLASH
 ### Muddat: 3–6 hafta · Baho ta'siri: +1.8 umumiy ball
 
@@ -780,6 +929,106 @@ export default function MnemonicCard({ rule, mnemonic, visual, acronym }: Mnemon
 
 ---
 
+## F2-8. Writing AI Evaluation — Barcha Darslarga
+**Muammo:** Writing evaluation faqat IELTS style da — A1/A2 darajasi uchun soddaroq evaluation kerak
+**Ta'sir:** Ingliz tili pedagog +0.5
+
+### Amalga oshirish:
+
+**`src/lib/claude.ts`** ga qo'shimcha:
+```typescript
+const WRITING_PROMPTS: Record<string, string> = {
+  A1: `Foydalanuvchi ingliz tilida yozdi. Daraja: A1.
+  Baholang: (1) Grammatik to'g'rilik (1-5), (2) Vazifani bajarish (1-5).
+  ​Faqat 1 ta eng muhim xatoni tuzating. Javob o'zbek tilida.`,
+  A2: `Daraja: A2.
+  Baholang: (1) Grammatik to'g'rilik (1-5), (2) Leksika xilma-xilligi (1-5),
+  (3) Vazifani bajarish (1-5). 2 ta xatoni tuzating.`,
+  B1: `Daraja: B1.
+  Baholang: (1) Grammatik to'g'rilik, (2) Leksika, (3) Bog'liqlik (coherence),
+  (4) Vazifani bajarish. 3 ta xatoni tuzating.`
+}
+
+export async function evaluateWritingLevel(
+  text: string, level: string, prompt: string
+): Promise<WritingFeedback> {
+  return callClaude(WRITING_PROMPTS[level] ?? WRITING_PROMPTS.B1,
+    `Prompt: ${prompt}\nFoydalanuvchi: ${text}`)
+}
+```
+
+**`src/services/writingService.ts`** da `evaluateWriting` chaqiruvini level bo'yicha yangilash.
+
+---
+
+## F2-9. Speaking Bo'limini Daily Lessons ga Integratsiya
+**Muammo:** SpeakingPath alohida — daily lesson da speaking prompt yo'q
+**Ta'sir:** Ingliz tili pedagog +0.5, Yodlash olimi +0.3
+
+### Amalga oshirish:
+
+**`DailyLesson` interfeysi** ga yangi maydon:
+```typescript
+microTasks?: {
+  speaking?: {
+    prompt: string      // "Will ishlatib 3 ta bashorat aytib ko'ring"
+    duration: 30        // sekund
+  }
+  writing?: {
+    prompt: string
+    wordLimit: number
+  }
+}
+```
+
+**Har bir darsga micro-task qo'shish (A2+ dan yuqori):**
+
+| Dars | Speaking Prompt |
+|------|-----------------|
+| Future Forms (B1) | "Ertangi kuningizni 4 turda: will, going to, PC, jadval" |
+| Present Perfect (A2) | "3 ta gap: I have never..., I have already..., Have you ever...?" |
+| Conditionals (B1+) | "Agar ingliz tilini bilsangiz, nima qilgan bo'lar edingiz?" |
+
+---
+
+## F2-10. Curriculum Gap Analysis
+**Muammo:** CEFR can-do statements va vocabulary frequency audit qilinmagan
+**Ta'sir:** Ingliz tili pedagog +0.5, Yodlash olimi +0.3
+
+### Amalga oshirish:
+
+**`scripts/cefr-audit.ts`**:
+```typescript
+// Har bir darsning goalUz/subtitle ni CEFR checklists bilan solishtirish
+const CEFR_CAN_DO: Record<string, string[]> = {
+  A1: ['Can introduce myself', 'Can understand basic phrases',
+       'Can ask simple questions', 'Can write short notes'],
+  A2: ['Can describe my background', 'Can handle short social exchanges',
+       'Can understand simple directions', 'Can write short letters'],
+  // ...
+}
+
+export function auditCEFR(lesson: DailyLesson): string[] {
+  const missing = []
+  const levelCanDo = CEFR_CAN_DO[lesson.level]
+  for (const cando of levelCanDo) {
+    const matched = lesson.exercises.some(ex =>
+      ex.question.toLowerCase().includes(cando.toLowerCase().slice(0, 30))
+    )
+    if (!matched) missing.push(cando)
+  }
+  return missing
+}
+```
+
+**Vocabulary frequency audit:**
+```typescript
+// BNC/COCA top-2000 so'zlar bilan dars vocabulary sini solishtirish
+// Kam uchraydigan so'zlarni almashtirish
+```
+
+---
+
 # FAZA 3 — TEXNIK MUKAMMALLASH
 ### Muddat: 4–8 hafta · Baho ta'siri: +1.2 umumiy ball
 
@@ -1045,6 +1294,181 @@ interface ExerciseCheckResult {
 
 ---
 
+## F3-6. Adaptive Learning Engine
+**Muammo:** Hamma o'quvchilar bir xil curriculum dan o'tadi — personalizatsiya yo'q
+**Ta'sir:** Dasturchi +1.0, Yodlash olimi +0.5
+
+### Amalga oshirish:
+
+**Knowledge Tracing:**
+```typescript
+// src/lib/knowledge-tracing.ts
+// Bayesian Knowledge Tracing (BKT) — har bir rule ni o'zlashtirish ehtimolini hisoblash
+interface BKTParams {
+  pLearn: number   // o'rganish ehtimoli
+  pGuess: number   // taxmin qilish ehtimoli
+  pSlip: number    // xato qilish ehtimoli
+  pKnown: number   // hozir bilish ehtimoli
+}
+
+export function updateBKT(params: BKTParams, correct: boolean): BKTParams {
+  if (correct) {
+    // P(K|correct) = P(K)*1 + P(~K)*P(L) / P(correct)
+  } else {
+    // P(K|incorrect) = P(K)*P(S) / P(incorrect)
+  }
+  return params
+}
+```
+
+**Item Response Theory (IRT):**
+```typescript
+// 3PL model: P(correct) = c + (1-c) / (1 + exp(-a*(theta - b)))
+// a=discrimination, b=difficulty, c=guessing, theta=ability
+```
+
+**Adaptive difficulty:**
+```typescript
+// Agar 3 ta ketma-ket to'g'ri → qiyinroq variant
+// Agar 2 ta ketma-ket xato → osonroq variant
+```
+
+---
+
+## F3-7. AI Tutor 2.0
+**Muammo:** AI hozir faqat so'ralganda ishlaydi (Chat, Writing, Speaking). Real-time feedback yo'q
+**Ta'sir:** Ingliz tili pedagog +0.8, Dasturchi +0.3
+
+### Amalga oshirish:
+
+**Real-time error feedback:**
+```typescript
+// Mashq bajarishda xato bo'lsa, darhol AI explanation
+async function getRealTimeFeedback(
+  exercise: DailyExercise, userAnswer: string
+): Promise<string | null> {
+  if (!isWrong(userAnswer, exercise)) return null
+  return callClaude('Qisqa tushuntirish bering (1-2 gap, o'zbek tilida)', 
+    `Savol: ${exercise.question}\nJavob: ${userAnswer}\nTo'g'ri: ${exercise.blanks[0]}`)
+}
+```
+
+**AI conversation partner (Scenario-based):**
+```typescript
+// SpeakingPath dan olingan scenario → Chat.tsx ga integratsiya
+interface Scenario {
+  context: string
+  role: string
+  goal: string
+  keyPhrases: string[]
+}
+```
+
+**Weekly AI report:**
+```
+"Sizning kuchli tomonlaringiz: Present Perfect ✅
+  Zaif joylar: Conditionals (62% accuracy) ⚠️
+  Tavsiya: Day 82-83 ni qayta o'ting"
+```
+
+---
+
+## F3-8. Learning Analytics Dashboard
+**Muammo:** Hozirgi dashboard faqat XP va streak ko'rsatadi — chuqur analytics yo'q
+**Ta'sir:** Tadbirkor +0.5, Dasturchi +0.3
+
+### Amalga oshirish:
+
+**`src/components/dashboard/AnalyticsSection.tsx`:**
+```tsx
+// 1. Accuracy by grammar topic chart (Recharts)
+// 2. Learning speed (words/day, exercises/day)
+// 3. Time spent per skill (reading, writing, listening, speaking)
+// 4. Forgetting curve visualization (FSRS-5 ma'lumotlari asosida)
+// 5. Cohort analytics: "B1 o'quvchilari o'rtacha 45 kunda B1+ ga o'tadi"
+```
+
+**Event tracking:**
+```typescript
+// src/lib/analytics.ts
+interface AnalyticsEvent {
+  event: 'lesson_started' | 'exercise_answered' | 'lesson_abandoned' |
+         'ai_chat_message' | 'speaking_practice'
+  lessonId?: string
+  exerciseId?: number
+  result?: 'correct' | 'incorrect'
+  timeSpent?: number
+}
+
+export async function trackEvent(event: AnalyticsEvent) {
+  await supabase.from('analytics_events').insert(event)
+}
+```
+
+---
+
+## F3-9. Error Detection & Prevention
+**Muammo:** Sentry ulangan, lekin alert va monitoring tizimi yo'q
+**Ta'sir:** Dasturchi +0.5
+
+### Amalga oshirish:
+
+**Sentry alert:**
+```typescript
+// Critical errors (Auth failure, Lesson load failure) → Telegram/Email
+Sentry.init({
+  dsn: import.meta.env.VITE_SENTRY_DSN,
+  beforeSend(event) {
+    if (event.exception && isCritical(event)) {
+      notifyAdmin(event) // Telegram bot or email
+    }
+    return event
+  }
+})
+```
+
+**Error boundary monitoring:**
+- Har bir page `ErrorBoundary` bilan o'ralganmi tekshirish
+- UI da "Report error" button
+
+---
+
+## F3-10. Performance Monitoring
+**Muammo:** Web Vitals tracking bor, lekin budjet va benchmark yo'q
+**Ta'sir:** Dasturchi +0.3
+
+### Amalga oshirish:
+
+```typescript
+// Build size budget
+// max 500kb per chunk
+// Web Vitals targets:
+// LCP < 2.5s, FID < 100ms, CLS < 0.1
+```
+
+**`vite.config.ts`:**
+```typescript
+export default defineConfig({
+  build: {
+    chunkSizeWarningLimit: 500,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/react')) return 'react-core'
+          if (id.includes('@supabase')) return 'supabase'
+          if (id.includes('/data/daily/a1')) return 'lessons-a1'
+          if (id.includes('/data/daily/a2')) return 'lessons-a2'
+          if (id.includes('/data/daily/b1')) return 'lessons-b1'
+          if (id.includes('/data/daily/b2')) return 'lessons-b2'
+        }
+      }
+    }
+  }
+})
+```
+
+---
+
 # FAZA 4 — O'ZBEK TILI SIFATINI OSHIRISH
 ### Muddat: 2–4 hafta · Baho ta'siri: +1.0 umumiy ball
 
@@ -1159,6 +1583,30 @@ export const GRAMMAR_TERMS: Record<string, { uz: string; short: string }> = {
 | "Bajarish mumkin" | "bajara olasiz / bajaring" |
 | "Qo'llash joiz" | "ishlatish mumkin" |
 | "Hisobga olish kerak" | "e'tiborga olish kerak" |
+
+---
+
+## F4-4. i18n avtomatlashtirish (Crowdin / Lokalise)
+**Muammo:** Tarjimalar qo'lda yoziladi — yangi tillar qo'shish qiyin
+**Ta'sir:** O'zbek tili ustozi +0.3, Tadbirkor +0.3
+
+### Amalga oshirish:
+
+**Crowdin integratsiyasi:**
+```
+1. Crowdin da project ochish
+2. src/i18n/en.json ni source file sifatida ulash
+3. Auto-translate (DeepL) + human review
+4. Har hafta sync: Crowdin → PR → merge
+```
+
+**Yangi tillar:**
+```
+Faza 4.4 oyi:  russian (to'ldirish)
+3 oy:           korean (Koreya O'zbekiston bozorida kuchli)
+6 oy:           turkish, chinese
+12 oy:          qoraqalpoq, tojik, qozoq (markaziy Osiyo ekspansiyasi)
+```
 
 ---
 
@@ -1370,6 +1818,42 @@ interface CertificateData {
 ```typescript
 // Sertifikat ID → Supabase public table
 // QR code → https://englishpath.uz/verify/{certificateId}
+```
+
+---
+
+## F5-5. IELTS Preparation Module
+**Muammo:** MockTest.tsx bor, lekin to'liq IELTS preparation yo'q
+**Ta'sir:** Tadbirkor +1.0
+
+### Amalga oshirish:
+
+```typescript
+// Yangi modul: IELTS Academic / General Training
+// - Full mock tests (Listening, Reading, Writing, Speaking)
+// - Timed mode
+// - Band score prediction
+// - Writing task 1 & 2 with AI evaluation
+// - Speaking part 1, 2, 3 simulation
+```
+
+**Monetizatsiya:** IELTS moduli — Premium feature (qo'shimcha to'lov)
+
+---
+
+## F5-6. Business English Module
+**Muammo:** Faqat umumiy ingliz tili — biznes ingliz tili yo'q
+**Ta'sir:** Tadbirkor +0.5
+
+### Amalga oshirish:
+
+**30 ta dars:**
+```
+- Emails: formal/informal, enquiries, complaints
+- Meetings: agenda, opinions, proposals
+- Presentations: structure, visuals, Q&A
+- Negotiations: offers, compromises, contracts
+- Small talk: networking, social events
 ```
 
 ---
@@ -1757,6 +2241,98 @@ const prompt = `
 
 # YAKUNIY BAHO VA MAQSAD
 
+# FAZA 10 — SCALE & ECOSYSTEM
+### Muddat: 6-12 oy · Baho ta'siri: +1.5 umumiy ball
+
+---
+
+## F10-1. React Native Mobile App
+**Muammo:** PWA yaxshi, lekin native features (push notifications, speech recognition) cheklangan
+**Ta'sir:** Tadbirkor +1.0, Yangi boshlovchi +0.5
+
+### Amalga oshirish:
+
+```
+1. Core shared logic: Zustand store, services, lib (claude, supabase, srs)
+2. React Native bilan mosligini tekshirish
+3. Native speech recognition: Web Speech API → React Native Voice
+4. Offline-first mobile: Dexie IndexedDB → Async Storage / SQLite
+5. Push notifications: Firebase Cloud Messaging
+```
+
+---
+
+## F10-2. Kids English Module
+**Muammo:** Bolalar uchun content yo'q — bozorda katta segment
+**Ta'sir:** Tadbirkor +0.8
+
+### Amalga oshirish:
+
+```
+- A1 level gamification: more images, short animations
+- Parent dashboard: child progress tracking
+- 20 lessons: colors, animals, family, food, toys
+- Voice-only exercises (reading yozish o'rniga)
+```
+
+---
+
+## F10-3. Community & Social
+**Muammo:** Yakkama-yakka o'rganish — community elementi yo'q
+**Ta'sir:** Tadbirkor +0.5, Faylasuf +0.3
+
+### Amalga oshirish:
+
+**Leaderboards:**
+```typescript
+// Weekly challenges
+// Friends leaderboard (follow system)
+// Streak competition
+// XP milestones badges
+```
+
+**Study groups:**
+```typescript
+// Groups of 5-10 learners
+// Group chat
+// Tandem (real user, not AI)
+// Group challenges
+```
+
+---
+
+## F10-4. Content Creator Mode
+**Muammo:** Yangi dars yaratish uchun dasturchi kerak — CMS yo'q
+**Ta'sir:** Tadbirkor +0.8, Dasturchi +0.5
+
+### Amalga oshirish:
+
+```
+1. Lesson builder: drag-drop exercise editor
+2. Exercise templates: fill-blank, MC, error-correction, transformation
+3. Preview mode: real-time lesson preview
+4. Publish flow: draft → review → published
+5. Teacher dashboard: student progress, custom assignments
+```
+
+---
+
+## F10-5. Infrastructure & DevOps
+**Muammo:** Vercel free tier — agar user base > 10,000 bo'lsa, yetarli emas
+**Ta'sir:** Tadbirkor +0.5, Dasturchi +0.5
+
+### Amalga oshirish:
+
+```
+1. Vercel → dedicated hosting (AWS/DigitalOcean) + Docker
+2. Database: Supabase → PostgreSQL + Redis + S3
+3. CDN: Lesson data (JSON) + images/audio ni CDN orqali serve
+4. Auto-scaling: Horizontal pod autoscaling (HPA)
+5. Monitoring: Grafana + Prometheus
+```
+
+---
+
 ## Har Faza So'ng Kutilgan Baholar
 
 | Nuqtai Nazar | Hozir | Faza 1–2 | Faza 3–4 | Faza 5–6 | Faza 7–9 | Maqsad |
@@ -1793,6 +2369,51 @@ const prompt = `
 
 Agar faqat **eng muhim 10 ta o'zgarish** amalga oshirilsa, baho 6.5 dan 9.0 ga chiqadi:
 
+
+
+## 📊 KPI va Metrikalar
+
+| KPI | Hozir | 3 oy | 6 oy | 12 oy |
+|-----|-------|------|------|-------|
+| **Test pass rate** | 91% | 100% | 100% | 100% |
+| **Code coverage** | ~20% | 30% | 40% | 55% |
+| **Nazariya→Mashq qamrovi** | 65-75% | 85% | 92% | 98% |
+| **Skills bo'limi qamrovi** | ~30% | 45% | 70% | 90% |
+| **Darslarda vocab test** | 0% | 30% | 60% | 100% |
+| **AI personalizatsiya** | Basic | Adaptive | Full | Full |
+| **Mobile UX** | PWA | PWA+ | React Native Beta | React Native |
+
+## 📅 Choraklik Implementatsiya Rejasi
+
+### Q1 (0-3 oy) — Foundation
+| Oy | Vazifalar | Baho o'sishi |
+|----|-----------|-------------|
+| 1 | F1-1–F1-5 (ID validation, "Inkor" fix, build, lokalizatsiya, noaniq mashqlar audit) | +0.5 |
+| 2 | F1-6–F1-10 (CI/CD, E2E, coverage, sync, offline) + F2-1 (Grammar SRS) | +0.6 |
+| 3 | F2-2–F2-4 (Interleaved, micro-tasks, audio) + F2-5 (Mini-passages) | +0.5 |
+
+### Q2 (3-6 oy) — Content
+| Oy | Vazifalar | Baho o'sishi |
+|----|-----------|-------------|
+| 4 | F2-6–F2-10 (90-day claim, mnemonics, writing AI, speaking, curriculum gap) | +0.5 |
+| 5 | F3-1–F3-3 (CMS migratsiya, claude split, test coverage) + F4 (O'zbek tili) | +0.6 |
+| 6 | F3-4–F3-10 (Incremental seed, any, adaptive, AI tutor, analytics, error, perf) | +0.7 |
+
+### Q3 (6-9 oy) — AI & Monetizatsiya
+| Oy | Vazifalar | Baho o'sishi |
+|----|-----------|-------------|
+| 7 | F5-1–F5-4 (Freemium, analytics, referral, sertifikat) + F6 (Falsafiy) | +0.8 |
+| 8 | F5-5, F5-6 (IELTS, Business) + F7-1, F7-2 (Grammar SRS, confusable pairs) | +0.6 |
+| 9 | F7-3, F7-4 (Elaborative, active recall) + F8 (Boshlovchi: demo, loading, onboarding, hearts) | +0.7 |
+
+### Q4 (9-12 oy) — Scale
+| Oy | Vazifalar | Baho o'sishi |
+|----|-----------|-------------|
+| 10 | F9 (UX/Performance: listening, speaking AI) + F10-1 (React Native) | +0.5 |
+| 11 | F10-2, F10-3 (Kids, Community) + F10-4 (Content creator mode) | +0.6 |
+| 12 | F10-5 (Infrastructure) + Yakuniy audit + 10/10 sertifikatsiya | +0.4 |
+
+---
 1. ✅ **Grammar SRS** — Ebbinghaus egri chizig'iga qarshi (Faza 2-1)
 2. ✅ **Audio** — A1/A2 da talaffuz (Faza 2-4)
 3. ✅ **Interleaved practice** — Section 4–5 aralash (Faza 2-2)
