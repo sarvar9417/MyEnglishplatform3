@@ -4,6 +4,7 @@ import { CheckCircle, Brain, ArrowRight } from 'lucide-react'
 import LessonDemo from '../components/dailyLesson/LessonDemo'
 import { DEMO_LESSONS, type DemoLesson } from '../data/lessonDemoContent'
 import { getDueReviews } from '../lib/grammarSrs'
+import WeakAreasCard from '../components/grammar/WeakAreasCard'
 
 export default function GrammarReview() {
   const navigate = useNavigate()
@@ -37,6 +38,9 @@ export default function GrammarReview() {
           <button onClick={() => navigate('/mixed-review')} className="btn-ghost px-8 py-3 font-bold border border-gray-200 dark:border-gray-700 rounded-xl">
             🔀 Aralash takror
           </button>
+        </div>
+        <div className="w-full max-w-sm mt-8">
+          <WeakAreasCard />
         </div>
       </div>
     )
