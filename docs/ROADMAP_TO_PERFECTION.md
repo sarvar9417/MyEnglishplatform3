@@ -1388,7 +1388,7 @@ interface Scenario {
 
 ---
 
-## F3-8. ❌ Learning Analytics Dashboard
+## F3-8. ⚠️ Learning Analytics Dashboard
 **Muammo:** Hozirgi dashboard faqat XP va streak ko'rsatadi — chuqur analytics yo'q
 **Ta'sir:**, Dasturchi +0.3
 
