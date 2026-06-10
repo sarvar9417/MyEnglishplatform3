@@ -136,6 +136,10 @@ import { demonstratives, thereIsAre, canCant, haveGot, questionWords, conjunctio
 import { simplePresent, presentContinuous, simplePast, simpleFuture } from '../tenses/tensesData'
 // A2/B1/B1+/B2 daraja massivlari endi lessonsX.ts da YAGONA manba sifatida saqlanadi
 // va pastda re-export qilinadi (oldin bu yerda eski tartibda dublikat turardi).
+import { A2_LESSONS } from './lessonsA2'
+import { B1_LESSONS_NEW } from './lessonsB1'
+import { B1PLUS_LESSONS_NEW } from './lessonsB1plus'
+import { B2_LESSONS_NEW } from './lessonsB2'
 import type { DailyLesson } from '../dailyLessons'
 
 // A1 darslari — pedagogik ketma-ketlikda (loadAllLessons day raqamini massiv
@@ -173,8 +177,14 @@ export const A1_LESSONS_NEW: DailyLesson[] = [
 
 // Daraja massivlari — YAGONA manba lessonsX.ts (loadAllLessons aynan shularni ishlatadi;
 // zamonlar va comparatives pedagogik tartibda o'sha fayllarga singdirilgan)
-export { A2_LESSONS } from './lessonsA2'
-export { B1_LESSONS_NEW } from './lessonsB1'
-export { B1PLUS_LESSONS_NEW } from './lessonsB1plus'
-export { B2_LESSONS_NEW } from './lessonsB2'
 
+/** Barcha darslarni bitta massivga jamlash */
+export function getAllLessons(): DailyLesson[] {
+  return [
+    ...A1_LESSONS_NEW,
+    ...A2_LESSONS,
+    ...B1_LESSONS_NEW,
+    ...B1PLUS_LESSONS_NEW,
+    ...B2_LESSONS_NEW,
+  ]
+}

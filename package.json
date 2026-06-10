@@ -24,6 +24,7 @@
     "fix-lessons": "tsx scripts/fix-lessons.ts",
     "fix-lessons:dry": "tsx scripts/fix-lessons.ts --dry-run",
     "audit:ambiguous": "tsx scripts/find-ambiguous-exercises.ts",
+    "validate:ids": "tsx scripts/validate-lesson-ids.ts",
     "test:e2e": "playwright test --config e2e/playwright.config.ts",
     "test:e2e:ui": "playwright test --ui --config e2e/playwright.config.ts"
   },
