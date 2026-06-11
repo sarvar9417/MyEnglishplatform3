@@ -36,6 +36,9 @@ export interface VocabState {
   totalAnswered:  number
   loading:        boolean
   sessionTime:    number
+  /** Bugungi 100 ta so'z to'plami hisoblangan sana (Tashkent). Kunlik snapshot —
+   *  to'plam shu kun davomida QAT'IY; faqat yangi kunda qayta tanlanadi. */
+  dailyDate:      string
 
   setDailyWords:  (words: DailyWordRow[]) => void
   setReviewWords: (words: DailyWordRow[]) => void
@@ -72,10 +75,12 @@ export const useVocabStore = create<VocabState>()(
       totalAnswered: 0,
       loading:       false,
       sessionTime:   0,
+      dailyDate:     '',
 
       setDailyWords: (words) =>
         set({
           dailyWords: words,
+          dailyDate: getTodayTashkent(),
           currentBatch: 1,
           currentIdx: 0,
           viewMode: 'catalog',
@@ -183,6 +188,7 @@ export const useVocabStore = create<VocabState>()(
           totalAnswered: 0,
           loading:       false,
           sessionTime:   0,
+          dailyDate:     '',
         }),
     }),
     {
@@ -192,6 +198,7 @@ export const useVocabStore = create<VocabState>()(
         dailyWords: state.dailyWords,
         reviewWords: state.reviewWords,
         batchResults: state.batchResults,
+        dailyDate: state.dailyDate,
       }),
     }
   )

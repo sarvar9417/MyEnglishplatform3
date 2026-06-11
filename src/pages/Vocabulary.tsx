@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef, lazy, Suspense } from 'react'
 import { ArrowRight, FlaskConical } from 'lucide-react'
+import { useI18n } from '../i18n'
 import { supabase } from '../lib/supabase'
 import { monitoring } from '../lib/monitoring'
 import { useStore } from '../store/useStore'
@@ -38,6 +39,7 @@ const WORDS_PER_DAY = 100
 const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2']
 
 export default function Vocabulary() {
+  const { t } = useI18n()
   const { addXP, addLearnedWords, updateSkillProgress } = useStore()
   const {
     dailyWords, reviewWords, currentBatch, batchWords, currentIdx, viewMode,
@@ -182,7 +184,7 @@ export default function Vocabulary() {
       //    so'rovlar BIRGA yuboriladi (oldin 8+ ta ketma-ket edi). ──
       const [userData, allProgressRes, totals, reviewProgressRes, studiedRowsRes, learnedDataRes] = await Promise.all([
         supabase.from('users').select('start_date').eq('id', uid).maybeSingle(),
-        supabase.from('vocabulary_progress').select('word_id').eq('user_id', uid),
+        supabase.from('vocabulary_progress').select('word_id, is_learned').eq('user_id', uid),
         getCachedLevelTotals('words', LEVEL_ORDER),
         supabase.from('vocabulary_progress')
           .select('word_id, box, next_review, correct_count, wrong_count, is_learned, last_rating')
@@ -194,10 +196,14 @@ export default function Vocabulary() {
       const dbStartDate = userData.data?.start_date ?? today
       useStore.setState({ startDate: dbStartDate })
 
-      // ── O'rganilgan so'zlar va tugallangan to'plamlar ──
-      const studiedSet = new Set((allProgressRes.data ?? []).map(p => p.word_id))
+      // ── Yodlangan so'zlar (is_learned=true) va to'liq yodlangan to'plamlar ──
+      // "Yodlanmagan" = is_learned=false. Faqat TO'LIQ yodlangan so'zlar kunlik
+      // tanlovdan chiqariladi; boshlangan-lekin-yodlanmagan so'zlar QOLADI.
+      const learnedSet = new Set(
+        (allProgressRes.data ?? []).filter(p => p.is_learned).map(p => p.word_id)
+      )
       const setCounts = new Map<number, number>()
-      for (const wid of studiedSet) {
+      for (const wid of learnedSet) {
         const sn = Math.floor((wid - 1) / WORDS_PER_DAY)
         setCounts.set(sn, (setCounts.get(sn) ?? 0) + 1)
       }
@@ -208,23 +214,45 @@ export default function Vocabulary() {
       // Level totals — keshlangan statik katalog (faza A da parallel olingan)
       const totalsMap = new Map<string, number>(LEVEL_ORDER.map(l => [l, totals[l] ?? 0]))
 
-      // ── 2. O'rganilmagan so'zlarni yig'ish (WORDS_PER_DAY tagacha) ──
+      // ── 2. Kunlik 100 so'z ──
+      // KUNLIK SNAPSHOT: bugungi to'plam kun davomida QAT'IY. Agar shu kun uchun
+      // snapshot mavjud bo'lsa — aynan o'sha so'zlar qaytariladi (bugun yodlangan
+      // so'zlar ham kun oxirigacha qoladi). Faqat YANGI kunda keyingi 100 ta
+      // yodlanmagan so'z qaytadan tanlanadi (yodlanganlar chiqib, yangilari qo'shilib).
       const dailyWordRows: { id: number; english: string; uzbek: string; level: string; example: string | null; phonetic: string | null }[] = []
-      let setNum = compSets
-      while (dailyWordRows.length < WORDS_PER_DAY) {
-        const off = setNum * WORDS_PER_DAY
-        const { data: rows, error: we } = await supabase
+      const vocabSnap = useVocabStore.getState()
+      const hasSnapshot = vocabSnap.dailyDate === today && vocabSnap.dailyWords.length > 0
+
+      if (hasSnapshot) {
+        // Bugungi snapshot — o'sha so'zlarni (snapshot tartibida) qayta olamiz
+        const ids = vocabSnap.dailyWords.map(w => w.word_id)
+        const { data: rows } = await supabase
           .from('words')
           .select('id, english, uzbek, level, example, phonetic')
-          .order('level', { ascending: true })
-          .order('id', { ascending: true })
-          .range(off, off + WORDS_PER_DAY - 1)
-        if (we) setRpcError(`words query error: ${we.message}`)
-        if (!rows || rows.length === 0) break
-        const unstudied = rows.filter(w => !studiedSet.has(w.id))
-        const need = WORDS_PER_DAY - dailyWordRows.length
-        dailyWordRows.push(...unstudied.slice(0, need))
-        setNum++
+          .in('id', ids)
+        const byId = new Map((rows ?? []).map(w => [w.id, w]))
+        for (const id of ids) {
+          const w = byId.get(id)
+          if (w) dailyWordRows.push(w)
+        }
+      } else {
+        // Yangi kun — keyingi 100 ta yodlanmagan so'z (daraja+id tartibida)
+        let setNum = compSets
+        while (dailyWordRows.length < WORDS_PER_DAY) {
+          const off = setNum * WORDS_PER_DAY
+          const { data: rows, error: we } = await supabase
+            .from('words')
+            .select('id, english, uzbek, level, example, phonetic')
+            .order('level', { ascending: true })
+            .order('id', { ascending: true })
+            .range(off, off + WORDS_PER_DAY - 1)
+          if (we) setRpcError(`words query error: ${we.message}`)
+          if (!rows || rows.length === 0) break
+          const unlearned = rows.filter(w => !learnedSet.has(w.id))
+          const need = WORDS_PER_DAY - dailyWordRows.length
+          dailyWordRows.push(...unlearned.slice(0, need))
+          setNum++
+        }
       }
 
       // reviewProgress faza A da olingan
@@ -340,8 +368,9 @@ export default function Vocabulary() {
       ? s.batchWords
       : s.batchWords.filter(w => !w.is_learned)
     if (base.length === 0) return
-    // So'zlarni aralashtirib yuborish
-    const studyWords = [...base].sort(() => Math.random() - 0.5)
+    // Tartib QAT'IY (random emas) — har refresh'da bir xil so'zlar bir xil
+    // tartibda ko'rinsin. Kunlik snapshot bilan birga to'plam barqaror bo'ladi.
+    const studyWords = [...base]
     useVocabStore.setState({
       viewMode: mode,
       batchWords: studyWords,
@@ -388,7 +417,7 @@ export default function Vocabulary() {
 
     if (error) {
       monitoring.captureMessage('saveProgressToDB upsert error: ' + error.message, 'warn')
-      useToastStore.getState().toast('Natijani saqlashda xatolik', 'error')
+      useToastStore.getState().toast(t('common.error'), 'error')
       return
     }
 
@@ -529,7 +558,7 @@ export default function Vocabulary() {
     }
 
     if (imported > 0) {
-      useToastStore.getState().toast(`${imported} ta so'z import qilindi`, 'success')
+      useToastStore.getState().toast(`${imported} ${t('common.words')} ${t('common.saved')}`, 'success')
       // Reload data
       loadDailyData()
       setShowExportModal(false)
@@ -586,7 +615,7 @@ export default function Vocabulary() {
       <div className="p-3 sm:p-6 max-w-lg mx-auto select-none">
         <div className="flex items-center justify-between mb-4">
           <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">
-            ← Chiqish
+            {t('vocabPage.exitButton')}
           </button>
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-gray-500">{currentIdx + 1} / {batchWords.length}</span>
@@ -635,7 +664,7 @@ export default function Vocabulary() {
       <div className="p-3 sm:p-6 max-w-lg mx-auto">
         <div className="flex items-center justify-between mb-4">
           <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">
-            ← Chiqish
+            {t('vocabPage.exitButton')}
           </button>
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-gray-500">{currentIdx + 1} / {batchWords.length}</span>
@@ -682,7 +711,7 @@ export default function Vocabulary() {
                 className="w-full py-2.5 px-3 rounded-xl border-2 border-indigo-200 dark:border-indigo-700 text-indigo-600 dark:text-indigo-400 font-semibold hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:border-indigo-400 transition-all text-sm flex items-center justify-center gap-2"
               >
                 <FlaskConical size={15} />
-                Grammatik tahlil ko'rish
+                {t('vocabPage.grammarAnalysis')}
               </button>
             ) : (
               <GrammarAnalysisPanel text={testAnalysisText} loading={testAnalysisLoading} />
@@ -693,7 +722,7 @@ export default function Vocabulary() {
               onClick={handleTestAdvance}
               className="w-full py-3 bg-b1-500 text-white font-bold rounded-xl hover:bg-b1-600 transition-all text-sm flex items-center justify-center gap-2"
             >
-              Keyingi <ArrowRight size={16} />
+              {t('vocabPage.nextButton')} <ArrowRight size={16} />
             </button>
           </div>
         )}
@@ -708,9 +737,9 @@ export default function Vocabulary() {
       <div className="p-3 sm:p-6 max-w-lg mx-auto">
         <div className="flex items-center justify-between mb-4">
           <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">
-            ← Chiqish
+            {t('vocabPage.exitButton')}
           </button>
-          <span className="text-sm font-medium text-gray-500">{currentBatch}-Batch</span>
+          <span className="text-sm font-medium text-gray-500">{t('vocabPage.batchLabel', { num: currentBatch })}</span>
         </div>
         <WordGame
           words={batchWords}
@@ -805,13 +834,13 @@ export default function Vocabulary() {
           {reviewWords.length > 0 && (
             <div className="mt-3 flex items-center justify-between gap-2 rounded-xl border border-orange-200 bg-orange-50 dark:bg-orange-900/10 dark:border-orange-800 px-3 py-2">
               <p className="text-xs font-medium text-orange-700 dark:text-orange-400">
-                🔄 {reviewWords.length} ta so'z takrorlanishi kerak
+                {t('vocabPage.reviewBanner', { count: reviewWords.length })}
               </p>
               <button
                 onClick={() => { selectReview(); setTimeout(() => enterStudyMode('flashcard'), 0) }}
                 className="shrink-0 px-3 py-1 bg-orange-500 text-white font-bold rounded-lg text-xs hover:bg-orange-600 transition-all"
               >
-                Boshlash
+                {t('vocabPage.reviewStart')}
               </button>
             </div>
           )}
@@ -835,13 +864,13 @@ export default function Vocabulary() {
                   } ${batchWordsSlice.length === 0 ? 'opacity-40 cursor-not-allowed' : ''}`}
                 >
                   <p className={`text-sm font-bold ${isCurrent ? 'text-b1-600' : 'text-gray-700'}`}>
-                    {batchNum}
+                    {t('vocabPage.batchLabel', { num: batchNum })}
                   </p>
                   <p className="text-[10px] text-gray-400">{bStart}-{bEnd}</p>
                   <p className="text-[10px] font-medium text-b1-500 mt-0.5">
-                    {batchWordsSlice.filter((w) => !w.is_new && !w.is_learned).length} takror
+                    {t('vocabPage.reviewCount', { count: batchWordsSlice.filter((w) => !w.is_new && !w.is_learned).length })}
                     {batchWordsSlice.filter((w) => w.is_learned).length > 0 && (
-                      <> · {batchWordsSlice.filter((w) => w.is_learned).length} yodlangan</>
+                      <> · {t('vocabPage.learnedCount', { count: batchWordsSlice.filter((w) => w.is_learned).length })}</>
                     )}
                   </p>
                 </button>
@@ -853,13 +882,13 @@ export default function Vocabulary() {
           {batchWords.length > 0 && (
             <div className="mt-3 space-y-2">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                {currentBatch}-Batch · {batchWords.length} ta so'z
+                {t('vocabPage.batchPhaseName', { num: currentBatch, count: batchWords.length })}
               </p>
               <div className="grid grid-cols-3 gap-2">
                 {([
-                  { mode: 'flashcard' as const, label: 'FlashCard', icon: '🃏', desc: 'Ko\'rish' },
-                  { mode: 'test' as const, label: 'Test', icon: '📝', desc: 'Topshiriq' },
-                  { mode: 'game' as const, label: 'O\'yin', icon: '🎮', desc: 'Mustahkamlash' },
+                  { mode: 'flashcard' as const, label: t('vocabPage.modeFlashcard'), icon: '🃏', desc: t('vocabPage.modeFlashcardDesc') },
+                  { mode: 'test' as const, label: t('vocabPage.modeTest'), icon: '📝', desc: t('vocabPage.modeTestDesc') },
+                  { mode: 'game' as const, label: t('vocabPage.modeGame'), icon: '🎮', desc: t('vocabPage.modeGameDesc') },
                 ]).map((phase) => (
                   <button
                     key={phase.mode}
@@ -891,26 +920,26 @@ export default function Vocabulary() {
           <div className="mt-4 space-y-1">
             <div className="flex items-center justify-between mb-2">
               <p className="text-xs text-gray-400">
-                {filteredBatchWords.length} / {batchWords.length} ta
+                {filteredBatchWords.length} / {batchWords.length} {t('common.words')}
               </p>
               <div className="flex items-center gap-2 text-[10px] text-gray-400">
-                <span>{batchWords.filter((w) => w.is_new).length} yangi</span>
+                <span>{t('vocabPage.newCount', { count: batchWords.filter((w) => w.is_new).length })}</span>
                 {batchWords.filter((w) => !w.is_new && !w.is_learned).length > 0 && (
-                  <span>· {batchWords.filter((w) => !w.is_new && !w.is_learned).length} takror</span>
+                  <span>· {t('vocabPage.reviewCount', { count: batchWords.filter((w) => !w.is_new && !w.is_learned).length })}</span>
                 )}
                 {batchWords.filter((w) => w.is_learned).length > 0 && (
-                  <span>· {batchWords.filter((w) => w.is_learned).length} ⭐ yodlangan</span>
+                  <span>· {t('vocabPage.learnedCount', { count: batchWords.filter((w) => w.is_learned).length })}</span>
                 )}
               </div>
             </div>
             {filteredBatchWords.length === 0 ? (
               <div className="py-8 text-center">
-                <p className="text-sm text-gray-400">Hech narsa topilmadi</p>
+                <p className="text-sm text-gray-400">{t('vocabPage.noResults')}</p>
                 <button
                   onClick={() => { setFilterText(''); setFilterLevel(new Set()); setFilterMastery('all') }}
                   className="mt-2 text-xs text-b1-500 font-semibold hover:underline"
                 >
-                  Filtrlarni tozalash
+                  {t('vocabPage.filterClear')}
                 </button>
               </div>
             ) : (
