@@ -12,6 +12,7 @@ import { evaluateSpeech, startSpeakingChat, getSpeakingChatFeedback } from '../.
 import { useStore } from '../../store/useStore'
 import { supabase } from '../../lib/supabase'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
+import HoldMicButton from './HoldMicButton'
 import { useNavigate } from 'react-router-dom'
 import type { SpeakingPrompt } from '../../services/speakingService'
 
@@ -432,19 +433,15 @@ export default function FreePractice() {
         </div>
 
         <div className="flex flex-col items-center gap-4">
-          <button
-            onClick={isRecording ? stopRecording : startRecording}
+          <HoldMicButton
+            isRecording={isRecording}
+            onStart={startRecording}
+            onStop={stopRecording}
             disabled={!sr.isSupported || isEvaluating}
-            aria-pressed={isRecording}
-            className={`w-20 h-20 rounded-full flex items-center justify-center transition-all shadow-lg active:scale-95
-              ${isRecording ? 'bg-red-500 animate-pulse' : 'bg-primary-600 hover:bg-primary-700'}
-              disabled:opacity-40 disabled:cursor-not-allowed`}
-          >
-            {isRecording ? <MicOff size={28} className="text-white" /> : <Mic size={28} className="text-white" />}
-          </button>
-          <div className="text-center">
-            {isRecording && <p className="text-sm font-mono text-red-500 font-semibold">● {mins}:{String(secs).padStart(2, '0')} yozilmoqda...</p>}
-            {!isRecording && !isDone && <p className="text-sm text-gray-400">Mikrofon tugmasini bosing va gapiring</p>}
+            interim={sr.interim}
+          />
+          <div className="text-center min-h-[20px]">
+            {isRecording && <p className="text-sm font-mono text-red-500 font-semibold">● {mins}:{String(secs).padStart(2, '0')}</p>}
             {isDone && <p className="text-sm text-green-600 font-medium">✓ Yozib olindi — {mins}:{String(secs).padStart(2, '0')}</p>}
           </div>
         </div>
