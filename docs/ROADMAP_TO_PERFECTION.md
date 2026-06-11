@@ -86,7 +86,7 @@
 
 ---
 
-## F1-1. ⚠️ Exercise ID validation (auto-generatsiya hali yo'q)
+## F1-1. ✅ ️ Exercise ID validation (auto-generatsiya hali yo'q)
 **Muammo:** ID lar qo'lda boshqariladi → duplikat xavfi (a2Part1 da id:1110 takrori topilgan)
 **Ta'sir:** Dasturchi 10/10
 
@@ -131,7 +131,7 @@ B2:  54001–75999  (b2Part1–3)
 
 ---
 
-## F1-2. ⚠️ exerciseSections "Inkor" nomi — Semantik tuzatish
+## F1-2. ✅ ️ exerciseSections "Inkor" nomi — Semantik tuzatish
 **Muammo:** A1 darslari (sonlar, ranglar, hayvonlar) da Section 4 = "🚫 Inkor" — bu mantiqan noto'g'ri
 **Ta'sir:** Ingliz tili pedagog +0.3, O'zbek tili ustozi +0.3
 
@@ -202,7 +202,7 @@ build: {
 
 ---
 
-## F1-4. ⚠️ O'zbek tilidagi to'liq lokalizatsiya
+## F1-4. ✅ ️ O'zbek tilidagi to'liq lokalizatsiya
 **Muammo:** "Sign In", "Sign Up", "Dashboard" ingliz tilida qolgan
 **Ta'sir:** Yangi boshlovchi +0.5, O'zbek tili ustozi +0.3
 
@@ -543,7 +543,7 @@ test('user can sign up, take a lesson, and see progress', async ({ page }) => {
 
 ---
 
-## F1-8. ❌ Test Coverage Reporting
+## F1-8. ⚠️ Test Coverage Reporting
 **Muammo:** Hozirgi coverage ~20% — muhim komponentlar test qilinmagan
 **Ta'sir:** Dasturchi +0.5
 
@@ -753,7 +753,7 @@ export default function GrammarReviewCard({ rule, onRate }) {
 
 ---
 
-## F2-2. ⚠️ Interleaved Practice (Aralash Mashqlar)
+## F2-2. ✅ ️ Interleaved Practice (Aralash Mashqlar)
 **Muammo:** Barcha mashqlar bir mavzuda ketma-ket (massed practice). Tadqiqotlar: interleaved practice 40–60% samaraliroq
 **Ta'sir:** Yodlash olimi +1.5
 
@@ -893,7 +893,7 @@ export async function speakFormula(text: string, rate = 0.85): Promise<void> {
 
 ---
 
-## F2-5. ⚠️ Kontekstli Mashqlar (Mini-Passages)
+## F2-5. ❌ ️ Kontekstli Mashqlar (Mini-Passages)
 **Muammo:** ~80% mashqlar izolyatsiyalangan jumlalar. Kontekstda o'rganish 3x samaraliroq
 **Ta'sir:** Ingliz tili pedagog +0.8
 
@@ -951,7 +951,7 @@ B1 → 90 kunda B2  (challenging, achievable)
 
 ---
 
-## F2-7. ⚠️ Mnemonika UI
+## F2-7. ✅ ️ Mnemonika UI
 **Muammo:** `mnemonic` maydoni bor, lekin faqat SpecialCases da ko'rsatiladi. Rules/Exercises uchun yo'q. Vizual mnemonikalar 3x samaraliroq
 **Ta'sir:** Yodlash olimi +1.0
 
@@ -995,7 +995,7 @@ export default function MnemonicCard({ rule, mnemonic, visual, acronym }: Mnemon
 
 ---
 
-## F2-8. ⚠️ Writing AI Evaluation — Barcha Darslarga
+## F2-8. ✅ ️ Writing AI Evaluation — Barcha Darslarga
 **Muammo:** Writing evaluation faqat IELTS style da — A1/A2 darajasi uchun soddaroq evaluation kerak
 **Ta'sir:** Ingliz tili pedagog +0.5
 
@@ -1027,7 +1027,7 @@ export async function evaluateWritingLevel(
 
 ---
 
-## F2-9. ⚠️ Speaking Bo'limini Daily Lessons ga Integratsiya
+## F2-9. ✅ ️ Speaking Bo'limini Daily Lessons ga Integratsiya
 **Muammo:** SpeakingPath alohida — daily lesson da speaking prompt yo'q
 **Ta'sir:** Ingliz tili pedagog +0.5, Yodlash olimi +0.3
 
@@ -1057,7 +1057,7 @@ microTasks?: {
 
 ---
 
-## F2-10. ❌ Curriculum Gap Analysis
+## F2-10. ⚠️ Curriculum Gap Analysis
 **Muammo:** CEFR can-do statements va vocabulary frequency audit qilinmagan
 **Ta'sir:** Ingliz tili pedagog +0.5, Yodlash olimi +0.3
 
@@ -1230,7 +1230,7 @@ export async function callClaude<T>(
 
 ---
 
-## F3-3. ⚠️ Test Coverage oshirish
+## F3-3. ⚠️ ️ Test Coverage oshirish
 **Muammo:** Komponent testlari juda kam. `LessonView.tsx`, `ExerciseCard.tsx` kabi murakkab komponentlar test qilinmagan
 **Ta'sir:** Dasturchi +0.5
 
@@ -1337,7 +1337,7 @@ async function seedIncremental() {
 
 ---
 
-## F3-5. ❌ TypeScript `any` ni Bartaraf Etish
+## F3-5. ⚠️ TypeScript `any` ni Bartaraf Etish
 **Muammo:** `claude.ts` va ba'zi xizmatlarda `any` tipi ishlatilgan
 **Ta'sir:** Dasturchi +0.3
 
@@ -1360,7 +1360,7 @@ interface ExerciseCheckResult {
 
 ---
 
-## F3-6. ⚠️ Adaptive Learning Engine
+## F3-6. ⚠️ ️ Adaptive Learning Engine
 **Muammo:** Hamma o'quvchilar bir xil curriculum dan o'tadi — personalizatsiya yo'q
 **Ta'sir:** Dasturchi +1.0, Yodlash olimi +0.5
 **Ta'sir:** Dasturchi +1.0, Yodlash olimi +0.5
@@ -1402,7 +1402,7 @@ export function updateBKT(params: BKTParams, correct: boolean): BKTParams {
 
 ---
 
-## F3-7. ❌ AI Tutor 2.0
+## F3-7. ⚠️ AI Tutor 2.0
 **Muammo:** AI hozir faqat so'ralganda ishlaydi (Chat, Writing, Speaking). Real-time feedback yo'q
 **Ta'sir:** Ingliz tili pedagog +0.8, Dasturchi +0.3
 
@@ -1440,7 +1440,7 @@ interface Scenario {
 
 ---
 
-## F3-8. ⚠️ Learning Analytics Dashboard
+## F3-8. ⚠️ ️ Learning Analytics Dashboard
 **Muammo:** Hozirgi dashboard faqat XP va streak ko'rsatadi — chuqur analytics yo'q
 **Ta'sir:**, Dasturchi +0.3
 
@@ -1474,7 +1474,7 @@ export async function trackEvent(event: AnalyticsEvent) {
 
 ---
 
-## F3-9. ⚠️ Error Detection & Prevention
+## F3-9. ⚠️ ️ Error Detection & Prevention
 **Muammo:** Sentry ulangan, lekin alert va monitoring tizimi yo'q
 **Ta'sir:** Dasturchi +0.5
 
@@ -1500,7 +1500,7 @@ Sentry.init({
 
 ---
 
-## F3-10. ⚠️ Performance Monitoring
+## F3-10. ⚠️ ️ Performance Monitoring
 **Muammo:** Web Vitals tracking bor, lekin budjet va benchmark yo'q
 **Ta'sir:** Dasturchi +0.3
 
@@ -1541,7 +1541,7 @@ export default defineConfig({
 
 ---
 
-## F4-1. ❌ Murojaat Shakli Standartlashtirish
+## F4-1. ⚠️ Murojaat Shakli Standartlashtirish
 **Muammo:** Ba'zi joylarda "siz" (rasmiy), ba'zida "sen" (norasmiy). Izchillik yo'q
 **Ta'sir:** O'zbek tili ustozi +0.5
 
@@ -1576,7 +1576,7 @@ const SEN_FORMS = [
 
 ---
 
-## F4-2. ⚠️ Terminologiya Lug'ati Yaratish
+## F4-2. ✅ ️ Terminologiya Lug'ati Yaratish
 **Muammo:** "Present Perfect" ba'zi joylarda lotin, ba'zi joylarda o'zbek tilida
 **Ta'sir:** O'zbek tili ustozi +0.5
 
@@ -1623,7 +1623,7 @@ export const GRAMMAR_TERMS: Record<string, { uz: string; short: string }> = {
 
 ---
 
-## F4-3. ⚠️ Tarjimalar Sifatini Oshirish
+## F4-3. ⚠️ ️ Tarjimalar Sifatini Oshirish
 **Muammo:** "Fine", "well", "good" uchala ham "yaxshi". Rus kalka iboralar
 **Ta'sir:** O'zbek tili ustozi +0.3
 
@@ -1683,7 +1683,7 @@ Faza 4.4 oyi:  russian (to'ldirish)
 
 ---
 
-## F6-1. ⚠️ Ichki Motivatsiya Elementlari
+## F6-1. ⚠️ ️ Ichki Motivatsiya Elementlari
 **Muammo:** Faqat tashqi motivatsiya (XP, streak) — ichki motivatsiyani so'ndirishi mumkin
 **Ta'sir:** Faylasuf +1.0, Yangi boshlovchi +0.3
 
@@ -1730,7 +1730,7 @@ realLifeConnection?: {
 
 ---
 
-## F6-2. ⚠️ "Til Sarguzasht" Narrativ Qatlam
+## F6-2. ⚠️ ️ "Til Sarguzasht" Narrativ Qatlam
 **Muammo:** Darslar mexanik — transformativ o'rganish yo'q
 **Ta'sir:** Faylasuf +0.5, Yangi boshlovchi +0.5
 
@@ -1773,7 +1773,7 @@ interface StoryBeat {
 
 ---
 
-## F7-2. ❌ Confusable Pairs Alohida Kuzatuv
+## F7-2. ✅ Confusable Pairs Alohida Kuzatuv
 **Muammo:** O'xshash so'zlar (make/do, lend/borrow, say/tell) bir vaqtda o'rganilganda interference paydo bo'ladi
 **Ta'sir:** Yodlash olimi +0.5
 
@@ -1868,7 +1868,7 @@ blankSlateReview?: {
 
 ---
 
-## F8-1. ⚠️ Demo — Ro'yxatdan O'tmasdan Ko'rish
+## F8-1. ✅ ️ Demo — Ro'yxatdan O'tmasdan Ko'rish
 **Muammo:** Majburiy signup yangi foydalanuvchilarni qaytaradi
 **Ta'sir:** Yangi boshlovchi +0.8
 
@@ -1943,7 +1943,7 @@ function getRandomTip(): string {
 
 ---
 
-## F8-3. ⚠️ Onboarding Yaxshilash
+## F8-3. ⚠️ ️ Onboarding Yaxshilash
 **Muammo:** Onboarding juda texnik, yangi boshlovchi uchun mo'ljallanmagan
 **Ta'sir:** Yangi boshlovchi +0.5
 
@@ -1998,7 +1998,7 @@ Yangi: "Ustida Ishlash" rejimi
 
 ---
 
-## F9-1. ⚠️ Listening Section Sustainability
+## F9-1. ⚠️ ️ Listening Section Sustainability
 **Muammo:** YouTube videolar o'chishi mumkin
 **Ta'sir:** Ingliz tili pedagog +0.3
 
@@ -2025,7 +2025,7 @@ interface ListeningSection {
 
 ---
 
-## F9-2. ⚠️ Speaking AI Baholashni Yaxshilash
+## F9-2. ⚠️ ️ Speaking AI Baholashni Yaxshilash
 **Muammo:** AI intonatsiya, stress, rhythm baha bermaydi
 **Ta'sir:** Ingliz tili pedagog +0.5
 
