@@ -1,12 +1,11 @@
-// Speaking Path — qayta ishlatiladigan mikrofon tugmasi
-// Reja: docs/speaking-path-roadmap.md (Faza 2/3)
-// useSpeechRecognition (STT) ni o'raydi: bosilganda yozadi, qayta bosilganda
-// to'xtaydi va transcript'ni onResult orqali qaytaradi. STT yo'q brauzerda
-// disabled holatda ko'rsatiladi (parent fallback beradi).
+// Speaking Path — qayta ishlatiladigan mikrofon tugmasi (STT o'rami).
+// Endi yagona HoldMicButton'ni ishlatadi → butun Speaking Path bilan bir xil
+// push-to-talk(+lock) tajriba. useSpeechRecognition (STT) ni o'raydi: bosib
+// turilganda yozadi, qo'yib yuborilganda transcript'ni onResult orqali qaytaradi.
 
 import { useEffect, useRef } from 'react'
-import { Mic, Square } from 'lucide-react'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
+import HoldMicButton from './HoldMicButton'
 
 interface Props {
   onResult: (transcript: string) => void
@@ -33,7 +32,6 @@ export default function MicButton({ onResult, onSupportChange, label = 'Gapiring
     wasRecording.current = isRecording
   }, [isRecording, transcript, onResult])
 
-  // Bosib-turib-gapirish (push-to-talk): bosib turing → gapiring → qo'yib yuboring
   const startRec = () => {
     if (disabled || isRecording) return
     reset()
@@ -52,25 +50,13 @@ export default function MicButton({ onResult, onSupportChange, label = 'Gapiring
   }
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <button
-        onPointerDown={(e) => { e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId) } catch { /* noop */ } startRec() }}
-        onPointerUp={(e) => { try { e.currentTarget.releasePointerCapture(e.pointerId) } catch { /* noop */ } stopRec() }}
-        onPointerCancel={(e) => { try { e.currentTarget.releasePointerCapture(e.pointerId) } catch { /* noop */ } stopRec() }}
-        onContextMenu={(e) => e.preventDefault()}
-        disabled={disabled}
-        className={`w-16 h-16 rounded-full flex items-center justify-center transition-all shadow-lg select-none touch-none active:scale-95
-          ${isRecording
-            ? 'bg-rose-500 animate-pulse ring-4 ring-rose-200 dark:ring-rose-900'
-            : 'bg-gradient-to-br from-primary-500 to-primary-700 hover:from-primary-600 hover:to-primary-800'}
-          ${disabled ? 'opacity-40 cursor-not-allowed' : ''}`}
-        aria-label={isRecording ? "Yozilmoqda — qo'yib yuboring" : label}
-      >
-        {isRecording ? <Square size={22} className="text-white" fill="white" /> : <Mic size={26} className="text-white" />}
-      </button>
-      <p className="text-xs font-medium text-gray-500 dark:text-gray-400 min-h-[16px] text-center">
-        {isRecording ? (interim || "Gapiring… (qo'yib yuboring)") : `${label} (bosib turib)`}
-      </p>
-    </div>
+    <HoldMicButton
+      isRecording={isRecording}
+      onStart={startRec}
+      onStop={stopRec}
+      disabled={disabled}
+      idleLabel={`${label} (bosib turib)`}
+      interim={interim}
+    />
   )
 }

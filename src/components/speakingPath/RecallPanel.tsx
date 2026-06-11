@@ -4,7 +4,8 @@
 // Parent har blokka key={chunk.id} beradi → holat avtomatik reset bo'ladi.
 
 import { useState, useCallback, useEffect, useRef, useMemo } from 'react'
-import { ArrowRight, RotateCcw, Check, X, Volume2, Send, Mic, Square, BookOpen, Info } from 'lucide-react'
+import { ArrowRight, RotateCcw, Check, X, Volume2, Send, BookOpen, Info } from 'lucide-react'
+import HoldMicButton from './HoldMicButton'
 import { useSpeechSynthesis } from '../../hooks/useSpeechSynthesis'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { useAudioRecorder } from '../../hooks/useAudioRecorder'
@@ -147,27 +148,14 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
 
       {!attempted ? (
         <div className="space-y-3">
-          {/* Bosib-turib-gapirish (push-to-talk): bosib turing → gapiring → qo'yib yuboring */}
-          <div className="flex flex-col items-center gap-2">
-            <button
-              onPointerDown={(e) => { e.preventDefault(); try { e.currentTarget.setPointerCapture(e.pointerId) } catch { /* noop */ } startRecord() }}
-              onPointerUp={(e) => { try { e.currentTarget.releasePointerCapture(e.pointerId) } catch { /* noop */ } stopRecord() }}
-              onPointerCancel={(e) => { try { e.currentTarget.releasePointerCapture(e.pointerId) } catch { /* noop */ } stopRecord() }}
-              onContextMenu={(e) => e.preventDefault()}
-              className={`w-20 h-20 rounded-full text-white shadow-lg transition flex items-center justify-center select-none touch-none ${
-                recording
-                  ? 'bg-rose-500 scale-110 animate-pulse ring-4 ring-rose-200 dark:ring-rose-900'
-                  : 'bg-gradient-to-br from-primary-500 to-primary-700 active:scale-95 hover:from-primary-600 hover:to-primary-800'
-              }`}
-              aria-label={recording ? "Yozilmoqda — qo'yib yuboring" : 'Bosib turib gapiring'}
-            >
-              {recording ? <Square size={24} fill="white" /> : <Mic size={28} className="text-white" />}
-            </button>
-            <p className={`text-xs font-semibold text-center ${recording ? 'text-rose-500 animate-pulse' : 'text-gray-500 dark:text-gray-400'}`}>
-              {recording ? "🎤 Gapiring… (qo'yib yuboring)" : '🎤 Bosib turib gapiring'}
-            </p>
-            {recording && sr.interim && <p className="text-xs text-gray-400 italic">"{sr.interim}"</p>}
-          </div>
+          {/* Yagona push-to-talk(+lock) mikrofon — butun Speaking Path bilan bir xil */}
+          <HoldMicButton
+            isRecording={recording}
+            onStart={startRecord}
+            onStop={stopRecord}
+            idleLabel="🎤 Bosib turib gapiring"
+            interim={sr.interim}
+          />
 
           {/* type-to-recall fallback (faqat yozmaganda) */}
           {!recording && (
