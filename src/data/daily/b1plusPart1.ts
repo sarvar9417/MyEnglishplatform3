@@ -6,6 +6,15 @@ export const narrativeTensesB1plus: DailyLesson = {
   subtitle: "Past Simple, Past Continuous, Past Perfect, Past Perfect Continuous — hikoya qilish san'ati",
   level: 'B1+',
   day: 64,
+  reading: {
+    passage: "A Night to Remember\n\nIt was almost midnight when Aziz finally reached the village. He had been driving for six hours, and the rain had not stopped once. While he was looking for his grandmother's house, the car suddenly stopped. He realised that he had forgotten to check the fuel before leaving the city.\n\nAziz remembered that his grandmother lived near the old bridge, so he started walking. The wind was blowing hard, and the streets were empty. After he had walked for twenty minutes, he saw a warm light in a window. His grandmother had been waiting for him all evening. When she opened the door, she smiled and said she had already prepared his favourite soup.",
+    questions: [
+      { id: 80640, type: 'multiple-choice' as const, question: "What had Aziz forgotten to do before leaving?", options: ["Call his grandmother","Check the fuel","Take an umbrella","Fix the car"], correctIndex: 1, explanation: "Past Perfect 'had forgotten' — oldin sodir bo'lgan ish." },
+      { id: 80641, type: 'multiple-choice' as const, question: "Which tense describes the background ('The wind was blowing')?", options: ["Past Simple","Past Continuous","Past Perfect","Present Perfect"], correctIndex: 1, explanation: "Past Continuous — fon harakati." },
+      { id: 80642, type: 'multiple-choice' as const, question: "What does 'had been waiting' tell us?", options: ["A short action","A finished single action","A continuous action up to a past point","A future plan"], correctIndex: 2, explanation: "Past Perfect Continuous — o'tmishdagi nuqtagacha davom etgan." },
+      { id: 80643, type: 'multiple-choice' as const, question: "Put the events in order: she prepared the soup / he arrived.", options: ["He arrived, then she prepared it","She prepared it before he arrived","At the same time","Cannot tell"], correctIndex: 1, explanation: "'had already prepared' — kelishidan oldin tayyorlagan." },
+    ]
+  },
   writing: {
     prompt: "Tell a short story about a memorable day or an unexpected event. Set the scene, describe what was happening, and explain what had happened before. Use Past Simple, Past Continuous, and Past Perfect.",
     wordLimit: 100,
@@ -147,6 +156,15 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
   subtitle: 'Defining, Non-defining, Whom, Whose, Where, When \u2014 murakkab gap qurilishi',
   level: 'B1+',
   day: 65,
+  reading: {
+    passage: "The Teacher Who Changed Everything\n\nMr. Karimov, who taught English for thirty years, was the kind of person whom students never forgot. The school where he worked was small, but the lessons that he gave were unforgettable. He believed that every student, whether talented or not, deserved attention.\n\nThere was one student, whose name was Dilshod, who almost left school. The day when Mr. Karimov noticed him was an ordinary Monday. The book that he lent Dilshod, which was old and full of notes, became the boy's treasure. Years later, Dilshod, who is now a teacher himself, often talks about the man whose patience changed his life.",
+    questions: [
+      { id: 80650, type: 'multiple-choice' as const, question: "In 'the students whom he never forgot', why is 'whom' used?", options: ["Subject of the verb","Object of the verb","Possession","Place"], correctIndex: 1, explanation: "'whom' — to'ldiruvchi (object) uchun." },
+      { id: 80651, type: 'multiple-choice' as const, question: "'Dilshod, who is now a teacher, ...' — what kind of clause is this?", options: ["Defining","Non-defining","Reduced","Time clause"], correctIndex: 1, explanation: "Vergul bilan — non-defining (qo'shimcha ma'lumot)." },
+      { id: 80652, type: 'multiple-choice' as const, question: "Which word shows possession?", options: ["who","which","whose","where"], correctIndex: 2, explanation: "'whose' — egalik bildiradi." },
+      { id: 80653, type: 'multiple-choice' as const, question: "'The school where he worked' — 'where' refers to a...", options: ["person","time","place","reason"], correctIndex: 2, explanation: "'where' — joy uchun." },
+    ]
+  },
   writing: {
     prompt: "Describe a person, a place, and an object that are important to you. Add extra information using defining and non-defining relative clauses with 'who', 'whom', 'whose', 'where', and 'when'.",
     wordLimit: 90,
@@ -299,6 +317,15 @@ export const participleClausesB1plus: DailyLesson = {
   subtitle: 'Present Participle, Past Participle, Perfect Participle \u2014 qisqa va samarali gap tuzish',
   level: 'B1+',
   day: 66,
+  reading: {
+    passage: "Lost in the Mountains\n\nWalking along the narrow path, the two hikers did not notice the dark clouds above them. Surrounded by tall trees, they felt safe at first. The storm, having started suddenly, soon covered everything in fog.\n\nNot knowing which way to go, they decided to wait. Exhausted and cold, they sat under a large rock. A man living nearby, hearing their voices, came to help. Having spent many years in those mountains, he guided them down easily. Rescued at last, the hikers thanked him again and again. Looking back, they understood how dangerous their mistake had been.",
+    questions: [
+      { id: 80660, type: 'multiple-choice' as const, question: "'Walking along the path' replaces which clause?", options: ["Because they walked","While they were walking","After they walked","If they walked"], correctIndex: 1, explanation: "Present participle — bir vaqtda sodir bo'layotgan harakat." },
+      { id: 80661, type: 'multiple-choice' as const, question: "'Surrounded by trees' is a...", options: ["present participle","past participle clause","gerund","infinitive"], correctIndex: 1, explanation: "Past participle — passiv ma'no (ular o'ralgan edi)." },
+      { id: 80662, type: 'multiple-choice' as const, question: "'Having spent many years there' shows the action was...", options: ["at the same time","earlier than the main verb","in the future","impossible"], correctIndex: 1, explanation: "Perfect participle — oldinroq sodir bo'lgan." },
+      { id: 80663, type: 'multiple-choice' as const, question: "Why use participle clauses here?", options: ["To make text longer","To make writing shorter and more elegant","To ask questions","To show the future"], correctIndex: 1, explanation: "Participle clause — gaplarni qisqartiradi." },
+    ]
+  },
   writing: {
     prompt: "Describe a busy scene or a process. Make your writing shorter and more elegant by joining ideas with participle clauses (-ing, -ed, having + past participle).",
     wordLimit: 90,
@@ -441,6 +468,15 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
   subtitle: 'To + V, V-ing \u2014 murakkab verb patternlar va ma\u2019no farqlari',
   level: 'B1+',
   day: 67,
+  reading: {
+    passage: "Two Roads\n\nWhen Nodira finished university, she had to make a difficult choice. She remembered promising her father to find a stable job, but she also wanted to try acting. She stopped to think about both options carefully.\n\nHer friend suggested applying for a teaching post. \"You should try teaching,\" she said. But Nodira could not imagine spending her whole life in one classroom. She regretted not telling her family the truth earlier. Finally, she decided to follow her dream. She will never forget standing on a stage for the first time, and she does not regret making that choice.",
+    questions: [
+      { id: 80670, type: 'multiple-choice' as const, question: "'remembered promising' means she...", options: ["will promise later","recalls a past promise","forgot the promise","broke the promise"], correctIndex: 1, explanation: "'remember + -ing' — o'tgan xotira." },
+      { id: 80671, type: 'multiple-choice' as const, question: "'stopped to think' means she...", options: ["stopped thinking","paused in order to think","never thought","thought too much"], correctIndex: 1, explanation: "'stop + to V' — maqsad." },
+      { id: 80672, type: 'multiple-choice' as const, question: "'regretted not telling' refers to...", options: ["a future regret","regret about the past","a plan","a promise"], correctIndex: 1, explanation: "'regret + -ing' — o'tmish uchun afsus." },
+      { id: 80673, type: 'multiple-choice' as const, question: "'decided to follow' uses which form?", options: ["gerund","infinitive","past participle","base verb"], correctIndex: 1, explanation: "'decide + to V1'." },
+    ]
+  },
   writing: {
     prompt: "Write about choices and changes in your life. Use verbs whose meaning changes with -ing or 'to' — for example 'remember', 'stop', 'try', 'regret', and 'forget'.",
     wordLimit: 85,
@@ -584,6 +620,15 @@ export const modalPerfectsB1plus: DailyLesson = {
   subtitle: 'Must have, Might have, Should have, Could have, Would have \u2014 o\u2018tmish haqida taxmin va afsus',
   level: 'B1+',
   day: 68,
+  reading: {
+    passage: "The Missing Keys\n\nWhen Sardor came home, the door was open. \"Someone must have entered the house,\" he thought, his heart beating fast. But nothing was missing. \"I might have left the door open myself,\" he said quietly. He could have lost his keys at work, or he may have dropped them on the bus.\n\nHe should have been more careful that morning. If he had checked his pockets, this would not have happened. Later, his sister called. \"You must have left your keys here,\" she laughed. Sardor felt relieved. He needn't have worried at all.",
+    questions: [
+      { id: 80680, type: 'multiple-choice' as const, question: "'must have entered' shows the speaker is...", options: ["almost certain","not sure","asking","guessing wildly"], correctIndex: 0, explanation: "'must have' — o'tmish haqida ishonchli xulosa." },
+      { id: 80681, type: 'multiple-choice' as const, question: "'might have left' expresses...", options: ["certainty","possibility","obligation","ability"], correctIndex: 1, explanation: "'might/may have' — ehtimollik." },
+      { id: 80682, type: 'multiple-choice' as const, question: "'should have been more careful' shows...", options: ["a future plan","regret/criticism about the past","ability","permission"], correctIndex: 1, explanation: "'should have' — o'tmish uchun afsus/tanqid." },
+      { id: 80683, type: 'multiple-choice' as const, question: "'needn't have worried' means...", options: ["he had to worry","worrying was unnecessary","he never worried","he will worry"], correctIndex: 1, explanation: "'needn't have' — keraksiz qilingan ish." },
+    ]
+  },
   writing: {
     prompt: "Think about a past situation that did not go as planned. Speculate about what happened and express regret using 'must have', 'might have', 'should have', 'could have', and 'would have'.",
     wordLimit: 90,
@@ -732,6 +777,15 @@ export const emphasisDoesB1plus: DailyLesson = {
   subtitle: 'Do, Does, Did \u2014 gapga kuch va urg\u2018u berish san\u2018ati',
   level: 'B1+',
   day: 69,
+  reading: {
+    passage: "Believe Me\n\nMany people thought that Kamola did not work hard. \"But I do study every night,\" she insisted. \"I did finish all my homework, and I do care about my grades.\" Her teacher smiled. \"I know you do try,\" he said.\n\nKamola wanted to prove them wrong. She did pass the final exam with the highest mark. \"You see, I did tell you the truth,\" she said. Even her classmates admitted that she did deserve the prize. Sometimes one strong word does make a difference, and Kamola's example does show that effort matters.",
+    questions: [
+      { id: 80690, type: 'multiple-choice' as const, question: "Why does Kamola say 'I DO study every night'?", options: ["To ask a question","To add emphasis / contradict","To show the future","To show the past only"], correctIndex: 1, explanation: "Emphatic 'do' — kuch berish, e'tirozga javob." },
+      { id: 80691, type: 'multiple-choice' as const, question: "In 'I DID finish', the main verb is in...", options: ["past form","base form","-ing form","past participle"], correctIndex: 1, explanation: "'did' + base verb (finish, not finished)." },
+      { id: 80692, type: 'multiple-choice' as const, question: "'one strong word does make a difference' — 'does' here...", options: ["asks something","emphasises the statement","shows possibility","is a mistake"], correctIndex: 1, explanation: "Emphatic 'does' uchinchi shaxs uchun." },
+      { id: 80693, type: 'multiple-choice' as const, question: "Emphatic do/does/did is used to...", options: ["form questions only","strengthen or insist on a statement","make negatives","show the future"], correctIndex: 1, explanation: "Tasdiqni kuchaytirish uchun." },
+    ]
+  },
   writing: {
     prompt: "Write a paragraph defending an opinion or correcting a misunderstanding. Use emphatic 'do/does/did' to make your statements stronger.",
     wordLimit: 80,
@@ -874,6 +928,15 @@ export const frontingB1plus: DailyLesson = {
   subtitle: 'Gap bo\u2018laklarini oldinga chiqarish \u2014 urg\u2018u va stilistik ta\u2019sir',
   level: 'B1+',
   day: 70,
+  reading: {
+    passage: "On the Top of the Hill\n\nOn the top of the hill stood an old fortress. Never had the travellers seen such a beautiful view. In the distance rose the blue mountains, and below them lay a quiet green valley.\n\nRarely do tourists visit this place, so it remains peaceful. So tired were the travellers that they sat down at once. Only after a long rest did they continue. Little did they know that a small village waited just behind the hill. Here, among the trees, they found a tea house. Seldom had they tasted tea so sweet.",
+    questions: [
+      { id: 80700, type: 'multiple-choice' as const, question: "'On the top of the hill stood a fortress' — why is the order changed?", options: ["It is a mistake","For emphasis/style (fronting)","To ask a question","To show the future"], correctIndex: 1, explanation: "Fronting — joy iborasi oldinga chiqarilgan." },
+      { id: 80701, type: 'multiple-choice' as const, question: "After 'Never had the travellers seen', the order is...", options: ["normal","inverted (auxiliary before subject)","a question","passive"], correctIndex: 1, explanation: "Negativ fronting — inversiya kerak." },
+      { id: 80702, type: 'multiple-choice' as const, question: "'Rarely do tourists visit' — which word triggers inversion?", options: ["tourists","visit","Rarely","do"], correctIndex: 2, explanation: "Negativ ravish (Rarely) inversiyaga sabab." },
+      { id: 80703, type: 'multiple-choice' as const, question: "Fronting is mainly used to...", options: ["save space","add emphasis and dramatic effect","ask questions","make negatives"], correctIndex: 1, explanation: "Urg'u va stilistik ta'sir uchun." },
+    ]
+  },
   writing: {
     prompt: "Write a descriptive or dramatic paragraph. Move some phrases to the front of your sentences for emphasis and style (place, time, or negative adverbials).",
     wordLimit: 85,
@@ -1016,6 +1079,15 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
   subtitle: "So'zlarni tushirib qoldirish va o'rniga boshqa so'z ishlatish \u2014 qisqa va tabiiy gap",
   level: 'B1+',
   day: 71,
+  reading: {
+    passage: "A Short Conversation\n\n\"Are you coming to the party?\" asked Bek. \"Yes, I am,\" said Aziza. \"And is your brother coming too?\" \"No, he isn't, but my sister is.\"\n\nBek wanted to buy a gift. \"Should I bring flowers or chocolates?\" \"Bring the red ones,\" Aziza replied, \"they are nicer than the white ones.\" \"I think so too,\" he agreed. \"I can drive us there.\" \"So can I,\" she said, \"but yours is faster.\" At the end, both of them were happy, and so was everyone else at the party.",
+    questions: [
+      { id: 80710, type: 'multiple-choice' as const, question: "'Yes, I am' is short for...", options: ["Yes, I am coming","Yes, I will","Yes, I do","Yes, I can"], correctIndex: 0, explanation: "Ellipsis — takroriy 'coming' tushirilgan." },
+      { id: 80711, type: 'multiple-choice' as const, question: "'Bring the red ones' — 'ones' replaces...", options: ["a verb","flowers (a noun)","a clause","nothing"], correctIndex: 1, explanation: "Substitution — 'ones' otni almashtiradi." },
+      { id: 80712, type: 'multiple-choice' as const, question: "'I think so too' — 'so' replaces...", options: ["a noun","a whole clause","an adjective","a place"], correctIndex: 1, explanation: "'so' butun gapni almashtiradi." },
+      { id: 80713, type: 'multiple-choice' as const, question: "'So can I' is a way to...", options: ["disagree","agree with a positive statement","ask a question","make a negative"], correctIndex: 1, explanation: "Ijobiyga qo'shilish: So + auxiliary + subject." },
+    ]
+  },
   writing: {
     prompt: "Write a natural dialogue between two friends making plans. Avoid repeating words by using ellipsis and substitution ('one', 'so', 'do', 'too').",
     wordLimit: 80,
@@ -1158,6 +1230,15 @@ export const concessionB1plus: DailyLesson = {
   subtitle: "Although, Even though, Despite, In spite of, However \u2014 qarama-qarshilik va to'siqsizlik",
   level: 'B1+',
   day: 72,
+  reading: {
+    passage: "A Difficult Decision\n\nAlthough the job offer was excellent, Jasur was not sure. Despite the high salary, he would have to move abroad. Even though his family supported him, he felt afraid of leaving home.\n\nIn spite of his doubts, he decided to accept. The work was hard; however, he learned a lot. Although he missed his country, he made new friends. Despite being far away, he called his parents every week. He was tired, but happy. However difficult the first year was, Jasur never regretted his brave choice.",
+    questions: [
+      { id: 80720, type: 'multiple-choice' as const, question: "'Although the job was excellent, he was not sure' shows...", options: ["a result","a contrast","a reason","a time"], correctIndex: 1, explanation: "'Although' — qarama-qarshilik." },
+      { id: 80721, type: 'multiple-choice' as const, question: "After 'Despite' and 'In spite of' we use...", options: ["a full clause","a noun or -ing form","a question","the future"], correctIndex: 1, explanation: "Despite/In spite of + noun/-ing." },
+      { id: 80722, type: 'multiple-choice' as const, question: "'The work was hard; however, he learned a lot.' — 'however'...", options: ["joins two nouns","starts a contrasting sentence","shows a reason","is a mistake"], correctIndex: 1, explanation: "'however' yangi gapni boshlaydi, qarama-qarshilik." },
+      { id: 80723, type: 'multiple-choice' as const, question: "Which means the same as 'Although he was tired'?", options: ["Because he was tired","Despite being tired","So he was tired","When he was tired"], correctIndex: 1, explanation: "'Although + clause' = 'Despite + -ing'." },
+    ]
+  },
   writing: {
     prompt: "Write about a difficult decision with arguments on both sides. Show contrast using 'although', 'even though', 'despite', 'in spite of', and 'however'.",
     wordLimit: 90,
