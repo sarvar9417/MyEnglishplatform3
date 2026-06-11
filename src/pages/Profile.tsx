@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useStore } from '../store/useStore'
 import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
+import { useI18n } from '../i18n'
+import type { TranslationStrings } from '../i18n/types'
 import type { Level } from '../store/types'
 import {
   User, Mail, Medal, Target, Calendar,
@@ -81,26 +83,26 @@ type SortBy = 'xp' | 'streak' | 'words'
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
-const LEVELS: { value: Level; label: string; desc: string; color: string }[] = [
-  { value: 'A2+', label: 'A2+', desc: 'Boshlang\'ich',    color: 'bg-gray-100 text-gray-600 border-gray-200' },
-  { value: 'B1',  label: 'B1',  desc: 'O\'rta',            color: 'bg-b1-100 text-b1-700 border-b1-200' },
-  { value: 'B1+', label: 'B1+', desc: 'O\'rta yuqori',     color: 'bg-b1-100 text-b1-800 border-b1-200' },
-  { value: 'B2',  label: 'B2',  desc: 'Yuqori (maqsad)',   color: 'bg-b2-100 text-b2-700 border-b2-200' },
+const LEVELS: { value: Level; label: string; descKey: string; color: string }[] = [
+  { value: 'A2+', label: 'A2+', descKey: 'profile.levelA2Plus',    color: 'bg-gray-100 text-gray-600 border-gray-200' },
+  { value: 'B1',  label: 'B1',  descKey: 'profile.levelB1',        color: 'bg-b1-100 text-b1-700 border-b1-200' },
+  { value: 'B1+', label: 'B1+', descKey: 'profile.levelB1Plus',    color: 'bg-b1-100 text-b1-800 border-b1-200' },
+  { value: 'B2',  label: 'B2',  descKey: 'profile.levelB2',        color: 'bg-b2-100 text-b2-700 border-b2-200' },
 ]
 
-const PROFILE_TABS: { id: ProfileTab; label: string; emoji: string }[] = [
-  { id: 'info',         label: 'Profil',    emoji: '👤' },
-  { id: 'progress',     label: 'Progress',  emoji: '📊' },
-  { id: 'achievements', label: 'Nishonlar', emoji: '🏆' },
-  { id: 'leaders',      label: 'Reyting',   emoji: '🏅' },
+const PROFILE_TABS: { id: ProfileTab; labelKey: string; emoji: string }[] = [
+  { id: 'info',         labelKey: 'profile.tabInfo',        emoji: '👤' },
+  { id: 'progress',     labelKey: 'profile.tabProgress',    emoji: '📊' },
+  { id: 'achievements', labelKey: 'profile.tabAchievements',emoji: '🏆' },
+  { id: 'leaders',      labelKey: 'profile.tabLeaders',     emoji: '🏅' },
 ]
 
 const CATEGORIES: AchievementCategory[] = ['day', 'xp', 'streak', 'words', 'games', 'mocktest']
 
-const LEADER_TABS: { key: SortBy; label: string; Icon: typeof Trophy; color: string; bg: string }[] = [
-  { key: 'xp',     label: 'XP Reyting',     Icon: Zap,      color: 'text-yellow-600', bg: 'bg-yellow-50' },
-  { key: 'streak', label: 'Streak',          Icon: Flame,    color: 'text-orange-600', bg: 'bg-orange-50' },
-  { key: 'words',  label: "So'zlar",         Icon: BookCopy, color: 'text-b1-600',    bg: 'bg-b1-50' },
+const LEADER_TABS: { key: SortBy; labelKey: string; Icon: typeof Trophy; color: string; bg: string }[] = [
+  { key: 'xp',     labelKey: 'profile.leaderSortXP',     Icon: Zap,      color: 'text-yellow-600', bg: 'bg-yellow-50' },
+  { key: 'streak', labelKey: 'profile.leaderSortStreak', Icon: Flame,    color: 'text-orange-600', bg: 'bg-orange-50' },
+  { key: 'words',  labelKey: 'profile.leaderSortWords',  Icon: BookCopy, color: 'text-b1-600',    bg: 'bg-b1-50' },
 ]
 
 // ── Progress Helpers ──────────────────────────────────────────────────────────
@@ -180,6 +182,7 @@ function heatColor(hours: number) {
 // ── Progress Sub-Components ────────────────────────────────────────────────────
 
 function StreakCalendar({ days }: { days: DayData[] }) {
+  const { t } = useI18n()
   const weeks: DayData[][] = []
   for (let i = 0; i < days.length; i += 7) {
     weeks.push(days.slice(i, i + 7))
@@ -218,11 +221,11 @@ function StreakCalendar({ days }: { days: DayData[] }) {
         ))}
       </div>
       <div className="flex items-center gap-1.5 mt-3">
-        <span className="text-[11px] text-gray-400">Kam</span>
+        <span className="text-[11px] text-gray-400">{t('profile.progress.heatLow')}</span>
         {['bg-gray-100', 'bg-green-200', 'bg-green-400', 'bg-green-600', 'bg-green-800'].map((cls) => (
           <div key={cls} className={`w-3 h-3 rounded-sm ${cls}`} />
         ))}
-        <span className="text-[11px] text-gray-400">Ko'p (14h+)</span>
+        <span className="text-[11px] text-gray-400">{t('profile.progress.heatHigh')}</span>
       </div>
     </div>
   )
@@ -241,11 +244,12 @@ function ChartCard({ title, sub, children }: { title: string; sub?: string; chil
 }
 
 function HoursTip({ active, payload, label }: { active?: boolean; payload?: { value: number }[]; label?: string }) {
+  const { t } = useI18n()
   if (!active || !payload?.length) return null
   return (
     <div className="bg-white border border-gray-100 shadow-card rounded-xl px-3 py-2 text-xs">
       <p className="font-semibold text-gray-700 mb-1">{label}</p>
-      <p className="text-primary-600">{payload[0]?.value} soat</p>
+      <p className="text-primary-600">{t('profile.progress.hoursTooltip', { value: String(payload[0]?.value) })}</p>
     </div>
   )
 }
@@ -270,12 +274,13 @@ function AchievementCard({
   unlockCount: number
   totalUsers: number
 }) {
+  const { t } = useI18n()
   const [animate, setAnimate] = useState(false)
 
   useEffect(() => {
     if (isNew) {
-      const t = setTimeout(() => setAnimate(true), 100)
-      return () => clearTimeout(t)
+      const timer = setTimeout(() => setAnimate(true), 100)
+      return () => clearTimeout(timer)
     }
   }, [isNew])
 
@@ -328,7 +333,7 @@ function AchievementCard({
             <div className="flex items-center gap-1 mt-2">
               <Users size={11} className="text-gray-400" />
               <span className="text-[11px] text-gray-400">
-                {unlockCount} / {totalUsers} foydalanuvchi
+                {unlockCount} / {totalUsers} {t('profile.achievements.users')}
               </span>
               <div className="flex-1 max-w-[60px] ml-1">
                 <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
@@ -382,9 +387,10 @@ function LeaderRow({
   isMe:  boolean
   achievementCount: number
 }) {
+  const { t } = useI18n()
   const value   = getField(row, sort)
   const icon    = rankIcon(index)
-  const initial = (row.name ?? 'Foydalanuvchi').charAt(0).toUpperCase()
+  const initial = (row.name ?? t('profile.leaderRow.userFallback')).charAt(0).toUpperCase()
 
   return (
     <div
@@ -409,8 +415,8 @@ function LeaderRow({
 
       <div className="flex-1 min-w-0">
         <p className={`text-sm font-semibold truncate ${isMe ? 'text-primary-700 dark:text-primary-300' : 'text-gray-800 dark:text-gray-200'}`}>
-          {row.name ?? 'Foydalanuvchi'}
-          {isMe && <span className="ml-1.5 text-[11px] text-primary-500 dark:text-primary-400 font-normal">(siz)</span>}
+          {row.name ?? t('profile.leaderRow.userFallback')}
+          {isMe && <span className="ml-1.5 text-[11px] text-primary-500 dark:text-primary-400 font-normal">{t('profile.meLabel')}</span>}
         </p>
         <p className="text-[11px] text-gray-400 dark:text-gray-500">
           {formatValue(value, sort)}
@@ -432,6 +438,7 @@ function LeaderRow({
 // ── Main Profile Component ────────────────────────────────────────────────────
 
 export default function Profile() {
+  const { t } = useI18n()
   const [activeTab, setActiveTab] = useState<ProfileTab>('info')
 
   const { user, signOut } = useAuth()
@@ -502,7 +509,7 @@ export default function Profile() {
   ))
 
   const hour = new Date().getHours()
-  const greeting = hour < 12 ? 'Xayrli tong' : hour < 18 ? 'Xayrli kun' : 'Xayrli kech'
+  const greeting = hour < 12 ? t('profile.greetingMorning') : hour < 18 ? t('profile.greetingAfternoon') : t('profile.greetingEvening')
 
   // ── Progress Tab Effects ────────────────────────────────────────────────────
 
@@ -709,7 +716,7 @@ export default function Profile() {
 
     const trimmedName = name.trim()
     if (trimmedName.length < 2) {
-      setError("Ism kamida 2 belgidan iborat bo'lishi kerak")
+      setError(t('profile.info.errorNameTooShort'))
       setSaving(false)
       return
     }
@@ -736,7 +743,7 @@ export default function Profile() {
         })
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Saqlashda xatolik')
+      setError(e instanceof Error ? e.message : t('profile.info.errorSaveFailed'))
       setSaving(false)
       return
     }
@@ -798,13 +805,13 @@ export default function Profile() {
       return (
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-[11px]">
-            <span className="w-10 text-right text-gray-400 font-medium">Siz</span>
+            <span className="w-10 text-right text-gray-400 font-medium">{t('profile.studyBuddy.youLabel')}</span>
             <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
               <div className="h-full bg-primary-500 rounded-full" style={{ width: `${(myVal / max) * 100}%` }} />
             </div>
           </div>
           <div className="flex items-center gap-2 text-[11px]">
-            <span className="w-10 text-right text-gray-400 font-medium">Buddy</span>
+            <span className="w-10 text-right text-gray-400 font-medium">{t('profile.studyBuddy.buddyLabel')}</span>
             <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
               <div className="h-full bg-green-500 rounded-full" style={{ width: `${(buddyVal / max) * 100}%` }} />
             </div>
@@ -816,10 +823,10 @@ export default function Profile() {
     return (
       <div className="card">
         <h3 className="font-semibold text-sm text-gray-900 mb-3 flex items-center gap-2">
-          🤝 Birga o'qish
+          {t('profile.studyBuddy.title')}
         </h3>
         {loading ? (
-          <div className="text-sm text-gray-400">Yuklanmoqda...</div>
+          <div className="text-sm text-gray-400">{t('profile.studyBuddy.loading')}</div>
         ) : buddy ? (
           <div className="space-y-4">
             {/* Buddy header */}
@@ -830,7 +837,7 @@ export default function Profile() {
               <div className="flex-1">
                 <p className="text-sm font-bold text-gray-800 dark:text-white">{buddy.name}</p>
                 <p className="text-[11px] text-green-600 dark:text-green-400">
-                  Birgalikda o'qiyapsizlar
+                  {t('profile.studyBuddy.studyingTogether')}
                 </p>
               </div>
               {/* Duo streak */}
@@ -838,30 +845,30 @@ export default function Profile() {
                 <div className="flex items-center gap-1">
                   <Flame size={12} className={duoStreakToday ? 'text-orange-500' : 'text-gray-400'} />
                   <span className={`text-xs font-bold ${duoStreakToday ? 'text-orange-600' : 'text-gray-400'}`}>
-                    {duoStreakToday ? '🔥 Bugun' : '⏸️ Bugun emas'}
+                    {duoStreakToday ? t('profile.studyBuddy.duoStreakToday') : t('profile.studyBuddy.duoStreakNotToday')}
                   </span>
                 </div>
-                <span className="text-[11px] text-gray-400">Duo streak</span>
+                <span className="text-[11px] text-gray-400">{t('profile.studyBuddy.duoStreakLabel')}</span>
               </div>
             </div>
 
             {/* Progress comparison */}
             {!buddyLoading && (
               <div className="space-y-3">
-                <p className="text-xs font-semibold text-gray-700 dark:text-gray-300">📊 Progress solishtirish</p>
+                <p className="text-xs font-semibold text-gray-700 dark:text-gray-300">{t('profile.studyBuddy.progressTitle')}</p>
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-2 border border-gray-100 dark:border-gray-700">
-                    <p className="text-[11px] text-gray-400">XP</p>
+                    <p className="text-[11px] text-gray-400">{t('profile.studyBuddy.xpLabel')}</p>
                     <p className="text-sm font-bold text-primary-600">{totalXP.toLocaleString()}</p>
                     <p className="text-[11px] text-green-600">{buddyXP.toLocaleString()}</p>
                   </div>
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-2 border border-gray-100 dark:border-gray-700">
-                    <p className="text-[11px] text-gray-400">Streak</p>
-                    <p className="text-sm font-bold text-orange-500">{streak} kun</p>
-                    <p className="text-[11px] text-green-600">{buddyStreak} kun</p>
+                    <p className="text-[11px] text-gray-400">{t('profile.studyBuddy.streakLabel')}</p>
+                    <p className="text-sm font-bold text-orange-500">{streak} {t('profile.info.dayLabel').toLowerCase()}</p>
+                    <p className="text-[11px] text-green-600">{buddyStreak} {t('profile.info.dayLabel').toLowerCase()}</p>
                   </div>
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-2 border border-gray-100 dark:border-gray-700">
-                    <p className="text-[11px] text-gray-400">So'zlar</p>
+                    <p className="text-[11px] text-gray-400">{t('profile.studyBuddy.wordsLabel')}</p>
                     <p className="text-sm font-bold text-b1-600">{totalWordsLearned}</p>
                     <p className="text-[11px] text-green-600">{buddyWords}</p>
                   </div>
@@ -869,7 +876,7 @@ export default function Profile() {
 
                 {/* XP Bar comparison */}
                 <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-3">
-                  <p className="text-[11px] font-semibold text-gray-500 mb-2">XP taqqoslash</p>
+                  <p className="text-[11px] font-semibold text-gray-500 mb-2">{t('profile.studyBuddy.comparisonTitle')}</p>
                   {myBar(totalXP, buddyXP)}
                 </div>
               </div>
@@ -886,9 +893,9 @@ export default function Profile() {
                 }`}
               >
                 {challengeSent ? (
-                  <>✅ Challenge yuborildi!</>
+                  <>{t('profile.studyBuddy.challengeSent')}</>
                 ) : (
-                  <><Zap size={14} /> Challenge yuborish</>
+                  <><Zap size={14} /> {t('profile.studyBuddy.challengeSend')}</>
                 )}
               </button>
             </div>
@@ -898,7 +905,7 @@ export default function Profile() {
             <div className="flex gap-2">
               <input
                 type="email"
-                placeholder="Do'stingizning email..."
+                placeholder={t('profile.studyBuddy.emailPlaceholder')}
                 value={buddyEmail}
                 onChange={e => setBuddyEmail(e.target.value)}
                 className="input flex-1 text-sm"
@@ -912,12 +919,12 @@ export default function Profile() {
                   if (ok) {
                     setBuddy({ id: '', name: buddyEmail.trim() })
                   } else {
-                    setError('Foydalanuvchi topilmadi. Emailni tekshiring.')
+                    setError(t('profile.studyBuddy.userNotFound'))
                   }
                 }}
                 className="btn-primary text-sm px-4"
               >
-                Qo'shish
+                {t('profile.studyBuddy.addButton')}
               </button>
             </div>
             {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
@@ -931,8 +938,8 @@ export default function Profile() {
               <Bot size={14} className="text-white" />
             </div>
             <div className="flex-1">
-              <p className="text-xs font-bold text-gray-800 dark:text-gray-200">AI bilan o'qish</p>
-              <p className="text-[11px] text-gray-400">Zaif tomonlaringizni tahlil qiladi, maslahat beradi, ovozli suhbat</p>
+              <p className="text-xs font-bold text-gray-800 dark:text-gray-200">{t('profile.studyBuddy.aiTitle')}</p>
+              <p className="text-[11px] text-gray-400">{t('profile.studyBuddy.aiDesc')}</p>
             </div>
           </div>
           <button
@@ -940,7 +947,7 @@ export default function Profile() {
             className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 text-xs font-semibold hover:bg-purple-50 dark:hover:bg-purple-900/30 border border-purple-200 dark:border-purple-700 transition-colors"
           >
             <MessageCircle size={14} />
-            AI bilan suhbatlashish
+            {t('profile.studyBuddy.aiChatButton')}
           </button>
         </div>
       </div>
@@ -956,7 +963,7 @@ export default function Profile() {
             <div className="flex items-center gap-2 mb-3">
               <Trophy size={16} className="text-yellow-500" />
               <h3 className="font-bold text-sm text-gray-900">
-                Profil Badgelari
+                {t('profile.info.badgesTitle')}
               </h3>
             </div>
             <ProfileBadges
@@ -970,10 +977,10 @@ export default function Profile() {
         {/* Quick Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { icon: Flame, value: `${streak}`, label: 'Streak', color: 'text-orange-500', bg: 'bg-orange-50' },
-            { icon: Trophy, value: totalXP.toLocaleString(), label: 'Jami XP', color: 'text-b2-600', bg: 'bg-b2-50' },
-            { icon: Target, value: `Kun ${currentDay}/126`, label: 'Kun', color: 'text-primary-600', bg: 'bg-primary-50' },
-            { icon: Calendar, value: `${daysLeft}`, label: 'Kun qoldi', color: 'text-b1-600', bg: 'bg-b1-50' },
+            { icon: Flame, value: `${streak}`, label: t('profile.info.streakLabel'), color: 'text-orange-500', bg: 'bg-orange-50' },
+            { icon: Trophy, value: totalXP.toLocaleString(), label: t('profile.info.totalXPLabel'), color: 'text-b2-600', bg: 'bg-b2-50' },
+            { icon: Target, value: `${t('profile.info.dayLabel')} ${currentDay}/126`, label: t('profile.info.dayLabel'), color: 'text-primary-600', bg: 'bg-primary-50' },
+            { icon: Calendar, value: `${daysLeft}`, label: t('profile.info.daysLeftLabel'), color: 'text-b1-600', bg: 'bg-b1-50' },
           ].map((stat) => (
             <div key={stat.label} className="card !p-3 sm:!p-4 flex items-center gap-3">
               <div className={`w-10 h-10 rounded-xl ${stat.bg} flex items-center justify-center`}>
@@ -997,7 +1004,7 @@ export default function Profile() {
               <p className="text-lg font-bold text-gray-900 leading-tight">
                 {weeklyWinsLoading ? '...' : weeklyWins}
               </p>
-              <p className="text-[11px] text-gray-500">Tandem Haftalik G'alabalar</p>
+              <p className="text-[11px] text-gray-500">{t('profile.info.weeklyWinsLabel')}</p>
             </div>
           </div>
         )}
@@ -1045,21 +1052,21 @@ export default function Profile() {
         <form onSubmit={handleSave} className="card space-y-5">
           <h2 className="font-bold text-gray-900 text-sm flex items-center gap-2">
             <User size={16} className="text-primary-600" />
-            Shaxsiy ma'lumotlar
+            {t('profile.info.personalInfoTitle')}
           </h2>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
               <div className="flex items-center gap-1.5">
                 <User size={14} className="text-gray-400" />
-                Ism
+                {t('profile.info.nameLabel')}
               </div>
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Ismingiz..."
+              placeholder={t('profile.info.namePlaceholder')}
               required
               minLength={2}
               className="input"
@@ -1070,7 +1077,7 @@ export default function Profile() {
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
               <div className="flex items-center gap-1.5">
                 <Mail size={14} className="text-gray-400" />
-                Email
+                {t('profile.info.emailLabel')}
               </div>
             </label>
             <input
@@ -1079,14 +1086,14 @@ export default function Profile() {
               disabled
               className="input opacity-60 cursor-not-allowed"
             />
-            <p className="text-[11px] text-gray-400 mt-1">Emailni o'zgartirish uchun support bilan bog'laning</p>
+            <p className="text-[11px] text-gray-400 mt-1">{t('profile.info.emailChangeNote')}</p>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
               <div className="flex items-center gap-1.5">
                 <Medal size={14} className="text-gray-400" />
-                Hozirgi daraja
+                {t('profile.info.levelLabel')}
               </div>
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -1102,7 +1109,7 @@ export default function Profile() {
                     }`}
                 >
                   <p className={`font-bold text-sm ${level === l.value ? '' : 'text-gray-700'}`}>{l.label}</p>
-                  <p className="text-[11px] mt-0.5 opacity-70">{l.desc}</p>
+                  <p className="text-[11px] mt-0.5 opacity-70">{t(l.descKey as keyof TranslationStrings)}</p>
                 </button>
               ))}
             </div>
@@ -1111,7 +1118,7 @@ export default function Profile() {
               onClick={() => navigate('/placement-test')}
               className="mt-2 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-dashed border-primary-300 dark:border-primary-700 text-primary-600 dark:text-primary-400 font-semibold text-sm hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
             >
-              <GraduationCap size={15} /> Daraja aniqlash testini topshirish
+              <GraduationCap size={15} /> {t('profile.info.levelTestButton')}
             </button>
           </div>
 
@@ -1121,10 +1128,10 @@ export default function Profile() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <Target size={16} className="text-primary-600" />
-                <span className="font-semibold text-sm text-gray-900">Maqsad</span>
+                <span className="font-semibold text-sm text-gray-900">{t('profile.info.goalTitle')}</span>
               </div>
               <span className="text-xs font-bold text-primary-600">
-                {currentDay}/126 kun
+                {currentDay}/126 {t('profile.info.dayLabel').toLowerCase()}
               </span>
             </div>
             <div className="progress-bar">
@@ -1134,8 +1141,8 @@ export default function Profile() {
               />
             </div>
             <div className="flex justify-between text-[11px] text-gray-500 mt-1.5">
-              <span>Boshlangan: {startDate}</span>
-              <span>Maqsad: {targetDate} ({daysLeft} kun qoldi)</span>
+              <span>{t('profile.info.goalStarted', { date: startDate })}</span>
+              <span>{t('profile.info.goalTarget', { date: targetDate, days: String(daysLeft) })}</span>
             </div>
           </div>
 
@@ -1154,7 +1161,7 @@ export default function Profile() {
                 bg-gradient-to-r from-yellow-400 to-orange-500
                 text-white font-bold rounded-2xl hover:opacity-90 transition-opacity"
             >
-              🏆 B2 Sertifikatni ko'rish
+              {t('profile.info.certButton')}
             </button>
           )}
 
@@ -1165,13 +1172,13 @@ export default function Profile() {
               className="btn-primary flex-1 flex items-center justify-center gap-2 disabled:opacity-60"
             >
               <Save size={16} />
-              {saving ? 'Saqlanmoqda...' : 'Saqlash'}
+              {saving ? t('profile.info.savingButton') : t('profile.info.saveButton')}
             </button>
 
             {saved && (
               <div className="flex items-center gap-1.5 text-sm text-green-600 font-medium animate-slide-in">
                 <CheckCircle size={16} />
-                Saqlandi
+                {t('profile.info.savedLabel')}
               </div>
             )}
           </div>
@@ -1181,27 +1188,27 @@ export default function Profile() {
         <div className="card">
           <h3 className="font-semibold text-sm text-gray-900 mb-3 flex items-center gap-2">
             <User size={15} className="text-gray-400" />
-            Hisob ma'lumotlari
+            {t('profile.info.accountTitle')}
           </h3>
           <div className="space-y-2.5 text-sm">
             <div className="flex items-center justify-between py-1.5">
-              <span className="text-gray-500">Foydalanuvchi ID</span>
+              <span className="text-gray-500">{t('profile.info.userIdLabel')}</span>
               <span className="text-gray-700 font-mono text-xs truncate ml-4 max-w-[200px]">
                 {user?.id ?? '—'}
               </span>
             </div>
             <div className="h-px bg-gray-100" />
             <div className="flex items-center justify-between py-1.5">
-              <span className="text-gray-500">Email tasdiqlangan</span>
+              <span className="text-gray-500">{t('profile.info.emailConfirmedLabel')}</span>
               <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
                 user?.email_confirmed_at ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
               }`}>
-                {user?.email_confirmed_at ? 'Ha' : "Yo'q"}
+                {user?.email_confirmed_at ? t('profile.info.emailConfirmedYes') : t('profile.info.emailConfirmedNo')}
               </span>
             </div>
             <div className="h-px bg-gray-100" />
             <div className="flex items-center justify-between py-1.5">
-              <span className="text-gray-500">Ro'yxatdan o'tgan</span>
+              <span className="text-gray-500">{t('profile.info.registeredAtLabel')}</span>
               <span className="text-gray-700 text-xs">
                 {user?.created_at ? new Date(user.created_at).toLocaleDateString('uz-UZ') : '—'}
               </span>
@@ -1222,7 +1229,7 @@ export default function Profile() {
         {showAIChat && (
           <AIBuddyChatModal
             context={{
-              userName: userName || 'Student',
+              userName: userName || t('profile.userFallback'),
               currentLevel,
               currentDay,
               streak,
@@ -1239,8 +1246,8 @@ export default function Profile() {
         {/* Password Reset Link */}
         <div className="card flex items-center justify-between">
           <div>
-            <p className="font-semibold text-sm text-gray-900">Parolni o'zgartirish</p>
-            <p className="text-xs text-gray-500 mt-0.5">Email orqali parolni tiklash havolasini oling</p>
+            <p className="font-semibold text-sm text-gray-900">{t('profile.info.passwordTitle')}</p>
+            <p className="text-xs text-gray-500 mt-0.5">{t('profile.info.passwordDesc')}</p>
           </div>
           <button
             onClick={async () => {
@@ -1250,11 +1257,11 @@ export default function Profile() {
               await supabase.auth.resetPasswordForEmail(email, {
                 redirectTo: `${window.location.origin}/reset-password`,
               })
-              alert('Parolni tiklash havolasi emailingizga yuborildi!')
+              alert(t('profile.info.passwordResetAlert'))
             }}
             className="flex items-center gap-1 text-sm text-primary-600 font-semibold hover:gap-2 transition-all"
           >
-            Tiklash <ChevronRight size={14} />
+            {t('profile.info.passwordReset')} <ChevronRight size={14} />
           </button>
         </div>
       </div>
@@ -1272,20 +1279,19 @@ export default function Profile() {
     if (currentDay - startDay < 10) return null
 
     const items = [
-      { label: 'Darslar',  before: `${startDay}`,  after: `${currentDay}` },
-      { label: 'XP',       before: `${startXP}`,   after: `${last.cumulativeXP.toLocaleString()}` },
-      { label: "So'zlar",  before: `${startWords}`, after: `${last.totalWords}` },
+      { labelKey: 'profile.progress.growthLessons', before: `${startDay}`,  after: `${currentDay}` },
+      { labelKey: 'profile.progress.growthXP',       before: `${startXP}`,   after: `${last.cumulativeXP.toLocaleString()}` },
+      { labelKey: 'profile.progress.growthWords',  before: `${startWords}`, after: `${last.totalWords}` },
     ]
 
     return (
       <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-5 border border-green-100 dark:border-green-800">
         <h3 className="text-sm font-bold text-gray-800 dark:text-white mb-3">
-          📈 {currentDay - startDay} kunda siz shu qadar o'sdingiz!
+          {t('profile.progress.growthTitle', { days: String(currentDay - startDay) })}
         </h3>
-        <div className="grid grid-cols-3 gap-2">
-          {items.map(item => (
-            <div key={item.label} className="text-center bg-white dark:bg-gray-800 rounded-xl p-2.5">
-              <p className="text-[11px] text-gray-400 mb-1">{item.label}</p>
+        <div className="grid grid-cols-3 gap-2">            {items.map((item, i) => (
+            <div key={i} className="text-center bg-white dark:bg-gray-800 rounded-xl p-2.5">
+              <p className="text-[11px] text-gray-400 mb-1">{t(item.labelKey as keyof TranslationStrings)}</p>
               <p className="text-xs text-gray-400 line-through">{item.before}</p>
               <p className="text-base font-bold text-green-600 dark:text-green-400">{item.after}</p>
             </div>
@@ -1317,27 +1323,27 @@ export default function Profile() {
     return (
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-5 border border-blue-100 dark:border-blue-800">
         <h3 className="text-sm font-bold text-gray-800 dark:text-white mb-3 flex items-center gap-2">
-          🔮 B2 ga qachon yetasiz?
+          {t('profile.progress.predictionTitle')}
         </h3>
         {finishDate ? (
           <>
             <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
-              ~{daysUntilDone} kun
+              {t('profile.progress.predictionDays', { days: String(daysUntilDone) })}
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Taxminan: <span className="font-semibold text-gray-700 dark:text-gray-300">{finishDate}</span>
+              {t('profile.progress.predictionDate', { date: finishDate })}
             </p>
             <p className="text-xs text-gray-400 mt-1">
-              Hozirgi tezlik: haftada {avgDaysPerWeek} kun
+              {t('profile.progress.predictionPace', { days: String(avgDaysPerWeek) })}
             </p>
             {fasterDate && (
               <p className="text-xs text-indigo-500 mt-2">
-                Haftada 1 ta ko'proq dars qilsangiz → {fasterDate} da tugatgan bo'lasiz ⚡
+                {t('profile.progress.predictionFaster', { date: fasterDate })}
               </p>
             )}
           </>
         ) : (
-          <p className="text-sm text-gray-400">Hisoblash uchun ko'proq ma'lumot kerak</p>
+          <p className="text-sm text-gray-400">{t('profile.progress.predictionNoData')}</p>
         )}
       </div>
     )
@@ -1377,15 +1383,15 @@ export default function Profile() {
         {/* Top stat cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
           {[
-            { icon: <Award size={16} />,   color: 'text-b2-600',     label: 'Jami XP',     value: totalXP.toLocaleString()        },
-            { icon: <Flame size={16} />,   color: 'text-orange-500', label: 'Streak',      value: `${supaStreak || streak} kun`   },
-            { icon: <BarChart2 size={16}/>, color: 'text-primary-600',label: "O'rtacha",   value: `${avgHours}h/kun`              },
-            { icon: <TrendingUp size={16}/>,color: 'text-green-600',  label: 'Joriy daraja',value: `Kun ${currentDay}`            },
-          ].map((s) => (
-            <div key={s.label} className="card text-center py-3">
+            { icon: <Award size={16} />,   color: 'text-b2-600',     labelKey: 'profile.progress.totalXPLabel',    value: totalXP.toLocaleString()        },
+            { icon: <Flame size={16} />,   color: 'text-orange-500', labelKey: 'profile.progress.streakLabel',     value: `${supaStreak || streak} ${t('profile.info.dayLabel').toLowerCase()}`   },
+            { icon: <BarChart2 size={16}/>, color: 'text-primary-600',labelKey: 'profile.progress.avgLabel',        value: `${avgHours}h/kun`              },
+            { icon: <TrendingUp size={16}/>,color: 'text-green-600',  labelKey: 'profile.progress.currentDayLabel',    value: `${t('profile.info.dayLabel')} ${currentDay}`            },
+          ].map((s, i) => (
+            <div key={i} className="card text-center py-3">
               <div className={`flex justify-center mb-1 ${s.color}`}>{s.icon}</div>
               <p className="text-lg font-bold text-gray-900">{s.value}</p>
-              <p className="text-[11px] text-gray-500">{s.label}</p>
+              <p className="text-[11px] text-gray-500">{t(s.labelKey as keyof TranslationStrings)}</p>
             </div>
           ))}
         </div>
@@ -1396,7 +1402,7 @@ export default function Profile() {
         {/* Row 1: Bar chart + Radar */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="lg:col-span-2">
-            <ChartCard title="Kunlik o'qish soatlari" sub="Ko'k pog'ona = maqsad (14 soat)">
+            <ChartCard title={t('profile.progress.chartHoursTitle')} sub={t('profile.progress.chartHoursSub')}>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={barData} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
@@ -1415,37 +1421,36 @@ export default function Profile() {
             </ChartCard>
           </div>
 
-          <ChartCard title="Skill Radar" sub="Real natijalar bo'yicha">
+          <ChartCard title={t('profile.progress.chartRadarTitle')} sub={t('profile.progress.chartRadarSub')}>
             <ResponsiveContainer width="100%" height={200}>
               <RadarChart data={radarData} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
                 <PolarGrid stroke="#e5e7eb" />
                 <PolarAngleAxis dataKey="subject" tick={{ fontSize: 10, fill: '#6b7280' }} />
                 <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
                 <Radar
-                  name="Ko'nikmalar"
+                  name={t('profile.progress.chartRadarTitle')}
                   dataKey="value"
                   stroke="#1a56db"
                   fill="#1a56db"
                   fillOpacity={0.25}
                 />
-                <Tooltip
-                  formatter={(v: number) => [`${v}%`, 'Ball']}
-                  contentStyle={{ fontSize: 11, borderRadius: 8 }}
-                />
-              </RadarChart>
-            </ResponsiveContainer>
-          </ChartCard>
-        </div>
+                <Tooltip                formatter={(v: number) => [`${v}%`, 'Score']}
+                contentStyle={{ fontSize: 11, borderRadius: 8 }}
+              />
+            </RadarChart>
+          </ResponsiveContainer>
+        </ChartCard>
+      </div>
 
         {/* Row 2: Mock test */}
-        <ChartCard title="Mock test natijalari" sub="Haftalik ball o'zgarishi">
+        <ChartCard title={t('profile.progress.chartMockTitle')} sub={t('profile.progress.chartMockSub')}>
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={mockData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis dataKey="week" tick={{ fontSize: 10 }} tickLine={false} axisLine={false} />
               <YAxis domain={[0, 100]} tick={{ fontSize: 10 }} tickLine={false} axisLine={false} />
               <Tooltip
-                formatter={(v: number) => [`${v}%`, 'Ball']}
+                formatter={(v: number) => [`${v}%`, 'Score']}
                 contentStyle={{ fontSize: 11, borderRadius: 8 }}
               />
               <ReferenceLine y={60} stroke="#10b981" strokeDasharray="4 2"
@@ -1463,12 +1468,12 @@ export default function Profile() {
         </ChartCard>
 
         {/* Streak calendar */}
-        <ChartCard title="Streak Kalendar" sub="Har kuni o'qilgan soat (ko'k=maqsad)">
+        <ChartCard title={t('profile.progress.chartCalendarTitle')} sub={t('profile.progress.chartCalendarSub')}>
           <StreakCalendar days={timeline} />
         </ChartCard>
 
         {/* XP area chart */}
-        <ChartCard title="XP Tarixi" sub="Kumulativ tajriba ballari">
+        <ChartCard title={t('profile.progress.chartXPHistoryTitle')} sub={t('profile.progress.chartXPHistorySub')}>
           <ResponsiveContainer width="100%" height={160}>
             <AreaChart data={xpData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
               <defs>
@@ -1481,7 +1486,7 @@ export default function Profile() {
               <XAxis dataKey="label" tick={{ fontSize: 10 }} tickLine={false} axisLine={false} />
               <YAxis tick={{ fontSize: 10 }} tickLine={false} axisLine={false} />
               <Tooltip
-                formatter={(v: number) => [`${v.toLocaleString()} XP`, 'Jami XP']}
+                formatter={(v: number) => [`${v.toLocaleString()} XP`, t('profile.progress.totalXPLabel')]}
                 contentStyle={{ fontSize: 11, borderRadius: 8 }}
               />
               <Area
@@ -1494,12 +1499,12 @@ export default function Profile() {
 
         {/* Daily log table */}
         <div className="card">
-          <p className="font-semibold text-gray-800 text-sm mb-3">Kunlik Log</p>
+          <p className="font-semibold text-gray-800 text-sm mb-3">{t('profile.progress.dailyLogTitle')}</p>
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
                 <tr className="border-b border-gray-100">
-                  {['Sana', 'Soat', "O'tilgan mavzular", 'XP'].map((h) => (
+                  {[t('profile.progress.tableDate'), t('profile.progress.tableHours'), t('profile.progress.tableTopics'), 'XP'].map((h) => (
                     <th key={h} className="text-left py-2 pr-4 text-gray-400 font-medium whitespace-nowrap">
                       {h}
                     </th>
@@ -1578,7 +1583,7 @@ export default function Profile() {
               <div className="text-5xl animate-bounce">{newAchievement.icon}</div>
               <div className="flex-1">
                 <p className="text-xs font-semibold uppercase tracking-wider text-yellow-100">
-                  Yangi Nishon!
+                  {t('profile.achievements.newBanner')}
                 </p>
                 <h2 className="text-xl font-bold mt-1 leading-tight">{newAchievement.title}</h2>
                 <p className="text-sm text-yellow-100 mt-1">{newAchievement.description}</p>
@@ -1589,7 +1594,7 @@ export default function Profile() {
                     className="px-4 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white
                       text-sm font-semibold transition-all backdrop-blur-sm"
                   >
-                    Ajoyib! 🎉
+                    {t('profile.achievements.awesomeButton')}
                   </button>
                 </div>
               </div>
@@ -1602,10 +1607,10 @@ export default function Profile() {
           <div>
             <h1 className="text-xl font-bold text-gray-900 flex items-center gap-2">
               <Trophy size={22} className="text-yellow-500" />
-              Nishonlar
+              {t('profile.achievements.title')}
             </h1>
             <p className="text-sm text-gray-500 mt-0.5">
-              {unlockedCount}/{totalCount} ta yechilgan
+              {t('profile.achievements.unlocked', { count: String(unlockedCount), total: String(totalCount) })}
             </p>
           </div>
         </div>
@@ -1615,7 +1620,7 @@ export default function Profile() {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <Medal size={18} className="text-yellow-500" />
-              <span className="font-bold text-sm text-gray-900">Umumiy Progress</span>
+              <span className="font-bold text-sm text-gray-900">{t('profile.achievements.progressTitle')}</span>
             </div>
             <span className="text-xs font-bold text-gray-600">{progressPct}%</span>
           </div>
@@ -1656,7 +1661,7 @@ export default function Profile() {
                 : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300'
             }`}
           >
-            {showUnlockedOnly ? 'Faqat yechilganlar' : 'Barchasi'}
+            {showUnlockedOnly ? t('profile.achievements.showUnlocked') : t('profile.achievements.showAll')}
           </button>
 
           {selectedCategory !== 'all' && (
@@ -1664,7 +1669,7 @@ export default function Profile() {
               onClick={() => setSelectedCategory('all')}
               className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-400 hover:text-gray-600"
             >
-              Filtrni tozalash ✕
+              {t('profile.achievements.filterClear')}
             </button>
           )}
         </div>
@@ -1686,11 +1691,11 @@ export default function Profile() {
         {filtered.length === 0 && (
           <div className="card text-center py-10">
             <Trophy size={40} className="mx-auto text-gray-200 mb-3" />
-            <p className="text-gray-500 font-medium">Hech qanday nishon topilmadi</p>
+            <p className="text-gray-500 font-medium">{t('profile.achievements.emptyTitle')}</p>
             <p className="text-xs text-gray-400 mt-1">
               {showUnlockedOnly
-                ? 'Hali hech qanday nishon yechilmagan. Darslarni boshlang!'
-                : 'Bu kategoriyada nishonlar mavjud emas'}
+                ? t('profile.achievements.emptyNoUnlocked')
+                : t('profile.achievements.emptyNoCategory')}
             </p>
           </div>
         )}
@@ -1698,21 +1703,21 @@ export default function Profile() {
         {/* Quick Progress */}
         <details className="card">
           <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-gray-700">
-            <span>Tezkor statistika</span>
+            <span>{t('profile.achievements.quickStats')}</span>
             <ChevronDown size={16} className="text-gray-400" />
           </summary>
           <div className="mt-4 space-y-3 text-sm">
             {[
-              { label: "Kun", value: currentDay, target: 90 },
-              { label: 'Jami XP', value: totalXP, target: 10000 },
-              { label: 'Streak', value: streak, target: 90 },
-              { label: "So'zlar", value: totalWordsLearned, target: 1000 },
-            ].map((stat) => {
+              { labelKey: 'profile.achievements.statsDay', value: currentDay, target: 90 },
+              { labelKey: 'profile.achievements.statsXP', value: totalXP, target: 10000 },
+              { labelKey: 'profile.achievements.statsStreak', value: streak, target: 90 },
+              { labelKey: 'profile.achievements.statsWords', value: totalWordsLearned, target: 1000 },
+            ].map((stat, i) => {
               const pct = Math.min(100, Math.round((stat.value / stat.target) * 100))
               return (
-                <div key={stat.label}>
+                <div key={i}>
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="text-gray-600">{stat.label}</span>
+                    <span className="text-gray-600">{t(stat.labelKey as keyof TranslationStrings)}</span>
                     <span className="text-gray-900 font-medium">
                       {stat.value.toLocaleString()} / {stat.target.toLocaleString()}
                     </span>
@@ -1749,7 +1754,7 @@ export default function Profile() {
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
             type="text"
-            placeholder="Foydalanuvchi qidirish..."
+            placeholder={t('profile.leaders.searchPlaceholder')}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-xl
@@ -1772,7 +1777,7 @@ export default function Profile() {
                 }`}
             >
               <tab.Icon size={14} />
-              {tab.label}
+              {t(tab.labelKey as keyof TranslationStrings)}
             </button>
           ))}
         </div>
@@ -1781,7 +1786,7 @@ export default function Profile() {
         {leadersLoading && (
           <div className="flex flex-col items-center justify-center py-12 gap-3">
             <Loader2 size={24} className="animate-spin text-gray-300" />
-            <p className="text-xs text-gray-400">Reyting yuklanmoqda...</p>
+            <p className="text-xs text-gray-400">{t('profile.leaders.loading')}</p>
           </div>
         )}
 
@@ -1789,7 +1794,7 @@ export default function Profile() {
         {leadersError && !leadersLoading && (
           <ErrorState
             icon={Users}
-            title="Yuklashda xatolik"
+            title={t('profile.leaders.errorTitle')}
             error={leadersError}
             onRetry={() => setRetryKey((k) => k + 1)}
             size="sm"
@@ -1802,18 +1807,18 @@ export default function Profile() {
             <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-3">
               <Search size={20} className="text-gray-400" />
             </div>
-            <p className="text-sm font-semibold text-gray-800">Hech narsa topilmadi</p>
+            <p className="text-sm font-semibold text-gray-800">{t('profile.leaders.emptyTitle')}</p>
             <p className="text-xs text-gray-400 mt-1">
               {search.trim()
-                ? `"${search}" bo'yicha foydalanuvchi yo'q`
-                : 'Hali hech kim reytingga qo\'shilmagan'}
+                ? t('profile.leaders.emptySearch', { query: search })
+                : t('profile.leaders.emptyNoSearch')}
             </p>
             {search.trim() && (
               <button
                 onClick={() => setSearch('')}
                 className="mt-3 text-xs text-primary-600 font-semibold hover:underline"
               >
-                Filtrni tozalash
+                {t('profile.leaders.filterClear')}
               </button>
             )}
           </div>
@@ -1838,7 +1843,7 @@ export default function Profile() {
         {/* My position */}
         {!leadersLoading && !leadersError && me && myIndex >= 100 && (
           <div className="mt-4 pt-4 border-t border-gray-100">
-            <p className="text-[11px] text-gray-400 mb-2 text-center">Sizning joyingiz</p>
+            <p className="text-[11px] text-gray-400 mb-2 text-center">{t('profile.leaders.myPosition')}</p>
             <LeaderRow row={me} index={myIndex} sort={sortBy} isMe achievementCount={achievementCounts[me.id] ?? 0} />
           </div>
         )}
@@ -1848,7 +1853,7 @@ export default function Profile() {
           <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 rounded-full border border-gray-100">
             <Users size={11} className="text-gray-400" />
             <span className="text-[11px] text-gray-400">
-              {leaders.length} ta faol foydalanuvchi
+              {t('profile.leaders.activeUsers', { count: String(leaders.length) })}
             </span>
           </div>
         </div>
@@ -1862,7 +1867,7 @@ export default function Profile() {
     <div className="max-w-2xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
       {showCert && (
         <Certificate
-          userName={userName || 'Foydalanuvchi'}
+          userName={userName || t('profile.userFallback')}
           completionDate={targetDate || new Date().toISOString().split('T')[0]}
           totalXP={totalXP}
           onClose={() => setShowCert(false)}
@@ -1871,8 +1876,8 @@ export default function Profile() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Profil Sozlamalari</h1>
-          <p className="text-sm text-gray-500 mt-0.5">{greeting}, {userName || 'Foydalanuvchi'}! 👋</p>
+          <h1 className="text-xl font-bold text-gray-900">{t('profile.title')}</h1>
+          <p className="text-sm text-gray-500 mt-0.5">{greeting}, {userName || t('profile.userFallback')}! 👋</p>
         </div>
         {activeTab === 'info' && (
           <button
@@ -1881,7 +1886,7 @@ export default function Profile() {
               hover:bg-red-100 transition-colors text-sm font-medium"
           >
             <LogOut size={16} />
-            Chiqish
+            {t('profile.signOut')}
           </button>
         )}
       </div>
@@ -1902,7 +1907,7 @@ export default function Profile() {
             `}
           >
             <span>{tab.emoji}</span>
-            <span className="hidden sm:inline">{tab.label}</span>
+            <span className="hidden sm:inline">{t(tab.labelKey as keyof TranslationStrings)}</span>
           </button>
         ))}
       </div>

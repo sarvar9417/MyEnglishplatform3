@@ -2,11 +2,13 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../hooks/useAuth'
+import { useI18n } from '../i18n'
 import { CheckCircle, Lock } from 'lucide-react'
 import { ResetPasswordSkeleton } from '../components/ui/PageSkeleton'
 
 export default function ResetPassword() {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const { updatePassword } = useAuth()
 
   const [password,     setPassword]     = useState('')
@@ -37,23 +39,23 @@ export default function ResetPassword() {
         setTimeout(() => {
           setChecking(false)
           if (!resolvedRef.current) {
-            setError("Tasdiqlash muddati o'tgan yoki havola noto'g'ri. Qaytadan urinib ko'ring.")
+            setError(t('resetPassword.errorTimeout'))
           }
           subscription.unsubscribe()
         }, 5000)
       }
     }
     init()
-  }, [])
+  }, [t])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (password.length < 6) {
-      setError("Parol kamida 6 belgidan iborat bo'lishi kerak")
+      setError(t('resetPassword.errorMinLength'))
       return
     }
     if (password !== confirm) {
-      setError("Parollar mos kelmadi")
+      setError(t('resetPassword.errorNotMatch'))
       return
     }
 
@@ -85,8 +87,8 @@ export default function ResetPassword() {
               <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
                 <CheckCircle size={32} className="text-green-600" />
               </div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Parol muvaffaqiyatli o'zgartirildi! ✅</h2>
-              <p className="text-sm text-gray-500">Bosh sahifaga yo'naltirilmoqda...</p>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t('resetPassword.successTitle')}</h2>
+              <p className="text-sm text-gray-500">{t('resetPassword.successRedirect')}</p>
             </div>
           ) : (
             <>
@@ -94,18 +96,18 @@ export default function ResetPassword() {
                 <div className="w-14 h-14 mx-auto mb-3 bg-primary-50 rounded-full flex items-center justify-center">
                   <Lock size={28} className="text-primary-600" />
                 </div>
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white">Yangi parol o'rnating</h2>
-                <p className="text-sm text-gray-500 mt-1">Yangi parolingizni kiriting</p>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white">{t('resetPassword.title')}</h2>
+                <p className="text-sm text-gray-500 mt-1">{t('resetPassword.subtitle')}</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Yangi parol</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('resetPassword.newPasswordLabel')}</label>
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="••••••••"
+                    placeholder={t('resetPassword.placeholderPassword')}
                     required
                     minLength={6}
                     className="input"
@@ -114,12 +116,12 @@ export default function ResetPassword() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Parolni takrorlang</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('resetPassword.confirmPasswordLabel')}</label>
                   <input
                     type="password"
                     value={confirm}
                     onChange={(e) => setConfirm(e.target.value)}
-                    placeholder="••••••••"
+                    placeholder={t('resetPassword.placeholderPassword')}
                     required
                     minLength={6}
                     className="input"
@@ -137,7 +139,7 @@ export default function ResetPassword() {
                   disabled={loading}
                   className="btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {loading ? 'Saqlanmoqda...' : 'Parolni saqlash →'}
+                  {loading ? t('resetPassword.savingButton') : t('resetPassword.saveButton')}
                 </button>
               </form>
             </>

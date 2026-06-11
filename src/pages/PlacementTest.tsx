@@ -4,6 +4,7 @@
 import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, GraduationCap, Sparkles, RotateCcw } from 'lucide-react'
+import { useI18n } from '../i18n'
 import { useAuth } from '../hooks/useAuth'
 import { useStore } from '../store/useStore'
 import { PLACEMENT_TEST_LENGTH } from '../data/placement/adaptive'
@@ -15,15 +16,18 @@ import type { Level } from '../store/types'
 
 type Phase = 'intro' | 'testing' | 'result'
 
+
+
 const LEVEL_DESC: Record<Level, string> = {
-  'A2+': "Boshlang'ich-o'rta — asoslar bor, kundalik suhbatga tayyorlanasiz.",
-  'B1': "O'rta — kundalik mavzularda erkin gaplasha olasiz.",
-  'B1+': "O'rta-yuqori — murakkabroq fikrlarni ifodalaysiz.",
-  'B2': "Yuqori — deyarli erkin, ish va akademik muloqotga yaqin.",
+  'A2+': '',
+  'B1': '',
+  'B1+': '',
+  'B2': '',
 }
 
 export default function PlacementTest() {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const { user } = useAuth()
   const setLevel = useStore(s => s.setLevel)
   const clearLevelUp = useStore(s => s.clearLevelUp)
@@ -52,25 +56,25 @@ export default function PlacementTest() {
           <button onClick={() => navigate('/')} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0">
             <ArrowLeft size={18} />
           </button>
-          <h1 className="text-lg sm:text-xl font-black text-gray-900 dark:text-gray-100">Daraja aniqlash testi</h1>
+          <h1 className="text-lg sm:text-xl font-black text-gray-900 dark:text-gray-100">{t('placementTest.title')}</h1>
         </div>
         <div className="rounded-2xl p-6 bg-gradient-to-br from-primary-600 to-b2-600 text-white text-center">
           <div className="w-14 h-14 mx-auto rounded-2xl bg-white/20 flex items-center justify-center">
             <GraduationCap size={28} />
           </div>
-          <p className="mt-3 font-black text-lg">Darajangizni aniqlaymiz</p>
-          <p className="text-white/80 text-sm mt-1">{PLACEMENT_TEST_LENGTH} ta savol · ~10 daqiqa · grammatika, lug'at, o'qish</p>
+          <p className="mt-3 font-black text-lg">{t('placementTest.introTitle')}</p>
+          <p className="text-white/80 text-sm mt-1">{t('placementTest.introDesc', { count: String(PLACEMENT_TEST_LENGTH) })}</p>
         </div>
         <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
-          <li>• Savollar javobingizga qarab moslashadi (to'g'ri → qiyinroq).</li>
-          <li>• Natijada darajangiz (A2+ … B2) va tavsiya beriladi.</li>
-          <li>• Bilmasangiz, taxmin qiling — bu sizning darajangizni aniqroq topadi.</li>
+          <li>{t('placementTest.introPoint1')}</li>
+          <li>{t('placementTest.introPoint2')}</li>
+          <li>{t('placementTest.introPoint3')}</li>
         </ul>
         <button
           onClick={() => setPhase('testing')}
           className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl bg-primary-600 text-white font-bold hover:bg-primary-700 active:scale-[0.98] transition-all"
         >
-          Boshlash <ArrowRight size={18} />
+          {t('placementTest.startButton')} <ArrowRight size={18} />
         </button>
       </div>
     )
@@ -93,15 +97,15 @@ export default function PlacementTest() {
           <div className="w-14 h-14 mx-auto rounded-2xl bg-white/20 flex items-center justify-center">
             <Sparkles size={28} />
           </div>
-          <p className="mt-3 text-white/80 text-sm font-semibold">SIZNING DARAJANGIZ</p>
+          <p className="mt-3 text-white/80 text-sm font-semibold">{t('placementTest.resultLevelLabel')}</p>
           <p className="text-4xl font-black mt-1">{result.level}</p>
           <p className="text-white/85 text-sm mt-2">{LEVEL_DESC[result.level]}</p>
-          <p className="text-white/70 text-xs mt-2">{result.correctCount} / {result.totalAsked} to'g'ri</p>
+          <p className="text-white/70 text-xs mt-2">{t('placementTest.resultScore', { correct: String(result.correctCount), total: String(result.totalAsked) })}</p>
         </div>
 
         {/* Band taqsimoti */}
         <div className="rounded-2xl p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Daraja bo'yicha natija</p>
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{t('placementTest.resultBandTitle')}</p>
           <div className="space-y-1.5">
             {BAND_ORDER.map(band => {
               const { correct, total } = result.bandScores[band]
@@ -124,13 +128,13 @@ export default function PlacementTest() {
           onClick={applyAndContinue}
           className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl bg-primary-600 text-white font-bold hover:bg-primary-700 active:scale-[0.98] transition-all"
         >
-          Darajani saqlash va davom etish <ArrowRight size={16} />
+          {t('placementTest.saveAndContinue')} <ArrowRight size={16} />
         </button>
         <button
           onClick={() => { setResult(null); setPhase('testing') }}
           className="w-full flex items-center justify-center gap-2 py-2.5 rounded-2xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-semibold text-sm"
         >
-          <RotateCcw size={15} /> Qayta test
+          <RotateCcw size={15} /> {t('placementTest.retryTest')}
         </button>
       </div>
     )

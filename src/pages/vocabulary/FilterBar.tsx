@@ -1,4 +1,5 @@
 import { Search, Filter } from 'lucide-react'
+import { useI18n } from '../../i18n'
 
 interface FilterBarProps {
   filterText: string
@@ -12,6 +13,7 @@ interface FilterBarProps {
 }
 
 export default function FilterBar(props: FilterBarProps) {
+  const { t } = useI18n()
   const {
     filterText, setFilterText,
     filterLevel, setFilterLevel,
@@ -28,7 +30,7 @@ export default function FilterBar(props: FilterBarProps) {
             type="text"
             value={filterText}
             onChange={e => setFilterText(e.target.value)}
-            placeholder="So'z qidirish..."
+            placeholder={t('vocabPage.searchPlaceholder')}
             className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-b1-500 focus:border-b1-500 outline-none transition-all"
           />
         </div>
@@ -73,10 +75,10 @@ export default function FilterBar(props: FilterBarProps) {
 
           {/* Mastery filter */}
           {([
-            { key: 'all' as const, label: 'Barcha' },
-            { key: 'new' as const, label: 'Yangi' },
-            { key: 'learning' as const, label: "O'rganilyapti" },
-            { key: 'learned' as const, label: 'Yodlangan' },
+            { key: 'all' as const, label: t('common.all') },
+            { key: 'new' as const, label: t('vocabPage.filterNew') },
+            { key: 'learning' as const, label: t('vocabPage.filterLearning') },
+            { key: 'learned' as const, label: t('vocabPage.filterLearned') },
           ]).map(({ key, label }) => (
             <button
               key={key}

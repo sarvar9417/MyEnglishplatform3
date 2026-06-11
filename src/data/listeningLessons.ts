@@ -24,6 +24,8 @@ export interface ListeningLesson {
   level: 'A1' | 'A2' | 'B1' | 'B1+' | 'B2'
   duration: string
   youtubeId: string
+  /** Backup YouTube ID in case the primary video is taken down */
+  backupYoutubeId?: string
   topic: string
   description: string
   vocabulary: { word: string; definition: string }[]

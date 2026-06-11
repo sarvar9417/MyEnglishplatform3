@@ -6,7 +6,6 @@
 
 import { generateLearningInsights, type LearningInsights, type LearningSignals } from '../lib/claude'
 import { getWeakGrammarLessonIds } from '../lib/grammarSrs'
-import { DEMO_LESSONS } from '../data/lessonDemoContent'
 
 const CACHE_KEY = 'ai-insights-v1'
 const STALE_MS = 7 * 24 * 60 * 60 * 1000  // 7 kun
@@ -28,13 +27,9 @@ export function isInsightsStale(cached: CachedInsights | null): boolean {
   return Date.now() - cached.generatedAt > STALE_MS
 }
 
-/** Zaif grammatika dars id'larini o'qiladigan mavzu nomlariga aylantiradi */
+/** Zaif grammatika dars id'larini qaytaradi (nomlarsiz) */
 export function getWeakGrammarLabels(limit = 5): string[] {
   return getWeakGrammarLessonIds(limit)
-    .map(id => {
-      const demo = Object.values(DEMO_LESSONS).find(d => d.id === id || d.id === id + '-demo')
-      return demo?.skill ?? id
-    })
 }
 
 /** AI tahlilni oladi va keshlaydi */

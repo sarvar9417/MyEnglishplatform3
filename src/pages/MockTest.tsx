@@ -12,6 +12,7 @@ import { evaluateWriting, evaluateSpeech } from '@/lib/claude'
 import { useSpeechSynthesis, SPEED_OPTIONS } from '@/hooks/useSpeechSynthesis'
 import { db } from '@/db/database'
 import { useStore } from '@/store/useStore'
+import { useI18n } from '../i18n'
 import { useNavigate } from 'react-router-dom'
 import { getTodayTashkent } from '@/utils/tashkentDate'
 import { supabase } from '@/lib/supabase'
@@ -131,21 +132,22 @@ function SectionBar({ label, pct, band }: { label: string; pct: number; band: nu
 // ── Select screen ─────────────────────────────────────────────────────────────
 
 function SelectScreen({ onStart, loading }: { onStart: (t: TestType) => void; loading?: boolean }) {
+  const { t } = useI18n()
   if (loading) {
     return <MockTestSkeleton />
   }
   const tests = [
-    { type:'a1' as TestType, title:'A1 darajasi testi', emoji:'🌱',
-      sub:'Asosiy grammatika, lug\'at va o\'qish', qs:20, mins:25,
+    { type:'a1' as TestType, title: t('mockTest.a1Title'), emoji:'🌱',
+      sub: t('mockTest.a1Sub'), qs:20, mins:25,
       color:'bg-emerald-50 border-emerald-100', tc:'text-emerald-700' },
-    { type:'b1' as TestType, title:'Haftalik B1 testi', emoji:'📝',
-      sub:'Grammatika, lug\'at va o\'qish', qs:30, mins:45,
+    { type:'b1' as TestType, title: t('mockTest.weeklyB1Title'), emoji:'📝',
+      sub: t('mockTest.weeklyB1Sub'), qs:30, mins:45,
       color:'bg-primary-50 border-primary-100', tc:'text-primary-700' },
-    { type:'b2' as TestType, title:'Haftalik B2 testi', emoji:'📋',
-      sub:'Yuqori daraja grammatika va lug\'at', qs:30, mins:60,
+    { type:'b2' as TestType, title: t('mockTest.weeklyB2Title'), emoji:'📋',
+      sub: t('mockTest.weeklyB2Sub'), qs:30, mins:60,
       color:'bg-b2-50 border-b2-100', tc:'text-b2-700' },
-    { type:'ielts' as TestType, title:"To'liq IELTS Simulatsiya", emoji:'🎓',
-      sub:'O\'qish · Tinglash · Yozish · Gapirish', qs:4, mins:120,
+    { type:'ielts' as TestType, title: t('mockTest.ieltsTitle'), emoji:'🎓',
+      sub: t('mockTest.ieltsSub'), qs:4, mins:120,
       color:'bg-purple-50 border-purple-100', tc:'text-purple-700' },
   ]
   return (
@@ -155,23 +157,23 @@ function SelectScreen({ onStart, loading }: { onStart: (t: TestType) => void; lo
           <ClipboardList size={20} className="text-primary-600" />
         </div>
         <div>
-          <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Mock Imtihon</h1>
-          <p className="text-xs text-gray-500">Daraja aniqlash va IELTS tayyorgarlik</p>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{t('mockTest.title')}</h1>
+          <p className="text-xs text-gray-500">{t('mockTest.subtitle')}</p>
         </div>
       </div>
       <div className="space-y-3">
-        {tests.map((t) => (
-          <button key={t.type} onClick={() => onStart(t.type)}
-            className={`w-full card text-left border hover:shadow-md hover:-translate-y-0.5 transition-all ${t.color}`}>
+        {tests.map((test) => (
+          <button key={test.type} onClick={() => onStart(test.type)}
+            className={`w-full card text-left border hover:shadow-md hover:-translate-y-0.5 transition-all ${test.color}`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="text-3xl">{t.emoji}</span>
+                <span className="text-3xl">{test.emoji}</span>
                 <div>
-                  <p className={`font-bold ${t.tc}`}>{t.title}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{t.sub}</p>
+                  <p className={`font-bold ${test.tc}`}>{test.title}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{test.sub}</p>
                   <div className="flex gap-3 mt-1.5">
-                    <span className="text-[11px] text-gray-400">⏱ {t.mins} daqiqa</span>
-                    <span className="text-[11px] text-gray-400">📊 {t.type === 'ielts' ? '4 bo\'lim' : `${t.qs} savol`}</span>
+                    <span className="text-[11px] text-gray-400">{t('mockTest.minutes', { mins: String(test.mins) })}</span>
+                    <span className="text-[11px] text-gray-400">{t('mockTest.questions', { count: String(test.type === 'ielts' ? 4 : test.qs) })}</span>
                   </div>
                 </div>
               </div>
@@ -183,16 +185,16 @@ function SelectScreen({ onStart, loading }: { onStart: (t: TestType) => void; lo
 
       {/* IELTS format info */}
       <div className="card bg-purple-50 border-purple-100 mt-4">
-        <p className="text-xs font-semibold text-purple-700 mb-2">🎓 IELTS Simulatsiya bo'limlari:</p>
+        <p className="text-xs font-semibold text-purple-700 mb-2">{t('mockTest.ieltsSectionsTitle')}</p>
         {[
-          ['📖 O\'qish (Reading)',   '30 daqiqa', '10 savol — 2 matn'],
-          ['🎧 Tinglash (Listening)', '20 daqiqa', 'Audio (ovoz) — eshitib javob bering'],
-          ['✍️ Yozish (Writing)',   '40 daqiqa', 'Task 1 + Task 2 (Claude baholaydi)'],
-          ['🎤 Gapirish (Speaking)',  '15 daqiqa', '2 ta prompt — Web Speech + Claude'],
-        ].map(([name, time, desc]) => (
-          <div key={name} className="flex items-center justify-between py-1.5 border-b border-purple-100 last:border-0">
-            <span className="text-xs font-medium text-purple-800">{name}</span>
-            <span className="text-[11px] text-purple-500">{time} · {desc}</span>
+          { name: t('mockTest.ieltsSectionReading'),   time: t('mockTest.minutes', { mins: '30' }),   desc: '10 savol — 2 matn' },
+          { name: t('mockTest.ieltsSectionListening'), time: t('mockTest.minutes', { mins: '20' }),   desc: 'Audio — eshitib javob bering' },
+          { name: t('mockTest.ieltsSectionWriting'),   time: t('mockTest.minutes', { mins: '40' }),   desc: 'Task 1 + Task 2 (Claude baholaydi)' },
+          { name: t('mockTest.ieltsSectionSpeaking'),  time: t('mockTest.minutes', { mins: '15' }),   desc: '2 ta prompt — Web Speech + Claude' },
+        ].map((s) => (
+          <div key={s.name} className="flex items-center justify-between py-1.5 border-b border-purple-100 last:border-0">
+            <span className="text-xs font-medium text-purple-800">{s.name}</span>
+            <span className="text-[11px] text-purple-500">{s.time} · {s.desc}</span>
           </div>
         ))}
       </div>
@@ -206,6 +208,7 @@ function WeeklyTest({ questions, level, mins, onDone }: {
   questions: TQ[]; level: 'A1' | 'B1' | 'B2'; mins: number
   onDone: (correct: number, total: number) => void
 }) {
+  const { t } = useI18n()
   const [idx,     setIdx]     = useState(0)
   const [answers, setAnswers] = useState<(number | null)[]>(Array(questions.length).fill(null))
   const [chosen,  setChosen]  = useState<number | null>(null)
@@ -234,15 +237,15 @@ function WeeklyTest({ questions, level, mins, onDone }: {
 
   if (done) return null
 
-  const sectionLabel = { grammar: '📚 Grammar', vocabulary: '📝 Vocabulary', reading: '📖 Reading' }
+  const sectionLabel = { grammar: t('mockTest.sectionGrammar'), vocabulary: t('mockTest.sectionVocab'), reading: t('mockTest.sectionReading') }
 
   return (
     <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <p className="text-xs text-gray-500">{level} testi</p>
-          <p className="text-sm font-semibold text-gray-700">{idx + 1} / {questions.length}</p>
+          <p className="text-xs text-gray-500">{t('mockTest.weeklyLabel', { level })}</p>
+          <p className="text-sm font-semibold text-gray-700">{t('mockTest.questionOf', { current: String(idx + 1), total: String(questions.length) })}</p>
         </div>
         <Timer fmt={timer.fmt} pct={timer.pct} warn={timer.left < 300} />
       </div>
@@ -286,7 +289,7 @@ function WeeklyTest({ questions, level, mins, onDone }: {
 
       <button onClick={next} disabled={chosen === null}
         className="w-full btn-primary text-sm flex items-center justify-center gap-2">
-        {idx + 1 >= questions.length ? 'Testni yakunlash ✓' : <>Keyingi <ChevronRight size={14} /></>}
+        {idx + 1 >= questions.length ? t('mockTest.finishButton') : <>{t('mockTest.nextButton')} <ChevronRight size={14} /></>}
       </button>
     </div>
   )
@@ -295,6 +298,7 @@ function WeeklyTest({ questions, level, mins, onDone }: {
 // ── IELTS Reading ─────────────────────────────────────────────────────────────
 
 function IELTSReading({ texts, onDone }: { texts: import('@/data/reading').ReadingText[]; onDone: (pct: number) => void }) {
+  const { t } = useI18n()
   type RText = import('@/data/reading').ReadingText
   // IELTS: 3 ta passage qiyinlik oshib boradi (B1 → B1+ → B2). Daraja topilmasa birinchi 3 ta.
   const selected = useMemo<RText[]>(() => {
@@ -340,8 +344,8 @@ function IELTSReading({ texts, onDone }: { texts: import('@/data/reading').Readi
     <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-3">
         <div>
-          <span className="text-xs font-semibold text-b1-600">📖 Reading · Matn {pIdx + 1}/{selected.length}</span>
-          <p className="text-xs text-gray-500 mt-0.5">Javob berildi: {answeredTotal}/{totalQ}</p>
+          <span className="text-xs font-semibold text-b1-600">{t('mockTest.ieltsReadingTitle', { current: String(pIdx + 1), total: String(selected.length) })}</span>
+          <p className="text-xs text-gray-500 mt-0.5">{t('mockTest.answersGiven', { count: String(answeredTotal), total: String(totalQ) })}</p>
         </div>
         <Timer fmt={timer.fmt} pct={timer.pct} warn={timer.left < 180} />
       </div>
@@ -378,7 +382,7 @@ function IELTSReading({ texts, onDone }: { texts: import('@/data/reading').Readi
       </div>
 
       <button onClick={next} disabled={answeredHere === 0} className="w-full btn-primary text-sm mt-4">
-        {isLast ? "Reading'ni yakunlash →" : 'Keyingi matn →'}
+        {isLast ? t('mockTest.ieltsReadingFinish') : t('mockTest.ieltsReadingNext')}
       </button>
     </div>
   )
@@ -387,6 +391,7 @@ function IELTSReading({ texts, onDone }: { texts: import('@/data/reading').Readi
 // ── IELTS Listening ───────────────────────────────────────────────────────────
 
 function IELTSListening({ data, onDone }: { data: MockTestData | null; onDone: (pct: number) => void }) {
+  const { t } = useI18n()
   const listeningMCQ = data?.listeningMCQ ?? []
   const listeningText = data?.listeningText ?? ''
   const tts = useSpeechSynthesis('en-US')
@@ -418,7 +423,7 @@ function IELTSListening({ data, onDone }: { data: MockTestData | null; onDone: (
   return (
     <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-3">
-        <span className="text-xs font-semibold text-orange-600">🎧 Listening</span>
+        <span className="text-xs font-semibold text-orange-600">{t('mockTest.ieltsListeningTitle')}</span>
         <Timer fmt={timer.fmt} pct={timer.pct} warn={timer.left < 120} />
       </div>
       <div className="h-1 bg-gray-100 rounded-full mb-4 overflow-hidden">
@@ -432,16 +437,16 @@ function IELTSListening({ data, onDone }: { data: MockTestData | null; onDone: (
           <>
             <div className="flex items-center gap-3">
               <button onClick={togglePlay} disabled={!tts.playing && plays >= MAX_PLAYS}
-                aria-label={tts.playing ? 'To\'xtatish' : 'Audio'}
+                aria-label={tts.playing ? t('mockTest.speakingStop') : 'Audio'}
                 className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center flex-shrink-0 disabled:opacity-40 hover:bg-orange-600 transition-colors">
                 {tts.playing ? <Pause size={22} /> : <Play size={22} />}
               </button>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-orange-800 dark:text-orange-200">
-                  {tts.playing ? 'Audio yangramoqda…' : plays >= MAX_PLAYS ? 'Audio tugadi' : plays === 0 ? "Audio'ni boshlash uchun bosing" : 'Yana tinglash'}
+                  {tts.playing ? t('common.loading') : plays >= MAX_PLAYS ? t('mockTest.listenPlayed') : plays === 0 ? t('mockTest.listenPrompt') : t('speaking.retryButton')}
                 </p>
                 <p className="text-xs text-orange-600 dark:text-orange-400 mt-0.5">
-                  Tinglash: {plays}/{MAX_PLAYS} marta · savollar bilan birga tinglang
+                  {t('mockTest.listenPlays', { used: String(plays), max: String(MAX_PLAYS) })}
                 </p>
               </div>
             </div>
@@ -457,7 +462,7 @@ function IELTSListening({ data, onDone }: { data: MockTestData | null; onDone: (
           </>
         ) : (
           <>
-            <p className="text-xs font-semibold text-orange-700 mb-2">⚠️ Brauzer audio'ni qo'llab-quvvatlamaydi — matnni o'qing</p>
+            <p className="text-xs font-semibold text-orange-700 mb-2">{t('mockTest.listenNotSupported')}</p>
             <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{listeningText}</p>
           </>
         )}
@@ -467,7 +472,7 @@ function IELTSListening({ data, onDone }: { data: MockTestData | null; onDone: (
       {plays > 0 && tts.supported && (
         <div className="mb-4">
           <button onClick={() => setShowScript(s => !s)} className="text-xs font-semibold text-orange-600 hover:underline">
-            📄 Transkript {showScript ? 'yashirish' : "ko'rsatish"}
+            📄 {showScript ? 'Transkript yashirish' : 'Transkript ko\'rsatish'}
           </button>
           {showScript && (
             <div className="card bg-gray-50 dark:bg-gray-800/50 mt-2">
@@ -493,10 +498,8 @@ function IELTSListening({ data, onDone }: { data: MockTestData | null; onDone: (
             </div>
           </div>
         ))}
-      </div>
-
-      <button onClick={submit} disabled={answered === 0} className="w-full btn-primary text-sm mt-4">
-        Listening'ni yakunlash ({answered}/{listeningMCQ.length}) →
+      </div>          <button onClick={submit} disabled={answered === 0} className="w-full btn-primary text-sm mt-4">
+        {t('mockTest.ieltsListeningFinish', { count: String(answered), total: String(listeningMCQ.length) })}
       </button>
     </div>
   )
@@ -505,6 +508,7 @@ function IELTSListening({ data, onDone }: { data: MockTestData | null; onDone: (
 // ── IELTS Writing ─────────────────────────────────────────────────────────────
 
 function IELTSWriting({ data, onDone }: { data: MockTestData | null; onDone: (t1: number, t2: number) => void }) {
+  const { t } = useI18n()
   const writingTask1 = data?.writingTask1 ?? { prompt: '', instruction: '' }
   const writingTask2 = data?.writingTask2 ?? { prompt: '', instruction: '' }
   const [task,     setTask]     = useState<1 | 2>(1)
@@ -577,21 +581,21 @@ function IELTSWriting({ data, onDone }: { data: MockTestData | null; onDone: (t1
       </div>
 
       <div className="card bg-b2-50 border-b2-100 mb-3">
-        <p className="text-xs font-semibold text-b2-700 mb-1">{task === 1 ? 'Task 1 — Data Description (150+ so\'z)' : 'Task 2 — Essay (250+ so\'z)'}</p>
+        <p className="text-xs font-semibold text-b2-700 mb-1">{t('mockTest.ieltsWritingTask', { n: String(task), title: task === 1 ? 'Data Description' : 'Essay', min: task === 1 ? '150' : '250' })}</p>
         <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{curPrompt.prompt}</p>
       </div>
 
       <div className="card mb-3">
         <textarea
           className="w-full min-h-[200px] text-sm text-gray-800 dark:text-gray-100 dark:bg-transparent leading-relaxed resize-none outline-none placeholder-gray-300 dark:placeholder-gray-600"
-          placeholder="Bu yerda yozing..."
+          placeholder={t('mockTest.writingPlaceholder')}
           value={curText}
           onChange={(e) => setCurText(e.target.value)}
           disabled={task === 1 ? loading1 : loading2}
         />
         <div className="flex justify-between pt-2 border-t border-gray-100 dark:border-gray-700 mt-2">
           <span className={`text-xs font-semibold ${wc >= minWords ? 'text-green-600' : 'text-gray-400'}`}>
-            {wc} / {minWords} so'z
+            {t('mockTest.wordCount', { count: String(wc) })} / {minWords}
           </span>
         </div>
       </div>
@@ -599,8 +603,8 @@ function IELTSWriting({ data, onDone }: { data: MockTestData | null; onDone: (t1
       <button onClick={task === 1 ? submitTask1 : submitTask2} disabled={!canSubmit}
         className="w-full btn-primary text-sm flex items-center justify-center gap-2">
         {(task === 1 ? loading1 : loading2)
-          ? <><Loader2 size={14} className="animate-spin" /> Claude baholamoqda...</>
-          : task === 1 ? 'Task 1 yakunlash → Task 2' : "Writing'ni yakunlash ✓"}
+          ? <><Loader2 size={14} className="animate-spin" /> {t('mockTest.writingEval')}</>
+          : task === 1 ? t('mockTest.writingSubmit1') : t('mockTest.writingSubmit2')}
       </button>
     </div>
   )
@@ -609,6 +613,7 @@ function IELTSWriting({ data, onDone }: { data: MockTestData | null; onDone: (t1
 // ── IELTS Speaking ────────────────────────────────────────────────────────────
 
 function IELTSSpeaking({ prompts, onDone }: { prompts: import('@/services/speakingService').SpeakingPrompt[]; onDone: (s1: number, s2: number) => void }) {
+  const { t } = useI18n()
   const [pIdx,      setPIdx]      = useState(0)
   const [recording, setRecording] = useState(false)
   const [transcript,setTranscript]= useState('')
@@ -664,7 +669,7 @@ function IELTSSpeaking({ prompts, onDone }: { prompts: import('@/services/speaki
     <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-3">
         <div>
-          <span className="text-xs font-semibold text-purple-600">🎤 Speaking · Prompt {pIdx + 1}/2</span>
+          <span className="text-xs font-semibold text-purple-600">{t('mockTest.ieltsSpeakingTitle', { current: String(pIdx + 1), total: '2' })}</span>
         </div>
         <Timer fmt={timer.fmt} pct={timer.pct} warn={timer.left < 120} />
       </div>
@@ -672,12 +677,12 @@ function IELTSSpeaking({ prompts, onDone }: { prompts: import('@/services/speaki
       {noSpeech && (
         <div className="card bg-orange-50 border-orange-100 mb-3 flex items-center gap-2">
           <AlertTriangle size={14} className="text-orange-500 flex-shrink-0" />
-          <p className="text-xs text-orange-700">Brauzer Web Speech API ni qo'llab-quvvatlamaydi. Javobingizni matn sifatida kiriting.</p>
+          <p className="text-xs text-orange-700">{t('mockTest.speakingNoSpeech')}</p>
         </div>
       )}
 
       <div className="card bg-purple-50 border-purple-100 mb-4">
-        <p className="text-xs text-purple-500 mb-1">Savol:</p>
+        <p className="text-xs text-purple-500 mb-1">{t('mockTest.speakingQuestion')}</p>
         <p className="text-sm font-medium text-purple-900 leading-relaxed">{p.prompt}</p>
         <div className="mt-2 space-y-1">
           {p.tips.map((tip, i) => (
@@ -690,7 +695,7 @@ function IELTSSpeaking({ prompts, onDone }: { prompts: import('@/services/speaki
         {noSpeech ? (
           <textarea
             className="w-full min-h-[120px] text-sm text-gray-800 leading-relaxed resize-none outline-none placeholder-gray-300"
-            placeholder="Javobingizni bu yerga yozing..."
+            placeholder={t('mockTest.speakingPlaceholder')}
             value={transcript}
             onChange={(e) => setTranscript(e.target.value)}
           />
@@ -698,7 +703,7 @@ function IELTSSpeaking({ prompts, onDone }: { prompts: import('@/services/speaki
           <div className="min-h-[80px]">
             {transcript
               ? <p className="text-sm text-gray-700 leading-relaxed">{transcript}</p>
-              : <p className="text-sm text-gray-400 italic">Mikrofon tugmasini bosib gapiring...</p>}
+              : <p className="text-sm text-gray-400 italic">{t('mockTest.speakingMicHint')}</p>}
           </div>
         )}
       </div>
@@ -708,14 +713,14 @@ function IELTSSpeaking({ prompts, onDone }: { prompts: import('@/services/speaki
           <button onClick={recording ? stopRec : startRec}
             className={`flex-1 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 border transition-all
               ${recording ? 'bg-red-50 dark:bg-red-900/20 border-red-200 text-red-600' : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
-            {recording ? <><MicOff size={14} /> To'xtatish</> : <><Mic size={14} /> Yozish</>}
+            {recording ? <><MicOff size={14} /> {t('mockTest.speakingStop')}</> : <><Mic size={14} /> {t('mockTest.speakingRecord')}</>}
           </button>
         )}
         <button onClick={submit} disabled={!transcript.trim() || loading || recording}
           className="flex-1 btn-primary text-sm flex items-center justify-center gap-2">
           {loading
-            ? <><Loader2 size={14} className="animate-spin" /> Baholanmoqda...</>
-            : pIdx === 0 ? 'Keyingi prompt →' : "Speaking'ni yakunlash ✓"}
+            ? <><Loader2 size={14} className="animate-spin" /> {t('mockTest.speakingEval')}</>
+            : pIdx === 0 ? t('mockTest.speakingNext') : t('mockTest.speakingFinish')}
         </button>
       </div>
     </div>
@@ -725,6 +730,7 @@ function IELTSSpeaking({ prompts, onDone }: { prompts: import('@/services/speaki
 // ── Result screen ─────────────────────────────────────────────────────────────
 
 function ResultScreen({ data, onRetry }: { data: ResultData; onRetry: () => void }) {
+  const { t } = useI18n()
   const navigate  = useNavigate()
   const isIELTS   = data.type === 'ielts'
   const band      = data.overallBand
@@ -747,20 +753,20 @@ function ResultScreen({ data, onRetry }: { data: ResultData; onRetry: () => void
       <div className="card bg-gradient-to-br from-primary-50 to-b2-50 border-primary-100 text-center mb-5">
         <CheckCircle size={36} className="text-primary-600 mx-auto mb-2" />
         <p className="text-xs text-gray-500 mb-1">
-          {isIELTS ? 'IELTS Band Score' : `${data.type.toUpperCase()} testi natijasi`}
+          {isIELTS ? 'IELTS Band Score' : t('mockTest.resultTitle')}
         </p>
         <p className="text-5xl font-bold text-primary-700">
           {isIELTS ? band.toFixed(1) : `${Math.round(band)}%`}
         </p>
         {!isIELTS && (
           <p className="text-sm text-gray-500 mt-1">
-            {data.weeklyScore}/{data.weeklyTotal} to'g'ri ·{' '}
-            {band >= 80 ? 'B2 darajasi 🎉' : band >= 65 ? 'B1+ darajasi' : 'B1 darajasi'}
+            {t('mockTest.progressLabel', { correct: String(data.weeklyScore), total: String(data.weeklyTotal) })} ·{' '}
+            {band >= 80 ? t('mockTest.resultB2') : band >= 65 ? t('mockTest.resultB1Plus') : t('mockTest.resultB1')}
           </p>
         )}
         {data.prevScore !== undefined && (
           <p className={`text-xs mt-2 font-semibold ${band > data.prevScore ? 'text-green-600' : 'text-orange-500'}`}>
-            {band > data.prevScore ? `▲ +${(band - data.prevScore).toFixed(1)} o'sish` : `▼ ${(data.prevScore - band).toFixed(1)} kamayish`} oldingi testga nisbatan
+            {band > data.prevScore ? t('mockTest.resultUp', { diff: (band - data.prevScore).toFixed(1) }) : t('mockTest.resultDown', { diff: (data.prevScore - band).toFixed(1) })} {t('mockTest.resultPrev')}
           </p>
         )}
       </div>
@@ -768,7 +774,7 @@ function ResultScreen({ data, onRetry }: { data: ResultData; onRetry: () => void
       {/* IELTS section breakdown */}
       {isIELTS && data.ielts && (
         <div className="card mb-4">
-          <p className="text-sm font-semibold text-gray-700 mb-3">Bo'limlar bo'yicha</p>
+          <p className="text-sm font-semibold text-gray-700 mb-3">{t('mockTest.sectionBreakdown')}</p>
           {[
             { label: '📖 Reading',   pct: data.ielts.reading,  band: roundBand(pctToBand(data.ielts.reading))  },
             { label: '🎧 Listening', pct: data.ielts.listening, band: roundBand(pctToBand(data.ielts.listening)) },
@@ -784,13 +790,13 @@ function ResultScreen({ data, onRetry }: { data: ResultData; onRetry: () => void
       {weakSection && (
         <div className="card bg-orange-50 border-orange-100 mb-4">
           <p className="text-sm font-semibold text-orange-700 mb-1">
-            ⚠️ Zaif tomon: {weakSection.label}
+            {t('mockTest.weaknessTitle', { label: weakSection.label })}
           </p>
           <p className="text-xs text-orange-600 mb-2">
-            Bu bo'limni kuchaytirish uchun qo'shimcha mashqlar bajaring.
+            {t('mockTest.weaknessDesc')}
           </p>
           <button onClick={() => navigate(weakSection.path)} className="text-xs font-semibold text-orange-700 underline">
-            {weakSection.label} darslariga o'tish →
+            {t('mockTest.weaknessLink', { label: weakSection.label })}
           </button>
         </div>
       )}
@@ -798,10 +804,10 @@ function ResultScreen({ data, onRetry }: { data: ResultData; onRetry: () => void
       {/* Action buttons */}
       <div className="flex gap-2">
         <button onClick={onRetry} className="btn-secondary flex-1 text-sm">
-          Qayta testlash
+          {t('mockTest.retryButton')}
         </button>
         <button onClick={() => navigate('/')} className="btn-primary flex-1 text-sm">
-          Bosh sahifa
+          {t('mockTest.homeButton')}
         </button>
       </div>
     </div>

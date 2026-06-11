@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ArrowRight, FlaskConical } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import FlashCard from '../../components/vocabulary/FlashCard'
 import GrammarAnalysisPanel from '../../components/vocabulary/GrammarAnalysisPanel'
 import { RATING_CONFIG } from '../../components/vocabulary/ratingConfig'
@@ -17,6 +18,7 @@ export default function FlashCardRenderer({
   onRate: (wordId: number, rating: Rating) => void
   onAdvance: () => void
 }) {
+  const { t } = useI18n()
   const [flipped, setFlipped] = useState(false)
   const [rated, setRated] = useState(false)
   const [analysisText, setAnalysisText] = useState('')
@@ -80,7 +82,7 @@ export default function FlashCardRenderer({
               className="w-full py-2.5 px-3 rounded-xl border-2 border-indigo-200 text-indigo-600 font-semibold hover:bg-indigo-50 hover:border-indigo-400 transition-all text-sm flex items-center justify-center gap-2"
             >
               <FlaskConical size={15} />
-              Grammatik tahlil ko'rish
+              {t('vocabPage.grammarAnalysis')}
             </button>
           ) : (
             <GrammarAnalysisPanel text={analysisText} loading={analysisLoading} />
@@ -91,7 +93,7 @@ export default function FlashCardRenderer({
             onClick={onAdvance}
             className="w-full py-3 bg-b1-500 text-white font-bold rounded-xl hover:bg-b1-600 transition-all text-sm flex items-center justify-center gap-2"
           >
-            Keyingi <ArrowRight size={16} />
+            {t('vocabPage.nextButton')} <ArrowRight size={16} />
           </button>
         </div>
       )}

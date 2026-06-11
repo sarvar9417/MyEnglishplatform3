@@ -7,15 +7,29 @@ export interface PwaInstallState {
   isInstalled: boolean
   /** Trigger the install prompt */
   promptInstall: () => Promise<boolean>
-  /** Dismiss/decline the install prompt for this session */
+  /** Dismiss/decline the install prompt (will reappear after 24 hours) */
   dismiss: () => void
 }
+
+// Key for storing dismissal timestamp in localStorage
+const DISMISSAL_KEY = 'pwa-install-dismissed-at'
+// Hours before the prompt can show again after dismissal
+const REENABLE_AFTER_HOURS = 24
 
 export function usePwaInstall(): PwaInstallState {
   const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null)
   const [canInstall, setCanInstall] = useState(false)
   const [isInstalled, setIsInstalled] = useState(false)
-  const [dismissed, setDismissed] = useState(false)
+
+  // Check if dismissed and if enough time has passed to re-enable
+  const isDismissed = useCallback(() => {
+    const dismissedAt = localStorage.getItem(DISMISSAL_KEY)
+    if (!dismissedAt) return false
+    const dismissedTime = Number(dismissedAt)
+    const now = Date.now()
+    const hoursPassed = (now - dismissedTime) / (1000 * 60 * 60)
+    return hoursPassed < REENABLE_AFTER_HOURS
+  }, [])
 
   useEffect(() => {
     // Check if already installed (display-mode: standalone)
@@ -34,6 +48,8 @@ export function usePwaInstall(): PwaInstallState {
       setIsInstalled(true)
       setCanInstall(false)
       setDeferredPrompt(null)
+      // Clear dismissal timestamp on successful install
+      localStorage.removeItem(DISMISSAL_KEY)
     }
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstall)
@@ -62,12 +78,13 @@ export function usePwaInstall(): PwaInstallState {
   }, [deferredPrompt])
 
   const dismiss = useCallback(() => {
-    setDismissed(true)
+    // Store dismissal timestamp - prompt will reappear after 24 hours
+    localStorage.setItem(DISMISSAL_KEY, String(Date.now()))
     setCanInstall(false)
   }, [])
 
   return {
-    canInstall: canInstall && !dismissed,
+    canInstall: canInstall && !isDismissed(),
     isInstalled,
     promptInstall,
     dismiss,

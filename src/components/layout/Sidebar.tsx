@@ -4,12 +4,14 @@ import { useStore } from '../../store/useStore'
 import { useTandemStore } from '../../store/tandemSlice'
 import { useI18n } from '../../i18n'
 import LanguageSwitcher from '../../components/ui/LanguageSwitcher'
+import { usePwaInstall } from '../../hooks/usePwaInstall'
 import {
   LayoutDashboard, BookOpen, BookMarked,
   ClipboardList, MessageSquare, BarChart3,
   ChevronLeft, ChevronRight, ChevronDown, Zap, Flame,
   Trophy, Sun, Moon, Monitor, X, User, Users,
   BookText, MessageCircle, Mic, Brain, BookmarkCheck,
+  Download,
 } from 'lucide-react'
 import { cycleTheme, getThemePreference, subscribeToTheme } from '../../utils/theme'
 
@@ -69,6 +71,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
   const { userName, totalXP, streak, currentLevel, currentDay, targetDate } = useStore()
   const pendingDuelCount = useTandemStore((s) => s.pendingOpponentDuels.length)
   const { t } = useI18n()
+  const { canInstall, promptInstall, isInstalled } = usePwaInstall()
 
   const daysLeft = Math.max(0, Math.ceil(
     (new Date(targetDate).getTime() - Date.now()) / 86400000
@@ -193,43 +196,59 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
           </button>
 
           {resourcesOpen && (
-            <div className={`space-y-0.5 ${collapsed ? 'hidden' : 'mt-0.5 ml-2 pl-2 border-l-2 border-gray-100 dark:border-gray-800'}`}>
-              {RESOURCES_SUBITEMS.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.to === '/'}
-                  onClick={handleNav}
-                  aria-label={t(ROUTE_T_KEY[item.to] ?? item.to)}
-                  className={({ isActive }) =>
-                    `sidebar-link ${isActive ? 'active' : ''} ${collapsed ? 'justify-center px-2' : ''}`
-                  }
-                  title={collapsed ? t(ROUTE_T_KEY[item.to] ?? item.to) : undefined}
-                >
-                  <span className="relative">
-                    {item.icon}
-                    {item.to === '/tandem' && pendingDuelCount > 0 && (
-                      <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-rose-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-sm">
-                        {pendingDuelCount > 9 ? '9+' : pendingDuelCount}
-                      </span>
-                    )}
-                  </span>
-                  {!collapsed && (
-                    <span className="flex items-center gap-1.5">
-                      {t(ROUTE_T_KEY[item.to] ?? item.to)}
-                      {item.to === '/tandem' && pendingDuelCount > 0 && (
-                        <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
-                          {pendingDuelCount}
-                        </span>
-                      )}
-                    </span>
-                  )}
-                </NavLink>
-              ))}
-            </div>
-          )}
-        </div>
-      </nav>
+             <div className={`space-y-0.5 ${collapsed ? 'hidden' : 'mt-0.5 ml-2 pl-2 border-l-2 border-gray-100 dark:border-gray-800'}`}>
+               {RESOURCES_SUBITEMS.map((item) => (
+                 <NavLink
+                   key={item.to}
+                   to={item.to}
+                   end={item.to === '/'}
+                   onClick={handleNav}
+                   aria-label={t(ROUTE_T_KEY[item.to] ?? item.to)}
+                   className={({ isActive }) =>
+                     `sidebar-link ${isActive ? 'active' : ''} ${collapsed ? 'justify-center px-2' : ''}`
+                   }
+                   title={collapsed ? t(ROUTE_T_KEY[item.to] ?? item.to) : undefined}
+                 >
+                   <span className="relative">
+                     {item.icon}
+                     {item.to === '/tandem' && pendingDuelCount > 0 && (
+                       <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-rose-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-sm">
+                         {pendingDuelCount > 9 ? '9+' : pendingDuelCount}
+                       </span>
+                     )}
+                   </span>
+                   {!collapsed && (
+                     <span className="flex items-center gap-1.5">
+                       {t(ROUTE_T_KEY[item.to] ?? item.to)}
+                       {item.to === '/tandem' && pendingDuelCount > 0 && (
+                         <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                           {pendingDuelCount}
+                         </span>
+                       )}
+                     </span>
+                   )}
+                 </NavLink>
+               ))}
+             </div>
+           )}
+         </div>
+
+         {/* PWA Install button - only show when not installed and can be installed */}
+         {!isInstalled && canInstall && (
+           <button
+             onClick={() => promptInstall()}
+             className={`sidebar-link ${collapsed ? 'justify-center px-2' : ''}`}
+             title={collapsed ? t('pwa.installTitle') : undefined}
+           >
+             <Download size={20} />
+             {!collapsed && (
+               <span className="flex items-center gap-1.5">
+                 {t('pwa.installTitle')}
+               </span>
+             )}
+           </button>
+         )}
+       </nav>
 
       {/* Stats footer */}
       {!collapsed && (
@@ -393,40 +412,53 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
             </button>
 
             {resourcesOpen && (
-              <div className="mt-0.5 ml-2 pl-2 border-l-2 border-gray-100 dark:border-gray-800 space-y-0.5">
-                {RESOURCES_SUBITEMS.map((item) => (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    end={item.to === '/'}
-                    onClick={handleNav}
-                    aria-label={t(ROUTE_T_KEY[item.to] ?? item.to)}
-                    className={({ isActive }) =>
-                      `sidebar-link ${isActive ? 'active' : ''}`
-                    }
-                  >
-                    <span className="relative">
-                      {item.icon}
-                      {item.to === '/tandem' && pendingDuelCount > 0 && (
-                        <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-rose-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-sm">
-                          {pendingDuelCount > 9 ? '9+' : pendingDuelCount}
-                        </span>
-                      )}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      {t(ROUTE_T_KEY[item.to] ?? item.to)}
-                      {item.to === '/tandem' && pendingDuelCount > 0 && (
-                        <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
-                          {pendingDuelCount}
-                        </span>
-                      )}
-                    </span>
-                  </NavLink>
-                ))}
-              </div>
-            )}
-          </div>
-        </nav>
+               <div className="mt-0.5 ml-2 pl-2 border-l-2 border-gray-100 dark:border-gray-800 space-y-0.5">
+                 {RESOURCES_SUBITEMS.map((item) => (
+                   <NavLink
+                     key={item.to}
+                     to={item.to}
+                     end={item.to === '/'}
+                     onClick={handleNav}
+                     aria-label={t(ROUTE_T_KEY[item.to] ?? item.to)}
+                     className={({ isActive }) =>
+                       `sidebar-link ${isActive ? 'active' : ''}`
+                     }
+                   >
+                     <span className="relative">
+                       {item.icon}
+                       {item.to === '/tandem' && pendingDuelCount > 0 && (
+                         <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-rose-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-sm">
+                           {pendingDuelCount > 9 ? '9+' : pendingDuelCount}
+                         </span>
+                       )}
+                     </span>
+                     <span className="flex items-center gap-1.5">
+                       {t(ROUTE_T_KEY[item.to] ?? item.to)}
+                       {item.to === '/tandem' && pendingDuelCount > 0 && (
+                         <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                           {pendingDuelCount}
+                         </span>
+                       )}
+                     </span>
+                   </NavLink>
+                 ))}
+               </div>
+             )}
+           </div>
+
+           {/* PWA Install button - mobile drawer */}
+           {!isInstalled && canInstall && (
+             <button
+               onClick={() => promptInstall()}
+               className="sidebar-link"
+             >
+               <Download size={20} />
+               <span className="flex items-center gap-1.5">
+                 {t('pwa.installTitle')}
+               </span>
+             </button>
+           )}
+         </nav>
 
         {/* Stats footer */}
         <div className="px-4 py-3 border-t border-gray-100 dark:border-gray-800">

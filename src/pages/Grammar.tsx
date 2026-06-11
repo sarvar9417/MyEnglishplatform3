@@ -6,6 +6,7 @@ import {
   Trophy, Zap, AlertCircle, Loader2,
 } from 'lucide-react'
 import { useNavigationGuard } from '../hooks/useNavigationGuard'
+import { useI18n } from '../i18n'
 import { type GrammarTopic, type Exercise } from '../data/grammar'
 import { GRAMMAR_COLORS, type GrammarCategory } from '../lib/grammarColors'
 import { fetchGrammarTopics, saveGrammarResult } from '../services/grammarService'
@@ -15,6 +16,7 @@ import { monitoring } from '../lib/monitoring'
 import { supabase } from '../lib/supabase'
 import { GrammarDNAMap } from '../components/grammar/GrammarDNAMap'
 import GrammarGlossary from '../components/grammar/GrammarGlossary'
+import { termUzBilingual } from '../data/grammarGlossary'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -41,10 +43,10 @@ function checkAnswer(ex: Exercise, userAns: string[]): boolean {
   }
 }
 
-function getUserAnswerText(ex: Exercise, userAns: string[]): string {
-  if (!userAns || userAns.length === 0) return '(javob berilmadi)'
+function getUserAnswerText(ex: Exercise, userAns: string[], noAnswer: string): string {
+  if (!userAns || userAns.length === 0) return noAnswer
   if (ex.type === 'fill-blank') return userAns.join(' / ')
-  return userAns[0] ?? '(javob berilmadi)'
+  return userAns[0] ?? noAnswer
 }
 
 // ─── Phase 1: Topic Selector ──────────────────────────────────────────────────
@@ -71,6 +73,7 @@ const TAG_TO_CATEGORY: Record<string, GrammarCategory> = {
 function TopicCard({
   topic, onSelect,
 }: { topic: GrammarTopic; onSelect: () => void }) {
+  const { t } = useI18n()
   return (
     <button
       onClick={onSelect}
@@ -87,24 +90,30 @@ function TopicCard({
 
       <div>
         <h3 className="font-bold text-gray-900 text-base leading-tight">{topic.title}</h3>
+        {(() => {
+          const uzName = termUzBilingual(topic.title)
+          if (uzName === topic.title) return null
+          return <p className="text-[11px] text-primary-600 font-medium mt-0.5">{uzName}</p>
+        })()}
         <p className="text-xs text-gray-500 mt-0.5">{topic.subtitle}</p>
       </div>
 
       <div className="flex items-center justify-between text-xs text-gray-400">
-        <span>📅 {topic.week}-hafta</span>
-        <span>📝 {topic.exercises.length} mashq</span>
-        <span>+{topic.exercises.length * 10} XP</span>
+        <span>📅 {t('grammar.weekLabel', { week: String(topic.week) })}</span>
+        <span>📝 {t('grammar.exerciseCount', { count: String(topic.exercises.length) })}</span>
+        <span>{t('grammar.xpLabel', { xp: String(topic.exercises.length * 10) })}</span>
       </div>
 
       <div className="flex items-center gap-1.5 text-primary-600 font-semibold text-sm
         group-hover:gap-3 transition-all">
-        Boshlash <ChevronRight size={15} />
+        {t('grammar.startButton')} <ChevronRight size={15} />
       </div>
     </button>
   )
 }
 
 function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect: (t: GrammarTopic) => void }) {
+  const { t } = useI18n()
   const navigate = useNavigate()
   const location = useLocation()
   const fromSkills = location.state?.from === '/skills'
@@ -112,7 +121,7 @@ function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect:
     <div className="p-3 sm:p-6 max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         {fromSkills && (
-          <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label="Ko'nikmalarga qaytish">
+          <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label={t('common.backToSkills')}>
             <ArrowLeft size={18} />
           </button>
         )}
@@ -120,8 +129,8 @@ function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect:
           <BookOpen size={20} className="text-primary-600" />
         </div>
         <div>
-          <h1 className="text-lg sm:text-xl font-bold text-gray-900">Grammar Darslar</h1>
-          <p className="text-xs text-gray-500">Mavzuni tanlang va mashqlarni bajaring</p>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900">{t('grammar.selectTitle')}</h1>
+          <p className="text-xs text-gray-500">{t('grammar.selectSubtitle')}</p>
         </div>
       </div>
 
@@ -143,7 +152,7 @@ function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect:
       <div className="mt-6 card bg-primary-50 border-primary-100">
         <p className="text-sm text-primary-800 font-medium flex items-center gap-2">
           <Lightbulb size={16} />
-          Har to'g'ri javob <strong>+10 XP</strong> beradi. AI tushuntirish mashq oxirida ko'rinadi.
+          <span dangerouslySetInnerHTML={{ __html: t('grammar.tipText') }} />
         </p>
       </div>
     </div>
@@ -162,12 +171,13 @@ const FORMULA_TO_CATEGORY: Record<string, GrammarCategory> = {
 function ExplanationCard({
   topic, onStart, onBack,
 }: { topic: GrammarTopic; onStart: () => void; onBack: () => void }) {
+  const { t } = useI18n()
   return (
     <div className="p-3 sm:p-6 max-w-3xl mx-auto space-y-4 sm:space-y-5">
       {/* Nav */}
       <div className="flex items-center gap-2 sm:gap-3">
         <button onClick={onBack} className="btn-ghost flex items-center gap-1 text-sm">
-          <ArrowLeft size={16} /> Orqaga
+          <ArrowLeft size={16} /> {t('common.back')}
         </button>
         <div className="h-5 w-px bg-gray-200" />
         <span className={`badge border ${LEVEL_COLORS[topic.level] ?? ''}`}>{topic.level}</span>
@@ -177,12 +187,17 @@ function ExplanationCard({
       {/* Title */}
       <div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{topic.title}</h2>
+        {(() => {
+          const uzName = termUzBilingual(topic.title)
+          if (uzName === topic.title) return null
+          return <p className="text-xs text-primary-600 font-medium mt-0.5">{uzName}</p>
+        })()}
         <p className="text-gray-500 text-sm mt-1">{topic.subtitle}</p>
       </div>
 
       {/* Formula box */}
       <div className="bg-gradient-to-br from-primary-600 to-b2-600 rounded-2xl p-3 sm:p-5 text-white">
-        <p className="text-xs font-semibold opacity-70 mb-2 uppercase tracking-wider">Formula</p>
+        <p className="text-xs font-semibold opacity-70 mb-2 uppercase tracking-wider">{t('grammar.formulaLabel')}</p>
         <p className="text-2xl font-mono font-bold tracking-wide">{topic.formula}</p>
         <div className="grid grid-cols-1 gap-2 mt-4">
           {topic.formulaRows.map((row) => {
@@ -206,7 +221,7 @@ function ExplanationCard({
       {/* When to use */}
       <div className="card">
         <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
-          Qachon ishlatiladi?
+          {t('grammar.whenToUse')}
         </p>
         <ul className="space-y-2">
           {topic.usedFor.map((u, i) => (
@@ -221,7 +236,7 @@ function ExplanationCard({
       {/* Examples */}
       <div className="card">
         <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
-          Misollar
+          {t('grammar.examplesLabel')}
         </p>
         <div className="space-y-3">
           {topic.examples.map((ex, i) => (
@@ -236,7 +251,7 @@ function ExplanationCard({
       {/* CTA */}
       <button onClick={onStart} className="btn-primary w-full flex items-center justify-center gap-2 py-3">
         <Zap size={18} />
-        {topic.exercises.length} ta mashqni boshlash → +{topic.exercises.length * 10} XP
+        {t('grammar.startExercise', { count: String(topic.exercises.length), xp: String(topic.exercises.length * 10) })}
       </button>
     </div>
   )
@@ -255,6 +270,7 @@ function FillBlankQuestion({
   submitted: boolean
   isCorrect: boolean
 }) {
+  const { t } = useI18n()
   const parts = ex.question.split(/_{3,}/)
 
   return (
@@ -264,7 +280,7 @@ function FillBlankQuestion({
         : 'bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800'
     }`}>
       <p className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-3">
-        📝 Bo'sh joyni to'ldiring
+        {t('grammar.fillBlankTitle')}
       </p>
       <p className="text-sm text-gray-700 leading-loose flex flex-wrap items-center gap-y-1">
         {parts.map((part, i) => (
@@ -293,7 +309,7 @@ function FillBlankQuestion({
         <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
           {!isCorrect && (
             <p className="font-semibold">
-              ✅ To'g'ri javob:{' '}
+              {t('grammar.correctAnswer')}{' '}
               <span className="font-mono">{ex.blanks.join(' / ')}</span>
             </p>
           )}
@@ -317,6 +333,7 @@ function MCQuestion({
   submitted: boolean
   isCorrect: boolean
 }) {
+  const { t } = useI18n()
   return (
     <div className={`p-4 rounded-2xl border transition-colors ${
       submitted
@@ -324,7 +341,7 @@ function MCQuestion({
         : 'bg-violet-50 dark:bg-violet-900/20 border-violet-100 dark:border-violet-800'
     }`}>
       <p className="text-[11px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider mb-3">
-        🔘 To'g'ri variantni tanlang
+        {t('grammar.mcTitle')}
       </p>
       <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{ex.question}</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -373,6 +390,7 @@ function ErrorCorrectionQuestion({
   submitted: boolean
   isCorrect: boolean
 }) {
+  const { t } = useI18n()
   return (
     <div className={`p-4 rounded-2xl border transition-colors ${
       submitted
@@ -380,7 +398,7 @@ function ErrorCorrectionQuestion({
         : 'bg-amber-50 dark:bg-amber-900/20 border-amber-100 dark:border-amber-800'
     }`}>
       <p className="text-[11px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-3">
-        🔍 Xatoni toping va to'g'irlang
+        {t('grammar.errorCorrectionTitle')}
       </p>
       {/* Wrong sentence with error highlighted */}
       <div className="bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-700 rounded-xl px-3 py-2 mb-3">
@@ -402,13 +420,13 @@ function ErrorCorrectionQuestion({
         value={answer}
         onChange={(e) => onChange(e.target.value)}
         disabled={submitted}
-        placeholder="To'g'ri gapni yozing..."
+        placeholder={t('grammar.errorInputPlaceholder')}
         className="input text-sm"
       />
       {submitted && (
         <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
           {!isCorrect && (
-            <p className="font-semibold">✅ To'g'ri variant: <span className="font-mono">{ex.correct}</span></p>
+            <p className="font-semibold">{t('grammar.correctAnswer')} <span className="font-mono">{ex.correct}</span></p>
           )}
           <p className="mt-1 text-gray-600">💡 {ex.explanation}</p>
         </div>
@@ -428,6 +446,7 @@ function TransformQuestion({
   submitted: boolean
   isCorrect: boolean
 }) {
+  const { t } = useI18n()
   return (
     <div className={`p-4 rounded-2xl border transition-colors ${
       submitted
@@ -435,13 +454,13 @@ function TransformQuestion({
         : 'bg-teal-50 border-teal-100'
     }`}>
       <p className="text-[11px] font-bold text-teal-600 uppercase tracking-wider mb-3">
-        🔄 Gapni o'zgartiring
+        {t('grammar.transformTitle')}
       </p>
       <div className="bg-white border border-teal-200 rounded-xl px-3 py-2 mb-2">
         <p className="text-sm text-gray-800 font-medium">{ex.question}</p>
       </div>
       <p className="text-xs text-teal-600 mb-2 font-medium flex items-center gap-1">
-        <span>Boshlang'ich:</span>
+        <span>{t('grammar.transformHint')}:</span>
         <span className="font-mono font-bold">{ex.hint}</span>
       </p>
       <input
@@ -449,13 +468,13 @@ function TransformQuestion({
         value={answer}
         onChange={(e) => onChange(e.target.value)}
         disabled={submitted}
-        placeholder="To'liq javobni yozing..."
+        placeholder={t('grammar.transformInputPlaceholder')}
         className="input text-sm"
       />
       {submitted && (
         <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
           {!isCorrect && (
-            <p className="font-semibold">✅ Namuna javob: <span className="font-mono">{ex.correct}</span></p>
+            <p className="font-semibold">{t('grammar.correctAnswer')} <span className="font-mono">{ex.correct}</span></p>
           )}
           <p className="mt-1 text-gray-600">💡 {ex.explanation}</p>
         </div>
@@ -529,6 +548,7 @@ function AIFeedbackPanel({
   topic: GrammarTopic
   results: GrammarResult[]
 }) {
+  const { t } = useI18n()
   const [text, setText] = useState('')
   const [loading, setLoading] = useState(false)
   const [started, setStarted] = useState(false)
@@ -581,7 +601,7 @@ function AIFeedbackPanel({
         className="btn-primary w-full flex items-center justify-center gap-2 py-3"
       >
         <Sparkles size={18} />
-        AI Tushuntirish — Claude tahlil qilsin
+        {t('grammar.aiButton')}
       </button>
     )
   }
@@ -590,7 +610,7 @@ function AIFeedbackPanel({
     <div className="card border-b2-100 bg-gradient-to-b from-b2-50 to-white">
       <div className="flex items-center gap-2 mb-4">
         <Sparkles size={18} className="text-b2-600" />
-        <h3 className="font-bold text-gray-900">AI Tushuntirish</h3>
+        <h3 className="font-bold text-gray-900">{t('grammar.aiTitle')}</h3>
         {loading && <Loader2 size={15} className="text-b2-500 animate-spin ml-auto" />}
       </div>
 
@@ -618,6 +638,7 @@ type Phase = 'select' | 'explain' | 'exercise' | 'result'
 type Answers = Record<number, string[]>
 
 export default function Grammar() {
+  const { t } = useI18n()
   const { addXP, updateSkillProgress } = useStore()
 
   const [phase, setPhase]       = useState<Phase>('select')
@@ -673,7 +694,7 @@ export default function Grammar() {
         qNum:       i + 1,
         type:       ex.type,
         question:   ex.question,
-        userAnswer: getUserAnswerText(ex, userAns),
+        userAnswer: getUserAnswerText(ex, userAns, t('grammar.noAnswer')),
         correct:    ex.type === 'fill-blank' ? ex.blanks.join(' / ') : ex.correct,
         isCorrect:  ok,
       }
@@ -727,7 +748,7 @@ export default function Grammar() {
       {phase === 'select' && (
         loading ? (
           <div className="p-3 sm:p-6 max-w-4xl mx-auto flex items-center justify-center min-h-[300px]">
-            <div className="text-gray-400 animate-pulse">Mavzular yuklanmoqda...</div>
+            <div className="text-gray-400 animate-pulse">{t('grammar.loading')}</div>
           </div>
         ) : (
           <TopicSelector topics={topics} onSelect={handleSelectTopic} />
@@ -753,19 +774,19 @@ export default function Grammar() {
                 onClick={() => setPhase('explain')}
                 className="btn-ghost flex items-center gap-1 text-sm"
               >
-                <ArrowLeft size={15} /> Tushuntirish
+                <ArrowLeft size={15} /> {t('grammar.viewExplanation')}
               </button>
               <div className="h-5 w-px bg-gray-200" />
               <span className="font-bold text-gray-900 text-sm">{topic.title}</span>
             </div>
             {!submitted && (
               <span className="text-xs text-gray-500 font-medium">
-                {topic.exercises.length} ta savol · +{topic.exercises.length * 10} XP
+                {t('grammar.exerciseProgress', { count: String(topic.exercises.length), xp: String(topic.exercises.length * 10) })}
               </span>
             )}
             {submitted && (
               <span className={`text-sm font-bold ${scoreColor}`}>
-                {score}/{topic.exercises.length} to'g'ri
+                {t('grammar.scoreLabel', { correct: String(score), total: String(topic.exercises.length) })}
               </span>
             )}
           </div>
@@ -787,25 +808,25 @@ export default function Grammar() {
                 {score}<span className="text-2xl text-gray-400">/{topic.exercises.length}</span>
               </p>
               <p className="text-sm text-gray-600 mb-3">
-                {score === 10 ? '🏆 Mukammal natija!' :
-                 score >= 8  ? '🎉 Zo\'r! Juda yaxshi!' :
-                 score >= 6  ? '👍 Yaxshi, davom eting!' :
-                 score >= 4  ? '📚 Ko\'proq mashq kerak' :
-                               '💪 Tushuntirishni qayta o\'qing'}
+                {score === 10 ? t('grammar.resultPerfect') :
+                 score >= 8  ? t('grammar.resultGreat') :
+                 score >= 6  ? t('grammar.resultGood') :
+                 score >= 4  ? t('grammar.resultMorePractice') :
+                               t('grammar.resultReread')}
               </p>
               <div className="flex items-center justify-center gap-4">
                 <div className="flex items-center gap-1.5 text-yellow-600">
                   <Trophy size={18} />
-                  <span className="font-bold text-lg">+{score * 10} XP</span>
+                  <span className="font-bold text-lg">{t('grammar.resultXP', { xp: String(score * 10) })}</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-green-600">
                   <CheckCircle size={18} />
-                  <span className="font-medium text-sm">{score} to'g'ri</span>
+                  <span className="font-medium text-sm">{t('grammar.resultCorrect', { count: String(score) })}</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-red-500">
                   <XCircle size={18} />
                   <span className="font-medium text-sm">
-                    {topic.exercises.length - score} xato
+                    {t('grammar.resultWrong', { count: String(topic.exercises.length - score) })}
                   </span>
                 </div>
               </div>
@@ -833,7 +854,7 @@ export default function Grammar() {
               className="btn-primary w-full flex items-center justify-center gap-2 py-3 mt-4"
             >
               <CheckCircle size={18} />
-              Tekshirish (+{topic.exercises.length * 10} XP)
+              {t('grammar.submitCheck', { xp: String(topic.exercises.length * 10) })}
             </button>
           ) : (
             <div className="space-y-3 mt-4">
@@ -846,19 +867,19 @@ export default function Grammar() {
                   onClick={handleRetry}
                   className="btn-secondary flex items-center justify-center gap-1.5 text-sm"
                 >
-                  <RotateCcw size={15} /> Qayta urinish
+                  <RotateCcw size={15} /> {t('grammar.retryButton')}
                 </button>
                 <button
                   onClick={() => { setPhase('explain'); scrollTop() }}
                   className="btn-secondary flex items-center justify-center gap-1.5 text-sm"
                 >
-                  <BookOpen size={15} /> Tushuntirish
+                  <BookOpen size={15} /> {t('grammar.viewExplanation')}
                 </button>
                 <button
                   onClick={() => { setPhase('select'); scrollTop() }}
                   className="btn-primary flex items-center justify-center gap-1.5 text-sm"
                 >
-                  Boshqa mavzu <ChevronRight size={15} />
+                  {t('grammar.otherTopic')} <ChevronRight size={15} />
                 </button>
               </div>
             </div>

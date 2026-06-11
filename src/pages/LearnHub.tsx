@@ -5,6 +5,8 @@ import {
 } from 'lucide-react'
 import type { DailyLesson, ReviewLesson } from '../data/dailyLessons'
 import { useStore } from '../store/useStore'
+import { useI18n } from '../i18n'
+import type { TranslationStrings } from '../i18n/types'
 import { useTandemStore } from '../store/tandemSlice'
 import { fetchAllLessonProgress } from '../services/lessonService'
 import LessonView from '../components/dailyLesson/LessonView'
@@ -17,8 +19,8 @@ type LearnTab = 'grammar'
 // Mavjud daraja tablari (dars darajalari tartibida)
 const LEVELS = ['A1', 'A2', 'B1', 'B1+', 'B2'].filter(lv => LESSON_INDEX.some(l => l.level === lv))
 
-const TABS: { id: LearnTab; label: string; emoji: string }[] = [
-  { id: 'grammar', label: 'Grammatika', emoji: '📚' },
+const TABS: { id: LearnTab; labelKey: string; emoji: string }[] = [
+  { id: 'grammar', labelKey: 'learnHub.tabGrammar', emoji: '📚' },
 ]
 
 export default function LearnHub() {
@@ -40,6 +42,8 @@ export default function LearnHub() {
 
   // Boshlang'ich daraja: foydalanuvchi currentDay'dagi darsning darajasi →
   // currentLevel (A2+ → A2) → A1 (fallback)
+  const { t } = useI18n()
+
   const [activeLevel, setActiveLevel] = useState<string>(() => {
     const cur = LESSON_INDEX.find(l => l.day === currentDay)
     if (cur) return cur.level
@@ -82,14 +86,13 @@ export default function LearnHub() {
 
     return (
       <div className="space-y-5">
-        {/* ── Header ── */}
-        <div className="flex items-center gap-3">
+        {/* ── Header ── */}          <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
             <Sparkles size={20} className="text-primary-600" />
           </div>
           <div>
-            <h1 className="text-lg sm:text-xl font-bold text-gray-900">Kunlik Darslar</h1>
-            <p className="text-xs text-gray-500">Har kuni yangi mavzu — qoida, so'zlar va mashqlar</p>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900">{t('learnHub.headerTitle')}</h1>
+            <p className="text-xs text-gray-500">{t('learnHub.headerSubtitle')}</p>
           </div>
         </div>
 
@@ -131,7 +134,7 @@ export default function LearnHub() {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-1.5">
                   <Trophy size={16} className="text-amber-500" />
-                  <span className="text-sm font-bold text-gray-900">Umumiy progress</span>
+                  <span className="text-sm font-bold text-gray-900">{t('learnHub.progressTitle')}</span>
                 </div>
                 <span className="text-xs text-gray-400">{totalXp > 0 ? `+${totalXp} XP` : ''}</span>
               </div>
@@ -139,21 +142,21 @@ export default function LearnHub() {
               <div className="grid grid-cols-3 gap-3 mb-3">
                 <div className="text-center">
                   <p className="text-xl font-bold text-green-600">{completed}</p>
-                  <p className="text-[11px] text-gray-500">Bajarildi</p>
+                  <p className="text-[11px] text-gray-500">{t('learnHub.progressCompleted')}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-xl font-bold text-amber-500">{inProgress}</p>
-                  <p className="text-[11px] text-gray-500">Jarayonda</p>
+                  <p className="text-[11px] text-gray-500">{t('learnHub.progressInProgress')}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-xl font-bold text-gray-300">{notStarted}</p>
-                  <p className="text-[11px] text-gray-500">Kutilmoqda</p>
+                  <p className="text-[11px] text-gray-500">{t('learnHub.progressPending')}</p>
                 </div>
               </div>
 
               <div className="mb-3">
                 <div className="flex items-center justify-between text-xs mb-1">
-                  <span className="text-gray-500">O'rtacha natija</span>
+                  <span className="text-gray-500">{t('learnHub.progressAvgResult')}</span>
                   <span className={`font-bold ${avgPct >= 80 ? 'text-green-600' : avgPct >= 50 ? 'text-amber-600' : 'text-red-500'}`}>{avgPct}%</span>
                 </div>
                 <div className="h-2.5 bg-gray-200 rounded-full overflow-hidden">
@@ -175,7 +178,7 @@ export default function LearnHub() {
                   return (
                     <div key={l.id}
                       className={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold text-white cursor-help transition-transform hover:scale-125 ${color}`}
-                      title={`${l.title}: ${pct !== undefined ? pct + '%' : hasSession ? 'Jarayonda' : 'Boshlamagan'}`}>
+                      title={`${l.title}: ${pct !== undefined ? pct + '%' : hasSession ? t('learnHub.progressInProgress') : t('learnHub.progressPending')}`}>
                       {l.day ?? '?'}
                     </div>
                   )
@@ -225,12 +228,12 @@ export default function LearnHub() {
                     ))}
                   </div>
                   <div className="flex items-center gap-4 text-xs text-amber-700 dark:text-amber-400">
-                    <span>✍️ {review.exercises} mashq</span>
-                    <span>🧪 {review.tests} test</span>
-                    <span>+{(review.exercises + review.tests) * 10} XP</span>
+                    <span>✍️ {t('learnHub.exercisesCount', { count: review.exercises })}</span>
+                    <span>🧪 {t('learnHub.testsCount', { count: review.tests })}</span>
+                    <span>{t('learnHub.xpCount', { count: (review.exercises + review.tests) * 10 })}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-amber-700 dark:text-amber-400 font-semibold text-sm group-hover:gap-3 transition-all">
-                    {pct !== undefined ? 'Qayta takrorlash' : 'Takrorlashni boshlash'} <ChevronRight size={15} />
+                    {pct !== undefined ? t('learnHub.reviewRestart') : t('learnHub.reviewStart')} <ChevronRight size={15} />
                   </div>
                 </button>
               )
@@ -240,8 +243,8 @@ export default function LearnHub() {
             const pct = lessonScores[lesson.id]
             const session = lessonSessions[lesson.id]
             const tabLabels: Record<string, string> = {
-              theory: '📖 Nazariya', drill: '⚡ Mashqlar', reading: "📰 O'qish",
-              speaking: '🎤 Gapirish', writing: '✍️ Yozish', listening: '🎧 Tinglash',
+              theory: '📖 ' + t('learnHub.tabTheory'), drill: '⚡ ' + t('learnHub.tabDrill'), reading: "📰 " + t('learnHub.tabReading'),
+              speaking: '🎤 ' + t('learnHub.tabSpeaking'), writing: '✍️ ' + t('learnHub.tabWriting'), listening: '🎧 ' + t('learnHub.tabListening'),
             }
             return (
               <button
@@ -267,14 +270,14 @@ export default function LearnHub() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500">
-                  <span>📚 {lesson.formulas} formula</span>
-                  <span>📝 {lesson.vocabulary} ta so'z</span>
-                  <span>✍️ {lesson.exercises} ta mashq</span>
-                  <span>+{lesson.exercises * 10} XP</span>
+                  <span>📚 {t('learnHub.formulasCount', { count: lesson.formulas })}</span>
+                  <span>📝 {t('learnHub.wordsCount', { count: lesson.vocabulary })}</span>
+                  <span>✍️ {t('learnHub.exercisesCount', { count: lesson.exercises })}</span>
+                  <span>{t('learnHub.xpCount', { count: lesson.exercises * 10 })}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-primary-600 font-semibold text-sm group-hover:gap-3 transition-all">
-                    {(pct !== undefined || session) ? 'Davom etish' : 'Boshlash'} <ChevronRight size={15} />
+                    {(pct !== undefined || session) ? t('learnHub.lessonContinue') : t('learnHub.lessonStart')} <ChevronRight size={15} />
                   </div>
                   {session && (
                     <span className="text-[11px] text-gray-400 dark:text-gray-500">
@@ -291,7 +294,7 @@ export default function LearnHub() {
         <div className="card bg-gradient-to-r from-primary-50 to-b2-50 border-primary-100">
           <p className="text-sm text-primary-800 font-medium flex items-center gap-2">
             <Lightbulb size={16} />
-            Har bir darsda: grammatika qoidalari, lug'at, misollar va 20 ta mashq. Barchasini bajaring!
+            {t('learnHub.tipText')}
           </p>
         </div>
 
@@ -308,9 +311,9 @@ export default function LearnHub() {
   return (
     <div className="p-3 sm:p-6 max-w-4xl mx-auto">
       <div className="mb-5">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">O'quv Markazi</h1>
+        <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">{t('learnHub.title')}</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
-          Barcha darslar va ko'nikmalar bir joyda
+          {t('learnHub.subtitle')}
         </p>
       </div>
 
@@ -325,14 +328,14 @@ export default function LearnHub() {
           </div>
           <div className="flex-1 min-w-0">
             <p className="font-bold text-sm text-rose-800 dark:text-rose-200">
-              Sizni {pendingOpponentDuels.length} ta duel kutmoqda!
+              {t('learnHub.duelTitle', { count: pendingOpponentDuels.length })}
             </p>
             <p className="text-xs text-rose-600 dark:text-rose-400 mt-0.5">
-              Javob berish uchun 24 soat vaqtingiz bor
+              {t('learnHub.duelSubtitle')}
             </p>
           </div>
           <span className="text-sm text-rose-600 dark:text-rose-400 font-semibold group-hover:gap-1.5 transition-all flex items-center gap-0.5 flex-shrink-0">
-            Tandem <ChevronRight size={15} />
+            {t('learnHub.duelButton')} <ChevronRight size={15} />
           </span>
         </button>
       )}
@@ -352,7 +355,7 @@ export default function LearnHub() {
             `}
           >
             <span>{tab.emoji}</span>
-            <span className="hidden sm:inline">{tab.label}</span>
+            <span className="hidden sm:inline">{t(tab.labelKey as keyof TranslationStrings)}</span>
           </button>
         ))}
       </div>

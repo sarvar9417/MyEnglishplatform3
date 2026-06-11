@@ -7,7 +7,7 @@ import { useStore } from '../../store/useStore'
 import { checkAnswer } from './helpers'
 import { checkDailyExerciseAnswers } from '../../lib/claude'
 import type { DailyExerciseCheckItem } from '../../lib/claude'
-import { getStoryBeat, ACT_DISPLAY } from '../../data/narrative/storyline'
+import { getStoryBeat, resolveActDisplay } from '../../data/narrative/storyline'
 import { getStoryForLesson } from '../../data/narrative/storyLessonMapping'
 import ExerciseCard from './ExerciseCard'
 import FormulaRecallCard from './FormulaRecallCard'
@@ -21,8 +21,6 @@ import ListeningSection from './ListeningSection'
 import SpeakingSection from './SpeakingSection'
 import { monitoring } from '../../lib/monitoring'
 import LessonImage from './LessonImage'
-import LessonDemo from './LessonDemo'
-import { DEMO_LESSONS } from '../../data/lessonDemoContent'
 
 import { AudioButton } from '../ui/AudioButton'
 import { findConfusablePair } from '../../data/confusable-pairs'
@@ -119,10 +117,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
   const lessonDoneRef = useRef(false)
   const lessonProgressRef = useRef<{ section: number; tab: Tab }>({ section: 0, tab: 'theory' })
 
-  // Namunaviy (yangi ko'rinish) dars — agar shu dars uchun demo mavjud bo'lsa
   const navigate = useNavigate()
-  const demoLesson = DEMO_LESSONS[lesson.id]
-  const [demoMode, setDemoMode] = useState(false)
 
   const section = lesson.exerciseSections[currentSection]
   const allLessonExercises = useMemo(() => [
@@ -649,11 +644,6 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
     ...(lesson.listening ? [{ id: 'listening' as Tab, label: 'Tinglash', icon: '🎧' }] : []),
   ]
 
-  // ── Namunaviy (yangi ko'rinish) dars rejimi ──
-  if (demoMode && demoLesson) {
-    return <LessonDemo lesson={demoLesson} onExit={() => setDemoMode(false)} />
-  }
-
   return (
     <div className="p-3 sm:p-6 max-w-4xl mx-auto space-y-4 sm:space-y-5">
       <div className="flex items-center gap-2 sm:gap-3">
@@ -670,22 +660,6 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
         )}
       </div>
 
-      {/* ── Namunaviy (yangi ko'rinish) dars tugmasi — faqat demo bor darslarda ── */}
-      {demoLesson && (
-        <button
-          onClick={() => setDemoMode(true)}
-          className="w-full rounded-2xl p-4 flex items-center gap-4 text-left
-            bg-gradient-to-r from-violet-500 to-purple-600
-            hover:from-violet-600 hover:to-purple-700 transition-all shadow-lg active:scale-[0.98]"
-        >
-          <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-2xl shrink-0">🎮</div>
-          <div className="flex-1 min-w-0">
-            <p className="text-white font-black text-base">Yangi ko'rinishda o'rganish</p>
-            <p className="text-white/80 text-xs">Duolingo uslubida — qiziqarli, qadam-qadam, o'yin shaklida</p>
-          </div>
-          <span className="text-white/90 font-bold text-sm bg-white/20 px-3 py-1.5 rounded-xl shrink-0">Boshlash →</span>
-        </button>
-      )}
       {/* ── Dars boshida do'stni chaqirish ── */}
       <LessonChallengeButton
         lesson={lesson}
@@ -718,7 +692,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
         <div className="space-y-6">
           {/* O'rganish yo'li konteksti — dars boshida */}
           {storyBeat && (() => {
-            const act = ACT_DISPLAY[storyBeat.act] ?? ACT_DISPLAY.prologue
+            const act = resolveActDisplay(storyBeat.act)
             const progress = Math.min(100, Math.round(((lesson.day ?? 1) / 126) * 100))
             const link = getStoryForLesson(lesson.id)
             return (

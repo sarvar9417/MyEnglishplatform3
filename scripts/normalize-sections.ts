@@ -33,6 +33,15 @@ const FILES = [
   '../src/data/daily/b2Part3.ts',
 ]
 
+// A1 fayllarida position 3 → "Kengaytish" (semantik jihatdan to'g'ri)
+const A1_STANDARD = [
+  { title: "Boshlang'ich", color: 'bg-emerald-500', icon: '🌱' },
+  { title: "O'rtacha",     color: 'bg-blue-500',    icon: '📘' },
+  { title: 'Qiyin',        color: 'bg-violet-500',  icon: '🎯' },
+  { title: 'Kengaytish',   color: 'bg-amber-500',   icon: '🔤' },
+  { title: "O'zgartirish", color: 'bg-teal-500',    icon: '🔄' },
+]
+
 const STANDARD = [
   { title: "Boshlang'ich", color: 'bg-emerald-500', icon: '🌱' },
   { title: "O'rtacha",     color: 'bg-blue-500',    icon: '📘' },
@@ -50,7 +59,11 @@ const SLOT_MAP: Record<number, number[]> = {
 
 // ─── Normalize a single exerciseSections block ────────────────────────────────
 
-function normalizeBlock(blockText: string): string {
+function isA1File(rel: string): boolean {
+  return rel.includes('a1Part')
+}
+
+function normalizeBlock(blockText: string, rel: string): string {
   const lines = blockText.split('\n')
 
   // Find indices of lines that represent individual section objects
@@ -65,10 +78,11 @@ function normalizeBlock(blockText: string): string {
   if (n === 0 || n >= 6) return blockText  // empty or 6–7 section (a1 lesson 1) → skip
 
   const slotMap = SLOT_MAP[n] ?? [0, 1, 2, 3, 4]
+  const template = isA1File(rel) ? A1_STANDARD : STANDARD
 
   for (let i = 0; i < sectionIdx.length; i++) {
     const lineIdx = sectionIdx[i]
-    const std = STANDARD[slotMap[i]]
+    const std = template[slotMap[i]]
     lines[lineIdx] = lines[lineIdx]
       // title: "..." or title: '...'
       .replace(/title:\s*(?:"[^"]*"|'(?:[^'\\]|\\.)*')/, `title: "${std.title}"`)
@@ -93,7 +107,7 @@ function processFile(rel: string): { changed: boolean; sections: number } {
     /exerciseSections:\s*\[([\s\S]*?)\],/g,
     (_, inner) => {
       sectionCount++
-      const normalized = normalizeBlock(inner)
+      const normalized = normalizeBlock(inner, rel)
       return `exerciseSections: [${normalized}],`
     }
   )

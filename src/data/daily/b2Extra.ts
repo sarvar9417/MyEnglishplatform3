@@ -172,7 +172,7 @@ export const inversionB2: DailyLesson = {
       "title": "Not only...but also — parallel tuzilma",
       "drills": [
         {
-          "id": 36001,
+          "id": 70498,
           "type": "error-correction",
           "correct": "Not only does he speak English, but he also speaks French.",
           "question": "Not only he speaks English, but also he speaks French.",
@@ -181,7 +181,7 @@ export const inversionB2: DailyLesson = {
           "instruction": "Not only...but also xatosini toping:"
         },
         {
-          "id": 36002,
+          "id": 70499,
           "hint": "Not only ...",
           "type": "transformation",
           "correct": "Not only is she intelligent, but she is also hardworking.",
@@ -190,7 +190,7 @@ export const inversionB2: DailyLesson = {
           "instruction": "Not only...but also bilan qayta yozing:"
         },
         {
-          "id": 36003,
+          "id": 70500,
           "type": "fill-blank",
           "blanks": [
             "does she compose"
@@ -219,7 +219,7 @@ export const inversionB2: DailyLesson = {
       "title": "Hardly...when / No sooner...than — vaqt farqi",
       "drills": [
         {
-          "id": 36004,
+          "id": 70501,
           "type": "fill-blank",
           "blanks": [
             "had we left"
@@ -229,7 +229,7 @@ export const inversionB2: DailyLesson = {
           "instruction": "To'ldiring (Hardly...when):"
         },
         {
-          "id": 36005,
+          "id": 70502,
           "type": "error-correction",
           "correct": "No sooner had she arrived than the meeting started.",
           "question": "No sooner had she arrived when the meeting started.",
@@ -238,7 +238,7 @@ export const inversionB2: DailyLesson = {
           "instruction": "Xatoni toping:"
         },
         {
-          "id": 36006,
+          "id": 70503,
           "hint": "No sooner ...",
           "type": "transformation",
           "correct": "No sooner had I closed my eyes than the phone rang.",
@@ -266,7 +266,7 @@ export const inversionB2: DailyLesson = {
       "title": "Only after / Only when — asosiy gapda inversiya",
       "drills": [
         {
-          "id": 36007,
+          "id": 70504,
           "type": "error-correction",
           "correct": "Only after he finished the report did he go home.",
           "question": "Only after did he finish the report, he went home.",
@@ -275,7 +275,7 @@ export const inversionB2: DailyLesson = {
           "instruction": "Inversiya xatosini toping:"
         },
         {
-          "id": 36008,
+          "id": 70505,
           "type": "fill-blank",
           "blanks": [
             "working",
@@ -286,7 +286,7 @@ export const inversionB2: DailyLesson = {
           "instruction": "To'g'ri shaklni qo'ying:"
         },
         {
-          "id": 36009,
+          "id": 70506,
           "hint": "Only when ...",
           "type": "transformation",
           "correct": "Only when you read the instructions carefully will you understand the lesson.",
@@ -311,7 +311,7 @@ export const inversionB2: DailyLesson = {
   ],
   "exercises": [
     {
-      "id": 3601,
+      "id": 70507,
       "type": "multiple-choice",
       "correct": "Not only does he speak English but also he speaks French.",
       "options": [
@@ -325,7 +325,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya qoidasini tanlang:"
     },
     {
-      "id": 3602,
+      "id": 70508,
       "type": "multiple-choice",
       "correct": "Never",
       "options": [
@@ -339,7 +339,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3603,
+      "id": 70509,
       "type": "multiple-choice",
       "correct": "than",
       "options": [
@@ -353,7 +353,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3604,
+      "id": 70510,
       "type": "multiple-choice",
       "correct": "Hardly",
       "options": [
@@ -367,7 +367,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3605,
+      "id": 70511,
       "type": "fill-blank",
       "blanks": [
         "finishing"
@@ -377,7 +377,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan to'ldiring:"
     },
     {
-      "id": 3606,
+      "id": 70512,
       "type": "fill-blank",
       "blanks": [
         "saw"
@@ -387,7 +387,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan to'ldiring:"
     },
     {
-      "id": 3607,
+      "id": 70513,
       "type": "fill-blank",
       "blanks": [
         "do we see"
@@ -397,7 +397,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan to'ldiring:"
     },
     {
-      "id": 3608,
+      "id": 70514,
       "type": "fill-blank",
       "blanks": [
         "fascinating was the film"
@@ -407,7 +407,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan to'ldiring:"
     },
     {
-      "id": 3609,
+      "id": 70515,
       "type": "fill-blank",
       "blanks": [
         "does she complain"
@@ -417,7 +417,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan to'ldiring:"
     },
     {
-      "id": 3610,
+      "id": 70516,
       "type": "multiple-choice",
       "correct": "Never have I seen such beauty.",
       "options": [
@@ -431,7 +431,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3611,
+      "id": 70517,
       "type": "error-correction",
       "correct": "Not only did she win the race, but she also broke the record.",
       "question": "Not only did she won the race, but she also broke the record.",
@@ -440,7 +440,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 3612,
+      "id": 70518,
       "type": "error-correction",
       "correct": "Only when I finished the book did I understand the message.",
       "question": "Only when did I finish the book I understood the message.",
@@ -449,7 +449,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 3613,
+      "id": 70519,
       "type": "error-correction",
       "correct": "Hardly had I closed the door when the phone rang.",
       "question": "Hardly I had closed the door when the phone rang.",
@@ -458,7 +458,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 3614,
+      "id": 70520,
       "hint": "Not only ...",
       "type": "transformation",
       "correct": "Not only did I lose my wallet, but I also lost my phone.",
@@ -467,7 +467,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan qayta yozing:"
     },
     {
-      "id": 3615,
+      "id": 70521,
       "hint": "Rarely ...",
       "type": "transformation",
       "correct": "Rarely does the audience hear such beautiful music.",
@@ -476,7 +476,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan qayta yozing:"
     },
     {
-      "id": 3616,
+      "id": 70522,
       "hint": "Only through ...",
       "type": "transformation",
       "correct": "Only through hard work can we achieve true success.",
@@ -485,7 +485,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan qayta yozing:"
     },
     {
-      "id": 3617,
+      "id": 70523,
       "hint": "Not until ...",
       "type": "transformation",
       "correct": "Not until he got sick did he realize the importance of health.",
@@ -494,7 +494,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan qayta yozing:"
     },
     {
-      "id": 3618,
+      "id": 70524,
       "type": "fill-blank",
       "blanks": [
         "was the chaos"
@@ -504,7 +504,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Inversiya bilan to'ldiring:"
     },
     {
-      "id": 3619,
+      "id": 70525,
       "type": "multiple-choice",
       "correct": "Hardly...when",
       "options": [
@@ -518,7 +518,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3620,
+      "id": 70526,
       "type": "error-correction",
       "correct": "Never have I encountered such a challenging problem before.",
       "question": "Never I have encountered such a challenging problem before.",
@@ -583,7 +583,7 @@ export const inversionB2: DailyLesson = {
   ],
   "tests": [
     {
-      "id": 361,
+      "id": 70527,
       "type": "multiple-choice",
       "correct": "Aux + S + V",
       "options": [
@@ -597,7 +597,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Asosiy inversiya"
     },
     {
-      "id": 362,
+      "id": 70528,
       "type": "multiple-choice",
       "correct": "Inversiya",
       "options": [
@@ -611,7 +611,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Asosiy inversiya"
     },
     {
-      "id": 363,
+      "id": 70529,
       "type": "multiple-choice",
       "correct": "Ha",
       "options": [
@@ -625,7 +625,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Asosiy inversiya"
     },
     {
-      "id": 364,
+      "id": 70530,
       "type": "multiple-choice",
       "correct": "when",
       "options": [
@@ -639,7 +639,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Asosiy inversiya"
     },
     {
-      "id": 365,
+      "id": 70531,
       "type": "multiple-choice",
       "correct": "than",
       "options": [
@@ -653,7 +653,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Asosiy inversiya"
     },
     {
-      "id": 366,
+      "id": 70532,
       "type": "multiple-choice",
       "correct": "Not only",
       "options": [
@@ -667,7 +667,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Qoidani qo'llash"
     },
     {
-      "id": 367,
+      "id": 70533,
       "type": "multiple-choice",
       "correct": "Hardly",
       "options": [
@@ -681,7 +681,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Qoidani qo'llash"
     },
     {
-      "id": 368,
+      "id": 70534,
       "type": "multiple-choice",
       "correct": "did I realize",
       "options": [
@@ -695,7 +695,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Qoidani qo'llash"
     },
     {
-      "id": 369,
+      "id": 70535,
       "type": "multiple-choice",
       "correct": "Seldom do I eat meat.",
       "options": [
@@ -709,7 +709,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Qoidani qo'llash"
     },
     {
-      "id": 370,
+      "id": 70536,
       "type": "multiple-choice",
       "correct": "did I understand",
       "options": [
@@ -723,7 +723,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Qoidani qo'llash"
     },
     {
-      "id": 371,
+      "id": 70537,
       "type": "multiple-choice",
       "correct": "Hardly had we arrived when it rained.",
       "options": [
@@ -737,7 +737,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Murakkab"
     },
     {
-      "id": 372,
+      "id": 70538,
       "type": "multiple-choice",
       "correct": "powerful was his speech",
       "options": [
@@ -751,7 +751,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Murakkab"
     },
     {
-      "id": 373,
+      "id": 70539,
       "type": "multiple-choice",
       "correct": "Only after did he leave did she cry.",
       "options": [
@@ -765,7 +765,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Murakkab"
     },
     {
-      "id": 374,
+      "id": 70540,
       "type": "multiple-choice",
       "correct": "Ikkala qismdagi fe'llar",
       "options": [
@@ -779,7 +779,7 @@ export const inversionB2: DailyLesson = {
       "instruction": "Yuqori daraja"
     },
     {
-      "id": 375,
+      "id": 70541,
       "type": "multiple-choice",
       "correct": "Not only...but also",
       "options": [
@@ -1013,7 +1013,7 @@ export const cleftSentencesB2: DailyLesson = {
       "title": "It is...that vs What...is — farq va qo'llanish",
       "drills": [
         {
-          "id": 37001,
+          "id": 70542,
           "type": "multiple-choice",
           "correct": "It was John who...",
           "options": [
@@ -1027,7 +1027,7 @@ export const cleftSentencesB2: DailyLesson = {
           "instruction": "To'g'ri variantni tanlang:"
         },
         {
-          "id": 37002,
+          "id": 70543,
           "hint": "It is ...",
           "type": "transformation",
           "correct": "It is education that transforms lives.",
@@ -1036,7 +1036,7 @@ export const cleftSentencesB2: DailyLesson = {
           "instruction": "'It is...that' ga o'zgartiring:"
         },
         {
-          "id": 37003,
+          "id": 70544,
           "type": "fill-blank",
           "blanks": [
             "appreciate"
@@ -1065,7 +1065,7 @@ export const cleftSentencesB2: DailyLesson = {
       "title": "All...is/was — faqatgina ma'nosi",
       "drills": [
         {
-          "id": 37004,
+          "id": 70545,
           "type": "error-correction",
           "correct": "All (that) I need is your support.",
           "question": "All what I need is your support.",
@@ -1074,7 +1074,7 @@ export const cleftSentencesB2: DailyLesson = {
           "instruction": "Xatoni toping:"
         },
         {
-          "id": 37005,
+          "id": 70546,
           "type": "fill-blank",
           "blanks": [
             "wants"
@@ -1084,7 +1084,7 @@ export const cleftSentencesB2: DailyLesson = {
           "instruction": "'All...is' bilan to'ldiring:"
         },
         {
-          "id": 37006,
+          "id": 70547,
           "hint": "All ...",
           "type": "transformation",
           "correct": "All I need is a good sleep.",
@@ -1112,7 +1112,7 @@ export const cleftSentencesB2: DailyLesson = {
       "title": "The reason why...is — sababni ta'kidlash",
       "drills": [
         {
-          "id": 37007,
+          "id": 70548,
           "type": "error-correction",
           "correct": "The reason why I am late is the traffic jam.",
           "question": "The reason why I am late is because of the traffic jam.",
@@ -1121,7 +1121,7 @@ export const cleftSentencesB2: DailyLesson = {
           "instruction": "Xatoni toping:"
         },
         {
-          "id": 37008,
+          "id": 70549,
           "type": "fill-blank",
           "blanks": [
             "succeeded"
@@ -1131,7 +1131,7 @@ export const cleftSentencesB2: DailyLesson = {
           "instruction": "'The reason why...is' bilan to'ldiring:"
         },
         {
-          "id": 37009,
+          "id": 70550,
           "hint": "The reason why ...",
           "type": "transformation",
           "correct": "The reason why I came here was that I wanted to learn from the best.",
@@ -1156,7 +1156,7 @@ export const cleftSentencesB2: DailyLesson = {
   ],
   "exercises": [
     {
-      "id": 3701,
+      "id": 70551,
       "type": "multiple-choice",
       "correct": "It was John who won the prize.",
       "options": [
@@ -1170,7 +1170,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence tanlang:"
     },
     {
-      "id": 3702,
+      "id": 70552,
       "type": "multiple-choice",
       "correct": "What",
       "options": [
@@ -1184,7 +1184,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3703,
+      "id": 70553,
       "type": "multiple-choice",
       "correct": "who",
       "options": [
@@ -1198,7 +1198,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3704,
+      "id": 70554,
       "type": "multiple-choice",
       "correct": "is",
       "options": [
@@ -1212,7 +1212,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3705,
+      "id": 70555,
       "type": "multiple-choice",
       "correct": "What",
       "options": [
@@ -1226,7 +1226,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3706,
+      "id": 70556,
       "type": "fill-blank",
       "blanks": [
         "that"
@@ -1236,7 +1236,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence bilan to'ldiring:"
     },
     {
-      "id": 3707,
+      "id": 70557,
       "type": "fill-blank",
       "blanks": [
         "needs"
@@ -1246,7 +1246,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence bilan to'ldiring:"
     },
     {
-      "id": 3708,
+      "id": 70558,
       "type": "fill-blank",
       "blanks": [
         "asked"
@@ -1256,7 +1256,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence bilan to'ldiring:"
     },
     {
-      "id": 3709,
+      "id": 70559,
       "type": "fill-blank",
       "blanks": [
         "because of the rain"
@@ -1266,7 +1266,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence bilan to'ldiring:"
     },
     {
-      "id": 3710,
+      "id": 70560,
       "type": "fill-blank",
       "blanks": [
         "left"
@@ -1276,7 +1276,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence bilan to'ldiring:"
     },
     {
-      "id": 3711,
+      "id": 70561,
       "type": "error-correction",
       "correct": "It was my friends who were supporting me all the way.",
       "question": "It was my friends who was supporting me all the way.",
@@ -1285,7 +1285,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 3712,
+      "id": 70562,
       "type": "error-correction",
       "correct": "What I need is more time to complete the project.",
       "question": "What I need are more time to complete the project.",
@@ -1294,7 +1294,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 3713,
+      "id": 70563,
       "type": "error-correction",
       "correct": "All (that) she wants is a fair chance to prove herself.",
       "question": "All what she wants is a fair chance to prove herself.",
@@ -1303,7 +1303,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 3714,
+      "id": 70564,
       "hint": "It was ...",
       "type": "transformation",
       "correct": "It was in London that I met her.",
@@ -1312,7 +1312,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence ga o'zgartiring:"
     },
     {
-      "id": 3715,
+      "id": 70565,
       "hint": "What ...",
       "type": "transformation",
       "correct": "What impressed me the most was his honesty.",
@@ -1321,7 +1321,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence ga o'zgartiring:"
     },
     {
-      "id": 3716,
+      "id": 70566,
       "hint": "All ...",
       "type": "transformation",
       "correct": "All I need is a quiet place to study.",
@@ -1330,7 +1330,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence ga o'zgartiring:"
     },
     {
-      "id": 3717,
+      "id": 70567,
       "hint": "The reason why ...",
       "type": "transformation",
       "correct": "The reason why she left was the unbearable noise.",
@@ -1339,7 +1339,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Cleft sentence ga o'zgartiring:"
     },
     {
-      "id": 3718,
+      "id": 70568,
       "type": "multiple-choice",
       "correct": "It was yesterday that she called.",
       "options": [
@@ -1353,7 +1353,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3719,
+      "id": 70569,
       "type": "multiple-choice",
       "correct": "The reason why I left was the noise.",
       "options": [
@@ -1367,7 +1367,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3720,
+      "id": 70570,
       "type": "error-correction",
       "correct": "It is the students who are responsible for the project.",
       "question": "It is the students who is responsible for the project.",
@@ -1432,7 +1432,7 @@ export const cleftSentencesB2: DailyLesson = {
   ],
   "tests": [
     {
-      "id": 376,
+      "id": 70571,
       "type": "multiple-choice",
       "correct": "Biror bo'lakni ta'kidlash",
       "options": [
@@ -1446,7 +1446,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 377,
+      "id": 70572,
       "type": "multiple-choice",
       "correct": "who",
       "options": [
@@ -1460,7 +1460,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 378,
+      "id": 70573,
       "type": "multiple-choice",
       "correct": "is",
       "options": [
@@ -1474,7 +1474,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 379,
+      "id": 70574,
       "type": "multiple-choice",
       "correct": "is",
       "options": [
@@ -1488,7 +1488,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 380,
+      "id": 70575,
       "type": "multiple-choice",
       "correct": "that",
       "options": [
@@ -1502,7 +1502,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 381,
+      "id": 70576,
       "type": "multiple-choice",
       "correct": "What",
       "options": [
@@ -1516,7 +1516,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 382,
+      "id": 70577,
       "type": "multiple-choice",
       "correct": "because of",
       "options": [
@@ -1530,7 +1530,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 383,
+      "id": 70578,
       "type": "multiple-choice",
       "correct": "was",
       "options": [
@@ -1544,7 +1544,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 384,
+      "id": 70579,
       "type": "multiple-choice",
       "correct": "All that I want",
       "options": [
@@ -1558,7 +1558,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 385,
+      "id": 70580,
       "type": "multiple-choice",
       "correct": "is",
       "options": [
@@ -1572,7 +1572,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 386,
+      "id": 70581,
       "type": "multiple-choice",
       "correct": "All what she wants is love.",
       "options": [
@@ -1586,7 +1586,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Qiyin"
     },
     {
-      "id": 387,
+      "id": 70582,
       "type": "multiple-choice",
       "correct": "who were",
       "options": [
@@ -1600,7 +1600,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Qiyin"
     },
     {
-      "id": 388,
+      "id": 70583,
       "type": "multiple-choice",
       "correct": "is",
       "options": [
@@ -1614,7 +1614,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Qiyin"
     },
     {
-      "id": 389,
+      "id": 70584,
       "type": "multiple-choice",
       "correct": "What must be emphasized is the pivotal role of education.",
       "options": [
@@ -1628,7 +1628,7 @@ export const cleftSentencesB2: DailyLesson = {
       "instruction": "Yuqori daraja"
     },
     {
-      "id": 390,
+      "id": 70585,
       "type": "multiple-choice",
       "correct": "It is = aniq bo'lak, What = tushuncha",
       "options": [
@@ -1868,7 +1868,7 @@ export const advancedPassiveB2: DailyLesson = {
       "title": "Need + V-ing (passive ma'no)",
       "drills": [
         {
-          "id": 38001,
+          "id": 70586,
           "type": "multiple-choice",
           "correct": "needs",
           "options": [
@@ -1882,7 +1882,7 @@ export const advancedPassiveB2: DailyLesson = {
           "instruction": "To'g'ri variantni tanlang:"
         },
         {
-          "id": 38002,
+          "id": 70587,
           "hint": "The windows need ...",
           "type": "transformation",
           "correct": "The windows need cleaning.",
@@ -1891,7 +1891,7 @@ export const advancedPassiveB2: DailyLesson = {
           "instruction": "'Need + V-ing' bilan qayta yozing:"
         },
         {
-          "id": 38003,
+          "id": 70588,
           "type": "fill-blank",
           "blanks": [
             "revising"
@@ -1920,7 +1920,7 @@ export const advancedPassiveB2: DailyLesson = {
       "title": "Have vs Get in Causative — uslubiy farq",
       "drills": [
         {
-          "id": 38004,
+          "id": 70589,
           "type": "multiple-choice",
           "correct": "I had my car serviced.",
           "options": [
@@ -1934,7 +1934,7 @@ export const advancedPassiveB2: DailyLesson = {
           "instruction": "Causative variantini tanlang:"
         },
         {
-          "id": 38005,
+          "id": 70590,
           "type": "fill-blank",
           "blanks": [
             "got"
@@ -1944,7 +1944,7 @@ export const advancedPassiveB2: DailyLesson = {
           "instruction": "'Have' yoki 'get' bilan to'ldiring:"
         },
         {
-          "id": 38006,
+          "id": 70591,
           "type": "error-correction",
           "correct": "I had my hair cut yesterday at the salon.",
           "question": "I had my hair cutting yesterday at the salon.",
@@ -1972,7 +1972,7 @@ export const advancedPassiveB2: DailyLesson = {
       "title": "It is said that... vs He is said to...",
       "drills": [
         {
-          "id": 38007,
+          "id": 70592,
           "hint": "The CEO ...",
           "type": "transformation",
           "correct": "The CEO is believed to step down.",
@@ -1981,7 +1981,7 @@ export const advancedPassiveB2: DailyLesson = {
           "instruction": "'It is...that' dan 'S is...to' ga o'zgartiring:"
         },
         {
-          "id": 38008,
+          "id": 70593,
           "hint": "It is reported ...",
           "type": "transformation",
           "correct": "It is reported that the company has made a profit.",
@@ -1990,7 +1990,7 @@ export const advancedPassiveB2: DailyLesson = {
           "instruction": "'S is...to' dan 'It is...that' ga o'zgartiring:"
         },
         {
-          "id": 38009,
+          "id": 70594,
           "type": "fill-blank",
           "blanks": [
             "is"
@@ -2016,7 +2016,7 @@ export const advancedPassiveB2: DailyLesson = {
   ],
   "exercises": [
     {
-      "id": 3801,
+      "id": 70595,
       "type": "multiple-choice",
       "correct": "to be",
       "options": [
@@ -2030,7 +2030,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Passive infinitive tanlang:"
     },
     {
-      "id": 3802,
+      "id": 70596,
       "type": "multiple-choice",
       "correct": "being given",
       "options": [
@@ -2044,7 +2044,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Passive gerund tanlang:"
     },
     {
-      "id": 3803,
+      "id": 70597,
       "type": "multiple-choice",
       "correct": "had",
       "options": [
@@ -2058,7 +2058,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Causative tanlang:"
     },
     {
-      "id": 3804,
+      "id": 70598,
       "type": "multiple-choice",
       "correct": "is said",
       "options": [
@@ -2072,7 +2072,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Reporting verb passive tanlang:"
     },
     {
-      "id": 3805,
+      "id": 70599,
       "type": "multiple-choice",
       "correct": "washing",
       "options": [
@@ -2086,7 +2086,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3806,
+      "id": 70600,
       "type": "fill-blank",
       "blanks": [
         "to visit"
@@ -2096,7 +2096,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Passive infinitive bilan to'ldiring:"
     },
     {
-      "id": 3807,
+      "id": 70601,
       "type": "fill-blank",
       "blanks": [
         "being involved"
@@ -2106,7 +2106,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Passive gerund bilan to'ldiring:"
     },
     {
-      "id": 3808,
+      "id": 70602,
       "type": "fill-blank",
       "blanks": [
         "having our house painted"
@@ -2116,7 +2116,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Causative bilan to'ldiring:"
     },
     {
-      "id": 3809,
+      "id": 70603,
       "type": "fill-blank",
       "blanks": [
         "believed"
@@ -2126,7 +2126,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Reporting verb passive bilan to'ldiring:"
     },
     {
-      "id": 3810,
+      "id": 70604,
       "type": "fill-blank",
       "blanks": [
         "to have committed"
@@ -2136,7 +2136,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "To'g'ri shaklni qo'ying:"
     },
     {
-      "id": 3811,
+      "id": 70605,
       "type": "error-correction",
       "correct": "The report is believed to have been finished by now, but it isn't.",
       "question": "The report is believed to be finished by now, but it isn't.",
@@ -2145,7 +2145,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 3812,
+      "id": 70606,
       "type": "error-correction",
       "correct": "I don't like being told what to do.",
       "question": "I don't like being tell what to do.",
@@ -2154,7 +2154,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 3813,
+      "id": 70607,
       "type": "error-correction",
       "correct": "I had my hair cut at the barbershop yesterday.",
       "question": "I had my hair cutting at the barbershop yesterday.",
@@ -2163,7 +2163,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 3814,
+      "id": 70608,
       "hint": "He ...",
       "type": "transformation",
       "correct": "He is believed to be innocent.",
@@ -2172,7 +2172,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Passive infinitive ga o'zgartiring:"
     },
     {
-      "id": 3815,
+      "id": 70609,
       "hint": "I had ...",
       "type": "transformation",
       "correct": "I had my car fixed by a mechanic.",
@@ -2181,7 +2181,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Causative ga o'zgartiring:"
     },
     {
-      "id": 3816,
+      "id": 70610,
       "hint": "It is said ...",
       "type": "transformation",
       "correct": "It is said that the company is planning an expansion.",
@@ -2190,7 +2190,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "'It is...that' ga o'zgartiring:"
     },
     {
-      "id": 3817,
+      "id": 70611,
       "hint": "The documents need ...",
       "type": "transformation",
       "correct": "The documents need signing.",
@@ -2199,7 +2199,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "'Need + V-ing' ga o'zgartiring:"
     },
     {
-      "id": 3818,
+      "id": 70612,
       "type": "multiple-choice",
       "correct": "I had my car repaired by a mechanic.",
       "options": [
@@ -2213,7 +2213,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3819,
+      "id": 70613,
       "type": "multiple-choice",
       "correct": "renovating",
       "options": [
@@ -2227,7 +2227,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 3820,
+      "id": 70614,
       "type": "error-correction",
       "correct": "It is believed that the project will be completed on time.",
       "question": "It is believed that the project to be completed on time.",
@@ -2292,7 +2292,7 @@ export const advancedPassiveB2: DailyLesson = {
   ],
   "tests": [
     {
-      "id": 391,
+      "id": 70615,
       "type": "multiple-choice",
       "correct": "to be + V₃",
       "options": [
@@ -2306,7 +2306,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 392,
+      "id": 70616,
       "type": "multiple-choice",
       "correct": "being told",
       "options": [
@@ -2320,7 +2320,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 393,
+      "id": 70617,
       "type": "multiple-choice",
       "correct": "had",
       "options": [
@@ -2334,7 +2334,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 394,
+      "id": 70618,
       "type": "multiple-choice",
       "correct": "Reporting verb passive",
       "options": [
@@ -2348,7 +2348,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 395,
+      "id": 70619,
       "type": "multiple-choice",
       "correct": "The car needs to be washed",
       "options": [
@@ -2362,7 +2362,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 396,
+      "id": 70620,
       "type": "multiple-choice",
       "correct": "to have won",
       "options": [
@@ -2376,7 +2376,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 397,
+      "id": 70621,
       "type": "multiple-choice",
       "correct": "being seen",
       "options": [
@@ -2390,7 +2390,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 398,
+      "id": 70622,
       "type": "multiple-choice",
       "correct": "having",
       "options": [
@@ -2404,7 +2404,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 399,
+      "id": 70623,
       "type": "multiple-choice",
       "correct": "is rumoured",
       "options": [
@@ -2418,7 +2418,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 400,
+      "id": 70624,
       "type": "multiple-choice",
       "correct": "run",
       "options": [
@@ -2432,7 +2432,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 401,
+      "id": 70625,
       "type": "multiple-choice",
       "correct": "The suspect is alleged to have escaped.",
       "options": [
@@ -2446,7 +2446,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Qiyin"
     },
     {
-      "id": 402,
+      "id": 70626,
       "type": "multiple-choice",
       "correct": "serviced",
       "options": [
@@ -2460,7 +2460,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Qiyin"
     },
     {
-      "id": 403,
+      "id": 70627,
       "type": "multiple-choice",
       "correct": "The house needs painting.",
       "options": [
@@ -2474,7 +2474,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Qiyin"
     },
     {
-      "id": 404,
+      "id": 70628,
       "type": "multiple-choice",
       "correct": "Had = formal, Got = informal",
       "options": [
@@ -2488,7 +2488,7 @@ export const advancedPassiveB2: DailyLesson = {
       "instruction": "Yuqori daraja"
     },
     {
-      "id": 405,
+      "id": 70629,
       "type": "multiple-choice",
       "correct": "It is widely believed that...",
       "options": [
@@ -2951,7 +2951,7 @@ export const academicVocabularyB2: DailyLesson = {
       "title": "Affect vs Effect — eng ko'p uchraydigan xato",
       "drills": [
         {
-          "id": 40001,
+          "id": 70630,
           "type": "fill-blank",
           "blanks": [
             "affect"
@@ -2961,7 +2961,7 @@ export const academicVocabularyB2: DailyLesson = {
           "instruction": "'Affect' yoki 'Effect' bilan to'ldiring:"
         },
         {
-          "id": 40002,
+          "id": 70631,
           "type": "fill-blank",
           "blanks": [
             "effect"
@@ -2971,7 +2971,7 @@ export const academicVocabularyB2: DailyLesson = {
           "instruction": "'Affect' yoki 'Effect' bilan to'ldiring:"
         },
         {
-          "id": 40003,
+          "id": 70632,
           "type": "multiple-choice",
           "correct": "affect",
           "options": [
@@ -3004,7 +3004,7 @@ export const academicVocabularyB2: DailyLesson = {
       "title": "Data — ko'plikdami yoki birlikdami?",
       "drills": [
         {
-          "id": 40004,
+          "id": 70633,
           "type": "fill-blank",
           "blanks": [
             "are"
@@ -3014,7 +3014,7 @@ export const academicVocabularyB2: DailyLesson = {
           "instruction": "'Is' yoki 'are' bilan to'ldiring:"
         },
         {
-          "id": 40005,
+          "id": 70634,
           "type": "error-correction",
           "correct": "These data are not accurate enough for the report.",
           "question": "This data is not accurate enough for the report.",
@@ -3023,7 +3023,7 @@ export const academicVocabularyB2: DailyLesson = {
           "instruction": "Xatoni toping:"
         },
         {
-          "id": 40006,
+          "id": 70635,
           "type": "multiple-choice",
           "correct": "The data are clear.",
           "options": [
@@ -3056,7 +3056,7 @@ export const academicVocabularyB2: DailyLesson = {
       "title": "Formal va Informal so'zlar — register farqi",
       "drills": [
         {
-          "id": 40007,
+          "id": 70636,
           "type": "fill-blank",
           "blanks": [
             "obtain"
@@ -3066,7 +3066,7 @@ export const academicVocabularyB2: DailyLesson = {
           "instruction": "Formal so'z bilan to'ldiring:"
         },
         {
-          "id": 40008,
+          "id": 70637,
           "type": "multiple-choice",
           "correct": "demonstrate",
           "options": [
@@ -3080,7 +3080,7 @@ export const academicVocabularyB2: DailyLesson = {
           "instruction": "Formal variantni tanlang:"
         },
         {
-          "id": 40009,
+          "id": 70638,
           "hint": "We obtained ...",
           "type": "transformation",
           "correct": "We obtained a significant number of benefits from the new system.",
@@ -3105,7 +3105,7 @@ export const academicVocabularyB2: DailyLesson = {
   ],
   "exercises": [
     {
-      "id": 4001,
+      "id": 70639,
       "type": "multiple-choice",
       "correct": "analysis",
       "options": [
@@ -3119,7 +3119,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Akademik so'z tanlang:"
     },
     {
-      "id": 4002,
+      "id": 70640,
       "type": "multiple-choice",
       "correct": "obtain",
       "options": [
@@ -3133,7 +3133,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Formal variantni tanlang:"
     },
     {
-      "id": 4003,
+      "id": 70641,
       "type": "multiple-choice",
       "correct": "conduct",
       "options": [
@@ -3147,7 +3147,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Collocation tanlang:"
     },
     {
-      "id": 4004,
+      "id": 70642,
       "type": "multiple-choice",
       "correct": "are",
       "options": [
@@ -3161,7 +3161,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 4005,
+      "id": 70643,
       "type": "multiple-choice",
       "correct": "affects",
       "options": [
@@ -3175,7 +3175,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 4006,
+      "id": 70644,
       "type": "fill-blank",
       "blanks": [
         "concept"
@@ -3185,7 +3185,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Akademik so'z bilan to'ldiring:"
     },
     {
-      "id": 4007,
+      "id": 70645,
       "type": "fill-blank",
       "blanks": [
         "demonstrates"
@@ -3195,7 +3195,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Formal so'z bilan to'ldiring:"
     },
     {
-      "id": 4008,
+      "id": 70646,
       "type": "fill-blank",
       "blanks": [
         "role"
@@ -3205,7 +3205,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Collocation bilan to'ldiring:"
     },
     {
-      "id": 4009,
+      "id": 70647,
       "type": "fill-blank",
       "blanks": [
         "consequences"
@@ -3215,7 +3215,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Akademik so'z bilan to'ldiring:"
     },
     {
-      "id": 4010,
+      "id": 70648,
       "type": "fill-blank",
       "blanks": [
         "needs"
@@ -3225,7 +3225,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Formal so'z bilan to'ldiring:"
     },
     {
-      "id": 4011,
+      "id": 70649,
       "type": "error-correction",
       "correct": "The effect of the policy was significant for the economy.",
       "question": "The effect of the policy affected the economy.",
@@ -3234,7 +3234,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 4012,
+      "id": 70650,
       "type": "error-correction",
       "correct": "We obtained a significant number of benefits from the new system.",
       "question": "We got a lot of benefits from the new system. (Make formal)",
@@ -3243,7 +3243,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 4013,
+      "id": 70651,
       "type": "error-correction",
       "correct": "These data are not sufficient for our analysis.",
       "question": "This data is not sufficient for our analysis.",
@@ -3252,7 +3252,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Xatoni toping:"
     },
     {
-      "id": 4014,
+      "id": 70652,
       "hint": "The government should address ...",
       "type": "transformation",
       "correct": "The government should address the issue of pollution.",
@@ -3261,7 +3261,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Formal ga o'zgartiring:"
     },
     {
-      "id": 4015,
+      "id": 70653,
       "hint": "It is widely ...",
       "type": "transformation",
       "correct": "It is widely believed that education is of great importance.",
@@ -3270,7 +3270,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Formal ga o'zgartiring:"
     },
     {
-      "id": 4016,
+      "id": 70654,
       "hint": "It can be observed that ...",
       "type": "transformation",
       "correct": "It can be observed that the economy is improving.",
@@ -3279,7 +3279,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Formal ga o'zgartiring:"
     },
     {
-      "id": 4017,
+      "id": 70655,
       "type": "multiple-choice",
       "correct": "sufficient",
       "options": [
@@ -3293,7 +3293,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 4018,
+      "id": 70656,
       "type": "multiple-choice",
       "correct": "play a role",
       "options": [
@@ -3307,7 +3307,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 4019,
+      "id": 70657,
       "type": "multiple-choice",
       "correct": "It is widely acknowledged that this is detrimental.",
       "options": [
@@ -3321,7 +3321,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "To'g'ri variantni tanlang:"
     },
     {
-      "id": 4020,
+      "id": 70658,
       "type": "error-correction",
       "correct": "It can be argued that technology has a significant impact on education.",
       "question": "It can be argued that technology has a big impact on education.",
@@ -3386,7 +3386,7 @@ export const academicVocabularyB2: DailyLesson = {
   ],
   "tests": [
     {
-      "id": 421,
+      "id": 70659,
       "type": "multiple-choice",
       "correct": "tahlil",
       "options": [
@@ -3400,7 +3400,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 422,
+      "id": 70660,
       "type": "multiple-choice",
       "correct": "obtain",
       "options": [
@@ -3414,7 +3414,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 423,
+      "id": 70661,
       "type": "multiple-choice",
       "correct": "demonstrate",
       "options": [
@@ -3428,7 +3428,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 424,
+      "id": 70662,
       "type": "multiple-choice",
       "correct": "a significant number of",
       "options": [
@@ -3442,7 +3442,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 425,
+      "id": 70663,
       "type": "multiple-choice",
       "correct": "data are",
       "options": [
@@ -3456,7 +3456,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Asosiy"
     },
     {
-      "id": 426,
+      "id": 70664,
       "type": "multiple-choice",
       "correct": "plays",
       "options": [
@@ -3470,7 +3470,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 427,
+      "id": 70665,
       "type": "multiple-choice",
       "correct": "ta'sir qilmoq",
       "options": [
@@ -3484,7 +3484,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 428,
+      "id": 70666,
       "type": "multiple-choice",
       "correct": "natijada",
       "options": [
@@ -3498,7 +3498,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 429,
+      "id": 70667,
       "type": "multiple-choice",
       "correct": "banana",
       "options": [
@@ -3512,7 +3512,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 430,
+      "id": 70668,
       "type": "multiple-choice",
       "correct": "address",
       "options": [
@@ -3526,7 +3526,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "O'rtacha"
     },
     {
-      "id": 431,
+      "id": 70669,
       "type": "multiple-choice",
       "correct": "The policy affected the economy positively.",
       "options": [
@@ -3540,7 +3540,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Qiyin"
     },
     {
-      "id": 432,
+      "id": 70670,
       "type": "multiple-choice",
       "correct": "We obtained sufficient data.",
       "options": [
@@ -3554,7 +3554,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Qiyin"
     },
     {
-      "id": 433,
+      "id": 70671,
       "type": "multiple-choice",
       "correct": "Research is uncountable",
       "options": [
@@ -3568,7 +3568,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Qiyin"
     },
     {
-      "id": 434,
+      "id": 70672,
       "type": "multiple-choice",
       "correct": "It can be argued that there are several factors contributing to this phenomenon.",
       "options": [
@@ -3582,7 +3582,7 @@ export const academicVocabularyB2: DailyLesson = {
       "instruction": "Yuqori daraja"
     },
     {
-      "id": 435,
+      "id": 70673,
       "type": "multiple-choice",
       "correct": "Use a mix of formal academic words with correct collocations",
       "options": [

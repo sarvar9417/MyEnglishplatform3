@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { ArrowLeft, Send, Sparkles, Trophy, BookOpen, AlertCircle, Volume2, Lightbulb, Mic, Square } from 'lucide-react'
 import { useStore } from '../store/useStore'
+import { useI18n } from '../i18n'
+import type { TranslationStrings } from '../i18n/types'
 import { CONVERSATION_SCENARIOS, type ConversationScenario } from '../data/conversationScenarios'
 import { startScenarioConversation, getScenarioReport, type ScenarioReport } from '../lib/claude'
 import { feelLevelUp, feelTap } from '../lib/gameFeel'
@@ -11,8 +13,14 @@ import { useSpeechSynthesis } from '../hooks/useSpeechSynthesis'
 type View = 'select' | 'chat' | 'loading-report' | 'report'
 interface Msg { role: 'user' | 'assistant'; content: string }
 
-const CATEGORY_LABEL: Record<ConversationScenario['category'], string> = {
-  kundalik: 'Kundalik', sayohat: 'Sayohat', ish: 'Ish', ijtimoiy: 'Ijtimoiy',
+function catLabel(cat: ConversationScenario['category'], t: (key: keyof TranslationStrings, params?: Record<string, string>) => string): string {
+  const labels: Record<ConversationScenario['category'], string> = {
+    kundalik: t('conversation.categoryDaily'),
+    sayohat: t('conversation.categoryTravel'),
+    ish: t('conversation.categoryWork'),
+    ijtimoiy: t('conversation.categorySocial'),
+  }
+  return labels[cat]
 }
 const CATEGORY_COLOR: Record<ConversationScenario['category'], string> = {
   kundalik: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
@@ -22,6 +30,7 @@ const CATEGORY_COLOR: Record<ConversationScenario['category'], string> = {
 }
 
 export default function Conversation() {
+  const { t } = useI18n()
   const currentLevel = useStore(s => s.currentLevel)
   const addXP = useStore(s => s.addXP)
   const level = (currentLevel || 'B1').replace('+', '')
@@ -134,14 +143,14 @@ export default function Conversation() {
             <Sparkles size={22} className="text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-black text-gray-900 dark:text-white">AI Suhbat Hamrohi</h1>
-            <p className="text-xs text-gray-500">Real vaziyatlarda ingliz tilida gaplashing — Claude bilan</p>
+            <h1 className="text-xl font-black text-gray-900 dark:text-white">{t('conversation.title')}</h1>
+            <p className="text-xs text-gray-500">{t('conversation.subtitle')}</p>
           </div>
         </div>
 
         <div className="rounded-2xl p-3.5 bg-violet-50 dark:bg-violet-950/30 text-xs text-violet-800 dark:text-violet-200 flex gap-2">
           <Lightbulb size={16} className="shrink-0 mt-0.5" />
-          <span>Stsenariy tanlang, rolingizni o'ynang va maqsadingizga erishing. Oxirida Claude sizga shaxsiy hisobot beradi.</span>
+          <span>{t('conversation.tip')}</span>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-3">
@@ -154,7 +163,7 @@ export default function Conversation() {
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-3xl">{s.emoji}</span>
                 <div className="flex items-center gap-1.5">
-                  <span className={`text-[11px] font-bold px-1.5 py-0.5 rounded-full ${CATEGORY_COLOR[s.category]}`}>{CATEGORY_LABEL[s.category]}</span>
+                  <span className={`text-[11px] font-bold px-1.5 py-0.5 rounded-full ${CATEGORY_COLOR[s.category]}`}>{catLabel(s.category, t)}</span>
                   <span className="text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500">{s.minLevel}+</span>
                 </div>
               </div>
@@ -172,8 +181,8 @@ export default function Conversation() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[70vh] p-6 text-center">
         <div className="text-6xl mb-4 animate-bounce">🧠</div>
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Claude suhbatingizni tahlil qilyapti…</h2>
-        <p className="text-sm text-gray-500">Ravonlik, yangi so'zlar va xatolaringiz aniqlanmoqda</p>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{t('conversation.loadingTitle')}</h2>
+        <p className="text-sm text-gray-500">{t('conversation.loadingDesc')}</p>
       </div>
     )
   }
@@ -195,15 +204,15 @@ export default function Conversation() {
       <div className="max-w-xl mx-auto p-4 space-y-4">
         <div className="text-center pt-2">
           <div className="text-6xl mb-2">{report.taskSuccess >= 7 ? '🎉' : '💪'}</div>
-          <h1 className="text-xl font-black text-gray-900 dark:text-white">{scenario.emoji} {scenario.titleUz} — yakunlandi!</h1>
+          <h1 className="text-xl font-black text-gray-900 dark:text-white">{t('conversation.reportCompleted', { emoji: scenario.emoji, title: scenario.titleUz })}</h1>
           <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-bold text-sm">
             <Trophy size={15} /> +{xpEarned} XP
           </div>
         </div>
 
         <div className="card space-y-3">
-          <Bar label="Ravonlik (Fluency)" value={report.fluency} />
-          <Bar label="Maqsad bajarilishi" value={report.taskSuccess} />
+          <Bar label={t('conversation.barFluency')} value={report.fluency} />
+          <Bar label={t('conversation.barTaskSuccess')} value={report.taskSuccess} />
         </div>
 
         <div className="card">
@@ -214,7 +223,7 @@ export default function Conversation() {
           <div className="card">
             <div className="flex items-center gap-2 mb-2.5">
               <BookOpen size={16} className="text-emerald-500" />
-              <h3 className="text-sm font-bold text-gray-800 dark:text-white">Yangi so'zlar</h3>
+              <h3 className="text-sm font-bold text-gray-800 dark:text-white">{t('conversation.newWordsTitle')}</h3>
             </div>
             <div className="space-y-1.5">
               {report.newWords.map((w) => (
@@ -233,7 +242,7 @@ export default function Conversation() {
           <div className="card">
             <div className="flex items-center gap-2 mb-2.5">
               <AlertCircle size={16} className="text-rose-500" />
-              <h3 className="text-sm font-bold text-gray-800 dark:text-white">Tuzatishlar</h3>
+              <h3 className="text-sm font-bold text-gray-800 dark:text-white">{t('conversation.mistakesTitle')}</h3>
             </div>
             <div className="space-y-2">
               {report.mistakes.map((m, i) => (
@@ -248,8 +257,8 @@ export default function Conversation() {
         )}
 
         <div className="flex gap-2">
-          <button onClick={() => startScenario(scenario)} className="flex-1 btn-secondary py-3 font-bold">Yana o'ynash</button>
-          <button onClick={reset} className="flex-1 btn-primary py-3 font-bold">Boshqa stsenariy</button>
+          <button onClick={() => startScenario(scenario)} className="flex-1 btn-secondary py-3 font-bold">{t('conversation.retryButton')}</button>
+          <button onClick={reset} className="flex-1 btn-primary py-3 font-bold">{t('conversation.otherScenario')}</button>
         </div>
       </div>
     )
@@ -266,7 +275,7 @@ export default function Conversation() {
           <p className="font-bold text-sm text-gray-900 dark:text-white truncate">{scenario?.titleUz}</p>
           <p className="text-xs text-gray-400 truncate">🎯 {scenario?.goalUz}</p>
         </div>
-        <button onClick={() => setVoiceOn(v => !v)} title="Ovoz" className={`p-2 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center ${voiceOn ? 'text-violet-500 bg-violet-50 dark:bg-violet-950/40' : 'text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'}`}>
+        <button onClick={() => setVoiceOn(v => !v)} title={t('conversation.voiceTitle')} className={`p-2 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center ${voiceOn ? 'text-violet-500 bg-violet-50 dark:bg-violet-950/40' : 'text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'}`}>
           <Volume2 size={18} />
         </button>
       </div>
@@ -306,16 +315,15 @@ export default function Conversation() {
       {/* Input */}
       <div className="p-3 border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-950 space-y-2">
         <div className="flex items-center justify-between">
-          <button onClick={() => setShowHints(v => !v)} className="text-xs text-violet-500 font-semibold flex items-center gap-1 min-h-[44px]"><Lightbulb size={14} /> Yordam iboralari</button>
+          <button onClick={() => setShowHints(v => !v)} className="text-xs text-violet-500 font-semibold flex items-center gap-1 min-h-[44px]"><Lightbulb size={14} /> {t('conversation.hintsButton')}</button>
           {turnCount >= 2 && (
-            <button onClick={endConversation} className="text-xs text-gray-500 font-semibold underline min-h-[44px]">Suhbatni tugatish →</button>
+            <button onClick={endConversation} className="text-xs text-gray-500 font-semibold underline min-h-[44px]">{t('conversation.endButton')}</button>
           )}
         </div>
 
-        {sr.isRecording && (
-          <p className="text-xs text-rose-500 font-semibold flex items-center gap-1.5 animate-pulse">
-            <span className="w-2 h-2 bg-rose-500 rounded-full" /> Tinglayapman… gapiring
-          </p>
+        {sr.isRecording && (            <p className="text-xs text-rose-500 font-semibold flex items-center gap-1.5 animate-pulse">
+              <span className="w-2 h-2 bg-rose-500 rounded-full" /> {t('conversation.listeningMic')}
+            </p>
         )}
 
         <div className="flex items-center gap-2">
@@ -323,14 +331,14 @@ export default function Conversation() {
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => { if (e.key === 'Enter') send() }}
-            placeholder={sr.isRecording ? 'Gapiring…' : 'Yozing yoki 🎤 bosib gapiring…'}
+            placeholder={sr.isRecording ? t('conversation.listeningMic') : t('conversation.inputPlaceholder')}
             className="flex-1 px-3.5 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-sm outline-none focus:ring-2 ring-violet-400"
           />
           {sr.isSupported && (
             <button
               onClick={toggleMic}
               disabled={loading}
-              title={sr.isRecording ? 'To\'xtatish' : 'Gapirish'}
+              title={sr.isRecording ? t('conversation.micTitleStop') : t('conversation.micTitleStart')}
               className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition active:scale-95 disabled:opacity-40 ${
                 sr.isRecording ? 'bg-rose-500 text-white animate-pulse' : 'bg-gray-100 dark:bg-gray-800 text-violet-500'
               }`}

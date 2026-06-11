@@ -1,6 +1,8 @@
 import { useState, lazy, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BookOpen, BookMarked, MessageCircle, BookText, Sword } from 'lucide-react'
+import { useI18n } from '../i18n'
+import type { TranslationStrings } from '../i18n/types'
 import { VocabularySkeleton, DictionarySkeleton } from '../components/ui/PageSkeleton'
 
 const Vocabulary = lazy(() => import('./Vocabulary'))
@@ -11,13 +13,14 @@ const PhraseDictionary = lazy(() => import('./PhraseDictionary'))
 type VocabTab = 'learn' | 'dictionary' | 'phrases' | 'phrases-dict'
 
 const VOCAB_TABS: { id: VocabTab; label: string; Icon: typeof BookOpen }[] = [
-  { id: 'learn',        label: "SRS O'rganish", Icon: BookOpen },
-  { id: 'dictionary',   label: "So'z Izlash",   Icon: BookMarked },
-  { id: 'phrases',      label: 'Iboralar',       Icon: MessageCircle },
-  { id: 'phrases-dict', label: 'Ibora Lug\'ati', Icon: BookText },
+  { id: 'learn',        label: '', Icon: BookOpen },
+  { id: 'dictionary',   label: '',   Icon: BookMarked },
+  { id: 'phrases',      label: '',       Icon: MessageCircle },
+  { id: 'phrases-dict', label: '', Icon: BookText },
 ]
 
 export default function VocabHub() {
+  const { t } = useI18n()
   const [activeTab, setActiveTab] = useState<VocabTab>('learn')
   const navigate = useNavigate()
 
@@ -39,7 +42,7 @@ export default function VocabHub() {
             `}
           >
             <tab.Icon size={15} />
-            <span className="hidden sm:inline">{tab.label}</span>
+            <span className="hidden sm:inline">{tab.label || t(('vocabHub.tab' + tab.id.charAt(0).toUpperCase() + tab.id.slice(1)) as keyof TranslationStrings)}</span>
           </button>
         ))}
       </nav>
@@ -69,14 +72,14 @@ export default function VocabHub() {
                   </div>
                   <div className="text-left flex-1">
                     <p className="text-sm font-bold text-gray-800 dark:text-white">
-                      So'z Dueli ⚔️
+                      {t('vocabHub.battleTitle')}
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      Do'stingizni chaqiring — kim ko'p so'z bilishini sinab ko'ring
+                      {t('vocabHub.battleDesc')}
                     </p>
                   </div>
                   <span className="text-xs font-semibold text-red-500 group-hover:translate-x-0.5 transition-transform">
-                    O'ynash →
+                    {t('vocabHub.battlePlay')}
                   </span>
                 </button>
               </div>

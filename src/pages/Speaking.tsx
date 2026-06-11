@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Mic, MicOff, RotateCcw, ChevronLeft, Loader2, Volume2, MessageCircle, Sparkles, Square, Send, Brain } from 'lucide-react'
+import { useI18n } from '../i18n'
 import { SkeletonText } from '../components/ui/Skeleton'
 import SpeakingHistory from '../components/speaking/SpeakingHistory'
 import { CATEGORY_LABEL, CATEGORY_COLOR } from '@/data/speakingPrompts'
@@ -69,6 +70,7 @@ function ScoreCard({ label, score, color }: { label: string; score: number; colo
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 export default function Speaking() {
+  const { t } = useI18n()
   const navigate = useNavigate()
   const location = useLocation()
   const fromSkills = location.state?.from === '/skills'
@@ -319,7 +321,7 @@ export default function Speaking() {
       <div className="p-3 sm:p-6 max-w-2xl mx-auto">
         <div className="flex items-center gap-3 mb-4 sm:mb-6">
           {fromSkills && (
-            <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label="Ko'nikmalarga qaytish">
+            <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label={t('common.backToSkills')}>
               <ChevronLeft size={18} />
             </button>
           )}
@@ -327,8 +329,8 @@ export default function Speaking() {
             <Mic size={20} className="text-b2-600" />
           </div>
           <div>
-            <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Speaking</h1>
-            <p className="text-xs text-gray-500">Web Speech API · Claude AI bilan suhbat · Baholash</p>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{t('speaking.title')}</h1>
+            <p className="text-xs text-gray-500">{t('speaking.subtitle')}</p>
           </div>
         </div>
 
@@ -341,8 +343,8 @@ export default function Speaking() {
             <Sparkles size={20} />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-black text-sm flex items-center gap-1.5">AI Suhbat Hamrohi <span className="text-[11px] bg-white/25 px-1.5 py-0.5 rounded-full font-bold">YANGI</span></p>
-            <p className="text-[11px] text-white/85">Real vaziyatlarda rol o'ynang — restoran, ish suhbati, aeroport…</p>
+            <p className="font-black text-sm flex items-center gap-1.5">{t('speaking.bannerRoleplay')} <span className="text-[11px] bg-white/25 px-1.5 py-0.5 rounded-full font-bold">{t('speaking.bannerNew')}</span></p>
+            <p className="text-[11px] text-white/85">{t('speaking.bannerRoleplayDesc')}</p>
           </div>
           <ChevronLeft size={18} className="rotate-180 shrink-0 text-white/70" />
         </button>
@@ -356,8 +358,8 @@ export default function Speaking() {
             <Mic size={20} />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-black text-sm flex items-center gap-1.5">AI Talaffuz Murabbiysi <span className="text-[11px] bg-white/25 px-1.5 py-0.5 rounded-full font-bold">YANGI</span></p>
-            <p className="text-[11px] text-white/85">Tovushlarni mashq qiling — th, w/v, unlilar, urg'u…</p>
+            <p className="font-black text-sm flex items-center gap-1.5">{t('speaking.bannerPronunciation')} <span className="text-[11px] bg-white/25 px-1.5 py-0.5 rounded-full font-bold">{t('speaking.bannerNew')}</span></p>
+            <p className="text-[11px] text-white/85">{t('speaking.bannerPronunciationDesc')}</p>
           </div>
           <ChevronLeft size={18} className="rotate-180 shrink-0 text-white/70" />
         </button>
@@ -372,7 +374,7 @@ export default function Speaking() {
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
-            <Mic size={14} className="inline mr-1" /> Prompt Mode
+            <Mic size={14} className="inline mr-1" /> {t('speaking.modePrompt')}
           </button>
           <button
             onClick={() => setMode('chat')}
@@ -382,15 +384,14 @@ export default function Speaking() {
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
-            <MessageCircle size={14} className="inline mr-1" /> Chat Mode
+            <MessageCircle size={14} className="inline mr-1" /> {t('speaking.modeChat')}
           </button>
         </div>
 
         {!sr.isSupported && (
           <div className="card bg-red-50 border-red-100 mb-4">
             <p className="text-sm text-red-700 font-medium">
-              ⚠️ Brauzeringiz Web Speech API-ni qo'llab-quvvatlamaydi.
-              Chrome yoki Edge ishlatishingizni tavsiya qilamiz.
+              {t('speaking.browserWarn')}
             </p>
           </div>
         )}
@@ -399,7 +400,7 @@ export default function Speaking() {
         {mode === 'prompt' && (
           <>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
-              Bugungi savollar ({currentDay}-kun)
+              {t('speaking.todayPrompts', { day: String(currentDay) })}
             </p>
             <div className="space-y-3 mb-6">
               {dailyPrompts.map((p) => (
@@ -414,7 +415,7 @@ export default function Speaking() {
                         <span className={`badge text-[11px] ${CATEGORY_COLOR[p.category]}`}>
                           {CATEGORY_LABEL[p.category]}
                         </span>
-                        <span className="text-xs text-gray-400">{Math.floor(p.timeSeconds / 60)}:{String(p.timeSeconds % 60).padStart(2, '0')} daqiqa</span>
+                        <span className="text-xs text-gray-400">{Math.floor(p.timeSeconds / 60)}:{String(p.timeSeconds % 60).padStart(2, '0')} {t('common.minutes')}</span>
                       </div>
                       <p className="text-sm text-gray-800 dark:text-gray-200 leading-snug">{p.prompt}</p>
                       <div className="flex gap-1 mt-2">
@@ -432,11 +433,10 @@ export default function Speaking() {
             </div>
 
             <details className="card">
-              <summary className="cursor-pointer text-sm font-semibold text-gray-700 select-none">
-                Barcha savollar ({prompts.length} ta)
-              </summary>
+              <summary className="cursor-pointer text-sm font-semibold text-gray-700 select-none">              {t('speaking.allPrompts', { count: String(prompts.length) })}
+            </summary>
               {promptsLoading ? (
-                <div className="text-gray-400 animate-pulse text-center py-4 text-sm">Savollar yuklanmoqda...</div>
+                <div className="text-gray-400 animate-pulse text-center py-4 text-sm">{t('speaking.loadingPrompts')}</div>
               ) : (
                 <div className="space-y-0.5 mt-2">
                   {prompts.map((p) => (
@@ -466,17 +466,16 @@ export default function Speaking() {
                   <MessageCircle size={18} className="text-primary-700" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-primary-800">💬 Chat Conversation</p>
+                  <p className="text-sm font-bold text-primary-800">{t('speaking.chatDescription')}</p>
                   <p className="text-xs text-primary-600 mt-0.5">
-                    Mavzuni tanlang va Claude AI bilan real-time suhbatlashing.
-                    Siz gapirasiz, Claude javob beradi va suhbat oxirida feedback olasiz.
+                    {t('speaking.chatDescriptionDetail')}
                   </p>
                 </div>
               </div>
             </div>
 
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
-              Suhbat mavzulari
+              {t('speaking.chatTopics')}
             </p>
             <div className="space-y-2 mb-6">
               {prompts.map((p) => {
@@ -525,32 +524,32 @@ export default function Speaking() {
           <button onClick={() => setView('select')} className="btn-ghost p-2 rounded-xl">
             <ChevronLeft size={18} />
           </button>
-          <h2 className="font-bold text-gray-900 dark:text-white">Baholash natijalari</h2>
+          <h2 className="font-bold text-gray-900 dark:text-white">{t('speaking.resultTitle')}</h2>
         </div>
 
         {/* Overall */}
         <div className="card bg-gradient-to-r from-b2-50 to-primary-50 border-b2-100 text-center mb-4">
-          <p className="text-xs text-gray-500 mb-1">Umumiy ball</p>
+          <p className="text-xs text-gray-500 mb-1">{t('speaking.overallScore')}</p>
           <p className="text-4xl font-bold text-b2-600">{avg}<span className="text-xl font-normal text-gray-400">/10</span></p>
-          <p className="text-xs text-gray-500 mt-1">+{avg * 3} XP qazonlandi</p>
+          <p className="text-xs text-gray-500 mt-1">{t('speaking.xpEarned', { xp: String(avg * 3) })}</p>
         </div>
 
         {/* Score cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-4">
-          <ScoreCard label="Fluency"    score={scores.fluency}    color="text-orange-600" />
-          <ScoreCard label="Grammar"    score={scores.grammar}    color="text-green-600"  />
-          <ScoreCard label="Vocabulary" score={scores.vocabulary} color="text-b2-600"     />
+          <ScoreCard label={t('speaking.scoreFluency')}    score={scores.fluency}    color="text-orange-600" />
+          <ScoreCard label={t('speaking.scoreGrammar')}    score={scores.grammar}    color="text-green-600"  />
+          <ScoreCard label={t('speaking.scoreVocabulary')} score={scores.vocabulary} color="text-b2-600"     />
         </div>
 
         {/* WPM metric */}
         {timer > 0 && (
           <div className="card bg-gray-50 dark:bg-gray-800/50 mb-4">
-            <p className="text-xs font-semibold text-gray-500 mb-1">⚡ Nutq tezligi</p>
+            <p className="text-xs font-semibold text-gray-500 mb-1">{t('speaking.speechRate')}</p>
             <p className="text-sm font-bold text-gray-800 dark:text-gray-200">
-              {Math.round(sr.transcript.trim().split(/\s+/).filter(Boolean).length / (timer / 60))} so'z/daqiqa
+              {Math.round(sr.transcript.trim().split(/\s+/).filter(Boolean).length / (timer / 60))} {t('speaking.wpmLabel')}
             </p>
             <p className="text-[11px] text-gray-400 mt-0.5">
-              {Math.round(timer / 60)}:{String(timer % 60).padStart(2, '0')} daqiqa · {sr.transcript.trim().split(/\s+/).filter(Boolean).length} so'z
+              {Math.round(timer / 60)}:{String(timer % 60).padStart(2, '0')} {t('common.minutes')} · {sr.transcript.trim().split(/\s+/).filter(Boolean).length} {t('common.words')}
             </p>
           </div>
         )}
@@ -558,7 +557,7 @@ export default function Speaking() {
         {/* Feedback */}
         {feedback && (
           <div className="card bg-primary-50 border-primary-100 mb-4">
-            <p className="text-xs font-semibold text-primary-700 mb-1">💡 Feedback</p>
+            <p className="text-xs font-semibold text-primary-700 mb-1">{t('speaking.feedback')}</p>
             <p className="text-sm text-gray-700 leading-relaxed">{feedback}</p>
           </div>
         )}
@@ -566,13 +565,13 @@ export default function Speaking() {
         {/* Audio playback */}
         {ar.audioUrl && (
           <div className="mb-4">
-            <AudioPlayback audioUrl={ar.audioUrl} label="Sizning javobingiz" color="text-b2-600" />
+            <AudioPlayback audioUrl={ar.audioUrl} label={t('speaking.yourAnswer')} color="text-b2-600" />
           </div>
         )}
 
         {/* Transcript */}
         <div className="card mb-4">
-          <p className="text-xs font-semibold text-gray-500 mb-1">Sizning javobingiz</p>
+          <p className="text-xs font-semibold text-gray-500 mb-1">{t('speaking.yourAnswer')}</p>
           <p className="text-sm text-gray-700 italic leading-relaxed">"{sr.transcript}"</p>
         </div>
 
@@ -581,13 +580,13 @@ export default function Speaking() {
             onClick={() => { resetRecording(); setEvaluation(''); setView('record') }}
             className="btn-secondary flex-1 text-sm flex items-center justify-center gap-1"
           >
-            <RotateCcw size={14} /> Qayta yozish
+            <RotateCcw size={14} /> {t('speaking.retryButton')}
           </button>
           <button
             onClick={() => setView('select')}
             className="btn-primary flex-1 text-sm"
           >
-            Boshqa savol
+            {t('speaking.nextPromptButton')}
           </button>
         </div>
 
@@ -616,7 +615,7 @@ export default function Speaking() {
               <ChevronLeft size={18} />
             </button>
             <div>
-              <h2 className="font-bold text-sm text-gray-900 dark:text-white">Chat Conversation</h2>
+              <h2 className="font-bold text-sm text-gray-900 dark:text-white">{t('speaking.chatDescription')}</h2>
               {chatTopic && (
                 <span className={`badge text-[11px] ${CATEGORY_COLOR[chatTopic.category]}`}>
                   {CATEGORY_LABEL[chatTopic.category]}
@@ -625,13 +624,13 @@ export default function Speaking() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-[11px] text-gray-400">{turnCount} turn</span>
+            <span className="text-[11px] text-gray-400">{t('speaking.chatTurn', { count: String(turnCount) })}</span>
             <button
               onClick={endChat}
               disabled={chatLoading}
               className="btn-ghost text-xs text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-1.5 rounded-lg font-medium disabled:opacity-40"
             >
-              <Square size={12} className="inline mr-1" /> Suhbatni tugat
+              <Square size={12} className="inline mr-1" /> {t('speaking.chatEnd')}
             </button>
           </div>
         </div>
@@ -653,8 +652,8 @@ export default function Speaking() {
               <div className="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mb-3 animate-pulse">
                 <MessageCircle size={28} className="text-primary-500" />
               </div>
-              <p className="text-sm font-medium text-gray-700">Claude suhbatni boshlayapti...</p>
-              <p className="text-xs text-gray-400 mt-1">Iltimos, bir necha soniya kuting</p>
+              <p className="text-sm font-medium text-gray-700">{t('speaking.chatWaiting')}</p>
+              <p className="text-xs text-gray-400 mt-1">{t('speaking.chatPleaseWait')}</p>
             </div>
           )}
 
@@ -673,7 +672,7 @@ export default function Speaking() {
                 {msg.role === 'assistant' && (
                   <div className="flex items-center gap-1.5 mb-1">
                     <Brain size={12} className="text-primary-500" />
-                    <span className="text-[11px] font-semibold text-primary-600">Claude AI</span>
+                    <span className="text-[11px] font-semibold text-primary-600">{t('speaking.chatClaude')}</span>
                   </div>
                 )}
                 <p className="text-sm leading-relaxed">{msg.content}</p>
@@ -746,7 +745,7 @@ export default function Speaking() {
                 disabled={!sr.isSupported || chatLoading}
                 className="btn-primary flex-1 text-sm flex items-center justify-center gap-2 py-3 disabled:opacity-40"
               >
-                <Mic size={18} /> Gapiring
+                <Mic size={18} /> {t('speaking.chatMicButton')}
               </button>
             ) : (
               <>
@@ -754,7 +753,7 @@ export default function Speaking() {
                   onClick={() => sr.stop()}
                   className="btn-secondary flex-1 text-sm flex items-center justify-center gap-2 py-3"
                 >
-                  <MicOff size={18} className="text-red-500" /> To'xtatish
+                  <MicOff size={18} className="text-red-500" /> {t('speaking.chatStopButton')}
                 </button>
               </>
             )}
@@ -765,7 +764,7 @@ export default function Speaking() {
                 disabled={!canSend}
                 className="btn-primary text-sm flex items-center justify-center gap-1.5 py-3 px-5 disabled:opacity-40"
               >
-                <Send size={16} /> Yuborish
+                <Send size={16} /> {t('speaking.chatSendButton')}
               </button>
             )}
 
@@ -773,7 +772,7 @@ export default function Speaking() {
               <button
                 onClick={() => sr.reset()}
                 className="btn-ghost p-3 rounded-xl text-gray-400 hover:text-gray-600"
-                title="Tozalash"
+                title={t('common.reset')}
               >
                 <RotateCcw size={16} />
               </button>
@@ -784,11 +783,11 @@ export default function Speaking() {
           <div className="mt-2 text-center">
             {srReady && !chatLoading && (
               <p className="text-[11px] text-gray-400">
-                Mikrofon tugmasini bosing, gapiring va "Yuborish" ni bosing. Claude avtomatik javob beradi.
+                {t('speaking.chatInputTip')}
               </p>
             )}
             {chatLoading && (
-              <p className="text-[11px] text-primary-500 animate-pulse">Claude javob yozmoqda...</p>
+              <p className="text-[11px] text-primary-500 animate-pulse">{t('speaking.chatClaudeLoading')}</p>
             )}
           </div>
         </div>
@@ -808,7 +807,7 @@ export default function Speaking() {
           <button onClick={() => setView('select')} className="btn-ghost p-2 rounded-xl">
             <ChevronLeft size={18} />
           </button>
-          <h2 className="font-bold text-gray-900">Suhbat yakunlandi</h2>
+          <h2 className="font-bold text-gray-900">{t('speaking.chatFeedbackTitle')}</h2>
         </div>
 
         {/* Stats */}
@@ -816,9 +815,9 @@ export default function Speaking() {
           <div className="w-12 h-12 bg-primary-200 rounded-2xl flex items-center justify-center mx-auto mb-2">
             <Sparkles size={24} className="text-primary-700" />
           </div>
-          <p className="text-lg font-bold text-gray-800 dark:text-gray-200">Ajoyib suhbat! 🎉</p>
+          <p className="text-lg font-bold text-gray-800 dark:text-gray-200">{t('speaking.chatCompleted')}</p>
           <p className="text-xs text-gray-500 mt-1">
-            {turnCount} ta almashinuv · {chatTopic?.prompt.slice(0, 60)}...
+            {t('speaking.chatFeedbackTurnCount', { count: String(turnCount) })} · {chatTopic?.prompt.slice(0, 60)}...
           </p>
         </div>
 
@@ -826,27 +825,27 @@ export default function Speaking() {
         <div className="grid grid-cols-2 gap-3 mb-4">
           <div className="card text-center py-4">
             <p className="text-2xl font-bold text-b2-600">+{xpEarned}</p>
-            <p className="text-xs text-gray-500 mt-0.5">XP qozonildi</p>
+            <p className="text-xs text-gray-500 mt-0.5">{t('speaking.chatXPEarned')}</p>
           </div>
           <div className="card text-center py-4">
             <p className="text-2xl font-bold text-green-600">
               {progressPct}%
             </p>
-            <p className="text-xs text-gray-500 mt-0.5">Speaking progress</p>
+            <p className="text-xs text-gray-500 mt-0.5">{t('speaking.chatProgressLabel')}</p>
           </div>
         </div>
 
         {/* Feedback */}
         {chatFeedback ? (
           <div className="card bg-primary-50 border-primary-100 mb-4">
-            <p className="text-xs font-semibold text-primary-700 mb-2">💡 Claude dan feedback</p>
+            <p className="text-xs font-semibold text-primary-700 mb-2">{t('speaking.feedback')}</p>
             <pre className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap font-sans">
               {chatFeedback}
             </pre>
           </div>
         ) : (
           <div className="card bg-gray-50 text-center py-6 mb-4">
-            <p className="text-sm text-gray-500 mb-3">Feedback tayyorlanmoqda...</p>
+            <p className="text-sm text-gray-500 mb-3">{t('speaking.chatFeedbackLoading')}</p>
             <SkeletonText lines={3} />
           </div>
         )}
@@ -854,9 +853,9 @@ export default function Speaking() {
         {/* Checklist status */}
         <div className="card mb-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-gray-600">📋 Speaking checklist</span>
+            <span className="text-xs font-semibold text-gray-600">{t('speaking.chatChecklistLabel')}</span>
             <span className={`text-xs font-bold ${todayChecklist.speaking ? 'text-green-600' : 'text-gray-400'}`}>
-              {todayChecklist.speaking ? '✅ Bajarildi' : '❌ Bajarilmagan'}
+              {todayChecklist.speaking ? t('speaking.chatCompletedStatus') : t('speaking.chatNotCompletedStatus')}
             </span>
           </div>
         </div>
@@ -864,13 +863,13 @@ export default function Speaking() {
         {/* Conversation transcript */}
         <details className="card mb-4">
           <summary className="cursor-pointer text-sm font-semibold text-gray-700 select-none">
-            Suhbat tarixi ({chatMessages.length} ta xabar)
+            {t('speaking.chatTranscript', { count: String(chatMessages.length) })}
           </summary>
           <div className="space-y-2 mt-3">
             {chatMessages.map((msg) => (
               <div key={msg.timestamp} className={`p-2 rounded-lg ${msg.role === 'user' ? 'bg-b2-50' : 'bg-gray-50'}`}>
                 <p className={`text-[11px] font-semibold mb-0.5 ${msg.role === 'user' ? 'text-b2-600' : 'text-gray-500'}`}>
-                  {msg.role === 'user' ? '👤 Siz' : '🤖 Claude'}
+                  {msg.role === 'user' ? t('speaking.chatYou') : t('speaking.chatClaude')}
                 </p>
                 <p className="text-xs text-gray-700 leading-relaxed">{msg.content}</p>
               </div>
@@ -882,7 +881,7 @@ export default function Speaking() {
           onClick={() => setView('select')}
           className="btn-primary w-full text-sm"
         >
-          Speaking sahifasiga qaytish
+          {t('speaking.chatBackButton')}
         </button>
       </div>
     )
@@ -921,7 +920,7 @@ export default function Speaking() {
           <button
             onClick={() => speakText(prompt.prompt)}
             className="flex-shrink-0 mt-0.5 p-1 rounded-lg hover:bg-b2-100 transition-colors"
-            title="Ovozli o'qish"
+            title={t('speaking.speakTooltip')}
           >
             <Volume2 size={16} className="text-b2-500" />
           </button>
@@ -931,7 +930,7 @@ export default function Speaking() {
 
       {/* Tips */}
       <div className="mb-5">
-        <p className="text-xs font-semibold text-gray-500 mb-1.5">Maslahatlar:</p>
+        <p className="text-xs font-semibold text-gray-500 mb-1.5">{t('speaking.tipsHeader')}</p>
         <ul className="space-y-1">
           {prompt.tips.map((tip, i) => (
             <li key={i} className="text-xs text-gray-500 flex items-start gap-1.5">
@@ -964,14 +963,14 @@ export default function Speaking() {
         <div className="text-center">
           {isRecording && (
             <p className="text-sm font-mono text-red-500 font-semibold" aria-live="polite">
-              ● {mins}:{String(secs).padStart(2, '0')} yozilmoqda...
+              {t('speaking.recordingTimer', { mins: String(mins), secs: String(secs).padStart(2, '0') })}
             </p>
           )}
           {!isRecording && !isDone && (
-            <p className="text-sm text-gray-400">Mikrofon tugmasini bosing va gapiring</p>
+            <p className="text-sm text-gray-400">{t('speaking.recordInstruction')}</p>
           )}
           {isDone && (
-            <p className="text-sm text-green-600 font-medium">✓ Yozib olindi — {Math.floor(timer / 60)}:{String(timer % 60).padStart(2, '0')}</p>
+            <p className="text-sm text-green-600 font-medium">{t('speaking.recordDone', { duration: `${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, '0')}` })}</p>
           )}
         </div>
       </div>
@@ -998,7 +997,7 @@ export default function Speaking() {
             onClick={resetRecording}
             className="btn-secondary flex-1 text-sm flex items-center justify-center gap-1"
           >
-            <RotateCcw size={14} /> Qayta
+            <RotateCcw size={14} /> {t('speaking.recordRewind')}
           </button>
         )}
         {isDone && sr.transcript.trim() && (
@@ -1008,8 +1007,8 @@ export default function Speaking() {
             className="btn-primary flex-1 text-sm flex items-center justify-center gap-1.5"
           >
             {isEvaluating
-              ? <><Loader2 size={14} className="animate-spin" /> Baholanmoqda...</>
-              : '✨ Claude baholaydi'
+              ? <><Loader2 size={14} className="animate-spin" /> {t('speaking.evaluating')}</>
+              : t('speaking.recordEvaluate')
             }
           </button>
         )}
@@ -1018,7 +1017,7 @@ export default function Speaking() {
       {/* Evaluation streaming */}
       {isEvaluating && evaluation && (
         <div className="mt-4 card bg-primary-50 border-primary-100">
-          <p className="text-xs font-semibold text-primary-700 mb-1">Baholanmoqda...</p>
+          <p className="text-xs font-semibold text-primary-700 mb-1">{t('speaking.evaluating')}</p>
           <pre className="text-xs text-gray-700 whitespace-pre-wrap font-sans leading-relaxed">
             {evaluation}
             <span className="inline-block w-1 h-3 bg-primary-400 ml-0.5 animate-pulse align-middle" />

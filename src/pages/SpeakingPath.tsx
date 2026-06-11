@@ -15,8 +15,10 @@ import SpeakingCharts from '../components/speakingPath/SpeakingCharts'
 import SpeakingAchievements from '../components/speakingPath/SpeakingAchievements'
 import FreePractice from '../components/speakingPath/FreePractice'
 import { useStore } from '../store/useStore'
+import { useI18n } from '../i18n'
 
 export default function SpeakingPath() {
+  const { t } = useI18n()
   const navigate = useNavigate()
   const { user } = useAuth()
   const userId = user?.id
@@ -103,9 +105,9 @@ export default function SpeakingPath() {
         </button>
         <div className="min-w-0">
           <h1 className="text-lg sm:text-xl font-black text-gray-900 dark:text-gray-100 flex items-center gap-2">
-            <Mic size={20} className="text-primary-600" /> Gapirish Yo'li
+            <Mic size={20} className="text-primary-600" /> {t('speakingPath.title')}
           </h1>
-          <p className="text-xs text-gray-500 dark:text-gray-400">0 dan suhbatgacha — har kuni 15 daqiqa</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t('speakingPath.subtitle')}</p>
         </div>
       </div>
 
@@ -115,13 +117,13 @@ export default function SpeakingPath() {
           onClick={() => { setTab('path'); setSearchParams({}) }}
           className={`flex-1 py-2 rounded-xl text-sm font-bold transition-colors ${tab === 'path' ? 'bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-300 shadow-sm' : 'text-gray-500 dark:text-gray-400'}`}
         >
-          🪜 Narvon
+          {t('speakingPath.tabPath')}
         </button>
         <button
           onClick={() => { setTab('free'); setSearchParams({ tab: 'free' }) }}
           className={`flex-1 py-2 rounded-xl text-sm font-bold transition-colors ${tab === 'free' ? 'bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-300 shadow-sm' : 'text-gray-500 dark:text-gray-400'}`}
         >
-          🎤 Erkin amaliyot
+          {t('speakingPath.tabFree')}
         </button>
       </div>
 
@@ -132,12 +134,12 @@ export default function SpeakingPath() {
       {/* Statistika */}
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-2xl p-4 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
-          <div className="flex items-center gap-1.5 text-white/80 text-xs font-semibold"><Flame size={14} /> JORIY KUN</div>
+          <div className="flex items-center gap-1.5 text-white/80 text-xs font-semibold"><Flame size={14} /> {t('speakingPath.currentDay')}</div>
           <p className="text-2xl font-black mt-1">{currentDay} <span className="text-base font-bold text-white/70">/ {TOTAL_SPEAKING_DAYS}</span></p>
         </div>
         <div className="rounded-2xl p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-          <div className="flex items-center gap-1.5 text-gray-400 text-xs font-semibold"><Trophy size={14} /> TUGATILGAN</div>
-          <p className="text-2xl font-black mt-1 text-gray-900 dark:text-gray-100">{completedCount} <span className="text-base font-bold text-gray-400">kun</span></p>
+          <div className="flex items-center gap-1.5 text-gray-400 text-xs font-semibold"><Trophy size={14} /> {t('speakingPath.completed')}</div>
+          <p className="text-2xl font-black mt-1 text-gray-900 dark:text-gray-100">{completedCount} <span className="text-base font-bold text-gray-400">{t('speakingPath.days')}</span></p>
         </div>
       </div>
 
@@ -151,8 +153,8 @@ export default function SpeakingPath() {
             <RotateCcw size={20} />
           </div>
           <div className="flex-1 min-w-0 text-left">
-            <p className="font-black text-sm">Takrorlash vaqti keldi</p>
-            <p className="text-white/80 text-xs">{dueChunks.length} ta ibora takrorga tayyor</p>
+            <p className="font-black text-sm">{t('speakingPath.reviewTitle')}</p>
+            <p className="text-white/80 text-xs">{t('speakingPath.reviewDesc', { count: String(dueChunks.length) })}</p>
           </div>
           <ChevronRight size={18} className="shrink-0" />
         </button>

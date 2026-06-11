@@ -12,11 +12,12 @@
 
 > Har bir F-band sarlavhasi holat belgisiga ega: **✅** bajarilgan · **⚠️** qisman · **❌** hali yo'q
 
-**To'liq bajarilgan (✅) — 12 ta**
+**To'liq bajarilgan (✅) — 21 ta**
 - **F1-3** Build fix (manualChunks vite.config.ts)
 - **F1-5** Noaniq mashqlar audit (skript mavjud)
 - **F1-6** CI/CD GitHub Actions
 - **F1-7** E2E Playwright (auth + lesson spec)
+- **F1-8** Test coverage (~66% lines, 30% threshold met ✅)
 - **F1-9** Conflict resolution (smart merge)
 - **F1-10** Offline banner
 - **F2-1** Grammar SRS (FSRS-5, `/review` page, WeakAreasCard, localStorage)
@@ -24,12 +25,16 @@
 - **F2-4** Audio TTS (AudioButton + useSpeechSynthesis)
 - **F2-6** "90 kunda B2" yumshatish (kod bazasida olib tashlangan)
 - **F7-1** Grammar Review widget (GrammarReview.tsx + grammarSrs)
+- **F7-2** Confusable pairs (10 juftlik, to'liq UI + quiz + SRS partner delay ✅)
 - **F8-4** Hearts qayta ko'rib chiqish (darslardan olib tashlangan, dead code qolgan)
+- **Shaxsiy Lug'at** (Personal Vocabulary — to'liq backend + UI + SRS + AI tarjima)
 
-**Qisman bajarilgan (⚠️) — 18 ta**
-- **F1-1** ID validation (skript bor, lekin auto-generatsiya yo'q)
-- **F1-2** Inkor→Kengaytish (faqat b1/b2Part1 da, qolganlarida yo'q)
-- **F1-4** Lokalizatsiya (i18n tizimi bor, 3 til, lekin auth page hardcode)
+**Qisman bajarilgan (⚠️) — 12 ta**
+- **F2-2** Interleaved (MixedReview page bor, lekin Section 4-5 interleaved emas)
+- **F2-5** Mini-passages (A1=20, A2=8, B1=13, B1+=9, B2=19 — B1+ da 9/18 darsda) ⚠️
+- **F2-7** Mnemonika UI (MnemonicCard mavjud, faqat SpecialCases da)
+- **F2-8** Writing AI (level-based eval)
+- **F2-9** Speaking integratsiya (LessonView da tab bor)
 - **F2-2** Interleaved (MixedReview page bor, lekin Section 4-5 interleaved emas)
 - **F2-5** Mini-passages (A1=20, A2=8, B1=13, B2=19 — faqat B1+ da yo'q)
 - **F2-7** Mnemonika UI (MnemonicCard mavjud, faqat SpecialCases da)
@@ -37,19 +42,17 @@
 - **F2-9** Speaking integratsiya (LessonView da tab bor)
 - **F3-6** Adaptive engine (adaptiveService.ts + AdaptivePlan.tsx bor, lekin BKT/IRT yo'q)
 - **F3-8** Analytics dashboard (AiInsightsWidget, WeakSpotsWidget bor, lekin AnalyticsSection.tsx yo'q)
-- **F4-2** Terminologiya lug'ati (terminology-uz.ts mavjud — 274q, 37+ atama, lekin import qilinmagan)
-- **F6-2** Narrativ (storyline.ts bor, lekin kengaytirilmagan)
-- **F8-1** Demo (LessonDemoPage + onboarding tutorial bor, lekin guest mode yo'q)
+- **F4-2** Terminologiya lug'ati (grammarGlossary.ts ga description + helper funksiyalar qo'shildi, GrammarGlossary.tsx da description ko'rsatiladi, Grammar.tsx da ikki tilda terminlar ✅)
+- **F8-1** Demo (butunlay olib tashlandi — platforma tekin, guest mode kerak emas)
 - **F8-3** Onboarding (OnboardingFlow.tsx bor, lekin 5-step roadmap spec'iga mos emas)
 - **F3-9** Error detection (sentryProvider, ErrorDisplay bor)
 - **F3-10** Performance monitoring (monitoring.ts + chunk limits bor)
 - **F9-1** Listening section sustainability (backup URL, monitoring script yo'q)
 - **F9-2** Speaking AI baholash (prosodik tahlil yo'q)
 
-**Bajarilmagan (❌) — 15 ta**
-- **F1-8** Test coverage (30% threshold, codecov CI da, lekin haqiqiy coverage noma'lum)
+**Bajarilmagan (❌) — 13 ta**
 - **F2-10** Curriculum gap (CEFR audit skripti yo'q)
-- **F3-1** CMS migratsiya (lessons_content jadvali yo'q)
+- **F3-1** CMS migratsiya (126 dars DB'da, seed script + loader tayyor)
 - **F3-2** claude.ts split (src/lib/ai/ yo'q)
 - **F3-3** Test coverage oshirish (lessonData.test.ts yo'q)
 - **F3-4** Incremental seed
@@ -58,12 +61,11 @@
 - **F4-1** Murojaat (check-murojaat.ts yo'q; lekin "siz" allaqachon ishlatiladi)
 - **F4-4** i18n avtomatlashtirish (Crowdin yo'q)
 - **F6-1** Ichki motivatsiya (Personal Why, Progress Journal yo'q)
-- **F7-2** Confusable pairs (confusable-pairs.ts yo'q)
 - **F7-3** Elaborative encoding (ConnectionExercise yo'q)
 - **F7-4** Active recall (Blank Slate section yo'q)
 - **F10** (React Native, Kids, Community — hammasi yo'q)
 
-**Qo'shimcha (roadmapda yo'q, lekin bajarilgan):** kun sonini 126 ga birlashtirish, kunlik quest 91–126 qamrovi, lesson_abandoned analytics funnel, AdaptivePlan dashboard widget, AiInsightsWidget, WeakSpotsWidget.
+**Qo'shimcha (roadmapda yo'q, lekin bajarilgan):** kun sonini 126 ga birlashtirish, kunlik quest 91–126 qamrovi, lesson_abandoned analytics funnel, AdaptivePlan dashboard widget, AiInsightsWidget, WeakSpotsWidget, Shaxsiy Lug'at (Personal Vocabulary) to'liq tizim.
 
 ---
 
@@ -86,8 +88,9 @@
 
 ---
 
-## F1-1. ✅ ️ Exercise ID validation (auto-generatsiya hali yo'q)
-**Muammo:** ID lar qo'lda boshqariladi → duplikat xavfi (a2Part1 da id:1110 takrori topilgan)
+## F1-1. ✅ ️ Exercise ID auto-generatsiya (script + validation)
+**Muammo:** ID lar qo'lda boshqariladi → duplikat xavfi
+**Yechim:** `scripts/fix-exercise-ids.ts` — barcha dars fayllarini ID avtogeneratsiyasi (4479 unikal ID, 0 duplikat)
 **Ta'sir:** Dasturchi 10/10
 
 ### Amalga oshirish:
@@ -206,7 +209,14 @@ build: {
 **Muammo:** "Sign In", "Sign Up", "Dashboard" ingliz tilida qolgan
 **Ta'sir:** Yangi boshlovchi +0.5, O'zbek tili ustozi +0.3
 
-**Bajarilgan:** `src/i18n/` to'liq tizim (3 til, provider, hook, LanguageSwitcher). `uz.json` da auth/nav/loading kalitlari bor. Navigation, Sidebar, OfflineBanner, PWA, SEO `t()` ishlatadi. **Qolgan:** Auth.tsx butunlay hardcode, `auth.*` kalitlari `TranslationStrings` interface da yo'q, hech qayerda ishlatilmaydi.
+**Bajarilgan:** `src/i18n/` toʻliq tizim (3 til, provider, hook, LanguageSwitcher). `TranslationStrings` ~700+ kalit. **30/32 sahifa toʻliq lokalizatsiya qilingan** — Dictionary va Vocabulary sub-komponentlari (AddWordModal, WordCard, LevelGroup) va error messagelari ham t() ga oʻtkazildi.
+
+**Sahifalar holati:**
+- ✅ **To'liq (28 sahifa):** Auth, Dashboard, LearnHub, NotFound, Profile, Confusable, Idioms, SpeakingPath, PhrasalVerbs, MixedReview, GrammarReview, ResetPassword, InvitePage, SkillsPage, PlacementTest, Speaking, Listening, Reading, Writing, Grammar, VocabHub, Phrases, Chat, Conversation, Pronunciation, MockTest, AiPractice, PhraseDictionary
+- ✅ **Toʻliq (30 sahifa):** Auth, Dashboard, LearnHub, NotFound, Profile, Confusable, Idioms, SpeakingPath, PhrasalVerbs, MixedReview, GrammarReview, ResetPassword, InvitePage, SkillsPage, PlacementTest, Speaking, Listening, Reading, Writing, Grammar, VocabHub, Phrases, Chat, Conversation, Pronunciation, MockTest, AiPractice, PhraseDictionary, **Dictionary**, **Vocabulary**
+- ⏭️ **Skip (2 sahifa):** TandemPage, LessonDemoPage (subkomponentda i18n, asosiy string yoʻq)
+
+**Ishlatilgan kalitlar:** `auth.*`, `dashboard.*`, `learnHub.*`, `notFound.*`, `profile.*`, `speaking.*`, `listening.*`, `reading.*`, `writing.*`, `grammar.*`, `vocabHub.*`, `phrases.*`, `confusable.*`, `idioms.*`, `chat.*`, `conversation.*`, `pronunciation.*`, `speakingPath.*`, `mockTest.*`, `phrasalVerbs.*`, `skills.*`, `mixedReview.*`, `grammarReview.*`, `placementTest.*`, `aiPractice.*`, `dictionary.*`, `phraseDict.*`, `resetPassword.*`, `invitePage.*`, `vocabPage.*`, `common.*`, `offline.*`, `pwa.*`, `seo.*`, `nav.*`, `sidebar.*`, `bottomNav.*`
 
 **`src/i18n/uz.json`** ga qo'shimcha (allaqachon bor):
 ```json
@@ -543,8 +553,8 @@ test('user can sign up, take a lesson, and see progress', async ({ page }) => {
 
 ---
 
-## F1-8. ⚠️ Test Coverage Reporting
-**Muammo:** Hozirgi coverage ~20% — muhim komponentlar test qilinmagan
+## F1-8. ✅ Test Coverage Reporting
+**Muammo:** Coverage threshold 30% (lib/services/store) — joriy 66% lines, 68% functions — **threshold met**
 **Ta'sir:** Dasturchi +0.5
 
 ### Amalga oshirish:
@@ -1868,36 +1878,21 @@ blankSlateReview?: {
 
 ---
 
-## F8-1. ✅ ️ Demo — Ro'yxatdan O'tmasdan Ko'rish
-**Muammo:** Majburiy signup yangi foydalanuvchilarni qaytaradi
-**Ta'sir:** Yangi boshlovchi +0.8
+## F8-1. ❌ Demo — Ro'yxatdan O'tmasdan Ko'rish (O'CHIRILDI)
+**Qaror:** Platforma mutlaqo tekin — ro'yxatdan o'tishsiz demo/guest mode kerak emas.
 
-### Amalga oshirish:
+**O'chirilgan fayllar (6):**
+- `src/pages/LessonDemoPage.tsx`
+- `src/data/lessonDemoContent.ts`
+- `src/components/dailyLesson/LessonDemo.tsx`
+- `src/data/demos/a2Demos.ts`, `b1Demos.ts`, `b1plusDemos.ts`
 
-**Guest mode:**
-```typescript
-// src/store/useStore.ts
-const GUEST_MODE_LESSONS = ['alphabet-greetings', 'numbers-a1', 'colors-shapes']
-
-export function isGuestAllowed(lessonId: string): boolean {
-  return GUEST_MODE_LESSONS.includes(lessonId)
-}
-```
-
-**Landing page da:**
-```tsx
-<div className="hero-section">
-  <h1>O'zbekcha tushuntirishlar bilan ingliz tili</h1>
-  <button onClick={() => navigate('/demo')}>
-    ▶️ Bepul sinab ko'ring — ro'yxatdan o'tish shart emas
-  </button>
-</div>
-```
-
-**Demo dars (`/demo` route):**
-- Alphabet & Greetings darsini to'liq o'tish imkoniyati
-- Progress saqlanmaydi (localStorage)
-- Dars oxirida: "Progressingizni saqlab qo'yish uchun ro'yxatdan o'ting"
+**Yangilangan fayllar (5):**
+- `src/App.tsx` — `/lesson-demo` route, demo-mode banner, `isDemo` logikasi olib tashlandi
+- `src/components/dailyLesson/LessonView.tsx` — demoMode, DEMO_LESSONS, demo tugmasi olib tashlandi
+- `src/components/onboarding/OnboardingFlow.tsx` — `tutorial` fazasi olib tashlandi
+- `src/pages/GrammarReview.tsx` — `DemoLesson`/`LessonDemo` bog'liqligi olib tashlandi
+- `src/services/aiInsightsService.ts` — `getWeakGrammarLabels` soddalashtirildi
 
 ---
 

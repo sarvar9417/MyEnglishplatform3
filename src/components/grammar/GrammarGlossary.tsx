@@ -2,7 +2,7 @@
 // Grammar sahifasida ko'rsatiladi (ingliz atama → o'zbekcha standart tarjima).
 
 import { useState, useMemo } from 'react'
-import { BookMarked, Search, ChevronDown } from 'lucide-react'
+import { BookMarked, Search, ChevronDown, Info } from 'lucide-react'
 import { GRAMMAR_TERMS } from '../../data/grammarGlossary'
 
 function normalize(s: string) {
@@ -56,9 +56,17 @@ export default function GrammarGlossary() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-80 overflow-y-auto">
               {filtered.map((t) => (
-                <div key={t.en} className="flex items-baseline gap-2 px-3 py-2 rounded-lg bg-gray-50">
-                  <span className="text-sm font-semibold text-primary-700 shrink-0">{t.en}</span>
-                  <span className="text-sm text-gray-600">— {t.uz}</span>
+                <div key={t.en} className="flex flex-col gap-1 px-3 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-sm font-semibold text-primary-700 shrink-0">{t.en}</span>
+                    <span className="text-sm text-gray-600">— {t.uz}</span>
+                  </div>
+                  {t.description && (
+                    <div className="flex items-start gap-1.5 text-[11px] text-gray-500 leading-relaxed">
+                      <Info size={10} className="mt-0.5 shrink-0 text-gray-400" />
+                      <span>{t.description}</span>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

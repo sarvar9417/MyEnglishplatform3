@@ -4,12 +4,14 @@
 
 import { useState, useMemo, useRef } from 'react'
 import { Search, X, BookOpen, ArrowLeft, Lightbulb, CheckCircle2, XCircle, RefreshCw, Brain, Sparkles, Zap } from 'lucide-react'
+import { useI18n } from '../i18n'
 import { CONFUSABLE_PAIRS, type ConfusablePair } from '../data/confusable-pairs'
 import { supabase } from '../lib/supabase'
 import { useToastStore } from '../utils/toastStore'
 import { delayConfusablePartners, pushWordsToSRS_FSRS, type PushWordInput } from '../services/vocabularyService'
 
 export default function Confusable() {
+  const { t } = useI18n()
   const [query, setQuery] = useState('')
   const [selected, setSelected] = useState<ConfusablePair | null>(null)
   const [mode, setMode] = useState<'browse' | 'quiz'>('browse')
@@ -96,10 +98,10 @@ export default function Confusable() {
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-1 flex items-center gap-2">
               <Brain size={28} className="text-purple-500" />
-              Confusable Pairs
+              {t('confusable.title')}
             </h1>
             <p className="text-sm text-gray-500">
-              {CONFUSABLE_PAIRS.length} ta chalkash so'zlar juftligi — bir-biriga aralashib ketadigan so'zlarni farqlang
+              {t('confusable.subtitle', { count: String(CONFUSABLE_PAIRS.length) })}
             </p>
           </div>
           <button
@@ -110,7 +112,7 @@ export default function Confusable() {
               transition-colors"
           >
             <Sparkles size={14} />
-            Test
+            {t('confusable.quizButton')}
           </button>
         </div>
       </div>
@@ -122,7 +124,7 @@ export default function Confusable() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Qidirish: so'z, qoida yoki misol..."
+          placeholder={t('confusable.searchPlaceholder')}
           className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700
             bg-white dark:bg-gray-900 text-sm text-gray-900 dark:text-gray-100
             placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -131,7 +133,7 @@ export default function Confusable() {
           <button
             onClick={() => setQuery('')}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-            aria-label="Tozalash"
+            aria-label={t('confusable.clearAria')}
           >
             <X size={18} />
           </button>
@@ -142,8 +144,8 @@ export default function Confusable() {
       {filtered.length === 0 ? (
         <div className="card text-center py-12">
           <BookOpen size={36} className="text-gray-300 mx-auto mb-3" />
-          <p className="text-sm text-gray-500">Hech narsa topilmadi</p>
-          <p className="text-xs text-gray-400 mt-1">Boshqa so'z bilan qidirib ko'ring</p>
+          <p className="text-sm text-gray-500">{t('confusable.noResults')}</p>
+          <p className="text-xs text-gray-400 mt-1">{t('confusable.noResultsHint')}</p>
         </div>
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">
@@ -199,6 +201,7 @@ function ConfusableDetail({
   srsPushing: Set<string>
   onPushSRS: (word: string) => Promise<void>
 }) {
+  const { t } = useI18n()
   return (
     <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <button
@@ -207,7 +210,7 @@ function ConfusableDetail({
           focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-lg px-2 py-1 transition-colors"
       >
         <ArrowLeft size={16} />
-        Orqaga
+        {t('confusable.detailBack')}
       </button>
 
       <article className="card !p-6 space-y-6">
@@ -230,14 +233,14 @@ function ConfusableDetail({
         <div className="flex items-center gap-2 p-3 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800">
           <Zap size={16} className="text-indigo-500 shrink-0" />
           <p className="text-xs text-indigo-700 dark:text-indigo-300">
-            SRS: bu juftlikdagi bir so'zni o'rganganingizda, ikkinchisi avtomatik kechiktiriladi — chalkashmaslik uchun
+            {t('confusable.srsDelayInfo')}
           </p>
         </div>
 
         {/* Rule */}
         <section>
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 flex items-center gap-1.5">
-            <BookOpen size={12} /> Qoida
+            <BookOpen size={12} /> {t('confusable.detailRule')}
           </h2>
           <div className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed">
             {pair.rule}
@@ -247,7 +250,7 @@ function ConfusableDetail({
         {/* Memory Hook */}
         <section className="p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
           <h2 className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-1.5">
-            <Lightbulb size={12} /> Yodda Saqlash
+            <Lightbulb size={12} /> {t('confusable.detailMemory')}
           </h2>
           <p className="text-sm text-amber-800 dark:text-amber-200 whitespace-pre-line leading-relaxed">
             {pair.memoryHook}
@@ -257,7 +260,7 @@ function ConfusableDetail({
         {/* Examples */}
         <section>
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
-            Misollar  <span className="font-normal text-gray-300">({pair.examples.length})</span>
+            {t('confusable.detailExamples', { count: String(pair.examples.length) })}
           </h2>
           <div className="space-y-3">
             {pair.examples.map((ex, i) => (
@@ -279,7 +282,7 @@ function ConfusableDetail({
         {/* SRS Partner Delay */}
         <div className="border-t border-gray-100 dark:border-gray-700 pt-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 flex items-center gap-1.5">
-            <Zap size={12} /> Sherikni kechiktirish
+            <Zap size={12} /> {t('confusable.detailDelayTitle')}
           </h3>
           <div className="flex flex-wrap gap-2">
             {pair.words.map((word) => (
@@ -294,25 +297,25 @@ function ConfusableDetail({
                 }`}
               >
                 {ratingLoading === word ? (
-                  <>⏳ Kechiktirilmoqda...</>
+                  <>{t('confusable.srsSaving')}</>
                 ) : (
-                  <><Zap size={12} /> "{word}" ni kechiktirish</>
+                  <><Zap size={12} /> {t('confusable.detailDelayAction', { word })}</>
                 )}
               </button>
             ))}
           </div>
           <p className="text-xs text-gray-400 mt-2">
-            Sherik so'zning SRS takrori +3 kunga kechiktiriladi
+            {t('confusable.detailDelayDesc')}
           </p>
         </div>
 
         {/* SRS Push to Vocabulary */}
         <div className="border-t border-gray-100 dark:border-gray-700 pt-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 flex items-center gap-1.5">
-            <BookOpen size={12} /> SRS ga saqlash
+            <BookOpen size={12} /> {t('confusable.detailSRSTitle')}
           </h3>
           <p className="text-xs text-gray-500 mb-3">
-            So'zlarni vocabulary SRS tizimiga qo'shing — FSRS algoritmi bo'yicha takrorlanadi
+            {t('confusable.detailSRSDesc')}
           </p>
           <div className="flex flex-wrap gap-2">
             {pair.words.map((word) => {
@@ -329,16 +332,16 @@ function ConfusableDetail({
                   }`}
                 >
                   {isPushing ? (
-                    <>⏳ Saqlanmoqda...</>
+                    <>{t('confusable.srsSaving')}</>
                   ) : (
-                    <><BookOpen size={14} /> "{word}" — SRS ga qo'shish</>
+                    <><BookOpen size={14} /> {t('confusable.detailSRSAdd', { word })}</>
                   )}
                 </button>
               )
             })}
           </div>
           <p className="text-xs text-gray-400 mt-2">
-            So'z vocabulary SRS ga 'bildim' reyting bilan qo'shiladi. Agar so'z allaqachon mavjud bo'lsa, FSRS progress yangilanadi
+            {t('confusable.detailSRSInfo')}
           </p>
         </div>
       </article>
@@ -410,6 +413,7 @@ function generateQuiz(): QuizQuestion[] {
 }
 
 function ConfusableQuiz({ onBack }: { onBack: () => void }) {
+  const { t } = useI18n()
   const [questions, setQuestions] = useState(() => generateQuiz())
   const [currentIdx, setCurrentIdx] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
@@ -467,7 +471,7 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
   if (finished) {
     const pct = Math.round((score / questions.length) * 100)
     const grade = pct >= 90 ? '🎉' : pct >= 70 ? '💪' : pct >= 50 ? '📚' : '🔄'
-    const gradeText = pct >= 90 ? "Zo'r!" : pct >= 70 ? 'Yaxshi!' : pct >= 50 ? 'O\'rtacha' : 'Mashq qilish kerak'
+    const gradeText = pct >= 90 ? t('confusable.finishedGradeExcellent') : pct >= 70 ? t('confusable.finishedGradeGood') : pct >= 50 ? t('confusable.finishedGradeAverage') : t('confusable.finishedGradePractice')
 
     return (
       <div className="p-3 sm:p-6 max-w-2xl mx-auto">
@@ -475,7 +479,7 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
           <div className="text-6xl mb-4">{grade}</div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">{gradeText}</h2>
           <p className="text-base text-gray-500 mb-1">
-            {score} / {questions.length} to'g'ri javob
+            {t('confusable.finishedScore', { score: String(score), total: String(questions.length) })}
           </p>
           <p className="text-5xl font-black text-purple-600 mb-6">{pct}%</p>
 
@@ -483,7 +487,7 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
           <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 mb-6 text-left">
             <p className="text-xs text-indigo-700 dark:text-indigo-300 flex items-center gap-1.5">
               <Zap size={12} />
-              To'g'ri javob berilgan pair'lar sheriklari SRS da +3 kunga kechiktirildi
+              {t('confusable.srsDelayProgress')}
             </p>
           </div>
 
@@ -494,7 +498,7 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
                 hover:bg-purple-700 transition-colors text-sm"
             >
               <RefreshCw size={16} />
-              Qayta boshlash
+              {t('confusable.finishedRestart')}
             </button>
             <button
               onClick={onBack}
@@ -503,7 +507,7 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
                 transition-colors text-sm"
             >
               <ArrowLeft size={16} />
-              Orqaga
+              {t('confusable.finishedBack')}
             </button>
           </div>
         </div>
@@ -520,14 +524,14 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
           className="flex items-center gap-2 text-sm text-gray-500 hover:text-purple-600 transition-colors"
         >
           <ArrowLeft size={16} />
-          Orqaga
+          {t('confusable.detailBack')}
         </button>
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <span className="font-semibold text-gray-700 dark:text-gray-300">{currentIdx + 1}</span>
           <span className="text-gray-300">/</span>
           <span>{questions.length}</span>
           <span className="w-px h-4 bg-gray-200 mx-1" />
-          <span className="text-purple-600 font-semibold">✓ {score}</span>
+          <span className="text-purple-600 font-semibold">{t('confusable.quizProgressScore', { score: String(score) })}</span>
         </div>
       </div>
 
@@ -544,10 +548,10 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
         <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3 flex items-center gap-1.5">
           <Brain size={12} />
           {current.type === 'which-correct'
-            ? "To'g'ri gapni tanlang"
+            ? t('confusable.quizSelectCorrect')
             : current.type === 'fill-blank'
-            ? "Bo'sh joyni to'ldiring"
-            : "To'g'ri so'zni tanlang"}
+            ? t('confusable.quizFillBlank')
+            : t('confusable.quizSelectWord')}
         </p>
 
         <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-5 leading-relaxed">
@@ -593,7 +597,7 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
         {showExplanation && (
           <div className="mt-5 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800">
             <p className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1.5 flex items-center gap-1.5">
-              <Lightbulb size={12} /> Izoh
+              <Lightbulb size={12} /> {t('confusable.quizExplanation')}
             </p>
             <p className="text-sm text-indigo-800 dark:text-indigo-200">
               {current.explanation}
@@ -607,7 +611,7 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
               onClick={handleNext}
               className="mt-3 px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 transition-colors"
             >
-              {currentIdx < questions.length - 1 ? 'Keyingi savol →' : 'Natijani ko\'rish →'}
+              {currentIdx < questions.length - 1 ? t('confusable.quizNext') : t('confusable.quizResult')}
             </button>
           </div>
         )}

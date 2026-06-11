@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef, lazy, Suspense } from 'react'
 import { BookText, RotateCcw, CheckCircle, ArrowRight, CalendarDays, BarChart3, Download, Search, Filter } from 'lucide-react'
+import { useI18n } from '../i18n'
 import { DictionarySkeleton } from '../components/ui/PageSkeleton'
 import { SkeletonCard } from '../components/ui/Skeleton'
 import { supabase } from '../lib/supabase'
@@ -30,6 +31,7 @@ const PhraseAnalytics = lazy(() => import('../components/phrases/PhraseAnalytics
 const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2']
 
 export default function Phrases() {
+  const { t } = useI18n()
   const { addXP, addLearnedWords, updateSkillProgress, toggleChecklistItem } = useStore()
   const {
     dailyPhrases, reviewPhrases, currentBatch, batchPhrases, currentIdx, viewMode,
@@ -443,17 +445,17 @@ export default function Phrases() {
           {hasPhrasesInDB ? (
             <>
               <div className="text-6xl mb-2">🎉</div>
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">Bugungi gaplar tugadi</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">{t('phrases.emptyTitleToday')}</h2>
               <p className="text-sm text-gray-500 max-w-xs">
-                Barcha gaplar o'rganildi! Ertaga yangi gaplar avtomatik keladi.
+                {t('phrases.emptyDescToday')}
               </p>
             </>
           ) : (
             <>
               <div className="text-6xl mb-2">📚</div>
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">Gaplar yuklanmadi</h2>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">{t('phrases.emptyTitleEmpty')}</h2>
               <p className="text-sm text-gray-500 max-w-xs">
-                Gaplar bazasi bo'sh. Terminalda yugurting:
+                {t('phrases.emptyDescEmpty')}
               </p>
               <code className="bg-gray-100 px-3 py-2 rounded-lg text-sm font-mono text-gray-700">
                 npx tsx scripts/seed-phrases.ts
@@ -461,7 +463,7 @@ export default function Phrases() {
             </>
           )}
           <button onClick={() => loadDailyData()} className="mt-4 py-4 px-10 bg-gradient-to-r from-b1-500 to-b1-600 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all flex items-center gap-3">
-            <RotateCcw size={20} /> Yangilash
+            <RotateCcw size={20} /> {t('phrases.emptyRefresh')}
           </button>
         </div>
       </div>
@@ -474,30 +476,29 @@ export default function Phrases() {
     const isLastBatch = isReviewMode || currentBatch >= 3
     return (
       <div className="p-3 sm:p-6 max-w-md mx-auto flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <div className="text-6xl mb-4">{pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪'}</div>
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">
-          {isReviewMode ? "Takrorlash tugadi!" : isLastBatch ? "Bugungi mashq tugadi!" : `${currentBatch}-Batch tugadi!`}
-        </h2>
-        <p className="text-gray-500 dark:text-gray-400 mb-6">
-          {batchPhrases.length} gapdan <span className="font-semibold text-gray-800 dark:text-gray-200">{correctCount}</span> tasini to'g'ri topding
-        </p>
+        <div className="text-6xl mb-4">{pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪'}</div>          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+            {isReviewMode ? t('phrases.completeTitleReview') : isLastBatch ? t('phrases.completeTitleDone') : t('phrases.completeTitleBatch', { batch: String(currentBatch) })}
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">
+            {t('phrases.completeDesc', { total: String(batchPhrases.length), correct: String(correctCount) })}
+          </p>
         <div className="flex items-center gap-3 mb-8">
           <div className="card text-center px-4 sm:px-8 py-4">
             <p className="text-2xl sm:text-3xl font-bold text-b1-600">{pct}%</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">To'g'ri</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{t('phrases.completeCorrect')}</p>
           </div>
           <div className="card text-center px-4 sm:px-8 py-4">
             <p className="text-2xl sm:text-3xl font-bold text-primary-600">{correctCount * 5}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">XP</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{t('phrases.completeXP')}</p>
           </div>
         </div>
         {isLastBatch ? (
           <button onClick={handleBatchComplete} className="btn-primary flex items-center gap-2">
-            <CheckCircle size={16} /> Yakunlash
+            <CheckCircle size={16} /> {t('phrases.completeFinish')}
           </button>
         ) : (
           <button onClick={() => selectBatch(currentBatch + 1)} className="btn-primary flex items-center gap-2">
-            Keyingi batch <ArrowRight size={16} className="inline" />
+            {t('phrases.completeNextBatch')} <ArrowRight size={16} className="inline" />
           </button>
         )}
       </div>
@@ -508,7 +509,7 @@ export default function Phrases() {
     return (
       <div className="p-3 sm:p-6 max-w-lg mx-auto select-none">
         <div className="flex items-center justify-between mb-4">
-          <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">← Chiqish</button>
+          <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">{t('phrases.flashcardExit')}</button>
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-gray-500">{currentIdx + 1} / {batchPhrases.length}</span>
             <div className="w-28 h-1.5 bg-gray-100 rounded-full overflow-hidden">
@@ -547,7 +548,7 @@ export default function Phrases() {
     return (
       <div className="p-3 sm:p-6 max-w-lg mx-auto">
         <div className="flex items-center justify-between mb-4">
-          <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">← Chiqish</button>
+          <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">{t('phrases.testExit')}</button>
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-gray-500">{currentIdx + 1} / {batchPhrases.length}</span>
             <div className="w-28 h-1.5 bg-gray-100 rounded-full overflow-hidden">
@@ -561,7 +562,7 @@ export default function Phrases() {
           onAnswer={handleTestAnswer}
         />
         <button onClick={handleTestAdvance} className="w-full mt-4 py-3 bg-b1-500 text-white font-bold rounded-xl hover:bg-b1-600 transition-all text-sm flex items-center justify-center gap-2">
-          Keyingi <ArrowRight size={16} />
+          {t('phrases.testNext')} <ArrowRight size={16} />
         </button>
       </div>
     )
@@ -571,8 +572,8 @@ export default function Phrases() {
     return (
       <div className="p-3 sm:p-6 max-w-lg mx-auto">
         <div className="flex items-center justify-between mb-4">
-          <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">← Chiqish</button>
-          <span className="text-sm font-medium text-gray-500">{currentBatch}-Batch</span>
+          <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">{t('phrases.gameExit')}</button>
+          <span className="text-sm font-medium text-gray-500">{t('phrases.batchLabel', { num: String(currentBatch) })}</span>
         </div>
         <PhraseScrambleGame
           phrases={batchPhrases}
@@ -617,24 +618,24 @@ export default function Phrases() {
           <h1 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100">Gap o'rganish</h1>
         </div>
         <div className="flex items-center gap-1">
-          <button onClick={() => setShowTypingGame(true)} className="btn-secondary p-2 rounded-lg" title="Yozish">
+          <button onClick={() => setShowTypingGame(true)} className="btn-secondary p-2 rounded-lg" title={t('phrases.tooltipTyping')}>
             <span className="text-sm">⌨️</span>
           </button>
-          <button onClick={() => setShowScrambleGame(true)} className="btn-secondary p-2 rounded-lg" title="Scramble">
+          <button onClick={() => setShowScrambleGame(true)} className="btn-secondary p-2 rounded-lg" title={t('phrases.tooltipScramble')}>
             <span className="text-sm">🧩</span>
           </button>
           <button onClick={() => { setShowCalendar(!showCalendar); if (showCalendar) setSelectedDate(getTodayTashkent()) }}
-            className={`btn-secondary p-2 rounded-lg ${showCalendar ? 'ring-2 ring-b1-500 border-b1-500' : ''}`} title="Kalendar">
+            className={`btn-secondary p-2 rounded-lg ${showCalendar ? 'ring-2 ring-b1-500 border-b1-500' : ''}`} title={t('phrases.tooltipCalendar')}>
             <CalendarDays size={15} />
           </button>
           <button onClick={() => { setShowAnalytics(!showAnalytics); if (!showAnalytics) setShowCalendar(false) }}
-            className={`btn-secondary p-2 rounded-lg ${showAnalytics ? 'ring-2 ring-b1-500 border-b1-500' : ''}`} title="Analytics">
+            className={`btn-secondary p-2 rounded-lg ${showAnalytics ? 'ring-2 ring-b1-500 border-b1-500' : ''}`} title={t('phrases.tooltipAnalytics')}>
             <BarChart3 size={15} />
           </button>
-          <button onClick={() => setShowExportModal(true)} className="btn-secondary p-2 rounded-lg" title="Eksport">
+          <button onClick={() => setShowExportModal(true)} className="btn-secondary p-2 rounded-lg" title={t('phrases.tooltipExport')}>
             <Download size={15} />
           </button>
-          <button onClick={() => loadDailyData()} className="btn-secondary p-2 rounded-lg" title="Yangilash">
+          <button onClick={() => loadDailyData()} className="btn-secondary p-2 rounded-lg" title={t('phrases.tooltipRefresh')}>
             <RotateCcw size={15} />
           </button>
         </div>
@@ -687,13 +688,13 @@ export default function Phrases() {
           {reviewPhrases.length > 0 && (
             <div className="mt-3 flex items-center justify-between gap-2 rounded-xl border border-orange-200 bg-orange-50 dark:bg-orange-900/10 dark:border-orange-800 px-3 py-2">
               <p className="text-xs font-medium text-orange-700 dark:text-orange-400">
-                🔄 {reviewPhrases.length} ta gap takrorlanishi kerak
+                {t('phrases.reviewDue', { count: String(reviewPhrases.length) })}
               </p>
               <button
                 onClick={() => { selectReview(); setTimeout(() => enterStudyMode('flashcard'), 0) }}
                 className="shrink-0 px-3 py-1 bg-orange-500 text-white font-bold rounded-lg text-xs hover:bg-orange-600 transition-all"
               >
-                Boshlash
+                {t('phrases.reviewStart')}
               </button>
             </div>
           )}
@@ -712,11 +713,11 @@ export default function Phrases() {
                   disabled={batchSlice.length === 0}
                   className={`card py-3 text-center transition-all ${isCurrent ? 'ring-2 ring-b1-500 border-b1-500' : ''} ${batchSlice.length === 0 ? 'opacity-40 cursor-not-allowed' : ''}`}
                 >
-                  <p className={`text-sm font-bold ${isCurrent ? 'text-b1-600' : 'text-gray-700'}`}>{batchNum}-Batch</p>
-                  <p className="text-[10px] text-gray-400">{startNum}-{endNum}</p>
+                  <p className={`text-sm font-bold ${isCurrent ? 'text-b1-600' : 'text-gray-700'}`}>{t('phrases.batchLabel', { num: String(batchNum) })}</p>
+                  <p className="text-[10px] text-gray-400">{t('phrases.batchRange', { start: String(startNum), end: String(endNum) })}</p>
                   <p className="text-[10px] font-medium text-b1-500 mt-0.5">
-                    {batchSlice.filter(p => !p.is_new && !p.is_learned).length} takror
-                    {batchSlice.filter(p => p.is_learned).length > 0 && <> · {batchSlice.filter(p => p.is_learned).length} yodlangan</>}
+                    {t('phrases.batchReviewLabel', { count: String(batchSlice.filter(p => !p.is_new && !p.is_learned).length) })}
+                    {batchSlice.filter(p => p.is_learned).length > 0 && <> · {t('phrases.batchLearnedLabel', { count: String(batchSlice.filter(p => p.is_learned).length) }) }</>}
                   </p>
                 </button>
               )
@@ -726,13 +727,13 @@ export default function Phrases() {
           {batchPhrases.length > 0 && (
             <div className="mt-4 space-y-3">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                {currentBatch}-Batch · {batchPhrases.length} ta gap
+                {t('phrases.batchLabel', { num: String(currentBatch) })} · {batchPhrases.length} ta gap
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 {([
-                  { mode: 'flashcard' as const, label: 'FlashCard', icon: '🃏', desc: "Ko'rish" },
-                  { mode: 'test' as const, label: 'Test', icon: '📝', desc: 'Topshiriq' },
-                  { mode: 'game' as const, label: "O'yin", icon: '🧩', desc: 'Scramble' },
+                  { mode: 'flashcard' as const, label: t('phrases.modeFlashcard'), icon: '🃏', desc: t('phrases.modeFlashcardDesc') },
+                  { mode: 'test' as const, label: t('phrases.modeTest'), icon: '📝', desc: t('phrases.modeTestDesc') },
+                  { mode: 'game' as const, label: t('phrases.modeGame'), icon: '🧩', desc: t('phrases.modeGameDesc') },
                 ]).map((phase) => (
                   <button
                     key={phase.mode}
@@ -756,7 +757,7 @@ export default function Phrases() {
                   type="text"
                   value={filterText}
                   onChange={e => setFilterText(e.target.value)}
-                  placeholder="Gap qidirish..."
+                  placeholder={t('phrases.searchPlaceholder')}
                   className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-b1-500 focus:border-b1-500 outline-none transition-all"
                 />
               </div>
@@ -781,10 +782,10 @@ export default function Phrases() {
                 ))}
                 <span className="text-[10px] text-gray-300 dark:text-gray-600">|</span>
                 {([
-                  { key: 'all' as const, label: 'Barcha' },
-                  { key: 'new' as const, label: 'Yangi' },
-                  { key: 'learning' as const, label: "O'rganilyapti" },
-                  { key: 'learned' as const, label: 'Yodlangan' },
+                  { key: 'all' as const, label: t('phrases.filterAll') },
+                  { key: 'new' as const, label: t('phrases.filterNew') },
+                  { key: 'learning' as const, label: t('phrases.filterLearning') },
+                  { key: 'learned' as const, label: t('phrases.filterLearned') },
                 ]).map(({ key, label }) => (
                   <button
                     key={key}
@@ -800,22 +801,22 @@ export default function Phrases() {
 
           <div className="mt-4 space-y-1">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-xs text-gray-400">{filteredBatchPhrases.length} / {batchPhrases.length} ta</p>
+              <p className="text-xs text-gray-400">{filteredBatchPhrases.length} / {batchPhrases.length} {t('common.words')}</p>
               <div className="flex items-center gap-2 text-[10px] text-gray-400">
-                <span>{batchPhrases.filter(p => p.is_new).length} yangi</span>
+                <span>{t('phrases.statsNew', { count: String(batchPhrases.filter(p => p.is_new).length) })}</span>
                 {batchPhrases.filter(p => !p.is_new && !p.is_learned).length > 0 && (
-                  <span>· {batchPhrases.filter(p => !p.is_new && !p.is_learned).length} takror</span>
+                  <span>· {t('phrases.statsReview', { count: String(batchPhrases.filter(p => !p.is_new && !p.is_learned).length) })}</span>
                 )}
                 {batchPhrases.filter(p => p.is_learned).length > 0 && (
-                  <span>· {batchPhrases.filter(p => p.is_learned).length} ⭐ yodlangan</span>
+                  <span>· {t('phrases.statsLearned', { count: String(batchPhrases.filter(p => p.is_learned).length) })}</span>
                 )}
               </div>
             </div>
             {filteredBatchPhrases.length === 0 ? (
               <div className="py-8 text-center">
-                <p className="text-sm text-gray-400">Hech narsa topilmadi</p>
+                <p className="text-sm text-gray-400">{t('phrases.noResults')}</p>
                 <button onClick={() => { setFilterText(''); setFilterLevel(new Set()); setFilterMastery('all') }} className="mt-2 text-xs text-b1-500 font-semibold hover:underline">
-                  Filtrlarni tozalash
+                  {t('phrases.filterClear')}
                 </button>
               </div>
             ) : (

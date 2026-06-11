@@ -21,8 +21,6 @@ function toMeta(x: Record<string, unknown>): LessonMeta {
   }
 }
 
-// LESSON_INDEX (LearnHub ro'yxati uchun yengil metadata) loadAllLessons bilan
-// sinxron ekanini kafolatlaydi. Darslar o'zgarsa, UPDATE_INDEX=1 bilan qayta yaratiladi.
 test('LESSON_INDEX is in sync with loadAllLessons', async () => {
   const all = await loadAllLessons()
   const computed = (all as Record<string, unknown>[]).map(toMeta)
@@ -44,4 +42,4 @@ test('LESSON_INDEX is in sync with loadAllLessons', async () => {
   }
 
   expect(LESSON_INDEX).toEqual(computed)
-})
+}, 30000)

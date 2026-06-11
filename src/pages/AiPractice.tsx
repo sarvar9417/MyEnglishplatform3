@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { useI18n } from '../i18n'
 import { ArrowLeft, Sparkles, RefreshCw, Check, X, Trophy, Wand2 } from 'lucide-react'
 import { useStore } from '../store/useStore'
 import { generatePracticeExercises, type GeneratedExercise } from '../lib/claude'
@@ -8,7 +9,7 @@ import { getWeakGrammarLabels } from '../services/aiInsightsService'
 
 type View = 'setup' | 'loading' | 'quiz' | 'result'
 
-const THEMES = ['Umumiy', 'Sport', 'Texnologiya', 'Sayohat', 'Biznes', 'Ovqat', 'Kino & Musiqa']
+
 
 const COMMON_TOPICS = [
   'Present Simple', 'Present Continuous', 'Past Simple', 'Present Perfect',
@@ -17,16 +18,26 @@ const COMMON_TOPICS = [
   'Phrasal Verbs', 'Reported Speech',
 ]
 
+const THEME_KEYS = ['general', 'sport', 'tech', 'travel', 'business', 'food', 'movie']
+
 export default function AiPractice() {
+  const { t } = useI18n()
   const currentLevel = useStore(s => s.currentLevel)
   const addXP = useStore(s => s.addXP)
   const level = (currentLevel || 'B1').replace('+', '')
 
   const weakTopics = useMemo(() => getWeakGrammarLabels(4), [])
 
+  const themeLabels: Record<string, string> = useMemo(() => ({
+    general: t('aiPractice.themeGeneral'), sport: t('aiPractice.themeSport'),
+    tech: t('aiPractice.themeTech'), travel: t('aiPractice.themeTravel'),
+    business: t('aiPractice.themeBusiness'), food: t('aiPractice.themeFood'),
+    movie: t('aiPractice.themeMovie'),
+  }), [t])
+
   const [view, setView] = useState<View>('setup')
   const [topic, setTopic] = useState('')
-  const [theme, setTheme] = useState('Umumiy')
+  const [themeKey, setThemeKey] = useState('general')
   const [exercises, setExercises] = useState<GeneratedExercise[]>([])
   const [idx, setIdx] = useState(0)
   const [chosen, setChosen] = useState<string | null>(null)
@@ -47,13 +58,13 @@ export default function AiPractice() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams])
 
-  async function generate(t: string) {
-    setTopic(t)
+  async function generate(topicStr: string) {
+    setTopic(topicStr)
     setView('loading')
     setError('')
-    const ex = await generatePracticeExercises(t, theme, level, 6)
+    const ex = await generatePracticeExercises(topicStr, themeLabels[themeKey], level, 6)
     if (ex.length === 0) {
-      setError("Mashq yaratib bo'lmadi. Qaytadan urinib ko'ring.")
+      setError(t('aiPractice.error'))
       setView('setup')
       return
     }
@@ -96,8 +107,8 @@ export default function AiPractice() {
             <Wand2 size={22} className="text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-black text-gray-900 dark:text-white">AI Mashq Generatori</h1>
-            <p className="text-xs text-gray-500">Claude siz uchun cheksiz yangi mashqlar yaratadi</p>
+          <h1 className="text-xl font-black text-gray-900 dark:text-white">{t('aiPractice.title')}</h1>
+          <p className="text-xs text-gray-500">{t('aiPractice.subtitle')}</p>
           </div>
         </div>
 
@@ -105,18 +116,21 @@ export default function AiPractice() {
 
         {/* Theme */}
         <div>
-          <p className="text-xs font-bold text-gray-700 dark:text-gray-300 mb-2">🎨 Mavzu (qiziqishingiz)</p>
+          <p className="text-xs font-bold text-gray-700 dark:text-gray-300 mb-2">{t('aiPractice.themeTitle')}</p>
           <div className="flex flex-wrap gap-1.5">
-            {THEMES.map(t => (
-              <button key={t} onClick={() => setTheme(t)} className={`text-xs px-3 py-1.5 rounded-full font-semibold transition ${theme === t ? 'bg-fuchsia-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'}`}>{t}</button>
-            ))}
+            {THEME_KEYS.map(k => {
+              const lbl = themeLabels[k]
+              return (
+                <button key={k} onClick={() => setThemeKey(k)} className={`text-xs px-3 py-1.5 rounded-full font-semibold transition ${themeKey === k ? 'bg-fuchsia-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'}`}>{lbl}</button>
+              )
+            })}
           </div>
         </div>
 
         {/* Weak topics */}
         {weakTopics.length > 0 && (
           <div>
-            <p className="text-xs font-bold text-rose-600 mb-2">🎯 Sizning zaif mavzularingiz</p>
+            <p className="text-xs font-bold text-rose-600 mb-2">{t('aiPractice.weakTopicsTitle')}</p>
             <div className="space-y-2">
               {weakTopics.map(t => (
                 <button key={t} onClick={() => generate(t)} className="w-full text-left p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900/40 hover:shadow-md transition active:scale-[0.98] flex items-center justify-between">
@@ -130,7 +144,7 @@ export default function AiPractice() {
 
         {/* Common topics */}
         <div>
-          <p className="text-xs font-bold text-gray-700 dark:text-gray-300 mb-2">📚 Grammatika mavzulari</p>
+          <p className="text-xs font-bold text-gray-700 dark:text-gray-300 mb-2">{t('aiPractice.grammarTopicsTitle')}</p>
           <div className="grid grid-cols-2 gap-2">
             {COMMON_TOPICS.map(t => (
               <button key={t} onClick={() => generate(t)} className="text-left p-3 rounded-xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-fuchsia-300 hover:shadow-md transition active:scale-[0.98]">
@@ -148,8 +162,8 @@ export default function AiPractice() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[70vh] p-6 text-center">
         <div className="text-6xl mb-4 animate-bounce">🪄</div>
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Claude mashqlar yaratyapti…</h2>
-        <p className="text-sm text-gray-500">"{topic}" · {theme}</p>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{t('aiPractice.loadingTitle')}</h2>
+        <p className="text-sm text-gray-500">{t('aiPractice.loadingDesc', { topic, theme: themeLabels[themeKey] })}</p>
       </div>
     )
   }
@@ -161,15 +175,15 @@ export default function AiPractice() {
       <div className="max-w-xl mx-auto p-4 space-y-4">
         <div className="text-center pt-4">
           <div className="text-6xl mb-2">{pct === 100 ? '🏆' : pct >= 60 ? '🎉' : '💪'}</div>
-          <h1 className="text-xl font-black text-gray-900 dark:text-white">{correctCount}/{exercises.length} to'g'ri</h1>
+          <h1 className="text-xl font-black text-gray-900 dark:text-white">{t('aiPractice.resultScore', { correct: String(correctCount), total: String(exercises.length) })}</h1>
           <div className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-bold text-sm">
-            <Trophy size={15} /> +{correctCount * 3} XP
+            <Trophy size={15} /> {t('aiPractice.resultXP', { xp: String(correctCount * 3) })}
           </div>
-          <p className="text-xs text-gray-500 mt-2">{topic} · {theme}</p>
+          <p className="text-xs text-gray-500 mt-2">{t('aiPractice.resultTopic', { topic, theme: themeLabels[themeKey] })}</p>
         </div>
         <div className="flex gap-2">
-          <button onClick={() => generate(topic)} className="flex-1 btn-primary py-3 font-bold flex items-center justify-center gap-1.5"><RefreshCw size={15} /> Yana mashq</button>
-          <button onClick={reset} className="flex-1 btn-secondary py-3 font-bold">Boshqa mavzu</button>
+          <button onClick={() => generate(topic)} className="flex-1 btn-primary py-3 font-bold flex items-center justify-center gap-1.5"><RefreshCw size={15} /> {t('aiPractice.retryTopic')}</button>
+          <button onClick={reset} className="flex-1 btn-secondary py-3 font-bold">{t('aiPractice.newTopic')}</button>
         </div>
       </div>
     )
@@ -224,10 +238,10 @@ export default function AiPractice() {
       {answered && (
         <div className="space-y-3 animate-page-enter">
           <div className="card bg-gray-50 dark:bg-gray-800/50 text-sm text-gray-600 dark:text-gray-400">
-            💡 {current.explanation}
+            {t('aiPractice.explanationLabel')}: {current.explanation}
           </div>
           <button onClick={next} className="w-full btn-primary py-3 font-bold">
-            {idx < exercises.length - 1 ? 'Keyingi →' : 'Yakunlash'}
+            {idx < exercises.length - 1 ? t('aiPractice.quizNext') : t('aiPractice.quizFinish')}
           </button>
         </div>
       )}

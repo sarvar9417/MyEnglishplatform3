@@ -139,8 +139,8 @@ export default function Auth() {
         {/* Branding */}
         <div className="text-center mb-8">
           <div className="text-5xl mb-3">📚</div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">EnglishPath</h1>
-          <p className="text-gray-500 text-sm mt-1">A2+ dan B2 sari — 126 kunlik intensiv yo'l</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t('app.brandName')}</h1>
+          <p className="text-gray-500 text-sm mt-1">{t('auth.tagline')}</p>
         </div>
 
         <div className="card shadow-xl">
@@ -178,10 +178,7 @@ export default function Auth() {
                 {signupState === 'resent' ? t('auth.signupResent') : t('auth.signupSuccess')}
               </h2>
 
-              <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                <strong className="text-primary-600 font-semibold">{signedUpEmail}</strong> manziliga
-                tasdiqlash xatini yubordik.
-              </p>
+              <p className="text-sm text-gray-500 mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('auth.signupSuccessBody').replace('{email}', signedUpEmail) }} />
 
               {/* Instructions */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-5 mb-5 text-left border border-blue-100 dark:border-blue-800">
@@ -319,7 +316,7 @@ export default function Auth() {
               <div className="w-full border-t border-gray-200 dark:border-gray-700" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white dark:bg-gray-950 px-2 text-gray-400">yoki</span>
+              <span className="bg-white dark:bg-gray-950 px-2 text-gray-400">{t('auth.orDivider')}</span>
             </div>
           </div>
           <button

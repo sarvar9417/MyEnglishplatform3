@@ -7,6 +7,7 @@ import { TYPE_LABEL, TYPE_COLOR } from '@/data/writingPrompts'
 import { fetchWritingPrompts, getDailyWritingPrompt, saveWritingResult } from '@/services/writingService'
 import type { WritingPrompt } from '@/services/writingService'
 import { evaluateWriting, analyzeWritingIELTS, analyzeWritingErrors, type WritingError } from '@/lib/claude'
+import { useI18n } from '../i18n'
 import { useStore } from '@/store/useStore'
 import { supabase } from '@/lib/supabase'
 import { monitoring } from '@/lib/monitoring'
@@ -68,6 +69,7 @@ function ScoreCard({ label: lbl, score, color }: { label: string; score: number;
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 export default function Writing() {
+  const { t } = useI18n()
   const navigate = useNavigate()
   const location = useLocation()
   const fromSkills = location.state?.from === '/skills'
@@ -248,38 +250,38 @@ export default function Writing() {
             <PenLine size={20} className="text-b2-600" />
           </div>
           <div>
-            <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Writing natijasi</h1>
-            <p className="text-xs text-gray-500">{wc} so'z · {formatTimer(timer)}</p>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{t('writing.resultTitle')}</h1>
+            <p className="text-xs text-gray-500">{t('writing.wordCount', { count: String(wc), limit: '' })} · {formatTimer(timer)}</p>
           </div>
         </div>
 
         {/* Overall */}
-        <div className="card bg-gradient-to-r from-b2-50 to-primary-50 border-b2-100 text-center mb-4">              <p className="text-xs text-gray-500 mb-1">Umumiy ball</p>
+        <div className="card bg-gradient-to-r from-b2-50 to-primary-50 border-b2-100 text-center mb-4">              <p className="text-xs text-gray-500 mb-1">{t('writing.overallScore')}</p>
           <p className="text-4xl font-bold text-b2-600">
             {avg}<span className="text-xl font-normal text-gray-400">/10</span>
           </p>
-          <p className="text-xs text-gray-500 mt-1">+{avg * 4} XP qazonlandi</p>
+          <p className="text-xs text-gray-500 mt-1">{t('writing.xpEarned', { xp: String(avg * 4) })}</p>
           {/* IELTS band mapping */}
           <p className="text-xs text-b2-400 mt-1">
             {ieltsMode
-              ? `IELTS Band ${avg >= 9 ? '9.0' : avg >= 8 ? '8.0' : avg >= 7 ? '7.0' : avg >= 6 ? '6.0' : avg >= 5 ? '5.0' : avg >= 4 ? '4.0' : '4.0 dan past'}`
-              : avg >= 10 ? 'IELTS 9.0' : avg >= 9 ? 'IELTS 8.0–8.5' : avg >= 8 ? 'IELTS 7.0–7.5' : avg >= 7 ? 'IELTS 6.0–6.5' : avg >= 6 ? 'IELTS 5.0–5.5' : avg >= 5 ? 'IELTS 4.0–4.5' : 'IELTS 4.0 dan past'
+              ? `${t('writing.ieltsBandLabel', { band: avg >= 9 ? '9.0' : avg >= 8 ? '8.0' : avg >= 7 ? '7.0' : avg >= 6 ? '6.0' : avg >= 5 ? '5.0' : avg >= 4 ? '4.0' : t('writing.belowIELTS') })}`
+              : avg >= 10 ? 'IELTS 9.0' : avg >= 9 ? 'IELTS 8.0–8.5' : avg >= 8 ? 'IELTS 7.0–7.5' : avg >= 7 ? 'IELTS 6.0–6.5' : avg >= 6 ? 'IELTS 5.0–5.5' : avg >= 5 ? 'IELTS 4.0–4.5' : t('writing.belowIELTS')
             }
           </p>
         </div>
 
         {/* Score grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
-          <ScoreCard label="Task Achievement" score={scores.taskAchievement} color="text-primary-600" />
-          <ScoreCard label="Coherence"         score={scores.coherence}       color="text-b1-600"     />
-          <ScoreCard label="Vocabulary"        score={scores.vocabulary}      color="text-orange-600" />
-          <ScoreCard label="Grammar"           score={scores.grammar}         color="text-b2-600"     />
+          <ScoreCard label={t('writing.scoreTaskAchievement')} score={scores.taskAchievement} color="text-primary-600" />
+          <ScoreCard label={t('writing.scoreCoherence')}         score={scores.coherence}       color="text-b1-600"     />
+          <ScoreCard label={t('writing.scoreVocabulary')}        score={scores.vocabulary}      color="text-orange-600" />
+          <ScoreCard label={t('writing.scoreGrammar')}           score={scores.grammar}         color="text-b2-600"     />
         </div>
 
         {/* Feedback */}
         {feedback && (
           <div className="card bg-primary-50 border-primary-100 mb-4">
-            <p className="text-xs font-semibold text-primary-700 mb-1">💡 Feedback</p>
+            <p className="text-xs font-semibold text-primary-700 mb-1">{t('writing.feedback')}</p>
             <p className="text-sm text-gray-700 leading-relaxed">{feedback}</p>
           </div>
         )}
@@ -288,13 +290,13 @@ export default function Writing() {
         {(errorsLoading || errors.length > 0) && (
           <div className="card mb-4 border-rose-100">
             <div className="flex items-center gap-2 mb-2.5">
-              <span className="text-sm font-semibold text-rose-600">🔍 Aniq xatolar va tuzatishlar</span>
+              <span className="text-sm font-semibold text-rose-600">{t('writing.errorAnalysisTitle')}</span>
               {errors.length > 0 && (
                 <span className="text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-600">{errors.length}</span>
               )}
             </div>
             {errorsLoading && errors.length === 0 ? (
-              <p className="text-xs text-gray-400">Xatolar tahlil qilinmoqda…</p>
+              <p className="text-xs text-gray-400">{t('writing.errorAnalysisLoading')}</p>
             ) : (
               <div className="space-y-2.5">
                 {errors.map((e, i) => (
@@ -312,7 +314,7 @@ export default function Writing() {
 
         {/* Original essay */}
         <div className="card mb-4">
-          <p className="text-xs font-semibold text-gray-500 mb-2">Sizning esseyingiz</p>
+          <p className="text-xs font-semibold text-gray-500 mb-2">{t('writing.yourEssay')}</p>
           <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{essay}</p>
         </div>
 
@@ -323,7 +325,7 @@ export default function Writing() {
               onClick={() => setShowImproved((v) => !v)}
               className="w-full flex items-center justify-between"
             >
-              <p className="text-sm font-semibold text-green-700">✨ Yaxshilangan versiya</p>
+              <p className="text-sm font-semibold text-green-700">{t('writing.improvedVersion')}</p>
               {showImproved ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
             </button>
             {showImproved && (
@@ -342,13 +344,13 @@ export default function Writing() {
             }}
             className="btn-secondary flex-1 text-sm"
           >
-            Qayta yozish
+            {t('writing.rewriteButton')}
           </button>
           <button
             onClick={() => { window.history.back() }}
             className="btn-primary flex-1 text-sm"
           >
-            Tugatish
+            {t('writing.finishButton')}
           </button>
         </div>
 
@@ -370,7 +372,7 @@ export default function Writing() {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             {fromSkills && (
-              <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label="Ko'nikmalarga qaytish">
+              <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label={t('common.backToSkills')}>
                 <ChevronLeft size={18} />
               </button>
             )}
@@ -378,8 +380,8 @@ export default function Writing() {
               <PenLine size={20} className="text-b2-600" />
             </div>
             <div>
-              <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Writing</h1>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Bugungi vazifa · {currentDay}-kun</p>
+              <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{t('writing.title')}</h1>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{t('writing.dailyTask', { day: String(currentDay) })}</p>
             </div>
           </div>
         {timerActive && (
@@ -407,14 +409,14 @@ export default function Writing() {
           <span className={`badge text-[11px] ${TYPE_COLOR[prompt.type]}`}>
             {TYPE_LABEL[prompt.type]}
           </span>
-          <span className="text-xs text-gray-400">~{prompt.wordLimit} so'z · {prompt.timeMinutes} daqiqa</span>
+          <span className="text-xs text-gray-400">{t('writing.wordCount', { count: String(prompt.wordLimit), limit: '' })} · {t('writing.promptTimeLimit', { minutes: String(prompt.timeMinutes) })}</span>
         </div>
         <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed font-medium">{prompt.prompt}</p>
       </div>
 
       {/* Tips */}
       <div className="card bg-b2-50 border-b2-100 mb-4">
-        <p className="text-xs font-semibold text-b2-700 mb-1.5">📝 Yozish bo'yicha maslahatlar:</p>
+        <p className="text-xs font-semibold text-b2-700 mb-1.5">{t('writing.tipsTitle')}</p>
         <ul className="space-y-1">
           {prompt.tips.map((tip, i) => (
             <li key={i} className="text-xs text-b2-800 flex items-start gap-1.5">
@@ -430,20 +432,20 @@ export default function Writing() {
         {essay.trim().length > 0 && (
           <div className="flex items-center gap-1.5 text-[11px] text-gray-400 mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            Draft saqlandi
+            {t('writing.draftSaved')}
           </div>
         )}
         <textarea
           aria-label="Insho matni"
           className="w-full min-h-[240px] text-sm text-gray-800 dark:text-gray-100 dark:bg-transparent leading-relaxed resize-none outline-none placeholder-gray-300 dark:placeholder-gray-600"
-          placeholder="Bu yerda yozing..."
+          placeholder={t('writing.editorPlaceholder')}
           value={essay}
           onChange={(e) => setEssay(e.target.value)}
           disabled={evaluating}
         />
         <div className="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700 mt-2">
           <span className={`text-xs font-semibold ${wc >= prompt.wordLimit ? 'text-green-600' : wc >= minWords ? 'text-orange-500' : 'text-gray-400'}`}>
-            {wc} / {prompt.wordLimit} so'z
+            {wc} / {prompt.wordLimit} {t('common.words')}
           </span>
           <div className="w-32 h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
             <div
@@ -457,7 +459,7 @@ export default function Writing() {
       {/* Minimum words hint */}
       {wc < minWords && essay.length > 0 && (
         <p className="text-xs text-orange-500 mb-3 text-center">
-          Yuborish uchun kamida {minWords} ta so'z yozing ({minWords - wc} ta qoldi)
+          {t('writing.minWordsHint', { min: String(minWords), remaining: String(minWords - wc) })}
         </p>
       )}
 
@@ -465,7 +467,7 @@ export default function Writing() {
       {evaluating && streamText && (
         <div className="card bg-primary-50 border-primary-100 mb-3">
           <p className="text-xs font-semibold text-primary-700 mb-1 flex items-center gap-1">
-            <Loader2 size={12} className="animate-spin" /> {ieltsMode ? 'IELTS baholanmoqda...' : 'Baholanmoqda...'}
+            <Loader2 size={12} className="animate-spin" /> {ieltsMode ? `${t('writing.evaluating')}` : t('writing.evaluating')}
           </p>
           <pre className="text-xs text-gray-700 whitespace-pre-wrap font-sans leading-relaxed">
             {streamText}
@@ -481,8 +483,8 @@ export default function Writing() {
         className="w-full btn-primary text-sm flex items-center justify-center gap-2"
       >
         {evaluating
-          ? <><Loader2 size={14} className="animate-spin" /> Claude baholamoqda...</>
-          : '✨ Claude baholaydi'
+          ? <><Loader2 size={14} className="animate-spin" /> {t('writing.evaluating')}</>
+          : t('writing.submitButton')
         }
       </button>
     </div>

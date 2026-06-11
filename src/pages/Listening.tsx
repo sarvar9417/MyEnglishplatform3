@@ -4,6 +4,7 @@ import {
   Headphones, ChevronLeft, ChevronRight, Eye, EyeOff,
   CheckCircle2, XCircle, Clock, BookOpen, Mic,
 } from 'lucide-react'
+import { useI18n } from '../i18n'
 import { type ListeningLesson } from '@/data/listeningLessons'
 import { fetchListeningLessons, saveListeningResult } from '@/services/listeningService'
 import { useStore } from '@/store/useStore'
@@ -35,6 +36,7 @@ function LevelBadge({ level }: { level: string }) {
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 export default function Listening() {
+  const { t } = useI18n()
   const navigate = useNavigate()
   const location = useLocation()
   const fromSkills = location.state?.from === '/skills'
@@ -138,7 +140,7 @@ export default function Listening() {
       <div className="p-3 sm:p-6 max-w-2xl mx-auto">
         <div className="flex items-center gap-3 mb-4 sm:mb-6">
           {fromSkills && (
-            <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label="Ko'nikmalarga qaytish">
+            <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label={t('common.backToSkills')}>
               <ChevronLeft size={18} />
             </button>
           )}
@@ -146,13 +148,13 @@ export default function Listening() {
             <Headphones size={20} className="text-orange-600" />
           </div>
           <div>
-            <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Listening</h1>
-            <p className="text-xs text-gray-500">YouTube darslar · Mashqlar · Shadowing</p>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{t('listening.title')}</h1>
+            <p className="text-xs text-gray-500">{t('listening.subtitle')}</p>
           </div>
         </div>
 
         {lessonsLoading ? (
-          <div className="flex items-center justify-center min-h-[200px] text-gray-400 animate-pulse">Darslar yuklanmoqda...</div>
+          <div className="flex items-center justify-center min-h-[200px] text-gray-400 animate-pulse">{t('listening.loading')}</div>
         ) : (
           <div className="space-y-3">
             {lessons.map((l) => (
@@ -171,8 +173,8 @@ export default function Listening() {
                     <p className="text-xs text-gray-500 mt-0.5">{l.description}</p>
                     <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
                       <span className="flex items-center gap-1"><Clock size={11} /> {l.duration}</span>
-                      <span className="flex items-center gap-1"><BookOpen size={11} /> {l.fillBlanks.length + l.trueFalse.length + 1} mashq</span>
-                      <span className="flex items-center gap-1"><Mic size={11} /> Shadowing</span>
+                      <span className="flex items-center gap-1"><BookOpen size={11} /> {t('listening.exercisesCount', { count: String(l.fillBlanks.length + l.trueFalse.length + 1) })}</span>
+                      <span className="flex items-center gap-1"><Mic size={11} /> {t('listening.hasShadowing')}</span>
                     </div>
                   </div>
                   <ChevronRight size={18} className="text-gray-300 flex-shrink-0 mt-1" />
@@ -196,41 +198,41 @@ export default function Listening() {
     return (
       <div className="p-3 sm:p-6 max-w-md mx-auto flex flex-col items-center justify-center min-h-[60vh] text-center">
         <div className="text-6xl mb-4">{pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪'}</div>
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1">Dars tugadi!</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1">{t('listening.resultTitle')}</h2>
         <p className="text-sm text-gray-500 mb-6 line-clamp-1">{lesson.title}</p>
 
         <div className="flex gap-3 mb-8">
           <div className="card text-center px-6 py-4">
             <p className="text-3xl font-bold text-orange-500">{pct}%</p>
-            <p className="text-xs text-gray-500 mt-0.5">To'g'ri</p>
+            <p className="text-xs text-gray-500 mt-0.5">{t('listening.resultCorrect')}</p>
           </div>
           <div className="card text-center px-6 py-4">
             <p className="text-3xl font-bold text-primary-600">{xp}</p>
-            <p className="text-xs text-gray-500 mt-0.5">XP qazonlandi</p>
+            <p className="text-xs text-gray-500 mt-0.5">{t('listening.resultXPLabel')}</p>
           </div>
         </div>
 
         <div className="w-full space-y-2 mb-6 text-sm text-left">
           <div className="flex justify-between">
-            <span className="text-gray-600">Fill-in-the-blank</span>
+            <span className="text-gray-600">{t('listening.resultFillBlank')}</span>
             <span className="font-semibold">{fillCorrect}/{lesson.fillBlanks.length}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-600">True / False</span>
+            <span className="text-gray-600">{t('listening.resultTrueFalse')}</span>
             <span className="font-semibold">{tfCorrect}/{lesson.trueFalse.length}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-600">Summary</span>
+            <span className="text-gray-600">{t('listening.resultSummary')}</span>
             <span className="font-semibold">{summaryText.trim().split(/\s+/).length >= 30 ? '✓' : '—'}</span>
           </div>
         </div>
 
         <div className="flex gap-2 w-full">
           <button onClick={() => setPhase('select')} className="btn-secondary flex-1 text-sm">
-            Dars tanlash
+            {t('listening.selectLesson')}
           </button>
           <button onClick={() => { setPhase('lesson'); setTab('watch') }} className="btn-primary flex-1 text-sm">
-            Qayta ko'rish
+            {t('listening.reviewButton')}
           </button>
         </div>
       </div>
@@ -240,7 +242,7 @@ export default function Listening() {
   // ── EXERCISES phase ───────────────────────────────────────────────────────
 
   if (phase === 'exercises' && lesson) {
-    const stepLabels = ['Fill-blank', 'True/False', 'Summary']
+    const stepLabels = [t('listening.fillBlanks'), t('listening.trueFalse'), t('listening.summary')]
 
     return (
       <div className="p-3 sm:p-6 max-w-2xl mx-auto">
@@ -251,7 +253,7 @@ export default function Listening() {
           </button>
           <div className="flex-1 min-w-0">
             <p className="text-xs text-gray-500 truncate">{lesson.title}</p>
-            <p className="text-sm font-semibold text-gray-900 dark:text-white">Mashqlar</p>
+            <p className="text-sm font-semibold text-gray-900 dark:text-white">{t('listening.exerciseTitle')}</p>
           </div>
         </div>
 
@@ -271,7 +273,7 @@ export default function Listening() {
         {exStep === 0 && (
           <div className="space-y-4">
             <p className="text-sm font-semibold text-gray-700 mb-3">
-              Bo'sh joylarni to'ldiring
+              {t('listening.fillBlanks')}
             </p>
             {lesson.fillBlanks.map((q, i) => {
               const parts = q.sentence.split(/_{3,}/)
@@ -303,7 +305,7 @@ export default function Listening() {
               onClick={() => setExStep(1)}
               className="w-full btn-primary text-sm mt-2"
             >
-              Keyingi →
+              {t('listening.nextButton')}
             </button>
           </div>
         )}
@@ -312,7 +314,7 @@ export default function Listening() {
         {exStep === 1 && (
           <div className="space-y-3">
             <p className="text-sm font-semibold text-gray-700 mb-3">
-              To'g'ri (T) yoki Noto'g'ri (F)?
+              {t('listening.trueFalse')}
             </p>
             {lesson.trueFalse.map((q, i) => (
               <div key={q.id} className="card">
@@ -338,20 +340,20 @@ export default function Listening() {
                           : 'bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100'
                         }`}
                     >
-                      {val ? 'T — To\'g\'ri' : 'F — Noto\'g\'ri'}
+                      {val ? 'T — ' + t('listening.trueLabel') : 'F — ' + t('listening.falseLabel')}
                     </button>
                   ))}
                 </div>
               </div>
             ))}
             <div className="flex gap-2 mt-2">
-              <button onClick={() => setExStep(0)} className="btn-secondary text-sm flex-1">← Orqaga</button>
+              <button onClick={() => setExStep(0)} className="btn-secondary text-sm flex-1">{t('listening.backButton')}</button>
               <button
                 onClick={() => setExStep(2)}
                 disabled={tfAnswers.includes(null)}
                 className="btn-primary text-sm flex-1"
               >
-                Keyingi →
+                {t('listening.nextButton')}
               </button>
             </div>
           </div>
@@ -361,8 +363,8 @@ export default function Listening() {
         {exStep === 2 && (
           <div className="space-y-3">
             <div>
-              <p className="text-sm font-semibold text-gray-700 mb-1">Summary yozing</p>
-              <p className="text-xs text-gray-400">Darsdan asosiy fikrlarni o'z so'zlaringiz bilan yozing (kamida 30 ta so'z)</p>
+              <p className="text-sm font-semibold text-gray-700 mb-1">{t('listening.summary')}</p>
+              <p className="text-xs text-gray-400">{t('listening.summaryHint')}</p>
             </div>
             <textarea
               className="input min-h-[140px] resize-none text-sm leading-relaxed"
@@ -372,20 +374,20 @@ export default function Listening() {
             />
             <div className="flex items-center justify-between text-xs">
               <span className={`font-medium ${summaryText.trim().split(/\s+/).filter(Boolean).length >= 30 ? 'text-green-600' : 'text-gray-400'}`}>
-                {summaryText.trim().split(/\s+/).filter(Boolean).length} / 30 so'z
+                {summaryText.trim().split(/\s+/).filter(Boolean).length} / 30 {t('common.words')}
               </span>
               {summaryText.trim().split(/\s+/).filter(Boolean).length >= 30 && (
-                <span className="text-green-600 font-medium">✓ Yaxshi!</span>
+                <span className="text-green-600 font-medium">{t('listening.summaryGood')}</span>
               )}
             </div>
             <div className="flex gap-2">
-              <button onClick={() => setExStep(1)} className="btn-secondary text-sm flex-1">← Orqaga</button>
+              <button onClick={() => setExStep(1)} className="btn-secondary text-sm flex-1">{t('listening.backButton')}</button>
               <button
                 onClick={submitExercises}
                 disabled={summaryText.trim().length < 10}
                 className="btn-primary text-sm flex-1"
               >
-                Yuborish ✓
+                {t('listening.submitButton')}
               </button>
             </div>
           </div>
@@ -423,9 +425,9 @@ export default function Listening() {
       {/* Tab bar */}
       <div className="flex bg-gray-100 dark:bg-gray-800 rounded-xl p-1 mb-4 gap-1">
         {([
-          { id: 'watch',      label: '▶ Ko\'rish' },
-          { id: 'transcript', label: '📄 Matn' },
-          { id: 'shadowing',  label: '🎤 Shadowing' },
+          { id: 'watch',      label: t('listening.tabWatch') },
+          { id: 'transcript', label: t('listening.tabTranscript') },
+          { id: 'shadowing',  label: t('listening.tabShadowing') },
         ] as { id: Tab; label: string }[]).map((t) => (
           <button
             key={t.id}
@@ -442,7 +444,7 @@ export default function Listening() {
           className={`text-xs font-semibold py-1.5 px-2 rounded-lg transition-all ${
             audioOnly ? 'bg-b1-500 text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'
           }`}
-          title={audioOnly ? 'Video rejim' : 'Audio rejim'}
+          title={audioOnly ? t('listening.videoMode') : t('listening.audioOnlyMode')}
         >
           {audioOnly ? '🔊' : '🎬'}
         </button>
@@ -455,14 +457,14 @@ export default function Listening() {
             {ytError ? (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-white bg-gray-900 p-4 text-center">
                 <span className="text-3xl">⚠️</span>
-                <p className="text-sm font-medium">Video yuklanmadi</p>
+                <p className="text-sm font-medium">{t('listening.videoError')}</p>
                 <p className="text-xs text-gray-400">
                   <a href={`https://www.youtube.com/watch?v=${lesson.youtubeId}`} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
-                    YouTube da ochish
+                    {t('listening.openYouTube')}
                   </a>
                 </p>
                 <button onClick={() => setYtError(false)} className="text-xs text-b1-300 underline mt-1">
-                  Qayta urinish
+                  {t('listening.retryVideo')}
                 </button>
               </div>
             ) : audioOnly ? (
@@ -474,7 +476,7 @@ export default function Listening() {
                   target="_blank" rel="noopener noreferrer"
                   className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white text-xs rounded-xl transition-colors"
                 >
-                  YouTube da ochish
+                  {t('listening.openYouTube')}
                 </a>
               </div>
             ) : (
@@ -490,7 +492,7 @@ export default function Listening() {
 
           {/* Key vocabulary */}
           <div className="card">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Kalit so'zlar</p>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">{t('listening.keyVocabulary')}</p>
             <div className="space-y-1.5">
               {lesson.vocabulary.map((v) => (
                 <div key={v.word} className="flex gap-2 text-sm">
@@ -505,7 +507,7 @@ export default function Listening() {
             onClick={goToExercises}
             className="w-full btn-primary text-sm flex items-center justify-center gap-2"
           >
-            Mashqlarga o'tish <ChevronRight size={15} />
+            {t('listening.goToExercises')} <ChevronRight size={15} />
           </button>
         </div>
       )}
@@ -514,7 +516,7 @@ export default function Listening() {
       {tab === 'transcript' && (
         <div className="space-y-2">
           <p className="text-xs text-gray-400 mb-1">
-            Har bir qatorni bosing — tarjimasini ko'ring
+            {t('listening.transcriptHint')}
           </p>
           {lesson.transcript.map((line, i) => (
             <TranscriptCard key={i} line={line} />
@@ -522,8 +524,7 @@ export default function Listening() {
           <button
             onClick={goToExercises}
             className="w-full btn-primary text-sm mt-3 flex items-center justify-center gap-2"
-          >
-            Mashqlarga o'tish <ChevronRight size={15} />
+          >                {t('listening.goToExercises')} <ChevronRight size={15} />
           </button>
         </div>
       )}
@@ -534,7 +535,7 @@ export default function Listening() {
           {/* Progress */}
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-gray-600">
-              {segIdx + 1} / {lesson.transcript.length} segment
+              {t('listening.shadowingSegment', { current: String(segIdx + 1), total: String(lesson.transcript.length) })}
             </span>
             <div className="w-32 h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
               <div
@@ -569,14 +570,14 @@ export default function Listening() {
                 className="btn-ghost py-1 px-2 text-xs flex items-center gap-1 ml-auto"
               >
                 {segRevealed ? <EyeOff size={13} /> : <Eye size={13} />}
-                {segRevealed ? 'Yashirish' : 'Ko\'rish'}
+                {segRevealed ? t('listening.shadowingHide') : t('listening.shadowingReveal')}
               </button>
             </div>
             {segRevealed ? (
               <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{segment.text}</p>
             ) : (
               <div className="h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                <span className="text-xs text-gray-400">Avval tinglang, keyin matnni ko'ring</span>
+                <span className="text-xs text-gray-400">{t('listening.shadowingHint')}</span>
               </div>
             )}
           </div>
@@ -588,21 +589,21 @@ export default function Listening() {
               disabled={segIdx === 0}
               className="btn-secondary flex-1 text-sm flex items-center justify-center gap-1"
             >
-              <ChevronLeft size={15} /> Oldingi
+              <ChevronLeft size={15} /> {t('listening.shadowingPrev')}
             </button>
             {segIdx < lesson.transcript.length - 1 ? (
               <button
                 onClick={() => { setSegIdx((i) => i + 1); setSegRevealed(false) }}
                 className="btn-primary flex-1 text-sm flex items-center justify-center gap-1"
               >
-                Keyingi <ChevronRight size={15} />
+                {t('listening.shadowingNext')} <ChevronRight size={15} />
               </button>
             ) : (
               <button
                 onClick={goToExercises}
                 className="btn-primary flex-1 text-sm"
               >
-                Mashqlarga o'tish ✓
+                {t('listening.goToExercises')} ✓
               </button>
             )}
           </div>
@@ -610,7 +611,7 @@ export default function Listening() {
           {/* Shadowing tip */}
           <div className="card bg-orange-50 border-orange-100">
             <p className="text-xs text-orange-700 font-medium">
-              🎤 Shadowing texnikasi: Video'ni tinglang → to'xtating → aynan shunday gapiring → Keyingi
+              {t('listening.shadowingTip')}
             </p>
           </div>
         </div>
@@ -622,6 +623,7 @@ export default function Listening() {
 // ── Transcript card (collapsible) ─────────────────────────────────────────────
 
 function TranscriptCard({ line }: { line: { startSec: number; text: string; speaker?: string } }) {
+  const { t } = useI18n()
   const [open, setOpen] = useState(false)
   const mins = Math.floor(line.startSec / 60)
   const secs = line.startSec % 60
@@ -655,7 +657,7 @@ function TranscriptCard({ line }: { line: { startSec: number; text: string; spea
           {/* Inline True/False result icon reuse */}
           <CheckCircle2 size={13} className="text-green-500 flex-shrink-0 mt-0.5" />
           <p className="text-xs text-gray-500 italic">
-            (Bu qator {Math.floor(line.startSec / 60)}:{String(line.startSec % 60).padStart(2,'0')} dan boshlanadi)
+            {t('listening.transcriptTime', { min: String(Math.floor(line.startSec / 60)), sec: String(line.startSec % 60).padStart(2, '0') })}
           </p>
         </div>
       )}

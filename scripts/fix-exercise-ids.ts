@@ -33,6 +33,7 @@ const LESSON_FILES: LessonFile[] = [
   { path: 'src/data/daily/a2Part2.ts', level: 'A2', idRange: [14001, 38999] },
   { path: 'src/data/daily/a2Part3.ts', level: 'A2', idRange: [14001, 38999] },
   { path: 'src/data/daily/a2Part4.ts', level: 'A2', idRange: [14001, 38999] },
+  { path: 'src/data/dailyLessons.ts', level: 'A2', idRange: [14001, 38999] },
   // B1
   { path: 'src/data/daily/b1Part1.ts', level: 'B1', idRange: [40001, 49999] },
   { path: 'src/data/daily/b1Extra.ts', level: 'B1', idRange: [40001, 49999] },
@@ -50,7 +51,7 @@ const LESSON_FILES: LessonFile[] = [
 
 function collectOldIds(content: string): number[] {
   const ids: number[] = []
-  const regex = /([{\,]\s*)(id:\s*)(\d+)(?=\s*[,}])/g
+  const regex = /([{\,]\s*)("?id"?\s*:\s*)(\d+)(?=\s*[,}])/g
   let match: RegExpExecArray | null
   while ((match = regex.exec(content)) !== null) {
     ids.push(parseInt(match[3], 10))
@@ -62,7 +63,7 @@ function replaceIdsSequentially(content: string, startId: number): string {
   let nextId = startId
   let replaceCount = 0
   const result = content.replace(
-    /([{\,]\s*)(id:\s*)(\d+)(?=\s*[,}])/g,
+    /([{\,]\s*)("?id"?\s*:\s*)(\d+)(?=\s*[,}])/g,
     (match, prefix, idPrefix) => {
       replaceCount++
       return `${prefix}${idPrefix}${nextId++}`
@@ -73,7 +74,9 @@ function replaceIdsSequentially(content: string, startId: number): string {
 }
 
 function main(): void {
-  console.log('🔧 Exercise ID auto-generation (sequential per file, non-overlapping ranges)\\n')
+  const isDryRun = process.argv.includes('--dry-run')
+  if (isDryRun) console.log('🔍 DRY RUN — no files will be modified\n')
+  else console.log('🔧 Exercise ID auto-generation (sequential per file, non-overlapping ranges)\n')
 
   const byLevel = new Map<string, LessonFile[]>()
   for (const file of LESSON_FILES) {
@@ -83,20 +86,17 @@ function main(): void {
   }
 
   for (const [level, files] of byLevel) {
-    console.log(`\\n📚 ${level} lessons:`)
+    console.log(`\n📚 ${level} lessons:`)
     const [rangeStart, rangeEnd] = files[0].idRange
     const totalRange = rangeEnd - rangeStart + 1
     const filesCount = files.length
     
-    // Calculate sub-range size for each file (divide range equally)
     const subRangeSize = Math.floor(totalRange / filesCount)
     
-    // Process each file with its own non-overlapping sub-range
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
       const fullPath = join(process.cwd(), file.path)
       
-      // Calculate this file's sub-range
       const fileRangeStart = rangeStart + (i * subRangeSize)
       const fileRangeEnd = i === files.length - 1 
         ? rangeEnd 
@@ -107,8 +107,11 @@ function main(): void {
         const oldIds = collectOldIds(content)
         console.log(`  Found ${oldIds.length} IDs in ${file.path}`)
 
-        // Replace IDs sequentially starting from this file's sub-range
         const newContent = replaceIdsSequentially(content, fileRangeStart)
+        if (isDryRun) {
+          console.log(`  [DRY RUN] Would update ${file.path} (${oldIds.length} exercises, range ${fileRangeStart}-${fileRangeEnd})`)
+          continue
+        }
         writeFileSync(fullPath, newContent, 'utf-8')
         console.log(`  Processing ${file.path}...`)
         console.log(`    ✅ Updated (${oldIds.length} exercises, range ${fileRangeStart}-${fileRangeEnd})`)
@@ -118,7 +121,8 @@ function main(): void {
     }
   }
 
-  console.log('\\n✅ Done! Run validate:ids to verify.')
+  if (isDryRun) console.log('\n🔍 Dry run complete. No files were modified.')
+  else console.log('\n✅ Done! Run validate:ids to verify.')
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

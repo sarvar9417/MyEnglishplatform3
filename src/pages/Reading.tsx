@@ -7,6 +7,7 @@ import {
 import { type ReadingText, type VocabWord, type CompQuestion } from '@/data/reading'
 import { fetchReadingTexts, saveReadingResult } from '@/services/readingService'
 import { generateReadingQuestions } from '@/lib/claude'
+import { useI18n } from '../i18n'
 import { useStore } from '@/store/useStore'
 import { supabase } from '@/lib/supabase'
 import { monitoring } from '@/lib/monitoring'
@@ -102,6 +103,7 @@ function VocabPopup({ word, onClose }: { word: VocabWord; onClose: () => void })
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 export default function Reading() {
+  const { t } = useI18n()
   const navigate = useNavigate()
   const location = useLocation()
   const fromSkills = location.state?.from === '/skills'
@@ -186,7 +188,7 @@ export default function Reading() {
       <div className="p-3 sm:p-6 max-w-2xl mx-auto">
         <div className="flex items-center gap-3 mb-4 sm:mb-6">
           {fromSkills && (
-            <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label="Ko'nikmalarga qaytish">
+            <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label={t('common.backToSkills')}>
               <ChevronLeft size={18} />
             </button>
           )}
@@ -194,35 +196,35 @@ export default function Reading() {
             <BookOpen size={20} className="text-green-600" />
           </div>
           <div>
-            <h1 className="text-lg sm:text-xl font-bold text-gray-900">Reading</h1>
-            <p className="text-xs text-gray-500">Timed reading · Comprehension · Vocabulary</p>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900">{t('reading.title')}</h1>
+            <p className="text-xs text-gray-500">{t('reading.subtitle')}</p>
           </div>
         </div>
 
         {textsLoading ? (
-          <div className="flex items-center justify-center min-h-[200px] text-gray-400 animate-pulse">Matnlar yuklanmoqda...</div>
+          <div className="flex items-center justify-center min-h-[200px] text-gray-400 animate-pulse">{t('reading.loading')}</div>
         ) : (
           <div className="space-y-3">
-            {texts.map((t) => (
+            {texts.map((item) => (
               <button
-                key={t.id}
-                onClick={() => openText(t)}
+              key={item.id}
+              onClick={() => openText(item)}
                 className="w-full card text-left hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className={`badge text-[10px] ${t.level === 'B2' ? 'badge-b2' : t.level === 'B1+' ? 'badge-b1' : 'badge-primary'}`}>
-                        {t.level}
+                      <span className={`badge text-[10px] ${item.level === 'B2' ? 'badge-b2' : item.level === 'B1+' ? 'badge-b1' : 'badge-primary'}`}>
+                        {item.level}
                       </span>
-                      <span className="text-xs text-gray-400">{t.topic}</span>
+                      <span className="text-xs text-gray-400">{item.topic}</span>
                     </div>
-                    <p className="font-semibold text-gray-900 text-sm">{t.title}</p>
+                    <p className="font-semibold text-gray-900 text-sm">{item.title}</p>
                     <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-400">
-                      <span className="flex items-center gap-1"><Clock size={11} /> {t.readingTime} daqiqa</span>
-                      <span>~{t.wordCount} so'z</span>
-                      <span>10 ta lug'at</span>
-                      <span>5 ta savol</span>
+                      <span className="flex items-center gap-1"><Clock size={11} /> {t('reading.readingTime', { minutes: String(item.readingTime) })}</span>
+                      <span>{t('reading.wordCount', { count: String(item.wordCount) })}</span>
+                      <span>{t('reading.vocabCount', { count: '10' })}</span>
+                      <span>{t('reading.questionsCount', { count: '5' })}</span>
                     </div>
                   </div>
                   <ChevronRight size={18} className="text-gray-300 flex-shrink-0 mt-1" />
@@ -245,18 +247,18 @@ export default function Reading() {
       <div className="p-3 sm:p-6 max-w-2xl mx-auto">
         <div className="text-center mb-6">
           <div className="text-5xl mb-3">{pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '💪'}</div>
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Natija</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">{t('reading.resultTitle')}</h2>
           <p className="text-sm text-gray-500 mt-0.5">{text.title}</p>
         </div>
 
         <div className="flex gap-3 justify-center mb-6">
           <div className="card text-center px-8 py-4">
             <p className="text-3xl font-bold text-green-600">{correct}/{text.questions.length}</p>
-            <p className="text-xs text-gray-500 mt-0.5">To'g'ri javob</p>
+            <p className="text-xs text-gray-500 mt-0.5">{t('reading.resultCorrect')}</p>
           </div>
           <div className="card text-center px-8 py-4">
             <p className="text-3xl font-bold text-primary-600">{correct * 12}</p>
-            <p className="text-xs text-gray-500 mt-0.5">XP qazonlandi</p>
+            <p className="text-xs text-gray-500 mt-0.5">{t('reading.resultXPLabel')}</p>
           </div>
         </div>
 
@@ -275,8 +277,8 @@ export default function Reading() {
                 </div>
                 {!isCorrect && (
                   <div className="ml-6 space-y-1">
-                    <p className="text-xs text-red-600">Sizning javobingiz: {answers[i] !== null ? q.options[answers[i]!] : '—'}</p>
-                    <p className="text-xs text-green-700 font-medium">To'g'ri javob: {q.options[q.correctIndex]}</p>
+                    <p className="text-xs text-red-600">{t('reading.yourAnswer')}: {answers[i] !== null ? q.options[answers[i]!] : '—'}</p>
+                    <p className="text-xs text-green-700 font-medium">{t('reading.correctAnswer')}: {q.options[q.correctIndex]}</p>
                     <p className="text-xs text-gray-500 italic">{q.explanation}</p>
                   </div>
                 )}
@@ -286,8 +288,8 @@ export default function Reading() {
         </div>
 
         <div className="flex gap-2">
-          <button onClick={() => setPhase('select')} className="btn-secondary flex-1 text-sm">Matn tanlash</button>
-          <button onClick={() => { setPhase('read') }} className="btn-primary flex-1 text-sm">Qayta o'qish</button>
+          <button onClick={() => setPhase('select')} className="btn-secondary flex-1 text-sm">{t('reading.selectText')}</button>
+          <button onClick={() => { setPhase('read') }} className="btn-primary flex-1 text-sm">{t('reading.rereadButton')}</button>
         </div>
       </div>
     )
@@ -306,7 +308,7 @@ export default function Reading() {
           </button>
           <div className="flex-1 min-w-0">
             <p className="text-xs text-gray-500 truncate">{text.title}</p>
-            <p className="text-sm font-semibold text-gray-900">Comprehension savollar</p>
+            <p className="text-sm font-semibold text-gray-900">{t('reading.quizTitle')}</p>
           </div>
         </div>
 
@@ -348,7 +350,7 @@ export default function Reading() {
           disabled={!allAnswered || submitted}
           className="w-full btn-primary text-sm mt-5"
         >
-          Yuborish ✓
+          {t('reading.submitButton')}
         </button>
       </div>
     )
@@ -399,7 +401,7 @@ export default function Reading() {
       {/* Vocab legend */}
       <div className="card bg-yellow-50 border-yellow-100 mb-4">
         <p className="text-xs text-yellow-800 font-medium mb-2">
-          📖 Sariq so'zlarni bosing — ta'rif va misol ko'ring
+          {t('reading.vocabLegend')}
         </p>
         <div className="flex flex-wrap gap-1.5">
           {text.vocabWords.map((v) => (
@@ -419,7 +421,7 @@ export default function Reading() {
         <div className="flex items-center justify-between mb-2">
           <p className="text-sm font-semibold text-gray-700 flex items-center gap-1.5">
             <Sparkles size={14} className="text-primary-500" />
-            Claude: 5 ta yangi savol
+            {t('reading.aiQuestionsTitle')}
           </p>
           {!aiQuestions && (
             <button
@@ -428,7 +430,7 @@ export default function Reading() {
               className="btn-secondary text-xs py-1 px-3 flex items-center gap-1"
             >
               {aiLoading ? <Loader2 size={12} className="animate-spin" /> : null}
-              {aiLoading ? 'Yaratilmoqda...' : 'Yaratish'}
+              {aiLoading ? t('reading.aiGenerating') : t('reading.aiGenerate')}
             </button>
           )}
         </div>
@@ -447,7 +449,7 @@ export default function Reading() {
         onClick={goToQuiz}
         className="w-full btn-primary text-sm flex items-center justify-center gap-2"
       >
-        Mashqlarga o'tish <ChevronRight size={15} />
+        {t('reading.goToQuiz')} <ChevronRight size={15} />
       </button>
 
       {/* Vocab popup */}

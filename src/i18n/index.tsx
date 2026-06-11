@@ -1,6 +1,9 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react'
 import type { Locale, TranslationStrings } from './types'
 import { monitoring } from '../lib/monitoring'
+// Provider'siz holatlar (testlar yoki edge-case) uchun statik uz tarjima fallback'i.
+// Production'da App doim <I18nProvider> bilan o'raydi — bu ishlatilmaydi.
+import uzFallback from './uz.json'
 
 /* ─── Storage ─── */
 
@@ -118,12 +121,22 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
 /* ─── Hook ─── */
 
+// Provider yo'q bo'lganda ishlatiladigan fallback — haqiqiy uz tarjimalar bilan.
+// Shu sabab provider'siz render qilingan komponentlar (masalan testlar) ham
+// to'g'ri matn ko'rsatadi va crash bo'lmaydi.
+const FALLBACK_DICT = uzFallback as unknown as Record<string, string>
+const FALLBACK_CONTEXT: I18nContextValue = {
+  locale: 'uz',
+  loading: false,
+  t: (key, params) => {
+    const template = FALLBACK_DICT[key as string]
+    return template === undefined ? (key as string) : interpolate(template, params)
+  },
+  setLocale: () => { /* no-op outside provider */ },
+}
+
 export function useI18n(): I18nContextValue {
-  const ctx = useContext(I18nContext)
-  if (!ctx) {
-    throw new Error('useI18n must be used inside <I18nProvider>')
-  }
-  return ctx
+  return useContext(I18nContext) ?? FALLBACK_CONTEXT
 }
 
 /* ─── Re-export types ─── */

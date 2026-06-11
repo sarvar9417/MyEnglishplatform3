@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useStore } from '../store/useStore'
 import { useAuth } from '../hooks/useAuth'
 import { useProgress } from '../hooks/useProgress'
+import { useI18n } from '../i18n'
 import { useTandemStore } from '../store/tandemSlice'
 import { getSpeakingStats, type SpeakingStats } from '../services/speakingPathService'
 import { getAllChunks, TOTAL_SPEAKING_DAYS } from '../data/speakingPath'
@@ -21,7 +22,7 @@ import AdaptivePlan from '../components/dashboard/AdaptivePlan'
 import ProgressMap from '../components/dashboard/ProgressMap'
 import { IDIOMS } from '../data/idioms'
 import type { QuickWeakSpot } from '../services/analyticsService'
-import { getStoryBeat, ACT_DISPLAY, STORY_BEATS } from '../data/narrative/storyline'
+import { getStoryBeat, STORY_BEATS, resolveActDisplay } from '../data/narrative/storyline'
 import { AVATARS } from '../components/ui/AvatarSelector'
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -29,6 +30,7 @@ import { AVATARS } from '../components/ui/AvatarSelector'
 // ═══════════════════════════════════════════════════════════════════════════
 
 function TopBar() {
+  const { t } = useI18n()
   const { currentLevel, currentWeek, currentDay, streak: localStreak, targetDate, userName: localName, avatarId, totalWordsLearned } = useStore()
   const { displayName, signOut } = useAuth()
   const { dbStreak } = useProgress()
@@ -51,8 +53,8 @@ function TopBar() {
 
   const hour = new Date().getHours()
   const greeting =
-    hour < 12 ? 'Xayrli tong' :
-    hour < 18 ? 'Xayrli kun'  : 'Xayrli kech'
+    hour < 12 ? t('dashboard.greetingMorning') :
+    hour < 18 ? t('dashboard.greetingAfternoon')  : t('dashboard.greetingEvening')
 
   return (
     <header className="bg-white border-b border-gray-100 px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between flex-shrink-0 gap-2">
@@ -60,43 +62,43 @@ function TopBar() {
         <p className="text-xs text-gray-400 font-medium">{greeting}</p>
         <h1 className="text-sm sm:text-base font-bold text-gray-900 leading-tight truncate flex items-center gap-1.5">
           <span className="text-lg">{AVATARS.find(a => a.id === avatarId)?.emoji ?? '👤'}</span>
-          {userName || 'Foydalanuvchi'} 👋
+          {t('dashboard.greetingUser', { name: userName || t('sidebar.userFallback') })}
         </h1>
       </div>
 
       <div className={`flex items-center gap-1 px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-full border font-semibold text-[11px] sm:text-sm flex-shrink-0 ${levelColor}`}>
-        <span>{currentLevel}</span>
+        <span>{t('dashboard.topBarLevel', { level: currentLevel })}</span>
         <span className="text-xs opacity-60 hidden sm:inline">·</span>
-        <span className="text-xs font-medium opacity-80 hidden sm:inline">{currentWeek}-hafta</span>
+        <span className="text-xs font-medium opacity-80 hidden sm:inline">{t('dashboard.topBarWeek', { week: currentWeek })}</span>
         <span className="text-xs opacity-60 hidden sm:inline">·</span>
-        <span className="text-xs font-medium opacity-80">{dayInWeek}-kun</span>
+        <span className="text-xs font-medium opacity-80">{t('dashboard.topBarDay', { dayInWeek })}</span>
       </div>
 
       <div className="flex items-center gap-2 sm:gap-4">
         <div className="flex items-center gap-1 sm:gap-1.5">
           <span className="text-base sm:text-lg leading-none">🔥</span>
           <div className="hidden sm:block">
-            <p className="text-sm font-bold text-gray-900 leading-tight">{streak} kun</p>
-            <p className="text-[11px] text-gray-400">streak</p>
+            <p className="text-sm font-bold text-gray-900 leading-tight">{t('dashboard.topBarStreak', { streak })}</p>
+            <p className="text-[11px] text-gray-400">{t('dashboard.streakLabel')}</p>
           </div>
           <span className="text-xs font-bold text-gray-900 sm:hidden">{streak}</span>
         </div>
         <div className="h-7 w-px bg-gray-100 hidden sm:block" />
         <div className="text-right hidden sm:block">
-          <p className="text-sm font-bold text-gray-900 leading-tight">{daysLeft} kun</p>
-          <p className="text-[11px] text-gray-400">maqsadgacha</p>
+          <p className="text-sm font-bold text-gray-900 leading-tight">{t('dashboard.topBarDaysLeft', { daysLeft })}</p>
+          <p className="text-[11px] text-gray-400">{t('dashboard.daysLeftLabel')}</p>
         </div>
         <div className="hidden sm:flex items-center gap-1.5">
           <span className="text-base leading-none">📚</span>
           <div>
             <p className="text-sm font-bold text-gray-900 leading-tight">{totalWordsLearned}</p>
-            <p className="text-[11px] text-gray-400">jami so'z</p>
+            <p className="text-[11px] text-gray-400">{t('dashboard.totalWordsLabel')}</p>
           </div>
         </div>
         <div className="h-7 w-px bg-gray-100" />
         <button
           onClick={signOut}
-          title="Chiqish"
+          title={t('dashboard.signOutTitle')}
           className="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
         >
           <LogOut size={18} />
@@ -123,13 +125,14 @@ interface RingConfig {
 }
 
 function SkillRing({ pct, stroke, track, label, hours, Icon, iconColor, onClick }: Omit<RingConfig, 'key'> & { onClick?: () => void }) {
+  const { t } = useI18n()
   const SIZE = typeof window !== 'undefined' && window.innerWidth < 640 ? 72 : 96
   const R    = SIZE === 72 ? 28 : 38
   const C    = 2 * Math.PI * R
   const offset = C * (1 - Math.min(pct, 100) / 100)
 
   return (
-    <button onClick={onClick} className="flex flex-col items-center gap-1.5 sm:gap-2.5 transition-transform hover:scale-105 active:scale-95 focus:outline-none" aria-label={`${label} bo'limiga o'tish`}>
+    <button onClick={onClick} className="flex flex-col items-center gap-1.5 sm:gap-2.5 transition-transform hover:scale-105 active:scale-95 focus:outline-none" aria-label={t('dashboard.skillRingAria', { label })}>
       <div className="relative" style={{ width: SIZE, height: SIZE }}>
         {pct >= 80 && (
           <div
@@ -162,6 +165,7 @@ function SkillRing({ pct, stroke, track, label, hours, Icon, iconColor, onClick 
 }
 
 function TodayProgress() {
+  const { t } = useI18n()
   const navigate = useNavigate()
   const { todayGrammarPct, todayVocabPct, todayListeningPct, todayReadingPct, todaySpeakingPct, todayWritingPct } = useStore()
   const { todayProgress } = useProgress()
@@ -175,37 +179,37 @@ function TodayProgress() {
 
   const rings: RingConfig[] = [
     {
-      key: 'grammar', label: 'Grammar',    hours: '3 soat', route: '/grammar',
+      key: 'grammar', label: t('dashboard.skillRingGrammar'),    hours: t('dashboard.skillRingGrammarHours'), route: '/grammar',
       pct: gPct,
       stroke: '#1a56db', track: '#dbeafe',
       Icon: BookOpen, iconColor: 'text-primary-600',
     },
     {
-      key: 'vocab', label: "Lug'at",       hours: '2 soat', route: '/vocabulary',
+      key: 'vocab', label: t('dashboard.skillRingVocab'),       hours: t('dashboard.skillRingVocabHours'), route: '/vocabulary',
       pct: vPct,
       stroke: '#0f766e', track: '#ccfbf1',
       Icon: BookMarked, iconColor: 'text-b1-600',
     },
     {
-      key: 'listening', label: 'Listening', hours: '2 soat', route: '/listening',
+      key: 'listening', label: t('dashboard.skillRingListening'), hours: t('dashboard.skillRingListeningHours'), route: '/listening',
       pct: lPct,
       stroke: '#f97316', track: '#ffedd5',
       Icon: Headphones, iconColor: 'text-orange-500',
     },
     {
-      key: 'reading', label: 'Reading',     hours: '1.5 soat', route: '/reading',
+      key: 'reading', label: t('dashboard.skillRingReading'),     hours: t('dashboard.skillRingReadingHours'), route: '/reading',
       pct: rPct,
       stroke: '#06b6d4', track: '#cffafe',
       Icon: BookText, iconColor: 'text-cyan-600',
     },
     {
-      key: 'speaking', label: 'Speaking',   hours: '1.5 soat', route: '/speaking',
+      key: 'speaking', label: t('dashboard.skillRingSpeaking'),   hours: t('dashboard.skillRingSpeakingHours'), route: '/speaking',
       pct: sPct,
       stroke: '#e11d48', track: '#ffe4e6',
       Icon: Mic, iconColor: 'text-rose-500',
     },
     {
-      key: 'writing', label: 'Writing',     hours: '2 soat', route: '/writing',
+      key: 'writing', label: t('dashboard.skillRingWriting'),     hours: t('dashboard.skillRingWritingHours'), route: '/writing',
       pct: wPct,
       stroke: '#7c3aed', track: '#ede9fe',
       Icon: PenLine, iconColor: 'text-b2-600',
@@ -223,11 +227,11 @@ function TodayProgress() {
     <section className="card">
       <div className="flex items-center justify-between mb-5">
         <div>
-          <h2 className="font-bold text-gray-900 text-sm">Bugungi Skill Progress</h2>
-          <p className="text-xs text-gray-400 mt-0.5">Har bir ko'nikmaga bosing → mashq qiling</p>
+          <h2 className="font-bold text-gray-900 text-sm">{t('dashboard.skillProgressTitle')}</h2>
+          <p className="text-xs text-gray-400 mt-0.5">{t('dashboard.skillProgressSubtitle')}</p>
         </div>
         <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${avgColor}`}>
-          O'rtacha {avg}%
+          {t('dashboard.skillProgressAvg', { avg })}
         </span>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-2">
@@ -242,6 +246,7 @@ function TodayProgress() {
 // ═══════════════════════════════════════════════════════════════════════════
 
 function LessonProgressCard() {
+  const { t } = useI18n()
   const lessonProgress = useStore((s) => s.lessonProgress)
   const lessons = useStore((s) => s.lessons)
   const navigate = useNavigate()
@@ -260,23 +265,23 @@ function LessonProgressCard() {
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Sun size={18} className="text-primary-600" />
-          <h3 className="font-bold text-gray-900 text-sm">Kunlik Darslar</h3>
+          <h3 className="font-bold text-gray-900 text-sm">{t('dashboard.lessonProgressTitle')}</h3>
         </div>
         <button
           onClick={() => navigate('/lesson')}
           className="text-xs text-primary-600 font-semibold flex items-center gap-0.5 hover:gap-1.5 transition-all"
         >
-          Barchasi <ChevronRight size={12} />
+          {t('dashboard.lessonProgressViewAll')} <ChevronRight size={12} />
         </button>
       </div>
 
       <div className="flex items-center gap-4 mb-3 pb-3 border-b border-gray-50">
         <div className="flex items-center gap-1.5">
-          <span className="text-xs text-gray-500">Bajarildi:</span>
+          <span className="text-xs text-gray-500">{t('dashboard.lessonProgressCompleted')}</span>
           <span className="font-bold text-gray-900">{completed}/{pcts.length}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-xs text-gray-500">O'rtacha:</span>
+          <span className="text-xs text-gray-500">{t('dashboard.lessonProgressAverage')}</span>
           <span className={`font-bold ${
             avgPct >= 80 ? 'text-green-600' : avgPct >= 50 ? 'text-yellow-600' : 'text-red-500'
           }`}>{avgPct}%</span>
@@ -319,6 +324,7 @@ function LessonProgressCard() {
 // ═══════════════════════════════════════════════════════════════════════════
 
 function DailyIdiomCard() {
+  const { t } = useI18n()
   const navigate = useNavigate()
 
   // Deterministic daily pick based on day of year
@@ -341,7 +347,7 @@ function DailyIdiomCard() {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[11px] font-bold uppercase tracking-wider text-yellow-600 dark:text-yellow-400">
-              Kunning Idiomasi
+              {t('dashboard.dailyIdiomTitle')}
             </span>
             <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 ${
               idiom.level === 'B2'
@@ -359,7 +365,7 @@ function DailyIdiomCard() {
           </p>
           <div className="flex items-center gap-1 mt-1.5 text-xs text-gray-400 dark:text-gray-500 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
             <MessageCircle size={12} />
-            <span>Barcha idiomalar →</span>
+            <span>{t('dashboard.dailyIdiomViewAll')}</span>
           </div>
         </div>
         <span className="text-sm flex-shrink-0 text-gray-300 dark:text-gray-600 group-hover:text-primary-400 transition-colors">
@@ -375,6 +381,7 @@ function DailyIdiomCard() {
 // ═══════════════════════════════════════════════════════════════════════════
 
 function StartLessonButton() {
+  const { t } = useI18n()
   const navigate = useNavigate()
 
   return (
@@ -389,17 +396,18 @@ function StartLessonButton() {
         📚
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-white font-black text-base">Bugungi Dars</p>
-        <p className="text-white/80 text-xs">Grammatika, lug'at va ko'nikmalar</p>
+        <p className="text-white font-black text-base">{t('dashboard.startLessonTitle')}</p>
+        <p className="text-white/80 text-xs">{t('dashboard.startLessonSubtitle')}</p>
       </div>
       <span className="text-white/90 font-bold text-sm bg-white/20 px-3 py-1.5 rounded-xl flex-shrink-0">
-        Boshlash →
+        {t('dashboard.startLessonButton')}
       </span>
     </button>
   )
 }
 
 function SpeakingPathCard() {
+  const { t } = useI18n()
   const navigate = useNavigate()
   const { user } = useAuth()
   const [stats, setStats] = useState<SpeakingStats | null>(null)
@@ -414,7 +422,7 @@ function SpeakingPathCard() {
     return () => { active = false }
   }, [user?.id])
 
-  const day = stats ? Math.min(stats.currentDay, TOTAL_SPEAKING_DAYS) : null
+  const day = stats ? Math.min(stats.currentDay, TOTAL_SPEAKING_DAYS) : 0
 
   return (
     <button
@@ -428,20 +436,20 @@ function SpeakingPathCard() {
         🗣️
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-white font-black text-base">Gapirish Yo'li</p>
+        <p className="text-white font-black text-base">{t('dashboard.speakingPathTitle')}</p>
         {stats ? (
           <div className="flex items-center gap-2.5 text-white/85 text-xs font-semibold mt-0.5 flex-wrap">
-            <span>Kun {day}/{TOTAL_SPEAKING_DAYS}</span>
-            {stats.streakDays > 0 && <span>🔥 {stats.streakDays} kun</span>}
-            <span>🎙️ {stats.todayMinutes}/15 daq</span>
-            {stats.dueCount > 0 && <span>🔁 {stats.dueCount} takror</span>}
+            <span>{t('dashboard.speakingPathDay', { day, total: TOTAL_SPEAKING_DAYS })}</span>
+            {stats.streakDays > 0 && <span>{t('dashboard.speakingPathStreak', { days: stats.streakDays })}</span>}
+            <span>{t('dashboard.speakingPathMinutes', { minutes: stats.todayMinutes, target: 15 })}</span>
+            {stats.dueCount > 0 && <span>{t('dashboard.speakingPathReview', { count: stats.dueCount })}</span>}
           </div>
         ) : (
-          <p className="text-white/80 text-xs">0 dan suhbatgacha — har kuni 15 daqiqa</p>
+          <p className="text-white/80 text-xs">{t('dashboard.speakingPathSubtitle')}</p>
         )}
       </div>
       <span className="text-white/90 font-bold text-sm bg-white/20 px-3 py-1.5 rounded-xl flex-shrink-0">
-        Boshlash →
+        {t('dashboard.speakingPathButton')}
       </span>
     </button>
   )
@@ -452,9 +460,10 @@ function SpeakingPathCard() {
 // ═══════════════════════════════════════════════════════════════════════════
 
 function StoryBeatCard() {
+  const { t } = useI18n()
   const { currentDay } = useStore()
   const beat = getStoryBeat(currentDay)
-  const act = ACT_DISPLAY[beat.act] ?? ACT_DISPLAY.prologue
+  const act = resolveActDisplay(beat.act)
   const progress = Math.min(100, Math.round((currentDay / 126) * 100))
 
   const currentActIndex = STORY_BEATS.findIndex(b => b.act === beat.act)
@@ -548,7 +557,7 @@ function StoryBeatCard() {
               </span>
               <span className={`text-[8px] whitespace-nowrap
                 ${reached ? 'text-gray-400' : 'text-gray-300 dark:text-gray-600'}`}>
-                Kun {stop.day}
+                {t('dashboard.storyBeatDay', { day: stop.day })}
               </span>
             </div>
           )
@@ -556,9 +565,9 @@ function StoryBeatCard() {
       </div>
 
       <div className="flex items-center justify-between text-[11px] text-gray-400 mt-1 pt-2 border-t border-gray-50 dark:border-gray-700">
-        <span>🏁 {progress}% yakunlandi</span>
+        <span>{t('dashboard.storyBeatProgress', { pct: progress })}</span>
         <span className="font-medium text-gray-500 dark:text-gray-400">
-          Kun {currentDay}/126
+          {t('dashboard.storyBeatDay', { day: currentDay })}
         </span>
       </div>
     </section>
@@ -579,6 +588,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 export default function Dashboard() {
+  const { t } = useI18n()
   const navigate = useNavigate()
   const { fetchAndSetLessons } = useStore()
   const handleWeakSpotsLoaded = useCallback((_spots: QuickWeakSpot[]) => {}, [])
@@ -606,14 +616,14 @@ export default function Dashboard() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="font-bold text-sm text-rose-800 dark:text-rose-200">
-                  Sizni {pendingOpponentDuels.length} ta duel kutmoqda!
+                  {t('dashboard.duelTitle', { count: pendingOpponentDuels.length })}
                 </p>
                 <p className="text-xs text-rose-600 dark:text-rose-400 mt-0.5">
-                  Javob berish uchun 24 soat vaqtingiz bor
+                  {t('dashboard.duelSubtitle')}
                 </p>
               </div>
               <span className="text-sm text-rose-600 dark:text-rose-400 font-semibold group-hover:gap-1.5 transition-all flex items-center gap-0.5 flex-shrink-0">
-                Tandem <ChevronRight size={15} />
+                {t('dashboard.duelButton')} <ChevronRight size={15} />
               </span>
             </button>
           )}
@@ -632,12 +642,12 @@ export default function Dashboard() {
           <TodayProgress />
 
           {/* ── 3. Bugun ── */}
-          <SectionLabel>Bugun</SectionLabel>
+          <SectionLabel>{t('dashboard.sectionToday')}</SectionLabel>
           <LessonProgressCard />
           <ReviewOverview />
 
           {/* ── 4. Tavsiya ── */}
-          <SectionLabel>Tavsiya</SectionLabel>
+          <SectionLabel>{t('dashboard.sectionRecommended')}</SectionLabel>
           <WeakSpotsWidget onSpotsLoaded={handleWeakSpotsLoaded} />
           <AdaptivePlan />
           <AiInsightsWidget />
@@ -648,7 +658,7 @@ export default function Dashboard() {
               onClick={() => setShowMore(v => !v)}
               className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
             >
-              {showMore ? 'Kamroq ko\'rsatish' : 'Ko\'proq'}
+              {showMore ? t('dashboard.showLess') : t('dashboard.showMore')}
               <ChevronDown size={16} className={`transition-transform ${showMore ? 'rotate-180' : ''}`} />
             </button>
             {showMore && (

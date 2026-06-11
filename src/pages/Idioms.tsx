@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Search, X, BookOpen, Filter, ArrowLeft, Lightbulb, CheckCircle2, XCircle, RefreshCw } from 'lucide-react'
+import { useI18n } from '../i18n'
 import { IDIOMS, type Idiom, type IdiomLevel } from '../data/idioms'
 
 const CATEGORIES = [
@@ -22,6 +23,7 @@ const CATEGORY_EMOJI: Record<string, string> = {
 }
 
 export default function Idioms() {
+  const { t } = useI18n()
   const [query, setQuery] = useState('')
   const [categoryFilter, setCategoryFilter] = useState<string>('all')
   const [levelFilter, setLevelFilter] = useState<string>('all')
@@ -68,10 +70,10 @@ export default function Idioms() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-1">
-              Idioms
+              {t('idioms.title')}
             </h1>
             <p className="text-sm text-gray-500">
-              {IDIOMS.length} ta idiom — B1+ va B2 darajasi uchun
+              {t('idioms.subtitle', { count: String(IDIOMS.length) })}
             </p>
           </div>
           <button
@@ -81,7 +83,7 @@ export default function Idioms() {
               dark:bg-primary-900/30 dark:text-primary-300 dark:hover:bg-primary-900/50
               transition-colors"
           >
-            🧪 Test
+            {t('idioms.quizButton')}
           </button>
         </div>
       </div>
@@ -93,7 +95,7 @@ export default function Idioms() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Qidirish: idiom, ma'no yoki misol..."
+          placeholder={t('idioms.searchPlaceholder')}
           className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700
             bg-white dark:bg-gray-900 text-sm text-gray-900 dark:text-gray-100
             placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -102,7 +104,7 @@ export default function Idioms() {
           <button
             onClick={() => setQuery('')}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-            aria-label="Tozalash"
+            aria-label={t('idioms.clearAria')}
           >
             <X size={18} />
           </button>
@@ -115,7 +117,7 @@ export default function Idioms() {
         <FilterChip
           active={categoryFilter === 'all'}
           onClick={() => setCategoryFilter('all')}
-          label="Hammasi"
+          label={t('idioms.filterAll')}
         />
         {CATEGORIES.map((c) => (
           <FilterChip
@@ -140,8 +142,8 @@ export default function Idioms() {
       {filtered.length === 0 ? (
         <div className="card text-center py-12">
           <BookOpen size={36} className="text-gray-300 mx-auto mb-3" />
-          <p className="text-sm text-gray-500">Hech narsa topilmadi</p>
-          <p className="text-xs text-gray-400 mt-1">Boshqa so'z bilan qidirib ko'ring</p>
+          <p className="text-sm text-gray-500">{t('idioms.noResults')}</p>
+          <p className="text-xs text-gray-400 mt-1">{t('idioms.noResultsHint')}</p>
         </div>
       ) : (
         <div className="space-y-6">
@@ -221,6 +223,7 @@ function shuffleArray<T>(arr: T[]): T[] {
 }
 
 function IdiomQuiz({ onBack }: { onBack: () => void }) {
+  const { t } = useI18n()
   const [questions, setQuestions] = useState(() => generateQuiz())
   const [currentIdx, setCurrentIdx] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
@@ -262,9 +265,9 @@ function IdiomQuiz({ onBack }: { onBack: () => void }) {
       <div className="p-3 sm:p-6 max-w-2xl mx-auto">
         <div className="card !p-8 text-center">
           <div className="text-5xl mb-4">{pct >= 80 ? '🎉' : pct >= 50 ? '💪' : '📚'}</div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Test tugadi!</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">{t('idioms.finishedTitle')}</h2>
           <p className="text-gray-500 mb-1">
-            {score} / {questions.length} to'g'ri javob
+            {t('idioms.finishedScore', { score: String(score), total: String(questions.length) })}
           </p>
           <p className="text-4xl font-black text-primary-600 mb-6">{pct}%</p>
           <div className="flex items-center justify-center gap-3">
@@ -274,7 +277,7 @@ function IdiomQuiz({ onBack }: { onBack: () => void }) {
                 hover:bg-primary-700 transition-colors text-sm"
             >
               <RefreshCw size={16} />
-              Qayta boshlash
+              {t('idioms.finishedRestart')}
             </button>
             <button
               onClick={onBack}
@@ -283,7 +286,7 @@ function IdiomQuiz({ onBack }: { onBack: () => void }) {
                 transition-colors text-sm"
             >
               <ArrowLeft size={16} />
-              Orqaga
+              {t('idioms.finishedBack')}
             </button>
           </div>
         </div>
@@ -300,14 +303,14 @@ function IdiomQuiz({ onBack }: { onBack: () => void }) {
           className="flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 transition-colors"
         >
           <ArrowLeft size={16} />
-          Orqaga
+          {t('idioms.detailBack')}
         </button>
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <span className="font-semibold text-gray-700 dark:text-gray-300">{currentIdx + 1}</span>
           <span className="text-gray-300">/</span>
           <span>{questions.length}</span>
           <span className="w-px h-4 bg-gray-200 mx-1" />
-          <span className="text-primary-600 font-semibold">✓ {score}</span>
+          <span className="text-primary-600 font-semibold">{t('idioms.quizProgressScore', { score: String(score) })}</span>
         </div>
       </div>
 
@@ -321,7 +324,7 @@ function IdiomQuiz({ onBack }: { onBack: () => void }) {
 
       {/* Question card */}
       <div className="card !p-6">
-        <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">              {current.type === 'idiom-to-meaning' ? "Idiom ma'nosini toping" : "To'g'ri idiomni tanlang"}
+        <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">              {current.type === 'idiom-to-meaning' ? t('idioms.quizFindMeaning') : t('idioms.quizFindIdiom')}
         </p>
 
         <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-5">
@@ -367,7 +370,7 @@ function IdiomQuiz({ onBack }: { onBack: () => void }) {
         {showExplanation && (
           <div className="mt-5 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
             <p className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1.5">
-              Izoh
+              {t('idioms.quizExplanation')}
             </p>
             <p className="text-sm text-blue-800 dark:text-blue-200">
               {current.explanation}
@@ -381,7 +384,7 @@ function IdiomQuiz({ onBack }: { onBack: () => void }) {
               onClick={handleNext}
               className="mt-3 px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors"
             >
-              {currentIdx < questions.length - 1 ? 'Keyingi savol →' : 'Natijani ko\'rish →'}
+              {currentIdx < questions.length - 1 ? t('idioms.quizNext') : t('idioms.quizResult')}
             </button>
           </div>
         )}
@@ -419,6 +422,7 @@ function generateQuiz() {
 }
 
 function IdiomDetail({ idiom, onBack }: { idiom: Idiom; onClick?: () => void; onBack: () => void }) {
+  const { t } = useI18n()
   return (
     <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <button
@@ -427,7 +431,7 @@ function IdiomDetail({ idiom, onBack }: { idiom: Idiom; onClick?: () => void; on
           focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded-lg px-2 py-1"
       >
         <ArrowLeft size={16} />
-        Orqaga
+        {t('idioms.detailBack')}
       </button>
 
       <article className="card !p-6">
@@ -450,7 +454,7 @@ function IdiomDetail({ idiom, onBack }: { idiom: Idiom; onClick?: () => void; on
 
         <section className="mb-5">
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">
-            Ma'nosi
+            {t('idioms.detailMeaning')}
           </h2>
           <p className="text-base text-gray-800 dark:text-gray-200">
             {idiom.actualMeaning}
@@ -459,7 +463,7 @@ function IdiomDetail({ idiom, onBack }: { idiom: Idiom; onClick?: () => void; on
 
         <section className="mb-5">
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">
-            Hozirgi ma'nosi
+            {t('idioms.detailLiteral')}
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400 italic">
             {idiom.literalMeaning}
@@ -468,7 +472,7 @@ function IdiomDetail({ idiom, onBack }: { idiom: Idiom; onClick?: () => void; on
 
         <section className="mb-5">
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
-            Misollar
+            {t('idioms.detailExamples')}
           </h2>
           <ul className="space-y-2">
             {idiom.examples.map((ex, i) => (
@@ -485,7 +489,7 @@ function IdiomDetail({ idiom, onBack }: { idiom: Idiom; onClick?: () => void; on
 
         <section className="mb-5">
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 inline-flex items-center gap-1.5">
-            <Lightbulb size={12} /> Kelib chiqishi
+            <Lightbulb size={12} /> {t('idioms.detailOrigin')}
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {idiom.origin}
@@ -494,7 +498,7 @@ function IdiomDetail({ idiom, onBack }: { idiom: Idiom; onClick?: () => void; on
 
         <section>
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
-            Category
+            {t('idioms.detailCategory')}
           </h2>
           <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-lg
             bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 capitalize">

@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Search, X, BookOpen, Filter, ArrowLeft } from 'lucide-react'
+import { useI18n } from '../i18n'
 import { PHRASAL_VERBS, type PhrasalVerb, type PhrasalVerbLevel } from '../data/phrasalVerbs'
 
 const VERBS: Array<'get' | 'take' | 'put' | 'come' | 'look' | 'go'
@@ -14,6 +15,7 @@ const VERBS: Array<'get' | 'take' | 'put' | 'come' | 'look' | 'go'
 const LEVELS: PhrasalVerbLevel[] = ['B1+', 'B2']
 
 export default function PhrasalVerbs() {
+  const { t } = useI18n()
   const [query, setQuery] = useState('')
   const [verbFilter, setVerbFilter] = useState<string>('all')
   const [levelFilter, setLevelFilter] = useState<string>('all')
@@ -53,10 +55,10 @@ export default function PhrasalVerbs() {
       {/* Header */}
       <div className="mb-5">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-1">
-          Phrasal Verbs
+          {t('phrasalVerbs.title')}
         </h1>
         <p className="text-sm text-gray-500">
-          {PHRASAL_VERBS.length} ta phrasal verb — B1+ va B2 darajasi uchun
+          {t('phrasalVerbs.subtitle', { count: String(PHRASAL_VERBS.length) })}
         </p>
       </div>
 
@@ -70,7 +72,7 @@ export default function PhrasalVerbs() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Qidirish: phrasal verb, ma'no yoki misol..."
+          placeholder={t('phrasalVerbs.searchPlaceholder')}
           className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700
             bg-white dark:bg-gray-900 text-sm text-gray-900 dark:text-gray-100
             placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -79,7 +81,7 @@ export default function PhrasalVerbs() {
           <button
             onClick={() => setQuery('')}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-            aria-label="Tozalash"
+            aria-label={t('common.filterClear')}
           >
             <X size={18} />
           </button>
@@ -92,7 +94,7 @@ export default function PhrasalVerbs() {
         <FilterChip
           active={verbFilter === 'all'}
           onClick={() => setVerbFilter('all')}
-          label="Hammasi"
+          label={t('phrasalVerbs.filterAll')}
         />
         {VERBS.map((v) => (
           <FilterChip
@@ -117,8 +119,8 @@ export default function PhrasalVerbs() {
       {filtered.length === 0 ? (
         <div className="card text-center py-12">
           <BookOpen size={36} className="text-gray-300 mx-auto mb-3" />
-          <p className="text-sm text-gray-500">Hech narsa topilmadi</p>
-          <p className="text-xs text-gray-400 mt-1">Boshqa so'z bilan qidirib ko'ring</p>
+          <p className="text-sm text-gray-500">{t('phrasalVerbs.noResults')}</p>
+          <p className="text-xs text-gray-400 mt-1">{t('phrasalVerbs.tryDifferentQuery')}</p>
         </div>
       ) : (
         <div className="space-y-6">
@@ -185,6 +187,7 @@ function PhrasalVerbCard({ verb, onClick }: { verb: PhrasalVerb; onClick: () => 
 }
 
 function PhrasalVerbDetail({ verb, onBack }: { verb: PhrasalVerb; onBack: () => void }) {
+  const { t } = useI18n()
   return (
     <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <button
@@ -192,8 +195,8 @@ function PhrasalVerbDetail({ verb, onBack }: { verb: PhrasalVerb; onBack: () => 
         className="flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 mb-4
           focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded-lg px-2 py-1"
       >
-        <ArrowLeft size={16} />
-        Orqaga
+        <        ArrowLeft size={16} />
+        {t('phrasalVerbs.detailBack')}
       </button>
 
       <article className="card !p-6">
@@ -216,7 +219,7 @@ function PhrasalVerbDetail({ verb, onBack }: { verb: PhrasalVerb; onBack: () => 
 
         <section className="mb-5">
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">
-            Ma'nosi
+            {t('phrasalVerbs.meaning')}
           </h2>
           <p className="text-base text-gray-800 dark:text-gray-200">
             {verb.meaning}
@@ -225,7 +228,7 @@ function PhrasalVerbDetail({ verb, onBack }: { verb: PhrasalVerb; onBack: () => 
 
         <section className="mb-5">
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
-            Misollar
+            {t('phrasalVerbs.examples')}
           </h2>
           <ul className="space-y-2">
             {verb.examples.map((ex, i) => (

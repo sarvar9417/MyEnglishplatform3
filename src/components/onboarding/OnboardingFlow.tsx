@@ -3,8 +3,6 @@ import { ChevronRight, Sparkles } from 'lucide-react'
 import { useStore } from '../../store/useStore'
 import { PlacementTest } from './PlacementTest'
 import { AvatarSelector } from '../ui/AvatarSelector'
-import LessonDemo from '../dailyLesson/LessonDemo'
-import { DEMO_LESSONS, SIMPLE_PRESENT_LESSON, type DemoLesson } from '../../data/lessonDemoContent'
 import { LevelExplainer } from './LevelExplainer'
 import { JourneyPreview } from './JourneyPreview'
 import type { Level } from '../../store/types'
@@ -13,28 +11,12 @@ type Phase =
   | 'placement'
   | 'welcome'
   | 'name'
-  | 'tutorial'
   | 'levels'
   | 'avatar'
   | 'journey'
   | 'ready'
 
 const MIN_NAME_LENGTH = 2
-
-// Map level to appropriate demo lesson
-function lessonForLevel(level: string): DemoLesson {
-  const map: Record<string, string> = {
-    'A1':  'simple-present',
-    'A2':  'can-ability-demo',
-    'A2+': 'can-ability-demo',
-    'B1':  'simple-future',
-    'B1+': 'past-continuous',
-    'B2':  'present-perfect',
-  }
-  const key = map[level]
-  if (key && DEMO_LESSONS[key]) return DEMO_LESSONS[key]
-  return SIMPLE_PRESENT_LESSON
-}
 
 // Get placement level-based greeting
 function levelGreeting(level: string): { emoji: string; headline: string; sub: string } {
@@ -54,7 +36,6 @@ export function OnboardingFlow() {
   const [phase, setPhase] = useState<Phase>('placement')
   const [name, setName] = useState('')
   const [placementResult, setPlacementResult] = useState<{ level: string; startDay: number } | null>(null)
-  const [showTutorial, setShowTutorial] = useState(true)
 
   // Estimate percentage from level (matches determineLevelFromScore thresholds)
   function pctFromLevel(level: string): number {
@@ -75,7 +56,7 @@ export function OnboardingFlow() {
   }, [])
 
   const handleNext = useCallback(() => {
-    const phases: Phase[] = ['welcome', 'name', 'tutorial', 'levels', 'avatar', 'journey', 'ready']
+    const phases: Phase[] = ['welcome', 'name', 'levels', 'avatar', 'journey', 'ready']
     const idx = phases.indexOf(phase)
     if (idx < phases.length - 1) {
       setPhase(phases[idx + 1])
@@ -83,7 +64,7 @@ export function OnboardingFlow() {
   }, [phase])
 
   const handleBack = useCallback(() => {
-    const phases: Phase[] = ['welcome', 'name', 'tutorial', 'levels', 'avatar', 'journey', 'ready']
+    const phases: Phase[] = ['welcome', 'name', 'levels', 'avatar', 'journey', 'ready']
     const idx = phases.indexOf(phase)
     if (idx > 0) {
       setPhase(phases[idx - 1])
@@ -119,11 +100,10 @@ export function OnboardingFlow() {
   if (!placementResult) return null
 
   const pct = pctFromLevel(placementResult.level)
-  const tutorial = lessonForLevel(placementResult.level)
   const greeting = levelGreeting(placementResult.level)
 
   // Calculate progress through phases
-  const allPhases: Phase[] = ['welcome', 'name', 'tutorial', 'levels', 'avatar', 'journey', 'ready']
+  const allPhases: Phase[] = ['welcome', 'name', 'levels', 'avatar', 'journey', 'ready']
   const currentPhaseIdx = allPhases.indexOf(phase)
 
   const renderPhaseContent = () => {
@@ -216,42 +196,6 @@ export function OnboardingFlow() {
                 </ul>
               </div>
             </div>
-          </div>
-        )
-
-      // ─── TUTORIAL ───────────────────────────────────────────────
-      case 'tutorial':
-        if (!showTutorial) {
-          return (
-            <div className="text-center space-y-4 animate-fade-in">
-              <span className="text-6xl block">⏭️</span>
-              <h2 className="text-xl font-black text-gray-900 dark:text-white">
-                Tutorialni o'tkazib yubordingiz
-              </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                Keyinroq Lesson Demo dan istalgan vaqtda o'rganishingiz mumkin
-              </p>
-            </div>
-          )
-        }
-        return (
-          <div className="relative">
-            {/* Header with skip */}
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="text-xs font-bold text-primary-500 uppercase tracking-wider">
-                🎯 Interaktiv demo dars
-              </h3>
-              <button
-                onClick={() => setShowTutorial(false)}
-                className="text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-              >
-                O'tkazib yuborish →
-              </button>
-            </div>
-            <LessonDemo
-              onExit={() => setShowTutorial(false)}
-              lesson={tutorial}
-            />
           </div>
         )
 
@@ -348,7 +292,7 @@ export function OnboardingFlow() {
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-b2-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-lg">
         {/* Progress dots */}
-        {phase !== 'tutorial' && (
+        {(
           <div className="flex justify-center gap-1.5 mb-6">
             {allPhases.map((p, i) => (
               <div
@@ -367,8 +311,8 @@ export function OnboardingFlow() {
         <div className="card shadow-xl p-5 sm:p-6">
           {renderPhaseContent()}
 
-          {/* Navigation buttons (for non-ready, non-tutorial phases) */}
-          {phase !== 'ready' && phase !== 'tutorial' && (
+          {/* Navigation buttons (for non-ready phases) */}
+          {phase !== 'ready' && (
             <div className="flex gap-3 mt-6">
               {phase !== 'welcome' && (
                 <button className="btn-secondary flex-1" onClick={handleBack}>

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import {
   Send, Bot, User, Trash2,
   Zap, AlertCircle, ChevronDown,
@@ -8,6 +8,7 @@ import { sendMessageStream, type ChatMessage, MODEL } from '../lib/claude'
 import { AiLoadingOverlay } from '../components/ui/AiLoadingOverlay'
 import { QUICK_PROMPTS, type TutorMode } from '../lib/prompts'
 import { useNavigationGuard } from '../hooks/useNavigationGuard'
+import { useI18n } from '../i18n'
 import { useStore } from '../store/useStore'
 import { addSession } from '../db/database'
 import { getTodayTashkent } from '../utils/tashkentDate'
@@ -142,6 +143,7 @@ function MessageBubble({ msg, onRegenerate }: {
   msg: UIMessage
   onRegenerate?: () => void
 }) {
+  const { t } = useI18n()
   const isUser = msg.role === 'user'
   const [copied, setCopied] = useState(false)
 
@@ -186,18 +188,18 @@ function MessageBubble({ msg, onRegenerate }: {
             <div className="absolute -bottom-4 right-0 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
               <button
                 onClick={handleCopy}
-                aria-label="Nusxalash"
+                aria-label={t('chat.copyLabel')}
                 className="p-1 rounded-md bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all shadow-sm"
-                title="Nusxalash"
+                title={t('chat.copyLabel')}
               >
                 {copied ? <Check size={12} className="text-green-500" /> : <Copy size={12} />}
               </button>
               {onRegenerate && (
                 <button
                   onClick={onRegenerate}
-                  aria-label="Qayta yaratish"
+                  aria-label={t('chat.regenerateLabel')}
                   className="p-1 rounded-md bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all shadow-sm"
-                  title="Qayta yaratish"
+                  title={t('chat.regenerateLabel')}
                 >
                   <RefreshCw size={12} />
                 </button>
@@ -215,34 +217,31 @@ function MessageBubble({ msg, onRegenerate }: {
 
 // ─── Mode Selector ────────────────────────────────────────────────────────────
 
-const MODES: { id: TutorMode; label: string; color: string }[] = [
-  { id: 'general',          label: '💬 Free talk',     color: 'text-primary-600' },
-  { id: 'grammar-check',    label: '✍️ Grammar',        color: 'text-orange-600'  },
-  { id: 'vocabulary',       label: '📖 Vocab',          color: 'text-b1-600'      },
-  { id: 'writing-feedback', label: '📝 Writing',        color: 'text-b2-600'      },
-  { id: 'lesson-explain',   label: '📚 Lesson',         color: 'text-indigo-600'  },
+const MODE_IDS: { id: TutorMode; color: string }[] = [
+  { id: 'general',          color: 'text-primary-600' },
+  { id: 'grammar-check',    color: 'text-orange-600'  },
+  { id: 'vocabulary',       color: 'text-b1-600'      },
+  { id: 'writing-feedback', color: 'text-b2-600'      },
+  { id: 'lesson-explain',   color: 'text-indigo-600'  },
 ]
 
 // ─── API Key Banner ───────────────────────────────────────────────────────────
 
 function ApiKeyBanner() {
+  const { t } = useI18n()
   return (
     <div className="mx-3 sm:mx-4 my-3 p-3 sm:p-4 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-xl text-sm">
       <p className="font-semibold text-amber-800 dark:text-amber-300 flex items-center gap-2">
-        <AlertCircle size={16} /> API kaliti sozlanmagan
+        <AlertCircle size={16} /> {t('chat.apiKeyTitle')}
       </p>
-      <p className="text-amber-700 dark:text-amber-400 mt-1 text-xs">
-        <code className="bg-amber-100 dark:bg-amber-900/50 px-1 py-0.5 rounded">.env</code> faylida{' '}
-        <code className="bg-amber-100 dark:bg-amber-900/50 px-1 py-0.5 rounded">VITE_ANTHROPIC_API_KEY</code>{' '}
-        ni haqiqiy kalit bilan almashtiring, so'ng serverni qayta ishga tushiring.
-      </p>
+      <p className="text-amber-700 dark:text-amber-400 mt-1 text-xs" dangerouslySetInnerHTML={{ __html: t('chat.apiKeyDesc') }} />
       <a
         href="https://console.anthropic.com/"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block mt-2 text-xs text-amber-900 dark:text-amber-300 underline"
       >
-        → console.anthropic.com dan kalit olish
+        {t('chat.apiKeyLink')}
       </a>
     </div>
   )
@@ -276,6 +275,7 @@ export default function Chat() {
   const [isStreaming, setIsStreaming] = useState(false)
   const [showModes, setShowModes] = useState(false)
   const [sessionStart] = useState(Date.now())
+  const { t } = useI18n()
 
   useNavigationGuard(input.trim().length > 0)
 
@@ -405,6 +405,15 @@ export default function Chat() {
     setMessages([INITIAL_MESSAGE])
   }
 
+  const MODES = useMemo(() => MODE_IDS.map((m) => ({
+    ...m,
+    label: m.id === 'general' ? t('chat.modeFreeTalk') :
+           m.id === 'grammar-check' ? t('chat.modeGrammar') :
+           m.id === 'vocabulary' ? t('chat.modeVocab') :
+           m.id === 'writing-feedback' ? t('chat.modeWriting') :
+           t('chat.modeLesson'),
+  })), [t])
+
   const currentMode = MODES.find((m) => m.id === mode) ?? MODES[0]
 
   return (
@@ -419,7 +428,7 @@ export default function Chat() {
             <Bot size={18} className="text-white" />
           </div>
           <div>
-            <p className="font-bold text-gray-900 dark:text-gray-100 text-sm">EnglishPath AI Tutor</p>
+            <p className="font-bold text-gray-900 dark:text-gray-100 text-sm">{t('chat.title')}</p>
             <p className="text-[11px] text-green-500 font-medium flex items-center gap-1">
               <span className="w-1.5 h-1.5 bg-green-500 rounded-full inline-block" />
               {MODEL}
@@ -456,10 +465,10 @@ export default function Chat() {
           </div>
           <button
             onClick={clearChat}
-            aria-label="Suhbatni tozalash"
+            aria-label={t('chat.clearChatLabel')}
             className="p-2 rounded-xl text-gray-400 hover:text-red-500
               hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
-            title="Suhbatni tozalash"
+            title={t('chat.clearChatLabel')}
           >
             <Trash2 size={16} />
           </button>
@@ -522,19 +531,19 @@ export default function Chat() {
           focus-within:ring-2 focus-within:ring-primary-100 dark:focus-within:ring-primary-900/30 transition-all p-3">
           <textarea
             ref={textareaRef}
-            aria-label="Xabar matni"
+            aria-label={t('chat.inputAria')}
             className="flex-1 resize-none outline-none text-sm text-gray-800 dark:text-gray-200
               placeholder-gray-400 dark:placeholder-gray-500 bg-transparent leading-relaxed min-h-[40px] max-h-[160px]"
             placeholder={
               API_KEY_MISSING
-                ? 'API kalitini .env ga qo\'ying...'
+                ? t('chat.placeholderApiKey')
                 : mode === 'grammar-check'
-                  ? 'Grammatikasini tekshirishim kerak bo\'lgan gapni yozing...'
+                  ? t('chat.placeholderGrammar')
                   : mode === 'writing-feedback'
-                    ? 'Yozgan matnimni bu yerga joylashtiring...'
+                    ? t('chat.placeholderWriting')
                     : mode === 'vocabulary'
-                      ? 'So\'z yoki ibora haqida so\'rang...'
-                      : 'Inglizcha yozing yoki savol bering...'
+                      ? t('chat.placeholderVocab')
+                      : t('chat.placeholderGeneral')
             }
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -553,7 +562,7 @@ export default function Chat() {
             <button
               onClick={() => send()}
               disabled={isStreaming || !input.trim() || API_KEY_MISSING}
-              aria-label="Xabarni yuborish"
+              aria-label={t('chat.sendAria')}
               className="w-9 h-9 bg-primary-600 hover:bg-primary-700
                 rounded-xl flex items-center justify-center text-white
                 transition-all hover:scale-105 active:scale-95
@@ -568,7 +577,7 @@ export default function Chat() {
           </div>
         </div>
         <p className="text-[10px] text-gray-400 dark:text-gray-600 text-center mt-1.5">
-          Enter — yuborish &nbsp;·&nbsp; Shift+Enter — yangi qator
+          {t('chat.footerHint')}
         </p>
       </div>
 

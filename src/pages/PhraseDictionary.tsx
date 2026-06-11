@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Search, BookOpen, ChevronDown, ChevronUp, CheckCircle, Clock, X, MessageCircle, Volume2, Loader2 } from 'lucide-react'
+import { useI18n } from '../i18n'
 import { supabase } from '../lib/supabase'
 import { monitoring } from '../lib/monitoring'
 import { getCategoryStyle } from '../utils/phraseConfig'
@@ -58,6 +59,7 @@ interface Meta {
 
 // ─── Asosiy komponent ──────────────────────────────────────────────────────
 export default function PhraseDictionary() {
+  const { t } = useI18n()
   const [query, setQuery]               = useState('')
   const [debouncedQuery, setDebounced]  = useState('')
   const [levelFilter, setLevelFilter]   = useState('')
@@ -192,18 +194,18 @@ export default function PhraseDictionary() {
           <MessageCircle size={20} className="text-b1-600 dark:text-b1-400" />
         </div>
         <div>
-          <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">Gaplar lug'ati</h1>
-          <p className="text-xs text-gray-500 dark:text-gray-400">Barcha gaplarni ko'rish va o'rganish holati</p>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">{t('phraseDict.title')}</h1>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t('phraseDict.subtitle')}</p>
         </div>
       </div>
 
       {/* Stats */}
       <div className="flex items-center gap-4 mb-4 text-xs text-gray-400 dark:text-gray-500">
-        <span>Jami: <strong className="text-gray-700 dark:text-gray-300">{totalAll}</strong> ta gap</span>
+        <span>{t('phraseDict.totalLabel', { count: totalAll })}</span>
         {meta.totalStudied > 0 && (
           <>
-            <span>Yodlangan: <strong className="text-green-600">{meta.totalLearned}</strong></span>
-            <span>Boshlangan: <strong className="text-b1-500">{meta.totalStudied}</strong></span>
+            <span>{t('phraseDict.learnedLabel', { count: meta.totalLearned })}</span>
+            <span>{t('phraseDict.startedLabel', { count: meta.totalStudied })}</span>
           </>
         )}
       </div>
@@ -216,7 +218,7 @@ export default function PhraseDictionary() {
           type="text"
           value={query}
           onChange={e => setQuery(e.target.value)}
-          placeholder="Inglizcha yoki o'zbekcha gap qidiring..."
+          placeholder={t('phraseDict.searchPlaceholder')}
           className="w-full pl-10 pr-10 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl outline-none text-sm text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:border-b1-400 focus:ring-2 focus:ring-b1-100 dark:focus:ring-b1-900/40 transition-all"
         />
         {query && (
@@ -228,7 +230,7 @@ export default function PhraseDictionary() {
 
       {/* Level filter */}
       <div className="flex items-center gap-2 mb-3 overflow-x-auto scrollbar-hide flex-wrap">
-        {[{ key: '', label: `Barcha (${totalAll})` }, ...LEVEL_ORDER.map(l => ({ key: l, label: `${l} (${meta.levels[l] ?? 0})` }))].map(({ key, label }) => (
+        {[{ key: '', label: t('phraseDict.filterAll', { count: totalAll }) }, ...LEVEL_ORDER.map(l => ({ key: l, label: `${l} (${meta.levels[l] ?? 0})` }))].map(({ key, label }) => (
           <button key={key} onClick={() => setLevelFilter(key === levelFilter ? '' : key)}
             className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${
               levelFilter === key
@@ -248,7 +250,7 @@ export default function PhraseDictionary() {
               !categoryFilter ? 'bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800'
                 : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
             }`}>
-            Barcha
+            {t('phraseDict.filterAll')}
           </button>
           {categories.map(cat => (
             <button key={cat} onClick={() => setCatFilter(cat === categoryFilter ? '' : cat)}
@@ -274,12 +276,12 @@ export default function PhraseDictionary() {
         <div className="flex flex-col items-center justify-center min-h-[200px] text-center">
           <BookOpen size={40} className="text-gray-200 dark:text-gray-700 mb-3" />
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            {debouncedQuery ? `"${debouncedQuery}" bo'yicha hech narsa topilmadi` : 'Gaplar topilmadi'}
+            {debouncedQuery ? t('phraseDict.emptyNoResults', { query: debouncedQuery }) : t('phraseDict.emptyTitle')}
           </p>
           {(debouncedQuery || levelFilter || categoryFilter) && (
             <button onClick={() => { setQuery(''); setLevelFilter(''); setCatFilter('') }}
               className="mt-2 text-xs text-b1-500 font-semibold hover:underline">
-              Filtrlarni tozalash
+              {t('phraseDict.filterClear')}
             </button>
           )}
         </div>
@@ -290,9 +292,9 @@ export default function PhraseDictionary() {
         <>
           <div className="flex items-center justify-between mb-3">
             <p className="text-xs text-gray-400 dark:text-gray-500">
-              {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, totalCount)} / {totalCount} ta natija
+              {t('phraseDict.countResult', { start: (page - 1) * PAGE_SIZE + 1, end: Math.min(page * PAGE_SIZE, totalCount), total: totalCount })}
             </p>
-            <p className="text-xs text-gray-300 dark:text-gray-600">Sahifa {page}/{totalPages}</p>
+            <p className="text-xs text-gray-300 dark:text-gray-600">{t('phraseDict.pageLabel', { page, total: totalPages })}</p>
           </div>
 
           <div className="space-y-3">
@@ -350,6 +352,7 @@ function renderPageNumbers(page: number, totalPages: number): (number | string)[
 
 // ─── LevelGroup ────────────────────────────────────────────────────────────
 function LevelGroup({ level, entries }: { level: string; entries: PhraseDictEntry[] }) {
+  const { t } = useI18n()
   const [collapsed, setCollapsed] = useState(false)
   if (!entries.length) return null
   const learned = entries.filter(e => e.progress?.is_learned).length
@@ -361,10 +364,10 @@ function LevelGroup({ level, entries }: { level: string; entries: PhraseDictEntr
         <span className={`inline-flex px-2.5 py-0.5 rounded-lg text-xs font-bold ${LEVEL_BADGES[level]}`}>
           {level}
         </span>
-        <span className="text-xs text-gray-400 dark:text-gray-500">{entries.length} ta gap</span>
+        <span className="text-xs text-gray-400 dark:text-gray-500">{t('phraseDict.countResult', { start: 1, end: entries.length, total: entries.length })}</span>
         {learned > 0 && (
           <span className="text-[10px] text-green-600 dark:text-green-400 font-medium">
-            ({learned} yodlangan)
+            ({learned} {t('phraseDict.yodlangan')})
           </span>
         )}
         <div className="flex-1 border-t border-gray-100 dark:border-gray-700" />
@@ -383,6 +386,7 @@ function LevelGroup({ level, entries }: { level: string; entries: PhraseDictEntr
 
 // ─── PhraseCard ────────────────────────────────────────────────────────────
 function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
+  const { t } = useI18n()
   const [expanded, setExpanded] = useState(false)
   const { phrase, progress } = entry
 
@@ -416,7 +420,7 @@ function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
                   ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
               }`}>
-                {progress.is_learned ? '⭐ Yodlangan' : `Box ${progress.box}`}
+                {progress.is_learned ? t('phraseDict.yodlangan') : `Box ${progress.box}`}
               </span>
             )}
           </div>
@@ -425,7 +429,7 @@ function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
         <div className="flex items-center gap-1.5 flex-shrink-0">
           <button onClick={speak}
             className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 hover:text-b1-600 dark:hover:text-b1-400 transition-colors"
-            title="Talaffuz">
+            title={t('phraseDict.speakTitle')}>
             <Volume2 size={16} />
           </button>
           {progress?.is_learned && <CheckCircle size={16} className="text-green-500" />}
@@ -444,7 +448,7 @@ function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
               </span>
               <span className="flex items-center gap-1">
                 <CheckCircle size={12} className={progress.is_learned ? 'text-green-500' : 'text-gray-300 dark:text-gray-600'} />
-                {progress.is_learned ? 'Yodlangan' : "O'rganilmoqda"}
+                {progress.is_learned ? t('phraseDict.yodlangan') : t('phraseDict.learning')}
               </span>
               {(progress.correct_count > 0 || progress.wrong_count > 0) && (
                 <span className="text-green-600 dark:text-green-400">
@@ -452,11 +456,11 @@ function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
                 </span>
               )}
               {progress.last_rating != null && (
-                <span className="text-gray-400 dark:text-gray-500">Oxirgi: {progress.last_rating}</span>
+                <span className="text-gray-400 dark:text-gray-500">{t('phraseDict.lastRating', { rating: progress.last_rating })}</span>
               )}
             </div>
           ) : (
-            <p className="text-xs text-gray-400 dark:text-gray-500">Hali o'rganilmagan</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500">{t('phraseDict.notStudied')}</p>
           )}
         </div>
       )}

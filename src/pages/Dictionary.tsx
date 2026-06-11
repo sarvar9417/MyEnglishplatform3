@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { Search, BookOpen, Volume2, ChevronDown, ChevronUp, CheckCircle, Clock, X, BookText, Plus, Trash2, Loader2 } from 'lucide-react'
 import EmptyState from '../components/ui/EmptyState'
 import { DictionarySkeleton } from '../components/ui/PageSkeleton'
+import { useI18n } from '../i18n'
 import { supabase } from '../lib/supabase'
 import { searchDictionary, fetchWordList, addUserWord, deleteUserWord, type DictWord } from '../services/dictionaryService'
 
@@ -14,13 +15,7 @@ const LEVEL_BADGES: Record<string, string> = {
 
 const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2']
 
-const BOX_LABELS: Record<number, string> = {
-  1: 'Yangi',
-  2: "O'rganilmoqda",
-  3: 'Takrorlanmoqda',
-  4: "Deyarli o'rganilgan",
-  5: "O'rganilgan",
-}
+
 
 // ── Add Word Modal ───────────────────────────────────────────────────────────
 
@@ -30,6 +25,7 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
   userId: string
   onAdded: () => void
 }) {
+  const { t } = useI18n()
   const [english, setEnglish] = useState('')
   const [uzbek, setUzbek] = useState('')
   const [level, setLevel] = useState('A2')
@@ -49,8 +45,8 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
 
   const handleSubmit = async () => {
     setError('')
-    if (!english.trim()) { setError('Inglizcha so\'zni kiriting'); return }
-    if (!uzbek.trim()) { setError("O'zbekcha tarjimani kiriting"); return }
+    if (!english.trim()) { setError(t('dictionary.addModalRequired')); return }
+    if (!uzbek.trim()) { setError(t('dictionary.addModalUzbekRequired')); return }
 
     setSaving(true)
     const res = await addUserWord(userId, { english, uzbek, level, example, phonetic })
@@ -61,7 +57,7 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
       onAdded()
       onClose()
     } else {
-      setError(res.error ?? 'Xatolik yuz berdi')
+      setError(res.error ?? t('dictionary.addModalError'))
     }
   }
 
@@ -82,15 +78,15 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
     >
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md p-5 sm:p-6 animate-in fade-in zoom-in-95">
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white">Yangi so'z qo'shish</h2>
-          <button onClick={onClose} aria-label="Modalni yopish" className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white">{t('dictionary.addModalTitle')}</h2>
+          <button onClick={onClose} aria-label={t('dictionary.addModalCloseAria')} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
             <X size={18} />
           </button>
         </div>
 
         <div className="space-y-3">
           <div>
-            <label className="block text-xs font-semibold text-gray-500 mb-1">Inglizcha *</label>
+            <label className="block text-xs font-semibold text-gray-500 mb-1">{t('dictionary.addModalEnglish')}</label>
             <input
               value={english}
               onChange={(e) => setEnglish(e.target.value)}
@@ -100,7 +96,7 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-500 mb-1">O'zbekcha *</label>
+            <label className="block text-xs font-semibold text-gray-500 mb-1">{t('dictionary.addModalUzbek')}</label>
             <input
               value={uzbek}
               onChange={(e) => setUzbek(e.target.value)}
@@ -111,7 +107,7 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-gray-500 mb-1">Daraja</label>
+              <label className="block text-xs font-semibold text-gray-500 mb-1">{t('dictionary.addModalLevel')}</label>
               <select
                 value={level}
                 onChange={(e) => setLevel(e.target.value)}
@@ -123,7 +119,7 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-500 mb-1">Fonetik</label>
+              <label className="block text-xs font-semibold text-gray-500 mb-1">{t('dictionary.addModalPhonetic')}</label>
               <input
                 value={phonetic}
                 onChange={(e) => setPhonetic(e.target.value)}
@@ -134,7 +130,7 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-500 mb-1">Misol jumla</label>
+            <label className="block text-xs font-semibold text-gray-500 mb-1">{t('dictionary.addModalExample')}</label>
             <textarea
               value={example}
               onChange={(e) => setExample(e.target.value)}
@@ -154,7 +150,7 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
             className="w-full py-3 bg-primary-600 hover:bg-primary-700 disabled:bg-gray-300 text-white font-semibold text-sm rounded-xl transition-all flex items-center justify-center gap-2"
           >
             {saving ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />}
-            {saving ? 'Saqlanmoqda...' : "So'zni qo'shish"}
+            {saving ? t('dictionary.addModalSaving') : t('dictionary.addModalSave')}
           </button>
         </div>
       </div>
@@ -165,6 +161,7 @@ function AddWordModal({ open, onClose, userId, onAdded }: {
 // ── Word Card ─────────────────────────────────────────────────────────────────
 
 function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string | null; onDeleted?: () => void }) {
+  const { t } = useI18n()
   const [expanded, setExpanded] = useState(false)
   const [deleting, setDeleting] = useState(false)
 
@@ -180,7 +177,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
 
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation()
-    if (!userId || !window.confirm(`"${word.english}" ni o'chirishni tasdiqlaysizmi?`)) return
+    if (!userId || !window.confirm(t('dictionary.deleteConfirm', { word: word.english }))) return
     setDeleting(true)
     await deleteUserWord(userId, word.word_id)
     setDeleting(false)
@@ -196,13 +193,12 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
         <div className="flex items-center gap-2 min-w-0">
           <span className="font-semibold text-gray-900 dark:text-white text-sm truncate">{word.english}</span>
           <span className="text-xs text-gray-400 truncate">— {word.uzbek}</span>
-          <span className="text-[10px] bg-blue-100 text-blue-600 font-semibold px-1.5 py-0.5 rounded">Siz</span>
+          <span className="text-[10px] bg-blue-100 text-blue-600 font-semibold px-1.5 py-0.5 rounded">{t('dictionary.userWordBadge')}</span>
         </div>
         <div className="flex items-center gap-1.5 flex-shrink-0">
           {word.phonetic && (
             <span className="text-[10px] text-gray-300 font-mono hidden sm:inline">/{word.phonetic}/</span>
-          )}
-          <span className={`badge text-[10px] ${LEVEL_BADGES[word.level] ?? ''}`}>{word.level}</span>
+          )}                  <span className={`badge text-[10px] ${LEVEL_BADGES[word.level] ?? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>{word.level}</span>
           <ChevronDown size={14} className="text-gray-200 group-hover:text-gray-400 transition-colors" />
         </div>
       </button>
@@ -224,7 +220,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
               {word.level}
             </span>
             {word.source === 'user' && (
-              <span className="text-[10px] bg-blue-100 text-blue-600 font-semibold px-1.5 py-0.5 rounded">Siz</span>
+              <span className="text-[10px] bg-blue-100 text-blue-600 font-semibold px-1.5 py-0.5 rounded">{t('dictionary.userWordBadge')}</span>
             )}
             {word.box && (
               <span className={`badge text-[10px] ${
@@ -232,7 +228,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
                 word.box >= 3 ? 'bg-blue-100 text-blue-700' :
                 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
               }`}>
-                {BOX_LABELS[word.box]}
+                {{1:t('dictionary.boxNew'),2:t('dictionary.boxLearning'),3:t('dictionary.boxReviewing'),4:t('dictionary.boxAlmost'),5:t('dictionary.boxLearned')}[word.box]}
               </span>
             )}
           </div>
@@ -245,7 +241,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
           <button
             onClick={(e) => { e.stopPropagation(); speak() }}
             className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 hover:text-primary-600 transition-colors"
-            title="Talaffuz"
+            title={t('dictionary.speakTitle')}
           >
             <Volume2 size={16} />
           </button>
@@ -255,7 +251,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
               onClick={handleDelete}
               disabled={deleting}
               className="p-1.5 rounded-lg hover:bg-red-50 text-gray-300 hover:text-red-500 transition-colors"
-              title="O'chirish"
+              title={t('dictionary.deleteTitle')}
             >
               {deleting ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
             </button>
@@ -268,7 +264,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
         <div className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700 space-y-2">
           {word.example && (
             <div>
-              <p className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5">Misol</p>
+              <p className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5">{t('dictionary.exampleLabel')}</p>
               <p className="text-sm text-gray-700 italic">"{word.example}"</p>
             </div>
           )}
@@ -277,7 +273,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
               <span className="flex items-center gap-1"><Clock size={12} /> Box {word.box}/5</span>
               <span className="flex items-center gap-1">
                 <CheckCircle size={12} className={word.is_learned ? 'text-green-500' : 'text-gray-300'} />
-                {word.is_learned ? "O'rganilgan" : "O'rganilmoqda"}
+                {word.is_learned ? t('dictionary.wordLearned') : t('dictionary.wordStudying')}
               </span>
               {word.correct_count !== null && (
                 <span className="text-green-600">+{word.correct_count} / -{word.wrong_count}</span>
@@ -285,7 +281,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
             </div>
           )}
           {word.source === 'user' && (
-            <p className="text-[10px] text-blue-400 font-medium">Shaxsiy so'z</p>
+            <p className="text-[10px] text-blue-400 font-medium">{t('dictionary.personalWordLabel')}</p>
           )}
         </div>
       )}
@@ -301,6 +297,7 @@ function LevelGroup({ level, words, userId, onDeleted }: {
   userId?: string | null
   onDeleted?: () => void
 }) {
+  const { t } = useI18n()
   const [collapsed, setCollapsed] = useState(false)
 
   if (words.length === 0) return null
@@ -317,13 +314,13 @@ function LevelGroup({ level, words, userId, onDeleted }: {
         <span className={`inline-flex px-2.5 py-0.5 rounded-lg text-xs font-bold ${LEVEL_BADGES[level]}`}>
           {level}
         </span>
-        <span className="text-xs text-gray-400">{words.length} ta so'z</span>
+        <span className="text-xs text-gray-400">{words.length} {t('common.words')}</span>
         {countUser > 0 && (
-          <span className="text-[10px] text-blue-500 font-medium">({countUser} siz)</span>
+          <span className="text-[10px] text-blue-500 font-medium">({t('dictionary.yourWords', { count: countUser })})</span>
         )}
         {countLearned > 0 && (
           <span className="text-[10px] text-green-600 font-medium">
-            ({countLearned} o'rganilgan)
+            ({t('dictionary.wordLearned')} {countLearned})
           </span>
         )}
         <div className="flex-1 border-t border-gray-100 dark:border-gray-700" />
@@ -345,6 +342,7 @@ function LevelGroup({ level, words, userId, onDeleted }: {
 const PAGE_SIZE = 20
 
 export default function Dictionary() {
+  const { t } = useI18n()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<DictWord[]>([])
   const [allWords, setAllWords] = useState<DictWord[]>([])
@@ -456,8 +454,8 @@ export default function Dictionary() {
           <BookText size={20} className="text-blue-600" />
         </div>
         <div>
-          <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Lug'at</h1>
-          <p className="text-xs text-gray-500">So'z qidirish va o'rganish holati</p>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{t('dictionary.title')}</h1>
+          <p className="text-xs text-gray-500">{t('dictionary.subtitle')}</p>
         </div>
       </div>
 
@@ -472,14 +470,14 @@ export default function Dictionary() {
             autoComplete="off"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Inglizcha yoki o'zbekcha so'z qidiring..."
-            aria-label="So'z qidirish"
+            placeholder={t('dictionary.searchPlaceholder')}
+            aria-label={t('dictionary.searchAria')}
             className="w-full pl-10 pr-10 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl
               outline-none text-sm text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500
               focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-all"
           />
           {query && (
-            <button onClick={() => setQuery('')} aria-label="Qidiruvni tozalash" className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500">
+            <button onClick={() => setQuery('')} aria-label={t('dictionary.clearSearchAria')} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500">
               <X size={16} />
             </button>
           )}
@@ -489,7 +487,7 @@ export default function Dictionary() {
           className="flex-shrink-0 px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-2xl transition-all flex items-center gap-2"
         >
           <Plus size={16} />
-          <span className="hidden sm:inline">Qo'shish</span>
+          <span className="hidden sm:inline">{t('dictionary.addButton')}</span>
         </button>
       </div>
 
@@ -503,7 +501,7 @@ export default function Dictionary() {
               : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
           }`}
         >
-          Barcha{!query.trim() ? '' : <span className="opacity-60 ml-0.5">({displayCount})</span>}
+          {t('dictionary.filterAll')}{!query.trim() ? '' : <span className="opacity-60 ml-0.5">({displayCount})</span>}
         </button>
         {['A1', 'A2', 'B1', 'B2'].map((lvl) => {
           const total = query.trim() ? 0 : allWords.filter((w) => w.level === lvl).length
@@ -530,8 +528,8 @@ export default function Dictionary() {
       {!loading && searched && results.length === 0 && (
         <EmptyState
           icon={BookOpen}
-          title={`"${query}" bo'yicha hech narsa topilmadi`}
-          description="Boshqa so'z qidirib ko'ring"
+          title={t('dictionary.noResultsTitle', { query })}
+          description={t('dictionary.noResultsDesc')}
           size="sm"
         />
       )}
@@ -549,16 +547,16 @@ export default function Dictionary() {
           <div className="flex items-center justify-between mb-3">
             <p className="text-xs text-gray-400">
               {query.trim()
-                ? `${results.length} ta natija topildi`
+                ? t('dictionary.resultCount', { count: results.length })
                 : (() => {
                     const start = (page - 1) * PAGE_SIZE + 1
                     const end = Math.min(page * PAGE_SIZE, totalCount)
-                    return `${start}-${end} / ${totalCount} ta so'z${countUserWords > 0 ? ` (+${countUserWords} sizniki)` : ''}`
+                    return t('dictionary.countWords', { start, end, total: totalCount }) + (countUserWords > 0 ? ` ${t('dictionary.yourWords', { count: countUserWords })}` : '')
                   })()
               }
             </p>
             {!query.trim() && (
-              <p className="text-xs text-gray-300">Sahifa {page}/{totalPages}</p>
+              <p className="text-xs text-gray-300">{t('dictionary.pageLabel', { page, total: totalPages })}</p>
             )}
           </div>
           <div className="space-y-3">
@@ -620,12 +618,12 @@ export default function Dictionary() {
       {!loading && !query.trim() && allWords.length === 0 && (
         <div className="flex flex-col items-center justify-center min-h-[200px] text-center">
           <Search size={40} className="text-gray-200 mb-3" />
-          <p className="text-sm text-gray-500">Hozircha hech qanday so'z yo'q</p>
+          <p className="text-sm text-gray-500">{t('dictionary.emptyTitle')}</p>
           <button
             onClick={() => setAddModalOpen(true)}
             className="mt-4 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-xl transition-all flex items-center gap-2"
           >
-            <Plus size={16} /> Birinchi so'zni qo'shish
+            <Plus size={16} /> {t('dictionary.emptyAddFirst')}
           </button>
         </div>
       )}
