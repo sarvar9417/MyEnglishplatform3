@@ -56,12 +56,20 @@ export default function WeakAreasCard() {
         })}
       </div>
 
-      <button
-        onClick={() => navigate('/mixed-review')}
-        className="btn-ghost w-full mt-3 text-sm font-semibold flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 rounded-xl py-2"
-      >
-        Mashq qilish <ChevronRight size={16} />
-      </button>
+      <div className="grid grid-cols-2 gap-2 mt-3">
+        <button
+          onClick={() => navigate('/mixed-review')}
+          className="btn-ghost text-sm font-semibold flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 rounded-xl py-2"
+        >
+          🔀 Aralash <ChevronRight size={14} />
+        </button>
+        <button
+          onClick={() => navigate('/active-recall')}
+          className="btn-ghost text-sm font-semibold flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 rounded-xl py-2"
+        >
+          🧠 Recall <ChevronRight size={14} />
+        </button>
+      </div>
     </div>
   )
 }
