@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { BrowserRouter, MemoryRouter, Routes, Route } from 'react-router-dom'
+import { I18nProvider } from '../../i18n'
 
 // ─── Hoisted mocks ───────────────────────────────────────────────────────────
 
@@ -227,9 +228,11 @@ describe('Auth Flow — integration tests', () => {
   describe('Login page', () => {
     it('renders Auth page with login form labels and inputs', () => {
       render(
-        <MemoryRouter>
-          <Auth />
-        </MemoryRouter>
+        <I18nProvider>
+          <MemoryRouter>
+            <Auth />
+          </MemoryRouter>
+        </I18nProvider>
       )
 
       // Labels exist
@@ -242,9 +245,11 @@ describe('Auth Flow — integration tests', () => {
 
     it('renders app logo and description on auth page', () => {
       render(
-        <MemoryRouter>
-          <Auth />
-        </MemoryRouter>
+        <I18nProvider>
+          <MemoryRouter>
+            <Auth />
+          </MemoryRouter>
+        </I18nProvider>
       )
 
       expect(screen.getByText('EnglishPath')).toBeInTheDocument()
