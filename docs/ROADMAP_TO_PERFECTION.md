@@ -1878,7 +1878,7 @@ blankSlateReview?: {
 
 ---
 
-## F8-1. ❌ Demo — Ro'yxatdan O'tmasdan Ko'rish (O'CHIRILDI)
+## F8-1. 🚫 Demo — BEKOR QILINDI (kerak emas, butunlay olib tashlandi)
 **Qaror:** Platforma mutlaqo tekin — ro'yxatdan o'tishsiz demo/guest mode kerak emas.
 
 **O'chirilgan fayllar (6):**

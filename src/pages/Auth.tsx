@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useI18n } from '../i18n'
-import { X, MailCheck, RefreshCw, AlertTriangle, Eye } from 'lucide-react'
+import { X, MailCheck, RefreshCw, AlertTriangle } from 'lucide-react'
 
 type Tab = 'login' | 'signup'
 type SignupState = 'form' | 'sent' | 'resent'
@@ -310,24 +310,6 @@ export default function Auth() {
             </form>
           )}
 
-          {/* Demo mode CTA */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200 dark:border-gray-700" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white dark:bg-gray-950 px-2 text-gray-400">{t('auth.orDivider')}</span>
-            </div>
-          </div>
-          <button
-            onClick={() => { localStorage.setItem('demo-mode', 'true'); window.location.href = '/lesson' }}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl
-              border-2 border-dashed border-primary-300 text-primary-700 font-medium text-sm
-              hover:bg-primary-50 hover:border-primary-400 transition-all"
-          >
-            <Eye size={18} />
-            {t('auth.demoButton')}
-          </button>
         </div>
 
         <p className="text-center text-xs text-gray-400 mt-6" dangerouslySetInnerHTML={{ __html: t('auth.supportText') }} />
