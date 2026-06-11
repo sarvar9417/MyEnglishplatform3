@@ -43,6 +43,28 @@ import {
 
 type Answers = Record<number, string[]>
 
+// Section elementlarini topadi: avval id bo'yicha (to'g'ri sozlangan darslar),
+// bo'sh bo'lsa — pozitsion taqsimlash. Sabab: fix-exercise-ids exercise/test
+// id'larini o'zgartirgan, lekin exerciseSections/testSections.ids'ni yangilamagan
+// → eski havolalar bilan qolgan va mashqlar/testlar ko'rinmay qolgan.
+function resolveSectionItems<T extends { id: number }>(
+  sections: { ids: number[] }[],
+  sectionIndex: number,
+  pool: T[],
+  source: T[],
+): T[] {
+  const section = sections[sectionIndex]
+  if (!section) return []
+  const byId = pool.filter((it) => section.ids.includes(it.id))
+  if (byId.length > 0) return byId
+  let cursor = 0
+  for (let i = 0; i < sections.length; i++) {
+    if (i === sectionIndex) return source.slice(cursor, cursor + sections[i].ids.length)
+    cursor += sections[i].ids.length
+  }
+  return []
+}
+
 export default function LessonView({ lesson: lessonProp, onBack }: { lesson: DailyLesson; onBack: () => void }) {
   const [skillsData, setSkillsData] = useState<Record<string, { reading?: ReadingSectionType; writing?: WritingSectionType; listening?: ListeningSectionType }>>({})
   const skills = skillsData[lessonProp.id] || {}
@@ -107,7 +129,14 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
     ...lesson.exercises,
     ...(lesson.specialCases?.flatMap(sc => sc.drills) ?? []),
   ], [lesson.exercises, lesson.specialCases])
-  const sectionExercises = allLessonExercises.filter((ex) => section?.ids.includes(ex.id))
+  // Section mashqlari: avval id bo'yicha (to'g'ri sozlangan darslar).
+  // Agar bo'sh bo'lsa — section.ids buzilgan (eski/yangilanmagan id'larga ishora,
+  // fix-exercise-ids exercise id'larini o'zgartirgan, sections'ni emas). Bunday
+  // holatda exercises'ni section tartibi va soni bo'yicha pozitsion taqsimlaymiz.
+  const sectionExercises = useMemo(
+    () => resolveSectionItems(lesson.exerciseSections, currentSection, allLessonExercises, lesson.exercises),
+    [allLessonExercises, currentSection, lesson.exerciseSections, lesson.exercises],
+  )
   const isLastSection = currentSection === lesson.exerciseSections.length - 1
   const storyBeat = lesson.day ? getStoryBeat(lesson.day) : null
   const allExercisesDone = Object.keys(completedSections).length === lesson.exerciseSections.length
@@ -380,7 +409,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
       testDBSaveTimerRef.current = setTimeout(() => {
         const section = lesson.testSections[testSection]
         if (!section) return
-        const sectionTests = lesson.tests.filter(t => section.ids.includes(t.id))
+        const sectionTests = resolveSectionItems(lesson.testSections, testSection, lesson.tests, lesson.tests)
         const payloads = sectionTests.filter(t => testAnswers[t.id]).map(t => ({
           exerciseId: t.id, exerciseType: t.type, answer: [testAnswers[t.id]], isCorrect: false,
         }))
@@ -1116,7 +1145,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
               {(() => {
                 const section = lesson.testSections[testSection]
                 if (!section) return null
-                const sectionTests = lesson.tests.filter(t => section.ids.includes(t.id))
+                const sectionTests = resolveSectionItems(lesson.testSections, testSection, lesson.tests, lesson.tests)
                 return (
                   <>
                     <div className={`rounded-xl p-4 text-white ${section.color}`}>
