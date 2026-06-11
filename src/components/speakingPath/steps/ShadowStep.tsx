@@ -4,10 +4,11 @@
 // analyzePronunciation bilan talaffuz balli. STT yo'q bo'lsa oqim buzilmaydi.
 
 import { useState, useCallback, useEffect, useRef } from 'react'
-import { Volume2, ArrowRight, Loader2, RotateCcw, Mic, Square, BookOpen } from 'lucide-react'
+import { Volume2, ArrowRight, Loader2, RotateCcw, BookOpen } from 'lucide-react'
 import { useSpeechSynthesis } from '../../../hooks/useSpeechSynthesis'
 import { useSpeechRecognition } from '../../../hooks/useSpeechRecognition'
 import { useAudioRecorder } from '../../../hooks/useAudioRecorder'
+import HoldMicButton from '../HoldMicButton'
 import { analyzePronunciation, type PronunciationAnalysis } from '../../../lib/claude'
 import { monitoring } from '../../../lib/monitoring'
 import AudioPlayback from '../../speaking/AudioPlayback'
@@ -36,18 +37,23 @@ export default function ShadowStep({ day, level, onNext }: Props) {
   const [analyzing, setAnalyzing] = useState(false)
   const [result, setResult] = useState<PronunciationAnalysis | null>(null)
   const [recording, setRecording] = useState(false)
+  const [noSpeech, setNoSpeech] = useState(false)
   const chunkRef = useRef<SpeakingDay['chunks'][0] | null>(null)
 
   const chunk = day.chunks[index]
   chunkRef.current = chunk
   const isLast = index >= day.chunks.length - 1
 
-  // STT transcript tayyor bo'lganda tahlilni boshlaymiz
+  // Yozish tugagach (sr to'xtagach) natijani qayta ishlaymiz.
+  // Mobil/iOS: STT hech narsa eshitmasligi mumkin — bunday holatda "stuck"
+  // qolmaymiz, idle'ga qaytib qayta urinish/o'tkazish imkonini beramiz.
   useEffect(() => {
-    if (!recording || sr.isRecording || !sr.transcript.trim()) return
+    if (!recording || sr.isRecording) return
     setRecording(false)
 
     const text = sr.transcript.trim()
+    if (!text) { setNoSpeech(true); return }
+
     const currentChunk = chunkRef.current
     if (!currentChunk) return
 
@@ -77,23 +83,26 @@ export default function ShadowStep({ day, level, onNext }: Props) {
     })()
   }, [recording, sr.isRecording, sr.transcript, level, ar.audioUrl])
 
-  const toggleRecord = useCallback(() => {
-    if (recording) {
-      sr.stop()
-      ar.stop()
-    } else {
-      setResult(null)
-      sr.reset()
-      ar.reset()
-      sr.start()
-      ar.start()
-      setRecording(true)
-    }
-  }, [recording, sr, ar])
+  // Push-to-talk: bosib turing → gapiring → qo'yib yuboring.
+  const startRecord = useCallback(() => {
+    setResult(null)
+    setNoSpeech(false)
+    sr.reset()
+    ar.reset()
+    sr.start()
+    ar.start()
+    setRecording(true)
+  }, [sr, ar])
+
+  const stopRecord = useCallback(() => {
+    sr.stop()
+    ar.stop()
+  }, [sr, ar])
 
   const advance = useCallback(() => {
     setResult(null)
     setRecording(false)
+    setNoSpeech(false)
     sr.reset()
     ar.reset()
     if (isLast) onNext()
@@ -103,6 +112,7 @@ export default function ShadowStep({ day, level, onNext }: Props) {
   const retry = useCallback(() => {
     setResult(null)
     setRecording(false)
+    setNoSpeech(false)
     sr.reset()
     ar.reset()
   }, [sr, ar])
@@ -201,25 +211,22 @@ export default function ShadowStep({ day, level, onNext }: Props) {
           </div>
         ) : (
           <div className="flex flex-col items-center gap-2">
-            {recording && (
-              <p className="text-xs text-rose-500 font-semibold flex items-center gap-1.5 animate-pulse">
-                <span className="w-2 h-2 bg-rose-500 rounded-full" /> Takrorlang…
-              </p>
-            )}
-            <button
-              onClick={toggleRecord}
+            <HoldMicButton
+              isRecording={recording}
+              onStart={startRecord}
+              onStop={stopRecord}
               disabled={analyzing}
-              className={`w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg active:scale-95 transition disabled:opacity-50 ${
-                recording ? 'bg-rose-500 animate-pulse' : 'bg-gradient-to-br from-primary-500 to-primary-700'
-              }`}
-            >
-              {recording ? <Square size={22} className="text-white" fill="white" /> : <Mic size={26} className="text-white" />}
-            </button>
-            <p className="text-xs font-medium text-gray-500 dark:text-gray-400">
-              {recording ? (sr.interim || 'Tinglayapman…') : 'Bosib gapiring'}
-            </p>
-
-            {/* STT interim transcript */}
+              idleLabel="Bosib turib takrorlang"
+              interim={sr.interim}
+            />
+            {noSpeech && (
+              <div className="text-center mt-1">
+                <p className="text-xs text-amber-600 dark:text-amber-400">Ovoz eshitilmadi — yana bir bor urinib ko'ring.</p>
+                <button onClick={advance} className="mt-1.5 text-xs font-semibold text-primary-600 hover:underline">
+                  O'tkazib yuborish →
+                </button>
+              </div>
+            )}
             {sr.interim && (
               <p className="text-xs text-gray-400 italic max-w-md text-center">"{sr.interim}"</p>
             )}

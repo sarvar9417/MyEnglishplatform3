@@ -83,18 +83,24 @@ afterEach(() => {
   srState.interim = ''
 })
 
+function pressRelease(btn: Element) {
+  // Push-to-talk: bosib turish (pointerDown) → qo'yib yuborish (pointerUp)
+  fireEvent.pointerDown(btn)
+  fireEvent.pointerUp(btn)
+}
+
 function startRecording(component: HTMLElement) {
   // Find the circular (rounded-full) icon-only button inside the mic area
   const allBtns = component.querySelectorAll('button')
   for (const btn of allBtns) {
     if (btn.className.includes('rounded-full') && !btn.textContent?.trim()) {
-      fireEvent.click(btn)
+      pressRelease(btn)
       return
     }
   }
-  // Fallback: just click any icon-only button
+  // Fallback: just press any icon-only button
   const svgBtns = Array.from(allBtns).filter(b => b.querySelector('svg') && !b.textContent?.trim())
-  if (svgBtns.length > 0) fireEvent.click(svgBtns[0])
+  if (svgBtns.length > 0) pressRelease(svgBtns[0])
 }
 
 describe('ShadowStep', () => {
@@ -124,7 +130,7 @@ describe('ShadowStep', () => {
     })
 
     const { container, rerender } = render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
-    expect(screen.getByText('Bosib gapiring')).toBeInTheDocument()
+    expect(screen.getByText('Bosib turib takrorlang')).toBeInTheDocument()
 
     // Click mic → starts recording
     startRecording(container)
@@ -236,7 +242,7 @@ describe('ShadowStep', () => {
     fireEvent.click(screen.getByText(/Qayta/))
 
     await waitFor(() => {
-      expect(screen.getByText('Bosib gapiring')).toBeInTheDocument()
+      expect(screen.getByText('Bosib turib takrorlang')).toBeInTheDocument()
     })
   })
 
