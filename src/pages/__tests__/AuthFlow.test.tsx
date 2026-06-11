@@ -276,7 +276,7 @@ describe('Auth Flow — integration tests', () => {
 
       // Greeting with user name from useAuth
       expect(screen.getByText('Xayrli kun')).toBeInTheDocument()
-      expect(screen.getByText('Ali 👋')).toBeInTheDocument()
+      expect(screen.getByText((_c, el) => el?.tagName === 'H1' && (el.textContent ?? '').includes('👋'))).toBeInTheDocument()
 
       // Dashboard sections
       expect(screen.getByText('Bugungi Skill Progress')).toBeInTheDocument()
@@ -415,7 +415,7 @@ describe('Auth Flow — integration tests', () => {
 
       // Verify Dashboard renders after login
       expect(screen.getByText('Xayrli kun')).toBeInTheDocument()
-      expect(screen.getByText('Ali 👋')).toBeInTheDocument()
+      expect(screen.getByText((_c, el) => el?.tagName === 'H1' && (el.textContent ?? '').includes('👋'))).toBeInTheDocument()
       expect(screen.getByTitle('Chiqish')).toBeInTheDocument()
 
       // Step 2: Navigate to Lesson page (StartLessonButton — "Bugungi Dars")

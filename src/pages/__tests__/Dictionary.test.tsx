@@ -323,7 +323,7 @@ describe('Dictionary — page integration tests', () => {
     // Expanded details should be visible
     expect(screen.getByText(/Hello, how are you\?/)).toBeInTheDocument()
     expect(screen.getByText(/Box 3\/5/)).toBeInTheDocument()
-    expect(screen.getByText(/O'rganilgan/)).toBeInTheDocument()
+    expect(screen.getAllByText(/O'rganilgan/)[0]).toBeInTheDocument()
     expect(screen.getByText('+5 / -1')).toBeInTheDocument()
   })
 

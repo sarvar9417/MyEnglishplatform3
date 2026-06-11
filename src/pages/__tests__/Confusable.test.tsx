@@ -69,9 +69,9 @@ describe('Confusable browse view', () => {
 
   it('renders page title and description', () => {
     renderPage()
-    expect(screen.getByText('Confusable Pairs')).toBeInTheDocument()
+    expect(screen.getByText("Chalkash So'zlar")).toBeInTheDocument()
     expect(screen.getByText(/chalkash/)).toBeInTheDocument()
-    expect(screen.getByText('Test')).toBeInTheDocument()
+    expect(screen.getByText("🧪 Test")).toBeInTheDocument()
   })
 
   it('renders search input', () => {
@@ -134,7 +134,7 @@ describe('Confusable detail view', () => {
   it('back button returns to browse', () => {
     goToDetail()
     fireEvent.click(screen.getByText(/Orqaga/))
-    expect(screen.getByText('Confusable Pairs')).toBeInTheDocument()
+    expect(screen.getByText("Chalkash So'zlar")).toBeInTheDocument()
   })
 
   it('delay button calls delayConfusablePartners', async () => {
@@ -174,7 +174,7 @@ describe('Confusable quiz view', () => {
 
   function goToQuiz() {
     renderPage()
-    fireEvent.click(screen.getByText('Test'))
+    fireEvent.click(screen.getByText("🧪 Test"))
   }
 
   it('shows quiz with progress and options', () => {

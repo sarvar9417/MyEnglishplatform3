@@ -357,7 +357,7 @@ describe('Vocabulary — page integration tests', () => {
 
     await renderPage()
     // Page title and main sections
-    expect(screen.getByText('Vocabulary')).toBeInTheDocument()
+    expect(screen.getByText("Lug'at & Iboralar")).toBeInTheDocument()
     expect(screen.getByTestId('vocab-progress')).toBeInTheDocument()
     // Action buttons (icon-only in compact header)
     expect(screen.getByTitle('O\'yin')).toBeInTheDocument()
@@ -450,10 +450,10 @@ describe('Vocabulary — page integration tests', () => {
 
     await renderPage()
     // Batch tabs should exist
-    expect(screen.getByText('1')).toBeInTheDocument()
-    expect(screen.getByText('2')).toBeInTheDocument()
-    expect(screen.getByText('3')).toBeInTheDocument()
-    expect(screen.getByText('4')).toBeInTheDocument()
+    expect(screen.getByText("1-Batch")).toBeInTheDocument()
+    expect(screen.getByText("2-Batch")).toBeInTheDocument()
+    expect(screen.getByText("3-Batch")).toBeInTheDocument()
+    expect(screen.getByText("4-Batch")).toBeInTheDocument()
   })
 
   // ── FlashCard view mode ────────────────────────────────────────────────────
@@ -594,6 +594,6 @@ describe('Vocabulary — page integration tests', () => {
     fireEvent.click(screen.getByText('Close'))
     // After closing, catalog view should be visible again
     expect(screen.queryByTestId('typing-game')).not.toBeInTheDocument()
-    expect(screen.getByText('Vocabulary')).toBeInTheDocument()
+    expect(screen.getByText("Lug'at & Iboralar")).toBeInTheDocument()
   })
 })

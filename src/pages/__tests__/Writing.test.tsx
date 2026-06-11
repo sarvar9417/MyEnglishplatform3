@@ -69,7 +69,7 @@ describe('Writing', () => {
 
   it('renders writing view when prompts loaded', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Writing')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText("Yozish")).toBeInTheDocument())
     expect(screen.getByText('Bugungi vazifa · 10-kun')).toBeInTheDocument()
     expect(screen.getByText(mockPrompt.prompt)).toBeInTheDocument()
     expect(screen.getByText('Fikr')).toBeInTheDocument()
