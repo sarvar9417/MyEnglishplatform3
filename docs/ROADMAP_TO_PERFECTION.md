@@ -1110,7 +1110,7 @@ export function auditCEFR(lesson: DailyLesson): string[] {
 
 ---
 
-## F3-1. ❌ Kontent TypeScript Fayllaridan CMS ga Ko'chirish
+## F3-1. ⚠️ Kontent TypeScript Fayllaridan CMS ga Ko'chirish
 **Muammo:** 106 dars TS fayllarida hardcode. Kontent tahrirlash uchun dasturchi kerak. ~40,000+ qator TypeScript
 **Ta'sir:** Dasturchi +1.0
 
@@ -1853,7 +1853,7 @@ interface ConnectionExercise {
 
 ---
 
-## F7-4. ❌ Active Recall — Blank Slate Testing
+## F7-4. ✅ Active Recall — Blank Slate Testing
 **Muammo:** Ko'pchilik mashqlar recognition-based (tanlash). Recall-based (yodlash) mashqlar ko'p emas
 **Ta'sir:** Yodlash olimi +0.5
 
