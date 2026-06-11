@@ -31,7 +31,7 @@
 - **F1-2** Inkor→Kengaytish (faqat b1/b2Part1 da, qolganlarida yo'q)
 - **F1-4** Lokalizatsiya (i18n tizimi bor, 3 til, lekin auth page hardcode)
 - **F2-2** Interleaved (MixedReview page bor, lekin Section 4-5 interleaved emas)
-- **F2-5** Mini-passages (faqat B1 va A2 da, boshqa level'larda yo'q)
+- **F2-5** Mini-passages (A1=20, A2=8, B1=13, B2=19 — faqat B1+ da yo'q)
 - **F2-7** Mnemonika UI (MnemonicCard mavjud, faqat SpecialCases da)
 - **F2-8** Writing AI (level-based eval)
 - **F2-9** Speaking integratsiya (LessonView da tab bor)

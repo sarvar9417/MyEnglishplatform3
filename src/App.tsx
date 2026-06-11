@@ -77,6 +77,7 @@ const InvitePage = lazyWithReload(() => import('./pages/InvitePage'))
 const PhrasalVerbs = lazyWithReload(() => import('./pages/PhrasalVerbs'))
 const Idioms = lazyWithReload(() => import('./pages/Idioms'))
 const Confusable = lazyWithReload(() => import('./pages/Confusable'))
+const PersonalVocabulary = lazyWithReload(() => import('./pages/PersonalVocabulary'))
 const SpeakingPath = lazyWithReload(() => import('./pages/SpeakingPath'))
 const PlacementTest = lazyWithReload(() => import('./pages/PlacementTest'))
 const NotFound = lazyWithReload(() => import('./pages/NotFound'))
@@ -200,6 +201,7 @@ function AppShell() {
               <Route path="/reading"        element={<SafePage><Reading /></SafePage>} />
               <Route path="/writing"        element={<SafePage><Writing /></SafePage>} />
               <Route path="/skills"        element={<SafePage><SkillsPage /></SafePage>} />
+              <Route path="/personal-vocabulary" element={<SafePage><PersonalVocabulary /></SafePage>} />
               <Route path="/profile"        element={<SafePage><Profile /></SafePage>} />
               <Route path="/lesson-demo"    element={<SafePage><LessonDemoPage /></SafePage>} />
               <Route path="/review"         element={<SafePage><GrammarReview /></SafePage>} />

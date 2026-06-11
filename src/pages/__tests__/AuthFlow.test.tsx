@@ -1,7 +1,19 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { BrowserRouter, MemoryRouter, Routes, Route } from 'react-router-dom'
-import { I18nProvider } from '../../i18n'
+import uz from '../../i18n/uz.json'
+
+// ─── i18n mock (sync — dynamic import fails in vitest) ──────────────────────
+const uzDict = vi.hoisted(() => ({} as Record<string, string>))
+const mockI18n = vi.hoisted(() => {
+  function mockT(key: string): string { return uzDict[key] ?? key }
+  return { I18nProvider: ({ children }: { children: unknown }) => children, mockT }
+})
+vi.mock('../../i18n', () => ({
+  I18nProvider: mockI18n.I18nProvider,
+  useI18n: () => ({ locale: 'uz' as const, loading: false, t: mockI18n.mockT, setLocale: () => {} }),
+}))
+Object.assign(uzDict, uz as Record<string, string>)
 
 // ─── Hoisted mocks ───────────────────────────────────────────────────────────
 
@@ -228,11 +240,9 @@ describe('Auth Flow — integration tests', () => {
   describe('Login page', () => {
     it('renders Auth page with login form labels and inputs', () => {
       render(
-        <I18nProvider>
-          <MemoryRouter>
-            <Auth />
-          </MemoryRouter>
-        </I18nProvider>
+        <MemoryRouter>
+          <Auth />
+        </MemoryRouter>
       )
 
       // Labels exist
@@ -245,11 +255,9 @@ describe('Auth Flow — integration tests', () => {
 
     it('renders app logo and description on auth page', () => {
       render(
-        <I18nProvider>
-          <MemoryRouter>
-            <Auth />
-          </MemoryRouter>
-        </I18nProvider>
+        <MemoryRouter>
+          <Auth />
+        </MemoryRouter>
       )
 
       expect(screen.getByText('EnglishPath')).toBeInTheDocument()

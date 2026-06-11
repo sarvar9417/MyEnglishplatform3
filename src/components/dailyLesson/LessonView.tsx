@@ -103,7 +103,11 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
   const [demoMode, setDemoMode] = useState(false)
 
   const section = lesson.exerciseSections[currentSection]
-  const sectionExercises = lesson.exercises.filter((ex) => section?.ids.includes(ex.id))
+  const allLessonExercises = useMemo(() => [
+    ...lesson.exercises,
+    ...(lesson.specialCases?.flatMap(sc => sc.drills) ?? []),
+  ], [lesson.exercises, lesson.specialCases])
+  const sectionExercises = allLessonExercises.filter((ex) => section?.ids.includes(ex.id))
   const isLastSection = currentSection === lesson.exerciseSections.length - 1
   const storyBeat = lesson.day ? getStoryBeat(lesson.day) : null
   const allExercisesDone = Object.keys(completedSections).length === lesson.exerciseSections.length

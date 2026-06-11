@@ -16,6 +16,7 @@ export interface TranslationStrings {
   'nav.lessons': string
   'nav.speakingPath': string
   'nav.vocabulary': string
+  'nav.personalVocabulary': string
   'nav.mockTest': string
   'nav.aiTutor': string
   'nav.profile': string
@@ -26,7 +27,28 @@ export interface TranslationStrings {
   'nav.idioms': string
   'nav.confusablePairs': string
 
-  /* ── Sidebar misc ── */
+  /* ── Personal Vocabulary ── */
+  'personalVocab.title': string
+  'personalVocab.subtitle': string
+  'personalVocab.export': string
+  'personalVocab.import': string
+  'personalVocab.totalWords': string
+  'personalVocab.learned': string
+  'personalVocab.due': string
+  'personalVocab.addWord': string
+  'personalVocab.startTest': string
+  'personalVocab.searchPlaceholder': string
+  'personalVocab.allCategories': string
+  'personalVocab.custom': string
+  'personalVocab.allLevels': string
+  'personalVocab.dueOnly': string
+  'personalVocab.loading': string
+  'personalVocab.noResults': string
+   'personalVocab.emptyState': string
+   'personalVocab.flashCardTest': string
+   'personalVocab.noWordsForReview': string
+
+   /* ── Sidebar misc ── */
   'sidebar.levelRange': string
   'sidebar.userFallback': string
   'sidebar.dayCount': string        // "Kun {day}/126"

@@ -3,15 +3,18 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 import { createAuthSlice } from './authSlice'
 import { createProgressSlice } from './progressSlice'
 import { createLessonSlice } from './lessonSlice'
+import { createPersonalVocabularySlice } from './personalVocabularySlice'
 
 export type { Level, DailyChecklist, MockResult, LessonSessionData } from './types'
 export type { AuthSlice } from './authSlice'
 export type { ProgressSlice } from './progressSlice'
 export type { LessonSlice } from './lessonSlice'
+export type { PersonalVocabularySlice } from './personalVocabularySlice'
 
 export type AppState = ReturnType<typeof createAuthSlice>
   & ReturnType<typeof createProgressSlice>
   & ReturnType<typeof createLessonSlice>
+  & ReturnType<typeof createPersonalVocabularySlice>
 
 export const useStore = create<AppState>()(
   persist(
@@ -19,6 +22,7 @@ export const useStore = create<AppState>()(
       ...createAuthSlice(...a),
       ...createProgressSlice(...a),
       ...createLessonSlice(...a),
+      ...createPersonalVocabularySlice(...a),
     }),
     {
       name: 'englishpath-store',
@@ -32,6 +36,9 @@ export const useStore = create<AppState>()(
           _hydrated: _h,
           lessonProgress: _lp,
           lessonSessions: _ls,
+          personalWords: _pw,
+          personalWordsLoading: _pwl,
+          personalWordsFetched: _pwf,
           ...rest 
         } = s
         return rest as AppState

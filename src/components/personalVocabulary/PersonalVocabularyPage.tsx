@@ -1,0 +1,288 @@
+import { useState, useEffect, useRef } from 'react'
+import { useStore } from '../../store/useStore'
+import { useI18n } from '../../i18n'
+import { exportPersonalVocabulary, importPersonalVocabulary, generateAITranslation } from '../../services/personalVocabularyService'
+import { supabase } from '../../lib/supabase'
+import type { PersonalWord, AddWordDTO, VocabRating } from '../../types/personalVocabulary'
+import { Plus, Search, Download, Upload, Play, BookOpen, Filter, Loader2 } from 'lucide-react'
+import AddWordForm from './AddWordForm'
+import WordList from './WordList'
+import FlashCardTest from './FlashCardTest'
+
+type ViewMode = 'list' | 'add' | 'test'
+
+let cachedUserId: string | null = null
+async function getUserId(): Promise<string> {
+  if (cachedUserId) return cachedUserId
+  const { data: { session } } = await supabase.auth.getSession()
+  cachedUserId = session?.user?.id ?? 'guest'
+  return cachedUserId
+}
+
+export default function PersonalVocabularyPage() {
+  const { t } = useI18n()
+  const { personalWords, personalWordsFetched, deletePersonalWord, ratePersonalWord, fetchPersonalWords, batchAddPersonalWords } = useStore()
+  
+  const [viewMode, setViewMode] = useState<ViewMode>('list')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [filterCategory, setFilterCategory] = useState<string>('all')
+  const [filterLevel, setFilterLevel] = useState<string>('all')
+  const [showDueOnly, setShowDueOnly] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [importLoading, setImportLoading] = useState(false)
+  const [testWords, setTestWords] = useState<PersonalWord[]>([])
+  const mountedRef = useRef(true)
+
+  // Fetch words on mount
+  useEffect(() => {
+    mountedRef.current = true
+    if (!personalWordsFetched) {
+      setLoading(true)
+      getUserId().then((userId) => {
+        if (mountedRef.current) fetchPersonalWords(userId).finally(() => {
+          if (mountedRef.current) setLoading(false)
+        })
+      })
+    }
+    return () => { mountedRef.current = false }
+  }, [personalWordsFetched, fetchPersonalWords])
+
+  // Filter words
+  const filteredWords = personalWords.filter((w) => {
+    const matchesSearch = w.english.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         w.uzbek.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesCategory = filterCategory === 'all' || w.category === filterCategory
+    const matchesLevel = filterLevel === 'all' || w.level === filterLevel
+    const matchesDue = !showDueOnly || !w.is_learned && new Date(w.next_review) <= new Date()
+    return matchesSearch && matchesCategory && matchesLevel && matchesDue
+  })
+
+  // Stats
+  const totalWords = personalWords.length
+  const learnedWords = personalWords.filter(w => w.is_learned).length
+  const dueWords = personalWords.filter(w => !w.is_learned && new Date(w.next_review) <= new Date()).length
+
+  const handleAddWord = async (wordData: AddWordDTO) => {
+    const userId = await getUserId()
+    await useStore.getState().addPersonalWord(wordData, userId)
+    setViewMode('list')
+  }
+
+  const handleDeleteWord = async (id: number) => {
+    const userId = await getUserId()
+    await deletePersonalWord(id, userId)
+  }
+
+  const handleRateWord = async (id: number, rating: VocabRating) => {
+    const userId = await getUserId()
+    await ratePersonalWord(id, rating, userId)
+  }
+
+  const handleStartTest = () => {
+    const due = personalWords.filter(w => !w.is_learned && new Date(w.next_review) <= new Date())
+    const wordsToTest = due.length > 0 ? due : personalWords.slice(0, 10)
+    setTestWords(wordsToTest)
+    setViewMode('test')
+  }
+
+  const handleExport = () => {
+    const json = exportPersonalVocabulary(personalWords)
+    const blob = new Blob([json], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `personal-vocabulary-${new Date().toISOString().split('T')[0]}.json`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
+  const handleImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setImportLoading(true)
+    try {
+      const text = await file.text()
+      const words = importPersonalVocabulary(text)
+      if (words.length === 0) {
+        alert('Noto\'g\'ri fayl formati')
+        return
+      }
+      const userId = await getUserId()
+      await batchAddPersonalWords(words, userId)
+    } finally {
+      setImportLoading(false)
+      e.target.value = ''
+    }
+  }
+
+  const handleAITranslation = async (word: string): Promise<{ uzbek: string; phonetic?: string; example?: string }> => {
+    return await generateAITranslation(word)
+  }
+
+  if (viewMode === 'test') {
+    return (
+      <FlashCardTest
+        words={testWords}
+        onComplete={(results) => {
+          // Save results — pass through the actual rating from the test
+          results.forEach((r) => {
+            if (r.result === 'correct' && r.rating) {
+              handleRateWord(r.vocabId, r.rating as VocabRating)
+            } else if (r.result === 'correct') {
+              handleRateWord(r.vocabId, 'bildim')
+            } else {
+              handleRateWord(r.vocabId, 'bilmadim')
+            }
+          })
+          setViewMode('list')
+        }}
+        onExit={() => setViewMode('list')}
+      />
+    )
+  }
+
+  return (
+    <div className="max-w-4xl mx-auto p-4 space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
+            {t('personalVocab.title') || 'Shaxsiy Lug\'atim'}
+          </h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            {t('personalVocab.subtitle') || 'O\'zingiz uchun shaxsiy lug\'at yarating'}
+          </p>
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={handleExport}
+            className="flex items-center gap-1 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            <Download size={16} />
+            <span className="hidden sm:inline">{t('personalVocab.export') || 'Export'}</span>
+          </button>
+          <label className={`flex items-center gap-1 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer ${importLoading ? 'opacity-50 pointer-events-none' : ''}`}>
+            {importLoading ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
+            <span className="hidden sm:inline">{importLoading ? 'Import qilinmoqda...' : (t('personalVocab.import') || 'Import')}</span>
+            <input type="file" accept=".json" className="hidden" onChange={handleImport} />
+          </label>
+        </div>
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-3 gap-4">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
+          <div className="text-2xl font-bold text-primary-600">{totalWords}</div>
+          <div className="text-xs text-gray-500">{t('personalVocab.totalWords') || 'Jami so\'zlar'}</div>
+        </div>
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
+          <div className="text-2xl font-bold text-green-600">{learnedWords}</div>
+          <div className="text-xs text-gray-500">{t('personalVocab.learned') || 'O\'rganilgan'}</div>
+        </div>
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
+          <div className="text-2xl font-bold text-orange-600">{dueWords}</div>
+          <div className="text-xs text-gray-500">{t('personalVocab.due') || 'Takrorlash vaqti'}</div>
+        </div>
+      </div>
+
+      {/* Actions */}
+      <div className="flex flex-wrap gap-3">
+        <button
+          onClick={() => setViewMode('add')}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-500 text-white font-medium hover:bg-primary-600 shadow-sm"
+        >
+          <Plus size={18} />
+          {t('personalVocab.addWord') || 'So\'z qo\'shish'}
+        </button>
+        <button
+          onClick={handleStartTest}
+          disabled={personalWords.length === 0}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-b2-500 text-white font-medium hover:bg-b2-600 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <Play size={18} />
+          {t('personalVocab.startTest') || 'Flash card testi'}
+        </button>
+      </div>
+
+      {/* Search & Filters */}
+      <div className="flex flex-wrap gap-3 items-center">
+        <div className="relative flex-1 min-w-[200px]">
+          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <input
+            type="text"
+            placeholder={t('personalVocab.searchPlaceholder') || 'So\'z qidirish...'}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+        </div>
+        <select
+          value={filterCategory}
+          onChange={(e) => setFilterCategory(e.target.value)}
+          className="px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+        >
+          <option value="all">{t('personalVocab.allCategories') || 'Barcha kategoriyalar'}</option>
+          <option value="custom">{t('personalVocab.custom') || 'Shaxsiy'}</option>
+          <option value="grammar">Grammar</option>
+          <option value="travel">Travel</option>
+          <option value="business">Business</option>
+          <option value="ielts">IELTS</option>
+        </select>
+        <select
+          value={filterLevel}
+          onChange={(e) => setFilterLevel(e.target.value)}
+          className="px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+        >
+          <option value="all">{t('personalVocab.allLevels') || 'Barcha darajalar'}</option>
+          <option value="A1">A1</option>
+          <option value="A2">A2</option>
+          <option value="B1">B1</option>
+          <option value="B2">B2</option>
+        </select>
+        <button
+          onClick={() => setShowDueOnly(!showDueOnly)}
+          className={`flex items-center gap-1 px-3 py-2.5 rounded-xl border ${
+            showDueOnly
+              ? 'bg-orange-100 dark:bg-orange-900/30 border-orange-300 text-orange-700 dark:text-orange-300'
+              : 'border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300'
+          }`}
+        >
+          <Filter size={16} />
+          {t('personalVocab.dueOnly') || 'Faqat takrorlash'}
+        </button>
+      </div>
+
+      {/* Content */}
+      {viewMode === 'add' && (
+        <AddWordForm
+          onAdd={handleAddWord}
+          onCancel={() => setViewMode('list')}
+          onAITranslate={handleAITranslation}
+        />
+      )}
+
+      {loading ? (
+        <div className="text-center py-12 text-gray-500">
+          {t('personalVocab.loading') || 'Yuklanmoqda...'}
+        </div>
+      ) : (
+        <WordList
+          words={filteredWords}
+          onDelete={handleDeleteWord}
+          onRate={handleRateWord}
+        />
+      )}
+
+      {!loading && filteredWords.length === 0 && (
+        <div className="text-center py-12">
+          <BookOpen size={48} className="mx-auto text-gray-300 mb-4" />
+          <p className="text-gray-500">
+            {searchQuery || filterCategory !== 'all' || filterLevel !== 'all'
+              ? t('personalVocab.noResults') || 'Hech narsa topilmadi'
+              : t('personalVocab.emptyState') || 'Hali so\'zlar qo\'shilmagan. Birinchi so\'zingizni qo\'shing!'}
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}

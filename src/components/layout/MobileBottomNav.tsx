@@ -24,10 +24,11 @@ const ROUTE_T_KEY: Record<string, keyof import('../../i18n').TranslationStrings>
 }
 
 const RESOURCE_ITEMS = [
-  { to: '/tandem',        icon: Users,         labelKey: 'nav.tandem' as const },
-  { to: '/skills',        icon: BarChart3,     labelKey: 'nav.skills' as const },
-  { to: '/phrasal-verbs', icon: BookText,      labelKey: 'nav.phrasalVerbs' as const },
-  { to: '/idioms',        icon: MessageCircle, labelKey: 'nav.idioms' as const },
+  { to: '/tandem',              icon: Users,         labelKey: 'nav.tandem' as const },
+  { to: '/skills',              icon: BarChart3,     labelKey: 'nav.skills' as const },
+  { to: '/personal-vocabulary', icon: BookMarked,    labelKey: 'nav.personalVocabulary' as const },
+  { to: '/phrasal-verbs',       icon: BookText,      labelKey: 'nav.phrasalVerbs' as const },
+  { to: '/idioms',              icon: MessageCircle, labelKey: 'nav.idioms' as const },
 ]
 
 const NAV_ITEMS = [

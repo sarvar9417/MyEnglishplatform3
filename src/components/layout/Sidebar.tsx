@@ -9,7 +9,7 @@ import {
   ClipboardList, MessageSquare, BarChart3,
   ChevronLeft, ChevronRight, ChevronDown, Zap, Flame,
   Trophy, Sun, Moon, Monitor, X, User, Users,
-  BookText, MessageCircle, Mic, Brain,
+  BookText, MessageCircle, Mic, Brain, BookmarkCheck,
 } from 'lucide-react'
 import { cycleTheme, getThemePreference, subscribeToTheme } from '../../utils/theme'
 
@@ -24,6 +24,7 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/lesson',        icon: <BookOpen size={20} />,        label: 'Darslar' },
   { to: '/speaking-path', icon: <Mic size={20} />,             label: 'Speaking' },
   { to: '/vocabulary',    icon: <BookMarked size={20} />,      label: "Lug'at & Iboralar" },
+  { to: '/personal-vocabulary', icon: <BookmarkCheck size={20} />, label: "Shaxsiy Lug'atim" },
   { to: '/mock-test',     icon: <ClipboardList size={20} />,   label: 'Mock Test' },
   { to: '/chat',          icon: <MessageSquare size={20} />,   label: 'AI Tutor' },
   { to: '/profile',       icon: <User size={20} />,            label: 'Profil' },
@@ -50,6 +51,7 @@ const ROUTE_T_KEY: Record<string, keyof import('../../i18n').TranslationStrings>
   '/lesson': 'nav.lessons',
   '/speaking-path': 'nav.speakingPath',
   '/vocabulary': 'nav.vocabulary',
+  '/personal-vocabulary': 'nav.personalVocabulary',
   '/mock-test': 'nav.mockTest',
   '/chat': 'nav.aiTutor',
   '/profile': 'nav.profile',
