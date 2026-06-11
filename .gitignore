@@ -47,6 +47,8 @@ scripts/*.sql
 !scripts/sync_listening_supabase.mjs
 !scripts/*.ts
 !scripts/create_tandem_tables.sql
+# Personal vocabulary sxemasi — maxfiy ma'lumotsiz, version-control kerak
+!scripts/personal_vocabulary_setup.sql
 
 # Playwright E2E
 playwright-report/

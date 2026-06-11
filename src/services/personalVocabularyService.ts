@@ -1,5 +1,5 @@
 import { supabase } from '../lib/supabase'
-import { addDaysTashkent } from '../utils/tashkentDate'
+import { addDaysTashkent, getTodayTashkent } from '../utils/tashkentDate'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
 import { createDefaultFSRSState, computeNextReviewFSRS } from '../lib/srs'
@@ -11,6 +11,15 @@ import type { PersonalWord, AddWordDTO, UpdateWordDTO, VocabRating } from '../ty
 
 const SRS_INTERVALS = [1, 3, 7, 14, 30, 90]
 const MAX_BOX = 6
+
+// 'guest' (yoki bo'sh) userId — auth.users'ga FK + RLS uchun yaroqsiz.
+// Mutatsiyalardan oldin tekshiramiz: jim FK xatosi o'rniga aniq xabar.
+function requireAuthedUser(userId: string): void {
+  if (!userId || userId === 'guest') {
+    useToastStore.getState().toast('Iltimos, avval tizimga kiring', 'error')
+    throw new Error('Not authenticated')
+  }
+}
 
 export function computePersonalVocabNextReview(
   box: number,
@@ -40,9 +49,10 @@ export async function addPersonalWordToDB(
   userId: string,
   wordData: AddWordDTO
 ): Promise<PersonalWord> {
+  requireAuthedUser(userId)
   const now = new Date().toISOString()
   const defaultFSRS = createDefaultFSRSState()
-  
+
   const { data, error } = await (supabase
     .from('personal_vocabulary' as never)
     .insert({
@@ -134,8 +144,10 @@ export async function fetchPersonalWordsFromDB(userId: string): Promise<Personal
 }
 
 export async function fetchWordsForReviewFromDB(userId: string): Promise<PersonalWord[]> {
-  const today = new Date().toISOString().split('T')[0]
-  
+  // Tashkent vaqti bilan (next_review ham Tashkent sanasi bilan o'rnatiladi) —
+  // aks holda yarim tunda off-by-one bo'lardi.
+  const today = getTodayTashkent()
+
   const { data, error } = await (supabase
     .from('personal_vocabulary' as never)
     .select('*')
@@ -157,6 +169,7 @@ export async function ratePersonalWordInDB(
   wordId: number,
   rating: VocabRating
 ): Promise<PersonalWord> {
+  requireAuthedUser(userId)
   // Compute FSRS client-side (our TypeScript algorithm)
   const { data: existing, error: fetchError } = await (supabase
     .from('personal_vocabulary' as never)
@@ -213,6 +226,7 @@ export async function batchAddPersonalWordsToDB(
   wordsData: AddWordDTO[]
 ): Promise<PersonalWord[]> {
   if (wordsData.length === 0) return []
+  requireAuthedUser(userId)
 
   const now = new Date().toISOString()
   const defaultFSRS = createDefaultFSRSState()
@@ -327,15 +341,18 @@ export function importPersonalVocabulary(jsonString: string): AddWordDTO[] {
   try {
     const data = JSON.parse(jsonString)
     if (!Array.isArray(data)) throw new Error('Invalid format')
-    return data.map((item: Record<string, unknown>) => ({
-      english: String(item.english || ''),
-      uzbek: String(item.uzbek || ''),
-      phonetic: item.phonetic ? String(item.phonetic) : undefined,
-      example: item.example ? String(item.example) : undefined,
-      category: (item.category as AddWordDTO['category']) || 'custom',
-      level: (item.level as AddWordDTO['level']) || 'A2',
-      source: 'imported' as const,
-    }))
+    return data
+      .map((item: Record<string, unknown>) => ({
+        english: String(item.english || '').trim(),
+        uzbek: String(item.uzbek || '').trim(),
+        phonetic: item.phonetic ? String(item.phonetic) : undefined,
+        example: item.example ? String(item.example) : undefined,
+        category: (item.category as AddWordDTO['category']) || 'custom',
+        level: (item.level as AddWordDTO['level']) || 'A2',
+        source: 'imported' as const,
+      }))
+      // Bo'sh english/uzbek bo'lgan yozuvlarni o'tkazib yuboramiz
+      .filter((w) => w.english.length > 0 && w.uzbek.length > 0)
   } catch (e) {
     monitoring.captureMessage('importPersonalVocabulary error: ' + (e instanceof Error ? e.message : String(e)), 'error')
     return []
