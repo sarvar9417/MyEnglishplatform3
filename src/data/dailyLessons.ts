@@ -135,6 +135,8 @@ export type DailyExercise =
   | { id: number; type: 'transformation'; instruction: string; question: string; hint: string; correct: string; explanation: string }
   | { id: number; type: 'fill-table'; instruction: string; rows: { adj: string; comp: string; sup: string }[]; explanation: string }
   | { id: number; type: 'vocab-match'; instruction: string; word: string; options: string[]; correct: string; explanation: string }
+  | { id: number; type: 'passage'; instruction: string; passage: string; blanks: string[]; acceptedAnswers?: string[][]; explanation: string }
+  | { id: number; type: 'connection'; instruction: string; prompt: string; hints: string[]; exampleAnswer: string }
 
 
 export const comparativesSuperlatives: DailyLesson = {
@@ -937,6 +939,22 @@ export const comparativesSuperlatives: DailyLesson = {
       correct: 'Mount Everest is the highest mountain in the world.',
       explanation: "'No other ... as high as' = eng balandi → 'the highest'. 'High' = 1 bo'g'in → 'the highest'.",
     },
+    // ── Chuqur o'rganish: kontekstli passage + elaborative connection ──
+    {
+      id: 34200, type: 'passage',
+      instruction: "Matn ichidagi bo'sh joylarni comparative/superlative bilan to'ldiring:",
+      passage: "My two brothers are very different. Karim is ___(1) than Jasur — he is 185 cm. But Jasur is ___(2) at football; he scores more goals. In our family, our father is the ___(3) cook of all — nobody makes better plov. Honestly, weekends are the ___(4) days of the week because we all eat together.",
+      blanks: ['taller', 'better', 'best', 'happiest'],
+      acceptedAnswers: [['taller'], ['better'], ['best'], ['happiest', 'best']],
+      explanation: "(1) tall → taller (qisqa sifat +er), (2) good → better (noto'g'ri shakl), (3) good → the best (superlative), (4) happy → the happiest (y→i +est).",
+    },
+    {
+      id: 34201, type: 'connection',
+      instruction: "O'z hayotingizdan misol yozing — bu qoidani yodda saqlashni kuchaytiradi:",
+      prompt: "Comparative va superlative ishlatib, o'z oilangiz yoki shahringiz haqida 3 ta gap yozing:",
+      hints: ["... is taller/older than ...", "... is the best/biggest ...", "... is more beautiful than ..."],
+      exampleAnswer: "My sister is older than me. Tashkent is the biggest city in Uzbekistan. Winter is colder than autumn in my city.",
+    },
   ],
   // ═══════════════════════════════════════════════════════════════════════
   // TESTLAR — 25 ta multiple-choice test, oddiydan murakkabga
@@ -983,6 +1001,7 @@ export const comparativesSuperlatives: DailyLesson = {
     { title: 'Kuchaytirish', desc: 'Jadval to\'ldirish va qo\'shimcha mashqlar', color: 'bg-violet-500', icon: '💪', ids: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30] },
     { title: 'Yuqori daraja', desc: 'Murakkab gaplar va nozik farqlar', color: 'bg-orange-500', icon: '🔥', ids: [31, 32, 33, 34, 35, 36, 37, 38, 39, 40] },
     { title: 'Yakuniy sinov', desc: '45 ta mashq — to\'liq test', color: 'bg-rose-500', icon: '🏆', ids: [41, 42, 43, 44, 45] },
+    { title: 'Chuqur o\'rganish', desc: 'Kontekstli matn + o\'z hayotingizdan misol (eng kuchli yodlash)', color: 'bg-cyan-500', icon: '🧠', ids: [34200, 34201] },
   ],
   reading: {
     passage: "Tashkent vs Samarkand\n\nTashkent is bigger than Samarkand, but Samarkand is older than Tashkent. Tashkent is the largest city in Uzbekistan. It has more people than any other city. The population of Tashkent is about 3 million, while Samarkand has about 800,000 people. Samarkand is much more beautiful than Tashkent because of its history. Registan Square in Samarkand is one of the most beautiful places in the world.\n\nTashkent has more modern buildings than Samarkand. It has the biggest subway system in the country. However, Samarkand has more tourists than Tashkent because people want to see the old architecture. The weather in Tashkent is hotter than in Samarkand in summer, but Samarkand is colder in winter.\n\nPublic transport in Tashkent is better than in Samarkand. The taxi service is faster and cheaper. But the food in Samarkand is more delicious than in Tashkent. Samarkand is famous for its plov — it is the best plov in the whole country!",

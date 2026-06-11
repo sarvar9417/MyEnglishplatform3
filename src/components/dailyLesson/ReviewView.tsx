@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, useRef } from 'react'
 import { ArrowLeft, CheckCircle, XCircle, Trophy, RotateCcw, ChevronRight, Sparkles, RefreshCw, BookOpen, ChevronDown, Target } from 'lucide-react'
 import type { ReviewLesson, DailyExercise } from '../../data/dailyLessons'
 import { useStore } from '../../store/useStore'
-import { checkAnswer } from './helpers'
+import { checkAnswer, getExerciseContext, getCorrectText } from './helpers'
 import { checkDailyExerciseAnswers } from '../../lib/claude'
 import type { DailyExerciseCheckItem } from '../../lib/claude'
 import ExerciseCard from './ExerciseCard'
@@ -160,10 +160,12 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
       const ok = checkAnswer(ex, userAns)
       if (ok) correct++
       else {
-        let context = '', correctStr = '', userAnsStr = ''
-        if (ex.type === 'fill-blank') { context = ex.question; correctStr = ex.blanks.join(' / '); userAnsStr = userAns.join(' / ') }
-        else if (ex.type === 'fill-table') { context = ex.instruction; correctStr = ex.rows.map(r => `${r.adj}: ${r.comp}/${r.sup}`).join('; '); userAnsStr = '' }
-        else { context = ex.type === 'vocab-match' ? ex.word : ex.question; correctStr = ex.correct; userAnsStr = userAns[0] ?? '' }
+        const context = getExerciseContext(ex)
+        const correctStr = getCorrectText(ex)
+        let userAnsStr = ''
+        if (ex.type === 'fill-blank' || ex.type === 'passage') { userAnsStr = userAns.join(' / ') }
+        else if (ex.type === 'fill-table') { userAnsStr = '' }
+        else { userAnsStr = userAns[0] ?? '' }
         wrongItems.push({ id: ex.id, context, correct: correctStr, userAnswer: userAnsStr, type: ex.type })
       }
       answerPayloads.push({ exerciseId: ex.id, exerciseType: ex.type, answer: userAns, isCorrect: ok })
@@ -322,21 +324,19 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
         </div>
         <div className="space-y-3">
           {wrongExercises.map((ex, i) => {
-            const correctStr = ex.type === 'fill-blank' ? ex.blanks.join(' / ')
-              : ex.type === 'fill-table' ? ex.rows.map(r => `${r.adj}: ${r.comp}/${r.sup}`).join('; ')
-              : ex.correct
+            const correctStr = getCorrectText(ex)
             return (
               <div key={ex.id} className="rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4 animate-slide-up" style={{ animationDelay: `${i * 60}ms` }}>
                 <div className="flex items-start gap-3">
                   <span className="w-7 h-7 rounded-full bg-red-500 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-semibold text-gray-800 dark:text-gray-200 mb-1">
-                      {ex.type === 'fill-blank' ? ex.question : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.question}
+                      {getExerciseContext(ex)}
                     </p>
                     <p className="text-xs text-green-600 dark:text-green-400 font-semibold mt-1">
                       ✓ {correctStr}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 italic mt-1">{ex.explanation}</p>
+                    {'explanation' in ex && <p className="text-xs text-gray-500 dark:text-gray-400 italic mt-1">{ex.explanation}</p>}
                   </div>
                 </div>
               </div>
@@ -650,23 +650,23 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
                   {sectionExercises.map((ex, i) => {
                     const userAnsArr = answers[ex.id] ?? []
                     const ok = aiResults[ex.id] ?? checkAnswer(ex, userAnsArr)
-                    let userAnsStr: string, correctStr: string
-                    if (ex.type === 'fill-blank') { userAnsStr = userAnsArr.join(' / ') || "(bo'sh)"; correctStr = ex.blanks.join(' / ') }
-                    else if (ex.type === 'fill-table') { userAnsStr = '(jadval)'; correctStr = ex.rows.map(r => `${r.adj}: ${r.comp}/${r.sup}`).join('; ') }
-                    else { userAnsStr = userAnsArr[0] || "(bo'sh)"; correctStr = ex.correct }
+                    let userAnsStr: string; const correctStr = getCorrectText(ex)
+                    if (ex.type === 'fill-blank' || ex.type === 'passage') { userAnsStr = userAnsArr.join(' / ') || "(bo'sh)" }
+                    else if (ex.type === 'fill-table') { userAnsStr = '(jadval)' }
+                    else { userAnsStr = userAnsArr[0] || "(bo'sh)" }
                     return (
                       <div key={ex.id} className={`rounded-xl border p-3 ${ok ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'}`}>
                         <div className="flex items-start gap-2">
                           <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 ${ok ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>{i + 1}</span>
                           <div className="flex-1 min-w-0">
                             <p className="text-xs text-gray-700 dark:text-gray-300 font-medium leading-snug">
-                              {ex.type === 'fill-blank' ? ex.question : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.question}
+                              {getExerciseContext(ex)}
                             </p>
                             {!ok && (
                               <div className="mt-1.5 space-y-0.5">
                                 <p className="text-xs"><span className="text-red-600 font-semibold">Sizniki:</span> <span className="font-mono">{userAnsStr}</span></p>
                                 <p className="text-xs"><span className="text-green-600 font-semibold">To'g'ri:</span> <span className="font-mono">{correctStr}</span></p>
-                                <p className="text-xs text-gray-500 dark:text-gray-400 italic mt-1">{ex.explanation}</p>
+                                {'explanation' in ex && <p className="text-xs text-gray-500 dark:text-gray-400 italic mt-1">{ex.explanation}</p>}
                               </div>
                             )}
                           </div>

@@ -60,6 +60,57 @@ export function checkAnswer(ex: DailyExercise, userAns: string[]): boolean {
     }
     case 'vocab-match':
       return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
+    case 'passage':
+      return ex.blanks.every((b, i) => {
+        if (ex.acceptedAnswers?.[i] && isAccepted(userAns[i] ?? '', ex.acceptedAnswers[i])) return true
+        return acceptBlank(userAns[i] ?? '', b)
+      })
+    case 'connection':
+      // Elaborative encoding — ochiq javob; yozilgan bo'lsa bajarilgan deb hisoblanadi
+      return (userAns[0] ?? '').trim().length > 0
+  }
+}
+
+function isAccepted(userAnswer: string, accepted: string[]): boolean {
+  return accepted.some(a => normalizeAnswer(a) === normalizeAnswer(userAnswer))
+}
+
+/* ─── Display helperlari (union bo'ylab xavfsiz matn olish) ───
+   Yangi mashq turi qo'shilganda faqat shu ikki switch'ni yangilash kifoya —
+   LessonView / ReviewView / SpecialCaseCard ichidagi tarqoq ternary'lar emas. */
+
+export function getExerciseContext(ex: DailyExercise): string {
+  switch (ex.type) {
+    case 'fill-blank':
+    case 'multiple-choice':
+    case 'error-correction':
+    case 'transformation':
+      return ex.question
+    case 'fill-table':
+      return ex.instruction
+    case 'vocab-match':
+      return ex.word
+    case 'passage':
+      return ex.passage
+    case 'connection':
+      return ex.prompt
+  }
+}
+
+export function getCorrectText(ex: DailyExercise): string {
+  switch (ex.type) {
+    case 'fill-blank':
+    case 'passage':
+      return ex.blanks.join(' / ')
+    case 'multiple-choice':
+    case 'error-correction':
+    case 'transformation':
+    case 'vocab-match':
+      return ex.correct
+    case 'fill-table':
+      return ex.rows.map(r => `${r.adj}: ${r.comp}/${r.sup}`).join('; ')
+    case 'connection':
+      return ex.exampleAnswer
   }
 }
 

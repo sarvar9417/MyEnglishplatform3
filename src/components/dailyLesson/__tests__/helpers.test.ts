@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { normalizeAnswer, checkAnswer, OPTION_LABELS } from '../helpers'
+import { normalizeAnswer, checkAnswer, OPTION_LABELS, getExerciseContext, getCorrectText } from '../helpers'
 import type { DailyExercise } from '../../../data/dailyLessons'
 
 describe('normalizeAnswer', () => {
@@ -117,6 +117,60 @@ describe('checkAnswer', () => {
       explanation: '',
     }
     expect(checkAnswer(ex, [''])).toBe(true)
+  })
+
+  it('checks passage type (contextual fill-blank)', () => {
+    const ex: DailyExercise = {
+      type: 'passage',
+      instruction: 'Fill blanks',
+      passage: 'He is ___(1) than me. She is the ___(2).',
+      blanks: ['taller', 'best'],
+      explanation: '',
+    }
+    expect(checkAnswer(ex, ['taller', 'best'])).toBe(true)
+    expect(checkAnswer(ex, ['TALLER', 'Best!'])).toBe(true)
+    expect(checkAnswer(ex, ['taller', 'worst'])).toBe(false)
+  })
+
+  it('checks passage type with acceptedAnswers alternatives', () => {
+    const ex: DailyExercise = {
+      type: 'passage',
+      instruction: '',
+      passage: '___(1)',
+      blanks: ['happiest'],
+      acceptedAnswers: [['happiest', 'best']],
+      explanation: '',
+    }
+    expect(checkAnswer(ex, ['happiest'])).toBe(true)
+    expect(checkAnswer(ex, ['best'])).toBe(true)
+    expect(checkAnswer(ex, ['saddest'])).toBe(false)
+  })
+
+  it('checks connection type (completed when non-empty)', () => {
+    const ex: DailyExercise = {
+      type: 'connection',
+      instruction: '',
+      prompt: 'Write 3 sentences',
+      hints: ['hint'],
+      exampleAnswer: 'My sister is older than me.',
+    }
+    expect(checkAnswer(ex, ['I am taller than my brother.'])).toBe(true)
+    expect(checkAnswer(ex, ['   '])).toBe(false)
+    expect(checkAnswer(ex, [''])).toBe(false)
+  })
+})
+
+describe('getExerciseContext / getCorrectText', () => {
+  it('returns context for every exercise type', () => {
+    expect(getExerciseContext({ type: 'fill-blank', question: 'Q', blanks: ['a'], instruction: '', explanation: '' } as DailyExercise)).toBe('Q')
+    expect(getExerciseContext({ type: 'vocab-match', word: 'cat', options: [], correct: '', instruction: '', explanation: '' } as DailyExercise)).toBe('cat')
+    expect(getExerciseContext({ type: 'passage', passage: 'P', blanks: [], instruction: '', explanation: '' } as DailyExercise)).toBe('P')
+    expect(getExerciseContext({ type: 'connection', prompt: 'Pr', hints: [], exampleAnswer: '', instruction: '' } as DailyExercise)).toBe('Pr')
+  })
+
+  it('returns correct-answer text for passage and connection', () => {
+    expect(getCorrectText({ type: 'passage', passage: '', blanks: ['a', 'b'], instruction: '', explanation: '' } as DailyExercise)).toBe('a / b')
+    expect(getCorrectText({ type: 'connection', prompt: '', hints: [], exampleAnswer: 'Example.', instruction: '' } as DailyExercise)).toBe('Example.')
   })
 })
 

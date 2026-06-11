@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useRef } from 'react'
 import type { DailyExercise } from '../../data/dailyLessons'
-import { normalizeAnswer, OPTION_LABELS } from './helpers'
+import { normalizeAnswer, OPTION_LABELS, getCorrectText } from './helpers'
 import { feelAnswer } from '../../lib/gameFeel'
 import { AudioButton } from '../ui/AudioButton'
 
@@ -325,6 +325,63 @@ export default function ExerciseCard({
           )}
         </div>
       )}
+
+      {ex.type === 'passage' && (
+        <div>
+          <p className="text-[11px] font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mb-1">📄 Matnli mashq (kontekst)</p>
+          {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
+          <div className="bg-white dark:bg-gray-800 border border-cyan-200 dark:border-cyan-800 rounded-xl px-4 py-3 mb-2 leading-loose text-sm text-gray-700 dark:text-gray-300">
+            {ex.passage.split(/_{3,}(?:\(\d+\))?/).map((part, i, arr) => (
+              <span key={i}>
+                {part}
+                {i < arr.length - 1 && (
+                  <input type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder={`(${i + 1})`}
+                    className={`inline-block border-b-2 w-28 text-center text-sm font-semibold outline-none bg-transparent transition-all duration-200 ${
+                      submitted
+                        ? normalizeAnswer(answers[i] ?? '') === normalizeAnswer((ex.blanks[i] ?? '').split('/')[0])
+                          ? 'border-green-500 text-green-700 dark:text-green-400'
+                          : 'border-red-400 text-red-700 dark:text-red-400'
+                        : 'border-cyan-400 text-cyan-700 dark:text-cyan-300 focus:border-cyan-600 focus:scale-105'
+                    }`}
+                    autoFocus={i === 0 && !submitted}
+                  />
+                )}
+              </span>
+            ))}
+          </div>
+          {submitted && feedbackBlock(ex, answers, isCorrect)}
+        </div>
+      )}
+
+      {ex.type === 'connection' && (
+        <div>
+          <p className="text-[11px] font-bold text-pink-600 dark:text-pink-400 uppercase tracking-wider mb-1">🔗 Bog'lash — o'z hayotingizdan</p>
+          {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
+          <div className="bg-pink-50 dark:bg-pink-900/20 border border-pink-200 dark:border-pink-800 rounded-xl px-4 py-3 mb-3">
+            <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">{ex.prompt}</p>
+            {ex.hints.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {ex.hints.map((h, i) => (
+                  <span key={i} className="text-[11px] px-2 py-0.5 rounded-full bg-pink-100 dark:bg-pink-900/40 text-pink-700 dark:text-pink-300">💡 {h}</span>
+                ))}
+              </div>
+            )}
+          </div>
+          <textarea value={answers[0] ?? ''} onChange={(e) => onChange(0, e.target.value)} disabled={submitted}
+            rows={3} placeholder="Bu yerga o'z misolingizni yozing..." className="input text-sm resize-none w-full" />
+          {submitted && (
+            <div className="mt-3 text-xs">
+              {(answers[0] ?? '').trim().length > 0
+                ? <p className="font-semibold text-green-700 dark:text-green-400">✅ Ajoyib! O'z misolingizni yaratish yodda saqlashni mustahkamlaydi. +10 XP</p>
+                : <p className="font-semibold text-amber-600 dark:text-amber-400">✍️ Keyingi safar o'z misolingizni yozib ko'ring — bu yodlashni kuchaytiradi.</p>}
+              <div className="mt-2 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                <p className="font-semibold text-gray-500 dark:text-gray-400 mb-0.5">📋 Namuna javob:</p>
+                <p className="text-gray-700 dark:text-gray-300 font-mono leading-relaxed">{ex.exampleAnswer}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
@@ -371,6 +428,15 @@ function submittedCheck(ex: DailyExercise, userAns: string[]): boolean {
     }
     case 'vocab-match':
       return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
+    case 'passage': {
+      return ex.blanks.every((b, i) => {
+        const userAnswer = userAns[i] ?? ''
+        if (ex.acceptedAnswers?.[i] && isAcceptedAnswer(userAnswer, ex.acceptedAnswers[i])) return true
+        return b.split('/').some(alt => normalizeAnswer(alt) === normalizeAnswer(userAnswer))
+      })
+    }
+    case 'connection':
+      return (userAns[0] ?? '').trim().length > 0
   }
 }
 
@@ -391,7 +457,7 @@ function hasAlternativeAnswer(ex: DailyExercise, answers: string[]): boolean {
  * Get blanks array for fill-blank exercise
  */
 function getBlanks(ex: DailyExercise): string[] {
-  if (ex.type === 'fill-blank') return ex.blanks
+  if (ex.type === 'fill-blank' || ex.type === 'passage') return ex.blanks
   return []
 }
 
@@ -405,14 +471,12 @@ function feedbackBlock(ex: DailyExercise, answers: string[], isCorrect: boolean)
       {!isCorrect && (
         <>
           <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{
-            ex.type === 'fill-blank'
+            ex.type === 'fill-blank' || ex.type === 'passage'
               ? (answers.join(' / ') || "(bo'sh)")
               : (answers[0] || "(bo'sh)")
           }</span></p>
           <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{
-            ex.type === 'fill-blank' ? blanks.join(' / ') :
-            ex.type === 'fill-table' ? 'jadvalda ko\'rsatilgan' :
-            ex.correct
+            ex.type === 'fill-table' ? 'jadvalda ko\'rsatilgan' : getCorrectText(ex)
           }</span></p>
         </>
       )}
@@ -425,7 +489,7 @@ function feedbackBlock(ex: DailyExercise, answers: string[], isCorrect: boolean)
           )}
         </>
       )}
-      <p className="mt-1 text-gray-600 dark:text-gray-400">💡 {ex.explanation}</p>
+      {'explanation' in ex && <p className="mt-1 text-gray-600 dark:text-gray-400">💡 {ex.explanation}</p>}
     </div>
   )
 }

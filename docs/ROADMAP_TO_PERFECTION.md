@@ -903,9 +903,16 @@ export async function speakFormula(text: string, rate = 0.85): Promise<void> {
 
 ---
 
-## F2-5. ❌ ️ Kontekstli Mashqlar (Mini-Passages)
+## F2-5. ✅ Kontekstli Mashqlar (Mini-Passages) — BAJARILDI
 **Muammo:** ~80% mashqlar izolyatsiyalangan jumlalar. Kontekstda o'rganish 3x samaraliroq
 **Ta'sir:** Ingliz tili pedagog +0.8
+
+**Holat:** `passage` mashq turi to'liq qo'shildi — `DailyExercise` union (dailyLessons.ts),
+ExerciseCard render (matn ichida inline inputlar, `___(n)` markerlari), `checkAnswer`
+(blanks + acceptedAnswers), va markazlashtirilgan `getExerciseContext`/`getCorrectText`
+helper'lari orqali LessonView/ReviewView/SpecialCaseCard'da xavfsiz ko'rsatish. Birinchi
+namuna kontent comparatives darsiga qo'shildi ("Chuqur o'rganish" bo'limi). Test'lar bilan
+qoplangan (helpers.test.ts). Qolgan darslarga kontent inkremental qo'shilishi mumkin.
 
 ### Yangi mashq turi: `passage`
 
@@ -1825,9 +1832,15 @@ if (isConfusablePair(newWord, lastLearnedWord)) {
 
 ---
 
-## F7-3. ❌ Elaborative Encoding Mashqlari
+## F7-3. ✅ Elaborative Encoding Mashqlari — BAJARILDI
 **Muammo:** Yangi ma'lumotni mavjud bilim bilan bog'lash mashqlari yo'q
 **Ta'sir:** Yodlash olimi +0.5
+
+**Holat:** `connection` mashq turi to'liq qo'shildi — ochiq javobli self-reflection
+(prompt + hints chiplari + textarea), submit qilingach namuna javob ko'rsatiladi.
+`checkAnswer` bo'sh bo'lmagan javobni "bajarilgan" deb hisoblaydi (baholanmaydi —
+elaborative encoding effort-based). Birinchi namuna comparatives darsiga qo'shildi.
+Test'lar bilan qoplangan.
 
 ### Yangi mashq turi: `connection`
 

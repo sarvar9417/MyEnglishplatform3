@@ -4,7 +4,7 @@ import type { DailyLesson, DailyExercise } from '../../data/dailyLessons'
 import type { ReadingSection as ReadingSectionType, WritingSection as WritingSectionType, ListeningSection as ListeningSectionType } from '../../data/dailyLessons'
 
 import { useStore } from '../../store/useStore'
-import { checkAnswer } from './helpers'
+import { checkAnswer, getExerciseContext, getCorrectText } from './helpers'
 import { checkDailyExerciseAnswers } from '../../lib/claude'
 import type { DailyExerciseCheckItem } from '../../lib/claude'
 import { getStoryBeat, resolveActDisplay } from '../../data/narrative/storyline'
@@ -441,20 +441,15 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
       const ok = checkAnswer(ex, userAns)
       if (ok) correct++
       else {
-        let context = ''
-        let correctStr = ''
+        const context = getExerciseContext(ex)
+        let correctStr = getCorrectText(ex)
         let userAnsStr = ''
-        if (ex.type === 'fill-blank') {
-          context = ex.question
-          correctStr = ex.blanks.join(' / ')
+        if (ex.type === 'fill-blank' || ex.type === 'passage') {
           userAnsStr = userAns.join(' / ')
         } else if (ex.type === 'fill-table') {
-          context = ex.instruction
           correctStr = ex.rows.map(r => `${r.adj}: comp=${r.comp}, sup=${r.sup}`).join('; ')
           userAnsStr = ex.rows.map((r, idx) => `${r.adj}: comp=${userAns[idx * 2] || '—'}, sup=${userAns[idx * 2 + 1] || '—'}`).join('; ')
         } else {
-          context = ex.type === 'vocab-match' ? ex.word : ex.question
-          correctStr = ex.correct
           userAnsStr = userAns[0] ?? ''
         }
         wrongItems.push({ id: ex.id, context, correct: correctStr, userAnswer: userAnsStr, type: ex.type })
@@ -1042,18 +1037,18 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
                         {sectionExercises.map((ex, i) => {
                           const userAnsArr = answers[ex.id] ?? []
                           const ok = aiResults[ex.id] ?? checkAnswer(ex, userAnsArr)
-                          let userAnsStr: string; let correctStr: string
-                          if (ex.type === 'fill-blank') { userAnsStr = userAnsArr.join(' / ') || "(bo'sh)"; correctStr = ex.blanks.join(' / ') }
+                          let userAnsStr: string; let correctStr = getCorrectText(ex)
+                          if (ex.type === 'fill-blank' || ex.type === 'passage') { userAnsStr = userAnsArr.join(' / ') || "(bo'sh)" }
                           else if (ex.type === 'fill-table') {
                             const parts = ex.rows.map((r, idx) => `${r.adj}: C=${userAnsArr[idx * 2] ?? '—'} S=${userAnsArr[idx * 2 + 1] ?? '—'}`)
                             userAnsStr = parts.join('; ')
                             correctStr = ex.rows.map((r) => `${r.adj}: C=${r.comp || '—'} S=${r.sup || '—'}`).join('; ')
-                          } else { userAnsStr = userAnsArr[0] || "(bo'sh)"; correctStr = ex.correct }
+                          } else { userAnsStr = userAnsArr[0] || "(bo'sh)" }
                           return (
                             <tr key={ex.id} className={`border-b border-gray-50 dark:border-gray-800 ${ok ? 'bg-green-50/40 dark:bg-green-900/20' : 'bg-red-50/40 dark:bg-red-900/20'}`}>
                               <td className="py-2.5 pr-2 text-xs font-bold text-gray-600">{i + 1}</td>
                               <td className="py-2.5 pr-3"><p className="text-xs text-gray-800 font-medium leading-snug line-clamp-2">
-                                {ex.type === 'fill-blank' ? ex.question.replace(/_{3,}/g, '___') : ex.type === 'fill-table' ? ex.instruction : ex.type === 'vocab-match' ? ex.word : ex.question}
+                                {ex.type === 'fill-blank' ? ex.question.replace(/_{3,}/g, '___') : getExerciseContext(ex)}
                               </p></td>
                               <td className="py-2.5 pr-3"><span className={`inline-block text-xs font-mono font-semibold px-1.5 py-0.5 rounded max-w-[400px] ${ok ? 'text-green-700' : 'bg-red-100 text-red-700'}`}>{userAnsStr}</span></td>
                               <td className="py-2.5 pr-3"><span className="inline-block text-xs font-mono font-semibold text-green-700 bg-green-100 px-1.5 py-0.5 rounded max-w-[400px]">{correctStr}</span></td>
@@ -1196,7 +1191,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
                                     return (
                                       <tr key={t.id} className={`border-b border-gray-50 dark:border-gray-800 ${ok ? 'bg-green-50/40 dark:bg-green-900/20' : 'bg-red-50/40 dark:bg-red-900/20'}`}>
                                         <td className="py-2.5 pr-2 text-xs font-bold text-gray-600">{i + 1}</td>
-                                        <td className="py-2.5 pr-3"><p className="text-xs text-gray-800 dark:text-gray-200 font-medium leading-snug line-clamp-2">{t.type === 'fill-table' ? t.instruction : t.type === 'vocab-match' ? t.word : t.question}</p></td>
+                                        <td className="py-2.5 pr-3"><p className="text-xs text-gray-800 dark:text-gray-200 font-medium leading-snug line-clamp-2">{getExerciseContext(t)}</p></td>
                                         <td className="py-2.5 pr-3">
                                           <span className={`inline-block text-xs font-mono font-semibold px-1.5 py-0.5 rounded ${ok ? 'text-green-700' : ans ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-500'}`}>
                                             {ans || '(tanlanmadi)'}
@@ -1236,7 +1231,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
                                     {t.instruction}
                                   </p>
                                 )}
-                                <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{t.type === 'fill-blank' ? t.question.replace(/_{3,}/g, '___') : t.type === 'fill-table' ? t.instruction : t.type === 'vocab-match' ? t.word : t.question}</p>
+                                <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{t.type === 'fill-blank' ? t.question.replace(/_{3,}/g, '___') : getExerciseContext(t)}</p>
                                 {t.type === 'multiple-choice' ? (
                                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                     {(shuffledTestOptionsMap.get(t.id) ?? t.options).map((opt, oi) => {
