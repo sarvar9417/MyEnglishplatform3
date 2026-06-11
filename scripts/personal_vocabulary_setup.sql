@@ -50,6 +50,10 @@ CREATE INDEX IF NOT EXISTS idx_personal_vocab_review
 CREATE INDEX IF NOT EXISTS idx_personal_vocab_sessions_user
   ON public.personal_vocabulary_sessions (user_id, session_date DESC);
 
+-- Dublikat so'zlar oldini olish: bir user bir so'zni 2 marta qo'sha olmaydi
+CREATE UNIQUE INDEX IF NOT EXISTS idx_personal_vocab_unique_word
+  ON public.personal_vocabulary (user_id, lower(trim(english)));
+
 -- ─── RLS — personal_vocabulary (har operatsiya uchun alohida, WITH CHECK bilan) ─
 ALTER TABLE public.personal_vocabulary ENABLE ROW LEVEL SECURITY;
 
@@ -71,6 +75,11 @@ CREATE POLICY "pvocab_delete" ON public.personal_vocabulary FOR DELETE
 
 -- ─── RLS — personal_vocabulary_sessions ──────────────────────────────────
 ALTER TABLE public.personal_vocabulary_sessions ENABLE ROW LEVEL SECURITY;
+
+-- Eski (dev migration'idan qolgan) ortiqcha policy'larni tozalaymiz
+DROP POLICY IF EXISTS "pvocab_sess_select" ON public.personal_vocabulary_sessions;
+DROP POLICY IF EXISTS "pvocab_sess_insert" ON public.personal_vocabulary_sessions;
+DROP POLICY IF EXISTS "pvocab_sess_delete" ON public.personal_vocabulary_sessions;
 
 DROP POLICY IF EXISTS "pvsess_select" ON public.personal_vocabulary_sessions;
 CREATE POLICY "pvsess_select" ON public.personal_vocabulary_sessions FOR SELECT
@@ -152,8 +161,8 @@ BEGIN
     box           = v_new_box,
     next_review   = (v_today + v_interval)::text,
     is_learned    = (v_new_box >= 6),
-    correct_count = correct_count + CASE WHEN p_rating = 'bilmadim' THEN 0 ELSE 1 END,
-    wrong_count   = wrong_count   + CASE WHEN p_rating = 'bilmadim' THEN 1 ELSE 0 END,
+    correct_count = correct_count + CASE WHEN p_rating IN ('bildim','yodladim') THEN 1 ELSE 0 END,
+    wrong_count   = wrong_count   + CASE WHEN p_rating IN ('bilmadim','qiynaldim') THEN 1 ELSE 0 END,
     last_rating   = p_rating,
     fsrs_stability  = COALESCE(p_fsrs_stability,  fsrs_stability),
     fsrs_difficulty = COALESCE(p_fsrs_difficulty, fsrs_difficulty),
@@ -165,7 +174,7 @@ BEGIN
   -- Sessiya tarixini yozamiz (jadval endi ishlatiladi)
   INSERT INTO public.personal_vocabulary_sessions (user_id, vocab_id, result, rating)
   VALUES (p_user_id, p_word_id,
-          CASE WHEN p_rating = 'bilmadim' THEN 'wrong' ELSE 'correct' END,
+          CASE WHEN p_rating IN ('bildim','yodladim') THEN 'correct' ELSE 'wrong' END,
           p_rating);
 
   RETURN v_row;

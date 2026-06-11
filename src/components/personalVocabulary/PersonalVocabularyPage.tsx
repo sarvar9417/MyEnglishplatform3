@@ -3,6 +3,7 @@ import { useStore } from '../../store/useStore'
 import { useI18n } from '../../i18n'
 import { exportPersonalVocabulary, importPersonalVocabulary, generateAITranslation } from '../../services/personalVocabularyService'
 import { supabase } from '../../lib/supabase'
+import { getTodayTashkent } from '../../utils/tashkentDate'
 import type { PersonalWord, AddWordDTO, VocabRating } from '../../types/personalVocabulary'
 import { Plus, Search, Download, Upload, Play, BookOpen, Filter, Loader2 } from 'lucide-react'
 import AddWordForm from './AddWordForm'
@@ -53,14 +54,14 @@ export default function PersonalVocabularyPage() {
                          w.uzbek.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesCategory = filterCategory === 'all' || w.category === filterCategory
     const matchesLevel = filterLevel === 'all' || w.level === filterLevel
-    const matchesDue = !showDueOnly || !w.is_learned && new Date(w.next_review) <= new Date()
+    const matchesDue = !showDueOnly || !w.is_learned && w.next_review <= getTodayTashkent()
     return matchesSearch && matchesCategory && matchesLevel && matchesDue
   })
 
   // Stats
   const totalWords = personalWords.length
   const learnedWords = personalWords.filter(w => w.is_learned).length
-  const dueWords = personalWords.filter(w => !w.is_learned && new Date(w.next_review) <= new Date()).length
+  const dueWords = personalWords.filter(w => !w.is_learned && w.next_review <= getTodayTashkent()).length
 
   const handleAddWord = async (wordData: AddWordDTO) => {
     const userId = await getUserId()
@@ -79,7 +80,8 @@ export default function PersonalVocabularyPage() {
   }
 
   const handleStartTest = () => {
-    const due = personalWords.filter(w => !w.is_learned && new Date(w.next_review) <= new Date())
+    const today = getTodayTashkent()
+    const due = personalWords.filter(w => !w.is_learned && w.next_review <= today)
     const wordsToTest = due.length > 0 ? due : personalWords.slice(0, 10)
     setTestWords(wordsToTest)
     setViewMode('test')
@@ -222,11 +224,26 @@ export default function PersonalVocabularyPage() {
           className="px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200"
         >
           <option value="all">{t('personalVocab.allCategories') || 'Barcha kategoriyalar'}</option>
-          <option value="custom">{t('personalVocab.custom') || 'Shaxsiy'}</option>
+          <option value="custom">Shaxsiy</option>
           <option value="grammar">Grammar</option>
           <option value="travel">Travel</option>
-          <option value="business">Business</option>
+          <option value="formal">Formal</option>
           <option value="ielts">IELTS</option>
+          <option value="business">Business</option>
+          <option value="food">Food</option>
+          <option value="health">Health</option>
+          <option value="education">Education</option>
+          <option value="social">Social</option>
+          <option value="work">Work</option>
+          <option value="shopping">Shopping</option>
+          <option value="relationships">Relationships</option>
+          <option value="environment">Environment</option>
+          <option value="economy">Economy</option>
+          <option value="culture">Culture</option>
+          <option value="feelings">Feelings</option>
+          <option value="discussion">Discussion</option>
+          <option value="technology">Technology</option>
+          <option value="communication">Communication</option>
         </select>
         <select
           value={filterLevel}
@@ -265,15 +282,13 @@ export default function PersonalVocabularyPage() {
         <div className="text-center py-12 text-gray-500">
           {t('personalVocab.loading') || 'Yuklanmoqda...'}
         </div>
-      ) : (
+      ) : filteredWords.length > 0 ? (
         <WordList
           words={filteredWords}
           onDelete={handleDeleteWord}
           onRate={handleRateWord}
         />
-      )}
-
-      {!loading && filteredWords.length === 0 && (
+      ) : (
         <div className="text-center py-12">
           <BookOpen size={48} className="mx-auto text-gray-300 mb-4" />
           <p className="text-gray-500">

@@ -9,9 +9,6 @@ import type { PersonalWord, AddWordDTO, UpdateWordDTO, VocabRating } from '../ty
 // Personal Vocabulary Service
 // ═══════════════════════════════════════════════════════════════════════════
 
-const SRS_INTERVALS = [1, 3, 7, 14, 30, 90]
-const MAX_BOX = 6
-
 // 'guest' (yoki bo'sh) userId — auth.users'ga FK + RLS uchun yaroqsiz.
 // Mutatsiyalardan oldin tekshiramiz: jim FK xatosi o'rniga aniq xabar.
 function requireAuthedUser(userId: string): void {
@@ -21,35 +18,29 @@ function requireAuthedUser(userId: string): void {
   }
 }
 
-export function computePersonalVocabNextReview(
-  box: number,
-  rating: VocabRating
-): { box: number; next_review: string; is_learned: boolean } {
-  let newBox: number
-
-  if (rating === 'yodladim') {
-    newBox = Math.min(box + 2, MAX_BOX)
-  } else if (rating === 'bildim') {
-    newBox = Math.min(box + 1, MAX_BOX)
-  } else if (rating === 'qiynaldim') {
-    newBox = box  // Keep at current level
-  } else {
-    newBox = 1  // bilmadim - reset to box 1
-  }
-
-  const intervalDays = SRS_INTERVALS[newBox - 1]
-  const isLearned = newBox >= MAX_BOX
-
-  return { box: newBox, next_review: addDaysTashkent(intervalDays), is_learned: isLearned }
-}
-
 // ─── CRUD Operations ──────────────────────────────────────────────────────
+
+async function checkDuplicateWord(userId: string, english: string): Promise<boolean> {
+  const { data } = await (supabase
+    .from('personal_vocabulary' as never)
+    .select('id')
+    .eq('user_id', userId)
+    .ilike('english', english.trim())
+    .maybeSingle() as unknown as Promise<{ data: { id: number } | null }>)
+  return !!data
+}
 
 export async function addPersonalWordToDB(
   userId: string,
   wordData: AddWordDTO
 ): Promise<PersonalWord> {
   requireAuthedUser(userId)
+
+  if (await checkDuplicateWord(userId, wordData.english)) {
+    useToastStore.getState().toast("Bu so'z allaqachon qo'shilgan", 'warning')
+    throw new Error('Duplicate word')
+  }
+
   const now = new Date().toISOString()
   const defaultFSRS = createDefaultFSRSState()
 
@@ -228,9 +219,27 @@ export async function batchAddPersonalWordsToDB(
   if (wordsData.length === 0) return []
   requireAuthedUser(userId)
 
+  // Filter out duplicates: fetch existing words for this user
+  const { data: existing } = await (supabase
+    .from('personal_vocabulary' as never)
+    .select('english')
+    .eq('user_id', userId) as unknown as Promise<{ data: { english: string }[] | null }>)
+  const existingSet = new Set((existing ?? []).map(e => e.english.toLowerCase().trim()))
+  const uniqueWords = wordsData.filter(w => !existingSet.has(w.english.toLowerCase().trim()))
+
+  if (uniqueWords.length === 0) {
+    useToastStore.getState().toast("Barcha so'zlar allaqachon qo'shilgan", 'warning')
+    return []
+  }
+
+  if (uniqueWords.length < wordsData.length) {
+    useToastStore.getState().toast(`${wordsData.length - uniqueWords.length} ta dublikat o'tkazib yuborildi`, 'warning')
+  }
+
   const now = new Date().toISOString()
+  const wordsToInsert = uniqueWords
   const defaultFSRS = createDefaultFSRSState()
-  const rows = wordsData.map((w) => ({
+  const rows = wordsToInsert.map((w) => ({
     user_id: userId,
     english: w.english,
     uzbek: w.uzbek,
