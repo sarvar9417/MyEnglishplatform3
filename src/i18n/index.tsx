@@ -31,14 +31,14 @@ async function loadLocale(locale: Locale): Promise<TranslationStrings> {
   let data: TranslationStrings
   switch (locale) {
     case 'en':
-      data = (await import('./en.json')).default as TranslationStrings
+      data = (await import('./en.json')).default as unknown as TranslationStrings
       break
     case 'ru':
-      data = (await import('./ru.json')).default as TranslationStrings
+      data = (await import('./ru.json')).default as unknown as TranslationStrings
       break
     case 'uz':
     default:
-      data = (await import('./uz.json')).default as TranslationStrings
+      data = (await import('./uz.json')).default as unknown as TranslationStrings
       break
   }
   cache.set(locale, data)
