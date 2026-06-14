@@ -355,6 +355,25 @@ export const participleClausesB1plus: DailyLesson = {
   subtitle: 'Present Participle, Past Participle, Perfect Participle \u2014 qisqa va samarali gap tuzish',
   level: 'B1+',
   day: 66,
+  listening: {
+    transcript: "Narrator: Walking through the old market, I noticed a small shop selling handmade carpets. Attracted by the bright colours, I stepped inside. An old man, sitting quietly in the corner, smiled at me. Having worked as a weaver for fifty years, he knew everything about carpets. Surprised by his knowledge, I asked many questions. Showing me a beautiful red carpet, he explained how it was made. Made from pure silk, it had taken six months to finish. Impressed by his skill, I decided to buy a small one. Wrapping it carefully, the old man thanked me warmly. Leaving the shop, I felt I had learned something special that day.",
+    vocabulary: [
+      { word: 'handmade', definition: 'qo\'lda yasalgan' },
+      { word: 'weaver', definition: 'to\'quvchi' },
+      { word: 'silk', definition: 'ipak' },
+      { word: 'impressed', definition: 'taassurot ostida qolgan' },
+      { word: 'skill', definition: 'mahorat' },
+    ],
+    questions: [
+      { id: 90081, type: 'multiple-choice', question: "What was the small shop selling?", options: ["Spices", "Handmade carpets", "Books", "Jewellery"], correctIndex: 1, explanation: "'a small shop selling handmade carpets' — present participle clause." },
+      { id: 90082, type: 'true-false', question: "The old man had worked as a weaver for fifty years.", answer: true, explanation: "'Having worked as a weaver for fifty years, he knew everything about carpets' — perfect participle." },
+      { id: 90083, type: 'multiple-choice', question: "What was the red carpet made from?", options: ["Cotton", "Wool", "Pure silk", "Polyester"], correctIndex: 2, explanation: "'Made from pure silk, it had taken six months to finish' — past participle clause." },
+      { id: 90084, type: 'multiple-choice', question: "How long had the silk carpet taken to finish?", options: ["One month", "Three months", "Six months", "One year"], correctIndex: 2, explanation: "'it had taken six months to finish.'" },
+      { id: 90085, type: 'multiple-choice', question: "How did the narrator feel when leaving the shop?", options: ["Disappointed", "That he had learned something special", "Tired", "Confused"], correctIndex: 1, explanation: "'Leaving the shop, I felt I had learned something special that day.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Sifatdosh gaplar (participle clauses)",
+  },
   reading: {
     passage: "Lost in the Mountains\n\nWalking along the narrow path, the two hikers did not notice the dark clouds above them. Surrounded by tall trees, they felt safe at first. The storm, having started suddenly, soon covered everything in fog.\n\nNot knowing which way to go, they decided to wait. Exhausted and cold, they sat under a large rock. A man living nearby, hearing their voices, came to help. Having spent many years in those mountains, he guided them down easily. Rescued at last, the hikers thanked him again and again. Looking back, they understood how dangerous their mistake had been.",
     questions: [
@@ -506,6 +525,25 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
   subtitle: 'To + V, V-ing \u2014 murakkab verb patternlar va ma\u2019no farqlari',
   level: 'B1+',
   day: 67,
+  listening: {
+    transcript: "Sardor: Did you remember to lock the door?\nGulnoza: Oh no! I forgot to do it. I remember locking it yesterday, though.\nSardor: Let's not worry. We can stop to check on the way back.\nGulnoza: Good idea. By the way, I've stopped drinking coffee — it kept me awake at night.\nSardor: Really? I tried to quit too, but I couldn't. I tried drinking tea instead, but it's not the same.\nGulnoza: I know the feeling. I'll never forget meeting my first English teacher; she changed my life.\nSardor: That's lovely. Remember to thank her someday.\nGulnoza: I will. Anyway, we need to buy some bread.\nSardor: And don't forget to call your mother — she's waiting.\nGulnoza: You're right. I always regret forgetting these little things!",
+    vocabulary: [
+      { word: 'lock', definition: 'qulflamoq' },
+      { word: 'quit', definition: 'tashlamoq, voz kechmoq' },
+      { word: 'awake', definition: 'uyg\'oq' },
+      { word: 'regret', definition: 'afsuslanmoq' },
+      { word: 'instead', definition: 'o\'rniga' },
+    ],
+    questions: [
+      { id: 90091, type: 'true-false', question: "Gulnoza remembered to lock the door.", answer: false, explanation: "'I forgot to do it' — forget + to V (a duty not done). She only remembers locking it YESTERDAY." },
+      { id: 90092, type: 'true-false', question: "Gulnoza has stopped drinking coffee.", answer: true, explanation: "'I've stopped drinking coffee' — stop + V-ing (quitting a habit)." },
+      { id: 90093, type: 'multiple-choice', question: "Why did Sardor try drinking tea?", options: ["He likes tea more", "He tried to quit coffee", "The coffee was finished", "Gulnoza asked him to"], correctIndex: 1, explanation: "'I tried to quit too... I tried drinking tea instead' — try to V (attempt) vs try V-ing (experiment)." },
+      { id: 90094, type: 'multiple-choice', question: "What will Gulnoza never forget?", options: ["Buying bread", "Locking the door", "Meeting her first English teacher", "Drinking coffee"], correctIndex: 2, explanation: "'I'll never forget meeting my first English teacher' — forget + V-ing (a memory)." },
+      { id: 90095, type: 'multiple-choice', question: "What does Sardor remind Gulnoza to do?", options: ["Call her mother", "Lock the door", "Buy tea", "Thank the teacher"], correctIndex: 0, explanation: "'don't forget to call your mother.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Infinitiv va gerund — remember / forget / stop / try",
+  },
   reading: {
     passage: "Two Roads\n\nWhen Nodira finished university, she had to make a difficult choice. She remembered promising her father to find a stable job, but she also wanted to try acting. She stopped to think about both options carefully.\n\nHer friend suggested applying for a teaching post. \"You should try teaching,\" she said. But Nodira could not imagine spending her whole life in one classroom. She regretted not telling her family the truth earlier. Finally, she decided to follow her dream. She will never forget standing on a stage for the first time, and she does not regret making that choice.",
     questions: [

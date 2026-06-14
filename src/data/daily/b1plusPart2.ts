@@ -6,6 +6,25 @@ export const linkingWordsAdvanced: DailyLesson = {
   subtitle: "Furthermore, moreover, consequently, hence, nevertheless � bog'lovchi so'zlar",
   level: 'B1+',
   day: 73,
+  listening: {
+    transcript: "Narrator: Learning a language is challenging; however, it is one of the most rewarding things you can do. Many people give up early. Nevertheless, those who continue often succeed. There are many useful tools, such as apps, books, and online courses. Despite having these tools, some learners still struggle. The main reason is a lack of practice; therefore, speaking every day is essential. Moreover, making mistakes is completely normal. In fact, mistakes help us learn. Although progress can feel slow, it is always happening. Consequently, patience is the key to success. Whereas some people focus only on grammar, the best learners practise all four skills. As a result, they improve faster and enjoy the process much more.",
+    vocabulary: [
+      { word: 'challenging', definition: 'qiyin, sinovli' },
+      { word: 'rewarding', definition: 'samarali, mamnuniyat keltiruvchi' },
+      { word: 'struggle', definition: 'qiynalmoq' },
+      { word: 'essential', definition: 'zarur, muhim' },
+      { word: 'patience', definition: 'sabr' },
+    ],
+    questions: [
+      { id: 90101, type: 'true-false', question: "The speaker says learning a language is rewarding.", answer: true, explanation: "'however, it is one of the most rewarding things you can do.'" },
+      { id: 90102, type: 'multiple-choice', question: "Which tools does the speaker mention?", options: ["Only teachers", "Apps, books, and online courses", "Only grammar books", "Films and music"], correctIndex: 1, explanation: "'many useful tools, such as apps, books, and online courses' — 'such as' for examples." },
+      { id: 90103, type: 'multiple-choice', question: "What is essential, according to the speaker?", options: ["Memorising grammar", "Speaking every day", "Using many apps", "Studying alone"], correctIndex: 1, explanation: "'therefore, speaking every day is essential' — 'therefore' shows result." },
+      { id: 90104, type: 'multiple-choice', question: "What is described as 'the key to success'?", options: ["Money", "Patience", "Talent", "Luck"], correctIndex: 1, explanation: "'Consequently, patience is the key to success.'" },
+      { id: 90105, type: 'multiple-choice', question: "What do the best learners practise?", options: ["Only grammar", "Only speaking", "All four skills", "Only listening"], correctIndex: 2, explanation: "'Whereas some people focus only on grammar, the best learners practise all four skills.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Bog'lovchi so'zlar (advanced linking words)",
+  },
   writing: {
     prompt: "Write a short formal paragraph giving your opinion on a topic such as technology, study, or city life. Connect your ideas with advanced linkers: 'furthermore', 'moreover', 'consequently', 'hence', and 'nevertheless'.",
     wordLimit: 95,

@@ -220,6 +220,25 @@ export const advancedConditionalsB2: DailyLesson = {
   subtitle: 'Mixed, inverted, implied conditionals — murakkab shart gaplar',
   level: 'B2',
   day: 83,
+  listening: {
+    transcript: "Investor: If we had launched the app last year, we would be profitable now.\nFounder: True. Had I known the market so well, I would have moved faster.\nInvestor: Were we to expand into new cities, we'd need a lot more funding.\nFounder: Agreed. If our team were larger, we could handle that growth easily.\nInvestor: Should the economy slow down, what would we do?\nFounder: We'd cut costs. But if customers hadn't trusted us, we wouldn't be here at all.\nInvestor: That's a fair point. If I were you, I'd hire two more engineers.\nFounder: I'm considering it. Had we not lost time last spring, we'd already have done so.\nInvestor: Well, if everything goes well, we'll raise new investment next quarter.\nFounder: Let's make sure it does.",
+    vocabulary: [
+      { word: 'profitable', definition: 'foydali, daromadli' },
+      { word: 'funding', definition: 'moliyalashtirish' },
+      { word: 'expand', definition: 'kengaytirmoq' },
+      { word: 'hire', definition: 'ishga olmoq' },
+      { word: 'investment', definition: 'investitsiya, sarmoya' },
+    ],
+    questions: [
+      { id: 90111, type: 'true-false', question: "The company is already profitable.", answer: false, explanation: "'If we HAD launched the app last year, we WOULD BE profitable now' — mixed conditional: it is not profitable." },
+      { id: 90112, type: 'multiple-choice', question: "What would the company need to expand into new cities?", options: ["More staff only", "A lot more funding", "A new product", "Government approval"], correctIndex: 1, explanation: "'Were we to expand into new cities, we'd need a lot more funding' — inversion of 'If we were to'." },
+      { id: 90113, type: 'multiple-choice', question: "What does the investor advise the founder to do?", options: ["Sell the company", "Hire two more engineers", "Move abroad", "Lower prices"], correctIndex: 1, explanation: "'If I were you, I'd hire two more engineers.'" },
+      { id: 90114, type: 'multiple-choice', question: "Why does the founder say they are 'here at all'?", options: ["Because of luck", "Because customers trusted them", "Because of the economy", "Because of the investor"], correctIndex: 1, explanation: "'if customers hadn't trusted us, we wouldn't be here at all' — third conditional." },
+      { id: 90115, type: 'multiple-choice', question: "When do they hope to raise new investment?", options: ["Next week", "Next month", "Next quarter", "Next year"], correctIndex: 2, explanation: "'if everything goes well, we'll raise new investment next quarter.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Murakkab shart gaplar — mixed conditionals va inversion",
+  },
   category: 'Advanced Grammar',
   formulas: [
     { label: 'Mixed Conditional', structure: 'If + past perfect, would + V (past→present)\nIf I had studied, I would be successful now.', color: 'green' },

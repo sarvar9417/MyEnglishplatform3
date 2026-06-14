@@ -7,6 +7,25 @@ export const complexSentencesB2: DailyLesson = {
   level: 'B2',
   day: 90,
   category: 'Advanced Grammar',
+  listening: {
+    transcript: "Lecturer: Today we'll discuss why some economies grow faster than others. Although many factors play a role, education is perhaps the most important. When a country invests in schools, its workforce becomes more skilled, which in turn attracts investment. Countries that fail to educate their citizens often fall behind, whereas those that prioritise learning tend to prosper. Because technology changes quickly, workers who keep learning remain valuable. Moreover, since global markets are connected, a skilled workforce can compete worldwide. What matters most is not how much money a country has, but how wisely it invests in its people. As economists have long argued, human capital is the true engine of growth. Therefore, any nation that wishes to succeed must treat education as a priority.",
+    vocabulary: [
+      { word: 'workforce', definition: 'ishchi kuchi' },
+      { word: 'prosper', definition: 'gullab-yashnamoq' },
+      { word: 'compete', definition: 'raqobatlashmoq' },
+      { word: 'invest', definition: 'sarmoya kiritmoq' },
+      { word: 'priority', definition: 'ustuvorlik' },
+    ],
+    questions: [
+      { id: 90121, type: 'multiple-choice', question: "According to the lecturer, what is perhaps the most important factor for growth?", options: ["Natural resources", "Education", "Geography", "Population size"], correctIndex: 1, explanation: "'Although many factors play a role, education is perhaps the most important.'" },
+      { id: 90122, type: 'multiple-choice', question: "What happens when a country invests in schools?", options: ["Prices fall", "Its workforce becomes more skilled", "Taxes rise", "People leave"], correctIndex: 1, explanation: "'its workforce becomes more skilled, which in turn attracts investment.'" },
+      { id: 90123, type: 'true-false', question: "Countries that fail to educate their citizens tend to prosper.", answer: false, explanation: "'Countries that fail to educate their citizens often fall behind' — they do NOT prosper." },
+      { id: 90124, type: 'multiple-choice', question: "What is called 'the true engine of growth'?", options: ["Money", "Human capital", "Technology", "Trade"], correctIndex: 1, explanation: "'human capital is the true engine of growth.'" },
+      { id: 90125, type: 'multiple-choice', question: "What must a nation treat as a priority?", options: ["Defence", "Education", "Tourism", "Agriculture"], correctIndex: 1, explanation: "'any nation that wishes to succeed must treat education as a priority.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Murakkab gaplar — akademik uslub",
+  },
   formulas: [
     { label: 'Subordination', structure: 'Subordinator + clause, main clause\nAlthough it rained, we went out.', color: 'green' },
     { label: 'Coordination', structure: 'Clause + coordinator + clause\nI came home and she made dinner.', color: 'blue' },
@@ -200,6 +219,25 @@ export const advancedModalsB2: DailyLesson = {
   subtitle: "Needn't have, didn't need to, would rather, had better, be supposed to, dare",
   level: 'B2',
   day: 91,
+  listening: {
+    transcript: "Boss: You needn't have stayed so late last night — the report wasn't urgent.\nEmployee: Oh, I didn't need to? I must have misunderstood the deadline.\nBoss: It's fine. But you'd better check with me next time before working overtime.\nEmployee: I will. I should have asked earlier. I just didn't want to be late.\nBoss: I understand. By the way, the client must have received our proposal by now.\nEmployee: They should have. I sent it two days ago. Should I follow up?\nBoss: Yes, you'd better. They might have questions.\nEmployee: Will do. I needn't have worried so much — everything is under control.\nBoss: Exactly. You mustn't put so much pressure on yourself.\nEmployee: Thank you. I'll try to relax a little more.",
+    vocabulary: [
+      { word: 'urgent', definition: 'shoshilinch' },
+      { word: 'deadline', definition: 'muddat, oxirgi sana' },
+      { word: 'overtime', definition: 'qo\'shimcha ish vaqti' },
+      { word: 'proposal', definition: 'taklif (rasmiy)' },
+      { word: 'pressure', definition: 'bosim' },
+    ],
+    questions: [
+      { id: 90131, type: 'true-false', question: "The employee needed to stay late last night.", answer: false, explanation: "'You needn't have stayed so late' — needn't have = it was unnecessary (but he did it)." },
+      { id: 90132, type: 'multiple-choice', question: "What does the boss advise about working overtime?", options: ["Never do it", "Check with the boss first next time", "Do it every day", "Ask a colleague"], correctIndex: 1, explanation: "'you'd better check with me next time before working overtime' — had better = strong advice." },
+      { id: 90133, type: 'multiple-choice', question: "When did the employee send the proposal?", options: ["Today", "Yesterday", "Two days ago", "Last week"], correctIndex: 2, explanation: "'I sent it two days ago.'" },
+      { id: 90134, type: 'multiple-choice', question: "What does the boss think the client must have done?", options: ["Rejected the proposal", "Received the proposal", "Ignored the email", "Called the office"], correctIndex: 1, explanation: "'the client must have received our proposal by now' — must have = logical deduction about the past." },
+      { id: 90135, type: 'multiple-choice', question: "What does the boss say the employee mustn't do?", options: ["Work hard", "Send proposals", "Put so much pressure on himself", "Take breaks"], correctIndex: 2, explanation: "'You mustn't put so much pressure on yourself.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Murakkab modal fe'llar — needn't have / had better / must have",
+  },
   category: 'Advanced Grammar',
   formulas: [
     { label: "Needn't have", structure: "Needn't have + V\u2083 (past unnecessary action)\nI needn't have brought an umbrella.", color: 'green' },
