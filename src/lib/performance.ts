@@ -1,5 +1,21 @@
 import { monitoring } from './monitoring'
 
+/**
+ * Core Web Vitals budjeti (Google "good" chegaralari) — F3-10.
+ * Metrika chegaradan oshsa monitoring'ga `warn` sifatida yoziladi (regressiya ko'rinadi).
+ */
+const WEB_VITALS_BUDGET = {
+  LCP: 2500,   // ms — Largest Contentful Paint
+  FID: 100,    // ms — First Input Delay
+  CLS: 0.1,    // birliksiz — Cumulative Layout Shift
+  FCP: 1800,   // ms — First Contentful Paint
+} as const
+
+/** Metrika budjetdan oshsa 'warn', aks holda 'info' qaytaradi. */
+function vitalSeverity(metric: keyof typeof WEB_VITALS_BUDGET, value: number): 'info' | 'warn' {
+  return value > WEB_VITALS_BUDGET[metric] ? 'warn' : 'info'
+}
+
 export function measureRenderTime(componentName: string): () => void {
   const start = performance.now()
   return () => {
@@ -18,7 +34,8 @@ export function reportWebVitals() {
   if ('getEntriesByType' in performance) {
     const paint = performance.getEntriesByType('paint')
     paint.forEach(entry => {
-      monitoring.captureMessage(`Web Vital: ${entry.name} = ${entry.startTime.toFixed(1)}ms`, 'info')
+      const sev = entry.name === 'first-contentful-paint' ? vitalSeverity('FCP', entry.startTime) : 'info'
+      monitoring.captureMessage(`Web Vital: ${entry.name} = ${entry.startTime.toFixed(1)}ms`, sev)
     })
   }
 
@@ -27,7 +44,7 @@ export function reportWebVitals() {
     const lcpObserver = new PerformanceObserver((list) => {
       const entries = list.getEntries()
       const last = entries[entries.length - 1]
-      monitoring.captureMessage(`LCP: ${last.startTime.toFixed(1)}ms`, 'info')
+      monitoring.captureMessage(`LCP: ${last.startTime.toFixed(1)}ms`, vitalSeverity('LCP', last.startTime))
     })
     lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true })
   } catch { /* unsupported browser */ }
@@ -37,7 +54,7 @@ export function reportWebVitals() {
     const fidObserver = new PerformanceObserver((list) => {
       list.getEntries().forEach(entry => {
         const delay = (entry as PerformanceEventTiming).processingStart - entry.startTime
-        monitoring.captureMessage(`FID: ${delay.toFixed(1)}ms`, 'info')
+        monitoring.captureMessage(`FID: ${delay.toFixed(1)}ms`, vitalSeverity('FID', delay))
       })
     })
     fidObserver.observe({ type: 'first-input', buffered: true })
@@ -60,7 +77,7 @@ export function reportWebVitals() {
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden' && clsValue > 0) {
         clsObserver.disconnect()
-        monitoring.captureMessage(`CLS: ${clsValue.toFixed(3)}`, 'info', {
+        monitoring.captureMessage(`CLS: ${clsValue.toFixed(3)}`, vitalSeverity('CLS', clsValue), {
           clsEntries: 1,
           url: location.href,
         })

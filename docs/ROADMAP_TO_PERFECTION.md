@@ -1541,9 +1541,20 @@ Sentry.init({
 
 ---
 
-## F3-10. ⚠️ ️ Performance Monitoring
+## F3-10. ✅ Performance Monitoring — BAJARILDI
 **Muammo:** Web Vitals tracking bor, lekin budjet va benchmark yo'q
 **Ta'sir:** Dasturchi +0.3
+
+**Holat:**
+- Web Vitals tracking allaqachon bor (`performance.ts` — LCP/FID/CLS/FCP PerformanceObserver
+  orqali, monitoring'ga yoziladi).
+- **Yangi: budjet/benchmark qo'shildi** — `WEB_VITALS_BUDGET` (Google "good" chegaralari:
+  LCP≤2500, FID≤100, CLS≤0.1, FCP≤1800). Metrika chegaradan oshsa monitoring'ga `info`
+  o'rniga `warn` sifatida yoziladi → regressiyalar ko'rinadi.
+- `vite.config.ts` manualChunks allaqachon mavjud (vendor/charts/db/icons + lessons
+  daraja bo'yicha), `chunkSizeWarningLimit: 900`. Vendor ataylab bitta chunk —
+  izoh: "avoid circular deps" (React'ni ajratish runtime chunk-tartibi xatosini
+  keltirishi mumkin; brauzersiz tasdiqlab bo'lmaydi, shuning uchun tegilmadi).
 
 ### Amalga oshirish:
 
