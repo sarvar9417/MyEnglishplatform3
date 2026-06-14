@@ -1072,9 +1072,16 @@ microTasks?: {
 
 ---
 
-## F2-10. ⚠️ Curriculum Gap Analysis
+## F2-10. ✅ Curriculum Gap Analysis — BAJARILDI (audit qismi)
 **Muammo:** CEFR can-do statements va vocabulary frequency audit qilinmagan
 **Ta'sir:** Ingliz tili pedagog +0.5, Yodlash olimi +0.3
+
+**Holat:** `scripts/cefr-audit.ts` (`npm run audit:cefr`) — 106 darsni daraja bo'yicha
+strukturaviy tahlil qiladi: lug'at/mashq hisoblari, reading/writing/listening qoplamasi,
+mashq turlari taqsimoti, kam ta'minlangan darslar va takror kun raqamlari.
+Hisobot: `docs/F2-10-curriculum-gap-analysis.md`. **Asosiy topilma:** listening
+A1'dan yuqorida deyarli yo'q (A2:1/22, B1/B1+/B2:0) — eng katta kontent gap.
+Semantik can-do mosligi pedagog tekshiruvini talab qiladi (avtomatlashtirib bo'lmaydi).
 
 ### Amalga oshirish:
 
