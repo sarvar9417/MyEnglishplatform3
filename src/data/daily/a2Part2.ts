@@ -5,6 +5,25 @@ export const adjectiveAdverb: DailyLesson = {
   subtitle: "Sifat va ravish — qanday va qanchalik farqi",
   level: 'A2',
   day: 30,
+  listening: {
+    transcript: "Coach: You played really well today, Bekzod!\nBekzod: Thank you, coach. I tried hard.\nCoach: Yes, I can see that. You run very fast, and you passed the ball carefully.\nBekzod: I practise every day. But my shooting is still bad.\nCoach: That's not true. You shot the ball beautifully in the second half.\nBekzod: Really? I was nervous at first.\nCoach: You looked calm to me. You play like a professional.\nBekzod: That's a big compliment! I'll work harder.\nCoach: Good. If you train seriously, you'll become a great player.\nBekzod: I promise I will!",
+    vocabulary: [
+      { word: 'coach', definition: 'murabbiy' },
+      { word: 'practise', definition: 'mashq qilmoq' },
+      { word: 'nervous', definition: 'asabiy, hayajonli' },
+      { word: 'calm', definition: 'xotirjam' },
+      { word: 'compliment', definition: 'maqtov' },
+    ],
+    questions: [
+      { id: 90161, type: 'multiple-choice', question: "How did Bekzod play today?", options: ["Badly", "Really well", "Slowly", "Carelessly"], correctIndex: 1, explanation: "'You played really well today' — 'well' is the adverb of 'good'." },
+      { id: 90162, type: 'true-false', question: "Bekzod runs slowly.", answer: false, explanation: "'You run very fast' — fast (adverb) shows how he runs." },
+      { id: 90163, type: 'multiple-choice', question: "How did Bekzod shoot the ball in the second half?", options: ["Badly", "Beautifully", "Weakly", "Nervously"], correctIndex: 1, explanation: "'You shot the ball beautifully' — adverb of manner." },
+      { id: 90164, type: 'multiple-choice', question: "How did Bekzod feel at first?", options: ["Calm", "Happy", "Nervous", "Tired"], correctIndex: 2, explanation: "'I was nervous at first' — adjective after 'was'." },
+      { id: 90165, type: 'multiple-choice', question: "What will Bekzod become if he trains seriously?", options: ["A coach", "A great player", "A teacher", "A captain"], correctIndex: 1, explanation: "'If you train seriously, you'll become a great player.'" },
+    ],
+    difficulty: 'medium',
+    topic: "Sifat va ravish — adjective vs adverb",
+  },
   writing: {
     prompt: "Describe a person you know and how they do things. Use adjectives to describe the person and adverbs to describe their actions.",
     wordLimit: 60,
@@ -337,6 +356,25 @@ export const passiveVoice: DailyLesson = {
   subtitle: "Simple Present va Past — ish-harakatning kim tomonidan bajarilishi muhim emas",
   level: 'A2',
   day: 32,
+  listening: {
+    transcript: "Guide: Welcome to our museum. This building was built in 1850.\nTourist: Wow! Who built it?\nGuide: It was designed by a famous architect. These paintings were made by local artists.\nTourist: They are beautiful. Are they sold sometimes?\nGuide: No, they are never sold. They are protected by law.\nTourist: I see. Is the museum cleaned every day?\nGuide: Yes, it is cleaned every morning before we open. Photos are allowed, but flash is not permitted.\nTourist: OK, no flash. When was this statue brought here?\nGuide: It was brought from Samarkand last year. It is loved by all our visitors.\nTourist: Thank you for the tour!",
+    vocabulary: [
+      { word: 'museum', definition: 'muzey' },
+      { word: 'design', definition: 'loyihalashtirmoq' },
+      { word: 'protect', definition: 'himoya qilmoq' },
+      { word: 'allow', definition: 'ruxsat bermoq' },
+      { word: 'statue', definition: 'haykal' },
+    ],
+    questions: [
+      { id: 90171, type: 'multiple-choice', question: "When was the building built?", options: ["In 1750", "In 1850", "In 1950", "In 2000"], correctIndex: 1, explanation: "'This building was built in 1850' — passive (past simple)." },
+      { id: 90172, type: 'multiple-choice', question: "Who were the paintings made by?", options: ["The architect", "Local artists", "The guide", "Tourists"], correctIndex: 1, explanation: "'These paintings were made by local artists' — by + agent." },
+      { id: 90173, type: 'true-false', question: "The paintings are sold sometimes.", answer: false, explanation: "'No, they are never sold. They are protected by law.'" },
+      { id: 90174, type: 'multiple-choice', question: "How often is the museum cleaned?", options: ["Every week", "Every morning", "Every month", "Never"], correctIndex: 1, explanation: "'it is cleaned every morning before we open' — passive (present simple)." },
+      { id: 90175, type: 'multiple-choice', question: "Where was the statue brought from?", options: ["Bukhara", "Khiva", "Samarkand", "Tashkent"], correctIndex: 2, explanation: "'It was brought from Samarkand last year.'" },
+    ],
+    difficulty: 'medium',
+    topic: "Majhul nisbat — passive voice",
+  },
   writing: {
     prompt: "Describe how a simple thing is made, or where products in your home come from. Use the passive voice in the present or past.",
     wordLimit: 60,

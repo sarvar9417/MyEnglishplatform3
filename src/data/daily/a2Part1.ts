@@ -5,6 +5,25 @@ export const modalVerbs: DailyLesson = {
   subtitle: "Can, must, should, might — imkoniyat, majburiyat, maslahat va ehtimollik",
   level: 'A2',
   day: 25,
+  listening: {
+    transcript: "Mum: Ali, can you help me in the kitchen?\nAli: Sure, Mum. What can I do?\nMum: You can wash the vegetables. But be careful — the knife is sharp.\nAli: OK. Must I cut them too?\nMum: No, you don't have to cut them. I will do that. But you must wash your hands first.\nAli: Of course. Can I use the small bowl?\nMum: Yes, you can. We might have guests tonight, so we should cook a lot.\nAli: Really? Who might come?\nMum: Your uncle may visit. He isn't sure yet.\nAli: I hope he can come. He's very funny!",
+    vocabulary: [
+      { word: 'kitchen', definition: 'oshxona' },
+      { word: 'sharp', definition: 'o\'tkir' },
+      { word: 'careful', definition: 'ehtiyotkor' },
+      { word: 'guest', definition: 'mehmon' },
+      { word: 'bowl', definition: 'kosa' },
+    ],
+    questions: [
+      { id: 90141, type: 'multiple-choice', question: "What can Ali do to help?", options: ["Cut the vegetables", "Wash the vegetables", "Cook the dinner", "Set the table"], correctIndex: 1, explanation: "'You can wash the vegetables' — can for ability/possibility." },
+      { id: 90142, type: 'true-false', question: "Ali must cut the vegetables.", answer: false, explanation: "'No, you don't have to cut them' — no obligation." },
+      { id: 90143, type: 'multiple-choice', question: "What must Ali do first?", options: ["Use the bowl", "Wash his hands", "Call his uncle", "Cook rice"], correctIndex: 1, explanation: "'you must wash your hands first' — must for obligation." },
+      { id: 90144, type: 'multiple-choice', question: "Why should they cook a lot?", options: ["Ali is hungry", "Guests might come", "It's a holiday", "Mum is tired"], correctIndex: 1, explanation: "'We might have guests tonight, so we should cook a lot.'" },
+      { id: 90145, type: 'multiple-choice', question: "Who may visit tonight?", options: ["Ali's friend", "Ali's teacher", "Ali's uncle", "Ali's cousin"], correctIndex: 2, explanation: "'Your uncle may visit' — may for possibility." },
+    ],
+    difficulty: 'easy',
+    topic: "Modal fe'llar — can / must / might",
+  },
   writing: {
     prompt: "Write about your abilities, rules, and advice. Say what you can do, what you must do at home or school, and give one piece of advice using 'should'.",
     wordLimit: 60,
@@ -394,6 +413,25 @@ export const prepositions: DailyLesson = {
   subtitle: "At, in, on — vaqt va joy predloglari",
   level: 'A2',
   day: 27,
+  listening: {
+    transcript: "Sam: When is the meeting?\nDilnoza: It's on Monday, at ten o'clock, in the morning.\nSam: Where is it?\nDilnoza: In the big room on the second floor.\nSam: OK. I'll be there at nine to prepare.\nDilnoza: Good. The documents are on the table, in a blue folder.\nSam: Thanks. Is Mr. Karimov coming?\nDilnoza: Yes, he'll arrive in an hour. He lives in Tashkent, on Navoi Street.\nSam: Great. See you at the meeting.\nDilnoza: See you on Monday!",
+    vocabulary: [
+      { word: 'meeting', definition: 'uchrashuv, yig\'ilish' },
+      { word: 'floor', definition: 'qavat' },
+      { word: 'prepare', definition: 'tayyorlamoq' },
+      { word: 'document', definition: 'hujjat' },
+      { word: 'folder', definition: 'papka' },
+    ],
+    questions: [
+      { id: 90151, type: 'multiple-choice', question: "When is the meeting?", options: ["On Sunday at nine", "On Monday at ten", "On Tuesday at noon", "On Friday at eight"], correctIndex: 1, explanation: "'It's on Monday, at ten o'clock' — on for days, at for clock time." },
+      { id: 90152, type: 'multiple-choice', question: "Where is the meeting room?", options: ["On the first floor", "On the second floor", "On the third floor", "In the basement"], correctIndex: 1, explanation: "'In the big room on the second floor.'" },
+      { id: 90153, type: 'multiple-choice', question: "Where are the documents?", options: ["In a drawer", "On the table in a blue folder", "On the chair", "In Sam's bag"], correctIndex: 1, explanation: "'The documents are on the table, in a blue folder.'" },
+      { id: 90154, type: 'multiple-choice', question: "When will Mr. Karimov arrive?", options: ["In an hour", "In a minute", "In a day", "At midnight"], correctIndex: 0, explanation: "'he'll arrive in an hour' — in for a period of time." },
+      { id: 90155, type: 'true-false', question: "Mr. Karimov lives on Navoi Street in Tashkent.", answer: true, explanation: "'He lives in Tashkent, on Navoi Street' — in for cities, on for streets." },
+    ],
+    difficulty: 'easy',
+    topic: "Vaqt va joy predloglari — in / on / at",
+  },
   writing: {
     prompt: "Describe your weekly schedule and where you go. Use 'at', 'in', and 'on' for times and places.",
     wordLimit: 55,
