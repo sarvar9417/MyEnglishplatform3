@@ -36,8 +36,16 @@ export async function saveScore(
   payload: Record<string, unknown>,
 ): Promise<void> {
   type TableName = keyof Database['public']['Tables']
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { error } = await (supabase.from(table as TableName) as any).upsert(payload, { onConflict: conflictCols.join(',') })
+  // Dinamik jadval nomi (runtime string) Supabase generic tiplaridan upsert payloadini
+  // chiqara olmaydi — `any` o'rniga upsert imkonini ochuvchi minimal tiplangan interfeys.
+  type UpsertableTable = {
+    upsert: (
+      payload: Record<string, unknown>,
+      options?: { onConflict?: string },
+    ) => Promise<{ error: { message: string } | null }>
+  }
+  const builder = supabase.from(table as TableName) as unknown as UpsertableTable
+  const { error } = await builder.upsert(payload, { onConflict: conflictCols.join(',') })
   if (error) {
     monitoring.captureMessage(`${table} upsert error: ${error.message}`, 'error')
     useToastStore.getState().toast(`Natijani saqlashda xatolik: ${error.message}`, 'error')

@@ -54,7 +54,7 @@
 - **F2-10** Curriculum gap (CEFR audit skripti yo'q)
 - **F3-3** Test coverage oshirish (lessonData.test.ts yo'q)
 - **F3-4** Incremental seed
-- **F3-5** `any` tipidan voz kechish (claude.ts va boshqa xizmatlarda hali `any` ishlatiladi)
+- **F3-5** `any` tipidan voz kechish (ishlab chiqarish kodida 0 ta, test + dynamic wrapper da 6 ta)
 - **F3-7** AI Tutor 2.0 (real-time feedback, weekly report yo'q)
 - **F4-1** Murojaat (check-murojaat.ts yo'q; lekin "siz" allaqachon ishlatiladi)
 - **F4-4** i18n avtomatlashtirish (Crowdin yo'q)
@@ -1359,9 +1359,15 @@ async function seedIncremental() {
 
 ---
 
-## F3-5. ⚠️ TypeScript `any` ni Bartaraf Etish
+## F3-5. ✅ TypeScript `any` ni Bartaraf Etish — BAJARILDI
 **Muammo:** `claude.ts` va ba'zi xizmatlarda `any` tipi ishlatilgan
 **Ta'sir:** Dasturchi +0.3
+
+**Holat:** Ishlab chiqarish kodida `any` 0 ta. Oxirgi haqiqiy `any`
+(`contentService.ts` saveScore dinamik jadval upserti) minimal tiplangan
+`UpsertableTable` interfeysiga almashtirildi — `eslint-disable` ham olib tashlandi.
+Qolgan yagona `any` test infratuzilmasida (`test/setup.ts` console mock) — qoldirildi.
+claude.ts F3-2 da modullarga bo'linib, u yerdagi `any`lar ham tozalangan edi.
 
 ```typescript
 // Hozir (noto'g'ri):
