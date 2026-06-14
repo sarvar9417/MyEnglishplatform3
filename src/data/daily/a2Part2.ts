@@ -192,6 +192,25 @@ export const gerundsInfinitives: DailyLesson = {
   subtitle: "V+ing va to+V1 — qachon qanday ishlatiladi",
   level: 'A2',
   day: 31,
+  listening: {
+    transcript: "Aziza: What do you like doing at the weekend?\nTom: I love playing football, and I enjoy reading books. What about you?\nAziza: I like cooking, but I hate washing dishes!\nTom: Ha! Me too. Do you want to learn a new hobby?\nAziza: Yes. I've decided to start painting. I want to improve my skills.\nTom: That's nice. I hope to learn the guitar this year.\nAziza: Good luck! It's difficult, but it's worth trying.\nTom: True. I need to practise every day.\nAziza: Don't forget to enjoy it too!\nTom: I will. Learning should be fun.",
+    vocabulary: [
+      { word: 'enjoy', definition: 'zavq olmoq' },
+      { word: 'hobby', definition: 'sevimli mashg\'ulot' },
+      { word: 'improve', definition: 'yaxshilamoq' },
+      { word: 'practise', definition: 'mashq qilmoq' },
+      { word: 'worth', definition: 'arziydigan' },
+    ],
+    questions: [
+      { id: 90211, type: 'multiple-choice', question: "What does Tom love doing?", options: ["Cooking", "Playing football", "Painting", "Washing dishes"], correctIndex: 1, explanation: "'I love playing football' — love + V-ing." },
+      { id: 90212, type: 'true-false', question: "Aziza enjoys washing dishes.", answer: false, explanation: "'I like cooking, but I hate washing dishes!'" },
+      { id: 90213, type: 'multiple-choice', question: "What has Aziza decided to start?", options: ["Cooking", "Football", "Painting", "Guitar"], correctIndex: 2, explanation: "'I've decided to start painting' — decide + to V." },
+      { id: 90214, type: 'multiple-choice', question: "What does Tom hope to learn?", options: ["Painting", "The guitar", "Cooking", "Reading"], correctIndex: 1, explanation: "'I hope to learn the guitar this year' — hope + to V." },
+      { id: 90215, type: 'multiple-choice', question: "What does Aziza say Tom shouldn't forget?", options: ["To practise", "To enjoy it", "To buy a guitar", "To rest"], correctIndex: 1, explanation: "'Don't forget to enjoy it too!'" },
+    ],
+    difficulty: 'medium',
+    topic: "Gerund va infinitiv — like / want / decide",
+  },
   writing: {
     prompt: "Write about your hobbies and goals. Say what you enjoy doing and what you want to do. Use both -ing forms and 'to + verb'.",
     wordLimit: 60,
@@ -546,6 +565,25 @@ export const reportedSpeech: DailyLesson = {
   subtitle: "Say/tell va tense backshift — kimningdir gapini aytib berish",
   level: 'A2',
   day: 33,
+  listening: {
+    transcript: "Dilshod: I saw Nodira yesterday. She told me some news.\nMadina: Really? What did she say?\nDilshod: She said that she was moving to a new flat. She told me she had found a great place.\nMadina: That's wonderful! Did she say where?\nDilshod: She said it was near the park. She also said she would have a party next week.\nMadina: Nice! Did she invite us?\nDilshod: Yes, she asked if we were free on Saturday. She told us to bring some music.\nMadina: Of course! Did she say what time?\nDilshod: She said the party started at seven.\nMadina: Perfect. Let's not be late!",
+    vocabulary: [
+      { word: 'news', definition: 'yangilik, xabar' },
+      { word: 'flat', definition: 'kvartira' },
+      { word: 'invite', definition: 'taklif qilmoq' },
+      { word: 'free', definition: 'bo\'sh (vaqti)' },
+      { word: 'bring', definition: 'olib kelmoq' },
+    ],
+    questions: [
+      { id: 90221, type: 'multiple-choice', question: "What did Nodira tell Dilshod?", options: ["She was buying a car", "She was moving to a new flat", "She was leaving the city", "She got a new job"], correctIndex: 1, explanation: "'She said that she was moving to a new flat' — reported speech (present → past)." },
+      { id: 90222, type: 'multiple-choice', question: "Where is the new flat?", options: ["Near the school", "Near the park", "In the centre", "By the river"], correctIndex: 1, explanation: "'She said it was near the park.'" },
+      { id: 90223, type: 'true-false', question: "Nodira said she would have a party next week.", answer: true, explanation: "'She also said she would have a party next week' — will → would." },
+      { id: 90224, type: 'multiple-choice', question: "What did Nodira ask Dilshod and Madina?", options: ["If they liked music", "If they were free on Saturday", "Where they lived", "When they could come"], correctIndex: 1, explanation: "'she asked if we were free on Saturday' — reported yes/no question with 'if'." },
+      { id: 90225, type: 'multiple-choice', question: "What time does the party start?", options: ["At six", "At seven", "At eight", "At nine"], correctIndex: 1, explanation: "'She said the party started at seven.'" },
+    ],
+    difficulty: 'medium',
+    topic: "Bilvosita nutq — reported speech",
+  },
   writing: {
     prompt: "Tell a friend what someone said to you yesterday. Report at least four statements using 'said' and 'told'.",
     wordLimit: 60,
@@ -717,6 +755,25 @@ export const firstConditional: DailyLesson = {
   subtitle: "If + Present Simple, will + V1 — real va mumkin bo'lgan shartlar",
   level: 'A2',
   day: 34,
+  listening: {
+    transcript: "Coach: If it rains tomorrow, we will train indoors.\nPlayer: And if it's sunny?\nCoach: If it's sunny, we'll play in the park. If you arrive early, you'll get a good spot.\nPlayer: OK. What if I'm sick?\nCoach: If you're sick, you should stay home. If you rest, you'll get better faster.\nPlayer: Thanks, coach. Will we have a match this weekend?\nCoach: If everyone trains hard, we'll have a match on Sunday. If we win, we'll celebrate!\nPlayer: I hope we win!\nCoach: We will, if we work as a team. Remember: if you believe, you can succeed.",
+    vocabulary: [
+      { word: 'train', definition: 'mashq qilmoq, tayyorlanmoq' },
+      { word: 'indoors', definition: 'ichkarida, yopiq joyda' },
+      { word: 'spot', definition: 'joy' },
+      { word: 'rest', definition: 'dam olmoq' },
+      { word: 'celebrate', definition: 'nishonlamoq' },
+    ],
+    questions: [
+      { id: 90231, type: 'multiple-choice', question: "What will they do if it rains tomorrow?", options: ["Cancel training", "Train indoors", "Play in the park", "Stay home"], correctIndex: 1, explanation: "'If it rains tomorrow, we will train indoors' — first conditional (if + present, will + V)." },
+      { id: 90232, type: 'multiple-choice', question: "What will happen if the player arrives early?", options: ["He will be tired", "He'll get a good spot", "He'll train alone", "He'll go home"], correctIndex: 1, explanation: "'If you arrive early, you'll get a good spot.'" },
+      { id: 90233, type: 'true-false', question: "If the player is sick, the coach says he should still come to training.", answer: false, explanation: "'If you're sick, you should stay home.'" },
+      { id: 90234, type: 'multiple-choice', question: "When will they have a match if everyone trains hard?", options: ["On Friday", "On Saturday", "On Sunday", "Next month"], correctIndex: 2, explanation: "'If everyone trains hard, we'll have a match on Sunday.'" },
+      { id: 90235, type: 'multiple-choice', question: "What will they do if they win?", options: ["Rest", "Celebrate", "Train more", "Go home"], correctIndex: 1, explanation: "'If we win, we'll celebrate!'" },
+    ],
+    difficulty: 'medium',
+    topic: "Birinchi shart gap — first conditional",
+  },
   writing: {
     prompt: "Write about your plans for the weekend and their conditions. Use the first conditional: 'If + present simple, will + verb'.",
     wordLimit: 60,

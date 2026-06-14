@@ -219,6 +219,25 @@ export const articles: DailyLesson = {
   subtitle: "A, an, the va zero article — aniqlik va noaniqlik",
   level: 'A2',
   day: 26,
+  listening: {
+    transcript: "Lola: I want to buy a new phone. Can you help me?\nJasur: Sure. There's a good shop near the bank. The shop is on Main Street.\nLola: Is it expensive?\nJasur: No, the prices are fair. I bought a laptop there last month.\nLola: Great. Do they sell headphones too?\nJasur: Yes. I got an excellent pair for my brother. The headphones were cheap.\nLola: Perfect. Let's go after lunch.\nJasur: OK. But the shop closes at six, so let's not be late.\nLola: Don't worry. The bus comes every ten minutes.\nJasur: Then we have time. Let's eat first!",
+    vocabulary: [
+      { word: 'phone', definition: 'telefon' },
+      { word: 'shop', definition: 'do\'kon' },
+      { word: 'expensive', definition: 'qimmat' },
+      { word: 'fair', definition: 'adolatli, o\'rtacha (narx)' },
+      { word: 'headphones', definition: 'quloqchin' },
+    ],
+    questions: [
+      { id: 90181, type: 'multiple-choice', question: "What does Lola want to buy?", options: ["A laptop", "A new phone", "Headphones", "A bus ticket"], correctIndex: 1, explanation: "'I want to buy a new phone' — 'a' for the first mention of a singular countable noun." },
+      { id: 90182, type: 'multiple-choice', question: "Where is the shop?", options: ["On Main Street", "In the city centre", "Near the school", "At the station"], correctIndex: 0, explanation: "'The shop is on Main Street' — 'the' for a specific, known shop." },
+      { id: 90183, type: 'true-false', question: "The prices at the shop are very expensive.", answer: false, explanation: "'No, the prices are fair.'" },
+      { id: 90184, type: 'multiple-choice', question: "What did Jasur buy for his brother?", options: ["A phone", "A laptop", "Headphones", "A book"], correctIndex: 2, explanation: "'I got an excellent pair for my brother. The headphones were cheap' — 'an' before a vowel sound." },
+      { id: 90185, type: 'multiple-choice', question: "What time does the shop close?", options: ["At five", "At six", "At seven", "At eight"], correctIndex: 1, explanation: "'the shop closes at six.'" },
+    ],
+    difficulty: 'easy',
+    topic: "Artikllar — a / an / the",
+  },
   writing: {
     prompt: "Describe your favourite place in your city. Use 'a/an' for the first mention of a thing and 'the' for specific things. Remember zero article for general ideas.",
     wordLimit: 60,
@@ -620,6 +639,25 @@ export const questionsLesson: DailyLesson = {
   subtitle: "Yes/No, Wh- va Tag questions — so'roq gaplar",
   level: 'A2',
   day: 28,
+  listening: {
+    transcript: "Interviewer: Good morning! What is your name?\nCandidate: My name is Sevara.\nInterviewer: Where do you live, Sevara?\nCandidate: I live in Tashkent, near the city centre.\nInterviewer: How long have you worked as a designer?\nCandidate: I have worked as a designer for three years.\nInterviewer: Why do you want this job?\nCandidate: Because I love your company, and I want to learn more.\nInterviewer: Do you speak English?\nCandidate: Yes, I do. I also speak a little Russian.\nInterviewer: When can you start?\nCandidate: I can start next Monday.\nInterviewer: Great. We will call you soon!",
+    vocabulary: [
+      { word: 'interview', definition: 'suhbat (ish uchun)' },
+      { word: 'candidate', definition: 'nomzod' },
+      { word: 'designer', definition: 'dizayner' },
+      { word: 'company', definition: 'kompaniya' },
+      { word: 'job', definition: 'ish, lavozim' },
+    ],
+    questions: [
+      { id: 90191, type: 'multiple-choice', question: "What is the candidate's name?", options: ["Sevara", "Sabina", "Sitora", "Surayyo"], correctIndex: 0, explanation: "'What is your name?' — 'My name is Sevara.'" },
+      { id: 90192, type: 'multiple-choice', question: "Where does she live?", options: ["In Samarkand", "In Tashkent", "In Bukhara", "Abroad"], correctIndex: 1, explanation: "'Where do you live?' — 'I live in Tashkent.'" },
+      { id: 90193, type: 'multiple-choice', question: "How long has she worked as a designer?", options: ["One year", "Two years", "Three years", "Five years"], correctIndex: 2, explanation: "'How long have you worked...' — 'for three years.'" },
+      { id: 90194, type: 'true-false', question: "She speaks only English.", answer: false, explanation: "'Yes, I do. I also speak a little Russian.'" },
+      { id: 90195, type: 'multiple-choice', question: "When can she start?", options: ["Today", "Tomorrow", "Next Monday", "Next month"], correctIndex: 2, explanation: "'When can you start?' — 'I can start next Monday.'" },
+    ],
+    difficulty: 'easy',
+    topic: "Savollar — wh-questions va yes/no savollar",
+  },
   writing: {
     prompt: "Write five questions you would ask a new classmate. Use Yes/No questions, Wh- questions, and at least one tag question.",
     wordLimit: 55,
@@ -795,6 +833,25 @@ export const countableUncountable: DailyLesson = {
   subtitle: "Some/any, much/many, a few/a little — sanaladigan va sanalmaydigan otlar",
   level: 'A2',
   day: 29,
+  listening: {
+    transcript: "Mum: We need to buy some food for dinner. How much rice do we have?\nBek: Not much. We have a little, but not enough.\nMum: OK, buy some rice. How many eggs are there?\nBek: There are only two eggs. We need more.\nMum: Get a dozen eggs, then. Do we have any milk?\nBek: There isn't much milk. Maybe one glass.\nMum: Buy two bottles. And we need some bread and a few apples.\nBek: How many apples?\nMum: About six. Oh, and we have no sugar at all!\nBek: OK, I'll buy a kilo of sugar too. Anything else?\nMum: No, that's enough. Thank you, Bek!",
+    vocabulary: [
+      { word: 'enough', definition: 'yetarli' },
+      { word: 'dozen', definition: 'o\'n ikkita, dyujina' },
+      { word: 'bottle', definition: 'shisha (idish)' },
+      { word: 'a few', definition: 'bir nechta (sanaladigan)' },
+      { word: 'kilo', definition: 'kilogramm' },
+    ],
+    questions: [
+      { id: 90201, type: 'multiple-choice', question: "How much rice do they have?", options: ["A lot", "A little, not enough", "None", "Two bags"], correctIndex: 1, explanation: "'How much rice...' (uncountable) — 'We have a little, but not enough.'" },
+      { id: 90202, type: 'multiple-choice', question: "How many eggs are there?", options: ["A dozen", "Only two", "Six", "Ten"], correctIndex: 1, explanation: "'How many eggs...' (countable) — 'There are only two eggs.'" },
+      { id: 90203, type: 'multiple-choice', question: "How much milk is there?", options: ["A lot", "Not much, one glass", "Two bottles", "None"], correctIndex: 1, explanation: "'There isn't much milk. Maybe one glass.'" },
+      { id: 90204, type: 'true-false', question: "They have plenty of sugar at home.", answer: false, explanation: "'we have no sugar at all!'" },
+      { id: 90205, type: 'multiple-choice', question: "How many apples does Mum want?", options: ["About six", "About ten", "A dozen", "Two"], correctIndex: 0, explanation: "'How many apples? — About six.'" },
+    ],
+    difficulty: 'easy',
+    topic: "Sanaladigan va sanalmaydigan otlar — much / many / a few",
+  },
   writing: {
     prompt: "Describe what is in your kitchen or fridge. Use 'some', 'any', 'much', 'many', 'a few', and 'a little'.",
     wordLimit: 60,
