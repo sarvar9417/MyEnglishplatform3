@@ -696,6 +696,25 @@ export const modalPerfectsB1plus: DailyLesson = {
   subtitle: 'Must have, Might have, Should have, Could have, Would have \u2014 o\u2018tmish haqida taxmin va afsus',
   level: 'B1+',
   day: 68,
+  listening: {
+    transcript: "Detective: The window is broken. Someone must have entered through it.\nOfficer: Yes. They could have used a ladder.\nDetective: True. The thief might have known the family was away.\nOfficer: I think so. The owner should have locked the back door.\nDetective: He should have, but he forgot. Look — the dog didn't bark.\nOfficer: The thief must have been someone the dog knew.\nDetective: Good point. They couldn't have carried the TV alone.\nOfficer: So there must have been two people.\nDetective: Exactly. We should have checked the cameras earlier.\nOfficer: Let's do it now. They can't have gone far.",
+    vocabulary: [
+      { word: 'detective', definition: 'tergovchi' },
+      { word: 'ladder', definition: 'narvon' },
+      { word: 'thief', definition: 'o\'g\'ri' },
+      { word: 'bark', definition: 'vovullamoq (it)' },
+      { word: 'camera', definition: 'kamera' },
+    ],
+    questions: [
+      { id: 90351, type: 'multiple-choice', question: "How did someone enter, according to the detective?", options: ["Through the door", "Through the broken window", "Through the roof", "Through the garage"], correctIndex: 1, explanation: "'Someone must have entered through it' — must have + V3 = strong deduction about the past." },
+      { id: 90352, type: 'multiple-choice', question: "What should the owner have done?", options: ["Called the police", "Locked the back door", "Bought a dog", "Closed the window"], correctIndex: 1, explanation: "'The owner should have locked the back door' — should have = past criticism/regret." },
+      { id: 90353, type: 'true-false', question: "The dog barked at the thief.", answer: false, explanation: "'the dog didn't bark... The thief must have been someone the dog knew.'" },
+      { id: 90354, type: 'multiple-choice', question: "Why must there have been two people?", options: ["The dog barked twice", "They couldn't have carried the TV alone", "Two doors were open", "Neighbours saw them"], correctIndex: 1, explanation: "'They couldn't have carried the TV alone. So there must have been two people.'" },
+      { id: 90355, type: 'multiple-choice', question: "What should they have done earlier?", options: ["Locked the door", "Checked the cameras", "Called the owner", "Searched the garden"], correctIndex: 1, explanation: "'We should have checked the cameras earlier.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Modal perfect — must / should / could / might + have + V3",
+  },
   reading: {
     passage: "The Missing Keys\n\nWhen Sardor came home, the door was open. \"Someone must have entered the house,\" he thought, his heart beating fast. But nothing was missing. \"I might have left the door open myself,\" he said quietly. He could have lost his keys at work, or he may have dropped them on the bus.\n\nHe should have been more careful that morning. If he had checked his pockets, this would not have happened. Later, his sister called. \"You must have left your keys here,\" she laughed. Sardor felt relieved. He needn't have worried at all.",
     questions: [
@@ -853,6 +872,25 @@ export const emphasisDoesB1plus: DailyLesson = {
   subtitle: 'Do, Does, Did \u2014 gapga kuch va urg\u2018u berish san\u2018ati',
   level: 'B1+',
   day: 69,
+  listening: {
+    transcript: "Teacher: You didn't finish your essay.\nStudent: I did finish it! I do work hard, I promise.\nTeacher: Really? I didn't receive it.\nStudent: I did send it, by email. It does say 'sent' on my screen.\nTeacher: Strange. I do believe you, but let me check.\nStudent: Please do. I really did spend hours on it.\nTeacher: Ah, here it is! It did arrive — in my spam folder.\nStudent: See? I told you I did submit it!\nTeacher: You did. I'm sorry. You do deserve a good grade.\nStudent: Thank you! I do appreciate that.",
+    vocabulary: [
+      { word: 'essay', definition: 'insho' },
+      { word: 'receive', definition: 'olmoq, qabul qilmoq' },
+      { word: 'submit', definition: 'topshirmoq' },
+      { word: 'deserve', definition: 'loyiq bo\'lmoq' },
+      { word: 'appreciate', definition: 'qadrlamoq, minnatdor bo\'lmoq' },
+    ],
+    questions: [
+      { id: 90361, type: 'multiple-choice', question: "What does the student emphasise about the essay?", options: ["That it was short", "That he did finish and send it", "That it was difficult", "That he was late"], correctIndex: 1, explanation: "'I did finish it!' and 'I did send it' — do/did for emphasis." },
+      { id: 90362, type: 'multiple-choice', question: "How did the student send the essay?", options: ["On paper", "By email", "By post", "In person"], correctIndex: 1, explanation: "'I did send it, by email.'" },
+      { id: 90363, type: 'true-false', question: "The teacher never received the essay at all.", answer: false, explanation: "'It did arrive — in my spam folder.'" },
+      { id: 90364, type: 'multiple-choice', question: "Where did the email arrive?", options: ["The inbox", "The spam folder", "The trash", "A different account"], correctIndex: 1, explanation: "'in my spam folder.'" },
+      { id: 90365, type: 'multiple-choice', question: "What does the teacher say the student deserves?", options: ["A warning", "A good grade", "Extra homework", "Another chance"], correctIndex: 1, explanation: "'You do deserve a good grade.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Ta'kid — emphatic do / does / did",
+  },
   reading: {
     passage: "Believe Me\n\nMany people thought that Kamola did not work hard. \"But I do study every night,\" she insisted. \"I did finish all my homework, and I do care about my grades.\" Her teacher smiled. \"I know you do try,\" he said.\n\nKamola wanted to prove them wrong. She did pass the final exam with the highest mark. \"You see, I did tell you the truth,\" she said. Even her classmates admitted that she did deserve the prize. Sometimes one strong word does make a difference, and Kamola's example does show that effort matters.",
     questions: [
@@ -1004,6 +1042,25 @@ export const frontingB1plus: DailyLesson = {
   subtitle: 'Gap bo\u2018laklarini oldinga chiqarish \u2014 urg\u2018u va stilistik ta\u2019sir',
   level: 'B1+',
   day: 70,
+  listening: {
+    transcript: "Guide: Welcome to the old castle. On the hill stands a tower over 500 years old.\nTourist: Amazing! And inside?\nGuide: Inside the tower hangs a huge bell. Never have I heard such a beautiful sound.\nTourist: Can we go up?\nGuide: Up the stairs we go! At the top you'll find the best view in the city.\nTourist: Wonderful. What's that painting?\nGuide: On that wall hangs a portrait of the first king. Rarely do visitors notice it.\nTourist: It's beautiful. So peaceful here.\nGuide: Peaceful it is. Little did people know how important this place would become.\nTourist: I'm so glad we came!",
+    vocabulary: [
+      { word: 'castle', definition: 'qal\'a' },
+      { word: 'tower', definition: 'minora' },
+      { word: 'bell', definition: 'qo\'ng\'iroq' },
+      { word: 'portrait', definition: 'portret' },
+      { word: 'peaceful', definition: 'tinch, osoyishta' },
+    ],
+    questions: [
+      { id: 90371, type: 'multiple-choice', question: "What stands on the hill?", options: ["A church", "A tower over 500 years old", "A statue", "A bridge"], correctIndex: 1, explanation: "'On the hill stands a tower over 500 years old' — fronting of place adverbial + inversion." },
+      { id: 90372, type: 'multiple-choice', question: "What hangs inside the tower?", options: ["A flag", "A huge bell", "A painting", "A clock"], correctIndex: 1, explanation: "'Inside the tower hangs a huge bell.'" },
+      { id: 90373, type: 'multiple-choice', question: "What will you find at the top of the stairs?", options: ["A garden", "The best view in the city", "A museum", "A café"], correctIndex: 1, explanation: "'At the top you'll find the best view in the city.'" },
+      { id: 90374, type: 'true-false', question: "Many visitors notice the king's portrait.", answer: false, explanation: "'Rarely do visitors notice it' — negative adverb fronting + inversion." },
+      { id: 90375, type: 'multiple-choice', question: "Whose portrait hangs on the wall?", options: ["The guide's", "The first king's", "A famous artist's", "The builder's"], correctIndex: 1, explanation: "'On that wall hangs a portrait of the first king.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Fronting — gap boshiga ko'chirish va inversiya",
+  },
   reading: {
     passage: "On the Top of the Hill\n\nOn the top of the hill stood an old fortress. Never had the travellers seen such a beautiful view. In the distance rose the blue mountains, and below them lay a quiet green valley.\n\nRarely do tourists visit this place, so it remains peaceful. So tired were the travellers that they sat down at once. Only after a long rest did they continue. Little did they know that a small village waited just behind the hill. Here, among the trees, they found a tea house. Seldom had they tasted tea so sweet.",
     questions: [
@@ -1155,6 +1212,25 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
   subtitle: "So'zlarni tushirib qoldirish va o'rniga boshqa so'z ishlatish \u2014 qisqa va tabiiy gap",
   level: 'B1+',
   day: 71,
+  listening: {
+    transcript: "Anvar: Are you coming to the cinema?\nBek: I'd love to, but I can't. Too much homework.\nAnvar: That's a shame. Dilshod is coming, and so is Laylo.\nBek: Lucky them! Which film are you watching?\nAnvar: The new action one. Have you seen it?\nBek: No, I haven't, but I'd like to.\nAnvar: You should. Everyone says it's great, and it is.\nBek: Maybe next week, if I can.\nAnvar: I hope so. I'll save you a seat if you want one.\nBek: Thanks! I might come if I finish early. If not, next time.",
+    vocabulary: [
+      { word: 'cinema', definition: 'kinoteatr' },
+      { word: 'homework', definition: 'uy vazifasi' },
+      { word: 'shame', definition: 'achinarli holat (a shame)' },
+      { word: 'seat', definition: 'o\'rindiq' },
+      { word: 'save', definition: 'saqlab qo\'ymoq (joy)' },
+    ],
+    questions: [
+      { id: 90381, type: 'multiple-choice', question: "Why can't Bek come to the cinema?", options: ["He's ill", "Too much homework", "No money", "He's tired"], correctIndex: 1, explanation: "'I'd love to, but I can't. Too much homework' — ellipsis: 'I'd love to (come)'." },
+      { id: 90382, type: 'multiple-choice', question: "Who else is coming?", options: ["Only Dilshod", "Dilshod and Laylo", "Nobody", "Anvar's brother"], correctIndex: 1, explanation: "'Dilshod is coming, and so is Laylo' — substitution with 'so is'." },
+      { id: 90383, type: 'true-false', question: "Bek has already seen the film.", answer: false, explanation: "'No, I haven't, but I'd like to' — ellipsis: 'I'd like to (see it)'." },
+      { id: 90384, type: 'multiple-choice', question: "What film are they watching?", options: ["A comedy", "The new action one", "A horror film", "A documentary"], correctIndex: 1, explanation: "'The new action one' — 'one' substitutes 'film'." },
+      { id: 90385, type: 'multiple-choice', question: "What will Anvar do for Bek?", options: ["Buy his ticket", "Save him a seat", "Pick him up", "Lend him notes"], correctIndex: 1, explanation: "'I'll save you a seat if you want one' — 'one' = a seat." },
+    ],
+    difficulty: 'hard',
+    topic: "Ellipsis va substitution — so / one / do",
+  },
   reading: {
     passage: "A Short Conversation\n\n\"Are you coming to the party?\" asked Bek. \"Yes, I am,\" said Aziza. \"And is your brother coming too?\" \"No, he isn't, but my sister is.\"\n\nBek wanted to buy a gift. \"Should I bring flowers or chocolates?\" \"Bring the red ones,\" Aziza replied, \"they are nicer than the white ones.\" \"I think so too,\" he agreed. \"I can drive us there.\" \"So can I,\" she said, \"but yours is faster.\" At the end, both of them were happy, and so was everyone else at the party.",
     questions: [
@@ -1306,6 +1382,25 @@ export const concessionB1plus: DailyLesson = {
   subtitle: "Although, Even though, Despite, In spite of, However \u2014 qarama-qarshilik va to'siqsizlik",
   level: 'B1+',
   day: 72,
+  listening: {
+    transcript: "Reporter: Despite the rain, thousands came to the festival today.\nVisitor: Yes! Although it was cold, we enjoyed every minute.\nReporter: Even though tickets were expensive, the show was worth it.\nVisitor: Definitely. Though I was tired, I stayed until the end.\nReporter: In spite of the crowds, everything was well organised.\nVisitor: True. Despite being far from the stage, we could see clearly.\nReporter: Will you come next year?\nVisitor: Of course, even though it's a long journey.\nReporter: Great to hear. Any complaints?\nVisitor: None, although the food was a little expensive.",
+    vocabulary: [
+      { word: 'festival', definition: 'festival, bayram' },
+      { word: 'crowd', definition: 'olomon' },
+      { word: 'organise', definition: 'tashkil qilmoq' },
+      { word: 'journey', definition: 'safar, yo\'l' },
+      { word: 'complaint', definition: 'shikoyat' },
+    ],
+    questions: [
+      { id: 90391, type: 'multiple-choice', question: "Despite what did thousands come to the festival?", options: ["The heat", "The rain", "The traffic", "The cost"], correctIndex: 1, explanation: "'Despite the rain, thousands came' — despite + noun." },
+      { id: 90392, type: 'true-false', question: "The visitor enjoyed the festival even though it was cold.", answer: true, explanation: "'Although it was cold, we enjoyed every minute.'" },
+      { id: 90393, type: 'multiple-choice', question: "What does the reporter say about the expensive tickets?", options: ["They were too high", "The show was worth it", "Many refunded them", "They were free later"], correctIndex: 1, explanation: "'Even though tickets were expensive, the show was worth it.'" },
+      { id: 90394, type: 'multiple-choice', question: "How well organised was the festival, despite the crowds?", options: ["Badly organised", "Well organised", "Not organised", "Cancelled"], correctIndex: 1, explanation: "'In spite of the crowds, everything was well organised.'" },
+      { id: 90395, type: 'multiple-choice', question: "What was the visitor's only minor complaint?", options: ["The rain", "The cold", "The expensive food", "The long queues"], correctIndex: 2, explanation: "'None, although the food was a little expensive.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Qarama-qarshilik — although / though / despite / even though",
+  },
   reading: {
     passage: "A Difficult Decision\n\nAlthough the job offer was excellent, Jasur was not sure. Despite the high salary, he would have to move abroad. Even though his family supported him, he felt afraid of leaving home.\n\nIn spite of his doubts, he decided to accept. The work was hard; however, he learned a lot. Although he missed his country, he made new friends. Despite being far away, he called his parents every week. He was tired, but happy. However difficult the first year was, Jasur never regretted his brave choice.",
     questions: [
