@@ -1252,9 +1252,15 @@ export async function callClaude<T>(
 
 ---
 
-## F3-3. ⚠️ ️ Test Coverage oshirish
+## F3-3. ⚠️ Test Coverage oshirish (ExerciseCard qoplandi ✅, LessonView qoldi)
 **Muammo:** Komponent testlari juda kam. `LessonView.tsx`, `ExerciseCard.tsx` kabi murakkab komponentlar test qilinmagan
 **Ta'sir:** Dasturchi +0.5
+
+**Holat:** `ExerciseCard.test.tsx` qo'shildi (12 test) — barcha mashq turlari uchun
+render + interaksiya: fill-blank, multiple-choice, va yangi `passage`/`connection`
+(input/onChange, to'g'ri/noto'g'ri submit feedback, namuna javob). AudioButton va
+gameFeel mock qilingan. `LessonView.tsx` (juda katta, Supabase'ga bog'liq) keng mock
+talab qiladi — keyingi bosqichda. Jami test: 1108 yashil.
 
 ### Qo'shilishi kerak bo'lgan testlar:
 
