@@ -8,6 +8,25 @@ export const relativeClausesB1: DailyLesson = {
   subtitle: "Defining va Non-defining — who/which/that/where/when",
   level: "B1",
   day: 35,
+  listening: {
+    transcript: "Guide: This is the museum that attracts thousands of tourists. The man who designed it was famous.\nVisitor: Amazing! Is that the painting which won an award?\nGuide: Yes. The artist who painted it lived here. This is the room where she worked.\nVisitor: Beautiful. And the garden that we saw earlier?\nGuide: That's the garden which inspired her most. The bench where she sat is still there.\nVisitor: Lovely. Who is the woman that works at the desk?\nGuide: She's the curator whose knowledge is incredible.\nVisitor: I'd love to meet her. This is a place that I'll never forget!",
+    vocabulary: [
+      { word: 'museum', definition: 'muzey' },
+      { word: 'design', definition: 'loyihalashtirmoq' },
+      { word: 'award', definition: 'mukofot' },
+      { word: 'inspire', definition: 'ilhomlantirmoq' },
+      { word: 'curator', definition: 'muzey xodimi, kurator' },
+    ],
+    questions: [
+      { id: 90811, type: 'multiple-choice', question: "What does the museum attract?", options: ["Few people", "Thousands of tourists", "Only artists", "Students"], correctIndex: 1, explanation: "'the museum that attracts thousands of tourists' — 'that' for things." },
+      { id: 90812, type: 'true-false', question: "The man who designed the museum was famous.", answer: true, explanation: "'The man who designed it was famous' — 'who' for people." },
+      { id: 90813, type: 'multiple-choice', question: "Where did the artist work?", options: ["In the garden", "In the room in the museum", "At home", "In a studio abroad"], correctIndex: 1, explanation: "'This is the room where she worked' — 'where' for places." },
+      { id: 90814, type: 'multiple-choice', question: "What inspired the artist most?", options: ["The painting", "The garden", "The city", "The award"], correctIndex: 1, explanation: "'the garden which inspired her most.'" },
+      { id: 90815, type: 'multiple-choice', question: "Who is the woman at the desk?", options: ["The artist", "The curator", "A tourist", "The designer"], correctIndex: 1, explanation: "'She's the curator whose knowledge is incredible' — 'whose' for possession." },
+    ],
+    difficulty: 'medium',
+    topic: "Nisbiy gaplar — who / which / that / where / whose",
+  },
   formulas: [
     {
       color: "green",
@@ -1087,6 +1106,25 @@ export const phrasalVerbsB1: DailyLesson = {
   subtitle: "Separable va inseparable phrasal verbs: look after, give up, put off, etc.",
   level: "B1",
   day: 37,
+  listening: {
+    transcript: "Mum: Please turn off the TV and clean up your room.\nSon: OK. Can I go out after?\nMum: Yes, but be back by six. Don't stay out late.\nSon: Sure. I'll pick up some bread on the way home.\nMum: Good. And don't forget to take out the rubbish.\nSon: I won't. By the way, my friend is coming over tonight.\nMum: That's fine. Just tidy up afterwards.\nSon: Of course. Can you wake me up early tomorrow?\nMum: Yes. Now hurry up — we're running out of time!\nSon: OK, I'm getting ready now.",
+    vocabulary: [
+      { word: 'turn off', definition: 'o\'chirmoq' },
+      { word: 'clean up', definition: 'tozalamoq, yig\'ishtirmoq' },
+      { word: 'pick up', definition: 'olib kelmoq, ko\'tarmoq' },
+      { word: 'take out', definition: 'tashqariga chiqarmoq' },
+      { word: 'hurry up', definition: 'shoshilmoq' },
+    ],
+    questions: [
+      { id: 90821, type: 'multiple-choice', question: "What does Mum ask the son to turn off?", options: ["The light", "The TV", "The radio", "The computer"], correctIndex: 1, explanation: "'turn off the TV' — phrasal verb (separable)." },
+      { id: 90822, type: 'multiple-choice', question: "By what time must the son be back?", options: ["Five", "Six", "Seven", "Eight"], correctIndex: 1, explanation: "'be back by six.'" },
+      { id: 90823, type: 'multiple-choice', question: "What will the son pick up on the way home?", options: ["Milk", "Bread", "Fruit", "A newspaper"], correctIndex: 1, explanation: "'I'll pick up some bread on the way home.'" },
+      { id: 90824, type: 'true-false', question: "A friend is coming over tonight.", answer: true, explanation: "'my friend is coming over tonight' — come over = visit." },
+      { id: 90825, type: 'multiple-choice', question: "What does the son ask Mum to do tomorrow?", options: ["Cook breakfast", "Wake him up early", "Drive him", "Buy bread"], correctIndex: 1, explanation: "'Can you wake me up early tomorrow?'" },
+    ],
+    difficulty: 'medium',
+    topic: "Phrasal fe'llar — turn off / clean up / pick up / take out",
+  },
   formulas: [
     {
       color: "green",

@@ -8,6 +8,25 @@ export const inversionB2: DailyLesson = {
   "subtitle": "Inversiya: gap tuzilishini o'zgartirib, ma'noni kuchaytirish",
   "level": "B2",
   "day": 74,
+  "listening": {
+    "transcript": "Speaker: Never have I seen such a beautiful sunrise.\nFriend: Nor have I. It's incredible.\nSpeaker: Not only is it beautiful, but it's also peaceful.\nFriend: Hardly had we arrived when the colours changed.\nSpeaker: True. Rarely do we get mornings like this.\nFriend: Only after climbing the hill did we see the full view.\nSpeaker: Little did we know it would be so worth it.\nFriend: So stunning was the scene that nobody spoke.\nSpeaker: No sooner had the sun risen than the birds began to sing.\nFriend: What a perfect start to the day!",
+    "vocabulary": [
+      { "word": "sunrise", "definition": "quyosh chiqishi" },
+      { "word": "peaceful", "definition": "tinch, osoyishta" },
+      { "word": "stunning", "definition": "hayratlanarli go'zal" },
+      { "word": "scene", "definition": "manzara" },
+      { "word": "rise", "definition": "ko'tarilmoq, chiqmoq" }
+    ],
+    "questions": [
+      { "id": 90831, "type": "multiple-choice", "question": "What had the speaker never seen before?", "options": ["Such a beautiful sunrise", "A bird", "A hill", "A storm"], "correctIndex": 0, "explanation": "'Never have I seen such a beautiful sunrise' — negative adverb fronting + inversion." },
+      { "id": 90832, "type": "true-false", "question": "The place is beautiful but noisy.", "answer": false, "explanation": "'Not only is it beautiful, but it's also peaceful.'" },
+      { "id": 90833, "type": "multiple-choice", "question": "When did the colours change?", "options": ["Before they arrived", "Just after they arrived", "At noon", "At night"], "correctIndex": 1, "explanation": "'Hardly had we arrived when the colours changed.'" },
+      { "id": 90834, "type": "multiple-choice", "question": "When did they see the full view?", "options": ["From the car", "Only after climbing the hill", "At the start", "From home"], "correctIndex": 1, "explanation": "'Only after climbing the hill did we see the full view' — fronting + inversion." },
+      { "id": 90835, "type": "multiple-choice", "question": "What happened no sooner than the sun rose?", "options": ["It rained", "The birds began to sing", "They left", "It got dark"], "correctIndex": 1, "explanation": "'No sooner had the sun risen than the birds began to sing.'" }
+    ],
+    "difficulty": "hard",
+    "topic": "Inversiya — Never have I / Not only / Hardly had / No sooner"
+  },
   "category": "IELTS Preparation",
   "formulas": [
     {
@@ -850,6 +869,25 @@ export const cleftSentencesB2: DailyLesson = {
   "subtitle": "Ajratilgan gaplar: biror bo'lakni alohida ta'kidlash",
   "level": "B2",
   "day": 75,
+  "listening": {
+    "transcript": "Detective: It was the gardener who broke the window, not the maid.\nAssistant: Are you sure?\nDetective: Yes. What he wanted was the painting, not the money.\nAssistant: Interesting. When did it happen?\nDetective: It was at midnight that he entered the house.\nAssistant: And the alarm?\nDetective: It was the alarm that scared him away. What saved the painting was luck.\nAssistant: So he failed?\nDetective: Exactly. It was his own mistake that gave him away.\nAssistant: Clever work, detective!",
+    "vocabulary": [
+      { "word": "gardener", "definition": "bog'bon" },
+      { "word": "maid", "definition": "xizmatchi ayol" },
+      { "word": "midnight", "definition": "yarim tun" },
+      { "word": "alarm", "definition": "signalizatsiya, ogohlantirgich" },
+      { "word": "mistake", "definition": "xato" }
+    ],
+    "questions": [
+      { "id": 90841, "type": "multiple-choice", "question": "Who broke the window?", "options": ["The maid", "The gardener", "The detective", "A guest"], "correctIndex": 1, "explanation": "'It was the gardener who broke the window' — cleft sentence for emphasis." },
+      { "id": 90842, "type": "multiple-choice", "question": "What did he want?", "options": ["The money", "The painting", "The keys", "The car"], "correctIndex": 1, "explanation": "'What he wanted was the painting, not the money' — wh-cleft." },
+      { "id": 90843, "type": "true-false", "question": "He entered the house at noon.", "answer": false, "explanation": "'It was at midnight that he entered the house.'" },
+      { "id": 90844, "type": "multiple-choice", "question": "What scared him away?", "options": ["A dog", "The alarm", "A light", "The maid"], "correctIndex": 1, "explanation": "'It was the alarm that scared him away.'" },
+      { "id": 90845, "type": "multiple-choice", "question": "What gave him away?", "options": ["A witness", "His own mistake", "A camera", "The police"], "correctIndex": 1, "explanation": "'It was his own mistake that gave him away.'" }
+    ],
+    "difficulty": "hard",
+    "topic": "Cleft gaplar — It is/was...that/who, What...was"
+  },
   "category": "IELTS Preparation",
   "formulas": [
     {
@@ -1699,6 +1737,25 @@ export const advancedPassiveB2: DailyLesson = {
   "subtitle": "Murakkab passiv tuzilmalar: infinitiv, gerundiy, kauzativ va reporting verb'lar",
   "level": "B2",
   "day": 76,
+  "listening": {
+    "transcript": "Reporter: It is said that the new policy will help thousands.\nExpert: Yes. The plan is believed to reduce poverty.\nReporter: When will it be implemented?\nExpert: It is expected to start next year. New schools are being built already.\nReporter: Is it true that taxes will rise?\nExpert: It is thought that some taxes may increase slightly.\nReporter: And the response?\nExpert: The policy is considered fair by most economists. It is reported that support is growing.\nReporter: Has it been tested?\nExpert: Yes, it was trialled in two regions and is known to work.",
+    "vocabulary": [
+      { "word": "policy", "definition": "siyosat, qaror" },
+      { "word": "implement", "definition": "amalga oshirmoq" },
+      { "word": "poverty", "definition": "qashshoqlik" },
+      { "word": "trial", "definition": "sinovdan o'tkazmoq" },
+      { "word": "economist", "definition": "iqtisodchi" }
+    ],
+    "questions": [
+      { "id": 90851, "type": "multiple-choice", "question": "What is said about the new policy?", "options": ["It will fail", "It will help thousands", "It is illegal", "It is expensive"], "correctIndex": 1, "explanation": "'It is said that the new policy will help thousands' — impersonal passive." },
+      { "id": 90852, "type": "multiple-choice", "question": "What is the plan believed to reduce?", "options": ["Taxes", "Poverty", "Schools", "Jobs"], "correctIndex": 1, "explanation": "'The plan is believed to reduce poverty' — passive + infinitive." },
+      { "id": 90853, "type": "true-false", "question": "New schools are being built already.", "answer": true, "explanation": "'New schools are being built already' — present continuous passive." },
+      { "id": 90854, "type": "multiple-choice", "question": "How do most economists consider the policy?", "options": ["Unfair", "Fair", "Risky", "Useless"], "correctIndex": 1, "explanation": "'The policy is considered fair by most economists.'" },
+      { "id": 90855, "type": "multiple-choice", "question": "Where was the policy trialled?", "options": ["In one city", "In two regions", "Nationwide", "Abroad"], "correctIndex": 1, "explanation": "'it was trialled in two regions and is known to work.'" }
+    ],
+    "difficulty": "hard",
+    "topic": "Murakkab majhul nisbat — It is said that / is believed to"
+  },
   "category": "IELTS Preparation",
   "formulas": [
     {
@@ -2559,6 +2616,25 @@ export const academicVocabularyB2: DailyLesson = {
   "subtitle": "Akademik so'z boyligi: AWL (Academic Word List) — 50 ta eng muhim so'z",
   "level": "B2",
   "day": 78,
+  "listening": {
+    "transcript": "Tutor: For IELTS, use precise academic words. Instead of 'big', say 'significant'.\nStudent: I see. What about 'show'?\nTutor: Use 'demonstrate' or 'illustrate'. And instead of 'a lot', say 'numerous'.\nStudent: Got it. How about 'important'?\nTutor: 'Crucial' or 'vital'. To say 'cause', use 'contribute to'.\nStudent: And 'good'?\nTutor: 'Beneficial' or 'positive'. Avoid simple words in essays.\nStudent: What replaces 'in my opinion'?\nTutor: Try 'it could be argued that'. Always analyse, don't just describe.\nStudent: Thank you. These words will improve my band score!",
+    "vocabulary": [
+      { "word": "significant", "definition": "muhim, sezilarli" },
+      { "word": "demonstrate", "definition": "ko'rsatmoq, namoyish etmoq" },
+      { "word": "crucial", "definition": "hal qiluvchi" },
+      { "word": "beneficial", "definition": "foydali" },
+      { "word": "analyse", "definition": "tahlil qilmoq" }
+    ],
+    "questions": [
+      { "id": 90861, "type": "multiple-choice", "question": "What word should replace 'big'?", "options": ["Large", "Significant", "Huge", "Wide"], "correctIndex": 1, "explanation": "'Instead of big, say significant' — precise academic vocabulary." },
+      { "id": 90862, "type": "multiple-choice", "question": "What can be used instead of 'show'?", "options": ["Tell", "Demonstrate or illustrate", "See", "Look"], "correctIndex": 1, "explanation": "'Use demonstrate or illustrate.'" },
+      { "id": 90863, "type": "true-false", "question": "'A lot' can be replaced with 'numerous'.", "answer": true, "explanation": "'instead of a lot, say numerous.'" },
+      { "id": 90864, "type": "multiple-choice", "question": "What replaces 'important'?", "options": ["Big", "Crucial or vital", "Nice", "Good"], "correctIndex": 1, "explanation": "'Crucial or vital.'" },
+      { "id": 90865, "type": "multiple-choice", "question": "What phrase replaces 'in my opinion'?", "options": ["I think", "It could be argued that", "Maybe", "I guess"], "correctIndex": 1, "explanation": "'Try it could be argued that.'" }
+    ],
+    "difficulty": "hard",
+    "topic": "Akademik lug'at — IELTS uchun aniq so'zlar"
+  },
   "category": "IELTS Preparation",
   "formulas": [
     {
