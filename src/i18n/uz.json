@@ -1177,6 +1177,9 @@
   "vocabPage.calendar": "Kalendar",
   "vocabPage.analytics": "Analytics",
   "vocabPage.export": "Eksport",
-  "vocabPage.xpScore": "XP"
+  "vocabPage.xpScore": "XP",
+  "placementTest.levelA2Plus": "A2+",
+  "placementTest.levelB1": "B1",
+  "placementTest.levelB1Plus": "B1+",
+  "placementTest.levelB2": "B2"
 }
-

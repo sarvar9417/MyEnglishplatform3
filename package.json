@@ -12,6 +12,7 @@
     "check:murojaat": "tsx scripts/check-murojaat.ts",
     "check:youtube": "tsx scripts/check-youtube-availability.ts",
     "audit:cefr": "tsx scripts/cefr-audit.ts",
+    "check:i18n": "tsx scripts/check-i18n.ts",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",

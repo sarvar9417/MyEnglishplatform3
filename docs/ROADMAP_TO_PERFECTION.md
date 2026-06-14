@@ -1671,9 +1671,17 @@ export const GRAMMAR_TERMS: Record<string, { uz: string; short: string }> = {
 
 ---
 
-## F4-3. ⚠️ ️ Tarjimalar Sifatini Oshirish
+## F4-3. ✅ Tarjimalar Sifatini Oshirish — BAJARILDI (izchillik qismi)
 **Muammo:** "Fine", "well", "good" uchala ham "yaxshi". Rus kalka iboralar
 **Ta'sir:** O'zbek tili ustozi +0.3
+
+**Holat:** `scripts/check-i18n.ts` (`npm run check:i18n`) — uz/en/ru o'rtasida
+yetishmayotgan kalitlar, bo'sh qiymatlar va placeholder mosligini tekshiradi.
+**Topildi va tuzatildi:** en 37, ru 67, uz 4 ta kalit yetishmas edi (UI'da xom
+kalit-nomi ko'rsatilardi) — barchasi tarjima qilib to'ldirildi; `speaking.chatTranscript`
+placeholder nomuvofiqligi ham tuzatildi. Endi uchala til ham **1137 kalit (parite)**.
+`src/i18n/__tests__/i18n-consistency.test.ts` (3 test) drift'ni doimiy bloklaydi.
+Eslatma: leksik sifat (sinonimlar farqi, kalka iboralar) qo'lда tahrir talab qiladi.
 
 ### Lug'at qayta ko'rib chiqish:
 
