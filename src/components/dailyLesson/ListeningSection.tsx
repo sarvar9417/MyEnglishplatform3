@@ -658,6 +658,14 @@ export default function ListeningSection({ section, addXP }: Props) {
             </div>
           )}
 
+          {/* Zaxira manba (F9-1) — YouTube o'chsa ham mavjud audio/video havolasi */}
+          {section.backupUrl && (
+            <a href={section.backupUrl} target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 text-xs text-primary-600 dark:text-primary-400 hover:underline">
+              <Headphones size={14} /> Video ochilmasa — zaxira audio manbasini oching
+            </a>
+          )}
+
           {/* Audio player */}
           <div className="rounded-2xl bg-gradient-to-r from-primary-600 to-violet-600 p-5 text-white shadow-lg">
             <div className="flex items-center justify-between mb-3">

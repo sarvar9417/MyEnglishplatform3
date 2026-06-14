@@ -2030,9 +2030,20 @@ Yangi: "Ustida Ishlash" rejimi
 
 ---
 
-## F9-1. ⚠️ ️ Listening Section Sustainability
+## F9-1. ✅ Listening Section Sustainability — BAJARILDI (kodga tegishli qism)
 **Muammo:** YouTube videolar o'chishi mumkin
 **Ta'sir:** Ingliz tili pedagog +0.3
+
+**Holat:**
+- `scripts/check-youtube-availability.ts` monitoring skripti (`npm run check:youtube`)
+  — barcha `youtubeId` larni oEmbed orqali tekshiradi (API kalitsiz), 429/5xx da qayta
+  urinish bilan. Ishga tushirildi: **122 dan 69 tasi embed qilinmaydi** —
+  to'liq ro'yxat `docs/F9-1-broken-youtube-videos.md` da (kontent jamoasi almashtirishi uchun).
+- `ListeningSection` type'ga `backupUrl?` qo'shildi + komponentда zaxira manba havolasi render qilinadi.
+- Graceful degradation allaqachon mavjud: video o'chsa ham TTS audio pleyer transkriptdan
+  ovoz sintez qiladi va savollar ishlaydi — Listening hech qachon to'liq buzilmaydi.
+- ⛔ Kodда imkonsiz qism: videolarni R2/Supabase Storage'ga zaxiralash (infra) va
+  69 ta videoni qo'lда almashtirish (kontent kuratsiyasi) — foydalanuvchi qarori.
 
 ### Yechim:
 

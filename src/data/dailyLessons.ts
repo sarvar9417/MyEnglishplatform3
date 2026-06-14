@@ -93,6 +93,8 @@ export interface SpeakingSection {
 
 export interface ListeningSection {
   youtubeId?: string
+  /** Zaxira video/audio manbasi (masalan Supabase Storage) — youtubeId o'chsa ishlatiladi (F9-1) */
+  backupUrl?: string
   transcript: string
   source?: string
   duration?: string
