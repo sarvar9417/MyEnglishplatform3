@@ -504,7 +504,7 @@
   "speaking.yourAnswer": "Sizning javobingiz",
   "speaking.retryButton": "Qayta yozish",
   "speaking.nextPromptButton": "Boshqa savol",
-  "speaking.chatEnd": "Suhbatni tugat",
+  "speaking.chatEnd": "Suhbatni tugatish",
   "speaking.chatTurn": "{count} turn",
   "speaking.chatWaiting": "Claude suhbatni boshlayapti...",
   "speaking.chatPleaseWait": "Iltimos, bir necha soniya kuting",

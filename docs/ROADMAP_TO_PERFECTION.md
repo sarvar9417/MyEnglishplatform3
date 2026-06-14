@@ -1575,9 +1575,16 @@ export default defineConfig({
 
 ---
 
-## F4-1. ⚠️ Murojaat Shakli Standartlashtirish
+## F4-1. ✅ Murojaat Shakli Standartlashtirish — BAJARILDI
 **Muammo:** Ba'zi joylarda "siz" (rasmiy), ba'zida "sen" (norasmiy). Izchillik yo'q
 **Ta'sir:** O'zbek tili ustozi +0.5
+
+**Holat:** `scripts/check-murojaat.ts` audit skripti yaratildi (`npm run check:murojaat`)
+— uz.json + data fayllarning foydalanuvchiga murojaat maydonlarini (instruction/desc/
+title/tips) norasmiy "sen" olmoshlari va buyruq maylига tekshiradi (kichik harf-sezgir,
+inglizcha homograflarni chetlab o'tadi; `explanation`/misol tarjimalar atayin tekshirilmaydi).
+Topilgan yagona haqiqiy xato tuzatildi: `speaking.chatEnd` "Suhbatni tugat" → "Suhbatni
+tugatish". Audit endi toza (exit 0). uz.json UI allaqachon to'liq rasmiy edi.
 
 ### Qaror: Butun platforma "siz" (rasmiy, hurmatli) shaklida
 
