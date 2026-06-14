@@ -74,7 +74,6 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
         d.setUTCDate(d.getUTCDate() + intervalDays)
         const nextReview = d.toISOString().split('T')[0]
 
-        /* eslint-disable @typescript-eslint/no-explicit-any */
         await supabase.from('phrase_progress').upsert({
           user_id: uid,
           phrase_id: r.phrase.id,
@@ -84,8 +83,7 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
           wrong_count: r.correct ? 0 : 1,
           is_learned: false,
           last_reviewed: new Date().toISOString(),
-        } as any, { onConflict: 'user_id,phrase_id' })
-        /* eslint-enable @typescript-eslint/no-explicit-any */
+        }, { onConflict: 'user_id,phrase_id' })
       }
     }
     saveResults()

@@ -501,6 +501,8 @@ export interface TranslationStrings {
   'speaking.subtitle': string
   'speaking.browserWarn': string
   'speaking.browserWarnAdvice': string
+  'speaking.micPermissionDenied': string
+  'speaking.micRetry': string
   'speaking.chatDescriptionDetail': string
   'speaking.modePrompt': string
   'speaking.modeChat': string

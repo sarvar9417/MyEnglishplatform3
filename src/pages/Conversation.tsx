@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { ArrowLeft, Send, Sparkles, Trophy, BookOpen, AlertCircle, Volume2, Lightbulb, Mic, Square } from 'lucide-react'
+import { ArrowLeft, Send, Sparkles, Trophy, BookOpen, AlertCircle, Volume2, Lightbulb, Mic, MicOff, Square, RotateCcw } from 'lucide-react'
 import { useStore } from '../store/useStore'
 import { useI18n } from '../i18n'
 import type { TranslationStrings } from '../i18n/types'
@@ -152,6 +152,22 @@ export default function Conversation() {
           <Lightbulb size={16} className="shrink-0 mt-0.5" />
           <span>{t('conversation.tip')}</span>
         </div>
+
+        {sr.permissionError && (
+          <div className="rounded-xl p-3 bg-amber-50 dark:bg-amber-950/30 text-xs text-amber-700 dark:text-amber-300">
+            <p className="font-medium flex items-center gap-1.5">
+              <MicOff size={14} className="text-amber-500 shrink-0" />
+              {t('speaking.micPermissionDenied')}
+            </p>
+            <button
+              onClick={() => { sr.reset(); sr.start() }}
+              className="mt-1.5 text-xs font-semibold text-amber-800 bg-amber-200/60 hover:bg-amber-200 px-2.5 py-1 rounded-lg transition-colors"
+            >
+              <RotateCcw size={11} className="inline mr-1" />
+              {t('speaking.micRetry')}
+            </button>
+          </div>
+        )}
 
         <div className="grid sm:grid-cols-2 gap-3">
           {CONVERSATION_SCENARIOS.map(s => (
@@ -344,6 +360,15 @@ export default function Conversation() {
               }`}
             >
               {sr.isRecording ? <Square size={16} /> : <Mic size={18} />}
+            </button>
+          )}
+          {sr.permissionError && !sr.isRecording && (
+            <button
+              onClick={() => { sr.reset(); sr.start() }}
+              className="text-xs text-amber-600 font-semibold flex items-center gap-1"
+              title={t('speaking.micRetry')}
+            >
+              <RotateCcw size={12} /> {t('speaking.micRetry')}
             </button>
           )}
           <button onClick={send} disabled={!input.trim() || loading} className="w-10 h-10 rounded-xl bg-violet-500 text-white flex items-center justify-center disabled:opacity-40 active:scale-95 transition shrink-0">

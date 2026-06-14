@@ -500,8 +500,8 @@ export const contrastiveStructuresB2: DailyLesson = {
     { title: "Boshlang'ich", desc: 'While, whereas, unlike', color: 'bg-emerald-500', icon: '🌱', ids: [6401, 6402, 6403, 6404, 6405] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6406, 6407, 6408, 6409, 6410] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6411, 6412, 6413, 6414, 6415] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6418, 6416, 6420, 6419, 6417, 6424, 6423, 6425, 6421, 6422] },
-    { title: "Conversely", desc: "Rasmiy zidlik — conversely", color: 'bg-orange-500', icon: '↔️', ids: [6426, 6427, 6428, 6429, 6430] },
+    { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [6418, 6416, 6420, 6419, 6417, 6424, 6423, 6425, 6421, 6422] },
+    { title: "O'zgartirish", desc: "Rasmiy zidlik — conversely", color: 'bg-teal-500', icon: '🔄', ids: [6426, 6427, 6428, 6429, 6430] },
   ],
   tests: [
     { id: 59645, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'While / Whereas qanday ma\'no?', options: ['sabab', 'farq', 'vaqt', 'natija'], correct: 'farq', explanation: 'While/Whereas = contrast' },

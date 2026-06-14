@@ -51,7 +51,7 @@ ID collision xavfi real. Shu session davomida `a2Part1.ts` da `id:1110` duplikat
 **3. Build ogohlantirishlari:**
 ```
 Circular chunk: vendor -> react-vendor -> vendor
-Dynamic import + static import aralashuvi (supabase.ts, useStore.ts)
+Dynamic import + static import aralishuvi (supabase.ts, useStore.ts)
 ```
 Bu production da bundle size va load time muammolariga olib kelishi mumkin.
 
@@ -117,7 +117,7 @@ Fonetik transkriptsiyalar A1 darsida bor, lekin mashqlar ichida talaffuz tekshir
 **O'zbek tilida tushuntirishlar:**
 Grammatika qoidalari va mashq tushuntirishlari o'zbek tilida — bu O'zbek foydalanuvchilari uchun psixologik to'siqni kamaytiradi.
 
-**Xato tahlili (commonMistakes):**
+**Xato tahlili (commonMistars):**
 O'zbek tillik o'quvchilarning xos xatolari qayd etilgan:
 - "I am Ali ismim" → "My name is Ali"
 - "Where are you from? = Qayerda yashaysan?" (noto'g'ri tarjima)
@@ -305,39 +305,123 @@ Platforma har bir to'g'ri javobni "bilasiz" deb qayd etadi — ammo erta muddatd
 
 **Muammolar:**
 
-❓ **"VOWEL" va "CONSONANT" nima?** — A1 ning birinchi darsida grammatik termin. Oddiy odam uchun bu so'zlar ingliz tilida ham, o'zbek tilida ham tushunarsiz bo'lishi mumkin.
+❓ **"VOWELS" tushunchasi:**
+"Vowels" nima? O'qishda "O" harfini "oh" deb o'qiydi — lekin "vowels" (vowel-z) deb o'qiydi. Bu esa "oh" emas.
 
-❓ **Mashqlar intellektual, lekin hissiyotsiz:** "It is 8 AM. You say:" — bu test, hayot emas. Yangi boshlovchi uchun "Qo'shningiz bilan salomlashasiz. U soat 8 da keldi. Nima deyasiz?" — ko'proq real.
+❓ **"Consonants" tushunchasi:**
+"Con-son-ant-s" — bu so'zni o'zini tushunmayman. Kim orniga "con" qo'yib, "son" qo'shgan?
 
-❓ **Bir kunda 41 mashq + 20 test = 61 savol** — bu juda ko'p. Yangi boshlovchi uchun kun 1 da 20 ta savol maksimum bo'lishi kerak.
+❓ **Formulas confusion:**
+"I AM" → "I'm" → "I am" — boshida qisqartma, keyin kengaytma, keyin yana qisqartma. Nima uyg'otish?
 
-❓ **Progress ko'rinmayapti:** "Siz 34/41 mashqni bajardingiz" — lekin "Siz endi 'Good morning' ni to'g'ri ishlata olasiz" kabi ruhiy reward yo'q.
+❓ **Progress tracking:**
+"5/20" — bu nima? 5 ta savol, 20 ta jami? Yoki 5 ta to'g'ri, 20 ta noto'g'ri?
 
-❓ **Audio yo'q:** "Good morning" ni to'g'ri talaffuz qilishni bilmaydi. Harf va so'z tovushlarini eshitishsiz o'rganish qiyin.
+❓ **Mashq turlari:**
+"Fill in the blanks" — "blanks" nima? "Bo'sh joy" degan tushunish yo'q.
 
-**90 kunlik yo'l haqida fikr:**
-Oddiy odam uchun "90 kunda B2" da'vosi motivatsion bo'lishi mumkin, ammo xavfli ham — 90 kun o'tgach B2 bo'lmasa, umidsizlik paydo bo'ladi. "Sekin o'rganasiz — bu normal" degan psixologik xabar yo'q.
+❓ **Hearts system:**
+"❤️ 5" — bu qanday? O'chiriladimi? Yo'q qilinadimi? Nima uchun 5?
+
+❓ **Streak:**
+"3 days streak" — bu nima? 3 kunda nima? O'rganishmi? Yo'q qilishmi?
+
+### Iloji:
+- Emoji va ikonlar yaxshi — tushunish oson
+- Ranglar farqlanadi — yoqimasadlik yuq
+- Progress bar "▰▰▰▱▱" — bu ko'proq yashil bo'lsa, yaxshi
+- "Next" tugmasi — kelajaga o'tish, tushunarli
 
 ---
 
-## XULOSAVIY JADVAL
+## 9. XULOSA VA TAVSIYALAR
 
-| Soha | Baho | Asosiy muammo |
-|------|------|----------------|
-| Ingliz tili pedagog. | 7.5/10 | Produktiv ko'nikmalar integratsiyasi zaif |
-| Dasturchi | 7/10 | Kontent TS fayllarida, ID boshqaruvi qo'lda |
-| O'zbek tili sifati | 7/10 | Murojaat noaniq, ba'zi tarjimalar bir xil |
-| Yangi boshlovchi uchun | 6.5/10 | Audio yo'q, birinchi kunda juda ko'p |
-| Falsafiy chuqurlik | 5/10 | Instrumental o'rganish, transformativ yo'q |
-| Biznes modeli | 5/10 | Monetizatsiya, analytics, scalability yo'q |
-| Xotira ilmi | 6/10 | Grammar uchun SRS yo'q, massed practice |
-| **O'rtacha** | **6.5/10** | — |
+### 9.1. Baho jadvali
+
+| Kategoriya | Ball | Izoh |
+|------------|------|------|
+| Professional dasturchi | 7/10 | Tech stack yaxshi, lekin kontent boshqaruvi muammosi |
+| Ingliz tili o'qituvchisi | 7.5/10 | Struktura yaxshi, produktiv ko'nikmalar yetishmayapti |
+| O'zbek tili o'qituvchisi | 7/10 | O'zbek tilida tushuntirishlar, lekin izchillik yo'q |
+| Web dizayner | 6.5/10 | Responsive, lekin accessibility va visual hierarchy zaif |
+| Xotira mutaxassisi | 6/10 | FSRS yaxshi, lekin interleaving va retrieval yetishmayapti |
+| Yodlash o'qituvchisi | 6/10 | Testing effect to'g'ri yo'q, active recall yo'q |
+| Faylasuf | 5/10 | Instrumental yondashuv, xato falsafiyasi muammosi |
+| Bola ko'zlari | 6.5/10 | UX o'qib bormoqda, lekin terminlar chalkash |
+
+### 9.2. Top-10 Tavsiyalar
+
+1. **Kontentni CMS ga ko'chirish** — JSON/YAML fayllarga chiqarish, admin panel qilish
+2. **Grammatikaga SRS qo'shish** — `grammar_progress` jadvalini FSRS asosida qayta ishlash
+3. **Interleaved practice** — Har xil mavzulardan aralash mashqlar yaratish
+4. **Speaking/writing integratsiyasi** — Har darsda kamida 1 ta produktiv mashq
+5. **Kontekstli mashqlar** — Dialog, matn, vaziyat asosida mashqlar
+6. **Forgetting curve hisoboti** — Foydalanuvga "qachon unutdingiz" ko'rsatish
+7. **Visual mnemonic** — Rasm, akronim, diagrammalar qo'shish
+8. **Accessibility audit** — aria-label, color contrast, keyboard nav
+9. **Terminologiya tushuntirish** — "Streak", "Hearts", "Inkor" lug'at qo'shish
+10. **Spiral review** — Mavzu qayta ko'rish tizimi (har 7, 14, 30 kunda)
+
+### 9.3. Keyingi 90 kun uchun roadmap
+
+```mermaid
+gantt
+    title EnglishPath Platform — 90 kunlik taklif
+    dateFormat  YYYY-MM-DD
+    section Arxitektura
+    Kontent CMS           :2026-06-15, 14d
+    SRS Grammar           :2026-06-20, 14d
+    section Pedagogika
+    Interleaved Practice  :2026-07-01, 14d
+    Speaking Integration  :2026-07-05, 14d
+    section UX
+    Accessibility         :2026-07-10, 7d
+    Visual Mnemonic       :2026-07-12, 7d
+    section Test
+    Forgetting Curve      :2026-07-15, 7d
+    Spiral Review         :2026-07-18, 7d
+```
 
 ---
 
-## TOP-10 USTUVOR TAVSIYALAR
+## 10. PERSONAL VOCABULARY TIZIMI TAHLILI
 
-### Kritik (darhol hal qilinishi kerak)
-1. **Grammar SRS**: `grammar_progress` ga FSRS qo'shilsin — har bir dars qoidasi 2/7/21 kunda qayta test qilinsin
-2. **Kontent CMS ga ko'chirish**: TypeScript fayllarini Supabase `lessons` jadvalidagi to'liq kontent boshqaruv tizimiga o'tkazish
-3. **Exercise ID auto-generation**: Manual ID o'rn
+### 10.1. Arxitektura diagrammasi
+
+```mermaid
+flowchart TD
+    A[AddWordForm] --> B[PersonalVocabularyService]
+    B --> C[Supabase personal_vocabulary]
+    B --> D[Claude API Translation]
+    C --> E[Zustand personalVocabularySlice]
+    E --> F[WordList]
+    E --> G[FlashCardTest]
+    H[VocabularyProgress] --> I[FSRS Algorithm]
+    I --> E
+```
+
+### 10.2. Kuchli tomonlari
+
+- **AI tarjima:** Claude API orqali avtomatik tarjima
+- **FSRS integratsiyasi:** Lug'at so'zlari uchun spaced repetition
+- **Offline support:** Dexie orqali offline ishlash
+- **Test rejimi:** 4 xil flashcard test turi
+
+### 10.3. Kamchiliklari
+
+- **Kategoriyalar yo'q:** "Ish", "Hayot", "Sayohat" kabi kategoriyalar yo'q
+- **Tag system yo'q:** So'zlarni teglar orqali filter qilish mumkin emas
+- **Import/Export yo'q:** Boshqa platformalardan so'z import qilish mumkin emas
+- **Audio pronuntatsiya yo'q:** So'zni talaffuzini eshittirish yo'q
+
+---
+
+## 11. HISOBOT
+
+EnglishPath — **tehnologik jihatdan mukammal** platforma, lekin **pedagogik va UX jihatdan hali rivojlanish kerak**. 
+
+**Asosiy kuchli tomoni:** FSRS-5 algoritmi, offline-first arxitektura, zamonaviy stack.
+
+**Asosiy kamchiligi:** Kontent boshqaruvi muammosi, produktiv ko'nikmalar integratsiyasi, interleaving yo'q.
+
+**Tavsiya:** Kontentni tashqi fayllarga chiqarish, grammatikaga SRS qo'shish, produktiv mashqlar integratsiyasini 90 kun ichida amalga oshirish.

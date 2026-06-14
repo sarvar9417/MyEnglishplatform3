@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { ArrowLeft, Volume2, Mic, Square, ChevronLeft, ChevronRight, Sparkles, Trophy, RotateCcw, Gauge } from 'lucide-react'
+import { ArrowLeft, Volume2, Mic, MicOff, Square, ChevronLeft, ChevronRight, Sparkles, Trophy, RotateCcw, Gauge } from 'lucide-react'
 import { useStore } from '../store/useStore'
 import { useI18n } from '../i18n'
 import { PRONUNCIATION_CATEGORIES, type PronunciationCategory } from '../data/pronunciationDrills'
@@ -130,6 +130,21 @@ export default function Pronunciation() {
           <span>{t('pronunciation.tip')}</span>
         </div>
 
+        {sr.permissionError && (
+          <div className="rounded-xl p-3 bg-amber-50 dark:bg-amber-950/30 text-xs text-amber-700 dark:text-amber-300">
+            <p className="font-medium flex items-center gap-1.5">
+              <MicOff size={14} className="text-amber-500 shrink-0" />
+              {t('speaking.micPermissionDenied')}
+            </p>
+            <button
+              onClick={() => { sr.reset(); sr.start() }}
+              className="mt-1.5 text-xs font-semibold text-amber-800 bg-amber-200/60 hover:bg-amber-200 px-2.5 py-1 rounded-lg transition-colors"
+            >
+              <RotateCcw size={11} className="inline mr-1" />
+              {t('speaking.micRetry')}
+            </button>
+          </div>
+        )}
         {!sr.isSupported && (
           <div className="rounded-xl p-3 bg-amber-50 dark:bg-amber-950/30 text-xs text-amber-700 dark:text-amber-300">
             {t('pronunciation.browserWarn')}
@@ -209,6 +224,21 @@ export default function Pronunciation() {
       {/* Mic */}
       {sr.isSupported && (
         <div className="flex flex-col items-center gap-2">
+          {sr.permissionError && !sr.isRecording && !analyzing && (
+            <div className="rounded-xl p-2.5 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40 w-full text-center">
+              <p className="text-[11px] text-amber-700 dark:text-amber-300 font-medium flex items-center justify-center gap-1">
+                <MicOff size={12} className="text-amber-500" />
+                {t('speaking.micPermissionDenied')}
+              </p>
+              <button
+                onClick={() => { sr.reset(); sr.start() }}
+                className="mt-1 text-[11px] font-semibold text-amber-800 bg-amber-200/60 hover:bg-amber-200 px-2.5 py-1 rounded-lg transition-colors"
+              >
+                <RotateCcw size={10} className="inline mr-1" />
+                {t('speaking.micRetry')}
+              </button>
+            </div>
+          )}
           {sr.isRecording && (
             <p className="text-xs text-rose-500 font-semibold flex items-center gap-1.5 animate-pulse">
               <span className="w-2 h-2 bg-rose-500 rounded-full" /> {t('pronunciation.listeningMic')}
@@ -223,7 +253,7 @@ export default function Pronunciation() {
           >
             {sr.isRecording ? <Square size={24} /> : <Mic size={26} />}
           </button>
-          <p className="text-[11px] text-gray-400">{sr.isRecording ? t('pronunciation.micStopHint') : analyzing ? t('pronunciation.analyzing') : t('pronunciation.micStartHint')}</p>
+          <p className="text-[11px] text-gray-400">{sr.isRecording ? t('pronunciation.micStopHint') : analyzing ? t('pronunciation.analyzing') : sr.permissionError ? '' : t('pronunciation.micStartHint')}</p>
         </div>
       )}
 

@@ -139,8 +139,8 @@ export const adjectiveAdverb: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Adj vs Adv asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1901, 1902, 1903, 1904, 1905] },
     { title: "O'rtacha", desc: '-ly qo\'shimchasi', color: 'bg-blue-500', icon: '📘', ids: [1906, 1907, 1908, 1909, 1910] },
     { title: "Qiyin", desc: 'Good/Well, Hard/Hardly', color: 'bg-violet-500', icon: '🎯', ids: [1912, 1914, 1911, 1913, 1915] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1918, 1920, 1919, 1917, 1915, 1913, 1916, 1918, 1920, 1916] },
-    { title: "So'z moslash", desc: 'Adj vs Adv farqi', color: 'bg-orange-500', icon: '🔗', ids: [50009, 50010, 50011, 50012] },
+    { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [1918, 1920, 1919, 1917, 1915, 1913, 1916, 1918, 1920, 1916] },
+    { title: "O'zgartirish", desc: 'Adj vs Adv farqi', color: 'bg-teal-500', icon: '🔄', ids: [50009, 50010, 50011, 50012] },
   ],
   tests: [
     { id: 19033, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Adjective nima vazifasini bajaradi?", options: ['otni tavsiflaydi', 'fe\'lni tavsiflaydi', 'sifatni tavsiflaydi', 'ravishni tavsiflaydi'], correct: 'otni tavsiflaydi', explanation: "Adjective — otni tavsiflaydi" },

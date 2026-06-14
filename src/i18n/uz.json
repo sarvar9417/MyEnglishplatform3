@@ -537,6 +537,8 @@
   "speaking.scoreGrammar": "Grammar",
   "speaking.browserWarn": "⚠️ Brauzeringiz Web Speech API-ni qo'llab-quvvatlamaydi. Chrome yoki Edge ishlatishingizni tavsiya qilamiz.",
   "speaking.browserWarnAdvice": "Chrome yoki Edge ishlatishingizni tavsiya qilamiz.",
+  "speaking.micPermissionDenied": "Mikrofonga ruxsat berilmadi. Brauzer sozlamalarida mikrofonga ruxsat bering.",
+  "speaking.micRetry": "Qayta urinish",
   "speaking.chatDescriptionDetail": "Mavzuni tanlang va Claude AI bilan real-time suhbatlashing. Siz gapirasiz, Claude javob beradi va suhbat oxirida feedback olasiz.",
   "speaking.promptTime": "{minutes}:{seconds} daqiqa",
   "speaking.promptsCount": "{count} ta savol",

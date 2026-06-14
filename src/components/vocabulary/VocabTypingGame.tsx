@@ -86,8 +86,7 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
           is_learned: false,
           // last_rating yozilmaydi — mavjud "yodladim" statusi o'chib ketmasligi uchun
           last_reviewed: new Date().toISOString(),
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        } as any, { onConflict: 'user_id,word_id' })
+        }, { onConflict: 'user_id,word_id' })
       }
     }
     saveResults()

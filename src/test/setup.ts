@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import '@testing-library/jest-dom'
 
 // jsdom doesn't implement scrollTo — mock both window and Element.scrollTo so tests don't throw
@@ -11,7 +12,6 @@ if (typeof Element.prototype.scrollTo !== 'function') {
 // Suppress act() warnings from async effects — tests handle this correctly via await renderPage()
 // Suppress jsdom 'Not implemented: window.scrollTo' error — guarded with try/catch in source
 const origConsoleError = console.error
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 console.error = (...args: any[]) => {
   const msg = typeof args[0] === 'string' ? args[0] : ''
   if (msg.includes('inside a test was not wrapped in act(')) return

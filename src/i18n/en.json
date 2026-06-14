@@ -518,6 +518,8 @@
   "speaking.bannerRoleplayDesc": "Role-play real situations — restaurant, job interview, airport…",
   "speaking.bannerPronunciation": "🎯 AI Pronunciation Coach",
   "speaking.bannerPronunciationDesc": "Practice sounds — th, w/v, vowels, stress…",
+  "speaking.micPermissionDenied": "Microphone permission denied. Please allow microphone access in your browser settings.",
+  "speaking.micRetry": "Retry",
 
   "listening.title": "Listening",
   "listening.subtitle": "YouTube lessons \u00b7 Exercises \u00b7 Shadowing",

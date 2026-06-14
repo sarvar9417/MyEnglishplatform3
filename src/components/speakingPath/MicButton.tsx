@@ -10,18 +10,18 @@ import HoldMicButton from './HoldMicButton'
 interface Props {
   onResult: (transcript: string) => void
   /** STT qo'llab-quvvatlanmasligi haqida parent'ni xabardor qilish */
-  onSupportChange?: (supported: boolean) => void
+  onSupportChange?: (supported: boolean, permissionError: boolean) => void
   label?: string
   disabled?: boolean
 }
 
 export default function MicButton({ onResult, onSupportChange, label = 'Gapiring', disabled }: Props) {
-  const { isSupported, isRecording, transcript, interim, start, stop, reset } = useSpeechRecognition()
+  const { isSupported, isRecording, transcript, interim, permissionError, start, stop, reset } = useSpeechRecognition()
   const wasRecording = useRef(false)
 
   useEffect(() => {
-    onSupportChange?.(isSupported)
-  }, [isSupported, onSupportChange])
+    onSupportChange?.(isSupported, permissionError)
+  }, [isSupported, permissionError, onSupportChange])
 
   // yozish tugagan paytni ushlaymiz → transcript'ni qaytaramiz
   useEffect(() => {

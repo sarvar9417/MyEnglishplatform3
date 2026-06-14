@@ -211,6 +211,20 @@ export default function ShadowStep({ day, level, onNext }: Props) {
           </div>
         ) : (
           <div className="flex flex-col items-center gap-2">
+            {sr.permissionError && !recording && (
+              <div className="text-center">
+                <p className="text-xs text-amber-600 dark:text-amber-400 font-medium">
+                  🎤 Mikrofon ruxsati yo'q.
+                </p>
+                <button
+                  onClick={() => { sr.reset(); sr.start() }}
+                  className="mt-1 text-xs font-semibold text-amber-700 bg-amber-100 dark:bg-amber-900/40 hover:bg-amber-200 dark:hover:bg-amber-800/60 px-2.5 py-1 rounded-lg transition-colors"
+                >
+                  <RotateCcw size={10} className="inline mr-1" />
+                  Qayta urinish
+                </button>
+              </div>
+            )}
             <HoldMicButton
               isRecording={recording}
               onStart={startRecord}

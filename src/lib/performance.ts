@@ -48,8 +48,7 @@ export function reportWebVitals() {
     let clsValue = 0
     const clsObserver = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const clsEntry = entry as any
+        const clsEntry = entry as unknown as { hadRecentInput: boolean; value: number }
         if (!clsEntry.hadRecentInput) {
           clsValue += clsEntry.value
         }

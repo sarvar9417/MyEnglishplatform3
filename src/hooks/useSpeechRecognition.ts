@@ -14,7 +14,7 @@ type SrCtor = new () => {
   abort(): void
   onresult: ((e: SrEvent) => void) | null
   onend: (() => void) | null
-  onerror: ((e: Event) => void) | null
+  onerror: ((e: Event & { error?: string }) => void) | null
 }
 
 declare global {
@@ -26,9 +26,28 @@ export interface SpeechRecognitionState {
   isRecording: boolean
   transcript: string
   interim: string
+  permissionError: boolean
   start(): void
   stop(): void
   reset(): void
+}
+
+/** iOS'da Web Speech API (SpeechRecognition) ishlamaydi */
+function isIOS(): boolean {
+  if (typeof navigator === 'undefined') return false
+  return /iPhone|iPad|iPod/i.test(navigator.userAgent)
+}
+
+/** Mikrofon ruxsatini oldindan so'rab, keyin stream'ni bo'shatadi.
+ *  Android Chrome'da SpeechRecognition.start() ishlashi uchun ruxsat kerak. */
+async function requestMicPermission(): Promise<boolean> {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+    stream.getTracks().forEach(t => t.stop())
+    return true
+  } catch {
+    return false
+  }
 }
 
 export function useSpeechRecognition(): SpeechRecognitionState {
@@ -36,12 +55,19 @@ export function useSpeechRecognition(): SpeechRecognitionState {
   const [isRecording, setIsRecording] = useState(false)
   const [transcript, setTranscript] = useState('')
   const [interim, setInterim] = useState('')
+  const [permissionError, setPermissionError] = useState(false)
   const recRef = useRef<InstanceType<SrCtor> | null>(null)
   // Final va interim natijalarni ref'da saqlaymiz — stop()/onend paytida ishlatish uchun
   const transcriptRef = useRef('')
   const interimRef = useRef('')
 
   useEffect(() => {
+    // 1) iOS → umuman qo'llab-quvvatlanmaydi
+    if (isIOS()) {
+      setIsSupported(false)
+      return
+    }
+    // 2) Web Speech API mavjudmi?
     const Ctor = window.SpeechRecognition ?? window.webkitSpeechRecognition
     if (!Ctor) setIsSupported(false)
   }, [])
@@ -50,9 +76,19 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     return () => { try { recRef.current?.abort() } catch { /* noop */ } }
   }, [])
 
-  const start = useCallback(() => {
+  const start = useCallback(async () => {
     const Ctor = window.SpeechRecognition ?? window.webkitSpeechRecognition
     if (!Ctor) return
+
+    // Mobil'da ruxsatni oldindan so'raymiz (Android Chrome talab qiladi)
+    const hasPermission = await requestMicPermission()
+    if (!hasPermission) {
+      setPermissionError(true)
+      // eslint-disable-next-line no-console
+      console.warn('[SpeechRecognition] Mikrofon ruxsati yo\'q yoki qurilmada mikrofon topilmadi')
+      return
+    }
+    setPermissionError(false)
 
     // Avvalgi instansiyani to'xtatamiz (dublikat tanishni oldini olish)
     try { recRef.current?.abort() } catch { /* noop */ }
@@ -90,7 +126,13 @@ export function useSpeechRecognition(): SpeechRecognitionState {
       setIsRecording(false)
     }
 
-    rec.onerror = () => {
+    rec.onerror = (e) => {
+      const err = e.error ?? 'unknown'
+      // eslint-disable-next-line no-console
+      console.warn('[SpeechRecognition] Xatolik:', err)
+      if (err === 'not-allowed' || err === 'service-not-allowed') {
+        setPermissionError(true)
+      }
       setIsRecording(false)
     }
 
@@ -119,7 +161,8 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     setTranscript('')
     setInterim('')
     setIsRecording(false)
+    setPermissionError(false)
   }, [])
 
-  return { isSupported, isRecording, transcript, interim, start, stop, reset }
+  return { isSupported, isRecording, transcript, interim, permissionError, start, stop, reset }
 }

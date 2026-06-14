@@ -1,3 +1,4 @@
+import type { Database } from '../types/supabase'
 import { supabase } from '../lib/supabase'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
@@ -34,10 +35,9 @@ export async function saveScore(
   conflictCols: string[],
   payload: Record<string, unknown>,
 ): Promise<void> {
-  const { error } = await supabase
-    .from(table as never)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    .upsert(payload as any, { onConflict: conflictCols.join(',') })
+  type TableName = keyof Database['public']['Tables']
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { error } = await (supabase.from(table as TableName) as any).upsert(payload, { onConflict: conflictCols.join(',') })
   if (error) {
     monitoring.captureMessage(`${table} upsert error: ${error.message}`, 'error')
     useToastStore.getState().toast(`Natijani saqlashda xatolik: ${error.message}`, 'error')

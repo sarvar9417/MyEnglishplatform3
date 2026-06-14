@@ -92,7 +92,9 @@ describe('daily lessons data', () => {
 
   // ── Lesson data quality ──
 
-  const VALID_EXERCISE_TYPES = ['fill-blank', 'multiple-choice', 'error-correction', 'transformation', 'fill-table', 'vocab-match']
+  const VALID_EXERCISE_TYPES = ['fill-blank', 'multiple-choice', 'error-correction', 'transformation', 'fill-table', 'vocab-match', 'passage', 'connection']
+  // 'connection' (elaborative encoding) — ochiq javobli, explanation o'rniga exampleAnswer ishlatadi
+  const TYPES_WITHOUT_EXPLANATION = ['connection']
 
   it('every exercise has a valid type', () => {
     for (const l of ALL_LESSONS) {
@@ -110,11 +112,13 @@ describe('daily lessons data', () => {
   it('every exercise has a non-empty explanation', () => {
     for (const l of ALL_LESSONS) {
       for (const ex of l.exercises) {
+        if (TYPES_WITHOUT_EXPLANATION.includes(ex.type)) continue
         expect(ex.explanation).toBeTruthy()
         expect(ex.explanation.length).toBeGreaterThanOrEqual(3)
       }
       if (l.tests) {
         for (const t of l.tests) {
+          if (TYPES_WITHOUT_EXPLANATION.includes(t.type)) continue
           expect(t.explanation).toBeTruthy()
           expect(t.explanation.length).toBeGreaterThanOrEqual(3)
         }

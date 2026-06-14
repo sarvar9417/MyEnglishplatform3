@@ -99,7 +99,6 @@ export async function upsertPhraseProgress(
     })
   }
 
-  /* eslint-disable @typescript-eslint/no-explicit-any */
   const { error } = await supabase.from('phrase_progress').upsert({
     user_id: userId,
     phrase_id: phraseId,
@@ -110,8 +109,7 @@ export async function upsertPhraseProgress(
     is_learned: merged.isLearned,
     last_rating: lastRating,
     last_reviewed: new Date().toISOString(),
-  } as any, { onConflict: 'user_id,phrase_id' })
-  /* eslint-enable @typescript-eslint/no-explicit-any */
+  }, { onConflict: 'user_id,phrase_id' })
 
   if (error) {
     monitoring.captureMessage('upsertPhraseProgress error: ' + (error instanceof Error ? error.message : String(error)), 'error')
@@ -129,7 +127,6 @@ export async function savePhraseSession(
 ) {
   const dateToUse = sessionDate ?? new Date().toISOString().split('T')[0]
 
-  /* eslint-disable @typescript-eslint/no-explicit-any */
   const { error } = await supabase
     .from('phrase_sessions')
     .upsert({
@@ -140,8 +137,7 @@ export async function savePhraseSession(
       score,
       time_spent: timeSpent,
       completed: true,
-    } as any, { onConflict: 'user_id,session_date,batch_number' })
-  /* eslint-enable @typescript-eslint/no-explicit-any */
+    }, { onConflict: 'user_id,session_date,batch_number' })
 
   if (error) {
     monitoring.captureMessage('savePhraseSession error: ' + (error instanceof Error ? error.message : String(error)), 'error')

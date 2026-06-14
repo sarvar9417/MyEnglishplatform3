@@ -388,6 +388,21 @@ export default function Speaking() {
           </button>
         </div>
 
+        {sr.permissionError && (
+          <div className="card bg-amber-50 border-amber-100 mb-4">
+            <p className="text-sm text-amber-700 font-medium flex items-center gap-2">
+              <MicOff size={16} className="text-amber-500 shrink-0" />
+              {t('speaking.micPermissionDenied')}
+            </p>
+            <button
+              onClick={() => { sr.reset(); sr.start() }}
+              className="mt-2 text-xs font-semibold text-amber-800 bg-amber-200/60 hover:bg-amber-200 px-3 py-1.5 rounded-lg transition-colors"
+            >
+              <RotateCcw size={12} className="inline mr-1" />
+              {t('speaking.micRetry')}
+            </button>
+          </div>
+        )}
         {!sr.isSupported && (
           <div className="card bg-red-50 border-red-100 mb-4">
             <p className="text-sm text-red-700 font-medium">
@@ -739,6 +754,20 @@ export default function Speaking() {
 
           {/* Control buttons */}
           <div className="flex items-center gap-2">
+            {sr.permissionError && !sr.isRecording && (
+              <div className="text-center w-full">
+                <p className="text-xs text-amber-600 font-medium">
+                  {t('speaking.micPermissionDenied')}
+                </p>
+                <button
+                  onClick={() => { sr.reset(); sr.start() }}
+                  className="mt-1.5 text-xs font-semibold text-amber-700 bg-amber-100 hover:bg-amber-200 px-2.5 py-1 rounded-lg transition-colors"
+                >
+                  <RotateCcw size={11} className="inline mr-1" />
+                  {t('speaking.micRetry')}
+                </button>
+              </div>
+            )}
             {!sr.isRecording ? (
               <button
                 onClick={() => sr.start()}
@@ -942,6 +971,21 @@ export default function Speaking() {
 
       {/* Mic button */}
       <div className="flex flex-col items-center gap-4 mb-5">
+        {sr.permissionError && !isRecording && (
+          <div className="card bg-amber-50 border-amber-100 w-full text-center">
+            <p className="text-xs text-amber-700 font-medium flex items-center justify-center gap-1.5">
+              <MicOff size={14} className="text-amber-500" />
+              {t('speaking.micPermissionDenied')}
+            </p>
+            <button
+              onClick={() => { sr.reset(); sr.start() }}
+              className="mt-2 text-xs font-semibold text-amber-800 bg-amber-200/60 hover:bg-amber-200 px-3 py-1.5 rounded-lg transition-colors"
+            >
+              <RotateCcw size={12} className="inline mr-1" />
+              {t('speaking.micRetry')}
+            </button>
+          </div>
+        )}
         <button
           onClick={isRecording ? stopRecording : startRecording}
           disabled={!sr.isSupported || isEvaluating}
@@ -966,7 +1010,7 @@ export default function Speaking() {
               {t('speaking.recordingTimer', { mins: String(mins), secs: String(secs).padStart(2, '0') })}
             </p>
           )}
-          {!isRecording && !isDone && (
+          {!isRecording && !isDone && !sr.permissionError && (
             <p className="text-sm text-gray-400">{t('speaking.recordInstruction')}</p>
           )}
           {isDone && (

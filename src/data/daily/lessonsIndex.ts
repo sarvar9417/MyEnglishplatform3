@@ -28,10 +28,10 @@ export const LESSON_INDEX: LessonMeta[] = [
     "level": "A1",
     "day": 1,
     "isReview": false,
-    "formulas": 3,
-    "vocabulary": 44,
-    "exercises": 41,
-    "tests": 20
+    "formulas": 4,
+    "vocabulary": 20,
+    "exercises": 20,
+    "tests": 15
   },
   {
     "id": "numbers-1-100",
@@ -473,7 +473,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 3,
     "vocabulary": 23,
-    "exercises": 45,
+    "exercises": 47,
     "tests": 25
   },
   {

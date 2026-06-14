@@ -412,8 +412,7 @@ export default function Vocabulary() {
       is_learned: srsResult.is_learned,
       last_rating: rating,
       last_reviewed: new Date().toISOString(),
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } as any, { onConflict: 'user_id,word_id' })
+    }, { onConflict: 'user_id,word_id' })
 
     if (error) {
       monitoring.captureMessage('saveProgressToDB upsert error: ' + error.message, 'warn')
@@ -551,8 +550,7 @@ export default function Vocabulary() {
         is_learned: row.is_learned ?? false,
         last_rating: row.last_rating ?? null,
         last_reviewed: new Date().toISOString(),
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } as any, { onConflict: 'user_id,word_id' })
+      }, { onConflict: 'user_id,word_id' })
 
       if (!error) imported++
     }

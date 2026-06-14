@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
@@ -22,7 +23,6 @@ const mockStoreState = vi.hoisted(() => ({
   todayXP: 100,
   totalXP: 1500,
   lessonProgress: {} as Record<string, number>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   lessons: [] as any[],
   lastActiveDate: '2026-06-15',
   totalWordsLearned: 25,

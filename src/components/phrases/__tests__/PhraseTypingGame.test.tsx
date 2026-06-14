@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import PhraseTypingGame from '../PhraseTypingGame'
@@ -22,19 +23,13 @@ const mockGetTodayTashkent = vi.hoisted(() => vi.fn(() => '2026-06-15'))
 /** Query-builder chain — each method returns `qb` so the chain works */
 const mockQB = vi.hoisted(() => {
   const qb: Record<string, ReturnType<typeof vi.fn>> & { then: ReturnType<typeof vi.fn> } = {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     select: vi.fn(() => qb as any),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     eq: vi.fn(() => qb as any),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     limit: vi.fn(() => qb as any),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     order: vi.fn(() => qb as any),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     range: vi.fn(() => qb as any),
     then: vi.fn((f: (v: unknown) => void) => f({ data: [], error: null })),
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return qb as any
 })
 

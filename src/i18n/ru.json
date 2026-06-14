@@ -477,6 +477,8 @@
   "speaking.bannerRoleplayDesc": "Ролевые игры — ресторан, собеседование, аэропорт…",
   "speaking.bannerPronunciation": "🎯 AI Тренер произношения",
   "speaking.bannerPronunciationDesc": "Тренируйте звуки — th, w/v, гласные, ударение…",
+  "speaking.micPermissionDenied": "Доступ к микрофону запрещён. Пожалуйста, разрешите доступ к микрофону в настройках браузера.",
+  "speaking.micRetry": "Повторить",
 
   "listening.title": "Аудирование",
   "listening.subtitle": "YouTube уроки · Упражнения · Shadowing",

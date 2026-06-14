@@ -156,8 +156,8 @@ export const modalVerbs: DailyLesson = {
     { title: "Boshlang'ich", desc: 'Can va Can\'t asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1401, 1402, 1403, 1404, 1405] },
     { title: "O'rtacha", desc: 'Must va Should', color: 'bg-blue-500', icon: '📘', ids: [1406, 1407, 1408, 1409, 1410] },
     { title: "Qiyin", desc: 'Might va inkor shakllari', color: 'bg-violet-500', icon: '🎯', ids: [1412, 1414, 1413, 1415, 1411] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1422, 1421, 1426, 1419, 1423, 1428, 1418, 1427, 1425, 1430, 1424, 1429, 1416, 1417, 1420] },
-    { title: "So'z moslash", desc: 'Modal fe\'l va ma\'no', color: 'bg-orange-500', icon: '🔗', ids: [50001, 50002, 50003, 50004] },
+    { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [1422, 1421, 1426, 1419, 1423, 1428, 1418, 1427, 1425, 1430, 1424, 1429, 1416, 1417, 1420] },
+    { title: "O'zgartirish", desc: 'Modal fe\'l va ma\'no', color: 'bg-teal-500', icon: '🔄', ids: [50001, 50002, 50003, 50004] },
   ],
   tests: [
     { id: 14044, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Qaysi gap TO\'G\'RI?', options: ['I can swim', 'I cans swim', 'I can swims', 'I can to swim'], correct: 'I can swim', explanation: "Modal + V1" },
@@ -350,8 +350,8 @@ export const articles: DailyLesson = {
     { title: "Boshlang'ich", desc: 'A va An qoidalari', color: 'bg-emerald-500', icon: '🌱', ids: [1501, 1502, 1503, 1504, 1505] },
     { title: "O'rtacha", desc: 'The ishlatilishi', color: 'bg-blue-500', icon: '📘', ids: [1506, 1507, 1508, 1509, 1510] },
     { title: "Qiyin", desc: 'Zero article', color: 'bg-violet-500', icon: '🎯', ids: [1511, 1514, 1512, 1513, 1515] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1530, 1520, 1526, 1518, 1519, 1523, 1521, 1525, 1517, 1528, 1527, 1529, 1524, 1522, 1516] },
-    { title: "So'z moslash", desc: 'Artikl va qo\'llanish', color: 'bg-orange-500', icon: '🔗', ids: [50005, 50006, 50007, 50008] },
+    { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [1530, 1520, 1526, 1518, 1519, 1523, 1521, 1525, 1517, 1528, 1527, 1529, 1524, 1522, 1516] },
+    { title: "O'zgartirish", desc: 'Artikl va qo\'llanish', color: 'bg-teal-500', icon: '🔄', ids: [50005, 50006, 50007, 50008] },
   ],
   tests: [
     { id: 14107, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z oldidan 'an' keladi?", options: ['dog', 'university', 'apple', 'house'], correct: 'apple', explanation: "Apple — unli tovush" },

@@ -80,7 +80,15 @@ function castLesson(row: LessonRow): DailyLesson {
   }
 }
 
+let cachedLessons: (DailyLesson | ReviewLesson)[] | null = null
+
+export function clearLessonCache(): void {
+  cachedLessons = null
+}
+
 export async function fetchLessons(): Promise<(DailyLesson | ReviewLesson)[]> {
+  if (cachedLessons) return cachedLessons
+
   const { data, error } = await supabase
     .from('lessons')
     .select('*')
@@ -91,15 +99,18 @@ export async function fetchLessons(): Promise<(DailyLesson | ReviewLesson)[]> {
     const cached = await getCachedLessons()
     if (cached.length > 0) {
       monitoring.captureMessage('Offline: lessons from cache', 'info')
+      cachedLessons = cached
       return cached
     }
     monitoring.captureMessage('No cached lessons, using local fallback', 'warn')
-    return fallbackLessons()
+    cachedLessons = await fallbackLessons()
+    return cachedLessons
   }
 
   if (!data || data.length === 0) {
     monitoring.captureMessage('No lessons found in Supabase, using local fallback', 'warn')
-    return fallbackLessons()
+    cachedLessons = await fallbackLessons()
+    return cachedLessons
   }
 
   const { loadAllLessons } = await import('../data/dailyLessons')
@@ -125,6 +136,7 @@ export async function fetchLessons(): Promise<(DailyLesson | ReviewLesson)[]> {
   }
   monitoring.captureMessage(`Cached ${mergedLessons.length} lessons offline`, 'info')
 
+  cachedLessons = mergedLessons
   return mergedLessons
 }
 
@@ -714,8 +726,7 @@ export async function saveViewedTabsToDB(
     lesson_id: lessonId,
     viewed_tabs: JSON.stringify(viewedTabs),
     updated_at: new Date().toISOString(),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } as any, { onConflict: 'user_id,lesson_id' })
+  }, { onConflict: 'user_id,lesson_id' })
 }
 
 async function fallbackLessons(): Promise<(DailyLesson | ReviewLesson)[]> {

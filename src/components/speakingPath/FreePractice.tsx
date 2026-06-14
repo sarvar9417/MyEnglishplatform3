@@ -107,6 +107,15 @@ export default function FreePractice() {
 
   const dailyPrompts = prompts.length > 0 ? getDailyPrompts(currentDay, prompts) : []
 
+  // ── Permission error → recording state ni to'xtat ──────────────────────
+  useEffect(() => {
+    if (sr.permissionError && recordState === 'recording') {
+      if (timerRef.current) clearInterval(timerRef.current)
+      setTimer(0)
+      setRecordState('idle')
+    }
+  }, [sr.permissionError, recordState])
+
   // ── Recording ──────────────────────────────────────────────────────────────
 
   function startRecording() {
@@ -312,10 +321,25 @@ export default function FreePractice() {
           <ChevronLeft size={18} className="rotate-180 shrink-0 text-white/70" />
         </button>
 
+        {sr.permissionError && (
+          <div className="card bg-amber-50 border-amber-100">
+            <p className="text-sm text-amber-700 font-medium flex items-center gap-2">
+              <MicOff size={16} className="text-amber-500 shrink-0" />
+              Mikrofonga ruxsat berilmadi. Brauzer sozlamalarida mikrofon ruxsatini yoqing.
+            </p>
+            <button
+              onClick={() => { sr.reset(); sr.start() }}
+              className="mt-2 text-xs font-semibold text-amber-800 bg-amber-200/60 hover:bg-amber-200 px-3 py-1.5 rounded-lg transition-colors"
+            >
+              <RotateCcw size={12} className="inline mr-1" />
+              Qayta urinish
+            </button>
+          </div>
+        )}
         {!sr.isSupported && (
           <div className="card bg-red-50 border-red-100">
             <p className="text-sm text-red-700 font-medium">
-              ⚠️ Brauzeringiz Web Speech API-ni qo'llab-quvvatlamaydi. Chrome yoki Edge ishlatishingizni tavsiya qilamiz.
+              ⚠️ Brauzeringiz ovozni tanimaydi. Android'da Chrome, iOS'da esa matn bilan yozishni ishlating.
             </p>
           </div>
         )}
@@ -407,7 +431,6 @@ export default function FreePractice() {
     const isEvaluating = recordState === 'evaluating'
     const mins = Math.floor(timer / 60)
     const secs = timer % 60
-
     return (
       <div className="space-y-4">
         <button onClick={() => { resetRecording(); setView('select') }} className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-700">
@@ -432,12 +455,28 @@ export default function FreePractice() {
           </ul>
         </div>
 
+        {sr.permissionError && !sr.transcript.trim() && (
+          <div className="card bg-amber-50 border-amber-100">
+            <p className="text-sm text-amber-700 font-medium flex items-center gap-2">
+              <MicOff size={16} className="text-amber-500 shrink-0" />
+              Mikrofonga ruxsat berilmadi. Brauzer sozlamalarida mikrofon ruxsatini yoqing.
+            </p>
+            <button
+              onClick={() => { sr.reset(); sr.start() }}
+              className="mt-2 text-xs font-semibold text-amber-800 bg-amber-200/60 hover:bg-amber-200 px-3 py-1.5 rounded-lg transition-colors"
+            >
+              <RotateCcw size={12} className="inline mr-1" />
+              Qayta urinish
+            </button>
+          </div>
+        )}
+
         <div className="flex flex-col items-center gap-4">
           <HoldMicButton
             isRecording={isRecording}
             onStart={startRecording}
             onStop={stopRecording}
-            disabled={!sr.isSupported || isEvaluating}
+            disabled={!sr.isSupported || isEvaluating || sr.permissionError}
             interim={sr.interim}
           />
           <div className="text-center min-h-[20px]">
@@ -600,6 +639,20 @@ export default function FreePractice() {
           )}
 
           <div className="flex items-center gap-2">
+            {sr.permissionError && !sr.isRecording && (
+              <div className="text-center w-full">
+                <p className="text-xs text-amber-600 font-medium">
+                  Mikrofonga ruxsat berilmadi. Brauzer sozlamalarida mikrofon ruxsatini yoqing.
+                </p>
+                <button
+                  onClick={() => { sr.reset(); sr.start() }}
+                  className="mt-1.5 text-xs font-semibold text-amber-700 bg-amber-100 hover:bg-amber-200 px-2.5 py-1 rounded-lg transition-colors"
+                >
+                  <RotateCcw size={11} className="inline mr-1" />
+                  Qayta urinish
+                </button>
+              </div>
+            )}
             {!sr.isRecording ? (
               <button onClick={() => sr.start()} disabled={!sr.isSupported || chatLoading} className="btn-primary flex-1 text-sm flex items-center justify-center gap-2 py-3 disabled:opacity-40">
                 <Mic size={18} /> Gapiring

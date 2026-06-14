@@ -323,8 +323,7 @@ export default function Phrases() {
       is_learned: srsResult.is_learned,
       last_rating: rating,
       last_reviewed: new Date().toISOString(),
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } as any, { onConflict: 'user_id,phrase_id' })
+    }, { onConflict: 'user_id,phrase_id' })
 
     if (error) {
       monitoring.captureMessage('savePhraseProgressToDB upsert error: ' + error.message, 'error')

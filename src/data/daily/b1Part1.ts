@@ -286,7 +286,7 @@ export const modalsObligation: DailyLesson = {
     { title: "Boshlang'ich", desc: "Must / Have to — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4101, 4102, 4103, 4104, 4105] },
     { title: "O'rtacha", desc: "Mustn't vs Don't have to", color: 'bg-blue-500', icon: '📘', ids: [4106, 4107, 4108, 4109, 4110] },
     { title: "Qiyin", desc: "Xatolarni topish va tuzatish", color: 'bg-violet-500', icon: '🎯', ids: [4111, 4112, 4113, 4114] },
-    { title: "Kengaytirish", desc: "Gapni o'zgartirish va qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4115, 4116, 4117, 4118] },
+    { title: "Inkor", desc: "Gapni o'zgartirish va qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4115, 4116, 4117, 4118] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4119, 4120] },
   ],
   tests: [
@@ -434,7 +434,7 @@ export const modalsSpeculation: DailyLesson = {
     { title: "Boshlang'ich", desc: "Must / Might / Can't be asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4201, 4202, 4203, 4204] },
     { title: "O'rtacha", desc: "Taxmin shakllarini qo'llash", color: 'bg-blue-500', icon: '📘', ids: [4205, 4206, 4207, 4208] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4209, 4210, 4211] },
-    { title: "Kengaytirish", desc: "Gapni qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4212, 4213, 4214, 4215] },
+    { title: "Inkor", desc: "Gapni qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4212, 4213, 4214, 4215] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄',       ids: [4216, 4217, 4218, 4219, 4220] },
   ],
   tests: [
@@ -576,7 +576,7 @@ export const pastHabits: DailyLesson = {
     { title: "Boshlang'ich", desc: "Used to va Would — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4301, 4302, 4303, 4304] },
     { title: "O'rtacha", desc: "Used to va Would ni qo'llash", color: 'bg-blue-500', icon: '📘',       ids: [4305, 4306, 4307, 4308] },
     { title: "Qiyin", desc: "Xatolarni topish va tuzatish", color: 'bg-violet-500', icon: '🎯', ids: [4309, 4310, 4311, 4312] },
-    { title: "Kengaytirish", desc: "Gapni qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4313, 4314, 4315, 4316] },
+    { title: "Inkor", desc: "Gapni qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4313, 4314, 4315, 4316] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4318, 4317, 4319, 4320] },
   ],
   tests: [
@@ -720,7 +720,7 @@ export const causatives: DailyLesson = {
     { title: "Boshlang'ich", desc: "Have/Get + object + V3", color: 'bg-emerald-500', icon: '🌱', ids: [4401, 4402, 4403, 4404] },
     { title: "O'rtacha", desc: "Have/Get person variantlari", color: 'bg-blue-500', icon: '📘', ids: [4405, 4406, 4407, 4408] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4409, 4410, 4411, 4412] },
-    { title: "Kengaytirish", desc: "Gapni o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [4413, 4414, 4415, 4416] },
+    { title: "Inkor", desc: "Gapni o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [4413, 4414, 4415, 4416] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4418, 4417, 4419, 4420] },
   ],
   tests: [
@@ -865,7 +865,7 @@ export const questionTags: DailyLesson = {
     { title: "Boshlang'ich", desc: "Asosiy qoida — musbat/inkor", color: 'bg-emerald-500', icon: '🌱', ids: [4501, 4502, 4503, 4504] },
     { title: "O'rtacha", desc: "Turli fe'llar bilan", color: 'bg-blue-500', icon: '📘', ids: [4505, 4506, 4507, 4508] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4509, 4510, 4511, 4512] },
-    { title: "Kengaytirish", desc: "Gapga tag qo'shish", color: 'bg-red-500', icon: '🚫', ids: [4513, 4514, 4515, 4516] },
+    { title: "Inkor", desc: "Gapga tag qo'shish", color: 'bg-red-500', icon: '🚫', ids: [4513, 4514, 4515, 4516] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4518, 4517, 4519, 4520] },
   ],
   tests: [
@@ -1007,7 +1007,7 @@ export const bothEitherNeither: DailyLesson = {
     { title: "Boshlang'ich", desc: "Both, Either, Neither farqlari", color: 'bg-emerald-500', icon: '🌱', ids: [4601, 4602, 4603, 4604] },
     { title: "O'rtacha", desc: "Both/Either/Neither of bilan", color: 'bg-blue-500', icon: '📘', ids: [4605, 4606, 4607, 4608] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4609, 4610, 4611] },
-    { title: "Kengaytirish", desc: "Juft bog'lovchilar bilan", color: 'bg-red-500', icon: '🚫', ids: [4615, 4616, 4612, 4613, 4614] },
+    { title: "Inkor", desc: "Juft bog'lovchilar bilan", color: 'bg-red-500', icon: '🚫', ids: [4615, 4616, 4612, 4613, 4614] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4617, 4619, 4618, 4620] },
   ],
   tests: [
@@ -1149,7 +1149,7 @@ export const timeClauses: DailyLesson = {
     { title: "Boshlang'ich", desc: "Vaqt ergash gaplari asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4701, 4702, 4703, 4704] },
     { title: "O'rtacha", desc: "Present Simple vs Future", color: 'bg-blue-500', icon: '📘', ids: [4705, 4706, 4707, 4708] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4709, 4710, 4711] },
-    { title: "Kengaytirish", desc: "Gapni bog'lash", color: 'bg-red-500', icon: '🚫', ids: [4712, 4713, 4714, 4715] },
+    { title: "Inkor", desc: "Gapni bog'lash", color: 'bg-red-500', icon: '🚫', ids: [4712, 4713, 4714, 4715] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4717, 4716, 4718, 4719, 4720] },
   ],
   tests: [
@@ -1293,7 +1293,7 @@ export const indirectQuestions: DailyLesson = {
     { title: "Boshlang'ich", desc: "Indirect so'roq asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4801, 4802, 4803, 4804] },
     { title: "O'rtacha", desc: "If / Whether bilan", color: 'bg-blue-500', icon: '📘', ids: [4805, 4806, 4807, 4808] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4809, 4810, 4811, 4812] },
-    { title: "Kengaytirish", desc: "Direct ? Indirect", color: 'bg-red-500', icon: '🚫', ids: [4813, 4814, 4815, 4816] },
+    { title: "Inkor", desc: "Direct ? Indirect", color: 'bg-red-500', icon: '🚫', ids: [4813, 4814, 4815, 4816] },
     { title: "O'zgartirish", desc: "Muloyim so'roqlar", color: 'bg-teal-500', icon: '🔄', ids: [4818, 4817, 4819, 4820] },
   ],
   tests: [
@@ -1438,7 +1438,7 @@ export const soNeitherAuxiliaries: DailyLesson = {
     { title: "Boshlang'ich", desc: "So va Neither asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4901, 4902, 4903, 4904] },
     { title: "O'rtacha", desc: "Turli yordamchi fe'llar", color: 'bg-blue-500', icon: '📘', ids: [4905, 4906, 4907, 4908] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4909, 4910, 4911, 4912] },
-    { title: "Kengaytirish", desc: "Javob yozish", color: 'bg-red-500', icon: '🚫', ids: [4913, 4914, 4915, 4916] },
+    { title: "Inkor", desc: "Javob yozish", color: 'bg-red-500', icon: '🚫', ids: [4913, 4914, 4915, 4916] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4919, 4917, 4918, 4920] },
   ],
   tests: [
@@ -1580,7 +1580,7 @@ export const wishesRegrets: DailyLesson = {
     { title: "Boshlang'ich", desc: "I wish + Past Simple — hozirgi orzular", color: 'bg-emerald-500', icon: '🌱', ids: [5001, 5002, 5003, 5004] },
     { title: "O'rtacha", desc: "I wish + Past Perfect — pushaymonlik", color: 'bg-blue-500', icon: '📘', ids: [5005, 5006, 5007, 5008] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [5009, 5010, 5011, 5012] },
-    { title: "Kengaytirish", desc: "Gapni o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [5013, 5014, 5015, 5016] },
+    { title: "Inkor", desc: "Gapni o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [5013, 5014, 5015, 5016] },
     { title: "O'zgartirish", desc: "Would, Could, Regret", color: 'bg-teal-500', icon: '🔄', ids: [5018, 5017, 5019, 5020] },
   ],
   tests: [
