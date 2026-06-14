@@ -6,6 +6,25 @@ export const narrativeTensesB1plus: DailyLesson = {
   subtitle: "Past Simple, Past Continuous, Past Perfect, Past Perfect Continuous — hikoya qilish san'ati",
   level: 'B1+',
   day: 64,
+  listening: {
+    transcript: "Narrator: It was a cold winter evening, and I was walking home from work when something strange happened. I had been thinking about dinner all day, so I wasn't paying attention to the road. Suddenly, I heard a loud noise behind me. When I turned around, I saw that a car had stopped in the middle of the street. The driver, who had been driving too fast, looked frightened. A cat had run in front of his car, and he had braked just in time. People were gathering around, and everyone was talking at once. By the time the police arrived, the driver had already calmed down. Luckily, nobody had been hurt. While the officer was writing his report, the little cat sat quietly on the pavement, as if nothing had happened. I had never seen anything like it before.",
+    vocabulary: [
+      { word: 'frightened', definition: 'qo\'rqib ketgan' },
+      { word: 'brake', definition: 'tormoz bosmoq' },
+      { word: 'gather', definition: 'to\'planmoq' },
+      { word: 'pavement', definition: 'piyodalar yo\'lakchasi' },
+      { word: 'calm down', definition: 'tinchlanmoq' },
+    ],
+    questions: [
+      { id: 90051, type: 'multiple-choice', question: "What was the narrator doing when something strange happened?", options: ["Driving a car", "Walking home from work", "Cooking dinner", "Reading a report"], correctIndex: 1, explanation: "'I was walking home from work when something strange happened' — Past Continuous interrupted by Past Simple." },
+      { id: 90052, type: 'true-false', question: "The narrator had been thinking about dinner all day.", answer: true, explanation: "'I had been thinking about dinner all day' — Past Perfect Continuous." },
+      { id: 90053, type: 'multiple-choice', question: "Why had the car stopped in the street?", options: ["It ran out of fuel", "A cat had run in front of it", "The engine broke", "The police stopped it"], correctIndex: 1, explanation: "'A cat had run in front of his car, and he had braked just in time.'" },
+      { id: 90054, type: 'multiple-choice', question: "What had the driver been doing wrong?", options: ["Driving too fast", "Using his phone", "Driving without lights", "Ignoring a sign"], correctIndex: 0, explanation: "'The driver, who had been driving too fast, looked frightened.'" },
+      { id: 90055, type: 'true-false', question: "Someone was seriously hurt in the incident.", answer: false, explanation: "'Luckily, nobody had been hurt.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Hikoya zamonlari — voqea bayoni",
+  },
   reading: {
     passage: "A Night to Remember\n\nIt was almost midnight when Aziz finally reached the village. He had been driving for six hours, and the rain had not stopped once. While he was looking for his grandmother's house, the car suddenly stopped. He realised that he had forgotten to check the fuel before leaving the city.\n\nAziz remembered that his grandmother lived near the old bridge, so he started walking. The wind was blowing hard, and the streets were empty. After he had walked for twenty minutes, he saw a warm light in a window. His grandmother had been waiting for him all evening. When she opened the door, she smiled and said she had already prepared his favourite soup.",
     questions: [
@@ -156,6 +175,25 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
   subtitle: 'Defining, Non-defining, Whom, Whose, Where, When \u2014 murakkab gap qurilishi',
   level: 'B1+',
   day: 65,
+  listening: {
+    transcript: "Speaker: Let me tell you about my friend Bobur, who I've known since childhood. Bobur, whose father is a famous doctor, grew up in Samarkand — the city where I was born too. We first met in 2005, the year when our families became neighbours. Bobur is the kind of person who always helps others. The school that we attended together was very strict, which is why we studied so hard. There's a small café where we used to meet every Friday. The owner, whom everyone respected, knew our names by heart. Bobur, who now works in Tashkent, still calls me every week. The friendship that we built as children is something I truly value.",
+    vocabulary: [
+      { word: 'childhood', definition: 'bolalik' },
+      { word: 'strict', definition: 'qattiqqo\'l, qattiq tartibli' },
+      { word: 'respect', definition: 'hurmat qilmoq' },
+      { word: 'neighbour', definition: 'qo\'shni' },
+      { word: 'value', definition: 'qadrlamoq' },
+    ],
+    questions: [
+      { id: 90061, type: 'multiple-choice', question: "Where was the speaker born?", options: ["Tashkent", "Samarkand", "Bukhara", "Andijan"], correctIndex: 1, explanation: "'Samarkand — the city where I was born too' — relative adverb 'where'." },
+      { id: 90062, type: 'true-false', question: "Bobur's father is a famous doctor.", answer: true, explanation: "'Bobur, whose father is a famous doctor' — non-defining clause with 'whose'." },
+      { id: 90063, type: 'multiple-choice', question: "When did the two families become neighbours?", options: ["In 2000", "In 2005", "In 2010", "In 2015"], correctIndex: 1, explanation: "'We first met in 2005, the year when our families became neighbours.'" },
+      { id: 90064, type: 'multiple-choice', question: "Where did they used to meet every Friday?", options: ["At school", "At a small café", "At Bobur's house", "At the park"], correctIndex: 1, explanation: "'There's a small café where we used to meet every Friday.'" },
+      { id: 90065, type: 'multiple-choice', question: "Where does Bobur work now?", options: ["Samarkand", "Tashkent", "Abroad", "At the café"], correctIndex: 1, explanation: "'Bobur, who now works in Tashkent, still calls me every week.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Murakkab nisbiy gaplar — who/whom/whose/where/when",
+  },
   reading: {
     passage: "The Teacher Who Changed Everything\n\nMr. Karimov, who taught English for thirty years, was the kind of person whom students never forgot. The school where he worked was small, but the lessons that he gave were unforgettable. He believed that every student, whether talented or not, deserved attention.\n\nThere was one student, whose name was Dilshod, who almost left school. The day when Mr. Karimov noticed him was an ordinary Monday. The book that he lent Dilshod, which was old and full of notes, became the boy's treasure. Years later, Dilshod, who is now a teacher himself, often talks about the man whose patience changed his life.",
     questions: [

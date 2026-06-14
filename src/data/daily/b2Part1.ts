@@ -7,6 +7,25 @@ export const unrealPastB2: DailyLesson = {
   level: 'B2',
   day: 82,
   category: 'Advanced Grammar',
+  listening: {
+    transcript: "Aziz: I wish I had studied harder for the exam. I failed it again.\nNodira: If only you had asked me for help! I would rather you had told me earlier.\nAziz: I know. It's time I changed my habits. I wish I weren't so lazy.\nNodira: Don't be too hard on yourself. But honestly, it's time you started a proper schedule.\nAziz: You're right. I'd rather study a little every day than panic before exams.\nNodira: Exactly. If only you had done that this time. Next time will be different.\nAziz: I wish I could go back and start again, but I can't.\nNodira: True. It's time we both focused on the future, not the past.\nAziz: Agreed. I'd rather you helped me make a study plan — would you?\nNodira: Of course. Let's start tonight.",
+    vocabulary: [
+      { word: 'fail', definition: 'yiqilmoq (imtihonda), muvaffaqiyatsizlikka uchramoq' },
+      { word: 'lazy', definition: 'dangasa' },
+      { word: 'schedule', definition: 'jadval, reja' },
+      { word: 'panic', definition: 'vahimaga tushmoq' },
+      { word: 'focus', definition: 'e\'tibor qaratmoq' },
+    ],
+    questions: [
+      { id: 90071, type: 'multiple-choice', question: "What does Aziz wish about the exam?", options: ["That he had taken it later", "That he had studied harder", "That he had skipped it", "That he had cheated"], correctIndex: 1, explanation: "'I wish I had studied harder for the exam' — wish + Past Perfect for past regret." },
+      { id: 90072, type: 'true-false', question: "Nodira would rather Aziz had told her about the problem earlier.", answer: true, explanation: "'I would rather you had told me earlier' — would rather + Past Perfect." },
+      { id: 90073, type: 'multiple-choice', question: "What does Aziz say it's time he did?", options: ["Changed his habits", "Quit school", "Moved away", "Bought a new phone"], correctIndex: 0, explanation: "'It's time I changed my habits' — it's time + Past Simple for something that should happen now." },
+      { id: 90074, type: 'multiple-choice', question: "Which does Aziz prefer?", options: ["Panic before exams", "Study a little every day", "Not study at all", "Study only at night"], correctIndex: 1, explanation: "'I'd rather study a little every day than panic before exams.'" },
+      { id: 90075, type: 'multiple-choice', question: "What does Aziz ask Nodira to help with?", options: ["Cleaning his room", "Making a study plan", "Writing the exam", "Finding a teacher"], correctIndex: 1, explanation: "'I'd rather you helped me make a study plan.'" },
+    ],
+    difficulty: 'hard',
+    topic: "Xayoliy o'tmish — wish / if only / would rather / it's time",
+  },
   formulas: [
     { label: 'Wish + Past', structure: 'Wish + S + past verb (present unreal)\nI wish I knew the answer.', color: 'green' },
     { label: 'Wish + Past Perfect', structure: 'Wish + S + had + V₃ (past unreal)\nI wish I had studied harder.', color: 'blue' },
