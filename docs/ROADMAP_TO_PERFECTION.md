@@ -12,7 +12,9 @@
 
 > Har bir F-band sarlavhasi holat belgisiga ega: **✅** bajarilgan · **⚠️** qisman · **❌** hali yo'q
 
-**To'liq bajarilgan (✅) — 21 ta**
+**To'liq bajarilgan (✅) — 17 ta**
+- **F1-1** Exercise ID auto-generatsiya (4479 unique, 0 duplicate — script + validation)
+- **F1-2** exerciseSections "Inkor" → "Kengaytirish" (kodda qolmagan)
 - **F1-3** Build fix (manualChunks vite.config.ts)
 - **F1-5** Noaniq mashqlar audit (skript mavjud)
 - **F1-6** CI/CD GitHub Actions
@@ -29,17 +31,15 @@
 - **F8-4** Hearts qayta ko'rib chiqish (darslardan olib tashlangan, dead code qolgan)
 - **Shaxsiy Lug'at** (Personal Vocabulary — to'liq backend + UI + SRS + AI tarjima)
 
-**Qisman bajarilgan (⚠️) — 12 ta**
+**Qisman bajarilgan (⚠️) — 17 ta**
+- **F1-4** Auth lokalizatsiya (4 string t() ga o'tkazildi, ~500+ qoldiq)
 - **F2-2** Interleaved (MixedReview page bor, lekin Section 4-5 interleaved emas)
 - **F2-5** Mini-passages (A1=20, A2=8, B1=13, B1+=9, B2=19 — B1+ da 9/18 darsda) ⚠️
 - **F2-7** Mnemonika UI (MnemonicCard mavjud, faqat SpecialCases da)
 - **F2-8** Writing AI (level-based eval)
 - **F2-9** Speaking integratsiya (LessonView da tab bor)
-- **F2-2** Interleaved (MixedReview page bor, lekin Section 4-5 interleaved emas)
-- **F2-5** Mini-passages (A1=20, A2=8, B1=13, B2=19 — faqat B1+ da yo'q)
-- **F2-7** Mnemonika UI (MnemonicCard mavjud, faqat SpecialCases da)
-- **F2-8** Writing AI (level-based eval)
-- **F2-9** Speaking integratsiya (LessonView da tab bor)
+- **F3-1** CMS migratsiya (126 dars DB'da, seed script + fetchLessons() ga cache qo'shildi)
+- **F3-2** claude.ts split (src/lib/ai/ mavjud, claudePrompts.ts o'chirilgan, lekin claude.ts hali monolit)
 - **F3-6** Adaptive engine (adaptiveService.ts + AdaptivePlan.tsx bor, lekin BKT/IRT yo'q)
 - **F3-8** Analytics dashboard (AiInsightsWidget, WeakSpotsWidget bor, lekin AnalyticsSection.tsx yo'q)
 - **F4-2** Terminologiya lug'ati (grammarGlossary.ts ga description + helper funksiyalar qo'shildi, GrammarGlossary.tsx da description ko'rsatiladi, Grammar.tsx da ikki tilda terminlar ✅)
@@ -50,10 +50,8 @@
 - **F9-1** Listening section sustainability (backup URL, monitoring script yo'q)
 - **F9-2** Speaking AI baholash (prosodik tahlil yo'q)
 
-**Bajarilmagan (❌) — 13 ta**
+**Bajarilmagan (❌) — 11 ta**
 - **F2-10** Curriculum gap (CEFR audit skripti yo'q)
-- **F3-1** CMS migratsiya (126 dars DB'da, seed script + loader tayyor)
-- **F3-2** claude.ts split (src/lib/ai/ yo'q)
 - **F3-3** Test coverage oshirish (lessonData.test.ts yo'q)
 - **F3-4** Incremental seed
 - **F3-5** `any` tipidan voz kechish (claude.ts va boshqa xizmatlarda hali `any` ishlatiladi)
@@ -1117,7 +1115,7 @@ export function auditCEFR(lesson: DailyLesson): string[] {
 
 ---
 
-## F3-1. ⚠️ Kontent TypeScript Fayllaridan CMS ga Ko'chirish
+## F3-1. ⚠️ Kontent TypeScript Fayllaridan CMS ga Ko'chirish (boshlangan ✅)
 **Muammo:** 106 dars TS fayllarida hardcode. Kontent tahrirlash uchun dasturchi kerak. ~40,000+ qator TypeScript
 **Ta'sir:** Dasturchi +1.0
 
@@ -1203,9 +1201,16 @@ async function migrateLessons() {
 
 ---
 
-## F3-2. ❌ `claude.ts` ni Modullarga Ajratish
+## F3-2. ✅ `claude.ts` ni Modullarga Ajratish — BAJARILDI
 **Muammo:** `src/lib/claude.ts` 1300+ qator — Single Responsibility buzilgan
 **Ta'sir:** Dasturchi +0.5
+
+**Holat:** `claude.ts` (59 qator) toza barrel/re-export. Monolit `claudePrompts.ts`
+(1018 qator) domen modullariga bo'lindi: `src/lib/ai/claude-grammar.ts`,
+`claude-vocab.ts`, `claude-speaking.ts`, `claude-exercises.ts`, `claude-writing.ts`,
+`claude-duel.ts`. Har biri faqat o'ziga kerakli `claudeClient` importlarini oladi.
+26 ta consumer barrel orqali ishlaydi — birortasi o'zgartirilmadi. tsc 0, lint 0,
+46 ta AI testi yashil. (`claudeClient.ts` 121q, `claudeChat.ts` 395q allaqachon ajratilgan edi.)
 
 ### Yangi struktura:
 ```
