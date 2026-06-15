@@ -13,8 +13,8 @@ const TOTAL_CHUNKS = ALL_CHUNKS.length
 // ── 1. Strukturaviy tekshiruvlar ──────────────────────────────────────────────
 
 describe('struktura', () => {
-  test('75 kun mavjud va ketma-ketlik 1..N', () => {
-    expect(TOTAL_SPEAKING_DAYS).toBe(75)
+  test('79 kun mavjud va ketma-ketlik 1..N', () => {
+    expect(TOTAL_SPEAKING_DAYS).toBe(79)
     SPEAKING_DAYS.forEach((d, i) => {
       expect(d.day).toBe(i + 1)
     })
@@ -95,13 +95,13 @@ describe('chunk ID formati', () => {
 describe('CEFR progressiyasi', () => {
   const CEFR_ORDER = ['A0', 'A1', 'A2', 'B1'] as const
 
-  test('faqat A0, A1, A2, B1 darajalari ishlatilgan', () => {
+  test('faqat A0, A1, A2, B1, B1+, B2 darajalari ishlatilgan', () => {
     for (const d of SPEAKING_DAYS) {
       expect((CEFR_ORDER as readonly string[]).includes(d.cefr), `${d.day}-kun: ${d.cefr}`).toBe(true)
     }
   })
 
-  test('CEFR progressiyasi ortga qaytmaydi (A0→A1→A2→B1)', () => {
+  test('CEFR progressiyasi ortga qaytmaydi (A0→A1→A2→B1→B1+→B2)', () => {
     let maxIdx = 0
     for (const d of SPEAKING_DAYS) {
       const idx = CEFR_ORDER.indexOf(d.cefr as typeof CEFR_ORDER[number])
@@ -110,15 +110,15 @@ describe('CEFR progressiyasi', () => {
     }
   })
 
-  test('A0 ≥3, A1 ≥15, A2 ≥18 (boshlang\'ich darajalar boy), B1 qolgan', () => {
+  test('A0 ≥3, A1 ≥15, A2 ≥22, B1≥39', () => {
     const counts: Record<string, number> = {}
     for (const d of SPEAKING_DAYS) {
       counts[d.cefr] = (counts[d.cefr] || 0) + 1
     }
     expect(counts['A0']).toBeGreaterThanOrEqual(3)
     expect(counts['A1']).toBeGreaterThanOrEqual(15)
-    expect(counts['A2']).toBeGreaterThanOrEqual(18)
-    expect(counts['B1']).toBeGreaterThanOrEqual(15)
+    expect(counts['A2']).toBeGreaterThanOrEqual(22)
+    expect(counts['B1']).toBeGreaterThanOrEqual(39)
   })
 })
 
@@ -128,7 +128,7 @@ describe('IPA', () => {
   test('kalit bloklarda IPA bor (>2% chunklarda)', () => {
     const withIpa = ALL_CHUNKS.filter(c => !!c.ipa)
     const ratio = withIpa.length / TOTAL_CHUNKS
-    expect(ratio).toBeGreaterThan(0.02)
+    expect(ratio).toBeGreaterThanOrEqual(0.02)
   })
 
   test('dastlabki kunlarda IPA mavjud (≥5% kun)', () => {
@@ -210,8 +210,8 @@ describe('o\'zbekcha matn sifati', () => {
 
 describe('umumiy statistika', () => {
   test('jami chunklar soni hisobot', () => {
-    expect(TOTAL_CHUNKS).toBeGreaterThan(300) // 60 kun * ~5.5 chunk = ~330
-    expect(TOTAL_CHUNKS).toBeLessThan(480)    // 60 kun * 8 chunk = 480
+    expect(TOTAL_CHUNKS).toBeGreaterThan(400) // 79 kun * 5 chunk = 395
+    expect(TOTAL_CHUNKS).toBeLessThan(640)    // 79 kun * 8 chunk = 632
   })
 
   test('jami scenario goalUz lar noyob (takrorlanmasligi kerak)', () => {

@@ -8,7 +8,16 @@
 
 import { supabase } from '../lib/supabase'
 import { createDefaultFSRSState, computeNextReviewFSRS, type FSRSState } from '../lib/srs'
-import type { SpeakingChunk, SpeakingDayProgress } from '../data/speakingPath/types'
+import { LESSON_INDEX } from '../data/daily/lessonsIndex'
+import type { GrammarProgress, SpeakingChunk, SpeakingDayProgress } from '../data/speakingPath/types'
+
+// Dynamik jadval nomi uchun helper type (contentService.ts dagi saveScore pattern)
+type UpsertableTable = {
+  upsert: (
+    payload: Record<string, unknown> | Record<string, unknown>[],
+    options?: { onConflict?: string },
+  ) => Promise<{ error: { message: string } | null }>
+}
 
 // ── localStorage kalitlari — userId bilan prefikslanadi (multi-user izolatsiya) ──
 const progressKey = (uid: string) => `sp_progress_${uid}`
@@ -354,4 +363,266 @@ export async function getSpeakingStats(
     chunksMastered: mastered,
     avgChunkStability: avgStability,
   }
+}
+
+// ── Grammatika pattern'lari (CEFR bo'yicha) ─────────────────────────────────
+// extractGrammarFromTranscript() uchun — transkriptda qaysi grammar
+// point'lar ishlatilganini aniqlaydi. Regex match asosida ishlaydi.
+// Pattern'lar speaking_curriculum_roadmap.md §5.1 dan olingan.
+
+interface GrammarPattern {
+  id: string
+  level: string
+  regex: RegExp
+}
+
+const GRAMMAR_PATTERNS: GrammarPattern[] = [
+  // A1 (5)
+  { id: 'have-got', level: 'A1', regex: /\b(have|has) got\b/i },
+  { id: 'there-is-are', level: 'A1', regex: /\bthere (is|are)\b/i },
+  { id: 'simple-present', level: 'A1', regex: /\b(?:i|you|we|they) \w+\b|(?:he|she|it) \w+s\b/i },
+  { id: 'present-continuous', level: 'A1', regex: /\b(am|is|are) \w+ing\b/i },
+  { id: 'can-cant', level: 'A1', regex: /\bcan('t| not)?\b/i },
+
+  // A2 (12)
+  { id: 'simple-past', level: 'A2', regex: /\b(did|was|were|had|went|saw|ate|took|made|said)\b/i },
+  { id: 'simple-future', level: 'A2', regex: /\bwill\b|\bgoing to\b/i },
+  { id: 'present-perfect', level: 'A2', regex: /\b(have|has) (been|seen|done|had|gone|taken)\b/i },
+  { id: 'modal-verbs', level: 'A2', regex: /\b(can|could|should|must|might|may)\b/i },
+  { id: 'first-conditional', level: 'A2', regex: /\bif .+, .+ will\b/i },
+  { id: 'comparatives', level: 'A2', regex: /\b(more|most|er than|better|best|worse|worst)\b/i },
+  { id: 'gerunds-infinitives', level: 'A2', regex: /\b(enjoy|like|love|hate|don't mind) \w+ing\b/i },
+  { id: 'articles', level: 'A2', regex: /\b(a|an|the) \w+\b/ },
+  { id: 'prepositions', level: 'A2', regex: /\b(in|on|at|to|for|with|about)\b/ },
+  { id: 'questions', level: 'A2', regex: /^(Do|Does|Did|Is|Are|Was|Were|Can|Will|Have|Has) /m },
+  { id: 'adjective-adverb', level: 'A2', regex: /\b(quickly|slowly|carefully|badly|well|hard)\b/i },
+  { id: 'quantifiers', level: 'A2', regex: /\b(some|any|much|many|a lot of|a few|a little)\b/i },
+
+  // B1 (10)
+  { id: 'present-perfect-continuous', level: 'B1', regex: /\b(have|has) been \w+ing\b/i },
+  { id: 'past-perfect', level: 'B1', regex: /\bhad (been|done|seen|gone|taken|made|said)\b/i },
+  { id: 'future-continuous', level: 'B1', regex: /\bwill be \w+ing\b/i },
+  { id: 'passive-voice', level: 'B1', regex: /\b(am|is|are|was|were|been|being) \w+en\b|\b(am|is|are|was|were) \w+ed\b/i },
+  { id: 'reported-speech', level: 'B1', regex: /\b(said|told|asked) (that|me|him|her|us|them)\b/i },
+  { id: 'second-conditional', level: 'B1', regex: /\bif .+ (were|did|had|could), .+ would\b/i },
+  { id: 'relative-clauses', level: 'B1', regex: /\b(who|which|that|whom|whose) \w+\b/ },
+  { id: 'time-prepositions', level: 'B1', regex: /\b(at \d|on \w+day|in \w+ber|in \w+uary)\b/i },
+  { id: 'verb-patterns', level: 'B1', regex: /\b(want|need|expect|hope|decide|promise) to \w+\b/i },
+  { id: 'conjunctions', level: 'B1', regex: /\b(although|however|therefore|moreover|nevertheless)\b/i },
+
+  // B1+ (5)
+  { id: 'modal-perfects', level: 'B1+', regex: /\b(must|could|might|may|should|would) have \w+en\b/i },
+  { id: 'narrative-tenses', level: 'B1+', regex: /\b(was \w+ing|were \w+ing|had \w+ed)\b/ },
+  { id: 'participle-clauses', level: 'B1+', regex: /\b(having|being) \w+en\b|\b(Having|Being) \w+ed\b/i },
+  { id: 'emphasis-does', level: 'B1+', regex: /\b(do|does|did) \w+\b(?!\?)/ },
+  { id: 'infinitive-gerund', level: 'B1+', regex: /\b(avoid|suggest|recommend|consider|admit) \w+ing\b/i },
+
+  // B2 (5)
+  { id: 'unreal-past', level: 'B2', regex: /\b(wish|if only|would rather|it's time) \w+\b/i },
+  { id: 'advanced-conditionals', level: 'B2', regex: /\b(had \w+ed|had \w+en), .+ (would|could) have\b/i },
+  { id: 'hedging', level: 'B2', regex: /\b(it seems|it appears|tends to|likely to|arguably)\b/i },
+  { id: 'inversion', level: 'B2', regex: /\b(Not only|Never have|Rarely do|No sooner|Hardly had)\b/i },
+  { id: 'cleft-sentences', level: 'B2', regex: /\b(What I|The reason why|The thing that|It is .+ that)\b/i },
+]
+
+/** Lesson ID dan grammar point nomini olish (LESSON_INDEX orqali) */
+function getGrammarPoint(lessonId: string): string {
+  const found = LESSON_INDEX.find(m => m.id === lessonId)
+  return found?.title ?? lessonId
+}
+
+/** Lesson ID dan CEFR darajasini olish */
+function getGrammarLevel(lessonId: string, defaultLevel: string): string {
+  const found = LESSON_INDEX.find(m => m.id === lessonId)
+  return found?.level ?? defaultLevel
+}
+
+// ── localStorage kaliti ──────────────────────────────────────────────────────
+const grammarKey = (uid: string) => `sp_grammar_${uid}`
+
+// ── Grammar Sync ─────────────────────────────────────────────────────────────
+
+/** Transkriptdan qaysi grammar point'lar ishlatilganini aniqlaydi.
+ *  Free mode da har bir prompt'dan keyin chaqiriladi.
+ *  Natija → updateGrammarProgress() ga yuboriladi. */
+export function extractGrammarFromTranscript(transcript: string): GrammarProgress[] {
+  const now = new Date().toISOString()
+  const matched: GrammarProgress[] = []
+  const seen = new Set<string>()
+
+  for (const gp of GRAMMAR_PATTERNS) {
+    const match = gp.regex.test(transcript)
+    if (match && !seen.has(gp.id)) {
+      seen.add(gp.id)
+      matched.push({
+        lessonId: gp.id,
+        grammarPoint: getGrammarPoint(gp.id),
+        level: gp.level,
+        status: 'practice',
+        bestScore: 0,
+        practiceCount: 1,
+        lastPracticedAt: now,
+        usedInFreeMode: true,
+      })
+    }
+  }
+
+  return matched
+}
+
+/** Bir kunlik track mode yakunlanganda — linkedLessonId bo'yicha grammar progressni
+ *  yangilaydi. Day75 da linkedLessonId yo'q bo'lsa, hech narsa qilinmaydi. */
+export function onTrackDayComplete(
+  userId: string,
+  _day: number,
+  dayGrammarScore: number,
+  practicedLessonIds: string[],
+): Promise<void> {
+  const entries: GrammarProgress[] = practicedLessonIds.map(lessonId => ({
+    lessonId,
+    grammarPoint: getGrammarPoint(lessonId),
+    level: getGrammarLevel(lessonId, ''),
+    status: dayGrammarScore >= 80 ? 'mastered' : 'practice',
+    bestScore: dayGrammarScore,
+    practiceCount: 1,
+    lastPracticedAt: new Date().toISOString(),
+    usedInFreeMode: false,
+  }))
+  return updateGrammarProgress(userId, entries)
+}
+
+/** Bir yoki bir nechta GrammarProgress entry'larini saqlaydi (Dual Persistence:
+ *  localStorage darhol + supabase upsert). */
+export async function updateGrammarProgress(
+  userId: string,
+  entries: GrammarProgress[],
+): Promise<void> {
+  if (entries.length === 0) return
+
+  // localStorage (darhol)
+  const all = readJSON<GrammarProgress[]>(grammarKey(userId), [])
+  for (const entry of entries) {
+    const idx = all.findIndex(g => g.lessonId === entry.lessonId)
+    if (idx >= 0) {
+      all[idx].practiceCount++
+      all[idx].lastPracticedAt = new Date().toISOString()
+      all[idx].usedInFreeMode = all[idx].usedInFreeMode || entry.usedInFreeMode
+      if (entry.bestScore > all[idx].bestScore) {
+        all[idx].bestScore = entry.bestScore
+        all[idx].status = entry.bestScore >= 80 ? 'mastered' : 'practice'
+      }
+    } else {
+      all.push(entry)
+    }
+  }
+  writeJSON(grammarKey(userId), all)
+
+  // Supabase upsert — dynamic table (not in generated types yet)
+  try {
+    const rows = all.map(g => ({
+      user_id: userId,
+      lesson_id: g.lessonId,
+      grammar_point: g.grammarPoint,
+      level: g.level,
+      status: g.status,
+      best_score: g.bestScore,
+      practice_count: g.practiceCount,
+      used_in_free_mode: g.usedInFreeMode,
+      updated_at: new Date().toISOString(),
+    }))
+    const builder = (supabase as unknown as {
+      from: (t: string) => UpsertableTable
+    }).from('user_grammar_progress')
+    const { error } = await builder.upsert(rows, { onConflict: 'user_id,lesson_id' })
+    if (error) throw error
+  } catch {
+    /* oflayn — localStorage da saqlandi */
+  }
+}
+
+// ── Level Mastery ─────────────────────────────────────────────────────────────
+
+/** Bir darajadagi mastery holatini hisoblaydi.
+ *  grammarMastered/total — nechta grammar point o'zlashtirilgan (score >= 70)
+ *  vocabRecalled/total — nechta chunk SRS da kamida bir marta baholangan
+ *  isComplete — har ikkala shart bajarilgan bo'lsa true
+ *
+ *  @param levelChunks — aynan shu CEFR darajasidagi chunk'lar ro'yxati */
+export async function getLevelMastery(
+  userId: string,
+  cefr: string,
+  grammarPointCount: number,
+  levelChunks: SpeakingChunk[],
+): Promise<{
+  grammarMastered: number
+  grammarTotal: number
+  vocabRecalled: number
+  vocabTotal: number
+  isComplete: boolean
+}> {
+  const grammarProgress = await getGrammarProgress(userId)
+  const srsMap = await loadSrsMap(userId)
+
+  // CEFR darajasidagi grammar point'lar
+  const levelGrammar = grammarProgress.filter(g => g.level === cefr)
+  const grammarMastered = levelGrammar.filter(g => g.status === 'mastered').length
+  const grammarTotal = grammarPointCount
+
+  // CEFR darajasidagi chunk ID'lari
+  const levelChunkIds = new Set(levelChunks.map(c => c.id))
+
+  // Shulardan qanchasi SRS da baholangan?
+  const vocabRecalled = Object.keys(srsMap).filter(id => levelChunkIds.has(id)).length
+  const vocabTotal = levelChunks.length
+
+  return {
+    grammarMastered,
+    grammarTotal,
+    vocabRecalled: Math.min(vocabRecalled, vocabTotal),
+    vocabTotal,
+    isComplete: grammarMastered >= grammarTotal && vocabRecalled >= vocabTotal,
+  }
+}
+
+/** Foydalanuvchining barcha grammar progressini qaytaradi (Supabase → localStorage fallback) */
+export async function getGrammarProgress(userId: string): Promise<GrammarProgress[]> {
+  try {
+    type GrammarRow = {
+      lesson_id: string
+      grammar_point: string
+      level: string
+      status: string
+      best_score: number
+      practice_count: number
+      last_practiced_at: string | null
+      used_in_free_mode: boolean
+    }
+    const { data, error } = await (supabase as unknown as {
+      from: (table: string) => {
+        select: (cols: string) => {
+          eq: (col: string, val: string) => Promise<{ data: GrammarRow[] | null; error: { message: string } | null }>
+        }
+      }
+    }).from('user_grammar_progress')
+      .select('lesson_id, grammar_point, level, status, best_score, practice_count, last_practiced_at, used_in_free_mode')
+      .eq('user_id', userId)
+    if (error) throw error
+    if (data) {
+      const mapped: GrammarProgress[] = data.map(r => ({
+        lessonId: r.lesson_id,
+        grammarPoint: r.grammar_point,
+        level: r.level,
+        status: r.status as GrammarProgress['status'],
+        bestScore: r.best_score,
+        practiceCount: r.practice_count,
+        lastPracticedAt: r.last_practiced_at ?? undefined,
+        usedInFreeMode: r.used_in_free_mode,
+      }))
+      writeJSON(grammarKey(userId), mapped)
+      return mapped
+    }
+  } catch {
+    /* fall through → localStorage */
+  }
+  return readJSON<GrammarProgress[]>(grammarKey(userId), [])
 }

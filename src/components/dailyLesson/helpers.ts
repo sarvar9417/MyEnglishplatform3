@@ -44,11 +44,27 @@ function acceptBlank(text: string, blank: string): boolean {
   return blank.split('/').some(alt => normalizeAnswer(alt) === cleaned)
 }
 
+export function isAcceptedAnswer(userAnswer: string, accepted: string[]): boolean {
+  return accepted.some(a => normalizeAnswer(a) === normalizeAnswer(userAnswer))
+}
+
+export function isBlankAccepted(ex: Extract<DailyExercise, { type: 'fill-blank' | 'passage' }>, index: number, userAnswer: string): boolean {
+  const accepted = ex.acceptedAnswers?.[index]
+  if (accepted?.length) return isAcceptedAnswer(userAnswer, accepted)
+  return acceptBlank(userAnswer, ex.blanks[index] ?? '')
+}
+
+export function getAcceptedBlankText(ex: Extract<DailyExercise, { type: 'fill-blank' | 'passage' }>, index: number): string {
+  const accepted = ex.acceptedAnswers?.[index]
+  if (accepted?.length) return accepted.join(' / ')
+  return ex.blanks[index] ?? ''
+}
+
 export function checkAnswer(ex: DailyExercise, userAns: string[]): boolean {
   if (!userAns || userAns.length === 0) return false
   switch (ex.type) {
     case 'fill-blank':
-      return ex.blanks.every((b, i) => acceptBlank(userAns[i] ?? '', b))
+      return ex.blanks.every((_, i) => isBlankAccepted(ex, i, userAns[i] ?? ''))
     case 'multiple-choice':
       return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
     case 'error-correction':
@@ -61,18 +77,11 @@ export function checkAnswer(ex: DailyExercise, userAns: string[]): boolean {
     case 'vocab-match':
       return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
     case 'passage':
-      return ex.blanks.every((b, i) => {
-        if (ex.acceptedAnswers?.[i] && isAccepted(userAns[i] ?? '', ex.acceptedAnswers[i])) return true
-        return acceptBlank(userAns[i] ?? '', b)
-      })
+      return ex.blanks.every((_, i) => isBlankAccepted(ex, i, userAns[i] ?? ''))
     case 'connection':
       // Elaborative encoding — ochiq javob; yozilgan bo'lsa bajarilgan deb hisoblanadi
       return (userAns[0] ?? '').trim().length > 0
   }
-}
-
-function isAccepted(userAnswer: string, accepted: string[]): boolean {
-  return accepted.some(a => normalizeAnswer(a) === normalizeAnswer(userAnswer))
 }
 
 /* ─── Display helperlari (union bo'ylab xavfsiz matn olish) ───
@@ -101,7 +110,7 @@ export function getCorrectText(ex: DailyExercise): string {
   switch (ex.type) {
     case 'fill-blank':
     case 'passage':
-      return ex.blanks.join(' / ')
+      return ex.blanks.map((_, i) => getAcceptedBlankText(ex, i)).join(' / ')
     case 'multiple-choice':
     case 'error-correction':
     case 'transformation':

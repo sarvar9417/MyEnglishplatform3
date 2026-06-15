@@ -51,14 +51,14 @@ const CEFR_ZONES: CefrZone[] = [
     icon: '📘',
   },
   {
-    label: "O'rta", cefr: 'A2', dayMin: 19, dayMax: 36,
+    label: "O'rta", cefr: 'A2', dayMin: 19, dayMax: 40,
     color: '#6d28d9', bgClass: 'bg-violet-50 dark:bg-violet-900/20',
     textClass: 'text-violet-700 dark:text-violet-300',
     borderClass: 'border-violet-200 dark:border-violet-800/50',
     icon: '📗',
   },
   {
-    label: "Yuqori o'rta", cefr: 'B1', dayMin: 37, dayMax: 75,
+    label: "Yuqori o'rta", cefr: 'B1', dayMin: 41, dayMax: 79,
     color: '#d97706', bgClass: 'bg-amber-50 dark:bg-amber-900/20',
     textClass: 'text-amber-700 dark:text-amber-300',
     borderClass: 'border-amber-200 dark:border-amber-800/50',
@@ -170,6 +170,7 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
 
                     {/* Asosiy karta */}
                     <button
+                      data-day={d.day}
                       onClick={() => !isLocked && onToggle(d.day)}
                       disabled={isLocked}
                       className={`relative w-full flex items-center gap-3 p-3 rounded-2xl text-left transition-all border
@@ -254,6 +255,21 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                         <p className="text-xs font-semibold text-primary-700 dark:text-primary-300 flex items-center gap-1.5">
                           <Sparkles size={13} /> {d.goalUz}
                         </p>
+
+                        {/* Grammar badge — linkedLessonId / grammarPoint */}
+                        {d.linkedLessonId && (
+                          <div className="flex items-center gap-2 p-2 rounded-lg bg-primary-50/60 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800/30">
+                            <span className="text-[10px] font-semibold text-primary-600 dark:text-primary-400 flex items-center gap-1">
+                              📚 Grammar:
+                            </span>
+                            <span className="text-[11px] font-medium text-primary-700 dark:text-primary-300">
+                              {d.grammarPoint ?? d.linkedLessonId}
+                            </span>
+                            <span className="text-[10px] font-mono text-gray-400 dark:text-gray-500 ml-auto">
+                              {d.linkedLessonId}
+                            </span>
+                          </div>
+                        )}
 
                         {/* SRS Stability — per-chunk mastery dots */}
                         <div className="flex items-center gap-2 p-2 rounded-lg bg-white/40 dark:bg-gray-700/30">

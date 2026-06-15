@@ -822,10 +822,10 @@ export const someAnyNoEvery: DailyLesson = {
     },
   ],
   exercises: [
-    { id: 24190, type: 'fill-blank', instruction: "Some yoki any bilan to'ldiring:", question: 'I have ___ good friends.', blanks: ['some'], acceptedAnswers: [['some', 'a lot of']], explanation: "Ijobiy gap → 'some' (lekin 'a lot of' ham to'g'ri)." },
-    { id: 24191, type: 'fill-blank', instruction: "Some yoki any:", question: 'Do you have ___ questions?', blanks: ['any'], acceptedAnswers: [['any', 'some']], explanation: "Savol → 'any' (lekin 'some' ham to'g'ri, chunki bu taklif/iltimos)." },
+    { id: 24190, type: 'fill-blank', instruction: "Some yoki any bilan to'ldiring:", question: 'I have ___ good friends.', blanks: ['some'], acceptedAnswers: [['some', 'a lot of']], explanation: "Ijobiy gap → 'some'; 'a lot of' ham grammatik to'g'ri." },
+    { id: 24191, type: 'fill-blank', instruction: "Some yoki any:", question: 'Do you have ___ questions?', blanks: ['any'], acceptedAnswers: [['any', 'some']], explanation: "Savol → 'any'; taklif/iltimos ma'nosida 'some' ham to'g'ri." },
     { id: 24192, type: 'fill-blank', instruction: "Some yoki any:", question: "There isn't ___ milk in the fridge.", blanks: ['any'], explanation: "Inkor → 'any'." },
-    { id: 24193, type: 'fill-blank', instruction: "Some yoki any:", question: 'Would you like ___ tea?', blanks: ['some'], acceptedAnswers: [['some', 'any']], explanation: "Taklif → 'some' (lekin 'any' ham grammatik to'g'ri)." },
+    { id: 24193, type: 'fill-blank', instruction: "Some yoki any:", question: 'Would you like ___ tea?', blanks: ['some'], acceptedAnswers: [['some', 'any']], explanation: "Taklif → 'some'; 'any' ham grammatik to'g'ri." },
     { id: 24194, type: 'fill-blank', instruction: "No bilan to'ldiring:", question: 'I have ___ money. (I am broke.)', blanks: ['no'], explanation: "'No money' = hech qanday pul yo'q." },
     { id: 24195, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'There are ___ apples in the basket.', options: ['some', 'any', 'no', 'every'], correct: 'some', explanation: "Ijobiy gap, ko'plik → 'some'." },
     { id: 24196, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I don\'t have ___ money.', options: ['some', 'any', 'no', 'every'], correct: 'any', explanation: "Inkor → 'any'. 'I don't have any money.'" },

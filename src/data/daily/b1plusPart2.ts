@@ -301,8 +301,8 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
         { en: "Let's take a break after this session.", uz: "Bu sessiyadan keyin tanaffus qilaylik." },
       ],
       drills: [
-        { id: 52044, type: 'fill-blank', instruction: 'Have yoki take?', question: "Let's ___ a break.", blanks: ['take'], explanation: "Take a break" },
-        { id: 52045, type: 'fill-blank', instruction: 'Have yoki take? (ikkisi ham to\'g\'ri)', question: 'I need to ___ a shower.', blanks: ['have', 'take'], explanation: "Have a shower (BrE) / Take a shower (AmE) — ikkisi ham to'g'ri" },
+        { id: 52044, type: 'fill-blank', instruction: 'Have yoki take?', question: "Let's ___ a break.", blanks: ['take'], acceptedAnswers: [['take', 'have']], explanation: "Take a break; BrE'da have a break ham to'g'ri." },
+        { id: 52045, type: 'fill-blank', instruction: 'Have yoki take? (ikkisi ham to\'g\'ri)', question: 'I need to ___ a shower.', blanks: ['have'], acceptedAnswers: [['have', 'take']], explanation: "Have a shower (BrE) / Take a shower (AmE) — ikkisi ham to'g'ri" },
         { id: 52046, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['make a photo', 'do a photo', 'take a photo', 'have a photo'], correct: 'take a photo', explanation: "Take a photo = suratga olish" },
       ],
     },

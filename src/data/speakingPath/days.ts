@@ -13,6 +13,7 @@ const day1: SpeakingDay = {
   subtitle: "Birinchi suhbat — salom va ism",
   goalUz: "Birovni salomlay olasiz, ismingizni ayta olasiz va xayrlasha olasiz.",
   estMinutes: 12,
+  linkedLessonId: 'alphabet-greetings',
   vocab: [
     { en: 'party', uz: 'ziyofat', example: 'I met him at a party.' },
     { en: 'colleague', uz: 'hamkasb', example: 'She is my colleague.' },
@@ -55,6 +56,7 @@ const day2: SpeakingDay = {
   subtitle: "Yurt, shahar va kasb haqida",
   goalUz: "Qayerdan ekaningizni va nima ish qilishingizni ayta olasiz.",
   estMinutes: 12,
+  linkedLessonId: 'alphabet-greetings',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -98,6 +100,7 @@ const day3: SpeakingDay = {
   subtitle: "Ma'lumot almashish",
   goalUz: "Yoshingiz va telefon raqamingizni ayta olasiz, raqamlarni so'ray olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'numbers-1-100',
   vocab: [
     { en: 'birthday', uz: 'tug\'ilgan kun', example: 'When is your birthday?' },
     { en: 'young', uz: 'yosh', example: 'She is very young.' },
@@ -141,6 +144,7 @@ const day4: SpeakingDay = {
   subtitle: "Qahva va ovqat so'rash",
   goalUz: "Kafeda muloyim buyurtma bera olasiz va rahmat ayta olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'food-drinks',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
     { en: 'waiter', uz: 'ofitsiant', example: 'Waiter, please!' },
@@ -184,6 +188,7 @@ const day5: SpeakingDay = {
   subtitle: "Narx so'rash va sotib olish",
   goalUz: "Do'konda narx so'ray olasiz va xarid qila olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'numbers-1-100',
   vocab: [
     { en: 'size', uz: 'o\'lcham', example: 'What size do you need?' },
     { en: 'colour', uz: 'rang', example: 'I like this colour.' },
@@ -226,6 +231,7 @@ const day6: SpeakingDay = {
   subtitle: "Ko'chada yo'nalish topish",
   goalUz: "Ko'chada yo'l so'ray olasiz va yo'nalishni tushuna olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'prepositions-of-place',
   vocab: [
     { en: 'map', uz: 'xarita', example: 'Do you have a map?' },
     { en: 'street', uz: 'ko\'cha', example: 'Go along this street.' },
@@ -268,6 +274,7 @@ const day7: SpeakingDay = {
   subtitle: "Soat va kun haqida",
   goalUz: "Vaqtni so'ray olasiz va uchrashuvga kelisha olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'time-routines',
   vocab: [
     { en: 'party', uz: 'ziyofat', example: 'I met him at a party.' },
     { en: 'colleague', uz: 'hamkasb', example: 'She is my colleague.' },
@@ -311,6 +318,7 @@ const day8: SpeakingDay = {
   subtitle: "Yaqinlaringiz haqida gapirish",
   goalUz: "Oilangiz haqida oddiy gaplar ayta olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'family',
   vocab: [
     { en: 'parents', uz: 'ota-ona', example: 'My parents live in Tashkent.' },
     { en: 'children', uz: 'bolalar', example: 'Do you have children?' },
@@ -354,6 +362,7 @@ const day9: SpeakingDay = {
   subtitle: "Bir kuningizni tasvirlash",
   goalUz: "Odatda kuningiz qanday o'tishini ayta olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'simple-present',
   vocab: [
     { en: 'usually', uz: 'odatda', example: 'I usually wake up at 7.' },
     { en: 'sometimes', uz: 'ba\'zida', example: 'Sometimes I go to the gym.' },
@@ -397,6 +406,7 @@ const day10: SpeakingDay = {
   subtitle: "Salomlashish va kun haqida",
   goalUz: "Tanishlar bilan kichik suhbat qura olasiz.",
   estMinutes: 12,
+  linkedLessonId: 'alphabet-greetings',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -439,6 +449,7 @@ const day11: SpeakingDay = {
   subtitle: "Bo'sh vaqt va qiziqishlar",
   goalUz: "Nimani yoqtirishingizni ayta olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'can-cant',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -482,6 +493,7 @@ const day12: SpeakingDay = {
   subtitle: "Ochlik va tanlov",
   goalUz: "Ochligingizni ayta va ovqat tanlay olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'food-drinks',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
     { en: 'waiter', uz: 'ofitsiant', example: 'Waiter, please!' },
@@ -524,6 +536,7 @@ const day13: SpeakingDay = {
   subtitle: "Narsalarni nomlash",
   goalUz: "Narsalar va ranglarni ayta olasiz.",
   estMinutes: 12,
+  linkedLessonId: 'colors-shapes',
   vocab: [
     { en: 'please', uz: 'iltimos', example: 'Please help me.' },
     { en: 'sorry', uz: 'kechirasiz', example: 'Sorry, I am late.' },
@@ -567,6 +580,7 @@ const day14: SpeakingDay = {
   subtitle: "Uyni tasvirlash",
   goalUz: "Uyingiz va xonalarni tasvirlay olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'there-is-are',
   vocab: [
     { en: 'garden', uz: 'bog\'', example: 'We have a beautiful garden.' },
     { en: 'balcony', uz: 'balkon', example: 'We have a balcony.' },
@@ -610,6 +624,7 @@ const day15: SpeakingDay = {
   subtitle: "Uy hayvonlari haqida",
   goalUz: "Hayvonlar va uy hayvonlari haqida gapira olasiz.",
   estMinutes: 12,
+  linkedLessonId: 'animals',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -652,6 +667,7 @@ const day16: SpeakingDay = {
   subtitle: "Kiyim haqida gapirish",
   goalUz: "Kiyimlaringiz haqida oddiy gaplar ayta olasiz.",
   estMinutes: 12,
+  linkedLessonId: 'clothes',
   vocab: [
     { en: 'size', uz: 'o\'lcham', example: 'What size do you need?' },
     { en: 'colour', uz: 'rang', example: 'I like this colour.' },
@@ -694,6 +710,7 @@ const day17: SpeakingDay = {
   subtitle: "O'zini qanday his qilish",
   goalUz: "Hislaringizni ayta va do'stni tinchlantira olasiz.",
   estMinutes: 12,
+  linkedLessonId: 'basic-adjectives',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -736,6 +753,7 @@ const day18: SpeakingDay = {
   subtitle: "O'qish haqida oddiy gaplar",
   goalUz: "O'qish va fanlaringiz haqida gapira olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'have-got',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -779,6 +797,7 @@ const day19: SpeakingDay = {
   subtitle: "Fikr bildirish",
   goalUz: "Nimani yoqtirishingiz va yoqtirmasligingizni ayta olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'gerunds-infinitives',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
     { en: 'waiter', uz: 'ofitsiant', example: 'Waiter, please!' },
@@ -822,6 +841,7 @@ const day20: SpeakingDay = {
   subtitle: "O'tgan zamon (Past Simple)",
   goalUz: "O'tgan kuningiz haqida oddiy gaplar ayta olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'simple-past',
   vocab: [
     { en: 'usually', uz: 'odatda', example: 'I usually wake up at 7.' },
     { en: 'sometimes', uz: 'ba\'zida', example: 'Sometimes I go to the gym.' },
@@ -865,6 +885,7 @@ const day21: SpeakingDay = {
   subtitle: "Going to — rejalar haqida",
   goalUz: "Yaqin kelajakdagi rejalaringizni ayta olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'present-continuous-future',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -907,6 +928,7 @@ const day22: SpeakingDay = {
   subtitle: "Muloyim shikoyat qilish",
   goalUz: "Muammoni muloyim tarzda ayta olasiz va yordam so'ray olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'temperature', uz: 'harorat', example: 'The temperature is 30 degrees.' },
     { en: 'windy', uz: 'shamolli', example: 'It is very windy outside.' },
@@ -949,6 +971,7 @@ const day23: SpeakingDay = {
   subtitle: "Restoranda stol band qilish",
   goalUz: "Telefon orqali stol band qila olasiz.",
   estMinutes: 15,
+  linkedLessonId: 'prepositions',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
     { en: 'waiter', uz: 'ofitsiant', example: 'Waiter, please!' },
@@ -991,6 +1014,7 @@ const day24: SpeakingDay = {
   subtitle: "Tavsiya so'rash va hisob",
   goalUz: "Tavsiya so'ray olasiz, taom buyurtma qilasiz va hisobni so'raysiz.",
   estMinutes: 14,
+  linkedLessonId: 'articles',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
     { en: 'waiter', uz: 'ofitsiant', example: 'Waiter, please!' },
@@ -1034,6 +1058,7 @@ const day25: SpeakingDay = {
   subtitle: "Ro'yxatdan o'tish va reys",
   goalUz: "Aeroportda ro'yxatdan o'ta olasiz va reys haqida so'raysiz.",
   estMinutes: 14,
+  linkedLessonId: 'questions',
   vocab: [
     { en: 'platform', uz: 'platforma', example: 'Which platform?' },
     { en: 'departure', uz: 'ketish', example: 'Departure at 10 AM.' },
@@ -1076,6 +1101,7 @@ const day26: SpeakingDay = {
   subtitle: "Xona band qilish va so'rovlar",
   goalUz: "Mehmonxonaga joylasha olasiz va xizmatlar haqida so'raysiz.",
   estMinutes: 14,
+  linkedLessonId: 'there-is-are',
   vocab: [
     { en: 'temperature', uz: 'harorat', example: 'The temperature is 30 degrees.' },
     { en: 'windy', uz: 'shamolli', example: 'It is very windy outside.' },
@@ -1119,6 +1145,7 @@ const day27: SpeakingDay = {
   subtitle: "Shikoyat va dori",
   goalUz: "Qayeringiz og'riyotganini ayta olasiz va maslahat so'raysiz.",
   estMinutes: 14,
+  linkedLessonId: 'have-got',
   vocab: [
     { en: 'passport', uz: 'pasport', example: 'Can I see your passport?' },
     { en: 'ticket', uz: 'bilet', example: 'I need a ticket to London.' },
@@ -1161,6 +1188,7 @@ const day28: SpeakingDay = {
   subtitle: "Ob-havoni tasvirlash",
   goalUz: "Ob-havoni tasvirlay olasiz va nima kiyganingizni aytasiz.",
   estMinutes: 13,
+  linkedLessonId: 'adjective-adverb',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
     { en: 'waiter', uz: 'ofitsiant', example: 'Waiter, please!' },
@@ -1203,6 +1231,7 @@ const day29: SpeakingDay = {
   subtitle: "Kiyib ko'rish va o'lcham",
   goalUz: "Kiyib ko'rishni so'ray olasiz va rang/o'lcham haqida so'raysiz.",
   estMinutes: 13,
+  linkedLessonId: 'demonstratives',
   vocab: [
     { en: 'size', uz: 'o\'lcham', example: 'What size do you need?' },
     { en: 'colour', uz: 'rang', example: 'I like this colour.' },
@@ -1246,6 +1275,7 @@ const day30: SpeakingDay = {
   subtitle: "Kasb va vazifalar",
   goalUz: "Ishingiz va vazifangizni tushuntira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'present-perfect',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -1288,6 +1318,7 @@ const day31: SpeakingDay = {
   subtitle: "Hafta oxiri rejalari",
   goalUz: "Hafta oxiri rejalaringizni ayta va taklif qila olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'present-continuous-future',
   vocab: [
     { en: 'hope', uz: 'umid qilmoq', example: 'I hope so.' },
     { en: 'dream', uz: 'orzu', example: 'My dream is to visit London.' },
@@ -1330,6 +1361,7 @@ const day32: SpeakingDay = {
   subtitle: "Tabriklash va tadbirlar",
   goalUz: "Tabriklay va bayram haqida gapira olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'possessives',
   vocab: [
     { en: 'birthday', uz: 'tug\'ilgan kun', example: 'When is your birthday?' },
     { en: 'young', uz: 'yosh', example: 'She is very young.' },
@@ -1372,6 +1404,7 @@ const day33: SpeakingDay = {
   subtitle: "Avtobus va poezd",
   goalUz: "Transport, chipta va yo'nalish haqida so'ray olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'quantifiers',
   vocab: [
     { en: 'interesting', uz: 'qiziqarli', example: 'That sounds interesting!' },
     { en: 'boring', uz: 'zerikarli', example: 'I find it boring.' },
@@ -1414,6 +1447,7 @@ const day34: SpeakingDay = {
   subtitle: "Oddiy xizmatlar",
   goalUz: "Bank/pochtada xizmat so'ray olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'countable-uncountable',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -1457,6 +1491,7 @@ const day35: SpeakingDay = {
   subtitle: "Qaytarish va almashtirish",
   goalUz: "Mahsulotni qaytara yoki almashtira olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'map', uz: 'xarita', example: 'Do you have a map?' },
     { en: 'street', uz: 'ko\'cha', example: 'Go along this street.' },
@@ -1499,6 +1534,7 @@ const day36: SpeakingDay = {
   subtitle: "Oddiy fikr va rozilik",
   goalUz: "Oddiy fikr bildira va rozilik/e'tiroz ayta olasiz.",
   estMinutes: 13,
+  linkedLessonId: 'so-such',
   vocab: [
     { en: 'agree', uz: 'rozi bo\'lmoq', example: 'I agree with you.' },
     { en: 'disagree', uz: 'rozi bo\'lmaslik', example: 'I disagree.' },
@@ -1536,11 +1572,174 @@ const day36: SpeakingDay = {
 }
 
 const day37: SpeakingDay = {
-  day: 37, cefr: 'B1',
+  day: 37, cefr: 'A2',
+  title: "Solishtirish (Comparatives)",
+  subtitle: "Sifatlarning qiyosiy va ustun darajalari",
+  goalUz: "Narsalarni solishtira olasiz: -er than, more than, as...as, superlatives.",
+  linkedLessonId: 'comparatives-superlatives',
+  grammarPoint: 'comparatives / superlatives / as...as / than',
+  estMinutes: 15,
+  vocab: [
+    { en: 'cheaper', uz: 'arzonroq', example: 'This jacket is cheaper than that one.' },
+    { en: 'more expensive', uz: 'qimmatroq', example: 'The laptop is more expensive.' },
+    { en: 'the best', uz: 'eng yaxshisi', example: 'This is the best café in town.' },
+    { en: 'as good as', uz: 'kabi yaxshi', example: 'It is as good as the other one.' },
+  ],
+  pronunciationFocus: {
+    sound: '/\u0259/ \u2014 cheaper, faster, better',
+    ipaExample: '/\u02c8t\u0283i\u02d0p\u0259/ \u2014 cheaper / /\u02c8f\u0251\u02d0st\u0259/ \u2014 faster / /\u02c8bet\u0259/ \u2014 better',
+    tipUz: "Comparativelardagi -er = /\u0259/ (qisqa, kuchsiz \u2014 urg'u EMAS!). O'zbeklar 'cheaper' ni /chiper/ deb o'qishadi, aslida /\u02c8t\u0283i\u02d0p\u0259/ \u2014 ka PUNKTIR chiziq.",
+    tipEn: "The -er suffix is unstressed /\u0259/, not /er/. 'Cheaper' = /\u02c8t\u0283i\u02d0p\u0259/, not /chee-per/.",
+    commonError: "-er ni /\u025cr/ yoki /er/ deb talaffuz qilish. To'g'risi: qisqa /\u0259/ tovushi. 'Faster' = /\u02c8f\u0251\u02d0st\u0259/ (fah-st\u0259).",
+  },
+  recycledChunkIds: ['sp-d19-c1', 'sp-d20-c1', 'sp-d21-c1'],
+  chunks: [
+    { id: 'sp-d37-c1', en: 'This phone is cheaper than that one.', uz: "Bu telefon o'shasidan arzonroq.", pattern: "Subject + is + comparative + than + object", grammarTip: "Qisqa sifatlar + -er + than. 'Cheap' \u2192 'cheaper' (cheap + er = arzonroq).", commonMistake: "'This phone is more cheap than that one' dema \u2014 qisqa sifat: 'CHEAPER than' (more emas).", stressWord: 'CHEAPER' },
+    { id: 'sp-d37-c2', en: 'A car is more expensive than a bike.', uz: "Noutbuk planshetdan qimmatroq.", pattern: "Subject + is + more + adjective + than + object", grammarTip: "Uzoq sifatlar: 'more + adjective'. 'Expensive' = 3 bo'g'inli \u2192 'more expensive'.", commonMistake: "'The laptop is expensiver than the tablet' dema \u2014 uzoq sifat: 'MORE expensive'.", stressWord: 'MORE' },
+    { id: 'sp-d37-c3', en: 'This is the best restaurant in town.', uz: "Bu shahardagi eng yaxshi restoran.", pattern: "This is the + superlative + noun + place", grammarTip: "Superlative: the + -est (qisqa) yoki the most + adj (uzoq). 'Good' \u2192 'the BEST' (irregular).", commonMistake: "'This is the most best restaurant' dema \u2014 'best' o'zi superlative: 'the BEST' (most kerak emas).", stressWord: 'BEST' },
+    { id: 'sp-d37-c4', en: 'He runs as fast as his sister.', uz: "U akasi kabi tez yuguradi.", pattern: "Subject + verb + as + adjective + as + object", grammarTip: "'As...as' = tenglik. 'As fast as' = kabi tez. 'Not as...as' = unchalik emas.", commonMistake: "'She runs so fast as her brother' dema \u2014 'as fast AS' (so emas).", stressWord: 'FAST' },
+    { id: 'sp-d37-c5', en: 'This sofa is the most comfortable.', uz: "Bu mashina eng qulayi.", pattern: "Subject + is the most + adjective", grammarTip: "Uzoq sifatlar: 'the most + adjective'. 'Comfortable' (3+ bo'g'in) \u2192 'the most comfortable'.", commonMistake: "'This car is the comfortablest' dema \u2014 uzoq sifat: 'the MOST comfortable'.", stressWord: 'MOST' },
+    { id: 'sp-d37-c6', en: 'My room is not as big as yours.', uz: "Mening uyim siznikidek katta emas.", pattern: "Subject + is not as + adjective + as + object", grammarTip: "'Not as...as' = teng emas. 'Not as big as' = kabi katta emas. Inkor shakli.", commonMistake: "'My house is not so big like yours' dema \u2014 'not as...AS': 'not as big AS'.", stressWord: 'BIG' },
+  ],
+  scenario: {
+    topic: "comparing two products before buying",
+    aiRole: "a shop assistant in an electronics store",
+    userRole: "a customer comparing phones",
+    opening: "I can't decide which phone to buy. This one is $200 and that one is $350. What do you think?",
+    goalUz: "Narsalarni solishtiring, qiyosiy va ustun darajalarni qo'llang.",
+  },
+}
+
+
+const day38: SpeakingDay = {
+  day: 38, cefr: 'A2',
+  title: "Majhul nisbat (Passive Voice)",
+  subtitle: "Present va Past Passive \u2014 ish-harakatning o'zi muhim",
+  goalUz: "Oddiy passive voice gaplarni (Present va Past) tuza olasiz va ishlata olasiz.",
+  linkedLessonId: 'passive-voice',
+  grammarPoint: 'present passive / past passive / by + agent',
+  estMinutes: 15,
+  vocab: [
+    { en: 'built', uz: "qurilgan", example: 'This school was built in 2010.' },
+    { en: 'written', uz: "yozilgan", example: 'This book was written in 1990.' },
+    { en: 'spoken', uz: "gapiriladigan", example: 'English is spoken here.' },
+    { en: 'grown', uz: "yetishtiriladi", example: 'Rice is grown in China.' },
+  ],
+  pronunciationFocus: {
+    sound: '/t/ vs /d/ vs /\u026ad/ (-ed endings)',
+    ipaExample: '/t/ \u2014 washed, watched / /d/ \u2014 cleaned, played / /\u026ad/ \u2014 wanted, needed',
+    tipUz: "-ed qo'shimchasi 3 xil talaffuz qilinadi: /t/ (tilsiz: washed), /d/ (ovozli: cleaned), /\u026ad/ (t/d dan keyin: wanted). Passive da V3 ning -ed qo'shimchasiga e'tibor bering!",
+    tipEn: "The -ed ending has 3 pronunciations: /t/ (voiceless: washed), /d/ (voiced: cleaned), /\u026ad/ (after t/d: wanted). Pay attention in passive voice!",
+    commonError: "O'zbeklar -ed ni doim /\u026ad/ deb talaffuz qiladi. 'Watched' \u2192 'watch-id' emas, /w\u0252t\u0283t/ (bir bo'g'in!).",
+  },
+  recycledChunkIds: ['sp-d22-c1', 'sp-d23-c1', 'sp-d24-c1'],
+  chunks: [
+    { id: 'sp-d38-c1', en: 'Tea is grown in India.', uz: "Qahva Braziliyada yetishtiriladi.", pattern: "Subject + is + V3 + place", grammarTip: "Present Passive = am/is/are + V3. 'Is grown' = yetishtiriladi. Bajaruvchi muhim emas.", commonMistake: "'Coffee is grow in Brazil' dema \u2014 V3: 'is GROWN' (grow \u2192 grew \u2192 GROWN).", stressWord: 'GROWN' },
+    { id: 'sp-d38-c2', en: 'This house was built in 2005.', uz: "Bu uy 2005 yilda qurilgan.", pattern: "Subject + was + V3 + time", grammarTip: "Past Passive = was/were + V3. 'Was built' = qurilgan. 'In 2005' = 2005 yilda.", commonMistake: "'This house was build in 2005' dema \u2014 V3: 'was BUILT' (build \u2192 built \u2192 BUILT).", stressWord: 'BUILT' },
+    { id: 'sp-d38-c3', en: 'Spanish is spoken in many countries.', uz: "Ingliz tili butun dunyoda gapiriladi.", pattern: "Subject + is + V3 + place", grammarTip: "Is/are + V3 = passive. 'Is spoken' = gapiriladi. Bajaruvchi muhim emas.", commonMistake: "'English is speak all over the world' dema \u2014 V3: 'is SPOKEN' (speak \u2192 spoke \u2192 SPOKEN).", stressWord: 'SPOKEN' },
+    { id: 'sp-d38-c4', en: 'The vase was broken by a cat.', uz: "Deraza kuchli shamoldan sindirilgan.", pattern: "Subject + was + V3 + by + agent", grammarTip: "BY + agent = bajaruvchi muhim bo'lganda. 'By a strong wind' = kuchli shamol tomonidan.", commonMistake: "'The window was broken with a strong wind' dema \u2014 'BY': 'broken BY a strong wind'.", stressWord: 'BROKEN' },
+    { id: 'sp-d38-c5', en: 'The packages are delivered every afternoon.', uz: "Xatlar har kuni ertalab yetkaziladi.", pattern: "Subject + are + V3 + frequency", grammarTip: "'Are delivered' = ko'plik passive (present). 'Every morning' = har kuni ertalab.", commonMistake: "'The letters is delivered' dema \u2014 ko'plik: 'the letters ARE delivered'.", stressWord: 'DELIVERED' },
+    { id: 'sp-d38-c6', en: 'My bag was stolen yesterday.', uz: "Kecha telefonim o'g'irlangan.", pattern: "Subject + was + V3 + time", grammarTip: "'Was stolen' = o'g'irlangan (Past Passive). 'Steal' \u2192 'stole' \u2192 'STOLEN'.", commonMistake: "'My phone was stole yesterday' dema \u2014 V3: 'was STOLEN' (stole emas!).", stressWord: 'STOLEN' },
+  ],
+  scenario: {
+    topic: "describing how things are made or what happened",
+    aiRole: "a tour guide at a museum",
+    userRole: "a visitor asking about exhibits and history",
+    opening: "Welcome to our museum! This building was built in 1920. All exhibits are preserved very carefully.",
+    goalUz: "Narsalar qayerda yetishtirilishi, nima qachon qurilgani haqida passive bilan gapiring.",
+  },
+}
+
+
+const day39: SpeakingDay = {
+  day: 39, cefr: 'A2',
+  title: "O'zlashtirma gaplar (Reported Speech)",
+  subtitle: "Say / Tell \u2014 birovning gapini aytib berish",
+  goalUz: "Birovning gapini say va tell yordamida aytib bera olasiz va reported speech da zamonni orqaga siljita olasiz.",
+  linkedLessonId: 'reported-speech',
+  grammarPoint: 'say vs tell / tense backshift / reported questions',
+  estMinutes: 15,
+  vocab: [
+    { en: 'said', uz: "aytdi (say o'tgan)", example: 'He said (that) he was tired.' },
+    { en: 'told', uz: "aytdi (tell o'tgan)", example: 'She told me (that) she was happy.' },
+    { en: 'asked', uz: "so'radi", example: 'She asked if I was ready.' },
+    { en: 'that', uz: 'deb, -ganini', example: 'He said that he would come.' },
+  ],
+  pronunciationFocus: {
+    sound: '/s/ vs /z/ \u2014 said vs says',
+    ipaExample: '/sed/ \u2014 said / /sez/ \u2014 says / /t\u0259\u028ald/ \u2014 told / /\u0251\u02d0skt/ \u2014 asked',
+    tipUz: "'Said' = /sed/ (qisqa 'e' tovushi). 'Says' = /sez/ (hatto 'say' dan farq qiladi \u2014 /z/ bilan!). 'Told' = /t\u0259\u028ald/ (bir bo'g'in). 'Asked' = /\u0251\u02d0skt/ (4 undosh \u2014 o'zbeklar 'ask-ed' deb ikki bo'g'in qiladi, aslida bir!).",
+    tipEn: "'Said' rhymes with 'bed' (/sed/). 'Says' rhymes with 'fez' (/sez/). 'Asked' is ONE syllable /\u0251\u02d0skt/, not two.",
+    commonError: "'Said' ni /se\u026ad/ deb talaffuz qilish. To'g'risi: /sed/ (ey \u2192 e). 'Says' ni /se\u026az/ deb talaffuz qilish. To'g'risi: /sez/ (say \u2192 sez).",
+  },
+  recycledChunkIds: ['sp-d25-c1', 'sp-d26-c1', 'sp-d27-c1'],
+  chunks: [
+    { id: 'sp-d39-c1', en: 'She said (that) she was hungry.', uz: "U charchaganini aytdi.", pattern: "Subject + said + (that) + subject + past tense", grammarTip: "'Said + that' = birovning gapini aytish. Present 'I am tired' \u2192 past 'she was tired' (backshift).", commonMistake: "'She said that she is tired' dema \u2014 present emas, past: 'she WAS tired'.", stressWord: 'SAID' },
+    { id: 'sp-d39-c2', en: 'Mum told me (that) she was happy.', uz: "U menga bandligini aytdi.", pattern: "Subject + told + person + (that) + clause", grammarTip: "'Told' + person (me/him/her). 'Tell' \u2192 'told' (irregular). 'Told' dan keyin 'to' KERAK EMAS.", commonMistake: "'He told to me that he was busy' dema \u2014 'told me' (to'siz): 'He TOLD me'.", stressWord: 'TOLD' },
+    { id: 'sp-d39-c3', en: 'She asked if I liked tea.', uz: "U kofe yoqtirishimni so'radi.", pattern: "Subject + asked + if + subject + past tense", grammarTip: "Yes/no savollari \u2192 'if' bilan. 'Do you like?' \u2192 'if I liked' (backshift + question word order).", commonMistake: "'She asked if do I like coffee' dema \u2014 so'z tartibi: 'if I LIKED' (do emas).", stressWord: 'ASKED' },
+    { id: 'sp-d39-c4', en: 'He asked where I worked.', uz: "U qayerda yashashimni so'radi.", pattern: "Subject + asked + wh-word + subject + past tense", grammarTip: "Wh-savollari \u2192 'where I lived' (subject + verb, do/does KERAK EMAS).", commonMistake: "'He asked where did I live' dema \u2014 inversiya yo'q: 'where I LIVED'.", stressWord: 'LIVED' },
+    { id: 'sp-d39-c5', en: 'Dad told me to clean my room.', uz: "U menga eshikni yopishimni aytdi.", pattern: "Subject + told + person + to + V1", grammarTip: "Buyruqlar \u2192 'told + person + to + V1'. 'Close the door!' \u2192 'told me TO close the door'.", commonMistake: "'She told me close the door' dema \u2014 'to' kerak: 'told me TO close'.", stressWord: 'CLOSE' },
+    { id: 'sp-d39-c6', en: 'They said (that) they would help us.', uz: "U menga yordam berishini aytdi.", pattern: "Subject + said + (that) + subject + would + V1", grammarTip: "'Will' \u2192 'would' (backshift). 'I will help' \u2192 'he WOULD help'. 'Can' \u2192 'could'.", commonMistake: "'He said that he will help me' dema \u2014 backshift: 'will' \u2192 'WOULD'.", stressWord: 'WOULD' },
+  ],
+  scenario: {
+    topic: "reporting what someone told you",
+    aiRole: "a friend who is curious about what others said",
+    userRole: "someone reporting conversations from their day",
+    opening: "How was your day? Did anyone tell you anything interesting?",
+    goalUz: "O'zlashtirma gaplar (reported speech) yordamida birovning gapini ayting: said, told, asked, backshift.",
+  },
+}
+
+
+const day40: SpeakingDay = {
+  day: 40, cefr: 'A2',
+  title: "Some / Any / No / Every",
+  subtitle: "Noaniq miqdor va mavjudlik olmoshlari",
+  goalUz: "Some, any, no, every va ularning hosilalarini (somebody, anything, nobody, everything) to'g'ri ishlata olasiz.",
+  linkedLessonId: 'some-any-no-every',
+  grammarPoint: 'some vs any / no = not any / every + singular / compounds',
+  estMinutes: 15,
+  vocab: [
+    { en: 'some', uz: 'bir oz, bir nechta', example: 'I have some friends.' },
+    { en: 'any', uz: "hech qanday", example: "Do you have any plans for today?" },
+    { en: 'no', uz: "hech qanday ... yo'q", example: 'I have no money.' },
+    { en: 'every', uz: 'har bir', example: 'Every student is here.' },
+  ],
+  pronunciationFocus: {
+    sound: '/\u028c/ \u2014 some, none, nothing',
+    ipaExample: '/s\u028cm/ \u2014 some / /n\u028cn/ \u2014 none / /\u02c8n\u028c\u03b8\u026a\u014b/ \u2014 nothing / /\u02c8\u025bvri\u03b8\u026a\u014b/ \u2014 everything',
+    tipUz: "'Some' = /s\u028cm/ (qisqa 'a' tovushi). O'zbeklar 'som' deb o'qishadi, aslida 'sam'ga yaqinroq. 'Nothing' = /\u02c8n\u028c\u03b8\u026a\u014b/ \u2014 '\u03b8' tish orasidagi tovush!",
+    tipEn: "The /\u028c/ sound is short and relaxed \u2014 like 'u' in 'cup'. Some = /s\u028cm/, not /so\u028am/. Nothing = /\u02c8n\u028c\u03b8\u026a\u014b/ with the 'th' sound /\u03b8/.",
+    commonError: "'Some' ni /so\u028am/ deb talaffuz qilish (uzoq 'o' bilan). To'g'risi: /s\u028cm/. 'Nothing' ni /\u02c8n\u0252t\u026a\u014b/ deb aytish \u2014 'th' tovushi /\u03b8/ bilan: /\u02c8n\u028c\u03b8\u026a\u014b/.",
+  },
+  recycledChunkIds: ['sp-d28-c1', 'sp-d29-c1', 'sp-d30-c1'],
+  chunks: [
+    { id: 'sp-d40-c1', en: 'I have some friends in Samarkand.', uz: "Mening Toshkentda do'stlarim bor.", pattern: "I have + some + plural noun + place", grammarTip: "'Some' = ijobiy gaplarda (bir nechta, bir oz). 'Some friends' = bir nechta do'st.", commonMistake: "'I have any friends' dema \u2014 ijobiy: 'some', inkor/savol: 'any'.", stressWord: 'SOME' },
+    { id: 'sp-d40-c2', en: "I don't have any cash.", uz: "Mening pulim yo'q.", pattern: "Subject + don't/doesn't + have + any + noun", grammarTip: "'Any' = inkor gaplarda (hech qanday). 'Don't have any' = umuman yo'q.", commonMistake: "'I don't have no money' dema \u2014 double negative: 'don't have ANY money' yoki 'have NO money'.", stressWord: 'ANY' },
+    { id: 'sp-d40-c3', en: 'Do you have any plans for today?', uz: "Bugungi rejalaringiz bormi?", pattern: "Do/Does + subject + have + any + noun?", grammarTip: "'Any' = savollarda. 'Any plans' = birorta reja.", commonMistake: "'Do you have some plans?' dema \u2014 savolda 'ANY' ishlatiladi: 'Do you have ANY plans?'.", stressWord: 'ANY' },
+    { id: 'sp-d40-c4', en: 'There is no milk in my tea.', uz: "Kofemda shakar yo'q.", pattern: "There is + no + noun + place", grammarTip: "'No' = 'not any' (kuchliroq). 'There is no sugar' = 'There isn't any sugar'. 'No' bilan fe'l ijobiy!", commonMistake: "'There is not no sugar' dema \u2014 'no' o'zi inkor: 'There IS no sugar'.", stressWord: 'NO' },
+    { id: 'sp-d40-c5', en: 'Someone is at the door.', uz: "Eshik oldida kimdir bor.", pattern: "Somebody/Something/Someone + is + place", grammarTip: "'Somebody' = kimdir (ijobiy). 'Somebody is' \u2014 birlik fe'l! Compounds: somebody, something, somewhere.", commonMistake: "'Somebody are at the door' dema \u2014 'somebody' + birlik fe'l: 'Somebody IS'.", stressWord: 'SOMEBODY' },
+    { id: 'sp-d40-c6', en: 'Every child has a toy.', uz: "Har bir o'quvchining kitobi bor.", pattern: "Every + singular noun + singular verb", grammarTip: "'Every' + birlik ot + birlik fe'l. 'Every student HAS' (not 'have').", commonMistake: "'Every students have a book' dema \u2014 'every' + birlik: 'Every STUDENT HAS'.", stressWord: 'EVERY' },
+  ],
+  scenario: {
+    topic: "offering food and checking what's available",
+    aiRole: "a host at a party asking what guests want",
+    userRole: "a guest asking about food and drinks",
+    opening: "Welcome to the party! Would you like some tea or something to eat?",
+    goalUz: "Some, any, no, every va ularning hosilalari bilan mavjudlikni tasvirlang va taklif/iltimoslarni ifoda eting.",
+  },
+}
+
+
+
+
+const day41: SpeakingDay = {
+  day: 41, cefr: 'B1',
   title: "Rasmiy telefon so'rovi",
   subtitle: "E'lon bo'yicha qo'ng'iroq",
   goalUz: "Rasmiy qo'ng'iroq qila olasiz va ma'lumot so'raysiz.",
   estMinutes: 15,
+  linkedLessonId: 'indirect-questions',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -1555,17 +1754,17 @@ const day37: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d22-c3', 'sp-d22-c6', 'sp-d10-c1'],
   chunks: [
-    { id: 'sp-d37-c1', en: "I'm calling about the advertisement.", uz: "Men e'lon bo'yicha qo'ng'iroq qilyapman.", grammarTip: "'Calling about' = … haqida qo'ng'iroq qilmoq. 'About' = haqida. 'Advertisement' = e'lon. 'I'm calling' Present Continuous (hozirgi harakat).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d41-c1', en: "I'm calling about the advertisement.", uz: "Men e'lon bo'yicha qo'ng'iroq qilyapman.", grammarTip: "'Calling about' = … haqida qo'ng'iroq qilmoq. 'About' = haqida. 'Advertisement' = e'lon. 'I'm calling' Present Continuous (hozirgi harakat).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'CALLING'},
-    { id: 'sp-d37-c2', en: "Could you tell me more about it?", uz: "Bu haqda ko'proq ayta olasizmi?", grammarTip: "'Could you tell me more about …?' = … haqida ko'proq ayta olasizmi? 'More' = ko'proq. 'Tell me' = menga ayting. 'Tell' + me (indirect object) + about.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d41-c2', en: "Could you tell me more about it?", uz: "Bu haqda ko'proq ayta olasizmi?", grammarTip: "'Could you tell me more about …?' = … haqida ko'proq ayta olasizmi? 'More' = ko'proq. 'Tell me' = menga ayting. 'Tell' + me (indirect object) + about.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'COULD'},
-    { id: 'sp-d37-c3', en: "When would be a good time?", uz: "Qachon qulay bo'ladi?", grammarTip: "'When would be a good time?' = qachon qulay bo'ladi? 'Would' modal fe'l (muloyim). 'A good time' = qulay vaqt.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d41-c3', en: "When would be a good time?", uz: "Qachon qulay bo'ladi?", grammarTip: "'When would be a good time?' = qachon qulay bo'ladi? 'Would' modal fe'l (muloyim). 'A good time' = qulay vaqt.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHEN'},
-    { id: 'sp-d37-c4', en: "Could you put me through to the manager?", uz: "Meni menejerga ulay olasizmi?", grammarTip: "'Put me through' = meni ulang (telefon qo'ng'irog'i). Phrasal verb: 'put through to'. 'The manager' = menejer.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d41-c4', en: "Could you put me through to the manager?", uz: "Meni menejerga ulay olasizmi?", grammarTip: "'Put me through' = meni ulang (telefon qo'ng'irog'i). Phrasal verb: 'put through to'. 'The manager' = menejer.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'COULD'},
-    { id: 'sp-d37-c5', en: "I'll call back later.", uz: "Keyinroq qayta qo'ng'iroq qilaman.", grammarTip: "'Call back' = qayta qo'ng'iroq qilmoq (phrasal verb). 'Later' = keyinroq. 'I'll' = 'I will'.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d41-c5', en: "I'll call back later.", uz: "Keyinroq qayta qo'ng'iroq qilaman.", grammarTip: "'Call back' = qayta qo'ng'iroq qilmoq (phrasal verb). 'Later' = keyinroq. 'I'll' = 'I will'.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'LATER'},
-    { id: 'sp-d37-c6', en: "I appreciate your assistance.", uz: "Yordamingiz uchun minnatdorman.", grammarTip: "'I appreciate …' = men … ni qadrlayman/minnatdorman. 'Your assistance' = sizning yordamingiz. Rasmiy ibora: 'appreciate' = minnatdor bo'lmoq.", commonMistake: "'Your' (sening) / 'you're' (you are). 'Your right' xato — 'YOU'RE right'.",
+    { id: 'sp-d41-c6', en: "I appreciate your assistance.", uz: "Yordamingiz uchun minnatdorman.", grammarTip: "'I appreciate …' = men … ni qadrlayman/minnatdorman. 'Your assistance' = sizning yordamingiz. Rasmiy ibora: 'appreciate' = minnatdor bo'lmoq.", commonMistake: "'Your' (sening) / 'you're' (you are). 'Your right' xato — 'YOU'RE right'.",
   stressWord: 'APPRECIATE'},
   ],
   scenario: {
@@ -1577,12 +1776,13 @@ const day37: SpeakingDay = {
   },
 }
 
-const day38: SpeakingDay = {
-  day: 38, cefr: 'B1',
+const day42: SpeakingDay = {
+  day: 42, cefr: 'B1',
   title: "Rozilik va e'tiroz",
   subtitle: "Fikr bildirish",
   goalUz: "Rozilik yoki e'tirozingizni muloyim bildira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'so-neither-auxiliaries',
   vocab: [
     { en: 'agree', uz: 'rozi bo\'lmoq', example: 'I agree with you.' },
     { en: 'disagree', uz: 'rozi bo\'lmaslik', example: 'I disagree.' },
@@ -1597,17 +1797,17 @@ const day38: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d36-c1', 'sp-d36-c6', 'sp-d36-c4'],
   chunks: [
-    { id: 'sp-d38-c1', en: "I completely agree with you.", uz: "Men siz bilan to'liq roziman.", grammarTip: "'Completely agree' = to'liq roziman. 'Completely' = to'liq (intensifier). 'Agree with' = bilan rozi bo'lmoq. 'With' + person.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d42-c1', en: "I completely agree with you.", uz: "Men siz bilan to'liq roziman.", grammarTip: "'Completely agree' = to'liq roziman. 'Completely' = to'liq (intensifier). 'Agree with' = bilan rozi bo'lmoq. 'With' + person.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'COMPLETELY'},
-    { id: 'sp-d38-c2', en: "I see your point, but…", uz: "Fikringizni tushunaman, lekin…", grammarTip: "'I see your point' = fikringizni tushunaman. 'See' = tushunmoq (ko'z bilan emas). 'But' = lekin (ziddiyat kiritish).", commonMistake: "/ʌ/ — qisqa 'a' tovushi. O'zbek tilidagi 'o' ga o'xshaydi: 'but' /bʌt/.",
+    { id: 'sp-d42-c2', en: "I see your point, but…", uz: "Fikringizni tushunaman, lekin…", grammarTip: "'I see your point' = fikringizni tushunaman. 'See' = tushunmoq (ko'z bilan emas). 'But' = lekin (ziddiyat kiritish).", commonMistake: "/ʌ/ — qisqa 'a' tovushi. O'zbek tilidagi 'o' ga o'xshaydi: 'but' /bʌt/.",
   stressWord: 'SEE'},
-    { id: 'sp-d38-c3', en: "I'm not sure about that.", uz: "Bunga ishonchim komil emas.", grammarTip: "'I'm not sure about …' = … ga ishonchim komil emas. 'Sure' = aniq, ishonchli. 'Not sure' = noaniq. 'About' = haqida.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d42-c3', en: "I'm not sure about that.", uz: "Bunga ishonchim komil emas.", grammarTip: "'I'm not sure about …' = … ga ishonchim komil emas. 'Sure' = aniq, ishonchli. 'Not sure' = noaniq. 'About' = haqida.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'NOT'},
-    { id: 'sp-d38-c4', en: "That's a good point.", uz: "Bu yaxshi fikr.", grammarTip: "'That's a good point' = bu yaxshi fikr (muhokamada). 'Point' = nuqta/fikr. Diskussiyada fikrni ma'qullash uchun ishlatiladi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d42-c4', en: "That's a good point.", uz: "Bu yaxshi fikr.", grammarTip: "'That's a good point' = bu yaxshi fikr (muhokamada). 'Point' = nuqta/fikr. Diskussiyada fikrni ma'qullash uchun ishlatiladi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'A'},
-    { id: 'sp-d38-c5', en: "I'd say it depends.", uz: "Menimcha, vaziyatga bog'liq.", grammarTip: "'I'd say' = 'I would say' (muloyim fikr). 'It depends' = vaziyatga bog'liq. 'Depends on' = ga bog'liq. 'It depends' turg'un ibora.", commonMistake: "'Say something' / 'tell someone'. 'Say' + narsa, 'tell' + odam.",
+    { id: 'sp-d42-c5', en: "I'd say it depends.", uz: "Menimcha, vaziyatga bog'liq.", grammarTip: "'I'd say' = 'I would say' (muloyim fikr). 'It depends' = vaziyatga bog'liq. 'Depends on' = ga bog'liq. 'It depends' turg'un ibora.", commonMistake: "'Say something' / 'tell someone'. 'Say' + narsa, 'tell' + odam.",
   stressWord: 'DEPENDS'},
-    { id: 'sp-d38-c6', en: "What do you think?", uz: "Siz qanday o'ylaysiz?", grammarTip: "'What do you think?' = nima deb o'ylaysiz? 'Think' = o'ylamoq. 'What' + 'do' + 'you' + 'think' — so'roq qolipi. 'Think about/of' = haqida o'ylamoq.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d42-c6', en: "What do you think?", uz: "Siz qanday o'ylaysiz?", grammarTip: "'What do you think?' = nima deb o'ylaysiz? 'Think' = o'ylamoq. 'What' + 'do' + 'you' + 'think' — so'roq qolipi. 'Think about/of' = haqida o'ylamoq.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'WHAT'},
   ],
   scenario: {
@@ -1619,12 +1819,13 @@ const day38: SpeakingDay = {
   },
 }
 
-const day39: SpeakingDay = {
-  day: 39, cefr: 'B1',
+const day43: SpeakingDay = {
+  day: 43, cefr: 'B1',
   title: "Taklif: qabul va rad",
   subtitle: "Taklif qilish va javob",
   goalUz: "Taklifni muloyim qabul qila yoki rad eta olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'modals-obligation',
   vocab: [
     { en: 'join', uz: 'qo\'shilmoq', example: 'Would you like to join?' },
     { en: 'celebrate', uz: 'nishonlamoq', example: 'Let us celebrate!' },
@@ -1639,17 +1840,17 @@ const day39: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d21-c3', 'sp-d31-c1', 'sp-d32-c6'],
   chunks: [
-    { id: 'sp-d39-c1', en: "Would you like to join us?", uz: "Biz bilan qo'shilasizmi?", grammarTip: "'Would you like to + V?' = taklif qilish. 'Would' + 'you' + 'like' + 'to' + V. 'Join us' = bizga qo'shiling. 'Join' = qo'shilmoq.", commonMistake: "Modal fe'ldan keyin 'to' qo'yilmaydi: 'can GO', 'should DO'. 'To' faqat 'have to' da.",
+    { id: 'sp-d43-c1', en: "Would you like to join us?", uz: "Biz bilan qo'shilasizmi?", grammarTip: "'Would you like to + V?' = taklif qilish. 'Would' + 'you' + 'like' + 'to' + V. 'Join us' = bizga qo'shiling. 'Join' = qo'shilmoq.", commonMistake: "Modal fe'ldan keyin 'to' qo'yilmaydi: 'can GO', 'should DO'. 'To' faqat 'have to' da.",
   stressWord: 'WOULD'},
-    { id: 'sp-d39-c2', en: "I'd love to, thank you.", uz: "Mamnuniyat bilan, rahmat.", grammarTip: "'I'd love to' = men mamnuniyat bilan. 'I'd' = 'I would'. 'Love to' = juda xohlash. Taklifni qabul qilish uchun eng yaxshi ibora.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d43-c2', en: "I'd love to, thank you.", uz: "Mamnuniyat bilan, rahmat.", grammarTip: "'I'd love to' = men mamnuniyat bilan. 'I'd' = 'I would'. 'Love to' = juda xohlash. Taklifni qabul qilish uchun eng yaxshi ibora.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'THANK'},
-    { id: 'sp-d39-c3', en: "I'm afraid I can't make it.", uz: "Afsuski, kela olmayman.", grammarTip: "'I'm afraid' = afsuski (muloyim rad etish). 'Can't make it' = kela olmayman. 'Make it' = biror joyga yetib bormoq (turg'un ibora).", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d43-c3', en: "I'm afraid I can't make it.", uz: "Afsuski, kela olmayman.", grammarTip: "'I'm afraid' = afsuski (muloyim rad etish). 'Can't make it' = kela olmayman. 'Make it' = biror joyga yetib bormoq (turg'un ibora).", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'AFRAID'},
-    { id: 'sp-d39-c4', en: "Maybe another time.", uz: "Balki boshqa safar.", grammarTip: "'Maybe another time' = balki boshqa safar. 'Another' = boshqa. 'Time' bu yerda 'safar' ma'nosida. Taklifni muloyim rad etish.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d43-c4', en: "Maybe another time.", uz: "Balki boshqa safar.", grammarTip: "'Maybe another time' = balki boshqa safar. 'Another' = boshqa. 'Time' bu yerda 'safar' ma'nosida. Taklifni muloyim rad etish.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'TIME'},
-    { id: 'sp-d39-c5', en: "What time should I come?", uz: "Soat nechada kelay?", grammarTip: "'What time should I + V?' = soat nechada … y? 'Should' modal fe'l (kerak/ma'qul). 'Come' = kelmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d43-c5', en: "What time should I come?", uz: "Soat nechada kelay?", grammarTip: "'What time should I + V?' = soat nechada … y? 'Should' modal fe'l (kerak/ma'qul). 'Come' = kelmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHAT'},
-    { id: 'sp-d39-c6', en: "Thanks for the invitation.", uz: "Taklif uchun rahmat.", grammarTip: "'Thanks for …' = … uchun rahmat (norasmiy). 'Invitation' = taklif. 'For' + ot/-ing. 'Thank you' rasmiy, 'thanks' norasmiy.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d43-c6', en: "Thanks for the invitation.", uz: "Taklif uchun rahmat.", grammarTip: "'Thanks for …' = … uchun rahmat (norasmiy). 'Invitation' = taklif. 'For' + ot/-ing. 'Thank you' rasmiy, 'thanks' norasmiy.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'INVITATION'},
   ],
   scenario: {
@@ -1661,12 +1862,13 @@ const day39: SpeakingDay = {
   },
 }
 
-const day40: SpeakingDay = {
-  day: 40, cefr: 'B1',
+const day44: SpeakingDay = {
+  day: 44, cefr: 'B1',
   title: "Tajriba haqida",
   subtitle: "Present Perfect",
   goalUz: "Hayot tajribalaringiz haqida gapira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'present-perfect',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -1682,17 +1884,17 @@ const day40: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d20-c5', 'sp-d30-c3', 'sp-d36-c1'],
   chunks: [
-    { id: 'sp-d40-c1', en: "Have you ever been to London?", uz: "Hech Londonda bo'lganmisiz?", pattern: "Have you ever …?", grammarTip: "'Have you ever + Past Participle?' — Present Perfect so'rog'i. 'Ever' = hech qachon. 'Been' = 'be' ning PP (Past Participle).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d44-c1', en: "Have you ever been to London?", uz: "Hech Londonda bo'lganmisiz?", pattern: "Have you ever …?", grammarTip: "'Have you ever + Past Participle?' — Present Perfect so'rog'i. 'Ever' = hech qachon. 'Been' = 'be' ning PP (Past Participle).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'HAVE'},
-    { id: 'sp-d40-c2', en: "I've never tried sushi.", uz: "Men hech sushi tatib ko'rmaganman.", grammarTip: "'I've never + PP' = men hech …maganman. 'Never' = hech qachon. 'Tried' = 'try' ning PP (try → tried → tried). 'Never' 've dan keyin keladi.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d44-c2', en: "I've never tried sushi.", uz: "Men hech sushi tatib ko'rmaganman.", grammarTip: "'I've never + PP' = men hech …maganman. 'Never' = hech qachon. 'Tried' = 'try' ning PP (try → tried → tried). 'Never' 've dan keyin keladi.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'SUSHI'},
-    { id: 'sp-d40-c3', en: "I've already finished my work.", uz: "Men ishimni allaqachon tugatdim.", grammarTip: "'Already' = allaqachon (Present Perfect bilan). 'Already' gap o'rtasida: have + already + PP. 'Finished' = finish + -ed (to'g'ri fe'l).", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d44-c3', en: "I've already finished my work.", uz: "Men ishimni allaqachon tugatdim.", grammarTip: "'Already' = allaqachon (Present Perfect bilan). 'Already' gap o'rtasida: have + already + PP. 'Finished' = finish + -ed (to'g'ri fe'l).", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WORK'},
-    { id: 'sp-d40-c4', en: "She has just left.", uz: "U hozirgina ketdi.", grammarTip: "'Has just + PP' = hozirgina. 'Just' = hozirgina. 'Has' = 'have' ning he/she/it shakli. 'Left' = 'leave' ning PP (leave → left → left).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d44-c4', en: "She has just left.", uz: "U hozirgina ketdi.", grammarTip: "'Has just + PP' = hozirgina. 'Just' = hozirgina. 'Has' = 'have' ning he/she/it shakli. 'Left' = 'leave' ning PP (leave → left → left).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'HAS'},
-    { id: 'sp-d40-c5', en: "I haven't seen that film yet.", uz: "Men u filmni hali ko'rmaganman.", grammarTip: "'Haven't ... yet' = hali …maganman. 'Seen' = 'see' ning PP (see → saw → seen). 'Yet' gap oxirida (inkor va so'roqda).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d44-c5', en: "I haven't seen that film yet.", uz: "Men u filmni hali ko'rmaganman.", grammarTip: "'Haven't ... yet' = hali …maganman. 'Seen' = 'see' ning PP (see → saw → seen). 'Yet' gap oxirida (inkor va so'roqda).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'HAVENT'},
-    { id: 'sp-d40-c6', en: "It's the best food I've ever had.", uz: "Bu men tatib ko'rgan eng zo'r taom.", grammarTip: "'The best + ot + I've ever + PP' = men … eng yaxshisi. 'Best' = 'good' ning superlativi. 'Ever had' = hech qachon …gan.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d44-c6', en: "It's the best food I've ever had.", uz: "Bu men tatib ko'rgan eng zo'r taom.", grammarTip: "'The best + ot + I've ever + PP' = men … eng yaxshisi. 'Best' = 'good' ning superlativi. 'Ever had' = hech qachon …gan.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'THE'},
   ],
   scenario: {
@@ -1704,12 +1906,13 @@ const day40: SpeakingDay = {
   },
 }
 
-const day41: SpeakingDay = {
-  day: 41, cefr: 'B1',
+const day45: SpeakingDay = {
+  day: 45, cefr: 'B1',
   title: "Uchrashuv kelishish",
   subtitle: "Reja va tasdiq",
   goalUz: "Uchrashuv vaqtini kelishib, tasdiqlay olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'time-clauses',
   vocab: [
     { en: 'party', uz: 'ziyofat', example: 'I met him at a party.' },
     { en: 'colleague', uz: 'hamkasb', example: 'She is my colleague.' },
@@ -1722,19 +1925,19 @@ const day41: SpeakingDay = {
     tipUz: "/ʃ/ — 'sh' tovushi. Til tanglayga yaqin, nafas chiqariladi. O'zbek tilidagi 'sh' ga o'xshaydi.",
     tipEn: "/ʃ/ — the 'sh' sound. Tongue close to the palate, air is released. Similar to Uzbek 'sh'.",
   },
-  recycledChunkIds: ['sp-d22-c3', 'sp-d31-c6', 'sp-d37-c5'],
+  recycledChunkIds: ['sp-d22-c3', 'sp-d31-c6', 'sp-d41-c5'],
   chunks: [
-    { id: 'sp-d41-c1', en: "Let's arrange a meeting.", uz: "Keling, uchrashuv tashkil qilaylik.", grammarTip: "'Let's + V' = taklif. 'Arrange' = tashkil qilmoq. 'A meeting' = uchrashuv. 'Arrange a meeting' rasmiy ibora.", commonMistake: "Sanaladigan ot oldidan 'a' artiklini qo'shishni unutma: 'a problem'.",
+    { id: 'sp-d45-c1', en: "Let's arrange a meeting.", uz: "Keling, uchrashuv tashkil qilaylik.", grammarTip: "'Let's + V' = taklif. 'Arrange' = tashkil qilmoq. 'A meeting' = uchrashuv. 'Arrange a meeting' rasmiy ibora.", commonMistake: "Sanaladigan ot oldidan 'a' artiklini qo'shishni unutma: 'a problem'.",
   stressWord: 'MEETING'},
-    { id: 'sp-d41-c2', en: "Shall we meet on Monday?", uz: "Dushanba kuni uchrashaylikmi?", grammarTip: "'Shall we + V?' = taklif (Britaniya). 'Shall' = 'will' ning varianti, taklif uchun. 'On Monday' = dushanba kuni. 'On' + kun.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d45-c2', en: "Shall we meet on Monday?", uz: "Dushanba kuni uchrashaylikmi?", grammarTip: "'Shall we + V?' = taklif (Britaniya). 'Shall' = 'will' ning varianti, taklif uchun. 'On Monday' = dushanba kuni. 'On' + kun.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'MONDAY'},
-    { id: 'sp-d41-c3', en: "That works for me.", uz: "Bu menga mos keladi.", grammarTip: "'That works for me' = bu menga mos keladi. 'Works' = ishlaydi/mos keladi. Turg'un ibora. 'For me' = men uchun.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d45-c3', en: "That works for me.", uz: "Bu menga mos keladi.", grammarTip: "'That works for me' = bu menga mos keladi. 'Works' = ishlaydi/mos keladi. Turg'un ibora. 'For me' = men uchun.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'WORKS'},
-    { id: 'sp-d41-c4', en: "Can we change the time?", uz: "Vaqtni o'zgartira olamizmi?", grammarTip: "'Can we change …?' = o'zgartira olamizmi? 'Change the time' = vaqtni o'zgartirmoq. 'The time' = belgilangan vaqt.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d45-c4', en: "Can we change the time?", uz: "Vaqtni o'zgartira olamizmi?", grammarTip: "'Can we change …?' = o'zgartira olamizmi? 'Change the time' = vaqtni o'zgartirmoq. 'The time' = belgilangan vaqt.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'CAN'},
-    { id: 'sp-d41-c5', en: "Let me check my schedule.", uz: "Jadvalimni tekshirib ko'ray.", grammarTip: "'Let me + V' = ruxsat bering … y. 'Check' = tekshirmoq. 'My schedule' = mening jadvalim. Britaniya: 'diary', AQSH: 'schedule'.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d45-c5', en: "Let me check my schedule.", uz: "Jadvalimni tekshirib ko'ray.", grammarTip: "'Let me + V' = ruxsat bering … y. 'Check' = tekshirmoq. 'My schedule' = mening jadvalim. Britaniya: 'diary', AQSH: 'schedule'.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'LET'},
-    { id: 'sp-d41-c6', en: "I'll confirm by email.", uz: "Email orqali tasdiqlayman.", grammarTip: "'Confirm' = tasdiqlash. 'By email' = email orqali. 'By' + vosita (by phone, by email). 'I'll' = 'I will'.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d45-c6', en: "I'll confirm by email.", uz: "Email orqali tasdiqlayman.", grammarTip: "'Confirm' = tasdiqlash. 'By email' = email orqali. 'By' + vosita (by phone, by email). 'I'll' = 'I will'.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'EMAIL'},
   ],
   scenario: {
@@ -1746,12 +1949,13 @@ const day41: SpeakingDay = {
   },
 }
 
-const day42: SpeakingDay = {
-  day: 42, cefr: 'B1',
+const day46: SpeakingDay = {
+  day: 46, cefr: 'B1',
   title: "Maslahat berish",
   subtitle: "should / could",
   goalUz: "Muloyim maslahat bera va so'ray olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'modals-obligation',
   vocab: [
     { en: 'recommend', uz: 'tavsiya qilmoq', example: 'What do you recommend?' },
     { en: 'useful', uz: 'foydali', example: 'That is very useful.' },
@@ -1764,19 +1968,19 @@ const day42: SpeakingDay = {
     tipUz: "/ʊ/ qisqa va bo'sh — lablarni yumaloqlang, lekin tarang emas. 'Good' (/gʊd/) va 'food' (/fuːd/) farqiga e'tibor bering.",
     tipEn: "/ʊ/ is short and relaxed — round your lips but don't tense them. Note the difference between 'good' (/gʊd/) and 'food' (/fuːd/).",
   },
-  recycledChunkIds: ['sp-d38-c2', 'sp-d38-c3', 'sp-d36-c1'],
+  recycledChunkIds: ['sp-d42-c2', 'sp-d42-c3', 'sp-d36-c1'],
   chunks: [
-    { id: 'sp-d42-c1', en: "What should I do?", uz: "Men nima qilishim kerak?", grammarTip: "'What should I + V?' = nima qilishim kerak? 'Should' modal fe'l (maslahat). 'Should I' so'roqda: should + sub'ekt + V.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d46-c1', en: "What should I do?", uz: "Men nima qilishim kerak?", grammarTip: "'What should I + V?' = nima qilishim kerak? 'Should' modal fe'l (maslahat). 'Should I' so'roqda: should + sub'ekt + V.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHAT'},
-    { id: 'sp-d42-c2', en: "You should see a doctor.", uz: "Siz shifokorga ko'rinishingiz kerak.", pattern: "You should …", grammarTip: "'You should + V' = siz … kerak. 'Should' + asosiy fe'l (to'siz). 'See a doctor' = shifokorga ko'rinmoq.", commonMistake: "Kasb oldidan 'a' artiklini tushirib qoldirma: 'I am A teacher'.",
+    { id: 'sp-d46-c2', en: "You should see a doctor.", uz: "Siz shifokorga ko'rinishingiz kerak.", pattern: "You should …", grammarTip: "'You should + V' = siz … kerak. 'Should' + asosiy fe'l (to'siz). 'See a doctor' = shifokorga ko'rinmoq.", commonMistake: "Kasb oldidan 'a' artiklini tushirib qoldirma: 'I am A teacher'.",
   stressWord: 'SHOULD'},
-    { id: 'sp-d42-c3', en: "You could try this.", uz: "Buni sinab ko'rsangiz bo'ladi.", grammarTip: "'Could' = mumkin (should dan zaifroq maslahat). 'Could try' = sinab ko'rsangiz bo'ladi. 'Try' = sinab ko'rmoq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d46-c3', en: "You could try this.", uz: "Buni sinab ko'rsangiz bo'ladi.", grammarTip: "'Could' = mumkin (should dan zaifroq maslahat). 'Could try' = sinab ko'rsangiz bo'ladi. 'Try' = sinab ko'rmoq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'COULD'},
-    { id: 'sp-d42-c4', en: "If I were you, I'd wait.", uz: "Sizning o'rningizda bo'lsam, kutardim.", grammarTip: "'If I were you' = sizning o'rningizda bo'lsam (Second Conditional). 'Were' — birlikda 'was' emas, 'were' ishlatiladi! 'I'd' = 'I would'.", commonMistake: "'Wait' dan keyin 'for' kerak: 'wait FOR me'.",
+    { id: 'sp-d46-c4', en: "If I were you, I'd wait.", uz: "Sizning o'rningizda bo'lsam, kutardim.", grammarTip: "'If I were you' = sizning o'rningizda bo'lsam (Second Conditional). 'Were' — birlikda 'was' emas, 'were' ishlatiladi! 'I'd' = 'I would'.", commonMistake: "'Wait' dan keyin 'for' kerak: 'wait FOR me'.",
   stressWord: 'WAIT'},
-    { id: 'sp-d42-c5', en: "That's good advice.", uz: "Bu yaxshi maslahat.", grammarTip: "'Good advice' = yaxshi maslahat. 'Advice' = maslahat (sanalmaydigan ot, 'advices' emas!). 'A piece of advice' = bitta maslahat.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d46-c5', en: "That's good advice.", uz: "Bu yaxshi maslahat.", grammarTip: "'Good advice' = yaxshi maslahat. 'Advice' = maslahat (sanalmaydigan ot, 'advices' emas!). 'A piece of advice' = bitta maslahat.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'GOOD'},
-    { id: 'sp-d42-c6', en: "Maybe you should rest.", uz: "Balki dam olishingiz kerak.", grammarTip: "'Maybe + gap' = balki. 'You should rest' = dam olishingiz kerak. 'Rest' = dam olmoq (fe'l). 'Maybe' gap boshida keladi.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d46-c6', en: "Maybe you should rest.", uz: "Balki dam olishingiz kerak.", grammarTip: "'Maybe + gap' = balki. 'You should rest' = dam olishingiz kerak. 'Rest' = dam olmoq (fe'l). 'Maybe' gap boshida keladi.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'SHOULD'},
   ],
   scenario: {
@@ -1788,12 +1992,13 @@ const day42: SpeakingDay = {
   },
 }
 
-const day43: SpeakingDay = {
-  day: 43, cefr: 'B1',
+const day47: SpeakingDay = {
+  day: 47, cefr: 'B1',
   title: "Rejalar va orzular",
   subtitle: "Kelajak haqida",
   goalUz: "Kelajak rejalaringiz va orzularingizni ayta olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'future-forms-review',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -1806,19 +2011,19 @@ const day43: SpeakingDay = {
     tipUz: "/ɜː/ — tilni o'rtaga qo'ying va lablarni yumaloqlamang. O'zbek tilida bu tovush yo'q. 'World' va 'word' farqiga e'tibor bering.",
     tipEn: "/ɜː/ — tongue in the middle, lips not rounded. Uzbek doesn't have this sound. Note the difference between 'world' and 'word'.",
   },
-  recycledChunkIds: ['sp-d21-c4', 'sp-d21-c5', 'sp-d40-c6'],
+  recycledChunkIds: ['sp-d21-c4', 'sp-d21-c5', 'sp-d44-c6'],
   chunks: [
-    { id: 'sp-d43-c1', en: "I hope to study abroad.", uz: "Men chet elda o'qishni umid qilaman.", grammarTip: "'Hope to + V' = … ni umid qilmoq. 'Hope' = umid qilmoq. 'Study abroad' = chet elda o'qimoq. 'Abroad' = chet el (oldidan 'to/in' qo'yilmaydi).", commonMistake: "Bu fe'llardan keyin 'to + V' keladi: 'want TO go', 'need TO do'.",
+    { id: 'sp-d47-c1', en: "I hope to study abroad.", uz: "Men chet elda o'qishni umid qilaman.", grammarTip: "'Hope to + V' = … ni umid qilmoq. 'Hope' = umid qilmoq. 'Study abroad' = chet elda o'qimoq. 'Abroad' = chet el (oldidan 'to/in' qo'yilmaydi).", commonMistake: "Bu fe'llardan keyin 'to + V' keladi: 'want TO go', 'need TO do'.",
   stressWord: 'HOPE'},
-    { id: 'sp-d43-c2', en: "I'm planning to start a business.", uz: "Men biznes boshlashni rejalashtiryapman.", grammarTip: "'Planning to + V' = rejalashtirmoq. 'Plan to + V' = …moqchi. 'Start a business' = biznes boshlash. 'A business' = biznes (sanaladigan).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d47-c2', en: "I'm planning to start a business.", uz: "Men biznes boshlashni rejalashtiryapman.", grammarTip: "'Planning to + V' = rejalashtirmoq. 'Plan to + V' = …moqchi. 'Start a business' = biznes boshlash. 'A business' = biznes (sanaladigan).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'PLANNING'},
-    { id: 'sp-d43-c3', en: "I might move to a new city.", uz: "Men yangi shaharga ko'chishim mumkin.", grammarTip: "'Might + V' = ehtimol (50% ehtimol). 'Might' 'may' dan noaniqroq. 'Move to' = ko'chib bormoq. 'A new city' = yangi shahar.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d47-c3', en: "I might move to a new city.", uz: "Men yangi shaharga ko'chishim mumkin.", grammarTip: "'Might + V' = ehtimol (50% ehtimol). 'Might' 'may' dan noaniqroq. 'Move to' = ko'chib bormoq. 'A new city' = yangi shahar.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'MIGHT'},
-    { id: 'sp-d43-c4', en: "In five years, I want to grow.", uz: "Besh yildan keyin men o'sishni istayman.", grammarTip: "'In + vaqt' = …dan keyin (kelajak). 'In five years' = besh yildan keyin. 'Want to grow' = o'sishni istamoq. 'Grow' = o'smoq/rivojlanmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d47-c4', en: "In five years, I want to grow.", uz: "Besh yildan keyin men o'sishni istayman.", grammarTip: "'In + vaqt' = …dan keyin (kelajak). 'In five years' = besh yildan keyin. 'Want to grow' = o'sishni istamoq. 'Grow' = o'smoq/rivojlanmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'GROW'},
-    { id: 'sp-d43-c5', en: "My dream is to travel the world.", uz: "Mening orzuim — dunyoni aylanib chiqish.", grammarTip: "'My dream is to + V' = mening orzuyim … . 'Travel the world' = dunyoni sayohat qilmoq. 'The world' = dunyo (har doim 'the' bilan).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d47-c5', en: "My dream is to travel the world.", uz: "Mening orzuim — dunyoni aylanib chiqish.", grammarTip: "'My dream is to + V' = mening orzuyim … . 'Travel the world' = dunyoni sayohat qilmoq. 'The world' = dunyo (har doim 'the' bilan).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'IS'},
-    { id: 'sp-d43-c6', en: "What are your goals?", uz: "Maqsadlaringiz qanday?", grammarTip: "'What are your goals?' = maqsadlaringiz qanday? 'Goals' = maqsadlar (ko'plik). 'Your goals' = sizning maqsadlaringiz.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d47-c6', en: "What are your goals?", uz: "Maqsadlaringiz qanday?", grammarTip: "'What are your goals?' = maqsadlaringiz qanday? 'Goals' = maqsadlar (ko'plik). 'Your goals' = sizning maqsadlaringiz.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHAT'},
   ],
   scenario: {
@@ -1830,12 +2035,13 @@ const day43: SpeakingDay = {
   },
 }
 
-const day44: SpeakingDay = {
-  day: 44, cefr: 'B1',
+const day48: SpeakingDay = {
+  day: 48, cefr: 'B1',
   title: "Sabab va natija",
   subtitle: "because / so",
   goalUz: "Qaror va sabablaringizni tushuntira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'conjunctions',
   vocab: [
     { en: 'actually', uz: 'aslida', example: 'Actually, that is not true.' },
     { en: 'honestly', uz: 'rostini aytsam', example: 'Honestly, I disagree.' },
@@ -1848,19 +2054,19 @@ const day44: SpeakingDay = {
     tipUz: "/aɪ/ — 'a' dan 'i' ga silliq o'tish. 'Tired' ikki bo'g'in: ti-red (/taɪəd/). 'Why' bir bo'g'in: /waɪ/.",
     tipEn: "/aɪ/ — glide smoothly from 'a' to 'i'. 'Tired' is two syllables: ti-red (/taɪəd/). 'Why' is one syllable: /waɪ/.",
   },
-  recycledChunkIds: ['sp-d40-c2', 'sp-d43-c1', 'sp-d38-c5'],
+  recycledChunkIds: ['sp-d44-c2', 'sp-d47-c1', 'sp-d42-c5'],
   chunks: [
-    { id: 'sp-d44-c1', en: "I'm tired because I worked late.", uz: "Charchadim, chunki kech ishladim.", grammarTip: "'Because' = chunki (sabab bog'lovchisi). 'Because + to'liq gap'. 'Worked' = 'work' + '-ed' (to'g'ri fe'l o'tgan zamon). 'Late' = kech.", commonMistake: "'-ed' /t/ deb talaffuz qilinadi (tilsiz tovushlardan keyin): 'watched' /wɒtʃt/.",
+    { id: 'sp-d48-c1', en: "I'm tired because I worked late.", uz: "Charchadim, chunki kech ishladim.", grammarTip: "'Because' = chunki (sabab bog'lovchisi). 'Because + to'liq gap'. 'Worked' = 'work' + '-ed' (to'g'ri fe'l o'tgan zamon). 'Late' = kech.", commonMistake: "'-ed' /t/ deb talaffuz qilinadi (tilsiz tovushlardan keyin): 'watched' /wɒtʃt/.",
   stressWord: 'TIRED'},
-    { id: 'sp-d44-c2', en: "It was raining, so we stayed home.", uz: "Yomg'ir yog'ayotgandi, shuning uchun uyda qoldik.", grammarTip: "'So' = shuning uchun (natija bog'lovchisi). 'Was raining' = Past Continuous. 'Stayed home' = uyda qoldik ('at' qo'yilmaydi).", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d48-c2', en: "It was raining, so we stayed home.", uz: "Yomg'ir yog'ayotgandi, shuning uchun uyda qoldik.", grammarTip: "'So' = shuning uchun (natija bog'lovchisi). 'Was raining' = Past Continuous. 'Stayed home' = uyda qoldik ('at' qo'yilmaydi).", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'HOME'},
-    { id: 'sp-d44-c3', en: "I learn English so I can travel.", uz: "Men sayohat qilish uchun ingliz tilini o'rganaman.", grammarTip: "'So I can + V' = … uchun (maqsad). 'Learn' = o'rganmoq. 'So that' — maqsad bildiradi. 'So I can travel' = sayohat qilishim uchun.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d48-c3', en: "I learn English so I can travel.", uz: "Men sayohat qilish uchun ingliz tilini o'rganaman.", grammarTip: "'So I can + V' = … uchun (maqsad). 'Learn' = o'rganmoq. 'So that' — maqsad bildiradi. 'So I can travel' = sayohat qilishim uchun.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'LEARN'},
-    { id: 'sp-d44-c4', en: "Why did you choose this?", uz: "Nega buni tanladingiz?", grammarTip: "'Why did you + V?' = nega … dingiz? 'Why' = nega. 'Did' + sub'ekt + asosiy fe'l — o'tgan zamon so'rog'i. 'Choose' = tanlamoq (choose → chose → chosen).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d48-c4', en: "Why did you choose this?", uz: "Nega buni tanladingiz?", grammarTip: "'Why did you + V?' = nega … dingiz? 'Why' = nega. 'Did' + sub'ekt + asosiy fe'l — o'tgan zamon so'rog'i. 'Choose' = tanlamoq (choose → chose → chosen).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'WHY'},
-    { id: 'sp-d44-c5', en: "The reason is simple.", uz: "Sababi oddiy.", grammarTip: "'The reason is …' = sababi … . 'Reason' = sabab. 'Simple' = oddiy. 'The reason + is + sifat' — sababni tushuntirish.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d48-c5', en: "The reason is simple.", uz: "Sababi oddiy.", grammarTip: "'The reason is …' = sababi … . 'Reason' = sabab. 'Simple' = oddiy. 'The reason + is + sifat' — sababni tushuntirish.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'IS'},
-    { id: 'sp-d44-c6', en: "That's why I'm here.", uz: "Shuning uchun men shu yerdaman.", grammarTip: "'That's why' = shuning uchun. 'That's' = 'That is'. 'Why' bu yerda 'nega' emas, 'shuning uchun' ma'nosida. 'I'm here' = men shu yerdaman.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d48-c6', en: "That's why I'm here.", uz: "Shuning uchun men shu yerdaman.", grammarTip: "'That's why' = shuning uchun. 'That's' = 'That is'. 'Why' bu yerda 'nega' emas, 'shuning uchun' ma'nosida. 'I'm here' = men shu yerdaman.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'WHY'},
   ],
   scenario: {
@@ -1872,12 +2078,13 @@ const day44: SpeakingDay = {
   },
 }
 
-const day45: SpeakingDay = {
-  day: 45, cefr: 'B1',
+const day49: SpeakingDay = {
+  day: 49, cefr: 'B1',
   title: "Intervyu asoslari",
   subtitle: "O'zini taqdim etish",
   goalUz: "Oddiy ish intervyusida o'zingizni taqdim eta olasiz.",
   estMinutes: 15,
+  linkedLessonId: 'indirect-questions',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -1891,19 +2098,19 @@ const day45: SpeakingDay = {
     tipEn: "/θ/ — tongue between teeth, breathe out (voiceless). 'Strength' = /streŋθ/ — the /ŋ/ + /θ/ combination is tricky.",
     commonError: "O'zbeklar 'strength' ni /strɛng/ deb talaffuz qiladi. So'z oxiridagi /θ/ ni unutmang!",
   },
-  recycledChunkIds: ['sp-d30-c1', 'sp-d38-c1', 'sp-d42-c2'],
+  recycledChunkIds: ['sp-d30-c1', 'sp-d42-c1', 'sp-d46-c2'],
   chunks: [
-    { id: 'sp-d45-c1', en: "Tell me about yourself.", uz: "O'zingiz haqingizda gapiring.", grammarTip: "'Tell me about …' = … haqida gapiring. 'Tell' = aytmoq (tell → told → told). 'Yourself' = o'zingiz (reflexive pronoun).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d49-c1', en: "Tell me about yourself.", uz: "O'zingiz haqingizda gapiring.", grammarTip: "'Tell me about …' = … haqida gapiring. 'Tell' = aytmoq (tell → told → told). 'Yourself' = o'zingiz (reflexive pronoun).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'TELL'},
-    { id: 'sp-d45-c2', en: "My strength is teamwork.", uz: "Mening kuchli tomonim — jamoada ishlash.", grammarTip: "'My strength is …' = mening kuchli tomonim. 'Strength' = kuchli tomon. 'Teamwork' = jamoada ishlash (bir so'z).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d49-c2', en: "My strength is teamwork.", uz: "Mening kuchli tomonim — jamoada ishlash.", grammarTip: "'My strength is …' = mening kuchli tomonim. 'Strength' = kuchli tomon. 'Teamwork' = jamoada ishlash (bir so'z).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'IS'},
-    { id: 'sp-d45-c3', en: "I'm good at solving problems.", uz: "Men muammolarni hal qilishda yaxshiman.", grammarTip: "'Good at + V-ing' = … da yaxshi. 'Good at' = …da mohir. 'Solving' = 'solve' + '-ing'. 'Problems' = muammolar.", commonMistake: "'Good AT' (qobiliyat) / 'good WITH' (odamlar) — prepozitsiyani to'g'ri tanla.",
+    { id: 'sp-d49-c3', en: "I'm good at solving problems.", uz: "Men muammolarni hal qilishda yaxshiman.", grammarTip: "'Good at + V-ing' = … da yaxshi. 'Good at' = …da mohir. 'Solving' = 'solve' + '-ing'. 'Problems' = muammolar.", commonMistake: "'Good AT' (qobiliyat) / 'good WITH' (odamlar) — prepozitsiyani to'g'ri tanla.",
   stressWord: 'GOOD'},
-    { id: 'sp-d45-c4', en: "Why do you want this job?", uz: "Nega bu ishni xohlaysiz?", grammarTip: "'Why do you want …?' = nega xohlaysiz? 'Want' = xohlamoq. 'This job' = bu ish. Intervyuda eng ko'p beriladigan savol.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d49-c4', en: "Why do you want this job?", uz: "Nega bu ishni xohlaysiz?", grammarTip: "'Why do you want …?' = nega xohlaysiz? 'Want' = xohlamoq. 'This job' = bu ish. Intervyuda eng ko'p beriladigan savol.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'WHY'},
-    { id: 'sp-d45-c5', en: "I'm a quick learner.", uz: "Men tez o'rganaman.", grammarTip: "'A quick learner' = tez o'rganuvchi. 'Quick' = tez (sifat). 'Learner' = o'rganuvchi (so'z oxirida -er). 'Quickly' ravish, 'quick' sifat.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d49-c5', en: "I'm a quick learner.", uz: "Men tez o'rganaman.", grammarTip: "'A quick learner' = tez o'rganuvchi. 'Quick' = tez (sifat). 'Learner' = o'rganuvchi (so'z oxirida -er). 'Quickly' ravish, 'quick' sifat.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'A'},
-    { id: 'sp-d45-c6', en: "Do you have any questions?", uz: "Savollaringiz bormi?", grammarTip: "'Do you have any …?' = bormi? 'Any questions' = biror savol. 'Any' so'roq gaplarda 'some' o'rnida. 'Questions' = savollar.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d49-c6', en: "Do you have any questions?", uz: "Savollaringiz bormi?", grammarTip: "'Do you have any …?' = bormi? 'Any questions' = biror savol. 'Any' so'roq gaplarda 'some' o'rnida. 'Questions' = savollar.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'DO'},
   ],
   scenario: {
@@ -1915,12 +2122,13 @@ const day45: SpeakingDay = {
   },
 }
 
-const day46: SpeakingDay = {
-  day: 46, cefr: 'B1',
+const day50: SpeakingDay = {
+  day: 50, cefr: 'B1',
   title: "Bankda hisob ochish",
   subtitle: "Hujjatlar va to'lovlar",
   goalUz: "Bankda hisob ocha olasiz va shartlar haqida so'raysiz.",
   estMinutes: 15,
+  linkedLessonId: 'countable-uncountable',
   vocab: [
     { en: 'cash', uz: 'naqd pul', example: 'I will pay in cash.' },
     { en: 'card', uz: 'karta', example: 'Do you accept card?' },
@@ -1933,19 +2141,19 @@ const day46: SpeakingDay = {
     tipUz: "'A' dan 'i' ga silliq o'ting - /aɪ/ diftongi og'izni katta ochib, keyin tishlarni yaqinlashtirish orqali chiqadi.",
     tipEn: "Glide from 'a' to 'i' - the /aɪ/ diphthong starts with mouth wide and ends with teeth close.",
   },
-  recycledChunkIds: ['sp-d34-c2', 'sp-d34-c4', 'sp-d45-c3'],
+  recycledChunkIds: ['sp-d34-c2', 'sp-d34-c4', 'sp-d49-c3'],
   chunks: [
-    { id: 'sp-d46-c1', en: "I'd like to open an account.", uz: "Men hisob ochmoqchiman.", grammarTip: "'I'd like to open an account' = men hisob ochmoqchiman. 'Account' = hisob. 'Open an account' bankingda keng ishlatiladi.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d50-c1', en: "I'd like to open an account.", uz: "Men hisob ochmoqchiman.", grammarTip: "'I'd like to open an account' = men hisob ochmoqchiman. 'Account' = hisob. 'Open an account' bankingda keng ishlatiladi.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'ACCOUNT'},
-    { id: 'sp-d46-c2', en: "What documents do I need?", uz: "Menga qanday hujjatlar kerak?", grammarTip: "'What documents do I need?' - qanday hujjatlar kerak? 'Documents' = hujjatlar. 'Need' = kerak bo'lmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d50-c2', en: "What documents do I need?", uz: "Menga qanday hujjatlar kerak?", grammarTip: "'What documents do I need?' - qanday hujjatlar kerak? 'Documents' = hujjatlar. 'Need' = kerak bo'lmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHAT'},
-    { id: 'sp-d46-c3', en: "How long does it take?", uz: "Bu qancha vaqt oladi?", grammarTip: "'How long does it take?' - qancha vaqt oladi? 'Take' bu yerda 'vaqt olmoq' ma'nosida.", commonMistake: "'Bring' = olib kelmoq, 'take' = olib ketmoq. Yo'nalishiga e'tibor ber.",
+    { id: 'sp-d50-c3', en: "How long does it take?", uz: "Bu qancha vaqt oladi?", grammarTip: "'How long does it take?' - qancha vaqt oladi? 'Take' bu yerda 'vaqt olmoq' ma'nosida.", commonMistake: "'Bring' = olib kelmoq, 'take' = olib ketmoq. Yo'nalishiga e'tibor ber.",
   stressWord: 'HOW'},
-    { id: 'sp-d46-c4', en: "Is there a monthly fee?", uz: "Oylik to'lov bormi?", grammarTip: "'Is there a monthly fee?' - oylik to'lov bormi? 'Monthly fee' = oylik to'lov.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d50-c4', en: "Is there a monthly fee?", uz: "Oylik to'lov bormi?", grammarTip: "'Is there a monthly fee?' - oylik to'lov bormi? 'Monthly fee' = oylik to'lov.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'IS'},
-    { id: 'sp-d46-c5', en: "Can I check my balance?", uz: "Balansimni tekshira olamanmi?", grammarTip: "'Can I check my balance?' - balansimni tekshirsam bo'ladimi? 'Balance' = hisob qoldig'i.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d50-c5', en: "Can I check my balance?", uz: "Balansimni tekshira olamanmi?", grammarTip: "'Can I check my balance?' - balansimni tekshirsam bo'ladimi? 'Balance' = hisob qoldig'i.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'CAN'},
-    { id: 'sp-d46-c6', en: "I'd like to transfer money.", uz: "Men pul o'tkazmoqchiman.", grammarTip: "'I'd like to transfer money' - pul o'tkazmoqchiman. 'Transfer' = o'tkazmoq. 'Money' = pul (sanalmaydi).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d50-c6', en: "I'd like to transfer money.", uz: "Men pul o'tkazmoqchiman.", grammarTip: "'I'd like to transfer money' - pul o'tkazmoqchiman. 'Transfer' = o'tkazmoq. 'Money' = pul (sanalmaydi).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'MONEY'},
   ],
   scenario: {
@@ -1957,12 +2165,13 @@ const day46: SpeakingDay = {
   },
 }
 
-const day47: SpeakingDay = {
-  day: 47, cefr: 'B1',
+const day51: SpeakingDay = {
+  day: 51, cefr: 'B1',
   title: "Pochtada",
   subtitle: "Posilka jo'natish",
   goalUz: "Posilka jo'nata olasiz va narx/vaqt haqida so'raysiz.",
   estMinutes: 14,
+  linkedLessonId: 'prepositions',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -1975,19 +2184,19 @@ const day47: SpeakingDay = {
     tipUz: "'E' dan 'ə' ga o'ting - /eə/ tovushi 'ea' sifatida talaffuz qilinadi. O'zbek tilida bu tovush yo'q.",
     tipEn: "Glide from 'e' to 'ə' - the /eə/ sound is pronounced like 'air'. Uzbek doesn't have this sound.",
   },
-  recycledChunkIds: ['sp-d34-c1', 'sp-d34-c2', 'sp-d46-c3'],
+  recycledChunkIds: ['sp-d34-c1', 'sp-d34-c2', 'sp-d50-c3'],
   chunks: [
-    { id: 'sp-d47-c1', en: "I'd like to send this parcel.", uz: "Men bu posilkani jo'natmoqchiman.", grammarTip: "'I'd like to send this parcel' - bu posilkani jo'natmoqchiman. 'Send' -> 'sent' -> 'sent' (noto'g'ri fe'l).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d51-c1', en: "I'd like to send this parcel.", uz: "Men bu posilkani jo'natmoqchiman.", grammarTip: "'I'd like to send this parcel' - bu posilkani jo'natmoqchiman. 'Send' -> 'sent' -> 'sent' (noto'g'ri fe'l).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'PARCEL'},
-    { id: 'sp-d47-c2', en: "How much does it cost to send?", uz: "Jo'natish qancha turadi?", grammarTip: "'How much does it cost to send?' - jo'natish qancha turadi? 'Cost to + V' = ... qancha turadi.", commonMistake: "'Much' = sanalmaydigan otlar bilan: 'much water', 'much time'.",
+    { id: 'sp-d51-c2', en: "How much does it cost to send?", uz: "Jo'natish qancha turadi?", grammarTip: "'How much does it cost to send?' - jo'natish qancha turadi? 'Cost to + V' = ... qancha turadi.", commonMistake: "'Much' = sanalmaydigan otlar bilan: 'much water', 'much time'.",
   stressWord: 'HOW'},
-    { id: 'sp-d47-c3', en: "How long will it take to arrive?", uz: "Yetib borishi qancha vaqt oladi?", grammarTip: "'How long will it take to arrive?' - yetib borishi qancha vaqt oladi? 'Arrive at/in' = yetib bormoq.", commonMistake: "'Arrive IN' (shahar) / 'arrive AT' (joy). 'Arrive to' xato!",
+    { id: 'sp-d51-c3', en: "How long will it take to arrive?", uz: "Yetib borishi qancha vaqt oladi?", grammarTip: "'How long will it take to arrive?' - yetib borishi qancha vaqt oladi? 'Arrive at/in' = yetib bormoq.", commonMistake: "'Arrive IN' (shahar) / 'arrive AT' (joy). 'Arrive to' xato!",
   stressWord: 'HOW'},
-    { id: 'sp-d47-c4', en: "Is there a cheaper option?", uz: "Arzonroq variant bormi?", grammarTip: "'Is there a cheaper option?' - arzonroq variant bormi? 'Cheaper' = 'cheap' + '-er' (solishtirma).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d51-c4', en: "Is there a cheaper option?", uz: "Arzonroq variant bormi?", grammarTip: "'Is there a cheaper option?' - arzonroq variant bormi? 'Cheaper' = 'cheap' + '-er' (solishtirma).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'IS'},
-    { id: 'sp-d47-c5', en: "I'd like to track my package.", uz: "Men posilkamni kuzatmoqchiman.", grammarTip: "'I'd like to track my package' - posilkamni kuzatmoqchiman. 'Track' = kuzatmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d51-c5', en: "I'd like to track my package.", uz: "Men posilkamni kuzatmoqchiman.", grammarTip: "'I'd like to track my package' - posilkamni kuzatmoqchiman. 'Track' = kuzatmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'PACKAGE'},
-    { id: 'sp-d47-c6', en: "It's fragile, please be careful.", uz: "U mo'rt, ehtiyot bo'ling, iltimos.", grammarTip: "'It's fragile, please be careful' - u mo'rt, ehtiyot bo'ling. 'Fragile' = mo'rt/siniqli.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d51-c6', en: "It's fragile, please be careful.", uz: "U mo'rt, ehtiyot bo'ling, iltimos.", grammarTip: "'It's fragile, please be careful' - u mo'rt, ehtiyot bo'ling. 'Fragile' = mo'rt/siniqli.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'FRAGILE'},
   ],
   scenario: {
@@ -1999,12 +2208,13 @@ const day47: SpeakingDay = {
   },
 }
 
-const day48: SpeakingDay = {
-  day: 48, cefr: 'B1',
+const day52: SpeakingDay = {
+  day: 52, cefr: 'B1',
   title: "Kvartira ijarasi",
   subtitle: "Ijara shartlari",
   goalUz: "Ijara haqida so'ray olasiz va shartlarni aniqlaysiz.",
   estMinutes: 15,
+  linkedLessonId: 'there-is-are',
   vocab: [
     { en: 'garden', uz: 'bog\'', example: 'We have a beautiful garden.' },
     { en: 'balcony', uz: 'balkon', example: 'We have a balcony.' },
@@ -2019,17 +2229,17 @@ const day48: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d26-c1', 'sp-d26-c2', 'sp-d26-c6'],
   chunks: [
-    { id: 'sp-d48-c1', en: "I'm looking for a flat to rent.", uz: "Men ijaraga kvartira qidiryapman.", grammarTip: "'I'm looking for a flat to rent' - kvartira qidiryapman. 'Look for' = qidirmoq. 'Flat' = kvartira (Britaniya).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d52-c1', en: "I'm looking for a flat to rent.", uz: "Men ijaraga kvartira qidiryapman.", grammarTip: "'I'm looking for a flat to rent' - kvartira qidiryapman. 'Look for' = qidirmoq. 'Flat' = kvartira (Britaniya).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'LOOKING'},
-    { id: 'sp-d48-c2', en: "How much is the rent per month?", uz: "Oyiga ijara qancha?", grammarTip: "'How much is the rent per month?' - oylik ijara qancha? 'Rent' = ijara (ot). 'Per month' = oyiga.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d52-c2', en: "How much is the rent per month?", uz: "Oyiga ijara qancha?", grammarTip: "'How much is the rent per month?' - oylik ijara qancha? 'Rent' = ijara (ot). 'Per month' = oyiga.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'HOW'},
-    { id: 'sp-d48-c3', en: "Are bills included?", uz: "Kommunal to'lovlar kiradimi?", grammarTip: "'Are bills included?' - kommunal to'lovlar kiradimi? 'Bills' = hisob-kitoblar.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d52-c3', en: "Are bills included?", uz: "Kommunal to'lovlar kiradimi?", grammarTip: "'Are bills included?' - kommunal to'lovlar kiradimi? 'Bills' = hisob-kitoblar.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'ARE'},
-    { id: 'sp-d48-c4', en: "Can I see the flat?", uz: "Kvartirani ko'rsam bo'ladimi?", grammarTip: "'Can I see the flat?' - kvartirani ko'rsam bo'ladimi? 'Can I + V?' - ruxsat so'rash uchun asosiy qolip.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d52-c4', en: "Can I see the flat?", uz: "Kvartirani ko'rsam bo'ladimi?", grammarTip: "'Can I see the flat?' - kvartirani ko'rsam bo'ladimi? 'Can I + V?' - ruxsat so'rash uchun asosiy qolip.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'CAN'},
-    { id: 'sp-d48-c5', en: "When can I move in?", uz: "Qachon ko'chib o'ta olaman?", grammarTip: "'When can I move in?' - qachon ko'chib o'ta olaman? 'Move in' = ko'chib kirmoq (phrasal verb).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d52-c5', en: "When can I move in?", uz: "Qachon ko'chib o'ta olaman?", grammarTip: "'When can I move in?' - qachon ko'chib o'ta olaman? 'Move in' = ko'chib kirmoq (phrasal verb).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'WHEN'},
-    { id: 'sp-d48-c6', en: "Is there a deposit?", uz: "Garov puli bormi?", grammarTip: "'Is there a deposit?' - garov puli bormi? 'Deposit' = garov puli.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d52-c6', en: "Is there a deposit?", uz: "Garov puli bormi?", grammarTip: "'Is there a deposit?' - garov puli bormi? 'Deposit' = garov puli.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'IS'},
   ],
   scenario: {
@@ -2041,12 +2251,13 @@ const day48: SpeakingDay = {
   },
 }
 
-const day49: SpeakingDay = {
-  day: 49, cefr: 'B1',
+const day53: SpeakingDay = {
+  day: 53, cefr: 'B1',
   title: "Ish suhbati: tajriba",
   subtitle: "Tajriba va sharoit",
   goalUz: "Ish tajribangizni tushuntira olasiz.",
   estMinutes: 15,
+  linkedLessonId: 'present-perfect',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -2059,19 +2270,19 @@ const day49: SpeakingDay = {
     tipUz: "'J' tovushi - til uchini tanglayga tegizib, keskin qo'yib yuboring. O'zbek 'j'siga o'xshaydi, lekin kuchliroq.",
     tipEn: "The 'j' sound - touch your tongue to the palate and release sharply.",
   },
-  recycledChunkIds: ['sp-d45-c1', 'sp-d45-c4', 'sp-d30-c3'],
+  recycledChunkIds: ['sp-d49-c1', 'sp-d49-c4', 'sp-d30-c3'],
   chunks: [
-    { id: 'sp-d49-c1', en: "I have five years of experience.", uz: "Mening besh yillik tajribam bor.", grammarTip: "'I have five years of experience' - besh yillik tajribam bor. 'Experience' = tajriba (sanalmaydi).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d53-c1', en: "I have five years of experience.", uz: "Mening besh yillik tajribam bor.", grammarTip: "'I have five years of experience' - besh yillik tajribam bor. 'Experience' = tajriba (sanalmaydi).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'HAVE'},
-    { id: 'sp-d49-c2', en: "In my last job, I managed a team.", uz: "Oxirgi ishimda men jamoani boshqardim.", grammarTip: "'In my last job, I managed a team' - oxirgi ishimda jamoani boshqardim. 'Managed' = 'manage' + '-ed'.", commonMistake: "Sanaladigan ot oldidan 'a' artiklini qo'shishni unutma: 'a problem'.",
+    { id: 'sp-d53-c2', en: "In my last job, I managed a team.", uz: "Oxirgi ishimda men jamoani boshqardim.", grammarTip: "'In my last job, I managed a team' - oxirgi ishimda jamoani boshqardim. 'Managed' = 'manage' + '-ed'.", commonMistake: "Sanaladigan ot oldidan 'a' artiklini qo'shishni unutma: 'a problem'.",
   stressWord: 'TEAM'},
-    { id: 'sp-d49-c3', en: "I'm looking for a new challenge.", uz: "Men yangi sinov izlayapman.", grammarTip: "'I'm looking for a new challenge' - yangi sinov izlayapman. 'Challenge' = sinov/qiyinchilik.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d53-c3', en: "I'm looking for a new challenge.", uz: "Men yangi sinov izlayapman.", grammarTip: "'I'm looking for a new challenge' - yangi sinov izlayapman. 'Challenge' = sinov/qiyinchilik.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'LOOKING'},
-    { id: 'sp-d49-c4', en: "I work well under pressure.", uz: "Men bosim ostida yaxshi ishlayman.", grammarTip: "'I work well under pressure' - bosim ostida yaxshi ishlayman. 'Under pressure' = bosim ostida.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d53-c4', en: "I work well under pressure.", uz: "Men bosim ostida yaxshi ishlayman.", grammarTip: "'I work well under pressure' - bosim ostida yaxshi ishlayman. 'Under pressure' = bosim ostida.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WORK'},
-    { id: 'sp-d49-c5', en: "What are the working hours?", uz: "Ish vaqti qanday?", grammarTip: "'What are the working hours?' - ish vaqti qanday? 'Working hours' = ish vaqti.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d53-c5', en: "What are the working hours?", uz: "Ish vaqti qanday?", grammarTip: "'What are the working hours?' - ish vaqti qanday? 'Working hours' = ish vaqti.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'WHAT'},
-    { id: 'sp-d49-c6', en: "When will you make a decision?", uz: "Qachon qaror qabul qilasiz?", grammarTip: "'When will you make a decision?' - qachon qaror qabul qilasiz? 'Make a decision' = qaror qabul qilmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d53-c6', en: "When will you make a decision?", uz: "Qachon qaror qabul qilasiz?", grammarTip: "'When will you make a decision?' - qachon qaror qabul qilasiz? 'Make a decision' = qaror qabul qilmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHEN'},
   ],
   scenario: {
@@ -2083,12 +2294,13 @@ const day49: SpeakingDay = {
   },
 }
 
-const day50: SpeakingDay = {
-  day: 50, cefr: 'B1',
+const day54: SpeakingDay = {
+  day: 54, cefr: 'B1',
   title: "Texnik yordam",
   subtitle: "Muammoni hal qilish",
   goalUz: "Texnik muammoni tushuntira olasiz va yechim so'raysiz.",
   estMinutes: 14,
+  linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'message', uz: 'xabar', example: 'Did you get my message?' },
     { en: 'call back', uz: 'qayta qo\'ng\'iroq', example: 'Please call me back.' },
@@ -2101,19 +2313,19 @@ const day50: SpeakingDay = {
     tipUz: "/aɪ/ - 'a' dan 'i' ga o'tish. 'Tired' = /taɪəd/. 'Try' = /traɪ/.",
     tipEn: "/aɪ/ - glide from 'a' to 'i'. 'Tired' = /taɪəd/. 'Try' = /traɪ/.",
   },
-  recycledChunkIds: ['sp-d22-c3', 'sp-d22-c5', 'sp-d37-c5'],
+  recycledChunkIds: ['sp-d22-c3', 'sp-d22-c5', 'sp-d41-c5'],
   chunks: [
-    { id: 'sp-d50-c1', en: "My internet isn't working.", uz: "Mening internetim ishlamayapti.", grammarTip: "'My internet isn't working' - internetim ishlamayapti. 'Isn't' = 'is not'.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d54-c1', en: "My internet isn't working.", uz: "Mening internetim ishlamayapti.", grammarTip: "'My internet isn't working' - internetim ishlamayapti. 'Isn't' = 'is not'.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'WORKING'},
-    { id: 'sp-d50-c2', en: "I've already tried restarting it.", uz: "Men uni qayta yoqib ko'rdim allaqachon.", grammarTip: "'I've already tried restarting it' - Present Perfect: 'have' + PP. 'Already' = allaqachon.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d54-c2', en: "I've already tried restarting it.", uz: "Men uni qayta yoqib ko'rdim allaqachon.", grammarTip: "'I've already tried restarting it' - Present Perfect: 'have' + PP. 'Already' = allaqachon.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'RESTARTING'},
-    { id: 'sp-d50-c3', en: "When will it be fixed?", uz: "Qachon tuzatiladi?", grammarTip: "'When will it be fixed?' - Passive voice: 'will be + PP'. 'Fixed' = tuzatilgan.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d54-c3', en: "When will it be fixed?", uz: "Qachon tuzatiladi?", grammarTip: "'When will it be fixed?' - Passive voice: 'will be + PP'. 'Fixed' = tuzatilgan.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHEN'},
-    { id: 'sp-d50-c4', en: "Can you send a technician?", uz: "Texnik yubora olasizmi?", grammarTip: "'Can you send a technician?' - 'Can you + V?' = iltimos.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d54-c4', en: "Can you send a technician?", uz: "Texnik yubora olasizmi?", grammarTip: "'Can you send a technician?' - 'Can you + V?' = iltimos.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'CAN'},
-    { id: 'sp-d50-c5', en: "How long will it take?", uz: "Bu qancha vaqt oladi?", grammarTip: "'How long will it take?' - qancha vaqt oladi? 'Will' kelasi zamon.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d54-c5', en: "How long will it take?", uz: "Bu qancha vaqt oladi?", grammarTip: "'How long will it take?' - qancha vaqt oladi? 'Will' kelasi zamon.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'HOW'},
-    { id: 'sp-d50-c6', en: "Thank you for your patience.", uz: "Sabringiz uchun rahmat.", grammarTip: "'Thank you for your patience' - sabringiz uchun rahmat. 'Patience' = sabr (sanalmaydi).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d54-c6', en: "Thank you for your patience.", uz: "Sabringiz uchun rahmat.", grammarTip: "'Thank you for your patience' - sabringiz uchun rahmat. 'Patience' = sabr (sanalmaydi).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'PATIENCE'},
   ],
   scenario: {
@@ -2125,12 +2337,13 @@ const day50: SpeakingDay = {
   },
 }
 
-const day51: SpeakingDay = {
-  day: 51, cefr: 'B1',
+const day55: SpeakingDay = {
+  day: 55, cefr: 'B1',
   title: "Sayohat rejasi",
   subtitle: "Sayohatni rejalashtirish",
   goalUz: "Sayohatingizni rejalashtira olasiz va maslahat so'raysiz.",
   estMinutes: 15,
+  linkedLessonId: 'first-conditional',
   vocab: [
     { en: 'usually', uz: 'odatda', example: 'I usually wake up at 7.' },
     { en: 'sometimes', uz: 'ba\'zida', example: 'Sometimes I go to the gym.' },
@@ -2145,17 +2358,17 @@ const day51: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d25-c5', 'sp-d25-c6', 'sp-d33-c1'],
   chunks: [
-    { id: 'sp-d51-c1', en: "I'm planning a trip to Turkey.", uz: "Men Turkiyaga sayohat rejalashtiryapman.", grammarTip: "'I'm planning a trip to Turkey' - Turkiyaga sayohat rejalashtiryapman. 'Plan' + V-ing yoki 'plan to + V'. 'Trip' = sayohat.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d55-c1', en: "I'm planning a trip to Turkey.", uz: "Men Turkiyaga sayohat rejalashtiryapman.", grammarTip: "'I'm planning a trip to Turkey' - Turkiyaga sayohat rejalashtiryapman. 'Plan' + V-ing yoki 'plan to + V'. 'Trip' = sayohat.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'PLANNING'},
-    { id: 'sp-d51-c2', en: "What's the best time to visit?", uz: "Borishning eng yaxshi vaqti qachon?", grammarTip: "'What's the best time to visit?' - borishning eng yaxshi vaqti qachon? 'Best' = 'good' superlativi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d55-c2', en: "What's the best time to visit?", uz: "Borishning eng yaxshi vaqti qachon?", grammarTip: "'What's the best time to visit?' - borishning eng yaxshi vaqti qachon? 'Best' = 'good' superlativi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'VISIT'},
-    { id: 'sp-d51-c3', en: "How do I get from the airport?", uz: "Aeroportdan qanday boraman?", grammarTip: "'How do I get from the airport?' - aeroportdan qanday boraman? 'How do I + V?' qolipi.", commonMistake: "'The' bilan aniq joyni ko'rsat: 'the station', 'the bank'.",
+    { id: 'sp-d55-c3', en: "How do I get from the airport?", uz: "Aeroportdan qanday boraman?", grammarTip: "'How do I get from the airport?' - aeroportdan qanday boraman? 'How do I + V?' qolipi.", commonMistake: "'The' bilan aniq joyni ko'rsat: 'the station', 'the bank'.",
   stressWord: 'HOW'},
-    { id: 'sp-d51-c4', en: "Do I need a visa?", uz: "Menga viza kerakmi?", grammarTip: "'Do I need a visa?' - viza kerakmi? 'Need' = kerak bo'lmoq. 'A visa' = viza.", commonMistake: "Bu fe'llardan keyin 'to + V' keladi: 'want TO go', 'need TO do'.",
+    { id: 'sp-d55-c4', en: "Do I need a visa?", uz: "Menga viza kerakmi?", grammarTip: "'Do I need a visa?' - viza kerakmi? 'Need' = kerak bo'lmoq. 'A visa' = viza.", commonMistake: "Bu fe'llardan keyin 'to + V' keladi: 'want TO go', 'need TO do'.",
   stressWord: 'DO'},
-    { id: 'sp-d51-c5', en: "Can you recommend a hotel?", uz: "Mehmonxona tavsiya qila olasizmi?", grammarTip: "'Can you recommend a hotel?' - mehmonxona tavsiya qila olasizmi? 'Recommend' = tavsiya qilmoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d55-c5', en: "Can you recommend a hotel?", uz: "Mehmonxona tavsiya qila olasizmi?", grammarTip: "'Can you recommend a hotel?' - mehmonxona tavsiya qila olasizmi? 'Recommend' = tavsiya qilmoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'CAN'},
-    { id: 'sp-d51-c6', en: "I can't wait to go.", uz: "Borishni intiqlik bilan kutyapman.", grammarTip: "'I can't wait to go' - borishni intiqlik bilan kutyapman. 'Can't wait to + V' = intiqlik bilan kutmoq (turg'un ibora).", commonMistake: "'Wait' dan keyin 'for' kerak: 'wait FOR me'.",
+    { id: 'sp-d55-c6', en: "I can't wait to go.", uz: "Borishni intiqlik bilan kutyapman.", grammarTip: "'I can't wait to go' - borishni intiqlik bilan kutyapman. 'Can't wait to + V' = intiqlik bilan kutmoq (turg'un ibora).", commonMistake: "'Wait' dan keyin 'for' kerak: 'wait FOR me'.",
   stressWord: 'CANT'},
   ],
   scenario: {
@@ -2167,12 +2380,13 @@ const day51: SpeakingDay = {
   },
 }
 
-const day52: SpeakingDay = {
-  day: 52, cefr: 'B1',
+const day56: SpeakingDay = {
+  day: 56, cefr: 'B1',
   title: "Restoranda shikoyat",
   subtitle: "Muloyim shikoyat",
   goalUz: "Restoranda muloyim shikoyat qila olasiz va yechim so'raysiz.",
   estMinutes: 14,
+  linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
     { en: 'waiter', uz: 'ofitsiant', example: 'Waiter, please!' },
@@ -2187,17 +2401,17 @@ const day52: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d24-c4', 'sp-d35-c1', 'sp-d24-c3'],
   chunks: [
-    { id: 'sp-d52-c1', en: "Excuse me, this isn't what I ordered.", uz: "Kechirasiz, bu men buyurtma qilgan narsa emas.", grammarTip: "'This isn't what I ordered' - bu men buyurtma qilgan narsa emas. 'Isn't' = 'is not'.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d56-c1', en: "Excuse me, this isn't what I ordered.", uz: "Kechirasiz, bu men buyurtma qilgan narsa emas.", grammarTip: "'This isn't what I ordered' - bu men buyurtma qilgan narsa emas. 'Isn't' = 'is not'.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'ORDERED'},
-    { id: 'sp-d52-c2', en: "The food is cold.", uz: "Ovqat sovuq.", grammarTip: "'The food is cold' - ovqat sovuq. 'Food' = ovqat (sanalmaydi). 'The' aniq artikl.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d56-c2', en: "The food is cold.", uz: "Ovqat sovuq.", grammarTip: "'The food is cold' - ovqat sovuq. 'Food' = ovqat (sanalmaydi). 'The' aniq artikl.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'IS'},
-    { id: 'sp-d52-c3', en: "We've been waiting a long time.", uz: "Biz uzoq vaqt kutyapmiz.", grammarTip: "'We've been waiting a long time' - uzoq vaqt kutyapmiz. 'Have been waiting' = Present Perfect Continuous.", commonMistake: "Sifat otdan oldin keladi: 'a NICE day' (nice day emas 'day nice').",
+    { id: 'sp-d56-c3', en: "We've been waiting a long time.", uz: "Biz uzoq vaqt kutyapmiz.", grammarTip: "'We've been waiting a long time' - uzoq vaqt kutyapmiz. 'Have been waiting' = Present Perfect Continuous.", commonMistake: "Sifat otdan oldin keladi: 'a NICE day' (nice day emas 'day nice').",
   stressWord: 'TIME'},
-    { id: 'sp-d52-c4', en: "Could you bring the manager?", uz: "Menejerni chaqira olasizmi?", grammarTip: "'Could you bring the manager?' - 'Could you + V?' = 'Can you' dan muloyimroq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d56-c4', en: "Could you bring the manager?", uz: "Menejerni chaqira olasizmi?", grammarTip: "'Could you bring the manager?' - 'Could you + V?' = 'Can you' dan muloyimroq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'COULD'},
-    { id: 'sp-d52-c5', en: "Could we get a discount?", uz: "Chegirma olsak bo'ladimi?", grammarTip: "'Could we get a discount?' - chegirma olsak bo'ladimi? 'Discount' = chegirma.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d56-c5', en: "Could we get a discount?", uz: "Chegirma olsak bo'ladimi?", grammarTip: "'Could we get a discount?' - chegirma olsak bo'ladimi? 'Discount' = chegirma.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'COULD'},
-    { id: 'sp-d52-c6', en: "Thank you for sorting it out.", uz: "Hal qilganingiz uchun rahmat.", grammarTip: "'Thank you for sorting it out' - hal qilganingiz uchun rahmat. 'Sort out' = hal qilmoq (phrasal verb).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d56-c6', en: "Thank you for sorting it out.", uz: "Hal qilganingiz uchun rahmat.", grammarTip: "'Thank you for sorting it out' - hal qilganingiz uchun rahmat. 'Sort out' = hal qilmoq (phrasal verb).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'OUT'},
   ],
   scenario: {
@@ -2209,12 +2423,13 @@ const day52: SpeakingDay = {
   },
 }
 
-const day53: SpeakingDay = {
-  day: 53, cefr: 'B1',
+const day57: SpeakingDay = {
+  day: 57, cefr: 'B1',
   title: "Dorixonada",
   subtitle: "Dori so'rash",
   goalUz: "Dorixonada belgini ayta olasiz va dori so'raysiz.",
   estMinutes: 14,
+  linkedLessonId: 'countable-uncountable',
   vocab: [
     { en: 'size', uz: 'o\'lcham', example: 'What size do you need?' },
     { en: 'colour', uz: 'rang', example: 'I like this colour.' },
@@ -2229,17 +2444,17 @@ const day53: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d27-c2', 'sp-d27-c5', 'sp-d27-c6'],
   chunks: [
-    { id: 'sp-d53-c1', en: "Do you have something for a cough?", uz: "Yo'tal uchun biror narsa bormi?", grammarTip: "'Do you have something for a cough?' - yo'tal uchun dori bormi? 'Something for + kasallik' = ... uchun dori.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d57-c1', en: "Do you have something for a cough?", uz: "Yo'tal uchun biror narsa bormi?", grammarTip: "'Do you have something for a cough?' - yo'tal uchun dori bormi? 'Something for + kasallik' = ... uchun dori.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'DO'},
-    { id: 'sp-d53-c2', en: "I need something for a headache.", uz: "Menga bosh og'rig'i uchun dori kerak.", grammarTip: "'I need something for a headache' - bosh og'rig'i uchun dori kerak. 'Need' = kerak.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d57-c2', en: "I need something for a headache.", uz: "Menga bosh og'rig'i uchun dori kerak.", grammarTip: "'I need something for a headache' - bosh og'rig'i uchun dori kerak. 'Need' = kerak.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'NEED'},
-    { id: 'sp-d53-c3', en: "How often should I take it?", uz: "Buni qancha vaqtda bir ichishim kerak?", grammarTip: "'How often should I take it?' - 'How often' = qanchalik tez-tez. 'Should' = kerak (maslahat).", commonMistake: "Chastota ravishi fe'ldan oldin keladi: 'I always go', 'He never eats'.",
+    { id: 'sp-d57-c3', en: "How often should I take it?", uz: "Buni qancha vaqtda bir ichishim kerak?", grammarTip: "'How often should I take it?' - 'How often' = qanchalik tez-tez. 'Should' = kerak (maslahat).", commonMistake: "Chastota ravishi fe'ldan oldin keladi: 'I always go', 'He never eats'.",
   stressWord: 'HOW'},
-    { id: 'sp-d53-c4', en: "Are there any side effects?", uz: "Yon ta'sirlari bormi?", grammarTip: "'Are there any side effects?' - yon ta'sirlari bormi? 'Side effects' = yon ta'sirlar (ko'plik).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d57-c4', en: "Are there any side effects?", uz: "Yon ta'sirlari bormi?", grammarTip: "'Are there any side effects?' - yon ta'sirlari bormi? 'Side effects' = yon ta'sirlar (ko'plik).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'ARE'},
-    { id: 'sp-d53-c5', en: "Do I need a prescription?", uz: "Menga retsept kerakmi?", grammarTip: "'Do I need a prescription?' - retsept kerakmi? 'Prescription' = retsept.", commonMistake: "Bu fe'llardan keyin 'to + V' keladi: 'want TO go', 'need TO do'.",
+    { id: 'sp-d57-c5', en: "Do I need a prescription?", uz: "Menga retsept kerakmi?", grammarTip: "'Do I need a prescription?' - retsept kerakmi? 'Prescription' = retsept.", commonMistake: "Bu fe'llardan keyin 'to + V' keladi: 'want TO go', 'need TO do'.",
   stressWord: 'DO'},
-    { id: 'sp-d53-c6', en: "How much do I owe you?", uz: "Sizga qancha qarzdorman?", grammarTip: "'How much do I owe you?' - sizga qancha qarzdorman? 'Owe' = qarzdor bo'lmoq.", commonMistake: "'Much' = sanalmaydigan otlar bilan: 'much water', 'much time'.",
+    { id: 'sp-d57-c6', en: "How much do I owe you?", uz: "Sizga qancha qarzdorman?", grammarTip: "'How much do I owe you?' - sizga qancha qarzdorman? 'Owe' = qarzdor bo'lmoq.", commonMistake: "'Much' = sanalmaydigan otlar bilan: 'much water', 'much time'.",
   stressWord: 'HOW'},
   ],
   scenario: {
@@ -2251,12 +2466,13 @@ const day53: SpeakingDay = {
   },
 }
 
-const day54: SpeakingDay = {
-  day: 54, cefr: 'B1',
+const day58: SpeakingDay = {
+  day: 58, cefr: 'B1',
   title: "Sport va sog'liq",
   subtitle: "Sog'lom turmush",
   goalUz: "Sog'lom turmush odatlaringiz haqida gapira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'gerunds-infinitives',
   vocab: [
     { en: 'pharmacy', uz: 'dorixona', example: 'Where is the nearest pharmacy?' },
     { en: 'pain', uz: 'og\'riq', example: 'I have a pain here.' },
@@ -2271,17 +2487,17 @@ const day54: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d28-c5', 'sp-d17-c2', 'sp-d11-c4'],
   chunks: [
-    { id: 'sp-d54-c1', en: "I'm trying to get fit.", uz: "Men sog'lom bo'lishga harakat qilyapman.", grammarTip: "'I'm trying to get fit' - sog'lom bo'lishga harakat qilyapman. 'Try to + V' = ... ga harakat qilmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d58-c1', en: "I'm trying to get fit.", uz: "Men sog'lom bo'lishga harakat qilyapman.", grammarTip: "'I'm trying to get fit' - sog'lom bo'lishga harakat qilyapman. 'Try to + V' = ... ga harakat qilmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'TRYING'},
-    { id: 'sp-d54-c2', en: "I go to the gym three times a week.", uz: "Men haftada uch marta sport zaliga boraman.", grammarTip: "'I go to the gym three times a week' - haftada uch marta. 'Times a week' = haftada ... marta.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d58-c2', en: "I go to the gym three times a week.", uz: "Men haftada uch marta sport zaliga boraman.", grammarTip: "'I go to the gym three times a week' - haftada uch marta. 'Times a week' = haftada ... marta.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'GO'},
-    { id: 'sp-d54-c3', en: "I've started running in the mornings.", uz: "Men ertalab yugurishni boshladim.", grammarTip: "'I've started running in the mornings' - 'Have started' = Present Perfect. 'Running' = gerund.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d58-c3', en: "I've started running in the mornings.", uz: "Men ertalab yugurishni boshladim.", grammarTip: "'I've started running in the mornings' - 'Have started' = Present Perfect. 'Running' = gerund.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'MORNINGS'},
-    { id: 'sp-d54-c4', en: "I'm trying to eat healthier.", uz: "Men sog'lomroq ovqatlanishga harakat qilyapman.", grammarTip: "'I'm trying to eat healthier' - 'Healthier' = 'healthy' + '-ier' (solishtirma).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d58-c4', en: "I'm trying to eat healthier.", uz: "Men sog'lomroq ovqatlanishga harakat qilyapman.", grammarTip: "'I'm trying to eat healthier' - 'Healthier' = 'healthy' + '-ier' (solishtirma).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'TRYING'},
-    { id: 'sp-d54-c5', en: "How do you stay in shape?", uz: "Siz qanday formada qolasiz?", grammarTip: "'How do you stay in shape?' - 'Stay in shape' = formada qolmoq (turg'un ibora).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d58-c5', en: "How do you stay in shape?", uz: "Siz qanday formada qolasiz?", grammarTip: "'How do you stay in shape?' - 'Stay in shape' = formada qolmoq (turg'un ibora).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'HOW'},
-    { id: 'sp-d54-c6', en: "It's good for your health.", uz: "Bu sog'lig'ingiz uchun foydali.", grammarTip: "'It's good for your health' - 'Good for' = ... uchun foydali.", commonMistake: "'Your' (sening) / 'you're' (you are). 'Your right' xato — 'YOU'RE right'.",
+    { id: 'sp-d58-c6', en: "It's good for your health.", uz: "Bu sog'lig'ingiz uchun foydali.", grammarTip: "'It's good for your health' - 'Good for' = ... uchun foydali.", commonMistake: "'Your' (sening) / 'you're' (you are). 'Your right' xato — 'YOU'RE right'.",
   stressWord: 'GOOD'},
   ],
   scenario: {
@@ -2293,12 +2509,13 @@ const day54: SpeakingDay = {
   },
 }
 
-const day55: SpeakingDay = {
-  day: 55, cefr: 'B1',
+const day59: SpeakingDay = {
+  day: 59, cefr: 'B1',
   title: "Film va kitob",
   subtitle: "Tavsiya berish",
   goalUz: "Film yoki kitob haqida fikr bildira va tavsiya bera olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'present-perfect',
   vocab: [
     { en: 'reservation', uz: 'bron', example: 'I have a reservation.' },
     { en: 'key', uz: 'kalit', example: 'Can I have the key?' },
@@ -2313,17 +2530,17 @@ const day55: SpeakingDay = {
   },
   recycledChunkIds: ['sp-d36-c1', 'sp-d11-c5', 'sp-d36-c6'],
   chunks: [
-    { id: 'sp-d55-c1', en: "Have you seen this film?", uz: "Bu filmni ko'rganmisiz?", grammarTip: "'Have you seen this film?' - Present Perfect. 'Seen' = 'see' ning PP (see -> saw -> seen).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d59-c1', en: "Have you seen this film?", uz: "Bu filmni ko'rganmisiz?", grammarTip: "'Have you seen this film?' - Present Perfect. 'Seen' = 'see' ning PP (see -> saw -> seen).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'HAVE'},
-    { id: 'sp-d55-c2', en: "It's about a true story.", uz: "U haqiqiy voqea haqida.", grammarTip: "'It's about a true story' - haqiqiy voqea haqida. 'About' = haqida.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d59-c2', en: "It's about a true story.", uz: "U haqiqiy voqea haqida.", grammarTip: "'It's about a true story' - haqiqiy voqea haqida. 'About' = haqida.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'ABOUT'},
-    { id: 'sp-d55-c3', en: "The acting was amazing.", uz: "Aktyorlik o'yini ajoyib edi.", grammarTip: "'The acting was amazing' - 'Acting' = aktyorlik. 'Was' = o'tgan zamon.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d59-c3', en: "The acting was amazing.", uz: "Aktyorlik o'yini ajoyib edi.", grammarTip: "'The acting was amazing' - 'Acting' = aktyorlik. 'Was' = o'tgan zamon.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'AMAZING'},
-    { id: 'sp-d55-c4', en: "I'd highly recommend it.", uz: "Men buni qattiq tavsiya qilaman.", grammarTip: "'I'd highly recommend it' - qattiq tavsiya qilaman. 'I'd' = 'I would'.", commonMistake: "Bu fe'llardan keyin V-ing keladi: 'enjoy DOING', 'suggest GOING'.",
+    { id: 'sp-d59-c4', en: "I'd highly recommend it.", uz: "Men buni qattiq tavsiya qilaman.", grammarTip: "'I'd highly recommend it' - qattiq tavsiya qilaman. 'I'd' = 'I would'.", commonMistake: "Bu fe'llardan keyin V-ing keladi: 'enjoy DOING', 'suggest GOING'.",
   stressWord: 'RECOMMEND'},
-    { id: 'sp-d55-c5', en: "What kind of films do you like?", uz: "Qanday filmlarni yoqtirasiz?", grammarTip: "'What kind of films do you like?' - 'What kind of' = qanday turdagi.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d59-c5', en: "What kind of films do you like?", uz: "Qanday filmlarni yoqtirasiz?", grammarTip: "'What kind of films do you like?' - 'What kind of' = qanday turdagi.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHAT'},
-    { id: 'sp-d55-c6', en: "The ending was surprising.", uz: "Yakuni kutilmagan edi.", grammarTip: "'The ending was surprising' - 'Ending' = yakun. 'Was surprising' = kutilmagan edi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d59-c6', en: "The ending was surprising.", uz: "Yakuni kutilmagan edi.", grammarTip: "'The ending was surprising' - 'Ending' = yakun. 'Was surprising' = kutilmagan edi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'SURPRISING'},
   ],
   scenario: {
@@ -2335,12 +2552,13 @@ const day55: SpeakingDay = {
   },
 }
 
-const day56: SpeakingDay = {
-  day: 56, cefr: 'B1',
+const day60: SpeakingDay = {
+  day: 60, cefr: 'B1',
   title: "Yangiliklar haqida fikr",
   subtitle: "Fikr bildirish",
   goalUz: "Yangilik haqida fikr bildira va sabab ayta olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'verb-patterns',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -2353,19 +2571,19 @@ const day56: SpeakingDay = {
     tipUz: "/aɪ/ - ikki tovushli diftong. Og'iz 'a' uchun ochiladi, 'i' uchun yopiladi.",
     tipEn: "/aɪ/ - a diphthong. The mouth opens for 'a' and closes for 'i'. Smooth transition.",
   },
-  recycledChunkIds: ['sp-d36-c2', 'sp-d38-c6', 'sp-d44-c4'],
+  recycledChunkIds: ['sp-d36-c2', 'sp-d42-c6', 'sp-d48-c4'],
   chunks: [
-    { id: 'sp-d56-c1', en: "Did you hear the news?", uz: "Yangilikni eshitdingizmi?", grammarTip: "'Did you hear the news?' - Past Simple: 'Did + V'. 'Hear' -> 'heard' -> 'heard' (noto'g'ri fe'l).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d60-c1', en: "Did you hear the news?", uz: "Yangilikni eshitdingizmi?", grammarTip: "'Did you hear the news?' - Past Simple: 'Did + V'. 'Hear' -> 'heard' -> 'heard' (noto'g'ri fe'l).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'DID'},
-    { id: 'sp-d56-c2', en: "In my opinion, it's a good thing.", uz: "Mening fikrimcha, bu yaxshi narsa.", grammarTip: "'In my opinion' = mening fikrimcha. 'A good thing' = yaxshi narsa.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d60-c2', en: "In my opinion, it's a good thing.", uz: "Mening fikrimcha, bu yaxshi narsa.", grammarTip: "'In my opinion' = mening fikrimcha. 'A good thing' = yaxshi narsa.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'THING'},
-    { id: 'sp-d56-c3', en: "I'm not sure it will work.", uz: "Bu ishlashiga ishonchim yo'q.", grammarTip: "'Not sure' = ishonchi komil emas. 'Will work' = kelasi zamon.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d60-c3', en: "I'm not sure it will work.", uz: "Bu ishlashiga ishonchim yo'q.", grammarTip: "'Not sure' = ishonchi komil emas. 'Will work' = kelasi zamon.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'NOT'},
-    { id: 'sp-d56-c4', en: "It depends on how you look at it.", uz: "Bu qanday qarashingizga bog'liq.", grammarTip: "'Depends on' = ga bog'liq. 'Look at' = qaramoq.", commonMistake: "'Look' + prepozitsiya: look AT, look FOR, look FORWARD TO.",
+    { id: 'sp-d60-c4', en: "It depends on how you look at it.", uz: "Bu qanday qarashingizga bog'liq.", grammarTip: "'Depends on' = ga bog'liq. 'Look at' = qaramoq.", commonMistake: "'Look' + prepozitsiya: look AT, look FOR, look FORWARD TO.",
   stressWord: 'LOOK'},
-    { id: 'sp-d56-c5', en: "Many people disagree.", uz: "Ko'pchilik rozi emas.", grammarTip: "'Disagree' = rozi bo'lmaslik. 'Dis-' prefiksi 'agree'ga qarama-qarshi ma'no beradi.", commonMistake: "'Many' = sanaladigan otlar bilan: 'many people', 'many books'.",
+    { id: 'sp-d60-c5', en: "Many people disagree.", uz: "Ko'pchilik rozi emas.", grammarTip: "'Disagree' = rozi bo'lmaslik. 'Dis-' prefiksi 'agree'ga qarama-qarshi ma'no beradi.", commonMistake: "'Many' = sanaladigan otlar bilan: 'many people', 'many books'.",
   stressWord: 'DISAGREE'},
-    { id: 'sp-d56-c6', en: "Only time will tell.", uz: "Faqat vaqt ko'rsatadi.", grammarTip: "Turg'un ibora (proverb). 'Will tell' = kelasi zamonda 'tell' fe'li.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d60-c6', en: "Only time will tell.", uz: "Faqat vaqt ko'rsatadi.", grammarTip: "Turg'un ibora (proverb). 'Will tell' = kelasi zamonda 'tell' fe'li.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WILL'},
   ],
   scenario: {
@@ -2377,12 +2595,13 @@ const day56: SpeakingDay = {
   },
 }
 
-const day57: SpeakingDay = {
-  day: 57, cefr: 'B1',
+const day61: SpeakingDay = {
+  day: 61, cefr: 'B1',
   title: "Atrof-muhit",
   subtitle: "Tabiatni asrash",
   goalUz: "Atrof-muhit haqida fikr bildira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -2395,19 +2614,19 @@ const day57: SpeakingDay = {
     tipUz: "Tilni tanglayga yaqinlashtirib, nafas chiqaring - /ʃ/ tovushi o'zbek 'sh'siga o'xshaydi.",
     tipEn: "Bring your tongue close to the palate and breathe out - /ʃ/ is like 'sh'. Voiceless.",
   },
-  recycledChunkIds: ['sp-d44-c3', 'sp-d28-c2', 'sp-d54-c6'],
+  recycledChunkIds: ['sp-d48-c3', 'sp-d28-c2', 'sp-d58-c6'],
   chunks: [
-    { id: 'sp-d57-c1', en: "We should protect the environment.", uz: "Biz atrof-muhitni himoya qilishimiz kerak.", grammarTip: "'We should protect the environment' - 'Should + V' = kerak.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d61-c1', en: "We should protect the environment.", uz: "Biz atrof-muhitni himoya qilishimiz kerak.", grammarTip: "'We should protect the environment' - 'Should + V' = kerak.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'SHOULD'},
-    { id: 'sp-d57-c2', en: "I try to save water and electricity.", uz: "Men suv va elektrni tejashga harakat qilaman.", grammarTip: "'Try to + V' = harakat qilmoq. 'Save' = tejamoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d61-c2', en: "I try to save water and electricity.", uz: "Men suv va elektrni tejashga harakat qilaman.", grammarTip: "'Try to + V' = harakat qilmoq. 'Save' = tejamoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'TRY'},
-    { id: 'sp-d57-c3', en: "Pollution is a big problem.", uz: "Ifloslanish katta muammo.", grammarTip: "'Pollution' = ifloslanish (sanalmaydi). 'A big problem' = katta muammo.", commonMistake: "Sanaladigan ot oldidan 'a' artiklini qo'shishni unutma: 'a problem'.",
+    { id: 'sp-d61-c3', en: "Pollution is a big problem.", uz: "Ifloslanish katta muammo.", grammarTip: "'Pollution' = ifloslanish (sanalmaydi). 'A big problem' = katta muammo.", commonMistake: "Sanaladigan ot oldidan 'a' artiklini qo'shishni unutma: 'a problem'.",
   stressWord: 'IS'},
-    { id: 'sp-d57-c4', en: "We use too much plastic.", uz: "Biz juda ko'p plastik ishlatamiz.", grammarTip: "'Too much' = juda ko'p (sanalmaydigan otlar bilan).", commonMistake: "'Much' = sanalmaydigan otlar bilan: 'much water', 'much time'.",
+    { id: 'sp-d61-c4', en: "We use too much plastic.", uz: "Biz juda ko'p plastik ishlatamiz.", grammarTip: "'Too much' = juda ko'p (sanalmaydigan otlar bilan).", commonMistake: "'Much' = sanalmaydigan otlar bilan: 'much water', 'much time'.",
   stressWord: 'PLASTIC'},
-    { id: 'sp-d57-c5', en: "Small changes can help.", uz: "Kichik o'zgarishlar yordam berishi mumkin.", grammarTip: "'Can + V' = qila oladi. 'Help' = yordam bermoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d61-c5', en: "Small changes can help.", uz: "Kichik o'zgarishlar yordam berishi mumkin.", grammarTip: "'Can + V' = qila oladi. 'Help' = yordam bermoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'CAN'},
-    { id: 'sp-d57-c6', en: "Everyone should do their part.", uz: "Har kim o'z hissasini qo'shishi kerak.", grammarTip: "'Should do' = qilishi kerak. 'Their part' = o'z hissasi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d61-c6', en: "Everyone should do their part.", uz: "Har kim o'z hissasini qo'shishi kerak.", grammarTip: "'Should do' = qilishi kerak. 'Their part' = o'z hissasi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'SHOULD'},
   ],
   scenario: {
@@ -2419,12 +2638,13 @@ const day57: SpeakingDay = {
   },
 }
 
-const day58: SpeakingDay = {
-  day: 58, cefr: 'B1',
+const day62: SpeakingDay = {
+  day: 62, cefr: 'B1',
   title: "Texnologiya va tarmoq",
   subtitle: "Ijtimoiy tarmoq odatlari",
   goalUz: "Texnologiya odatlaringiz haqida gapira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'phrasal-verbs-b1',
   vocab: [
     { en: 'usually', uz: 'odatda', example: 'I usually wake up at 7.' },
     { en: 'sometimes', uz: 'ba\'zida', example: 'Sometimes I go to the gym.' },
@@ -2437,19 +2657,19 @@ const day58: SpeakingDay = {
     tipUz: "/iː/ - uzun va tarang 'i'. O'zbek 'i'sidan cho'ziqroq. 'Media' = /ˈmiːdiə/.",
     tipEn: "/iː/ - long and tense 'e'. Longer than Uzbek 'i'. 'Media' = /ˈmiːdiə/.",
   },
-  recycledChunkIds: ['sp-d56-c3', 'sp-d36-c5', 'sp-d11-c3'],
+  recycledChunkIds: ['sp-d60-c3', 'sp-d36-c5', 'sp-d11-c3'],
   chunks: [
-    { id: 'sp-d58-c1', en: "I spend too much time on my phone.", uz: "Men telefonimda juda ko'p vaqt sarflayman.", grammarTip: "'Spend time on' = vaqt sarflamoq. 'Spend' -> 'spent' -> 'spent'.", commonMistake: "'Much' = sanalmaydigan otlar bilan: 'much water', 'much time'.",
+    { id: 'sp-d62-c1', en: "I spend too much time on my phone.", uz: "Men telefonimda juda ko'p vaqt sarflayman.", grammarTip: "'Spend time on' = vaqt sarflamoq. 'Spend' -> 'spent' -> 'spent'.", commonMistake: "'Much' = sanalmaydigan otlar bilan: 'much water', 'much time'.",
   stressWord: 'SPEND'},
-    { id: 'sp-d58-c2', en: "Social media can be useful.", uz: "Ijtimoiy tarmoqlar foydali bo'lishi mumkin.", grammarTip: "'Can be + sifat' = ... bo'lishi mumkin.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d62-c2', en: "Social media can be useful.", uz: "Ijtimoiy tarmoqlar foydali bo'lishi mumkin.", grammarTip: "'Can be + sifat' = ... bo'lishi mumkin.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'CAN'},
-    { id: 'sp-d58-c3', en: "But it can also waste time.", uz: "Lekin u vaqtni behuda sarflashi ham mumkin.", grammarTip: "'Waste time' = vaqtni behuda sarflamoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d62-c3', en: "But it can also waste time.", uz: "Lekin u vaqtni behuda sarflashi ham mumkin.", grammarTip: "'Waste time' = vaqtni behuda sarflamoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'CAN'},
-    { id: 'sp-d58-c4', en: "I follow a lot of accounts.", uz: "Men ko'p akkauntlarni kuzataman.", grammarTip: "'Follow' = kuzatmoq. 'A lot of' = ko'p.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d62-c4', en: "I follow a lot of accounts.", uz: "Men ko'p akkauntlarni kuzataman.", grammarTip: "'Follow' = kuzatmoq. 'A lot of' = ko'p.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'FOLLOW'},
-    { id: 'sp-d58-c5', en: "Technology changes so fast.", uz: "Texnologiya juda tez o'zgaradi.", grammarTip: "'Changes' = 'change' + 's' (he/she/it). 'Fast' = tez.", commonMistake: "Ko'plik '-s' uch xil talaffuz: /s/ (cats), /z/ (dogs), /ɪz/ (houses).",
+    { id: 'sp-d62-c5', en: "Technology changes so fast.", uz: "Texnologiya juda tez o'zgaradi.", grammarTip: "'Changes' = 'change' + 's' (he/she/it). 'Fast' = tez.", commonMistake: "Ko'plik '-s' uch xil talaffuz: /s/ (cats), /z/ (dogs), /ɪz/ (houses).",
   stressWord: 'FAST'},
-    { id: 'sp-d58-c6', en: "How often do you check it?", uz: "Siz uni qancha tez-tez tekshirasiz?", grammarTip: "'How often' = qanchalik tez-tez. 'Check' = tekshirmoq.", commonMistake: "Chastota ravishi fe'ldan oldin keladi: 'I always go', 'He never eats'.",
+    { id: 'sp-d62-c6', en: "How often do you check it?", uz: "Siz uni qancha tez-tez tekshirasiz?", grammarTip: "'How often' = qanchalik tez-tez. 'Check' = tekshirmoq.", commonMistake: "Chastota ravishi fe'ldan oldin keladi: 'I always go', 'He never eats'.",
   stressWord: 'HOW'},
   ],
   scenario: {
@@ -2461,12 +2681,13 @@ const day58: SpeakingDay = {
   },
 }
 
-const day59: SpeakingDay = {
-  day: 59, cefr: 'B1',
+const day63: SpeakingDay = {
+  day: 63, cefr: 'B1',
   title: "Ta'lim va o'rganish",
   subtitle: "O'qish haqida",
   goalUz: "O'qish va o'rganish haqida gapira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'past-perfect',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -2479,19 +2700,19 @@ const day59: SpeakingDay = {
     tipUz: "Tilni tishlar orasiga qo'ying va nafas chiqaring (ovozsiz) - /θ/ o'zbek tilida yo'q tovush.",
     tipEn: "Place your tongue between your teeth and breathe out (voiceless) - /θ/ doesn't exist in Uzbek.",
   },
-  recycledChunkIds: ['sp-d18-c1', 'sp-d18-c6', 'sp-d43-c1'],
+  recycledChunkIds: ['sp-d18-c1', 'sp-d18-c6', 'sp-d47-c1'],
   chunks: [
-    { id: 'sp-d59-c1', en: "I'm studying to improve my skills.", uz: "Men ko'nikmalarimni oshirish uchun o'qiyapman.", grammarTip: "'To + V' = maqsad. 'Improve' = yaxshilamoq.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d63-c1', en: "I'm studying to improve my skills.", uz: "Men ko'nikmalarimni oshirish uchun o'qiyapman.", grammarTip: "'To + V' = maqsad. 'Improve' = yaxshilamoq.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'STUDYING'},
-    { id: 'sp-d59-c2', en: "Learning a language takes time.", uz: "Til o'rganish vaqt talab qiladi.", grammarTip: "'Learning' = gerund (egasi). 'Takes time' = vaqt oladi.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d63-c2', en: "Learning a language takes time.", uz: "Til o'rganish vaqt talab qiladi.", grammarTip: "'Learning' = gerund (egasi). 'Takes time' = vaqt oladi.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'TIME'},
-    { id: 'sp-d59-c3', en: "I study a little every day.", uz: "Men har kuni ozgina o'qiyman.", grammarTip: "'A little' = ozgina (miqdor). 'Every day' = har kuni.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d63-c3', en: "I study a little every day.", uz: "Men har kuni ozgina o'qiyman.", grammarTip: "'A little' = ozgina (miqdor). 'Every day' = har kuni.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'STUDY'},
-    { id: 'sp-d59-c4', en: "Practice is the most important thing.", uz: "Amaliyot eng muhim narsa.", grammarTip: "'The most important' = eng muhim (superlativ).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d63-c4', en: "Practice is the most important thing.", uz: "Amaliyot eng muhim narsa.", grammarTip: "'The most important' = eng muhim (superlativ).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'PRACTICE'},
-    { id: 'sp-d59-c5', en: "I want to continue learning.", uz: "Men o'qishni davom ettirmoqchiman.", grammarTip: "'Continue + V-ing' = davom ettirmoq. 'Want to + V' = xohlamoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d63-c5', en: "I want to continue learning.", uz: "Men o'qishni davom ettirmoqchiman.", grammarTip: "'Continue + V-ing' = davom ettirmoq. 'Want to + V' = xohlamoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WANT'},
-    { id: 'sp-d59-c6', en: "What are you learning these days?", uz: "Hozir nima o'rganyapsiz?", grammarTip: "Present Continuous: 'are you + V-ing?' 'These days' = hozirgi paytda.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d63-c6', en: "What are you learning these days?", uz: "Hozir nima o'rganyapsiz?", grammarTip: "Present Continuous: 'are you + V-ing?' 'These days' = hozirgi paytda.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'WHAT'},
   ],
   scenario: {
@@ -2503,12 +2724,13 @@ const day59: SpeakingDay = {
   },
 }
 
-const day60: SpeakingDay = {
-  day: 60, cefr: 'B1',
+const day64: SpeakingDay = {
+  day: 64, cefr: 'B1',
   title: "Pul va byudjet",
   subtitle: "Tejash haqida",
   goalUz: "Pul tejash va byudjet haqida gapira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'quantifiers',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -2521,19 +2743,19 @@ const day60: SpeakingDay = {
     tipUz: "/aɪ/ - diftong. 'Price' = /praɪs/. 'Item' = /ˈaɪtəm/. 'Buy' = /baɪ/.",
     tipEn: "/aɪ/ - diphthong. 'Price' = /praɪs/. 'Item' = /ˈaɪtəm/. 'Buy' = /baɪ/.",
   },
-  recycledChunkIds: ['sp-d34-c2', 'sp-d5-c5', 'sp-d46-c5'],
+  recycledChunkIds: ['sp-d34-c2', 'sp-d5-c5', 'sp-d50-c5'],
   chunks: [
-    { id: 'sp-d60-c1', en: "I'm trying to save money.", uz: "Men pul tejashga harakat qilyapman.", grammarTip: "'Try to + V' = harakat qilmoq. 'Save money' = pul tejamoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d64-c1', en: "I'm trying to save money.", uz: "Men pul tejashga harakat qilyapman.", grammarTip: "'Try to + V' = harakat qilmoq. 'Save money' = pul tejamoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'TRYING'},
-    { id: 'sp-d60-c2', en: "I made a budget this month.", uz: "Men bu oy byudjet tuzdim.", grammarTip: "'Made' = 'make' ning PT (make -> made -> made).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d64-c2', en: "I made a budget this month.", uz: "Men bu oy byudjet tuzdim.", grammarTip: "'Made' = 'make' ning PT (make -> made -> made).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'MADE'},
-    { id: 'sp-d60-c3', en: "It's too expensive for me.", uz: "Bu men uchun juda qimmat.", grammarTip: "'Too + sifat' = haddan tashqari.", commonMistake: "'Too' = juda ham (salbiy). 'Too expensive' = juda qimmat. 'To' bilan adashtirma!",
+    { id: 'sp-d64-c3', en: "It's too expensive for me.", uz: "Bu men uchun juda qimmat.", grammarTip: "'Too + sifat' = haddan tashqari.", commonMistake: "'Too' = juda ham (salbiy). 'Too expensive' = juda qimmat. 'To' bilan adashtirma!",
   stressWord: 'TOO'},
-    { id: 'sp-d60-c4', en: "I'm saving for a holiday.", uz: "Men ta'til uchun pul yig'yapman.", grammarTip: "'Save for' = ... uchun yig'moq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d64-c4', en: "I'm saving for a holiday.", uz: "Men ta'til uchun pul yig'yapman.", grammarTip: "'Save for' = ... uchun yig'moq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'SAVING'},
-    { id: 'sp-d60-c5', en: "Prices keep going up.", uz: "Narxlar oshib bormoqda.", grammarTip: "'Keep + V-ing' = davom etmoq. 'Going up' = oshmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d64-c5', en: "Prices keep going up.", uz: "Narxlar oshib bormoqda.", grammarTip: "'Keep + V-ing' = davom etmoq. 'Going up' = oshmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'GOING'},
-    { id: 'sp-d60-c6', en: "It's worth the money.", uz: "U pulga arziydi.", grammarTip: "'Worth' = arzimoq. 'Worth the money' = pulga arziydi (turg'un ibora).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d64-c6', en: "It's worth the money.", uz: "U pulga arziydi.", grammarTip: "'Worth' = arzimoq. 'Worth the money' = pulga arziydi (turg'un ibora).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'WORTH'},
   ],
   scenario: {
@@ -2545,12 +2767,13 @@ const day60: SpeakingDay = {
   },
 }
 
-const day61: SpeakingDay = {
-  day: 61, cefr: 'B1',
+const day65: SpeakingDay = {
+  day: 65, cefr: 'B1',
   title: "Ish-hayot muvozanati",
   subtitle: "Dam olish va ish",
   goalUz: "Ish va dam olish muvozanati haqida gapira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'modals-obligation',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -2563,19 +2786,19 @@ const day61: SpeakingDay = {
     tipUz: "/iː/ - uzun 'i'. Lablar bir oz cho'ziladi. 'Week' = /wiːk/. 'Free' = /friː/.",
     tipEn: "/iː/ - long 'e'. Lips are slightly stretched. 'Week' = /wiːk/. 'Free' = /friː/.",
   },
-  recycledChunkIds: ['sp-d30-c3', 'sp-d9-c4', 'sp-d54-c1'],
+  recycledChunkIds: ['sp-d30-c3', 'sp-d9-c4', 'sp-d58-c1'],
   chunks: [
-    { id: 'sp-d61-c1', en: "I work long hours.", uz: "Men uzoq soat ishlayman.", grammarTip: "'Long hours' = uzoq vaqt.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d65-c1', en: "I work long hours.", uz: "Men uzoq soat ishlayman.", grammarTip: "'Long hours' = uzoq vaqt.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WORK'},
-    { id: 'sp-d61-c2', en: "I try to relax at the weekend.", uz: "Men hafta oxirida dam olishga harakat qilaman.", grammarTip: "'Try to + V'. 'At the weekend' = hafta oxirida.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d65-c2', en: "I try to relax at the weekend.", uz: "Men hafta oxirida dam olishga harakat qilaman.", grammarTip: "'Try to + V'. 'At the weekend' = hafta oxirida.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'TRY'},
-    { id: 'sp-d61-c3', en: "It's important to take breaks.", uz: "Tanaffus qilish muhim.", grammarTip: "'It's + sifat + to V' = ... muhim.", commonMistake: "'Bring' = olib kelmoq, 'take' = olib ketmoq. Yo'nalishiga e'tibor ber.",
+    { id: 'sp-d65-c3', en: "It's important to take breaks.", uz: "Tanaffus qilish muhim.", grammarTip: "'It's + sifat + to V' = ... muhim.", commonMistake: "'Bring' = olib kelmoq, 'take' = olib ketmoq. Yo'nalishiga e'tibor ber.",
   stressWord: 'IMPORTANT'},
-    { id: 'sp-d61-c4', en: "I don't have much free time.", uz: "Mening ko'p bo'sh vaqtim yo'q.", grammarTip: "'Much' = ko'p (sanalmaydigan). 'Free time' = bo'sh vaqt.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d65-c4', en: "I don't have much free time.", uz: "Mening ko'p bo'sh vaqtim yo'q.", grammarTip: "'Much' = ko'p (sanalmaydigan). 'Free time' = bo'sh vaqt.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'DONT'},
-    { id: 'sp-d61-c5', en: "I need a better balance.", uz: "Menga yaxshiroq muvozanat kerak.", grammarTip: "'Better' = 'good'ning solishtirma darajasi.", commonMistake: "Bu fe'llardan keyin 'to + V' keladi: 'want TO go', 'need TO do'.",
+    { id: 'sp-d65-c5', en: "I need a better balance.", uz: "Menga yaxshiroq muvozanat kerak.", grammarTip: "'Better' = 'good'ning solishtirma darajasi.", commonMistake: "Bu fe'llardan keyin 'to + V' keladi: 'want TO go', 'need TO do'.",
   stressWord: 'NEED'},
-    { id: 'sp-d61-c6', en: "How do you relax after work?", uz: "Ishdan keyin qanday dam olasiz?", grammarTip: "'After work' = ishdan keyin. 'Relax' = dam olmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d65-c6', en: "How do you relax after work?", uz: "Ishdan keyin qanday dam olasiz?", grammarTip: "'After work' = ishdan keyin. 'Relax' = dam olmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'HOW'},
   ],
   scenario: {
@@ -2587,12 +2810,13 @@ const day61: SpeakingDay = {
   },
 }
 
-const day62: SpeakingDay = {
-  day: 62, cefr: 'B1',
+const day66: SpeakingDay = {
+  day: 66, cefr: 'B1',
   title: "Madaniy farqlar",
   subtitle: "An'analar haqida",
   goalUz: "Madaniyat va an'analaringiz haqida gapira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'both-either-neither',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -2605,19 +2829,19 @@ const day62: SpeakingDay = {
     tipUz: "'T' + 'sh' birikmasi - til uchini tanglayga tegizib, keskin qo'yib yuboring. O'zbek 'ch'siga o'xshaydi.",
     tipEn: "'T' + 'sh' combined - touch tongue to palate and release sharply.",
   },
-  recycledChunkIds: ['sp-d19-c6', 'sp-d44-c5', 'sp-d56-c4'],
+  recycledChunkIds: ['sp-d19-c6', 'sp-d48-c5', 'sp-d60-c4'],
   chunks: [
-    { id: 'sp-d62-c1', en: "In my country, we do it differently.", uz: "Mening yurtimda biz buni boshqacha qilamiz.", grammarTip: "'Differently' = boshqacha (ravish). 'In my country' = yurtimda.", commonMistake: "/ʌ/ — qisqa 'a' tovushi. O'zbek tilidagi 'o' ga o'xshaydi: 'but' /bʌt/.",
+    { id: 'sp-d66-c1', en: "In my country, we do it differently.", uz: "Mening yurtimda biz buni boshqacha qilamiz.", grammarTip: "'Differently' = boshqacha (ravish). 'In my country' = yurtimda.", commonMistake: "/ʌ/ — qisqa 'a' tovushi. O'zbek tilidagi 'o' ga o'xshaydi: 'but' /bʌt/.",
   stressWord: 'DO'},
-    { id: 'sp-d62-c2', en: "It's a tradition here.", uz: "Bu yerda bu an'ana.", grammarTip: "'Tradition' = an'ana. 'Here' = bu yerda.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d66-c2', en: "It's a tradition here.", uz: "Bu yerda bu an'ana.", grammarTip: "'Tradition' = an'ana. 'Here' = bu yerda.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'A'},
-    { id: 'sp-d62-c3', en: "I find that interesting.", uz: "Men buni qiziqarli deb bilaman.", grammarTip: "'Find + ot + sifat' = ...ni ... deb bilmoq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d66-c3', en: "I find that interesting.", uz: "Men buni qiziqarli deb bilaman.", grammarTip: "'Find + ot + sifat' = ...ni ... deb bilmoq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'FIND'},
-    { id: 'sp-d62-c4', en: "We usually eat dinner late.", uz: "Biz odatda kechki ovqatni kech yeymiz.", grammarTip: "'Usually' = odatda (chastota ravishi).", commonMistake: "Chastota ravishi fe'ldan oldin keladi: 'I always go', 'He never eats'.",
+    { id: 'sp-d66-c4', en: "We usually eat dinner late.", uz: "Biz odatda kechki ovqatni kech yeymiz.", grammarTip: "'Usually' = odatda (chastota ravishi).", commonMistake: "Chastota ravishi fe'ldan oldin keladi: 'I always go', 'He never eats'.",
   stressWord: 'LATE'},
-    { id: 'sp-d62-c5', en: "Every culture is different.", uz: "Har bir madaniyat har xil.", grammarTip: "'Every' = har bir (birlik!). 'Every culture' + 'is' (birlik fe'l).", commonMistake: "Urg'uni to'g'ri qo'y: 'interesting' /ˈɪn.trɪ.stɪŋ/ (in-ter-est-ing, 4 bo'g'in).",
+    { id: 'sp-d66-c5', en: "Every culture is different.", uz: "Har bir madaniyat har xil.", grammarTip: "'Every' = har bir (birlik!). 'Every culture' + 'is' (birlik fe'l).", commonMistake: "Urg'uni to'g'ri qo'y: 'interesting' /ˈɪn.trɪ.stɪŋ/ (in-ter-est-ing, 4 bo'g'in).",
   stressWord: 'IS'},
-    { id: 'sp-d62-c6', en: "What's it like in your country?", uz: "Sizning yurtingizda qanday?", grammarTip: "'What's it like?' = qanday? 'Like' bu yerda 'o'xshash' emas, 'how' ma'nosida.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d66-c6', en: "What's it like in your country?", uz: "Sizning yurtingizda qanday?", grammarTip: "'What's it like?' = qanday? 'Like' bu yerda 'o'xshash' emas, 'how' ma'nosida.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'COUNTRY'},
   ],
   scenario: {
@@ -2629,12 +2853,13 @@ const day62: SpeakingDay = {
   },
 }
 
-const day63: SpeakingDay = {
-  day: 63, cefr: 'B1',
+const day67: SpeakingDay = {
+  day: 67, cefr: 'B1',
   title: "Ishda kelishuv",
   subtitle: "Murosa topish",
   goalUz: "Muammoni muhokama qilib, murosa yechimi taklif qila olasiz.",
   estMinutes: 15,
+  linkedLessonId: 'both-either-neither',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -2647,19 +2872,19 @@ const day63: SpeakingDay = {
     tipUz: "/z/ ovozli - bo'g'zingiz titrashi kerak. So'z oxirida ko'p ishlatiladi.",
     tipEn: "/z/ is voiced - your throat should vibrate. Often used at the end of words.",
   },
-  recycledChunkIds: ['sp-d38-c5', 'sp-d38-c2', 'sp-d38-c4'],
+  recycledChunkIds: ['sp-d42-c5', 'sp-d42-c2', 'sp-d42-c4'],
   chunks: [
-    { id: 'sp-d63-c1', en: "Can we find a solution?", uz: "Yechim topa olamizmi?", grammarTip: "'Find a solution' = yechim topmoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d67-c1', en: "Can we find a solution?", uz: "Yechim topa olamizmi?", grammarTip: "'Find a solution' = yechim topmoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'CAN'},
-    { id: 'sp-d63-c2', en: "Let's discuss the options.", uz: "Variantlarni muhokama qilaylik.", grammarTip: "'Let's + V' = taklif. 'Discuss' = muhokama qilmoq.", commonMistake: "'Discuss' + to'g'ridan-to'g'ri ot (about kerak emas): 'discuss the problem'.",
+    { id: 'sp-d67-c2', en: "Let's discuss the options.", uz: "Variantlarni muhokama qilaylik.", grammarTip: "'Let's + V' = taklif. 'Discuss' = muhokama qilmoq.", commonMistake: "'Discuss' + to'g'ridan-to'g'ri ot (about kerak emas): 'discuss the problem'.",
   stressWord: 'OPTIONS'},
-    { id: 'sp-d63-c3', en: "I understand your concern.", uz: "Tashvishingizni tushunaman.", grammarTip: "'Understand' -> 'understood' -> 'understood'. 'Concern' = tashvish.", commonMistake: "/ɜː/ — til o'rtada, lablar yumaloq emas. O'zbek tilida bu tovush yo'q.",
+    { id: 'sp-d67-c3', en: "I understand your concern.", uz: "Tashvishingizni tushunaman.", grammarTip: "'Understand' -> 'understood' -> 'understood'. 'Concern' = tashvish.", commonMistake: "/ɜː/ — til o'rtada, lablar yumaloq emas. O'zbek tilida bu tovush yo'q.",
   stressWord: 'UNDERSTAND'},
-    { id: 'sp-d63-c4', en: "Maybe we can compromise.", uz: "Balki murosaga kela olamiz.", grammarTip: "'Compromise' = murosa/murosaga kelmoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d67-c4', en: "Maybe we can compromise.", uz: "Balki murosaga kela olamiz.", grammarTip: "'Compromise' = murosa/murosaga kelmoq.", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'CAN'},
-    { id: 'sp-d63-c5', en: "What do you suggest?", uz: "Nimani taklif qilasiz?", grammarTip: "'Suggest' = taklif qilmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d67-c5', en: "What do you suggest?", uz: "Nimani taklif qilasiz?", grammarTip: "'Suggest' = taklif qilmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHAT'},
-    { id: 'sp-d63-c6', en: "Let's meet halfway.", uz: "Keling, o'rtaga kelaylik.", grammarTip: "'Meet halfway' = o'rtaga kelmoq/murosaga kelmoq (idiom).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d67-c6', en: "Let's meet halfway.", uz: "Keling, o'rtaga kelaylik.", grammarTip: "'Meet halfway' = o'rtaga kelmoq/murosaga kelmoq (idiom).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'HALFWAY'},
   ],
   scenario: {
@@ -2671,12 +2896,13 @@ const day63: SpeakingDay = {
   },
 }
 
-const day64: SpeakingDay = {
-  day: 64, cefr: 'B1',
+const day68: SpeakingDay = {
+  day: 68, cefr: 'B1',
   title: "Taqdimot qilish",
   subtitle: "Mavzuni tanishtirish",
   goalUz: "Qisqa taqdimot qila olasiz.",
   estMinutes: 15,
+  linkedLessonId: 'relative-clauses-b1',
   vocab: [
     { en: 'appearance', uz: 'tashqi ko\'rinish', example: 'Describe his appearance.' },
     { en: 'tall', uz: 'baland bo\'yli', example: 'He is very tall.' },
@@ -2689,19 +2915,19 @@ const day64: SpeakingDay = {
     tipUz: "/eɪ/ - 'e' dan 'i' ga silliq o'tish. O'zbek 'ey'siga o'xshaydi.",
     tipEn: "/eɪ/ - glide from 'e' to 'i'. Similar to Uzbek 'ey'.",
   },
-  recycledChunkIds: ['sp-d45-c1', 'sp-d45-c6', 'sp-d44-c3'],
+  recycledChunkIds: ['sp-d49-c1', 'sp-d49-c6', 'sp-d48-c3'],
   chunks: [
-    { id: 'sp-d64-c1', en: "Today I'm going to talk about my idea.", uz: "Bugun men o'z g'oyam haqida gapiraman.", grammarTip: "'Going to + V' = kelajak reja.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d68-c1', en: "Today I'm going to talk about my idea.", uz: "Bugun men o'z g'oyam haqida gapiraman.", grammarTip: "'Going to + V' = kelajak reja.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'IDEA'},
-    { id: 'sp-d64-c2', en: "First, let me give you an overview.", uz: "Avval umumiy ma'lumot beray.", grammarTip: "'Let me + V' = ruxsat bering.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d68-c2', en: "First, let me give you an overview.", uz: "Avval umumiy ma'lumot beray.", grammarTip: "'Let me + V' = ruxsat bering.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'OVERVIEW'},
-    { id: 'sp-d64-c3', en: "As you can see here...", uz: "Bu yerda ko'rib turganingizdek...", grammarTip: "'As you can see' = ko'rib turganingizdek (turg'un ibora).", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d68-c3', en: "As you can see here...", uz: "Bu yerda ko'rib turganingizdek...", grammarTip: "'As you can see' = ko'rib turganingizdek (turg'un ibora).", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'CAN'},
-    { id: 'sp-d64-c4', en: "Let me explain why.", uz: "Nima uchunligini tushuntiray.", grammarTip: "'Let me + V' = ruxsat bering ... y.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d68-c4', en: "Let me explain why.", uz: "Nima uchunligini tushuntiray.", grammarTip: "'Let me + V' = ruxsat bering ... y.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'LET'},
-    { id: 'sp-d64-c5', en: "Does anyone have questions?", uz: "Kimda savol bor?", grammarTip: "'Does anyone' = kimdir. 'Anyone' birlik!", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d68-c5', en: "Does anyone have questions?", uz: "Kimda savol bor?", grammarTip: "'Does anyone' = kimdir. 'Anyone' birlik!", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'DOES'},
-    { id: 'sp-d64-c6', en: "Thank you for listening.", uz: "Tinglaganingiz uchun rahmat.", grammarTip: "'Thank you for + V-ing' = ...ganingiz uchun rahmat.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d68-c6', en: "Thank you for listening.", uz: "Tinglaganingiz uchun rahmat.", grammarTip: "'Thank you for + V-ing' = ...ganingiz uchun rahmat.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'LISTENING'},
   ],
   scenario: {
@@ -2713,12 +2939,13 @@ const day64: SpeakingDay = {
   },
 }
 
-const day65: SpeakingDay = {
-  day: 65, cefr: 'B1',
+const day69: SpeakingDay = {
+  day: 69, cefr: 'B1',
   title: "Kelishmovchilikni hal qilish",
   subtitle: "Xotirjam suhbat",
   goalUz: "Kelishmovchilikni xotirjam hal qila olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'modals-speculation',
   vocab: [
     { en: 'actually', uz: 'aslida', example: 'Actually, that is not true.' },
     { en: 'honestly', uz: 'rostini aytsam', example: 'Honestly, I disagree.' },
@@ -2731,19 +2958,19 @@ const day65: SpeakingDay = {
     tipUz: "/ʌ/ - qisqa va ochiq 'a'. O'zbek 'a'siga o'xshaydi, lekin qisqaroq.",
     tipEn: "/ʌ/ - short and open 'a'. Similar to Uzbek 'a' but shorter.",
   },
-  recycledChunkIds: ['sp-d38-c2', 'sp-d38-c3', 'sp-d63-c3'],
+  recycledChunkIds: ['sp-d42-c2', 'sp-d42-c3', 'sp-d67-c3'],
   chunks: [
-    { id: 'sp-d65-c1', en: "I think there's been a misunderstanding.", uz: "Menimcha, tushunmovchilik bo'lgan.", grammarTip: "'There's been' = 'there has been' (Present Perfect). 'Misunderstanding' = tushunmovchilik.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d69-c1', en: "I think there's been a misunderstanding.", uz: "Menimcha, tushunmovchilik bo'lgan.", grammarTip: "'There's been' = 'there has been' (Present Perfect). 'Misunderstanding' = tushunmovchilik.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'THINK'},
-    { id: 'sp-d65-c2', en: "Let's talk about it calmly.", uz: "Keling, buni xotirjam gaplashaylik.", grammarTip: "'Let's + V' = taklif. 'Calmly' = xotirjam.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d69-c2', en: "Let's talk about it calmly.", uz: "Keling, buni xotirjam gaplashaylik.", grammarTip: "'Let's + V' = taklif. 'Calmly' = xotirjam.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'CALMLY'},
-    { id: 'sp-d65-c3', en: "I see it differently.", uz: "Men buni boshqacha ko'raman.", grammarTip: "'See' = tushunmoq (ko'z bilan emas).", commonMistake: "Urg'uni to'g'ri qo'y: 'interesting' /ˈɪn.trɪ.stɪŋ/ (in-ter-est-ing, 4 bo'g'in).",
+    { id: 'sp-d69-c3', en: "I see it differently.", uz: "Men buni boshqacha ko'raman.", grammarTip: "'See' = tushunmoq (ko'z bilan emas).", commonMistake: "Urg'uni to'g'ri qo'y: 'interesting' /ˈɪn.trɪ.stɪŋ/ (in-ter-est-ing, 4 bo'g'in).",
   stressWord: 'SEE'},
-    { id: 'sp-d65-c4', en: "I'm sorry if I upset you.", uz: "Agar xafa qilgan bo'lsam, kechirasiz.", grammarTip: "'Sorry if' = agar ... bo'lsa kechiring.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d69-c4', en: "I'm sorry if I upset you.", uz: "Agar xafa qilgan bo'lsam, kechirasiz.", grammarTip: "'Sorry if' = agar ... bo'lsa kechiring.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'SORRY'},
-    { id: 'sp-d65-c5', en: "Let's not argue.", uz: "Keling, janjallashmaylik.", grammarTip: "'Let's not + V' = ...maylik (taklif inkori).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d69-c5', en: "Let's not argue.", uz: "Keling, janjallashmaylik.", grammarTip: "'Let's not + V' = ...maylik (taklif inkori).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'ARGUE'},
-    { id: 'sp-d65-c6', en: "I hope we can move on.", uz: "Umid qilamanki, davom eta olamiz.", grammarTip: "'Move on' = davom etmoq (phrasal verb).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d69-c6', en: "I hope we can move on.", uz: "Umid qilamanki, davom eta olamiz.", grammarTip: "'Move on' = davom etmoq (phrasal verb).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'HOPE'},
   ],
   scenario: {
@@ -2755,12 +2982,13 @@ const day65: SpeakingDay = {
   },
 }
 
-const day66: SpeakingDay = {
-  day: 66, cefr: 'B1',
+const day70: SpeakingDay = {
+  day: 70, cefr: 'B1',
   title: "Hikoya aytib berish",
   subtitle: "Voqeani so'zlash",
   goalUz: "Boshingizdan o'tgan voqeani aytib bera olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'past-perfect',
   vocab: [
     { en: 'remember', uz: 'eslamoq', example: 'Do you remember?' },
     { en: 'forget', uz: 'unutmoq', example: 'I forgot your name.' },
@@ -2773,19 +3001,19 @@ const day66: SpeakingDay = {
     tipUz: "/ɔː/ - lablarni yumaloqlang. 'Story' = /ˈstɔːri/. O'zbek 'o'sidan ochiqroq.",
     tipEn: "/ɔː/ - round your lips. 'Story' = /ˈstɔːri/. More open than Uzbek 'o'.",
   },
-  recycledChunkIds: ['sp-d44-c2', 'sp-d20-c3', 'sp-d44-c6'],
+  recycledChunkIds: ['sp-d48-c2', 'sp-d20-c3', 'sp-d48-c6'],
   chunks: [
-    { id: 'sp-d66-c1', en: "Let me tell you what happened.", uz: "Nima bo'lganini aytib beray.", grammarTip: "'Let me + V' = ruxsat bering.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d70-c1', en: "Let me tell you what happened.", uz: "Nima bo'lganini aytib beray.", grammarTip: "'Let me + V' = ruxsat bering.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'LET'},
-    { id: 'sp-d66-c2', en: "It all started when I was young.", uz: "Hammasi men yosh paytimda boshlandi.", grammarTip: "'It all started' = hammasi boshlandi. 'When I was young' = yoshligimda.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d70-c2', en: "It all started when I was young.", uz: "Hammasi men yosh paytimda boshlandi.", grammarTip: "'It all started' = hammasi boshlandi. 'When I was young' = yoshligimda.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'YOUNG'},
-    { id: 'sp-d66-c3', en: "Suddenly, something strange happened.", uz: "To'satdan g'alati narsa yuz berdi.", grammarTip: "'Suddenly' = to'satdan (ravish). 'Strange' = g'alati.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d70-c3', en: "Suddenly, something strange happened.", uz: "To'satdan g'alati narsa yuz berdi.", grammarTip: "'Suddenly' = to'satdan (ravish). 'Strange' = g'alati.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'HAPPENED'},
-    { id: 'sp-d66-c4', en: "In the end, everything was fine.", uz: "Oxir-oqibat, hammasi yaxshi bo'ldi.", grammarTip: "'In the end' = oxir-oqibat. 'Everything' = hamma narsa (birlik).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d70-c4', en: "In the end, everything was fine.", uz: "Oxir-oqibat, hammasi yaxshi bo'ldi.", grammarTip: "'In the end' = oxir-oqibat. 'Everything' = hamma narsa (birlik).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'FINE'},
-    { id: 'sp-d66-c5', en: "You won't believe what happened.", uz: "Nima bo'lganiga ishonmaysiz.", grammarTip: "'Won't believe' = ishonmaysiz ('will not').", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d70-c5', en: "You won't believe what happened.", uz: "Nima bo'lganiga ishonmaysiz.", grammarTip: "'Won't believe' = ishonmaysiz ('will not').", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'HAPPENED'},
-    { id: 'sp-d66-c6', en: "It was the funniest moment.", uz: "Bu eng kulgili lahza edi.", grammarTip: "'Funniest' = 'funny' ning superlativi (-y -> -iest).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d70-c6', en: "It was the funniest moment.", uz: "Bu eng kulgili lahza edi.", grammarTip: "'Funniest' = 'funny' ning superlativi (-y -> -iest).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'MOMENT'},
   ],
   scenario: {
@@ -2797,12 +3025,13 @@ const day66: SpeakingDay = {
   },
 }
 
-const day67: SpeakingDay = {
-  day: 67, cefr: 'B1',
+const day71: SpeakingDay = {
+  day: 71, cefr: 'B1',
   title: "Taxmin va ehtimollik",
   subtitle: "might / must / can't",
   goalUz: "Vaziyat haqida taxmin qila olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'modals-speculation',
   vocab: [
     { en: 'actually', uz: 'aslida', example: 'Actually, that is not true.' },
     { en: 'honestly', uz: 'rostini aytsam', example: 'Honestly, I disagree.' },
@@ -2815,19 +3044,19 @@ const day67: SpeakingDay = {
     tipUz: "/aɪ/ - diftong. 'Might' = /maɪt/. 'Might' modal fe'li 'may'dan noaniqroq.",
     tipEn: "/aɪ/ - diphthong. 'Might' = /maɪt/. 'Might' is less certain than 'may'.",
   },
-  recycledChunkIds: ['sp-d43-c3', 'sp-d21-c5', 'sp-d44-c1'],
+  recycledChunkIds: ['sp-d47-c3', 'sp-d21-c5', 'sp-d48-c1'],
   chunks: [
-    { id: 'sp-d67-c1', en: "He might be at work.", uz: "U ishda bo'lishi mumkin.", grammarTip: "'Might + V' = ehtimol (50%).", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d71-c1', en: "He might be at work.", uz: "U ishda bo'lishi mumkin.", grammarTip: "'Might + V' = ehtimol (50%).", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WORK'},
-    { id: 'sp-d67-c2', en: "She must be tired.", uz: "U charchagan bo'lsa kerak.", grammarTip: "'Must + V' = ... bo'lsa kerak (95% ishonch).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d71-c2', en: "She must be tired.", uz: "U charchagan bo'lsa kerak.", grammarTip: "'Must + V' = ... bo'lsa kerak (95% ishonch).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'MUST'},
-    { id: 'sp-d67-c3', en: "It can't be true.", uz: "Bu rost bo'lishi mumkin emas.", grammarTip: "'Can't + V' = ... bo'lishi mumkin emas (0% ishonch).", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
+    { id: 'sp-d71-c3', en: "It can't be true.", uz: "Bu rost bo'lishi mumkin emas.", grammarTip: "'Can't + V' = ... bo'lishi mumkin emas (0% ishonch).", commonMistake: "/æ/ — og'iz katta ochiladi. O'zbek tilida bu tovush yo'q: 'man' /mæn/.",
   stressWord: 'TRUE'},
-    { id: 'sp-d67-c4', en: "Maybe they forgot.", uz: "Balki ular unutgandir.", grammarTip: "'Maybe' = balki. 'Forgot' = 'forget' ning PT.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d71-c4', en: "Maybe they forgot.", uz: "Balki ular unutgandir.", grammarTip: "'Maybe' = balki. 'Forgot' = 'forget' ning PT.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'FORGOT'},
-    { id: 'sp-d67-c5', en: "I'm not sure, but I think so.", uz: "Ishonchim komil emas, lekin shunday deb o'ylayman.", grammarTip: "'Not sure' = aniq emas. 'Think so' = shunday o'ylamoq.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d71-c5', en: "I'm not sure, but I think so.", uz: "Ishonchim komil emas, lekin shunday deb o'ylayman.", grammarTip: "'Not sure' = aniq emas. 'Think so' = shunday o'ylamoq.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'NOT'},
-    { id: 'sp-d67-c6', en: "It's probably going to rain.", uz: "Ehtimol, yomg'ir yog'adi.", grammarTip: "'Probably' = ehtimol. 'Going to' = bashorat.", commonMistake: "Urg'uni to'g'ri qo'y: 'interesting' /ˈɪn.trɪ.stɪŋ/ (in-ter-est-ing, 4 bo'g'in).",
+    { id: 'sp-d71-c6', en: "It's probably going to rain.", uz: "Ehtimol, yomg'ir yog'adi.", grammarTip: "'Probably' = ehtimol. 'Going to' = bashorat.", commonMistake: "Urg'uni to'g'ri qo'y: 'interesting' /ˈɪn.trɪ.stɪŋ/ (in-ter-est-ing, 4 bo'g'in).",
   stressWord: 'PROBABLY'},
   ],
   scenario: {
@@ -2839,12 +3068,13 @@ const day67: SpeakingDay = {
   },
 }
 
-const day68: SpeakingDay = {
-  day: 68, cefr: 'B1',
+const day72: SpeakingDay = {
+  day: 72, cefr: 'B1',
   title: "Afsus va o'tmish",
   subtitle: "should have",
   goalUz: "Afsus va o'tmish haqida gapira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'wishes-regrets',
   vocab: [
     { en: 'apologise', uz: 'kechirim so\'ramoq', example: 'I apologise for the delay.' },
     { en: 'forgive', uz: 'kechirmoq', example: 'Please forgive me.' },
@@ -2857,19 +3087,19 @@ const day68: SpeakingDay = {
     tipUz: "/ʊ/ qisqa va bo'sh - lablarni yumaloqlang, lekin tarang emas.",
     tipEn: "/ʊ/ is short and relaxed - round your lips but don't tense.",
   },
-  recycledChunkIds: ['sp-d42-c1', 'sp-d42-c4', 'sp-d67-c1'],
+  recycledChunkIds: ['sp-d46-c1', 'sp-d46-c4', 'sp-d71-c1'],
   chunks: [
-    { id: 'sp-d68-c1', en: "I should have studied more.", uz: "Men ko'proq o'qishim kerak edi.", grammarTip: "'Should have + PP' = ... kerak edi (afsus).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d72-c1', en: "I should have studied more.", uz: "Men ko'proq o'qishim kerak edi.", grammarTip: "'Should have + PP' = ... kerak edi (afsus).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'SHOULD'},
-    { id: 'sp-d68-c2', en: "I shouldn't have said that.", uz: "Men buni aytmasligim kerak edi.", grammarTip: "'Shouldn't have + PP' = ...masligim kerak edi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d72-c2', en: "I shouldn't have said that.", uz: "Men buni aytmasligim kerak edi.", grammarTip: "'Shouldn't have + PP' = ...masligim kerak edi.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'SHOULDNT'},
-    { id: 'sp-d68-c3', en: "I wish I had more time.", uz: "Koshki ko'proq vaqtim bo'lsa edi.", grammarTip: "'I wish + Past Perfect' = orzu (amalga oshmagan).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d72-c3', en: "I wish I had more time.", uz: "Koshki ko'proq vaqtim bo'lsa edi.", grammarTip: "'I wish + Past Perfect' = orzu (amalga oshmagan).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'WISH'},
-    { id: 'sp-d68-c4', en: "It was a mistake.", uz: "Bu xato edi.", grammarTip: "'Mistake' = xato. 'Make a mistake' = xato qilmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d72-c4', en: "It was a mistake.", uz: "Bu xato edi.", grammarTip: "'Mistake' = xato. 'Make a mistake' = xato qilmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'MISTAKE'},
-    { id: 'sp-d68-c5', en: "Next time I'll do better.", uz: "Keyingi safar yaxshiroq qilaman.", grammarTip: "'Next time' = keyingi safar. 'I'll' = 'I will'.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d72-c5', en: "Next time I'll do better.", uz: "Keyingi safar yaxshiroq qilaman.", grammarTip: "'Next time' = keyingi safar. 'I'll' = 'I will'.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'DO'},
-    { id: 'sp-d68-c6', en: "I regret not trying.", uz: "Urinib ko'rmaganimga afsuslanaman.", grammarTip: "'Regret + V-ing' = ...ganimga afsuslanaman.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d72-c6', en: "I regret not trying.", uz: "Urinib ko'rmaganimga afsuslanaman.", grammarTip: "'Regret + V-ing' = ...ganimga afsuslanaman.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'REGRET'},
   ],
   scenario: {
@@ -2881,12 +3111,13 @@ const day68: SpeakingDay = {
   },
 }
 
-const day69: SpeakingDay = {
-  day: 69, cefr: 'B1',
+const day73: SpeakingDay = {
+  day: 73, cefr: 'B1',
   title: "Faraziy holatlar",
   subtitle: "if + would",
   goalUz: "Faraziy holatlar haqida gapira olasiz.",
   estMinutes: 15,
+  linkedLessonId: 'first-conditional',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -2899,19 +3130,19 @@ const day69: SpeakingDay = {
     tipUz: "Lablaringizni 'o' shakliga keltiring va tezda oching - /w/ lablar orqali chiqadi.",
     tipEn: "Round your lips like 'o' and quickly open them - /w/ comes through your lips.",
   },
-  recycledChunkIds: ['sp-d42-c4', 'sp-d43-c4', 'sp-d43-c5'],
+  recycledChunkIds: ['sp-d46-c4', 'sp-d47-c4', 'sp-d47-c5'],
   chunks: [
-    { id: 'sp-d69-c1', en: "If I had more money, I would travel.", uz: "Agar ko'proq pulim bo'lsa, sayohat qilardim.", grammarTip: "Second Conditional: If + Past Simple, would + V.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d73-c1', en: "If I had more money, I would travel.", uz: "Agar ko'proq pulim bo'lsa, sayohat qilardim.", grammarTip: "Second Conditional: If + Past Simple, would + V.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'WOULD'},
-    { id: 'sp-d69-c2', en: "If I were you, I would accept.", uz: "Sizning o'rningizda bo'lsam, qabul qilardim.", grammarTip: "'If I were you' = sizning o'rningizda bo'lsam (doim 'were'!).", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d73-c2', en: "If I were you, I would accept.", uz: "Sizning o'rningizda bo'lsam, qabul qilardim.", grammarTip: "'If I were you' = sizning o'rningizda bo'lsam (doim 'were'!).", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WOULD'},
-    { id: 'sp-d69-c3', en: "What would you do?", uz: "Siz nima qilardingiz?", grammarTip: "'Would you + V?' = shartli so'roq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d73-c3', en: "What would you do?", uz: "Siz nima qilardingiz?", grammarTip: "'Would you + V?' = shartli so'roq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHAT'},
-    { id: 'sp-d69-c4', en: "If it rains, we'll stay home.", uz: "Agar yomg'ir yog'sa, uyda qolamiz.", grammarTip: "First Conditional: If + Present Simple, will + V.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d73-c4', en: "If it rains, we'll stay home.", uz: "Agar yomg'ir yog'sa, uyda qolamiz.", grammarTip: "First Conditional: If + Present Simple, will + V.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'HOME'},
-    { id: 'sp-d69-c5', en: "I would help if I could.", uz: "Imkonim bo'lsa, yordam berardim.", grammarTip: "'Could' = 'can'ning o'tgan zamon shakli.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d73-c5', en: "I would help if I could.", uz: "Imkonim bo'lsa, yordam berardim.", grammarTip: "'Could' = 'can'ning o'tgan zamon shakli.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'WOULD'},
-    { id: 'sp-d69-c6', en: "It would be nice to travel more.", uz: "Ko'proq sayohat qilish yaxshi bo'lardi.", grammarTip: "'Would be' = bo'lardi. 'It + would be + sifat + to V'.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d73-c6', en: "It would be nice to travel more.", uz: "Ko'proq sayohat qilish yaxshi bo'lardi.", grammarTip: "'Would be' = bo'lardi. 'It + would be + sifat + to V'.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'WOULD'},
   ],
   scenario: {
@@ -2923,12 +3154,13 @@ const day69: SpeakingDay = {
   },
 }
 
-const day70: SpeakingDay = {
-  day: 70, cefr: 'B1',
+const day74: SpeakingDay = {
+  day: 74, cefr: 'B1',
   title: "Tavsiya va did",
   subtitle: "Tavsiya berish",
   goalUz: "Tavsiya bera va fikringizni ayta olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'gerunds-infinitives',
   vocab: [
     { en: 'recommend', uz: 'tavsiya qilmoq', example: 'What do you recommend?' },
     { en: 'useful', uz: 'foydali', example: 'That is very useful.' },
@@ -2941,19 +3173,19 @@ const day70: SpeakingDay = {
     tipUz: "Tilingizni orqaga buking - /r/ yumshoq. 'Really' = /ˈriːəli/.",
     tipEn: "Curl your tongue back - /r/ is soft. 'Really' = /ˈriːəli/.",
   },
-  recycledChunkIds: ['sp-d55-c4', 'sp-d42-c5', 'sp-d55-c5'],
+  recycledChunkIds: ['sp-d59-c4', 'sp-d46-c5', 'sp-d59-c5'],
   chunks: [
-    { id: 'sp-d70-c1', en: "I would recommend trying it.", uz: "Men buni sinab ko'rishni tavsiya qilaman.", grammarTip: "'Recommend + V-ing' = ...ni tavsiya qilmoq.", commonMistake: "Bu fe'llardan keyin V-ing keladi: 'enjoy DOING', 'suggest GOING'.",
+    { id: 'sp-d74-c1', en: "I would recommend trying it.", uz: "Men buni sinab ko'rishni tavsiya qilaman.", grammarTip: "'Recommend + V-ing' = ...ni tavsiya qilmoq.", commonMistake: "Bu fe'llardan keyin V-ing keladi: 'enjoy DOING', 'suggest GOING'.",
   stressWord: 'WOULD'},
-    { id: 'sp-d70-c2', en: "It's definitely worth it.", uz: "Bu albatta arziydi.", grammarTip: "'Definitely' = albatta. 'Worth it' = arziydi (turg'un ibora).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d74-c2', en: "It's definitely worth it.", uz: "Bu albatta arziydi.", grammarTip: "'Definitely' = albatta. 'Worth it' = arziydi (turg'un ibora).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'DEFINITELY'},
-    { id: 'sp-d70-c3', en: "You should give it a go.", uz: "Siz buni sinab ko'rishingiz kerak.", grammarTip: "'Give it a go' = sinab ko'rmoq (norasmiy idiom).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d74-c3', en: "You should give it a go.", uz: "Siz buni sinab ko'rishingiz kerak.", grammarTip: "'Give it a go' = sinab ko'rmoq (norasmiy idiom).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'SHOULD'},
-    { id: 'sp-d70-c4', en: "I'm not a big fan of it.", uz: "Men uni unchalik yoqtirmayman.", grammarTip: "'Not a big fan of' = unchalik yoqtirmaslik.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d74-c4', en: "I'm not a big fan of it.", uz: "Men uni unchalik yoqtirmayman.", grammarTip: "'Not a big fan of' = unchalik yoqtirmaslik.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'NOT'},
-    { id: 'sp-d70-c5', en: "It's a matter of taste.", uz: "Bu did masalasi.", grammarTip: "'A matter of' = ... masalasi. 'Taste' = did.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d74-c5', en: "It's a matter of taste.", uz: "Bu did masalasi.", grammarTip: "'A matter of' = ... masalasi. 'Taste' = did.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'A'},
-    { id: 'sp-d70-c6', en: "What would you recommend?", uz: "Siz nimani tavsiya qilasiz?", grammarTip: "'Would you recommend' = muloyim so'roq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d74-c6', en: "What would you recommend?", uz: "Siz nimani tavsiya qilasiz?", grammarTip: "'Would you recommend' = muloyim so'roq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHAT'},
   ],
   scenario: {
@@ -2965,12 +3197,13 @@ const day70: SpeakingDay = {
   },
 }
 
-const day71: SpeakingDay = {
-  day: 71, cefr: 'B1',
+const day75: SpeakingDay = {
+  day: 75, cefr: 'B1',
   title: "Shahar va qishloq",
   subtitle: "Solishtirish",
   goalUz: "Shahar va qishloqni solishtira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'comparatives-superlatives',
   vocab: [
     { en: 'capital', uz: 'poytaxt', example: 'Tashkent is the capital.' },
     { en: 'downtown', uz: 'shahar markazi', example: 'I live downtown.' },
@@ -2983,19 +3216,19 @@ const day71: SpeakingDay = {
     tipUz: "/ɪ/ qisqa va bo'sh - og'zingizni katta ochmang. 'City' = /ˈsɪti/.",
     tipEn: "/ɪ/ is short and relaxed. 'City' = /ˈsɪti/.",
   },
-  recycledChunkIds: ['sp-d56-c4', 'sp-d62-c5', 'sp-d61-c4'],
+  recycledChunkIds: ['sp-d60-c4', 'sp-d66-c5', 'sp-d65-c4'],
   chunks: [
-    { id: 'sp-d71-c1', en: "I prefer living in the city.", uz: "Men shaharda yashashni afzal ko'raman.", grammarTip: "'Prefer + V-ing' = ...ni afzal ko'rmoq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d75-c1', en: "I prefer living in the city.", uz: "Men shaharda yashashni afzal ko'raman.", grammarTip: "'Prefer + V-ing' = ...ni afzal ko'rmoq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'PREFER'},
-    { id: 'sp-d71-c2', en: "The countryside is more peaceful.", uz: "Qishloq tinchroq.", grammarTip: "'The countryside' = qishloq (har doim 'the' bilan).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d75-c2', en: "The countryside is more peaceful.", uz: "Qishloq tinchroq.", grammarTip: "'The countryside' = qishloq (har doim 'the' bilan).", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'IS'},
-    { id: 'sp-d71-c3', en: "There's more to do in the city.", uz: "Shaharda qiladigan ish ko'proq.", grammarTip: "'There is + more + to V' = ... ko'proq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d75-c3', en: "There's more to do in the city.", uz: "Shaharda qiladigan ish ko'proq.", grammarTip: "'There is + more + to V' = ... ko'proq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'DO'},
-    { id: 'sp-d71-c4', en: "But it's also more crowded.", uz: "Lekin u gavjumroq ham.", grammarTip: "'More crowded' = gavjumroq (solishtirma).", commonMistake: "/ʌ/ — qisqa 'a' tovushi. O'zbek tilidagi 'o' ga o'xshaydi: 'but' /bʌt/.",
+    { id: 'sp-d75-c4', en: "But it's also more crowded.", uz: "Lekin u gavjumroq ham.", grammarTip: "'More crowded' = gavjumroq (solishtirma).", commonMistake: "/ʌ/ — qisqa 'a' tovushi. O'zbek tilidagi 'o' ga o'xshaydi: 'but' /bʌt/.",
   stressWord: 'CROWDED'},
-    { id: 'sp-d71-c5', en: "Life is slower in the village.", uz: "Qishloqda hayot sekinroq.", grammarTip: "'Slower' = 'slow' + '-er'.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d75-c5', en: "Life is slower in the village.", uz: "Qishloqda hayot sekinroq.", grammarTip: "'Slower' = 'slow' + '-er'.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'IS'},
-    { id: 'sp-d71-c6', en: "Where would you rather live?", uz: "Qayerda yashashni xohlardingiz?", grammarTip: "'Would rather + V' = ...ni afzal ko'rmoq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d75-c6', en: "Where would you rather live?", uz: "Qayerda yashashni xohlardingiz?", grammarTip: "'Would rather + V' = ...ni afzal ko'rmoq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'WHERE'},
   ],
   scenario: {
@@ -3007,12 +3240,13 @@ const day71: SpeakingDay = {
   },
 }
 
-const day72: SpeakingDay = {
-  day: 72, cefr: 'B1',
+const day76: SpeakingDay = {
+  day: 76, cefr: 'B1',
   title: "Kelajak bashorati",
   subtitle: "will / might",
   goalUz: "Kelajak haqida bashorat qila olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'future-forms-review',
   vocab: [
     { en: 'hope', uz: 'umid qilmoq', example: 'I hope so.' },
     { en: 'dream', uz: 'orzu', example: 'My dream is to visit London.' },
@@ -3025,19 +3259,19 @@ const day72: SpeakingDay = {
     tipUz: "/aɪ/ - diftong. 'Might' = /maɪt/. 'Time' = /taɪm/.",
     tipEn: "/aɪ/ - diphthong. 'Might' = /maɪt/. 'Time' = /taɪm/.",
   },
-  recycledChunkIds: ['sp-d67-c1', 'sp-d67-c6', 'sp-d43-c3'],
+  recycledChunkIds: ['sp-d71-c1', 'sp-d71-c6', 'sp-d47-c3'],
   chunks: [
-    { id: 'sp-d72-c1', en: "In the future, cars might drive themselves.", uz: "Kelajakda mashinalar o'zini o'zi haydashi mumkin.", grammarTip: "'Might + V' = ehtimol.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
+    { id: 'sp-d76-c1', en: "In the future, cars might drive themselves.", uz: "Kelajakda mashinalar o'zini o'zi haydashi mumkin.", grammarTip: "'Might + V' = ehtimol.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'THEMSELVES'},
-    { id: 'sp-d72-c2', en: "Technology will keep improving.", uz: "Texnologiya yaxshilanishda davom etadi.", grammarTip: "'Will + V' = kelasi zamon. 'Keep + V-ing' = davom etmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d76-c2', en: "Technology will keep improving.", uz: "Texnologiya yaxshilanishda davom etadi.", grammarTip: "'Will + V' = kelasi zamon. 'Keep + V-ing' = davom etmoq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WILL'},
-    { id: 'sp-d72-c3', en: "I think robots will do more jobs.", uz: "Menimcha, robotlar ko'proq ish qiladi.", grammarTip: "'Will do' = qiladi (bashorat).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d76-c3', en: "I think robots will do more jobs.", uz: "Menimcha, robotlar ko'proq ish qiladi.", grammarTip: "'Will do' = qiladi (bashorat).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'THINK'},
-    { id: 'sp-d72-c4', en: "It's hard to predict.", uz: "Bashorat qilish qiyin.", grammarTip: "'It's hard to + V' = ... qiyin.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d76-c4', en: "It's hard to predict.", uz: "Bashorat qilish qiyin.", grammarTip: "'It's hard to + V' = ... qiyin.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'HARD'},
-    { id: 'sp-d72-c5', en: "Some things will never change.", uz: "Ba'zi narsalar hech qachon o'zgarmaydi.", grammarTip: "'Will never + V' = hech qachon ...maydi.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d76-c5', en: "Some things will never change.", uz: "Ba'zi narsalar hech qachon o'zgarmaydi.", grammarTip: "'Will never + V' = hech qachon ...maydi.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'WILL'},
-    { id: 'sp-d72-c6', en: "What do you think the future holds?", uz: "Kelajak nima olib keladi deb o'ylaysiz?", grammarTip: "'The future holds' = kelajakda nima bo'ladi (idiom).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d76-c6', en: "What do you think the future holds?", uz: "Kelajak nima olib keladi deb o'ylaysiz?", grammarTip: "'The future holds' = kelajakda nima bo'ladi (idiom).", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'WHAT'},
   ],
   scenario: {
@@ -3049,12 +3283,13 @@ const day72: SpeakingDay = {
   },
 }
 
-const day73: SpeakingDay = {
-  day: 73, cefr: 'B1',
+const day77: SpeakingDay = {
+  day: 77, cefr: 'B1',
   title: "Kuchli va zaif tomon",
   subtitle: "Intervyu savoli",
   goalUz: "Kuchli va zaif tomonlaringizni muvozanatli ayta olasiz.",
   estMinutes: 15,
+  linkedLessonId: 'indirect-questions',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
     { en: 'salary', uz: 'maosh', example: 'What is the salary?' },
@@ -3067,19 +3302,19 @@ const day73: SpeakingDay = {
     tipUz: "/θ/ - til tishlar orasida, nafas chiqaring. 'Strength' = /streŋθ/.",
     tipEn: "/θ/ - tongue between teeth, breathe out (voiceless).",
   },
-  recycledChunkIds: ['sp-d45-c2', 'sp-d45-c3', 'sp-d49-c1'],
+  recycledChunkIds: ['sp-d49-c2', 'sp-d49-c3', 'sp-d53-c1'],
   chunks: [
-    { id: 'sp-d73-c1', en: "My greatest strength is patience.", uz: "Mening eng kuchli tomonim - sabr.", grammarTip: "'Greatest' = 'great' superlativi.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d77-c1', en: "My greatest strength is patience.", uz: "Mening eng kuchli tomonim - sabr.", grammarTip: "'Greatest' = 'great' superlativi.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'IS'},
-    { id: 'sp-d73-c2', en: "I sometimes work too hard.", uz: "Men ba'zan haddan tashqari ko'p ishlayman.", grammarTip: "'Sometimes' = ba'zan (chastota). 'Too hard' = haddan tashqari qattiq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d77-c2', en: "I sometimes work too hard.", uz: "Men ba'zan haddan tashqari ko'p ishlayman.", grammarTip: "'Sometimes' = ba'zan (chastota). 'Too hard' = haddan tashqari qattiq.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'SOMETIMES'},
-    { id: 'sp-d73-c3', en: "I'm working on improving it.", uz: "Men buni yaxshilash ustida ishlayapman.", grammarTip: "'Work on + V-ing' = ustida ishlamoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d77-c3', en: "I'm working on improving it.", uz: "Men buni yaxshilash ustida ishlayapman.", grammarTip: "'Work on + V-ing' = ustida ishlamoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'WORKING'},
-    { id: 'sp-d73-c4', en: "I learn from my mistakes.", uz: "Men xatolarimdan o'rganaman.", grammarTip: "'Learn from' = ...dan o'rganmoq.", commonMistake: "/ɜː/ — til o'rtada, lablar yumaloq emas. O'zbek tilida bu tovush yo'q.",
+    { id: 'sp-d77-c4', en: "I learn from my mistakes.", uz: "Men xatolarimdan o'rganaman.", grammarTip: "'Learn from' = ...dan o'rganmoq.", commonMistake: "/ɜː/ — til o'rtada, lablar yumaloq emas. O'zbek tilida bu tovush yo'q.",
   stressWord: 'LEARN'},
-    { id: 'sp-d73-c5', en: "I'm a good team player.", uz: "Men yaxshi jamoa a'zosiman.", grammarTip: "'Team player' = jamoada ishlaydigan odam.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d77-c5', en: "I'm a good team player.", uz: "Men yaxshi jamoa a'zosiman.", grammarTip: "'Team player' = jamoada ishlaydigan odam.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'A'},
-    { id: 'sp-d73-c6', en: "I always try my best.", uz: "Men har doim qo'limdan kelganini qilaman.", grammarTip: "'Try my best' = qo'ldan kelganini qilmoq.", commonMistake: "Chastota ravishi fe'ldan oldin keladi: 'I always go', 'He never eats'.",
+    { id: 'sp-d77-c6', en: "I always try my best.", uz: "Men har doim qo'limdan kelganini qilaman.", grammarTip: "'Try my best' = qo'ldan kelganini qilmoq.", commonMistake: "Chastota ravishi fe'ldan oldin keladi: 'I always go', 'He never eats'.",
   stressWord: 'ALWAYS'},
   ],
   scenario: {
@@ -3091,12 +3326,13 @@ const day73: SpeakingDay = {
   },
 }
 
-const day74: SpeakingDay = {
-  day: 74, cefr: 'B1',
+const day78: SpeakingDay = {
+  day: 78, cefr: 'B1',
   title: "Maqsad va motivatsiya",
   subtitle: "Rag'bat haqida",
   goalUz: "Maqsad va motivatsiyangiz haqida gapira olasiz.",
   estMinutes: 14,
+  linkedLessonId: 'future-forms-review',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
     { en: 'weekend', uz: 'dam olish kuni', example: 'How was your weekend?' },
@@ -3109,19 +3345,19 @@ const day74: SpeakingDay = {
     tipUz: "/aɪ/ - 'a' dan 'i' ga o'tish. 'Myself' = /maɪˈself/.",
     tipEn: "/aɪ/ - glide from 'a' to 'i'. 'Myself' = /maɪˈself/.",
   },
-  recycledChunkIds: ['sp-d73-c4', 'sp-d73-c6', 'sp-d59-c4'],
+  recycledChunkIds: ['sp-d77-c4', 'sp-d77-c6', 'sp-d63-c4'],
   chunks: [
-    { id: 'sp-d74-c1', en: "I set goals for myself.", uz: "Men o'zimga maqsadlar qo'yaman.", grammarTip: "'Set goals' = maqsad qo'ymoq. 'Myself' = o'zimga (reflexive).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d78-c1', en: "I set goals for myself.", uz: "Men o'zimga maqsadlar qo'yaman.", grammarTip: "'Set goals' = maqsad qo'ymoq. 'Myself' = o'zimga (reflexive).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'SET'},
-    { id: 'sp-d74-c2', en: "I stay motivated by small wins.", uz: "Men kichik g'alabalar bilan rag'batlanaman.", grammarTip: "'Stay motivated' = rag'batlangan holda qolmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d78-c2', en: "I stay motivated by small wins.", uz: "Men kichik g'alabalar bilan rag'batlanaman.", grammarTip: "'Stay motivated' = rag'batlangan holda qolmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'STAY'},
-    { id: 'sp-d74-c3', en: "I never give up easily.", uz: "Men oson taslim bo'lmayman.", grammarTip: "'Give up' = taslim bo'lmoq (phrasal verb).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d78-c3', en: "I never give up easily.", uz: "Men oson taslim bo'lmayman.", grammarTip: "'Give up' = taslim bo'lmoq (phrasal verb).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'NEVER'},
-    { id: 'sp-d74-c4', en: "Hard work pays off.", uz: "Mehnat o'z samarasini beradi.", grammarTip: "'Pays off' = natija bermoq (phrasal verb). Idiom.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d78-c4', en: "Hard work pays off.", uz: "Mehnat o'z samarasini beradi.", grammarTip: "'Pays off' = natija bermoq (phrasal verb). Idiom.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'OFF'},
-    { id: 'sp-d74-c5', en: "I believe in myself.", uz: "Men o'zimga ishonaman.", grammarTip: "'Believe in' = ga ishonmoq.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
+    { id: 'sp-d78-c5', en: "I believe in myself.", uz: "Men o'zimga ishonaman.", grammarTip: "'Believe in' = ga ishonmoq.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'BELIEVE'},
-    { id: 'sp-d74-c6', en: "What motivates you?", uz: "Sizni nima rag'batlantiradi?", grammarTip: "'Motivates' = rag'batlantiradi.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
+    { id: 'sp-d78-c6', en: "What motivates you?", uz: "Sizni nima rag'batlantiradi?", grammarTip: "'Motivates' = rag'batlantiradi.", commonMistake: "/w/ tovushi — lablar yumaloq. O'zbeklar /v/ bilan almashtiradi: 'what' → 'vat' emas.",
   stressWord: 'WHAT'},
   ],
   scenario: {
@@ -3133,12 +3369,13 @@ const day74: SpeakingDay = {
   },
 }
 
-const day75: SpeakingDay = {
-  day: 75, cefr: 'B1',
+const day79: SpeakingDay = {
+  day: 79, cefr: 'B1',
   title: "Yakuniy taqdimot",
   subtitle: "O'zini ishonch bilan taqdim etish",
   goalUz: "O'zingizni ishonch bilan to'liq taqdim eta olasiz - 75-kun yakuni!",
   estMinutes: 15,
+  linkedLessonId: 'linking-words-advanced-b1plus',
   vocab: [
     { en: 'audience', uz: 'tomoshabinlar', example: 'The audience was impressed.' },
     { en: 'slide', uz: 'slayd', example: 'The next slide shows...' },
@@ -3151,19 +3388,19 @@ const day75: SpeakingDay = {
     tipUz: "/aɪ/ - ikki tovushli diftong. Ingliz tilida eng ko'p ishlatiladigan diftonglardan biri.",
     tipEn: "/aɪ/ - a two-sound diphthong. One of the most common English diphthongs.",
   },
-  recycledChunkIds: ['sp-d45-c1', 'sp-d45-c5', 'sp-d73-c1'],
+  recycledChunkIds: ['sp-d49-c1', 'sp-d49-c5', 'sp-d77-c1'],
   chunks: [
-    { id: 'sp-d75-c1', en: "Let me introduce myself properly.", uz: "O'zimni to'liq tanishtiray.", grammarTip: "'Introduce + reflexive' = o'zini tanishtirmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d79-c1', en: "Let me introduce myself properly.", uz: "O'zimni to'liq tanishtiray.", grammarTip: "'Introduce + reflexive' = o'zini tanishtirmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'LET'},
-    { id: 'sp-d75-c2', en: "I'm passionate about learning.", uz: "Men o'rganishga qiziqaman.", grammarTip: "'Passionate about' = ...ga qiziqmoq (kuchli).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d79-c2', en: "I'm passionate about learning.", uz: "Men o'rganishga qiziqaman.", grammarTip: "'Passionate about' = ...ga qiziqmoq (kuchli).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'PASSIONATE'},
-    { id: 'sp-d75-c3', en: "I've come a long way.", uz: "Men uzoq yo'l bosib o'tdim.", grammarTip: "Present Perfect: 'I've come'. 'A long way' = uzoq yo'l. Idiom.", commonMistake: "Sifat otdan oldin keladi: 'a NICE day' (nice day emas 'day nice').",
+    { id: 'sp-d79-c3', en: "I've come a long way.", uz: "Men uzoq yo'l bosib o'tdim.", grammarTip: "Present Perfect: 'I've come'. 'A long way' = uzoq yo'l. Idiom.", commonMistake: "Sifat otdan oldin keladi: 'a NICE day' (nice day emas 'day nice').",
   stressWord: 'WAY'},
-    { id: 'sp-d75-c4', en: "I'm confident speaking English now.", uz: "Men endi ingliz tilida ishonch bilan gapiraman.", grammarTip: "'Confident + V-ing' = ...da ishonchli.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d79-c4', en: "I'm confident speaking English now.", uz: "Men endi ingliz tilida ishonch bilan gapiraman.", grammarTip: "'Confident + V-ing' = ...da ishonchli.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'CONFIDENT'},
-    { id: 'sp-d75-c5', en: "I'm ready for new challenges.", uz: "Men yangi sinovlarga tayyorman.", grammarTip: "'Ready for' = ...ga tayyor.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
+    { id: 'sp-d79-c5', en: "I'm ready for new challenges.", uz: "Men yangi sinovlarga tayyorman.", grammarTip: "'Ready for' = ...ga tayyor.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'READY'},
-    { id: 'sp-d75-c6', en: "Thank you for this opportunity.", uz: "Bu imkoniyat uchun rahmat.", grammarTip: "'Thank you for + ot' = ...uchun rahmat.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
+    { id: 'sp-d79-c6', en: "Thank you for this opportunity.", uz: "Bu imkoniyat uchun rahmat.", grammarTip: "'Thank you for + ot' = ...uchun rahmat.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'OPPORTUNITY'},
   ],
   scenario: {
@@ -3185,5 +3422,5 @@ export const SPEAKING_DAYS: SpeakingDay[] = [
   day49, day50, day51, day52, day53, day54, day55, day56,
   day57, day58, day59, day60, day61, day62, day63, day64,
   day65, day66, day67, day68, day69, day70, day71, day72,
-  day73, day74, day75,
+  day73, day74, day75, day76, day77, day78, day79
 ]

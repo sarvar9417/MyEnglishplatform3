@@ -291,10 +291,10 @@ export const quantifiers: DailyLesson = {
     },
   ],
   exercises: [
-    { id: 29045, type: 'fill-blank', instruction: "Much yoki many qo'ying:", question: 'How ___ sugar do you need?', blanks: ['much'], acceptedAnswers: [['much', 'a lot of']], explanation: "Sugar — sanalmaydigan → much (lekin a lot of ham to'g'ri)." },
-    { id: 29046, type: 'fill-blank', instruction: "Much yoki many qo'ying:", question: 'How ___ books do you have?', blanks: ['many'], acceptedAnswers: [['many', 'a lot of']], explanation: "Books — sanaluvchi → many (lekin a lot of ham to'g'ri)." },
-    { id: 29047, type: 'fill-blank', instruction: "Some yoki any qo'ying:", question: 'I have ___ good news for you.', blanks: ['some'], acceptedAnswers: [['some', 'a lot of']], explanation: "Ijobiy gap → some (lekin a lot of ham to'g'ri)." },
-    { id: 29048, type: 'fill-blank', instruction: "Some yoki any qo'ying:", question: "I don't have ___ money.", blanks: ['any'], acceptedAnswers: [['any', 'much']], explanation: "Inkor → any (lekin much ham to'g'ri)." },
+    { id: 29045, type: 'fill-blank', instruction: "Much yoki many qo'ying:", question: 'How ___ sugar do you need?', blanks: ['much'], explanation: "Sugar — sanalmaydigan, shuning uchun How much." },
+    { id: 29046, type: 'fill-blank', instruction: "Much yoki many qo'ying:", question: 'How ___ books do you have?', blanks: ['many'], acceptedAnswers: [['many', 'a lot of']], explanation: "Books — sanaluvchi → many; a lot of ham grammatik to'g'ri." },
+    { id: 29047, type: 'fill-blank', instruction: "Some yoki any qo'ying:", question: 'I have ___ good news for you.', blanks: ['some'], acceptedAnswers: [['some', 'a lot of']], explanation: "Ijobiy gap → some; a lot of ham grammatik to'g'ri." },
+    { id: 29048, type: 'fill-blank', instruction: "Some yoki any qo'ying:", question: "I don't have ___ money.", blanks: ['any'], acceptedAnswers: [['any', 'much', 'a lot of']], explanation: "Inkor → any; much/a lot of ham grammatik to'g'ri." },
     { id: 29049, type: 'fill-blank', instruction: "A few yoki a little qo'ying:", question: 'There are ___ apples in the basket.', blanks: ['a few'], explanation: "Apples — sanaluvchi \u2192 a few" },
     { id: 29050, type: 'multiple-choice', instruction: "To'g'ri variant:", question: 'How ___ time do we have?', options: ['much', 'many', 'a lot of', 'few'], correct: 'much', explanation: "Time — sanalmaydigan" },
     { id: 29051, type: 'multiple-choice', instruction: "To'g'ri variant:", question: 'There are ___ people in the room.', options: ['a lot of', 'much', 'a little', 'little'], correct: 'a lot of', explanation: "People — sanaluvchi, ijobiy \u2192 a lot of" },
@@ -798,7 +798,7 @@ export const a2Review2: DailyLesson = {
   ],
   exercises: [
     { id: 29167, type: 'fill-blank', instruction: "Present Continuous:", question: 'She ___ (fly) to Rome next Friday.', blanks: ['is flying'], explanation: "Safar rejasi — Present Continuous" },
-    { id: 29168, type: 'fill-blank', instruction: "Much yoki many:", question: 'How ___ time do we have left?', blanks: ['much'], acceptedAnswers: [['much', 'a lot of']], explanation: "Time — sanalmaydigan (lekin a lot of ham to'g'ri)." },
+    { id: 29168, type: 'fill-blank', instruction: "Much yoki many:", question: 'How ___ time do we have left?', blanks: ['much'], explanation: "Time — sanalmaydigan, shuning uchun How much." },
     { id: 29169, type: 'fill-blank', instruction: "Too yoki enough:", question: 'The soup is ___ salty. I cannot eat it.', blanks: ['too'], explanation: "Ortiqcha — too" },
     { id: 29170, type: 'fill-blank', instruction: "So yoki such:", question: 'The book was ___ interesting!', blanks: ['so'], explanation: "Interesting — sifat (ot yo'q)" },
     { id: 29171, type: 'fill-blank', instruction: "A few yoki a little:", question: 'I need ___ minutes to finish this.', blanks: ['a few'], explanation: "Minutes — sanaluvchi \u2192 a few" },

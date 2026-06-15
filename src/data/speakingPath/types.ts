@@ -64,7 +64,7 @@ export interface SpeakingScenario {
 export interface SpeakingDay {
   /** 1..N, ketma-ketlik */
   day: number
-  cefr: 'A0' | 'A1' | 'A2' | 'B1'
+  cefr: 'A0' | 'A1' | 'A2' | 'B1' | 'B1+' | 'B2'
   /** "Salomlashish va tanishish" */
   title: string
   /** qisqa tavsif */
@@ -85,6 +85,14 @@ export interface SpeakingDay {
   isReviewDay?: boolean
   /** Scenario uchun kerakli qo'shimcha lug'at (just-in-time vocabulary) */
   vocab?: VocabItem[]
+  // -- Phase 2: Grammar-Driven Speaking --
+  /** Daily lesson ID ga bog'lash. Format: daily lesson id bilan bir xil — kebab-case string.
+   *  B1+ ID'lari '-b1plus' suffix'i bilan, B2 ID'lari '-b2' suffix'i bilan */
+  linkedLessonId?: string
+  /** Shu kunda ishlatiladigan daily lesson vocabulary ID'lari */
+  usedVocabIds?: string[]
+  /** Grammatika punktining qisqa nomi (display uchun) */
+  grammarPoint?: string
 }
 
 /** Foydalanuvchining bir kun bo'yicha progressi (runtime/persist) */
@@ -97,4 +105,21 @@ export interface SpeakingDayProgress {
   spokenSeconds: number
   /** ISO sana */
   completedAt?: string
+  // -- Phase 2 additions --
+  /** Shu kundagi grammar quiz balli */
+  grammarScore?: number
+  /** Shu kunda practice qilingan daily lesson ID'lari */
+  practicedLessonIds?: string[]
+}
+
+/** Grammar Track progress (persist) */
+export interface GrammarProgress {
+  lessonId: string
+  grammarPoint: string
+  level: string
+  status: 'not-started' | 'practice' | 'mastered'
+  bestScore: number
+  practiceCount: number
+  lastPracticedAt?: string
+  usedInFreeMode: boolean
 }

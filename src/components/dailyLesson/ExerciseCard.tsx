@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useRef } from 'react'
 import type { DailyExercise } from '../../data/dailyLessons'
-import { normalizeAnswer, OPTION_LABELS, getCorrectText } from './helpers'
+import { normalizeAnswer, OPTION_LABELS, getCorrectText, checkAnswer, isBlankAccepted, isAcceptedAnswer } from './helpers'
 import { feelAnswer } from '../../lib/gameFeel'
 import { AudioButton } from '../ui/AudioButton'
 
@@ -94,7 +94,7 @@ export default function ExerciseCard({
                   <input type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder="___"
                     className={`inline-block border-b-2 w-32 text-center text-sm font-semibold outline-none bg-transparent transition-all duration-200 ${
                       submitted
-                        ? normalizeAnswer(answers[i] ?? '') === normalizeAnswer(ex.blanks[i] ?? '')
+                        ? isBlankAccepted(ex, i, answers[i] ?? '')
                           ? 'border-green-500 text-green-700 dark:text-green-400'
                           : 'border-red-400 text-red-700 dark:text-red-400'
                         : 'border-primary-400 text-primary-700 dark:text-primary-300 focus:border-primary-600 focus:scale-105'
@@ -384,60 +384,6 @@ export default function ExerciseCard({
       )}
     </div>
   )
-}
-
-function checkAnswer(ex: DailyExercise, userAns: string[]): boolean {
-  return submittedCheck(ex, userAns)
-}
-
-/**
- * Check if an answer is in the accepted answers list
- */
-function isAcceptedAnswer(userAnswer: string, accepted: string[]): boolean {
-  return accepted.some(a => normalizeAnswer(a) === normalizeAnswer(userAnswer))
-}
-
-function submittedCheck(ex: DailyExercise, userAns: string[]): boolean {
-  if (!userAns || userAns.length === 0) return false
-  switch (ex.type) {
-    case 'fill-blank': {
-      // Check if all answers are correct, considering acceptedAnswers
-      const allCorrect = ex.blanks.every((b, i) => {
-        const userAnswer = userAns[i] ?? ''
-        const cleaned = normalizeAnswer(userAnswer)
-        
-        // Check against acceptedAnswers first (if provided)
-        if (ex.acceptedAnswers && ex.acceptedAnswers[i]) {
-          if (isAcceptedAnswer(userAnswer, ex.acceptedAnswers[i])) {
-            return true
-          }
-        }
-        
-        // Fall back to original logic (blanks with / separator)
-        return b.split('/').some(alt => normalizeAnswer(alt) === cleaned)
-      })
-      return allCorrect
-    }
-    case 'multiple-choice':
-    case 'error-correction':
-    case 'transformation':
-      return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
-    case 'fill-table': {
-      const expected = ex.rows.flatMap((r) => [r.comp, r.sup])
-      return expected.every((b, i) => b === '' || normalizeAnswer(userAns[i] ?? '') === normalizeAnswer(b))
-    }
-    case 'vocab-match':
-      return normalizeAnswer(userAns[0] ?? '') === normalizeAnswer(ex.correct)
-    case 'passage': {
-      return ex.blanks.every((b, i) => {
-        const userAnswer = userAns[i] ?? ''
-        if (ex.acceptedAnswers?.[i] && isAcceptedAnswer(userAnswer, ex.acceptedAnswers[i])) return true
-        return b.split('/').some(alt => normalizeAnswer(alt) === normalizeAnswer(userAnswer))
-      })
-    }
-    case 'connection':
-      return (userAns[0] ?? '').trim().length > 0
-  }
 }
 
 /**

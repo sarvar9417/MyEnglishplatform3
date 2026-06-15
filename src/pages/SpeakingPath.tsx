@@ -38,7 +38,22 @@ export default function SpeakingPath() {
 
   // Tab: 'path' (narvon) | 'free' (erkin amaliyot). /speaking → ?tab=free redirect.
   const [searchParams, setSearchParams] = useSearchParams()
-  const [tab, setTab] = useState<'path' | 'free'>(searchParams.get('tab') === 'free' ? 'free' : 'path')
+  const [tab, setTab] = useState<'path' | 'free'>(searchParams.get('tab') === 'free' ? 'free' : 'path')    // ?day=N param — daily lesson dan kelganda o'sha speaking kunga scroll
+    const dayParam = searchParams.get('day')
+    useEffect(() => {
+      if (dayParam && !loading) {
+        const dayNum = parseInt(dayParam, 10)
+        if (!isNaN(dayNum) && dayNum >= 1 && dayNum <= TOTAL_SPEAKING_DAYS) {
+          setExpandedDay(dayNum)
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              const el = document.querySelector(`[data-day="${dayNum}"]`)
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+            })
+          })
+        }
+      }
+    }, [dayParam, loading])
 
   const loadProgress = useCallback(async () => {
     if (!userId) return
@@ -184,7 +199,7 @@ export default function SpeakingPath() {
             speakingStreak: speakingStats?.streakDays ?? 0,
             chunksMastered: speakingStats?.chunksMastered ?? 0,
             bestSpeakScore: speakingStats?.avgSpeakScore7d ?? 0,
-            cefr: unlockedDay >= 64 ? 'B2' : unlockedDay >= 36 ? 'B1' : unlockedDay >= 19 ? 'A2' : unlockedDay >= 7 ? 'A1' : 'A0',
+            cefr: unlockedDay >= 41 ? 'B1' : unlockedDay >= 19 ? 'A2' : unlockedDay >= 4 ? 'A1' : 'A0',
           }}
         />
       )}

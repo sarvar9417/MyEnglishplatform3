@@ -71,10 +71,10 @@ const AMBIGUOUS_PATTERNS = [
 
 // Kontekst so'zlari — agar savolda bu so'zlar bo'lsa, aniq bo'ladi
 const CONTEXT_WORDS = [
-  'near', 'far', 'close', 'here', 'there', 'always', 'every day', 
+  'near', 'far', 'close', 'here', 'there', 'always', 'every day',
   'now', 'at the moment', 'right now', 'currently', 'today', 'tomorrow',
   'yesterday', 'next week', 'last night', 'soon', 'later', 'before',
-  'after', 'when', 'while', 'as', 'because', 'since', 'if', 'unless',
+  'after', 'when', 'while', 'as', 'because', 'since', 'if', 'unless', 'how',
   // O'zbekcha kontekst so'zlari
   'yaqin', 'uzoq', 'bular', 'ular', 'birlik', 'ko\'plik'
 ]

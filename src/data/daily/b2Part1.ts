@@ -995,7 +995,7 @@ export const hedgingB2: DailyLesson = {
         { en: 'She seems upset about something.', uz: "U nimadandir xafa bo'lganga o'xshaydi." },
       ],
       drills: [
-        { id: 54230, type: 'fill-blank', instruction: 'Seem yoki appear bilan to\'ldiring:', question: 'She _____ to be the best candidate for the job.', blanks: ['seems'], explanation: "'Seems to be' = tuyuladi. Ikkalasi ham to'g'ri, 'seems' sub'ektiv." },
+        { id: 54230, type: 'fill-blank', instruction: 'Seem yoki appear bilan to\'ldiring:', question: 'She _____ to be the best candidate for the job.', blanks: ['seems'], acceptedAnswers: [['seems', 'appears']], explanation: "'Seems to be' = tuyuladi; 'appears to be' ham grammatik to'g'ri." },
         { id: 54231, type: 'multiple-choice', instruction: 'To\'g\'ri variantni tanlang:', question: 'He _____ like a very nice person.', options: ['seems', 'appears', 'seems like', 'looks'], correct: 'seems like', explanation: "'Seem like + noun' — 'a very nice person' noun." },
         { id: 54232, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The results appear that the experiment failed.', errorPart: 'appear that', correct: 'The results appear to show that the experiment failed.', explanation: "'Appear that' kam qo'llaniladi. 'Appear to show that' ko'proq akademik." },
       ],
