@@ -235,3 +235,57 @@ const A2_P1: Lesson[] = [
   },
 ]
 seed('src/data/daily/a2Part1.ts', A2_P1)
+
+const A2_P2: Lesson[] = [
+  {
+    id: 'adjectiveAdverb', name: 'Adjective vs Adverb',
+    section: "Sifat/ravish + Comparative farqi",
+    exercises: `    // ── Interleaved Practice: Adjective/Adverb + Comparatives ──
+    { id: ID0, type: 'multiple-choice', instruction: "Sifat (be bilan) va ravish (fe'l bilan):", question: "She is a _____ driver. She drives very _____.", options: ["careful / carefully", "carefully / careful", "careful / careful", "carefully / carefully"], correct: "careful / carefully", explanation: "Ot oldida sifat → careful driver. Fe'lni tavsiflaydi → drives carefully (ravish)." },
+    { id: ID1, type: 'fill-blank', instruction: "Good (sifat) va well (ravish):", question: "He is a _____ student and he speaks English _____.", blanks: ["good", "well"], explanation: "Ot → good student (sifat). Fe'l → speaks well (ravish, 'good'ning ravishi)." },
+    { id: ID2, type: 'error-correction', instruction: "Fe'ldan keyin ravish:", question: "She sings beautiful.", errorPart: "beautiful", correct: "She sings beautifully.", explanation: "Fe'lni (sings) tavsiflaydi → ravish: beautifully." },
+    { id: ID3, type: 'multiple-choice', instruction: "Comparative (sifat va ravish):", question: "My car is _____ than yours, and it runs _____.", options: ["faster / faster", "more fast / faster", "faster / more fast", "fast / fast"], correct: "faster / faster", explanation: "Qisqa sifat/ravish → +er (faster) ikkala holда." },
+    { id: ID4, type: 'transformation', instruction: "Sifatni ravishga aylantiring:", question: "He is a quick worker.", hint: "He works ...", correct: "He works quickly.", explanation: "Sifat (quick) → ravish (quickly) fe'l bilan." },`,
+  },
+  {
+    id: 'gerundsInfinitives', name: 'Gerunds and Infinitives',
+    section: "Gerund/infinitiv + Like/want farqi",
+    exercises: `    // ── Interleaved Practice: Gerunds/Infinitives + verb patterns ──
+    { id: ID0, type: 'multiple-choice', instruction: "Enjoy + V-ing va want + to V:", question: "I enjoy _____ books, but I want _____ a new hobby.", options: ["reading / to start", "to read / starting", "reading / starting", "to read / to start"], correct: "reading / to start", explanation: "Enjoy + V-ing (reading). Want + to V (to start)." },
+    { id: ID1, type: 'fill-blank', instruction: "Decide + to V va finish + V-ing:", question: "She decided _____ (study) medicine. He finished _____ (write) the report.", blanks: ["to study", "writing"], explanation: "Decide + to V. Finish + V-ing." },
+    { id: ID2, type: 'error-correction', instruction: "Like + V-ing/to V (avoid + V-ing):", question: "I avoid to eat late at night.", errorPart: "to eat", correct: "I avoid eating late at night.", explanation: "Avoid + V-ing (eating), to V emas." },
+    { id: ID3, type: 'multiple-choice', instruction: "Preposition + V-ing:", question: "She is good at _____, and she is interested in _____ a language.", options: ["cooking / learning", "to cook / to learn", "cooking / to learn", "cook / learn"], correct: "cooking / learning", explanation: "Predlogdan keyin (at, in) → V-ing (cooking, learning)." },
+    { id: ID4, type: 'transformation', instruction: "Want + to V shaklida yozing:", question: "Her plan is a trip to London. (use 'want')", hint: "She wants ...", correct: "She wants to travel to London.", explanation: "Want + to V (to travel)." },`,
+  },
+  {
+    id: 'passiveVoice', name: 'Passive Voice',
+    section: "Passive + Active/Tenses farqi",
+    exercises: `    // ── Interleaved Practice: Passive + Active/Tenses ──
+    { id: ID0, type: 'multiple-choice', instruction: "Active va passive farqi:", question: "Shakespeare _____ Hamlet. Hamlet _____ by Shakespeare.", options: ["wrote / was written", "was written / wrote", "writes / is written", "wrote / wrote"], correct: "wrote / was written", explanation: "Active: Shakespeare wrote. Passive: Hamlet was written by..." },
+    { id: ID1, type: 'fill-blank', instruction: "Present va past passive:", question: "Rice _____ (grow) in Asia. This bridge _____ (build) in 1900.", blanks: ["is grown", "was built"], explanation: "Present passive → is grown. Past passive → was built." },
+    { id: ID2, type: 'error-correction', instruction: "Passive V3 shakli:", question: "The window was break by the storm.", errorPart: "was break", correct: "The window was broken by the storm.", explanation: "Passive: be + V3 (broken), 'break' emas." },
+    { id: ID3, type: 'multiple-choice', instruction: "Qachon passive (agent muhim emas):", question: "My car _____ yesterday. Someone _____ it from the street.", options: ["was stolen / stole", "stole / was stolen", "is stolen / steals", "was stole / stolen"], correct: "was stolen / stole", explanation: "Kim qilgani noma'lum/muhim emas → passive (was stolen). Active: someone stole." },
+    { id: ID4, type: 'transformation', instruction: "Active gapni passivega aylantiring:", question: "They clean the office every day.", hint: "The office ...", correct: "The office is cleaned every day.", explanation: "Present passive → is cleaned." },`,
+  },
+  {
+    id: 'reportedSpeech', name: 'Reported Speech',
+    section: "Reported speech + Tenses (backshift) farqi",
+    exercises: `    // ── Interleaved Practice: Reported Speech + Tense backshift ──
+    { id: ID0, type: 'multiple-choice', instruction: "Direct va reported (zamon orqaga):", question: "Direct: 'I am tired.' Reported: He said he _____ tired. Direct: 'I will come.' Reported: She said she _____ come.", options: ["was / would", "is / will", "was / will", "is / would"], correct: "was / would", explanation: "Reported'da zamon orqaga: am → was, will → would." },
+    { id: ID1, type: 'fill-blank', instruction: "Reported question (if/that):", question: "She asked _____ I was free. He told me _____ he was busy.", blanks: ["if", "that"], explanation: "Reported yes/no question → if. Reported statement → that." },
+    { id: ID2, type: 'error-correction', instruction: "Reported question — inversiya yo'q:", question: "He asked where was I.", errorPart: "where was I", correct: "He asked where I was.", explanation: "Reported question'da inversiya yo'q → where I was." },
+    { id: ID3, type: 'multiple-choice', instruction: "Say va tell farqi:", question: "She _____ that she was happy. She _____ me that she was happy.", options: ["said / told", "told / said", "said / said", "told / told"], correct: "said / told", explanation: "Say + that (object yo'q). Tell + object (me) + that." },
+    { id: ID4, type: 'transformation', instruction: "Direct gapni reported qiling:", question: "Tom said: 'I live in Tashkent.'", hint: "Tom said that he ...", correct: "Tom said that he lived in Tashkent.", explanation: "Present → past (live → lived), I → he." },`,
+  },
+  {
+    id: 'firstConditional', name: 'First Conditional',
+    section: "First conditional + Time clauses / future farqi",
+    exercises: `    // ── Interleaved Practice: First Conditional + Future/Time clauses ──
+    { id: ID0, type: 'multiple-choice', instruction: "If + present, will + V1:", question: "If it _____ tomorrow, we _____ at home.", options: ["rains / will stay", "will rain / stay", "rains / stay", "will rain / will stay"], correct: "rains / will stay", explanation: "First conditional: if + Present Simple (rains), asosiy gap will + V1 (will stay)." },
+    { id: ID1, type: 'fill-blank', instruction: "When (time clause) va if (shart):", question: "I will call you when I _____ home. I will help if you _____ me.", blanks: ["get", "ask"], explanation: "When/if dan keyin Present Simple (get, ask) — 'will' emas." },
+    { id: ID2, type: 'error-correction', instruction: "If qismida 'will' ishlatilmaydi:", question: "If you will study hard, you will pass.", errorPart: "will study", correct: "If you study hard, you will pass.", explanation: "If qismida Present Simple (study). 'Will' faqat asosiy gapда." },
+    { id: ID3, type: 'multiple-choice', instruction: "Unless (agar ...masa):", question: "You will be late _____ you hurry. _____ it stops raining, we will stay in.", options: ["unless / Unless", "if / If", "unless / If", "if / Unless"], correct: "unless / Unless", explanation: "Unless = if...not (agar shoshilmasangiz). Unless it stops = agar to'xtamasa." },
+    { id: ID4, type: 'transformation', instruction: "Ikki gapni first conditional bilan birlashtiring:", question: "Maybe you will be tired. Then you should rest.", hint: "If you ...", correct: "If you are tired, you should rest.", explanation: "If + Present Simple (are tired), asosiy gap (should rest)." },`,
+  },
+]
+seed('src/data/daily/a2Part2.ts', A2_P2)

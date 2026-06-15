@@ -153,6 +153,14 @@ export const adjectiveAdverb: DailyLesson = {
     { id: 19030, type: 'vocab-match', instruction: "Sifat (adjective) yoki ravish (adverb) ekanini aniqlang:", word: 'quickly (tezda)', options: ['adjective', 'adverb', 'ikkala', 'fe\'l'], correct: 'adverb', explanation: "Quickly — ravish: He runs quickly (tez yuguradi). -ly qo'shimchasi." },
     { id: 19031, type: 'vocab-match', instruction: "To'g'ri shaklni tanlang (adjective yoki adverb):", word: 'She sings ____ (beautiful)', options: ['beautiful', 'beautifully', 'beauty', 'beautify'], correct: 'beautifully', explanation: "Fe'ldan keyin adverb: sings beautifully." },
     { id: 19032, type: 'vocab-match', instruction: "To'g'ri shaklni tanlang (adjective yoki adverb):", word: 'He is a ____ driver (careful)', options: ['careful', 'carefully', 'carefulness', 'care'], correct: 'careful', explanation: "Ot oldidan adjective: a careful driver." },
+
+
+    // ── Interleaved Practice: Adjective/Adverb + Comparatives ──
+    { id: 95161, type: 'multiple-choice', instruction: "Sifat (be bilan) va ravish (fe'l bilan):", question: "She is a _____ driver. She drives very _____.", options: ["careful / carefully", "carefully / careful", "careful / careful", "carefully / carefully"], correct: "careful / carefully", explanation: "Ot oldida sifat → careful driver. Fe'lni tavsiflaydi → drives carefully (ravish)." },
+    { id: 95162, type: 'fill-blank', instruction: "Good (sifat) va well (ravish):", question: "He is a _____ student and he speaks English _____.", blanks: ["good", "well"], explanation: "Ot → good student (sifat). Fe'l → speaks well (ravish, 'good'ning ravishi)." },
+    { id: 95163, type: 'error-correction', instruction: "Fe'ldan keyin ravish:", question: "She sings beautiful.", errorPart: "beautiful", correct: "She sings beautifully.", explanation: "Fe'lni (sings) tavsiflaydi → ravish: beautifully." },
+    { id: 95164, type: 'multiple-choice', instruction: "Comparative (sifat va ravish):", question: "My car is _____ than yours, and it runs _____.", options: ["faster / faster", "more fast / faster", "faster / more fast", "fast / fast"], correct: "faster / faster", explanation: "Qisqa sifat/ravish → +er (faster) ikkala holда." },
+    { id: 95165, type: 'transformation', instruction: "Sifatni ravishga aylantiring:", question: "He is a quick worker.", hint: "He works ...", correct: "He works quickly.", explanation: "Sifat (quick) → ravish (quickly) fe'l bilan." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Adj vs Adv asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1901, 1902, 1903, 1904, 1905] },
@@ -160,6 +168,7 @@ export const adjectiveAdverb: DailyLesson = {
     { title: "Qiyin", desc: 'Good/Well, Hard/Hardly', color: 'bg-violet-500', icon: '🎯', ids: [1912, 1914, 1911, 1913, 1915] },
     { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [1918, 1920, 1919, 1917, 1915, 1913, 1916, 1918, 1920, 1916] },
     { title: "O'zgartirish", desc: 'Adj vs Adv farqi', color: 'bg-teal-500', icon: '🔄', ids: [50009, 50010, 50011, 50012] },
+    { title: "🔀 Aralash", desc: "Sifat/ravish + Comparative farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95161, 95162, 95163, 95164, 95165] },
   ],
   tests: [
     { id: 19033, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Adjective nima vazifasini bajaradi?", options: ['otni tavsiflaydi', 'fe\'lni tavsiflaydi', 'sifatni tavsiflaydi', 'ravishni tavsiflaydi'], correct: 'otni tavsiflaydi', explanation: "Adjective — otni tavsiflaydi" },
@@ -337,12 +346,21 @@ export const gerundsInfinitives: DailyLesson = {
     { id: 19074, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I suggest to take a break.', errorPart: 'to take', correct: 'I suggest taking a break.', explanation: "Suggest + V-ing" },
     { id: 19075, type: 'fill-blank', instruction: "Infinitive bilan:", question: 'She promised ___ me.', blanks: ['to help'], explanation: "Promise + to + V1" },
     { id: 19076, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['I enjoy to read', 'I enjoy reading', 'I enjoy read', 'I enjoy to reading'], correct: 'I enjoy reading', explanation: "Enjoy + V-ing" },
+
+
+    // ── Interleaved Practice: Gerunds/Infinitives + verb patterns ──
+    { id: 95171, type: 'multiple-choice', instruction: "Enjoy + V-ing va want + to V:", question: "I enjoy _____ books, but I want _____ a new hobby.", options: ["reading / to start", "to read / starting", "reading / starting", "to read / to start"], correct: "reading / to start", explanation: "Enjoy + V-ing (reading). Want + to V (to start)." },
+    { id: 95172, type: 'fill-blank', instruction: "Decide + to V va finish + V-ing:", question: "She decided _____ (study) medicine. He finished _____ (write) the report.", blanks: ["to study", "writing"], explanation: "Decide + to V. Finish + V-ing." },
+    { id: 95173, type: 'error-correction', instruction: "Like + V-ing/to V (avoid + V-ing):", question: "I avoid to eat late at night.", errorPart: "to eat", correct: "I avoid eating late at night.", explanation: "Avoid + V-ing (eating), to V emas." },
+    { id: 95174, type: 'multiple-choice', instruction: "Preposition + V-ing:", question: "She is good at _____, and she is interested in _____ a language.", options: ["cooking / learning", "to cook / to learn", "cooking / to learn", "cook / learn"], correct: "cooking / learning", explanation: "Predlogdan keyin (at, in) → V-ing (cooking, learning)." },
+    { id: 95175, type: 'transformation', instruction: "Want + to V shaklida yozing:", question: "Her plan is a trip to London. (use 'want')", hint: "She wants ...", correct: "She wants to travel to London.", explanation: "Want + to V (to travel)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Gerund asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [2001, 2002, 2003, 2004, 2005] },
     { title: "O'rtacha", desc: 'Infinitive asoslari', color: 'bg-blue-500', icon: '📘', ids: [2006, 2007, 2008, 2009, 2010] },
     { title: "Qiyin", desc: 'Stop, Remember, Forget', color: 'bg-violet-500', icon: '🎯', ids: [2013, 2014, 2011, 2012, 2015] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2020, 2016, 2015, 2018, 2018, 2020, 2017, 2012, 2019, 2016] },
+    { title: "🔀 Aralash", desc: "Gerund/infinitiv + Like/want farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95171, 95172, 95173, 95174, 95175] },
   ],
   tests: [
     { id: 19077, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Gerund qanday yasaladi?", options: ['to + V1', 'V + -ing', 'V + -ed', 'V + -s'], correct: 'V + -ing', explanation: "Gerund = V + -ing" },
@@ -517,12 +535,21 @@ export const passiveVoice: DailyLesson = {
     { id: 19118, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['The house was build', 'The house was built', 'The house is build', 'The house built'], correct: 'The house was built', explanation: "Past Passive: was built" },
     { id: 19119, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The letter was wrote yesterday.', errorPart: 'wrote', correct: 'The letter was written yesterday.', explanation: "Write → written" },
     { id: 19120, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'By nima uchun ishlatiladi?', options: ['bajaruvchini ko\'rsatish', 'vaqtni ko\'rsatish', 'joyni ko\'rsatish', 'sababni ko\'rsatish'], correct: 'bajaruvchini ko\'rsatish', explanation: "By + agent = bajaruvchi" },
+
+
+    // ── Interleaved Practice: Passive + Active/Tenses ──
+    { id: 95181, type: 'multiple-choice', instruction: "Active va passive farqi:", question: "Shakespeare _____ Hamlet. Hamlet _____ by Shakespeare.", options: ["wrote / was written", "was written / wrote", "writes / is written", "wrote / wrote"], correct: "wrote / was written", explanation: "Active: Shakespeare wrote. Passive: Hamlet was written by..." },
+    { id: 95182, type: 'fill-blank', instruction: "Present va past passive:", question: "Rice _____ (grow) in Asia. This bridge _____ (build) in 1900.", blanks: ["is grown", "was built"], explanation: "Present passive → is grown. Past passive → was built." },
+    { id: 95183, type: 'error-correction', instruction: "Passive V3 shakli:", question: "The window was break by the storm.", errorPart: "was break", correct: "The window was broken by the storm.", explanation: "Passive: be + V3 (broken), 'break' emas." },
+    { id: 95184, type: 'multiple-choice', instruction: "Qachon passive (agent muhim emas):", question: "My car _____ yesterday. Someone _____ it from the street.", options: ["was stolen / stole", "stole / was stolen", "is stolen / steals", "was stole / stolen"], correct: "was stolen / stole", explanation: "Kim qilgani noma'lum/muhim emas → passive (was stolen). Active: someone stole." },
+    { id: 95185, type: 'transformation', instruction: "Active gapni passivega aylantiring:", question: "They clean the office every day.", hint: "The office ...", correct: "The office is cleaned every day.", explanation: "Present passive → is cleaned." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Present Passive', color: 'bg-emerald-500', icon: '🌱', ids: [2101, 2102, 2103, 2104, 2105] },
     { title: "O'rtacha", desc: 'Past Passive', color: 'bg-blue-500', icon: '📘', ids: [2106, 2107, 2108, 2109, 2110] },
     { title: "Qiyin", desc: 'Inkor va savol shakllari', color: 'bg-violet-500', icon: '🎯', ids: [2113, 2114, 2111, 2115, 2112] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2115, 2120, 2120, 2117, 2112, 2116, 2119, 2117, 2118, 2119] },
+    { title: "🔀 Aralash", desc: "Passive + Active/Tenses farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95181, 95182, 95183, 95184, 95185] },
   ],
   tests: [
     { id: 19121, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Passive Voice nima?", options: ['bajaruvchi muhim', 'harakat muhim', 'vaqt muhim', 'joy muhim'], correct: 'harakat muhim', explanation: "Passive — harakat muhim" },
@@ -707,12 +734,21 @@ export const reportedSpeech: DailyLesson = {
     { id: 19167, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['He told me that he was tired', 'He told that he was tired', 'He said me that he was tired', 'He told to me that he was tired'], correct: 'He told me that he was tired', explanation: "Tell + person + that" },
     { id: 19168, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She asked what did I want.', errorPart: 'did I want', correct: 'She asked what I wanted.', explanation: "Subject + verb, no auxiliary" },
     { id: 19169, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She asked ___ I liked coffee.', options: ['if', 'that', 'what', 'where'], correct: 'if', explanation: "Yes/no → if/whether" },
+
+
+    // ── Interleaved Practice: Reported Speech + Tense backshift ──
+    { id: 95191, type: 'multiple-choice', instruction: "Direct va reported (zamon orqaga):", question: "Direct: 'I am tired.' Reported: He said he _____ tired. Direct: 'I will come.' Reported: She said she _____ come.", options: ["was / would", "is / will", "was / will", "is / would"], correct: "was / would", explanation: "Reported'da zamon orqaga: am → was, will → would." },
+    { id: 95192, type: 'fill-blank', instruction: "Reported question (if/that):", question: "She asked _____ I was free. He told me _____ he was busy.", blanks: ["if", "that"], explanation: "Reported yes/no question → if. Reported statement → that." },
+    { id: 95193, type: 'error-correction', instruction: "Reported question — inversiya yo'q:", question: "He asked where was I.", errorPart: "where was I", correct: "He asked where I was.", explanation: "Reported question'da inversiya yo'q → where I was." },
+    { id: 95194, type: 'multiple-choice', instruction: "Say va tell farqi:", question: "She _____ that she was happy. She _____ me that she was happy.", options: ["said / told", "told / said", "said / said", "told / told"], correct: "said / told", explanation: "Say + that (object yo'q). Tell + object (me) + that." },
+    { id: 95195, type: 'transformation', instruction: "Direct gapni reported qiling:", question: "Tom said: 'I live in Tashkent.'", hint: "Tom said that he ...", correct: "Tom said that he lived in Tashkent.", explanation: "Present → past (live → lived), I → he." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Say va Tell', color: 'bg-emerald-500', icon: '🌱', ids: [2201, 2202, 2203, 2204, 2205] },
     { title: "O'rtacha", desc: 'Tense backshift', color: 'bg-blue-500', icon: '📘', ids: [2206, 2207, 2208, 2209, 2210] },
     { title: "Qiyin", desc: 'Reported questions', color: 'bg-violet-500', icon: '🎯', ids: [2213, 2214, 2211, 2212, 2215] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2220, 2215, 2219, 2219, 2217, 2218, 2212, 2216, 2220, 2217] },
+    { title: "🔀 Aralash", desc: "Reported speech + Tenses (backshift) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95191, 95192, 95193, 95194, 95195] },
   ],
   tests: [
     { id: 19170, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Say va Tell farqi?", options: ['say + person, tell + that', 'tell + person, say + (that)', 'ikkalasi bir xil', 'say + to + person, tell + to + person'], correct: 'tell + person, say + (that)', explanation: "Tell + person, say + (that)" },
@@ -895,12 +931,21 @@ export const firstConditional: DailyLesson = {
     { id: 19216, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['If I will have time, I will help', 'If I have time, I will help', 'If I have time, I help', 'If I had time, I will help'], correct: 'If I have time, I will help', explanation: "If + Present, will + V1" },
     { id: 19217, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Unless you don\'t hurry, you will be late.', errorPart: "don't hurry", correct: 'Unless you hurry, you will be late.', explanation: "Unless + ijobiy shakl (+ inkor KERAK EMAS)" },
     { id: 19218, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'What ___ if she says no?', options: ['will you do', 'do you', 'you will do', 'you do'], correct: 'will you do', explanation: "Wh- + will + subject + V1?" },
+
+
+    // ── Interleaved Practice: First Conditional + Future/Time clauses ──
+    { id: 95201, type: 'multiple-choice', instruction: "If + present, will + V1:", question: "If it _____ tomorrow, we _____ at home.", options: ["rains / will stay", "will rain / stay", "rains / stay", "will rain / will stay"], correct: "rains / will stay", explanation: "First conditional: if + Present Simple (rains), asosiy gap will + V1 (will stay)." },
+    { id: 95202, type: 'fill-blank', instruction: "When (time clause) va if (shart):", question: "I will call you when I _____ home. I will help if you _____ me.", blanks: ["get", "ask"], explanation: "When/if dan keyin Present Simple (get, ask) — 'will' emas." },
+    { id: 95203, type: 'error-correction', instruction: "If qismida 'will' ishlatilmaydi:", question: "If you will study hard, you will pass.", errorPart: "will study", correct: "If you study hard, you will pass.", explanation: "If qismida Present Simple (study). 'Will' faqat asosiy gapда." },
+    { id: 95204, type: 'multiple-choice', instruction: "Unless (agar ...masa):", question: "You will be late _____ you hurry. _____ it stops raining, we will stay in.", options: ["unless / Unless", "if / If", "unless / If", "if / Unless"], correct: "unless / Unless", explanation: "Unless = if...not (agar shoshilmasangiz). Unless it stops = agar to'xtamasa." },
+    { id: 95205, type: 'transformation', instruction: "Ikki gapni first conditional bilan birlashtiring:", question: "Maybe you will be tired. Then you should rest.", hint: "If you ...", correct: "If you are tired, you should rest.", explanation: "If + Present Simple (are tired), asosiy gap (should rest)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'If + Present, will + V1', color: 'bg-emerald-500', icon: '🌱', ids: [2301, 2302, 2303, 2304, 2305] },
     { title: "O'rtacha", desc: 'Inkor shakllari', color: 'bg-blue-500', icon: '📘', ids: [2306, 2307, 2308, 2309, 2310] },
     { title: "Qiyin", desc: 'Unless va savol shakli', color: 'bg-violet-500', icon: '🎯', ids: [2313, 2314, 2311, 2312, 2315] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2319, 2320, 2320, 2312, 2317, 2316, 2318, 2319, 2315, 2317] },
+    { title: "🔀 Aralash", desc: "First conditional + Time clauses / future farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95201, 95202, 95203, 95204, 95205] },
   ],
   tests: [
     { id: 19219, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "First Conditional formulas?", options: ['If + will, will', 'If + Present, will + V1', 'If + Past, would + V1', 'If + will, V1'], correct: 'If + Present, will + V1', explanation: "If + Present Simple, will + V1" },
