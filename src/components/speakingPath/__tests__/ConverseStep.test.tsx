@@ -31,6 +31,7 @@ vi.mock('../../../hooks/useSpeechRecognition', () => ({
     stop: vi.fn(),
     reset: vi.fn(),
   }),
+  isMobileDevice: () => false,
 }))
 
 import ConverseStep from '../steps/ConverseStep'

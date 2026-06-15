@@ -10,7 +10,7 @@ import type { SpeakingPrompt } from '@/services/speakingService'
 import { evaluateSpeech, startSpeakingChat, getSpeakingChatFeedback } from '@/lib/claude'
 import { useStore } from '@/store/useStore'
 import { supabase } from '@/lib/supabase'
-import { useSpeechRecognition } from '@/hooks/useSpeechRecognition'
+import { useSpeechRecognition, isMobileDevice } from '@/hooks/useSpeechRecognition'
 import { useAudioRecorder } from '@/hooks/useAudioRecorder'
 import AudioPlayback from '@/components/speaking/AudioPlayback'
 import { analyzeAudio } from '@/hooks/useAudioAnalyser'
@@ -115,7 +115,8 @@ export default function Speaking() {
 
   function startRecording() {
     sr.start()
-    ar.start()
+    // Mobilда MediaRecorder STT bilan mikrofonni talashadi — faqat desktop'da yozamiz.
+    if (!isMobileDevice()) ar.start()
     setRecordState('recording')
     setTimer(0)
     timerRef.current = setInterval(() => setTimer((t) => t + 1), 1000)

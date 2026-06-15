@@ -7,7 +7,7 @@ import { useState, useCallback, useEffect, useRef, useMemo } from 'react'
 import { ArrowRight, RotateCcw, Check, X, Volume2, Send, BookOpen, Info } from 'lucide-react'
 import HoldMicButton from './HoldMicButton'
 import { useSpeechSynthesis } from '../../hooks/useSpeechSynthesis'
-import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
+import { useSpeechRecognition, isMobileDevice } from '../../hooks/useSpeechRecognition'
 import { useAudioRecorder } from '../../hooks/useAudioRecorder'
 import { gradeChunk } from '../../services/speakingPathService'
 import { semanticSimilarity, semanticToRating, isSemanticCorrect } from './match'
@@ -50,6 +50,8 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
   const { speak, supported } = useSpeechSynthesis()
   const sr = useSpeechRecognition()
   const ar = useAudioRecorder()
+  // Mobilда STT mikrofonni eksklyuziv oladi — MediaRecorder'ni o'tkazib yuboramiz.
+  const mobile = isMobileDevice()
 
   const [attempted, setAttempted] = useState(false)
   const [lastText, setLastText] = useState('')
@@ -95,10 +97,10 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
     sr.reset()
     ar.reset()
     sr.start()
-    ar.start()
+    if (!mobile) ar.start()
     setRecording(true)
     readyRef.current = true
-  }, [recording, sr, ar])
+  }, [recording, sr, ar, mobile])
 
   const stopRecord = useCallback(() => {
     if (!recording) return

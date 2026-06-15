@@ -7,7 +7,7 @@ import { analyzePronunciation, type PronunciationAnalysis } from '../lib/claude'
 import { useSpeechSynthesis, SPEED_OPTIONS } from '../hooks/useSpeechSynthesis'
 import { feelLevelUp, feelTap } from '../lib/gameFeel'
 import { monitoring } from '../lib/monitoring'
-import { useSpeechRecognition } from '../hooks/useSpeechRecognition'
+import { useSpeechRecognition, isMobileDevice } from '../hooks/useSpeechRecognition'
 import { useAudioRecorder } from '../hooks/useAudioRecorder'
 import AudioPlayback from '../components/speaking/AudioPlayback'
 import { analyzeAudio, type PitchContourPoint } from '../hooks/useAudioAnalyser'
@@ -99,7 +99,8 @@ export default function Pronunciation() {
       sr.reset()
       ar.reset()
       sr.start()
-      ar.start()
+      // Mobilда STT mikrofonni eksklyuziv oladi — ovoz yozishni o'tkazib yuboramiz.
+      if (!isMobileDevice()) ar.start()
     }
   }
 

@@ -10,6 +10,7 @@ vi.mock('../../../hooks/useSpeechSynthesis', () => ({
 }))
 vi.mock('../../../hooks/useSpeechRecognition', () => ({
   useSpeechRecognition: () => ({ isSupported: false, isRecording: false, transcript: '', interim: '', start: vi.fn(), stop: vi.fn(), reset: vi.fn() }),
+  isMobileDevice: () => false,
 }))
 
 import RecallPanel from '../RecallPanel'

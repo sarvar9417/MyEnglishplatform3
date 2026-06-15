@@ -68,15 +68,32 @@ function isIOS(): boolean {
   return /iPhone|iPad|iPod/i.test(navigator.userAgent)
 }
 
-/** Mikrofon ruxsatini oldindan so'rab, keyin stream'ni bo'shatadi.
- *  Android Chrome'da SpeechRecognition.start() ishlashi uchun ruxsat kerak. */
+/** Mobil qurilma (Android/telefon). Mobilда SpeechRecognition mikrofonni o'zi ochadi —
+ *  shu sabab ochiq getUserMedia stream'i (MediaRecorder uchun) uni jim qoldirishi mumkin. */
+export function isMobileDevice(): boolean {
+  if (typeof navigator === 'undefined') return false
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent)
+}
+
+/** Mikrofon ruxsatini oldindan so'raydi.
+ *  Android Chrome'da SpeechRecognition.start() ishlashi uchun ruxsat kerak.
+ *  MUHIM (mobil): ruxsat olingach probe stream'ni DARHOL bo'shatamiz — aks holda
+ *  ochiq mikrofon stream'i Android SpeechRecognition'ni jim qoldiradi (mic band).
+ *  Desktop'da stream'ni saqlaymiz, useAudioRecorder uni qayta ishlatadi (ovoz yozish). */
 async function requestMicPermission(): Promise<boolean> {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-    _sharedMicStream = stream
-    _streamResolve?.(stream)
-    _streamPromise = null
-    _streamResolve = null
+    if (isMobileDevice()) {
+      // Mobil: SR mikrofonni mustaqil ochadi — probe'ni bo'shatamiz (toza mic).
+      stream.getTracks().forEach(t => t.stop())
+      _streamPromise = null
+      _streamResolve = null
+    } else {
+      _sharedMicStream = stream
+      _streamResolve?.(stream)
+      _streamPromise = null
+      _streamResolve = null
+    }
     return true
   } catch {
     _streamPromise = null

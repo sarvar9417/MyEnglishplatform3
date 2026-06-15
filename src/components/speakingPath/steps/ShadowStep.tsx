@@ -6,7 +6,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { Volume2, ArrowRight, Loader2, RotateCcw, BookOpen } from 'lucide-react'
 import { useSpeechSynthesis } from '../../../hooks/useSpeechSynthesis'
-import { useSpeechRecognition } from '../../../hooks/useSpeechRecognition'
+import { useSpeechRecognition, isMobileDevice } from '../../../hooks/useSpeechRecognition'
 import { useAudioRecorder } from '../../../hooks/useAudioRecorder'
 import HoldMicButton from '../HoldMicButton'
 import { analyzePronunciation, type PronunciationAnalysis } from '../../../lib/claude'
@@ -32,6 +32,10 @@ export default function ShadowStep({ day, level, onNext }: Props) {
   const { speak, supported } = useSpeechSynthesis()
   const sr = useSpeechRecognition()
   const ar = useAudioRecorder()
+  // Mobilда SpeechRecognition mikrofonni eksklyuziv oladi — MediaRecorder bilan
+  // bir vaqtda ishlatsak, Android'da STT jim qoladi. Shu sabab mobilда ovoz
+  // yozishni o'tkazib yuboramiz (matn ustuvor; ovoz playback faqat desktop'da).
+  const mobile = isMobileDevice()
 
   const [index, setIndex] = useState(0)
   const [analyzing, setAnalyzing] = useState(false)
@@ -68,7 +72,8 @@ export default function ShadowStep({ day, level, onNext }: Props) {
       return
     }
 
-    if (!ar.audioUrl) return
+    // Desktop: ovoz yozilishini kutamiz. Mobil: ovoz yo'q — faqat matn bilan davom etamiz.
+    if (!mobile && !ar.audioUrl) return
 
     analysisDoneRef.current = true
     setRecording(false)
@@ -101,7 +106,7 @@ export default function ShadowStep({ day, level, onNext }: Props) {
         setAnalyzing(false)
       }
     })()
-  }, [recording, sr.isRecording, sr.transcript, level, ar.audioUrl])
+  }, [recording, sr.isRecording, sr.transcript, level, ar.audioUrl, mobile])
 
   // Push-to-talk: bosib turing → gapiring → qo'yib yuboring.
   const startRecord = useCallback(() => {
@@ -112,9 +117,11 @@ export default function ShadowStep({ day, level, onNext }: Props) {
     sr.reset()
     ar.reset()
     sr.start()
-    ar.start()
+    // Mobilда MediaRecorder'ni ishga tushirmaymiz — SpeechRecognition mikrofonni
+    // eksklyuziv oladi (Android STT ishonchli ishlashi uchun).
+    if (!mobile) ar.start()
     setRecording(true)
-  }, [sr, ar])
+  }, [sr, ar, mobile])
 
   const stopRecord = useCallback(() => {
     sr.stop()

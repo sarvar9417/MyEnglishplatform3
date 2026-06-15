@@ -29,6 +29,7 @@ vi.mock('../../../hooks/useSpeechRecognition', () => ({
     stop: vi.fn(() => { srState.isRecording = false }),
     reset: vi.fn(() => { srState.transcript = ''; srState.interim = ''; srState.isRecording = false }),
   }),
+  isMobileDevice: () => false,
 }))
 
 vi.mock('../../../hooks/useAudioRecorder', () => ({
