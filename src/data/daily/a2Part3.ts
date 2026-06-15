@@ -128,12 +128,21 @@ export const verbPatterns: DailyLesson = {
     { id: 24025, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She told me not coming late.', errorPart: 'not coming', correct: 'She told me not to come late.', explanation: "'Tell + person + not + to V1': 'told me not to come'." },
     { id: 24026, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'The doctor advised her ___ more water.', options: ['drink', 'to drink', 'drinking', 'drank'], correct: 'to drink', explanation: "'Advise + person + to V1': 'advised her to drink'." },
     { id: 24027, type: 'transformation', instruction: "Finish + V-ing:", question: 'Have you done reading the report?', hint: 'Have you finished ___ the report?', correct: 'reading', explanation: "'Finish' + V-ing: 'finished reading'." },
+
+
+    // ── Interleaved Practice: Verb Patterns + Gerund/Infinitive ──
+    { id: 95211, type: 'multiple-choice', instruction: "Want + obj + to V va enjoy + V-ing:", question: "I want you _____ early. I enjoy _____ in the morning.", options: ["to come / running", "come / to run", "to come / to run", "coming / running"], correct: "to come / running", explanation: "Want + object + to V (you to come). Enjoy + V-ing (running)." },
+    { id: 95212, type: 'fill-blank', instruction: "Tell/ask + obj + to V:", question: "She asked me _____ (help). The teacher told us _____ (be) quiet.", blanks: ["to help", "to be"], explanation: "Ask/tell + object + to V (to help, to be)." },
+    { id: 95213, type: 'error-correction', instruction: "Make + obj + V1 (to'siz):", question: "The film made me to cry.", errorPart: "to cry", correct: "The film made me cry.", explanation: "Make + object + V1 (cry), 'to' siz." },
+    { id: 95214, type: 'multiple-choice', instruction: "Let (to'siz) va allow (to bilan):", question: "My parents let me _____ out, and they allow me _____ late.", options: ["go / to stay", "to go / stay", "going / staying", "go / stay"], correct: "go / to stay", explanation: "Let + V1 (go). Allow + object + to V (to stay)." },
+    { id: 95215, type: 'transformation', instruction: "Want bilan qayta yozing:", question: "I would like you to call me. (use 'want')", hint: "I want ...", correct: "I want you to call me.", explanation: "Want + object + to V (you to call)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "V-ing va to V1 asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2701, 2702, 2703, 2704, 2705] },
     { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [2706, 2707, 2708, 2709, 2710] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2713, 2714, 2715, 2711, 2712] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2720, 2724, 2721, 2722, 2718, 2717, 2716, 2725, 2723, 2719] },
+    { title: "🔀 Aralash", desc: "Verb + object + to V + Gerund/infinitiv farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95211, 95212, 95213, 95214, 95215] },
   ],
   tests: [
     { id: 24028, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Enjoy dan keyin qanday shakl keladi?", options: ['V1', 'to V1', 'V-ing', 'V3'], correct: 'V-ing', explanation: "'Enjoy' + V-ing: 'enjoy reading'." },
@@ -296,12 +305,21 @@ export const timePrepositions: DailyLesson = {
     { id: 24074, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I have lived here since five years.', errorPart: 'since five years', correct: 'I have lived here for five years.', explanation: "'Five years' = vaqt oralig'i → 'for'. 'Since' = boshlanish nuqtasi uchun." },
     { id: 24075, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'The office is open ___ 9 am ___ 5 pm.', options: ['from...to', 'since...until', 'at...on', 'in...at'], correct: 'from...to', explanation: "Vaqt oralig'i: 'from 9 am to 5 pm'." },
     { id: 24076, type: 'transformation', instruction: "Until yoki by bilan to'ldiring:", question: 'She will wait there. She will not leave before 6 pm.', hint: 'She will wait ___ 6 pm.', correct: 'until', explanation: "Davom etish → 'until 6 pm'." },
+
+
+    // ── Interleaved Practice: Time Prepositions + Present Simple ──
+    { id: 95221, type: 'multiple-choice', instruction: "At/on/in (vaqt):", question: "I wake up _____ 7 _____ weekdays, but I sleep late _____ summer.", options: ["at / on / in", "on / at / in", "in / on / at", "at / in / on"], correct: "at / on / in", explanation: "Soat → at 7. Kunlar → on weekdays. Fasl → in summer." },
+    { id: 95222, type: 'fill-blank', instruction: "For (davomiylik) va since (boshlanish):", question: "I have lived here _____ five years, _____ 2019.", blanks: ["for", "since"], explanation: "Davr → for five years. Boshlanish nuqtasi → since 2019." },
+    { id: 95223, type: 'error-correction', instruction: "On + sana:", question: "My birthday is in the 5th of May.", errorPart: "in the 5th", correct: "My birthday is on the 5th of May.", explanation: "Aniq sana → on the 5th." },
+    { id: 95224, type: 'multiple-choice', instruction: "During (davomida) va while (...payt):", question: "I slept _____ the film. I fell asleep _____ I was watching.", options: ["during / while", "while / during", "during / during", "while / while"], correct: "during / while", explanation: "During + ot (the film). While + gap (I was watching)." },
+    { id: 95225, type: 'transformation', instruction: "To'g'ri predlog bilan:", question: "The meeting is ___ Friday ___ 3 pm.", hint: "...", correct: "The meeting is on Friday at 3 pm.", explanation: "Kun → on Friday. Soat → at 3 pm." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "At / In / On asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2801, 2802, 2803, 2804, 2805] },
     { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [2806, 2807, 2808, 2809, 2810] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2813, 2814, 2815, 2811, 2812] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2817, 2820, 2821, 2823, 2825, 2818, 2819, 2816, 2824, 2822] },
+    { title: "🔀 Aralash", desc: "Vaqt predloglari + Present Simple farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95221, 95222, 95223, 95224, 95225] },
   ],
   tests: [
     { id: 24077, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "AT qaysi vaqt bilan ishlatiladi?", options: ['oylar bilan', 'kunlar bilan', 'aniq vaqt bilan', 'fasllar bilan'], correct: 'aniq vaqt bilan', explanation: "AT + aniq vaqt: at 5 o'clock, at midnight." },
@@ -467,12 +485,21 @@ export const thereIsThereAre: DailyLesson = {
     { id: 24120, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'There are some milk in the glass.', errorPart: 'There are', correct: 'There is some milk in the glass.', explanation: "'Milk' sanalmaydigan → 'There is'." },
     { id: 24121, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'There is ___ milk and some eggs in the fridge.', options: ['some', 'any', 'no', 'many'], correct: 'some', explanation: "Ijobiy gap, sanalmaydigan → 'some milk'." },
     { id: 24122, type: 'transformation', instruction: "O'tgan zamonga o'zgartiring:", question: 'There are many people at the party.', hint: 'There ___ many people at the party.', correct: 'were', explanation: "'There are' o'tgan zamonda → 'There were'." },
+
+
+    // ── Interleaved Practice: There is/are + Countable/Quantifiers ──
+    { id: 95231, type: 'multiple-choice', instruction: "There is (birlik/uncountable) va there are (ko'plik):", question: "_____ a book on the desk. _____ some pens too.", options: ["There is / There are", "There are / There is", "There is / There is", "There are / There are"], correct: "There is / There are", explanation: "Birlik (a book) → There is. Ko'plik (pens) → There are." },
+    { id: 95232, type: 'fill-blank', instruction: "There isn't any / there aren't any:", question: "There _____ any milk. There _____ any eggs.", blanks: ["isn't", "aren't"], explanation: "Uncountable (milk) → isn't any. Ko'plik (eggs) → aren't any." },
+    { id: 95233, type: 'error-correction', instruction: "Uncountable bilan there is:", question: "There are some water in the bottle.", errorPart: "There are", correct: "There is some water in the bottle.", explanation: "Water = uncountable → There is (singular)." },
+    { id: 95234, type: 'multiple-choice', instruction: "How much/many + there:", question: "How _____ chairs are there? How _____ furniture is there?", options: ["many / much", "much / many", "many / many", "much / much"], correct: "many / much", explanation: "Countable (chairs) → many. Uncountable (furniture) → much." },
+    { id: 95235, type: 'transformation', instruction: "There is/are bilan yozing:", question: "Two parks exist near my house.", hint: "There ...", correct: "There are two parks near my house.", explanation: "Ko'plik (two parks) → There are." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "There is / There are asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2401, 2402, 2403, 2404, 2405] },
     { title: "O'rtacha", desc: "So'roq va tanlov", color: 'bg-blue-500', icon: '📘', ids: [2406, 2407, 2408, 2409, 2410] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [2413, 2414, 2415, 2411, 2412] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2422, 2424, 2417, 2419, 2423, 2421, 2418, 2416, 2420, 2425] },
+    { title: "🔀 Aralash", desc: "There is/are + Countable/some/any farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95231, 95232, 95233, 95234, 95235] },
   ],
   tests: [
     { id: 24123, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "There is ___ qachon ishlatiladi?", options: ['birlik otlar bilan', 'ko\'plik otlar bilan', 'hamma vaqt', 'savollarda'], correct: 'birlik otlar bilan', explanation: "There is — birlik otlar va sanalmaydigan otlar bilan." },
@@ -640,12 +667,21 @@ export const possessives: DailyLesson = {
     { id: 24166, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "Whose coming to the party tonight?", errorPart: "Whose", correct: "Who's coming to the party tonight?", explanation: "'Who's' = Who is. 'Whose' = kimning (egalik so'roq)." },
     { id: 24167, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'The ___ room is at the end of the hall.', options: ["women's", "womens'", "woman's", "womens's"], correct: "women's", explanation: "Irregular plural 'women' → women's (s-siz ko'plik + 's)." },
     { id: 24168, type: 'transformation', instruction: "Possessive pronoun bilan qayta yozing:", question: 'That car belongs to them.', hint: 'That car is ___.', correct: 'theirs', explanation: "'They/them' → possessive pronoun 'theirs'. 'That car is theirs'." },
+
+
+    // ── Interleaved Practice: Possessives + Pronouns ──
+    { id: 95241, type: 'multiple-choice', instruction: "Possessive adjective (my) va pronoun (mine):", question: "This is _____ book. The book is _____.", options: ["my / mine", "mine / my", "my / my", "mine / mine"], correct: "my / mine", explanation: "Ot oldida → my book (adjective). Ot o'rniga → it's mine (pronoun)." },
+    { id: 95242, type: 'fill-blank', instruction: "Possessive 's (egalik):", question: "This is _____ (Ali) car. These are the _____ (children) toys.", blanks: ["Ali's", "children's"], explanation: "Egalik → Ali's car, children's toys (apostrof + s)." },
+    { id: 95243, type: 'error-correction', instruction: "Its (egalik) va it's (it is):", question: "The dog wagged it's tail.", errorPart: "it's", correct: "The dog wagged its tail.", explanation: "Egalik → its (apostrofsiz). It's = it is." },
+    { id: 95244, type: 'multiple-choice', instruction: "Whose (kimning) va who's (who is):", question: "_____ bag is this? _____ coming to the party?", options: ["Whose / Who's", "Who's / Whose", "Whose / Whose", "Who's / Who's"], correct: "Whose / Who's", explanation: "Egalik savoli → Whose. Who is → Who's." },
+    { id: 95245, type: 'transformation', instruction: "Of o'rniga 's ishlating:", question: "The car of my brother is new.", hint: "My ...", correct: "My brother's car is new.", explanation: "Egalik → brother's car ('s bilan)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Possessive adjectives", color: 'bg-emerald-500', icon: '🌱', ids: [2501, 2502, 2503, 2504, 2505] },
     { title: "O'rtacha", desc: "Pronoun va tanlov", color: 'bg-blue-500', icon: '📘', ids: [2506, 2507, 2508, 2509, 2510] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2513, 2514, 2515, 2511, 2512] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2517, 2521, 2516, 2519, 2522, 2520, 2523, 2525, 2524, 2518] },
+    { title: "🔀 Aralash", desc: "Egalik (mine/'s) + Olmoshlar farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95241, 95242, 95243, 95244, 95245] },
   ],
   tests: [
     { id: 24169, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'My' qanday ma'noda?", options: ['mening', 'sening', 'uning', 'bizning'], correct: 'mening', explanation: "My = mening (1st person singular)." },
@@ -811,12 +847,21 @@ export const someAnyNoEvery: DailyLesson = {
     { id: 24212, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Every students must bring their ID.', errorPart: 'Every students', correct: 'Every student must bring their ID.', explanation: "'Every' + birlik ot: 'Every student' (ko'plik EMAS)." },
     { id: 24213, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ is ready! We can start eating.', options: ['Everything', 'Anything', 'Nothing', 'Something'], correct: 'Everything', explanation: "Hamma narsa tayyor → 'Everything' (every + thing)." },
     { id: 24214, type: 'transformation', instruction: "No ga o'zgartiring:", question: "There aren't any chairs left.", hint: 'There are ___ chairs left.', correct: 'no', explanation: "'Aren't any' → 'no': 'There are no chairs left'." },
+
+
+    // ── Interleaved Practice: Some/Any/No + Countable ──
+    { id: 95251, type: 'multiple-choice', instruction: "Some (tasdiq) va any (savol/inkor):", question: "I have _____ questions. Do you have _____ questions?", options: ["some / any", "any / some", "some / some", "any / any"], correct: "some / any", explanation: "Tasdiq → some. Savol → any." },
+    { id: 95252, type: 'fill-blank', instruction: "No (= not any) va none:", question: "There is _____ sugar left. How many are left? _____.", blanks: ["no", "None"], explanation: "No + ot (no sugar). Otsiz javob → None." },
+    { id: 95253, type: 'error-correction', instruction: "Something/anything:", question: "I don't have something to eat.", errorPart: "something", correct: "I don't have anything to eat.", explanation: "Inkorда → anything (something tasdiqда)." },
+    { id: 95254, type: 'multiple-choice', instruction: "Everybody + birlik fe'l:", question: "Everybody _____ here. Somebody _____ at the door.", options: ["is / is", "are / are", "is / are", "are / is"], correct: "is / is", explanation: "Everybody/somebody → birlik fe'l (is)." },
+    { id: 95255, type: 'transformation', instruction: "Inkor gapни 'any' bilan yozing:", question: "I have no money.", hint: "I don't ...", correct: "I don't have any money.", explanation: "No → not any (don't have any money)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Some / Any / No asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2601, 2602, 2603, 2604, 2605] },
     { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [2606, 2607, 2608, 2609, 2610] },
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2613, 2614, 2615, 2611, 2612] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2622, 2621, 2620, 2616, 2618, 2624, 2623, 2619, 2625, 2617] },
+    { title: "🔀 Aralash", desc: "Some/any/no + Countable/much-many farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95251, 95252, 95253, 95254, 95255] },
   ],
   tests: [
     { id: 24215, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Some qanday gaplarda ishlatiladi?", options: ['faqat ijobiy', 'faqat inkor', 'ijobiy va takliflarda', 'faqat savollarda'], correct: 'ijobiy va takliflarda', explanation: "Some — ijobiy gaplar va taklif/iltimos savollarida." },

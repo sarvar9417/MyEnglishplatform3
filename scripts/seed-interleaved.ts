@@ -289,3 +289,111 @@ const A2_P2: Lesson[] = [
   },
 ]
 seed('src/data/daily/a2Part2.ts', A2_P2)
+
+const A2_P3: Lesson[] = [
+  {
+    id: 'verbPatterns', name: 'Verb Patterns',
+    section: "Verb + object + to V + Gerund/infinitiv farqi",
+    exercises: `    // ── Interleaved Practice: Verb Patterns + Gerund/Infinitive ──
+    { id: ID0, type: 'multiple-choice', instruction: "Want + obj + to V va enjoy + V-ing:", question: "I want you _____ early. I enjoy _____ in the morning.", options: ["to come / running", "come / to run", "to come / to run", "coming / running"], correct: "to come / running", explanation: "Want + object + to V (you to come). Enjoy + V-ing (running)." },
+    { id: ID1, type: 'fill-blank', instruction: "Tell/ask + obj + to V:", question: "She asked me _____ (help). The teacher told us _____ (be) quiet.", blanks: ["to help", "to be"], explanation: "Ask/tell + object + to V (to help, to be)." },
+    { id: ID2, type: 'error-correction', instruction: "Make + obj + V1 (to'siz):", question: "The film made me to cry.", errorPart: "to cry", correct: "The film made me cry.", explanation: "Make + object + V1 (cry), 'to' siz." },
+    { id: ID3, type: 'multiple-choice', instruction: "Let (to'siz) va allow (to bilan):", question: "My parents let me _____ out, and they allow me _____ late.", options: ["go / to stay", "to go / stay", "going / staying", "go / stay"], correct: "go / to stay", explanation: "Let + V1 (go). Allow + object + to V (to stay)." },
+    { id: ID4, type: 'transformation', instruction: "Want bilan qayta yozing:", question: "I would like you to call me. (use 'want')", hint: "I want ...", correct: "I want you to call me.", explanation: "Want + object + to V (you to call)." },`,
+  },
+  {
+    id: 'timePrepositions', name: 'Time Prepositions',
+    section: "Vaqt predloglari + Present Simple farqi",
+    exercises: `    // ── Interleaved Practice: Time Prepositions + Present Simple ──
+    { id: ID0, type: 'multiple-choice', instruction: "At/on/in (vaqt):", question: "I wake up _____ 7 _____ weekdays, but I sleep late _____ summer.", options: ["at / on / in", "on / at / in", "in / on / at", "at / in / on"], correct: "at / on / in", explanation: "Soat → at 7. Kunlar → on weekdays. Fasl → in summer." },
+    { id: ID1, type: 'fill-blank', instruction: "For (davomiylik) va since (boshlanish):", question: "I have lived here _____ five years, _____ 2019.", blanks: ["for", "since"], explanation: "Davr → for five years. Boshlanish nuqtasi → since 2019." },
+    { id: ID2, type: 'error-correction', instruction: "On + sana:", question: "My birthday is in the 5th of May.", errorPart: "in the 5th", correct: "My birthday is on the 5th of May.", explanation: "Aniq sana → on the 5th." },
+    { id: ID3, type: 'multiple-choice', instruction: "During (davomida) va while (...payt):", question: "I slept _____ the film. I fell asleep _____ I was watching.", options: ["during / while", "while / during", "during / during", "while / while"], correct: "during / while", explanation: "During + ot (the film). While + gap (I was watching)." },
+    { id: ID4, type: 'transformation', instruction: "To'g'ri predlog bilan:", question: "The meeting is ___ Friday ___ 3 pm.", hint: "...", correct: "The meeting is on Friday at 3 pm.", explanation: "Kun → on Friday. Soat → at 3 pm." },`,
+  },
+  {
+    id: 'thereIsThereAre', name: 'There is / There are',
+    section: "There is/are + Countable/some/any farqi",
+    exercises: `    // ── Interleaved Practice: There is/are + Countable/Quantifiers ──
+    { id: ID0, type: 'multiple-choice', instruction: "There is (birlik/uncountable) va there are (ko'plik):", question: "_____ a book on the desk. _____ some pens too.", options: ["There is / There are", "There are / There is", "There is / There is", "There are / There are"], correct: "There is / There are", explanation: "Birlik (a book) → There is. Ko'plik (pens) → There are." },
+    { id: ID1, type: 'fill-blank', instruction: "There isn't any / there aren't any:", question: "There _____ any milk. There _____ any eggs.", blanks: ["isn't", "aren't"], explanation: "Uncountable (milk) → isn't any. Ko'plik (eggs) → aren't any." },
+    { id: ID2, type: 'error-correction', instruction: "Uncountable bilan there is:", question: "There are some water in the bottle.", errorPart: "There are", correct: "There is some water in the bottle.", explanation: "Water = uncountable → There is (singular)." },
+    { id: ID3, type: 'multiple-choice', instruction: "How much/many + there:", question: "How _____ chairs are there? How _____ furniture is there?", options: ["many / much", "much / many", "many / many", "much / much"], correct: "many / much", explanation: "Countable (chairs) → many. Uncountable (furniture) → much." },
+    { id: ID4, type: 'transformation', instruction: "There is/are bilan yozing:", question: "Two parks exist near my house.", hint: "There ...", correct: "There are two parks near my house.", explanation: "Ko'plik (two parks) → There are." },`,
+  },
+  {
+    id: 'possessives', name: 'Possessives',
+    section: "Egalik (mine/'s) + Olmoshlar farqi",
+    exercises: `    // ── Interleaved Practice: Possessives + Pronouns ──
+    { id: ID0, type: 'multiple-choice', instruction: "Possessive adjective (my) va pronoun (mine):", question: "This is _____ book. The book is _____.", options: ["my / mine", "mine / my", "my / my", "mine / mine"], correct: "my / mine", explanation: "Ot oldida → my book (adjective). Ot o'rniga → it's mine (pronoun)." },
+    { id: ID1, type: 'fill-blank', instruction: "Possessive 's (egalik):", question: "This is _____ (Ali) car. These are the _____ (children) toys.", blanks: ["Ali's", "children's"], explanation: "Egalik → Ali's car, children's toys (apostrof + s)." },
+    { id: ID2, type: 'error-correction', instruction: "Its (egalik) va it's (it is):", question: "The dog wagged it's tail.", errorPart: "it's", correct: "The dog wagged its tail.", explanation: "Egalik → its (apostrofsiz). It's = it is." },
+    { id: ID3, type: 'multiple-choice', instruction: "Whose (kimning) va who's (who is):", question: "_____ bag is this? _____ coming to the party?", options: ["Whose / Who's", "Who's / Whose", "Whose / Whose", "Who's / Who's"], correct: "Whose / Who's", explanation: "Egalik savoli → Whose. Who is → Who's." },
+    { id: ID4, type: 'transformation', instruction: "Of o'rniga 's ishlating:", question: "The car of my brother is new.", hint: "My ...", correct: "My brother's car is new.", explanation: "Egalik → brother's car ('s bilan)." },`,
+  },
+  {
+    id: 'someAnyNoEvery', name: 'Some / Any / No / Every',
+    section: "Some/any/no + Countable/much-many farqi",
+    exercises: `    // ── Interleaved Practice: Some/Any/No + Countable ──
+    { id: ID0, type: 'multiple-choice', instruction: "Some (tasdiq) va any (savol/inkor):", question: "I have _____ questions. Do you have _____ questions?", options: ["some / any", "any / some", "some / some", "any / any"], correct: "some / any", explanation: "Tasdiq → some. Savol → any." },
+    { id: ID1, type: 'fill-blank', instruction: "No (= not any) va none:", question: "There is _____ sugar left. How many are left? _____.", blanks: ["no", "None"], explanation: "No + ot (no sugar). Otsiz javob → None." },
+    { id: ID2, type: 'error-correction', instruction: "Something/anything:", question: "I don't have something to eat.", errorPart: "something", correct: "I don't have anything to eat.", explanation: "Inkorда → anything (something tasdiqда)." },
+    { id: ID3, type: 'multiple-choice', instruction: "Everybody + birlik fe'l:", question: "Everybody _____ here. Somebody _____ at the door.", options: ["is / is", "are / are", "is / are", "are / is"], correct: "is / is", explanation: "Everybody/somebody → birlik fe'l (is)." },
+    { id: ID4, type: 'transformation', instruction: "Inkor gapни 'any' bilan yozing:", question: "I have no money.", hint: "I don't ...", correct: "I don't have any money.", explanation: "No → not any (don't have any money)." },`,
+  },
+]
+seed('src/data/daily/a2Part3.ts', A2_P3)
+
+const A2_P4: Lesson[] = [
+  {
+    id: 'presentContinuousFuture', name: 'Present Continuous for Future',
+    section: "PC kelajak (arrangement) + Will/Going to farqi",
+    exercises: `    // ── Interleaved Practice: PC Future + Will/Going to ──
+    { id: ID0, type: 'multiple-choice', instruction: "Arrangement (PC) va prediction (will):", question: "I _____ my friend at 6 (arranged). I think it _____ a good evening.", options: ["am meeting / will be", "will meet / is being", "meet / will be", "am meeting / is"], correct: "am meeting / will be", explanation: "Kelishilgan uchrashuv → am meeting. Bashorat → will be." },
+    { id: ID1, type: 'fill-blank', instruction: "PC (reja) va going to (niyat):", question: "We _____ (fly) to Dubai on Monday (booked). I _____ (start) a diet soon.", blanks: ["are flying", "am going to start"], explanation: "Band qilingan reja → are flying (PC). Niyat → am going to start." },
+    { id: ID2, type: 'error-correction', instruction: "Kelishilgan reja — PC, will emas:", question: "I will meet the doctor at 3 tomorrow, it's arranged.", errorPart: "will meet", correct: "I am meeting the doctor at 3 tomorrow, it's arranged.", explanation: "Aniq kelishilgan → Present Continuous (am meeting)." },
+    { id: ID3, type: 'multiple-choice', instruction: "Timetable (PS) va arrangement (PC):", question: "The plane _____ at 9 (schedule). We _____ at 7 to be early (plan).", options: ["leaves / are arriving", "is leaving / arrive", "leave / are arriving", "leaves / arrive"], correct: "leaves / are arriving", explanation: "Jadval → leaves (PS). Kelishilgan reja → are arriving (PC)." },
+    { id: ID4, type: 'transformation', instruction: "Kelishilgan rejani PC bilan yozing:", question: "My plan is to visit grandma on Sunday. (arranged)", hint: "I ...", correct: "I am visiting grandma on Sunday.", explanation: "Aniq reja → Present Continuous (am visiting)." },`,
+  },
+  {
+    id: 'quantifiers', name: 'Quantifiers',
+    section: "Quantifiers (much/many/few) + Countable farqi",
+    exercises: `    // ── Interleaved Practice: Quantifiers + Countable/Uncountable ──
+    { id: ID0, type: 'multiple-choice', instruction: "Few (countable) va little (uncountable):", question: "I have _____ friends but very _____ free time.", options: ["few / little", "little / few", "few / few", "little / little"], correct: "few / little", explanation: "Countable (friends) → few. Uncountable (time) → little." },
+    { id: ID1, type: 'fill-blank', instruction: "A lot of (ikkalasi) va much/many:", question: "There is _____ of water and there are _____ of people.", blanks: ["a lot", "a lot"], explanation: "A lot of — countable va uncountable bilan ishlaydi (a lot of water, a lot of people)." },
+    { id: ID2, type: 'error-correction', instruction: "Many + countable:", question: "I don't have much books.", errorPart: "much books", correct: "I don't have many books.", explanation: "Books = countable → many (much uncountable uchun)." },
+    { id: ID3, type: 'multiple-choice', instruction: "Too much / too many:", question: "There is _____ noise and _____ cars in the city.", options: ["too much / too many", "too many / too much", "too much / too much", "too many / too many"], correct: "too much / too many", explanation: "Uncountable (noise) → too much. Countable (cars) → too many." },
+    { id: ID4, type: 'transformation', instruction: "Enough bilan yozing:", question: "We don't have a sufficient number of chairs.", hint: "We don't have ...", correct: "We don't have enough chairs.", explanation: "Yetarli emas → enough chairs." },`,
+  },
+  {
+    id: 'tooEnough', name: 'Too and Enough',
+    section: "Too/enough + Comparative/sifat farqi",
+    exercises: `    // ── Interleaved Practice: Too/Enough + Adjectives ──
+    { id: ID0, type: 'multiple-choice', instruction: "Too (ortiqcha) va enough (yetarli):", question: "This coffee is _____ hot to drink. It isn't cool _____.", options: ["too / enough", "enough / too", "too / too", "enough / enough"], correct: "too / enough", explanation: "Ortiqcha → too hot. Yetarli emas → not cool enough." },
+    { id: ID1, type: 'fill-blank', instruction: "Enough + ot va sifat + enough:", question: "He is old _____ to drive. We don't have _____ money.", blanks: ["enough", "enough"], explanation: "Sifatdan keyin → old enough. Otdan oldin → enough money." },
+    { id: ID2, type: 'error-correction', instruction: "Enough sifatdan keyin keladi:", question: "She isn't enough tall for the team.", errorPart: "enough tall", correct: "She isn't tall enough for the team.", explanation: "Sifat + enough (tall enough), enough + sifat emas." },
+    { id: ID3, type: 'multiple-choice', instruction: "Too + sifat va comparative:", question: "This box is _____ heavy. Can you find a _____ one?", options: ["too / lighter", "enough / light", "too / light", "enough / lighter"], correct: "too / lighter", explanation: "Ortiqcha → too heavy. Solishtirish → lighter one." },
+    { id: ID4, type: 'transformation', instruction: "Too ... shaklida yozing:", question: "The bag is so heavy that I can't lift it.", hint: "The bag is ...", correct: "The bag is too heavy to lift.", explanation: "So...that → too + adjective + to V (too heavy to lift)." },`,
+  },
+  {
+    id: 'soSuch', name: 'So and Such',
+    section: "So/such + Sifat/comparative farqi",
+    exercises: `    // ── Interleaved Practice: So/Such + Adjectives ──
+    { id: ID0, type: 'multiple-choice', instruction: "So (+ sifat) va such (+ ot):", question: "The film was _____ good. It was _____ a good film.", options: ["so / such", "such / so", "so / so", "such / such"], correct: "so / such", explanation: "So + sifat (so good). Such + (a) + ot (such a good film)." },
+    { id: ID1, type: 'fill-blank', instruction: "So + sifat ... that:", question: "It was _____ cold _____ we stayed home.", blanks: ["so", "that"], explanation: "So + adjective + that (natija): so cold that we stayed." },
+    { id: ID2, type: 'error-correction', instruction: "Such + ot iborasi:", question: "It was so a beautiful day.", errorPart: "so a beautiful day", correct: "It was such a beautiful day.", explanation: "Ot iborasi (a beautiful day) → such, so emas." },
+    { id: ID3, type: 'multiple-choice', instruction: "So many / so much:", question: "There were _____ people and _____ noise.", options: ["so many / so much", "so much / so many", "such many / such much", "so many / so many"], correct: "so many / so much", explanation: "Countable (people) → so many. Uncountable (noise) → so much." },
+    { id: ID4, type: 'transformation', instruction: "Such ... that bilan yozing:", question: "The book was very interesting, so I finished it in a day.", hint: "It was such ...", correct: "It was such an interesting book that I finished it in a day.", explanation: "Such + a/an + adjective + noun + that (natija)." },`,
+  },
+  {
+    id: 'a2Review2', name: 'A2 Review',
+    section: "A2 mavzularini aralash takrorlash",
+    exercises: `    // ── Interleaved Practice: A2 mixed review ──
+    { id: ID0, type: 'multiple-choice', instruction: "Used to va passive:", question: "This castle _____ 500 years ago. People _____ live in it.", options: ["was built / used to", "built / used to", "was built / use to", "is built / used to"], correct: "was built / used to", explanation: "Past passive → was built. O'tgan odat → used to live." },
+    { id: ID1, type: 'fill-blank', instruction: "First conditional va comparative:", question: "If you study harder, you _____ get _____ marks (good).", blanks: ["will", "better"], explanation: "First conditional → will get. Comparative → better marks." },
+    { id: ID2, type: 'error-correction', instruction: "Present perfect va for/since:", question: "I have lived here since five years.", errorPart: "since five years", correct: "I have lived here for five years.", explanation: "Davr (five years) → for, since boshlanish nuqtasi uchun." },
+    { id: ID3, type: 'multiple-choice', instruction: "Reported speech va modal:", question: "She said she _____ swim. He told me he _____ come tomorrow.", options: ["could / would", "can / will", "could / will", "can / would"], correct: "could / would", explanation: "Reported: can → could, will → would." },
+    { id: ID4, type: 'transformation', instruction: "Passivega aylantiring:", question: "Someone stole my bike yesterday.", hint: "My bike ...", correct: "My bike was stolen yesterday.", explanation: "Past passive → was stolen (agent muhim emas)." },`,
+  },
+]
+seed('src/data/daily/a2Part4.ts', A2_P4)

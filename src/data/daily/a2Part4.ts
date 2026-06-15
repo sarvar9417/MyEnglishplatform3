@@ -135,12 +135,21 @@ export const presentContinuousFuture: DailyLesson = {
     { id: 29021, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'The film ___ at 8 pm tonight.', options: ['starts', 'is starting', 'start', 'will start'], correct: 'starts', explanation: "Kino jadvali — Present Simple" },
     { id: 29022, type: 'fill-blank', instruction: "Present Simple yoki Continuous:", question: 'I ___ (go) to the dentist on Friday. I have an appointment.', blanks: ['am going'], explanation: "Shaxsiy reja (appointment) — Present Continuous" },
     { id: 29023, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is about a FIXED ARRANGEMENT?", options: ["I am meeting John at 6.", "I will meet John.", "I meet John every day.", "I am meeting John these days."], correct: "I am meeting John at 6.", explanation: "Aniq vaqt bilan — fixed arrangement" },
+
+
+    // ── Interleaved Practice: PC Future + Will/Going to ──
+    { id: 95261, type: 'multiple-choice', instruction: "Arrangement (PC) va prediction (will):", question: "I _____ my friend at 6 (arranged). I think it _____ a good evening.", options: ["am meeting / will be", "will meet / is being", "meet / will be", "am meeting / is"], correct: "am meeting / will be", explanation: "Kelishilgan uchrashuv → am meeting. Bashorat → will be." },
+    { id: 95262, type: 'fill-blank', instruction: "PC (reja) va going to (niyat):", question: "We _____ (fly) to Dubai on Monday (booked). I _____ (start) a diet soon.", blanks: ["are flying", "am going to start"], explanation: "Band qilingan reja → are flying (PC). Niyat → am going to start." },
+    { id: 95263, type: 'error-correction', instruction: "Kelishilgan reja — PC, will emas:", question: "I will meet the doctor at 3 tomorrow, it's arranged.", errorPart: "will meet", correct: "I am meeting the doctor at 3 tomorrow, it's arranged.", explanation: "Aniq kelishilgan → Present Continuous (am meeting)." },
+    { id: 95264, type: 'multiple-choice', instruction: "Timetable (PS) va arrangement (PC):", question: "The plane _____ at 9 (schedule). We _____ at 7 to be early (plan).", options: ["leaves / are arriving", "is leaving / arrive", "leave / are arriving", "leaves / arrive"], correct: "leaves / are arriving", explanation: "Jadval → leaves (PS). Kelishilgan reja → are arriving (PC)." },
+    { id: 95265, type: 'transformation', instruction: "Kelishilgan rejani PC bilan yozing:", question: "My plan is to visit grandma on Sunday. (arranged)", hint: "I ...", correct: "I am visiting grandma on Sunday.", explanation: "Aniq reja → Present Continuous (am visiting)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Ijobiy shakl asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [2901, 2902, 2903, 2904, 2905] },
     { title: "O'rtacha", desc: 'Savol va tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [2906, 2907, 2908, 2909, 2910] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [2914, 2915, 2913, 2911, 2912] },
     { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [2920, 2916, 2915, 2912, 2917, 2919, 2916, 2918, 2920, 2919] },
+    { title: "🔀 Aralash", desc: "PC kelajak (arrangement) + Will/Going to farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95261, 95262, 95263, 95264, 95265] },
   ],
   tests: [
     { id: 29024, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Present Continuous kelasi zamonda nima uchun ishlatiladi?", options: ['Rejalashtirilgan ishlar', 'Jadvallar', 'Bashoratlar', 'Takroriy harakatlar'], correct: 'Rejalashtirilgan ishlar', explanation: "Present Continuous — aniq rejalar uchun" },
@@ -302,12 +311,21 @@ export const quantifiers: DailyLesson = {
     { id: 29062, type: 'fill-blank', instruction: "A lot of yoki much:", question: "She has ___ money. (ko'p)", blanks: ['a lot of'], explanation: "Ijobiy gapda a lot of" },
     { id: 29063, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "I have ___ time. Let's talk.", options: ['a little', 'little', 'a few', 'few'], correct: 'a little', explanation: "Ijobiy, sanalmaydigan \u2192 a little" },
     { id: 29064, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "Which sentence is CORRECT?", options: ['He has much friends.', 'He has many friends.', 'He has a little friends.', 'He has few friends.'], correct: 'He has many friends.', explanation: "Many + sanaluvchi ko'plik" },
+
+
+    // ── Interleaved Practice: Quantifiers + Countable/Uncountable ──
+    { id: 95271, type: 'multiple-choice', instruction: "Few (countable) va little (uncountable):", question: "I have _____ friends but very _____ free time.", options: ["few / little", "little / few", "few / few", "little / little"], correct: "few / little", explanation: "Countable (friends) → few. Uncountable (time) → little." },
+    { id: 95272, type: 'fill-blank', instruction: "A lot of (ikkalasi) va much/many:", question: "There is _____ of water and there are _____ of people.", blanks: ["a lot", "a lot"], explanation: "A lot of — countable va uncountable bilan ishlaydi (a lot of water, a lot of people)." },
+    { id: 95273, type: 'error-correction', instruction: "Many + countable:", question: "I don't have much books.", errorPart: "much books", correct: "I don't have many books.", explanation: "Books = countable → many (much uncountable uchun)." },
+    { id: 95274, type: 'multiple-choice', instruction: "Too much / too many:", question: "There is _____ noise and _____ cars in the city.", options: ["too much / too many", "too many / too much", "too much / too much", "too many / too many"], correct: "too much / too many", explanation: "Uncountable (noise) → too much. Countable (cars) → too many." },
+    { id: 95275, type: 'transformation', instruction: "Enough bilan yozing:", question: "We don't have a sufficient number of chairs.", hint: "We don't have ...", correct: "We don't have enough chairs.", explanation: "Yetarli emas → enough chairs." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Much/Many asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3001, 3002, 3003, 3004, 3005] },
     { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3006, 3007, 3008, 3009, 3010] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3015, 3013, 3014, 3011, 3012] },
     { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3019, 3019, 3020, 3017, 3018, 3016, 3020, 3015, 3012, 3016] },
+    { title: "🔀 Aralash", desc: "Quantifiers (much/many/few) + Countable farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95271, 95272, 95273, 95274, 95275] },
   ],
   tests: [
     { id: 29065, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Much qanday otlar bilan ishlatiladi?", options: ['sanalmaydigan', 'sanaluvchi', 'ikkala', "faqat ko'plik"], correct: 'sanalmaydigan', explanation: "Much — sanalmaydigan otlar bilan" },
@@ -468,12 +486,21 @@ export const tooEnough: DailyLesson = {
     { id: 29103, type: 'fill-blank', instruction: "Too many yoki too much:", question: 'There are ___ (much/many) cars on the road.', blanks: ['too many'], explanation: "Cars — sanaluvchi \u2192 too many" },
     { id: 29104, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "Which sentence is CORRECT?", options: ['I have too much homework.', 'I have too many homework.', 'I have homework too much.', 'I have too homeworks much.'], correct: 'I have too much homework.', explanation: "Homework — sanalmaydigan \u2192 too much" },
     { id: 29105, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "Which sentence means the same as 'He is too short to play basketball'?", options: ["He is not tall enough to play basketball.", 'He is tall enough to play basketball.', 'He is very short.', 'He is not short enough.'], correct: "He is not tall enough to play basketball.", explanation: "Too short = not tall enough" },
+
+
+    // ── Interleaved Practice: Too/Enough + Adjectives ──
+    { id: 95281, type: 'multiple-choice', instruction: "Too (ortiqcha) va enough (yetarli):", question: "This coffee is _____ hot to drink. It isn't cool _____.", options: ["too / enough", "enough / too", "too / too", "enough / enough"], correct: "too / enough", explanation: "Ortiqcha → too hot. Yetarli emas → not cool enough." },
+    { id: 95282, type: 'fill-blank', instruction: "Enough + ot va sifat + enough:", question: "He is old _____ to drive. We don't have _____ money.", blanks: ["enough", "enough"], explanation: "Sifatdan keyin → old enough. Otdan oldin → enough money." },
+    { id: 95283, type: 'error-correction', instruction: "Enough sifatdan keyin keladi:", question: "She isn't enough tall for the team.", errorPart: "enough tall", correct: "She isn't tall enough for the team.", explanation: "Sifat + enough (tall enough), enough + sifat emas." },
+    { id: 95284, type: 'multiple-choice', instruction: "Too + sifat va comparative:", question: "This box is _____ heavy. Can you find a _____ one?", options: ["too / lighter", "enough / light", "too / light", "enough / lighter"], correct: "too / lighter", explanation: "Ortiqcha → too heavy. Solishtirish → lighter one." },
+    { id: 95285, type: 'transformation', instruction: "Too ... shaklida yozing:", question: "The bag is so heavy that I can't lift it.", hint: "The bag is ...", correct: "The bag is too heavy to lift.", explanation: "So...that → too + adjective + to V (too heavy to lift)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Too va Enough asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3101, 3102, 3103, 3104, 3105] },
     { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3106, 3107, 3108, 3109, 3110] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3113, 3111, 3112, 3114, 3115] },
     { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3117, 3120, 3117, 3118, 3119, 3120, 3116, 3112, 3115, 3119] },
+    { title: "🔀 Aralash", desc: "Too/enough + Comparative/sifat farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95281, 95282, 95283, 95284, 95285] },
   ],
   tests: [
     { id: 29106, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Too qanday ma'noni bildiradi?", options: ['juda (ortiqcha)', 'yetarli', 'juda (neytral)', 'bir oz'], correct: 'juda (ortiqcha)', explanation: "Too — keragidan ortiq" },
@@ -634,12 +661,21 @@ export const soSuch: DailyLesson = {
     { id: 29144, type: 'multiple-choice', instruction: "To'g'ri variant:", question: 'He is ___ good teacher that every student loves him.', options: ['such a', 'so', 'such', 'so much'], correct: 'such a', explanation: "Good teacher — ot bor \u2192 such a" },
     { id: 29145, type: 'multiple-choice', instruction: "To'g'ri variant:", question: 'This is ___ important information that you must read it.', options: ['such', 'so', 'such a', 'so much'], correct: 'such', explanation: "Important information — sanalmaydigan \u2192 such" },
     { id: 29146, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "Which sentence is CORRECT?", options: ['It is such a beautiful weather.', 'It is such beautiful weather.', 'It is so beautiful weather.', 'It is so a beautiful weather.'], correct: 'It is such beautiful weather.', explanation: "Weather — sanalmaydigan \u2192 such + adj + noun (a/ansiz)" },
+
+
+    // ── Interleaved Practice: So/Such + Adjectives ──
+    { id: 95291, type: 'multiple-choice', instruction: "So (+ sifat) va such (+ ot):", question: "The film was _____ good. It was _____ a good film.", options: ["so / such", "such / so", "so / so", "such / such"], correct: "so / such", explanation: "So + sifat (so good). Such + (a) + ot (such a good film)." },
+    { id: 95292, type: 'fill-blank', instruction: "So + sifat ... that:", question: "It was _____ cold _____ we stayed home.", blanks: ["so", "that"], explanation: "So + adjective + that (natija): so cold that we stayed." },
+    { id: 95293, type: 'error-correction', instruction: "Such + ot iborasi:", question: "It was so a beautiful day.", errorPart: "so a beautiful day", correct: "It was such a beautiful day.", explanation: "Ot iborasi (a beautiful day) → such, so emas." },
+    { id: 95294, type: 'multiple-choice', instruction: "So many / so much:", question: "There were _____ people and _____ noise.", options: ["so many / so much", "so much / so many", "such many / such much", "so many / so many"], correct: "so many / so much", explanation: "Countable (people) → so many. Uncountable (noise) → so much." },
+    { id: 95295, type: 'transformation', instruction: "Such ... that bilan yozing:", question: "The book was very interesting, so I finished it in a day.", hint: "It was such ...", correct: "It was such an interesting book that I finished it in a day.", explanation: "Such + a/an + adjective + noun + that (natija)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'So va Such asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3201, 3202, 3203, 3204, 3205] },
     { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3206, 3207, 3208, 3209, 3210] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3213, 3214, 3211, 3212, 3215] },
     { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3216, 3218, 3215, 3217, 3220, 3220, 3219, 3219, 3218, 3212] },
+    { title: "🔀 Aralash", desc: "So/such + Sifat/comparative farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95291, 95292, 95293, 95294, 95295] },
   ],
   tests: [
     { id: 29147, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "So qanday so'z turkumlari bilan ishlatiladi?", options: ['sifat/ravishdosh', 'ot', "fe'l", 'son'], correct: 'sifat/ravishdosh', explanation: "So + adjective/adverb" },
@@ -781,12 +817,21 @@ export const a2Review2: DailyLesson = {
     { id: 29184, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "There isn't ___ sugar in my coffee.", options: ['any', 'some', 'no', 'a little'], correct: 'any', explanation: "Inkor \u2192 any" },
     { id: 29185, type: 'fill-blank', instruction: "Too many yoki too much:", question: 'There is ___ (many/much) noise in here.', blanks: ['too much'], explanation: "Noise — sanalmaydigan \u2192 too much" },
     { id: 29186, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "Which sentence is CORRECT?", options: ['She is such a good teacher.', 'She is so a good teacher.', 'She is such good teacher.', 'She is so good teacher.'], correct: 'She is such a good teacher.', explanation: "Such a + adj + noun" },
+
+
+    // ── Interleaved Practice: A2 mixed review ──
+    { id: 95301, type: 'multiple-choice', instruction: "Used to va passive:", question: "This castle _____ 500 years ago. People _____ live in it.", options: ["was built / used to", "built / used to", "was built / use to", "is built / used to"], correct: "was built / used to", explanation: "Past passive → was built. O'tgan odat → used to live." },
+    { id: 95302, type: 'fill-blank', instruction: "First conditional va comparative:", question: "If you study harder, you _____ get _____ marks (good).", blanks: ["will", "better"], explanation: "First conditional → will get. Comparative → better marks." },
+    { id: 95303, type: 'error-correction', instruction: "Present perfect va for/since:", question: "I have lived here since five years.", errorPart: "since five years", correct: "I have lived here for five years.", explanation: "Davr (five years) → for, since boshlanish nuqtasi uchun." },
+    { id: 95304, type: 'multiple-choice', instruction: "Reported speech va modal:", question: "She said she _____ swim. He told me he _____ come tomorrow.", options: ["could / would", "can / will", "could / will", "can / would"], correct: "could / would", explanation: "Reported: can → could, will → would." },
+    { id: 95305, type: 'transformation', instruction: "Passivega aylantiring:", question: "Someone stole my bike yesterday.", hint: "My bike ...", correct: "My bike was stolen yesterday.", explanation: "Past passive → was stolen (agent muhim emas)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Asosiy qoidalar', color: 'bg-emerald-500', icon: '🌱', ids: [3301, 3302, 3303, 3304, 3305] },
     { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3306, 3307, 3308, 3309, 3310] },
     { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3315, 3311, 3312, 3313, 3314] },
     { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3319, 3319, 3320, 3317, 3320, 3316, 3318, 3312, 3317, 3315] },
+    { title: "🔀 Aralash", desc: "A2 mavzularini aralash takrorlash", color: 'bg-fuchsia-500', icon: '🔄', ids: [95301, 95302, 95303, 95304, 95305] },
   ],
   tests: [
     { id: 29187, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Present Continuous kelasi zamonda nima uchun?", options: ['rejalar uchun', 'jadvallar uchun', 'bashoratlar uchun', 'odatlar uchun'], correct: 'rejalar uchun', explanation: "Rejalashtirilgan ishlar" },
