@@ -481,3 +481,131 @@ const B2_P1: Lesson[] = [
   },
 ]
 seed('src/data/daily/b2Part1.ts', B2_P1)
+
+const B2_P2: Lesson[] = [
+  {
+    id: 'complexSentencesB2', name: 'Complex Sentences',
+    section: "Murakkab gaplar + Relative/conjunction farqi",
+    exercises: `    // ── Interleaved Practice: Complex Sentences + Relative Clauses ──
+    { id: ID0, type: 'multiple-choice', instruction: "Subordinate clause (although) va relative (which):", question: "_____ it was late, we continued. The plan, _____ took months, finally worked.", options: ["Although / which", "Which / although", "Despite / which", "Although / that"], correct: "Although / which", explanation: "Ergash gap → Although. Non-defining relative → , which." },
+    { id: ID1, type: 'fill-blank', instruction: "Participle clause + main clause:", question: "_____ (walk) home, I saw an accident. _____ (finish) the task, she left.", blanks: ["Walking", "Having finished"], explanation: "Bir vaqtda → Walking (present participle). Avval tugagan → Having finished (perfect participle)." },
+    { id: ID2, type: 'error-correction', instruction: "Fragment (tugallanmagan gap):", question: "Because the weather was bad. We stayed home.", errorPart: "Because the weather was bad. We", correct: "Because the weather was bad, we stayed home.", explanation: "Ergash gap yakka turolmaydi → asosiy gap bilan birlashtiriladi (vergul bilan)." },
+    { id: ID3, type: 'multiple-choice', instruction: "Whereas (qarama-qarshi) va while:", question: "He likes tea, _____ she prefers coffee. _____ I cooked, he cleaned.", options: ["whereas / While", "while / Whereas", "although / While", "whereas / Although"], correct: "whereas / While", explanation: "Qarama-qarshilik → whereas. Bir vaqtda → While." },
+    { id: ID4, type: 'transformation', instruction: "Ikki gapni relative clause bilan birlashtiring:", question: "The book is on the table. I bought it yesterday.", hint: "The book that ...", correct: "The book that I bought yesterday is on the table.", explanation: "Defining relative → that I bought yesterday." },`,
+  },
+  {
+    id: 'advancedModalsB2', name: 'Advanced Modals',
+    section: "Murakkab modallar + Speculation farqi",
+    exercises: `    // ── Interleaved Practice: Advanced Modals + Past Speculation ──
+    { id: ID0, type: 'multiple-choice', instruction: "Needn't have (keraksiz) va didn't need to:", question: "You _____ worried — it was fine. I _____ go, so I stayed home.", options: ["needn't have / didn't need to", "didn't need to / needn't have", "mustn't have / needn't", "needn't / didn't need"], correct: "needn't have / didn't need to", explanation: "Keraksiz qilingan ish → needn't have. Kerak bo'lmagani uchun qilmadi → didn't need to." },
+    { id: ID1, type: 'fill-blank', instruction: "Must have / can't have (o'tmish taxmin):", question: "The ground is wet; it _____ rained. She passed easily; it _____ been hard.", blanks: ["must have", "can't have"], explanation: "O'tmish ishonchli taxmin → must have rained. O'tmish imkonsiz → can't have been." },
+    { id: ID2, type: 'error-correction', instruction: "Had better (kuchli maslahat):", question: "You had better to call him now.", errorPart: "had better to call", correct: "You had better call him now.", explanation: "Had better + V1 (to'siz): had better call." },
+    { id: ID3, type: 'multiple-choice', instruction: "Should have (o'tmish afsus) va might have (ehtimol):", question: "I _____ studied more (regret). He's late; he _____ missed the bus (possible).", options: ["should have / might have", "might have / should have", "must have / should have", "should have / must have"], correct: "should have / might have", explanation: "O'tmish afsusi → should have studied. O'tmish ehtimoli → might have missed." },
+    { id: ID4, type: 'transformation', instruction: "O'tmishdagi ishonchli taxminni yozing:", question: "I'm sure she finished it (it's done now).", hint: "She must ...", correct: "She must have finished it.", explanation: "O'tmish ishonchli taxmin → must have + V3 (finished)." },`,
+  },
+  {
+    id: 'contrastiveStructuresB2', name: 'Contrastive Structures',
+    section: "Qarama-qarshilik + Linking words farqi",
+    exercises: `    // ── Interleaved Practice: Contrastive + Linking ──
+    { id: ID0, type: 'multiple-choice', instruction: "Whereas/while (qarama-qarshi) va however:", question: "Cities are busy, _____ villages are calm. It rained; _____, we still went.", options: ["whereas / however", "however / whereas", "while / although", "whereas / although"], correct: "whereas / however", explanation: "Ikki holatni qarama-qarshi qo'yish → whereas. Gaplararo qarshilik → however." },
+    { id: ID1, type: 'fill-blank', instruction: "In contrast / on the other hand:", question: "Tea calms you. _____ contrast, coffee energizes. On the other _____, it can disturb sleep.", blanks: ["In", "hand"], explanation: "In contrast, on the other hand — qarama-qarshi bog'lovchilar." },
+    { id: ID2, type: 'error-correction', instruction: "Despite + ot (although + gap):", question: "Despite of the rain, we went out.", errorPart: "Despite of the rain", correct: "Despite the rain, we went out.", explanation: "Despite + ot ('of' siz). 'Despite of' noto'g'ri." },
+    { id: ID3, type: 'multiple-choice', instruction: "Unlike (+ ot) va although (+ gap):", question: "_____ his brother, he is shy. _____ he is shy, he spoke well.", options: ["Unlike / Although", "Although / Unlike", "Unlike / Despite", "Despite / Although"], correct: "Unlike / Although", explanation: "Unlike + ot (his brother). Although + gap (he is shy)." },
+    { id: ID4, type: 'transformation', instruction: "Although'ni 'despite' bilan yozing:", question: "Although she was tired, she finished.", hint: "Despite ...", correct: "Despite being tired, she finished.", explanation: "Despite + V-ing/ot (being tired)." },`,
+  },
+  {
+    id: 'punctuationB2', name: 'Punctuation',
+    section: "Tinish belgilari + Gap tuzilishi farqi",
+    exercises: `    // ── Interleaved Practice: Punctuation + Sentence Structure ──
+    { id: ID0, type: 'multiple-choice', instruction: "Semicolon va comma:", question: "Two full clauses: 'It rained_ we stayed home.' Non-defining clause: 'My car_ which is old_ broke.'", options: ["; / , ,", ", / ; ;", "; / ; ;", ", / , ,"], correct: "; / , ,", explanation: "Ikki to'liq gap → nuqtali vergul (;). Non-defining clause → ikki vergul (, ,)." },
+    { id: ID1, type: 'fill-blank', instruction: "Colon (ro'yxat oldidan):", question: "We need three things_ bread, milk, and eggs.", blanks: [":"], explanation: "Ro'yxat oldidan → ikki nuqta (:)." },
+    { id: ID2, type: 'error-correction', instruction: "Apostrof — its vs it's:", question: "The company increased it's profits.", errorPart: "it's", correct: "The company increased its profits.", explanation: "Egalik → its (apostrofsiz). It's = it is." },
+    { id: ID3, type: 'multiple-choice', instruction: "Defining (vergulsiz) va non-defining (vergulli):", question: "Defining: 'The man _____ called is here.' Non-defining: 'Tom_ who called_ is here.'", options: ["who (no comma) / , who ,", ", who , / who", "that , / who", "which / that"], correct: "who (no comma) / , who ,", explanation: "Defining (zarur) → vergulsiz. Non-defining (qo'shimcha) → vergullar bilan." },
+    { id: ID4, type: 'transformation', instruction: "Comma splice'ni to'g'rilang (semicolon bilan):", question: "It was late, we went home.", hint: "It was late; ...", correct: "It was late; we went home.", explanation: "Ikki to'liq gapni vergul bog'lay olmaydi → nuqtali vergul (;)." },`,
+  },
+  {
+    id: 'academicCollocationsB2', name: 'Academic Collocations',
+    section: "Akademik kollokatsiyalar + Lug'at farqi",
+    exercises: `    // ── Interleaved Practice: Academic Collocations + Vocabulary ──
+    { id: ID0, type: 'multiple-choice', instruction: "Conduct research va draw a conclusion:", question: "Scientists _____ research and then _____ a conclusion.", options: ["conduct / draw", "do / make", "make / do", "take / give"], correct: "conduct / draw", explanation: "Akademik kollokatsiyalar: conduct research, draw a conclusion." },
+    { id: ID1, type: 'fill-blank', instruction: "Provide evidence / cite sources:", question: "You must _____ evidence and _____ reliable sources.", blanks: ["provide", "cite"], explanation: "Provide evidence, cite sources — akademik kollokatsiyalar." },
+    { id: ID2, type: 'error-correction', instruction: "Make/reach a decision:", question: "The committee did an important decision.", errorPart: "did an important decision", correct: "The committee made an important decision.", explanation: "Make a decision (do emas)." },
+    { id: ID3, type: 'multiple-choice', instruction: "Akademik sifat + ot:", question: "There is a _____ difference and a _____ increase.", options: ["significant / substantial", "big / large", "much / many", "strong / hard"], correct: "significant / substantial", explanation: "Akademik: significant difference, substantial increase (big/large o'rniga)." },
+    { id: ID4, type: 'transformation', instruction: "Oddiy so'zni akademik kollokatsiya bilan:", question: "The study shows a big change.", hint: "The study reveals a ...", correct: "The study reveals a significant change.", explanation: "Akademik: reveal + significant change." },`,
+  },
+  {
+    id: 'criticalThinkingB2', name: 'Critical Thinking Language',
+    section: "Tanqidiy fikrlash tili + Hedging farqi",
+    exercises: `    // ── Interleaved Practice: Critical Thinking + Hedging ──
+    { id: ID0, type: 'multiple-choice', instruction: "Assumption va bias:", question: "The author makes an _____ that all readers agree. That is a _____.", options: ["assumption / bias", "evidence / fact", "argument / proof", "analysis / source"], correct: "assumption / bias", explanation: "Tanqidiy tahlil: assumption (faraz), bias (noxolislik)." },
+    { id: ID1, type: 'fill-blank', instruction: "Correlation vs causation:", question: "This shows _____ (a link), but it doesn't prove _____ (cause and effect).", blanks: ["correlation", "causation"], explanation: "Tanqidiy fikrlash: correlation ≠ causation." },
+    { id: ID2, type: 'error-correction', instruction: "Hedging — kuchli da'voni baholash:", question: "This source is definitely reliable and proves everything.", errorPart: "definitely reliable and proves everything", correct: "This source appears reliable but does not prove everything.", explanation: "Tanqidiy/hedged: appears reliable, does not prove everything." },
+    { id: ID3, type: 'multiple-choice', instruction: "Evaluate va question (fe'l):", question: "We should _____ the evidence and _____ the author's claims.", options: ["evaluate / question", "accept / believe", "ignore / trust", "copy / repeat"], correct: "evaluate / question", explanation: "Tanqidiy fikrlash: evaluate evidence, question claims." },
+    { id: ID4, type: 'transformation', instruction: "Da'voni tanqidiy baholang:", question: "The article says coffee is good. (be critical/hedged)", hint: "The article claims coffee is good, but ...", correct: "The article claims coffee is good, but the evidence is limited.", explanation: "Tanqidiy: claims + but the evidence is limited (baholash)." },`,
+  },
+  {
+    id: 'b2Review', name: 'B2 Review',
+    section: "B2 mavzularini aralash takrorlash",
+    exercises: `    // ── Interleaved Practice: B2 mixed review ──
+    { id: ID0, type: 'multiple-choice', instruction: "Mixed conditional va inversion:", question: "_____ I known, I would act differently now. If I _____ harder, I'd be successful today.", options: ["Had / had worked", "If / worked", "Had / worked", "If / had worked"], correct: "Had / had worked", explanation: "Inversiya → Had I known. Mixed conditional → had worked (o'tmish) → now/today." },
+    { id: ID1, type: 'fill-blank', instruction: "Subjunctive va nominalization:", question: "I recommend that the _____ (reduce) _____ (be) approved.", blanks: ["reduction", "be"], explanation: "Nominalization (reduce → reduction) + subjunctive (be approved)." },
+    { id: ID2, type: 'error-correction', instruction: "Hedging va akademik uslub:", question: "This research definitely proves coffee improves all memory.", errorPart: "definitely proves coffee improves all memory", correct: "This research suggests coffee may improve memory.", explanation: "Akademik hedging: suggests, may improve (definitely/all/proves emas)." },
+    { id: ID3, type: 'multiple-choice', instruction: "Advanced modal va contrast:", question: "You _____ have told me (regret). _____ I was busy, I would have helped.", options: ["should / Although", "must / Despite", "should / Despite", "might / Although"], correct: "should / Although", explanation: "O'tmish afsus → should have told. Qarshilik → Although." },
+    { id: ID4, type: 'transformation', instruction: "Rasmiy, nominalizatsiya bilan yozing:", question: "Because prices increased, sales fell.", hint: "The increase ...", correct: "The increase in prices led to a fall in sales.", explanation: "Nominalization: increase, fall — rasmiy, ixcham uslub." },`,
+  },
+]
+seed('src/data/daily/b2Part2.ts', B2_P2)
+
+const B2_P3: Lesson[] = [
+  {
+    id: 'argumentStructureB2', name: 'Argument Structure',
+    section: "Dalil tuzilishi + Cohesion farqi",
+    exercises: `    // ── Interleaved Practice: Argument Structure + Cohesion ──
+    { id: ID0, type: 'multiple-choice', instruction: "Claim va counterargument:", question: "My _____ is that remote work helps. However, one might _____ that it weakens teams.", options: ["claim / argue", "evidence / prove", "proof / show", "fact / state"], correct: "claim / argue", explanation: "Dalil tuzilishi: claim (asosiy fikr), one might argue (counterargument)." },
+    { id: ID1, type: 'fill-blank', instruction: "Furthermore / therefore (bog'lash):", question: "Costs fell. _____ (additionally), quality rose. _____ (so), profits grew.", blanks: ["Furthermore", "Therefore"], explanation: "Qo'shimcha dalil → Furthermore. Natija → Therefore." },
+    { id: ID2, type: 'error-correction', instruction: "Refute (qarshi dalilni rad etish):", question: "Some say it is risky. But this point is wrong because of evidence.", errorPart: "this point is wrong because of evidence", correct: "However, the evidence does not support this concern.", explanation: "Akademik refutation: the evidence does not support this concern." },
+    { id: ID3, type: 'multiple-choice', instruction: "Granted / nevertheless (concession):", question: "_____, the cost is high. _____, the benefits outweigh it.", options: ["Granted / Nevertheless", "Therefore / Moreover", "Because / So", "However / Although"], correct: "Granted / Nevertheless", explanation: "Tan olish → Granted. Shunga qaramay → Nevertheless." },
+    { id: ID4, type: 'transformation', instruction: "Xulosani 'thus' bilan bog'lang:", question: "The benefits are clear. So we should adopt the plan.", hint: "The benefits are clear; thus, ...", correct: "The benefits are clear; thus, we should adopt the plan.", explanation: "Rasmiy xulosa bog'lovchi → thus." },`,
+  },
+  {
+    id: 'stanceMarkersB2', name: 'Stance Markers',
+    section: "Pozitsiya belgilari + Hedging farqi",
+    exercises: `    // ── Interleaved Practice: Stance Markers + Hedging ──
+    { id: ID0, type: 'multiple-choice', instruction: "Frankly va arguably:", question: "_____, I found it dull. It is _____ the best book this year, though many disagree.", options: ["Frankly / arguably", "Arguably / frankly", "Clearly / surely", "Surely / clearly"], correct: "Frankly / arguably", explanation: "Ochig'i → Frankly. Bahsli da'vo → arguably." },
+    { id: ID1, type: 'fill-blank', instruction: "Admittedly / undoubtedly:", question: "_____ (tan olish), the plot was weak. The acting was _____ (shubhasiz) excellent.", blanks: ["Admittedly", "undoubtedly"], explanation: "Tan olish → Admittedly. Shubhasiz → undoubtedly." },
+    { id: ID2, type: 'error-correction', instruction: "Stance — kuchli da'voni yumshatish:", question: "Obviously everyone agrees this is true.", errorPart: "Obviously everyone agrees this is true", correct: "Arguably, many would agree with this.", explanation: "Ehtiyotkor stance: Arguably, many would agree (obviously/everyone emas)." },
+    { id: ID3, type: 'multiple-choice', instruction: "In my view va it seems:", question: "_____ my view, prices will rise. _____ that more time is needed.", options: ["In / It seems", "On / It looks", "At / It feels", "By / It shows"], correct: "In / It seems", explanation: "Pozitsiya: In my view. Hedging → It seems that." },
+    { id: ID4, type: 'transformation', instruction: "Fikrni stance marker bilan yumshating:", question: "This is the best solution.", hint: "Arguably, ...", correct: "Arguably, this is the best solution.", explanation: "Bahsli da'vo → Arguably (ehtiyotkor pozitsiya)." },`,
+  },
+  {
+    id: 'paraphrasingB2', name: 'Paraphrasing and Summarising',
+    section: "Boshqacha ifodalash + Akademik lug'at farqi",
+    exercises: `    // ── Interleaved Practice: Paraphrasing + Academic Vocabulary ──
+    { id: ID0, type: 'multiple-choice', instruction: "Paraphrase (sinonim):", question: "'The economy collapsed' → 'The economy _____.' 'numerous' → '_____'", options: ["fell sharply / many", "grew / few", "stayed / some", "rose / a lot"], correct: "fell sharply / many", explanation: "Paraphrase: collapsed → fell sharply, numerous → many/a large number." },
+    { id: ID1, type: 'fill-blank', instruction: "In short / to sum up:", question: "_____ short, education reduces poverty. To _____ up, learning leads to jobs.", blanks: ["In", "sum"], explanation: "Xulosa iboralari: in short, to sum up." },
+    { id: ID2, type: 'error-correction', instruction: "Paraphrase — bir xil so'zni takrorlamaslik:", question: "The important point is that this point is important.", errorPart: "this point is important", correct: "The key issue is that it carries great weight.", explanation: "Paraphrase: takrorni sinonim bilan almashtirish (key issue, carries great weight)." },
+    { id: ID3, type: 'multiple-choice', instruction: "Rephrase (akademik sinonim):", question: "'show' → '_____'. 'big problem' → '_____ issue'.", options: ["demonstrate / major", "tell / small", "see / tiny", "do / little"], correct: "demonstrate / major", explanation: "Akademik paraphrase: show → demonstrate, big → major." },
+    { id: ID4, type: 'transformation', instruction: "Gapni paraphrase qiling:", question: "Many people think the plan is very good.", hint: "Numerous individuals consider ...", correct: "Numerous individuals consider the plan highly effective.", explanation: "Paraphrase: many people → numerous individuals, very good → highly effective." },`,
+  },
+  {
+    id: 'advancedVerbPatternsB2', name: 'Advanced Verb Patterns',
+    section: "Murakkab fe'l patternlari + Gerund/infinitiv farqi",
+    exercises: `    // ── Interleaved Practice: Advanced Verb Patterns + Gerund/Infinitive ──
+    { id: ID0, type: 'multiple-choice', instruction: "Urge + obj + to V va avoid + V-ing:", question: "I urge you _____ early, and I'd avoid _____ to the last minute.", options: ["to apply / leaving", "applying / to leave", "to apply / to leave", "applying / leaving"], correct: "to apply / leaving", explanation: "Urge + object + to V (to apply). Avoid + V-ing (leaving)." },
+    { id: ID1, type: 'fill-blank', instruction: "Look forward to + V-ing:", question: "I look forward _____ (hear) from you. She admitted _____ (make) a mistake.", blanks: ["to hearing", "making"], explanation: "Look forward to + V-ing (hearing). Admit + V-ing (making)." },
+    { id: ID2, type: 'error-correction', instruction: "Recommend + V-ing (to'g'ri):", question: "I recommend to submit it early.", errorPart: "to submit", correct: "I recommend submitting it early.", explanation: "Recommend + V-ing (submitting), to V emas." },
+    { id: ID3, type: 'multiple-choice', instruction: "Remember + to V / + V-ing farqi:", question: "Remember _____ the door (duty). I remember _____ it last night (memory).", options: ["to lock / locking", "locking / to lock", "to lock / to lock", "locking / locking"], correct: "to lock / locking", explanation: "Remember + to V (kelajak vazifa). Remember + V-ing (o'tmish xotira)." },
+    { id: ID4, type: 'transformation', instruction: "Suggest + V-ing bilan yozing:", question: "Her idea was that we should start tonight.", hint: "She suggested ...", correct: "She suggested starting tonight.", explanation: "Suggest + V-ing (starting)." },`,
+  },
+  {
+    id: 'b2ComprehensiveReview', name: 'B2 Comprehensive Review',
+    section: "B2 darajasini keng aralash takrorlash",
+    exercises: `    // ── Interleaved Practice: B2 comprehensive review ──
+    { id: ID0, type: 'multiple-choice', instruction: "Subjunctive, hedging, stance:", question: "I recommend that it _____ reviewed. _____, this is the strongest option (stance).", options: ["be / Arguably", "is / Obviously", "be / Surely", "is / Clearly"], correct: "be / Arguably", explanation: "Subjunctive (be reviewed) + ehtiyotkor stance (Arguably)." },
+    { id: ID1, type: 'fill-blank', instruction: "Inversion va mixed conditional:", question: "_____ I known the risk, I wouldn't be here now. _____ it not for your help, I'd have failed.", blanks: ["Had", "Were"], explanation: "Had I known (inversiya, mixed). Were it not for (inversiya)." },
+    { id: ID2, type: 'error-correction', instruction: "Akademik register va nominalization:", question: "Because they didn't plan, the project's failure happened.", errorPart: "Because they didn't plan, the project's failure happened", correct: "The lack of planning led to the project's failure.", explanation: "Nominalization + rasmiy: The lack of planning led to..." },
+    { id: ID3, type: 'multiple-choice', instruction: "Advanced modal va critical language:", question: "The results _____ have been affected by bias; we should _____ the evidence carefully.", options: ["may / evaluate", "must / accept", "can / ignore", "will / trust"], correct: "may / evaluate", explanation: "O'tmish ehtimoli (may have) + tanqidiy (evaluate the evidence)." },
+    { id: ID4, type: 'transformation', instruction: "Paraphrase + hedge bilan akademik qiling:", question: "Everyone knows this plan is the best.", hint: "It could be argued that ...", correct: "It could be argued that this plan is the most effective.", explanation: "Hedging + paraphrase: it could be argued, most effective." },`,
+  },
+]
+seed('src/data/daily/b2Part3.ts', B2_P3)

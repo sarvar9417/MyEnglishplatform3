@@ -129,12 +129,21 @@ export const complexSentencesB2: DailyLesson = {
     { id: 59529, type: 'transformation', instruction: 'Birlashtiring:', question: 'She is the scientist. She won the Nobel Prize. Combine with relative clause.', hint: 'She is the scientist who/that...', correct: 'She is the scientist who/that won the Nobel Prize.', explanation: 'Defining relative clause for people: who / that' },
     { id: 59530, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence uses a NON-DEFINING relative clause CORRECTLY?", options: ['The man who lives next door is my uncle', 'My father, who is 60, is retiring', 'The book which I read was good', 'The student that passed was clever'], correct: 'My father, who is 60, is retiring', explanation: 'Non-defining: commas + who (adds extra info, not identifying)' },
     { id: 59531, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I love reading books I read every day.", errorPart: 'I read every day', correct: ', and I read every day.', explanation: "Run-on sentence: ikki independent clause bog'lovchisiz yozilgan. 'and' yoki 'so' kabi coordinator kerak." },
+
+
+    // ── Interleaved Practice: Complex Sentences + Relative Clauses ──
+    { id: 95391, type: 'multiple-choice', instruction: "Subordinate clause (although) va relative (which):", question: "_____ it was late, we continued. The plan, _____ took months, finally worked.", options: ["Although / which", "Which / although", "Despite / which", "Although / that"], correct: "Although / which", explanation: "Ergash gap → Although. Non-defining relative → , which." },
+    { id: 95392, type: 'fill-blank', instruction: "Participle clause + main clause:", question: "_____ (walk) home, I saw an accident. _____ (finish) the task, she left.", blanks: ["Walking", "Having finished"], explanation: "Bir vaqtda → Walking (present participle). Avval tugagan → Having finished (perfect participle)." },
+    { id: 95393, type: 'error-correction', instruction: "Fragment (tugallanmagan gap):", question: "Because the weather was bad. We stayed home.", errorPart: "Because the weather was bad. We", correct: "Because the weather was bad, we stayed home.", explanation: "Ergash gap yakka turolmaydi → asosiy gap bilan birlashtiriladi (vergul bilan)." },
+    { id: 95394, type: 'multiple-choice', instruction: "Whereas (qarama-qarshi) va while:", question: "He likes tea, _____ she prefers coffee. _____ I cooked, he cleaned.", options: ["whereas / While", "while / Whereas", "although / While", "whereas / Although"], correct: "whereas / While", explanation: "Qarama-qarshilik → whereas. Bir vaqtda → While." },
+    { id: 95395, type: 'transformation', instruction: "Ikki gapni relative clause bilan birlashtiring:", question: "The book is on the table. I bought it yesterday.", hint: "The book that ...", correct: "The book that I bought yesterday is on the table.", explanation: "Defining relative → that I bought yesterday." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Bog\'lovchilar va relative pronoun', color: 'bg-emerald-500', icon: '🌱', ids: [6201, 6202, 6203, 6204, 6205] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6206, 6207, 6208, 6209, 6210] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6211, 6212, 6213, 6214, 6215] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6220, 6218, 6221, 6217, 6225, 6219, 6216, 6224, 6223, 6222, 6226] },
+    { title: "🔀 Aralash", desc: "Murakkab gaplar + Relative/conjunction farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95391, 95392, 95393, 95394, 95395] },
   ],
   tests: [
     { id: 59532, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Complex sentence nima?', options: ['bitta clause', 'main + subordinate clause', 'faqat subordinate clause', 'ikki so\'z'], correct: 'main + subordinate clause', explanation: 'Complex = main + subordinate' },
@@ -338,12 +347,21 @@ export const advancedModalsB2: DailyLesson = {
     { id: 59583, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "She ___ called — we already knew the news.", options: ["needn't have", "didn't need to", "shouldn't have", "hadn't better"], correct: "needn't have", explanation: "Needn't have + V3 = unnecessary action that WAS done" },
     { id: 59584, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'I didn't need to pay' vs 'I needn't have paid' — farqi?", options: ["farqi yo'q", "didn't need to = qilmadim, needn't have = qildim (lekin kerak emas edi)", "needn't have = qilmadim, didn't need to = qildim", "ikkalasi = qildim"], correct: "didn't need to = qilmadim, needn't have = qildim (lekin kerak emas edi)", explanation: "KEY DIFFERENCE: didn't need to = not done. Needn't have = done unnecessarily." },
     { id: 59585, type: 'transformation', instruction: "Had better bilan:", question: "It is strongly advised that you leave now (warning). → You ___", hint: "had better", correct: "You had better leave now.", explanation: "Had better = strong advice with implied consequence" },
+
+
+    // ── Interleaved Practice: Advanced Modals + Past Speculation ──
+    { id: 95401, type: 'multiple-choice', instruction: "Needn't have (keraksiz) va didn't need to:", question: "You _____ worried — it was fine. I _____ go, so I stayed home.", options: ["needn't have / didn't need to", "didn't need to / needn't have", "mustn't have / needn't", "needn't / didn't need"], correct: "needn't have / didn't need to", explanation: "Keraksiz qilingan ish → needn't have. Kerak bo'lmagani uchun qilmadi → didn't need to." },
+    { id: 95402, type: 'fill-blank', instruction: "Must have / can't have (o'tmish taxmin):", question: "The ground is wet; it _____ rained. She passed easily; it _____ been hard.", blanks: ["must have", "can't have"], explanation: "O'tmish ishonchli taxmin → must have rained. O'tmish imkonsiz → can't have been." },
+    { id: 95403, type: 'error-correction', instruction: "Had better (kuchli maslahat):", question: "You had better to call him now.", errorPart: "had better to call", correct: "You had better call him now.", explanation: "Had better + V1 (to'siz): had better call." },
+    { id: 95404, type: 'multiple-choice', instruction: "Should have (o'tmish afsus) va might have (ehtimol):", question: "I _____ studied more (regret). He's late; he _____ missed the bus (possible).", options: ["should have / might have", "might have / should have", "must have / should have", "should have / must have"], correct: "should have / might have", explanation: "O'tmish afsusi → should have studied. O'tmish ehtimoli → might have missed." },
+    { id: 95405, type: 'transformation', instruction: "O'tmishdagi ishonchli taxminni yozing:", question: "I'm sure she finished it (it's done now).", hint: "She must ...", correct: "She must have finished it.", explanation: "O'tmish ishonchli taxmin → must have + V3 (finished)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Needn\'t have va didn\'t need to', color: 'bg-emerald-500', icon: '🌱', ids: [6301, 6302, 6303, 6304, 6305] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6306, 6307, 6308, 6309, 6310] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6311, 6312, 6313, 6314, 6315] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6325, 6321, 6323, 6319, 6324, 6320, 6318, 6316, 6322, 6317] },
+    { title: "🔀 Aralash", desc: "Murakkab modallar + Speculation farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95401, 95402, 95403, 95404, 95405] },
   ],
   tests: [
     { id: 59586, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Needn't have + V\u2083 nima ma'no?", options: ['kerak edi, qildim', 'kerak emas edi, qildim', 'kerak edi, qilmadim', 'kerak emas edi, qilmadim'], correct: 'kerak emas edi, qildim', explanation: "Needn't have = I did it (unnecessary)" },
@@ -552,6 +570,14 @@ export const contrastiveStructuresB2: DailyLesson = {
     { id: 59642, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "He is lazy. Conversely, he is also hardworking.", errorPart: 'Conversely', correct: 'On the other hand', explanation: "Conversely = ikki qarama-qarshi holat. Bunda bir kishining ikki tomoni ko'rsatilmoqda → on the other hand yaxshiroq" },
     { id: 59643, type: 'transformation', instruction: "Conversely bilan qayta yozing:", question: "Technology connects people globally. At the same time, it can isolate individuals locally.", hint: "Technology connects people globally. Conversely, ...", correct: "Technology connects people globally. Conversely, it can isolate individuals locally.", explanation: "Conversely = formal contrast between two opposite trends" },
     { id: 59644, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Conversely' qaysi registrda ko'proq ishlatiladi?", options: ['Norasmiy suhbat', 'Academic va rasmiy yozuv', 'Kundalik gap', 'SMS'], correct: 'Academic va rasmiy yozuv', explanation: "Conversely = formal/academic register — IELTS Writing da foydali" },
+
+
+    // ── Interleaved Practice: Contrastive + Linking ──
+    { id: 95411, type: 'multiple-choice', instruction: "Whereas/while (qarama-qarshi) va however:", question: "Cities are busy, _____ villages are calm. It rained; _____, we still went.", options: ["whereas / however", "however / whereas", "while / although", "whereas / although"], correct: "whereas / however", explanation: "Ikki holatni qarama-qarshi qo'yish → whereas. Gaplararo qarshilik → however." },
+    { id: 95412, type: 'fill-blank', instruction: "In contrast / on the other hand:", question: "Tea calms you. _____ contrast, coffee energizes. On the other _____, it can disturb sleep.", blanks: ["In", "hand"], explanation: "In contrast, on the other hand — qarama-qarshi bog'lovchilar." },
+    { id: 95413, type: 'error-correction', instruction: "Despite + ot (although + gap):", question: "Despite of the rain, we went out.", errorPart: "Despite of the rain", correct: "Despite the rain, we went out.", explanation: "Despite + ot ('of' siz). 'Despite of' noto'g'ri." },
+    { id: 95414, type: 'multiple-choice', instruction: "Unlike (+ ot) va although (+ gap):", question: "_____ his brother, he is shy. _____ he is shy, he spoke well.", options: ["Unlike / Although", "Although / Unlike", "Unlike / Despite", "Despite / Although"], correct: "Unlike / Although", explanation: "Unlike + ot (his brother). Although + gap (he is shy)." },
+    { id: 95415, type: 'transformation', instruction: "Although'ni 'despite' bilan yozing:", question: "Although she was tired, she finished.", hint: "Despite ...", correct: "Despite being tired, she finished.", explanation: "Despite + V-ing/ot (being tired)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'While, whereas, unlike', color: 'bg-emerald-500', icon: '🌱', ids: [6401, 6402, 6403, 6404, 6405] },
@@ -559,6 +585,7 @@ export const contrastiveStructuresB2: DailyLesson = {
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6411, 6412, 6413, 6414, 6415] },
     { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [6418, 6416, 6420, 6419, 6417, 6424, 6423, 6425, 6421, 6422] },
     { title: "O'zgartirish", desc: "Rasmiy zidlik — conversely", color: 'bg-teal-500', icon: '🔄', ids: [6426, 6427, 6428, 6429, 6430] },
+    { title: "🔀 Aralash", desc: "Qarama-qarshilik + Linking words farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95411, 95412, 95413, 95414, 95415] },
   ],
   tests: [
     { id: 59645, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'While / Whereas qanday ma\'no?', options: ['sabab', 'farq', 'vaqt', 'natija'], correct: 'farq', explanation: 'While/Whereas = contrast' },
@@ -762,12 +789,21 @@ export const punctuationB2: DailyLesson = {
     { id: 59696, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which uses a SEMICOLON correctly?", options: ["I like tea; and coffee", "It was late; we left early", "She is tall; but thin", "He came; because he wanted to"], correct: "It was late; we left early", explanation: "Semicolon joins two independent clauses without a conjunction" },
     { id: 59697, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'It's' vs 'Its' — qaysi to'g'ri?", options: ["Its raining outside", "The dog wagged it's tail", "The cat licked its paw", "Its a beautiful day"], correct: "The cat licked its paw", explanation: "'Its' = possessive (no apostrophe). 'It's' = it is" },
     { id: 59698, type: 'transformation', instruction: "Colon bilan:", question: "I need: water, food, and shelter. → I need three things ___", hint: "colon before list", correct: "I need three things: water, food, and shelter.", explanation: "Colon introduces a list or explanation" },
+
+
+    // ── Interleaved Practice: Punctuation + Sentence Structure ──
+    { id: 95421, type: 'multiple-choice', instruction: "Semicolon va comma:", question: "Two full clauses: 'It rained_ we stayed home.' Non-defining clause: 'My car_ which is old_ broke.'", options: ["; / , ,", ", / ; ;", "; / ; ;", ", / , ,"], correct: "; / , ,", explanation: "Ikki to'liq gap → nuqtali vergul (;). Non-defining clause → ikki vergul (, ,)." },
+    { id: 95422, type: 'fill-blank', instruction: "Colon (ro'yxat oldidan):", question: "We need three things_ bread, milk, and eggs.", blanks: [":"], explanation: "Ro'yxat oldidan → ikki nuqta (:)." },
+    { id: 95423, type: 'error-correction', instruction: "Apostrof — its vs it's:", question: "The company increased it's profits.", errorPart: "it's", correct: "The company increased its profits.", explanation: "Egalik → its (apostrofsiz). It's = it is." },
+    { id: 95424, type: 'multiple-choice', instruction: "Defining (vergulsiz) va non-defining (vergulli):", question: "Defining: 'The man _____ called is here.' Non-defining: 'Tom_ who called_ is here.'", options: ["who (no comma) / , who ,", ", who , / who", "that , / who", "which / that"], correct: "who (no comma) / , who ,", explanation: "Defining (zarur) → vergulsiz. Non-defining (qo'shimcha) → vergullar bilan." },
+    { id: 95425, type: 'transformation', instruction: "Comma splice'ni to'g'rilang (semicolon bilan):", question: "It was late, we went home.", hint: "It was late; ...", correct: "It was late; we went home.", explanation: "Ikki to'liq gapni vergul bog'lay olmaydi → nuqtali vergul (;)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Colon, semicolon, dash', color: 'bg-emerald-500', icon: '🌱', ids: [6501, 6502, 6503, 6504, 6505] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6506, 6507, 6508, 6509, 6510] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6511, 6512, 6513, 6514, 6515] },
     { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6516, 6520, 6521, 6523, 6524, 6519, 6517, 6522, 6525, 6518] },
+    { title: "🔀 Aralash", desc: "Tinish belgilari + Gap tuzilishi farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95421, 95422, 95423, 95424, 95425] },
   ],
   tests: [
     { id: 59699, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Colon nima uchun ishlatiladi?', options: ['gapni tugatish', 'ro\'yxat/tushuntirish kiritish', 'savol qo\'yish', 'qo\'shtirnoq'], correct: 'ro\'yxat/tushuntirish kiritish', explanation: 'Colon introduces list/explanation' },
@@ -971,12 +1007,21 @@ export const academicCollocationsB2: DailyLesson = {
     { id: 59750, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "The committee ___ a decision after a long debate.", options: ['did', 'made', 'conducted', 'put forward'], correct: 'made', explanation: "Make a decision (NOT do/conduct a decision)" },
     { id: 59751, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which collocation is CORRECT?", options: ['do a suggestion', 'make a suggestion', 'put a suggestion', 'give a suggestion'], correct: 'make a suggestion', explanation: "Make a suggestion (standard collocation)" },
     { id: 59752, type: 'transformation', instruction: "Kollekatsiyani to'g'rilang:", question: "She did an argument that education should be free. → She ___ an argument that...", hint: "put forward", correct: "She put forward an argument that education should be free.", explanation: "Put forward an argument (NOT do an argument)" },
+
+
+    // ── Interleaved Practice: Academic Collocations + Vocabulary ──
+    { id: 95431, type: 'multiple-choice', instruction: "Conduct research va draw a conclusion:", question: "Scientists _____ research and then _____ a conclusion.", options: ["conduct / draw", "do / make", "make / do", "take / give"], correct: "conduct / draw", explanation: "Akademik kollokatsiyalar: conduct research, draw a conclusion." },
+    { id: 95432, type: 'fill-blank', instruction: "Provide evidence / cite sources:", question: "You must _____ evidence and _____ reliable sources.", blanks: ["provide", "cite"], explanation: "Provide evidence, cite sources — akademik kollokatsiyalar." },
+    { id: 95433, type: 'error-correction', instruction: "Make/reach a decision:", question: "The committee did an important decision.", errorPart: "did an important decision", correct: "The committee made an important decision.", explanation: "Make a decision (do emas)." },
+    { id: 95434, type: 'multiple-choice', instruction: "Akademik sifat + ot:", question: "There is a _____ difference and a _____ increase.", options: ["significant / substantial", "big / large", "much / many", "strong / hard"], correct: "significant / substantial", explanation: "Akademik: significant difference, substantial increase (big/large o'rniga)." },
+    { id: 95435, type: 'transformation', instruction: "Oddiy so'zni akademik kollokatsiya bilan:", question: "The study shows a big change.", hint: "The study reveals a ...", correct: "The study reveals a significant change.", explanation: "Akademik: reveal + significant change." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Research va conclusion collocations', color: 'bg-emerald-500', icon: '🌱', ids: [6601, 6602, 6603, 6604, 6605] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6606, 6607, 6608, 6609, 6610] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6611, 6612, 6613, 6614, 6615] },
     { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6617, 6620, 6622, 6616, 6624, 6621, 6625, 6618, 6623, 6619] },
+    { title: "🔀 Aralash", desc: "Akademik kollokatsiyalar + Lug'at farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95431, 95432, 95433, 95434, 95435] },
   ],
   tests: [
     { id: 59753, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Research bilan qaysi verb ishlatiladi?', options: ['make', 'conduct', 'create', 'build'], correct: 'conduct', explanation: 'Conduct research' },
@@ -1180,12 +1225,21 @@ export const criticalThinkingB2: DailyLesson = {
     { id: 59804, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "From the data, we can ___ that the treatment was effective.", options: ['imply', 'infer', 'argue', 'claim'], correct: 'infer', explanation: "Infer = draw a conclusion from evidence (listener/reader role)" },
     { id: 59805, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "The study ___ the previously held view that sugar is harmless.", options: ['implied', 'inferred', 'refuted', 'contended'], correct: 'refuted', explanation: "Refute = prove wrong with evidence" },
     { id: 59806, type: 'transformation', instruction: "Academic language:", question: "He said the theory is wrong. → He ___ the theory.", hint: "challenged / refuted", correct: "He challenged/refuted the theory.", explanation: "Challenge = question validity. Refute = prove wrong." },
+
+
+    // ── Interleaved Practice: Critical Thinking + Hedging ──
+    { id: 95441, type: 'multiple-choice', instruction: "Assumption va bias:", question: "The author makes an _____ that all readers agree. That is a _____.", options: ["assumption / bias", "evidence / fact", "argument / proof", "analysis / source"], correct: "assumption / bias", explanation: "Tanqidiy tahlil: assumption (faraz), bias (noxolislik)." },
+    { id: 95442, type: 'fill-blank', instruction: "Correlation vs causation:", question: "This shows _____ (a link), but it doesn't prove _____ (cause and effect).", blanks: ["correlation", "causation"], explanation: "Tanqidiy fikrlash: correlation ≠ causation." },
+    { id: 95443, type: 'error-correction', instruction: "Hedging — kuchli da'voni baholash:", question: "This source is definitely reliable and proves everything.", errorPart: "definitely reliable and proves everything", correct: "This source appears reliable but does not prove everything.", explanation: "Tanqidiy/hedged: appears reliable, does not prove everything." },
+    { id: 95444, type: 'multiple-choice', instruction: "Evaluate va question (fe'l):", question: "We should _____ the evidence and _____ the author's claims.", options: ["evaluate / question", "accept / believe", "ignore / trust", "copy / repeat"], correct: "evaluate / question", explanation: "Tanqidiy fikrlash: evaluate evidence, question claims." },
+    { id: 95445, type: 'transformation', instruction: "Da'voni tanqidiy baholang:", question: "The article says coffee is good. (be critical/hedged)", hint: "The article claims coffee is good, but ...", correct: "The article claims coffee is good, but the evidence is limited.", explanation: "Tanqidiy: claims + but the evidence is limited (baholash)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Argue, claim, refute', color: 'bg-emerald-500', icon: '🌱', ids: [6701, 6702, 6703, 6704, 6705] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6706, 6707, 6708, 6709, 6710] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6711, 6712, 6713, 6714, 6715] },
     { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6718, 6721, 6719, 6717, 6716, 6720, 6723, 6724, 6725, 6722] },
+    { title: "🔀 Aralash", desc: "Tanqidiy fikrlash tili + Hedging farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95441, 95442, 95443, 95444, 95445] },
   ],
   tests: [
     { id: 59807, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Argue va Claim farqi?', options: ['farqi yo\'q', 'argue = dalil bilan, claim = tasdiqlash', 'argue = yumshoq, claim = kuchli', 'argue = rasmiy, claim = norasmiy'], correct: 'argue = dalil bilan, claim = tasdiqlash', explanation: 'Argue = with evidence. Claim = assertion.' },
@@ -1388,12 +1442,21 @@ export const b2Review: DailyLesson = {
     { id: 59858, type: 'error-correction', instruction: "Review — Murakkab:", question: "Despite of the challenges, the project succeeded.", errorPart: 'Despite of', correct: 'Despite', explanation: "Despite + noun (no 'of'). In spite of the challenges = also correct" },
     { id: 59859, type: 'multiple-choice', instruction: "Review — Murakkab:", question: "I ___ have bought so much food. Half of it went to waste.", options: ["needn't", "needn't have", "didn't need to have", "hadn't better"], correct: "needn't have", explanation: "Needn't have + V3 = unnecessary action that WAS done" },
     { id: 59860, type: 'transformation', instruction: "Review — Murakkab:", question: "If I had known about the sale, I would save money. What type of conditional is this?", hint: "past condition → present result", correct: "Mixed conditional (past → present)", explanation: "If + had + V3 (past), would + V (present result) = MIXED conditional" },
+
+
+    // ── Interleaved Practice: B2 mixed review ──
+    { id: 95451, type: 'multiple-choice', instruction: "Mixed conditional va inversion:", question: "_____ I known, I would act differently now. If I _____ harder, I'd be successful today.", options: ["Had / had worked", "If / worked", "Had / worked", "If / had worked"], correct: "Had / had worked", explanation: "Inversiya → Had I known. Mixed conditional → had worked (o'tmish) → now/today." },
+    { id: 95452, type: 'fill-blank', instruction: "Subjunctive va nominalization:", question: "I recommend that the _____ (reduce) _____ (be) approved.", blanks: ["reduction", "be"], explanation: "Nominalization (reduce → reduction) + subjunctive (be approved)." },
+    { id: 95453, type: 'error-correction', instruction: "Hedging va akademik uslub:", question: "This research definitely proves coffee improves all memory.", errorPart: "definitely proves coffee improves all memory", correct: "This research suggests coffee may improve memory.", explanation: "Akademik hedging: suggests, may improve (definitely/all/proves emas)." },
+    { id: 95454, type: 'multiple-choice', instruction: "Advanced modal va contrast:", question: "You _____ have told me (regret). _____ I was busy, I would have helped.", options: ["should / Although", "must / Despite", "should / Despite", "might / Although"], correct: "should / Although", explanation: "O'tmish afsus → should have told. Qarshilik → Although." },
+    { id: 95455, type: 'transformation', instruction: "Rasmiy, nominalizatsiya bilan yozing:", question: "Because prices increased, sales fell.", hint: "The increase ...", correct: "The increase in prices led to a fall in sales.", explanation: "Nominalization: increase, fall — rasmiy, ixcham uslub." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'All B2 topics mixed', color: 'bg-emerald-500', icon: '🌱', ids: [6801, 6802, 6803, 6804, 6805] },
     { title: "O'rtacha", desc: 'Tanlash va farqlash', color: 'bg-blue-500', icon: '📘', ids: [6806, 6807, 6808, 6809, 6810] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [6811, 6812, 6813, 6814, 6815] },
     { title: "O'zgartirish", desc: 'Aralash \u2014 yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6825, 6819, 6818, 6821, 6817, 6824, 6822, 6823, 6816, 6820] },
+    { title: "🔀 Aralash", desc: "B2 mavzularini aralash takrorlash", color: 'bg-fuchsia-500', icon: '🔄', ids: [95451, 95452, 95453, 95454, 95455] },
   ],
   tests: [
     { id: 59861, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct for unreal past?', options: ['I wish I know', 'I wish I knew', 'I wish I would know', 'I wish I had knew'], correct: 'I wish I knew', explanation: 'Present unreal \u2192 past simple' },

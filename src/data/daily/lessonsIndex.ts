@@ -1481,7 +1481,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Advanced Grammar",
     "formulas": 4,
     "vocabulary": 15,
-    "exercises": 26,
+    "exercises": 31,
     "tests": 18
   },
   {
@@ -1494,7 +1494,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Advanced Grammar",
     "formulas": 4,
     "vocabulary": 12,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 18
   },
   {
@@ -1507,7 +1507,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Advanced Grammar",
     "formulas": 4,
     "vocabulary": 12,
-    "exercises": 30,
+    "exercises": 35,
     "tests": 18
   },
   {
@@ -1565,7 +1565,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Writing",
     "formulas": 4,
     "vocabulary": 12,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 18
   },
   {
@@ -1578,7 +1578,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Academic English",
     "formulas": 4,
     "vocabulary": 12,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 18
   },
   {
@@ -1604,7 +1604,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Academic English",
     "formulas": 4,
     "vocabulary": 12,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 18
   },
   {
@@ -1635,7 +1635,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Review",
     "formulas": 4,
     "vocabulary": 11,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 18
   },
   {
@@ -1648,7 +1648,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Academic Skills",
     "formulas": 4,
     "vocabulary": 16,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 20
   },
   {
@@ -1661,7 +1661,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Academic Skills",
     "formulas": 4,
     "vocabulary": 14,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 20
   },
   {
@@ -1674,7 +1674,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Academic Skills",
     "formulas": 4,
     "vocabulary": 12,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 20
   },
   {
@@ -1687,7 +1687,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Advanced Grammar",
     "formulas": 4,
     "vocabulary": 15,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 20
   },
   {
@@ -1718,7 +1718,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Review",
     "formulas": 4,
     "vocabulary": 11,
-    "exercises": 25,
+    "exercises": 30,
     "tests": 20
   }
 ]
