@@ -129,6 +129,14 @@ export const unrealPastB2: DailyLesson = {
     { id: 54030, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "It's high time we ___ something about this problem.", options: ['do', 'did', 'have done', 'would do'], correct: 'did', explanation: "It's high time + past tense" },
     { id: 54031, type: 'transformation', instruction: "Ifodalang:", question: "I regret not learning Chinese. → I wish...", hint: "I wish I ___", correct: "I wish I had learned Chinese.", explanation: "Past regret → wish + had + V3" },
     { id: 54032, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I wish I can speak English fluently.", errorPart: 'can', correct: 'could', explanation: "Wish + past simple: 'I wish I could' (can → could present unreal)" },
+
+
+    // ── Interleaved Practice: Unreal Past + Conditionals ──
+    { id: 95311, type: 'multiple-choice', instruction: "Wish (hozir) va wish (o'tmish):", question: "I wish I _____ richer now. I wish I _____ the chance last year.", options: ["were / had taken", "was / took", "am / had taken", "were / took"], correct: "were / had taken", explanation: "Hozirgi orzu → wish + Past (were). O'tmish afsus → wish + Past Perfect (had taken)." },
+    { id: 95312, type: 'fill-blank', instruction: "It's time + Past va would rather + Past:", question: "It's time we _____ (leave). I'd rather you _____ (not / smoke) here.", blanks: ["left", "didn't smoke"], explanation: "It's time + Past Simple (left). Would rather + Past Simple (didn't smoke) — boshqaning harakati." },
+    { id: 95313, type: 'error-correction', instruction: "Wish + would (bezovta qiluvchi odat):", question: "I wish you will stop interrupting me.", errorPart: "will stop", correct: "I wish you would stop interrupting me.", explanation: "Boshqaning bezovta odati → wish + would (will emas)." },
+    { id: 95314, type: 'multiple-choice', instruction: "Unreal past va second conditional:", question: "If only I _____ how! If I _____ how, I would help.", options: ["knew / knew", "know / know", "had known / knew", "knew / had known"], correct: "knew / knew", explanation: "Hozirgi real bo'lmagan holat → Past Simple (knew) ikkalasi." },
+    { id: 95315, type: 'transformation', instruction: "Real holatni wish bilan (hozir):", question: "I don't have a car, and it's a problem.", hint: "I wish I ...", correct: "I wish I had a car.", explanation: "Hozirgi yetishmovchilik orzusi → wish + Past Simple (had)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Unreal Past asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5401, 5402, 5403, 5404, 5405] },
@@ -136,6 +144,7 @@ export const unrealPastB2: DailyLesson = {
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5411, 5412, 5413, 5414, 5415] },
     { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5420, 5416, 5417, 5418, 5419] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5421, 5422, 5423, 5424, 5425, 5426] },
+    { title: "🔀 Aralash", desc: "Unreal past (wish/if only) + Conditionals farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95311, 95312, 95313, 95314, 95315] },
   ],
   tests: [
     { id: 54033, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Wish + past simple nima uchun?", options: ["o'tgan xayol", 'hozirgi xayol', 'shikoyat', 'kelasi xayol'], correct: 'hozirgi xayol', explanation: "Wish + past = present unreal" },
@@ -351,6 +360,14 @@ export const advancedConditionalsB2: DailyLesson = {
     { id: 54093, type: 'error-correction', instruction: "Mixed conditional xatosini toping:", question: "If I would have studied harder, I would have a better job now.", errorPart: 'would have studied', correct: 'had studied', explanation: "If dan keyin would ishlatilmaydi: 'If I had studied harder, I would have a better job now.' = mixed conditional (past→present)." },
     { id: 54094, type: 'error-correction', instruction: "Present→past mixed conditional xatosini toping:", question: "If I am more organized, I wouldn't have lost my keys yesterday.", errorPart: 'am', correct: 'were', explanation: "Present→past mixed: If + were (present condition), would have + V3 (past result). 'Am' present tense emas, 'were' kerak — chunki bu xayoliy vaziyat." },
     { id: 54095, type: 'transformation', instruction: "Present condition → past result: Mixed conditional bilan ifodalang:", question: "You are not careful with money, so you spent all your savings.", hint: "If you ___ careful with money, you ___ all your savings.", correct: "If you were more careful with money, you wouldn't have spent all your savings.", explanation: "Present condition (If + were = ehtiyotkor emas) → past result (wouldn't have spent = sarflamagan bo'larding). Present→past mixed conditional." },
+
+
+    // ── Interleaved Practice: Advanced Conditionals + Unreal Past ──
+    { id: 95321, type: 'multiple-choice', instruction: "Mixed conditional (o'tmish → hozir):", question: "If I _____ harder at school, I _____ a better job now.", options: ["had studied / would have", "studied / would have had", "had studied / would have had", "studied / would have"], correct: "had studied / would have", explanation: "O'tmish sharti (had studied) → hozirgi natija (would have) — mixed conditional." },
+    { id: 95322, type: 'fill-blank', instruction: "Inversion (if olib tashlanadi):", question: "_____ I known earlier, I would have come. _____ it not for you, I'd be lost.", blanks: ["Had", "Were"], explanation: "If I had → Had I. If it were not → Were it not (inversiya, formal)." },
+    { id: 95323, type: 'error-correction', instruction: "Third conditional shakli:", question: "If she would have called, I would have answered.", errorPart: "would have called", correct: "If she had called, I would have answered.", explanation: "If qismida 'would have' ishlatilmaydi → had called (Past Perfect)." },
+    { id: 95324, type: 'multiple-choice', instruction: "Wish va third conditional:", question: "I wish you _____ me. If you _____ me, I would have helped.", options: ["had told / had told", "told / told", "had told / told", "would tell / told"], correct: "had told / had told", explanation: "Ikkalasi ham o'tmish real bo'lmagan → Past Perfect (had told)." },
+    { id: 95325, type: 'transformation', instruction: "Inversiya bilan yozing (if siz):", question: "If I had known, I would have stayed.", hint: "Had I ...", correct: "Had I known, I would have stayed.", explanation: "If I had → Had I (formal inversiya)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Conditionals asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5501, 5502, 5503, 5504, 5505] },
@@ -360,6 +377,7 @@ export const advancedConditionalsB2: DailyLesson = {
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5521, 5522, 5523, 5524, 5525] },
     { title: "Qo'shimcha", desc: 'As long as, Otherwise, In case, Were to', color: 'bg-amber-500', icon: '📌', ids: [5526, 5527, 5528, 5529] },
     { title: "Mixed qo'shimcha", desc: "Present→past mixed + 3rd vs Mixed", color: 'bg-rose-500', icon: '🔀', ids: [5530, 5531, 5532, 5533, 5534] },
+    { title: "🔀 Aralash", desc: "Mixed conditionals + inversion + Unreal past farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95321, 95322, 95323, 95324, 95325] },
   ],
   tests: [
     { id: 54096, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Mixed conditional qanday?", options: ['past→past', 'past→present', 'present→present', 'future→past'], correct: 'past→present', explanation: "If + had → would + V" },
@@ -569,6 +587,14 @@ export const nominalizationB2: DailyLesson = {
     { id: 54147, type: 'fill-blank', instruction: "The fact that:", question: 'The ___ that pollution is rising is alarming.', blanks: ['fact'], explanation: 'The fact that + clause' },
     { id: 54148, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which noun form is CORRECT?', options: ['investation', 'investure', 'investment', 'investion'], correct: 'investment', explanation: 'Invest + -ment = investment' },
     { id: 54149, type: 'transformation', instruction: 'Adj → Noun:', question: 'The results are significant. → The ___ of the results...', hint: 'significant → ?', correct: 'significance', explanation: 'Significant → significance (-ance suffix)' },
+
+
+    // ── Interleaved Practice: Nominalization + Passive ──
+    { id: 95331, type: 'multiple-choice', instruction: "Fe'l va nominalizatsiya (rasmiy):", question: "Informal: 'They decided to...' Formal: 'The _____ was made to...' (reduce → noun)", options: ["decision / reduction", "decide / reduce", "deciding / reducing", "decided / reduced"], correct: "decision / reduction", explanation: "Rasmiy uslub: decide → decision, reduce → reduction (nominalizatsiya)." },
+    { id: 95332, type: 'fill-blank', instruction: "Nominalizatsiya + passive:", question: "The _____ (implement) of the policy _____ (delay) until next year.", blanks: ["implementation", "was delayed"], explanation: "Implement → implementation (noun). Passive → was delayed." },
+    { id: 95333, type: 'error-correction', instruction: "Nominalizatsiya — ot shakli:", question: "The analyse of the data took weeks.", errorPart: "analyse", correct: "The analysis of the data took weeks.", explanation: "Fe'l 'analyse' → ot 'analysis'." },
+    { id: 95334, type: 'multiple-choice', instruction: "Fe'l → ot (rasmiy):", question: "We must improve safety. → A _____ in safety is needed. We must protect it. → The _____ of it is vital.", options: ["improvement / protection", "improving / protecting", "improve / protect", "improved / protected"], correct: "improvement / protection", explanation: "Improve → improvement, protect → protection (nominalizatsiya)." },
+    { id: 95335, type: 'transformation', instruction: "Gapni nominalizatsiya bilan rasmiy qiling:", question: "Prices increased, which worried people.", hint: "The increase ...", correct: "The increase in prices worried people.", explanation: "Increase (fe'l) → the increase (ot) — rasmiy, ixcham." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Noun yasash asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5601, 5602, 5603, 5604, 5605] },
@@ -576,6 +602,7 @@ export const nominalizationB2: DailyLesson = {
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5611, 5612, 5613, 5614, 5615] },
     { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5620, 5616, 5617, 5618, 5619] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5621, 5622, 5623, 5624, 5625] },
+    { title: "🔀 Aralash", desc: "Nominalizatsiya + Passive (rasmiy uslub) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95331, 95332, 95333, 95334, 95335] },
   ],
   tests: [
     { id: 54150, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Develop' so'zining noun shakli?", options: ['develop', 'development', 'developing', 'developed'], correct: 'development', explanation: 'Develop + -ment' },
@@ -780,6 +807,14 @@ export const subjunctiveB2: DailyLesson = {
     { id: 54201, type: 'transformation', instruction: "Subjunctive ga o'zgartiring:", question: "The doctor said: 'She should rest.' → The doctor recommended that she ___", hint: "base verb", correct: 'rest', explanation: "Recommend that + base verb (no -s)" },
     { id: 54202, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'___ it not for modern medicine, many diseases would be fatal.'", options: ['If were', 'Were', 'Had', 'Should'], correct: 'Were', explanation: "Were it not for = If it were not for (formal subjunctive)" },
     { id: 54203, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gap NOTO'G'RI?", options: ['I suggest he go', 'She insisted he be present', 'It is vital she attend', 'They recommend that he applies'], correct: 'They recommend that he applies', explanation: "Recommend that + base verb: 'applies' → 'apply' (no -s)" },
+
+
+    // ── Interleaved Practice: Subjunctive + Modals ──
+    { id: 95341, type: 'multiple-choice', instruction: "Subjunctive (recommend that ... be) va modal:", question: "I recommend that he _____ early. He _____ arrive early to get a seat.", options: ["arrive / should", "arrives / should", "arrive / arrives", "arrives / arrive"], correct: "arrive / should", explanation: "Subjunktiv: recommend that he arrive (base form). Maslahat → should arrive." },
+    { id: 95342, type: 'fill-blank', instruction: "Insist/demand + that + V1:", question: "They insisted that she _____ (be) present. He demanded that it _____ (be) done now.", blanks: ["be", "be"], explanation: "Subjunktiv: insist/demand + that + base form (be) — barcha shaxslar." },
+    { id: 95343, type: 'error-correction', instruction: "Subjunctive — base form:", question: "It is essential that everyone is on time.", errorPart: "is on time", correct: "It is essential that everyone be on time.", explanation: "It is essential that + base form (be), 'is' emas (subjunktiv)." },
+    { id: 95344, type: 'multiple-choice', instruction: "Suggest + that va should:", question: "I suggest that we _____ the budget. You _____ check it twice.", options: ["review / should", "reviews / should", "review / reviews", "should review / review"], correct: "review / should", explanation: "Subjunktiv: suggest that we review (base). Maslahat → should check." },
+    { id: 95345, type: 'transformation', instruction: "Subjunktiv bilan rasmiy yozing:", question: "The manager said the report must be finished by Friday. (use 'demanded that')", hint: "The manager demanded that ...", correct: "The manager demanded that the report be finished by Friday.", explanation: "Demand + that + base form (be finished)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Subjunctive asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5701, 5702, 5703, 5704, 5705] },
@@ -787,6 +822,7 @@ export const subjunctiveB2: DailyLesson = {
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5711, 5712, 5713, 5714, 5715] },
     { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5720, 5716, 5717, 5718, 5719] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5721, 5722, 5723, 5724, 5725] },
+    { title: "🔀 Aralash", desc: "Subjunktiv + Modals farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95341, 95342, 95343, 95344, 95345] },
   ],
   tests: [
     { id: 54204, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Subjunctive present = ?", options: ['base verb', 'past verb', 'to + verb', '-ing form'], correct: 'base verb', explanation: 'Subjunctive = base verb (no -s)' },
@@ -986,6 +1022,14 @@ export const hedgingB2: DailyLesson = {
     { id: 54250, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'The evidence _____ that climate change _____.', blanks: ['strongly suggests', 'may accelerate'], explanation: "Hedging: 'strongly suggests' + 'may accelerate' = academic style." },
     { id: 54251, type: 'transformation', instruction: "To'g'ri variantni tanlang:", question: 'It is possible that the meeting will be postponed. (Use might)', hint: 'The meeting ...', correct: 'The meeting might be postponed.', explanation: "'It is possible that' → 'might' (modal hedging)." },
     { id: 54252, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence is MOST APPROPRIATE for academic writing?', options: ['This proves the theory.', 'This is arguably the best approach.', 'This is definitely correct.', 'This is always true.'], correct: 'This is arguably the best approach.', explanation: "'Arguably' = academic hedging. 'Proves/definitely/always' = too strong for academic." },
+
+
+    // ── Interleaved Practice: Hedging + Stance ──
+    { id: 95351, type: 'multiple-choice', instruction: "Hedging (ehtiyotkor) va aniq bayonot:", question: "Strong: 'This proves it.' Hedged: 'This _____ to suggest...' / 'It _____ be the case.'", options: ["seems / may", "proves / must", "shows / will", "is / does"], correct: "seems / may", explanation: "Ehtiyotkor til → seems to suggest, may be the case (kuchsizroq da'vo)." },
+    { id: 95352, type: 'fill-blank', instruction: "Tends to / appears:", question: "The data _____ (tend) to support this. It _____ (appear) that more research is needed.", blanks: ["tends", "appears"], explanation: "Hedging fe'llari: tends to, appears that — ehtiyotkor xulosa." },
+    { id: 95353, type: 'error-correction', instruction: "Hedging — kuchli da'voni yumshatish:", question: "This definitely causes the problem in all cases.", errorPart: "definitely causes the problem in all cases", correct: "This may contribute to the problem in some cases.", explanation: "Akademik hedging: definitely/all → may/some (ehtiyotkor)." },
+    { id: 95354, type: 'multiple-choice', instruction: "It could be argued / arguably:", question: "_____ that prices will rise. This is _____ the best approach.", options: ["It could be argued / arguably", "It proves / definitely", "It shows / certainly", "It is / clearly"], correct: "It could be argued / arguably", explanation: "Hedging: it could be argued, arguably — fikrni ehtiyotkor bildiradi." },
+    { id: 95355, type: 'transformation', instruction: "Bayonotni hedge qiling (yumshating):", question: "Coffee improves memory.", hint: "Coffee may ...", correct: "Coffee may improve memory.", explanation: "May + V1 → ehtiyotkor, hedged da'vo." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'May, might, could', color: 'bg-emerald-500', icon: '🌱', ids: [5801, 5802, 5803, 5804] },
@@ -993,6 +1037,7 @@ export const hedgingB2: DailyLesson = {
     { title: "Qiyin", desc: 'Adverb hedging + suggest', color: 'bg-violet-500', icon: '🎯', ids: [5813, 5817, 5814, 5815, 5816] },
     { title: "Inkor", desc: 'Academic hedging', color: 'bg-red-500', icon: '🚫', ids: [5820, 5818, 5819] },
     { title: "O'zgartirish", desc: 'Essay hedging practice', color: 'bg-teal-500', icon: '🔄', ids: [5820, 5818, 5816] },
+    { title: "🔀 Aralash", desc: "Hedging (ehtiyotkor til) + Stance/modal farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95351, 95352, 95353, 95354, 95355] },
   ],
   tests: [
     { id: 54253, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which expresses 50% probability?', options: ['must', 'may', 'will', 'can'], correct: 'may', explanation: "'May' = 50%." },
@@ -1188,6 +1233,14 @@ export const complexPrepositionsB2: DailyLesson = {
     { id: 54296, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence is grammatically CORRECT?', options: ['Despite of the delay, we continued.', 'In spite the delay, we continued.', 'Despite the delay, we continued.', 'In spite of the delay but we continued.'], correct: 'Despite the delay, we continued.', explanation: "'Despite' + noun. 'In spite of' + noun (but not 'in spite the delay')." },
     { id: 54297, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: '_____ of unforeseen circumstances, the event has been postponed.', blanks: ['Owing to'], explanation: "'Owing to' = sababli (rasmiy). 'Due to' ham mumkin." },
     { id: 54298, type: 'transformation', instruction: "To'g'ri variantni tanlang:", question: 'The project failed because of lack of funding. (Use owing to)', hint: 'Owing ...', correct: 'Owing to lack of funding, the project failed.', explanation: "'Owing to' = 'because of' ning rasmiy varianti. Odatda gap boshida." },
+
+
+    // ── Interleaved Practice: Complex Prepositions + Linking ──
+    { id: 95361, type: 'multiple-choice', instruction: "Due to (+ ot) va because (+ gap):", question: "The delay was _____ heavy rain. We were late _____ it rained.", options: ["due to / because", "because / due to", "due to / due to", "because / because"], correct: "due to / because", explanation: "Due to + ot (heavy rain). Because + gap (it rained)." },
+    { id: 95362, type: 'fill-blank', instruction: "In terms of / with regard to:", question: "_____ regard _____ the budget, we have concerns. _____ terms _____ cost, it's high.", blanks: ["With", "to"], explanation: "With regard to / in terms of — rasmiy predlogli iboralar." },
+    { id: 95363, type: 'error-correction', instruction: "Despite (+ ot) vs although (+ gap):", question: "Despite it was raining, we went out.", errorPart: "Despite it was raining", correct: "Despite the rain, we went out.", explanation: "Despite + ot (the rain). Gap uchun → although it was raining." },
+    { id: 95364, type: 'multiple-choice', instruction: "On behalf of / in addition to:", question: "_____ behalf of the team, I thank you. _____ addition to that, we need staff.", options: ["On / In", "In / On", "On / On", "In / In"], correct: "On / In", explanation: "On behalf of (nomidan). In addition to (bundan tashqari)." },
+    { id: 95365, type: 'transformation', instruction: "Because o'rniga 'due to' (ot bilan):", question: "The flight was cancelled because the weather was bad.", hint: "The flight was cancelled due to ...", correct: "The flight was cancelled due to bad weather.", explanation: "Due to + ot ibora (bad weather)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Despite, in spite of, on behalf of', color: 'bg-emerald-500', icon: '🌱', ids: [5901, 5903, 5902, 5904] },
@@ -1195,6 +1248,7 @@ export const complexPrepositionsB2: DailyLesson = {
     { title: "Qiyin", desc: 'With regard to, in the event of', color: 'bg-violet-500', icon: '🎯', ids: [5914, 5913, 5916, 5915, 5917] },
     { title: "Inkor", desc: 'Formal prepositions master', color: 'bg-red-500', icon: '🚫', ids: [5918, 5919, 5920] },
     { title: "O'zgartirish", desc: 'Business letter practice', color: 'bg-teal-500', icon: '🔄', ids: [5909, 5915, 5920] },
+    { title: "🔀 Aralash", desc: "Murakkab predloglar + Linking words farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95361, 95362, 95363, 95364, 95365] },
   ],
   tests: [
     { id: 54299, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['Despite the rain', 'Despite of the rain', 'Despite to rain', 'Despite for rain'], correct: 'Despite the rain', explanation: "'Despite' + noun." },
@@ -1392,6 +1446,14 @@ export const cohesionB2: DailyLesson = {
     { id: 54342, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which creates the BEST lexical chain?', options: ['Car, vehicle, road, driver', 'Car, apple, book, sun', 'Car, but, however, then', 'Car, he, she, it'], correct: 'Car, vehicle, road, driver', explanation: "'Car, vehicle, road, driver' = lexical chain (bir mavzu)." },
     { id: 54343, type: 'transformation', instruction: "To'g'ri variantni tanlang:", question: 'Two sentences: "The doctor arrived. The doctor examined the patient." (Improve cohesion using reference)', hint: 'The doctor arrived. ...', correct: 'The doctor arrived. He examined the patient.', explanation: "'The doctor' → 'He' (reference). Takrorlanmaslik uchun pronoun." },
     { id: 54344, type: 'error-correction', instruction: "To'g'ri variantni tanlang:", question: 'He studied hard. Therefore he passed.', errorPart: 'Therefore he', correct: 'He studied hard. Therefore, he passed.', explanation: "'Therefore' + comma. Bog'lovchidan keyin vergul kerak." },
+
+
+    // ── Interleaved Practice: Cohesion + Reference ──
+    { id: 95371, type: 'multiple-choice', instruction: "The former va the latter:", question: "Tea and coffee are popular. _____ is calming; _____ gives energy.", options: ["The former / the latter", "The latter / the former", "The first / the second", "This / that"], correct: "The former / the latter", explanation: "Birinchisi (tea) → the former. Ikkinchisi (coffee) → the latter." },
+    { id: 95372, type: 'fill-blank', instruction: "Such + bog'lash:", question: "Prices rose sharply. _____ a change affected everyone. _____ is why we acted.", blanks: ["Such", "This"], explanation: "Such a change (oldingi fikrga ishora). This is why (sabab bog'lash)." },
+    { id: 95373, type: 'error-correction', instruction: "Reference — 'it' vs 'this':", question: "Sales fell. It is because the economy slowed and prices rose.", errorPart: "It is because", correct: "This was because the economy slowed and prices rose.", explanation: "Oldingi butun fikrga ishora → This (kuchliroq kogeziya)." },
+    { id: 95374, type: 'multiple-choice', instruction: "Consequently / moreover (bog'lash):", question: "Costs rose. _____, profits fell. _____, staff left — a second problem.", options: ["Consequently / Moreover", "Moreover / Consequently", "However / Therefore", "Although / Despite"], correct: "Consequently / Moreover", explanation: "Natija → Consequently. Qo'shimcha → Moreover." },
+    { id: 95375, type: 'transformation', instruction: "Ikki gapni 'which' bilan bog'lang:", question: "The project failed. This surprised everyone.", hint: "The project failed, which ...", correct: "The project failed, which surprised everyone.", explanation: "Butun fikrga ishora → , which (kogeziya)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Reference, one/do substitution', color: 'bg-emerald-500', icon: '🌱', ids: [6001, 6003, 6002, 6004] },
@@ -1399,6 +1461,7 @@ export const cohesionB2: DailyLesson = {
     { title: "Qiyin", desc: 'Anaphora, so/not substitution', color: 'bg-violet-500', icon: '🎯', ids: [6013, 6014, 6017, 6015, 6016] },
     { title: "Inkor", desc: 'Lexical chains, text analysis', color: 'bg-red-500', icon: '🚫', ids: [6018, 6020, 6019] },
     { title: "O'zgartirish", desc: 'Cohesion in paragraphs', color: 'bg-teal-500', icon: '🔄', ids: [6018, 6020, 6016] },
+    { title: "🔀 Aralash", desc: "Kogeziya (this/such/former) + Reference farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95371, 95372, 95373, 95374, 95375] },
   ],
   tests: [
     { id: 54345, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'What is reference?', options: ['Word substitution', 'Word omission', 'Word pointing to another', 'Word repetition'], correct: 'Word pointing to another', explanation: "'Reference' = ishora (one word points to another)." },
@@ -1594,6 +1657,14 @@ export const registerB2: DailyLesson = {
     { id: 54388, type: 'transformation', instruction: "To'g'ri variantni tanlang:", question: 'Make this formal: "We also found that the drug works well."', hint: 'Furthermore, ...', correct: 'Furthermore, it was found that the drug is effective.', explanation: "'Also' → 'Furthermore'. 'We found' → 'it was found' (passive). 'Works well' → 'is effective'." },
     { id: 54389, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'Visitors _____ from smoking in the building. (formal)', blanks: ['are requested to refrain'], explanation: "Formal notification: 'Visitors are requested to refrain from...' (passive + formal verb)." },
     { id: 54390, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is the MOST FORMAL version?', options: ['I need your help.', 'Can you help me?', 'I would be grateful for your assistance.', 'Please help me.'], correct: 'I would be grateful for your assistance.', explanation: "'I would be grateful for your assistance' = most formal (conditional + formal noun)." },
+
+
+    // ── Interleaved Practice: Register + Reported Speech ──
+    { id: 95381, type: 'multiple-choice', instruction: "Norasmiy va rasmiy:", question: "Informal: 'I wanna know...' Formal: 'I would like _____ know...' Informal: 'kids' Formal: '_____'", options: ["to / children", "to / kids", "knowing / children", "for / children"], correct: "to / children", explanation: "Rasmiy: would like to know, children (kids emas)." },
+    { id: 95382, type: 'fill-blank', instruction: "Rasmiy phrasal o'rniga lotin fe'l:", question: "Informal: 'find out'. Formal: '_____' (discover). Informal: 'put off'. Formal: '_____' (postpone).", blanks: ["discover", "postpone"], explanation: "Rasmiy uslubda lotin fe'llar: discover, postpone (phrasal o'rniga)." },
+    { id: 95383, type: 'error-correction', instruction: "Rasmiy xatda qisqartma yo'q:", question: "I'm writing to inform you that we can't proceed.", errorPart: "I'm writing", correct: "I am writing to inform you that we cannot proceed.", explanation: "Rasmiy register: qisqartmasiz (I am, cannot)." },
+    { id: 95384, type: 'multiple-choice', instruction: "Reported speech + rasmiy:", question: "She said: 'I'll sort it out.' Formal report: She stated that she _____ _____ the matter.", options: ["would resolve", "will sort out", "would sort out", "will resolve"], correct: "would resolve", explanation: "Reported (will → would) + rasmiy (sort out → resolve)." },
+    { id: 95385, type: 'transformation', instruction: "Norasmiy gapni rasmiy qiling:", question: "Can you help me out with this ASAP?", hint: "I would be grateful if ...", correct: "I would be grateful if you could assist me with this as soon as possible.", explanation: "Rasmiy register: would be grateful, assist, as soon as possible." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Formal vs Informal, contractions', color: 'bg-emerald-500', icon: '🌱', ids: [6101, 6103, 6102, 6104] },
@@ -1601,6 +1672,7 @@ export const registerB2: DailyLesson = {
     { title: "Qiyin", desc: 'Academic vocabulary, formality levels', color: 'bg-violet-500', icon: '🎯', ids: [6113, 6117, 6114, 6116, 6115] },
     { title: "Inkor", desc: 'Full register transformation', color: 'bg-red-500', icon: '🚫', ids: [6120, 6119, 6118] },
     { title: "O'zgartirish", desc: 'Formal letter/essay practice', color: 'bg-teal-500', icon: '🔄', ids: [6120, 6116, 6118] },
+    { title: "🔀 Aralash", desc: "Register (rasmiy/norasmiy) + Reported speech farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95381, 95382, 95383, 95384, 95385] },
   ],
   tests: [
     { id: 54391, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is informal?', options: ['investigate', 'commence', 'look into', 'tolerate'], correct: 'look into', explanation: "'Look into' = phrasal verb (informal)." },
