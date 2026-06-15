@@ -761,9 +761,17 @@ export default function GrammarReviewCard({ rule, onRate }) {
 
 ---
 
-## F2-2. ✅ ️ Interleaved Practice (Aralash Mashqlar)
+## F2-2. ✅ ️ Interleaved Practice (Aralash Mashqlar) — BAJARILDI (5 B1 dars)
 **Muammo:** Barcha mashqlar bir mavzuda ketma-ket (massed practice). Tadqiqotlar: interleaved practice 40–60% samaraliroq
 **Ta'sir:** Yodlash olimi +1.5
+
+**Holat (2026-06-15):** `scripts/seed-interleaved.ts` orqali 5 ta B1 darsiga (past-habits,
+causatives, question-tags, modals-speculation, wishes-regrets) "🔀 Aralash" exerciseSection
+qo'shildi — har biriga dars mavzusini avval o'rganilgan grammatika bilan aralashtiruvchi
+5 mashq (jami 25, ID 95001-95045, kolliziyasiz). Toza quoting, LESSON_INDEX regeneratsiya,
+tsc 0 / test 1111 / build OK. Naqsh tayyor — qolgan darslarga kengaytirilishi mumkin.
+(Eslatma: parallel jarayonning avvalgi urinishi dublikat ID va sintaksis xatosi bilan buzuq
+edi — qaytarilib, toza qayta yozildi.)
 
 ### Amalga oshirish:
 
@@ -854,9 +862,15 @@ microTasks?: {
 
 ---
 
-## F2-4. ✅ Audio Qo'shish — A1/A2 Darslari
+## F2-4. ✅ Audio/Listening — BARCHA 106 DARS (A1/A2 dan ancha oshib ketdi)
 **Muammo:** Yangi boshlovchi talaffuzni eshitmasdan o'rganadi
 **Ta'sir:** Yangi boshlovchi +1.5
+
+**Holat (2026-06-15):** Faqat A1/A2 emas — **barcha 106 darsга** listening bo'limi qo'shildi
+(A1 23/23, A2 22/22, B1 18/18, B1+ 18/18, B2 25/25 = **100%**). 59 ta dialog/hikoya +
+295 savol + lug'at. Har biri darsning grammatikasini ishlatadi. TTS audio pleyer
+transkriptdan ovoz sintez qiladi — **YouTube video shart emas** (F9-1 dead-video
+muammosidan xoli). TTS (browser SpeechSynthesis) allaqachon mavjud edi.
 
 ### Yechim: Web Speech API + Premium TTS
 
@@ -2094,9 +2108,16 @@ interface ListeningSection {
 
 ---
 
-## F9-2. ⚠️ ️ Speaking AI Baholashni Yaxshilash
+## F9-2. ⚠️ ️ Speaking AI Baholashni Yaxshilash (mobil ishonchliligi tuzatildi ✅)
 **Muammo:** AI intonatsiya, stress, rhythm baha bermaydi
 **Ta'sir:** Ingliz tili pedagog +0.5
+
+**Holat (2026-06-15):** Mobil speech-to-text **tuzatildi** — Android'da gapirilgan gap endi
+matnga aylanadi (SpeechRecognition + MediaRecorder mikrofon talashuvi bartaraf etildi;
+mobilда STT mikrofonni eksklyuziv oladi). Bu baholashni mobilда umuman ishlashga keltirdi.
+Desktop'da acoustic tahlil (pitch/energy via analyzeAudio) allaqachon bor.
+⛔ Qolgan: chuqur prosodik baholash (intonatsiya/stress/rhythm) — desktop acoustic'dan
+nariga o'tish hali kerak (kelajak ishi).
 
 ### Web Speech API + Claude kombinatsiyasi:
 
