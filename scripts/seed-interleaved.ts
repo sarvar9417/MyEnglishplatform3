@@ -66,9 +66,81 @@ const B1: Lesson[] = [
     { id: ID3, type: 'multiple-choice', instruction: "Wish va third conditional (o'tmish):", question: "I wish I _____ you earlier. If I _____ you, I would have helped.", options: ["had called / had called", "called / called", "have called / called", "had called / called"], correct: "had called / had called", explanation: "Ikkalasi ham o'tmishdagi real bo'lmagan holat → Past Perfect (had called)." },
     { id: ID4, type: 'transformation', instruction: "Real holatni wish (afsus) ga aylantiring:", question: "I didn't buy the tickets, and now they are sold out.", hint: "I wish I ...", correct: "I wish I had bought the tickets.", explanation: "O'tmishdagi qilinmagan ish afsusi → wish + Past Perfect (had bought)." },`,
   },
+  {
+    id: 'futureFormsReview', name: 'Future Forms',
+    section: "Will / Going to / Present Continuous / Present Simple farqi",
+    exercises: `    // ── Interleaved Practice: Future Forms (will / going to / PC / PS) ──
+    { id: ID0, type: 'multiple-choice', instruction: "Dalilli bashorat (going to) va va'da (will):", question: "Look at those clouds! It _____ rain. Don't worry, I _____ carry your bag.", options: ["is going to / will", "will / is going to", "is going to / is going to", "will / will"], correct: "is going to / will", explanation: "Hozirgi dalil → is going to rain. O'sha onda berilgan va'da → will carry." },
+    { id: ID1, type: 'fill-blank', instruction: "Arrangement (PC) va timetable (PS):", question: "I _____ the dentist at 3 tomorrow (arranged). The film _____ at 7 pm (schedule).", blanks: ["am meeting", "starts"], explanation: "Kelishilgan uchrashuv → Present Continuous (am meeting). Jadval → Present Simple (starts)." },
+    { id: ID2, type: 'error-correction', instruction: "Spontan qaror — will, going to emas:", question: "The phone is ringing. I am going to answer it.", errorPart: "am going to answer", correct: "The phone is ringing. I will answer it.", explanation: "O'sha onda qabul qilingan qaror → will. Going to oldindan rejalashtirilgan uchun." },
+    { id: ID3, type: 'multiple-choice', instruction: "Reja (going to) va kelishuv (Present Continuous):", question: "I _____ start a new course next month. We _____ dinner with friends on Friday.", options: ["am going to / are having", "will / will have", "am having / am going to", "are going to / will have"], correct: "am going to / are having", explanation: "Niyat/reja → am going to start. Aniq kelishilgan tadbir → are having dinner." },
+    { id: ID4, type: 'transformation', instruction: "Dalilga asoslangan bashoratni 'going to' bilan yozing:", question: "Be careful! You / fall!", hint: "You ...", correct: "You are going to fall!", explanation: "Hozirgi dalil asosida darhol sodir bo'ladigan bashorat → are going to fall." },`,
+  },
+  {
+    id: 'modalsObligation', name: 'Modals of Obligation',
+    section: "Obligation (must/have to) + Speculation (must = taxmin) farqi",
+    exercises: `    // ── Interleaved Practice: Obligation + Speculation/Advice ──
+    { id: ID0, type: 'multiple-choice', instruction: "Must (majburiyat) va must (taxmin):", question: "You _____ wear a helmet — it's the law. He's not answering; he _____ be asleep.", options: ["must / must", "have to / might", "must / should", "should / must"], correct: "must / must", explanation: "Birinchi must = majburiyat (qonun). Ikkinchi must = ishonchli taxmin. Bir so'z, ikki ma'no." },
+    { id: ID1, type: 'fill-blank', instruction: "Mustn't (taqiq) va don't have to (majburiy emas):", question: "You _____ smoke here (it is forbidden), but you _____ wear a tie (it is optional).", blanks: ["mustn't", "don't have to"], explanation: "Taqiq → mustn't. Majburiy emas (ixtiyoriy) → don't have to. Ikkisi butunlay farq qiladi." },
+    { id: ID2, type: 'error-correction', instruction: "Should (maslahat) vs must (majburiyat):", question: "You must drink more water if you want, it's just my advice.", errorPart: "must", correct: "You should drink more water if you want, it's just my advice.", explanation: "Maslahat → should. Must = kuchli majburiyat, maslahat uchun emas." },
+    { id: ID3, type: 'multiple-choice', instruction: "Have to (tashqi majburiyat) va must (ichki/shaxsiy):", question: "I _____ wear a uniform at work (company rule). I really _____ call my mother — I miss her.", options: ["have to / must", "must / have to", "should / must", "have to / should"], correct: "have to / must", explanation: "Tashqi qoidalar → have to. Ichki, shaxsiy his → must." },
+    { id: ID4, type: 'transformation', instruction: "Past majburiyatni 'had to' bilan yozing:", question: "It was necessary for me to work late yesterday.", hint: "I ...", correct: "I had to work late yesterday.", explanation: "O'tmishdagi majburiyat → had to (must'ning o'tgan shakli)." },`,
+  },
+  {
+    id: 'bothEitherNeither', name: 'Both / Either / Neither',
+    section: "Both/either/neither + Quantifiers (all/none/every) farqi",
+    exercises: `    // ── Interleaved Practice: Both/Either/Neither + Quantifiers ──
+    { id: ID0, type: 'multiple-choice', instruction: "Neither (ikkitadan hech qaysi) va none (uchdan ko'pdan hech qaysi):", question: "I have two pens, but _____ of them works. There are six chairs, but _____ of them is free.", options: ["neither / none", "none / neither", "either / none", "neither / either"], correct: "neither / none", explanation: "Ikkita → neither of them. Ikkidan ko'p (olti) → none of them." },
+    { id: ID1, type: 'fill-blank', instruction: "Both (ikkalasi) va all (hammasi):", question: "_____ of my two brothers are tall. _____ of the students passed the exam (all of them).", blanks: ["Both", "All"], explanation: "Ikkalasi → Both. Hammasi (ko'plik) → All." },
+    { id: ID2, type: 'error-correction', instruction: "Either fe'l mosligi:", question: "Either of the answers are correct.", errorPart: "are", correct: "Either of the answers is correct.", explanation: "Either + birlik fe'l → is correct (each one). 'Are' noto'g'ri." },
+    { id: ID3, type: 'multiple-choice', instruction: "Neither...nor va either...or:", question: "_____ Tom _____ Sam came (both absent). You can have _____ tea _____ coffee (one choice).", options: ["Neither / nor / either / or", "Either / or / neither / nor", "Neither / or / either / nor", "Both / and / either / or"], correct: "Neither / nor / either / or", explanation: "Ikkalasi ham yo'q → neither...nor. Ikkidan biri → either...or." },
+    { id: ID4, type: 'transformation', instruction: "'Not...and not' ni neither...nor bilan qisqartiring:", question: "She doesn't eat meat and she doesn't eat fish.", hint: "She eats ...", correct: "She eats neither meat nor fish.", explanation: "Ikki inkorni birlashtirish → neither meat nor fish." },`,
+  },
+  {
+    id: 'timeClauses', name: 'Time Clauses',
+    section: "Time clauses + Tenses (present/future) farqi",
+    exercises: `    // ── Interleaved Practice: Time Clauses + Present/Future ──
+    { id: ID0, type: 'multiple-choice', instruction: "Time clause'da kelasi zamon ishlatilmaydi:", question: "I will call you when I _____ home. As soon as the rain _____, we will go out.", options: ["get / stops", "will get / will stop", "get / will stop", "will get / stops"], correct: "get / stops", explanation: "When/as soon as'dan keyin Present Simple (get, stops) — 'will' emas, garchi ma'no kelasi bo'lsa ham." },
+    { id: ID1, type: 'fill-blank', instruction: "Until (gacha) + Present Simple:", question: "Wait here until I _____ back. I won't leave until the work _____ finished.", blanks: ["come", "is"], explanation: "Until'dan keyin Present Simple (come) / present passive (is finished) — kelasi ma'noда." },
+    { id: ID2, type: 'error-correction', instruction: "While + davomli harakat:", question: "While I will cook dinner, you can set the table.", errorPart: "will cook", correct: "While I cook dinner, you can set the table.", explanation: "While'dan keyin kelasida ham Present Simple/Continuous — 'will' emas." },
+    { id: ID3, type: 'multiple-choice', instruction: "Before/after time clause + Past:", question: "After she _____ her homework, she went out. Before we _____, we locked the door.", options: ["had finished / left", "finished / had left", "will finish / leave", "finishes / leaves"], correct: "had finished / left", explanation: "Avval tugagan harakat → Past Perfect (had finished), keyin Past Simple (went/left)." },
+    { id: ID4, type: 'transformation', instruction: "Ikki gapni 'as soon as' bilan birlashtiring (kelasi):", question: "The bus will arrive. Then we will get on it.", hint: "As soon as the bus ...", correct: "As soon as the bus arrives, we will get on it.", explanation: "As soon as + Present Simple (arrives), asosiy gap will + V1." },`,
+  },
+  {
+    id: 'indirectQuestions', name: 'Indirect Questions',
+    section: "Indirect questions + Reported speech / tags farqi",
+    exercises: `    // ── Interleaved Practice: Indirect Questions + Reported Speech ──
+    { id: ID0, type: 'multiple-choice', instruction: "Direct va indirect question tartibi:", question: "Direct: 'Where does she live?' Indirect: 'Do you know where she _____?' '_____ she live near here?' (direct)", options: ["lives / Does", "does live / Do", "lives / Is", "live / Does"], correct: "lives / Does", explanation: "Indirect: inversiya yo'q → where she lives. Direct: Does + subject + verb." },
+    { id: ID1, type: 'fill-blank', instruction: "If/whether bilan indirect yes/no question:", question: "I wonder _____ the shop is open. Could you tell me _____ this bus goes to the centre.", blanks: ["if", "whether"], explanation: "Indirect yes/no question → if yoki whether bilan boshlanadi." },
+    { id: ID2, type: 'error-correction', instruction: "Indirect question'da do/does olib tashlanadi:", question: "Can you tell me what time does the train leave?", errorPart: "does the train leave", correct: "Can you tell me what time the train leaves?", explanation: "Indirect: do/does yo'q, 's' qaytadi → what time the train leaves." },
+    { id: ID3, type: 'multiple-choice', instruction: "Indirect question vs question tag:", question: "Do you know who _____ this? You don't know the answer, _____?", options: ["wrote / do you", "did write / don't you", "wrote / did you", "did wrote / do you"], correct: "wrote / do you", explanation: "Indirect → who wrote (inversiyasiz). Inkor gap → tasdiq tag (do you)." },
+    { id: ID4, type: 'transformation', instruction: "Direct question'ni indirect (polite) qiling:", question: "How much does this cost?", hint: "Could you tell me how much ...", correct: "Could you tell me how much this costs?", explanation: "Indirect: inversiyasiz, 's' qaytadi → how much this costs." },`,
+  },
+  {
+    id: 'soNeitherAuxiliaries', name: 'So / Neither + Auxiliaries',
+    section: "So/Neither agreement + Tenses (auxiliary mosligi)",
+    exercises: `    // ── Interleaved Practice: So/Neither + Auxiliary agreement ──
+    { id: ID0, type: 'multiple-choice', instruction: "So (tasdiq rozilik) va neither (inkor rozilik):", question: "'I like tea.' '_____ I.' 'I can't swim.' '_____ I.'", options: ["So do / Neither can", "So am / Neither do", "Neither do / So can", "So do / So can"], correct: "So do / Neither can", explanation: "Tasdiqqa rozilik → So + auxiliary (do). Inkorga rozilik → Neither + auxiliary (can)." },
+    { id: ID1, type: 'fill-blank', instruction: "Auxiliary zamonni mos qiladi:", question: "'I went to Paris.' 'So _____ I.' 'She has finished.' 'So _____ he.'", blanks: ["did", "has"], explanation: "Past Simple (went) → did. Present Perfect (has finished) → has. Auxiliary asl zamonga mos." },
+    { id: ID2, type: 'error-correction', instruction: "So/neither dan keyin inversiya:", question: "'I am tired.' 'So I am.'", errorPart: "So I am", correct: "'I am tired.' 'So am I.'", explanation: "Rozilikda inversiya: So + auxiliary + subject → So am I. ('So I am' = boshqa ma'no)." },
+    { id: ID3, type: 'multiple-choice', instruction: "Neither (inkor) — auxiliary tanlash:", question: "'I haven't seen it.' '_____ I.' 'They won't come.' '_____ we.'", options: ["Neither have / Neither will", "Neither did / Neither do", "So have / So will", "Neither has / Neither will"], correct: "Neither have / Neither will", explanation: "Present Perfect inkor (haven't) → Neither have. Future inkor (won't) → Neither will." },
+    { id: ID4, type: 'transformation', instruction: "Roziligini 'So' bilan qisqa javob qiling:", question: "A: 'I would love to travel more.' B agrees (short answer).", hint: "So ...", correct: "So would I.", explanation: "Would + rozilik → So would I (auxiliary 'would' takrorlanadi)." },`,
+  },
 ]
 
-let nextBase = 95001
+// nextBase'ni mavjud 95xxx ID'lardan avtomatik aniqlaymiz — takroriy ishlashda kolliziyasiz.
+import { readdirSync } from 'fs'
+function computeNextBase(): number {
+  let max = 95000
+  for (const f of readdirSync('src/data/daily')) {
+    if (!f.endsWith('.ts')) continue
+    const s = readFileSync(`src/data/daily/${f}`, 'utf-8')
+    for (const m of s.matchAll(/id:\s*(95\d{3})/g)) max = Math.max(max, Number(m[1]))
+  }
+  // keyingi o'nlikdan boshlaymiz (har dars 10 ID bloki)
+  return Math.floor(max / 10) * 10 + 10 + 1
+}
+let nextBase = computeNextBase()
 
 function seed(path: string, lessons: Lesson[]) {
   let content = readFileSync(path, 'utf-8')
