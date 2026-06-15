@@ -761,17 +761,23 @@ export default function GrammarReviewCard({ rule, onRate }) {
 
 ---
 
-## F2-2. ✅ ️ Interleaved Practice (Aralash Mashqlar) — BAJARILDI (5 B1 dars)
+## F2-2. ✅ ️ Interleaved Practice (Aralash Mashqlar) — TO'LIQ BAJARILDI (51 dars)
 **Muammo:** Barcha mashqlar bir mavzuda ketma-ket (massed practice). Tadqiqotlar: interleaved practice 40–60% samaraliroq
 **Ta'sir:** Yodlash olimi +1.5
 
-**Holat (2026-06-15):** `scripts/seed-interleaved.ts` orqali 5 ta B1 darsiga (past-habits,
-causatives, question-tags, modals-speculation, wishes-regrets) "🔀 Aralash" exerciseSection
-qo'shildi — har biriga dars mavzusini avval o'rganilgan grammatika bilan aralashtiruvchi
-5 mashq (jami 25, ID 95001-95045, kolliziyasiz). Toza quoting, LESSON_INDEX regeneratsiya,
-tsc 0 / test 1111 / build OK. Naqsh tayyor — qolgan darslarga kengaytirilishi mumkin.
-(Eslatma: parallel jarayonning avvalgi urinishi dublikat ID va sintaksis xatosi bilan buzuq
-edi — qaytarilib, toza qayta yozildi.)
+**Holat (2026-06-15):** `scripts/seed-interleaved.ts` orqali **51 ta darsga** "🔀 Aralash"
+exerciseSection qo'shildi — har biri dars mavzusini avval o'rganilgan grammatika bilan
+aralashtiruvchi 5 mashq:
+- **B1:** b1Part1 11/11 dars (95001-95105)
+- **A2:** a2Part1-4 20/20 dars (95111-95305)
+- **B2:** b2Part1-3 20/20 dars (95311-95495)
+
+Jami **255 mashq** (multiple-choice, fill-blank, error-correction, transformation),
+unik ID (95001-95495, kolliziyasiz), toza quoting, LESSON_INDEX avtomatik regeneratsiya.
+tsc 0 / lint 0 / test 1111 / build OK (4570+ unik ID, dublikatsiz). Skript idempotent va
+nextBase'ni avtomatik aniqlaydi — kelajakda yangi darslarga ham xavfsiz kengaytiriladi.
+(Eslatma: parallel jarayonning avvalgi urinishi dublikat ID, sintaksis xatosi va eskirgan
+index bilan buzuq edi — to'liq qaytarilib, toza qayta yozildi.)
 
 ### Amalga oshirish:
 
