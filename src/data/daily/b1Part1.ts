@@ -486,6 +486,14 @@ export const modalsSpeculation: DailyLesson = {
     { id: 40127, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "She ___ have left already. Her coat is still here.", options: ['must', 'can\'t', 'might', 'should'], correct: 'can\'t', explanation: "Palto hali bu yerda ? ketgan bo'lishi mumkin emas ? can't have left." },
     { id: 40128, type: 'fill-blank', instruction: "Do you think... bilan so'roq yozing:", question: "_____ you think she _____ about the surprise?", blanks: ['Do', 'knows'], explanation: "'Do you think + present' ? Do you think she knows?" },
     { id: 40129, type: 'transformation', instruction: "Could it be... bilan so'roq yozing:", question: 'Perhaps she forgot about the meeting.', hint: 'Could it be ...', correct: 'Could it be that she forgot about the meeting?', explanation: "'Could it be that...' = taxmin so'roqi." },
+
+
+    // ── Interleaved Practice: Modals of Speculation + Obligation ──
+    { id: 95031, type: 'multiple-choice', instruction: "Speculation va obligation (bir xil so'z, ikki ma'no):", question: "He _____ be at work now (I'm sure). You _____ finish this by 5 PM (rule).", options: ["must / have to", "might / must", "can't / should", "could / need to"], correct: "must / have to", explanation: "Must be = taxmin (100% ishonch). Have to finish = tashqi majburiyat." },
+    { id: 95032, type: 'fill-blank', instruction: "Can't (imkonsiz taxmin) ni to'ldiring:", question: "The lights are off, so they _____ be at home.", blanks: ["can't"], explanation: "Dalilga asoslangan imkonsizlik → can't be (mustn't emas — mustn't = taqiq)." },
+    { id: 95033, type: 'error-correction', instruction: "Speculation xatosi — mustn't vs can't:", question: "She speaks perfect French, so she mustn't be a beginner.", errorPart: "mustn't be", correct: "She speaks perfect French, so she can't be a beginner.", explanation: "Imkonsiz taxmin → can't be. Mustn't = taqiq (ruxsat yo'q), taxmin emas." },
+    { id: 95034, type: 'multiple-choice', instruction: "Might (ehtimol) va must (majburiyat):", question: "It _____ rain later, take an umbrella. You _____ wear a seatbelt — it's the law.", options: ["might / must", "must / might", "can't / should", "should / might"], correct: "might / must", explanation: "Ehtimollik → might rain. Qonuniy majburiyat → must wear." },
+    { id: 95035, type: 'transformation', instruction: "Aniq gapni taxminga (must be) aylantiring:", question: "I'm sure he is tired after the trip.", hint: "He must ...", correct: "He must be tired after the trip.", explanation: "Dalilga asoslangan ishonchli taxmin → must be tired." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Must / Might / Can't be asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4201, 4202, 4203, 4204] },
@@ -493,6 +501,7 @@ export const modalsSpeculation: DailyLesson = {
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4209, 4210, 4211] },
     { title: "Inkor", desc: "Gapni qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4212, 4213, 4214, 4215] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄',       ids: [4216, 4217, 4218, 4219, 4220] },
+    { title: "🔀 Aralash", desc: "Speculation (taxmin) + Obligation (majburiyat) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95031, 95032, 95033, 95034, 95035] },
   ],
   tests: [
     { id: 40130, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi modal fe'l ishonchli taxminni ifodalaydi?", options: ['must', 'might', 'can\'t', 'could'], correct: 'must', explanation: "Must = ishonchli taxmin (bo'lsa kerak)." },
@@ -647,6 +656,14 @@ export const pastHabits: DailyLesson = {
     { id: 40172, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "I ___ eat meat, but now I am a vegetarian.", options: ['used to', 'would', 'didn\'t use to', 'am used to'], correct: 'used to', explanation: "O'tmishda yerdim, hozir yemayman ? used to." },
     { id: 40173, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "When we were kids, we _____ hours playing in the park.", blanks: ['would spend'], explanation: "Hikoya qilishda ? would spend. Takrorlanuvchi harakat." },
     { id: 40174, type: 'transformation', instruction: "So'roq shaklida yozing:", question: 'You used to live in Samarkand.', hint: '?', correct: 'Did you use to live in Samarkand?', explanation: "So'roq ? Did + use to + V1." },
+
+
+    // ── Interleaved Practice: Past Habits + Past Simple/Continuous ──
+    { id: 95001, type: 'multiple-choice', instruction: "O'tgan odat va aniq voqeani farqlang:", question: "When I was a child, I _____ in this park every day. Last week, I _____ my old friend here.", options: ["used to play / met", "played / would meet", "would play / used to meet", "was playing / have met"], correct: "used to play / met", explanation: "Har kuni bolalikda = o'tgan odat → used to play. Last week = aniq voqea → Past Simple (met)." },
+    { id: 95002, type: 'fill-blank', instruction: "Used to (odat) va Past Simple (bitta voqea):", question: "I _____ in a small village, but last year I _____ to the city.", blanks: ["used to live", "moved"], explanation: "Qishloqda yashash = o'tgan holat → used to live. Last year I moved = aniq voqea → Past Simple." },
+    { id: 95003, type: 'error-correction', instruction: "Would xatosi — state fe'llar bilan would ishlatilmaydi:", question: "When I was young, I would have a red bicycle.", errorPart: "would have", correct: "When I was young, I used to have a red bicycle.", explanation: "Have = state fe'l (egalik). Would faqat action fe'llar bilan; state uchun used to." },
+    { id: 95004, type: 'multiple-choice', instruction: "Past Continuous (fon) va Past Simple (uzilish):", question: "I _____ TV when the phone suddenly _____.", options: ["was watching / rang", "watched / was ringing", "used to watch / rang", "would watch / rang"], correct: "was watching / rang", explanation: "Davom etgan fon harakat → Past Continuous; uni uzgan qisqa voqea → Past Simple." },
+    { id: 95005, type: 'transformation', instruction: "Past Simple ni Used to ga o'zgartiring (odat ekanini ko'rsatish):", question: "He walked to school every day when he was a child.", hint: "He used to ...", correct: "He used to walk to school every day when he was a child.", explanation: "Har kuni yurish = o'tgan odat → used to walk (endi qilmasligini ta'kidlaydi)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Used to va Would — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4301, 4302, 4303, 4304] },
@@ -654,6 +671,7 @@ export const pastHabits: DailyLesson = {
     { title: "Qiyin", desc: "Xatolarni topish va tuzatish", color: 'bg-violet-500', icon: '🎯', ids: [4309, 4310, 4311, 4312] },
     { title: "Inkor", desc: "Gapni qayta yozish", color: 'bg-red-500', icon: '🚫', ids: [4313, 4314, 4315, 4316] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4318, 4317, 4319, 4320] },
+    { title: "🔀 Aralash", desc: "Past habits + Past Simple/Continuous farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95001, 95002, 95003, 95004, 95005] },
   ],
   tests: [
     { id: 40175, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi shakl o'tgan odatlar va holatlar uchun ishlatiladi?", options: ['used to', 'would', 'be used to', 'get used to'], correct: 'used to', explanation: "Used to = o'tgan odatlar va holatlar." },
@@ -810,6 +828,14 @@ export const causatives: DailyLesson = {
     { id: 40218, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "I got my friend ___ me with my homework.", options: ['help', 'to help', 'helped', 'helping'], correct: 'to help', explanation: "Get + person + to V1." },
     { id: 40219, type: 'fill-blank', instruction: "Present Perfect bilan:", question: "I _____.", blanks: ['have just had my car washed'], explanation: "Present perfect causative: have + had + object + V3." },
     { id: 40220, type: 'transformation', instruction: "Modal bilan:", question: 'It would be a good idea to check your eyes.', hint: 'You ...', correct: 'You should have your eyes checked.', explanation: "Modal + causative: should have + object + V3." },
+
+
+    // ── Interleaved Practice: Causatives + Active/Passive ──
+    { id: 95011, type: 'multiple-choice', instruction: "Have something done va o'zi qilish:", question: "I can't cut hair myself, so I _____ at the salon. My sister _____ her own hair.", options: ["have it cut / cuts", "have cut it / cut", "get cut it / is cutting", "had cut / has cut"], correct: "have it cut / cuts", explanation: "Boshqa qildiradi → have it cut (causative). O'zi qiladi → cuts (oddiy active)." },
+    { id: 95012, type: 'fill-blank', instruction: "Causative (have/get sth done) ni to'ldiring:", question: "We are _____ our house _____ next month (someone else does it).", blanks: ["having", "painted"], explanation: "Have + object + V3 = boshqaga qildirish: having our house painted." },
+    { id: 95013, type: 'error-correction', instruction: "Causative tartibi xatosi:", question: "I had cut my hair yesterday by a barber.", errorPart: "had cut my hair", correct: "I had my hair cut yesterday by a barber.", explanation: "To'g'ri tartib: have + OBJECT + V3 → had my hair cut (object fe'ldan oldin)." },
+    { id: 95014, type: 'multiple-choice', instruction: "Passive va Causative farqi:", question: "The window _____ by a thief. Then we _____ by a professional.", options: ["was broken / had it repaired", "broke / repaired it", "is broken / repair it", "had broken / was repaired"], correct: "was broken / had it repaired", explanation: "Oddiy passive (kim sindirgani noma'lum) → was broken. Boshqaga tuzattirish → had it repaired." },
+    { id: 95015, type: 'transformation', instruction: "Active ni causative (get something done) ga aylantiring:", question: "A mechanic checks my car every year.", hint: "I get my car ...", correct: "I get my car checked every year.", explanation: "Get + object + V3 = boshqaga qildirish: get my car checked." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Have/Get + object + V3", color: 'bg-emerald-500', icon: '🌱', ids: [4401, 4402, 4403, 4404] },
@@ -817,6 +843,7 @@ export const causatives: DailyLesson = {
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4409, 4410, 4411, 4412] },
     { title: "Inkor", desc: "Gapni o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [4413, 4414, 4415, 4416] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4418, 4417, 4419, 4420] },
+    { title: "🔀 Aralash", desc: "Causative + Active/Passive farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95011, 95012, 95013, 95014, 95015] },
   ],
   tests: [
     { id: 40221, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Causative 'have' qanday tuzilishga ega?", options: ['have + V3', 'have + object + V1', 'have + object + V3', 'have + V-ing'], correct: 'have + object + V3', explanation: "Causative have: have + object + V3." },
@@ -974,6 +1001,14 @@ export const questionTags: DailyLesson = {
     { id: 40264, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "Nobody called, ___?", options: ['did they', 'didn\'t they', 'did he', 'didn\'t he'], correct: 'did they', explanation: "Nobody ? inkor ? musbat tag + they: did they." },
     { id: 40265, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "She hardly ever goes out, _____?", blanks: ['does she'], explanation: "Hardly ? inkor ma'no ? musbat tag: does she." },
     { id: 40266, type: 'transformation', instruction: "Question tag va javob yozing:", question: 'You are from Uzbekistan. (confirm)', hint: 'You ...', correct: "You are from Uzbekistan, aren't you? — Yes, I am.", explanation: "Confirm ? falling intonation. Javob: Yes, I am." },
+
+
+    // ── Interleaved Practice: Question Tags + Direct/Indirect questions ──
+    { id: 95021, type: 'multiple-choice', instruction: "Tag question va direct question:", question: "You are from Tashkent, _____? _____ you live near the centre?", options: ["aren't you / Do", "isn't it / Are", "don't you / Did", "are you / Do"], correct: "aren't you / Do", explanation: "Tasdiq gap → inkor tag (aren't you). Direct question → Do + subject + verb." },
+    { id: 95022, type: 'fill-blank', instruction: "Tag qo'shing (inkor gap → tasdiq tag):", question: "She hasn't finished yet, _____?", blanks: ["has she"], explanation: "Inkor gap (hasn't) → tasdiq tag (has she). Auxiliary mosligi: have/has." },
+    { id: 95023, type: 'error-correction', instruction: "Indirect question tartibi xatosi:", question: "Can you tell me where is the station?", errorPart: "where is the station", correct: "Can you tell me where the station is?", explanation: "Indirect question'da inversiya yo'q: where the station IS (subject + verb)." },
+    { id: 95024, type: 'multiple-choice', instruction: "Tag — to be va to do mosligi:", question: "They went home early, _____? He doesn't smoke, _____?", options: ["didn't they / does he", "don't they / does he", "weren't they / is he", "didn't they / is he"], correct: "didn't they / does he", explanation: "Past Simple (went) → didn't they. Present (doesn't) → does he. Tag auxiliary'ga mos kelishi kerak." },
+    { id: 95025, type: 'transformation', instruction: "Direct question ni indirect qiling:", question: "What time does the bus leave?", hint: "Do you know what time ...", correct: "Do you know what time the bus leaves?", explanation: "Indirect: inversiya yo'q, 's' qaytadi → what time the bus leaves." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Asosiy qoida — musbat/inkor", color: 'bg-emerald-500', icon: '🌱', ids: [4501, 4502, 4503, 4504] },
@@ -981,6 +1016,7 @@ export const questionTags: DailyLesson = {
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [4509, 4510, 4511, 4512] },
     { title: "Inkor", desc: "Gapga tag qo'shish", color: 'bg-red-500', icon: '🚫', ids: [4513, 4514, 4515, 4516] },
     { title: "O'zgartirish", desc: "Murakkab vaziyatlar", color: 'bg-teal-500', icon: '🔄', ids: [4518, 4517, 4519, 4520] },
+    { title: "🔀 Aralash", desc: "Tag question + Direct/Indirect question farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95021, 95022, 95023, 95024, 95025] },
   ],
   tests: [
     { id: 40267, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Musbat gapga qanday tag qo'shiladi?", options: ['musbat tag', 'inkor tag', 'bir xil', 'tag qo\'shilmaydi'], correct: 'inkor tag', explanation: "Musbat gap ? inkor tag." },
@@ -1784,6 +1820,14 @@ export const wishesRegrets: DailyLesson = {
     { id: 40492, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "I regret ___ him about the surprise.", options: ['tell', 'telling', 'to tell', 'told'], correct: 'telling', explanation: "Regret + V-ing." },
     { id: 40493, type: 'fill-blank', instruction: "I wish + could:", question: 'I wish I _____ speak Chinese.', blanks: ['could'], acceptedAnswers: [['could', 'knew']], explanation: "Can ? could (past) (lekin knew ham to'g'ri - 'I wish I knew Chinese')." },
     { id: 40494, type: 'transformation', instruction: "Wish + would bilan shikoyat:", question: 'You never help with the housework.', hint: 'I wish ...', correct: 'I wish you would help with the housework.', explanation: "Shikoyat ? wish + would." },
+
+
+    // ── Interleaved Practice: Wishes/Regrets + Conditionals ──
+    { id: 95041, type: 'multiple-choice', instruction: "Wish (hozirgi orzu) va wish (o'tmish afsus):", question: "I wish I _____ taller. I wish I _____ harder for the last exam.", options: ["were / had studied", "was / studied", "am / studied", "were / studied"], correct: "were / had studied", explanation: "Hozirgi orzu → wish + Past (were). O'tmish afsus → wish + Past Perfect (had studied)." },
+    { id: 95042, type: 'fill-blank', instruction: "If only (kuchli afsus) + Past Perfect:", question: "If only I _____ (not / miss) the train, I wouldn't be late now.", blanks: ["hadn't missed"], explanation: "O'tmishdagi afsus → if only + Past Perfect (hadn't missed)." },
+    { id: 95043, type: 'error-correction', instruction: "Wish xatosi — hozirgi orzu uchun Past:", question: "I wish I have more free time these days.", errorPart: "have", correct: "I wish I had more free time these days.", explanation: "Hozirgi (real bo'lmagan) orzu → wish + Past Simple (had), 'have' emas." },
+    { id: 95044, type: 'multiple-choice', instruction: "Wish va third conditional (o'tmish):", question: "I wish I _____ you earlier. If I _____ you, I would have helped.", options: ["had called / had called", "called / called", "have called / called", "had called / called"], correct: "had called / had called", explanation: "Ikkalasi ham o'tmishdagi real bo'lmagan holat → Past Perfect (had called)." },
+    { id: 95045, type: 'transformation', instruction: "Real holatni wish (afsus) ga aylantiring:", question: "I didn't buy the tickets, and now they are sold out.", hint: "I wish I ...", correct: "I wish I had bought the tickets.", explanation: "O'tmishdagi qilinmagan ish afsusi → wish + Past Perfect (had bought)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "I wish + Past Simple — hozirgi orzular", color: 'bg-emerald-500', icon: '🌱', ids: [5001, 5002, 5003, 5004] },
@@ -1791,6 +1835,7 @@ export const wishesRegrets: DailyLesson = {
     { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [5009, 5010, 5011, 5012] },
     { title: "Inkor", desc: "Gapni o'zgartirish", color: 'bg-red-500', icon: '🚫', ids: [5013, 5014, 5015, 5016] },
     { title: "O'zgartirish", desc: "Would, Could, Regret", color: 'bg-teal-500', icon: '🔄', ids: [5018, 5017, 5019, 5020] },
+    { title: "🔀 Aralash", desc: "Wish/regret + Conditionals farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95041, 95042, 95043, 95044, 95045] },
   ],
   tests: [
     { id: 40495, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Hozirgi orzular uchun I wish dan keyin qanday zamon ishlatiladi?", options: ['Present Simple', 'Past Simple', 'Past Perfect', 'Future Simple'], correct: 'Past Simple', explanation: "Hozirgi orzu ? Past Simple (zamon orqaga)." },
