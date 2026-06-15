@@ -32,6 +32,36 @@ export interface SpeechRecognitionState {
   reset(): void
 }
 
+/** Ikki marta getUserMedia chaqirmaslik uchun umumiy stream — useAudioRecorder
+ *  ham shu stream'dan foydalanadi (agar mavjud bo'lsa). */
+let _sharedMicStream: MediaStream | null = null
+let _streamResolve: ((s: MediaStream) => void) | null = null
+let _streamPromise: Promise<MediaStream> | null = null
+
+export function getSharedMicStream(): MediaStream | null { return _sharedMicStream }
+
+/** useAudioRecorder start() bu promise'ni kutadi — stream tayyor bo'lgach resolve
+ *  bo'ladi (yoki 500ms timeout). */
+export function waitForSharedMicStream(timeout = 500): Promise<MediaStream | null> {
+  if (_sharedMicStream) return Promise.resolve(_sharedMicStream)
+  if (!_streamPromise) {
+    _streamPromise = new Promise((resolve) => {
+      _streamResolve = (s: MediaStream) => resolve(s)
+    })
+  }
+  return Promise.race([
+    _streamPromise,
+    new Promise<null>((r) => setTimeout(() => r(null), timeout)),
+  ])
+}
+
+export function clearSharedMicStream(): void {
+  _sharedMicStream?.getTracks().forEach(t => t.stop())
+  _sharedMicStream = null
+  _streamPromise = null
+  _streamResolve = null
+}
+
 /** iOS'da Web Speech API (SpeechRecognition) ishlamaydi */
 function isIOS(): boolean {
   if (typeof navigator === 'undefined') return false
@@ -43,9 +73,14 @@ function isIOS(): boolean {
 async function requestMicPermission(): Promise<boolean> {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-    stream.getTracks().forEach(t => t.stop())
+    _sharedMicStream = stream
+    _streamResolve?.(stream)
+    _streamPromise = null
+    _streamResolve = null
     return true
   } catch {
+    _streamPromise = null
+    _streamResolve = null
     return false
   }
 }
@@ -80,7 +115,6 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     const Ctor = window.SpeechRecognition ?? window.webkitSpeechRecognition
     if (!Ctor) return
 
-    // Mobil'da ruxsatni oldindan so'raymiz (Android Chrome talab qiladi)
     const hasPermission = await requestMicPermission()
     if (!hasPermission) {
       setPermissionError(true)

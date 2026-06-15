@@ -65,7 +65,10 @@ export function useAudioRecorder(): AudioRecorderState {
     reset()
 
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      const { waitForSharedMicStream } = await import('./useSpeechRecognition')
+      const shared = await waitForSharedMicStream()
+
+      const stream = shared ?? await navigator.mediaDevices.getUserMedia({ audio: true })
       streamRef.current = stream
 
       const mimeType = getMimeType()

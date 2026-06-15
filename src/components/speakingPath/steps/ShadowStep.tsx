@@ -39,6 +39,8 @@ export default function ShadowStep({ day, level, onNext }: Props) {
   const [recording, setRecording] = useState(false)
   const [noSpeech, setNoSpeech] = useState(false)
   const chunkRef = useRef<SpeakingDay['chunks'][0] | null>(null)
+  const analysisDoneRef = useRef(false)
+  const srStartedRef = useRef(false)
 
   const chunk = day.chunks[index]
   chunkRef.current = chunk
@@ -47,12 +49,29 @@ export default function ShadowStep({ day, level, onNext }: Props) {
   // Yozish tugagach (sr to'xtagach) natijani qayta ishlaymiz.
   // Mobil/iOS: STT hech narsa eshitmasligi mumkin — bunday holatda "stuck"
   // qolmaymiz, idle'ga qaytib qayta urinish/o'tkazish imkonini beramiz.
+  // srStartedRef orqali sr real ishga tushganini tekshiramiz — aks holda
+  // async sr.start() hali ishga tushmagan paytda "no speech" berib qo'yamiz.
+  useEffect(() => {
+    if (sr.isRecording) srStartedRef.current = true
+  }, [sr.isRecording])
+
   useEffect(() => {
     if (!recording || sr.isRecording) return
-    setRecording(false)
+    if (analysisDoneRef.current) return
 
     const text = sr.transcript.trim()
-    if (!text) { setNoSpeech(true); return }
+    if (!text) {
+      if (!srStartedRef.current) return
+      analysisDoneRef.current = true
+      setRecording(false)
+      setNoSpeech(true)
+      return
+    }
+
+    if (!ar.audioUrl) return
+
+    analysisDoneRef.current = true
+    setRecording(false)
 
     const currentChunk = chunkRef.current
     if (!currentChunk) return
@@ -63,11 +82,12 @@ export default function ShadowStep({ day, level, onNext }: Props) {
     ;(async () => {
       try {
         let acoustic
-        if (ar.audioUrl) {
+        const audioUrl = ar.audioUrl
+        if (audioUrl) {
           try {
-            const a = await analyzeAudio(ar.audioUrl, text)
+            const a = await analyzeAudio(audioUrl, text)
             acoustic = { pitchMean: a.pitchMean, pitchStddev: a.pitchStddev, avgEnergy: a.fluency.avgEnergy, energyVariation: a.fluency.energyVariation }
-          } catch {}
+          } catch { /* acoustic remains undefined */ }
         }
         const r = await analyzePronunciation(currentChunk.en, text, currentChunk.ipa ?? '', level, acoustic)
         setResult(r)
@@ -87,6 +107,8 @@ export default function ShadowStep({ day, level, onNext }: Props) {
   const startRecord = useCallback(() => {
     setResult(null)
     setNoSpeech(false)
+    analysisDoneRef.current = false
+    srStartedRef.current = false
     sr.reset()
     ar.reset()
     sr.start()

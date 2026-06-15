@@ -65,7 +65,9 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
     if (stopTimerRef.current) { clearTimeout(stopTimerRef.current); stopTimerRef.current = null }
   }
   // unmount'da timer'ni tozalaymiz
-  useEffect(() => () => clearStopTimer(), [])
+  useEffect(() => () => {
+    clearStopTimer()
+  }, [])
 
   const evaluate = useCallback((text: string) => {
     const result = semanticSimilarity(text, chunk.en)

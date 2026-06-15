@@ -2,11 +2,12 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 import { render, screen, fireEvent, cleanup, waitFor, act } from '@testing-library/react'
 import type { SpeakingDay } from '../../../data/speakingPath/types'
 
-const { mockSpeak, mockAnalyzePronunciation, mockCaptureException, mockTrackErrors } = vi.hoisted(() => ({
+const { mockSpeak, mockAnalyzePronunciation, mockCaptureException, mockTrackErrors, mockGetUserMedia } = vi.hoisted(() => ({
   mockSpeak: vi.fn(),
   mockAnalyzePronunciation: vi.fn(),
   mockCaptureException: vi.fn(),
-  mockTrackErrors: vi.fn(() => Promise.resolve()),  // Must return Promise for .catch() chain
+  mockTrackErrors: vi.fn(() => Promise.resolve()),
+  mockGetUserMedia: vi.fn(() => Promise.resolve({ getTracks: () => [{ stop: vi.fn() }] })),
 }))
 
 vi.mock('../../../hooks/useSpeechSynthesis', () => ({
@@ -16,6 +17,7 @@ vi.mock('../../../hooks/useSpeechSynthesis', () => ({
 
 // Mutable SR mock — changes trigger re-evaluation only when React re-renders (via rerender)
 const srState = { isRecording: false, transcript: '', interim: '' }
+const arState = { audioUrl: null as string | null }
 
 vi.mock('../../../hooks/useSpeechRecognition', () => ({
   useSpeechRecognition: () => ({
@@ -34,11 +36,11 @@ vi.mock('../../../hooks/useAudioRecorder', () => ({
     isSupported: true,
     isRecording: false,
     duration: 0,
-    audioUrl: null,
+    audioUrl: arState.audioUrl,
     audioBlob: null,
     start: vi.fn(),
     stop: vi.fn(),
-    reset: vi.fn(),
+    reset: vi.fn(() => { arState.audioUrl = null }),
   }),
 }))
 
@@ -81,26 +83,38 @@ afterEach(() => {
   srState.isRecording = false
   srState.transcript = ''
   srState.interim = ''
+  arState.audioUrl = null
+  vi.restoreAllMocks()
 })
 
-function pressRelease(btn: Element) {
-  // Push-to-talk: bosib turish (pointerDown) → qo'yib yuborish (pointerUp)
-  fireEvent.pointerDown(btn)
-  fireEvent.pointerUp(btn)
-}
+beforeEach(() => {
+  Object.defineProperty(navigator, 'mediaDevices', {
+    value: { getUserMedia: mockGetUserMedia },
+    configurable: true,
+    writable: true,
+  })
+})
 
-function startRecording(component: HTMLElement) {
+async function startRecording(component: HTMLElement) {
   // Find the circular (rounded-full) icon-only button inside the mic area
   const allBtns = component.querySelectorAll('button')
   for (const btn of allBtns) {
     if (btn.className.includes('rounded-full') && !btn.textContent?.trim()) {
-      pressRelease(btn)
+      // Push-to-talk: bosib turish (pointerDown) → qo'yib yuborish (pointerUp)
+      fireEvent.pointerDown(btn)
+      fireEvent.pointerUp(btn)
+      // Flush microtasks so async getUserMedia resolves before we continue
+      await new Promise(r => setTimeout(r, 0))
       return
     }
   }
   // Fallback: just press any icon-only button
   const svgBtns = Array.from(allBtns).filter(b => b.querySelector('svg') && !b.textContent?.trim())
-  if (svgBtns.length > 0) pressRelease(svgBtns[0])
+  if (svgBtns.length > 0) {
+    fireEvent.pointerDown(svgBtns[0])
+    fireEvent.pointerUp(svgBtns[0])
+    await new Promise(r => setTimeout(r, 0))
+  }
 }
 
 describe('ShadowStep', () => {
@@ -133,19 +147,21 @@ describe('ShadowStep', () => {
     expect(screen.getByText('Bosib turib takrorlang')).toBeInTheDocument()
 
     // Click mic → starts recording
-    startRecording(container)
+    await startRecording(container)
 
     // Simulate SR completion: transcript ready, isRecording stops
     await act(async () => {
       srState.transcript = 'Hello'
       srState.isRecording = false
+      arState.audioUrl = 'blob:test-audio'
       // Force re-render so the effect re-evaluates with new srState values
       rerender(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
     })
 
     await waitFor(() => {
       expect(mockAnalyzePronunciation).toHaveBeenCalledWith(
-        expect.stringContaining('Hello'), 'Hello', '/həˈloʊ/', 'A1', undefined
+        expect.stringContaining('Hello'), 'Hello', '/həˈloʊ/', 'A1',
+        expect.objectContaining({ pitchMean: expect.any(Number) })
       )
     })
     await waitFor(() => {
@@ -157,11 +173,12 @@ describe('ShadowStep', () => {
     mockAnalyzePronunciation.mockRejectedValueOnce(new Error('API error'))
 
     const { container, rerender } = render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
-    startRecording(container)
+    await startRecording(container)
 
     await act(async () => {
       srState.transcript = 'Hello'
       srState.isRecording = false
+      arState.audioUrl = 'blob:test-audio'
       rerender(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
     })
 
@@ -181,11 +198,12 @@ describe('ShadowStep', () => {
     })
 
     const { container, rerender } = render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
-    startRecording(container)
+    await startRecording(container)
 
     await act(async () => {
       srState.transcript = 'Hello'
       srState.isRecording = false
+      arState.audioUrl = 'blob:test-audio'
       rerender(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
     })
 
@@ -206,11 +224,12 @@ describe('ShadowStep', () => {
     const singleDay = makeDay({ chunks: [{ id: 'c1', en: 'Hello', uz: 'Salom' }] })
     const onNext = vi.fn()
     const { container, rerender } = render(<ShadowStep day={singleDay} level="A1" onNext={onNext} />)
-    startRecording(container)
+    await startRecording(container)
 
     await act(async () => {
       srState.transcript = 'Hello'
       srState.isRecording = false
+      arState.audioUrl = 'blob:test-audio'
       rerender(<ShadowStep day={singleDay} level="A1" onNext={onNext} />)
     })
 
@@ -227,11 +246,12 @@ describe('ShadowStep', () => {
     })
 
     const { container, rerender } = render(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
-    startRecording(container)
+    await startRecording(container)
 
     await act(async () => {
       srState.transcript = 'Hello'
       srState.isRecording = false
+      arState.audioUrl = 'blob:test-audio'
       rerender(<ShadowStep day={makeDay()} level="A1" onNext={vi.fn()} />)
     })
 
