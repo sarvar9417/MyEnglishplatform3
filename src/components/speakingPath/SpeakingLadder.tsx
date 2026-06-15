@@ -44,21 +44,35 @@ const CEFR_ZONES: CefrZone[] = [
     icon: '🌱',
   },
   {
-    label: 'Asosiy', cefr: 'A1', dayMin: 4, dayMax: 18,
+    label: 'Asosiy', cefr: 'A1', dayMin: 4, dayMax: 26,
     color: '#2563eb', bgClass: 'bg-blue-50 dark:bg-blue-900/20',
     textClass: 'text-blue-700 dark:text-blue-300',
     borderClass: 'border-blue-200 dark:border-blue-800/50',
     icon: '📘',
   },
   {
-    label: "O'rta", cefr: 'A2', dayMin: 19, dayMax: 40,
+    label: "O'rta", cefr: 'A2', dayMin: 27, dayMax: 51,
     color: '#6d28d9', bgClass: 'bg-violet-50 dark:bg-violet-900/20',
     textClass: 'text-violet-700 dark:text-violet-300',
     borderClass: 'border-violet-200 dark:border-violet-800/50',
     icon: '📗',
   },
   {
-    label: "Yuqori o'rta", cefr: 'B1', dayMin: 41, dayMax: 79,
+    label: "O'rta yuqori", cefr: 'B1', dayMin: 52, dayMax: 62,
+    color: '#d97706', bgClass: 'bg-amber-50 dark:bg-amber-900/20',
+    textClass: 'text-amber-700 dark:text-amber-300',
+    borderClass: 'border-amber-200 dark:border-amber-800/50',
+    icon: '📕',
+  },
+  {
+    label: "O'rtadan yuqori", cefr: 'B1+', dayMin: 63, dayMax: 80,
+    color: '#0891b2', bgClass: 'bg-cyan-50 dark:bg-cyan-900/20',
+    textClass: 'text-cyan-700 dark:text-cyan-300',
+    borderClass: 'border-cyan-200 dark:border-cyan-800/50',
+    icon: '🔥',
+  },
+  {
+    label: "Yuqori o'rta", cefr: 'B1', dayMin: 81, dayMax: 108,
     color: '#d97706', bgClass: 'bg-amber-50 dark:bg-amber-900/20',
     textClass: 'text-amber-700 dark:text-amber-300',
     borderClass: 'border-amber-200 dark:border-amber-800/50',
@@ -72,6 +86,7 @@ const CEFR_BADGE: Record<string, string> = {
   A0: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
   A1: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
   A2: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
+  'B1+': 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300',
   B1: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
 }
 
@@ -119,7 +134,7 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
         const isZoneUnlocked = zoneDays.some(d => d.day <= unlockedDay)
 
         return (
-          <div key={zone.cefr}>
+          <div key={zone.cefr + '-' + zone.dayMin}>
             {/* Zona sarlavhasi */}
             <div className={`px-3 py-2.5 rounded-xl border ${zone.borderClass} ${zone.bgClass} flex items-center gap-2.5 mb-2`}>
               <span className="text-lg">{zone.icon}</span>

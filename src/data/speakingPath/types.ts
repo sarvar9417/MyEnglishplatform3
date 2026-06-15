@@ -64,7 +64,7 @@ export interface SpeakingScenario {
 export interface SpeakingDay {
   /** 1..N, ketma-ketlik */
   day: number
-  cefr: 'A0' | 'A1' | 'A2' | 'B1' | 'B1+' | 'B2'
+  cefr: 'A0' | 'A1' | 'A2' | 'B1' | 'B2'
   /** "Salomlashish va tanishish" */
   title: string
   /** qisqa tavsif */
@@ -87,7 +87,7 @@ export interface SpeakingDay {
   vocab?: VocabItem[]
   // -- Phase 2: Grammar-Driven Speaking --
   /** Daily lesson ID ga bog'lash. Format: daily lesson id bilan bir xil — kebab-case string.
-   *  B1+ ID'lari '-b1plus' suffix'i bilan, B2 ID'lari '-b2' suffix'i bilan */
+   *  B2 ID'lari '-b2' suffix'i bilan */
   linkedLessonId?: string
   /** Shu kunda ishlatiladigan daily lesson vocabulary ID'lari */
   usedVocabIds?: string[]

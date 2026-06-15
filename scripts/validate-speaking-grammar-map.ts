@@ -10,6 +10,7 @@ interface ValidationResult {
   linkedSpeakingDays: number
   coveragePct: string
   b1Count: number
+  b1plusCount: number
   linkedIds: string[]
   linkedSet: Set<string>
 }
@@ -44,6 +45,7 @@ export function validateSpeakingGrammarMap(): ValidationResult {
 
   // 4. B1 count
   const b1Count = SPEAKING_DAYS.filter(d => d.cefr === 'B1').length
+  const b1plusCount = SPEAKING_DAYS.filter(d => d.cefr === 'B1+').length
 
   return {
     unknownLessonIds,
@@ -53,6 +55,7 @@ export function validateSpeakingGrammarMap(): ValidationResult {
     linkedSpeakingDays,
     coveragePct,
     b1Count,
+    b1plusCount,
     linkedIds: linkedIdsUnique,
     linkedSet,
   }
@@ -70,7 +73,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(`📊  Umumiy:`)
   console.log(`   Speaking days:     ${r.totalSpeakingDays}`)
   console.log(`   linkedLessonId:    ${r.linkedSpeakingDays} / ${r.totalSpeakingDays} (${r.coveragePct}%)`)
-  console.log(`   B1 (days 41-79):   ${r.b1Count} kun`)
+  console.log(`   B1 (days 52-108):  ${r.b1Count} kun`)
+  console.log(`   B1+ (days 63-80):  ${r.b1plusCount} kun`)
   console.log()
 
   // ── Noma'lum lesson ID'lar ──────────────────────────────
@@ -110,16 +114,24 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
 
 
-  // ── B1 split tekshiruvi ─────────────────────────────────
+  // ── B1/B1+ split tekshiruvi ────────────────────────────
   let splitOk = true
   for (const d of SPEAKING_DAYS) {
-    if (d.day >= 41 && d.day <= 79 && d.cefr !== 'B1') {
+    if ((d.day >= 52 && d.day <= 62) && d.cefr !== 'B1') {
+      console.log(`❌  Day ${d.day}: B1 bo'lishi kerak, lekin ${d.cefr}`)
+      splitOk = false
+    }
+    if ((d.day >= 63 && d.day <= 80) && d.cefr !== 'B1+') {
+      console.log(`❌  Day ${d.day}: B1+ bo'lishi kerak, lekin ${d.cefr}`)
+      splitOk = false
+    }
+    if (d.day >= 81 && d.day <= 108 && d.cefr !== 'B1') {
       console.log(`❌  Day ${d.day}: B1 bo'lishi kerak, lekin ${d.cefr}`)
       splitOk = false
     }
   }
   if (splitOk) {
-    console.log(`✅  B1 to'g'ri: days 41-79 = B1 (${r.b1Count} kun)`)
+    console.log(`✅  B1 to'g'ri: days 52-62 = B1, 63-80 = B1+, 81-108 = B1 (jami ${r.b1Count} kun B1, ${r.b1plusCount} kun B1+)`)
   }
   console.log()
 
