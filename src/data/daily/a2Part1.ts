@@ -170,6 +170,14 @@ export const modalVerbs: DailyLesson = {
     { id: 14041, type: 'vocab-match', instruction: "Modal fe'l va ma'nosini moslang:", word: 'must', options: ['qobiliyat', 'majburiyat', 'maslahat', 'ehtimol'], correct: 'majburiyat', explanation: "Must — kuchli majburiyat (You must stop)." },
     { id: 14042, type: 'vocab-match', instruction: "Modal fe'l va ma'nosini moslang:", word: 'should', options: ['qobiliyat', 'majburiyat', 'maslahat', 'ehtimol'], correct: 'maslahat', explanation: "Should — maslahat va tavsiya (You should study)." },
     { id: 14043, type: 'vocab-match', instruction: "Modal fe'l va ma'nosini moslang:", word: 'might', options: ['qobiliyat', 'majburiyat', 'maslahat', 'ehtimol'], correct: 'ehtimol', explanation: "Might — 30-40% ehtimol (It might rain)." },
+
+
+    // ── Interleaved Practice: Modals + Present Simple ──
+    { id: 95111, type: 'multiple-choice', instruction: "Can (qobiliyat) va Present Simple (odat):", question: "She _____ swim very well, and she _____ every morning before work.", options: ["can / swims", "cans / swim", "can / swim", "can to / swims"], correct: "can / swims", explanation: "Qobiliyat → can + V1 (swim). Odat → Present Simple, 3-shaxs +s (swims)." },
+    { id: 95112, type: 'fill-blank', instruction: "Must (majburiyat) va don't have to:", question: "You _____ wear a seatbelt in the car. You _____ pay — it is free.", blanks: ["must", "don't have to"], explanation: "Majburiyat → must. Majburiy emas → don't have to." },
+    { id: 95113, type: 'error-correction', instruction: "Can + V1 (to'g'ri shakl):", question: "I can to play the guitar.", errorPart: "can to play", correct: "I can play the guitar.", explanation: "Modal + V1 (to'siz). 'Can to' noto'g'ri → can play." },
+    { id: 95114, type: 'multiple-choice', instruction: "Might (ehtimol) va must (ishonchli taxmin):", question: "It _____ rain later (not sure). He isn't here; he _____ be ill (I'm sure).", options: ["might / must", "must / might", "can / must", "might / can"], correct: "might / must", explanation: "Ehtimol → might. Dalilli ishonchli taxmin → must be." },
+    { id: 95115, type: 'transformation', instruction: "Qobiliyatni 'can' bilan ifodalang:", question: "She knows how to drive a car.", hint: "She ...", correct: "She can drive a car.", explanation: "Qobiliyat → can + V1 (can drive)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Can va Can\'t asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1401, 1402, 1403, 1404, 1405] },
@@ -177,6 +185,7 @@ export const modalVerbs: DailyLesson = {
     { title: "Qiyin", desc: 'Might va inkor shakllari', color: 'bg-violet-500', icon: '🎯', ids: [1412, 1414, 1413, 1415, 1411] },
     { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [1422, 1421, 1426, 1419, 1423, 1428, 1418, 1427, 1425, 1430, 1424, 1429, 1416, 1417, 1420] },
     { title: "O'zgartirish", desc: 'Modal fe\'l va ma\'no', color: 'bg-teal-500', icon: '🔄', ids: [50001, 50002, 50003, 50004] },
+    { title: "🔀 Aralash", desc: "Modal fe'llar + Present Simple (odat) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95111, 95112, 95113, 95114, 95115] },
   ],
   tests: [
     { id: 14044, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Qaysi gap TO\'G\'RI?', options: ['I can swim', 'I cans swim', 'I can swims', 'I can to swim'], correct: 'I can swim', explanation: "Modal + V1" },
@@ -383,6 +392,14 @@ export const articles: DailyLesson = {
     { id: 14104, type: 'vocab-match', instruction: "Artikl va qo'llanilishini moslang:", word: 'an', options: ['unli tovush oldidan', 'undosh tovush oldidan', 'aniq narsa bilan', 'umumiy ma\'noda'], correct: 'unli tovush oldidan', explanation: "An — unli tovush oldidan: an apple, an hour." },
     { id: 14105, type: 'vocab-match', instruction: "Artikl va qo'llanilishini moslang:", word: 'the', options: ['unli tovush oldidan', 'undosh tovush oldidan', 'aniq narsa bilan', 'ko\'plik otlar bilan'], correct: 'aniq narsa bilan', explanation: "The — aniq yoki ma'lum narsa bilan: the door, the sun." },
     { id: 14106, type: 'vocab-match', instruction: "Artikl va qo'llanilishini moslang:", word: 'no article', options: ['noyob narsalar bilan', 'kasblar bilan', 'umumiy ko\'plik otlar bilan', 'eng ustun daraja bilan'], correct: 'umumiy ko\'plik otlar bilan', explanation: "Zero article — umumiy ma'nodagi ko'plik otlar: Dogs are animals." },
+
+
+    // ── Interleaved Practice: Articles + Countable/Uncountable ──
+    { id: 95121, type: 'multiple-choice', instruction: "A/an (birinchi marta) va the (aniq):", question: "I saw _____ cat in the garden. _____ cat was black.", options: ["a / The", "the / A", "an / The", "a / A"], correct: "a / The", explanation: "Birinchi eslatish → a cat. Endi aniq (o'sha) → The cat." },
+    { id: 95122, type: 'fill-blank', instruction: "A va an (tovush qoidasi):", question: "She is _____ honest person and _____ university student.", blanks: ["an", "a"], explanation: "Tovush bo'yicha: honest [o] → an. University [yu] → a (undosh tovush)." },
+    { id: 95123, type: 'error-correction', instruction: "Umumiy ma'noда the ishlatilmaydi (uncountable):", question: "The water is important for the health.", errorPart: "the health", correct: "The water is important for health.", explanation: "Umumiy tushuncha (health) → artiklsiz. Bu yerda 'the' kerak emas." },
+    { id: 95124, type: 'multiple-choice', instruction: "Zero article (umumiy ko'plik) va the:", question: "_____ dogs are loyal animals. _____ dogs in this house are big.", options: ["Zero / The", "The / Zero", "A / The", "The / A"], correct: "Zero / The", explanation: "Umumiy (barcha itlar) → artiklsiz. Aniq (bu uydagi) → The dogs." },
+    { id: 95125, type: 'transformation', instruction: "To'g'ri artikl bilan to'ldiring (birinchi eslatish):", question: "I bought ___ apple and ___ orange.", hint: "...", correct: "I bought an apple and an orange.", explanation: "Tovush bilan boshlanadi (apple, orange) → an." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'A va An qoidalari', color: 'bg-emerald-500', icon: '🌱', ids: [1501, 1502, 1503, 1504, 1505] },
@@ -390,6 +407,7 @@ export const articles: DailyLesson = {
     { title: "Qiyin", desc: 'Zero article', color: 'bg-violet-500', icon: '🎯', ids: [1511, 1514, 1512, 1513, 1515] },
     { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [1530, 1520, 1526, 1518, 1519, 1523, 1521, 1525, 1517, 1528, 1527, 1529, 1524, 1522, 1516] },
     { title: "O'zgartirish", desc: 'Artikl va qo\'llanish', color: 'bg-teal-500', icon: '🔄', ids: [50005, 50006, 50007, 50008] },
+    { title: "🔀 Aralash", desc: "Artikllar (a/an/the) + Countable/Uncountable farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95121, 95122, 95123, 95124, 95125] },
   ],
   tests: [
     { id: 14107, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z oldidan 'an' keladi?", options: ['dog', 'university', 'apple', 'house'], correct: 'apple', explanation: "Apple — unli tovush" },
@@ -591,12 +609,21 @@ export const prepositions: DailyLesson = {
     { id: 14163, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I like walking on the park.', errorPart: 'on', correct: 'I like walking in the park.', explanation: "Ochiq makon ichida — in the park" },
     { id: 14164, type: 'multiple-choice', instruction: "To'g'ri variant:", question: "She works ___ night. She is a nurse.", options: ['at', 'in', 'on', 'by'], correct: 'at', explanation: "At night — istisno" },
     { id: 14165, type: 'transformation', instruction: "Xatoni to'g'irlang:", question: 'I wake up on 7 o\'clock.', hint: "To'g'ri predlog:", correct: 'I wake up at 7 o\'clock.', explanation: "Aniq soat — at" },
+
+
+    // ── Interleaved Practice: Prepositions + Present Simple ──
+    { id: 95131, type: 'multiple-choice', instruction: "Vaqt predloglari (at/on/in):", question: "We have a meeting _____ Monday _____ 9 o'clock _____ the morning.", options: ["on / at / in", "at / on / in", "in / at / on", "on / in / at"], correct: "on / at / in", explanation: "Kun → on Monday. Soat → at 9. Qism → in the morning." },
+    { id: 95132, type: 'fill-blank', instruction: "Joy predloglari (in/on/at):", question: "The keys are _____ the table. She lives _____ Tashkent _____ Navoi Street.", blanks: ["on", "in", "on"], explanation: "Sirt → on the table. Shahar → in Tashkent. Ko'cha → on Navoi Street." },
+    { id: 95133, type: 'error-correction', instruction: "At + soat (in emas):", question: "The film starts in 8 o'clock.", errorPart: "in 8 o'clock", correct: "The film starts at 8 o'clock.", explanation: "Aniq soat → at 8 o'clock ('in' oy/yil uchun)." },
+    { id: 95134, type: 'multiple-choice', instruction: "Present Simple + predlog (jadval):", question: "The train _____ at 7 and _____ in London at noon.", options: ["leaves / arrives", "leave / arrive", "is leaving / arrives", "leaves / arrive"], correct: "leaves / arrives", explanation: "Jadval → Present Simple 3-shaxs +s (leaves, arrives) + at/in." },
+    { id: 95135, type: 'transformation', instruction: "To'g'ri predlog bilan yozing:", question: "My birthday is ___ June, ___ the 12th.", hint: "...", correct: "My birthday is in June, on the 12th.", explanation: "Oy → in June. Sana → on the 12th." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'At, In, On asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1601, 1602, 1603, 1604, 1605] },
     { title: "O'rtacha", desc: 'Joy predloglari', color: 'bg-blue-500', icon: '📘', ids: [1606, 1607, 1608, 1609, 1610] },
     { title: "Qiyin", desc: 'Vaqt va joy birga', color: 'bg-violet-500', icon: '🎯', ids: [1613, 1614, 1611, 1612, 1615] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1625, 1616, 1620, 1630, 1622, 1618, 1626, 1619, 1623, 1627, 1621, 1628, 1617, 1629, 1624] },
+    { title: "🔀 Aralash", desc: "Predloglar (in/on/at) + Present Simple farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95131, 95132, 95133, 95134, 95135] },
   ],
   tests: [
     { id: 14166, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Vaqt predlogi: ___ 5 o'clock", options: ['At', 'In', 'On', 'By'], correct: 'At', explanation: "Aniq soat — at" },
@@ -795,12 +822,21 @@ export const questionsLesson: DailyLesson = {
     { id: 14222, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ did they go last summer?', options: ['What', 'Where', 'When', 'Why'], correct: 'Where', explanation: "Joy — Where" },
     { id: 14223, type: 'fill-blank', instruction: "Tag question qo'shing:", question: 'He has a car, ___?', blanks: ["doesn't he"], explanation: "Has (ega) → doesn't he?" },
     { id: 14224, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Let's have a break, ___?", options: ['shall we', 'will we', 'do we', 'are we'], correct: 'shall we', explanation: "Let's → shall we?" },
+
+
+    // ── Interleaved Practice: Questions + Present/Past ──
+    { id: 95141, type: 'multiple-choice', instruction: "Present va Past savol (do/does/did):", question: "_____ she live here now? _____ you call me yesterday?", options: ["Does / Did", "Do / Does", "Did / Do", "Does / Do"], correct: "Does / Did", explanation: "Present 3-shaxs → Does she live. Past → Did you call." },
+    { id: 95142, type: 'fill-blank', instruction: "Savol so'zi (wh-) to'ldiring:", question: "_____ do you live? (place) _____ time does it start? (time)", blanks: ["Where", "What"], explanation: "Joy → Where. Vaqt → What time." },
+    { id: 95143, type: 'error-correction', instruction: "Savolда so'z tartibi:", question: "Where you are going?", errorPart: "you are", correct: "Where are you going?", explanation: "Savol tartibi: wh- + auxiliary + subject → Where are you going?" },
+    { id: 95144, type: 'multiple-choice', instruction: "Yes/no savol — to be va to do:", question: "_____ they happy? _____ they like coffee?", options: ["Are / Do", "Do / Are", "Are / Are", "Do / Do"], correct: "Are / Do", explanation: "Sifat (happy) → Are they. Fe'l (like) → Do they." },
+    { id: 95145, type: 'transformation', instruction: "Gapni savolga aylantiring (Past):", question: "She went to the market.", hint: "Where ...", correct: "Where did she go?", explanation: "Past savol → did + subject + V1 (go), 'went' emas." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Yes/No savollari', color: 'bg-emerald-500', icon: '🌱', ids: [1701, 1702, 1703, 1704, 1705] },
     { title: "O'rtacha", desc: 'Wh- savollari', color: 'bg-blue-500', icon: '📘', ids: [1706, 1707, 1708, 1709, 1710] },
     { title: "Qiyin", desc: 'Tag questions', color: 'bg-violet-500', icon: '🎯', ids: [1713, 1714, 1711, 1712, 1715] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1725, 1723, 1724, 1717, 1719, 1727, 1722, 1720, 1718, 1728, 1730, 1721, 1716, 1726, 1729] },
+    { title: "🔀 Aralash", desc: "Savollar (wh/yes-no) + Present/Past farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95141, 95142, 95143, 95144, 95145] },
   ],
   tests: [
     { id: 14225, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "___ you like tea?", options: ['Do', 'Does', 'Are', 'Is'], correct: 'Do', explanation: "You bilan Do" },
@@ -988,12 +1024,21 @@ export const countableUncountable: DailyLesson = {
     { id: 14276, type: 'transformation', instruction: "Many → Much bilan o'zgartiring:", question: 'How many rice do you want?', hint: "To'g'ri shakl:", correct: 'How much rice do you want?', explanation: "Rice — sanalmaydigan, much" },
     { id: 14277, type: 'fill-blank', instruction: "Some yoki any:", question: "There isn't ___ bread left.", blanks: ['any'], explanation: "Inkor — any" },
     { id: 14278, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He has ___ friends in this city. He feels at home.', options: ['little', 'few', 'a few', 'a little'], correct: 'a few', explanation: "A few — bir nechta (ijobiy ma'no)" },
+
+
+    // ── Interleaved Practice: Countable/Uncountable + Quantifiers ──
+    { id: 95151, type: 'multiple-choice', instruction: "Much (uncountable) va many (countable):", question: "How _____ water do we need? How _____ apples are there?", options: ["much / many", "many / much", "much / much", "many / many"], correct: "much / many", explanation: "Uncountable (water) → much. Countable (apples) → many." },
+    { id: 95152, type: 'fill-blank', instruction: "Some (tasdiq) va any (inkor/savol):", question: "I need _____ sugar. There isn't _____ milk in the fridge.", blanks: ["some", "any"], explanation: "Tasdiq → some sugar. Inkor → not any milk." },
+    { id: 95153, type: 'error-correction', instruction: "Uncountable bilan 'a' ishlatilmaydi:", question: "Can you give me an information?", errorPart: "an information", correct: "Can you give me some information?", explanation: "Information = uncountable → 'an' yo'q. → some information." },
+    { id: 95154, type: 'multiple-choice', instruction: "A few (countable) va a little (uncountable):", question: "I have _____ friends here and _____ free time.", options: ["a few / a little", "a little / a few", "a few / a few", "a little / a little"], correct: "a few / a little", explanation: "Countable (friends) → a few. Uncountable (time) → a little." },
+    { id: 95155, type: 'transformation', instruction: "Uncountable otni 'a piece of' bilan sanang:", question: "I want to give you advice (make it countable).", hint: "I want to give you a ...", correct: "I want to give you a piece of advice.", explanation: "Uncountable (advice) → a piece of advice bilan sanaladi." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Much/Many', color: 'bg-emerald-500', icon: '🌱', ids: [1801, 1802, 1803, 1804, 1805] },
     { title: "O'rtacha", desc: 'Some/Any qoidalari', color: 'bg-blue-500', icon: '📘', ids: [1806, 1807, 1808, 1809, 1810] },
     { title: "Qiyin", desc: 'A few/A little', color: 'bg-violet-500', icon: '🎯', ids: [1813, 1814, 1811, 1812, 1815] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1817, 1821, 1826, 1825, 1819, 1823, 1828, 1829, 1818, 1830, 1816, 1827, 1824, 1820, 1822] },
+    { title: "🔀 Aralash", desc: "Sanaladigan/sanalmaydigan + Artikl/quantifier farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95151, 95152, 95153, 95154, 95155] },
   ],
   tests: [
     { id: 14279, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "How ___ books do you have?", options: ['much', 'many', 'a little', 'little'], correct: 'many', explanation: "Books — sanaladigan" },

@@ -181,3 +181,57 @@ function seed(path: string, lessons: Lesson[]) {
 }
 
 seed('src/data/daily/b1Part1.ts', B1)
+
+const A2_P1: Lesson[] = [
+  {
+    id: 'modalVerbs', name: 'Modal Verbs',
+    section: "Modal fe'llar + Present Simple (odat) farqi",
+    exercises: `    // ── Interleaved Practice: Modals + Present Simple ──
+    { id: ID0, type: 'multiple-choice', instruction: "Can (qobiliyat) va Present Simple (odat):", question: "She _____ swim very well, and she _____ every morning before work.", options: ["can / swims", "cans / swim", "can / swim", "can to / swims"], correct: "can / swims", explanation: "Qobiliyat → can + V1 (swim). Odat → Present Simple, 3-shaxs +s (swims)." },
+    { id: ID1, type: 'fill-blank', instruction: "Must (majburiyat) va don't have to:", question: "You _____ wear a seatbelt in the car. You _____ pay — it is free.", blanks: ["must", "don't have to"], explanation: "Majburiyat → must. Majburiy emas → don't have to." },
+    { id: ID2, type: 'error-correction', instruction: "Can + V1 (to'g'ri shakl):", question: "I can to play the guitar.", errorPart: "can to play", correct: "I can play the guitar.", explanation: "Modal + V1 (to'siz). 'Can to' noto'g'ri → can play." },
+    { id: ID3, type: 'multiple-choice', instruction: "Might (ehtimol) va must (ishonchli taxmin):", question: "It _____ rain later (not sure). He isn't here; he _____ be ill (I'm sure).", options: ["might / must", "must / might", "can / must", "might / can"], correct: "might / must", explanation: "Ehtimol → might. Dalilli ishonchli taxmin → must be." },
+    { id: ID4, type: 'transformation', instruction: "Qobiliyatni 'can' bilan ifodalang:", question: "She knows how to drive a car.", hint: "She ...", correct: "She can drive a car.", explanation: "Qobiliyat → can + V1 (can drive)." },`,
+  },
+  {
+    id: 'articles', name: 'Articles',
+    section: "Artikllar (a/an/the) + Countable/Uncountable farqi",
+    exercises: `    // ── Interleaved Practice: Articles + Countable/Uncountable ──
+    { id: ID0, type: 'multiple-choice', instruction: "A/an (birinchi marta) va the (aniq):", question: "I saw _____ cat in the garden. _____ cat was black.", options: ["a / The", "the / A", "an / The", "a / A"], correct: "a / The", explanation: "Birinchi eslatish → a cat. Endi aniq (o'sha) → The cat." },
+    { id: ID1, type: 'fill-blank', instruction: "A va an (tovush qoidasi):", question: "She is _____ honest person and _____ university student.", blanks: ["an", "a"], explanation: "Tovush bo'yicha: honest [o] → an. University [yu] → a (undosh tovush)." },
+    { id: ID2, type: 'error-correction', instruction: "Umumiy ma'noда the ishlatilmaydi (uncountable):", question: "The water is important for the health.", errorPart: "the health", correct: "The water is important for health.", explanation: "Umumiy tushuncha (health) → artiklsiz. Bu yerda 'the' kerak emas." },
+    { id: ID3, type: 'multiple-choice', instruction: "Zero article (umumiy ko'plik) va the:", question: "_____ dogs are loyal animals. _____ dogs in this house are big.", options: ["Zero / The", "The / Zero", "A / The", "The / A"], correct: "Zero / The", explanation: "Umumiy (barcha itlar) → artiklsiz. Aniq (bu uydagi) → The dogs." },
+    { id: ID4, type: 'transformation', instruction: "To'g'ri artikl bilan to'ldiring (birinchi eslatish):", question: "I bought ___ apple and ___ orange.", hint: "...", correct: "I bought an apple and an orange.", explanation: "Tovush bilan boshlanadi (apple, orange) → an." },`,
+  },
+  {
+    id: 'prepositions', name: 'Prepositions of Time and Place',
+    section: "Predloglar (in/on/at) + Present Simple farqi",
+    exercises: `    // ── Interleaved Practice: Prepositions + Present Simple ──
+    { id: ID0, type: 'multiple-choice', instruction: "Vaqt predloglari (at/on/in):", question: "We have a meeting _____ Monday _____ 9 o'clock _____ the morning.", options: ["on / at / in", "at / on / in", "in / at / on", "on / in / at"], correct: "on / at / in", explanation: "Kun → on Monday. Soat → at 9. Qism → in the morning." },
+    { id: ID1, type: 'fill-blank', instruction: "Joy predloglari (in/on/at):", question: "The keys are _____ the table. She lives _____ Tashkent _____ Navoi Street.", blanks: ["on", "in", "on"], explanation: "Sirt → on the table. Shahar → in Tashkent. Ko'cha → on Navoi Street." },
+    { id: ID2, type: 'error-correction', instruction: "At + soat (in emas):", question: "The film starts in 8 o'clock.", errorPart: "in 8 o'clock", correct: "The film starts at 8 o'clock.", explanation: "Aniq soat → at 8 o'clock ('in' oy/yil uchun)." },
+    { id: ID3, type: 'multiple-choice', instruction: "Present Simple + predlog (jadval):", question: "The train _____ at 7 and _____ in London at noon.", options: ["leaves / arrives", "leave / arrive", "is leaving / arrives", "leaves / arrive"], correct: "leaves / arrives", explanation: "Jadval → Present Simple 3-shaxs +s (leaves, arrives) + at/in." },
+    { id: ID4, type: 'transformation', instruction: "To'g'ri predlog bilan yozing:", question: "My birthday is ___ June, ___ the 12th.", hint: "...", correct: "My birthday is in June, on the 12th.", explanation: "Oy → in June. Sana → on the 12th." },`,
+  },
+  {
+    id: 'questionsLesson', name: 'Questions',
+    section: "Savollar (wh/yes-no) + Present/Past farqi",
+    exercises: `    // ── Interleaved Practice: Questions + Present/Past ──
+    { id: ID0, type: 'multiple-choice', instruction: "Present va Past savol (do/does/did):", question: "_____ she live here now? _____ you call me yesterday?", options: ["Does / Did", "Do / Does", "Did / Do", "Does / Do"], correct: "Does / Did", explanation: "Present 3-shaxs → Does she live. Past → Did you call." },
+    { id: ID1, type: 'fill-blank', instruction: "Savol so'zi (wh-) to'ldiring:", question: "_____ do you live? (place) _____ time does it start? (time)", blanks: ["Where", "What"], explanation: "Joy → Where. Vaqt → What time." },
+    { id: ID2, type: 'error-correction', instruction: "Savolда so'z tartibi:", question: "Where you are going?", errorPart: "you are", correct: "Where are you going?", explanation: "Savol tartibi: wh- + auxiliary + subject → Where are you going?" },
+    { id: ID3, type: 'multiple-choice', instruction: "Yes/no savol — to be va to do:", question: "_____ they happy? _____ they like coffee?", options: ["Are / Do", "Do / Are", "Are / Are", "Do / Do"], correct: "Are / Do", explanation: "Sifat (happy) → Are they. Fe'l (like) → Do they." },
+    { id: ID4, type: 'transformation', instruction: "Gapni savolga aylantiring (Past):", question: "She went to the market.", hint: "Where ...", correct: "Where did she go?", explanation: "Past savol → did + subject + V1 (go), 'went' emas." },`,
+  },
+  {
+    id: 'countableUncountable', name: 'Countable and Uncountable',
+    section: "Sanaladigan/sanalmaydigan + Artikl/quantifier farqi",
+    exercises: `    // ── Interleaved Practice: Countable/Uncountable + Quantifiers ──
+    { id: ID0, type: 'multiple-choice', instruction: "Much (uncountable) va many (countable):", question: "How _____ water do we need? How _____ apples are there?", options: ["much / many", "many / much", "much / much", "many / many"], correct: "much / many", explanation: "Uncountable (water) → much. Countable (apples) → many." },
+    { id: ID1, type: 'fill-blank', instruction: "Some (tasdiq) va any (inkor/savol):", question: "I need _____ sugar. There isn't _____ milk in the fridge.", blanks: ["some", "any"], explanation: "Tasdiq → some sugar. Inkor → not any milk." },
+    { id: ID2, type: 'error-correction', instruction: "Uncountable bilan 'a' ishlatilmaydi:", question: "Can you give me an information?", errorPart: "an information", correct: "Can you give me some information?", explanation: "Information = uncountable → 'an' yo'q. → some information." },
+    { id: ID3, type: 'multiple-choice', instruction: "A few (countable) va a little (uncountable):", question: "I have _____ friends here and _____ free time.", options: ["a few / a little", "a little / a few", "a few / a few", "a little / a little"], correct: "a few / a little", explanation: "Countable (friends) → a few. Uncountable (time) → a little." },
+    { id: ID4, type: 'transformation', instruction: "Uncountable otni 'a piece of' bilan sanang:", question: "I want to give you advice (make it countable).", hint: "I want to give you a ...", correct: "I want to give you a piece of advice.", explanation: "Uncountable (advice) → a piece of advice bilan sanaladi." },`,
+  },
+]
+seed('src/data/daily/a2Part1.ts', A2_P1)
