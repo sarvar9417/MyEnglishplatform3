@@ -13,6 +13,7 @@ const day1: SpeakingDay = {
   subtitle: "Birinchi suhbat — salom va ism",
   goalUz: "Birovni salomlay olasiz, ismingizni ayta olasiz va xayrlasha olasiz.",
   estMinutes: 12,
+  grammarPoint: 'be (am/is/are)',
   linkedLessonId: 'alphabet-greetings',
   vocab: [
     { en: 'party', uz: 'ziyofat', example: 'I met him at a party.' },
@@ -56,6 +57,7 @@ const day2: SpeakingDay = {
   subtitle: "Yurt, shahar va kasb haqida",
   goalUz: "Qayerdan ekaningizni va nima ish qilishingizni ayta olasiz.",
   estMinutes: 12,
+  grammarPoint: 'pronouns + be',
   linkedLessonId: 'alphabet-greetings',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -100,6 +102,7 @@ const day3: SpeakingDay = {
   subtitle: "Ma'lumot almashish",
   goalUz: "Yoshingiz va telefon raqamingizni ayta olasiz, raqamlarni so'ray olasiz.",
   estMinutes: 13,
+  grammarPoint: 'numbers + be',
   linkedLessonId: 'numbers-1-100',
   vocab: [
     { en: 'birthday', uz: 'tug\'ilgan kun', example: 'When is your birthday?' },
@@ -144,6 +147,7 @@ const day4: SpeakingDay = {
   subtitle: "Qahva va ovqat so'rash",
   goalUz: "Kafeda muloyim buyurtma bera olasiz va rahmat ayta olasiz.",
   estMinutes: 13,
+  grammarPoint: 'be (am/is/are)',
   linkedLessonId: 'food-drinks',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
@@ -188,6 +192,7 @@ const day5: SpeakingDay = {
   subtitle: "Narx so'rash va sotib olish",
   goalUz: "Do'konda narx so'ray olasiz va xarid qila olasiz.",
   estMinutes: 13,
+  grammarPoint: 'be + from/live',
   linkedLessonId: 'numbers-1-100',
   vocab: [
     { en: 'size', uz: 'o\'lcham', example: 'What size do you need?' },
@@ -231,6 +236,7 @@ const day6: SpeakingDay = {
   subtitle: "Ko'chada yo'nalish topish",
   goalUz: "Ko'chada yo'l so'ray olasiz va yo'nalishni tushuna olasiz.",
   estMinutes: 14,
+  grammarPoint: 'prepositions of place',
   linkedLessonId: 'prepositions-of-place',
   vocab: [
     { en: 'map', uz: 'xarita', example: 'Do you have a map?' },
@@ -274,6 +280,7 @@ const day7: SpeakingDay = {
   subtitle: "Soat va kun haqida",
   goalUz: "Vaqtni so'ray olasiz va uchrashuvga kelisha olasiz.",
   estMinutes: 13,
+  grammarPoint: 'prepositions of time',
   linkedLessonId: 'time-routines',
   vocab: [
     { en: 'party', uz: 'ziyofat', example: 'I met him at a party.' },
@@ -318,6 +325,7 @@ const day8: SpeakingDay = {
   subtitle: "Yaqinlaringiz haqida gapirish",
   goalUz: "Oilangiz haqida oddiy gaplar ayta olasiz.",
   estMinutes: 13,
+  grammarPoint: 'possessive \'s, my/your/his/her',
   linkedLessonId: 'family',
   vocab: [
     { en: 'parents', uz: 'ota-ona', example: 'My parents live in Tashkent.' },
@@ -362,6 +370,7 @@ const day9: SpeakingDay = {
   subtitle: "Bir kuningizni tasvirlash",
   goalUz: "Odatda kuningiz qanday o'tishini ayta olasiz.",
   estMinutes: 14,
+  grammarPoint: 'present simple',
   linkedLessonId: 'simple-present',
   vocab: [
     { en: 'usually', uz: 'odatda', example: 'I usually wake up at 7.' },
@@ -406,6 +415,7 @@ const day10: SpeakingDay = {
   subtitle: "Salomlashish va kun haqida",
   goalUz: "Tanishlar bilan kichik suhbat qura olasiz.",
   estMinutes: 12,
+  grammarPoint: 'be + adjective',
   linkedLessonId: 'alphabet-greetings',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -449,6 +459,7 @@ const day11: SpeakingDay = {
   subtitle: "Bo'sh vaqt va qiziqishlar",
   goalUz: "Nimani yoqtirishingizni ayta olasiz.",
   estMinutes: 13,
+  grammarPoint: 'like + gerund',
   linkedLessonId: 'can-cant',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -493,6 +504,7 @@ const day12: SpeakingDay = {
   subtitle: "Ochlik va tanlov",
   goalUz: "Ochligingizni ayta va ovqat tanlay olasiz.",
   estMinutes: 13,
+  grammarPoint: 'some/any',
   linkedLessonId: 'food-drinks',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
@@ -536,6 +548,7 @@ const day13: SpeakingDay = {
   subtitle: "Narsalarni nomlash",
   goalUz: "Narsalar va ranglarni ayta olasiz.",
   estMinutes: 12,
+  grammarPoint: 'this/that/these/those',
   linkedLessonId: 'colors-shapes',
   vocab: [
     { en: 'please', uz: 'iltimos', example: 'Please help me.' },
@@ -580,6 +593,7 @@ const day14: SpeakingDay = {
   subtitle: "Uyni tasvirlash",
   goalUz: "Uyingiz va xonalarni tasvirlay olasiz.",
   estMinutes: 13,
+  grammarPoint: 'there is/are',
   linkedLessonId: 'there-is-are',
   vocab: [
     { en: 'garden', uz: 'bog\'', example: 'We have a beautiful garden.' },
@@ -624,6 +638,7 @@ const day15: SpeakingDay = {
   subtitle: "Uy hayvonlari haqida",
   goalUz: "Hayvonlar va uy hayvonlari haqida gapira olasiz.",
   estMinutes: 12,
+  grammarPoint: 'have got',
   linkedLessonId: 'animals',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -667,6 +682,7 @@ const day16: SpeakingDay = {
   subtitle: "Kiyim haqida gapirish",
   goalUz: "Kiyimlaringiz haqida oddiy gaplar ayta olasiz.",
   estMinutes: 12,
+  grammarPoint: 'adjectives',
   linkedLessonId: 'clothes',
   vocab: [
     { en: 'size', uz: 'o\'lcham', example: 'What size do you need?' },
@@ -710,6 +726,7 @@ const day17: SpeakingDay = {
   subtitle: "O'zini qanday his qilish",
   goalUz: "Hislaringizni ayta va do'stni tinchlantira olasiz.",
   estMinutes: 12,
+  grammarPoint: 'how are you',
   linkedLessonId: 'basic-adjectives',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -753,6 +770,7 @@ const day18: SpeakingDay = {
   subtitle: "O'qish haqida oddiy gaplar",
   goalUz: "O'qish va fanlaringiz haqida gapira olasiz.",
   estMinutes: 13,
+  grammarPoint: 'simple present (review)',
   linkedLessonId: 'have-got',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -1209,6 +1227,7 @@ const day30: SpeakingDay = {
   subtitle: "Fikr bildirish",
   goalUz: "Nimani yoqtirishingiz va yoqtirmasligingizni ayta olasiz.",
   estMinutes: 14,
+  grammarPoint: 'like + V-ing / to + V',
   linkedLessonId: 'gerunds-infinitives',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
@@ -1253,6 +1272,7 @@ const day31: SpeakingDay = {
   subtitle: "O'tgan zamon (Past Simple)",
   goalUz: "O'tgan kuningiz haqida oddiy gaplar ayta olasiz.",
   estMinutes: 14,
+  grammarPoint: 'past simple (regular)',
   linkedLessonId: 'simple-past',
   vocab: [
     { en: 'usually', uz: 'odatda', example: 'I usually wake up at 7.' },
@@ -1297,6 +1317,7 @@ const day32: SpeakingDay = {
   subtitle: "Going to — rejalar haqida",
   goalUz: "Yaqin kelajakdagi rejalaringizni ayta olasiz.",
   estMinutes: 14,
+  grammarPoint: 'going to',
   linkedLessonId: 'present-continuous-future',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -1340,6 +1361,7 @@ const day33: SpeakingDay = {
   subtitle: "Muloyim shikoyat qilish",
   goalUz: "Muammoni muloyim tarzda ayta olasiz va yordam so'ray olasiz.",
   estMinutes: 14,
+  grammarPoint: 'can/could/may',
   linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'temperature', uz: 'harorat', example: 'The temperature is 30 degrees.' },
@@ -1383,6 +1405,7 @@ const day34: SpeakingDay = {
   subtitle: "Restoranda stol band qilish",
   goalUz: "Telefon orqali stol band qila olasiz.",
   estMinutes: 15,
+  grammarPoint: 'prepositions (review)',
   linkedLessonId: 'prepositions',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
@@ -1426,6 +1449,7 @@ const day35: SpeakingDay = {
   subtitle: "Tavsiya so'rash va hisob",
   goalUz: "Tavsiya so'ray olasiz, taom buyurtma qilasiz va hisobni so'raysiz.",
   estMinutes: 14,
+  grammarPoint: 'a/an/the',
   linkedLessonId: 'articles',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
@@ -1470,6 +1494,7 @@ const day36: SpeakingDay = {
   subtitle: "Ro'yxatdan o'tish va reys",
   goalUz: "Aeroportda ro'yxatdan o'ta olasiz va reys haqida so'raysiz.",
   estMinutes: 14,
+  grammarPoint: 'question forms',
   linkedLessonId: 'questions',
   vocab: [
     { en: 'platform', uz: 'platforma', example: 'Which platform?' },
@@ -1513,6 +1538,7 @@ const day37: SpeakingDay = {
   subtitle: "Xona band qilish va so'rovlar",
   goalUz: "Mehmonxonaga joylasha olasiz va xizmatlar haqida so'raysiz.",
   estMinutes: 14,
+  grammarPoint: 'there is/are (review)',
   linkedLessonId: 'there-is-are',
   vocab: [
     { en: 'temperature', uz: 'harorat', example: 'The temperature is 30 degrees.' },
@@ -1557,6 +1583,7 @@ const day38: SpeakingDay = {
   subtitle: "Shikoyat va dori",
   goalUz: "Qayeringiz og'riyotganini ayta olasiz va maslahat so'raysiz.",
   estMinutes: 14,
+  grammarPoint: 'have got (review)',
   linkedLessonId: 'have-got',
   vocab: [
     { en: 'passport', uz: 'pasport', example: 'Can I see your passport?' },
@@ -1600,6 +1627,7 @@ const day39: SpeakingDay = {
   subtitle: "Ob-havoni tasvirlash",
   goalUz: "Ob-havoni tasvirlay olasiz va nima kiyganingizni aytasiz.",
   estMinutes: 13,
+  grammarPoint: 'adjective vs adverb',
   linkedLessonId: 'adjective-adverb',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
@@ -1643,6 +1671,7 @@ const day40: SpeakingDay = {
   subtitle: "Kiyib ko'rish va o'lcham",
   goalUz: "Kiyib ko'rishni so'ray olasiz va rang/o'lcham haqida so'raysiz.",
   estMinutes: 13,
+  grammarPoint: 'this/that/these/those',
   linkedLessonId: 'demonstratives',
   vocab: [
     { en: 'size', uz: 'o\'lcham', example: 'What size do you need?' },
@@ -1687,6 +1716,7 @@ const day41: SpeakingDay = {
   subtitle: "Kasb va vazifalar",
   goalUz: "Ishingiz va vazifangizni tushuntira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'have/has + V3',
   linkedLessonId: 'present-perfect',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -1730,6 +1760,7 @@ const day42: SpeakingDay = {
   subtitle: "Hafta oxiri rejalari",
   goalUz: "Hafta oxiri rejalaringizni ayta va taklif qila olasiz.",
   estMinutes: 14,
+  grammarPoint: 'present continuous for future',
   linkedLessonId: 'present-continuous-future',
   vocab: [
     { en: 'hope', uz: 'umid qilmoq', example: 'I hope so.' },
@@ -1773,6 +1804,7 @@ const day43: SpeakingDay = {
   subtitle: "Tabriklash va tadbirlar",
   goalUz: "Tabriklay va bayram haqida gapira olasiz.",
   estMinutes: 13,
+  grammarPoint: 'my/your/his/her/its',
   linkedLessonId: 'possessives',
   vocab: [
     { en: 'birthday', uz: 'tug\'ilgan kun', example: 'When is your birthday?' },
@@ -1816,6 +1848,7 @@ const day44: SpeakingDay = {
   subtitle: "Avtobus va poezd",
   goalUz: "Transport, chipta va yo'nalish haqida so'ray olasiz.",
   estMinutes: 14,
+  grammarPoint: 'much/many/a lot of',
   linkedLessonId: 'quantifiers',
   vocab: [
     { en: 'interesting', uz: 'qiziqarli', example: 'That sounds interesting!' },
@@ -1859,6 +1892,7 @@ const day45: SpeakingDay = {
   subtitle: "Oddiy xizmatlar",
   goalUz: "Bank/pochtada xizmat so'ray olasiz.",
   estMinutes: 14,
+  grammarPoint: 'countable vs uncountable',
   linkedLessonId: 'countable-uncountable',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -1903,6 +1937,7 @@ const day46: SpeakingDay = {
   subtitle: "Qaytarish va almashtirish",
   goalUz: "Mahsulotni qaytara yoki almashtira olasiz.",
   estMinutes: 13,
+  grammarPoint: 'must/have to/should',
   linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'map', uz: 'xarita', example: 'Do you have a map?' },
@@ -1946,6 +1981,7 @@ const day47: SpeakingDay = {
   subtitle: "Oddiy fikr va rozilik",
   goalUz: "Oddiy fikr bildira va rozilik/e'tiroz ayta olasiz.",
   estMinutes: 13,
+  grammarPoint: 'gerunds vs infinitives',
   linkedLessonId: 'so-such',
   vocab: [
     { en: 'agree', uz: 'rozi bo\'lmoq', example: 'I agree with you.' },
@@ -2367,6 +2403,7 @@ const day58: SpeakingDay = {
   subtitle: "E'lon bo'yicha qo'ng'iroq",
   goalUz: "Rasmiy qo'ng'iroq qila olasiz va ma'lumot so'raysiz.",
   estMinutes: 15,
+  grammarPoint: 'must/have to/should (review)',
   linkedLessonId: 'indirect-questions',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -2410,6 +2447,7 @@ const day59: SpeakingDay = {
   subtitle: "Fikr bildirish",
   goalUz: "Rozilik yoki e'tirozingizni muloyim bildira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'question forms (review)',
   linkedLessonId: 'so-neither-auxiliaries',
   vocab: [
     { en: 'agree', uz: 'rozi bo\'lmoq', example: 'I agree with you.' },
@@ -2453,6 +2491,7 @@ const day60: SpeakingDay = {
   subtitle: "Taklif qilish va javob",
   goalUz: "Taklifni muloyim qabul qila yoki rad eta olasiz.",
   estMinutes: 14,
+  grammarPoint: 'could/would like',
   linkedLessonId: 'modals-obligation',
   vocab: [
     { en: 'join', uz: 'qo\'shilmoq', example: 'Would you like to join?' },
@@ -2496,6 +2535,7 @@ const day61: SpeakingDay = {
   subtitle: "Present Perfect",
   goalUz: "Hayot tajribalaringiz haqida gapira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'have/has + V3 (review)',
   linkedLessonId: 'present-perfect',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -2540,6 +2580,7 @@ const day62: SpeakingDay = {
   subtitle: "Reja va tasdiq",
   goalUz: "Uchrashuv vaqtini kelishib, tasdiqlay olasiz.",
   estMinutes: 14,
+  grammarPoint: 'at/on/in (time)',
   linkedLessonId: 'time-clauses',
   vocab: [
     { en: 'party', uz: 'ziyofat', example: 'I met him at a party.' },
@@ -2583,6 +2624,7 @@ const day63: SpeakingDay = {
   subtitle: "should / could",
   goalUz: "Muloyim maslahat bera va so'ray olasiz.",
   estMinutes: 14,
+  grammarPoint: 'should/could/might',
   linkedLessonId: 'modals-obligation',
   vocab: [
     { en: 'recommend', uz: 'tavsiya qilmoq', example: 'What do you recommend?' },
@@ -2626,6 +2668,7 @@ const day64: SpeakingDay = {
   subtitle: "Kelajak haqida",
   goalUz: "Kelajak rejalaringiz va orzularingizni ayta olasiz.",
   estMinutes: 14,
+  grammarPoint: 'if + present, will + V1',
   linkedLessonId: 'future-forms-review',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -2669,6 +2712,7 @@ const day65: SpeakingDay = {
   subtitle: "because / so",
   goalUz: "Qaror va sabablaringizni tushuntira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'because/so/therefore',
   linkedLessonId: 'conjunctions',
   vocab: [
     { en: 'actually', uz: 'aslida', example: 'Actually, that is not true.' },
@@ -2712,6 +2756,7 @@ const day66: SpeakingDay = {
   subtitle: "O'zini taqdim etish",
   goalUz: "Oddiy ish intervyusida o'zingizni taqdim eta olasiz.",
   estMinutes: 15,
+  grammarPoint: 'question forms (advanced)',
   linkedLessonId: 'indirect-questions',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -2756,6 +2801,7 @@ const day67: SpeakingDay = {
   subtitle: "Hujjatlar va to'lovlar",
   goalUz: "Bankda hisob ocha olasiz va shartlar haqida so'raysiz.",
   estMinutes: 15,
+  grammarPoint: 'much/many/a lot of (review)',
   linkedLessonId: 'countable-uncountable',
   vocab: [
     { en: 'cash', uz: 'naqd pul', example: 'I will pay in cash.' },
@@ -2799,6 +2845,7 @@ const day68: SpeakingDay = {
   subtitle: "Posilka jo'natish",
   goalUz: "Posilka jo'nata olasiz va narx/vaqt haqida so'raysiz.",
   estMinutes: 14,
+  grammarPoint: 'prepositions (review)',
   linkedLessonId: 'prepositions',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -2842,6 +2889,7 @@ const day69: SpeakingDay = {
   subtitle: "Ijara shartlari",
   goalUz: "Ijara haqida so'ray olasiz va shartlarni aniqlaysiz.",
   estMinutes: 15,
+  grammarPoint: 'there is/are (review)',
   linkedLessonId: 'there-is-are',
   vocab: [
     { en: 'garden', uz: 'bog\'', example: 'We have a beautiful garden.' },
@@ -2885,6 +2933,7 @@ const day70: SpeakingDay = {
   subtitle: "Tajriba va sharoit",
   goalUz: "Ish tajribangizni tushuntira olasiz.",
   estMinutes: 15,
+  grammarPoint: 'present perfect (review)',
   linkedLessonId: 'present-perfect',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -2928,6 +2977,7 @@ const day71: SpeakingDay = {
   subtitle: "Muammoni hal qilish",
   goalUz: "Texnik muammoni tushuntira olasiz va yechim so'raysiz.",
   estMinutes: 14,
+  grammarPoint: 'can/could (polite)',
   linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'message', uz: 'xabar', example: 'Did you get my message?' },
@@ -2971,6 +3021,7 @@ const day72: SpeakingDay = {
   subtitle: "Sayohatni rejalashtirish",
   goalUz: "Sayohatingizni rejalashtira olasiz va maslahat so'raysiz.",
   estMinutes: 15,
+  grammarPoint: 'if + present, will + V1',
   linkedLessonId: 'first-conditional',
   vocab: [
     { en: 'usually', uz: 'odatda', example: 'I usually wake up at 7.' },
@@ -3014,6 +3065,7 @@ const day73: SpeakingDay = {
   subtitle: "Muloyim shikoyat",
   goalUz: "Restoranda muloyim shikoyat qila olasiz va yechim so'raysiz.",
   estMinutes: 14,
+  grammarPoint: 'I want to/I\'d like to',
   linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'menu', uz: 'menyu', example: 'Can I see the menu?' },
@@ -3057,6 +3109,7 @@ const day74: SpeakingDay = {
   subtitle: "Dori so'rash",
   goalUz: "Dorixonada belgini ayta olasiz va dori so'raysiz.",
   estMinutes: 14,
+  grammarPoint: 'some/any (review)',
   linkedLessonId: 'countable-uncountable',
   vocab: [
     { en: 'size', uz: 'o\'lcham', example: 'What size do you need?' },
@@ -3100,6 +3153,7 @@ const day75: SpeakingDay = {
   subtitle: "Sog'lom turmush",
   goalUz: "Sog'lom turmush odatlaringiz haqida gapira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'enjoy + V-ing, want + to V',
   linkedLessonId: 'gerunds-infinitives',
   vocab: [
     { en: 'pharmacy', uz: 'dorixona', example: 'Where is the nearest pharmacy?' },
@@ -3143,6 +3197,7 @@ const day76: SpeakingDay = {
   subtitle: "Tavsiya berish",
   goalUz: "Film yoki kitob haqida fikr bildira va tavsiya bera olasiz.",
   estMinutes: 14,
+  grammarPoint: 'ever/never + V3',
   linkedLessonId: 'present-perfect',
   vocab: [
     { en: 'reservation', uz: 'bron', example: 'I have a reservation.' },
@@ -3186,6 +3241,7 @@ const day77: SpeakingDay = {
   subtitle: "Fikr bildirish",
   goalUz: "Yangilik haqida fikr bildira va sabab ayta olasiz.",
   estMinutes: 14,
+  grammarPoint: 'verb + gerund/infinitive',
   linkedLessonId: 'verb-patterns',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -3229,6 +3285,7 @@ const day78: SpeakingDay = {
   subtitle: "Tabiatni asrash",
   goalUz: "Atrof-muhit haqida fikr bildira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'should/shouldn\'t',
   linkedLessonId: 'modal-verbs',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -3272,6 +3329,7 @@ const day79: SpeakingDay = {
   subtitle: "Ijtimoiy tarmoq odatlari",
   goalUz: "Texnologiya odatlaringiz haqida gapira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'past simple/continuous/perfect',
   linkedLessonId: 'phrasal-verbs-b1',
   vocab: [
     { en: 'usually', uz: 'odatda', example: 'I usually wake up at 7.' },
@@ -3315,6 +3373,7 @@ const day80: SpeakingDay = {
   subtitle: "O'qish haqida",
   goalUz: "O'qish va o'rganish haqida gapira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'to V vs V-ing (advanced)',
   linkedLessonId: 'past-perfect',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -3358,6 +3417,7 @@ const day81: SpeakingDay = {
   subtitle: "Tejash haqida",
   goalUz: "Pul tejash va byudjet haqida gapira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'collocations',
   linkedLessonId: 'quantifiers',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -3401,6 +3461,7 @@ const day82: SpeakingDay = {
   subtitle: "Dam olish va ish",
   goalUz: "Ish va dam olish muvozanati haqida gapira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'although/even though',
   linkedLessonId: 'modals-obligation',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -3444,6 +3505,7 @@ const day83: SpeakingDay = {
   subtitle: "An'analar haqida",
   goalUz: "Madaniyat va an'analaringiz haqida gapira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'common idioms',
   linkedLessonId: 'both-either-neither',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -3487,6 +3549,7 @@ const day84: SpeakingDay = {
   subtitle: "Murosa topish",
   goalUz: "Muammoni muhokama qilib, murosa yechimi taklif qila olasiz.",
   estMinutes: 15,
+  grammarPoint: 'say/tell/ask + object',
   linkedLessonId: 'both-either-neither',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -3530,6 +3593,7 @@ const day85: SpeakingDay = {
   subtitle: "Mavzuni tanishtirish",
   goalUz: "Qisqa taqdimot qila olasiz.",
   estMinutes: 15,
+  grammarPoint: 'however/furthermore/moreover',
   linkedLessonId: 'relative-clauses-b1',
   vocab: [
     { en: 'appearance', uz: 'tashqi ko\'rinish', example: 'Describe his appearance.' },
@@ -3573,6 +3637,7 @@ const day86: SpeakingDay = {
   subtitle: "Xotirjam suhbat",
   goalUz: "Kelishmovchilikni xotirjam hal qila olasiz.",
   estMinutes: 14,
+  grammarPoint: 'each/every/all/both',
   linkedLessonId: 'modals-speculation',
   vocab: [
     { en: 'actually', uz: 'aslida', example: 'Actually, that is not true.' },
@@ -3616,6 +3681,7 @@ const day87: SpeakingDay = {
   subtitle: "Voqeani so'zlash",
   goalUz: "Boshingizdan o'tgan voqeani aytib bera olasiz.",
   estMinutes: 14,
+  grammarPoint: 'storytelling tenses',
   linkedLessonId: 'past-perfect',
   vocab: [
     { en: 'remember', uz: 'eslamoq', example: 'Do you remember?' },
@@ -3659,6 +3725,7 @@ const day88: SpeakingDay = {
   subtitle: "might / must / can't",
   goalUz: "Vaziyat haqida taxmin qila olasiz.",
   estMinutes: 14,
+  grammarPoint: 'might/could/should + have + V3',
   linkedLessonId: 'modals-speculation',
   vocab: [
     { en: 'actually', uz: 'aslida', example: 'Actually, that is not true.' },
@@ -3702,6 +3769,7 @@ const day89: SpeakingDay = {
   subtitle: "should have",
   goalUz: "Afsus va o'tmish haqida gapira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'I wish I had...',
   linkedLessonId: 'wishes-regrets',
   vocab: [
     { en: 'apologise', uz: 'kechirim so\'ramoq', example: 'I apologise for the delay.' },
@@ -3745,6 +3813,7 @@ const day90: SpeakingDay = {
   subtitle: "if + would",
   goalUz: "Faraziy holatlar haqida gapira olasiz.",
   estMinutes: 15,
+  grammarPoint: 'V-ing/Ved clauses',
   linkedLessonId: 'first-conditional',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -3788,6 +3857,7 @@ const day91: SpeakingDay = {
   subtitle: "Tavsiya berish",
   goalUz: "Tavsiya bera va fikringizni ayta olasiz.",
   estMinutes: 14,
+  grammarPoint: 'recommend/suggest + V-ing',
   linkedLessonId: 'gerunds-infinitives',
   vocab: [
     { en: 'recommend', uz: 'tavsiya qilmoq', example: 'What do you recommend?' },
@@ -3831,6 +3901,7 @@ const day92: SpeakingDay = {
   subtitle: "Solishtirish",
   goalUz: "Shahar va qishloqni solishtira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'in terms of, on behalf of',
   linkedLessonId: 'comparatives-superlatives',
   vocab: [
     { en: 'capital', uz: 'poytaxt', example: 'Tashkent is the capital.' },
@@ -3874,6 +3945,7 @@ const day93: SpeakingDay = {
   subtitle: "will / might",
   goalUz: "Kelajak haqida bashorat qila olasiz.",
   estMinutes: 14,
+  grammarPoint: 'suffixes: -tion, -ment, -ness',
   linkedLessonId: 'future-forms-review',
   vocab: [
     { en: 'hope', uz: 'umid qilmoq', example: 'I hope so.' },
@@ -3917,6 +3989,7 @@ const day94: SpeakingDay = {
   subtitle: "Intervyu savoli",
   goalUz: "Kuchli va zaif tomonlaringizni muvozanatli ayta olasiz.",
   estMinutes: 15,
+  grammarPoint: 'do/does/did + V1',
   linkedLessonId: 'indirect-questions',
   vocab: [
     { en: 'experience', uz: 'tajriba', example: 'I have 3 years of experience.' },
@@ -3960,6 +4033,7 @@ const day95: SpeakingDay = {
   subtitle: "Rag'bat haqida",
   goalUz: "Maqsad va motivatsiyangiz haqida gapira olasiz.",
   estMinutes: 14,
+  grammarPoint: 'collocations (review)',
   linkedLessonId: 'future-forms-review',
   vocab: [
     { en: 'weather', uz: 'ob-havo', example: 'Nice weather, is not it?' },
@@ -4003,6 +4077,7 @@ const day96: SpeakingDay = {
   subtitle: "O'zini ishonch bilan taqdim etish",
   goalUz: "O'zingizni ishonch bilan to'liq taqdim eta olasiz - 75-kun yakuni!",
   estMinutes: 15,
+  grammarPoint: '综合 (comprehensive)',
   linkedLessonId: 'linking-words-advanced-b1plus',
   vocab: [
     { en: 'audience', uz: 'tomoshabinlar', example: 'The audience was impressed.' },
