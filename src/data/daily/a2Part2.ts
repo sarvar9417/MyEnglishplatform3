@@ -492,7 +492,7 @@ export const passiveVoice: DailyLesson = {
       ],
       drills: [
         { id: 19095, type: 'fill-blank', instruction: "By qo'shing yoki qo'shmang:", question: 'The cake was made ___ my mother.', blanks: ['by'], explanation: "Bajaruvchi muhim — by" },
-        { id: 19096, type: 'fill-blank', instruction: "By qo'shing yoki qo'shmang:", question: 'My phone was stolen ___.', blanks: [''], explanation: "Noma'lum — by kerak emas" },
+        { id: 19096, type: 'fill-blank', instruction: "By qo'shing yoki qo'shmang (kerak bo'lmasa — qo'ying):", question: 'My phone was stolen ___.', blanks: ['—'], acceptedAnswers: [['—', '-', '']], explanation: "Noma'lum — by kerak emas (— = hech narsa)" },
         { id: 19097, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'English ___ in many countries.', options: ['speaks', 'is spoken', 'was spoken', 'is speak'], correct: 'is spoken', explanation: "Present Passive: is + V3" },
       ],
     },
@@ -906,7 +906,7 @@ export const firstConditional: DailyLesson = {
       drills: [
         { id: 19196, type: 'fill-blank', instruction: "If first → vergul qo'ying:", question: 'If you study ___ you will pass.', blanks: [','], explanation: "If first → vergul kerak" },
         { id: 19197, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['If you study, you will pass', 'If you study you will pass', 'If you study, you will pass,', 'If, you study you will pass'], correct: 'If you study, you will pass', explanation: "If birinchi → vergul" },
-        { id: 19198, type: 'fill-blank', instruction: "Vergul kerakmi?", question: 'You will pass ___ if you study.', blanks: [''], explanation: "If ikkinchi → vergul kerak emas" },
+        { id: 19198, type: 'fill-blank', instruction: "Vergul kerakmi? (kerak bo'lmasa — qo'ying):", question: 'You will pass ___ if you study.', blanks: ['—'], acceptedAnswers: [['—', '-', '']], explanation: "If ikkinchi → vergul kerak emas (— = vergul yo'q)" },
       ],
     },
   ],

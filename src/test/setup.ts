@@ -9,6 +9,23 @@ if (typeof Element.prototype.scrollTo !== 'function') {
   Element.prototype.scrollTo = (() => {}) as typeof Element.prototype['scrollTo']
 }
 
+// Vitest 4.x jsdom doesn't provide matchMedia by default — required by theme tests
+if (typeof window.matchMedia !== 'function') {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: (query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    }),
+  })
+}
+
 // Suppress act() warnings from async effects — tests handle this correctly via await renderPage()
 // Suppress jsdom 'Not implemented: window.scrollTo' error — guarded with try/catch in source
 const origConsoleError = console.error

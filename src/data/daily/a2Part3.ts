@@ -637,7 +637,7 @@ export const possessives: DailyLesson = {
       drills: [
         { id: 24141, type: 'fill-blank', instruction: "Double possessive bilan to'ldiring:", question: 'She is a friend of ___.', blanks: ['mine'], explanation: "Of + mine — 'Of' dan keyin possessive pronoun." },
         { id: 24142, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "It's a painting of ___.", options: ['her', 'hers', 'she', 'herself'], correct: 'hers', explanation: "Of + hers (possessive pronoun)." },
-        { id: 24143, type: 'error-correction', instruction: 'Xatoni toping va to\'g\'irlang:', question: 'He is a friend of my brother.', errorPart: 'My friend', correct: 'He is a friend of my brother\'s.', explanation: "Double possessive — 'a friend of my brother's'. Ikkala egalik birga." },
+        { id: 24143, type: 'error-correction', instruction: 'Xatoni toping va to\'g\'irlang:', question: 'He is a friend of my brother.', errorPart: 'my brother', correct: 'He is a friend of my brother\'s.', explanation: "Double possessive — 'a friend of my brother's'. Ikkala egalik birga." },
       ],
     },
   ],

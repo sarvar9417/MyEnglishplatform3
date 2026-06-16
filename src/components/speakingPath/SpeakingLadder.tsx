@@ -69,7 +69,7 @@ const CEFR_ZONES: CefrZone[] = [
     color: '#e11d48', bgClass: 'bg-rose-50 dark:bg-rose-900/20',
     textClass: 'text-rose-700 dark:text-rose-300',
     borderClass: 'border-rose-200 dark:border-rose-800/50',
-    icon: '📘',
+    icon: '📙',
   },
 ]
 

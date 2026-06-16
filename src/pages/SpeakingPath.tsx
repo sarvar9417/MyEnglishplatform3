@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, Mic, Flame, Trophy, RotateCcw, ChevronRight } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
-import { SPEAKING_DAYS, TOTAL_SPEAKING_DAYS, getSpeakingDay, getAllChunks, type SpeakingChunk, type SpeakingDayProgress } from '../data/speakingPath'
+import { SPEAKING_DAYS, TOTAL_SPEAKING_DAYS, getSpeakingDay, getAllChunks, getCefrForDay, type SpeakingChunk, type SpeakingDayProgress } from '../data/speakingPath'
 import { getSpeakingProgress, getDueChunks, getSpeakingStats, loadSrsMap, computeTrend, computeSRSDistribution, type SpeakingStats, type TrendPoint, type SRSDistribution } from '../services/speakingPathService'
 import SpeakingLadder from '../components/speakingPath/SpeakingLadder'
 import SpeakingDaySession from '../components/speakingPath/SpeakingDaySession'
@@ -199,7 +199,7 @@ export default function SpeakingPath() {
             speakingStreak: speakingStats?.streakDays ?? 0,
             chunksMastered: speakingStats?.chunksMastered ?? 0,
             bestSpeakScore: speakingStats?.avgSpeakScore7d ?? 0,
-            cefr: unlockedDay >= 99 ? 'B2' : unlockedDay >= 58 ? 'B1' : unlockedDay >= 30 ? 'A2' : unlockedDay >= 4 ? 'A1' : 'A0',
+            cefr: getCefrForDay(unlockedDay),
           }}
         />
       )}

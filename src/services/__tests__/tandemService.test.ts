@@ -87,6 +87,8 @@ beforeEach(() => {
 afterEach(() => {
   vi.useRealTimers()
   vi.restoreAllMocks()
+  // Re-apply getSession mock after restoreAllMocks clears it
+  mockSupabaseInstance.auth.getSession.mockResolvedValue(mockSession)
 })
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -267,6 +269,9 @@ describe('createTandemPair / getTandemPair', () => {
 
 describe('updateTandemStreak', () => {
   beforeEach(() => {
+    // mockReset() clears all state from previous test (calls, return queues, implementations)
+    // This is essential in vitest 4.x where hoisted mocks retain state across tests
+    mockSupabaseInstance.from.mockReset()
     const { qb, setResult } = buildQBWithUpdate()
     setResult({ id: 'pair-1', user_a: 'test-user-id', user_b: 'friend-a', combined_streak: 5, last_both_active: '2026-06-14', total_xp: 100, freeze_used_on: null }, null)
     mockSupabaseInstance.from.mockReturnValueOnce(qb)

@@ -1237,7 +1237,7 @@ export const complexPrepositionsB2: DailyLesson = {
 
     // ── Interleaved Practice: Complex Prepositions + Linking ──
     { id: 95361, type: 'multiple-choice', instruction: "Due to (+ ot) va because (+ gap):", question: "The delay was _____ heavy rain. We were late _____ it rained.", options: ["due to / because", "because / due to", "due to / due to", "because / because"], correct: "due to / because", explanation: "Due to + ot (heavy rain). Because + gap (it rained)." },
-    { id: 95362, type: 'fill-blank', instruction: "In terms of / with regard to:", question: "_____ regard _____ the budget, we have concerns. _____ terms _____ cost, it's high.", blanks: ["With", "to"], explanation: "With regard to / in terms of — rasmiy predlogli iboralar." },
+    { id: 95362, type: 'fill-blank', instruction: "In terms of / with regard to:", question: "_____ regard _____ the budget, we have concerns. _____ terms _____ cost, it's high.", blanks: ["With", "to", "In", "of"], explanation: "With regard to / in terms of — rasmiy predlogli iboralar." },
     { id: 95363, type: 'error-correction', instruction: "Despite (+ ot) vs although (+ gap):", question: "Despite it was raining, we went out.", errorPart: "Despite it was raining", correct: "Despite the rain, we went out.", explanation: "Despite + ot (the rain). Gap uchun → although it was raining." },
     { id: 95364, type: 'multiple-choice', instruction: "On behalf of / in addition to:", question: "_____ behalf of the team, I thank you. _____ addition to that, we need staff.", options: ["On / In", "In / On", "On / On", "In / In"], correct: "On / In", explanation: "On behalf of (nomidan). In addition to (bundan tashqari)." },
     { id: 95365, type: 'transformation', instruction: "Because o'rniga 'due to' (ot bilan):", question: "The flight was cancelled because the weather was bad.", hint: "The flight was cancelled due to ...", correct: "The flight was cancelled due to bad weather.", explanation: "Due to + ot ibora (bad weather)." },
@@ -1404,7 +1404,7 @@ export const cohesionB2: DailyLesson = {
       ],
       drills: [
         { id: 54319, type: 'multiple-choice', instruction: "Substitution yoki Ellipsis?", question: 'Do you need a pen? I have one.', options: ['Substitution', 'Ellipsis', 'Reference', 'Conjunction'], correct: 'Substitution', explanation: "'One' = substitution (pen o'rniga 'one' ishlatilgan)." },
-        { id: 54320, type: 'fill-blank', instruction: 'Substitution yoki ellipsis? Bo\'sh joyni to\'ldiring:', question: 'She bought five books. I bought three ___. (ellipsis)', blanks: [''], explanation: "Ellipsis = empty. 'Books' tushirib qoldirilgan." },
+        { id: 54320, type: 'fill-blank', instruction: 'Substitution yoki ellipsis? (so\'z tushsa — qo\'ying):', question: 'She bought five books. I bought three ___. (ellipsis)', blanks: ['—'], acceptedAnswers: [['—', '-', '']], explanation: "Ellipsis = bo'sh. 'Books' tushirib qoldirilgan (— = so'z tushadi)." },
         { id: 54321, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I like this phone more than that.', errorPart: 'that', correct: 'I like this phone more than that one.', explanation: "'That' o'rniga 'that one' kerak — substitution. 'One' = noun o'rnini bosadi." },
       ],
     },

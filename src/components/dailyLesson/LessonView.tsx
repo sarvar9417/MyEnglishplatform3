@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
-import { ArrowLeft, CheckCircle, XCircle, Star, Trophy, Lightbulb, RotateCcw, ChevronRight, BookOpen, Sparkles, Volume2, MessageCircle, Mic } from 'lucide-react'
+import { CheckCircle, XCircle, Star, Trophy, Lightbulb, RotateCcw, ChevronRight, BookOpen, Sparkles, Volume2, MessageCircle, Mic } from 'lucide-react'
 import type { DailyLesson, DailyExercise } from '../../data/dailyLessons'
 import type { ReadingSection as ReadingSectionType, WritingSection as WritingSectionType, ListeningSection as ListeningSectionType } from '../../data/dailyLessons'
 
@@ -23,11 +23,9 @@ import { monitoring } from '../../lib/monitoring'
 import LessonImage from './LessonImage'
 
 import { AudioButton } from '../ui/AudioButton'
-import { findConfusablePair } from '../../data/confusable-pairs'
 import { useNavigate } from 'react-router-dom'
 import DialogueCard from './DialogueCard'
 import CulturalNoteCard from './CulturalNoteCard'
-import LessonChallengeButton from './LessonChallengeButton'
 import { getDaysForLesson } from '../../data/speakingPath'
 import { speak } from '../../lib/tts'
 import {
@@ -37,32 +35,13 @@ import {
   loadExerciseAnswersFromDB, fetchLessonSkills, clearExerciseAnswersFromDB,
   type LoadedExerciseAnswer,
 } from '../../services/lessonService'
+import { resolveSectionItems, getConfusablePairs } from './lessonHelpers'
+import LessonHeader from './LessonHeader'
+import LessonNavigation, { type Tab } from './LessonNavigation'
 
 
 
 type Answers = Record<number, string[]>
-
-// Section elementlarini topadi: avval id bo'yicha (to'g'ri sozlangan darslar),
-// bo'sh bo'lsa — pozitsion taqsimlash. Sabab: fix-exercise-ids exercise/test
-// id'larini o'zgartirgan, lekin exerciseSections/testSections.ids'ni yangilamagan
-// → eski havolalar bilan qolgan va mashqlar/testlar ko'rinmay qolgan.
-function resolveSectionItems<T extends { id: number }>(
-  sections: { ids: number[] }[],
-  sectionIndex: number,
-  pool: T[],
-  source: T[],
-): T[] {
-  const section = sections[sectionIndex]
-  if (!section) return []
-  const byId = pool.filter((it) => section.ids.includes(it.id))
-  if (byId.length > 0) return byId
-  let cursor = 0
-  for (let i = 0; i < sections.length; i++) {
-    if (i === sectionIndex) return source.slice(cursor, cursor + sections[i].ids.length)
-    cursor += sections[i].ids.length
-  }
-  return []
-}
 
 export default function LessonView({ lesson: lessonProp, onBack }: { lesson: DailyLesson; onBack: () => void }) {
   const [skillsData, setSkillsData] = useState<Record<string, { reading?: ReadingSectionType; writing?: WritingSectionType; listening?: ListeningSectionType }>>({})
@@ -77,7 +56,6 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
   const { addXP, addLearnedWords, updateSkillProgress, setLessonProgress, saveLessonSession, clearLessonSession, lessonSessions, loseHeart } = useStore()
   const savedSession = lessonSessions[lesson.id]
 
-  type Tab = 'theory' | 'drill' | 'reading' | 'speaking' | 'writing' | 'listening'
   // tab ham sinxron tiklanadi (avval har doim 'theory'dan boshlanardi → davom
   // etishda foydalanuvchi noto'g'ri tabga tushardi). savedSession localStorage'dan
   // store init paytida seed qilingani uchun refresh'da ham mavjud bo'ladi.
@@ -631,57 +609,18 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
     scrollToTop()
   }
 
-  const tabs: { id: Tab; label: string; icon: string }[] = [
-    { id: 'theory',    label: 'Nazariya',  icon: '📖' },
-    { id: 'drill',     label: 'Mashqlar',  icon: '⚡' },
-    ...(lesson.reading ? [{ id: 'reading' as Tab, label: "O'qish", icon: '📰' }] : []),
-    { id: 'speaking' as Tab, label: 'Gapirish', icon: '🎤' },  // AI tomonidan mavzuga oid generatsiya
-    { id: 'writing' as Tab, label: 'Yozish', icon: '✍️' },
-    ...(lesson.listening ? [{ id: 'listening' as Tab, label: 'Tinglash', icon: '🎧' }] : []),
-  ]
-
   return (
     <div className="p-3 sm:p-6 max-w-4xl mx-auto space-y-4 sm:space-y-5">
-      <div className="flex items-center gap-2 sm:gap-3">
-        <button onClick={onBack} className="btn-ghost flex items-center gap-1 text-sm">
-          <ArrowLeft size={16} /> Boshqa dars
-        </button>
-        <div className="h-5 w-px bg-gray-200 dark:bg-gray-700" />
-        <span className="badge border bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-700">{lesson.level}</span>
-        <span className="text-xs text-gray-400 dark:text-gray-500">Kun {lesson.day}</span>
-        {prevScore !== null && (
-          <span className={`badge text-xs font-bold ${prevScore >= 80 ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400' : prevScore >= 50 ? 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400' : 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400'}`}>
-            {prevScore}% ✅
-          </span>
-        )}
-      </div>
-
-      {/* ── Dars boshida do'stni chaqirish ── */}
-      <LessonChallengeButton
+      <LessonHeader
         lesson={lesson}
-        lessonCompleted={allDone}
-        lessonScore={currentLessonScore}
+        prevScore={prevScore}
+        allDone={allDone}
+        currentLessonScore={currentLessonScore}
+        onBack={onBack}
       />
 
-      <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100">{lesson.title}</h1>
-        <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-1">{lesson.subtitle}</p>
-      </div>
-
       {/* Pill-style tab bar */}
-      <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-700 rounded-xl">
-        {tabs.map((t) => (
-          <button key={t.id} onClick={() => setTab(t.id)}
-            className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-              tab === t.id
-                ? 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-sm'
-                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
-            }`}>
-            <span>{t.icon}</span>
-            <span className="hidden sm:inline">{t.label}</span>
-          </button>
-        ))}
-      </div>
+      <LessonNavigation lesson={lesson} tab={tab} onTabChange={setTab} />
 
       {/* ── THEORY TAB ── */}
       {tab === 'theory' && (
@@ -843,15 +782,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
 
           {/* Confusable ogohlantirish banneri */}
           {(() => {
-            const seen = new Set<string>()
-            const confusableVocab: { pairId: string; uzTitle: string; words: string[] }[] = []
-            for (const v of lesson.vocabulary) {
-              const pair = findConfusablePair(v.en)
-              if (pair && !seen.has(pair.id)) {
-                seen.add(pair.id)
-                confusableVocab.push({ pairId: pair.id, uzTitle: pair.uzTitle, words: pair.words })
-              }
-            }
+            const confusableVocab = getConfusablePairs(lesson.vocabulary)
             if (confusableVocab.length === 0) return null
             return (
               <div className="rounded-xl border border-indigo-200 dark:border-indigo-800 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-4">
@@ -1368,15 +1299,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
       {tab === 'speaking' && (
         <div className="pt-2 space-y-4">
           {(() => {
-            const seen = new Set<string>()
-            const confusableVocab: { pairId: string; uzTitle: string; words: string[] }[] = []
-            for (const v of lesson.vocabulary) {
-              const pair = findConfusablePair(v.en)
-              if (pair && !seen.has(pair.id)) {
-                seen.add(pair.id)
-                confusableVocab.push({ pairId: pair.id, uzTitle: pair.uzTitle, words: pair.words })
-              }
-            }
+            const confusableVocab = getConfusablePairs(lesson.vocabulary)
             if (confusableVocab.length === 0) return null
             return (
               <div className="rounded-xl border border-indigo-200 dark:border-indigo-800 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-4">
@@ -1429,15 +1352,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: { lesson: Dai
       {tab === 'writing' && (
         <div className="pt-2 space-y-4">
           {(() => {
-            const seen = new Set<string>()
-            const confusableVocab: { pairId: string; uzTitle: string; words: string[] }[] = []
-            for (const v of lesson.vocabulary) {
-              const pair = findConfusablePair(v.en)
-              if (pair && !seen.has(pair.id)) {
-                seen.add(pair.id)
-                confusableVocab.push({ pairId: pair.id, uzTitle: pair.uzTitle, words: pair.words })
-              }
-            }
+            const confusableVocab = getConfusablePairs(lesson.vocabulary)
             if (confusableVocab.length === 0) return null
             return (
               <div className="rounded-xl border border-indigo-200 dark:border-indigo-800 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-4">

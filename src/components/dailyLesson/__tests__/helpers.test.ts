@@ -188,6 +188,7 @@ describe('getExerciseContext / getCorrectText', () => {
 
   it('returns correct-answer text for fill-blank, passage and connection', () => {
     expect(getCorrectText(exercise({ type: 'fill-blank', instruction: '', question: '', blanks: ['next to'], acceptedAnswers: [['next to', 'beside']], explanation: '' }))).toBe('next to / beside')
+    expect(getCorrectText(exercise({ type: 'fill-blank', instruction: '', question: 'They ___ play the guitar.', blanks: ['can'], explanation: '' }))).toBe('can')
     expect(getCorrectText(exercise({ type: 'passage', instruction: '', passage: '', blanks: ['a', 'b'], explanation: '' }))).toBe('a / b')
     expect(getCorrectText(exercise({ type: 'connection', instruction: '', prompt: '', hints: [], exampleAnswer: 'Example.', explanation: '' }))).toBe('Example.')
   })

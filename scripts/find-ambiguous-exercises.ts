@@ -75,6 +75,7 @@ const CONTEXT_WORDS = [
   'now', 'at the moment', 'right now', 'currently', 'today', 'tomorrow',
   'yesterday', 'next week', 'last night', 'soon', 'later', 'before',
   'after', 'when', 'while', 'as', 'because', 'since', 'if', 'unless', 'how',
+  'by monday', 'by the end', 'by then', 'by the time', 'by 2026',
   // O'zbekcha kontekst so'zlari
   'yaqin', 'uzoq', 'bular', 'ular', 'birlik', 'ko\'plik'
 ]

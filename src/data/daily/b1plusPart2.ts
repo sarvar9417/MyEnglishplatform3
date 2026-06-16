@@ -445,7 +445,7 @@ export const advancedPhrasalVerbs: DailyLesson = {
         { en: "I ran into my teacher.", uz: "Men o'qituvchimga tasodifan duch keldim." },
       ],
       drills: [
-        { id: 52082, type: 'fill-blank', instruction: 'Pronoun ni to\'g\'ri joylashtiring (him/her/them):', question: 'I picked ___ up at the station.', blanks: ['him', 'her', 'them', 'us'], explanation: "Pronoun bilan separable phrasal verb ajratiladi: pick him up (✓), pick up him (✗)" },
+        { id: 52082, type: 'fill-blank', instruction: 'Pronoun ni to\'g\'ri joylashtiring (him/her/them):', question: 'I picked ___ up at the station.', blanks: ['him/her/them/us'], explanation: "Pronoun bilan separable phrasal verb ajratiladi: pick him up (✓), pick up him (✗)" },
         { id: 52083, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I picked up him from school.', errorPart: 'picked up him', correct: 'picked him up', explanation: "Pronoun bilan separable phrasal verb ajratiladi" },
         { id: 52084, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is INSEPARABLE?', options: ['turn down', 'pick up', 'run into', 'put on'], correct: 'run into', explanation: "Run into — inseparable" },
       ],

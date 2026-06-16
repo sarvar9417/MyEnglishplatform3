@@ -26,6 +26,9 @@ import { buildQB } from '../../test/supabaseMock'
 beforeEach(() => {
   vi.useFakeTimers()
   vi.setSystemTime(new Date('2026-06-15T10:30:00Z'))
+  // Explicitly clear mock calls to ensure clean state between tests
+  mockSupabaseInstance.from.mockClear()
+  mockSupabaseInstance.rpc.mockClear()
 })
 
 afterEach(() => {

@@ -100,10 +100,29 @@ describe('Dictionary — page integration tests', () => {
       value: { cancel: vi.fn(), speak: vi.fn() },
       writable: true,
     })
-    // jsdom doesn't have SpeechSynthesisUtterance — mock it
-    ;(globalThis as any).SpeechSynthesisUtterance = vi.fn(() => ({
-      lang: '', rate: 0, text: '',
-    }))
+    // jsdom doesn't have SpeechSynthesisUtterance — mock it as a proper constructor
+    class MockUtterance {
+      lang = ''
+      rate = 0
+      text = ''
+      pitch = 1
+      volume = 1
+      voice: SpeechSynthesisVoice | null = null
+      onend: ((this: SpeechSynthesisUtterance, ev: SpeechSynthesisEvent) => void) | null = null
+      onerror: ((this: SpeechSynthesisUtterance, ev: SpeechSynthesisErrorEvent) => void) | null = null
+      onpause: ((this: SpeechSynthesisUtterance, ev: SpeechSynthesisEvent) => void) | null = null
+      onresume: ((this: SpeechSynthesisUtterance, ev: SpeechSynthesisEvent) => void) | null = null
+      onstart: ((this: SpeechSynthesisUtterance, ev: SpeechSynthesisEvent) => void) | null = null
+      onboundary: ((this: SpeechSynthesisUtterance, ev: SpeechSynthesisEvent) => void) | null = null
+      onmark: ((this: SpeechSynthesisUtterance, ev: SpeechSynthesisEvent) => void) | null = null
+      constructor(text?: string) {
+        this.text = text ?? ''
+      }
+      addEventListener() {}
+      removeEventListener() {}
+      dispatchEvent() { return true }
+    }
+    (globalThis as any).SpeechSynthesisUtterance = MockUtterance
     // Reset service mock state
     mockDictService.__state.fetchWordListResult = { words: [], total: 0 }
     mockDictService.__state.searchDictionaryResult = { words: [] }
