@@ -813,12 +813,12 @@ const day19: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d19-c1', en: "This is example sentence 1 for Have got / Has got.", uz: "Bu Have got / Has got uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d19-c2', en: "This is example sentence 2 for Have got / Has got.", uz: "Bu Have got / Has got uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d19-c3', en: "This is example sentence 3 for Have got / Has got.", uz: "Bu Have got / Has got uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d19-c4', en: "This is example sentence 4 for Have got / Has got.", uz: "Bu Have got / Has got uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d19-c5', en: "This is example sentence 5 for Have got / Has got.", uz: "Bu Have got / Has got uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d19-c6', en: "This is example sentence 6 for Have got / Has got.", uz: "Bu Have got / Has got uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d19-c1', en: "I have got a new phone.", uz: "Mening yangi telefonim bor.", grammarTip: "'Have got' = ega bo'lmoq. 'I have got' = menda bor. Qisqartma: 'I've got'.", commonMistake: "'I got a new phone' dema — 'have got' to'liq shakl. 'Have' /hæv/.", stressWord: 'GOT' },
+    { id: 'sp-d19-c2', en: "She has got a big family.", uz: "Uning katta oilasi bor.", grammarTip: "'Has got' = u ning bor. 'He/she/it' bilan 'has', 'I/we/you/they' bilan 'have' ishlatiladi.", commonMistake: "'She have got' dema — 'she HAS got' (has kerak, have emas).", stressWord: 'HAS' },
+    { id: 'sp-d19-c3', en: "We haven't got a car.", uz: "Bizda mashina yo'q.", grammarTip: "'Haven't got' = yo'q (inkor). 'Have not got' qisqartmasi: 'haven't got'.", commonMistake: "'We don't have got' emas — 'haven't got' ishlatiladi inkor uchun.", stressWord: "HAVEN'T" },
+    { id: 'sp-d19-c4', en: "Have you got a pen?", uz: "Sizda ruchka bormi?", grammarTip: "'Have you got …?' — egalik haqida so'roq. 'Have' so'roq boshida keladi.", commonMistake: "'Do you have got a pen?' emas — 'Have you got …?' (have so'roq boshida).", stressWord: 'HAVE' },
+    { id: 'sp-d19-c5', en: "He has got two sisters.", uz: "Uning ikki singlisi bor.", grammarTip: "'He has got' = uning bor. 'Two sisters' = ikki singil. Sondan keyin ot ko'plikda.", commonMistake: "'He has got two sister' dema — 'sisters' (ko'plik s kerak).", stressWord: 'SISTERS' },
+    { id: 'sp-d19-c6', en: "They haven't got any pets.", uz: "Ular uy hayvoni yo'q.", grammarTip: "'They haven't got any' = ularning … yo'q. 'Any' inkor gapda ishlatiladi.", commonMistake: "'They haven't got no pets' emas — 'haven't' bilan 'any' ishlatiladi, 'no' emas.", stressWord: 'ANY' }
   ],
   scenario: {
     topic: "Have got / Has got",
@@ -851,12 +851,12 @@ const day20: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d20-c1', en: "This is example sentence 1 for Can / Can't.", uz: "Bu Can / Can't uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d20-c2', en: "This is example sentence 2 for Can / Can't.", uz: "Bu Can / Can't uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d20-c3', en: "This is example sentence 3 for Can / Can't.", uz: "Bu Can / Can't uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d20-c4', en: "This is example sentence 4 for Can / Can't.", uz: "Bu Can / Can't uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d20-c5', en: "This is example sentence 5 for Can / Can't.", uz: "Bu Can / Can't uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d20-c6', en: "This is example sentence 6 for Can / Can't.", uz: "Bu Can / Can't uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d20-c1', en: "I can speak English.", uz: "Men ingliz tilida gapira olaman.", grammarTip: "'Can' = qila olmoq (imkoniyat). 'Can + V1' — fe'lning asosiy shakli. 'I can speak' = men gapira olaman.", commonMistake: "'I can speaks English' emas — 'can' dan keyin fe'l o'zgarmaydi: 'I can SPEAK'.", stressWord: 'SPEAK' },
+    { id: 'sp-d20-c2', en: "Can I sit here?", uz: "Bu yerdan o'tirsam bo'ladimi?", grammarTip: "'Can I …?' — ruxsat so'rash. 'Sit here' = bu yerda o'tirmoq. 'Can' ruxsat so'roqda ishlatiladi.", commonMistake: "'Can I to sit here?' emas — 'can' dan keyin 'to' qo'yilmaydi: 'Can I SIT here?'.", stressWord: 'CAN' },
+    { id: 'sp-d20-c3', en: "She can't drive a car.", uz: "U mashina hayday olmaydi.", grammarTip: "'Can't' = qila olmaydi (inkor). 'Can not' qisqartmasi: 'can't'. 'She can't drive' = u hayday olmaydi.", commonMistake: "'She can't drives' emas — 'can't' dan keyin fe'l o'zgarmaydi: 'She can't DRIVE'.", stressWord: "CAN'T" },
+    { id: 'sp-d20-c4', en: "Can you help me, please?", uz: "Iltimos, menga yordam bera olasizmi?", grammarTip: "'Can you …?' — yordam so'rash. 'Help me' = menga yordam bermoq. 'Please' muloyim qiladi.", commonMistake: "'Can you to help me?' emas — 'to' qo'yilmaydi: 'Can you HELP me?'.", stressWord: 'HELP' },
+    { id: 'sp-d20-c5', en: "I can't come tomorrow.", uz: "Men ertaga kela olmayman.", grammarTip: "'Can't come' = kela olmayman. 'Tomorrow' = ertaga. 'Can't' + kelajak vaqt bilan ham ishlatiladi.", commonMistake: "'I can't comes tomorrow' emas — 'can't' dan keyin fe'l o'zgarmaydi: 'can't COME'.", stressWord: 'COME' },
+    { id: 'sp-d20-c6', en: "He can play the guitar.", uz: "U gitarada chalay oladi.", grammarTip: "'Can play' = chalay oladi. 'The guitar' — musiqiy asbob oldida 'the' qo'yiladi.", commonMistake: "'He can plays the guitar' emas — 'can' dan keyin fe'l o'zgarmaydi: 'can PLAY'.", stressWord: 'PLAY' }
   ],
   scenario: {
     topic: "Can / Can't",
@@ -889,12 +889,12 @@ const day21: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d21-c1', en: "This is example sentence 1 for Present Continuous.", uz: "Bu Present Continuous uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d21-c2', en: "This is example sentence 2 for Present Continuous.", uz: "Bu Present Continuous uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d21-c3', en: "This is example sentence 3 for Present Continuous.", uz: "Bu Present Continuous uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d21-c4', en: "This is example sentence 4 for Present Continuous.", uz: "Bu Present Continuous uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d21-c5', en: "This is example sentence 5 for Present Continuous.", uz: "Bu Present Continuous uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d21-c6', en: "This is example sentence 6 for Present Continuous.", uz: "Bu Present Continuous uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d21-c1', en: "I am reading a book.", uz: "Men kitob o'qiyapman.", grammarTip: "'I am + V-ing' = hozir o'qiyapman (davomiy). 'Am reading' = o'qiyapman (hozirgi davomiy). 'Reading' = read + ing.", commonMistake: "'I reading a book' emas — 'am' kerak: 'I AM reading'. 'Read' → 'reading' (d bitta).", stressWord: 'READING' },
+    { id: 'sp-d21-c2', en: "She is cooking dinner.", uz: "U tushlik tayyorlayapti.", grammarTip: "'She is + V-ing' = u … qilyapti. 'Cooking' = cook + ing. 'She is' = u (ayol kishi) bilan 'is'.", commonMistake: "'She cooking dinner' emas — 'is' kerak: 'She IS cooking'. 'Cook' → 'cooking' (g tushmaydi).", stressWord: 'COOKING' },
+    { id: 'sp-d21-c3', en: "What are you doing?", uz: "Sen nima qilyapsan?", grammarTip: "'What are you doing?' — hozir nima qilyotganini so'rash. 'Are you doing' = so'roq shakli. 'Doing' = 'do' + ing.", commonMistake: "'What you doing?' emas — 'are' kerak: 'What ARE you doing?'.", stressWord: 'DOING' },
+    { id: 'sp-d21-c4', en: "We are not watching TV.", uz: "Biz televizor ko'rmayapmiz.", grammarTip: "'Are not watching' = ko'rmayapmiz (inkor). 'Not' 'am/is/are' dan keyin keladi. 'Watching' = watch + ing.", commonMistake: "'We are not watching TV' da 'watching' ni /waching/ deb aytma — /ˈwɒtʃ.ɪŋ/.", stressWord: 'NOT' },
+    { id: 'sp-d21-c5', en: "They are playing football.", uz: "Ular futbol o'ynayapti.", grammarTip: "'They are + V-ing' = ular … qilyapti. 'Playing' = play + ing. 'They are' ko'plik bilan.", commonMistake: "'They is playing' emas — ko'plikda 'are': 'They ARE playing'.", stressWord: 'PLAYING' },
+    { id: 'sp-d21-c6', en: "Is he sleeping now?", uz: "U hozir uylayaptimi?", grammarTip: "'Is he + V-ing?' — so'roq. 'Is' boshida keladi. 'Sleeping' = sleep + ing. 'Now' = hozir.", commonMistake: "'He is sleeping now?' emas — 'is' boshida: 'IS he sleeping now?'.", stressWord: 'SLEEPING' }
   ],
   scenario: {
     topic: "Present Continuous",
@@ -927,12 +927,12 @@ const day22: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d22-c1', en: "This is example sentence 1 for Simple Past.", uz: "Bu Simple Past uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d22-c2', en: "This is example sentence 2 for Simple Past.", uz: "Bu Simple Past uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d22-c3', en: "This is example sentence 3 for Simple Past.", uz: "Bu Simple Past uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d22-c4', en: "This is example sentence 4 for Simple Past.", uz: "Bu Simple Past uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d22-c5', en: "This is example sentence 5 for Simple Past.", uz: "Bu Simple Past uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d22-c6', en: "This is example sentence 6 for Simple Past.", uz: "Bu Simple Past uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d22-c1', en: "I went to the market yesterday.", uz: "Men kecha bozorga bordim.", grammarTip: "'Went' = 'go' ning o'tgan zamon shakli (go → went → gone). 'Yesterday' = kecha (o'tgan zamon belgisi).", commonMistake: "'Yesterday I go to market' emas — o'tgan zamonda 'went': 'I WENT'. 'The market' (the kerak).", stressWord: 'WENT' },
+    { id: 'sp-d22-c2', en: "She ate an apple this morning.", uz: "U bugun ertalab olma yedi.", grammarTip: "'Ate' = 'eat' ning o'tgan zamon shakli (eat → ate → eaten). 'This morning' = bugun ertalab.", commonMistake: "'She eat an apple' emas — o'tgan zamonda 'ate': 'She ATE'. 'Ate' /eɪt/.", stressWord: 'ATE' },
+    { id: 'sp-d22-c3', en: "We watched a film last night.", uz: "Biz kecha kechqurun film ko'rdik.", grammarTip: "'Watched' = 'watch' + '-ed' (to'g'ri fe'l). 'Last night' = kecha kechqurun (o'tgan zamon belgisi).", commonMistake: "'We watch a film last night' emas — o'tgan zamonda 'watched': 'We WATCHED'.", stressWord: 'WATCHED' },
+    { id: 'sp-d22-c4', en: "Did you call me yesterday?", uz: "Sen meni kecha chaqirdingmi?", grammarTip: "'Did you + V1?' — o'tgan zamon so'rogi. 'Did' yordamchi fe'l + asosiy fe'l (call, emas called).", commonMistake: "'Did you called me?' emas — 'did' dan keyin fe'l o'zgarmaydi: 'Did you CALL me?'.", stressWord: 'CALL' },
+    { id: 'sp-d22-c5', en: "He didn't go to school.", uz: "U maktabga bormadi.", grammarTip: "'Didn't go' = bormadi (inkor). 'Did not' → 'didn't'. 'Didn't' dan keyin fe'l o'zgarmaydi.", commonMistake: "'He didn't went to school' emas — 'didn't' dan keyin fe'l o'zgarmaydi: 'didn't GO'.", stressWord: "DIDN'T" },
+    { id: 'sp-d22-c6', en: "I saw my friend at the park.", uz: "Men do'stimni parkda ko'rdim.", grammarTip: "'Saw' = 'see' ning o'tgan zamon shakli (see → saw → seen). 'At the park' = parkda.", commonMistake: "'I see my friend yesterday' emas — o'tgan zamonda 'saw': 'I SAW'.", stressWord: 'SAW' }
   ],
   scenario: {
     topic: "Simple Past",
@@ -965,12 +965,12 @@ const day23: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d23-c1', en: "This is example sentence 1 for Simple Future.", uz: "Bu Simple Future uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d23-c2', en: "This is example sentence 2 for Simple Future.", uz: "Bu Simple Future uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d23-c3', en: "This is example sentence 3 for Simple Future.", uz: "Bu Simple Future uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d23-c4', en: "This is example sentence 4 for Simple Future.", uz: "Bu Simple Future uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d23-c5', en: "This is example sentence 5 for Simple Future.", uz: "Bu Simple Future uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d23-c6', en: "This is example sentence 6 for Simple Future.", uz: "Bu Simple Future uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d23-c1', en: "I will study English tomorrow.", uz: "Men ertaga ingliz tili o'rganaman.", grammarTip: "'Will + V1' = kelajak zamon. 'I will study' = o'rganaman. Qisqartma: 'I'll study'.", commonMistake: "'I will studies English' emas — 'will' dan keyin fe'l o'zgarmaydi: 'will STUDY'.", stressWord: 'WILL' },
+    { id: 'sp-d23-c2', en: "Will you come to the party?", uz: "Sen ziyofatga kelasanmi?", grammarTip: "'Will you + V1?' — kelajak haqida so'roq. 'Will' so'roq boshida keladi. Javob: 'Yes, I will' / 'No, I won't'.", commonMistake: "'You will come to the party?' emas — 'will' boshida: 'WILL you come?'.", stressWord: 'WILL' },
+    { id: 'sp-d23-c3', en: "She will call you later.", uz: "U keyinroq seni chaqiradi.", grammarTip: "'She will call' = u chaqiradi. 'Later' = keyinroq. 'Will' + fe'l (she/he/it bilan ham 'will' o'zgarmaydi).", commonMistake: "'She will calls you' emas — 'will' dan keyin fe'l o'zgarmaydi: 'will CALL'.", stressWord: 'CALL' },
+    { id: 'sp-d23-c4', en: "It will rain tomorrow.", uz: "Ertaga yomg'ir yog'adi.", grammarTip: "'It will rain' = yomg'ir yog'adi. 'It' ob-havo haqida gapirganda ishlatiladi. 'Rain' = yomg'ir yog'moq.", commonMistake: "'It will rains' emas — 'will' dan keyin fe'l o'zgarmaydi: 'will RAIN'.", stressWord: 'RAIN' },
+    { id: 'sp-d23-c5', en: "We won't be late.", uz: "Biz kechikmaymiz.", grammarTip: "'Won't' = 'will not' (inkor). 'Won't be' = bo'lmaymiz. 'Late' = kech (sifat).", commonMistake: "'We will not late' emas — 'be' kerak: 'won't BE late'. 'Won't' /woʊnt/.", stressWord: "WON'T" },
+    { id: 'sp-d23-c6', en: "They will arrive at six.", uz: "Ular soat oltida kelishadi.", grammarTip: "'They will arrive' = ular kelishadi. 'At six' = soat oltida. 'At' aniq vaqt bilan ishlatiladi.", commonMistake: "'They will arrives' emas — 'will' dan keyin fe'l o'zgarmaydi: 'will ARRIVE'.", stressWord: 'ARRIVE' }
   ],
   scenario: {
     topic: "Simple Future",
@@ -1003,12 +1003,12 @@ const day24: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d24-c1', en: "This is example sentence 1 for Question Words.", uz: "Bu Question Words uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d24-c2', en: "This is example sentence 2 for Question Words.", uz: "Bu Question Words uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d24-c3', en: "This is example sentence 3 for Question Words.", uz: "Bu Question Words uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d24-c4', en: "This is example sentence 4 for Question Words.", uz: "Bu Question Words uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d24-c5', en: "This is example sentence 5 for Question Words.", uz: "Bu Question Words uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d24-c6', en: "This is example sentence 6 for Question Words.", uz: "Bu Question Words uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d24-c1', en: "What is your name?", uz: "Ismingiz nima?", grammarTip: "'What' = nima (narsa so'rash). 'What is your name?' = ismingiz nima? 'What' + 'is' + ot.", commonMistake: "'What your name?' emas — 'is' kerak: 'What IS your name?'.", stressWord: 'WHAT' },
+    { id: 'sp-d24-c2', en: "Where do you live?", uz: "Qayerda yashaysiz?", grammarTip: "'Where' = qayer (joy so'rash). 'Where do you live?' = qayerda yashaysiz? 'Do you live' = so'roq shakli.", commonMistake: "'Where you live?' emas — 'do' kerak: 'Where DO you live?'.", stressWord: 'WHERE' },
+    { id: 'sp-d24-c3', en: "When is your birthday?", uz: "Tug'ilgan kuningiz qachon?", grammarTip: "'When' = qachon (vaqt so'rash). 'When is your birthday?' = tug'ilgan kuningiz qachon? 'Is' so'roqda boshida.", commonMistake: "'When is your birthday?' da 'birthday' ni /berzday/ deb aytma — /ˈbɜːθ.deɪ/.", stressWord: 'WHEN' },
+    { id: 'sp-d24-c4', en: "Who is that woman?", uz: "U ayol kim?", grammarTip: "'Who' = kim (shaxs so'rash). 'Who is that woman?' = u ayol kim? 'That woman' = u ayol (uzoq).", commonMistake: "'Who that woman is?' emas — 'is' boshida: 'Who IS that woman?'.", stressWord: 'WHO' },
+    { id: 'sp-d24-c5', en: "How much is this book?", uz: "Bu kitob qancha turadi?", grammarTip: "'How much' = qancha (narx so'rash). 'How much is this?' = bu qancha? 'Is' so'roqda boshida.", commonMistake: "'How much this book is?' emas — 'is' boshida: 'How much IS this book?'.", stressWord: 'MUCH' },
+    { id: 'sp-d24-c6', en: "Why are you late?", uz: "Nega kechikdingiz?", grammarTip: "'Why' = nima uchun (sabab so'rash). 'Why are you late?' = nima uchun kechikdingiz? 'Late' = kech.", commonMistake: "'Why you are late?' emas — 'are' boshida: 'Why ARE you late?'.", stressWord: 'WHY' }
   ],
   scenario: {
     topic: "Question Words",
@@ -1041,12 +1041,12 @@ const day25: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d25-c1', en: "This is example sentence 1 for Conjunctions.", uz: "Bu Conjunctions uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d25-c2', en: "This is example sentence 2 for Conjunctions.", uz: "Bu Conjunctions uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d25-c3', en: "This is example sentence 3 for Conjunctions.", uz: "Bu Conjunctions uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d25-c4', en: "This is example sentence 4 for Conjunctions.", uz: "Bu Conjunctions uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d25-c5', en: "This is example sentence 5 for Conjunctions.", uz: "Bu Conjunctions uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d25-c6', en: "This is example sentence 6 for Conjunctions.", uz: "Bu Conjunctions uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d25-c1', en: "I like tea and coffee.", uz: "Men choy va qahvani yoqtiraman.", grammarTip: "'And' = va (birlashtiruvchi). 'Tea and coffee' = choy va qahva. 'And' ikki ot yoki jumlani bog'laydi.", commonMistake: "'I like tea and coffee' da 'and' ni /end/ deb aytma — /ænd/ (a tovushi katta).", stressWord: 'AND' },
+    { id: 'sp-d25-c2', en: "I am tired but happy.", uz: "Men charchaganman, lekin xursandman.", grammarTip: "'But' = lekin (zidlovchi). 'Tired but happy' = charchagan lekin xursand. 'But' ikki zid sifatni bog'laydi.", commonMistake: "'I am tired and happy' emas (zid bo'lsa) — 'but' ishlatiladi: 'tired BUT happy'.", stressWord: 'BUT' },
+    { id: 'sp-d25-c3', en: "Do you want tea or coffee?", uz: "Choy yoki qahva xohlaysizmi?", grammarTip: "'Or' = yoki (tanlov). 'Tea or coffee' = choy yoki qahva. 'Or' tanlov beradi.", commonMistake: "'Do you want tea and coffee?' emas (tanlov bo'lsa) — 'or' ishlatiladi: 'tea OR coffee'.", stressWord: 'OR' },
+    { id: 'sp-d25-c4', en: "I stayed home because I was sick.", uz: "Men uyda qoldim, chunki kasal edim.", grammarTip: "'Because' = chunki (sabab). 'Because I was sick' = chunki kasal edim. 'Because' sabab aytilganda ishlatiladi.", commonMistake: "'Because I was sick' da 'because' ni /bikoz/ deb aytma — /bɪˈkɒz/ (uch bo'g'in).", stressWord: 'BECAUSE' },
+    { id: 'sp-d25-c5', en: "I want to go but I am busy.", uz: "Bormoqchiman, lekin bandman.", grammarTip: "'But' ikki jumlani bog'laydi: 'I want to go' + 'but' + 'I am busy'. Har bir jumla mustaqil.", commonMistake: "'I want to go but busy' emas — to'liq jumla kerak: 'but I AM busy'.", stressWord: 'BUT' },
+    { id: 'sp-d25-c6', en: "We can go now or later.", uz: "Biz hozir yoki keyinroq borishimiz mumkin.", grammarTip: "'Or' tanlov beradi: 'now or later' = hozir yoki keyinroq. 'Can go' = borish mumkin.", commonMistake: "'We can go now and later' emas (tanlov) — 'or' ishlatiladi: 'now OR later'.", stressWord: 'OR' }
   ],
   scenario: {
     topic: "Conjunctions",
@@ -1079,12 +1079,12 @@ const day26: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d26-c1', en: "This is example sentence 1 for Body Parts.", uz: "Bu Body Parts uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d26-c2', en: "This is example sentence 2 for Body Parts.", uz: "Bu Body Parts uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d26-c3', en: "This is example sentence 3 for Body Parts.", uz: "Bu Body Parts uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d26-c4', en: "This is example sentence 4 for Body Parts.", uz: "Bu Body Parts uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d26-c5', en: "This is example sentence 5 for Body Parts.", uz: "Bu Body Parts uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d26-c6', en: "This is example sentence 6 for Body Parts.", uz: "Bu Body Parts uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d26-c1', en: "I have got a headache.", uz: "Boshim og'riyapti.", grammarTip: "'Have got a headache' = bosh og'rig'i bor. 'Headache' = bosh og'rig'i (bosh + og'riq).", commonMistake: "'I have got headache' emas — 'a' kerak: 'a headache'. 'Headache' /ˈhed.eɪk/.", stressWord: 'HEADACHE' },
+    { id: 'sp-d26-c2', en: "My eyes are tired.", uz: "Ko'zlarim charchagan.", grammarTip: "'My eyes are tired' = ko'zlarim charchagan. 'Eyes' = ko'zlar (ko'plik). 'Tired' = charchagan (sifat).", commonMistake: "'My eye is tired' emas — ko'zlar ko'pincha ko'plikda: 'my EYES are tired'.", stressWord: 'EYES' },
+    { id: 'sp-d26-c3', en: "She has got long hair.", uz: "Uning uzun sochlari bor.", grammarTip: "'She has got' = uning bor. 'Long hair' = uzun sochlar. 'Hair' = soch (sanalmaydigan ot, 'a' qo'yilmaydi).", commonMistake: "'She has got a long hair' emas — 'hair' sanalmaydi: 'long hair' (a qo'yilmaydi).", stressWord: 'HAIR' },
+    { id: 'sp-d26-c4', en: "Touch your nose.", uz: "Biringni teg.", grammarTip: "'Touch' = tegmoq (buyruq). 'Your nose' = biring. 'Nose' = burun. Buyruq jumlalarida fe'l boshidan boshlanadi.", commonMistake: "'Touch you nose' emas — 'your' (sening) kerak: 'Touch YOUR nose'.", stressWord: 'NOSE' },
+    { id: 'sp-d26-c5', en: "He has got strong arms.", uz: "Uning kuchli qo'llari bor.", grammarTip: "'Strong arms' = kuchli qo'llar. 'Arms' = qo'llar (ko'plik). 'Strong' = kuchli (sifat). 'He has got' = uning bor.", commonMistake: "'He has got strong arm' emas — 'arms' (ko'plik s kerak): 'strong ARMS'.", stressWord: 'ARMS' },
+    { id: 'sp-d26-c6', en: "I have got two hands.", uz: "Mening ikki qo'lim bor.", grammarTip: "'Two hands' = ikki qo'l. 'Hands' = qo'llar (ko'plik). 'Have got' = ega bo'lmoq. 'Two' sondan keyin ot ko'plikda.", commonMistake: "'I have got two hand' emas — 'hands' (ko'plik s kerak): 'two HANDS'.", stressWord: 'HANDS' }
   ],
   scenario: {
     topic: "Body Parts",
@@ -1113,7 +1113,7 @@ const day27: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d22-c1', 'sp-d23-c1', 'sp-d24-c1', 'sp-d25-c1', 'sp-d26-c1'],
   chunks: [
     { id: 'sp-d27-c1', en: "This is example sentence 1 for A1 Review 1.", uz: "Bu A1 Review 1 uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d27-c2', en: "This is example sentence 2 for A1 Review 1.", uz: "Bu A1 Review 1 uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -1149,7 +1149,7 @@ const day28: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d22-c2', 'sp-d23-c2', 'sp-d24-c2', 'sp-d25-c2', 'sp-d26-c2'],
   chunks: [
     { id: 'sp-d28-c1', en: "This is example sentence 1 for A1 Review 2.", uz: "Bu A1 Review 2 uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d28-c2', en: "This is example sentence 2 for A1 Review 2.", uz: "Bu A1 Review 2 uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -1185,7 +1185,7 @@ const day29: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d22-c3', 'sp-d23-c3', 'sp-d24-c3', 'sp-d25-c3', 'sp-d26-c3'],
   chunks: [
     { id: 'sp-d29-c1', en: "This is example sentence 1 for A1 Final Review.", uz: "Bu A1 Final Review uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d29-c2', en: "This is example sentence 2 for A1 Final Review.", uz: "Bu A1 Final Review uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -2161,12 +2161,12 @@ const day52: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d52-c1', en: "This is example sentence 1 for Past Continuous.", uz: "Bu Past Continuous uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d52-c2', en: "This is example sentence 2 for Past Continuous.", uz: "Bu Past Continuous uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d52-c3', en: "This is example sentence 3 for Past Continuous.", uz: "Bu Past Continuous uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d52-c4', en: "This is example sentence 4 for Past Continuous.", uz: "Bu Past Continuous uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d52-c5', en: "This is example sentence 5 for Past Continuous.", uz: "Bu Past Continuous uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d52-c6', en: "This is example sentence 6 for Past Continuous.", uz: "Bu Past Continuous uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d52-c1', en: "I was reading a book when the phone rang.", uz: "Telefon jiringlaganda men kitob o'qiyotgan edim.", grammarTip: "Past Continuous: 'was/were + V-ing' — o'tganda davom etgan harakat. 'When' bilan qisqa harakat kesiladi.", commonMistake: "O'zbeklar 'was reading when' o'rniga 'was reading and' deyishadi. 'When' kerak — bitta harakat boshqasini to'xtatgan.", stressWord: 'READING' },
+    { id: 'sp-d52-c2', en: "They were playing football at five o'clock.", uz: "Ular soat beshda futbol o'ynayotgan edilar.", grammarTip: "'At + vaqt' — Past Continuous da aniq vaqtni ko'rsatish uchun. 'Were playing' — 3-osh shakl.", commonMistake: "'They was playing' dema — 3-osh shaklda 'were' ishlatiladi: 'They WERE playing'.", stressWord: 'WERE' },
+    { id: 'sp-d52-c3', en: "She was cooking dinner when I arrived.", uz: "Men yetib kelganda u tushlik tayyorlayotgan edi.", grammarTip: "'When' + Past Simple, asosiy gap — Past Continuous. Ikki harakat: biri uzoq, biri qisqa.", commonMistake: "'When' dan keyin ham Past Continuous ishlatma — 'when I ARRIVED' (Past Simple).", stressWord: 'COOKING' },
+    { id: 'sp-d52-c4', en: "What were you doing at nine last night?", uz: "Kecha kechqurun soat to'qqizda nima qilayotgan edingiz?", grammarTip: "So'roq: 'What + was/were + S + V-ing?' — o'tganda nimani qilayotganini so'rash.", commonMistake: "'What were you doing' da 'were' tushirilmaydi. 'What you were doing' xato.", stressWord: 'WHAT' },
+    { id: 'sp-d52-c5', en: "It was raining all morning.", uz: "Butun ertalab yomg'ir yog'ayotgan edi.", grammarTip: "Havo hodisalari (rain, snow, wind) bilan Past Continuous juda ko'p ishlatiladi. 'All morning' = butun ertalab.", commonMistake: "'It rained all morning' o'rniga 'It was raining' — davomiylikni ta'kidlash uchun.", stressWord: 'RANNING' },
+    { id: 'sp-d52-c6', en: "We were watching TV when the lights went out.", uz: "Biz televizor ko'rayotganda chiroqlar o'chib ketdi.", grammarTip: "'Went out' = o'chib ketdi (Past Simple). Past Continuous + when + Past Simple — keng tarqalgan naqsh.", commonMistake: "'Lights went off' ham ishlatiladi, lekin 'went out' = o'chib ketdi (chiroq uchun).", stressWord: 'WENT' }
   ],
   scenario: {
     topic: "Past Continuous",
@@ -2199,12 +2199,12 @@ const day53: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d53-c1', en: "This is example sentence 1 for Too / Enough.", uz: "Bu Too / Enough uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d53-c2', en: "This is example sentence 2 for Too / Enough.", uz: "Bu Too / Enough uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d53-c3', en: "This is example sentence 3 for Too / Enough.", uz: "Bu Too / Enough uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d53-c4', en: "This is example sentence 4 for Too / Enough.", uz: "Bu Too / Enough uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d53-c5', en: "This is example sentence 5 for Too / Enough.", uz: "Bu Too / Enough uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d53-c6', en: "This is example sentence 6 for Too / Enough.", uz: "Bu Too / Enough uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d53-c1', en: "This coffee is too hot to drink.", uz: "Bu qahva ichish uchun juda issiq.", grammarTip: "'Too + adj' = juda ham (salbiy ma'no). 'Too hot to drink' = ichish uchun juda issiq.", commonMistake: "'Too' dan keyin 'to' qo'yilmaydi: 'too hot drink' xato — 'too hot TO drink'.", stressWord: 'TOO' },
+    { id: 'sp-d53-c2', en: "She is old enough to drive.", uz: "U haydash uchun yetarli yoshda.", grammarTip: "'Adj + enough' = yetarli. 'Enough' sifatdan KEYIN keladi (farqli: 'too' dan OLDIN).", commonMistake: "'Enough old' xato — 'old ENOUGH'. 'Enough' sifatdan keyin, fe'ldan oldin keladi.", stressWord: 'ENOUGH' },
+    { id: 'sp-d53-c3', en: "The bag is too heavy for me to carry.", uz: "Sumka meni ko'tarish uchun juda og'ir.", grammarTip: "'Too + adj + for somebody + to do' — kimdir uchun juda … (qila olmaydi).", commonMistake: "'Too heavy for carry' xato — 'to carry' kerak: 'too heavy for me TO carry'.", stressWord: 'HEAVY' },
+    { id: 'sp-d53-c4', en: "There isn't enough time to finish.", uz: "Tugatish uchun yetarli vaqt yo'q.", grammarTip: "'Enough' sanaladigan otlar oldida: 'enough time' (adj oldida emas). 'There isn't enough' = yetarli emas.", commonMistake: "'Time enough' xato — 'enough TIME'. 'Enough' otlar OLDIN, sifatlar KEYIN keladi.", stressWord: 'ENOUGH' },
+    { id: 'sp-d53-c5', en: "This shirt is too small for me.", uz: "Bu ko'ylak menga juda kichik.", grammarTip: "'Too small' = juda kichik (yaramaydi). 'For me' = menga. 'Too' har doim salbiy natija beradi.", commonMistake: "'This shirt is too small' dema — 'too' bilan 'very' farqi: 'too' = salbiy, 'very' = neytral.", stressWord: 'TOO' },
+    { id: 'sp-d53-c6', en: "He speaks fast enough to be understood.", uz: "U tushuniladigan darajada tez gapiradi.", grammarTip: "'Adverb + enough' = yetarli darajada. 'Enough' ravishlardan (fast, well) KEYIN keladi.", commonMistake: "'Enough fast' xato — 'fast ENOUGH'. Ravishlar bilan 'enough' oxirida.", stressWord: 'ENOUGH' }
   ],
   scenario: {
     topic: "Too / Enough",
@@ -2237,12 +2237,12 @@ const day54: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d54-c1', en: "This is example sentence 1 for So / Such.", uz: "Bu So / Such uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d54-c2', en: "This is example sentence 2 for So / Such.", uz: "Bu So / Such uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d54-c3', en: "This is example sentence 3 for So / Such.", uz: "Bu So / Such uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d54-c4', en: "This is example sentence 4 for So / Such.", uz: "Bu So / Such uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d54-c5', en: "This is example sentence 5 for So / Such.", uz: "Bu So / Such uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d54-c6', en: "This is example sentence 6 for So / Such.", uz: "Bu So / Such uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d54-c1', en: "It was so cold that I couldn't go outside.", uz: "Juda sovuq ediki, tashqariga chiqa olmadim.", grammarTip: "'So + adj + that' = juda … ediki (natija). 'That' dan keyin natija gap keladi.", commonMistake: "'So cold that' o'rniga 'such cold' dema — 'so' sifat bilan, 'such' ot bilan ishlatiladi.", stressWord: 'SO' },
+    { id: 'sp-d54-c2', en: "It was such a nice day that we went for a walk.", uz: "Judaham chiroyli kun ediki, sayrga chiqdik.", grammarTip: "'Such + a/an + adj + noun' = judaham … (natija bilan). 'A' artikl kerak (bitta kun).", commonMistake: "'Such nice day' xato — 'a' kerak: 'such A nice day'.", stressWord: 'SUCH' },
+    { id: 'sp-d54-c3', en: "She is such a good teacher that everyone likes her.", uz: "U judaham yaxshi o'qituvchiki, hamma uni yoqtiradi.", grammarTip: "'Such a + adj + noun' — kuchli ta'kid. 'That everyone likes her' — natija.", commonMistake: "'She is so good teacher' xato — 'such a good teacher'. 'So' ot bilan ishlatilmaydi.", stressWord: 'SUCH' },
+    { id: 'sp-d54-c4', en: "The food was so delicious that I ate too much.", uz: "Ovqat judaham mazali ediki, haddan tashqari ko'p yedim.", grammarTip: "'So + adj + that' — juda … ediki (natija). 'Too much' = haddan tashqari ko'p.", commonMistake: "'So delicious food' xato — 'so' sifat oldidan keladi: 'the food was SO delicious'.", stressWord: 'SO' },
+    { id: 'sp-d54-c5', en: "It was such a boring film that I fell asleep.", uz: "Film judaham zerikarli ediki, uxlab qoldim.", grammarTip: "'Such a/an + adj + noun' + 'that' — judaham zerikarli film ediki. 'Fell asleep' = uxlab qoldim.", commonMistake: "'It was so boring film' xato — 'such a boring film' kerak (ot bilan 'such').", stressWord: 'SUCH' },
+    { id: 'sp-d54-c6', en: "He ran so fast that nobody could catch him.", uz: "U juda tez yugurdi, hech kim uni yeta olmadi.", grammarTip: "'So + adverb + that' — 'so' ravishlar bilan ham ishlatiladi. 'Fast' = tez (ravish).", commonMistake: "'He ran such fast' xato — 'so fast'. 'Such' ravishlar bilan ishlatilmaydi.", stressWord: 'SO' }
   ],
   scenario: {
     topic: "So / Such",
@@ -2271,7 +2271,7 @@ const day55: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d50-c1', 'sp-d51-c1', 'sp-d52-c1', 'sp-d53-c1', 'sp-d54-c1'],
   chunks: [
     { id: 'sp-d55-c1', en: "This is example sentence 1 for A2 Review 1.", uz: "Bu A2 Review 1 uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d55-c2', en: "This is example sentence 2 for A2 Review 1.", uz: "Bu A2 Review 1 uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -2307,7 +2307,7 @@ const day56: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d50-c2', 'sp-d51-c2', 'sp-d52-c2', 'sp-d53-c2', 'sp-d54-c2'],
   chunks: [
     { id: 'sp-d56-c1', en: "This is example sentence 1 for A2 Review 2.", uz: "Bu A2 Review 2 uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d56-c2', en: "This is example sentence 2 for A2 Review 2.", uz: "Bu A2 Review 2 uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -2343,7 +2343,7 @@ const day57: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d50-c3', 'sp-d51-c3', 'sp-d52-c3', 'sp-d53-c3', 'sp-d54-c3'],
   chunks: [
     { id: 'sp-d57-c1', en: "This is example sentence 1 for A2 Final Review.", uz: "Bu A2 Final Review uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d57-c2', en: "This is example sentence 2 for A2 Final Review.", uz: "Bu A2 Final Review uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -4058,7 +4058,7 @@ const day97: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d92-c1', 'sp-d93-c1', 'sp-d94-c1', 'sp-d95-c1', 'sp-d96-c1'],
   chunks: [
     { id: 'sp-d97-c1', en: "This is example sentence 1 for B1 Review 1.", uz: "Bu B1 Review 1 uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d97-c2', en: "This is example sentence 2 for B1 Review 1.", uz: "Bu B1 Review 1 uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -4094,7 +4094,7 @@ const day98: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d92-c2', 'sp-d93-c2', 'sp-d94-c2', 'sp-d95-c2', 'sp-d96-c2'],
   chunks: [
     { id: 'sp-d98-c1', en: "This is example sentence 1 for B1 Review 2.", uz: "Bu B1 Review 2 uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d98-c2', en: "This is example sentence 2 for B1 Review 2.", uz: "Bu B1 Review 2 uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -4134,12 +4134,12 @@ const day99: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d99-c1', en: "This is example sentence 1 for Unreal Past.", uz: "Bu Unreal Past uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d99-c2', en: "This is example sentence 2 for Unreal Past.", uz: "Bu Unreal Past uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d99-c3', en: "This is example sentence 3 for Unreal Past.", uz: "Bu Unreal Past uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d99-c4', en: "This is example sentence 4 for Unreal Past.", uz: "Bu Unreal Past uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d99-c5', en: "This is example sentence 5 for Unreal Past.", uz: "Bu Unreal Past uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d99-c6', en: "This is example sentence 6 for Unreal Past.", uz: "Bu Unreal Past uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d99-c1', en: "I wish I had more free time.", uz: "Ko'proq bo'sh vaqtim bo'lganini istardim.", grammarTip: "'Wish + past simple' — hozirgi haqiqatga afsus. 'Had' = Past Simple (ammonga o'xshab).", commonMistake: "'I wish I have more time' xato — 'I HAD' (Past Simple, zamon o'zgaradi).", stressWord: 'WISH' },
+    { id: 'sp-d99-c2', en: "If only I knew the answer.", uz: "Javobni bilganimda edi.", grammarTip: "'If only' = 'wish' dan kuchli. Afsus va orzu. 'Knew' = Past Simple (bilardim).", commonMistake: "'If only I know' xato — 'knew' (Past Simple) kerak.", stressWord: 'KNEW' },
+    { id: 'sp-d99-c3', en: "She wishes she could speak English fluently.", uz: "U ingliz tilini ravon gapira olganini istardi.", grammarTip: "'Wish + could' — imkonsiz imkoniyat. 'Could speak' = gapira olardim (lekin hozir yo'q).", commonMistake: "'She wishes she can speak' xato — 'could' (Past Simple modal) kerak.", stressWord: 'WISHES' },
+    { id: 'sp-d99-c4', en: "I wish I hadn't said that.", uz: "Shuni aytmaganimda edi.", grammarTip: "'Wish + past perfect' — o'tmishga afsus. 'Hadn't said' = aytmagan bo'lsam edi.", commonMistake: "'I wish I didn't say' o'rniga 'hadn't said' — o'tmish uchun Past Perfect kerak.", stressWord: 'HADNT' },
+    { id: 'sp-d99-c5', en: "If only we had listened to your advice.", uz: "Sizning maslahatingizni tinglagan bo'lsak edi.", grammarTip: "'If only + past perfect' — o'tmishdagi xatoga afsus. 'Had listened' = tinglagan bo'lsak.", commonMistake: "'If only we listened' xato — o'tmish uchun 'had listened' (Past Perfect) kerak.", stressWord: 'LISTENED' },
+    { id: 'sp-d99-c6', en: "I wish it weren't raining right now.", uz: "Hozir yog'maganda edi.", grammarTip: "'Wish + past continuous' — hozirgi davomiy holatga afsus. 'Weren't raining' = yog'mayotgan bo'lsa.", commonMistake: "'I wish it isn't raining' xato — 'weren't raining' (Past Continuous) kerak.", stressWord: 'WERENT' }
   ],
   scenario: {
     topic: "Unreal Past",
@@ -4172,12 +4172,12 @@ const day100: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d100-c1', en: "This is example sentence 1 for Advanced Conditionals.", uz: "Bu Advanced Conditionals uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d100-c2', en: "This is example sentence 2 for Advanced Conditionals.", uz: "Bu Advanced Conditionals uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d100-c3', en: "This is example sentence 3 for Advanced Conditionals.", uz: "Bu Advanced Conditionals uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d100-c4', en: "This is example sentence 4 for Advanced Conditionals.", uz: "Bu Advanced Conditionals uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d100-c5', en: "This is example sentence 5 for Advanced Conditionals.", uz: "Bu Advanced Conditionals uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d100-c6', en: "This is example sentence 6 for Advanced Conditionals.", uz: "Bu Advanced Conditionals uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d100-c1', en: "If I had studied harder, I would be a doctor now.", uz: "Ko'proq o'qigan bo'lsam, hozir shifokor bo'lar edim.", grammarTip: "Mixed conditional: o'tmish shart (had studied) + hozirgi natija (would be). Ikkita vaqt aralashadi.", commonMistake: "'If I studied harder, I would be' xato — o'tmish shart uchun 'had studied' kerak.", stressWord: 'WOULD' },
+    { id: 'sp-d100-c2', en: "If she hadn't moved abroad, she would still live in Tashkent.", uz: "U chet elga ko'chmaganida, hali ham Toshkentda yashar edi.", grammarTip: "O'tmish shart (hadn't moved) + hozirgi natija (would still live). 'Would still' = hali ham bo'lar edi.", commonMistake: "'She would still lived' xato — 'would' dan keyin fe'lning asosiy shakli: 'would live'.", stressWord: 'WOULD' },
+    { id: 'sp-d100-c3', en: "If I were you, I would accept the job offer.", uz: "Men sizning o'rnimda bo'lganimda, ish taklifini qabul qilardim.", grammarTip: "'If I were' — subjunctive (hamma uchun 'were'). 'Would accept' — hozirgi natija.", commonMistake: "'If I was you' grammatik jihatdan noto'g'ri — 'IF I WERE YOU' (formal).", stressWord: 'WERE' },
+    { id: 'sp-d100-c4', en: "He wouldn't be so tired if he had gone to bed earlier.", uz: "U ertaroq yotganida, bu zerikkan bo'lmas edi.", grammarTip: "Hozirgi shart (wouldn't be) + o'tmish shart (had gone). 'Earlier' = ertaroq (solishtirma).", commonMistake: "'He wouldn't be so tired if he went to bed' xato — o'tmish uchun 'had gone' kerak.", stressWord: 'HAD' },
+    { id: 'sp-d100-c5', en: "If we had left earlier, we wouldn't have missed the train.", uz: "Biz ertaroq chiqqan bo'lsak, poyezdni o'tkazib yubormagan bo'lardik.", grammarTip: "O'tmish shart (had left) + o'tmish natija (wouldn't have missed). Third conditional bilan aralash.", commonMistake: "'We wouldn't missed' xato — 'wouldn't HAVE missed' kerak (perfect).", stressWord: 'WOULDNT' },
+    { id: 'sp-d100-c6', en: "If he spoke English, he would get a better job.", uz: "U ingliz tilini bilsa, yaxshiroq ish topardi.", grammarTip: "Hozirgi shart (spoke = Past Simple) + hozirgi natija (would get). Umumiy shart.", commonMistake: "'If he speaks English' xato — hozirgi shart uchun ham 'spoke' (Past Simple) kerak.", stressWord: 'WOULD' }
   ],
   scenario: {
     topic: "Advanced Conditionals",
@@ -4210,12 +4210,12 @@ const day101: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d101-c1', en: "This is example sentence 1 for Future Perfect Continuous.", uz: "Bu Future Perfect Continuous uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d101-c2', en: "This is example sentence 2 for Future Perfect Continuous.", uz: "Bu Future Perfect Continuous uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d101-c3', en: "This is example sentence 3 for Future Perfect Continuous.", uz: "Bu Future Perfect Continuous uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d101-c4', en: "This is example sentence 4 for Future Perfect Continuous.", uz: "Bu Future Perfect Continuous uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d101-c5', en: "This is example sentence 5 for Future Perfect Continuous.", uz: "Bu Future Perfect Continuous uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d101-c6', en: "This is example sentence 6 for Future Perfect Continuous.", uz: "Bu Future Perfect Continuous uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d101-c1', en: "By next year, I will have been working here for ten years.", uz: "Kelgani yilgacha men bu yerda 10 yil ishlagan bo'laman.", grammarTip: "'Will have been V-ing' = kelajakda davom etgan ish. 'By next year' = kelgani yilgacha.", commonMistake: "'I will work here for ten years' xato — davomiylikni ta'kidlash uchun 'will have been working' kerak.", stressWord: 'WILL' },
+    { id: 'sp-d101-c2', en: "She will have been studying for three hours by the time you arrive.", uz: "Siz yetib kelguncha u uch soat o'qigan bo'ladi.", grammarTip: "'By the time + Present Simple' = shu vaqtgacha. 'Will have been studying' = uch soat davomida o'qigan.", commonMistake: "'She will have been studying for three hours when you arrive' xato — 'BY the time' kerak.", stressWord: 'BY' },
+    { id: 'sp-d101-c3', en: "By December, they will have been living in London for five years.", uz: "Dekabrgacha ular Londonda besh yil yashagan bo'lishadi.", grammarTip: "'By + vaqt' = shu vaqtgacha. 'Will have been living' = shu vaqtdan beri davom etgan.", commonMistake: "'By December they will live in London for five years' xato — davomiylik uchun 'will have been living'.", stressWord: 'LIVING' },
+    { id: 'sp-d101-c4', en: "How long will you have been learning English by June?", uz: "Iyungacha siz necha vaqt ingliz tilini o'rgangan bo'lasiz?", grammarTip: "So'roq: 'How long + will + S + have been V-ing + by + vaqt?' — necha vaqt davom etganini so'rash.", commonMistake: "'How long will you learn English by June' xato — 'will have been learning' kerak.", stressWord: 'HOW' },
+    { id: 'sp-d101-c5', en: "We will have been waiting for two hours if he doesn't come soon.", uz: "U tez kelmasa, biz ikki soat kutgan bo'lamiz.", grammarTip: "'If + Present Simple, will have been V-ing' — kelajakdagi kutish haqida. 'Waiting for two hours' = ikki soat.", commonMistake: "'We will wait for two hours' o'rniga 'will have been waiting' — davomiylikni ta'kidlash.", stressWord: 'WILL' },
+    { id: 'sp-d101-c6', en: "By the end of this month, I will have been reading this book for a long time.", uz: "Oxirigacha men bu kitobni uzoq vaqt o'qigan bo'laman.", grammarTip: "'By the end of + vaqt' = oxirigacha. 'Will have been reading' = uzoq vaqt davomida.", commonMistake: "'By the end I will read this book' xato — davomiylik uchun 'will have been reading' kerak.", stressWord: 'READING' }
   ],
   scenario: {
     topic: "Future Perfect Continuous",
@@ -4248,12 +4248,12 @@ const day102: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d102-c1', en: "This is example sentence 1 for Nominalization.", uz: "Bu Nominalization uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d102-c2', en: "This is example sentence 2 for Nominalization.", uz: "Bu Nominalization uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d102-c3', en: "This is example sentence 3 for Nominalization.", uz: "Bu Nominalization uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d102-c4', en: "This is example sentence 4 for Nominalization.", uz: "Bu Nominalization uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d102-c5', en: "This is example sentence 5 for Nominalization.", uz: "Bu Nominalization uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d102-c6', en: "This is example sentence 6 for Nominalization.", uz: "Bu Nominalization uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d102-c1', en: "The government made an important decision.", uz: "Hukumat muhim qaror qabul qildi.", grammarTip: "'Decide' (fe'l) → 'decision' (ot). Rasmiy nutqda fe'llar otlarga aylantiriladi.", commonMistake: "'The government decided' o'rniga 'made a decision' — rasmiy uslub. 'Decision' = qaror.", stressWord: 'DECISION' },
+    { id: 'sp-d102-c2', en: "There has been a significant improvement in the results.", uz: "Natijalarda sezilarli yaxshilanish bo'ldi.", grammarTip: "'Improve' (fe'l) → 'improvement' (ot). 'Significant' = sezilarli (rasmiy sifat).", commonMistake: "'There has been a significant improve' xato — 'improvement' (ot) kerak.", stressWord: 'IMPROVEMENT' },
+    { id: 'sp-d102-c3', en: "We need to conduct a thorough investigation.", uz: "Biz chuqur tekshiruv o'tkazishimiz kerak.", grammarTip: "'Investigate' (fe'l) → 'investigation' (ot). 'Conduct' = o'tkazmoq (rasmiy fe'l bilan).", commonMistake: "'We need to investigate thorough' xato — 'conduct a thorough investigation'.", stressWord: 'INVESTIGATION' },
+    { id: 'sp-d102-c4', en: "His failure to respond was surprising.", uz: "Uning javob bermaganligi hayratga solar edi.", grammarTip: "'Fail' (fe'l) → 'failure' (ot). 'Failure to + V' = … olmaganlik. Rasmiy uslub.", commonMistake: "'His failing to respond' xato — 'failure' (ot) kerak: 'his failure to respond'.", stressWord: 'FAILURE' },
+    { id: 'sp-d102-c5', en: "The discovery of a new species was announced.", uz: "Yangi tur topilgani e'lon qilindi.", grammarTip: "'Discover' (fe'l) → 'discovery' (ot). 'The discovery of' = ning kashfiyoti. Pasiv bilan.", commonMistake: "'The discovery of a new species was announce' xato — 'was ANNOUNCED' (passive).", stressWord: 'DISCOVERY' },
+    { id: 'sp-d102-c6', en: "The implementation of the plan requires careful planning.", uz: "Rejaning amalga oshirilishida ehtiyotkor rejalashtirish talab qilinadi.", grammarTip: "'Implement' (fe'l) → 'implementation' (ot). Ikkita 'plan' — biri ot, biri fe'l shakli.", commonMistake: "'The implement of the plan' xato — 'implementation' (ot) kerak.", stressWord: 'IMPLEMENTATION' }
   ],
   scenario: {
     topic: "Nominalization",
@@ -4286,12 +4286,12 @@ const day103: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d103-c1', en: "This is example sentence 1 for Subjunctive Mood.", uz: "Bu Subjunctive Mood uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d103-c2', en: "This is example sentence 2 for Subjunctive Mood.", uz: "Bu Subjunctive Mood uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d103-c3', en: "This is example sentence 3 for Subjunctive Mood.", uz: "Bu Subjunctive Mood uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d103-c4', en: "This is example sentence 4 for Subjunctive Mood.", uz: "Bu Subjunctive Mood uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d103-c5', en: "This is example sentence 5 for Subjunctive Mood.", uz: "Bu Subjunctive Mood uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d103-c6', en: "This is example sentence 6 for Subjunctive Mood.", uz: "Bu Subjunctive Mood uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d103-c1', en: "I suggest that he study harder for the exam.", uz: "Men unga imtihonga ko'proq o'qishni maslahat beraman.", grammarTip: "'Suggest that + S + base form' — taklif. 'Study' (s, emas 'studies'). Subjunctive.", commonMistake: "'I suggest that he studies' xato — subjunctive da fe'lning asosiy shakli: 'he STUDY'.", stressWord: 'STUDY' },
+    { id: 'sp-d103-c2', en: "If I were rich, I would travel the world.", uz: "Men boy bo'lganimda, butun dunyoni sayohat qilardim.", grammarTip: "'If I were' — subjunctive (hamma uchun 'were', hatto 'I' bilan). Imkoniyat yoki orzu.", commonMistake: "'If I was rich' xato — subjunctive da 'IF I WERE' (formal) ishlatiladi.", stressWord: 'WERE' },
+    { id: 'sp-d103-c3', en: "It is essential that she be present at the meeting.", uz: "Uning yig'ilishda ishtirok etishi zarur.", grammarTip: "'It is essential that + S + base form' — zarurat. 'She be' (emas 'she is').", commonMistake: "'It is essential that she is present' xato — subjunctive: 'she BE present'.", stressWord: 'BE' },
+    { id: 'sp-d103-c4', en: "I wish I were taller.", uz: "Bo'yingam balandroq bo'lganida edi.", grammarTip: "'I wish I were' — subjunctive. 'Were' (emas 'was') ishlatiladi, hatto 'I' bilan.", commonMistake: "'I wish I was taller' noto'g'ri emas, lekin 'were' — to'g'ri va rasmiy.", stressWord: 'WERE' },
+    { id: 'sp-d103-c5', en: "The doctor recommended that he take a week off.", uz: "Shifokor unga bir hafta dam olishni maslahat berdi.", grammarTip: "'Recommend that + S + base form' — maslahat. 'He take' (emas 'he takes').", commonMistake: "'The doctor recommended that he takes' xato — subjunctive: 'he TAKE'.", stressWord: 'TAKE' },
+    { id: 'sp-d103-c6', en: "If she were here, she would know what to do.", uz: "U bu yerda bo'lganida, nima qilishni bilardi.", grammarTip: "'If she were' — subjunctive. Hozirgi imkoniyat. 'Would know' — natija.", commonMistake: "'If she was here' xato — subjunctive: 'IF SHE WERE here'.", stressWord: 'WERE' }
   ],
   scenario: {
     topic: "Subjunctive Mood",
@@ -4324,12 +4324,12 @@ const day104: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d104-c1', en: "This is example sentence 1 for Advanced Passive.", uz: "Bu Advanced Passive uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d104-c2', en: "This is example sentence 2 for Advanced Passive.", uz: "Bu Advanced Passive uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d104-c3', en: "This is example sentence 3 for Advanced Passive.", uz: "Bu Advanced Passive uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d104-c4', en: "This is example sentence 4 for Advanced Passive.", uz: "Bu Advanced Passive uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d104-c5', en: "This is example sentence 5 for Advanced Passive.", uz: "Bu Advanced Passive uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d104-c6', en: "This is example sentence 6 for Advanced Passive.", uz: "Bu Advanced Passive uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d104-c1', en: "The report must be submitted by Friday.", uz: "Hisobot juma kunigacha topshirilishi shart.", grammarTip: "'Must be + past participle' — majburiyat + pasiv. 'Must be submitted' = topshirilishi kerak.", commonMistake: "'The report must submit by Friday' xato — pasiv: 'must be SUBMITTED'.", stressWord: 'SUBMITTED' },
+    { id: 'sp-d104-c2', en: "The building has been renovated three times.", uz: "Bino uch marta ta'mirlangan.", grammarTip: "'Has been + V3' — Perfect Passive. 'Renovated' = ta'mirlangan. 'Three times' = uch marta.", commonMistake: "'The building has been renovate' xato — 'renovated' (V3) kerak.", stressWord: 'BEEN' },
+    { id: 'sp-d104-c3', en: "The work could have been done more efficiently.", uz: "Ish samaraliroq bajarilishi mumkin edi.", grammarTip: "'Could have been + V3' — o'tmishdagi mumkinlik + pasiv. 'Done' = bajarilgan.", commonMistake: "'The work could have been do' xato — 'done' (V3) kerak.", stressWord: 'DONE' },
+    { id: 'sp-d104-c4', en: "New regulations will be introduced next month.", uz: "Yangi qoidalar kelasi oy joriy etiladi.", grammarTip: "'Will be + V3' — Future Passive. 'Introduced' = joriy etiladi. 'Next month' = kelasi oy.", commonMistake: "'New regulations will introduce' xato — pasiv: 'will be INTRODUCED'.", stressWord: 'BE' },
+    { id: 'sp-d104-c5', en: "The cake was being prepared when I arrived.", uz: "Men yetib kelganda tort tayyorlanayotgan edi.", grammarTip: "'Was being + V3' — Past Continuous Passive. Davomiy pasiv harakat.", commonMistake: "'The cake was being prepare' xato — 'was being PREPARED' (V3) kerak.", stressWord: 'BEING' },
+    { id: 'sp-d104-c6', en: "The decision should have been discussed more carefully.", uz: "Qaror ko'proq ehtiyotkorlik bilan muhokama qilinishi kerak edi.", grammarTip: "'Should have been + V3' — o'tmishdagi tavsiya + pasiv. 'Discussed' = muhokama qilingan.", commonMistake: "'The decision should have been discuss' xato — 'discussed' (V3) kerak.", stressWord: 'SHOULD' }
   ],
   scenario: {
     topic: "Advanced Passive",
@@ -4362,12 +4362,12 @@ const day105: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d105-c1', en: "This is example sentence 1 for Hedging.", uz: "Bu Hedging uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d105-c2', en: "This is example sentence 2 for Hedging.", uz: "Bu Hedging uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d105-c3', en: "This is example sentence 3 for Hedging.", uz: "Bu Hedging uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d105-c4', en: "This is example sentence 4 for Hedging.", uz: "Bu Hedging uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d105-c5', en: "This is example sentence 5 for Hedging.", uz: "Bu Hedging uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d105-c6', en: "This is example sentence 6 for Hedging.", uz: "Bu Hedging uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d105-c1', en: "It seems that the project will be delayed.", uz: "Loyiha kechiktiriladigan tuyuladi.", grammarTip: "'It seems that' = tuyuladi, ehtimol bor. Ehtiyotkor nutq — aniq emasligini bildiradi.", commonMistake: "'It seems the project will be delayed' — 'that' tushirilishi mumkin, lekin rasmiy yozuvda yaxshiroq.", stressWord: 'SEEMS' },
+    { id: 'sp-d105-c2', en: "Perhaps the weather will improve tomorrow.", uz: "Ehtimol ertaga ob-havo yaxshilanadi.", grammarTip: "'Perhaps' = ehtimol (hedging). Jumlanning boshida yoki oxirida ishlatiladi.", commonMistake: "'Perhaps' va 'maybe' bir xil, lekin 'perhaps' ko'proq rasmiy.", stressWord: 'PERHAPS' },
+    { id: 'sp-d105-c3', en: "The results might indicate a different conclusion.", uz: "Natijalar boshqa xulosaga ishora qilishi mumkin.", grammarTip: "'Might indicate' = ishora qilishi mumkin. 'Might' — 'may' dan kamroq ishonchli.", commonMistake: "'The results might indicates' xato — modal dan keyin fe'lning asosiy shakli: 'might INDICATE'.", stressWord: 'MIGHT' },
+    { id: 'sp-d105-c4', en: "It appears that the experiment was successful.", uz: "Tajriba muvaffaqiyatli bo'lgan tuyuladi.", grammarTip: "'It appears that' = tuyuladi, ko'rinadi. 'It seems' bilan bir xil ma'no.", commonMistake: "'It appears the experiment' — 'that' tushirilishi mumkin, lekin yaxshiroq.", stressWord: 'APPEARS' },
+    { id: 'sp-d105-c5', en: "This could potentially affect the overall results.", uz: "Bu umumiy natijalarga ta'sir qilishi mumkin.", grammarTip: "'Could potentially' = potensial ta'sir qilishi mumkin. Ikkita hedging birgalikda.", commonMistake: "'This could potentially affects' xato — 'could' dan keyin 'affect' (asosiy shakl).", stressWord: 'POTENTIALLY' },
+    { id: 'sp-d105-c6', en: "It is likely that prices will rise next year.", uz: "Narxlar kelasi oyga ko'tarilishi ehtimoli bor.", grammarTip: "'It is likely that' = ehtimoli bor. 'Likely' = ehtimol (sifat sifatida).", commonMistake: "'It is likely prices will rise' — 'that' tushirilishi mumkin, lekin rasmiy yozuvda yaxshiroq.", stressWord: 'LIKELY' }
   ],
   scenario: {
     topic: "Hedging",
@@ -4400,12 +4400,12 @@ const day106: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d106-c1', en: "This is example sentence 1 for Complex Prepositions.", uz: "Bu Complex Prepositions uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d106-c2', en: "This is example sentence 2 for Complex Prepositions.", uz: "Bu Complex Prepositions uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d106-c3', en: "This is example sentence 3 for Complex Prepositions.", uz: "Bu Complex Prepositions uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d106-c4', en: "This is example sentence 4 for Complex Prepositions.", uz: "Bu Complex Prepositions uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d106-c5', en: "This is example sentence 5 for Complex Prepositions.", uz: "Bu Complex Prepositions uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d106-c6', en: "This is example sentence 6 for Complex Prepositions.", uz: "Bu Complex Prepositions uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d106-c1', en: "In spite of the rain, we went for a walk.", uz: "Yomg'irga qaramay, biz sayrga chiqdik.", grammarTip: "'In spite of' = garchi, qarama-qarshilik bildiradi. + ot yoki V-ing.", commonMistake: "'In spite of the rain we went' — vergul qo'yish yaxshiroq: 'In spite of the rain, we went'.", stressWord: 'SPITE' },
+    { id: 'sp-d106-c2', en: "On account of the traffic, we arrived late.", uz: "Trafik tufayli, kechikib yetib kelib.", grammarTip: "'On account of' = sababli, tufayli. Rasmiy uslub. + ot yoki V-ing.", commonMistake: "'Because of' va 'on account of' bir xil, lekin 'on account of' ko'proq rasmiy.", stressWord: 'ACCOUNT' },
+    { id: 'sp-d106-c3', en: "Despite being tired, she finished the project.", uz: "Charchagan bo'lsa-da, loyihani tugatdi.", grammarTip: "'Despite + V-ing' = qarama-qarshilik. 'Despite' + gerund yoki ot. 'In spite of' bilan bir xil.", commonMistake: "'Despite of being tired' xato — 'despite' dan keyin 'of' qo'yilmaydi.", stressWord: 'DESPITE' },
+    { id: 'sp-d106-c4', en: "Due to the bad weather, the match was cancelled.", uz: "Yomon ob-havo tufayli, o'yin bekor qilindi.", grammarTip: "'Due to' = sababli, tufayli. 'On account of' bilan bir xil. Rasmiy uslub.", commonMistake: "'Due to' va 'because of' bir xil, lekin 'due to' ko'proq rasmiy.", stressWord: 'DUE' },
+    { id: 'sp-d106-c5', en: "In addition to his salary, he receives bonuses.", uz: "Maoshidan tashqari, u bonuslar oladi.", grammarTip: "'In addition to' = qo'shimcha, tashqari. + ot yoki V-ing.", commonMistake: "'In addition to' va 'apart from' bir xil, lekin 'in addition to' ko'proq rasmiy.", stressWord: 'ADDITION' },
+    { id: 'sp-d106-c6', en: "Regardless of the cost, we must proceed.", uz: "Xarajatga qaramasdan, davom etishimiz kerak.", grammarTip: "'Regardless of' = qaramasdan, farqi yo'q. 'Irrespective of' bilan bir xil.", commonMistake: "'Regardless of' va 'despite' bir xil, lekin 'regardless of' ko'proq kuchli.", stressWord: 'REGARDLESS' }
   ],
   scenario: {
     topic: "Complex Prepositions",
@@ -4438,12 +4438,12 @@ const day107: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d107-c1', en: "This is example sentence 1 for Cohesion.", uz: "Bu Cohesion uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d107-c2', en: "This is example sentence 2 for Cohesion.", uz: "Bu Cohesion uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d107-c3', en: "This is example sentence 3 for Cohesion.", uz: "Bu Cohesion uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d107-c4', en: "This is example sentence 4 for Cohesion.", uz: "Bu Cohesion uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d107-c5', en: "This is example sentence 5 for Cohesion.", uz: "Bu Cohesion uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d107-c6', en: "This is example sentence 6 for Cohesion.", uz: "Bu Cohesion uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d107-c1', en: "The project was successful; however, there were some challenges.", uz: "Loyiha muvaffaqiyatli bo'ldi; biroq, ba'zi qiyinchiliklar bo'ldi.", grammarTip: "'However' = biroq, lekin. Nuqtali vergul (;) dan keyin ishlatiladi. Zidlovchi bog'lovchi.", commonMistake: "'However' o'rniga 'but' — 'however' ko'proq rasmiy. 'However' dan keyin vergul.", stressWord: 'HOWEVER' },
+    { id: 'sp-d107-c2', en: "The plan is effective. Furthermore, it is cost-efficient.", uz: "Reja samarali. Bundan tashqari, xarajat jihatidan ham samarali.", grammarTip: "'Furthermore' = bundan tashqari, qo'shimcha. Yangi ma'no qo'shadi. Rasmiy nutq.", commonMistake: "'Furthermore' va 'additionally' bir xil, lekin 'furthermore' ko'proq rasmiy.", stressWord: 'FURTHERMORE' },
+    { id: 'sp-d107-c3', en: "The results were positive; moreover, they exceeded expectations.", uz: "Natijalar ijobiy edi; bundan tashqari, ular kutilganidan oshib ketdi.", grammarTip: "'Moreover' = bundan tashqari, ustiga. Kuchliroq qo'shimcha. Nuqtali vergul bilan.", commonMistake: "'Moreover' va 'furthermore' bir xil, lekin 'moreover' kuchliroq qo'shimcha.", stressWord: 'MOREOVER' },
+    { id: 'sp-d107-c4', en: "On the one hand, it is expensive. On the other hand, it is worth it.", uz: "Bir tomondan, bu qimmat. Boshqa tomondan, bunga arziydi.", grammarTip: "'On the one hand... on the other hand' = bir tomondan... boshqa tomondan. Qarama-qarshilik.", commonMistake: "'On one hand' xato — 'the' kerak: 'on THE one hand'.", stressWord: 'HAND' },
+    { id: 'sp-d107-c5', en: "In conclusion, the benefits outweigh the drawbacks.", uz: "Xulosa qilib aytganda, afzalliklar kamchiliklardan ko'proq.", grammarTip: "'In conclusion' = xulosa qilib. Yozma nutqda oxirida ishlatiladi. 'Outweigh' = ustunlik qilmoq.", commonMistake: "'In conclusion' va 'to conclude' bir xil, lekin 'in conclusion' ko'proq ishlatiladi.", stressWord: 'CONCLUSION' },
+    { id: 'sp-d107-c6', en: "Similarly, the second study confirmed these findings.", uz: "Xuddi shunday, ikkinchi tadqiqot shu xulosalarni tasdiqladi.", grammarTip: "'Similarly' = xuddi shunday, o'xshash. Ikkita bir xil faktni bog'laydi.", commonMistake: "'Similarly' va 'likewise' bir xil, lekin 'similarly' ko'proq ishlatiladi.", stressWord: 'SIMILARLY' }
   ],
   scenario: {
     topic: "Cohesion",
@@ -4476,12 +4476,12 @@ const day108: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d108-c1', en: "This is example sentence 1 for Register.", uz: "Bu Register uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d108-c2', en: "This is example sentence 2 for Register.", uz: "Bu Register uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d108-c3', en: "This is example sentence 3 for Register.", uz: "Bu Register uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d108-c4', en: "This is example sentence 4 for Register.", uz: "Bu Register uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d108-c5', en: "This is example sentence 5 for Register.", uz: "Bu Register uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d108-c6', en: "This is example sentence 6 for Register.", uz: "Bu Register uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d108-c1', en: "Could you kindly provide me with the information?", uz: "Iltimos, menga ma'lumotni taqdim eta olasizmi?", grammarTip: "'Could you kindly' = iltimos (rasmiy). Informal: 'Can you give me...?' Farq — madaniyat.", commonMistake: "'Could you kindly provide me the information' xato — 'provide me WITH the information'.", stressWord: 'KINDLY' },
+    { id: 'sp-d108-c2', en: "I would like to inquire about the available positions.", uz: "Bo'sh lavozimlar haqida so'rashni xohlar edim.", grammarTip: "'I would like to inquire' = so'rashni xohlar edim (rasmiy). Informal: 'I wanna ask about jobs'.", commonMistake: "'I want to inquire' o'rniga 'I would like to inquire' — ko'proq rasmiy.", stressWord: 'INQUIRE' },
+    { id: 'sp-d108-c3', en: "We regret to inform you that your application has been rejected.", uz: "Afsus bilan sizning arizangiz rad etilganini ma'lum qilamiz.", grammarTip: "'We regret to inform you' = afsus bilan ma'lum qilamiz. Rasmiy xat uslubi.", commonMistake: "'We are sorry to tell you' o'rniga 'we regret to inform you' — ko'proq rasmiy.", stressWord: 'REGRET' },
+    { id: 'sp-d108-c4', en: "I appreciate your prompt response to this matter.", uz: "Bu masalaga tezkor javobingiz uchun minnatdorman.", grammarTip: "'I appreciate your prompt response' = tezkor javob uchun minnatdorman. Rasmiy minnatdorlik.", commonMistake: "'Thanks for your quick reply' o'rniga 'I appreciate your prompt response' — rasmiy.", stressWord: 'APPRECIATE' },
+    { id: 'sp-d108-c5', en: "Hey, wanna grab a coffee later?", uz: "Ey, keyinroq qahva ichishga boramizmi?", grammarTip: "'Wanna' = 'want to' (informal). 'Grab a coffee' = qahva ichish. Do'stlar orasida.", commonMistake: "'Wanna' faqat norasmiy nutqda ishlatiladi. Rasmiy: 'would you like to'.", stressWord: 'WANNA' },
+    { id: 'sp-d108-c6', en: "It was nice chatting with you. Let's catch up soon!", uz: "Suhbatlashish yaxshi edi. Tez orada gaplashaylik!", grammarTip: "'Catch up' = yangiliklarni bilish, gaplashish. Norasmiy xayrlashish.", commonMistake: "'Catch up' va 'meet up' bir xil emas — 'catch up' = yangiliklarni bilish.", stressWord: 'CATCH' }
   ],
   scenario: {
     topic: "Register",
@@ -4514,12 +4514,12 @@ const day109: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d109-c1', en: "This is example sentence 1 for Complex Sentences.", uz: "Bu Complex Sentences uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d109-c2', en: "This is example sentence 2 for Complex Sentences.", uz: "Bu Complex Sentences uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d109-c3', en: "This is example sentence 3 for Complex Sentences.", uz: "Bu Complex Sentences uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d109-c4', en: "This is example sentence 4 for Complex Sentences.", uz: "Bu Complex Sentences uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d109-c5', en: "This is example sentence 5 for Complex Sentences.", uz: "Bu Complex Sentences uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d109-c6', en: "This is example sentence 6 for Complex Sentences.", uz: "Bu Complex Sentences uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d109-c1', en: "What she said surprised everyone at the meeting.", uz: "Uning aytganlari yig'ilishdagi hammalarni hayratga solishi.", grammarTip: "Noun clause: 'What she said' — butun gap ot o'rnida. 'Surprised' asosiy fe'l.", commonMistake: "'What she said surprised everyone' — 'that' tushiriladi: 'That what she said' xato.", stressWord: 'WHAT' },
+    { id: 'sp-d109-c2', en: "The woman who lives next door is a doctor.", uz: "Yonimizdagi ayol shifokor.", grammarTip: "Relative clause: 'who lives next door' — otning oxirida keladi. 'Who' = odamlar uchun.", commonMistake: "'The woman who lives next door' — 'who' o'rniga 'which' qo'ymang (which = narsalar).", stressWord: 'WHO' },
+    { id: 'sp-d109-c3', en: "I'll call you when I arrive at the airport.", uz: "Aeroportga yetib kelganimda sizga qo'ng'iroq qilaman.", grammarTip: "Adverbial clause: 'when I arrive' — vaqtni bildiradi. 'When' dan keyin Present Simple.", commonMistake: "'When I will arrive' xato — 'when' dan keyin zamon almashmaydi: 'when I ARRIVE'.", stressWord: 'WHEN' },
+    { id: 'sp-d109-c4', en: "The book that I bought yesterday was very interesting.", uz: "Kecha sotib olgan kitob juda qiziqarli edi.", grammarTip: "Relative clause: 'that I bought yesterday' — 'that' o'rniga 'which' ham ishlatiladi.", commonMistake: "'The book what I bought' xato — 'that' yoki 'which' kerak (narsalar uchun).", stressWord: 'THAT' },
+    { id: 'sp-d109-c5', en: "Although he was tired, he continued working.", uz: "Garchi charchagan bo'lsa-da, ishlashda davom etdi.", grammarTip: "Adverbial clause: 'although he was tired' — qarama-qarshilik. 'Although' = garchi.", commonMistake: "'Although he was tired he continued' — vergul qo'ying: 'Although he was tired, he continued'.", stressWord: 'ALTHOUGH' },
+    { id: 'sp-d109-c6', en: "The reason why she left is still unknown.", uz: "Uning ketgan sababi hali ham noma'lum.", grammarTip: "Relative clause: 'why she left' — sababni bildiradi. 'Why' = sababli. 'Is still unknown' = hali noma'lum.", commonMistake: "'The reason why she left is still unknown' — 'the reason why' tushirmang: 'the reason she left'.", stressWord: 'WHY' }
   ],
   scenario: {
     topic: "Complex Sentences",
@@ -4552,12 +4552,12 @@ const day110: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d110-c1', en: "This is example sentence 1 for Advanced Modals.", uz: "Bu Advanced Modals uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d110-c2', en: "This is example sentence 2 for Advanced Modals.", uz: "Bu Advanced Modals uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d110-c3', en: "This is example sentence 3 for Advanced Modals.", uz: "Bu Advanced Modals uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d110-c4', en: "This is example sentence 4 for Advanced Modals.", uz: "Bu Advanced Modals uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d110-c5', en: "This is example sentence 5 for Advanced Modals.", uz: "Bu Advanced Modals uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d110-c6', en: "This is example sentence 6 for Advanced Modals.", uz: "Bu Advanced Modals uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d110-c1', en: "She must have forgotten about the meeting.", uz: "U yig'ilishni unutgan bo'lishi kerak.", grammarTip: "'Must have + V3' = ehtimol shunday bo'lgan (ishonch bilan taxmin). 'Forgotten' = unutgan.", commonMistake: "'She must forgotten' xato — 'must HAVE forgotten' kerak (perfect).", stressWord: 'HAVE' },
+    { id: 'sp-d110-c2', en: "He could have passed the exam if he had studied.", uz: "U o'qiganida imtihondan o'ta olardi.", grammarTip: "'Could have + V3' = o'tmishda imkoniyat bor edi. 'Passed' = o'tgan.", commonMistake: "'He could passed' xato — 'could HAVE passed' kerak.", stressWord: 'COULD' },
+    { id: 'sp-d110-c3', en: "You should have told me earlier.", uz: "Sen ertaroq aytmagan eding.", grammarTip: "'Should have + V3' = o'tmishda qilishi kerak edi (lekin qilmadi). 'Told' = aytdi.", commonMistake: "'You should told me' xato — 'should HAVE told' kerak.", stressWord: 'SHOULD' },
+    { id: 'sp-d110-c4', en: "They must have arrived by now.", uz: "Ular hozirgacha yetib kelgan bo'lishlari kerak.", grammarTip: "'Must have + V3' = ehtimol shunday. 'By now' = hozirgacha. Ishonch bilan taxmin.", commonMistake: "'They must arrived' xato — 'must HAVE arrived' kerak.", stressWord: 'MUST' },
+    { id: 'sp-d110-c5', en: "She could have helped you, but she didn't want to.", uz: "U sizga yordam berardi, lekin xohlamadi.", grammarTip: "'Could have + V3' = imkoniyat bor edi (lekin amalga oshirmadi). 'But' bilan zid.", commonMistake: "'She could helped' xato — 'could HAVE helped' kerak.", stressWord: 'COULD' },
+    { id: 'sp-d110-c6', en: "We should have checked the schedule before leaving.", uz: "Ketishdan oldin jadvalni tekshirib chiqishimiz kerak edi.", grammarTip: "'Should have + V3' = o'tmishda qilishi kerak edi. 'Before leaving' = ketishdan oldin.", commonMistake: "'We should checked' xato — 'should HAVE checked' kerak.", stressWord: 'SHOULD' }
   ],
   scenario: {
     topic: "Advanced Modals",
@@ -4590,12 +4590,12 @@ const day111: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d111-c1', en: "This is example sentence 1 for Contrastive Structures.", uz: "Bu Contrastive Structures uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d111-c2', en: "This is example sentence 2 for Contrastive Structures.", uz: "Bu Contrastive Structures uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d111-c3', en: "This is example sentence 3 for Contrastive Structures.", uz: "Bu Contrastive Structures uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d111-c4', en: "This is example sentence 4 for Contrastive Structures.", uz: "Bu Contrastive Structures uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d111-c5', en: "This is example sentence 5 for Contrastive Structures.", uz: "Bu Contrastive Structures uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d111-c6', en: "This is example sentence 6 for Contrastive Structures.", uz: "Bu Contrastive Structures uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d111-c1', en: "She likes coffee, whereas he prefers tea.", uz: "U qahvani yoqtiradi, garchi u choyni afzal ko'radi.", grammarTip: "'Whereas' = garchi, aksincha. Ikkita qarama-qarshilikni bog'laydi. Rasmiy uslub.", commonMistake: "'Whereas' va 'while' bir xil, lekin 'whereas' ko'proq rasmiy.", stressWord: 'WHEREAS' },
+    { id: 'sp-d111-c2', en: "While I was cooking, my brother was watching TV.", uz: "Men ovqat tayyorlayotganimda, aka televizor ko'rayotgan edi.", grammarTip: "'While' = vaqt davomida. Ikkita bir vaqtda bo'lgan harakat. 'While' + Past Continuous.", commonMistake: "'While I cooked' o'rniga 'while I was cooking' — davomiylik uchun Continuous kerak.", stressWord: 'WHILE' },
+    { id: 'sp-d111-c3', en: "Although it was raining, we decided to go out.", uz: "Garchi yog'moqda bo'lsa-da, biz tashqariga chiqishga qaror qildik.", grammarTip: "'Although' = garchi, qarama-qarshilik. 'Although' dan keyin to'liq gap keladi.", commonMistake: "'Although it was raining we decided' — vergul qo'ying: 'Although it was raining, we decided'.", stressWord: 'ALTHOUGH' },
+    { id: 'sp-d111-c4', en: "He is smart but he doesn't work hard.", uz: "U aqlli, lekin qattiq ishlamaydi.", grammarTip: "'But' = lekin (eng oddiy qarama-qarshilik). 'But' dan keyin zid fikr keladi.", commonMistake: "'But' va 'however' bir xil, lekin 'however' ko'proq rasmiy.", stressWord: 'BUT' },
+    { id: 'sp-d111-c5', en: "Whereas the north is cold, the south is warm.", uz: "Shimoli sovuq bo'lsa, janub iliqlik.", grammarTip: "'Whereas' = aksincha (ikkita taqqoslash). 'North' va 'south' qarama-qarshilik.", commonMistake: "'Whereas the north is cold the south is warm' — vergul qo'ying: '..., whereas...'.", stressWord: 'WHEREAS' },
+    { id: 'sp-d111-c6', en: "Even though he studied hard, he failed the exam.", uz: "Qattiq o'qigan bo'lsa-da, imtihondan o'ta olmadi.", grammarTip: "'Even though' = garchi ('although' dan kuchliroq). 'Even though' + Past Simple.", commonMistake: "'Even though' va 'despite' bir xil, lekin 'even though' dan keyin gap, 'despite' dan keyin ot/V-ing.", stressWord: 'EVEN' }
   ],
   scenario: {
     topic: "Contrastive Structures",
@@ -4628,12 +4628,12 @@ const day112: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d112-c1', en: "This is example sentence 1 for Inversion.", uz: "Bu Inversion uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d112-c2', en: "This is example sentence 2 for Inversion.", uz: "Bu Inversion uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d112-c3', en: "This is example sentence 3 for Inversion.", uz: "Bu Inversion uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d112-c4', en: "This is example sentence 4 for Inversion.", uz: "Bu Inversion uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d112-c5', en: "This is example sentence 5 for Inversion.", uz: "Bu Inversion uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d112-c6', en: "This is example sentence 6 for Inversion.", uz: "Bu Inversion uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d112-c1', en: "Never have I seen such a beautiful sunset.", uz: "Hech qachon buncha chiroyli botishni ko'rmagan edim.", grammarTip: "'Never have I + V3' — teskari tartib (inversion). Kuchli ta'kid. 'Seen' = V3.", commonMistake: "'I have never seen' o'rniga 'Never have I seen' — inversion kuchli ta'kid uchun.", stressWord: 'NEVER' },
+    { id: 'sp-d112-c2', en: "Rarely does he arrive on time.", uz: "Kamdan-kam o'z vaqtida keladi.", grammarTip: "'Rarely does he + V' — teskari tartib. 'Rarely' = kamdan-kam. 'Does he arrive' (teskari).", commonMistake: "'He rarely arrives' o'rniga 'Rarely does he arrive' — inversion kuchli ta'kid uchun.", stressWord: 'RARELY' },
+    { id: 'sp-d112-c3', en: "Seldom have we experienced such hospitality.", uz: "Kamdan-kam buncha mehmondo'stlikni his qilganmiz.", grammarTip: "'Seldom have we + V3' — teskari tartib. 'Seldom' = kamdan-kam ('rarely' bilan bir xil).", commonMistake: "'We have seldom experienced' o'rniga 'Seldom have we experienced' — inversion.", stressWord: 'SELDOM' },
+    { id: 'sp-d112-c4', en: "Not only did she win the race, but she also broke the record.", uz: "U nafaqat poyevni yutdi, balki rekordni ham buzdi.", grammarTip: "'Not only did she + V, but also...' — teskari tartib. 'Not only... but also' = nafaqat... balki.", commonMistake: "'Not only she won' xato — 'Not only DID she win' (teskari tartib).", stressWord: 'NOT' },
+    { id: 'sp-d112-c5', en: "Hardly had I sat down when the phone rang.", uz: "O'tirmasimdan telefon jiringladi.", grammarTip: "'Hardly had I + V3 when...' — zudlik bildiradi. 'Hardly... when' = darhol.", commonMistake: "'I had hardly sat down' o'rniga 'Hardly had I sat down' — inversion.", stressWord: 'HARDLY' },
+    { id: 'sp-d112-c6', en: "Under no circumstances should you reveal this information.", uz: "Hech qanday holatda bu ma'lumotni oshkor qilmaslik kerak.", grammarTip: "'Under no circumstances should you + V' — taqiqlash. 'Should you' = teskari tartib.", commonMistake: "'You should not reveal' o'rniga 'Under no circumstances should you reveal' — kuchli taqiqlash.", stressWord: 'SHOULD' }
   ],
   scenario: {
     topic: "Inversion",
@@ -4666,12 +4666,12 @@ const day113: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d113-c1', en: "This is example sentence 1 for Cleft Sentences.", uz: "Bu Cleft Sentences uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d113-c2', en: "This is example sentence 2 for Cleft Sentences.", uz: "Bu Cleft Sentences uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d113-c3', en: "This is example sentence 3 for Cleft Sentences.", uz: "Bu Cleft Sentences uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d113-c4', en: "This is example sentence 4 for Cleft Sentences.", uz: "Bu Cleft Sentences uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d113-c5', en: "This is example sentence 5 for Cleft Sentences.", uz: "Bu Cleft Sentences uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d113-c6', en: "This is example sentence 6 for Cleft Sentences.", uz: "Bu Cleft Sentences uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d113-c1', en: "It was John who broke the window.", uz: "Derazani sindirgan Jon edi.", grammarTip: "'It is/was + S + who/that' — cleft sentence. Kuchli ta'kid. 'Who' = odamlar uchun.", commonMistake: "'John broke the window' o'rniga 'It was John who broke' — kuchli ta'kid.", stressWord: 'WAS' },
+    { id: 'sp-d113-c2', en: "It is the price that concerns me the most.", uz: "Meni eng ko'p qiziqtirgan narx.", grammarTip: "'It is + ot + that' — cleft sentence. Narx haqida ta'kid. 'Concerns me' = qiziqtiradi.", commonMistake: "'The price concerns me most' o'rniga 'It is the price that concerns me most'.", stressWord: 'PRICE' },
+    { id: 'sp-d113-c3', en: "What I need is a good night's sleep.", uz: "Menga kerak narsa — yaxshi uxlash.", grammarTip: "'What I need is...' — cleft sentence. 'What' = o'sha narsa. Kuchli ta'kid.", commonMistake: "'I need a good night's sleep' o'rniga 'What I need is...' — kuchli ta'kid.", stressWord: 'WHAT' },
+    { id: 'sp-d113-c4', en: "It was in London that they first met.", uz: "Ular birinchi marta Londonda uchrashdi.", grammarTip: "'It was in London that...' — joy haqida ta'kid. Cleft sentence.", commonMistake: "'They first met in London' o'rniga 'It was in London that they first met' — joy ta'kidi.", stressWord: 'LONDON' },
+    { id: 'sp-d113-c5', en: "It is not what you say but how you say it that matters.", uz: "Muhimi nimani aytishingiz emas, qanday aytishingiz.", grammarTip: "'It is not... but...' — taqqoslash. 'That matters' = muhim bo'lgan narsa.", commonMistake: "'What you say matters' o'rniga 'It is not what you say but how you say it that matters'.", stressWord: 'MATTERS' },
+    { id: 'sp-d113-c6', en: "It was the manager who made the final decision.", uz: "Yakuniy qarorni qabul qilgan menejer edi.", grammarTip: "'It was + S + who + V' — kim qilganini ta'kidlash. 'Final decision' = yakuniy qaror.", commonMistake: "'The manager made the final decision' o'rniga 'It was the manager who made' — ta'kid.", stressWord: 'WHO' }
   ],
   scenario: {
     topic: "Cleft Sentences",
@@ -4704,12 +4704,12 @@ const day114: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d114-c1', en: "This is example sentence 1 for Punctuation.", uz: "Bu Punctuation uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d114-c2', en: "This is example sentence 2 for Punctuation.", uz: "Bu Punctuation uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d114-c3', en: "This is example sentence 3 for Punctuation.", uz: "Bu Punctuation uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d114-c4', en: "This is example sentence 4 for Punctuation.", uz: "Bu Punctuation uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d114-c5', en: "This is example sentence 5 for Punctuation.", uz: "Bu Punctuation uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d114-c6', en: "This is example sentence 6 for Punctuation.", uz: "Bu Punctuation uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d114-c1', en: "She loves reading; he prefers watching films.", uz: "U kitob o'qishni yoqtiradi; u film ko'rishni afzal ko'radi.", grammarTip: "Semicolon (;) — bog'lovchi so'z o'rnida ikki mustaqil gapni bog'laydi.", commonMistake: "'She loves reading, he prefers' xato — semicolon (;) kerak, vergul emas.", stressWord: 'SEMICOLON' },
+    { id: 'sp-d114-c2', en: "There is one thing I need: a cup of coffee.", uz: "Menga kerak narsa bitta: bir piyola qahva.", grammarTip: "Colon (:) — tushuntirish yoki ro'yxatdan oldin ishlatiladi. 'One thing I need:' dan keyin javob.", commonMistake: "'There is one thing I need, a cup of coffee' — colon (:) kerak, vergul emas.", stressWord: 'COLON' },
+    { id: 'sp-d114-c3', en: "The results — as we expected — were positive.", uz: "Natijalar — kutganimizdek — ijobiy edi.", grammarTip: "Dash (—) — qo'shimcha ma'loni ajratadi. Ikkita dash bilan orasidagi gap qo'shimcha.", commonMistake: "'The results, as we expected, were positive' — dash (—) ko'proq ta'kid beradi.", stressWord: 'DASH' },
+    { id: 'sp-d114-c4', en: "I need to buy milk, eggs, and bread.", uz: "Men sut, tuxum va non sotib olishim kerak.", grammarTip: "Vergul (,) — ro'yxatda elementlarni ajratadi. Oxirgi 'and' dan oldin vergul (oxirgi ixtiyoriy).", commonMistake: "'I need to buy milk eggs and bread' xato — vergullar kerak: 'milk, eggs, and bread'.", stressWord: 'COMMA' },
+    { id: 'sp-d114-c5', en: "The company's profits increased by 20% last year.", uz: "Kompaniya foydasi kechagi yil 20% ga oshdi.", grammarTip: "Apostrof (') — egalik. 'Company's' = kompaniyaning. 'Profits' = foyda.", commonMistake: "'The companys profits' xato — 'company's' (apostrof kerak).", stressWord: 'APOSTROPHE' },
+    { id: 'sp-d114-c6', en: "The meeting is at 3 p.m. — please be on time.", uz: "Yig'ilish soat 15:00 da — iltimos, o'z vaqtida bo'ling.", grammarTip: "Dash (—) — ogohlantirish yoki qo'shimcha ma'no. 'Please be on time' = o'z vaqtida bo'ling.", commonMistake: "'The meeting is at 3pm please be on time' — dash (—) yoki nuqta kerak.", stressWord: 'DASH' }
   ],
   scenario: {
     topic: "Punctuation",
@@ -4742,12 +4742,12 @@ const day115: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d115-c1', en: "This is example sentence 1 for Academic Collocations.", uz: "Bu Academic Collocations uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d115-c2', en: "This is example sentence 2 for Academic Collocations.", uz: "Bu Academic Collocations uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d115-c3', en: "This is example sentence 3 for Academic Collocations.", uz: "Bu Academic Collocations uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d115-c4', en: "This is example sentence 4 for Academic Collocations.", uz: "Bu Academic Collocations uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d115-c5', en: "This is example sentence 5 for Academic Collocations.", uz: "Bu Academic Collocations uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d115-c6', en: "This is example sentence 6 for Academic Collocations.", uz: "Bu Academic Collocations uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d115-c1', en: "We conducted extensive research on the topic.", uz: "Biz bu mavzu bo'yicha keng qamrovli tadqiqot o'tkazdik.", grammarTip: "'Conduct research' = tadqiqot o'tkazmoq. 'Conduct' + research/study/survey — akademik collocation.", commonMistake: "'We made research' xato — 'conducted research' kerak. 'Conduct' tadqiqot bilan.", stressWord: 'CONDUCTED' },
+    { id: 'sp-d115-c2', en: "The study drew important conclusions from the data.", uz: "Tadqiqot ma'lumotlardan muhim xulosalar chiqardi.", grammarTip: "'Draw conclusions' = xulosalar chiqarmoq. 'Drew' = 'draw' ning o'tgan zamon.", commonMistake: "'The study made conclusions' xato — 'drew conclusions' kerak.", stressWord: 'DREW' },
+    { id: 'sp-d115-c3', en: "She presented her findings at the conference.", uz: "U konferensiyada o'z kashfiyotlarini taqdim etdi.", grammarTip: "'Present findings' = kashfiyotlarni taqdim etmoq. 'Presented' = taqdim etdi.", commonMistake: "'She showed her findings' o'rniga 'presented' — ko'proq akademik.", stressWord: 'PRESENTED' },
+    { id: 'sp-d115-c4', en: "The researchers gathered data from 500 participants.", uz: "Olimlar 500 ishtirokchidan ma'lumot to'pladilar.", grammarTip: "'Gather data' = ma'lumot to'plamoq. 'Gathered' = to'pladi. 'Participants' = ishtirokchilar.", commonMistake: "'The researchers collected data' ham to'g'ri, lekin 'gathered' ko'proq akademik.", stressWord: 'GATHERED' },
+    { id: 'sp-d115-c5', en: "This approach yields more accurate results.", uz: "Bu yondashuv aniqroq natijalar beradi.", grammarTip: "'Yield results' = natijalar beradi. 'Yields' = beradi (3-osh). Akademik uslub.", commonMistake: "'This approach gives more accurate results' o'rniga 'yields' — ko'proq akademik.", stressWord: 'YIELDS' },
+    { id: 'sp-d115-c6', en: "We must take into account all the variables.", uz: "Biz barcha o'zgaruvchilarni hisobga olishimiz kerak.", grammarTip: "'Take into account' = hisobga omoq. Boshqa variant: 'consider'. 'Variables' = o'zgaruvchilar.", commonMistake: "'We must take in account' xato — 'take INTO account' (with 'into').", stressWord: 'ACCOUNT' }
   ],
   scenario: {
     topic: "Academic Collocations",
@@ -4780,12 +4780,12 @@ const day116: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d116-c1', en: "This is example sentence 1 for Academic Vocabulary.", uz: "Bu Academic Vocabulary uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d116-c2', en: "This is example sentence 2 for Academic Vocabulary.", uz: "Bu Academic Vocabulary uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d116-c3', en: "This is example sentence 3 for Academic Vocabulary.", uz: "Bu Academic Vocabulary uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d116-c4', en: "This is example sentence 4 for Academic Vocabulary.", uz: "Bu Academic Vocabulary uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d116-c5', en: "This is example sentence 5 for Academic Vocabulary.", uz: "Bu Academic Vocabulary uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d116-c6', en: "This is example sentence 6 for Academic Vocabulary.", uz: "Bu Academic Vocabulary uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d116-c1', en: "The findings suggest a correlation between diet and health.", uz: "Kashfiyotlar diet va sog'liq o'rtasida bog'liqlik borligini ko'rsatadi.", grammarTip: "'Suggest' = ko'rsatmoq, taxmin qilmoq. 'Correlation' = bog'liqlik. Akademik so'z.", commonMistake: "'The findings suggest a correlation' — 'suggest' da 's' qo'shiladi (3-osh).", stressWord: 'CORRELATION' },
+    { id: 'sp-d116-c2', en: "We need to analyze the data more thoroughly.", uz: "Biz ma'lumotlarni ko'proq chuqur tahlil qilishimiz kerak.", grammarTip: "'Analyze' = tahlil qilmoq. 'Thoroughly' = chuqur, to'liq. Akademik ravish.", commonMistake: "'We need to analysis the data' xato — 'analyze' (fe'l) kerak, 'analysis' (ot) emas.", stressWord: 'ANALYZE' },
+    { id: 'sp-d116-c3', en: "This theory has been widely accepted by scholars.", uz: "Bu nazariya olimlar tomonidan keng qabul qilingan.", grammarTip: "'Widely accepted' = keng qabul qilingan. 'Scholars' = olimlar. Akademik uslub.", commonMistake: "'This theory has been widely accept' xato — 'accepted' (V3) kerak.", stressWord: 'ACCEPTED' },
+    { id: 'sp-d116-c4', en: "The methodology of this study is quite innovative.", uz: "Bu tadqiqot metedologiyasi juda innovatsion.", grammarTip: "'Methodology' = metodologiya. 'Innovative' = innovatsion. Akademik sifatlar.", commonMistake: "'The method of this study' o'rniga 'methodology' — ko'proq akademik.", stressWord: 'METHODOLOGY' },
+    { id: 'sp-d116-c5', en: "Further research is needed to confirm these results.", uz: "Natijalarni tasdiqlash uchun ko'proq tadqiqot kerak.", grammarTip: "'Further research' = ko'proq tadqiqot. 'Is needed' = kerak (passive). Akademik xulosa.", commonMistake: "'More research is needed' o'rniga 'further research' — ko'proq akademik.", stressWord: 'FURTHER' },
+    { id: 'sp-d116-c6', en: "The evidence supports the hypothesis significantly.", uz: "Dalillar taxminni sezilarli darajada tasdiqlaydi.", grammarTip: "'Evidence' = dalil. 'Supports' = tasdiqlaydi. 'Significantly' = sezilarli darajada.", commonMistake: "'The evidence support' xato — 'evidence' (ot, 3-osh) bilan 'supports' (s) kerak.", stressWord: 'SUPPORTS' }
   ],
   scenario: {
     topic: "Academic Vocabulary",
@@ -4818,12 +4818,12 @@ const day117: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d117-c1', en: "This is example sentence 1 for Critical Thinking.", uz: "Bu Critical Thinking uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d117-c2', en: "This is example sentence 2 for Critical Thinking.", uz: "Bu Critical Thinking uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d117-c3', en: "This is example sentence 3 for Critical Thinking.", uz: "Bu Critical Thinking uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d117-c4', en: "This is example sentence 4 for Critical Thinking.", uz: "Bu Critical Thinking uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d117-c5', en: "This is example sentence 5 for Critical Thinking.", uz: "Bu Critical Thinking uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d117-c6', en: "This is example sentence 6 for Critical Thinking.", uz: "Bu Critical Thinking uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d117-c1', en: "This argument lacks sufficient evidence to support it.", uz: "Bu argumentni qo'llab-quvvatlash uchun yetarli dalil yo'q.", grammarTip: "'Lacks sufficient evidence' = yetarli dalil yo'q. 'Lack' = kamchilik. Tanqidiy fikrlash.", commonMistake: "'This argument doesn't have enough evidence' o'rniga 'lacks sufficient evidence' — rasmiy.", stressWord: 'LACKS' },
+    { id: 'sp-d117-c2', en: "We should consider both sides of the argument.", uz: "Biz argumentning ikki tomonini ham ko'rib chiqishimiz kerak.", grammarTip: "'Consider both sides' = ikki tomonni ko'rib chiqmoq. Tanqidiy fikrlashning asosi.", commonMistake: "'We should look at both sides' o'rniga 'consider' — ko'proq akademik.", stressWord: 'CONSIDER' },
+    { id: 'sp-d117-c3', en: "The conclusion doesn't necessarily follow from the premises.", uz: "Xulosa tamoyillardan zarur emas.", grammarTip: "'Doesn't necessarily follow' = zarur emas. 'Premises' = tamoyillar. Mantiqiy tahlil.", commonMistake: "'The conclusion isn't right' o'rniga 'doesn't necessarily follow' — ko'proq aniqlik.", stressWord: 'FOLLOW' },
+    { id: 'sp-d117-c4', en: "This study is biased towards urban populations.", uz: "Bu tadqiqot shahar aholisiga nisbatan tarafkash.", grammarTip: "'Biased towards' = tarafkash. 'Urban populations' = shahar aholisi. Tanqidiy tahlil.", commonMistake: "'This study is bias' xato — 'is biased' (passive) kerak.", stressWord: 'BIASED' },
+    { id: 'sp-d117-c5', en: "We need to distinguish between correlation and causation.", uz: "Biz bog'liqlik va sababiyat o'rtasidagi farqni ajratishimiz kerak.", grammarTip: "'Distinguish between' = farqni ajratmoq. 'Correlation' = bog'liqlik, 'causation' = sababiyat.", commonMistake: "'We need to distinguish correlation and causation' xato — 'distinguish BETWEEN'.", stressWord: 'DISTINGUISH' },
+    { id: 'sp-d117-c6', en: "The data can be interpreted in different ways.", uz: "Ma'lumotlarni turlicha talqin qilish mumkin.", grammarTip: "'Can be interpreted' = talqin qilish mumkin (passive). 'Interpret' = talqin qilmoq.", commonMistake: "'The data can interpret different ways' xato — 'can be INTERPRETED'.", stressWord: 'INTERPRETED' }
   ],
   scenario: {
     topic: "Critical Thinking",
@@ -4856,12 +4856,12 @@ const day118: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d118-c1', en: "This is example sentence 1 for Argument Structure.", uz: "Bu Argument Structure uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d118-c2', en: "This is example sentence 2 for Argument Structure.", uz: "Bu Argument Structure uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d118-c3', en: "This is example sentence 3 for Argument Structure.", uz: "Bu Argument Structure uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d118-c4', en: "This is example sentence 4 for Argument Structure.", uz: "Bu Argument Structure uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d118-c5', en: "This is example sentence 5 for Argument Structure.", uz: "Bu Argument Structure uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d118-c6', en: "This is example sentence 6 for Argument Structure.", uz: "Bu Argument Structure uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d118-c1', en: "My thesis is that education should be free for everyone.", uz: "Mening tezam shundaki, ta'lim hamma uchun bepul bo'lishi kerak.", grammarTip: "'My thesis is that...' = mening tezam. 'Thesis' = asosiy fikr, argument.", commonMistake: "'My thesis is' dan keyin 'that' qo'yiladi: 'My thesis is THAT education...'.", stressWord: 'THESIS' },
+    { id: 'sp-d118-c2', en: "The evidence clearly supports my argument.", uz: "Dalillar aniq menim argumentimni qo'llab-quvvatlaydi.", grammarTip: "'Evidence supports' = dalillar qo'llab-quvvatlaydi. 'Clearly' = aniq. Kuchli argument.", commonMistake: "'The evidence support' xato — 'evidence' (ot, 3-osh) bilan 'supports' (s) kerak.", stressWord: 'SUPPORTS' },
+    { id: 'sp-d118-c3', en: "However, some people argue that the opposite is true.", uz: "Biroq, ba'zi odamlar aksincha to'g'ri deb argument qiladi.", grammarTip: "'However' = biroq. 'Argue that' = argument qilmoq. 'Opposite' = aks.", commonMistake: "'Some people argue that' — 'argue' da 's' qo'shilmasin: 'they ARGUE'.", stressWord: 'HOWEVER' },
+    { id: 'sp-d118-c4', en: "To sum up, the benefits of technology outweigh the risks.", uz: "Xulosa qilib, texnologiya afzalliklari xavflardan ustun.", grammarTip: "'To sum up' = xulosa qilib. 'Outweigh' = ustunlik qilmoq. Xulosa gap.", commonMistake: "'To sum up' va 'in conclusion' bir xil, lekin 'to sum up' ko'proq norasmiy.", stressWord: 'SUM' },
+    { id: 'sp-d118-c5', en: "A strong argument requires credible sources.", uz: "Kuchli argument ishonchli manbalar talab qiladi.", grammarTip: "'Requires' = talab qiladi. 'Credible sources' = ishonchli manbalar. Argument tuzilishi.", commonMistake: "'A strong argument need' xato — 'requires' (3-osh) kerak.", stressWord: 'REQUIRES' },
+    { id: 'sp-d118-c6', en: "We must address the counterargument to strengthen our position.", uz: "Biz pozitsiyamizni kuchaytirish uchun qarama-qarshi argumentga javob berishimiz kerak.", grammarTip: "'Counterargument' = qarama-qarshi argument. 'Address' = muammoni hal qilmoq.", commonMistake: "'We must answer the counterargument' o'rniga 'address' — ko'proq rasmiy.", stressWord: 'COUNTERARGUMENT' }
   ],
   scenario: {
     topic: "Argument Structure",
@@ -4894,12 +4894,12 @@ const day119: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d119-c1', en: "This is example sentence 1 for Stance Markers.", uz: "Bu Stance Markers uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d119-c2', en: "This is example sentence 2 for Stance Markers.", uz: "Bu Stance Markers uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d119-c3', en: "This is example sentence 3 for Stance Markers.", uz: "Bu Stance Markers uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d119-c4', en: "This is example sentence 4 for Stance Markers.", uz: "Bu Stance Markers uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d119-c5', en: "This is example sentence 5 for Stance Markers.", uz: "Bu Stance Markers uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d119-c6', en: "This is example sentence 6 for Stance Markers.", uz: "Bu Stance Markers uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d119-c1', en: "I believe that education is the key to success.", uz: "Men ishonaman-ki, ta'lim muvaffaqiyat kalitidir.", grammarTip: "'I believe that' = men ishonaman-ki. Stance marker — pozitsiya bildirish.", commonMistake: "'I believe that' da 'that' tushirilishi mumkin, lekin rasmiy yozuvda yaxshiroq.", stressWord: 'BELIEVE' },
+    { id: 'sp-d119-c2', en: "It is clear that climate change is a serious issue.", uz: "Aniq-ki, iqlim o'zgarishi jiddiy muammo.", grammarTip: "'It is clear that' = aniq-ki. Stance marker — o'z fikrini aniq bildirish.", commonMistake: "'Climate change is clear a serious issue' xato — 'It is clear THAT climate change...'.", stressWord: 'CLEAR' },
+    { id: 'sp-d119-c3', en: "In my opinion, the government should invest more in education.", uz: "Mening fikrimcha, hukumat ta'limga ko'proq sarmoya kiritishi kerak.", grammarTip: "'In my opinion' = mening fikrimcha. Stance marker — shaxsiy fikr.", commonMistake: "'In my opinion' va 'I think' bir xil, lekin 'in my opinion' ko'proq rasmiy.", stressWord: 'OPINION' },
+    { id: 'sp-d119-c4', en: "It seems to me that we need a different approach.", uz: "Menga ko'rinadiki, bizga boshqa yondashuv kerak.", grammarTip: "'It seems to me that' = menga ko'rinadiki. Ehtiyotkor stance marker.", commonMistake: "'It seems me that' xato — 'it seems TO me that' kerak.", stressWord: 'SEEMS' },
+    { id: 'sp-d119-c5', en: "I would argue that technology has both advantages and disadvantages.", uz: "Men argument qilardim-ki, texnologiya afzallik va kamchiliklarga ega.", grammarTip: "'I would argue that' = men argument qilardim-ki. Yumshoqroq (would).", commonMistake: "'I argue that' o'rniga 'I would argue that' — ko'proq ehtiyotkor.", stressWord: 'WOULD' },
+    { id: 'sp-d119-c6', en: "There is no doubt that practice makes perfect.", uz: "Shubha yo'q-ki, mashq qilish mukammallikka olib keladi.", grammarTip: "'There is no doubt that' = shubha yo'q-ki. Kuchli ta'kid.", commonMistake: "'There is no doubt that' — 'that' tushirilishi mumkin, lekin yaxshiroq.", stressWord: 'DOUBT' }
   ],
   scenario: {
     topic: "Stance Markers",
@@ -4932,12 +4932,12 @@ const day120: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d120-c1', en: "This is example sentence 1 for Paraphrasing.", uz: "Bu Paraphrasing uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d120-c2', en: "This is example sentence 2 for Paraphrasing.", uz: "Bu Paraphrasing uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d120-c3', en: "This is example sentence 3 for Paraphrasing.", uz: "Bu Paraphrasing uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d120-c4', en: "This is example sentence 4 for Paraphrasing.", uz: "Bu Paraphrasing uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d120-c5', en: "This is example sentence 5 for Paraphrasing.", uz: "Bu Paraphrasing uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d120-c6', en: "This is example sentence 6 for Paraphrasing.", uz: "Bu Paraphrasing uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d120-c1', en: "The study found that exercise improves mental health.", uz: "Tadqiqot shuni ko'rsatdiki, exercise ruhiy salomatlikni yaxshilaydi.", grammarTip: "Original: 'exercise improves mental health'. Paraphrase: 'physical activity enhances psychological wellbeing'.", commonMistake: "'Paraphrase' = boshqa so'zlar bilan qayta aytish, lekin ma'no o'zgarmaydi.", stressWord: 'FOUND' },
+    { id: 'sp-d120-c2', en: "According to the research, sleep is essential for memory.", uz: "Tadqiqotga ko'ra, uyqu xotira uchun zarur.", grammarTip: "Original: 'sleep is essential for memory'. Paraphrase: 'adequate rest is crucial for cognitive function'.", commonMistake: "'Paraphrasing' da asl ma'no saqlanadi, faqat so'zlar o'zgaradi.", stressWord: 'ACCORDING' },
+    { id: 'sp-d120-c3', en: "Many experts agree that pollution is a growing concern.", uz: "Ko'plab mutaxassislar ittifoq qilishadiki, ifloslanish o'sayotgan muammo.", grammarTip: "Original: 'pollution is a growing concern'. Paraphrase: 'environmental contamination is an increasing issue'.", commonMistake: "'Many experts agree that' — 'agree' da 's' qo'shilmasin: 'they AGREE'.", stressWord: 'EXPERTS' },
+    { id: 'sp-d120-c4', en: "The results indicate a significant improvement in student performance.", uz: "Natijalar talabalarning natijalarida sezilarli yaxshilanishni ko'rsatadi.", grammarTip: "Original: 'significant improvement'. Paraphrase: 'substantial progress'. Sinonimlarni ishlatish.", commonMistake: "'The results indicate' — 'indicate' da 's' qo'shiladi: 'the results INDICATE'.", stressWord: 'INDICATE' },
+    { id: 'sp-d120-c5', en: "It is widely believed that regular exercise benefits overall health.", uz: "Keng ishoniladiki, muntazam exercise umumiy sog'liqqa foyda keltiradi.", grammarTip: "Original: 'regular exercise benefits overall health'. Paraphrase: 'consistent physical activity contributes to general wellbeing'.", commonMistake: "'It is widely believed that' — passiv paraphrase. 'That' tushirilishi mumkin.", stressWord: 'WIDELY' },
+    { id: 'sp-d120-c6', en: "In other words, technology has transformed modern communication.", uz: "Boshqa so'zlar bilan aytganda, texnologiya zamonaviy kommunikatsiyani o'zgartirdi.", grammarTip: "'In other words' = boshqa so'zlar bilan aytganda. Paraphrase uchun ibora.", commonMistake: "'In other words' — paraphrase boshlanishini ko'rsatadi. Ko'p ishlatiladi.", stressWord: 'WORDS' }
   ],
   scenario: {
     topic: "Paraphrasing",
@@ -4970,12 +4970,12 @@ const day121: SpeakingDay = {
   },
   recycledChunkIds: [],
   chunks: [
-    { id: 'sp-d121-c1', en: "This is example sentence 1 for Advanced Verb Patterns.", uz: "Bu Advanced Verb Patterns uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d121-c2', en: "This is example sentence 2 for Advanced Verb Patterns.", uz: "Bu Advanced Verb Patterns uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d121-c3', en: "This is example sentence 3 for Advanced Verb Patterns.", uz: "Bu Advanced Verb Patterns uchun namuna jumla 3.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d121-c4', en: "This is example sentence 4 for Advanced Verb Patterns.", uz: "Bu Advanced Verb Patterns uchun namuna jumla 4.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d121-c5', en: "This is example sentence 5 for Advanced Verb Patterns.", uz: "Bu Advanced Verb Patterns uchun namuna jumla 5.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
-    { id: 'sp-d121-c6', en: "This is example sentence 6 for Advanced Verb Patterns.", uz: "Bu Advanced Verb Patterns uchun namuna jumla 6.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' }
+    { id: 'sp-d121-c1', en: "I can't help thinking about the problem.", uz: "Men muammo haqida o'ylamasdan turolmayman.", grammarTip: "'Can't help + V-ing' = qila olmaslik. 'Thinking' = o'ylash. Fe'l + gerund naqshi.", commonMistake: "'I can't help to think' xato — 'can't help THINKING' (gerund) kerak.", stressWord: 'HELP' },
+    { id: 'sp-d121-c2', en: "She admitted having made a mistake.", uz: "U xato qilganini tan oldi.", grammarTip: "'Admit + V-ing' = tan olmoq. 'Having made' = perfect gerund (oldin qilgan).", commonMistake: "'She admitted to make a mistake' xato — 'admitted MAKING a mistake' (gerund).", stressWord: 'ADMITTED' },
+    { id: 'sp-d121-c3', en: "They suggested going to the cinema instead.", uz: "Ular o'rniga kinoga borishni taklif qilishdi.", grammarTip: "'Suggest + V-ing' = taklif qilmoq. 'Going' = borish. Fe'l + gerund naqshi.", commonMistake: "'They suggested to go' xato — 'suggested GOING' (gerund) kerak.", stressWord: 'SUGGESTED' },
+    { id: 'sp-d121-c4', en: "I look forward to hearing from you soon.", uz: "Sizdan tez orada xabar olishni kutaman.", grammarTip: "'Look forward to + V-ing' = kutmoq. 'To' prepozitsiya, shuning uchun gerund.", commonMistake: "'I look forward to hear' xato — 'look forward to HEARING' (gerund, chunki 'to' prepozitsiya).", stressWord: 'LOOKING' },
+    { id: 'sp-d121-c5', en: "She denied knowing anything about the plan.", uz: "U reja haqida hech narsa bilmasligini rad etdi.", grammarTip: "'Deny + V-ing' = rad etmoq. 'Knowing' = bilish. Fe'l + gerund naqshi.", commonMistake: "'She denied to know' xato — 'denied KNOWING' (gerund) kerak.", stressWord: 'DENIED' },
+    { id: 'sp-d121-c6', en: "He avoided making eye contact during the interview.", uz: "U suhbat davomida ko'z tegishmaslikdan qochdi.", grammarTip: "'Avoid + V-ing' = qochmoq. 'Making eye contact' = ko'z tegishmaslik. Fe'l + gerund.", commonMistake: "'He avoided to make' xato — 'avoided MAKING' (gerund) kerak.", stressWord: 'AVOIDED' }
   ],
   scenario: {
     topic: "Advanced Verb Patterns",
@@ -5004,7 +5004,7 @@ const day122: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d117-c1', 'sp-d118-c1', 'sp-d119-c1', 'sp-d120-c1', 'sp-d121-c1'],
   chunks: [
     { id: 'sp-d122-c1', en: "This is example sentence 1 for B2 Review 1.", uz: "Bu B2 Review 1 uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d122-c2', en: "This is example sentence 2 for B2 Review 1.", uz: "Bu B2 Review 1 uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -5040,7 +5040,7 @@ const day123: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d117-c2', 'sp-d118-c2', 'sp-d119-c2', 'sp-d120-c2', 'sp-d121-c2'],
   chunks: [
     { id: 'sp-d123-c1', en: "This is example sentence 1 for B2 Review 2.", uz: "Bu B2 Review 2 uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d123-c2', en: "This is example sentence 2 for B2 Review 2.", uz: "Bu B2 Review 2 uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -5076,7 +5076,7 @@ const day124: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d117-c3', 'sp-d118-c3', 'sp-d119-c3', 'sp-d120-c3', 'sp-d121-c3'],
   chunks: [
     { id: 'sp-d124-c1', en: "This is example sentence 1 for B2 Review 3.", uz: "Bu B2 Review 3 uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d124-c2', en: "This is example sentence 2 for B2 Review 3.", uz: "Bu B2 Review 3 uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
@@ -5112,7 +5112,7 @@ const day125: SpeakingDay = {
     tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
     tipEn: "Place your tongue between your teeth.",
   },
-  recycledChunkIds: [],
+  recycledChunkIds: ['sp-d117-c4', 'sp-d118-c4', 'sp-d119-c4', 'sp-d120-c4', 'sp-d121-c4'],
   chunks: [
     { id: 'sp-d125-c1', en: "This is example sentence 1 for B2 Final Review.", uz: "Bu B2 Final Review uchun namuna jumla 1.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
     { id: 'sp-d125-c2', en: "This is example sentence 2 for B2 Final Review.", uz: "Bu B2 Final Review uchun namuna jumla 2.", grammarTip: "Grammar tip.", commonMistake: "Common mistake.", stressWord: 'EXAMPLE' },
