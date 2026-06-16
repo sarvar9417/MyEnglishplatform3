@@ -300,7 +300,7 @@ export default function ProfileInfo({
             name: trimmedName,
             level,
             email: session.user.email ?? '',
-          } as never, { onConflict: 'id' })
+          } as any, { onConflict: 'id' })
 
         if (dbError) throw dbError
 

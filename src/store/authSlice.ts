@@ -97,7 +97,7 @@ export const createAuthSlice: StateCreator<AppState, [], [], AuthSlice> = (set, 
               target_date: target,
               current_day: day,
               current_week: week,
-            } as never, { onConflict: 'id' })
+            } as any, { onConflict: 'id' })
             if (error) monitoring.captureMessage('onboarding sync error: ' + error.message, 'error')
           }
         } catch (e) {

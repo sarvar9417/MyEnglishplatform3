@@ -52,7 +52,7 @@ export async function fetchDailyPhrases(
     return []
   }
 
-  return (data ?? []) as unknown as DailyPhraseRow[]
+  return (data ?? []) as DailyPhraseRow[]
 }
 
 export async function fetchPhrasesForReview(userId: string): Promise<DailyPhraseRow[]> {
@@ -65,7 +65,7 @@ export async function fetchPhrasesForReview(userId: string): Promise<DailyPhrase
     return []
   }
 
-  return (data ?? []) as unknown as DailyPhraseRow[]
+  return (data ?? []) as DailyPhraseRow[]
 }
 
 export async function upsertPhraseProgress(

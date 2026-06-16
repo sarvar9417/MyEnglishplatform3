@@ -78,7 +78,7 @@ export async function addPersonalWordToDB(
   }
 
   if (!data) throw new Error('No data returned')
-  return data as unknown as PersonalWord
+  return data as PersonalWord
 }
 
 export async function updatePersonalWordInDB(
@@ -131,7 +131,7 @@ export async function fetchPersonalWordsFromDB(userId: string): Promise<Personal
     return []
   }
 
-  return (data ?? []) as unknown as PersonalWord[]
+  return (data ?? []) as PersonalWord[]
 }
 
 export async function fetchWordsForReviewFromDB(userId: string): Promise<PersonalWord[]> {
@@ -152,7 +152,7 @@ export async function fetchWordsForReviewFromDB(userId: string): Promise<Persona
     return []
   }
 
-  return (data ?? []) as unknown as PersonalWord[]
+  return (data ?? []) as PersonalWord[]
 }
 
 export async function ratePersonalWordInDB(
@@ -272,7 +272,7 @@ export async function batchAddPersonalWordsToDB(
     throw error instanceof Error ? error : new Error(String(error))
   }
 
-  return (data ?? []) as unknown as PersonalWord[]
+  return (data ?? []) as PersonalWord[]
 }
 
 // ─── AI Translation Helper ────────────────────────────────────────────────

@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 import { db } from '../lib/db'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
+import type { Json } from '../types/supabase'
 
 export async function requireSession(): Promise<string> {
   const { data: { session } } = await supabase.auth.getSession()
@@ -30,7 +31,7 @@ export async function fetchContent<T>(
   }
   if (!data || data.length === 0) return fallback
   if (!Array.isArray(data)) return []
-  return data.map((row: { data: unknown }) => db.jsonFrom<T>(row.data as never) as T).filter((r): r is T => r != null)
+  return data.map((row: { data: unknown }) => db.jsonFrom<T>(row.data as Json) as T).filter((r): r is T => r != null)
 }
 
 export async function saveScore(

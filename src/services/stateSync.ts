@@ -17,7 +17,7 @@ export async function syncUserState(state: PersistedState): Promise<void> {
     .maybeSingle()
 
   if (existing?.state) {
-    const remoteState = existing.state as unknown as PersistedState
+    const remoteState = existing.state as PersistedState
     const merged = mergeUserState({ local: state, remote: remoteState })
     await supabase.from('users').update({ state: merged as Json }).eq('id', session.user.id)
   } else {
@@ -33,7 +33,7 @@ export async function loadUserState(): Promise<PersistedState | null> {
     .select('state')
     .eq('id', session.user.id)
     .maybeSingle()
-  return (data?.state as unknown as PersistedState) ?? null
+  return (data?.state as PersistedState) ?? null
 }
 
 export async function loadTodayProgress() {

@@ -133,7 +133,7 @@ export async function fetchLessons(): Promise<(DailyLesson | ReviewLesson)[]> {
     .sort((a, b) => (orderMap.get(a.id) ?? 99999) - (orderMap.get(b.id) ?? 99999))
 
   for (const lesson of mergedLessons) {
-    cacheLesson(lesson as unknown as DailyLesson).catch((e) => monitoring.captureMessage('cacheLesson (merged) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
+    cacheLesson(lesson as DailyLesson).catch((e) => monitoring.captureMessage('cacheLesson (merged) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
   }
   monitoring.captureMessage(`Cached ${mergedLessons.length} lessons offline`, 'info')
 
@@ -158,7 +158,7 @@ export async function fetchReviewLessons(): Promise<ReviewLesson[]> {
           .from('review_lessons')
           .select('*')
           .in('id', supabaseOnlyIds)
-        const extraReviews = (extra ?? []).map(r => castReviewLesson(r as unknown as ReviewLessonRow))
+        const extraReviews = (extra ?? []).map(r => castReviewLesson(r as ReviewLessonRow))
         const allReviews = [...REVIEW_LESSONS, ...extraReviews]
         for (const review of allReviews) {
           cacheLesson(review as unknown as DailyLesson).catch((e) => monitoring.captureMessage('cacheLesson (review) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
@@ -639,7 +639,7 @@ export async function loadExerciseAnswersFromDB(lessonId: string): Promise<Loade
 
   if (!data) return []
 
-  return (data as unknown as { exercise_id: number; exercise_type: string; answer: string; is_correct: boolean; section_index: number; section_type: string }[]).map(d => ({
+  return (data as { exercise_id: number; exercise_type: string; answer: string; is_correct: boolean; section_index: number; section_type: string }[]).map(d => ({
     exerciseId: d.exercise_id,
     exerciseType: d.exercise_type,
     answer: typeof d.answer === 'string' ? JSON.parse(d.answer) : d.answer as unknown as string[],
@@ -705,7 +705,7 @@ export async function loadLessonVocabProgressFromDB(lessonId: string): Promise<L
 
   if (!data) return []
 
-  return (data as unknown as { word_index: number; known: boolean; quiz_correct: number; quiz_wrong: number }[]).map(d => ({
+  return (data as { word_index: number; known: boolean; quiz_correct: number; quiz_wrong: number }[]).map(d => ({
     wordIndex: d.word_index,
     known: d.known,
     quizCorrect: d.quiz_correct,

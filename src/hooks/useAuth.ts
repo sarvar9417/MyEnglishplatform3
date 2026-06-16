@@ -41,7 +41,7 @@ export function useAuth() {
     if (!error && data.user) {
       // Upsert into public.users so the trigger or RLS-protected insert lands
       await supabase.from('users').upsert(
-        { id: data.user.id, email, name } as never,
+        { id: data.user.id, email, name } as any,
         { onConflict: 'id' }
       )
     }

@@ -199,7 +199,7 @@ export async function saveUserAMessages(
     const { error } = await supabase
       .from('roleplay_sessions')
       .update({
-        user_a_messages: messages as unknown as Json,
+        user_a_messages: messages as Json,
         updated_at: new Date().toISOString(),
       })
       .eq('id', sessionId)
@@ -223,7 +223,7 @@ export async function saveUserBMessages(
     const { error } = await supabase
       .from('roleplay_sessions')
       .update({
-        user_b_messages: messages as unknown as Json,
+        user_b_messages: messages as Json,
         updated_at: new Date().toISOString(),
       })
       .eq('id', sessionId)

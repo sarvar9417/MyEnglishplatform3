@@ -320,7 +320,7 @@ export async function getTandemPair(): Promise<TandemPair | null> {
     return null
   }
 
-  return data as unknown as TandemPair
+  return data as TandemPair
 }
 
 /** Juftlik yaratish (do'stlik qabul qilingandan keyin) */
@@ -335,7 +335,7 @@ export async function createTandemPair(friendId: string): Promise<{ success: boo
     .or(`and(user_a.eq.${userId},user_b.eq.${friendId}),and(user_a.eq.${friendId},user_b.eq.${userId})`)
     .maybeSingle()
 
-  if (existing) return { success: true, pair: existing as unknown as TandemPair }
+  if (existing) return { success: true, pair: existing as TandemPair }
 
   // Kanonik tartib: user_a har doim lexik kichikrog'i. Aks holda (A,B) va (B,A)
   // unique(user_a,user_b) ostida HAR XIL qator bo'lib, race'da ikkala tomon ham
@@ -369,7 +369,7 @@ export async function createTandemPair(friendId: string): Promise<{ success: boo
     return { success: false, error: 'Juftlik yaratishda xatolik' }
   }
 
-  return { success: true, pair: data as unknown as TandemPair }
+  return { success: true, pair: data as TandemPair }
 }
 
 /** Juftlik streakini yangilash (ikkalasi ham bugun dars qilgan bo'lsa) */
@@ -1077,7 +1077,7 @@ export async function saveDuelVerdict(
       return { success: false, error: 'Baholashda xatolik' }
     }
 
-    return { success: true, result: data as unknown as DuelResult }
+    return { success: true, result: data as DuelResult }
   } catch (e) {
     monitoring.captureMessage('saveDuelVerdict failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return { success: false, error: 'AI hakam xatosi' }

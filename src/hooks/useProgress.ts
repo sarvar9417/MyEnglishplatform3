@@ -156,7 +156,7 @@ export function useProgress() {
     supabase
       .from('daily_progress')
       .upsert(
-        { user_id: uid, date: dateStr, ...patch } as never,
+        { user_id: uid, date: dateStr, ...patch } as any,
         { onConflict: 'user_id,date' }
       )
       .select()
