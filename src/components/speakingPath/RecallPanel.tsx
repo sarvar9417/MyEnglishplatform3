@@ -8,6 +8,7 @@ import { ArrowRight, RotateCcw, Check, X, Volume2, Send, BookOpen, Info } from '
 import HoldMicButton from './HoldMicButton'
 import { useSpeechSynthesis } from '../../hooks/useSpeechSynthesis'
 import { useSpeechRecognition, isMobileDevice } from '../../hooks/useSpeechRecognition'
+import { monitoring } from '../../lib/monitoring'
 import { useAudioRecorder } from '../../hooks/useAudioRecorder'
 import { gradeChunk } from '../../services/speakingPathService'
 import { semanticSimilarity, semanticToRating, isSemanticCorrect } from './match'
@@ -77,7 +78,9 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
     setLastResult(result)
     setBestScore(prev => Math.max(prev, result.score))
     setAttempted(true)
-    if (userId) gradeChunk(userId, chunk.id, semanticToRating(result.score)).catch(() => {})
+    if (userId) gradeChunk(userId, chunk.id, semanticToRating(result.score)).catch((e: unknown) => {
+      monitoring.captureMessage('SRS gradeChunk failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+    })
   }, [chunk, userId])
 
   // STT transcript tayyor bo'lganda baholash

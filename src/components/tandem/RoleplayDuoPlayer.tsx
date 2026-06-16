@@ -8,6 +8,7 @@ import {
   Loader2, Users, AlertCircle, BookOpen,
 } from 'lucide-react'
 import { useStore } from '../../store/useStore'
+import { monitoring } from '../../lib/monitoring'
 import { supabase } from '../../lib/supabase'
 import { CONVERSATION_SCENARIOS, type ConversationScenario } from '../../data/conversationScenarios'
 import { startScenarioConversation } from '../../lib/claude'
@@ -280,7 +281,9 @@ export default function RoleplayDuoPlayer({ session, currentUserId, currentUserN
     await saveUserAMessages(session.id, [{ role: 'assistant' as const, content: s.opening }])
 
     if (voiceOn) {
-      speak(s.opening, { rate: 0.95 }).catch(() => {})
+      speak(s.opening, { rate: 0.95 }).catch((e: unknown) => {
+        monitoring.captureMessage('TTS speak (roleplay opening) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      })
     }
   }
 
@@ -294,7 +297,9 @@ export default function RoleplayDuoPlayer({ session, currentUserId, currentUserN
     await saveUserBMessages(session.id, [{ role: 'assistant', content: scenario.opening }])
 
     if (voiceOn) {
-      speak(scenario.opening, { rate: 0.95 }).catch(() => {})
+      speak(scenario.opening, { rate: 0.95 }).catch((e: unknown) => {
+        monitoring.captureMessage('TTS speak (roleplay B opening) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      })
     }
   }
 
@@ -331,7 +336,9 @@ export default function RoleplayDuoPlayer({ session, currentUserId, currentUserN
         }
 
         if (voiceOn) {
-          speak(full, { rate: 0.95 }).catch(() => {})
+          speak(full, { rate: 0.95 }).catch((e: unknown) => {
+            monitoring.captureMessage('TTS speak (roleplay AI response) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+          })
         }
       },
       () => { setLoading(false); setStreaming('') },

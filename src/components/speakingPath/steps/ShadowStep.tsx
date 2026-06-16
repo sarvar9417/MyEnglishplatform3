@@ -97,7 +97,9 @@ export default function ShadowStep({ day, level, onNext }: Props) {
         const r = await analyzePronunciation(currentChunk.en, text, currentChunk.ipa ?? '', level, acoustic)
         setResult(r)
         if (r.issues.length > 0) {
-          trackPronunciationErrors(r.issues, r.score, 'shadow', currentChunk.en).catch(() => {})
+          trackPronunciationErrors(r.issues, r.score, 'shadow', currentChunk.en).catch((e: unknown) => {
+            monitoring.captureMessage('trackPronunciationErrors (shadow) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+          })
         }
       } catch (err) {
         monitoring.captureException(err instanceof Error ? err : new Error(String(err)), { context: 'ShadowStep.analyze' })

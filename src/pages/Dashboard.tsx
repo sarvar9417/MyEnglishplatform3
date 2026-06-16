@@ -7,6 +7,7 @@ import { useI18n } from '../i18n'
 import { useTandemStore } from '../store/tandemSlice'
 import { getSpeakingStats, type SpeakingStats } from '../services/speakingPathService'
 import { getAllChunks, TOTAL_SPEAKING_DAYS } from '../data/speakingPath'
+import { monitoring } from '../lib/monitoring'
 import {
   BookOpen, BookMarked, Headphones, PenLine,
   BookText, Mic, Sun, ChevronRight, ChevronDown, LogOut, MessageCircle,
@@ -418,7 +419,9 @@ function SpeakingPathCard() {
     let active = true
     getSpeakingStats(uid, getAllChunks())
       .then(s => { if (active) setStats(s) })
-      .catch(() => {})
+      .catch((e: unknown) => {
+        monitoring.captureMessage('getSpeakingStats failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      })
     return () => { active = false }
   }, [user?.id])
 

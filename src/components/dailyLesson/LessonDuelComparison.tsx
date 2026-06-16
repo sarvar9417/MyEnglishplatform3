@@ -88,7 +88,9 @@ export default function LessonDuelComparison({ lessonId, lessonTitle, lessonScor
             supabase.from('users').select('name').eq('id', duel.opponent!).single().then(({ data }) => {
               if (data?.name) setOpponentName(data.name)
             })
-          }).catch(() => {/* ignore */})
+          }).catch((e: unknown) => {
+            monitoring.captureMessage('load opponent name failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+          })
         }
 
         setLoading(false)

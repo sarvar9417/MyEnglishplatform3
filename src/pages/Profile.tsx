@@ -277,8 +277,13 @@ export default function Profile() {
             )
           })
         }
-      }).catch(() => {})
-    }).catch(() => setRewardsLoading(false))
+      }).catch((e: unknown) => {
+        monitoring.captureMessage('claimPendingRewards failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      })
+    }).catch((e: unknown) => {
+      monitoring.captureMessage('loadPendingRewards failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      setRewardsLoading(false)
+    })
   }, [user?.id, streak])
 
   // ── Achievements Tab Effects ────────────────────────────────────────────────

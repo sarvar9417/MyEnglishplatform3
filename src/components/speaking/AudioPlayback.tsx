@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Play, Pause, Volume2 } from 'lucide-react'
+import { monitoring } from '../../lib/monitoring'
 
 export interface PitchPoint {
   time: number
@@ -209,7 +210,9 @@ export default function AudioPlayback({
     if (playing) {
       audio.pause()
     } else {
-      audio.play().catch(() => {})
+      audio.play().catch((e: unknown) => {
+        monitoring.captureMessage('AudioPlayback play failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      })
     }
   }
 
@@ -286,7 +289,9 @@ function ComparisonRow({ url, label }: { url: string; label: string; color?: str
       <button
         onClick={() => {
           if (playing) audioRef.current?.pause()
-          else audioRef.current?.play().catch(() => {})
+          else audioRef.current?.play().catch((e: unknown) => {
+            monitoring.captureMessage('AudioPlayback mini play failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+          })
         }}
         className="w-8 h-8 rounded-full bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-300 flex items-center justify-center shrink-0 active:scale-95 transition-all"
         aria-label={playing ? 'Pause' : 'Play'}

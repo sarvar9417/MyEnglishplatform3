@@ -83,7 +83,9 @@ export default function Pronunciation() {
       setAnalyzing(false)
 
       if (result.issues.length > 0) {
-        trackPronunciationErrors(result.issues, result.score, 'pronunciation', phrase.text).catch(() => {})
+        trackPronunciationErrors(result.issues, result.score, 'pronunciation', phrase.text).catch((e: unknown) => {
+          monitoring.captureMessage('trackPronunciationErrors (pronunciation) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+        })
       }
 
       const key = `${category?.id}-${idx}`

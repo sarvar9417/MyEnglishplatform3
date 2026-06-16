@@ -18,7 +18,9 @@ export function useAppHydration(session: Session | null) {
 
     if (prevUserId && prevUserId !== session.user.id) {
       clearAllLessonProgress()
-      import('../db/database').then(({ clearLocalUserData }) => clearLocalUserData()).catch(() => {})
+      import('../db/database').then(({ clearLocalUserData }) => clearLocalUserData()).catch((e: unknown) => {
+        monitoring.captureMessage('clearLocalUserData on user switch failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      })
       try {
         for (const key of Object.keys(localStorage)) {
           if (key.includes('auth-token') || key === 'theme') continue

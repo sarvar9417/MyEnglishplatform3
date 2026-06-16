@@ -8,6 +8,7 @@ import { Users, UserPlus, Sword, Flame, Clock, Check,
   UserCheck, UserX, Loader2, Link as LinkIcon,
   Award, TrendingUp, Calendar, Theater, Sword as Swords,
 } from 'lucide-react'
+import { monitoring } from '../../lib/monitoring'
 import { useTandemStore } from '../../store/tandemSlice'
 import { addFriendByCode, acceptFriendRequest, getOrCreateWeeklyDuel, getDuelById, getOrCreateInviteCode } from '../../services/tandemService'
 import type { WeeklyDuelData } from '../../services/tandemService'
@@ -147,7 +148,9 @@ export default function TandemDashboard() {
   // ── Load Elo rating ─────────────────────────────────
   useEffect(() => {
     if (!currentUserId) return
-    getUserElo(currentUserId).then(setMyElo).catch(() => {})
+    getUserElo(currentUserId).then(setMyElo).catch((e: unknown) => {
+      monitoring.captureMessage('getUserElo failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+    })
   }, [currentUserId])
 
   // ── Load Roleplay sessions ─────────────────────────────────

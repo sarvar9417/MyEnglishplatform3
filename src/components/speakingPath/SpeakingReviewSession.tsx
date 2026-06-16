@@ -7,6 +7,7 @@ import { X, Sparkles, Check, RotateCcw, Brain } from 'lucide-react'
 import { loadSrsMap, computeSRSDistribution, type SRSDistribution } from '../../services/speakingPathService'
 import RecallPanel from './RecallPanel'
 import type { SpeakingChunk } from '../../data/speakingPath/types'
+import { monitoring } from '../../lib/monitoring'
 
 interface Props {
   chunks: SpeakingChunk[]
@@ -33,7 +34,9 @@ export default function SpeakingReviewSession({ chunks, userId, onExit }: Props)
       if (userId) {
         loadSrsMap(userId).then(map => {
           setGlobalSrsDist(computeSRSDistribution(map))
-        }).catch(() => {})
+        }).catch((e: unknown) => {
+          monitoring.captureMessage('loadSrsMap (review session) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+        })
       }
     } else {
       setIndex(i => i + 1)

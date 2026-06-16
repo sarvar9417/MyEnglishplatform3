@@ -8,6 +8,7 @@ import CooldownStep from './steps/CooldownStep'
 import WarmupStep from './steps/WarmupStep'
 import RecallPanel from './RecallPanel'
 import { saveSpeakingDayProgress, enrollChunks, loadSrsMap, computeSRSDistribution, type SRSDistribution } from '../../services/speakingPathService'
+import { monitoring } from '../../lib/monitoring'
 import { checkSpeakingAchievements, unlockSpeakingAchievements } from '../../services/speakingAchievementService'
 import { useToastStore } from '../../utils/toastStore'
 import { ACHIEVEMENTS } from '../../data/achievements'
@@ -110,9 +111,13 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
         bestSpeakScore: speakScore,
         spokenSeconds: secs,
         completedAt: new Date().toISOString(),
-      }).catch(() => {})
+      }).catch((e: unknown) => {
+        monitoring.captureMessage('saveSpeakingDayProgress failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      })
       // barcha kun bloklarini SRS'ga kafolatli kiritamiz (eksplitsit enrollment)
-      enrollChunks(userId, day.chunks.map(c => c.id)).catch(() => {})
+      enrollChunks(userId, day.chunks.map(c => c.id)).catch((e: unknown) => {
+        monitoring.captureMessage('enrollChunks failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      })
 
       // SRS statistikasini yuklash (non-blocking)
       loadSrsMap(userId).then(map => {
@@ -142,7 +147,9 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
         // Global SRS distribution (barcha chunklar)
         const globalDist = computeSRSDistribution(map)
         setGlobalSrsDist(globalDist)
-      }).catch(() => {})
+      }).catch((e: unknown) => {
+        monitoring.captureMessage('loadSrsMap (day session) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      })
     }
     setStep('done')
   }, [userId, day.day, day.chunks, speakScore, spokenSeconds])
