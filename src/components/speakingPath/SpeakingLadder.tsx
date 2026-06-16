@@ -65,18 +65,18 @@ const CEFR_ZONES: CefrZone[] = [
     icon: '📕',
   },
   {
-    label: "O'rtadan yuqori", cefr: 'B1+', dayMin: 63, dayMax: 80,
-    color: '#0891b2', bgClass: 'bg-cyan-50 dark:bg-cyan-900/20',
-    textClass: 'text-cyan-700 dark:text-cyan-300',
-    borderClass: 'border-cyan-200 dark:border-cyan-800/50',
-    icon: '🔥',
-  },
-  {
-    label: "Yuqori o'rta", cefr: 'B1', dayMin: 81, dayMax: 108,
+    label: "Yuqori o'rta", cefr: 'B1', dayMin: 63, dayMax: 98,
     color: '#d97706', bgClass: 'bg-amber-50 dark:bg-amber-900/20',
     textClass: 'text-amber-700 dark:text-amber-300',
     borderClass: 'border-amber-200 dark:border-amber-800/50',
     icon: '📕',
+  },
+  {
+    label: "Yuqori", cefr: 'B2', dayMin: 99, dayMax: 125,
+    color: '#e11d48', bgClass: 'bg-rose-50 dark:bg-rose-900/20',
+    textClass: 'text-rose-700 dark:text-rose-300',
+    borderClass: 'border-rose-200 dark:border-rose-800/50',
+    icon: '📘',
   },
 ]
 
@@ -86,8 +86,8 @@ const CEFR_BADGE: Record<string, string> = {
   A0: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
   A1: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
   A2: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
-  'B1+': 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300',
   B1: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+  B2: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300',
 }
 
 // ── SRS stability helper ────────────────────────────────────────────────────────

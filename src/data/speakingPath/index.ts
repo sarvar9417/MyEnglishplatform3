@@ -8,7 +8,7 @@ export { SPEAKING_DAYS }
 export type { SpeakingChunk, SpeakingDay, SpeakingScenario, SpeakingDayProgress, PronunciationFocus, VocabItem } from './types'
 
 /** CEFR darajalari tartibli ro'yxati */
-export const CEFR_ORDER = ['A0', 'A1', 'A2', 'B1', 'B1+', 'B2'] as const
+export const CEFR_ORDER = ['A0', 'A1', 'A2', 'B1', 'B2'] as const
 
 /** Jami kunlar soni */
 export const TOTAL_SPEAKING_DAYS = SPEAKING_DAYS.length
