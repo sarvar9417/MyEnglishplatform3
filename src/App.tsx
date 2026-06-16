@@ -102,9 +102,13 @@ function AppShell() {
         <LevelUpCelebration fromLevel={levelUpPending.from} toLevel={levelUpPending.to} xpEarned={500} onDismiss={clearLevelUp} />
       )}
       <div className="flex h-screen bg-gray-50 dark:bg-gray-950 overflow-hidden" style={{ height: 'calc(var(--vh, 1vh) * 100)' }}>
+        {/* Skip to main content — accessibility */}
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg">
+          Asosiy kontentga o'tish
+        </a>
         {mobileMenuOpen && <div className="fixed inset-0 z-30 bg-black/40 lg:hidden" onClick={() => setMobileMenuOpen(false)} />}
         <Sidebar isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
-        <main className="flex-1 overflow-y-auto flex flex-col mobile-safe-bottom scrollable">
+        <main id="main-content" className="flex-1 overflow-y-auto flex flex-col mobile-safe-bottom scrollable">
           <div className="sticky top-0 z-20 flex items-center justify-between px-3 py-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800 lg:hidden min-h-[48px]">
             <button onClick={() => setMobileMenuOpen(v => !v)} className="p-2 rounded-lg text-gray-500 hover:text-primary-600 hover:bg-primary-50 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label={t('app.menuLabel')}>
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}

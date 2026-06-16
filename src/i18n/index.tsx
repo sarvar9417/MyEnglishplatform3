@@ -101,6 +101,11 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     })
   }, [locale])
 
+  // Sync <html lang> attribute for accessibility
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
+
   const t = useCallback((key: keyof TranslationStrings, params?: Params): string => {
     const template = dict?.[key]
     if (template === undefined) return key // fallback: show the key name
