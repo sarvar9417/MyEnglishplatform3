@@ -7,6 +7,7 @@ import { Search, X, BookOpen, ArrowLeft, Lightbulb, CheckCircle2, XCircle, Refre
 import { useI18n } from '../i18n'
 import { CONFUSABLE_PAIRS, type ConfusablePair } from '../data/confusable-pairs'
 import { supabase } from '../lib/supabase'
+import { monitoring } from '../lib/monitoring'
 import { useToastStore } from '../utils/toastStore'
 import { delayConfusablePartners, pushWordsToSRS_FSRS, type PushWordInput } from '../services/vocabularyService'
 
@@ -440,9 +441,9 @@ function ConfusableQuiz({ onBack }: { onBack: () => void }) {
         supabase.auth.getSession().then(({ data: { session } }) => {
           if (session?.user.id) {
             const reviewedWord = pair.words.find(w => current.correct.toLowerCase().includes(w.toLowerCase())) ?? pair.words[0]
-            delayConfusablePartners(session.user.id, [reviewedWord]).catch(() => {})
+            delayConfusablePartners(session.user.id, [reviewedWord]).catch((e) => monitoring.captureMessage('delayConfusablePartners failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
           }
-        }).catch(() => {})
+        }).catch((e) => monitoring.captureMessage('getSession in Confusable failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
       }
     }
   }

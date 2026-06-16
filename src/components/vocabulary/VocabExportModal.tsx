@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { monitoring } from '../../lib/monitoring'
 import { Download, Upload, FileText, FileJson, FileSpreadsheet, X, CheckCircle, Loader2 } from 'lucide-react'
 import type { GameWord } from '../../store/vocabularyStore'
 import { downloadExport, parseImportData, type ExportFormat, type ImportResult, type VocabExportRow } from '../../services/vocabularyExport'
@@ -21,7 +22,8 @@ export default function VocabExportModal({ words, open, onClose, onImport }: Pro
   const handleExport = (format: ExportFormat) => {
     try {
       downloadExport(words, format)
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('VocabExportModal export failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       // export failed silently
     }
   }

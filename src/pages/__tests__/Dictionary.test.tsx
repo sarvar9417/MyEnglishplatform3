@@ -74,8 +74,6 @@ function makeWord(overrides: Partial<DictWord> = {}): DictWord {
 
 // ─── Imports (after mocks) ───────────────────────────────────────────────────
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import Dictionary from '../Dictionary'
 
 async function renderPage() {
@@ -94,7 +92,7 @@ describe('Dictionary — page integration tests', () => {
   beforeEach(() => {
     vi.useFakeTimers()
     vi.setSystemTime(new Date('2026-06-15T10:00:00Z'))
-    window.confirm = vi.fn(() => true) as any
+    window.confirm = vi.fn(() => true) as unknown as ((message?: string) => boolean)
     // Mock speechSynthesis
     Object.defineProperty(window, 'speechSynthesis', {
       value: { cancel: vi.fn(), speak: vi.fn() },
@@ -122,6 +120,7 @@ describe('Dictionary — page integration tests', () => {
       removeEventListener() {}
       dispatchEvent() { return true }
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (globalThis as any).SpeechSynthesisUtterance = MockUtterance
     // Reset service mock state
     mockDictService.__state.fetchWordListResult = { words: [], total: 0 }

@@ -8,6 +8,7 @@ import {
   TrendingUp,
 } from 'lucide-react'
 import { supabase } from '../../lib/supabase'
+import { monitoring } from '../../lib/monitoring'
 import { fetchQuickWeakSpots } from '../../services/analyticsService'
 import { addReaction, removeReaction, getReactions, REACTION_EMOJIS, REACTION_LABELS, type ReactionType } from '../../services/reactionService'
 
@@ -294,14 +295,16 @@ export default function FriendNeyronProfile({ friendId, friendName, onClose }: P
       try {
         const spots = await fetchQuickWeakSpots(friendId)
         setWeakSpots(spots)
-      } catch {
+      } catch (e) {
+        monitoring.captureMessage('FriendNeyronProfile fetchWeakSpots failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
         // Weak spots not available
       }
 
       // Reactions
       const reacts = await getReactions(friendId)
       setReactions(reacts)
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('FriendNeyronProfile loadFriendData failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       // Error loading
     }
     setLoading(false)

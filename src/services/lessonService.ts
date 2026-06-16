@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase'
+import { db } from '../lib/db'
 import { upsertLessonProgress as dbUpsert, cacheLesson, getCachedLessons, getCachedLesson } from '../db/database'
 import { getTodayTashkent } from '../utils/tashkentDate'
 import { monitoring } from '../lib/monitoring'
@@ -438,9 +439,9 @@ export async function saveLessonSessionToDB(
       localTestSection: data.testSection,
       remoteTestSection: existing.test_section as number,
       localCompletedSections: data.completedSections,
-      remoteCompletedSections: existing.completed_sections as Record<number, number>,
+      remoteCompletedSections: db.jsonFrom<Record<number, number>>(existing.completed_sections) ?? {} as Record<number, number>,
       localCompletedTestSections: data.completedTestSections,
-      remoteCompletedTestSections: existing.completed_test_sections as Record<number, number>,
+      remoteCompletedTestSections: db.jsonFrom<Record<number, number>>(existing.completed_test_sections) ?? {} as Record<number, number>,
       localUpdatedAt: now,
       remoteUpdatedAt: new Date(existing.updated_at as string).getTime(),
     })
@@ -507,8 +508,8 @@ export async function loadLessonSessionFromDB(lessonId: string): Promise<LoadedL
     tab: data.tab as string,
     currentSection: data.current_section as number,
     testSection: data.test_section as number,
-    completedSections: data.completed_sections as Record<number, number>,
-    completedTestSections: data.completed_test_sections as Record<number, number>,
+    completedSections: db.jsonFrom<Record<number, number>>(data.completed_sections) ?? {} as Record<number, number>,
+    completedTestSections: db.jsonFrom<Record<number, number>>(data.completed_test_sections) ?? {} as Record<number, number>,
     updatedAt: new Date(data.updated_at as string).getTime(),
   }
 }
@@ -638,13 +639,13 @@ export async function loadExerciseAnswersFromDB(lessonId: string): Promise<Loade
 
   if (!data) return []
 
-  return (data as Record<string, unknown>[]).map(d => ({
-    exerciseId: d.exercise_id as number,
-    exerciseType: d.exercise_type as string,
-    answer: typeof d.answer === 'string' ? JSON.parse(d.answer) : d.answer as string[],
-    isCorrect: d.is_correct as boolean,
-    sectionIndex: d.section_index as number,
-    sectionType: d.section_type as string,
+  return (data as unknown as { exercise_id: number; exercise_type: string; answer: string; is_correct: boolean; section_index: number; section_type: string }[]).map(d => ({
+    exerciseId: d.exercise_id,
+    exerciseType: d.exercise_type,
+    answer: typeof d.answer === 'string' ? JSON.parse(d.answer) : d.answer as unknown as string[],
+    isCorrect: d.is_correct,
+    sectionIndex: d.section_index,
+    sectionType: d.section_type,
   }))
 }
 
@@ -704,11 +705,11 @@ export async function loadLessonVocabProgressFromDB(lessonId: string): Promise<L
 
   if (!data) return []
 
-  return (data as Record<string, unknown>[]).map(d => ({
-    wordIndex: d.word_index as number,
-    known: d.known as boolean,
-    quizCorrect: d.quiz_correct as number,
-    quizWrong: d.quiz_wrong as number,
+  return (data as unknown as { word_index: number; known: boolean; quiz_correct: number; quiz_wrong: number }[]).map(d => ({
+    wordIndex: d.word_index,
+    known: d.known,
+    quizCorrect: d.quiz_correct,
+    quizWrong: d.quiz_wrong,
   }))
 }
 
@@ -736,11 +737,13 @@ async function fallbackLessons(): Promise<(DailyLesson | ReviewLesson)[]> {
 
 // ─── Lesson skills (reading/writing/listening) ─────────────────────────
 
+import type { Json } from '../types/supabase'
+
 interface LessonSkillsRow {
   lesson_id: string
-  reading?: object
-  writing?: object
-  listening?: object
+  reading?: Json | null
+  writing?: Json | null
+  listening?: Json | null
 }
 
 export async function fetchLessonSkills(): Promise<Record<string, { reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection }>> {
@@ -765,9 +768,9 @@ export async function fetchLessonSkills(): Promise<Record<string, { reading?: Re
   const result: LessonSkillsMap = {}
   for (const row of data as LessonSkillsRow[]) {
     const entry: { reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection } = {}
-    if (row.reading) entry.reading = row.reading as ReadingSection
-    if (row.writing) entry.writing = row.writing as WritingSection
-    if (row.listening) entry.listening = row.listening as ListeningSection
+    if (row.reading) entry.reading = db.jsonFrom<ReadingSection>(row.reading) ?? undefined
+    if (row.writing) entry.writing = db.jsonFrom<WritingSection>(row.writing) ?? undefined
+    if (row.listening) entry.listening = db.jsonFrom<ListeningSection>(row.listening) ?? undefined
     result[row.lesson_id] = entry
   }
 
@@ -796,6 +799,8 @@ export async function loadViewedTabsFromDB(lessonId: string): Promise<string[]> 
 
   if (!data) return []
 
-  const tabs = typeof data.viewed_tabs === 'string' ? JSON.parse(data.viewed_tabs) : data.viewed_tabs
+  const tabs = typeof data.viewed_tabs === 'string'
+    ? JSON.parse(data.viewed_tabs)
+    : db.jsonFrom<string[]>(data.viewed_tabs)
   return Array.isArray(tabs) ? tabs : []
 }

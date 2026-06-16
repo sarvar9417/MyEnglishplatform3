@@ -3,6 +3,8 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 import { supabase } from '../lib/supabase'
+import { db } from '../lib/db'
+import type { Json } from '../types/supabase'
 import { monitoring } from '../lib/monitoring'
 import { sendBrowserNotification } from '../hooks/useNotifications'
 import type { TandemPair, Duel, DuelMode, FriendshipStatus, DuelQuestion, DuelResult } from '../types/tandem'
@@ -522,7 +524,7 @@ export async function createDuel(
       opponent: opponentId,
       mode,
       status: 'pending',  // challenger avval o'ynaydi, keyin opponent_turn ga o'tadi
-      question_set: questionSet as never,
+      question_set: questionSet as unknown as Json,
       challenger_score: null,
       opponent_score: null,
       is_bot: !opponentId,
@@ -594,7 +596,7 @@ export async function createLessonDuel(
       opponent: opponentId,
       mode: 'lesson',
       status: 'pending',
-      question_set: questions as never,
+      question_set: questions as unknown as Json,
       challenger_score: null,
       opponent_score: null,
       is_bot: !opponentId,
@@ -669,7 +671,7 @@ export async function submitDuelAnswers(
   }
 
   // Ballni hisoblash
-  const questions = duel.question_set as unknown as DuelQuestion[]
+  const questions = db.jsonFrom<DuelQuestion[]>(duel.question_set) ?? []
   let correctCount = 0
   for (const answer of answers) {
     const q = questions[answer.questionIndex]
@@ -682,14 +684,12 @@ export async function submitDuelAnswers(
   const isFriendDuel = !duel.is_bot && duel.opponent !== null
   const nextStatus = isChallenger && isFriendDuel ? 'opponent_turn' : 'done'
 
-  const updateData: Partial<Duel> = {
-    status: nextStatus,
-    ...(isChallenger ? { challenger_score: correctCount } : { opponent_score: correctCount }),
-  }
-
   const { error } = await supabase
     .from('duels')
-    .update(updateData as never)
+    .update({
+      status: nextStatus,
+      ...(isChallenger ? { challenger_score: correctCount } : { opponent_score: correctCount }),
+    })
     .eq('id', duelId)
 
   if (error) {
@@ -1189,14 +1189,12 @@ export async function submitSpeakingDuelAnswer(
     //  hech qachon ololmasdi.)
     const isFriendDuel = !duel.is_bot && duel.opponent !== null
     const nextStatus = isChallenger && isFriendDuel ? 'opponent_turn' : 'done'
-    const updateData: Partial<Duel> = {
-      status: nextStatus,
-      ...(isChallenger ? { challenger_score: avgScore } : { opponent_score: avgScore }),
-    }
-
     const { error } = await supabase
       .from('duels')
-      .update(updateData as never)
+      .update({
+        status: nextStatus,
+        ...(isChallenger ? { challenger_score: avgScore } : { opponent_score: avgScore }),
+      })
       .eq('id', duelId)
 
     if (error) {
@@ -1315,24 +1313,25 @@ export async function updateWeeklyDuelXP(userId: string, xpAmount: number): Prom
   const field = isUserA ? 'user_a_xp' : 'user_b_xp'
 
   try {
-    await supabase.rpc('increment_weekly_xp' as never, {
+    await supabase.rpc('increment_weekly_xp', {
       p_pair_id: pair.id,
       p_week_start: weekStart,
       p_field: field,
       p_amount: xpAmount,
-    } as never)
+    })
   } catch {
     // RPC bo'lmasa — upsert bilan update
     try {
       const duel = await getOrCreateWeeklyDuel(pair.id)
       if (!duel) return
 
-      const updateField = isUserA ? 'user_a_xp' : 'user_b_xp'
+      const xpValue = (isUserA ? duel.user_a_xp : duel.user_b_xp) + xpAmount
 
-      await supabase
-        .from('weekly_duels')
-        .update({ [updateField]: (isUserA ? duel.user_a_xp : duel.user_b_xp) + xpAmount } as never)
-        .eq('id', duel.id)
+      if (isUserA) {
+        await supabase.from('weekly_duels').update({ user_a_xp: xpValue }).eq('id', duel.id)
+      } else {
+        await supabase.from('weekly_duels').update({ user_b_xp: xpValue }).eq('id', duel.id)
+      }
     } catch { /* ignore */ }
   }
 }

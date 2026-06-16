@@ -186,7 +186,9 @@ export async function chatWithBuddy(
               full += text
               onDelta(text)
             }
-          } catch { /* skip parse errors */ }
+          } catch (e) {
+            monitoring.captureMessage('chatWithBuddy parse error: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+            /* skip parse errors */ }
         }
       }
     }
@@ -248,7 +250,9 @@ export async function startBuddyVoiceChat(
               full += text
               onDelta(text)
             }
-          } catch { /* skip parse errors */ }
+          } catch (e) {
+            monitoring.captureMessage('chatWithBuddy parse error: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+            /* skip parse errors */ }
         }
       }
     }
@@ -275,7 +279,8 @@ export async function getContextFromStore(): Promise<BuddyContext | null> {
       todayMinutes: state.todayMinutes,
       totalWordsLearned: state.totalWordsLearned,
     }
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('getContextFromStore failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return null
   }
 }

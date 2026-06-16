@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { supabase } from '../../lib/supabase'
+import { monitoring } from '../../lib/monitoring'
 import { useStore } from '../../store/useStore'
 import { RealtimeChannel } from '@supabase/supabase-js'
 import { Sword, Copy, Check, Clock, Users, Share2, Bot, Zap, Sparkles, Layers } from 'lucide-react'
@@ -403,7 +404,8 @@ export default function VocabBattle() {
     }
     try {
       await navigator.share(shareData)
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('VocabBattle share failed (fallback to copy): ' + (e instanceof Error ? e.message : String(e)), 'warn')
       copyRoomId()
     }
   }

@@ -13,6 +13,7 @@ import { supabase } from '@/lib/supabase'
 import { useSpeechRecognition, isMobileDevice } from '@/hooks/useSpeechRecognition'
 import { useAudioRecorder } from '@/hooks/useAudioRecorder'
 import AudioPlayback from '@/components/speaking/AudioPlayback'
+import { monitoring } from '../lib/monitoring'
 import { analyzeAudio } from '@/hooks/useAudioAnalyser'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -145,7 +146,7 @@ export default function Speaking() {
 
     let acoustic
     if (ar.audioUrl) {
-      try { acoustic = await analyzeAudio(ar.audioUrl, sr.transcript) } catch {}
+      try { acoustic = await analyzeAudio(ar.audioUrl, sr.transcript) } catch (e) { monitoring.captureMessage('analyzeAudio failed (non-critical): ' + (e instanceof Error ? e.message : String(e)), 'warn') }
     }
 
     evaluateSpeech(

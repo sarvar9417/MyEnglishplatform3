@@ -4,6 +4,7 @@ import EmptyState from '../components/ui/EmptyState'
 import { DictionarySkeleton } from '../components/ui/PageSkeleton'
 import { useI18n } from '../i18n'
 import { supabase } from '../lib/supabase'
+import { monitoring } from '../lib/monitoring'
 import { searchDictionary, fetchWordList, addUserWord, deleteUserWord, type DictWord } from '../services/dictionaryService'
 
 const LEVEL_BADGES: Record<string, string> = {
@@ -427,7 +428,7 @@ export default function Dictionary() {
   const handlePageChange = (newPage: number) => {
     if (newPage < 1 || newPage > totalPages) return
     setPage(newPage)
-    try { window.scrollTo({ top: 0, behavior: 'smooth' }) } catch {/* jsdom guard */}
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }) } catch (e) { monitoring.captureMessage('Dictionary scrollTo failed (jsdom): ' + (e instanceof Error ? e.message : String(e)), 'warn') }
   }
 
   const renderPageNumbers = () => {

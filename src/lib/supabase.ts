@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import type { Database } from '../types/supabase'
+import type { Database, Json } from '../types/supabase'
 import type {
   DbUser, DbSession, DbVocabWord,
   DbDailyProgress, DbWriting, DbMockTest,
@@ -47,7 +47,7 @@ export async function getSession() {
 export async function upsertUserProfile(profile: Omit<DbUser, 'created_at'>) {
   const { error } = await supabase
     .from('users')
-    .upsert(profile as never, { onConflict: 'id' })
+    .upsert({ ...profile, state: profile.state as Json }, { onConflict: 'id' })
   return error
 }
 

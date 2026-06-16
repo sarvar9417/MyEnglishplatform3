@@ -1,3 +1,4 @@
+import { monitoring } from '../lib/monitoring'
 import { useState, useEffect, useCallback } from 'react'
 
 export interface PwaInstallState {
@@ -71,7 +72,8 @@ export function usePwaInstall(): PwaInstallState {
       setDeferredPrompt(null)
       setCanInstall(false)
       return choice.outcome === 'accepted'
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('pwa promptInstall failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       setDeferredPrompt(null)
       return false
     }

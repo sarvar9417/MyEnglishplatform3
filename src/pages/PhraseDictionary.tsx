@@ -91,7 +91,7 @@ export default function PhraseDictionary() {
       uidRef.current = session?.user?.id ?? null
 
       // Level counts (RPC)
-      const { data: lvlRows } = await supabase.rpc('get_phrase_counts_by_level' as never) as unknown as { data: { level: string; total: number }[] | null }
+      const { data: lvlRows } = await supabase.rpc('get_phrase_counts_by_level')
       const levels: Record<string, number> = {}
       for (const r of lvlRows ?? []) levels[r.level] = Number(r.total)
 
@@ -173,7 +173,7 @@ export default function PhraseDictionary() {
   function handlePageChange(p: number) {
     if (p < 1 || p > totalPages) return
     setPage(p)
-    try { window.scrollTo({ top: 0, behavior: 'smooth' }) } catch {/* jsdom guard */}
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }) } catch (e) { monitoring.captureMessage('PhraseDictionary scrollTo failed (jsdom): ' + (e instanceof Error ? e.message : String(e)), 'warn') }
   }
 
   // ── grouped by level (faqat joriy 20 ta gap ichidan) ────────────────────

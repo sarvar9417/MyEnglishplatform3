@@ -28,7 +28,8 @@ function loadPrefs(): NotificationPreferences {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     return raw ? { ...DEFAULT_PREFS, ...JSON.parse(raw) } : DEFAULT_PREFS
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('loadPrefs (notifications) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return DEFAULT_PREFS
   }
 }
@@ -69,7 +70,8 @@ export async function requestNotificationPermission(): Promise<boolean> {
   try {
     const result = await Notification.requestPermission()
     return result === 'granted'
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('requestNotificationPermission failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return false
   }
 }

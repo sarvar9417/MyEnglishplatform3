@@ -94,7 +94,7 @@ setCatchHandler(async ({ request }) => {
       await cache.put(OFFLINE_PAGE, response.clone())
       return response
     }
-  } catch { /* stay offline */ }
+  } catch (e) { console.warn('[SW] offline fallback fetch failed:', e) }
 
   // Last resort: return a minimal inline response
   return new Response(

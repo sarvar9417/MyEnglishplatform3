@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase'
+import { db } from '../lib/db'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
 import {
@@ -49,8 +50,9 @@ async function fetchQuestions(level: string): Promise<TQ[]> {
 
   return data
     .map((r) => {
-      if (!r.data || typeof r.data !== 'object') return null
-      return r.data as unknown as TQ
+      const q = db.jsonFrom<TQ>(r.data)
+      if (!q || typeof q !== 'object') return null
+      return q
     })
     .filter((q): q is TQ => q !== null)
 }
@@ -66,10 +68,11 @@ async function fetchListening(level: string): Promise<{ text: string; mcq: Liste
     return { text: IELTS_LISTENING_TEXT, mcq: IELTS_LISTENING_MCQ }
   }
 
-  if (!data.data || typeof data.data !== 'object') {
-    return { text: IELTS_LISTENING_TEXT, mcq: IELTS_LISTENING_MCQ }
+  const listening = db.jsonFrom<{ text: string; mcq: ListeningMCQ[] }>(data.data)
+  if (listening && typeof listening === 'object') {
+    return listening
   }
-  return data.data as unknown as { text: string; mcq: ListeningMCQ[] }
+  return { text: IELTS_LISTENING_TEXT, mcq: IELTS_LISTENING_MCQ }
 }
 
 async function fetchWriting(): Promise<{ writingTask1: { prompt: string; instruction: string }; writingTask2: { prompt: string; instruction: string } }> {
@@ -83,8 +86,10 @@ async function fetchWriting(): Promise<{ writingTask1: { prompt: string; instruc
     return { writingTask1: { prompt: IELTS_WRITING_TASK1.prompt, instruction: IELTS_WRITING_TASK1.title }, writingTask2: { prompt: IELTS_WRITING_TASK2.prompt, instruction: IELTS_WRITING_TASK2.title } }
   }
 
-  const d = data as unknown as MockTestRow
-  return d.data
+  return db.jsonFrom<MockTestRow['data']>(data.data) ?? {
+    writingTask1: { prompt: IELTS_WRITING_TASK1.prompt, instruction: IELTS_WRITING_TASK1.title },
+    writingTask2: { prompt: IELTS_WRITING_TASK2.prompt, instruction: IELTS_WRITING_TASK2.title },
+  }
 }
 
 export async function saveMockTestResult(params: {

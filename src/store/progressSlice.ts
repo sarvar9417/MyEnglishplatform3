@@ -474,7 +474,7 @@ export const createProgressSlice: StateCreator<AppState, [], [], ProgressSlice> 
     import('../lib/supabase').then(({ supabase }) => {
       supabase.auth.getSession().then(({ data: { session } }) => {
         if (session?.user.id) {
-          supabase.from('users').update({ total_xp: get().totalXP } as never).eq('id', session.user.id).then(({ error }) => {
+          supabase.from('users').update({ total_xp: get().totalXP }).eq('id', session.user.id).then(({ error }) => {
             if (error) monitoring.captureMessage('claimStreakBonuses sync error: ' + error.message, 'warn')
           })
         }

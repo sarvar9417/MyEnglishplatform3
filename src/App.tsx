@@ -234,7 +234,7 @@ function AppRouter() {
           if (key.includes('auth-token') || key === 'theme') continue
           localStorage.removeItem(key)
         }
-      } catch { /* ignore */ }
+      } catch (e) { monitoring.captureMessage('clearLocalUserData on user switch failed: ' + (e instanceof Error ? e.message : String(e)), 'warn') }
       // User-spetsifik store maydonlarini default'ga qaytaramiz + qayta hidratsiyaga majburlaymiz
       useStore.setState({
         userName: '', userEmail: '',

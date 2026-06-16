@@ -13,14 +13,14 @@ function getStoredLocale(): Locale {
   try {
     const stored = localStorage.getItem(STORAGE_KEY)
     if (stored === 'uz' || stored === 'en' || stored === 'ru') return stored
-  } catch { /* ignore */ }
+  } catch (e) { monitoring.captureMessage('getStoredLocale failed: ' + (e instanceof Error ? e.message : String(e)), 'warn') }
   return 'uz'  // default
 }
 
 function setStoredLocale(locale: Locale) {
   try {
     localStorage.setItem(STORAGE_KEY, locale)
-  } catch { /* ignore */ }
+  } catch (e) { monitoring.captureMessage('setStoredLocale failed: ' + (e instanceof Error ? e.message : String(e)), 'warn') }
 }
 
 /* ─── Loader ─── */
@@ -124,7 +124,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 // Provider yo'q bo'lganda ishlatiladigan fallback — haqiqiy uz tarjimalar bilan.
 // Shu sabab provider'siz render qilingan komponentlar (masalan testlar) ham
 // to'g'ri matn ko'rsatadi va crash bo'lmaydi.
-const FALLBACK_DICT = uzFallback as unknown as Record<string, string>
+const FALLBACK_DICT = uzFallback as Record<string, string>
 const FALLBACK_CONTEXT: I18nContextValue = {
   locale: 'uz',
   loading: false,

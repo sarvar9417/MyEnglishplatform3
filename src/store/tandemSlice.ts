@@ -5,6 +5,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import type { FriendWithProfile, TandemPair, Duel, DuellistItem, DuelMode, RoleplaySession, RoleplayDuoItem } from '../types/tandem'
+import { monitoring } from '../lib/monitoring'
 import {
   getFriends,
   getTandemPair,
@@ -210,7 +211,8 @@ export const useTandemStore = create<TandemState>()(
           const sessions = await getRoleplaySessionsForPair()
           const items = sessionsToDuoItems(sessions, session.user.id)
           set({ roleplaySessions: items, loadingRoleplay: false })
-        } catch {
+        } catch (e) {
+          monitoring.captureMessage('loadRoleplaySessions failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
           set({ loadingRoleplay: false })
         }
       },

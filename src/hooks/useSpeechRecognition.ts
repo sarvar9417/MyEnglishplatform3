@@ -1,3 +1,4 @@
+import { monitoring } from '../lib/monitoring'
 import { useState, useRef, useEffect, useCallback } from 'react'
 
 interface SrAlternative { readonly transcript: string }
@@ -95,7 +96,8 @@ async function requestMicPermission(): Promise<boolean> {
       _streamResolve = null
     }
     return true
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('requestMicPermission failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     _streamPromise = null
     _streamResolve = null
     return false

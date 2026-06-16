@@ -1,3 +1,4 @@
+import { monitoring } from '../lib/monitoring'
 import { useState, useRef, useCallback, useEffect } from 'react'
 
 export interface AudioRecorderState {
@@ -96,7 +97,8 @@ export function useAudioRecorder(): AudioRecorderState {
       timerRef.current = setInterval(() => {
         setDuration(Math.floor((Date.now() - startTimeRef.current) / 1000))
       }, 200)
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('useAudioRecorder start failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       setIsRecording(false)
     }
   }, [isSupported, reset])

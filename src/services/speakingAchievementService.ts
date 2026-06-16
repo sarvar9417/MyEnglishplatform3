@@ -3,6 +3,7 @@
 
 import { ACHIEVEMENTS } from '../data/achievements'
 import { getSpeakingProgress, loadSrsMap } from './speakingPathService'
+import { monitoring } from '../lib/monitoring'
 
 export interface SpeakingAchievementResult {
   newlyUnlocked: string[]
@@ -69,7 +70,8 @@ export async function checkSpeakingAchievements(
       else if (maxDay >= 36) cefr = 'B1'
       else if (maxDay >= 19) cefr = 'A2'
       else if (maxDay >= 7) cefr = 'A1'
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('checkSpeakingAchievements progress fetch failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
       // offline — overrideStats bo'lmasa, bo'sh qaytaramiz
     }
   }
@@ -140,7 +142,8 @@ export async function unlockSpeakingAchievements(
         })
       }
     }
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('unlockSpeakingAchievements store update failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     // store import qilishda xato
   }
 
@@ -160,7 +163,8 @@ export async function unlockSpeakingAchievements(
       onConflict: 'user_id,achievement_id',
       ignoreDuplicates: true,
     })
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('unlockSpeakingAchievements Supabase upsert failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
     // offline — keyingi safar sinxronlanadi
   }
 }

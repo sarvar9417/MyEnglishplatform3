@@ -1,3 +1,5 @@
+import { monitoring } from '../lib/monitoring'
+
 const STORAGE_KEY = 'theme'
 
 type Theme = 'light' | 'dark'
@@ -15,7 +17,7 @@ function getStoredTheme(): ThemePreference | null {
   try {
     const v = localStorage.getItem(STORAGE_KEY)
     if (v === 'dark' || v === 'light' || v === 'system') return v
-  } catch { /* ignore */ }
+  } catch (e) { monitoring.captureMessage('getStoredTheme failed: ' + (e instanceof Error ? e.message : String(e)), 'warn') }
   return null
 }
 
@@ -58,7 +60,7 @@ export function initTheme() {
 export function cycleTheme(): ThemePreference {
   const current = getThemePreference()
   const next: ThemePreference = current === 'light' ? 'dark' : current === 'dark' ? 'system' : 'light'
-  try { localStorage.setItem(STORAGE_KEY, next) } catch { /* ignore */ }
+  try { localStorage.setItem(STORAGE_KEY, next) } catch (e) { monitoring.captureMessage('cycleTheme setItem failed: ' + (e instanceof Error ? e.message : String(e)), 'warn') }
   applyTheme(next === 'system' ? getSystemTheme() : next)
   listeners.forEach(cb => cb()) // notify React subscribers
   return next

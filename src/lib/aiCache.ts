@@ -2,6 +2,8 @@
 // Har bir AI chaqiruvi: cache key = funksiya nomi + argument hash
 // TTL: 5 daqiqa (in-memory), 30 daqiqa (localStorage)
 
+import { monitoring } from './monitoring'
+
 const MEM_TTL_MS = 5 * 60 * 1000
 const LS_TTL_MS = 30 * 60 * 1000
 const LS_PREFIX = 'aich_'
@@ -41,7 +43,8 @@ function lsGet<T>(key: string): T | undefined {
       return undefined
     }
     return parsed.data
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('aiCache get failed (parse error): ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return undefined
   }
 }
@@ -49,7 +52,8 @@ function lsGet<T>(key: string): T | undefined {
 function lsSet<T>(key: string, data: T): void {
   try {
     localStorage.setItem(lsKey(key), JSON.stringify({ data, expiry: Date.now() + LS_TTL_MS }))
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('aiCache set failed (quota?), clearing old entries: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     // localStorage full bo'lsa — eng eski entry larni tozalaymiz
     try {
       const keys: { k: string; t: number }[] = []
@@ -59,7 +63,9 @@ function lsSet<T>(key: string, data: T): void {
           try {
             const parsed = JSON.parse(localStorage.getItem(k)!)
             keys.push({ k, t: parsed.expiry || 0 })
-          } catch { /* skip */ }
+          } catch (e) {
+            monitoring.captureMessage('aiCache cleanup parse error: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+            /* skip */ }
         }
       }
       keys.sort((a, b) => a.t - b.t)
@@ -67,7 +73,9 @@ function lsSet<T>(key: string, data: T): void {
         localStorage.removeItem(k)
       }
       localStorage.setItem(lsKey(key), JSON.stringify({ data, expiry: Date.now() + LS_TTL_MS }))
-    } catch { /* give up */ }
+    } catch (e) {
+      monitoring.captureMessage('aiCache set failed (give up): ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      /* give up */ }
   }
 }
 

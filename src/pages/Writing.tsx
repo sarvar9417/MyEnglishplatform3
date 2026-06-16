@@ -92,7 +92,7 @@ export default function Writing() {
   const draftKey = `writing-draft-day-${currentDay}`
   const [essay,        setEssay]        = useState(() => {
     try { return localStorage.getItem(draftKey) ?? '' }
-    catch { return '' }
+    catch (e) { monitoring.captureMessage('Writing draft load failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'); return '' }
   })
   const [timer,        setTimer]        = useState(0)
   const [timerActive,  setTimerActive]  = useState(false)

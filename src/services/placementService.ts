@@ -5,6 +5,7 @@
 import { supabase } from '../lib/supabase'
 import type { PlacementResult } from '../data/placement/types'
 import type { Json } from '../types/supabase'
+import { monitoring } from '../lib/monitoring'
 
 /** Test natijasini DB'ga yozadi (har test — yangi yozuv = tarix) */
 export async function savePlacementResult(userId: string, r: PlacementResult): Promise<void> {
@@ -17,7 +18,8 @@ export async function savePlacementResult(userId: string, r: PlacementResult): P
       total_asked: r.totalAsked,
       taken_at: r.takenAt,
     })
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('savePlacementResult failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* oflayn — natija baribir ilovaga o'rnatiladi */
   }
 }
@@ -39,7 +41,8 @@ export async function getLatestPlacement(userId: string): Promise<LatestPlacemen
       .maybeSingle()
     if (error || !data) return null
     return { level: data.level, takenAt: data.taken_at }
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('getLatestPlacement failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return null
   }
 }

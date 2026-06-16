@@ -775,6 +775,81 @@ export type Database = {
         }
         Relationships: []
       }
+      personal_vocabulary: {
+        Row: {
+          id: number
+          user_id: string
+          english: string
+          uzbek: string
+          phonetic: string | null
+          example: string | null
+          category: string
+          level: string
+          source: string
+          ai_suggested_translation: string | null
+          box: number
+          next_review: string
+          is_learned: boolean
+          correct_count: number
+          wrong_count: number
+          last_rating: string | null
+          fsrs_stability: number | null
+          fsrs_difficulty: number | null
+          fsrs_reps: number | null
+          fsrs_lapses: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          user_id: string
+          english: string
+          uzbek: string
+          phonetic?: string | null
+          example?: string | null
+          category: string
+          level: string
+          source: string
+          ai_suggested_translation?: string | null
+          box: number
+          next_review: string
+          is_learned: boolean
+          correct_count: number
+          wrong_count: number
+          last_rating?: string | null
+          fsrs_stability?: number | null
+          fsrs_difficulty?: number | null
+          fsrs_reps?: number | null
+          fsrs_lapses?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          user_id?: string
+          english?: string
+          uzbek?: string
+          phonetic?: string | null
+          example?: string | null
+          category?: string
+          level?: string
+          source?: string
+          ai_suggested_translation?: string | null
+          box?: number
+          next_review?: string
+          is_learned?: boolean
+          correct_count?: number
+          wrong_count?: number
+          last_rating?: string | null
+          fsrs_stability?: number | null
+          fsrs_difficulty?: number | null
+          fsrs_reps?: number | null
+          fsrs_lapses?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       phrase_progress: {
         Row: {
           id: number
@@ -1763,6 +1838,15 @@ export type Database = {
       lookup_user_by_invite_code: { Args: {
             p_code: string
           }; Returns: string }
+      rate_personal_vocab_word: { Args: {
+            p_user_id: string
+            p_word_id: number
+            p_rating: string
+            p_fsrs_stability?: number | null
+            p_fsrs_difficulty?: number | null
+            p_fsrs_reps?: number | null
+            p_fsrs_lapses?: number | null
+          }; Returns: Json }
     }
     Enums: {
       [_ in never]: never

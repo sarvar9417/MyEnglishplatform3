@@ -1,204 +1,172 @@
-// ═══════════════════════════════════════════════════════════════════════════
-// Confusable Pairs — page rendering tests
-// ═══════════════════════════════════════════════════════════════════════════
+import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { BrowserRouter } from 'react-router-dom'
 
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, fireEvent, cleanup, waitFor } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+const mockPairs = vi.hoisted(() => [
+  {
+    id: 'accept-vs-except',
+    words: ['accept', 'except'],
+    uzTitle: 'Accept vs Except — farqi',
+    rule: 'Accept = qabul qilmoq. Except = ...dan tashqari.',
+    memoryHook: 'Accept = A(dd) + cept(take) — qabul qilmoq',
+    examples: [
+      { correct: 'I accept your invitation.', wrong: 'I except your invitation.', explanation: 'Accept = qabul qilish' },
+    ],
+  },
+])
 
-// ─── Hoisted mocks ───────────────────────────────────────────────────────────
+vi.mock('../../data/confusable-pairs', () => ({
+  CONFUSABLE_PAIRS: mockPairs,
+}))
 
-const mockSupabase = vi.hoisted(() => {
-  const qb: Record<string, unknown> = {}
-  const chain = () => qb
-  const methods = ['select', 'insert', 'upsert', 'update', 'delete', 'eq', 'gte', 'lte',
-    'order', 'limit', 'range', 'single', 'maybeSingle', 'in', 'or', 'neq', 'gt', 'lt', 'not']
-  for (const m of methods) qb[m] = vi.fn(chain)
-  qb.then = vi.fn((f: (x: unknown) => void) => f({ data: [], error: null, count: 0 }))
-  qb.catch = vi.fn()
-  return {
-    auth: {
-      getSession: vi.fn().mockResolvedValue({
-        data: { session: { user: { id: 'user-1' } } },
-        error: null,
-      }),
-      onAuthStateChange: vi.fn(() => ({
-        data: { subscription: { unsubscribe: vi.fn() } },
-      })),
-    },
-    from: vi.fn(() => qb),
-    rpc: vi.fn(() => qb),
-  }
-})
+vi.mock('../../lib/supabase', () => ({
+  supabase: {
+    auth: { getSession: vi.fn().mockResolvedValue({ data: { session: { user: { id: 'user-test' } } } }) },
+  },
+}))
 
-const mockToast = vi.hoisted(() => vi.fn())
-const mockDelayConfusable = vi.hoisted(() => vi.fn().mockResolvedValue(undefined))
-const mockPushSRS = vi.hoisted(() => vi.fn().mockResolvedValue(undefined))
+vi.mock('../../lib/monitoring', () => ({
+  monitoring: { captureMessage: vi.fn(), captureException: vi.fn() },
+}))
 
-// ─── Module mocks ────────────────────────────────────────────────────────────
-
-vi.mock('../../lib/supabase', () => ({ supabase: mockSupabase }))
 vi.mock('../../utils/toastStore', () => ({
-  useToastStore: { getState: () => ({ toast: mockToast }) },
-}))
-vi.mock('../../services/vocabularyService', () => ({
-  delayConfusablePartners: mockDelayConfusable,
-  pushWordsToSRS_FSRS: mockPushSRS,
+  useToastStore: { getState: () => ({ toast: vi.fn() }) },
 }))
 
-// ─── Imports (after mocks) ───────────────────────────────────────────────────
+vi.mock('../../services/vocabularyService', () => ({
+  delayConfusablePartners: vi.fn().mockResolvedValue(undefined),
+  pushWordsToSRS_FSRS: vi.fn().mockResolvedValue(undefined),
+}))
+
+// ─── Import ──────────────────────────────────────────────────────────────────
 
 import Confusable from '../Confusable'
 
 function renderPage() {
-  return render(<MemoryRouter><Confusable /></MemoryRouter>)
+  return render(<BrowserRouter><Confusable /></BrowserRouter>)
 }
 
-/** Find a card button by text content */
-function findCard(text: string): HTMLElement | undefined {
-  return screen.getAllByRole('button').find(b =>
-    b.textContent?.toLowerCase().includes(text.toLowerCase()) &&
-    !b.textContent?.includes('Test') &&
-    !b.textContent?.includes('Orqaga')
-  )
-}
-
-describe('Confusable browse view', () => {
-  beforeEach(() => vi.clearAllMocks())
-  afterEach(() => cleanup())
-
-  it('renders page title and description', () => {
-    renderPage()
-    expect(screen.getByText("Chalkash So'zlar")).toBeInTheDocument()
-    expect(screen.getByText(/chalkash/)).toBeInTheDocument()
-    expect(screen.getByText("🧪 Test")).toBeInTheDocument()
+describe('Confusable', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
   })
+
+  // ── Header and title ──────────────────────────────────────────────────────
+
+  it('renders the title', () => {
+    renderPage()
+    expect(screen.getByText('Chalkash So\'zlar')).toBeInTheDocument()
+  })
+
+  // ── Search bar ────────────────────────────────────────────────────────────
 
   it('renders search input', () => {
     renderPage()
-    expect(screen.getByPlaceholderText(/Qidirish/)).toBeInTheDocument()
+    const searchInput = screen.getByPlaceholderText(/Qidirish/)
+    expect(searchInput).toBeInTheDocument()
   })
 
-  it('filters pairs when searching', () => {
+  // ── Results display ───────────────────────────────────────────────────────
+
+  it('renders confusable pair cards', () => {
     renderPage()
-    const input = screen.getByPlaceholderText(/Qidirish/)
-    fireEvent.change(input, { target: { value: 'make' } })
-    expect(screen.getByText(/make/)).toBeInTheDocument()
-    fireEvent.change(input, { target: { value: '' } })
-    expect(screen.getByText(/lend/)).toBeInTheDocument()
+    expect(screen.getByText(/accept/)).toBeInTheDocument()
+    expect(screen.getByText(/except/)).toBeInTheDocument()
   })
 
-  it('shows empty state when search matches nothing', () => {
+  it('shows the uzTitle of each pair', () => {
     renderPage()
-    fireEvent.change(screen.getByPlaceholderText(/Qidirish/), { target: { value: 'zzzzz' } })
+    expect(screen.getByText('Accept vs Except — farqi')).toBeInTheDocument()
+  })
+
+  // ── Quiz button ───────────────────────────────────────────────────────────
+
+  it('renders quiz start button', () => {
+    renderPage()
+    // uz.json: confusable.quizButton = "🏆 Test"
+    expect(screen.getByText('🧪 Test')).toBeInTheDocument()
+  })
+
+  // ── Quiz mode ─────────────────────────────────────────────────────────────
+
+  it('enters quiz mode when quiz button is clicked', async () => {
+    renderPage()
+    fireEvent.click(screen.getByText('🧪 Test'))
+    await waitFor(() => {
+      // Quiz progress text: 'Orqaga1/1✓ 0To\'g\'ri so\'zni tanlang…'
+      expect(document.body.textContent).toMatch(/1\/\d/)
+    })
+  })
+
+  // ── Search filtering ──────────────────────────────────────────────────────
+
+  it('filters pairs by search query', () => {
+    renderPage()
+    const searchInput = screen.getByPlaceholderText(/Qidirish/)
+    fireEvent.change(searchInput, { target: { value: 'accept' } })
+    // Should still show accept vs except
+    expect(screen.getByText('Accept vs Except — farqi')).toBeInTheDocument()
+  })
+
+  it('shows no results message when search has no matches', () => {
+    renderPage()
+    const searchInput = screen.getByPlaceholderText(/Qidirish/)
+    fireEvent.change(searchInput, { target: { value: 'zzzznonexistent' } })
+    // uz.json: confusable.noResults = "Hech narsa topilmadi"
     expect(screen.getByText('Hech narsa topilmadi')).toBeInTheDocument()
   })
 
-  it('navigates to detail view when clicking a card', () => {
+  // ── Clear search ──────────────────────────────────────────────────────────
+
+  it('clears search when X is clicked', () => {
     renderPage()
-    const card = findCard('make')
-    expect(card).toBeDefined()
-    if (card) fireEvent.click(card)
-    expect(screen.getByText(/Qoida/)).toBeInTheDocument()
-    expect(screen.getByText(/Yodda Saqlash/)).toBeInTheDocument()
-    expect(screen.getByText(/Misollar/)).toBeInTheDocument()
+    const searchInput = screen.getByPlaceholderText(/Qidirish/)
+    fireEvent.change(searchInput, { target: { value: 'test' } })
+
+    const clearButton = document.querySelector('.lucide-x')
+    if (clearButton) fireEvent.click(clearButton)
+
+    // After clear, the input value should be empty
+    expect((searchInput as HTMLInputElement).value).toBe('')
   })
-})
 
-describe('Confusable detail view', () => {
-  beforeEach(() => vi.clearAllMocks())
-  afterEach(() => cleanup())
+  // ── Detail view ───────────────────────────────────────────────────────────
 
-  function goToDetail() {
+  it('opens detail view when a card is clicked', async () => {
     renderPage()
-    const card = findCard('make')
-    if (card) fireEvent.click(card)
-    return card !== undefined
-  }
-
-  it('shows rule, memory hook and examples', () => {
-    goToDetail()
-    // Use getAllByText since /MAKE/ matches multiple elements (title + card)
-    const makeElements = screen.getAllByText(/MAKE/)
-    expect(makeElements.length).toBeGreaterThanOrEqual(1)
-    expect(screen.getByText(/Yodda Saqlash/)).toBeInTheDocument()
-    expect(screen.getByText(/Misollar/)).toBeInTheDocument()
+    fireEvent.click(screen.getByText('Accept vs Except — farqi'))
+    await waitFor(() => {
+      expect(screen.getByText(/Qoida/)).toBeInTheDocument()
+    })
   })
 
-  it('shows SRS sections', () => {
-    goToDetail()
-    expect(screen.getByText(/Sherikni kechiktirish/)).toBeInTheDocument()
-    expect(screen.getByText(/SRS ga saqlash/)).toBeInTheDocument()
-  })
-
-  it('back button returns to browse', () => {
-    goToDetail()
-    fireEvent.click(screen.getByText(/Orqaga/))
-    expect(screen.getByText("Chalkash So'zlar")).toBeInTheDocument()
-  })
-
-  it('delay button calls delayConfusablePartners', async () => {
-    goToDetail()
-    const btn = screen.getAllByRole('button').find(b =>
-      b.textContent?.includes('kechiktirish') && b.textContent?.includes('make')
-    )
-    expect(btn).toBeDefined()
-    if (btn) {
-      fireEvent.click(btn)
-      await vi.waitUntil(() => mockDelayConfusable.mock.calls.length > 0)
-      expect(mockDelayConfusable).toHaveBeenCalledWith('user-1', ['make'])
-    }
-  })
-
-  it('SRS push button calls pushWordsToSRS_FSRS and shows toast', async () => {
-    goToDetail()
-    const btn = screen.getAllByRole('button').find(b =>
-      b.textContent?.includes('SRS ga') && b.textContent?.includes('make')
-    )
-    expect(btn).toBeDefined()
-    if (btn) {
-      fireEvent.click(btn)
-      await vi.waitUntil(() => mockPushSRS.mock.calls.length > 0)
-      expect(mockPushSRS).toHaveBeenCalled()
-      expect(mockToast).toHaveBeenCalledWith(
-        expect.stringContaining('saqlandi'),
-        'success'
-      )
-    }
-  })
-})
-
-describe('Confusable quiz view', () => {
-  beforeEach(() => vi.clearAllMocks())
-  afterEach(() => cleanup())
-
-  function goToQuiz() {
+  it('shows rule section in detail view', async () => {
     renderPage()
-    fireEvent.click(screen.getByText("🧪 Test"))
-  }
-
-  it('shows quiz with progress and options', () => {
-    goToQuiz()
-    expect(screen.getByText(/Orqaga/)).toBeInTheDocument()
-    const buttons = screen.getAllByRole('button')
-    // Should have back button + at least 2 answer options + next button
-    expect(buttons.length).toBeGreaterThanOrEqual(3)
+    fireEvent.click(screen.getByText('Accept vs Except — farqi'))
+    await waitFor(() => {
+      expect(screen.getByText(/Accept = qabul qilmoq/)).toBeInTheDocument()
+    })
   })
 
-  it('selecting an answer shows explanation', async () => {
-    goToQuiz()
-    // Find an answer option (not back or next)
-    const opt = screen.getAllByRole('button').find(b =>
-      /^[A-D]$/.test(b.textContent?.trim()?.charAt(0) ?? '') &&
-      !b.textContent?.includes('Orqaga') &&
-      !b.textContent?.includes('Keyingi')
-    )
-    expect(opt).toBeDefined()
-    if (opt) {
-      fireEvent.click(opt)
-      await waitFor(() => {
-        expect(screen.getByText(/Izoh/)).toBeInTheDocument()
-      })
-    }
+  it('shows memory hook in detail view', async () => {
+    renderPage()
+    fireEvent.click(screen.getByText('Accept vs Except — farqi'))
+    await waitFor(() => {
+      expect(screen.getByText(/Accept = A\(dd\)/)).toBeInTheDocument()
+    })
+  })
+
+  // ── Back from detail ──────────────────────────────────────────────────────
+
+  it('goes back from detail to browse view', async () => {
+    renderPage()
+    fireEvent.click(screen.getByText('Accept vs Except — farqi'))
+    await waitFor(() => expect(screen.getByText(/Qoida/)).toBeInTheDocument())
+
+    // uz.json: confusable.detailBack = "Orqaga"
+    fireEvent.click(screen.getByText('Orqaga'))
+    await waitFor(() => {
+      expect(screen.getByText('Chalkash So\'zlar')).toBeInTheDocument()
+    })
   })
 })

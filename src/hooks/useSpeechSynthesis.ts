@@ -1,5 +1,6 @@
 // src/hooks/useSpeechSynthesis.ts
 // Reactive React hook wrapping src/lib/tts.ts — voice selection, speed control, speaking state
+import { monitoring } from '../lib/monitoring'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { speak, stopSpeaking, getVoices, getBestVoice, isSpeaking, isSpeechSupported, type TTSOptions } from '../lib/tts'
 
@@ -46,14 +47,18 @@ function loadPrefs(): { voiceName?: string; speed: number } {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (raw) return JSON.parse(raw)
-  } catch { /* ignore */ }
+  } catch (e) {
+    monitoring.captureMessage('loadPrefs (TTS) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+    /* ignore */ }
   return { speed: 0.9 }
 }
 
 function savePrefs(prefs: { voiceName?: string; speed: number }) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs))
-  } catch { /* ignore */ }
+  } catch (e) {
+    monitoring.captureMessage('savePrefs (TTS) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+    /* ignore */ }
 }
 
 /**

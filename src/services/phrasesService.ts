@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase'
+import { db } from '../lib/db'
 import { addDaysTashkent } from '../utils/tashkentDate'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
@@ -39,32 +40,32 @@ export async function fetchDailyPhrases(
   offset?: number,
   limit?: number
 ): Promise<DailyPhraseRow[]> {
-  const { data, error } = await (supabase
-    .rpc('get_daily_phrases' as never, {
-      p_user_id: userId,
-      p_level: level ?? null,
-      p_offset: offset ?? 0,
-      p_limit: limit ?? 60,
-    } as never) as unknown as Promise<{ data: DailyPhraseRow[] | null; error: unknown }>)
+  const { data, error } = await db.rpc('get_daily_phrases', {
+    p_user_id: userId,
+    p_level: level ?? undefined,
+    p_offset: offset ?? 0,
+    p_limit: limit ?? 60,
+  })
 
   if (error) {
     monitoring.captureMessage('fetchDailyPhrases error: ' + (error instanceof Error ? error.message : String(error)), 'error')
     return []
   }
 
-  return (data ?? []) as DailyPhraseRow[]
+  return (data ?? []) as unknown as DailyPhraseRow[]
 }
 
 export async function fetchPhrasesForReview(userId: string): Promise<DailyPhraseRow[]> {
-  const { data, error } = await (supabase
-    .rpc('get_phrases_for_review' as never, { p_user_id: userId } as never) as unknown as Promise<{ data: DailyPhraseRow[] | null; error: unknown }>)
+  const { data, error } = await db.rpc('get_phrases_for_review', {
+    p_user_id: userId,
+  })
 
   if (error) {
     monitoring.captureMessage('fetchPhrasesForReview error: ' + (error instanceof Error ? error.message : String(error)), 'error')
     return []
   }
 
-  return (data ?? []) as DailyPhraseRow[]
+  return (data ?? []) as unknown as DailyPhraseRow[]
 }
 
 export async function upsertPhraseProgress(
@@ -230,19 +231,21 @@ export interface LevelLearned {
 }
 
 export async function fetchPhraseLevelCounts(): Promise<LevelTotal[]> {
-  const { data, error } = await (supabase.rpc('get_phrase_counts_by_level' as never) as unknown as Promise<{ data: LevelTotal[] | null; error: unknown }>)
+  const { data, error } = await db.rpc('get_phrase_counts_by_level')
   if (error) {
     monitoring.captureMessage('fetchPhraseLevelCounts error: ' + (error instanceof Error ? error.message : String(error)), 'error')
     return []
   }
-  return (data ?? []) as LevelTotal[]
+  return data ?? []
 }
 
 export async function fetchPhraseLearnedCounts(userId: string): Promise<LevelLearned[]> {
-  const { data, error } = await (supabase.rpc('get_learned_phrase_counts_by_level' as never, { p_user_uuid: userId } as never) as unknown as Promise<{ data: LevelLearned[] | null; error: unknown }>)
+  const { data, error } = await db.rpc('get_learned_phrase_counts_by_level', {
+    p_user_uuid: userId,
+  })
   if (error) {
     monitoring.captureMessage('fetchPhraseLearnedCounts error: ' + (error instanceof Error ? error.message : String(error)), 'error')
     return []
   }
-  return (data ?? []) as LevelLearned[]
+  return data ?? []
 }

@@ -1,3 +1,4 @@
+import { monitoring } from '../lib/monitoring'
 import { useState, useEffect, useCallback, useRef } from 'react'
 
 export interface UseExamTimerOptions {
@@ -60,7 +61,8 @@ export function useExamTimer({
       const elapsedMs = Date.now() - state.startTime - state.pausedTotal
       const remaining = Math.max(0, duration - Math.floor(elapsedMs / 1000))
       return { remaining, isPaused: state.pausedAt !== null }
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('loadPersisted (exam timer) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       return null
     }
   }, [STORAGE_KEY, duration])
@@ -84,7 +86,8 @@ export function useExamTimer({
           STORAGE_KEY,
           JSON.stringify({ startTime, pausedAt: null, pausedTotal: 0 } satisfies PersistedState)
         )
-      } catch {
+      } catch (e) {
+        monitoring.captureMessage('exam timer localStorage init failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
         /* localStorage unavailable */
       }
       setTimeLeft(duration)
@@ -103,7 +106,8 @@ export function useExamTimer({
           setIsRunning(false)
           try {
             localStorage.removeItem(STORAGE_KEY)
-          } catch {
+          } catch (e) {
+            monitoring.captureMessage('exam timer removeItem failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
             /* ignore */
           }
           // Schedule callback outside of setState
@@ -123,7 +127,8 @@ export function useExamTimer({
         STORAGE_KEY,
         JSON.stringify({ startTime, pausedAt: null, pausedTotal: 0 } satisfies PersistedState)
       )
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('exam timer start failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       /* ignore */
     }
     setTimeLeft(duration)
@@ -138,7 +143,8 @@ export function useExamTimer({
         state.pausedAt = Date.now()
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
       }
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('exam timer pause failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       /* ignore */
     }
     setIsRunning(false)
@@ -155,7 +161,8 @@ export function useExamTimer({
           localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
         }
       }
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('exam timer resume failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       /* ignore */
     }
     setIsRunning(true)
@@ -164,7 +171,8 @@ export function useExamTimer({
   const reset = useCallback(() => {
     try {
       localStorage.removeItem(STORAGE_KEY)
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('exam timer reset failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       /* ignore */
     }
     setTimeLeft(duration)

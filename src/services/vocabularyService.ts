@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase'
+import { db } from '../lib/db'
 import { addDaysTashkent } from '../utils/tashkentDate'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
@@ -249,12 +250,12 @@ export interface LevelLearned {
 }
 
 export async function fetchLevelCounts(): Promise<LevelTotal[]> {
-  const { data, error } = await supabase.rpc('get_word_counts_by_level')
+  const { data, error } = await db.rpc('get_word_counts_by_level')
   if (error) {
     monitoring.captureMessage('fetchLevelCounts error: ' + (error instanceof Error ? error.message : String(error)), 'error')
     return []
   }
-  return (data ?? []) as LevelTotal[]
+  return data ?? []
 }
 
 // Har darajadagi jami yozuv soni (words yoki phrases katalogi) — deyarli statik,
@@ -288,12 +289,12 @@ export async function getCachedLevelTotals(
 }
 
 export async function fetchLearnedCounts(userId: string): Promise<LevelLearned[]> {
-  const { data, error } = await supabase.rpc('get_learned_counts_by_level', { user_uuid: userId })
+  const { data, error } = await db.rpc('get_learned_counts_by_level', { user_uuid: userId })
   if (error) {
     monitoring.captureMessage('fetchLearnedCounts error: ' + (error instanceof Error ? error.message : String(error)), 'error')
     return []
   }
-  return (data ?? []) as LevelLearned[]
+  return data ?? []
 }
 
 // ─── Interleaving: SRS dan eski so'zlarni olish ───────────────────────────
@@ -348,17 +349,14 @@ export async function getReviewWordsForLesson(
     }
   }
 
-  return rows.map((d) => {
-    const words = d.words as unknown as { english: string; uzbek: string; example?: string; phonetic?: string }
-    return {
-      wordId: d.word_id as number,
-      english: words.english,
-      uzbek: words.uzbek,
-      example: words.example,
-      phonetic: words.phonetic,
-      isReview: true as const,
-    }
-  })
+  return (rows as unknown as { word_id: number; words: { english: string; uzbek: string; example?: string; phonetic?: string } }[]).map((d) => ({
+    wordId: d.word_id,
+    english: d.words.english,
+    uzbek: d.words.uzbek,
+    example: d.words.example,
+    phonetic: d.words.phonetic,
+    isReview: true as const,
+  }))
 }
 
 export async function pushWordsToSRS(
@@ -375,7 +373,7 @@ export async function pushWordsToSRS(
 
     if (!wordRow) continue
 
-    const wordId = (wordRow as { id: number }).id
+    const wordId = wordRow.id
     const result = computeNextReview(1, w.rating)
 
     await supabase.from('vocabulary_progress').upsert({

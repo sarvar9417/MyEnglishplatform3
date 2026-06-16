@@ -9,6 +9,7 @@ import {
   Wifi, Monitor,
 } from 'lucide-react'
 import { supabase } from '../../lib/supabase'
+import { monitoring } from '../../lib/monitoring'
 import { useStore } from '../../store/useStore'
 import { fetchBattleQuestionsByMode } from '../../services/battleService'
 import { saveHotSeatResult } from '../../services/tandemService'
@@ -496,7 +497,7 @@ export default function HotSeatDuel({ onBack }: { onBack: () => void }) {
       title: 'EnglishPath Hot Seat',
       text: `🔥 Men bilan EnglishPath Hot Seat o'ynang! Xona ID: ${roomId}`,
     }
-    try { await navigator.share(shareData) } catch { copyRoomId() }
+    try { await navigator.share(shareData) } catch (e) { monitoring.captureMessage('HotSeatDuel share failed (fallback to copy): ' + (e instanceof Error ? e.message : String(e)), 'warn'); copyRoomId() }
   }
 
   // ═══════════════════════════════════════════════════════════════════════

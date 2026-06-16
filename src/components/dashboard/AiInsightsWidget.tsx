@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Brain, Sparkles, TrendingUp, Target, Lightbulb, RefreshCw, Wand2 } from 'lucide-react'
 import { useStore } from '../../store/useStore'
+import { monitoring } from '../../lib/monitoring'
 import { type LearningInsights, type LearningSignals } from '../../lib/claude'
 import { getCachedInsights, isInsightsStale, fetchAndCacheInsights, getWeakGrammarLabels } from '../../services/aiInsightsService'
 
@@ -48,7 +49,7 @@ export default function AiInsightsWidget() {
       const data = await fetchAndCacheInsights(buildSignals())
       setInsights(data)
       setStale(false)
-    } catch { /* ignore — non-critical */ }
+    } catch (e) { monitoring.captureMessage('AiInsightsWidget refresh failed (non-critical): ' + (e instanceof Error ? e.message : String(e)), 'warn') }
     finally { setLoading(false) }
   }
 

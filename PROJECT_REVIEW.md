@@ -1,8 +1,8 @@
 # EnglishPath — Loyiha Tanqidiy Xulosasi
 
 **Sana:** 2026-06-16  
-**Versiya:** 1.0.0  
-**Holat:** Tsc 0 xato · Testlar 1112/1112 o'tdi · Build muvaffaqiyatli
+**Versiya:** 1.1.0  
+**Holat:** Tsc 0 xato · Testlar 1264/1264 o'tdi · Build muvaffaqiyatli
 
 ---
 
@@ -16,21 +16,21 @@ Texnik jihatdan boy, zamonaviy va ambitsion mahsulot — poydevor kuchli, lekin 
 
 | Metrika | Qiymat | Baho |
 |---------|--------|------|
-| Manba fayllari (TS/TSX) | 429 | — |
-| Jami satrlar | ~141,695 | katta |
-| data/ ulushi | 59,644 satr = 42% | qattiq-kodlangan |
-| Eng katta fayl | days.ts 5,135 · Profile.tsx 1,922 | monolit |
+| Manba fayllari (TS/TSX) | ~440 | — |
+| Jami satrlar | ~140,000 | katta |
+| data/ ulushi | ~42% | qattiq-kodlangan |
+| Eng katta fayl | ListeningSection.tsx · Profile.tsx 460 | monolit |
 | tsc xatolari | 0 | ✅ |
 | as any / @ts-ignore / TODO | 0 / 0 / 0 | ✅ a'lo |
 | eslint-disable | 29 fayl | ⚠️ |
-| Test fayllari | 96 / 328 manba ≈ 29% | ⚠️ past |
-| Jami testlar | 1,112 | ✅ |
+| Test fayllari | 98 / ~330 manba ≈ 30% | ⚠️ past |
+| Jami testlar | 1,264 | ✅ |
 | Mashq auditi | 5,595 mashq → 0 muammo | ✅ |
 | Speaking kunlari | 125 (A0→A1→A2→B1→B2) | ✅ boy |
 | Daily lessonlar | 126 | ✅ |
 | i18n kalitlari | 1,230+ (uz/en/ru) | ✅ |
-| npm audit | 13 zaiflik (2 critical, 4 high) | 🔴 |
-| Ish daraxti | 14 o'zgargan + 20 kuzatilmagan | ⚠️ ifloslangan |
+| npm audit | 0 zaiflik | ✅ |
+| Ish daraxti | 14 o'zgargan + 1 kuzatilmagan | ⚠️ ifloslangan |
 
 ---
 
@@ -162,10 +162,10 @@ src/
 
 | Fayl | Hajm | Muammo |
 |------|------|--------|
-| `src/data/speakingPath/days.ts` | 5,135 qator | Bitta faylda 125 kun |
-| `src/pages/Profile.tsx` | 1,922 qator (80KB+) | Mini-ilova darajasida |
-| `src/components/dailyLesson/LessonView.tsx` | 84KB+ | Refactor qiyin |
-| `src/components/dailyLesson/ListeningSection.tsx` | 52KB+ | Regressiya xavfi yuqori |
+| ~~`src/data/speakingPath/days.ts`~~ | ~~5,135 qator~~ | ✅ `a0Days`-`b2Days` ga bo'lingan |
+| ~~`src/pages/Profile.tsx`~~ | ~~1,922 qator~~ | ✅ 460 qator — 4 widgetga bo'lingan |
+| ~~`src/components/dailyLesson/LessonView.tsx`~~ | ~~1,680 qator~~ | ✅ **120 qator** — 10 komponent + 1 hook bo'lingan |
+| `src/components/dailyLesson/ListeningSection.tsx` | 52KB+ | ⚠️ Qolgan eng katta monolit |
 | `src/components/phrases/Phrases.tsx` | 40KB+ | Yangi dev uchun kirish og'ir |
 
 **Oqibat:** Refactor qiyin, bug fix'da regressiya xavfi yuqori, yangi developer uchun kirish qiyin, test yozish murakkablashadi.
@@ -183,16 +183,9 @@ src/data/writingPrompts.ts  — 49KB
 
 **Oqibat:** Bitta missing brace yoki noto'g'ri quote butun app buildini buzadi. Bu shu sessiyada 2 marta jonli ko'rildi (`days.ts:2614`, `:4521`).
 
-#### 3. npm audit: 13 zaiflik
+#### 3. ~~npm audit: 13 zaiflik~~ ✅ **0 zaiflik**
 
-| daraja | soni |
-|--------|------|
-| Critical | 2 |
-| High | 4 |
-| Moderate | 5 |
-| Low | 2 |
-
-**Oqibat:** Xavfsizlik zaifliklari production'da qolishi mumkin.
+Oldingi kritik zaifliklar `npm audit fix` bilan to'liq tuzatilgan.
 
 #### 4. Parallel jarayon tartibsizligi
 
@@ -226,6 +219,7 @@ Sessiya davomida `HEAD d38ef41` ga ko'chib, keyin `ffe775e` ga qaytdi; tasdiqlan
 - `src/components/dailyLesson/ListeningSection.tsx`
 - `src/lib/ai/` — 6 ta Claude integration moduli
 - `src/services/stateSync.ts` — sync mantiqi murakkab, lekin yetarli testlanmagan
+- `src/components/dailyLesson/__tests__/SectionProgressBar.test.tsx` ✅ (yangi)
 
 #### 6. Tugallanmagan oqimlar
 
@@ -360,12 +354,12 @@ Barchasi hujjatlashtirilmagan.
 |------|-------|--------|
 | API keylar | ✅ To'g'ri | `.env` faylda, `.gitignore` da |
 | Supabase token | ⚠️ Xavfli | Suhbatda ulashilgan — rotate kerak |
-| npm audit | 🔴 13 zaiflik | 2 critical, 4 high |
+| npm audit | ✅ 0 zaiflik | To'liq tuzatilgan |
 | XSS | ⚠️ O'rtacha | 6 ta `dangerouslySetInnerHTML` |
 | Error message leak | ⚠️ O'rtacha | API xatolari clientga uzatiladi |
 | Cross-user leakage | ✅ Yaxshi | Partialize + user-switch cleanup |
 | RLS | ✅ Bor | Lekin audit qilinmagan |
-| Branch hygiene | ⚠️ Ifloslangan | 17 kuzatilmagan .py, .bak fayl |
+| Branch hygiene | ⚠️ Ifloslangan | 14 o'zgargan + 1 kuzatilmagan fayl |
 
 ---
 
@@ -435,24 +429,23 @@ Barchasi hujjatlashtirilmagan.
 
 ## Ustuvor yo'l xaritasi
 
-### Birinchi qadam (hozir)
+### ✅ Bajarildi
 
-1. 45 tuzatish + `audit:exercises` gate'ni commit qilish
-2. Branch'ni qulflash — parallel jarayonni to'xtatish
-3. `days.ts` ga bitta egasi tegsin
+1. ✅ `LessonView.tsx` → 10 komponent + 1 hook ga bo'lingan
+2. ✅ `days.ts` → `a0Days`-`b2Days` ga bo'lingan
+3. ✅ `Profile.tsx` → 4 widgetga bo'lingan (460 qator)
+4. ✅ `npm audit` — 0 zaiflik
+5. ✅ `.bak` fayllar tozalangan
+8. ✅ `useLessonState` hook ekstraksiyasi
+9. ✅ DRY prinsipi (ConfusableBanner, ExerciseResultsView)
 
-### 1-hafta — Xavfsizlik
+### Keyingi qadam
 
-4. `npm audit` critical/high zaifliklarini yopish
-5. Supabase sbp_ token rotate qilish
-6. `.bak` fayllarni o'chirish
-7. `eslint-disable` larni qayta ko'rib chiqish
-
-### 2-hafta — Monolitlarni bo'lish
-
-8. `days.ts` → `a0Days.ts`, `a1Days.ts`, `a2Days.ts`, `b1Days.ts`, `b2Days.ts`
-9. `LessonView.tsx` → section komponentlariga ajratish
-10. `Profile.tsx` → alohida widget komponentlariga ajratish
+1. `ListeningSection.tsx` (52KB+) — monolitdan ajratish
+2. `Phrases.tsx` (40KB+) — monolitdan ajratish
+3. `App.tsx` (396 qator) — routing/state yuklama
+4. `lib/ai/` — 6 ta Claude integration moduliga test yozish
+5. Test qamrovini oshirish (maqsad: 40%+)
 
 ### 3-hafta — Type safety
 

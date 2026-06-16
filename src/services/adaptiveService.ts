@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase'
+import type { Json } from '../types/supabase'
 import { monitoring } from '../lib/monitoring'
 import { GRAMMAR_TOPICS } from '../data/grammar'
 
@@ -176,7 +177,7 @@ export async function saveAdaptivePlan(userId: string, plan: AdaptivePlan): Prom
   await supabase.from('adaptive_plans').upsert({
     user_id: userId,
     date: plan.date,
-    plan_data: plan as never,
+    plan_data: plan as unknown as Json,
     updated_at: new Date().toISOString(),
   }, { onConflict: 'user_id,date' })
 }

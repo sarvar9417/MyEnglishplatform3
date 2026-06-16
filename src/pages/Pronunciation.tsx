@@ -76,7 +76,7 @@ export default function Pronunciation() {
           const a = await analyzeAudio(ar.audioUrl, said)
           acoustic = { pitchMean: a.pitchMean, pitchStddev: a.pitchStddev, avgEnergy: a.fluency.avgEnergy, energyVariation: a.fluency.energyVariation }
           setPitchContour(a.pitchContour)
-        } catch { setPitchContour([]) }
+        } catch (e) { monitoring.captureMessage('analyzeAudio failed (non-critical): ' + (e instanceof Error ? e.message : String(e)), 'warn'); setPitchContour([]) }
       }
       const result = await analyzePronunciation(phrase.text, said, phrase.ipa, level, acoustic)
       setAnalysis(result)

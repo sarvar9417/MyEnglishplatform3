@@ -9,15 +9,8 @@
 import { supabase } from '../lib/supabase'
 import { createDefaultFSRSState, computeNextReviewFSRS, type FSRSState } from '../lib/srs'
 import { LESSON_INDEX } from '../data/daily/lessonsIndex'
+import { monitoring } from '../lib/monitoring'
 import type { GrammarProgress, SpeakingChunk, SpeakingDayProgress } from '../data/speakingPath/types'
-
-// Dynamik jadval nomi uchun helper type (contentService.ts dagi saveScore pattern)
-type UpsertableTable = {
-  upsert: (
-    payload: Record<string, unknown> | Record<string, unknown>[],
-    options?: { onConflict?: string },
-  ) => Promise<{ error: { message: string } | null }>
-}
 
 // ── localStorage kalitlari — userId bilan prefikslanadi (multi-user izolatsiya) ──
 const progressKey = (uid: string) => `sp_progress_${uid}`
@@ -29,7 +22,8 @@ function readJSON<T>(key: string, fallback: T): T {
   try {
     const raw = localStorage.getItem(key)
     return raw ? (JSON.parse(raw) as T) : fallback
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('speakingPath readJSON failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return fallback
   }
 }
@@ -37,8 +31,8 @@ function readJSON<T>(key: string, fallback: T): T {
 function writeJSON(key: string, val: unknown): void {
   try {
     localStorage.setItem(key, JSON.stringify(val))
-  } catch {
-    /* quota / private mode — jim o'tkazib yuboriladi */
+  } catch (e) {
+    monitoring.captureMessage('speakingPath writeJSON failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
   }
 }
 
@@ -62,8 +56,8 @@ export async function getSpeakingProgress(userId: string): Promise<SpeakingDayPr
       }))
       writeJSON(progressKey(userId), mapped) // oflayn kesh
       return mapped
-    }
-  } catch {
+    }    } catch (e) {
+    monitoring.captureMessage('getSpeakingProgress Supabase failed, fallback to localStorage: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* fall through → localStorage */
   }
   return readJSON<SpeakingDayProgress[]>(progressKey(userId), [])
@@ -87,8 +81,8 @@ export async function saveSpeakingDayProgress(userId: string, p: SpeakingDayProg
       best_speak_score: p.bestSpeakScore ?? null,
       spoken_seconds: p.spokenSeconds,
       completed_at: p.completedAt ?? null,
-    })
-  } catch {
+    })    } catch (e) {
+    monitoring.captureMessage('saveSpeakingDayProgress Supabase failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* oflayn — localStorage da saqlandi, keyingi onlaynda sinxronlanadi */
   }
 }
@@ -123,8 +117,8 @@ export async function loadSrsMap(userId: string): Promise<SrsMap> {
       }
       writeJSON(srsKey(userId), map)
       return map
-    }
-  } catch {
+    }    } catch (e) {
+    monitoring.captureMessage('loadSrsMap Supabase failed, fallback to localStorage: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* fall through */
   }
   return readJSON<SrsMap>(srsKey(userId), {})
@@ -148,8 +142,8 @@ export async function enrollChunks(userId: string, chunkIds: string[]): Promise<
     await supabase.from('user_speaking_chunks').upsert(newRows, {
       onConflict: 'user_id,chunk_id',
       ignoreDuplicates: true,
-    })
-  } catch {
+    })    } catch (e) {
+    monitoring.captureMessage('enrollChunks Supabase failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* oflayn */
   }
 }
@@ -172,8 +166,8 @@ export async function gradeChunk(userId: string, chunkId: string, rating: string
       reps: state.reps,
       lapses: state.lapses,
       updated_at: new Date().toISOString(),
-    })
-  } catch {
+    })    } catch (e) {
+    monitoring.captureMessage('enrollChunks Supabase failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* oflayn */
   }
 }
@@ -528,12 +522,11 @@ export async function updateGrammarProgress(
       used_in_free_mode: g.usedInFreeMode,
       updated_at: new Date().toISOString(),
     }))
-    const builder = (supabase as unknown as {
-      from: (t: string) => UpsertableTable
-    }).from('user_grammar_progress')
+    const builder = (supabase as unknown as { from: (t: string) => { upsert: (payload: Record<string, unknown>[], options?: { onConflict?: string }) => Promise<{ error: { message: string } | null }> } }).from('user_grammar_progress')
     const { error } = await builder.upsert(rows, { onConflict: 'user_id,lesson_id' })
     if (error) throw error
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('updateGrammarProgress Supabase failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* oflayn — localStorage da saqlandi */
   }
 }
@@ -595,13 +588,7 @@ export async function getGrammarProgress(userId: string): Promise<GrammarProgres
       last_practiced_at: string | null
       used_in_free_mode: boolean
     }
-    const { data, error } = await (supabase as unknown as {
-      from: (table: string) => {
-        select: (cols: string) => {
-          eq: (col: string, val: string) => Promise<{ data: GrammarRow[] | null; error: { message: string } | null }>
-        }
-      }
-    }).from('user_grammar_progress')
+    const { data, error } = await (supabase as unknown as { from: (table: string) => { select: (cols: string) => { eq: (col: string, val: string) => Promise<{ data: GrammarRow[] | null; error: { message: string } | null }> } } }).from('user_grammar_progress')
       .select('lesson_id, grammar_point, level, status, best_score, practice_count, last_practiced_at, used_in_free_mode')
       .eq('user_id', userId)
     if (error) throw error
@@ -619,7 +606,8 @@ export async function getGrammarProgress(userId: string): Promise<GrammarProgres
       writeJSON(grammarKey(userId), mapped)
       return mapped
     }
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('getGrammarProgress Supabase failed, fallback to localStorage: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* fall through → localStorage */
   }
   return readJSON<GrammarProgress[]>(grammarKey(userId), [])

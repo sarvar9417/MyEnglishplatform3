@@ -21,12 +21,12 @@ function requireAuthedUser(userId: string): void {
 // ─── CRUD Operations ──────────────────────────────────────────────────────
 
 async function checkDuplicateWord(userId: string, english: string): Promise<boolean> {
-  const { data } = await (supabase
-    .from('personal_vocabulary' as never)
+  const { data } = await supabase
+    .from('personal_vocabulary')
     .select('id')
     .eq('user_id', userId)
     .ilike('english', english.trim())
-    .maybeSingle() as unknown as Promise<{ data: { id: number } | null }>)
+    .maybeSingle()
   return !!data
 }
 
@@ -44,8 +44,8 @@ export async function addPersonalWordToDB(
   const now = new Date().toISOString()
   const defaultFSRS = createDefaultFSRSState()
 
-  const { data, error } = await (supabase
-    .from('personal_vocabulary' as never)
+  const { data, error } = await supabase
+    .from('personal_vocabulary')
     .insert({
       user_id: userId,
       english: wordData.english,
@@ -67,9 +67,9 @@ export async function addPersonalWordToDB(
       fsrs_lapses: 0,
       created_at: now,
       updated_at: now,
-    } as never)
+    })
     .select()
-    .single() as unknown as Promise<{ data: PersonalWord | null; error: unknown }>)
+    .single()
 
   if (error) {
     monitoring.captureMessage('addPersonalWordToDB error: ' + (error instanceof Error ? error.message : String(error)), 'error')
@@ -78,7 +78,7 @@ export async function addPersonalWordToDB(
   }
 
   if (!data) throw new Error('No data returned')
-  return data
+  return data as unknown as PersonalWord
 }
 
 export async function updatePersonalWordInDB(
@@ -86,14 +86,14 @@ export async function updatePersonalWordInDB(
   wordId: number,
   updates: UpdateWordDTO
 ): Promise<void> {
-  const { error } = await (supabase
-    .from('personal_vocabulary' as never)
+  const { error } = await supabase
+    .from('personal_vocabulary')
     .update({
       ...updates,
       updated_at: new Date().toISOString(),
-    } as never)
+    })
     .eq('user_id', userId)
-    .eq('id', wordId) as unknown as Promise<{ error: unknown }>)
+    .eq('id', wordId)
 
   if (error) {
     monitoring.captureMessage('updatePersonalWordInDB error: ' + (error instanceof Error ? error.message : String(error)), 'error')
@@ -106,11 +106,11 @@ export async function deletePersonalWordFromDB(
   userId: string,
   wordId: number
 ): Promise<void> {
-  const { error } = await (supabase
-    .from('personal_vocabulary' as never)
+  const { error } = await supabase
+    .from('personal_vocabulary')
     .delete()
     .eq('user_id', userId)
-    .eq('id', wordId) as unknown as Promise<{ error: unknown }>)
+    .eq('id', wordId)
 
   if (error) {
     monitoring.captureMessage('deletePersonalWordFromDB error: ' + (error instanceof Error ? error.message : String(error)), 'error')
@@ -120,18 +120,18 @@ export async function deletePersonalWordFromDB(
 }
 
 export async function fetchPersonalWordsFromDB(userId: string): Promise<PersonalWord[]> {
-  const { data, error } = await (supabase
-    .from('personal_vocabulary' as never)
+  const { data, error } = await supabase
+    .from('personal_vocabulary')
     .select('*')
     .eq('user_id', userId)
-    .order('created_at', { ascending: false }) as unknown as Promise<{ data: PersonalWord[] | null; error: unknown }>)
+    .order('created_at', { ascending: false })
 
   if (error) {
     monitoring.captureMessage('fetchPersonalWordsFromDB error: ' + (error instanceof Error ? error.message : String(error)), 'error')
     return []
   }
 
-  return data ?? []
+  return (data ?? []) as unknown as PersonalWord[]
 }
 
 export async function fetchWordsForReviewFromDB(userId: string): Promise<PersonalWord[]> {
@@ -139,20 +139,20 @@ export async function fetchWordsForReviewFromDB(userId: string): Promise<Persona
   // aks holda yarim tunda off-by-one bo'lardi.
   const today = getTodayTashkent()
 
-  const { data, error } = await (supabase
-    .from('personal_vocabulary' as never)
+  const { data, error } = await supabase
+    .from('personal_vocabulary')
     .select('*')
     .eq('user_id', userId)
     .eq('is_learned', false)
     .lte('next_review', today)
-    .order('next_review', { ascending: true }) as unknown as Promise<{ data: PersonalWord[] | null; error: unknown }>)
+    .order('next_review', { ascending: true })
 
   if (error) {
     monitoring.captureMessage('fetchWordsForReviewFromDB error: ' + (error instanceof Error ? error.message : String(error)), 'error')
     return []
   }
 
-  return data ?? []
+  return (data ?? []) as unknown as PersonalWord[]
 }
 
 export async function ratePersonalWordInDB(
@@ -162,12 +162,12 @@ export async function ratePersonalWordInDB(
 ): Promise<PersonalWord> {
   requireAuthedUser(userId)
   // Compute FSRS client-side (our TypeScript algorithm)
-  const { data: existing, error: fetchError } = await (supabase
-    .from('personal_vocabulary' as never)
+  const { data: existing, error: fetchError } = await supabase
+    .from('personal_vocabulary')
     .select('fsrs_stability, fsrs_difficulty, next_review, fsrs_reps, fsrs_lapses')
     .eq('user_id', userId)
     .eq('id', wordId)
-    .single() as unknown as Promise<{ data: { fsrs_stability: number | null; fsrs_difficulty: number | null; next_review: string; fsrs_reps: number | null; fsrs_lapses: number | null } | null; error: unknown }>)
+    .single()
 
   let fsrsStability: number | undefined
   let fsrsDifficulty: number | undefined
@@ -192,8 +192,7 @@ export async function ratePersonalWordInDB(
   }
 
   // Atomic RPC call with FSRS params — no race condition on box/score update
-  const s = supabase as unknown as { rpc: (name: string, params: Record<string, unknown>) => Promise<{ data: Record<string, unknown> | null; error: unknown }> }
-  const { data, error } = await s.rpc('rate_personal_vocab_word', {
+  const { data, error } = await supabase.rpc('rate_personal_vocab_word', {
     p_user_id: userId,
     p_word_id: wordId,
     p_rating: rating,
@@ -220,10 +219,10 @@ export async function batchAddPersonalWordsToDB(
   requireAuthedUser(userId)
 
   // Filter out duplicates: fetch existing words for this user
-  const { data: existing } = await (supabase
-    .from('personal_vocabulary' as never)
+  const { data: existing } = await supabase
+    .from('personal_vocabulary')
     .select('english')
-    .eq('user_id', userId) as unknown as Promise<{ data: { english: string }[] | null }>)
+    .eq('user_id', userId)
   const existingSet = new Set((existing ?? []).map(e => e.english.toLowerCase().trim()))
   const uniqueWords = wordsData.filter(w => !existingSet.has(w.english.toLowerCase().trim()))
 
@@ -262,10 +261,10 @@ export async function batchAddPersonalWordsToDB(
     updated_at: now,
   }))
 
-  const { data, error } = await (supabase
-    .from('personal_vocabulary' as never)
-    .insert(rows as never)
-    .select() as unknown as Promise<{ data: PersonalWord[] | null; error: unknown }>)
+  const { data, error } = await supabase
+    .from('personal_vocabulary')
+    .insert(rows)
+    .select()
 
   if (error) {
     monitoring.captureMessage('batchAddPersonalWordsToDB error: ' + (error instanceof Error ? error.message : String(error)), 'error')
@@ -273,7 +272,7 @@ export async function batchAddPersonalWordsToDB(
     throw error instanceof Error ? error : new Error(String(error))
   }
 
-  return data ?? []
+  return (data ?? []) as unknown as PersonalWord[]
 }
 
 // ─── AI Translation Helper ────────────────────────────────────────────────

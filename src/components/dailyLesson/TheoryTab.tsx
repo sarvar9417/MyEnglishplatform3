@@ -1,0 +1,163 @@
+import { Star, BookOpen, Lightbulb, MessageCircle } from 'lucide-react'
+import type { NavigateFunction } from 'react-router-dom'
+import type { DailyLesson, ReadingSection, WritingSection, ListeningSection } from '../../data/dailyLessons'
+import type { StoryBeat } from '../../data/narrative/storyline'
+import { getConfusablePairs } from './lessonHelpers'
+import FormulaRecallCard from './FormulaRecallCard'
+import RuleCard from './RuleCard'
+import VocabLearner from './VocabLearner'
+import SpecialCaseCard from './SpecialCaseCard'
+import MnemonicCard from './MnemonicCard'
+import LessonImage from './LessonImage'
+import StoryBeatCard from './StoryBeatCard'
+import SpeakingPathLink from './SpeakingPathLink'
+import ExamplesSection from './ExamplesSection'
+import ConfusableBanner from './ConfusableBanner'
+import DialogueCard from './DialogueCard'
+import CulturalNoteCard from './CulturalNoteCard'
+
+interface Props {
+  lesson: DailyLesson & { reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection }
+  storyBeat: StoryBeat | null
+  navigate: NavigateFunction
+  addXP: (amount: number) => void
+  onVocabDone: (pushedCount: number) => void
+}
+
+export default function TheoryTab({ lesson, storyBeat, navigate, addXP, onVocabDone }: Props) {
+  return (
+    <div className="space-y-6">
+      {/* O'rganish yo'li konteksti — dars boshida */}
+      {storyBeat && <StoryBeatCard storyBeat={storyBeat} day={lesson.day} lessonId={lesson.id} />}
+
+      {/* Lesson image — dars ochilganda eng tepada vizual sxema */}
+      {lesson.image && <LessonImage filename={lesson.image} title={lesson.title} />}
+
+      {/* 🎤 Speak this — Grammar Track ga link */}
+      <SpeakingPathLink lessonId={lesson.id} navigate={navigate} />
+
+      {/* Grammar: Formulas */}
+      <div className="bg-gradient-to-br from-primary-600 to-b2-600 rounded-2xl p-5 text-white">
+        <p className="text-xs font-semibold opacity-70 mb-3 uppercase tracking-wider">Formulalar</p>
+        <div className="grid grid-cols-1 gap-2">
+          {lesson.formulas.map((row) => (
+            <FormulaRecallCard key={row.label} label={row.label} structure={row.structure} color={row.color} />
+          ))}
+        </div>
+      </div>
+
+      {/* Grammar: Rules */}
+      <div className="space-y-4">
+        <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
+          <BookOpen size={14} /> Qoidalar
+        </p>
+        {lesson.rules.map((r, i) => <RuleCard key={i} rule={r} index={i} />)}
+      </div>
+
+      {/* Special table (only comparatives-superlatives) */}
+      {lesson.id === 'comparatives-superlatives' && (
+        <div className="card border-primary-200">
+          <p className="text-xs font-bold text-primary-600 uppercase tracking-wider mb-3 flex items-center gap-1">
+            <Star size={14} /> Tezkor eslatma — yodda saqlash uchun
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b-2 border-primary-200 text-left text-xs text-primary-700 uppercase tracking-wider">
+                  <th className="pb-2 pr-3">Sifat turi</th>
+                  <th className="pb-2 pr-3">Comparative</th>
+                  <th className="pb-2 pr-3">Superlative</th>
+                  <th className="pb-2">Misol</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { type: "1 bo'g'in (qisqa)", comp: 'adj + -er', sup: 'the adj + -est', ex: 'tall → taller → the tallest' },
+                  { type: "-y bilan tugagan", comp: "-y → -i + -er", sup: "the -y → -i + -est", ex: 'happy → happier → the happiest' },
+                  { type: "CVC (undosh+unli+undosh)", comp: 'undosh ikki marta + -er', sup: 'the undosh×2 + -est', ex: 'big → bigger → the biggest' },
+                  { type: "-e bilan tugagan", comp: 'adj + -r', sup: 'the adj + -st', ex: 'large → larger → the largest' },
+                  { type: "2+ bo'g'in (uzun)", comp: 'more + adj', sup: 'the most + adj', ex: 'expensive → more expensive → the most expensive' },
+                  { type: "Noto'g'ri", comp: 'maxsus shakl', sup: 'maxsus shakl', ex: 'good → better → the best' },
+                ].map((r) => (
+                  <tr key={r.type} className="border-b border-gray-50">
+                    <td className="py-1.5 pr-3 font-semibold text-gray-800 text-xs">{r.type}</td>
+                    <td className="py-1.5 pr-3 font-mono text-xs text-purple-700">{r.comp}</td>
+                    <td className="py-1.5 pr-3 font-mono text-xs text-indigo-700">{r.sup}</td>
+                    <td className="py-1.5 font-mono text-xs text-gray-600">{r.ex}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Confusable ogohlantirish banneri */}
+      <ConfusableBanner pairs={getConfusablePairs(lesson.vocabulary)} navigate={navigate} variant="theory" />
+
+      {/* Vocabulary */}
+      <div className="pt-2 border-t border-gray-100 dark:border-gray-700">
+        <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+          📝 Lug'at — {lesson.vocabulary.length} ta so'z
+        </p>
+        <VocabLearner
+          vocab={lesson.vocabulary}
+          addXP={addXP}
+          lessonId={lesson.id}
+          lessonLevel={lesson.level}
+          onVocabDone={onVocabDone}
+        />
+      </div>
+
+      {/* Examples — with AudioButton for pronunciation */}
+      <ExamplesSection examples={lesson.examples} />
+
+      {/* Special Cases */}
+      {lesson.specialCases.length > 0 && (
+        <div className="pt-2 border-t border-gray-100 dark:border-gray-700">
+          <p className="text-xs font-bold text-primary-600 uppercase tracking-wider mb-3 flex items-center gap-1">
+            <Star size={14} /> Maxsus holatlar — yodda saqlash uchun alohida e'tibor
+          </p>
+          {lesson.specialCases.map((sc) => (
+            <div key={sc.id} className="space-y-3">
+              {sc.mnemonic && <MnemonicCard rule={sc.title} mnemonic={sc.mnemonic} />}
+              <SpecialCaseCard sc={sc} addXP={addXP} lessonId={lesson.id} />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Dialogues section */}
+      {lesson.dialogues && lesson.dialogues.length > 0 && (
+        <div className="pt-2 border-t border-gray-100 dark:border-gray-700 space-y-3">
+          <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
+            <MessageCircle size={14} /> Real-life dialogues — {lesson.dialogues.length} ta
+          </p>
+          {lesson.dialogues.map((d) => (
+            <DialogueCard key={d.id} dialogue={d} />
+          ))}
+        </div>
+      )}
+
+      {/* Cultural notes section */}
+      {lesson.culturalNotes && lesson.culturalNotes.length > 0 && (
+        <div className="pt-2 border-t border-gray-100 dark:border-gray-700 space-y-3">
+          <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
+            <Lightbulb size={14} /> Cultural context — {lesson.culturalNotes.length} ta
+          </p>
+          {lesson.culturalNotes.map((n) => (
+            <CulturalNoteCard key={n.id} note={n} />
+          ))}
+        </div>
+      )}
+
+      {/* Bottom info card */}
+      <div className="card bg-gradient-to-r from-primary-50 dark:from-primary-900/30 to-b2-50 dark:to-b2-900/30 border-primary-100 dark:border-primary-800">
+        <p className="text-sm text-primary-800 dark:text-primary-300 font-medium flex items-center gap-2">
+          <Lightbulb size={16} />
+          Keyingi bosqichda <strong>{lesson.vocabulary.length} ta so'z</strong> va <strong>{lesson.exercises.length} ta mashq</strong> bor. Har to'g'ri javob <strong>+10 XP</strong>.
+        </p>
+      </div>
+    </div>
+  )
+}

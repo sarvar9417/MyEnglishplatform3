@@ -194,7 +194,8 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
       }]
       const nextIdx = currentIdx + 1
       pendingRef.current = { rounds: newRounds, nextIdx, finished: nextIdx >= wordsRef.current.length }
-    } catch {
+    } catch (e) {
+      monitoring.captureMessage('VocabSentenceGame checkSentenceTranslation failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       setChecking(false)
       setFlash('wrong')
       const fallback = `To'g'ri javob: "${currentWord.english}" so'zini ishlatib, o'zbekcha gapni ingliz tiliga tarjima qiling.`
