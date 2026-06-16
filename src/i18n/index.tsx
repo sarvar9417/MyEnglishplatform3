@@ -48,16 +48,48 @@ async function loadLocale(locale: Locale): Promise<TranslationStrings> {
   return data
 }
 
-/* ─── Interpolation ─── */
+/* ─── Interpolation + Pluralization ─── */
 
 type Params = Record<string, string | number>
 
-function interpolate(template: string, params?: Params): string {
+/**
+ * Plural formani aniqlash:
+ * - Uzbek: doim "other" ishlatiladi (1 ta, 5 ta — bir xil)
+ * - English: one/other (1 item, 2 items)
+ * - Russian: one/few/many/other (1 день, 2 дня, 5 дней)
+ */
+function getPluralForm(count: number, locale: Locale): 'one' | 'few' | 'many' | 'other' {
+  if (locale === 'uz') return 'other'
+  if (locale === 'en') return count === 1 ? 'one' : 'other'
+  // Russian
+  const mod10 = count % 10
+  const mod100 = count % 100
+  if (mod10 === 1 && mod100 !== 11) return 'one'
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'few'
+  if (mod10 === 0 || (mod10 >= 5 && mod10 <= 9) || (mod100 >= 11 && mod100 <= 14)) return 'many'
+  return 'other'
+}
+
+function interpolate(template: string, params?: Params, locale: Locale = 'uz'): string {
   if (!params) return template
-  return template.replace(/\{(\w+)\}/g, (_, key) => {
+  // Plural: {count, plural, one {# item} other {# items}}
+  let result = template.replace(
+    /\{(\w+),\s*plural,\s*one\s*\{([^}]*)\}\s*other\s*\{([^}]*)\}\}/g,
+    (_, key, singular, plural) => {
+      const val = params[key]
+      if (val === undefined) return `{${key}}`
+      const n = Number(val)
+      const form = getPluralForm(n, locale)
+      const pattern = form === 'one' ? singular : plural
+      return pattern.replace(/#/g, String(n))
+    }
+  )
+  // Simple: {variable}
+  result = result.replace(/\{(\w+)\}/g, (_, key) => {
     const val = params[key]
     return val !== undefined ? String(val) : `{${key}}`
   })
+  return result
 }
 
 /* ─── Context ─── */
@@ -109,8 +141,8 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   const t = useCallback((key: keyof TranslationStrings, params?: Params): string => {
     const template = dict?.[key]
     if (template === undefined) return key // fallback: show the key name
-    return interpolate(template, params)
-  }, [dict])
+    return interpolate(template, params, locale)
+  }, [dict, locale])
 
   const setLocale = useCallback((newLocale: Locale) => {
     setStoredLocale(newLocale)
@@ -135,7 +167,7 @@ const FALLBACK_CONTEXT: I18nContextValue = {
   loading: false,
   t: (key, params) => {
     const template = FALLBACK_DICT[key as string]
-    return template === undefined ? (key as string) : interpolate(template, params)
+    return template === undefined ? (key as string) : interpolate(template, params, 'uz')
   },
   setLocale: () => { /* no-op outside provider */ },
 }
