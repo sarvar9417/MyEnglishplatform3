@@ -398,7 +398,7 @@ const GRAMMAR_PATTERNS: GrammarPattern[] = [
   { id: 'adjective-adverb', level: 'A2', regex: /\b(quickly|slowly|carefully|badly|well|hard)\b/i },
   { id: 'quantifiers', level: 'A2', regex: /\b(some|any|much|many|a lot of|a few|a little)\b/i },
 
-  // B1 (10)
+  // B1 (15)
   { id: 'present-perfect-continuous', level: 'B1', regex: /\b(have|has) been \w+ing\b/i },
   { id: 'past-perfect', level: 'B1', regex: /\bhad (been|done|seen|gone|taken|made|said)\b/i },
   { id: 'future-continuous', level: 'B1', regex: /\bwill be \w+ing\b/i },
@@ -409,13 +409,11 @@ const GRAMMAR_PATTERNS: GrammarPattern[] = [
   { id: 'time-prepositions', level: 'B1', regex: /\b(at \d|on \w+day|in \w+ber|in \w+uary)\b/i },
   { id: 'verb-patterns', level: 'B1', regex: /\b(want|need|expect|hope|decide|promise) to \w+\b/i },
   { id: 'conjunctions', level: 'B1', regex: /\b(although|however|therefore|moreover|nevertheless)\b/i },
-
-  // B1+ (5)
-  { id: 'modal-perfects', level: 'B1+', regex: /\b(must|could|might|may|should|would) have \w+en\b/i },
-  { id: 'narrative-tenses', level: 'B1+', regex: /\b(was \w+ing|were \w+ing|had \w+ed)\b/ },
-  { id: 'participle-clauses', level: 'B1+', regex: /\b(having|being) \w+en\b|\b(Having|Being) \w+ed\b/i },
-  { id: 'emphasis-does', level: 'B1+', regex: /\b(do|does|did) \w+\b(?!\?)/ },
-  { id: 'infinitive-gerund', level: 'B1+', regex: /\b(avoid|suggest|recommend|consider|admit) \w+ing\b/i },
+  { id: 'modal-perfects', level: 'B1', regex: /\b(must|could|might|may|should|would) have \w+en\b/i },
+  { id: 'narrative-tenses', level: 'B1', regex: /\b(was \w+ing|were \w+ing|had \w+ed)\b/ },
+  { id: 'participle-clauses', level: 'B1', regex: /\b(having|being) \w+en\b|\b(Having|Being) \w+ed\b/i },
+  { id: 'emphasis-does', level: 'B1', regex: /\b(do|does|did) \w+\b(?!\?)/ },
+  { id: 'infinitive-gerund', level: 'B1', regex: /\b(avoid|suggest|recommend|consider|admit) \w+ing\b/i },
 
   // B2 (5)
   { id: 'unreal-past', level: 'B2', regex: /\b(wish|if only|would rather|it's time) \w+\b/i },

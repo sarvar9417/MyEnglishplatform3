@@ -800,16 +800,16 @@ const day19: SpeakingDay = {
   linkedLessonId: 'have-got',
   grammarPoint: 'have got / has got',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'family', uz: 'oila', example: 'I have got a big family.' },
+    { en: 'phone', uz: 'telefon', example: 'My phone is new.' },
+    { en: 'car', uz: 'mashina', example: 'We have got a car.' },
+    { en: 'pen', uz: 'ruchka', example: 'Have you got a pen?' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/h/',
+    ipaExample: '/h/ — have, has',
+    tipUz: "Og'izdan chiqadigan yumshoq tovush.",
+    tipEn: "Soft sound from the throat.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -838,16 +838,16 @@ const day20: SpeakingDay = {
   linkedLessonId: 'can-cant',
   grammarPoint: 'can / can\'t',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'speak', uz: 'gapirish', example: 'I can speak English.' },
+    { en: 'help', uz: 'yordam', example: 'Can you help me?' },
+    { en: 'drive', uz: 'haydash', example: 'She can\'t drive.' },
+    { en: 'play', uz: 'o\'ynash', example: 'He can play the guitar.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/k/',
+    ipaExample: '/k/ — can, cat',
+    tipUz: "Til orqa qismidan chiqadi.",
+    tipEn: "Sound from the back of the tongue.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -876,16 +876,16 @@ const day21: SpeakingDay = {
   linkedLessonId: 'present-continuous',
   grammarPoint: 'am/is/are + V-ing',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'read', uz: 'o\'qish', example: 'I am reading a book.' },
+    { en: 'cook', uz: 'pishirish', example: 'She is cooking dinner.' },
+    { en: 'play', uz: 'o\'ynash', example: 'They are playing football.' },
+    { en: 'sleep', uz: 'uxlash', example: 'Is he sleeping now?' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/ɪŋ/',
+    ipaExample: '/ɪŋ/ — playing, reading',
+    tipUz: "Burun orqasidan chiqadi.",
+    tipEn: "Sound from behind the nose.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -914,16 +914,16 @@ const day22: SpeakingDay = {
   linkedLessonId: 'simple-past',
   grammarPoint: 'V2 (went, saw, ate)',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'went', uz: 'bordi', example: 'I went to the market.' },
+    { en: 'ate', uz: 'yedi', example: 'She ate an apple.' },
+    { en: 'watched', uz: 'tomosha qildi', example: 'We watched a film.' },
+    { en: 'saw', uz: 'ko\'rdi', example: 'I saw my friend.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/t/',
+    ipaExample: '/t/ — went, ate',
+    tipUz: "Til tishlarga tegadi.",
+    tipEn: "Tongue touches the teeth.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -952,16 +952,16 @@ const day23: SpeakingDay = {
   linkedLessonId: 'simple-future',
   grammarPoint: 'will + V1',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'will', uz: 'bo\'ladi', example: 'I will study English.' },
+    { en: 'study', uz: 'o\'qish', example: 'I will study hard.' },
+    { en: 'come', uz: 'kelish', example: 'Will you come?' },
+    { en: 'arrive', uz: 'yetib kelish', example: 'They will arrive at six.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/w/',
+    ipaExample: '/w/ — will, we',
+    tipUz: "Lablar bilan yasaladi.",
+    tipEn: "Made with the lips.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -990,16 +990,16 @@ const day24: SpeakingDay = {
   linkedLessonId: 'question-words',
   grammarPoint: 'what/where/when/who/how',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'what', uz: 'nima', example: 'What is your name?' },
+    { en: 'where', uz: 'qayer', example: 'Where do you live?' },
+    { en: 'when', uz: 'qachon', example: 'When is your birthday?' },
+    { en: 'who', uz: 'kim', example: 'Who is that woman?' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/w/',
+    ipaExample: '/w/ — what, where',
+    tipUz: "Lablar bilan yasaladi.",
+    tipEn: "Made with the lips.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -1028,16 +1028,16 @@ const day25: SpeakingDay = {
   linkedLessonId: 'conjunctions',
   grammarPoint: 'and, but, or, because',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'and', uz: 'va', example: 'Tea and coffee.' },
+    { en: 'but', uz: 'lekin', example: 'I am tired but happy.' },
+    { en: 'or', uz: 'yoki', example: 'Tea or coffee?' },
+    { en: 'because', uz: 'chunki', example: 'I stayed home because I was sick.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/b/',
+    ipaExample: '/b/ — but, because',
+    tipUz: "Lablar bilan yasaladi.",
+    tipEn: "Made with the lips.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -1066,16 +1066,16 @@ const day26: SpeakingDay = {
   linkedLessonId: 'body-parts',
   grammarPoint: 'have got (review)',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'head', uz: 'bosh', example: 'I have got a headache.' },
+    { en: 'hand', uz: 'qo\'l', example: 'Wash your hands.' },
+    { en: 'arm', uz: 'qo\'l (muskül)', example: 'He has got strong arms.' },
+    { en: 'leg', uz: 'oyoq', example: 'I hurt my leg.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/h/',
+    ipaExample: '/h/ — head, hand',
+    tipUz: "Og'izdan chiqadigan yumshoq tovush.",
+    tipEn: "Soft sound from the throat.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -1102,10 +1102,10 @@ const day27: SpeakingDay = {
   goalUz: "Have got, can, present continuous, past simple, future ni takrorlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'visited', uz: 'tashrif buyurdi', example: 'I visited my grandmother.' },
+    { en: 'called', uz: 'chaqirdi', example: 'She called me yesterday.' },
+    { en: 'tomorrow', uz: 'ertaga', example: 'I will go tomorrow.' },
+    { en: 'where', uz: 'qayer', example: 'Where do you live?' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
@@ -1138,10 +1138,10 @@ const day28: SpeakingDay = {
   goalUz: "Question words, conjunctions, body parts ni takrorlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'question', uz: 'savol', example: 'I have a question.' },
+    { en: 'because', uz: 'chunki', example: 'I stayed because it rained.' },
+    { en: 'head', uz: 'bosh', example: 'I have a headache.' },
+    { en: 'and', uz: 'va', example: 'Tea and coffee.' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
@@ -1174,10 +1174,10 @@ const day29: SpeakingDay = {
   goalUz: "Barcha A1 grammar va lug'atni mustahkamlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'went', uz: 'bordi', example: 'I went to school.' },
+    { en: 'will', uz: 'bo\'ladi', example: 'I will go tomorrow.' },
+    { en: 'what', uz: 'nima', example: 'What is your name?' },
+    { en: 'family', uz: 'oila', example: 'I have a big family.' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
@@ -2148,16 +2148,16 @@ const day52: SpeakingDay = {
   linkedLessonId: 'past-continuous',
   grammarPoint: 'was/were + V-ing',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'was', uz: 'edi', example: 'I was sleeping at nine.' },
+    { en: 'were', uz: 'edilar', example: 'They were playing football.' },
+    { en: 'raining', uz: 'yomg\'ir yog\'ayotgan', example: 'It was raining all day.' },
+    { en: 'sleeping', uz: 'uxlayotgan', example: 'She was sleeping when I called.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/w/',
+    ipaExample: '/w/ — was, were',
+    tipUz: "Lablar bilan yasaladi.",
+    tipEn: "Made with the lips.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -2186,16 +2186,16 @@ const day53: SpeakingDay = {
   linkedLessonId: 'too-enough',
   grammarPoint: 'too + adj, adj + enough',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'too', uz: 'juda', example: 'This bag is too heavy.' },
+    { en: 'enough', uz: 'yetarli', example: 'She is old enough to drive.' },
+    { en: 'expensive', uz: 'qimmat', example: 'The car is too expensive.' },
+    { en: 'tired', uz: 'charchagan', example: 'I am too tired to work.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/uː/',
+    ipaExample: '/uː/ — too, shoe',
+    tipUz: "Lablar yoyiladi.",
+    tipEn: "Lips are rounded.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -2224,16 +2224,16 @@ const day54: SpeakingDay = {
   linkedLessonId: 'so-such',
   grammarPoint: 'so + adj, such + noun',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'so', uz: 'shuncha', example: 'It was so cold today.' },
+    { en: 'such', uz: 'shunday', example: 'She is such a kind person.' },
+    { en: 'beautiful', uz: 'chiroyli', example: 'It was such a beautiful day.' },
+    { en: 'interesting', uz: 'qiziqarli', example: 'The book was so interesting.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/s/',
+    ipaExample: '/s/ — so, such',
+    tipUz: "Tishlar orasidan chiqadi.",
+    tipEn: "Sound between the teeth.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -2260,10 +2260,10 @@ const day55: SpeakingDay = {
   goalUz: "Past continuous, too/enough, so/such ni takrorlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'was', uz: 'edi', example: 'It was raining when I left.' },
+    { en: 'were', uz: 'edilar', example: 'They were studying all night.' },
+    { en: 'too', uz: 'juda', example: 'The test was too hard.' },
+    { en: 'enough', uz: 'yetarli', example: 'He is not tall enough.' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
@@ -2296,10 +2296,10 @@ const day56: SpeakingDay = {
   goalUz: "Barcha A2 grammar va lug'atni takrorlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'so', uz: 'shuncha', example: 'The movie was so good.' },
+    { en: 'such', uz: 'shunday', example: 'It was such a nice day.' },
+    { en: 'expensive', uz: 'qimmat', example: 'The food was too expensive.' },
+    { en: 'tired', uz: 'charchagan', example: 'She was too tired to continue.' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
@@ -2332,10 +2332,10 @@ const day57: SpeakingDay = {
   goalUz: "A1 va A2 darajasidagi barcha grammar va lug'atni mustahkamlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'went', uz: 'bordi', example: 'I went to the store.' },
+    { en: 'will', uz: 'bo\'ladi', example: 'It will be sunny tomorrow.' },
+    { en: 'so', uz: 'shuncha', example: 'The exam was so difficult.' },
+    { en: 'enough', uz: 'yetarli', example: 'She speaks well enough.' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
@@ -4047,16 +4047,16 @@ const day97: SpeakingDay = {
   goalUz: "B1 darajasidagi grammar va lug'atni takrorlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'city', uz: 'shahar', example: 'I live in a big city.' },
+    { en: 'countryside', uz: 'qishloq', example: 'The countryside is peaceful.' },
+    { en: 'predict', uz: 'bashorat qilish', example: 'Scientists predict rain.' },
+    { en: 'strength', uz: 'kuch', example: 'Patience is her strength.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/r/',
+    ipaExample: '/r/ — review, strength',
+    tipUz: "Til osganda yasaladi.",
+    tipEn: "Tongue curls up.",
   },
   recycledChunkIds: ['sp-d92-c1', 'sp-d93-c1', 'sp-d94-c1', 'sp-d95-c1', 'sp-d96-c1'],
   chunks: [
@@ -4083,16 +4083,16 @@ const day98: SpeakingDay = {
   goalUz: "B1 grammar ni mustahkamlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'goal', uz: 'maqsad', example: 'My goal is to learn English.' },
+    { en: 'motivate', uz: 'rag\'batlantirish', example: 'Good teachers motivate students.' },
+    { en: 'present', uz: 'taqdimot', example: 'She gave a great presentation.' },
+    { en: 'advise', uz: 'maslahat berish', example: 'The doctor advised rest.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/ə/',
+    ipaExample: '/ə/ — advice, goal',
+    tipUz: "Qisqa va yumshoq tovush.",
+    tipEn: "Short and soft sound.",
   },
   recycledChunkIds: ['sp-d92-c2', 'sp-d93-c2', 'sp-d94-c2', 'sp-d95-c2', 'sp-d96-c2'],
   chunks: [
@@ -4121,16 +4121,16 @@ const day99: SpeakingDay = {
   linkedLessonId: 'unreal-past-b2',
   grammarPoint: 'wish/if only + V2',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'wish', uz: 'istash', example: 'I wish I were taller.' },
+    { en: 'regret', uz: 'afsuslanish', example: 'I regret not studying harder.' },
+    { en: 'imagine', uz: 'tasavvur qilish', example: 'Imagine you are on a beach.' },
+    { en: 'suppose', uz: 'taxmin qilish', example: 'I suppose you are right.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/w/',
+    ipaExample: '/w/ — wish, would',
+    tipUz: "Lablar bilan yasaladi.",
+    tipEn: "Made with the lips.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4159,16 +4159,16 @@ const day100: SpeakingDay = {
   linkedLessonId: 'advanced-conditionals-b2',
   grammarPoint: 'mixed conditionals',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'if', uz: 'agar', example: 'If I had money, I would travel.' },
+    { en: 'would', uz: 'qilgan bo\'lardi', example: 'I would help you.' },
+    { en: 'could', uz: 'qila olgan bo\'lardi', example: 'We could go if you wanted.' },
+    { en: 'condition', uz: 'shart', example: 'This is a conditional sentence.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/k/',
+    ipaExample: '/k/ — condition, could',
+    tipUz: "Til orqa qismidan chiqadi.",
+    tipEn: "Sound from the back of the tongue.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4197,16 +4197,16 @@ const day101: SpeakingDay = {
   linkedLessonId: 'future-perfect-continuous',
   grammarPoint: 'will have been V-ing',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'will', uz: 'bo\'ladi', example: 'By next year I will have been working here for five years.' },
+    { en: 'been', uz: 'bo\'lgan', example: 'She will have been studying for hours.' },
+    { en: 'working', uz: 'ishlash', example: 'I will have been working all day.' },
+    { en: 'expecting', uz: 'kutilayotgan', example: 'They will have been expecting us.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/v/',
+    ipaExample: '/v/ — have, been',
+    tipUz: "Tish va lab orasidan chiqadi.",
+    tipEn: "Sound between teeth and lip.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4235,16 +4235,16 @@ const day102: SpeakingDay = {
   linkedLessonId: 'nominalization-b2',
   grammarPoint: 'verb to noun',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'decision', uz: 'qaror', example: 'We need to make a decision.' },
+    { en: 'development', uz: 'rivojlanish', example: 'Technology development is fast.' },
+    { en: 'growth', uz: 'o\'sish', example: 'Economic growth is important.' },
+    { en: 'achievement', uz: 'yutuq', example: 'Graduation is a great achievement.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/ʃ/',
+    ipaExample: '/ʃ/ — decision, nation',
+    tipUz: "Og'iz bo'shlig'iga yo'naltiriladi.",
+    tipEn: "Sound directed to mouth cavity.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4273,16 +4273,16 @@ const day103: SpeakingDay = {
   linkedLessonId: 'subjunctive-b2',
   grammarPoint: 'if I were / suggest he go',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'suggest', uz: 'taklif qilish', example: 'I suggest he go now.' },
+    { en: 'recommend', uz: 'tavsiya etish', example: 'She recommended reading the book.' },
+    { en: 'insist', uz: 'taleb qilish', example: 'He insisted on paying.' },
+    { en: 'demand', uz: 'talab qilish', example: 'They demanded an apology.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/dʒ/',
+    ipaExample: '/dʒ/ — judge, suggest',
+    tipUz: "Oldingi til bilan yasaladi.",
+    tipEn: "Made with the front of tongue.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4311,16 +4311,16 @@ const day104: SpeakingDay = {
   linkedLessonId: 'advanced-passive-b2',
   grammarPoint: 'passive + modals / perfect',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'been', uz: 'bo\'lgan', example: 'The work has been completed.' },
+    { en: 'made', uz: 'yaratilgan', example: 'The decision was made by the team.' },
+    { en: 'known', uz: 'ma\'lum', example: 'This fact is widely known.' },
+    { en: 'considered', uz: 'hisoblangan', example: 'She is considered an expert.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/n/',
+    ipaExample: '/n/ — been, known',
+    tipUz: "Burun orqasidan chiqadi.",
+    tipEn: "Sound from the nose.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4349,16 +4349,16 @@ const day105: SpeakingDay = {
   linkedLessonId: 'hedging-b2',
   grammarPoint: 'it seems/might/perhaps',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'seem', uz: 'ko\'rinish', example: 'It seems like a good idea.' },
+    { en: 'might', uz: 'mumkin', example: 'He might come later.' },
+    { en: 'perhaps', uz: 'ekan', example: 'Perhaps we should wait.' },
+    { en: 'possibly', uz: 'mumkin', example: 'This is possibly the best option.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/z/',
+    ipaExample: '/z/ — seems, is',
+    tipUz: "Lablar yoyiladi.",
+    tipEn: "Lips spread.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4387,16 +4387,16 @@ const day106: SpeakingDay = {
   linkedLessonId: 'complex-prepositions-b2',
   grammarPoint: 'in spite of / on account of',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'despite', uz: 'qaramay', example: 'Despite the rain we went out.' },
+    { en: 'although', uz: 'garchi', example: 'Although it was late she kept working.' },
+    { en: 'however', uz: 'biroq', example: 'It was expensive however it was worth it.' },
+    { en: 'moreover', uz: 'shuningdek', example: 'Moreover the results were impressive.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/ð/',
+    ipaExample: '/ð/ — although, the',
+    tipUz: "Tishlar orasida.",
+    tipEn: "Between the teeth.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4425,16 +4425,16 @@ const day107: SpeakingDay = {
   linkedLessonId: 'cohesion-b2',
   grammarPoint: 'linking paragraphs',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'therefore', uz: 'shuning uchun', example: 'He was tired therefore he went home.' },
+    { en: 'furthermore', uz: 'bundan tashqari', example: 'Furthermore the evidence is strong.' },
+    { en: 'consequently', uz: 'natijada', example: 'Consequently sales increased.' },
+    { en: 'nonetheless', uz: 'shunday bo\'lsa-da', example: 'It was difficult nonetheless she succeeded.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/f/',
+    ipaExample: '/f/ — furthermore',
+    tipUz: "Tish va lab orasidan chiqadi.",
+    tipEn: "Sound between teeth and lip.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4463,16 +4463,16 @@ const day108: SpeakingDay = {
   linkedLessonId: 'register-b2',
   grammarPoint: 'formal vs informal',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'formal', uz: 'rasmiy', example: 'Please use formal language.' },
+    { en: 'informal', uz: 'norasmiy', example: 'This is an informal meeting.' },
+    { en: 'register', uz: 'til darajasi', example: 'Choose the right register.' },
+    { en: 'tone', uz: 'ohang', example: 'The tone of the letter is polite.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/ə/',
+    ipaExample: '/ə/ — formal, register',
+    tipUz: "Qisqa va yumshoq tovush.",
+    tipEn: "Short and soft sound.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4501,16 +4501,16 @@ const day109: SpeakingDay = {
   linkedLessonId: 'complex-sentences-b2',
   grammarPoint: 'noun/relative/adverbial clauses',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'although', uz: 'garchi', example: 'Although it was raining we played.' },
+    { en: 'because', uz: 'chunki', example: 'I stayed because I was tired.' },
+    { en: 'which', uz: 'qaysi', example: 'The book which I read was great.' },
+    { en: 'who', uz: 'kim', example: 'The teacher who taught me was kind.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/z/',
+    ipaExample: '/z/ — which, is',
+    tipUz: "Lablar yoyiladi.",
+    tipEn: "Lips spread.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4539,16 +4539,16 @@ const day110: SpeakingDay = {
   linkedLessonId: 'advanced-modals-b2',
   grammarPoint: 'must have/could have/should have',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'must', uz: 'kerak', example: 'You must follow the rules.' },
+    { en: 'could', uz: 'qila oladi', example: 'He could speak three languages.' },
+    { en: 'should', uz: 'kerak', example: 'You should exercise daily.' },
+    { en: 'might', uz: 'mumkin', example: 'It might rain later.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/m/',
+    ipaExample: '/m/ — must, might',
+    tipUz: "Lablar yopiladi.",
+    tipEn: "Lips close together.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4577,16 +4577,16 @@ const day111: SpeakingDay = {
   linkedLessonId: 'contrastive-structures-b2',
   grammarPoint: 'whereas/while/although',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'whereas', uz: 'holbuki', example: 'He likes tea whereas I prefer coffee.' },
+    { en: 'while', uz: 'vaqtida', example: 'While I was sleeping the phone rang.' },
+    { en: 'although', uz: 'garchi', example: 'Although it was hard she finished.' },
+    { en: 'despite', uz: 'qaramay', example: 'Despite the cost we bought it.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/w/',
+    ipaExample: '/w/ — whereas, while',
+    tipUz: "Lablar bilan yasaladi.",
+    tipEn: "Made with the lips.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4615,16 +4615,16 @@ const day112: SpeakingDay = {
   linkedLessonId: 'inversion-b2',
   grammarPoint: 'Never have I seen...',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'never', uz: 'hech qachon', example: 'Never have I seen such beauty.' },
+    { en: 'hardly', uz: 'deyarli', example: 'Hardly had I arrived when it started.' },
+    { en: 'seldom', uz: 'kamdan-kam', example: 'Seldom does he complain.' },
+    { en: 'rarely', uz: 'kamdan-kam', example: 'Rarely do we meet.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/n/',
+    ipaExample: '/n/ — never, never',
+    tipUz: "Burun orqasidan chiqadi.",
+    tipEn: "Sound from the nose.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4653,16 +4653,16 @@ const day113: SpeakingDay = {
   linkedLessonId: 'cleft-sentences-b2',
   grammarPoint: 'It is... that...',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'it', uz: 'bu', example: 'It is the weather that I love.' },
+    { en: 'that', uz: 'ki', example: 'It was John that called.' },
+    { en: 'what', uz: 'nima', example: 'What I need is sleep.' },
+    { en: 'reason', uz: 'sabab', example: 'The reason is that he was late.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/t/',
+    ipaExample: '/t/ — it, that',
+    tipUz: "Til tishlarga tegadi.",
+    tipEn: "Tongue touches the teeth.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4691,16 +4691,16 @@ const day114: SpeakingDay = {
   linkedLessonId: 'punctuation-b2',
   grammarPoint: 'semicolons, colons, dashes',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'semicolon', uz: 'nuqta-vergul', example: 'Use a semicolon to join clauses.' },
+    { en: 'colon', uz: 'ikki nuqta', example: 'A colon introduces a list.' },
+    { en: 'dash', uz: 'chiziq', example: 'A dash adds emphasis.' },
+    { en: 'comma', uz: 'vergul', example: 'A comma separates items.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/s/',
+    ipaExample: '/s/ — semicolon',
+    tipUz: "Tishlar orasidan chiqadi.",
+    tipEn: "Sound between the teeth.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4729,16 +4729,16 @@ const day115: SpeakingDay = {
   linkedLessonId: 'academic-collocations-b2',
   grammarPoint: 'conduct research, draw conclusions',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'research', uz: 'tadqiqot', example: 'We conducted research on the topic.' },
+    { en: 'conclusion', uz: 'xulosa', example: 'The conclusion was surprising.' },
+    { en: 'evidence', uz: 'dalil', example: 'The evidence supports the theory.' },
+    { en: 'analysis', uz: 'tahlil', example: 'The analysis revealed new data.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/k/',
+    ipaExample: '/k/ — conduct',
+    tipUz: "Til orqa qismidan chiqadi.",
+    tipEn: "Sound from the back of the tongue.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4767,16 +4767,16 @@ const day116: SpeakingDay = {
   linkedLessonId: 'academic-vocabulary-b2',
   grammarPoint: 'academic word list',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'significant', uz: 'muhim', example: 'This is a significant finding.' },
+    { en: 'crucial', uz: 'hal qiluvchi', example: 'Timing is crucial.' },
+    { en: 'fundamental', uz: 'asosiy', example: 'This is a fundamental principle.' },
+    { en: 'relevant', uz: 'tegishli', example: 'Please provide relevant examples.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/θ/',
+    ipaExample: '/θ/ — think, theory',
+    tipUz: "Tishlar orasida.",
+    tipEn: "Between the teeth.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4805,16 +4805,16 @@ const day117: SpeakingDay = {
   linkedLessonId: 'critical-thinking-b2',
   grammarPoint: 'evaluating arguments',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'evaluate', uz: 'baholash', example: 'We need to evaluate the results.' },
+    { en: 'argue', uz: 'dalillash', example: 'She argued her point well.' },
+    { en: 'perspective', uz: 'nuqtai nazar', example: 'From my perspective it was correct.' },
+    { en: 'bias', uz: 'tarafgarlik', example: 'The report shows bias.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/k/',
+    ipaExample: '/k/ — critical',
+    tipUz: "Til orqa qismidan chiqadi.",
+    tipEn: "Sound from the back of the tongue.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4843,16 +4843,16 @@ const day118: SpeakingDay = {
   linkedLessonId: 'argument-structure-b2',
   grammarPoint: 'thesis, evidence, counterargument',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'thesis', uz: 'ilmiy ish', example: 'Her thesis was well-researched.' },
+    { en: 'evidence', uz: 'dalil', example: 'The evidence supports the claim.' },
+    { en: 'claim', uz: 'da\'vo', example: 'He made a strong claim.' },
+    { en: 'counter', uz: 'qarshi', example: 'She offered a counter argument.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/ð/',
+    ipaExample: '/ð/ — the, therefore',
+    tipUz: "Tishlar orasida.",
+    tipEn: "Between the teeth.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4881,16 +4881,16 @@ const day119: SpeakingDay = {
   linkedLessonId: 'stance-markers-b2',
   grammarPoint: 'I believe/It is clear that',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'believe', uz: 'ishonish', example: 'I believe in education.' },
+    { en: 'clearly', uz: 'aniq', example: 'It is clearly important.' },
+    { en: 'obviously', uz: 'albatta', example: 'Obviously we need to try harder.' },
+    { en: 'undoubtedly', uz: 'shubhasiz', example: 'Undoubtedly this is the best way.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/b/',
+    ipaExample: '/b/ — believe, but',
+    tipUz: "Lablar bilan yasaladi.",
+    tipEn: "Made with the lips.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4919,16 +4919,16 @@ const day120: SpeakingDay = {
   linkedLessonId: 'paraphrasing-b2',
   grammarPoint: 'rewriting without changing meaning',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'rephrase', uz: 'qayta ifodalash', example: 'Can you rephrase that?' },
+    { en: 'synonym', uz: 'sinonim', example: 'Happy and joyful are synonyms.' },
+    { en: 'equivalent', uz: 'teng', example: 'These words are equivalent.' },
+    { en: 'convey', uz: 'yetkazish', example: 'I want to convey my feelings.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/r/',
+    ipaExample: '/r/ — rewrite, rephrase',
+    tipUz: "Til osganda yasaladi.",
+    tipEn: "Tongue curls up.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4957,16 +4957,16 @@ const day121: SpeakingDay = {
   linkedLessonId: 'advanced-verb-patterns-b2',
   grammarPoint: 'complex verb + complement',
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'consider', uz: 'o\'ylash', example: 'I consider him a friend.' },
+    { en: 'avoid', uz: 'qochish', example: 'Avoid eating too much sugar.' },
+    { en: 'suggest', uz: 'taklif qilish', example: 'She suggested going for a walk.' },
+    { en: 'deny', uz: 'rad etish', example: 'He denied the accusation.' }
   ],
   pronunciationFocus: {
-    sound: '/\u03b8/',
-    ipaExample: '/\u03b8/ \u2014 think, three, thank',
-    tipUz: "Tilingizni tishlaringiz orasiga qo'ying.",
-    tipEn: "Place your tongue between your teeth.",
+    sound: '/d/',
+    ipaExample: '/d/ — consider, avoid',
+    tipUz: "Til tishlarga tegadi.",
+    tipEn: "Tongue touches the teeth.",
   },
   recycledChunkIds: [],
   chunks: [
@@ -4993,10 +4993,10 @@ const day122: SpeakingDay = {
   goalUz: "B2 darajasidagi grammar va lug'atni takrorlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'critical', uz: 'tanqidiy', example: 'Critical thinking is essential.' },
+    { en: 'argument', uz: 'dalil', example: 'His argument was convincing.' },
+    { en: 'stance', uz: 'pozitsiya', example: 'She took a firm stance.' },
+    { en: 'paraphrase', uz: 'qayta ifoda', example: 'Please paraphrase the text.' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
@@ -5029,10 +5029,10 @@ const day123: SpeakingDay = {
   goalUz: "B2 ning ikkinchi qismidagi grammar ni takrorlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'inversion', uz: 'teskari tartib', example: 'Inversion is used for emphasis.' },
+    { en: 'cleft', uz: 'ajratilgan', example: 'Cleft sentences add focus.' },
+    { en: 'hedging', uz: 'ehtiyotkorlik', example: 'Hedging softens your claim.' },
+    { en: 'register', uz: 'til darajasi', example: 'Formal register is important.' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
@@ -5065,10 +5065,10 @@ const day124: SpeakingDay = {
   goalUz: "B2 ning uchinchi qismidagi grammar ni takrorlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'conditional', uz: 'shartli', example: 'This is a third conditional.' },
+    { en: 'passive', uz: 'majhul', example: 'The passive voice is common.' },
+    { en: 'subjunctive', uz: 'fe\'l holati', example: 'The subjunctive mood is formal.' },
+    { en: 'modal', uz: 'modal fe\'l', example: 'Modals express possibility.' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
@@ -5101,10 +5101,10 @@ const day125: SpeakingDay = {
   goalUz: "B1 va B2 darajasidagi barcha grammar va lug'atni mustahkamlang..",
   estMinutes: 15,
   vocab: [
-    { en: 'example', uz: 'namuna', example: 'This is an example.' },
-    { en: 'practice', uz: 'amaliyot', example: 'Practice makes perfect.' },
-    { en: 'fluency', uz: 'ravonlik', example: 'Speak with fluency.' },
-    { en: 'confidence', uz: 'ishonch', example: 'Speak with confidence.' },
+    { en: 'academic', uz: 'akademik', example: 'Academic writing is formal.' },
+    { en: 'complex', uz: 'murakkab', example: 'Complex sentences are challenging.' },
+    { en: 'advanced', uz: 'yuqori', example: 'Advanced grammar requires practice.' },
+    { en: 'sophisticated', uz: 'murasos', example: 'Her writing style is sophisticated.' }
   ],
   pronunciationFocus: {
     sound: '/\u03b8/',
