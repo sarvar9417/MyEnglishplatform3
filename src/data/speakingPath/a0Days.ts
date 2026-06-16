@@ -65,7 +65,7 @@ const day2: SpeakingDay = {
     tipEn: "Round your lips like 'o' and quickly open them — the /w/ sound comes through your lips.",
     commonError: "O'zbeklar /w/ ni /v/ bilan almashtiradi (vat → what). Lablar yumaloq bo'lishi kerak!",
   },
-  recycledChunkIds: ['sp-d2-c1', 'sp-d2-c4', 'sp-d2-c5'],
+  recycledChunkIds: ['sp-d1-c1', 'sp-d1-c4', 'sp-d1-c5'],
   chunks: [
     { id: 'sp-d2-c1', en: "I am from Uzbekistan.", uz: "Men O'zbekistondanman.", pattern: "I am from …", ipa: "/aɪ æm frəm/", grammarTip: "'I am from + place' — qayerdanligingizni aytish. 'I am' + 'from' + shahar/mamlakat.", commonMistake: "'I from Uzbekistan' dema (am ni tushirib) — 'I AM from' deb 'am' ni qo'shing.",
   stressWord: 'AM'},
@@ -110,7 +110,7 @@ const day3: SpeakingDay = {
     tipEn: "Place your tongue between your teeth and vibrate your vocal cords — /ð/ sounds between 'd' and 'z'.",
     commonError: "O'zbeklar /ð/ ni /d/ yoki /z/ bilan almashtiradi (dis → this, zis → this). Til tishlar orasida bo'lishi kerak!",
   },
-  recycledChunkIds: ['sp-d3-c2', 'sp-d3-c1', 'sp-d3-c5'],
+  recycledChunkIds: ['sp-d1-c2', 'sp-d2-c1', 'sp-d2-c5'],
   chunks: [
     { id: 'sp-d3-c1', en: "I am twenty years old.", uz: "Men yigirma yoshdaman.", pattern: "I am … years old.", grammarTip: "'I am + yosh + years old' — yosh haqida gapirish. 'Years old' bilan yosh aytiladi. 'Twenty' = 20.", commonMistake: "'I am twenty year' dema (s ni tushirib) — 'years old' da 's' qo'shiladi: 'I am twenty years old'.",
   stressWord: 'AM'},

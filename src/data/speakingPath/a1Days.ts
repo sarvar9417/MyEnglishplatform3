@@ -698,11 +698,11 @@ const day19: SpeakingDay = {
     { id: 'sp-d19-c6', en: "They haven't got any pets.", uz: "Ular uy hayvoni yo'q.", grammarTip: "'They haven't got any' = ularning … yo'q. 'Any' inkor gapda ishlatiladi.", commonMistake: "'They haven't got no pets' emas — 'haven't' bilan 'any' ishlatiladi, 'no' emas.", stressWord: 'ANY' }
   ],
   scenario: {
-    topic: "Have got / Has got",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Have got/has got bilan egalikni bildira olasiz..",
+    topic: "talking about what you own and what others have",
+    aiRole: "a curious friend who just moved to town",
+    userRole: "someone showing their new flat",
+    opening: "Wow, nice flat! Have you got a lot of furniture?",
+    goalUz: "Nimaga egasi ekanligingizni va do'stlaringizda nima borligini 'have got' bilan ayting.",
   },
 }
 
@@ -736,11 +736,11 @@ const day20: SpeakingDay = {
     { id: 'sp-d20-c6', en: "He can play the guitar.", uz: "U gitarada chalay oladi.", grammarTip: "'Can play' = chalay oladi. 'The guitar' — musiqiy asbob oldida 'the' qo'yiladi.", commonMistake: "'He can plays the guitar' emas — 'can' dan keyin fe'l o'zgarmaydi: 'can PLAY'.", stressWord: 'PLAY' }
   ],
   scenario: {
-    topic: "Can / Can't",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Can/can't bilan imkoniyat va cheklovlarni ayta olasiz..",
+    topic: "talking about abilities and skills",
+    aiRole: "a new classmate at school",
+    userRole: "someone chatting at break time",
+    opening: "Hey! I heard you play music. What instruments can you play?",
+    goalUz: "Nima qila olishingiz va nima qila olmasligingizni 'can/can't' bilan ayting.",
   },
 }
 
@@ -774,11 +774,11 @@ const day21: SpeakingDay = {
     { id: 'sp-d21-c6', en: "Is he sleeping now?", uz: "U hozir uylayaptimi?", grammarTip: "'Is he + V-ing?' — so'roq. 'Is' boshida keladi. 'Sleeping' = sleep + ing. 'Now' = hozir.", commonMistake: "'He is sleeping now?' emas — 'is' boshida: 'IS he sleeping now?'.", stressWord: 'SLEEPING' }
   ],
   scenario: {
-    topic: "Present Continuous",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Present continuous bilan hozir sodir bo'layotgan ishlarni tasvirlay olasiz..",
+    topic: "describing what people are doing right now",
+    aiRole: "a friend looking out the window",
+    userRole: "someone watching the scene together",
+    opening: "Look outside! Everyone is busy today. What are the children doing?",
+    goalUz: "Hozir sodir bo'layotgan ishlarni 'am/is/are + V-ing' bilan tasvirlang.",
   },
 }
 
@@ -812,11 +812,11 @@ const day22: SpeakingDay = {
     { id: 'sp-d22-c6', en: "I saw my friend at the park.", uz: "Men do'stimni parkda ko'rdim.", grammarTip: "'Saw' = 'see' ning o'tgan zamon shakli (see → saw → seen). 'At the park' = parkda.", commonMistake: "'I see my friend yesterday' emas — o'tgan zamonda 'saw': 'I SAW'.", stressWord: 'SAW' }
   ],
   scenario: {
-    topic: "Simple Past",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Simple past bilan o'tgan voqealarni gapira olasiz..",
+    topic: "telling someone about your weekend",
+    aiRole: "a colleague at work on Monday morning",
+    userRole: "someone sharing weekend stories",
+    opening: "Good morning! How was your weekend? Did you do anything fun?",
+    goalUz: "O'tgan hafta oxirida nima qilganingizni 'Simple Past' bilan gapiring.",
   },
 }
 
@@ -850,11 +850,11 @@ const day23: SpeakingDay = {
     { id: 'sp-d23-c6', en: "They will arrive at six.", uz: "Ular soat oltida kelishadi.", grammarTip: "'They will arrive' = ular kelishadi. 'At six' = soat oltida. 'At' aniq vaqt bilan ishlatiladi.", commonMistake: "'They will arrives' emas — 'will' dan keyin fe'l o'zgarmaydi: 'will ARRIVE'.", stressWord: 'ARRIVE' }
   ],
   scenario: {
-    topic: "Simple Future",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Will bilan kelajak rejalarni gapira olasiz..",
+    topic: "making plans for the weekend",
+    aiRole: "a friend calling on the phone",
+    userRole: "someone planning activities",
+    opening: "Hey! I'm calling about Saturday. What are your plans? Will you be free?",
+    goalUz: "Kelajak rejalaringizni 'will' bilan gapiring va do'stingizni taklif qiling.",
   },
 }
 
@@ -888,11 +888,11 @@ const day24: SpeakingDay = {
     { id: 'sp-d24-c6', en: "Why are you late?", uz: "Nega kechikdingiz?", grammarTip: "'Why' = nima uchun (sabab so'rash). 'Why are you late?' = nima uchun kechikdingiz? 'Late' = kech.", commonMistake: "'Why you are late?' emas — 'are' boshida: 'Why ARE you late?'.", stressWord: 'WHY' }
   ],
   scenario: {
-    topic: "Question Words",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "What, where, when, who, how bilan savollar bera olasiz..",
+    topic: "getting to know a new person",
+    aiRole: "a friendly stranger at a language exchange event",
+    userRole: "someone meeting people for the first time",
+    opening: "Hi! I'm new here too. What's your name? Where are you from?",
+    goalUz: "Yangi tanishingizga 'what, where, when, who, how' bilan savollar bering.",
   },
 }
 
@@ -926,11 +926,11 @@ const day25: SpeakingDay = {
     { id: 'sp-d25-c6', en: "We can go now or later.", uz: "Biz hozir yoki keyinroq borishimiz mumkin.", grammarTip: "'Or' tanlov beradi: 'now or later' = hozir yoki keyinroq. 'Can go' = borish mumkin.", commonMistake: "'We can go now and later' emas (tanlov) — 'or' ishlatiladi: 'now OR later'.", stressWord: 'OR' }
   ],
   scenario: {
-    topic: "Conjunctions",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "And, but, or, because bilan gaplarni bog'lay olasiz..",
+    topic: "explaining your choices and reasons",
+    aiRole: "a friend planning a day out together",
+    userRole: "someone making plans",
+    opening: "I can't decide what to do today. Should we go to the cinema or the park?",
+    goalUz: "Tanlovlaringizni 'and, but, or, because' bilan bog'lab tushuntiring.",
   },
 }
 
@@ -964,11 +964,11 @@ const day26: SpeakingDay = {
     { id: 'sp-d26-c6', en: "I have got two hands.", uz: "Mening ikki qo'lim bor.", grammarTip: "'Two hands' = ikki qo'l. 'Hands' = qo'llar (ko'plik). 'Have got' = ega bo'lmoq. 'Two' sondan keyin ot ko'plikda.", commonMistake: "'I have got two hand' emas — 'hands' (ko'plik s kerak): 'two HANDS'.", stressWord: 'HANDS' }
   ],
   scenario: {
-    topic: "Body Parts",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Tana qismlarini ingliz tilida ayta olasiz..",
+    topic: "describing aches and pains",
+    aiRole: "a doctor at a clinic",
+    userRole: "a patient who feels unwell",
+    opening: "Good morning. What seems to be the problem today? Where does it hurt?",
+    goalUz: "Shifokorga qaysi tana qismingiz og'riyotganini 'have got' bilan tushuntiring.",
   },
 }
 
@@ -1000,11 +1000,11 @@ const day27: SpeakingDay = {
     { id: 'sp-d27-c6', en: "They played football on Saturday and they will play again next week.", uz: "Ular shanba kuni futbol o'ynadi va ertaga hafta yana o'ynaydi.", grammarTip: "Past Simple (played) + Future (will play). 'On Saturday' = past; 'next week' = future.", commonMistake: "Don't say 'They play football on Saturday' when talking about last Saturday — use Past Simple.", stressWord: 'PLAYED' }
   ],
   scenario: {
-    topic: "A1 Review 1",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Have got, can, present continuous, past simple, future ni takrorlang..",
+    topic: "catching up with a friend after a long time",
+    aiRole: "an old friend you haven't seen in months",
+    userRole: "someone sharing recent life updates",
+    opening: "Wow, it's been so long! How have you been? Tell me everything — what's new?",
+    goalUz: "Do'stingizga oxirgi paytlarda nima qilganingizni, nima qilayotganingizni va nima qilmoqchi ekanligingizni ayting.",
   },
 }
 
@@ -1036,11 +1036,11 @@ const day28: SpeakingDay = {
     { id: 'sp-d28-c6', en: "What happened to your leg, and why didn't you tell me?", uz: "Oyoqingizga nima bo'ldi va menga nega aytmadingiz?", grammarTip: "'What' (nima) + 'and' (va) + 'Why' (neg). Past Simple question with 'happened'.", commonMistake: "Don't say 'What happened to you leg' — use possessive 'your': 'your leg'.", stressWord: 'WHAT' }
   ],
   scenario: {
-    topic: "A1 Review 2",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Question words, conjunctions, body parts ni takrorlang..",
+    topic: "describing a trip to the doctor",
+    aiRole: "a worried friend asking about your health",
+    userRole: "someone explaining what happened",
+    opening: "I heard you went to the doctor yesterday. Are you okay? What happened?",
+    goalUz: "Shifokorga tashrifingiz haqida 'what, where, why' savollari va 'and, but, because' bilan gapiring.",
   },
 }
 
@@ -1072,11 +1072,11 @@ const day29: SpeakingDay = {
     { id: 'sp-d29-c6', en: "How old is your brother, and where does he work?", uz: "Singlingiz necha yoshda va u qayerda ishlaydi?", grammarTip: "Question words (How old, Where) + Present Simple (is, does...work). Family vocabulary included.", commonMistake: "Don't say 'Where does he works' — after 'does' use base form: 'Where does he WORK?'", stressWord: 'HOW' }
   ],
   scenario: {
-    topic: "A1 Final Review",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Barcha A1 grammar va lug'atni mustahkamlang..",
+    topic: "a big end-of-course conversation",
+    aiRole: "a teacher wrapping up the course",
+    userRole: "a student showing what you've learned",
+    opening: "Congratulations on finishing A1! Let's have a chat — tell me about yourself, your family, and your plans.",
+    goalUz: "Barcha A1 grammarni ishlatib o'zingiz, oilangiz va rejalaringiz haqida gapiring.",
   },
 }
 

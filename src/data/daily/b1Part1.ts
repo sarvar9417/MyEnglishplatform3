@@ -62,7 +62,7 @@ export const futureFormsReview: DailyLesson = {
     { en: 'evidence', uz: "dalil, isbot", example: 'There is clear evidence that the economy will improve.', rule: "Going to (dalillar)" },
     { en: 'prediction', uz: "bashorat", example: 'My prediction is that they will win the match.', rule: "Will (bashorat)" },
     { en: 'promise', uz: "va'da", example: 'I promise I will help you tomorrow.', rule: "Will (va'da)" },
-    { en: 'arrange', uz: "kelishmoq, tartibga solmoq", example: 'We arranged to meet at the caf— at 5 PM.', rule: "Present Continuous (kelishuv)" },
+    { en: 'arrange', uz: "kelishmoq, tartibga solmoq", example: 'We arranged to meet at the cafe at 5 PM.', rule: "Present Continuous (kelishuv)" },
     { en: 'shall', uz: "... qilaymi? (taklif)", example: 'Shall I open the window? It is too hot.', rule: "Shall I/we — taklif so'rash" },
     { en: 'probably', uz: "ehtimol, balkim", example: 'She will probably call later.', rule: "Will + probably — bashorat" },
     { en: 'definitely', uz: "albatta, aniq", example: 'I will definitely come to the party.', rule: "Will + definitely — ishonchli va'da" },

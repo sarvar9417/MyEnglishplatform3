@@ -135,6 +135,10 @@ export const SEED_WORDS: SeedWord[] = [
   { word: 'November',     phonetic: '/noʊˈvembər/',  translation: 'Noyabr',        exampleSentence: 'November is cold.', level: 'A1', category: 'months' },
   { word: 'December',     phonetic: '/dɪˈsembər/',   translation: 'Dekabr',        exampleSentence: 'December is the last month.', level: 'A1', category: 'months' },
   // Seasons (4)
+  { word: 'spring',        phonetic: '/sprɪŋ/',       translation: 'Bahor',         exampleSentence: 'Spring is warm.', level: 'A1', category: 'seasons' },
+  { word: 'summer',        phonetic: '/ˈsʌmər/',      translation: 'Yoz',           exampleSentence: 'Summer is hot.', level: 'A1', category: 'seasons' },
+  { word: 'autumn',        phonetic: '/ˈɔːtəm/',      translation: 'Kuz',           exampleSentence: 'Autumn leaves fall.', level: 'A1', category: 'seasons' },
+  { word: 'winter',        phonetic: '/ˈwɪntər/',     translation: 'Qish',          exampleSentence: 'Winter is cold.', level: 'A1', category: 'seasons' },
   // Weather (8)
   { word: 'sunny',        phonetic: '/ˈsʌni/',       translation: 'Quyoshli',      exampleSentence: 'It is sunny today.', level: 'A1', category: 'weather' },
   { word: 'rainy',        phonetic: '/ˈreɪni/',      translation: 'Yomg\'irli',    exampleSentence: 'It is a rainy day.', level: 'A1', category: 'weather' },

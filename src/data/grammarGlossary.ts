@@ -79,7 +79,7 @@ export const GRAMMAR_TERMS: GrammarTerm[] = [
   { en: 'Object',                      uz: 'To\'ldiruvchi',                  short: 'to\'ldiruvchi' },
   { en: 'Comparative',                 uz: 'Qiyosiy daraja',                  short: 'qiyosiy',
     description: 'Ikki narsani taqqoslash (bigger, more expensive)' },
-  { en: 'Superlative',                 uz: 'Orttirma daraja',                 short: 'orttirma',
+  { en: 'Superlative',                 uz: 'Ustun daraja',                  short: 'ustun',
     description: 'Eng yuqori daraja (the biggest, the most expensive)' },
   { en: 'Countable noun',              uz: 'Sanaladigan ot',                 short: 'sanaladigan',
     description: 'Son bilan sanash mumkin bo\'lgan otlar (book, apple, car)' },

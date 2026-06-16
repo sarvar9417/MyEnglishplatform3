@@ -1746,11 +1746,11 @@ const day97: SpeakingDay = {
     { id: 'sp-d97-c6', en: "In conclusion, while city life offers more opportunities, I personally believe that rural areas provide a better quality of life.", uz: "Xulosa qilib aytganda, shahar hayoti ko'proq imkoniyatlar bersa-da, men shaxsan qishloq hayoti yaxshiroq sifatli hayot taqdim etishiga ishonaman.", grammarTip: "'In conclusion' signals a final point. 'While + clause' shows contrast. 'Provide' = taqdim etmoq.", commonMistake: "Don't say 'rural area provide' — 'areas' is plural, so use 'provide' without -s.", stressWord: 'QUALITY' }
   ],
   scenario: {
-    topic: "B1 Review 1",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "B1 darajasidagi grammar va lug'atni takrorlang..",
+    topic: "mixing complex grammar structures in discussion",
+    aiRole: "a study partner preparing for a B1 exam",
+    userRole: "someone reviewing advanced grammar",
+    opening: "Ready for our weekly grammar review? Let's tackle some tricky sentences!",
+    goalUz: "B1 grammatikani aralashtirib, murakkab gaplarni to'g'ri tuzing.",
   },
 }
 
@@ -1782,11 +1782,11 @@ const day98: SpeakingDay = {
     { id: 'sp-d98-c6', en: "All in all, I think the key to personal growth is stepping outside your comfort zone and embracing new challenges.", uz: "Xulosa qilib, shaxsiy o'sishning kaliti — qulaylik zonasidan chiqish va yangi qiyinchiliklarni qabul qilishdir.", grammarTip: "'All in all' = xulosa sifatida. 'Key to + noun/gerund' = … kaliti. 'Stepping outside' = gerund after preposition.", commonMistake: "Don't say 'key to grow' — after 'to' (preposition) use gerund: 'key to growing'.", stressWord: 'EMBRACING' }
   ],
   scenario: {
-    topic: "B1 Review 2",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "B1 grammar ni mustahkamlang..",
+    topic: "combining all B1 grammar in a final practice",
+    aiRole: "a language partner",
+    userRole: "someone demonstrating B1 proficiency",
+    opening: "One last practice before your B1 exam — let's make it count!",
+    goalUz: "B1 grammatikani yakuniy baholang.",
   },
 }
 

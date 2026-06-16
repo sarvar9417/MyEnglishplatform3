@@ -984,11 +984,11 @@ const day52: SpeakingDay = {
     { id: 'sp-d52-c6', en: "We were watching TV when the lights went out.", uz: "Biz televizor ko'rayotganda chiroqlar o'chib ketdi.", grammarTip: "'Went out' = o'chib ketdi (Past Simple). Past Continuous + when + Past Simple — keng tarqalgan naqsh.", commonMistake: "'Lights went off' ham ishlatiladi, lekin 'went out' = o'chib ketdi (chiroq uchun).", stressWord: 'WENT' }
   ],
   scenario: {
-    topic: "Past Continuous",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Past continuous bilan o'tgamda davom etgan ishlarni tasvirlay olasiz..",
+    topic: "describing what was happening at a specific time in the past",
+    aiRole: "a friend who missed an event",
+    userRole: "someone recounting what they were doing",
+    opening: "I tried calling you last night around nine — what were you up to?",
+    goalUz: "O'tgan kecha soat 9 da nima qilayotganingizni past continuous bilan ayting.",
   },
 }
 
@@ -1022,11 +1022,11 @@ const day53: SpeakingDay = {
     { id: 'sp-d53-c6', en: "He speaks fast enough to be understood.", uz: "U tushuniladigan darajada tez gapiradi.", grammarTip: "'Adverb + enough' = yetarli darajada. 'Enough' ravishlardan (fast, well) KEYIN keladi.", commonMistake: "'Enough fast' xato — 'fast ENOUGH'. Ravishlar bilan 'enough' oxirida.", stressWord: 'ENOUGH' }
   ],
   scenario: {
-    topic: "Too / Enough",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Too va enough ishlatib vaziyatlarni tushuntira olasiz..",
+    topic: "explaining why something is or isn't suitable",
+    aiRole: "a friend helping you pick an outfit",
+    userRole: "someone trying on clothes",
+    opening: "So, how does that jacket fit? Too tight or just right?",
+    goalUz: "Narsalar juda ko'p yoki yetarli emasligini 'too' va 'enough' bilan tushuntiring.",
   },
 }
 
@@ -1060,11 +1060,11 @@ const day54: SpeakingDay = {
     { id: 'sp-d54-c6', en: "He ran so fast that nobody could catch him.", uz: "U juda tez yugurdi, hech kim uni yeta olmadi.", grammarTip: "'So + adverb + that' — 'so' ravishlar bilan ham ishlatiladi. 'Fast' = tez (ravish).", commonMistake: "'He ran such fast' xato — 'so fast'. 'Such' ravishlar bilan ishlatilmaydi.", stressWord: 'SO' }
   ],
   scenario: {
-    topic: "So / Such",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "So va such bilan sifatlarni kuchaytira olasiz..",
+    topic: "describing experiences with strong emphasis",
+    aiRole: "a friend catching up after a trip",
+    userRole: "someone sharing travel stories",
+    opening: "How was your weekend trip? Tell me everything!",
+    goalUz: "Sayohat yoki tajribangizni 'so' va 'such' bilan tasvirlab bering.",
   },
 }
 
@@ -1096,11 +1096,11 @@ const day55: SpeakingDay = {
     { id: 'sp-d55-c6', en: "He told me he didn't have any money left.", uz: "U menga hech qanday puli qolmaganini aytdi.", grammarTip: "Reported speech with negative: 'told me he didn't have'. 'Any' in negatives.", commonMistake: "Don't say 'He told me he haven't any money' — use 'didn't have'.", stressWord: 'MONEY' }
   ],
   scenario: {
-    topic: "A2 Review 1",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Past continuous, too/enough, so/such ni takrorlang..",
+    topic: "mixing past continuous, too/enough, and so/such in conversation",
+    aiRole: "a language exchange partner",
+    userRole: "someone reviewing grammar concepts",
+    opening: "Let's practice using everything we've learned this week!",
+    goalUz: "Past continuous, too/enough va so/such grammatikalarini aralashtirib gapiring.",
   },
 }
 
@@ -1132,11 +1132,11 @@ const day56: SpeakingDay = {
     { id: 'sp-d56-c6', en: "He is such a fast runner that nobody can beat him.", uz: "U juda tez yuguruvchi, hech kim uni yenolmaydi.", grammarTip: "'Such + a/an + adjective + noun + that'. 'Such a fast runner that' = result.", commonMistake: "Don't say 'He is so fast runner' — use 'such' before 'a/an + adjective + noun'.", stressWord: 'FAST' }
   ],
   scenario: {
-    topic: "A2 Review 2",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "Barcha A2 grammar va lug'atni takrorlang..",
+    topic: "combining multiple A2 grammar points in natural conversation",
+    aiRole: "a study buddy",
+    userRole: "someone reviewing for an exam",
+    opening: "I have my English exam tomorrow — can we practice together?",
+    goalUz: "Barcha A2 grammatikani tabiiy suhbatda qo'llang.",
   },
 }
 
@@ -1168,11 +1168,11 @@ const day57: SpeakingDay = {
     { id: 'sp-d57-c6', en: "He told me it was such a nice place that I should visit it.", uz: "U menga u juda joy ekanligini, men borib ko'rishim kerakligini aytdi.", grammarTip: "'Such + a/an + adj + noun + that' in reported speech. Combines reported speech with so/such.", commonMistake: "Don't say 'such nice a place' — correct order: 'such a nice place'.", stressWord: 'PLACE' }
   ],
   scenario: {
-    topic: "A2 Final Review",
-    aiRole: "a conversation partner",
-    userRole: "a student",
-    opening: "Let us practise.",
-    goalUz: "A1 va A2 darajasidagi barcha grammar va lug'atni mustahkamlang..",
+    topic: "using all A1 and A2 grammar naturally",
+    aiRole: "an English teacher giving final practice",
+    userRole: "a student showing final progress",
+    opening: "This is your final practice before the A2 test — show me what you've got!",
+    goalUz: "A1 va A2 grammatikani tabiiy ravishda ishlating.",
   },
 }
 
