@@ -199,7 +199,7 @@ export default function SpeakingPath() {
             speakingStreak: speakingStats?.streakDays ?? 0,
             chunksMastered: speakingStats?.chunksMastered ?? 0,
             bestSpeakScore: speakingStats?.avgSpeakScore7d ?? 0,
-            cefr: unlockedDay >= 99 ? 'B2' : unlockedDay >= 52 ? 'B1' : unlockedDay >= 27 ? 'A2' : unlockedDay >= 4 ? 'A1' : 'A0',
+            cefr: unlockedDay >= 99 ? 'B2' : unlockedDay >= 58 ? 'B1' : unlockedDay >= 30 ? 'A2' : unlockedDay >= 4 ? 'A1' : 'A0',
           }}
         />
       )}
