@@ -1,6 +1,8 @@
 import type { StateCreator } from 'zustand'
 import { getTodayTashkent } from '../utils/tashkentDate'
 import { monitoring } from '../lib/monitoring'
+import { syncUserField } from '../lib/supabaseSync'
+import { evaluateAchievements, syncAchievementsToDB } from '../services/achievementChecker'
 import type { DailyChecklist, MockResult } from './types'
 import type { AppState } from './appState'
 import { ACHIEVEMENTS } from '../data/achievements'
@@ -197,19 +199,8 @@ export const createProgressSlice: StateCreator<AppState, [], [], ProgressSlice> 
     if (amount <= 10) {
       import('../lib/gameFeel').then(({ feelXpTick }) => feelXpTick()).catch((e) => monitoring.captureMessage('feelXpTick import failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
     }
-    (async () => {
-      try {
-        get().checkAchievements()
-        const { supabase } = await import('../lib/supabase')
-        const { data: { session } } = await supabase.auth.getSession()
-        if (session?.user.id) {
-          const { error } = await supabase.from('users').update({ total_xp: get().totalXP }).eq('id', session.user.id)
-          if (error) monitoring.captureMessage('addXP sync error: ' + error.message, 'warn')
-        }
-      } catch (e) {
-        monitoring.captureMessage('addXP sync failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
-      }
-    })()
+    get().checkAchievements()
+    syncUserField('total_xp', get().totalXP)
     // Weekly Duel XP sync (tandem pair uchun)
     if (amount > 0) {
       setTimeout(() => {
@@ -264,21 +255,7 @@ export const createProgressSlice: StateCreator<AppState, [], [], ProgressSlice> 
   },
 
   _syncStreakToDB: (newStreak: number) => {
-    (async () => {
-      try {
-        const { supabase } = await import('../lib/supabase')
-        const { data: { session } } = await supabase.auth.getSession()
-        if (session?.user.id) {
-          const { error } = await supabase.from('users').update({
-            streak: newStreak,
-            last_active: getTodayTashkent(),
-          }).eq('id', session.user.id)
-          if (error) monitoring.captureMessage('streak sync error: ' + error.message, 'warn')
-        }
-      } catch (e) {
-        monitoring.captureMessage('streak sync failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
-      }
-    })()
+    syncUserField('streak', newStreak)
   },
 
   incrementStreak: () => {
@@ -428,19 +405,8 @@ export const createProgressSlice: StateCreator<AppState, [], [], ProgressSlice> 
 
   addLearnedWords: (count) => {
     set((s) => ({ totalWordsLearned: s.totalWordsLearned + count }))
-    ;(async () => {
-      try {
-        get().checkAchievements()
-        const { supabase } = await import('../lib/supabase')
-        const { data: { session } } = await supabase.auth.getSession()
-        if (session?.user.id) {
-          const { error } = await supabase.from('users').update({ words_learned: get().totalWordsLearned }).eq('id', session.user.id)
-          if (error) monitoring.captureMessage('addLearnedWords sync error: ' + error.message, 'warn')
-        }
-      } catch (e) {
-        monitoring.captureMessage('addLearnedWords sync failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
-      }
-    })()
+    get().checkAchievements()
+    syncUserField('words_learned', get().totalWordsLearned)
   },
 
   setLastMock: (result) => {
@@ -471,97 +437,28 @@ export const createProgressSlice: StateCreator<AppState, [], [], ProgressSlice> 
       todayXP: s.todayXP + totalBonus,
     }))
 
-    import('../lib/supabase').then(({ supabase }) => {
-      supabase.auth.getSession().then(({ data: { session } }) => {
-        if (session?.user.id) {
-          supabase.from('users').update({ total_xp: get().totalXP }).eq('id', session.user.id).then(({ error }) => {
-            if (error) monitoring.captureMessage('claimStreakBonuses sync error: ' + error.message, 'warn')
-          })
-        }
-      }).catch((e) => monitoring.captureMessage('claimStreakBonuses getSession error: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
-    }).catch((e) => monitoring.captureMessage('claimStreakBonuses supabase import error: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
+    syncUserField('total_xp', get().totalXP)
 
     return pending.map(m => m.xp)
   },
 
   checkAchievements: () => {
     const state = get()
-    const unlocked = state.unlockedAchievements
-    const newUnlocked: string[] = []
+    const trulyNew = evaluateAchievements(ACHIEVEMENTS, {
+      currentDay: state.currentDay,
+      totalXP: state.totalXP,
+      streak: state.streak,
+      totalWordsLearned: state.totalWordsLearned,
+      lastMock: state.lastMock,
+      unlockedAchievements: state.unlockedAchievements,
+    })
 
-    for (const ach of ACHIEVEMENTS) {
-      // Skip already unlocked
-      if (unlocked.includes(ach.id)) continue
-
-      let earned = false
-      switch (ach.requirement.type) {
-        case 'day':
-          earned = state.currentDay >= ach.requirement.value
-          break
-        case 'xp':
-          earned = state.totalXP >= ach.requirement.value
-          break
-        case 'streak':
-          earned = state.streak >= ach.requirement.value
-          break
-        case 'words':
-          earned = state.totalWordsLearned >= ach.requirement.value
-          break
-        case 'games':
-          // Games count is not yet tracked; will be added in future
-          break
-        case 'mocktest':
-          earned = state.lastMock !== null
-          break
-        case 'mocktest_score':
-          earned = (state.lastMock?.score ?? 0) >= ach.requirement.value
-          break
-      }
-
-      if (earned) {
-        newUnlocked.push(ach.id)
-      }
-    }
-
-    if (newUnlocked.length > 0) {
-      // Determine how many are truly new (not already in state)
-      const trulyNew = newUnlocked.filter(id => !state.unlockedAchievements.includes(id))
-      if (trulyNew.length > 0) {
-        set((s) => ({
-          unlockedAchievements: [...new Set([...s.unlockedAchievements, ...trulyNew])],
-          lastUnlockedAchievement: trulyNew[0],
-        }))
-
-        // Sync to Supabase in background
-        const syncToDB = async () => {
-          try {
-            const { supabase } = await import('../lib/supabase')
-            const { data: { session } } = await supabase.auth.getSession()
-            if (!session) return
-
-            // Fetch existing from DB
-            const { data: existing } = await supabase
-              .from('achievements')
-              .select('achievement_id')
-              .eq('user_id', session.user.id)
-
-            const existingIds = new Set((existing ?? []).map(r => r.achievement_id))
-
-            const toInsert = trulyNew
-              .filter(id => !existingIds.has(id))
-              .map(id => ({
-                user_id: session.user.id,
-                achievement_id: id,
-                unlocked_at: new Date().toISOString(),
-              }))
-
-            if (toInsert.length > 0) {
-              await supabase.from('achievements').upsert(toInsert, { onConflict: 'user_id,achievement_id', ignoreDuplicates: true })
-            }
-          } catch (e) { monitoring.captureMessage('Achievements sync failed: ' + (e instanceof Error ? e.message : String(e)), 'warn') }
-        }
-        syncToDB()
-      }
+    if (trulyNew.length > 0) {
+      set((s) => ({
+        unlockedAchievements: [...new Set([...s.unlockedAchievements, ...trulyNew])],
+        lastUnlockedAchievement: trulyNew[0],
+      }))
+      syncAchievementsToDB(trulyNew)
     }
   },
 })
