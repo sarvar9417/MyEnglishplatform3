@@ -169,13 +169,27 @@ export const argumentStructureB2: DailyLesson = {
       prompt: 'Bir mavzuda argument yozing: thesis, evidence, counterargument, conclusion.',
       hints: ['Thesis: This argues...', 'Evidence: The data shows...', 'Counterargument: Some claim...'],
       exampleAnswer: 'This paper argues that renewable energy is essential. The data shows that fossil fuels are finite. Therefore, we must invest in green technology.' },
-  ],
+  
+    { id: 56030, type: 'passage',
+      instruction: 'Akademik argument tuzilmasini to\'ldiring:',
+      passage: '__(1) (Thesis): Social media has both positive and negative effects. ___(2) (On the one hand), it connects people across the world. ___(3) (For example), families separated by distance can communicate daily. ___(4) (On the other hand), it can lead to addiction. Studies ___(5) (show) that excessive use affects mental health. ___(6) (However), it depends on usage. ___(7) (Therefore), we should focus on education. ___(8) (In conclusion), impact depends on the user.',
+      blanks: ['Thesis', 'On the one hand', 'For example', 'On the other hand', 'show', 'However', 'Therefore', 'In conclusion'],
+      acceptedAnswers: [['Thesis', 'Main point'], ['On the one hand'], ['For example', 'For instance'], ['On the other hand'], ['show', 'indicate', 'suggest'], ['However', 'Nevertheless'], ['Therefore', 'Thus'], ['In conclusion', 'To conclude']],
+      explanation: 'Argument structure: Thesis = asosiy fikr. On the one hand/On the other hand = ikki tomon. For example = misol. However = qarama-qarshi. Therefore = xulosa.'
+    },
+    { id: 56031, type: 'connection',
+      instruction: 'Argument tuzilmasi bilan yozing',
+      prompt: 'Argument structure (thesis, on the one hand, on the other hand, for example, however, therefore, in conclusion) ishlatib, \'Remote work: good or bad?\' mavzusida 5-6 jumla yozing.',
+      hints: ['Thesis: Remote work has both...', 'On the one hand, it allows...', 'For example...', 'On the other hand...', 'Therefore...', 'In conclusion...'],
+      exampleAnswer: 'Thesis: Remote work has advantages and disadvantages. On the one hand, it saves commuting time. For example, my uncle works from home more. On the other hand, it can be lonely. However, many companies are solving these problems. Therefore, I believe remote work will become more common.'
+    },
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Argument tuzilmasi va vocabulary', color: 'bg-emerald-500', icon: '🌱', ids: [6901, 6902, 6903, 6904, 6905] },
     { title: "O'rtacha", desc: 'Xatolarni toping', color: 'bg-blue-500', icon: '📘', ids: [6906, 6907, 6908, 6909, 6910] },
     { title: "Qiyin", desc: 'Transformatsiya va PEEL', color: 'bg-violet-500', icon: '🎯', ids: [6911, 6912, 6913, 6914, 6915] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [6920, 6916, 6922, 6924, 6918, 6921, 6923, 6919, 6925, 6917] },
-    { title: "🔀 Aralash", desc: "Dalil tuzilishi + Cohesion farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95461, 95462, 95463, 95464, 95465] },
+    { title: "🔀 Aralash", desc: "Dalil tuzilishi + Cohesion farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95461, 95462, 95463, 95464, 95465, 56030, 56031] },
   ],
   tests: [
     { id: 65030, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'PEEL nima?', options: ['Paragraph, Essay, Edit, Link', 'Point, Evidence, Explanation, Link', 'Plan, Execute, Edit, Launch', 'Premise, Example, Evaluate, List'], correct: 'Point, Evidence, Explanation, Link', explanation: 'PEEL = argument paragraph tuzilmasi' },
@@ -422,13 +436,27 @@ export const stanceMarkersB2: DailyLesson = {
       prompt: 'Stance markerlar bilan akademik fikr yozing.',
       hints: ['It is clear that...', 'The evidence suggests...', 'Undoubtedly...'],
       exampleAnswer: 'It is clear that climate change requires urgent action. The evidence suggests that human activity is the main cause.' },
-  ],
+  
+    { id: 56032, type: 'passage',
+      instruction: 'Munosabat bildiruvchi so\'zlarni to\'ldiring:',
+      passage: '__(1) (In my opinion), climate change is the biggest challenge of our time. ___(2) (It is clear that) we need to act now. ___(3) (I believe) that renewable energy is the solution. ___(4) (Undoubtedly), solar power has great potential. ___(5) (From my perspective), the government should invest more. ___(6) (It is worth noting that) many countries are making progress. ___(7) (Personally), I try to reduce my carbon footprint.',
+      blanks: ['In my opinion', 'It is clear that', 'I believe', 'Undoubtedly', 'From my perspective', 'It is worth noting that', 'Personally'],
+      acceptedAnswers: [['In my opinion', 'In my view'], ['It is clear that', 'Clearly', 'Obviously'], ['I believe', 'I think'], ['Undoubtedly', 'Certainly'], ['From my perspective', 'From my point of view'], ['It is worth noting that', 'It is important to note'], ['Personally']],
+      explanation: 'Stance markers = munosabat: in my opinion = mening fikrimcha, I believe = ishonaman, undoubtedly = shubhasiz, it is clear that = aniqki.'
+    },
+    { id: 56033, type: 'connection',
+      instruction: 'Oz fikringizni bildiring',
+      prompt: 'Stance markers (in my opinion, I believe, it is clear that, undoubtedly, personally) ishlatib, O\'zbekistonda turizm haqida fikringizni 4-5 jumlada yozing.',
+      hints: ['In my opinion, Uzbekistan...', 'I believe that tourism...', 'It is clear that...', 'Personally, I think...'],
+      exampleAnswer: 'In my opinion, Uzbekistan has great tourism potential. I believe that Samarkand and Bukhara are among the most beautiful cities. It is clear that the government is investing in tourism. Personally, I recommend visiting the Registan Square at sunset.'
+    },
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Stance marker turlari", color: 'bg-emerald-500', icon: '🌱', ids: [7001, 7002, 7003, 7004, 7005] },
     { title: "O'rtacha", desc: 'Xatolarni toping', color: 'bg-blue-500', icon: '📘', ids: [7006, 7007, 7008, 7009, 7010] },
     { title: "Qiyin", desc: 'Transformatsiya', color: 'bg-violet-500', icon: '🎯', ids: [7011, 7012, 7013, 7014, 7015] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7021, 7020, 7023, 7016, 7025, 7019, 7024, 7018, 7022, 7017] },
-    { title: "🔀 Aralash", desc: "Pozitsiya belgilari + Hedging farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95471, 95472, 95473, 95474, 95475] },
+    { title: "🔀 Aralash", desc: "Pozitsiya belgilari + Hedging farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95471, 95472, 95473, 95474, 95475, 56032, 56033] },
   ],
   tests: [
     { id: 65081, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Approximately' qanday stance marker?", options: ['Epistemic', 'Evaluative', 'Approximator', 'Hedge verb'], correct: 'Approximator', explanation: 'Approximately = taxminan (yaqinlashtiruvchi). Qoida: \'Approximately\' = roughly, about. Aniq raqam o\'rniga taxminiy: Approximately 50 people attended. (Taxminan 50 kishi qatnashdi.)' },
@@ -689,13 +717,27 @@ export const paraphrasingB2: DailyLesson = {
       prompt: 'Bir jumlani 2 xil usulda paraphrase qiling.',
       hints: ['Change word order', 'Use synonyms', 'Change active to passive'],
       exampleAnswer: 'Original: Many people believe technology is harmful. Paraphrase 1: Technology is considered harmful by many. Paraphrase 2: A common belief is that technology causes harm.' },
-  ],
+  
+    { id: 56034, type: 'passage',
+      instruction: 'Parafraz qiling (manoni ozgartirmasdan):',
+      passage: 'Original: \'Many people believe that exercise improves health.\' Paraphrase 1: \'It ___(1) (is widely believed that) exercise has a positive effect.\' Paraphrase 2: \'A ___(2) (large number of) individuals think physical activity ___(3) (enhances) wellbeing.\' Paraphrase 3: \'Exercise ___(4) (is considered to be) beneficial for health.\' Paraphrase 4: \'The ___(5) (benefits of) exercise are widely recognised.\'',
+      blanks: ['is widely believed that', 'large number of', 'enhances', 'is considered to be', 'benefits of'],
+      acceptedAnswers: [['is widely believed that'], ['large number of', 'majority of'], ['enhances', 'improves', 'boosts'], ['is considered to be', 'is thought to be'], ['benefits of', 'advantages of']],
+      explanation: 'Paraphrasing: sinonimlar va tuzilma ozgarishi bilan bir xil manoni saqlash. \'Many people believe\' = \'it is widely believed\', \'improves\' = \'enhances\'.'
+    },
+    { id: 56035, type: 'connection',
+      instruction: 'Parafraz qilib yozing',
+      prompt: 'Quyidagi gapni kamida 3 xil usulda parafraz qiling: \'Learning English is important for career growth.\'',
+      hints: ['It is widely believed that... (passive voice)', 'A large number of people think... (sinonim)', 'The importance of... (nominalization)', 'English is considered... (passive)'],
+      exampleAnswer: '1. It is widely believed that learning English contributes to career growth. 2. A large number of people think English skills enhance job opportunities. 3. The importance of English for professional growth is widely recognised.'
+    },
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Paraphrasing asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [7101, 7102, 7103, 7104, 7105] },
     { title: "O'rtacha", desc: 'Xatolarni toping', color: 'bg-blue-500', icon: '📘', ids: [7106, 7107, 7108, 7109, 7110] },
     { title: "Qiyin", desc: 'Transformatsiya', color: 'bg-violet-500', icon: '🎯', ids: [7111, 7112, 7113, 7114, 7115] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7123, 7124, 7120, 7118, 7119, 7121, 7116, 7125, 7117, 7122] },
-    { title: "🔀 Aralash", desc: "Boshqacha ifodalash + Akademik lug'at farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95481, 95482, 95483, 95484, 95485] },
+    { title: "🔀 Aralash", desc: "Boshqacha ifodalash + Akademik lug'at farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95481, 95482, 95483, 95484, 95485, 56034, 56035] },
   ],
   tests: [
     { id: 65132, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Paraphrase bilan plagiarism o'rtasida farq nima?", options: ['Farq yo\'q', 'Paraphrase = boshqa so\'z + tuzilma + manba; plagiarism = o\'g\'irlash', 'Plagiarism = tarjima', "Paraphrase = faqat so'z o'zgartirish"], correct: 'Paraphrase = boshqa so\'z + tuzilma + manba; plagiarism = o\'g\'irlash', explanation: 'Good paraphrase: vocabulary + structure + citation' },
@@ -947,13 +989,27 @@ export const advancedVerbPatternsB2: DailyLesson = {
       prompt: 'Causative va reporting verb patternlar bilan matn yozing.',
       hints: ['I had my...', 'I got him to...', 'They made me...'],
       exampleAnswer: 'I had my car repaired yesterday. I got my brother to help me move. They made me wait for an hour.' },
-  ],
+  
+    { id: 56036, type: 'passage',
+      instruction: 'Fel patternlarini to\'ldiring:',
+      passage: 'I ___(1) (recommend) practising English every day. She ___(2) (suggested) that we join the language club. They ___(3) (offered) to help me with my homework. He ___(4) (denied) stealing the money. We ___(5) (agreed) to meet again next week. The manager ___(6) (apologised for) being late. She ___(7) (insisted on) paying for dinner. I ___(8) (look forward to) hearing from you.',
+      blanks: ['recommend', 'suggested', 'offered', 'denied', 'agreed', 'apologised for', 'insisted on', 'look forward to'],
+      acceptedAnswers: [['recommend'], ['suggested'], ['offered'], ['denied'], ['agreed'], ['apologised for'], ['insisted on'], ['look forward to']],
+      explanation: 'Verb patterns: recommend/suggest + V-ing, suggest + that + clause, offer/agree + to V, deny + V-ing, apologise for/insist on/look forward to + V-ing.'
+    },
+    { id: 56037, type: 'connection',
+      instruction: 'Fel patternlari bilan yozing',
+      prompt: 'Verb patterns (recommend, suggest, offer, deny, agree, apologise for, insist on, look forward to) ishlatib, bir tajribangiz haqida 4-5 jumla yozing.',
+      hints: ['I recommend + V-ing... (tavsiya)', 'My friend offered + to V... (taklif)', 'I agreed + to V... (rozi)', 'I look forward to + V-ing... (intizor)'],
+      exampleAnswer: 'I recommend visiting Samarkand to every tourist. My friend offered to show me around. I agreed to meet him at 10 AM. He apologised for being late. He insisted on paying for lunch. I look forward to visiting again.'
+    },
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Gerund vs infinitive asosi", color: 'bg-emerald-500', icon: '🌱', ids: [7201, 7202, 7203, 7204, 7205] },
     { title: "O'rtacha", desc: 'Causative va passive reporting', color: 'bg-blue-500', icon: '📘', ids: [7206, 7207, 7208, 7209, 7210] },
     { title: "Qiyin", desc: 'Xatolarni toping', color: 'bg-violet-500', icon: '🎯', ids: [7211, 7212, 7213, 7214, 7215] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7221, 7217, 7224, 7223, 7225, 7219, 7216, 7220, 7218, 7222] },
-    { title: "🔀 Aralash", desc: "Murakkab fe'l patternlari + Gerund/infinitiv farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95491, 95492, 95493, 95494, 95495] },
+    { title: "🔀 Aralash", desc: "Murakkab fe'l patternlari + Gerund/infinitiv farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95491, 95492, 95493, 95494, 95495, 56036, 56037] },
   ],
   tests: [
     { id: 65183, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Stop + gerund' nima ma'no?", options: ["To'xtadi va qildi", "Qilishni to'xtatdi", "Urinib ko'rdi", 'Yodga tushirdi'], correct: "Qilishni to'xtatdi", explanation: "'Stop + gerund' = qilishni tugatish" },
@@ -1198,13 +1254,27 @@ export const b2ComprehensiveReview: DailyLesson = {
       prompt: 'Barcha B2 grammatikasidan foydalanib matn yozing.',
       hints: ['Argument', 'Stance', 'Verb patterns', 'Collocations'],
       exampleAnswer: 'This paper argues that language learning is a lifelong process. Undoubtedly, practice is the key to success. The improvement in my English has been remarkable.' },
-  ],
+  
+    { id: 56038, type: 'passage',
+      instruction: 'B2 yakuniy takrorlash:',
+      passage: 'I wish I ___(1) (know) about this course earlier. If I had known, I ___(2) (would) have enrolled last year. The ___(3) (develop) of my skills has been remarkable. My teacher recommends that I ___(4) (continue) practising. It ___(5) (seems) that my hard work is paying off. ___(6) (In spite of) the challenges, I have made progress. ___(7) (However), there is room for improvement. ___(8) (In my opinion), language learning is a lifelong journey.',
+      blanks: ['had known', 'would', 'development', 'continue', 'seems', 'In spite of', 'However', 'In my opinion'],
+      acceptedAnswers: [['had known'], ['would'], ['development'], ['continue'], ['seems', 'appears'], ['In spite of', 'Despite'], ['However', 'Nevertheless'], ['In my opinion', 'I believe']],
+      explanation: 'B2 final review: Unreal past (wish + had), conditional (would), nominalization (development), subjunctive (recommend + V1), hedging (it seems), contrast (in spite of), cohesion (however), stance (in my opinion).'
+    },
+    { id: 56039, type: 'connection',
+      instruction: 'B2 yakuniy xulosa',
+      prompt: 'B2 dagi barcha grammatik tuzilmalardan 5 xilini ishlatib, bir yillik rivojlanishingiz haqida 5-6 jumla yozing.',
+      hints: ['I wish I had... (unreal past)', 'If I had..., I would be... (mixed)', 'The improvement of... (nominalization)', 'It seems that... (hedging)', 'However/Therefore... (cohesion)'],
+      exampleAnswer: 'I wish I had started this course earlier. If I had studied more consistently, I would be more fluent now. The development of my English has been significant. My teacher recommends that I continue practising. It seems that my listening has improved the most.'
+    },
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "B2 asosiy tuzilmalar takrori", color: 'bg-emerald-500', icon: '🌱', ids: [7301, 7302, 7303, 7304, 7305] },
     { title: "O'rtacha", desc: 'Modal va discourse takrori', color: 'bg-blue-500', icon: '📘', ids: [7306, 7307, 7308, 7309, 7310] },
     { title: "Qiyin", desc: "B2 xatolar va tuzatish", color: 'bg-violet-500', icon: '🎯', ids: [7311, 7312, 7313, 7314, 7315] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [7323, 7316, 7318, 7322, 7321, 7317, 7320, 7324, 7325, 7319] },
-    { title: "🔀 Aralash", desc: "B2 darajasini keng aralash takrorlash", color: 'bg-fuchsia-500', icon: '🔄', ids: [95501, 95502, 95503, 95504, 95505] },
+    { title: "🔀 Aralash", desc: "B2 darajasini keng aralash takrorlash", color: 'bg-fuchsia-500', icon: '🔄', ids: [95501, 95502, 95503, 95504, 95505, 56038, 56039] },
   ],
   tests: [
     { id: 65234, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Inversion qaysi tuzilmada ishlatiladi?", options: ['Oddiy gap', "Negative adverbial gapni ta'kidlashda", 'Passive voice da', 'Conditional da'], correct: "Negative adverbial gapni ta'kidlashda", explanation: "Inversion: Never/Rarely/Not only/Hardly + aux + subject" },

@@ -361,7 +361,7 @@ export const relativeClausesB1: DailyLesson = {
         "who"
       ],
       question: "The woman ___ lives next door is a nurse.",
-      explanation: "Who = odamlar",
+      explanation: "Who is used for people — 'the woman' is a person.",
       instruction: "Who/which:"
     },
     {
@@ -371,7 +371,7 @@ export const relativeClausesB1: DailyLesson = {
         "which"
       ],
       question: "The car ___ is parked outside is mine.",
-      explanation: "Which = narsalar",
+      explanation: "Which is used for things — 'the car' is a thing.",
       instruction: "Who/which:"
     },
     {
@@ -381,7 +381,7 @@ export const relativeClausesB1: DailyLesson = {
         "that"
       ],
       question: "The book ___ I read was fantastic.",
-      explanation: "That = defining",
+      explanation: "'That' is used in defining relative clauses for both people and things.",
       instruction: "That:"
     },
     {
@@ -391,7 +391,7 @@ export const relativeClausesB1: DailyLesson = {
         "where"
       ],
       question: "The town ___ I grew up is small.",
-      explanation: "Where = joy",
+      explanation: "'Where' is used for places — 'the town' is a place.",
       instruction: "Where:"
     },
     {
@@ -401,7 +401,7 @@ export const relativeClausesB1: DailyLesson = {
         "when"
       ],
       question: "I remember the year ___ we travelled.",
-      explanation: "When = vaqt",
+      explanation: "'When' is used for time expressions — 'the year' refers to time.",
       instruction: "When:"
     },
     {
@@ -415,7 +415,7 @@ export const relativeClausesB1: DailyLesson = {
         "where"
       ],
       question: "The man ___ called you is my brother.",
-      explanation: "Who = odam",
+      explanation: "'Who' is used for people — 'the man' is a person.",
       instruction: "Tanlang:"
     },
     {
@@ -429,7 +429,7 @@ export const relativeClausesB1: DailyLesson = {
         "where"
       ],
       question: "The film ___ we saw was boring.",
-      explanation: "Which = narsa",
+      explanation: "'Which' is used for things — 'the film' is a thing.",
       instruction: "Tanlang:"
     },
     {
@@ -457,7 +457,7 @@ export const relativeClausesB1: DailyLesson = {
         "that"
       ],
       question: "The student ___ phone rang was embarrassed.",
-      explanation: "Whose = egalik",
+      explanation: "'Whose' shows possession — the phone belongs to the student.",
       instruction: "Tanlang:"
     },
     {
@@ -1041,47 +1041,28 @@ export const relativeClausesB1: DailyLesson = {
   ],
   testSections: [
     {
-      ids: [
-        261,
-        262,
-        263,
-        264,
-        265
-      ],
+      ids: [45041, 45042, 45043, 45044, 45045],
       desc: "Pronounlar",
       icon: "F1",
       color: "bg-emerald-500",
       title: "Oson"
     },
     {
-      ids: [
-        266,
-        267,
-        268,
-        269,
-        270
-      ],
+      ids: [45046, 45047, 45048, 45049, 45050],
       desc: "Qollash",
       icon: "B8",
       color: "bg-blue-500",
       title: "Ortacha"
     },
     {
-      ids: [
-        271,
-        272,
-        273
-      ],
+      ids: [45051, 45052, 45053, 45054, 45055],
       desc: "Defining/Non-defining",
       icon: "AA",
       color: "bg-violet-500",
       title: "Qiyin"
     },
     {
-      ids: [
-        274,
-        275
-      ],
+      ids: [45056, 45057, 45058, 45059, 45060],
       desc: "Sinov",
       icon: "C6",
       color: "bg-rose-500",
@@ -2096,26 +2077,14 @@ export const phrasalVerbsB1: DailyLesson = {
   ],
   testSections: [
     {
-      ids: [
-        281,
-        282,
-        283,
-        284,
-        285
-      ],
+      ids: [45111, 45112, 45113, 45114, 45115],
       desc: "Meanings",
       icon: "F1",
       color: "bg-emerald-500",
       title: "Oson"
     },
     {
-      ids: [
-        286,
-        287,
-        288,
-        289,
-        290
-      ],
+      ids: [45116, 45117, 45118, 45119, 45120],
       desc: "Qollash",
       icon: "B8",
       color: "bg-blue-500",
@@ -2133,10 +2102,7 @@ export const phrasalVerbsB1: DailyLesson = {
       title: "Qiyin"
     },
     {
-      ids: [
-        294,
-        295
-      ],
+      ids: [45121, 45122],
       desc: "Sinov",
       icon: "C6",
       color: "bg-rose-500",
@@ -2144,13 +2110,13 @@ export const phrasalVerbsB1: DailyLesson = {
     }
   ],
   reading: {
-    passage: "A Difficult Decision\n\nAkbar is thinking about buying a new car. \"If I save enough money, I will buy a car next year,\" he says. \"This is a zero conditional fact: if you have money, you can buy things.\"\n\nHis friend says: \"If you buy a car now, you will spend less on taxis. That is a first conditional - a real possibility.\"\n\nBut Akbar is not sure. \"If I bought a car, I would have to pay for petrol and maintenance. That is a second conditional - an unreal situation in the present. I don't have the car yet.\"\n\nHis wife adds: \"If we had bought a car last year, we would have saved money on transport. But we didn't, so that is a third conditional - an unreal situation in the past.\"\n\nAkbar thinks for a long time. \"If I were rich, I would buy two cars! But I am not rich. I think I will save money first and buy a car next year.\"",
+    passage: "Phrasal Verbs in Daily Life\n\nUlug'bek is telling his friend Sarvar about his day.\n\n\"I woke up late this morning. I had to hurry up and get ready quickly. I picked up my bag and ran out of the house.\"\n\nSarvar asks: \"Did you have breakfast?\"\n\"No, I didn't. I stopped at the bakery and picked up a sandwich. I looked after my little brother yesterday, so I was tired.\"\n\n\"What about the meeting?\" asks Sarvar.\n\"Oh, I had to put off the meeting until next week. The manager couldn't come. We need to find out what happened.\"\n\n\"And tonight?\"\n\"I'm looking forward to the concert. I'll pick up my friend at 7. We're going to have a great time!\"\n\n\"Don't stay out late,\" says Sarvar. \"You shouldn't give up sleep.\"\n\"Don't worry, I'll turn in early tomorrow. I can't put up with being tired all the time!\"",
     questions: [
-      { id: 45123, type: 'multiple-choice' as const, question: "What type of conditional is: 'If you have money, you can buy things'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 0, explanation: "Zero conditional is used for general truths and facts." },
-      { id: 45124, type: 'multiple-choice' as const, question: "What type of conditional is: 'If you buy a car now, you will spend less'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 1, explanation: "First conditional uses if + present simple, will + base verb for real possibilities." },
-      { id: 45125, type: 'multiple-choice' as const, question: "What type of conditional is: 'If I bought a car, I would have to pay for petrol'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 2, explanation: "Second conditional uses if + past simple, would + base verb for unreal present situations." },
-      { id: 45126, type: 'multiple-choice' as const, question: "What type of conditional is: 'If we had bought a car, we would have saved money'?", options: ["Zero conditional", "First conditional", "Second conditional", "Third conditional"], correctIndex: 3, explanation: "Third conditional uses if + past perfect, would have + past participle for unreal past." },
-      { id: 45127, type: 'multiple-choice' as const, question: "What verb form is used in the second conditional if-clause?", options: ["Present simple", "Past simple", "Past perfect", "Would + verb"], correctIndex: 1, explanation: "Second conditional uses past simple in the if-clause." },
+      { id: 45123, type: 'multiple-choice' as const, question: "What does Ulug'bek mean by 'hurry up'?", options: ["Slow down", "Move quickly", "Give up", "Turn off"], correctIndex: 1, explanation: "'Hurry up' = tezlash, shoshilmoq." },
+      { id: 45124, type: 'multiple-choice' as const, question: "What did Ulug'bek pick up at the bakery?", options: ["A book", "A sandwich", "A friend", "His brother"], correctIndex: 1, explanation: "'Pick up' = olib kelmoq, sotib olmoq." },
+      { id: 45125, type: 'multiple-choice' as const, question: "Why did Ulug'bek put off the meeting?", options: ["He was sick", "The manager couldn't come", "He forgot", "It was cancelled"], correctIndex: 1, explanation: "'Put off' = kechiktirmoq." },
+      { id: 45126, type: 'multiple-choice' as const, question: "What is Ulug'bek looking forward to?", options: ["Work", "A concert", "Sleep", "A meeting"], correctIndex: 1, explanation: "'Look forward to' = intizor bolmoq." },
+      { id: 45127, type: 'multiple-choice' as const, question: "What does Sarvar mean by 'give up sleep'?", options: ["Sleep more", "Stop sleeping", "Lose sleep", "Wake up early"], correctIndex: 2, explanation: "'Give up' = voz kechmoq, tashlamoq." },
     ]
   }
 }

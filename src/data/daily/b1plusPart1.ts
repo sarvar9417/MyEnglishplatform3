@@ -13,14 +13,14 @@ export const narrativeTensesB1plus: DailyLesson = {
       { word: 'brake', definition: 'tormoz bosmoq' },
       { word: 'gather', definition: 'to\'planmoq' },
       { word: 'pavement', definition: 'piyodalar yo\'lakchasi' },
-      { word: 'calm down', definition: 'tinchlanmoq' },
+      { word: 'calm down', definition: 'tinchlanmoq' }
     ],
     questions: [
       { id: 90051, type: 'multiple-choice', question: "What was the narrator doing when something strange happened?", options: ["Driving a car", "Walking home from work", "Cooking dinner", "Reading a report"], correctIndex: 1, explanation: "'I was walking home from work when something strange happened' — Past Continuous interrupted by Past Simple." },
       { id: 90052, type: 'true-false', question: "The narrator had been thinking about dinner all day.", answer: true, explanation: "'I had been thinking about dinner all day' — Past Perfect Continuous." },
       { id: 90053, type: 'multiple-choice', question: "Why had the car stopped in the street?", options: ["It ran out of fuel", "A cat had run in front of it", "The engine broke", "The police stopped it"], correctIndex: 1, explanation: "'A cat had run in front of his car, and he had braked just in time.'" },
       { id: 90054, type: 'multiple-choice', question: "What had the driver been doing wrong?", options: ["Driving too fast", "Using his phone", "Driving without lights", "Ignoring a sign"], correctIndex: 0, explanation: "'The driver, who had been driving too fast, looked frightened.'" },
-      { id: 90055, type: 'true-false', question: "Someone was seriously hurt in the incident.", answer: false, explanation: "'Luckily, nobody had been hurt.'" },
+      { id: 90055, type: 'true-false', question: "Someone was seriously hurt in the incident.", answer: false, explanation: "'Luckily, nobody had been hurt.'" }
     ],
     difficulty: 'hard',
     topic: "Hikoya zamonlari — voqea bayoni",
@@ -31,7 +31,7 @@ export const narrativeTensesB1plus: DailyLesson = {
       { id: 50001, type: 'multiple-choice' as const, question: "What had Aziz forgotten to do before leaving?", options: ["Call his grandmother","Check the fuel","Take an umbrella","Fix the car"], correctIndex: 1, explanation: "Past Perfect 'had forgotten' — oldin sodir bo'lgan ish." },
       { id: 50002, type: 'multiple-choice' as const, question: "Which tense describes the background ('The wind was blowing')?", options: ["Past Simple","Past Continuous","Past Perfect","Present Perfect"], correctIndex: 1, explanation: "Past Continuous — fon harakati." },
       { id: 50003, type: 'multiple-choice' as const, question: "What does 'had been waiting' tell us?", options: ["A short action","A finished single action","A continuous action up to a past point","A future plan"], correctIndex: 2, explanation: "Past Perfect Continuous — o'tmishdagi nuqtagacha davom etgan." },
-      { id: 50004, type: 'multiple-choice' as const, question: "Put the events in order: she prepared the soup / he arrived.", options: ["He arrived, then she prepared it","She prepared it before he arrived","At the same time","Cannot tell"], correctIndex: 1, explanation: "'had already prepared' — kelishidan oldin tayyorlagan." },
+      { id: 50004, type: 'multiple-choice' as const, question: "Put the events in order: she prepared the soup / he arrived.", options: ["He arrived, then she prepared it","She prepared it before he arrived","At the same time","Cannot tell"], correctIndex: 1, explanation: "'had already prepared' — kelishidan oldin tayyorlagan." }
     ]
   },
   writing: {
@@ -41,7 +41,7 @@ export const narrativeTensesB1plus: DailyLesson = {
       "Past Continuous for background: 'The sun was shining...'",
       "Past Simple for the main events: 'Suddenly, the phone rang.'",
       "Past Perfect for earlier events: 'I had already left when...'",
-      "Use time linkers: 'while', 'when', 'by the time'",
+      "Use time linkers: 'while', 'when', 'by the time'"
     ],
   },
   category: 'Storytelling',
@@ -49,8 +49,8 @@ export const narrativeTensesB1plus: DailyLesson = {
     { label: 'Past Simple', structure: 'Subject + V2 (V+ed / irregular)\nI walked to the store.\nShe saw a strange man.', color: 'green' },
     { label: 'Past Continuous', structure: 'Subject + was/were + V-ing\nI was walking home when...\nThe sun was shining.', color: 'blue' },
     { label: 'Past Perfect', structure: 'Subject + had + V3\nShe had already left when I arrived.\nI had never seen such a thing.', color: 'purple' },
-    { label: 'Past Perfect Continuous', structure: 'Subject + had been + V-ing\nWe had been waiting for hours.\nShe had been working all day.', color: 'orange' },
-  ],
+    { label: 'Past Perfect Continuous', structure: 'Subject + had been + V-ing\nWe had been waiting for hours.\nShe had been working all day.', color: 'orange' }
+    ],
   rules: [
     "1\uFE0F\u20E3 NARRATIVE TENSES NIMA?\n\nNarrative tenses � hikoya va voqealarni aytib berish uchun ishlatiladigan o'tgan zamon shakllari. Ingliz tilida to'rtta narrative tense bor:\n\n\uD83D\uDCCC Past Simple � asosiy voqealar (main events):\n  He opened the door and walked in.\n\n\uD83D\uDCCC Past Continuous � orqa fon (background):\n  The sun was shining and birds were singing.\n\n\uD83D\uDCCC Past Perfect � oldingi voqealar (earlier actions):\n  She had already eaten when I arrived.\n\n\uD83D\uDCCC Past Perfect Continuous � davomiylik (duration before something):\n  They had been travelling for six hours before they stopped.",
     "2\uFE0F\u20E3 PAST SIMPLE � ASOSIY VOQEALAR\n\nPast Simple hikoyadagi asosiy voqealarni ifodalaydi. Voqealar birin-ketin sodir bo'ladi:\n\n  He woke up, brushed his teeth, and had breakfast.\n  (U uyg'ondi, tishlarini yuvdi va nonushta qildi.)\n\n\uD83D\uDCCC To'g'ri fe'llar: V+ed (walked, played, started)\n\uD83D\uDCCC Noto'g'ri fe'llar: V2 (went, saw, bought, took)\n\uD83D\uDCCC Kengaytirish: didn't + V1\n\uD83D\uDCCC Savol: Did + S + V1?\n\nHikoya qilishda ko'pincha Past Simple ishlatiladi. Bu eng muhim tense!",
@@ -58,8 +58,8 @@ export const narrativeTensesB1plus: DailyLesson = {
     "4\uFE0F\u20E3 PAST PERFECT � OLDINGI VOQEALAR\n\nPast Perfect bir o'tgan zamon voqeasidan oldin sodir bo'lgan boshqa voqeani ifodalaydi:\n\n  When I arrived, the train had already left.\n  (Men yetib kelganimda, poyezd allaqachon ketgan edi.)\n  \u2192 avval: poyezd ketdi\n  \u2192 keyin: men yetib keldim\n\n\uD83D\uDCCC Formula: had + V3\n\uD83D\uDCCC Kengaytirish: hadn't + V3\n\uD83D\uDCCC Savol: Had + S + V3?\n\nPast Perfect vaqtda 'oldingi'likni ko'rsatadi. O'zbek tilida '-gan edi' qo'shimchasi bilan ifodalanadi.",
     "5\uFE0F\u20E3 PAST PERFECT CONTINUOUS � DAVOMIYLIK\n\nPast Perfect Continuous bir o'tgan zamon voqeasidan oldin ma'lum vaqt davom etgan harakatni ifodalaydi:\n\n  They had been driving for three hours when the car broke down.\n  (Ular uch soat davomida mashina haydab kelayotgan edi, qachonki mashina buzildi.)\n\n\uD83D\uDCCC Formula: had been + V-ing\n\uD83D\uDCCC Kengaytirish: hadn't been + V-ing\n\n\uD83D\uDD34 Past Perfect vs Past Perfect Continuous:\n  By 6 PM, she had finished her work. (tugallangan harakat)\n  She had been working since 8 AM. (davom etgan harakat)",
     "6\uFE0F\u20E3 VAQT BELGILARI\n\nPast Simple: yesterday, last week, in 2010, ago, first, then, next, finally, when\n  He arrived yesterday. First we ate, then we left.\n\nPast Continuous: while, as, at that moment, at 5 PM yesterday, all day\n  While I was cooking, he was watching TV.\n\nPast Perfect: already, just, never, ever, before, by the time, after\n  She had already left when I called.\n\nPast Perfect Continuous: for, since, all day/week, before, by the time\n  We had been waiting for hours when the news came.",
-    "7\uFE0F\u20E3 O'ZBEKCHA XATOLAR\n\n\u2022 Past Perfect ni ishlatmaslik: When I arrived, he already left \u2192 When I arrived, he had already left.\n\u2022 Past Continuous ni ishlatmaslik: It rained when I went out \u2192 It was raining when I went out.\n\u2022 Past Perfect Continuous ni ishlatmaslik: She waited for two hours before he came \u2192 She had been waiting for two hours before he came.\n\u2022 O'zbek tilida: 'Men kelganimda u ketgan edi' = Past Perfect\n\u2022 O'zbek tilida: 'Yomg'ir yog'ayotgan edi' = Past Continuous",
-  ],
+    "7\uFE0F\u20E3 O'ZBEKCHA XATOLAR\n\n\u2022 Past Perfect ni ishlatmaslik: When I arrived, he already left \u2192 When I arrived, he had already left.\n\u2022 Past Continuous ni ishlatmaslik: It rained when I went out \u2192 It was raining when I went out.\n\u2022 Past Perfect Continuous ni ishlatmaslik: She waited for two hours before he came \u2192 She had been waiting for two hours before he came.\n\u2022 O'zbek tilida: 'Men kelganimda u ketgan edi' = Past Perfect\n\u2022 O'zbek tilida: 'Yomg'ir yog'ayotgan edi' = Past Continuous"
+    ],
   vocabulary: [
     { en: 'narrate', uz: 'hikoya qilmoq', example: 'She narrated her travel adventures.', rule: 'Storytelling' },
     { en: 'flashback', uz: 'o\'tmishga qaytish', example: 'The movie used a flashback to show his childhood.', rule: 'Narrative technique' },
@@ -70,8 +70,8 @@ export const narrativeTensesB1plus: DailyLesson = {
     { en: 'suddenly', uz: 'to\'satdan, birdan', example: 'Suddenly, the lights went out.', rule: 'Unexpected event' },
     { en: 'previously', uz: 'avvalroq, oldin', example: 'Previously, they had never met.', rule: 'Earlier time' },
     { en: 'by the time', uz: '-gan vaqtga kelib', example: 'By the time we arrived, the show had started.', rule: 'Past Perfect' },
-    { en: 'plot twist', uz: 'syurjet burilishi', example: 'The plot twist surprised everyone.', rule: 'Story element' },
-  ],
+    { en: 'plot twist', uz: 'syurjet burilishi', example: 'The plot twist surprised everyone.', rule: 'Story element' }
+    ],
   examples: [
     { en: 'I was walking through the park when I met an old friend from school.', uz: 'Men parkda sayr qilayotgan edim, qachonki maktabdagi eski do\'stimni uchratdim.' },
     { en: 'She had already finished her homework before her mother came home from work.', uz: 'Onasi ishdan kelishidan oldin u allaqachon uy vazifasini tugatgan edi.' },
@@ -80,8 +80,8 @@ export const narrativeTensesB1plus: DailyLesson = {
     { en: 'He opened the door, walked into the room, and saw a strange package on the table.', uz: 'U eshikni ochdi, xonaga kirdi va stolda g\'alati paketni ko\'rdi.' },
     { en: 'While I was driving to work, I remembered that I had left my phone at home.', uz: 'Ishga ketayotganimda, telefonimni uyda qoldirganimni esladim.' },
     { en: 'The detectives had been investigating the case for months before they found the clue.', uz: 'Detektivlar ishni oylar davomida tergov qilgan edi, qachonki dalilni topishdi.' },
-    { en: 'First we checked into the hotel, then we went for a walk, and finally we had dinner.', uz: 'Avval mehmonxonaga joylashdik, keyin sayrga chiqdik va nihoyat kechki ovqatlandik.' },
-  ],
+    { en: 'First we checked into the hotel, then we went for a walk, and finally we had dinner.', uz: 'Avval mehmonxonaga joylashdik, keyin sayrga chiqdik va nihoyat kechki ovqatlandik.' }
+    ],
   specialCases: [
     {
       id: 'past-simple-vs-continuous',
@@ -91,13 +91,13 @@ export const narrativeTensesB1plus: DailyLesson = {
       commonMistakes: "I watched TV when the phone was ringing \u2192 I was watching TV when the phone rang.\nShe was getting up, was having a shower, and was leaving \u2192 She got up, had a shower, and left.",
       examples: [
         { en: 'I was reading a book when my friend called.', uz: 'Men kitob o\'qiyotgan edim, do\'stim qo\'ng\'iroq qilganida.' },
-        { en: 'I read a book last night before sleeping.', uz: 'Kecha uxlashdan oldin kitob o\'qidim.' },
-      ],
+        { en: 'I read a book last night before sleeping.', uz: 'Kecha uxlashdan oldin kitob o\'qidim.' }
+    ],
       drills: [
         { id: 50005, type: 'fill-blank', instruction: "Past Simple yoki Past Continuous?", question: 'I ___ (walk) home when it started to rain.', blanks: ['was walking'], explanation: 'Jarayon: was walking = davom etayotgan jarayon. Qoida: \'Was walking\' = yurib ketayotgan edi (davomiy). \'Walked\' = yurdi (tugallangan). Farq: was walking (davom etgan), walked (tugagan).' },
         { id: 50006, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She ___ TV when the lights went out.', options: ['watched', 'was watching', 'had watched', 'had been watching'], correct: 'was watching', explanation: 'Jarayon: was watching = tomosha qilayotgan edi. Qoida: Past Continuous jarayonni bildiradi: I was watching TV when the power went out. (TV ko\'rayotgan edim, elektr o\'chdi.)' },
-        { id: 50007, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I walked home when I saw a friend.', errorPart: 'walked', correct: 'I was walking home when I saw a friend.', explanation: 'Fon harakati: was walking = orqa fonda davom etgan harakat. Qoida: Past Continuous fon: I was walking through the park when I found a wallet. (Bog\'da ketayotgan edim, hamyon topdim.)' },
-      ],
+        { id: 50007, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I walked home when I saw a friend.', errorPart: 'walked', correct: 'I was walking home when I saw a friend.', explanation: 'Fon harakati: was walking = orqa fonda davom etgan harakat. Qoida: Past Continuous fon: I was walking through the park when I found a wallet. (Bog\'da ketayotgan edim, hamyon topdim.)' }
+    ],
     },
     {
       id: 'past-perfect-order',
@@ -107,15 +107,15 @@ export const narrativeTensesB1plus: DailyLesson = {
       commonMistakes: "I had woken up, had breakfast, and had left \u2192 I woke up, had breakfast, and left. (keraksiz Past Perfect)\nWhen I arrived, he already left \u2192 When I arrived, he had already left. (Past Perfect kerak)",
       examples: [
         { en: 'After I finished work, I went to the gym.', uz: 'Ishni tugatgandan keyin sport zaliga bordim.' },
-        { en: 'She had never flown before she went to London.', uz: 'U Londonga borishdan oldin hech qachon uchmagan edi.' },
-      ],
+        { en: 'She had never flown before she went to London.', uz: 'U Londonga borishdan oldin hech qachon uchmagan edi.' }
+    ],
       drills: [
         { id: 50008, type: 'fill-blank', instruction: "Past Perfect yoki Past Simple?", question: 'When I got there, they ___ (already/leave).', blanks: ['had already left'], explanation: 'Oldingi harakat: had left = oldin ketgan edi. Qoida: Past Perfect \'oldin sodir bo\'lgan\' ma\'nosida: They had left before I called. (Ular ketib bo\'lgan edi, men qo\'ng\'iroq qilishimdan oldin.)' },
         { id: 50009, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ the keys before I left the house.', options: ['grabbed', 'had grabbed', 'was grabbing', 'had been grabbing'], correct: 'had grabbed', explanation: 'Before dan oldin Past Perfect = \'before\' + Past Perfect. Qoida: \'Before\' dan keyin ham Past Perfect: She had finished before he arrived. (U tugatgan edi, u kelishidan oldin.)' },
-        { id: 50010, type: 'transformation', instruction: 'Past Perfect bilan ifodalang:', question: 'First she ate. Then I arrived.', hint: 'When I arrived, she ___.', correct: 'When I arrived, she had already eaten.', explanation: 'Eat -> Past Perfect: had eaten' },
-      ],
-    },
-  ],
+        { id: 50010, type: 'transformation', instruction: 'Past Perfect bilan ifodalang:', question: 'First she ate. Then I arrived.', hint: 'When I arrived, she ___.', correct: 'When I arrived, she had already eaten.', explanation: 'Eat -> Past Perfect: had eaten' }
+    ],
+    }
+    ],
   exercises: [
     { id: 50011, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: 'Yesterday I ___ (go) to the supermarket.', blanks: ['went'], explanation: 'Go -> went (noto\'g\'ri fe\'l)' },
     { id: 50012, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: 'At 8 PM, I ___ (watch) a movie.', blanks: ['was watching'], explanation: 'Past Continuous: was watching = orqa fon. Qoida: Was/were + V-ing. Fon + asosiy hodisa: She was watching TV when I called. (U TV ko\'rayotgan edi, men qo\'ng\'iroq qilganimda.)' },
@@ -148,14 +148,18 @@ export const narrativeTensesB1plus: DailyLesson = {
       instruction: 'Unutilmas kun',
       prompt: 'O\'tgan hafta sodir bo\'lgan qiziqarli voqeani hikoya qiling. Narrative tenses (Past Simple, Past Continuous, Past Perfect) ishlating.',
       hints: ['\'I was walking when...\'', '\'I had never...\'', '\'While I was...\''],
-      exampleAnswer: 'Last Saturday I was walking in the park when I saw an old friend. I hadn\'t seen him for five years! We had been classmates in school. We decided to have coffee together.' },
-   ],
+      exampleAnswer: 'Last Saturday I was walking in the park when I saw an old friend. I hadn\'t seen him for five years! We had been classmates in school. We decided to have coffee together.' }
+    ,
+    {"id":100601,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"while","options":["bir vaqtda, ...gan paytda","keyin, undan so'ng","oldin, ...dan oldin","lekin, biroq"],"correct":"bir vaqtda, ...gan paytda","explanation":"While — bir vaqtda sodir bo'lgan harakatlar uchun ishlatiladi."},
+    {"id":100602,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"past perfect","options":["o'tmishdagi o'tmish (had + V3)","hozirgi zamon","kelajak zamon","oddiy o'tmish"],"correct":"o'tmishdagi o'tmish (had + V3)","explanation":"Past Perfect — bir o'tmish voqeadan oldin sodir bo'lganini bildiradi."}
+  ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Har bir tense alohida', color: 'bg-emerald-500', icon: '🌱', ids: [3601, 3602, 3603, 3604, 3605] },
     { title: "O'rtacha", desc: 'Tense tanlash', color: 'bg-blue-500', icon: '📘', ids: [3606, 3607, 3608, 3609, 3610] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [3611, 3612, 3613, 3614, 3615] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3619, 3620, 3613, 3618, 3617, 3616, 3618, 3620, 3615, 3617, 55008, 55017] },
-  ],
+  
+    ],
   tests: [
     { id: 50031, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Narrative tenses nechta?', options: ['2 ta', '3 ta', '4 ta', '5 ta'], correct: '4 ta', explanation: 'Qoida: Narrative Tenses 4 ta: 1) Past Simple (tugagan harakat), 2) Past Continuous (fon), 3) Past Perfect (oldingi), 4) Past Perfect Continuous (davomiy oldingi). Hikoya qilishda ishlatiladi.' },
     { id: 50032, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Asosiy voqealar uchun qaysi tense ishlatiladi?', options: ['Past Continuous', 'Past Simple', 'Past Perfect', 'Past Perfect Continuous'], correct: 'Past Simple', explanation: 'Past Simple = asosiy voqealar (hikoyada). Qoida: Past Simple asosiy voqealarni bildiradi: He opened the door and saw a surprise. (U eshikni ochdi va ajablanib qoldi.)' },
@@ -171,14 +175,14 @@ export const narrativeTensesB1plus: DailyLesson = {
     { id: 50042, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "When I got home, I realised I ___ my keys at work.", options: ['left', 'was leaving', 'had left', 'had been leaving'], correct: 'had left', explanation: 'Oldingi: had left = oldin ketgan edi. Qoida: Past Perfect (had + V3) bir o\'tmish harakat ikkinchisidan oldin sodir bo\'lganini bildiradi: When I arrived, she had left. (Men kelganimda, u ketib bo\'lgan edi.)' },
     { id: 50043, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "She ___ in New York for 10 years before she moved to London.", options: ['lived', 'was living', 'had been living', 'had lived'], correct: 'had been living', explanation: 'Davomiylik: had been living = oldin yashab kelgan edi (davomiy). Qoida: Past Perfect Continuous (had been + V-ing) bir o\'tmish harakat ikkinchisidan oldin davom etganini bildiradi: They had been living there for 10 years before they moved.' },
     { id: 50044, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is grammatically CORRECT?", options: ['I had woken up, had breakfast, and had left.', 'I woke up, had breakfast, and left.', 'I was waking up, having breakfast, and leaving.', 'I had been waking up, having breakfast, and leaving.'], correct: 'I woke up, had breakfast, and left.', explanation: 'Ketma-ket: Past Simple = ketma-ket harakatlar. Qoida: Past Simple ketma-ket sodir bo\'lgan ishlar: She woke up, brushed her teeth, and had breakfast. (U uyg\'ondi, tishlarini yuvdi va nonushta qildi.)' },
-    { id: 50045, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence shows the CORRECT use of narrative tenses?", options: ['While I walked home, I was seeing an accident.', 'While I was walking home, I saw an accident.', 'While I had walked home, I had seen an accident.', 'While I had been walking home, I was seeing an accident.'], correct: 'While I was walking home, I saw an accident.', explanation: 'While + Past Continuous (fon) + Past Simple (asosiy)' },
-  ],
+    { id: 50045, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence shows the CORRECT use of narrative tenses?", options: ['While I walked home, I was seeing an accident.', 'While I was walking home, I saw an accident.', 'While I had walked home, I had seen an accident.', 'While I had been walking home, I was seeing an accident.'], correct: 'While I was walking home, I saw an accident.', explanation: 'While + Past Continuous (fon) + Past Simple (asosiy)' }
+    ],
   testSections: [
     { title: 'Oson', desc: 'Narrative tenses asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [361, 362, 363, 364, 365] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [366, 367, 368, 369, 370] },
     { title: 'Qiyin', desc: 'Tense tanlash', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [371, 372, 373] },
-    { title: 'Murakkab', desc: 'Narrative tenses master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [374, 375] },
-  ],
+    { title: 'Murakkab', desc: 'Narrative tenses master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [374, 375] }
+    ],
 }
 
 export const advancedRelativeClausesB1plus: DailyLesson = {
@@ -194,14 +198,14 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
       { word: 'strict', definition: 'qattiqqo\'l, qattiq tartibli' },
       { word: 'respect', definition: 'hurmat qilmoq' },
       { word: 'neighbour', definition: 'qo\'shni' },
-      { word: 'value', definition: 'qadrlamoq' },
+      { word: 'value', definition: 'qadrlamoq' }
     ],
     questions: [
       { id: 90061, type: 'multiple-choice', question: "Where was the speaker born?", options: ["Tashkent", "Samarkand", "Bukhara", "Andijan"], correctIndex: 1, explanation: "'Samarkand — the city where I was born too' — relative adverb 'where'." },
       { id: 90062, type: 'true-false', question: "Bobur's father is a famous doctor.", answer: true, explanation: "'Bobur, whose father is a famous doctor' — non-defining clause with 'whose'." },
       { id: 90063, type: 'multiple-choice', question: "When did the two families become neighbours?", options: ["In 2000", "In 2005", "In 2010", "In 2015"], correctIndex: 1, explanation: "'We first met in 2005, the year when our families became neighbours.'" },
       { id: 90064, type: 'multiple-choice', question: "Where did they used to meet every Friday?", options: ["At school", "At a small café", "At Bobur's house", "At the park"], correctIndex: 1, explanation: "'There's a small café where we used to meet every Friday.'" },
-      { id: 90065, type: 'multiple-choice', question: "Where does Bobur work now?", options: ["Samarkand", "Tashkent", "Abroad", "At the café"], correctIndex: 1, explanation: "'Bobur, who now works in Tashkent, still calls me every week.'" },
+      { id: 90065, type: 'multiple-choice', question: "Where does Bobur work now?", options: ["Samarkand", "Tashkent", "Abroad", "At the café"], correctIndex: 1, explanation: "'Bobur, who now works in Tashkent, still calls me every week.'" }
     ],
     difficulty: 'hard',
     topic: "Murakkab nisbiy gaplar — who/whom/whose/where/when",
@@ -212,7 +216,7 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
       { id: 50046, type: 'multiple-choice' as const, question: "In 'the students whom he never forgot', why is 'whom' used?", options: ["Subject of the verb","Object of the verb","Possession","Place"], correctIndex: 1, explanation: "'whom' — to'ldiruvchi (object) uchun." },
       { id: 50047, type: 'multiple-choice' as const, question: "'Dilshod, who is now a teacher, ...' — what kind of clause is this?", options: ["Defining","Non-defining","Reduced","Time clause"], correctIndex: 1, explanation: "Vergul bilan — non-defining (qo'shimcha ma'lumot)." },
       { id: 50048, type: 'multiple-choice' as const, question: "Which word shows possession?", options: ["who","which","whose","where"], correctIndex: 2, explanation: "'whose' — egalik bildiradi." },
-      { id: 50049, type: 'multiple-choice' as const, question: "'The school where he worked' — 'where' refers to a...", options: ["person","time","place","reason"], correctIndex: 2, explanation: "'where' — joy uchun." },
+      { id: 50049, type: 'multiple-choice' as const, question: "'The school where he worked' — 'where' refers to a...", options: ["person","time","place","reason"], correctIndex: 2, explanation: "'where' — joy uchun." }
     ]
   },
   writing: {
@@ -222,7 +226,7 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
       "Defining (no commas): 'the teacher who helped me'",
       "Non-defining (commas): 'My mother, who lives in Bukhara, ...'",
       "'whose' for possession: 'the man whose car...'",
-      "'where/when' for places and times",
+      "'where/when' for places and times"
     ],
   },
   category: 'Complex Structures',
@@ -230,8 +234,8 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
     { label: 'Defining', structure: 'Subject + who/which/that + V\nThe woman who lives next door is a doctor.', color: 'green' },
     { label: 'Non-defining', structure: 'Noun, + who/which + V, ...\nMy sister, who lives in Paris, is a designer.', color: 'blue' },
     { label: 'Whom / Whose', structure: '... whom + S + V (object)\n... whose + N + V\nThe man whom I met is a professor.', color: 'purple' },
-    { label: 'Where / When / Why', structure: 'place + where + S + V\ntime + when + S + V\nreason + why + S + V', color: 'orange' },
-  ],
+    { label: 'Where / When / Why', structure: 'place + where + S + V\ntime + when + S + V\nreason + why + S + V', color: 'orange' }
+    ],
   rules: [
     "1\uFE0F\u20E3 NISBIY GAPLAR NIMA?\n\nRelative clauses (nisbiy gaplar) bir ot yoki olmoshni aniqlashtirish yoki qo\u2019shimcha ma\u2019lumot berish uchun ishlatiladi. Ikki turi bor:\n\n\uD83D\uDCCC Defining (aniqlovchi) \u2014 gapning ma\u2019nosi uchun zarur:\n  The woman who lives next door is a doctor.\n\n\uD83D\uDCCC Non-defining (qo\u2019shimcha) \u2014 vergul bilan ajratiladi:\n  My sister, who lives in London, is a doctor.\n\nAsosiy farq: definingda vergul YO\u2018Q, non-definingda vergul BOR.",
     "2\uFE0F\u20E3 DEFINING RELATIVE CLAUSES\n\nDefining relative clauses gapning ma\u2019nosini aniqlashtiradi. Agar olib tashlansa, gap tushunarsiz bo\u2019lib qoladi:\n\n  The man who called you is my brother.\n  \u2192 \u201cwho called you\u201d \u2014 qaysi odam ekanini aniqlashtiradi\n\n\uD83D\uDCCC Who \u2014 odamlar (subject): The woman who lives here...\n\uD83D\uDCCC Which \u2014 narsalar: The book which I bought...\n\uD83D\uDCCC That \u2014 odam va narsalar (definingda): The man that called...\n\uD83D\uDCCC Object pronoun tushib qolishi mumkin: The man (who) I met... \u2714",
@@ -240,8 +244,8 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
     "5\uFE0F\u20E3 WHOSE \u2014 EGALIK\n\nWhose egalikni (possession) ifodalaydi. Odamlar, hayvonlar va narsalar uchun:\n\n  The girl whose phone was stolen called the police.\n  \u2192 whose phone = qizning telefoni\n\n  The company whose CEO resigned is in trouble.\n\n\uD83D\uDD34 Of which \u2014 narsalar uchun rasmiy variant:\n  The house the roof of which was damaged...\n\uD83D\uDD34 Whose odam va narsalar uchun: a car whose engine is powerful...",
     "6\uFE0F\u20E3 WHERE, WHEN, WHY\n\nWhere \u2014 joy uchun:\n  The hotel where we stayed was amazing.\n  \u2192 at the hotel = where\n\nWhen \u2014 vaqt uchun:\n  I remember the day when we first met.\n  \u2192 on that day = when\n\nWhy \u2014 sabab uchun:\n  Tell me the reason why you are late.\n  \u2192 for that reason = why\n\n\uD83D\uDD34 The reason why... The place where... The day when... \u2014 keng tarqalgan birikmalar",
     "7\uFE0F\u20E3 PREPOSITIONS + WHICH/WHOM\n\nRasmiy (formal) ingliz tilida prepozitsiyalar relative pronoun bilan birga keladi:\n\n  The person to whom you spoke is the manager.\n  \u2192 to whom = kimga\n\n  The company for which I work is global.\n  \u2192 for which = qaysi kompaniyada\n\n\uD83D\uDD34 So\u2018zlashuv tilida prepozitsiya oxirga qo\u2018yiladi:\n  The person who you spoke to... \u2714\n  The company which I work for... \u2714\n\n\uD83D\uDD34 Qisqa prepozitsiyalar (to, for, with, in, at, about) oxirda yaxshi eshitiladi.",
-    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 That ni non-defining da ishlatish: My sister, that lives in London, ... \u2192 My sister, who lives in London, ...\n\u2022 Whom ni ishlatmaslik: The woman who I saw... (so\u2018zlashuvda mumkin) \u2192 The woman whom I saw... (rasmiy)\n\u2022 Vergulni definingda ishlatish: The man, who called you, is my brother \u2192 The man who called you is my brother.\n\u2022 Whose ni faqat odamlar uchun ishlatish: A car whose engine is broken... \u2714 (narsalar uchun ham)\n\u2022 Where/When/Why ni tushirib qoldirish: The hotel we stayed... \u2192 The hotel where we stayed...",
-  ],
+    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 That ni non-defining da ishlatish: My sister, that lives in London, ... \u2192 My sister, who lives in London, ...\n\u2022 Whom ni ishlatmaslik: The woman who I saw... (so\u2018zlashuvda mumkin) \u2192 The woman whom I saw... (rasmiy)\n\u2022 Vergulni definingda ishlatish: The man, who called you, is my brother \u2192 The man who called you is my brother.\n\u2022 Whose ni faqat odamlar uchun ishlatish: A car whose engine is broken... \u2714 (narsalar uchun ham)\n\u2022 Where/When/Why ni tushirib qoldirish: The hotel we stayed... \u2192 The hotel where we stayed..."
+    ],
   vocabulary: [
     { en: 'relative clause', uz: 'nisbiy gap', example: 'A relative clause gives more information about a noun.', rule: 'Grammar' },
     { en: 'defining', uz: 'aniqlovchi', example: 'A defining clause is essential to the meaning.', rule: 'Clause type' },
@@ -259,8 +263,8 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
     { en: 'whose', uz: "kiming, kimning (egalik)", example: 'The girl whose bag was stolen cried.', rule: 'Possession' },
     { en: 'where', uz: "qaerda (joy uchun)", example: 'The city where I was born is beautiful.', rule: 'Place' },
     { en: 'when', uz: "qachon (vaqt uchun)", example: "I'll never forget the day when we met.", rule: 'Time' },
-    { en: 'why', uz: "nima uchun (sabab uchun)", example: 'The reason why she left is unclear.', rule: 'Reason' },
-  ],
+    { en: 'why', uz: "nima uchun (sabab uchun)", example: 'The reason why she left is unclear.', rule: 'Reason' }
+    ],
   examples: [
     { en: 'The woman who lives next door is a famous writer.', uz: "Yon qo'shnida yashaydigan ayol \u2014 mashhur yozuvchi." },
     { en: 'My brother, who works in Dubai, comes home twice a year.', uz: "Dubayda ishlaydigan ukam yiliga ikki marta uyga keladi." },
@@ -269,8 +273,8 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
     { en: 'The hotel where we stayed had a beautiful garden.', uz: "Biz qolgan mehmonxonada chiroyli bog' bor edi." },
     { en: "I'll never forget the day when we first met.", uz: "Birinchi marta uchrashgan kunimizni hech qachon unutmayman." },
     { en: 'The reason why I was late is that I missed the bus.', uz: "Kechikishimning sababi \u2014 avtobusni qo'ldan boy berganim." },
-    { en: 'The company for which I work is based in Tashkent.', uz: "Men ishlaydigan kompaniyaning ofisi Toshkentda." },
-  ],
+    { en: 'The company for which I work is based in Tashkent.', uz: "Men ishlaydigan kompaniyaning ofisi Toshkentda." }
+    ],
   specialCases: [
     {
       id: 'defining-vs-nondefining',
@@ -280,15 +284,15 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
       commonMistakes: "My brother, that is a doctor... \u2192 My brother, who is a doctor... (That non-definingda XATO)\nThe students who study hard... \u2192 ma'no o'zgaradi, vergul muhim!\nThat ni definingda ishlatish: The car that I bought... \u2714 (to'g'ri)",
       examples: [
         { en: 'The doctors who work in this hospital are highly qualified.', uz: "Bu shifoxonada ishlaydigan shifokorlar yuqori malakali. (faqat shu shifokorlar)" },
-        { en: 'The doctors, who work in this hospital, are highly qualified.', uz: "Shifokorlarning hammasi yuqori malakali \u2014 ular bu shifoxonada ishlaydi. (hamma shifokorlar)" },
-      ],
+        { en: 'The doctors, who work in this hospital, are highly qualified.', uz: "Shifokorlarning hammasi yuqori malakali \u2014 ular bu shifoxonada ishlaydi. (hamma shifokorlar)" }
+    ],
       drills: [
         { id: 50050, type: 'fill-blank', instruction: "Defining yoki non-defining?", question: 'The man ___ lives next door is a doctor. (defining)', blanks: ['who'], explanation: 'Defining \u2014 vergul yo\'q, that ham mumkin' },
         { id: 50051, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'My mother, ___ is 65, still works.', options: ['that', 'who', 'which', 'whom'], correct: 'who', explanation: 'Non-defining \u2014 that ishlatilmaydi' },
         { id: 50052, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'My sister, that lives in London, is a nurse.', errorPart: 'that', correct: 'My sister, who lives in London, is a nurse.', explanation: 'Non-definingda that ishlatilmaydi \u2014 who kerak' },
         { id: 50053, type: 'multiple-choice', instruction: "Bu gap qanday relative clause?", question: 'The students who are late will miss the test.', options: ["Defining (vergul yo'q, ma'no torayadi)", "Non-defining (vergul kerak)", "Ikkalasi ham to'g'ri", "Bu gap xato"], correct: "Defining (vergul yo'q, ma'no torayadi)", explanation: "Defining: 'who are late' aniqlovchi \u2014 kimlar? Vergul qo'shilmaydi." },
-        { id: 50054, type: 'transformation', instruction: "Defining \u2192 Non-defigning:", question: "The students who study hard pass. (All students study hard)", hint: 'The students, ...', correct: 'The students, who study hard, pass.', explanation: "Hamma o'qiydi \u2192 vergul bilan non-defining" },
-      ],
+        { id: 50054, type: 'transformation', instruction: "Defining \u2192 Non-defigning:", question: "The students who study hard pass. (All students study hard)", hint: 'The students, ...', correct: 'The students, who study hard, pass.', explanation: "Hamma o'qiydi \u2192 vergul bilan non-defining" }
+    ],
     },
     {
       id: 'prepositions-relative',
@@ -298,16 +302,16 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
       commonMistakes: "The person to who I spoke... \u2192 The person to whom I spoke... (prepozitsiyadan keyin whom)\nThe person who I spoke to... \u2714 (norasmiy, to'g'ri)\nThe company for that I work... \u2192 The company for which I work... (prepozitsiyadan keyin that emas, which)",
       examples: [
         { en: 'The friend with whom I travelled is from Canada.', uz: "Men bilan sayohat qilgan do'stim Kanadadan." },
-        { en: 'The company in which she works is very successful.', uz: "U ishlaydigan kompaniya juda muvaffaqiyatli." },
-      ],
+        { en: 'The company in which she works is very successful.', uz: "U ishlaydigan kompaniya juda muvaffaqiyatli." }
+    ],
       drills: [
         { id: 50055, type: 'fill-blank', instruction: "Prepozitsiya + whom bilan to'ldiring:", question: 'The person ___ I spoke is the CEO.', blanks: ['to whom'], explanation: 'Rasmiy: to whom = rasmiy uslubda \'whom\'. Qoida: Prepozitsiyadan keyin \'whom\' ishlatiladi: The person to whom I spoke... (Men gaplashgan odam...) Norasmiyda: The person I spoke to...' },
         { id: 50056, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'The company ___ I work is global.', options: ['for which', 'which for', 'for that', 'that for'], correct: 'for which', explanation: 'Prepozitsiya + which = rasmiy uslub. Qoida: Rasmiy uslubda prepozitsiya + which: The topic about which we spoke... (Biz gaplashgan mavzu...) Norasmiyda: The topic we spoke about...' },
         { id: 50057, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The person to who I spoke is the manager.', errorPart: 'to who', correct: 'The person to whom I spoke is the manager.', explanation: 'Prepozitsiyadan keyin whom, who emas' },
-        { id: 50058, type: 'transformation', instruction: 'Norasmiydan rasmiyga:', question: 'The person who I work with is friendly.', hint: 'The person with ...', correct: 'The person with whom I work is friendly.', explanation: 'Rasmiy: with whom = \'with\' + whom (rasmiy). Qoida: \'With whom\' = kim bilan (rasmiy): The colleague with whom I work... (Men ishlaydigan hamkasb...) Norasmiyda: The colleague I work with...' },
-      ],
-    },
-  ],
+        { id: 50058, type: 'transformation', instruction: 'Norasmiydan rasmiyga:', question: 'The person who I work with is friendly.', hint: 'The person with ...', correct: 'The person with whom I work is friendly.', explanation: 'Rasmiy: with whom = \'with\' + whom (rasmiy). Qoida: \'With whom\' = kim bilan (rasmiy): The colleague with whom I work... (Men ishlaydigan hamkasb...) Norasmiyda: The colleague I work with...' }
+    ],
+    }
+    ],
   exercises: [
     { id: 50059, type: 'fill-blank', instruction: "Relative pronoun qo'ying:", question: 'The woman ___ lives next door is a doctor.', blanks: ['who'], explanation: 'Who = odam, ega. Qoida: \'Who\' odamlar uchun, ega: The woman WHO lives next door is a doctor. Who + V1.' },
     { id: 50060, type: 'fill-blank', instruction: "Relative pronoun qo'ying:", question: 'The book ___ I bought is very interesting.', blanks: ['which/that'], explanation: 'Which/that \u2014 narsa, object' },
@@ -340,20 +344,24 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
       instruction: 'Muhim odamlar',
       prompt: 'Hayotingizdagi muhim odamlar haqida relative clauses ishlatib yozing.',
       hints: ['\'My mother, who...\'', '\'The teacher whose...\'', '\'The city where...\''],
-      exampleAnswer: 'My mother, who is a nurse, works very hard. The teacher whose class I loved the most was Mr. Karimov. Tashkent, where I was born, is a beautiful city.' },
-   ],
+      exampleAnswer: 'My mother, who is a nurse, works very hard. The teacher whose class I loved the most was Mr. Karimov. Tashkent, where I was born, is a beautiful city.' }
+    ,
+    {"id":100603,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"whom","options":["kimni, kimga (rasmiy, object)","kim (ega, subject)","kimning (egalik)","qaerda (joy)"],"correct":"kimni, kimga (rasmiy, object)","explanation":"Whom — rasmiy uslubda object o'rnida ishlatiladi."},
+    {"id":100604,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"whose","options":["kimning (egalik)","kim (ega)","kimni (object)","qachon (vaqt)"],"correct":"kimning (egalik)","explanation":"Whose — egalik ma'nosini bildiradi: whose book = kimning kitobi."}
+  ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Relative pronouns asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3701, 3702, 3703, 3704, 3705] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3706, 3707, 3708, 3709, 3710] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [3711, 3712, 3713, 3714, 3715] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3720, 3717, 3715, 3716, 3713, 3720, 3718, 3718, 3717, 3719, 55007, 55016] },
-  ],
+  
+    ],
   tests: [
     { id: 50079, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Relative clauses necha turga bolinadi?', options: ['1 ta', '2 ta', '3 ta', '4 ta'], correct: '2 ta', explanation: '2 tur: defining va non-defining' },
     { id: 50080, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Defining relative clausesda qaysi relative pronoun ishlatilmaydi?', options: ['who', 'which', 'that', 'whom'], correct: 'whom', explanation: "Whom definingda ham ishlatiladi, lekin kam. That eng keng tarqalgan" },
     { id: 50081, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Non-defining relative clausesda qaysi pronoun ishlatilmaydi?', options: ['who', 'which', 'that', 'whom'], correct: 'that', explanation: 'Non-definingda that ishlatilmaydi' },
     { id: 50082, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Whom qachon ishlatiladi?", options: ['ega (subject) sifatida', "to'ldiruvchi (object) sifatida", 'egalik uchun', 'joy uchun'], correct: "to'ldiruvchi (object) sifatida", explanation: 'Whom = to\'ldiruvchi (rasmiy). Qoida: \'Whom\' gapda to\'ldiruvchi: The person whom I met was kind. (Men uchrashgan odam mehribon edi.) Rasmiy; norasmiyda \'who\'.' },
-    { id: 50083, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Whose qanday ma'noni ifodalaydi?", options: ['joy', 'vaqt', 'egalik', 'sabab'], correct: 'egalik', explanation: 'Whose \u2014 possession (egalik)' },
+    { id: 50083, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Whose qanday ma'noni ifodalaydi?", options: ['joy', 'vaqt', 'egalik', 'sabab'], correct: 'egalik', explanation: 'Whose — egalik bildiruvchi relative pronoun. Qoida: Whose + noun: The girl whose phone rang was my friend.' },
     { id: 50084, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "My brother, ___ lives in Paris, is a chef.", options: ['that', 'which', 'who', 'whom'], correct: 'who', explanation: 'Non-defining = aniqlovsiz (who bilan). Qoida: Vergul bilan ajratiladi: My brother, who lives in London, is a doctor.' },
     { id: 50085, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "The hotel ___ we stayed was five-star.", options: ['which', 'where', 'who', 'whose'], correct: 'where', explanation: 'Where = joy (qayerda). Qoida: \'Where\' joy haqida gapirganda: The city where I was born is beautiful. (Men tug\'ilgan shahar go\'zal.) Where = in which, at which.' },
     { id: 50086, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "The woman ___ car was stolen called the police.", options: ['who', 'which', 'whose', 'whom'], correct: 'whose', explanation: "Whose \u2014 her car = whose car" },
@@ -363,14 +371,14 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
     { id: 50090, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "The company ___ I work for is based in London.", options: ['which', 'whom', 'whose', 'where'], correct: 'which', explanation: 'Which = kompaniya/narsa. Qoida: \'Which\' jonsiz narsalar va hayvonlar uchun: The company which I work for is big.' },
     { id: 50091, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence uses a NON-DEFINING clause?", options: ["The man who lives next door is a doctor.", "My brother, who lives in Paris, is a designer.", "The book that I bought is interesting.", "The woman whom I met is a lawyer."], correct: "My brother, who lives in Paris, is a designer.", explanation: "Vergul bor \u2014 non-defining" },
     { id: 50092, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT with a preposition?", options: ["The person to who I spoke.", "The person whom I spoke to.", "The person to whom I spoke.", "Both B and C"], correct: "Both B and C", explanation: "B (norasmiy) va C (rasmiy) ikkalasi to'g'ri" },
-    { id: 50093, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is grammatically CORRECT?", options: ["My sister, that is a doctor, lives here.", "The man who called you he is my uncle.", "The hotel where we stayed was expensive.", "The girl whom bag was stolen cried."], correct: "The hotel where we stayed was expensive.", explanation: "Where \u2014 joy, to'g'ri ishlatilgan" },
-  ],
+    { id: 50093, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is grammatically CORRECT?", options: ["My sister, that is a doctor, lives here.", "The man who called you he is my uncle.", "The hotel where we stayed was expensive.", "The girl whom bag was stolen cried."], correct: "The hotel where we stayed was expensive.", explanation: "Where \u2014 joy, to'g'ri ishlatilgan" }
+    ],
   testSections: [
     { title: 'Oson', desc: 'Relative pronouns asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [371, 372, 373, 374, 375] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [376, 377, 378, 379, 380] },
     { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [381, 382, 383] },
-    { title: 'Murakkab', desc: 'Relative clauses master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [384, 385] },
-  ],
+    { title: 'Murakkab', desc: 'Relative clauses master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [384, 385] }
+    ],
 }
 
 export const participleClausesB1plus: DailyLesson = {
@@ -386,14 +394,14 @@ export const participleClausesB1plus: DailyLesson = {
       { word: 'weaver', definition: 'to\'quvchi' },
       { word: 'silk', definition: 'ipak' },
       { word: 'impressed', definition: 'taassurot ostida qolgan' },
-      { word: 'skill', definition: 'mahorat' },
+      { word: 'skill', definition: 'mahorat' }
     ],
     questions: [
       { id: 90081, type: 'multiple-choice', question: "What was the small shop selling?", options: ["Spices", "Handmade carpets", "Books", "Jewellery"], correctIndex: 1, explanation: "'a small shop selling handmade carpets' — present participle clause." },
       { id: 90082, type: 'true-false', question: "The old man had worked as a weaver for fifty years.", answer: true, explanation: "'Having worked as a weaver for fifty years, he knew everything about carpets' — perfect participle." },
       { id: 90083, type: 'multiple-choice', question: "What was the red carpet made from?", options: ["Cotton", "Wool", "Pure silk", "Polyester"], correctIndex: 2, explanation: "'Made from pure silk, it had taken six months to finish' — past participle clause." },
       { id: 90084, type: 'multiple-choice', question: "How long had the silk carpet taken to finish?", options: ["One month", "Three months", "Six months", "One year"], correctIndex: 2, explanation: "'it had taken six months to finish.'" },
-      { id: 90085, type: 'multiple-choice', question: "How did the narrator feel when leaving the shop?", options: ["Disappointed", "That he had learned something special", "Tired", "Confused"], correctIndex: 1, explanation: "'Leaving the shop, I felt I had learned something special that day.'" },
+      { id: 90085, type: 'multiple-choice', question: "How did the narrator feel when leaving the shop?", options: ["Disappointed", "That he had learned something special", "Tired", "Confused"], correctIndex: 1, explanation: "'Leaving the shop, I felt I had learned something special that day.'" }
     ],
     difficulty: 'hard',
     topic: "Sifatdosh gaplar (participle clauses)",
@@ -404,7 +412,7 @@ export const participleClausesB1plus: DailyLesson = {
       { id: 50094, type: 'multiple-choice' as const, question: "'Walking along the path' replaces which clause?", options: ["Because they walked","While they were walking","After they walked","If they walked"], correctIndex: 1, explanation: "Present participle — bir vaqtda sodir bo'layotgan harakat." },
       { id: 50095, type: 'multiple-choice' as const, question: "'Surrounded by trees' is a...", options: ["present participle","past participle clause","gerund","infinitive"], correctIndex: 1, explanation: "Past participle — passiv ma'no (ular o'ralgan edi)." },
       { id: 50096, type: 'multiple-choice' as const, question: "'Having spent many years there' shows the action was...", options: ["at the same time","earlier than the main verb","in the future","impossible"], correctIndex: 1, explanation: "Perfect participle — oldinroq sodir bo'lgan." },
-      { id: 50097, type: 'multiple-choice' as const, question: "Why use participle clauses here?", options: ["To make text longer","To make writing shorter and more elegant","To ask questions","To show the future"], correctIndex: 1, explanation: "Participle clause — gaplarni qisqartiradi." },
+      { id: 50097, type: 'multiple-choice' as const, question: "Why use participle clauses here?", options: ["To make text longer","To make writing shorter and more elegant","To ask questions","To show the future"], correctIndex: 1, explanation: "Participle clause — gaplarni qisqartiradi." }
     ]
   },
   writing: {
@@ -414,7 +422,7 @@ export const participleClausesB1plus: DailyLesson = {
       "Present participle for active actions: 'Walking home, I saw...'",
       "Past participle for passive: 'Built in 1990, the bridge...'",
       "Perfect participle for an earlier action: 'Having finished, she left.'",
-      "Make sure the subject matches",
+      "Make sure the subject matches"
     ],
   },
   category: 'Complex Structures',
@@ -422,8 +430,8 @@ export const participleClausesB1plus: DailyLesson = {
     { label: 'Present Participle', structure: 'V-ing + ... (active)\nWalking home, I saw an accident.\nBeing tired, he went to bed early.', color: 'green' },
     { label: 'Past Participle', structure: 'V3 + ... (passive)\nExhausted by the trip, she fell asleep.\nWritten in simple English, the book is easy to read.', color: 'blue' },
     { label: 'Perfect Participle', structure: 'Having + V3 + ... (before main action)\nHaving finished work, she went home.\nHaving been warned, they stayed inside.', color: 'purple' },
-    { label: 'Negative Participle', structure: 'Not + V-ing / Not having + V3 + ...\nNot knowing the answer, he kept silent.\nNot having seen her before, I introduced myself.', color: 'orange' },
-  ],
+    { label: 'Negative Participle', structure: 'Not + V-ing / Not having + V3 + ...\nNot knowing the answer, he kept silent.\nNot having seen her before, I introduced myself.', color: 'orange' }
+    ],
   rules: [
     "1\uFE0F\u20E3 PARTICIPLE CLAUSES NIMA?\n\nParticiple clauses \u2014 ikki gapni birlashtirishning qisqa va samarali usuli. Ular zamon, sabab, shart yoki natijani ifodalaydi:\n\n  Because she was tired, she went to bed. (full clause)\n  Being tired, she went to bed. (participle clause)\n  (Charchaganligi sababli, u uxlashga ketdi.)\n\n\uD83D\uDCCC Present Participle (V-ing) \u2014 active ma\u2019no: Walking home...\n\uD83D\uDCCC Past Participle (V3) \u2014 passive ma\u2019no: Written in 1990...\n\uD83D\uDCCC Perfect Participle (Having + V3) \u2014 oldingi harakat: Having eaten...",
     "2\uFE0F\u20E3 PRESENT PARTICIPLE (V-ing)\n\nPresent Participle active ma\u2019noda ishlatiladi \u2014 subject harakatni o\u2018zi bajaradi:\n\n  Walking down the street, I met an old friend.\n  (Ko\u2018chada ketayotib, eski do\u2018stimni uchratdim.)\n  \u2192 I was walking + I met = Walking, I met\n\nIshlatilishi:\n\u2022 Sabab: Being late, I took a taxi. (Kech qolganim sababli, taksiga o\u2018tirdim.)\n\u2022 Vaqt: Arriving at the station, she bought a ticket. (Vokzalga kelib, u chipta sotib oldi.)\n\u2022 Natija: The train arrived, causing great excitement. (Poyezd keldi, bu katta hayajonga sabab bo\u2018ldi.)",
@@ -432,8 +440,8 @@ export const participleClausesB1plus: DailyLesson = {
     "5\uFE0F\u20E3 NEGATIVE PARTICIPLE CLAUSES\n\nNot participledan oldin keladi:\n\n  Not knowing what to say, I kept silent.\n  (Nima deyishni bilmay, men jim qoldim.)\n\n  Not having received a reply, she called again.\n  (Javob olmaganligi sababli, u yana qo\u2018ng\u2018iroq qildi.)\n\n  Not invited to the party, she felt sad.\n  (Ziyofatga taklif qilinmaganligi sababli, u xafa edi.)\n\n\uD83D\uDD34 Not har doim participle dan oldin keladi, hech qachon orqasida emas.",
     "6\uFE0F\u20E3 PARTICIPLE CLAUSES \u2014 QOIDALAR\n\n1) Subject bir xil bo\u2018lishi kerak:\n  Walking home, I saw an accident. (I = I) \u2714\n  Walking home, the sun was shining. \u274C (sun != I)\n\n2) Participle clause ikkinchi gapni boshlaydi, lekin o\u2018rtada ham kelishi mumkin:\n  The man, feeling guilty, confessed. (o\u2018rtada)\n\n3) Participle clause + as (sabab), when/while (vaqt), because (sabab):\n  While walking home, I saw an accident.\n  Because exhausted, she went to bed.",
     "7\uFE0F\u20E3 PARTICIPLE vs RELATIVE CLAUSE\n\nParticiple clauses ko\u2018pincha relative clauses ni qisqartiradi:\n\n  The woman who lives next door... \u2192 The woman living next door...\n  (Yon qo\u2018shnida yashaydigan ayol...)\n\n  The book which was written in 1990... \u2192 The book written in 1990...\n  (1990 yilda yozilgan kitob...)\n\n  The students who were waiting for the bus... \u2192 The students waiting for the bus...\n  (Avtobus kutayotgan talabalar...)\n\n\uD83D\uDD34 Active relative clause \u2192 V-ing\n\uD83D\uDD34 Passive relative clause \u2192 V3\n\uD83D\uDD34 Bu faqat defining relative clauses uchun!",
-    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Subject bir xil emas: Walking home, the rain started. \u2192 While I was walking home, the rain started.\n\u2022 Participle clause ni noto\u2018g\u2018ri ishlatish: Eaten dinner, I watched TV \u2192 Having eaten dinner, I watched TV.\n\u2022 Passive/Active adash: Writing by hand, the letter was beautiful \u2192 Written by hand, the letter was beautiful.\n\u2022 Not ni noto\u2018g\u2018ri joylashtirish: Knowing not the answer... \u2192 Not knowing the answer...\n\u2022 Participle vs gerund adash: I like swimming (gerund) vs Swimming daily, I feel fit (participle)",
-  ],
+    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Subject bir xil emas: Walking home, the rain started. \u2192 While I was walking home, the rain started.\n\u2022 Participle clause ni noto\u2018g\u2018ri ishlatish: Eaten dinner, I watched TV \u2192 Having eaten dinner, I watched TV.\n\u2022 Passive/Active adash: Writing by hand, the letter was beautiful \u2192 Written by hand, the letter was beautiful.\n\u2022 Not ni noto\u2018g\u2018ri joylashtirish: Knowing not the answer... \u2192 Not knowing the answer...\n\u2022 Participle vs gerund adash: I like swimming (gerund) vs Swimming daily, I feel fit (participle)"
+    ],
   vocabulary: [
     { en: 'participle', uz: 'sifatdosh', example: 'A participle is a verb form used as an adjective.', rule: 'Grammar' },
     { en: 'present participle', uz: "hozirgi zamon sifatdoshi (V-ing)", example: 'Walking home, I met a friend.', rule: 'Active' },
@@ -444,8 +452,8 @@ export const participleClausesB1plus: DailyLesson = {
     { en: 'reason', uz: 'sabab', example: 'Being tired, I went to bed early.', rule: 'Cause' },
     { en: 'result', uz: 'natija', example: 'The storm hit, causing widespread damage.', rule: 'Effect' },
     { en: 'dangling participle', uz: "noto'g'ri bog'langan sifatdosh", example: 'Walking home, the rain started. (dangling)', rule: 'Mistake' },
-    { en: 'reduce', uz: 'qisqartirmoq', example: 'Relative clauses can be reduced to participle clauses.', rule: 'Transformation' },
-  ],
+    { en: 'reduce', uz: 'qisqartirmoq', example: 'Relative clauses can be reduced to participle clauses.', rule: 'Transformation' }
+    ],
   examples: [
     { en: 'Walking through the park, I noticed the beautiful flowers.', uz: "Parkda sayr qilayotib, chiroyli gullarni payqadim." },
     { en: 'Exhausted after the marathon, he collapsed on the sofa.', uz: "Marafondan charchagan holda, u divanga yiqildi." },
@@ -454,8 +462,8 @@ export const participleClausesB1plus: DailyLesson = {
     { en: 'Born in a small village, he moved to the capital at 18.', uz: "Kichik qishloqda tug'ilgan, u 18 yoshida poytaxtga ko'chdi." },
     { en: 'The girl sitting by the window is my cousin.', uz: "Deraza yonida o'tirgan qiz \u2014 mening amakivachcham." },
     { en: 'Having been told the news, she burst into tears.', uz: "Yangilikni eshitgach, u yig'lab yubordi." },
-    { en: 'The window broken in the storm needs to be replaced.', uz: "Bo'ronda singan derazani almashtirish kerak." },
-  ],
+    { en: 'The window broken in the storm needs to be replaced.', uz: "Bo'ronda singan derazani almashtirish kerak." }
+    ],
   specialCases: [
     {
       id: 'dangling-participles',
@@ -465,13 +473,13 @@ export const participleClausesB1plus: DailyLesson = {
       commonMistakes: "Walking home, the rain started \u2192 While I was walking home, the rain started.\nHaving eaten dinner, the phone rang \u2192 While I was eating dinner, the phone rang.\nDriving to work, the accident happened \u2192 While I was driving to work, the accident happened.",
       examples: [
         { en: 'Driving to work, I saw an accident.', uz: "Ishga ketayotib, baxtsiz hodisani ko'rdim." },
-        { en: 'Driving to work, the accident was seen. (dangling)', uz: "Xato \u2014 accident driving?!" },
-      ],
+        { en: 'Driving to work, the accident was seen. (dangling)', uz: "Xato \u2014 accident driving?!" }
+    ],
       drills: [
         { id: 50098, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: '___ (walk) home, I saw a beautiful sunset.', blanks: ['Walking'], explanation: 'Present Participle \u2014 active' },
         { id: 50099, type: 'multiple-choice', instruction: 'Dangling participle ni toping:', question: 'Which sentence has a dangling participle?', options: ['Walking home, I saw an accident.', 'Having eaten, she left the room.', 'Walking home, the rain started.', 'Exhausted, he went to bed.'], correct: 'Walking home, the rain started.', explanation: 'Rain walking? Mantiqsiz! = Yomg\'ir yurmaydi! (Participle mantiqqa mos kelishi kerak.) Qoida: \'Walking\' subjektga mos kelishi shart: Walking home, I saw the rain. (Uyga ketayotib, yomg\'irni ko\'rdim.) \'Rain walking\' mantiqsiz!' },
-        { id: 50100, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Having eaten dinner, the TV was turned on.', errorPart: 'Having eaten dinner', correct: 'Having eaten dinner, he turned on the TV.', explanation: 'Subject bir xil bolishi kerak: he = he' },
-      ],
+        { id: 50100, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Having eaten dinner, the TV was turned on.', errorPart: 'Having eaten dinner', correct: 'Having eaten dinner, he turned on the TV.', explanation: 'Subject bir xil bolishi kerak: he = he' }
+    ],
     },
     {
       id: 'participle-relative',
@@ -481,15 +489,15 @@ export const participleClausesB1plus: DailyLesson = {
       commonMistakes: "Non-defining ni qisqartirish: My brother, living in Paris, ... \u2192 My brother, who lives in Paris, ... (non-defining qisqarmaydi)\nPerfect ni qisqartirish: The woman who had left... \u2192 qisqarmaydi, alohida gap",
       examples: [
         { en: 'The students waiting for the bus were getting cold.', uz: "Avtobus kutayotgan talabalar sovuq qotayotgan edi." },
-        { en: 'The money found by the police was returned.', uz: "Politsiya tomonidan topilgan pul qaytarildi." },
-      ],
+        { en: 'The money found by the police was returned.', uz: "Politsiya tomonidan topilgan pul qaytarildi." }
+    ],
       drills: [
         { id: 50101, type: 'transformation', instruction: 'Relative \u2192 Participle:', question: 'The woman who lives next door is a doctor.', hint: 'The woman living ...', correct: 'The woman living next door is a doctor.', explanation: "Who lives \u2192 living" },
         { id: 50102, type: 'transformation', instruction: 'Relative \u2192 Participle:', question: 'The book which was written in 1990 is famous.', hint: 'The book written ...', correct: 'The book written in 1990 is famous.', explanation: "Which was written \u2192 written" },
-        { id: 50103, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Can non-defining relative clauses be reduced?', options: ['Yes, always', 'No, never', 'Only with who', 'Only in informal speech'], correct: 'No, never', explanation: 'Non-defining qisqarmaydi (vergul bilan ajratilgan nisbiy gaplar). Qoida: My father, who is a teacher, works hard. (Otam, o\'qituvchi, qattiq ishlaydi.) Bu gapni qisqartirib bo\'lmaydi: \'My father, being a teacher\' XATO.' },
-      ],
-    },
-  ],
+        { id: 50103, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Can non-defining relative clauses be reduced?', options: ['Yes, always', 'No, never', 'Only with who', 'Only in informal speech'], correct: 'No, never', explanation: 'Non-defining qisqarmaydi (vergul bilan ajratilgan nisbiy gaplar). Qoida: My father, who is a teacher, works hard. (Otam, o\'qituvchi, qattiq ishlaydi.) Bu gapni qisqartirib bo\'lmaydi: \'My father, being a teacher\' XATO.' }
+    ],
+    }
+    ],
   exercises: [
     { id: 50104, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: '___ (walk) home, I met an old friend.', blanks: ['Walking'], explanation: 'Walking \u2014 active, bir vaqtda' },
     { id: 50105, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: '___ (exhaust) by the trip, she went to bed.', blanks: ['Exhausted'], explanation: "Exhausted \u2014 passive" },
@@ -522,14 +530,18 @@ export const participleClausesB1plus: DailyLesson = {
       instruction: 'Bir kunlik sayohat',
       prompt: 'Bir kunlik sayohatingizni participle clauses ishlatib qisqa va samarali qilib yozing.',
       hints: ['\'Walking through...\'', '\'Exhausted by...\'', '\'Having arrived...\''],
-      exampleAnswer: 'Walking through the old city, I saw amazing architecture. Exhausted by the long walk, I sat down at a cafe. Having rested for an hour, I continued my journey.' },
-   ],
+      exampleAnswer: 'Walking through the old city, I saw amazing architecture. Exhausted by the long walk, I sat down at a cafe. Having rested for an hour, I continued my journey.' }
+    ,
+    {"id":100605,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"present participle","options":["V-ing (faol ma'no)","V3 (passiv ma'no)","Having + V3 (oldingi)","to + V (masdar)"],"correct":"V-ing (faol ma'no)","explanation":"Present Participle — faol harakat: walking, running, singing."},
+    {"id":100606,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"past participle","options":["V3 (passiv ma'no)","V-ing (faol ma'no)","Having + V3","to + V"],"correct":"V3 (passiv ma'no)","explanation":"Past Participle — passiv ma'no: broken, written, seen."}
+  ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Participle turlari', color: 'bg-emerald-500', icon: '🌱', ids: [3801, 3802, 3803, 3804, 3805] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3806, 3807, 3808, 3809, 3810] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [3811, 3812, 3813, 3814, 3815] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3816, 3815, 3819, 3813, 3818, 3820, 3820, 3818, 3817, 3817, 55006, 55015] },
-  ],
+  
+    ],
   tests: [
     { id: 50124, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Present Participle qanday yasaladi?', options: ['V3', 'V-ing', 'Having + V3', 'To + V'], correct: 'V-ing', explanation: "Present Participle = V-ing" },
     { id: 50125, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Past Participle qanday yasaladi?', options: ['V-ing', 'V3', 'Having + V3', 'To + V'], correct: 'V3', explanation: "Past Participle = V3" },
@@ -545,14 +557,14 @@ export const participleClausesB1plus: DailyLesson = {
     { id: 50135, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which relative clause CAN be reduced?', options: ['My sister, who is a nurse, works here.', 'The man who called you left.', 'London, which is the capital, is big.', 'My father, who is 60, still works.'], correct: 'The man who called you left.', explanation: 'Faqat defining reducable = faqat aniqlovchi nisbiy gaplar qisqartirilishi mumkin. Qoida: Defining relative clauses: The man standing there is my brother. (U erda turgan odam mening akam.) Non-defining qisqartirilmaydi.' },
     { id: 50136, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "___ warned, they stayed inside.", options: ['Having', 'Having been', 'Being', 'Been'], correct: 'Having been', explanation: 'Having been warned \u2014 passive perfect' },
     { id: 50137, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is the BEST reduction? "Because he was feeling ill, he stayed in bed."', options: ['Feeling ill, he stayed in bed.', 'Felt ill, he stayed in bed.', 'Having felt ill, he stayed in bed.', 'Being felt ill, he stayed in bed.'], correct: 'Feeling ill, he stayed in bed.', explanation: 'Present Participle \u2014 active, sabab' },
-    { id: 50138, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence is grammatically CORRECT?', options: ['Writing in simple English, the book is easy.', 'Having not eaten all day, she was hungry.', 'Not invited to the party, she felt sad.', 'The car repairing by the mechanic is mine.'], correct: 'Not invited to the party, she felt sad.', explanation: "Not + V3 \u2014 to'g'ri negative passive" },
-  ],
+    { id: 50138, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence is grammatically CORRECT?', options: ['Writing in simple English, the book is easy.', 'Having not eaten all day, she was hungry.', 'Not invited to the party, she felt sad.', 'The car repairing by the mechanic is mine.'], correct: 'Not invited to the party, she felt sad.', explanation: "Not + V3 \u2014 to'g'ri negative passive" }
+    ],
   testSections: [
     { title: 'Oson', desc: 'Participle asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [381, 382, 383, 384, 385] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [386, 387, 388, 389, 390] },
     { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [391, 392, 393] },
-    { title: 'Murakkab', desc: 'Participle master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [394, 395] },
-  ],
+    { title: 'Murakkab', desc: 'Participle master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [394, 395] }
+    ],
 }
 
 export const infinitiveGerundAdvancedB1plus: DailyLesson = {
@@ -568,14 +580,14 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
       { word: 'quit', definition: 'tashlamoq, voz kechmoq' },
       { word: 'awake', definition: 'uyg\'oq' },
       { word: 'regret', definition: 'afsuslanmoq' },
-      { word: 'instead', definition: 'o\'rniga' },
+      { word: 'instead', definition: 'o\'rniga' }
     ],
     questions: [
       { id: 90091, type: 'true-false', question: "Gulnoza remembered to lock the door.", answer: false, explanation: "'I forgot to do it' — forget + to V (a duty not done). She only remembers locking it YESTERDAY." },
       { id: 90092, type: 'true-false', question: "Gulnoza has stopped drinking coffee.", answer: true, explanation: "'I've stopped drinking coffee' — stop + V-ing (quitting a habit)." },
       { id: 90093, type: 'multiple-choice', question: "Why did Sardor try drinking tea?", options: ["He likes tea more", "He tried to quit coffee", "The coffee was finished", "Gulnoza asked him to"], correctIndex: 1, explanation: "'I tried to quit too... I tried drinking tea instead' — try to V (attempt) vs try V-ing (experiment)." },
       { id: 90094, type: 'multiple-choice', question: "What will Gulnoza never forget?", options: ["Buying bread", "Locking the door", "Meeting her first English teacher", "Drinking coffee"], correctIndex: 2, explanation: "'I'll never forget meeting my first English teacher' — forget + V-ing (a memory)." },
-      { id: 90095, type: 'multiple-choice', question: "What does Sardor remind Gulnoza to do?", options: ["Call her mother", "Lock the door", "Buy tea", "Thank the teacher"], correctIndex: 0, explanation: "'don't forget to call your mother.'" },
+      { id: 90095, type: 'multiple-choice', question: "What does Sardor remind Gulnoza to do?", options: ["Call her mother", "Lock the door", "Buy tea", "Thank the teacher"], correctIndex: 0, explanation: "'don't forget to call your mother.'" }
     ],
     difficulty: 'hard',
     topic: "Infinitiv va gerund — remember / forget / stop / try",
@@ -586,7 +598,7 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
       { id: 50139, type: 'multiple-choice' as const, question: "'remembered promising' means she...", options: ["will promise later","recalls a past promise","forgot the promise","broke the promise"], correctIndex: 1, explanation: "'remember + -ing' — o'tgan xotira." },
       { id: 50140, type: 'multiple-choice' as const, question: "'stopped to think' means she...", options: ["stopped thinking","paused in order to think","never thought","thought too much"], correctIndex: 1, explanation: "'stop + to V' — maqsad." },
       { id: 50141, type: 'multiple-choice' as const, question: "'regretted not telling' refers to...", options: ["a future regret","regret about the past","a plan","a promise"], correctIndex: 1, explanation: "'regret + -ing' — o'tmish uchun afsus." },
-      { id: 50142, type: 'multiple-choice' as const, question: "'decided to follow' uses which form?", options: ["gerund","infinitive","past participle","base verb"], correctIndex: 1, explanation: "'decide + to V1'." },
+      { id: 50142, type: 'multiple-choice' as const, question: "'decided to follow' uses which form?", options: ["gerund","infinitive","past participle","base verb"], correctIndex: 1, explanation: "'decide + to V1'." }
     ]
   },
   writing: {
@@ -596,7 +608,7 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
       "'remember to do' (duty) vs 'remember doing' (memory)",
       "'stop to do' (purpose) vs 'stop doing' (end)",
       "'try to do' (attempt) vs 'try doing' (experiment)",
-      "'regret to say' vs 'regret doing'",
+      "'regret to say' vs 'regret doing'"
     ],
   },
   category: 'Verb Patterns',
@@ -604,8 +616,8 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
     { label: 'Gerund (V-ing)', structure: 'Verb + V-ing (general/liking)\nI enjoy reading.\nShe avoids going there.\nHe suggested taking a break.', color: 'green' },
     { label: 'Infinitive (to + V)', structure: 'Verb + to + V (goal/desire)\nI want to learn.\nShe decided to leave.\nHe promised to help.', color: 'blue' },
     { label: 'Verb + Object + Infinitive', structure: 'Verb + noun/pronoun + to + V\nShe told me to wait.\nThey advised him to study.\nI want you to help.', color: 'purple' },
-    { label: 'Meaning Change', structure: 'Same verb, different meaning:\nRemember + V-ing = eslash (past)\nRemember + to V = unutmaslik (future)\nStop + V-ing = to\u2018xtatish\nStop + to V = to\u2018xtab qilish', color: 'orange' },
-  ],
+    { label: 'Meaning Change', structure: 'Same verb, different meaning:\nRemember + V-ing = eslash (past)\nRemember + to V = unutmaslik (future)\nStop + V-ing = to\u2018xtatish\nStop + to V = to\u2018xtab qilish', color: 'orange' }
+    ],
   rules: [
     "1\uFE0F\u20E3 GERUND VA INFINITIVE \u2014 UMUMIY\n\nBa\u2019zi fe\u2019llardan keyin faqat GERUND (V-ing), ba\u2019zilaridan keyin faqat INFINITIVE (to + V) keladi. Ba\u2019zi fe\u2019llar ikkalasini ham oladi, lekin ma\u2019no o\u2018zgaradi.\n\nGerund: I enjoy reading books. (Kitob o\u2018qishdan zavqlanaman.)\nInfinitive: I want to read this book. (Bu kitobni o\u2018qimoqchiman.)\n\n\uD83D\uDCCC Gerund = faoliyat, umumiy ma\u2019no\n\uD83D\uDCCC Infinitive = maqsad, istak, kelajak",
     "2\uFE0F\u20E3 FAQAT GERUND OLADIGAN FE\u2018LLAR\n\nBu fe\u2019llardan keyin DOIM V-ing keladi:\n\n  enjoy: I enjoy swimming. (Suzishdan zavqlanaman.)\n  avoid: She avoided looking at me. (U menga qarashdan qochdi.)\n  suggest: He suggested going home. (U uyga ketishni taklif qildi.)\n  consider: I\u2019m considering changing jobs. (Ishni o\u2018zgartirishni o\u2018ylayapman.)\n  admit: He admitted stealing the money. (Pulni o\u2018g\u2018irlaganini tan oldi.)\n  deny: She denied breaking the vase. (Vazani sindirganini inkor etdi.)\n  mind: Do you mind waiting? (Kutishga qarshimisiz?)\n  finish: I finished reading the book. (Kitobni o\u2018qib tugatdim.)\n  practice: You should practice speaking. (Gapirishni mashq qilishing kerak.)\n\n\uD83D\uDD34 Bu fe\u2018llarni YODDA SAQLANG! Ular INFINITIVE qabul qilmaydi.",
@@ -614,8 +626,8 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
     "5\uFE0F\u20E3 MA\u2018NO O\u2018ZGARADIGAN FE\u2018LLAR (1)\n\nRemember + V-ing = o\u2018tmishni eslash:\n  I remember locking the door. (Eshikni berkitganimni eslayman.)\n  \u2192 Avval berkitdim, keyin eslayman.\n\nRemember + to V = unutmaslik (kelajak):\n  I remembered to lock the door. (Eshikni berkitishni esladim \u2192 berkitdim.)\n  \u2192 Avval esladim, keyin berkitdim.\n\nForget + V-ing = o\u2018tmishni unutish:\n  I\u2019ll never forget meeting her. (U bilan uchrashganimni hech qachon unutmayman.)\n\nForget + to V = qilishni unutish:\n  He forgot to call me. (U menga qo\u2018ng\u2018iroq qilishni unutdi.)",
     "6\uFE0F\u20E3 MA\u2018NO O\u2018ZGARADIGAN FE\u2018LLAR (2)\n\nStop + V-ing = biror harakatni to\u2018xtatish:\n  She stopped smoking. (U chekishni tashladi.)\n  \u2192 Chekishni to\u2018xtatdi (boshqa chekmaydi).\n\nStop + to V = biror narsa qilish uchun to\u2018xtash:\n  She stopped to smoke. (U chekish uchun to\u2018xtadi.)\n  \u2192 Biror ishni qilayotgan edi, chekish uchun to\u2018xtadi.\n\nTry + V-ing = sinab ko\u2018rish:\n  Try pressing that button. (U tugmani bosib ko\u2018r.)\n  \u2192 Nima bo\u2018lishini ko\u2018rish uchun sinash.\n\nTry + to V = harakat qilish, urinish:\n  I tried to open the door. (Eshikni ochishga urindim.)\n  \u2192 Harakat qildim, lekin muvaffaqiyatli bo\u2018ldimmi noma\u2019lum.",
     "7\uFE0F\u20E3 GO ON, REGRET, NEED\n\nGo on + V-ing = davom ettirish:\n  He went on talking. (U gapirishda davom etdi.)\n  \u2192 Xuddi shu harakatni davom ettirdi.\n\nGo on + to V = keyingi narsaga o\u2018tish:\n  He went on to talk about politics. (U siyosat haqida gapirishga o\u2018tdi.)\n  \u2192 Yangi mavzuga o\u2018tdi.\n\nRegret + V-ing = qilgan ishga pushaymon:\n  I regret leaving my job. (Ishimni tashlaganimga pushaymonman.)\n\nRegret + to V = xabar berish (rasmiy):\n  I regret to inform you... (Sizga xabar berishdan afsusdaman...)\n\nNeed + V-ing = passive ma\u2019no:\n  The car needs washing. (Mashinani yuvish kerak.)\n  \u2192 = needs to be washed\n\nNeed + to V = active: I need to wash the car.",
-    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Enjoy dan keyin to V: I enjoy to swim \u2192 I enjoy swimming.\n\u2022 Suggest dan keyin to V: He suggested to go \u2192 He suggested going.\n\u2022 Want dan keyin V-ing: I want going \u2192 I want to go.\n\u2022 Remember + V-ing vs to V adash: I remember to lock the door (esladim va berkitdim) vs I remember locking the door (berkitganimni eslayman).\n\u2022 Stop + V-ing vs to V adash: I stopped to smoke (chekdim) vs I stopped smoking (tashladim).\n\u2022 Make dan keyin to V: She made me to cry \u2192 She made me cry.",
-  ],
+    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Enjoy dan keyin to V: I enjoy to swim \u2192 I enjoy swimming.\n\u2022 Suggest dan keyin to V: He suggested to go \u2192 He suggested going.\n\u2022 Want dan keyin V-ing: I want going \u2192 I want to go.\n\u2022 Remember + V-ing vs to V adash: I remember to lock the door (esladim va berkitdim) vs I remember locking the door (berkitganimni eslayman).\n\u2022 Stop + V-ing vs to V adash: I stopped to smoke (chekdim) vs I stopped smoking (tashladim).\n\u2022 Make dan keyin to V: She made me to cry \u2192 She made me cry."
+    ],
   vocabulary: [
     { en: 'gerund', uz: 'harakat nomi (V-ing)', example: 'Swimming is fun.', rule: 'Grammar' },
     { en: 'infinitive', uz: 'masdar (to + V)', example: 'I want to swim.', rule: 'Grammar' },
@@ -626,8 +638,8 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
     { en: 'forget', uz: 'unutmok', example: 'I forgot to call you.', rule: 'Memory' },
     { en: 'try', uz: 'urinmoq, sinab ko\'rmoq', example: 'Try pressing this button.', rule: 'Effort' },
     { en: 'stop', uz: "to'xtatmoq, to'xtab ... qilmoq", example: 'She stopped smoking.', rule: 'Cessation' },
-    { en: 'go on', uz: 'davom etmoq', example: 'He went on talking for hours.', rule: 'Continuation' },
-  ],
+    { en: 'go on', uz: 'davom etmoq', example: 'He went on talking for hours.', rule: 'Continuation' }
+    ],
   examples: [
     { en: 'I enjoy reading books in my free time.', uz: "Bo'sh vaqtimda kitob o'qishdan zavqlanaman." },
     { en: 'She decided to study medicine at university.', uz: "U universitetda tibbiyot o'qishga qaror qildi." },
@@ -636,8 +648,8 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
     { en: 'Please remember to lock the door when you leave.', uz: "Iltimos, ketayotganda eshikni berkitishni unutmang." },
     { en: 'She stopped smoking last year for her health.', uz: "U sog'ligi uchun o'tgan yili chekishni tashladi." },
     { en: 'He stopped to buy some flowers on the way home.', uz: "U uyga ketayotib gul sotib olish uchun to'xtadi." },
-    { en: 'The car needs washing \u2014 it\'s very dirty.', uz: "Mashinani yuvish kerak \u2014 juda iflos." },
-  ],
+    { en: 'The car needs washing \u2014 it\'s very dirty.', uz: "Mashinani yuvish kerak \u2014 juda iflos." }
+    ],
   specialCases: [
     {
       id: 'remember-forget-regret',
@@ -647,13 +659,13 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
       commonMistakes: "I remember to lock the door yesterday \u2192 I remember locking the door yesterday. (yesterday = o'tmish \u2192 V-ing)\nI forgot posting the letter \u2192 I forgot to post the letter. (post qilishni unutdim, post qilganimni emas)",
       examples: [
         { en: "I'll never forget visiting the Registan Square.", uz: "Registon maydoniga borganimni hech qachon unutmayman." },
-        { en: "Don't forget to visit the Registan Square!", uz: "Registon maydoniga borishni unutmang!" },
-      ],
+        { en: "Don't forget to visit the Registan Square!", uz: "Registon maydoniga borishni unutmang!" }
+    ],
       drills: [
-        { id: 50143, type: 'fill-blank', instruction: "V-ing yoki to V?", question: 'I remember ___ (lock) the door. I did it at 8 PM.', blanks: ['locking'], explanation: 'O\'tmishdagi harakatni eslash \u2192 V-ing' },
+        { id: 50143, type: 'fill-blank', instruction: "V-ing yoki to V?", question: 'I remember ___ (lock) the door. I did it at 8 PM.', blanks: ['locking'], explanation: 'O\'tmishdagi harakatni eslash → remember + V-ing. I remember locking = eslayman, qulflaganman.' },
         { id: 50144, type: 'fill-blank', instruction: "V-ing yoki to V?", question: 'Please remember ___ (buy) bread on your way home.', blanks: ['to buy'], explanation: 'Kelajakdagi \u2014 unutma \u2192 to V' },
-        { id: 50145, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I regret ___ you that your application was rejected.', options: ['telling', 'to tell', 'tell', 'told'], correct: 'to tell', explanation: 'Rasmiy xabar \u2192 regret + to V' },
-      ],
+        { id: 50145, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I regret ___ you that your application was rejected.', options: ['telling', 'to tell', 'tell', 'told'], correct: 'to tell', explanation: 'Rasmiy xabar \u2192 regret + to V' }
+    ],
     },
     {
       id: 'stop-try-need',
@@ -663,24 +675,24 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
       commonMistakes: "I stopped to smoke = I quit? No, I paused to smoke! I stopped smoking = I quit.\nTry to press this button = urinish? No, try pressing = sinab ko'r!",
       examples: [
         { en: 'She stopped eating sugar for a month.', uz: "U bir oy davomida shakar iste'mol qilishni to'xtatdi." },
-        { en: 'She stopped to buy some sugar.', uz: "U shakar sotib olish uchun to'xtadi." },
-      ],
+        { en: 'She stopped to buy some sugar.', uz: "U shakar sotib olish uchun to'xtadi." }
+    ],
       drills: [
         { id: 50146, type: 'fill-blank', instruction: "V-ing yoki to V?", question: 'She stopped ___ (smoke) because it is bad for health.', blanks: ['smoking'], explanation: 'Tashladi = stop + V-ing. Qoida: He stopped smoking. (Tashladi.) Stop + to V = maqsad: stopped to smoke.' },
         { id: 50147, type: 'fill-blank', instruction: "V-ing yoki to V?", question: 'He stopped ___ (buy) some water.', blanks: ['to buy'], explanation: 'Suv olish uchun toxtadi \u2192 stop + to V' },
         { id: 50148, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Try ___ this button if nothing works.', options: ['pressing', 'to press', 'press', 'pressed'], correct: 'pressing', explanation: "Sinab ko'r \u2192 try + V-ing" },
-        { id: 50149, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The room needs to clean.', errorPart: 'to clean', correct: 'The room needs cleaning.', explanation: "Passive ma'no \u2192 needs + V-ing" },
-      ],
-    },
-  ],
+        { id: 50149, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The room needs to clean.', errorPart: 'to clean', correct: 'The room needs cleaning.', explanation: "Passive ma'no \u2192 needs + V-ing" }
+    ],
+    }
+    ],
   exercises: [
     { id: 50150, type: 'fill-blank', instruction: "Gerund yoki Infinitive?", question: 'I enjoy ___ (read) books.', blanks: ['reading'], explanation: 'Enjoy + V-ing — zavq olish. \'I enjoy reading books.\' (kitob o\'qishni yaxshi ko\'raman)' },
     { id: 50151, type: 'fill-blank', instruction: "Gerund yoki Infinitive?", question: 'She decided ___ (study) abroad.', blanks: ['to study'], explanation: 'Decide + to V = qaror qilmoq (+ infinitiv). Qoida: \'Decide\' dan keyin \'to + V1\': decide to go (ketishga qaror qilish). Qaror qabul qilishda ishlatiladi: We decided to buy a house.' },
     { id: 50152, type: 'fill-blank', instruction: "Gerund yoki Infinitive?", question: 'He suggested ___ (go) to the park.', blanks: ['going'], explanation: 'Suggest + V-ing — taklif qilmoq. \'I suggest studying every day.\'' },
     { id: 50153, type: 'fill-blank', instruction: "Gerund yoki Infinitive?", question: 'I want ___ (learn) English.', blanks: ['to learn'], explanation: 'Want + to V — xohlamoq. \'I want to learn English.\' (ingliz tilini o\'rganishni xohlayman)' },
     { id: 50154, type: 'fill-blank', instruction: "Gerund yoki Infinitive?", question: 'She avoids ___ (eat) junk food.', blanks: ['eating'], explanation: 'Avoid + V-ing = qochmoq, oldini olmoq. Qoida: \'Avoid\' dan keyin doim V-ing (-ing shakl) ishlatiladi: avoid making mistakes (xato qilishdan qochish). Avoid + to V XATO!' },
-    { id: 50155, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I remember ___ the door before leaving.', options: ['locking', 'to lock', 'lock', 'locked'], correct: 'locking', explanation: 'Eslayman (o\'tmish) \u2192 remember + V-ing' },
-    { id: 50156, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Please remember ___ the door when you leave.', options: ['locking', 'to lock', 'lock', 'locked'], correct: 'to lock', explanation: 'Unutma (kelajak) \u2192 remember + to V' },
+    { id: 50155, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I remember ___ the door before leaving.', options: ['locking', 'to lock', 'lock', 'locked'], correct: 'locking', explanation: 'Eslayman (o\'tmish) → remember + V-ing. O\'tgan harakatni eslashda V-ing ishlatiladi.' },
+    { id: 50156, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Please remember ___ the door when you leave.', options: ['locking', 'to lock', 'lock', 'locked'], correct: 'to lock', explanation: 'Unutma (kelajak) → remember + to V. Kelajakdagi harakatni eslatishda to V ishlatiladi.' },
     { id: 50157, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She stopped ___ because it was unhealthy.', options: ['to smoke', 'smoking', 'smoke', 'smoked'], correct: 'smoking', explanation: 'Tashladi = stop + V-ing. Qoida: He stopped smoking. (Tashladi.) Stop + to V = maqsad: stopped to smoke.' },
     { id: 50158, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He stopped ___ some flowers for his wife.', options: ['buying', 'to buy', 'buy', 'bought'], correct: 'to buy', explanation: "To'xtab sotib oldi \u2192 stop + to V" },
     { id: 50159, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Try ___ salt if it\'s not tasty enough.', options: ['adding', 'to add', 'add', 'added'], correct: 'adding', explanation: "Sinab ko'r \u2192 try + V-ing" },
@@ -688,7 +700,7 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
     { id: 50161, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She suggested to go to the cinema.', errorPart: 'to go', correct: 'She suggested going to the cinema.', explanation: 'Suggest + V-ing — taklif qilmoq. \'I suggest studying every day.\'' },
     { id: 50162, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I want going home now.', errorPart: 'going', correct: 'I want to go home now.', explanation: 'Want + to V — xohlamoq. \'I want to learn English.\' (ingliz tilini o\'rganishni xohlayman)' },
     { id: 50163, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She made me to cry with her words.', errorPart: 'to cry', correct: 'She made me cry with her words.', explanation: 'Make + object + bare infinitive (to siz)' },
-    { id: 50164, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I regret to tell him the truth yesterday.', errorPart: 'to tell', correct: 'I regret telling him the truth yesterday.', explanation: 'O\'tmish pushaymon \u2192 regret + V-ing' },
+    { id: 50164, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I regret to tell him the truth yesterday.', errorPart: 'to tell', correct: 'I regret telling him the truth yesterday.', explanation: 'O\'tmish pushaymon \u2192 regret + V-ing. O\'tgan harakatga pushaymonlikda V-ing ishlatiladi.' },
     { id: 50165, type: 'transformation', instruction: "Gerund bilan qayta yozing:", question: 'I enjoy reading. (Use: I like ...)', hint: "I like ...", correct: 'I like reading.', explanation: 'Like + V-ing (like + to V ham mumkin)' },
     { id: 50166, type: 'transformation', instruction: "To'g'ri shaklni qo'llang:", question: 'It is important that you arrive on time. (Use: You must remember ...)', hint: 'You must remember ...', correct: 'You must remember to arrive on time.', explanation: 'Remember + to V = unutma (biror narsani qilishni eslab qol). Qoida: \'Remember + to V\' = biror ishni qilishni unutmaslik: Remember to lock the door. (Eshikni qulflashni unutma.) \'Remember + V-ing\' = qilgan ishni eslash.' },
     { id: 50167, type: 'transformation', instruction: "Stop bilan qayta yozing:", question: 'He was walking. He stopped because he wanted to smoke.', hint: 'He stopped ...', correct: 'He stopped to smoke.', explanation: "To'xtab chekdi \u2192 stop + to V" },
@@ -705,14 +717,18 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
       instruction: 'Rejalar va yoqtirishlar',
       prompt: 'O\'zingizning rejalaringiz va yoqtirgan ishlaringiz haqida gerund va infinitive ishlatib yozing.',
       hints: ['\'I enjoy...\'', '\'I want to...\'', '\'I decided to...\''],
-      exampleAnswer: 'I enjoy reading books in my free time. I want to learn how to play the guitar. I decided to start an online course. I avoid eating too much sugar.' },
-   ],
+      exampleAnswer: 'I enjoy reading books in my free time. I want to learn how to play the guitar. I decided to start an online course. I avoid eating too much sugar.' }
+    ,
+    {"id":100607,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"enjoy","options":["zavqlanmoq (+ V-ing)","qaror qilmoq (+ to V)","taklif qilmoq (+ V-ing)","xohlamoq (+ to V)"],"correct":"zavqlanmoq (+ V-ing)","explanation":"Enjoy — faqat V-ing qabul qiladi: enjoy reading, enjoy swimming."},
+    {"id":100608,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"decide","options":["qaror qilmoq (+ to V)","zavqlanmoq (+ V-ing)","taklif qilmoq (+ V-ing)","qochmoq (+ V-ing)"],"correct":"qaror qilmoq (+ to V)","explanation":"Decide — faqat to + V qabul qiladi: decide to go, decide to study."}
+  ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Gerund yoki Infinitive', color: 'bg-emerald-500', icon: '🌱', ids: [3901, 3902, 3903, 3904, 3905] },
     { title: "O'rtacha", desc: 'Ma\'no farqlari', color: 'bg-blue-500', icon: '📘', ids: [3906, 3907, 3908, 3909, 3910] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [3911, 3912, 3913, 3914, 3915] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [3919, 3913, 3920, 3915, 3917, 3916, 3918, 3920, 3918, 3917, 55005, 55014] },
-  ],
+  
+    ],
   tests: [
     { id: 50170, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Enjoy dan keyin nima keladi?", options: ['to V', 'V-ing', 'V', 'V3'], correct: 'V-ing', explanation: 'Enjoy + V-ing — zavq olish. \'I enjoy reading books.\' (kitob o\'qishni yaxshi ko\'raman)' },
     { id: 50171, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Want dan keyin nima keladi?", options: ['V-ing', 'to V', 'V', 'V3'], correct: 'to V', explanation: 'Want + to V — xohlamoq. \'I want to learn English.\' (ingliz tilini o\'rganishni xohlayman)' },
@@ -723,19 +739,19 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
     { id: 50176, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She decided ___ a new job.', options: ['finding', 'to find', 'find', 'found'], correct: 'to find', explanation: 'Decide + to V = qaror qilmoq (+ infinitiv). Qoida: \'Decide\' dan keyin \'to + V1\': decide to go (ketishga qaror qilish). Qaror qabul qilishda ishlatiladi: We decided to buy a house.' },
     { id: 50177, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I remember ___ the letter yesterday.', options: ['posting', 'to post', 'post', 'posted'], correct: 'posting', explanation: 'O\'tmishni eslash \u2192 remember + V-ing' },
     { id: 50178, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Please remember ___ the letter.', options: ['posting', 'to post', 'post', 'posted'], correct: 'to post', explanation: 'Unutma = remember + to V. Qoida: Remember to lock the door. (Unutma.) Remember + V-ing = o\'tmishni eslash.' },
-    { id: 50179, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He stopped ___ because he felt dizzy.', options: ['to walk', 'walking', 'walk', 'walked'], correct: 'walking', explanation: 'Yurishni to\'xtatdi \u2192 stop + V-ing' },
+    { id: 50179, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He stopped ___ because he felt dizzy.', options: ['to walk', 'walking', 'walk', 'walked'], correct: 'walking', explanation: 'Yurishni to\'xtatdi → stop + V-ing. Faoliyatni to\'xtatishda stop + V-ing ishlatiladi.' },
     { id: 50180, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Try ___ this medicine \u2014 it might help.', options: ['taking', 'to take', 'take', 'took'], correct: 'taking', explanation: "Sinab ko'r \u2192 try + V-ing" },
     { id: 50181, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'The garden needs ___ .', options: ['to water', 'watering', 'water', 'watered'], correct: 'watering', explanation: 'Need + V-ing = passive meaning' },
-    { id: 50182, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She went on ___ about her trip for hours.', options: ['to talk', 'talking', 'talk', 'talked'], correct: 'talking', explanation: 'Davom etdi \u2192 go on + V-ing' },
-    { id: 50183, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is grammatically CORRECT?', options: ['I regret to say that to her.', 'I regret saying that to her. (I said it and now regret it)', 'I regret say that.', 'I regret to having said that.'], correct: 'I regret saying that to her. (I said it and now regret it)', explanation: 'O\'tmish pushaymon \u2192 regret + V-ing' },
-    { id: 50184, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence means "She quit her job"?', options: ['She stopped to work.', 'She stopped working.', 'She stopped to start working.', 'She stopped and worked.'], correct: 'She stopped working.', explanation: 'Stop + V-ing = tashlamoq (biror ishni to\'xtatish). Qoida: \'Stop + V-ing\' = biror narsani qilishni to\'xtatish: I stopped smoking. (Men chekishni tashladim.) \'Stop + to V\' = biror narsa QILISH UCHUN to\'xtash.' },
-  ],
+    { id: 50182, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She went on ___ about her trip for hours.', options: ['to talk', 'talking', 'talk', 'talked'], correct: 'talking', explanation: 'Davom etdi → go on + V-ing. Bir xil ishni davom ettirishda go on + V-ing ishlatiladi.' },
+    { id: 50183, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is grammatically CORRECT?', options: ['I regret to say that to her.', 'I regret saying that to her. (I said it and now regret it)', 'I regret say that.', 'I regret to having said that.'], correct: 'I regret saying that to her. (I said it and now regret it)', explanation: 'O\'tmish pushaymon → regret + V-ing. O\'tgan harakatga pushaymonlikda V-ing ishlatiladi.' },
+    { id: 50184, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence means "She quit her job"?', options: ['She stopped to work.', 'She stopped working.', 'She stopped to start working.', 'She stopped and worked.'], correct: 'She stopped working.', explanation: 'Stop + V-ing = tashlamoq (biror ishni to\'xtatish). Qoida: \'Stop + V-ing\' = biror narsani qilishni to\'xtatish: I stopped smoking. (Men chekishni tashladim.) \'Stop + to V\' = biror narsa QILISH UCHUN to\'xtash.' }
+    ],
   testSections: [
     { title: 'Oson', desc: 'Verb patterns asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [391, 392, 393, 394, 395] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [396, 397, 398, 399, 400] },
     { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [401, 402, 403] },
-    { title: 'Murakkab', desc: 'Gerund/Infinitive master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [404, 405] },
-  ],
+    { title: 'Murakkab', desc: 'Gerund/Infinitive master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [404, 405] }
+    ],
 }
 
 export const modalPerfectsB1plus: DailyLesson = {
@@ -751,14 +767,14 @@ export const modalPerfectsB1plus: DailyLesson = {
       { word: 'ladder', definition: 'narvon' },
       { word: 'thief', definition: 'o\'g\'ri' },
       { word: 'bark', definition: 'vovullamoq (it)' },
-      { word: 'camera', definition: 'kamera' },
+      { word: 'camera', definition: 'kamera' }
     ],
     questions: [
       { id: 90351, type: 'multiple-choice', question: "How did someone enter, according to the detective?", options: ["Through the door", "Through the broken window", "Through the roof", "Through the garage"], correctIndex: 1, explanation: "'Someone must have entered through it' — must have + V3 = strong deduction about the past." },
       { id: 90352, type: 'multiple-choice', question: "What should the owner have done?", options: ["Called the police", "Locked the back door", "Bought a dog", "Closed the window"], correctIndex: 1, explanation: "'The owner should have locked the back door' — should have = past criticism/regret." },
       { id: 90353, type: 'true-false', question: "The dog barked at the thief.", answer: false, explanation: "'the dog didn't bark... The thief must have been someone the dog knew.'" },
       { id: 90354, type: 'multiple-choice', question: "Why must there have been two people?", options: ["The dog barked twice", "They couldn't have carried the TV alone", "Two doors were open", "Neighbours saw them"], correctIndex: 1, explanation: "'They couldn't have carried the TV alone. So there must have been two people.'" },
-      { id: 90355, type: 'multiple-choice', question: "What should they have done earlier?", options: ["Locked the door", "Checked the cameras", "Called the owner", "Searched the garden"], correctIndex: 1, explanation: "'We should have checked the cameras earlier.'" },
+      { id: 90355, type: 'multiple-choice', question: "What should they have done earlier?", options: ["Locked the door", "Checked the cameras", "Called the owner", "Searched the garden"], correctIndex: 1, explanation: "'We should have checked the cameras earlier.'" }
     ],
     difficulty: 'hard',
     topic: "Modal perfect — must / should / could / might + have + V3",
@@ -769,7 +785,7 @@ export const modalPerfectsB1plus: DailyLesson = {
       { id: 50185, type: 'multiple-choice' as const, question: "'must have entered' shows the speaker is...", options: ["almost certain","not sure","asking","guessing wildly"], correctIndex: 0, explanation: "'must have' — o'tmish haqida ishonchli xulosa." },
       { id: 50186, type: 'multiple-choice' as const, question: "'might have left' expresses...", options: ["certainty","possibility","obligation","ability"], correctIndex: 1, explanation: "'might/may have' — ehtimollik." },
       { id: 50187, type: 'multiple-choice' as const, question: "'should have been more careful' shows...", options: ["a future plan","regret/criticism about the past","ability","permission"], correctIndex: 1, explanation: "'should have' — o'tmish uchun afsus/tanqid." },
-      { id: 50188, type: 'multiple-choice' as const, question: "'needn't have worried' means...", options: ["he had to worry","worrying was unnecessary","he never worried","he will worry"], correctIndex: 1, explanation: "'needn't have' — keraksiz qilingan ish." },
+      { id: 50188, type: 'multiple-choice' as const, question: "'needn't have worried' means...", options: ["he had to worry","worrying was unnecessary","he never worried","he will worry"], correctIndex: 1, explanation: "'needn't have' — keraksiz qilingan ish." }
     ]
   },
   writing: {
@@ -779,7 +795,7 @@ export const modalPerfectsB1plus: DailyLesson = {
       "'must have' = you are sure: 'He must have forgotten.'",
       "'might/could have' = possibility",
       "'should have' = regret or criticism: 'I should have called.'",
-      "'would have' for unreal past results",
+      "'would have' for unreal past results"
     ],
   },
   category: 'Modals',
@@ -787,8 +803,8 @@ export const modalPerfectsB1plus: DailyLesson = {
     { label: 'Must have + V3', structure: 'Must have + V3 \u2014 strong certainty about past\nSubject + must have + past participle\nShe must have left early.\nIt must have rained last night.', color: 'green' },
     { label: 'Might/May/Could have + V3', structure: 'Might/May/Could + have + V3 \u2014 possibility about past\nSubject + might/may/could + have + V3\nHe might have missed the bus.\nShe may have forgotten.', color: 'blue' },
     { label: 'Should have + V3', structure: 'Should/ought to + have + V3 \u2014 regret/criticism about past\nSubject + should/ought to + have + V3\nI should have studied harder.\nYou should have told me.', color: 'purple' },
-    { label: 'Could have / Would have', structure: 'Could have + V3 \u2014 past ability/possibility\nWould have + V3 \u2014 hypothetical past\nI could have helped you.\nShe would have come if invited.', color: 'orange' },
-  ],
+    { label: 'Could have / Would have', structure: 'Could have + V3 \u2014 past ability/possibility\nWould have + V3 \u2014 hypothetical past\nI could have helped you.\nShe would have come if invited.', color: 'orange' }
+    ],
   rules: [
     "1\uFE0F\u20E3 MODAL PERFECTS NIMA?\n\nModal Perfects \u2014 modal fe\u2018llar + have + V3 (past participle) birikmasi. O\u2018tmishdagi harakatlarga nisbatan taxmin, afsus, tanqid yoki imkoniyatni ifodalaydi:\n\n  She must have forgotten about the meeting.\n  (U uchrashuvni unutgan bo\u2018lishi kerak.)\n\n\uD83D\uDCCC Must have = ishonch (90-100%)\n\uD83D\uDCCC Might/May/Could have = taxmin (30-70%)\n\uD83D\uDCCC Should have = afsus, tanqid\n\uD83D\uDCCC Could have = imkoniyat (lekin qilmadi)\n\uD83D\uDCCC Would have = faraziy (if ...)",
     "2\uFE0F\u20E3 MUST HAVE + V3 \u2014 ISHONCH\n\nMust have \u2014 o\u2018tmishdagi biror narsaga ishonchimiz komil bo\u2018lganda:\n\n  The ground is wet. It must have rained last night.\n  (Yer ho\u2018l. Kecha yomg\u2018ir yog\u2018gan bo\u2018lishi kerak.)\n  \u2192 Yer ho\u2018l \u2192 yomg\u2018ir yog\u2018ganiga 100% ishonamiz.\n\n  She isn\u2018t answering her phone. She must have left already.\n  (U telefonga javob bermayapti. U allaqachon ketgan bo\u2018lishi kerak.)\n\n\uD83D\uDD34 Must have + V3 = had to (majburiyat) EMAS!\n  Must have left = ketgan bo\u2018lishi kerak (taxmin)\n  Had to leave = ketishga majbur edi (majburiyat)",
@@ -797,8 +813,8 @@ export const modalPerfectsB1plus: DailyLesson = {
     "5\uFE0F\u20E3 COULD HAVE + V3 \u2014 IMTIYOR\n\nCould have \u2014 o\u2018tmishda biror narsani qilish imkoniyati bor edi, lekin qilinmadi:\n\n  I could have helped you, but you didn\u2018t ask.\n  (Sizga yordam berishim mumkin edi, lekin so\u2018ramadingiz.)\n  \u2192 Imkoniyat bor edi, lekin foydalanilmadi.\n\n  We could have won the match if we had tried harder.\n  (Ko\u2018proq harakat qilganimizda, o\u2018yinda g\u2018alaba qozonishimiz mumkin edi.)\n\n\uD83D\uDD34 Could have \u2014 imkoniyat bor edi, ammo amalga oshmadi.\n\uD83D\uDD34 Could have + V3 \u2014 o\u2018tmish qobiliyati (was able to but didn\u2018t).",
     "6\uFE0F\u20E3 WOULD HAVE + V3 \u2014 FARAZ\n\nWould have \u2014 o\u2018tmishdagi faraziy vaziyat. Uchinchi shart (Third Conditional) bilan ishlatiladi:\n\n  If I had known, I would have come earlier.\n  (Agar bilganimda, avvalroq kelgan bo\u2018lardim.)\n  \u2192 Bilmasdim, kelmadim.\n\n  She would have passed the exam if she had studied.\n  (O\u2018qiganida, imtihondan o\u2018tgan bo\u2018lardi.)\n  \u2192 O\u2018qimadi, o\u2018tmadi.\n\n  They wouldn\u2018t have got lost if they had taken a map.\n  (Xarita olganlarida, adashmagan bo\u2018lishardi.)\n  \u2192 Olmadilar, adashdilar.",
     "7\uFE0F\u20E3 CAN\u2018T HAVE + V3 \u2014 ISHONMASLIK\n\nCan\u2018t have + V3 \u2014 o\u2018tmishda biror narsa sodir bo\u2018lganiga ishonmaslik:\n\n  He can\u2018t have finished the project already. It\u2019s too big!\n  (U loyihani allaqachon tugatgan bo\u2018lishi mumkin EMAS. Bu juda katta!)\n  \u2192 0% imkoniyat.\n\n  She can\u2018t have left without saying goodbye.\n  (U xayrlashmay ketgan bo\u2018lishi mumkin EMAS.)\n\n\uD83D\uDD34 Must have = ishonch (+), Can\u2018t have = ishonmaslik (-).\nQiyoslang:\n  He must have arrived. (Kelgan bo\u2018lishi kerak.)\n  He can\u2018t have arrived. (Kelgan bo\u2018lishi mumkin emas.)",
-    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Should have da have ni tushirish: I should studied \u2192 I should have studied.\n\u2022 Must have ni had to bilan adash: I must have left (taxmin) vs I had to leave (majburiyat).\n\u2022 Can\u2018t have ni mustn\u2018t have bilan adash: He mustn\u2018t have done it (taqiq) vs He can\u2018t have done it (ishonmaslik).\n\u2022 Would have ni will have bilan adash: I would have come (faraz) vs I will have come (future perfect).\n\u2022 Not ni noto\u2018g\u2018ri joylashtirish: I shouldn\u2018t to have gone \u2192 I shouldn\u2018t have gone.\n\u2022 Have dan keyin V1 ishlatish: He must have go \u2192 He must have gone.",
-  ],
+    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Should have da have ni tushirish: I should studied \u2192 I should have studied.\n\u2022 Must have ni had to bilan adash: I must have left (taxmin) vs I had to leave (majburiyat).\n\u2022 Can\u2018t have ni mustn\u2018t have bilan adash: He mustn\u2018t have done it (taqiq) vs He can\u2018t have done it (ishonmaslik).\n\u2022 Would have ni will have bilan adash: I would have come (faraz) vs I will have come (future perfect).\n\u2022 Not ni noto\u2018g\u2018ri joylashtirish: I shouldn\u2018t to have gone \u2192 I shouldn\u2018t have gone.\n\u2022 Have dan keyin V1 ishlatish: He must have go \u2192 He must have gone."
+    ],
   vocabulary: [
     { en: 'modal perfect', uz: "modal fe'l + have + V3", example: 'She must have left already.', rule: 'Grammar' },
     { en: 'certainty', uz: 'ishonch, aniqik', example: 'Must have shows strong certainty.', rule: 'Degree' },
@@ -815,8 +831,8 @@ export const modalPerfectsB1plus: DailyLesson = {
     { en: 'should have', uz: "...qilish kerak edi (afsus/tanqid)", example: 'You should have told me earlier.', rule: 'Afsus / tanqid' },
     { en: 'could have', uz: "...qilishi mumkin edi (lekin qilmadi)", example: 'We could have won if we tried harder.', rule: 'Amalga oshmagan imkoniyat' },
     { en: "can't have", uz: "...bo'lishi mumkin emas edi (inkor)", example: "He can't have finished already — it's too fast.", rule: 'Kuchli inkor xulosa' },
-    { en: "needn't have", uz: "...qilish shart emas edi (bajarildi)", example: "You needn't have bought food — we have plenty.", rule: "Keraksiz o'tgan harakat" },
-  ],
+    { en: "needn't have", uz: "...qilish shart emas edi (bajarildi)", example: "You needn't have bought food — we have plenty.", rule: "Keraksiz o'tgan harakat" }
+    ],
   examples: [
     { en: "She must have forgotten about the meeting \u2014 she's not here.", uz: "U uchrashuvni unutgan bo'lishi kerak \u2014 u bu yerda emas." },
     { en: 'He might have missed the bus \u2014 that explains his delay.', uz: "U avtobusni boy bergan bo'lishi mumkin \u2014 bu uning kechikishini tushuntiradi." },
@@ -825,8 +841,8 @@ export const modalPerfectsB1plus: DailyLesson = {
     { en: "If I had known, I would have come to the party.", uz: "Bilganimda, ziyofatga kelgan bo'lardim." },
     { en: "He can't have finished all the work in one hour.", uz: "U bir soatda hamma ishni tugatgan bo'lishi mumkin emas." },
     { en: "You shouldn't have told her the secret.", uz: "Siz unga sirni aytmasligingiz kerak edi." },
-    { en: "They could have taken a different road.", uz: "Ular boshqa yo'lga kirgan bo'lishlari mumkin." },
-  ],
+    { en: "They could have taken a different road.", uz: "Ular boshqa yo'lga kirgan bo'lishlari mumkin." }
+    ],
   specialCases: [
     {
       id: 'must-have-vs-had-to',
@@ -836,13 +852,13 @@ export const modalPerfectsB1plus: DailyLesson = {
       commonMistakes: "I must have go to the meeting yesterday (taxmin?) \u2192 I had to go to the meeting yesterday (majburiyat).\nShe must have left (taxmin: ketgan bolishi kerak) vs She had to leave (majbur: ketishga majbur edi).",
       examples: [
         { en: 'She must have left early. Her coat is gone.', uz: "U erta ketgan bo'lishi kerak. Paltosi yo'q." },
-        { en: 'She had to leave early because of the emergency.', uz: "U favqulodda vaziyat sababli erta ketishga majbur edi." },
-      ],
+        { en: 'She had to leave early because of the emergency.', uz: "U favqulodda vaziyat sababli erta ketishga majbur edi." }
+    ],
       drills: [
         { id: 50189, type: 'fill-blank', instruction: "Must have yoki Had to?", question: 'The ground is wet. It ___ rained last night.', blanks: ['must have'], explanation: 'Taxmin = must have (qattiq). Qoida: Must have + V3: He must have been tired. (Charchagan bo\'lsa kerak.) Ishonch: must > may > might.' },
-        { id: 50190, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ finish the report yesterday.', options: ['must have', 'had to', 'must', 'have to'], correct: 'had to', explanation: 'O\'tmish majburiyat \u2014 had to' },
-        { id: 50191, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She must have went home early.', errorPart: 'went', correct: 'She must have gone home early.', explanation: "Have + V3 \u2014 went emas, gone" },
-      ],
+        { id: 50190, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ finish the report yesterday.', options: ['must have', 'had to', 'must', 'have to'], correct: 'had to', explanation: 'O\'tmish majburiyat — had to. O\'tgan zamonda majburiyat had to bilan ifodalanadi.' },
+        { id: 50191, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She must have went home early.', errorPart: 'went', correct: 'She must have gone home early.', explanation: "Have + V3 \u2014 went emas, gone" }
+    ],
     },
     {
       id: 'cant-have-vs-must-not-have',
@@ -852,15 +868,15 @@ export const modalPerfectsB1plus: DailyLesson = {
       commonMistakes: "He mustn\u2018t have left yet ( mustn\u2018t have = taqiq?) \u2192 He can\u2018t have left yet (can\u2018t have = ishonmaslik).\nYou needn\u2018t have bought it \u2014 unnecessary vs You didn\u2018t have to buy it \u2014 wasn\u2018t necessary (may or may not have bought).",
       examples: [
         { en: "She can't have arrived already \u2014 we left at the same time!", uz: "U allaqachon kelgan bo'lishi mumkin emas \u2014 biz bir vaqtda ketdik!" },
-        { en: "You needn't have brought anything \u2014 we have everything.", uz: "Hech narsa olib kelishingiz shart emas edi \u2014 hammamizda bor." },
-      ],
+        { en: "You needn't have brought anything \u2014 we have everything.", uz: "Hech narsa olib kelishingiz shart emas edi \u2014 hammamizda bor." }
+    ],
       drills: [
         { id: 50192, type: 'fill-blank', instruction: "Can't have yoki Needn't have?", question: 'He ___ left already \u2014 I saw him five minutes ago!', blanks: ["can't have"], explanation: '0% imkoniyat \u2014 can\'t have' },
         { id: 50193, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "You ___ bought so much food \u2014 there's only two of us!", options: ["can't have", "needn't have", "mustn't have", "shouldn't have"], correct: "needn't have", explanation: 'Keraksiz qilindi \u2014 needn\'t have' },
-        { id: 50194, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'He mustn\'t have stolen it \u2014 he is honest.', errorPart: "mustn't have", correct: "He can't have stolen it \u2014 he is honest.", explanation: "Ishonmaslik \u2014 can't have" },
-      ],
-    },
-  ],
+        { id: 50194, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'He mustn\'t have stolen it \u2014 he is honest.', errorPart: "mustn't have", correct: "He can't have stolen it \u2014 he is honest.", explanation: "Ishonmaslik \u2014 can't have" }
+    ],
+    }
+    ],
   exercises: [
     { id: 50195, type: 'fill-blank', instruction: "Modal perfect qo'ying:", question: "She looks tired. She ___ (work) hard all day.", blanks: ['must have worked'], explanation: 'Taxmin \u2014 must have worked' },
     { id: 50196, type: 'fill-blank', instruction: "Modal perfect qo'ying:", question: "He isn't here. He ___ (leave) early.", blanks: ['might have left'], explanation: 'Ehtimol \u2014 might have left' },
@@ -893,14 +909,18 @@ export const modalPerfectsB1plus: DailyLesson = {
       instruction: 'Taxminlar',
       prompt: 'Kecha bir do\'stingiz uchrashuvga kelmadi. Nima bo\'lgan bo\'lishi mumkin? Modal perfects ishlating.',
       hints: ['\'He must have...\'', '\'He might have...\'', '\'He can\'t have...\''],
-      exampleAnswer: 'He must have forgotten about our meeting. He might have been stuck in traffic. He can\'t have lost my number because I sent him a message.' },
-   ],
+      exampleAnswer: 'He must have forgotten about our meeting. He might have been stuck in traffic. He can\'t have lost my number because I sent him a message.' }
+    ,
+    {"id":100609,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"must have","options":["...gan bo'lishi kerak (kuchli ishonch)","...qilish kerak edi (afsus)","...qilishi mumkin edi","...bo'lishi mumkin emas"],"correct":"...gan bo'lishi kerak (kuchli ishonch)","explanation":"Must have — o'tmish haqida kuchli ishonch (90-100%)."},
+    {"id":100610,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"should have","options":["...qilish kerak edi (afsus/tanqid)","...gan bo'lishi kerak (ishonch)","...qilishi mumkin edi","...kerak emas edi"],"correct":"...qilish kerak edi (afsus/tanqid)","explanation":"Should have — o'tmish uchun afsus yoki tanqid bildiradi."}
+  ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Modal perfect turlari', color: 'bg-emerald-500', icon: '🌱', ids: [4001, 4002, 4003, 4004, 4005] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4006, 4007, 4008, 4009, 4010] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4011, 4012, 4013, 4014, 4015] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4020, 4016, 4015, 4019, 4013, 4018, 4018, 4017, 4017, 4020, 55004, 55013] },
-  ],
+  
+    ],
   tests: [
     { id: 50215, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Must have + V3 qanday ma'noni ifodalaydi?", options: ['majburiyat', 'ishonch (deduction)', 'taxmin', 'afsus'], correct: 'ishonch (deduction)', explanation: "Must have = ishonch" },
     { id: 50216, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Might have + V3 qanday ma'no?", options: ['ishonch', 'majburiyat', 'taxmin (possibility)', 'tanqid'], correct: 'taxmin (possibility)', explanation: "Might have = taxmin" },
@@ -916,14 +936,14 @@ export const modalPerfectsB1plus: DailyLesson = {
     { id: 50226, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence shows DEDUCTION?", options: ['I had to go.', 'I must have left my keys.', 'I should have studied.', 'I could have helped.'], correct: 'I must have left my keys.', explanation: 'Must have = deduction = ...gan bo\'lsa kerak (taxmin). Qoida: Must have + V3 o\'tmishdagi ishonchli taxmin: He must have left early. (U erta ketgan bo\'lsa kerak.) Ishonch darajasi: must have > may have > might have.' },
     { id: 50227, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "I ___ to the meeting yesterday because I was ill.", options: ['must not go', "didn't have to go", "mustn't have gone", "couldn't go"], correct: "couldn't go", explanation: "Kasal edim \u2192 couldn't go (imkonsiz)" },
     { id: 50228, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence means 'You did it, but it wasn't necessary'?", options: ["You didn't have to do it.", "You needn't have done it.", "You mustn't have done it.", "You couldn't have done it."], correct: "You needn't have done it.", explanation: "Needn't have = keraksiz qilindi" },
-    { id: 50229, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ['I must had gone.', 'He should have went.', 'She might have forgotten.', 'They can\'t has arrived.'], correct: 'She might have forgotten.', explanation: "Might have + V3 \u2014 to'g'ri" },
-  ],
+    { id: 50229, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ['I must had gone.', 'He should have went.', 'She might have forgotten.', 'They can\'t has arrived.'], correct: 'She might have forgotten.', explanation: "Might have + V3 \u2014 to'g'ri" }
+    ],
   testSections: [
     { title: 'Oson', desc: 'Modal perfect asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [401, 402, 403, 404, 405] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [406, 407, 408, 409, 410] },
     { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [411, 412, 413] },
-    { title: 'Murakkab', desc: 'Modal perfect master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [414, 415] },
-  ],
+    { title: 'Murakkab', desc: 'Modal perfect master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [414, 415] }
+    ],
 }
 
 export const emphasisDoesB1plus: DailyLesson = {
@@ -939,14 +959,14 @@ export const emphasisDoesB1plus: DailyLesson = {
       { word: 'receive', definition: 'olmoq, qabul qilmoq' },
       { word: 'submit', definition: 'topshirmoq' },
       { word: 'deserve', definition: 'loyiq bo\'lmoq' },
-      { word: 'appreciate', definition: 'qadrlamoq, minnatdor bo\'lmoq' },
+      { word: 'appreciate', definition: 'qadrlamoq, minnatdor bo\'lmoq' }
     ],
     questions: [
       { id: 90361, type: 'multiple-choice', question: "What does the student emphasise about the essay?", options: ["That it was short", "That he did finish and send it", "That it was difficult", "That he was late"], correctIndex: 1, explanation: "'I did finish it!' and 'I did send it' — do/did for emphasis." },
       { id: 90362, type: 'multiple-choice', question: "How did the student send the essay?", options: ["On paper", "By email", "By post", "In person"], correctIndex: 1, explanation: "'I did send it, by email.'" },
       { id: 90363, type: 'true-false', question: "The teacher never received the essay at all.", answer: false, explanation: "'It did arrive — in my spam folder.'" },
       { id: 90364, type: 'multiple-choice', question: "Where did the email arrive?", options: ["The inbox", "The spam folder", "The trash", "A different account"], correctIndex: 1, explanation: "'in my spam folder.'" },
-      { id: 90365, type: 'multiple-choice', question: "What does the teacher say the student deserves?", options: ["A warning", "A good grade", "Extra homework", "Another chance"], correctIndex: 1, explanation: "'You do deserve a good grade.'" },
+      { id: 90365, type: 'multiple-choice', question: "What does the teacher say the student deserves?", options: ["A warning", "A good grade", "Extra homework", "Another chance"], correctIndex: 1, explanation: "'You do deserve a good grade.'" }
     ],
     difficulty: 'hard',
     topic: "Ta'kid — emphatic do / does / did",
@@ -957,7 +977,7 @@ export const emphasisDoesB1plus: DailyLesson = {
       { id: 50230, type: 'multiple-choice' as const, question: "Why does Kamola say 'I DO study every night'?", options: ["To ask a question","To add emphasis / contradict","To show the future","To show the past only"], correctIndex: 1, explanation: "Emphatic 'do' — kuch berish, e'tirozga javob." },
       { id: 50231, type: 'multiple-choice' as const, question: "In 'I DID finish', the main verb is in...", options: ["past form","base form","-ing form","past participle"], correctIndex: 1, explanation: "'did' + base verb (finish, not finished)." },
       { id: 50232, type: 'multiple-choice' as const, question: "'one strong word does make a difference' — 'does' here...", options: ["asks something","emphasises the statement","shows possibility","is a mistake"], correctIndex: 1, explanation: "Emphatic 'does' uchinchi shaxs uchun." },
-      { id: 50233, type: 'multiple-choice' as const, question: "Emphatic do/does/did is used to...", options: ["form questions only","strengthen or insist on a statement","make negatives","show the future"], correctIndex: 1, explanation: "Tasdiqni kuchaytirish uchun." },
+      { id: 50233, type: 'multiple-choice' as const, question: "Emphatic do/does/did is used to...", options: ["form questions only","strengthen or insist on a statement","make negatives","show the future"], correctIndex: 1, explanation: "Tasdiqni kuchaytirish uchun." }
     ]
   },
   writing: {
@@ -967,7 +987,7 @@ export const emphasisDoesB1plus: DailyLesson = {
       "Add 'do/does/did' before the base verb: 'I do like it!'",
       "Use it to contradict: 'You think I forgot, but I did remember.'",
       "Keep the main verb in the base form",
-      "Use it for strong agreement or insistence",
+      "Use it for strong agreement or insistence"
     ],
   },
   category: 'Emphasis',
@@ -975,8 +995,8 @@ export const emphasisDoesB1plus: DailyLesson = {
     { label: 'Present Emphasis', structure: 'Subject + do/does + V1\nI do understand your point.\nShe does work very hard.\nWe do want to help.', color: 'green' },
     { label: 'Past Emphasis', structure: 'Subject + did + V1\nI did see him yesterday.\nShe did finish the project.\nThey did arrive on time.', color: 'blue' },
     { label: 'Imperative Emphasis', structure: 'Do + V1 (polite invitation/emphasis)\nDo sit down.\nDo help yourself.\nDo be careful!', color: 'purple' },
-    { label: 'Negative Emphasis', structure: 'Subject + do/does/did + not + V1 (contrast)\nI do not agree with you at all.\nShe does not like him, not at all.\nWe did not expect this result.', color: 'orange' },
-  ],
+    { label: 'Negative Emphasis', structure: 'Subject + do/does/did + not + V1 (contrast)\nI do not agree with you at all.\nShe does not like him, not at all.\nWe did not expect this result.', color: 'orange' }
+    ],
   rules: [
     "1\uFE0F\u20E3 EMPHATIC DO NIMA?\n\nEmphatic do \u2014 gapga kuch va urg\u2018u berish uchun ishlatiladi. Odatda do savol va inkorlarda ishlatiladi, lekin TASDIQ gaplarda ham kuch berish uchun qo\u2018llanadi:\n\n  I do like this song! (Men bu qo\u2018shiqni YAXSHI KO\u2018RAMAN!)\n  \u2192 Oddiy: I like this song.\n  \u2192 Emphatic: I DO like this song! (kuchli)\n\n\uD83D\uDCCC Do/Does \u2014 present tense\n\uD83D\uDCCC Did \u2014 past tense\n\uD83D\uDCCC Asosiy fe\u2018l V1 (base form) shaklida qoladi",
     "2\uFE0F\u20E3 PRESENT EMPHASIS (do/does)\n\nHozirgi zamon tasdiq gaplarida urg\u2018u uchun do (I/you/we/they) yoki does (he/she/it) ishlatiladi:\n\n  I do understand your feelings.\n  (Men sizning hislaringizni TUSHUNAMAN.)\n  \u2192 \u201cdo\u201d = haqiqatan tushunaman, ishontirish.\n\n  She does work very hard.\n  (U haqiqatan qattiq ishlaydi.)\n  \u2192 \u201cdoes\u201d = haqiqatan, ikkilanmasdan.\n\n\uD83D\uDD34 Does dan keyin fe\u2018l V1 (works emas, work):\n  She works hard. \u2192 She does work hard. \u2714\n  (does + work, works emas)",
@@ -985,8 +1005,8 @@ export const emphasisDoesB1plus: DailyLesson = {
     "5\uFE0F\u20E3 EMPHATIC DO \u2014 TALAFFUZ\n\nEmphatic do juda kuchli talaffuz qilinadi \u2014 odatdagidan ancha balandroq va uzoqroq:\n\n  Normal: I \u2018like it. (oddiy, tez)\n  Emphatic: I \u2018DO like it! (do kuchli, pauza bilan)\n\n\uD83D\uDD34 Yozma ingliz tilida emphatic do \u2014 italics yoki bold bilan ko\u2018rsatiladi:\n  I do understand.\n  She does work hard.\n\n\uD83D\uDD34 So\u2018zlashuvda do \u2014 juda baland ovoz va urg\u2018u bilan aytiladi.\n\uD83D\uDD34 Adverbs (really, certainly, definitely) ham urg\u2018u uchun ishlatiladi:\n  I really do like it!",
     "6\uFE0F\u20E3 DO + BE (Buyruq gaplar)\n\nBe fe\u2018li bilan do imperative (buyruq) gaplarda kuch berish uchun ishlatiladi:\n\n  Do be careful! (Ehtiyot bo\u2018ling! \u2014 kuchli)\n  Do be quiet, please! (Jim bo\u2018ling, iltimos! \u2014 kuchli)\n  Don\u2018t be late! (Kechikmang!)\n\nEslatma: Be bilan do faqat imperative da ishlatiladi. Tasdiq gaplarda be bilan do ishlatilmaydi:\n  \u2714 I am happy. \u2192 I do be happy. \u274C\n\n\uD83D\uDD34 Do + be = faqat buyruq gapda (imperative).\n\uD83D\uDD34 Do + V = tasdiq gapda.",
     "7\uFE0F\u20E3 DO/DOES/DID \u2014 BOSHQA URG\u2018U USULLARI\n\nEmphatic do dan tashqari urg\u2018u berishning boshqa usullari:\n\n1) Really / Certainly / Definitely + verb:\n  I really like this. (Men buni haqiqatan yoqtiraman.)\n  She definitely knows the answer. (U albatta javobni biladi.)\n\n2) Inversion (teskari tartib):\n  Not only did he come late, but he also left early.\n  (U nafaqat kech keldi, balki erta ketdi.)\n\n3) Fronting (oldinga chiqarish):\n  That I do not understand. (Buni men tushunmayman.)\n\n4) Repetition:\n  He is, and always will be, my best friend.",
-    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Do/does/did dan keyin V3 ishlatish: I did seen him \u2192 I did see him.\n\u2022 Does dan keyin -s qo\u2018shish: She does works hard \u2192 She does work hard.\n\u2022 Be bilan emphatic do ni ishlatish: I do be happy \u2192 I am happy (be bilan do faqat imperative da).\n\u2022 Do ni noto\u2018g\u2018ri joylashtirish: I like do it \u2192 I do like it.\n\u2022 Emphatic do ni hamma gapda ishlatish \u2014 faqat urg\u2018u kerak bo\u2018lganda.\n\u2022 O\u2018zbek tilida \u201c-ha\u201d qo\u2018shimchasi (Men KO\u2018RDIM-HA!) \u2014 ingliz tilida do/did.",
-  ],
+    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Do/does/did dan keyin V3 ishlatish: I did seen him \u2192 I did see him.\n\u2022 Does dan keyin -s qo\u2018shish: She does works hard \u2192 She does work hard.\n\u2022 Be bilan emphatic do ni ishlatish: I do be happy \u2192 I am happy (be bilan do faqat imperative da).\n\u2022 Do ni noto\u2018g\u2018ri joylashtirish: I like do it \u2192 I do like it.\n\u2022 Emphatic do ni hamma gapda ishlatish \u2014 faqat urg\u2018u kerak bo\u2018lganda.\n\u2022 O\u2018zbek tilida \u201c-ha\u201d qo\u2018shimchasi (Men KO\u2018RDIM-HA!) \u2014 ingliz tilida do/did."
+    ],
   vocabulary: [
     { en: 'emphasis', uz: 'urg\u2019u, kuch', example: 'Do is used for emphasis in positive sentences.', rule: 'Concept' },
     { en: 'emphatic', uz: 'urg\u2019uli, kuchaytirilgan', example: 'An emphatic sentence uses do/does/did.', rule: 'Adjective' },
@@ -997,8 +1017,8 @@ export const emphasisDoesB1plus: DailyLesson = {
     { en: 'confirm', uz: 'tasdiqlamoq', example: 'Yes, I do agree with you.', rule: 'Affirmation' },
     { en: 'polarity', uz: 'musbat/manfiy qutb', example: 'Emphatic do reinforces positive polarity.', rule: 'Grammar' },
     { en: 'intonation', uz: 'ohang, talaffuz', example: 'Emphatic do is stressed in speech.', rule: 'Speaking' },
-    { en: 'imperative', uz: 'buyruq mayli', example: 'Do sit down \u2014 polite imperative.', rule: 'Mood' },
-  ],
+    { en: 'imperative', uz: 'buyruq mayli', example: 'Do sit down \u2014 polite imperative.', rule: 'Mood' }
+    ],
   examples: [
     { en: 'I do understand how you feel \u2014 believe me!', uz: "Men sizning hislaringizni TUSHUNANMAN \u2014 ishoning!" },
     { en: "She does work very hard, even on weekends.", uz: "U HAQIQATAN qattiq ishlaydi, hatto dam olish kunlarida ham." },
@@ -1007,8 +1027,8 @@ export const emphasisDoesB1plus: DailyLesson = {
     { en: "I don't agree with you, but I do respect your opinion.", uz: "Men siz bilan qo'shilmayman, lekin fikringizni HURMAT QILAMAN." },
     { en: "Do come in and make yourself at home!", uz: "KIRING va o'zingizni uydagidek his qiling!" },
     { en: "So you do know how to solve this problem!", uz: "Demak, siz bu muammoni qanday hal qilishni BILAR EKANSIZ!" },
-    { en: "We did finish the project, but it was very difficult.", uz: "Biz loyihani TUGATDIK, lekin juda qiyin edi." },
-  ],
+    { en: "We did finish the project, but it was very difficult.", uz: "Biz loyihani TUGATDIK, lekin juda qiyin edi." }
+    ],
   specialCases: [
     {
       id: 'emphatic-do-vs-auxiliary',
@@ -1018,13 +1038,13 @@ export const emphasisDoesB1plus: DailyLesson = {
       commonMistakes: "I do my homework (main verb) vs I DO like it (emphatic). Ma'no farqiga e'tibor bering!\nI do like (emphatic) vs Do I like? (auxiliary question).",
       examples: [
         { en: 'I do my work every day. (main verb = do)', uz: "Men har kuni ishimni qilaman." },
-        { en: 'I DO work every day! (emphatic)', uz: "Men har kuni ISHLAYMAN!" },
-      ],
+        { en: 'I DO work every day! (emphatic)', uz: "Men har kuni ISHLAYMAN!" }
+    ],
       drills: [
         { id: 50234, type: 'fill-blank', instruction: 'Emphatic do yoki auxiliary?', question: 'I ___ like this song very much! (emphatic)', blanks: ['do'], explanation: 'Emphatic = kuchli urg\'u. Qoida: Do/does/did + V1 urg\'u: I DO agree! (ROZIMAN!) Og\'zaki nutqda kuchli his-tuyg\'u.' },
         { id: 50235, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence uses EMPHATIC do?', options: ['Do you know her?', 'I do not like it.', 'I do understand!', 'She does her work.'], correct: 'I do understand!', explanation: 'Emphatic do \u2014 tasdiq, kuchli' },
-        { id: 50236, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I did saw him yesterday at the mall.', errorPart: 'saw', correct: 'I did see him yesterday at the mall.', explanation: 'Did + V1 (saw emas). Qoida: Did you SEE the movie? (Filmni ko\'rdingmi?) \'Did saw\' XATO! \'Did\' + V2 ishlatilmaydi.' },
-      ],
+        { id: 50236, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I did saw him yesterday at the mall.', errorPart: 'saw', correct: 'I did see him yesterday at the mall.', explanation: 'Did + V1 (saw emas). Qoida: Did you SEE the movie? (Filmni ko\'rdingmi?) \'Did saw\' XATO! \'Did\' + V2 ishlatilmaydi.' }
+    ],
     },
     {
       id: 'emphatic-imperative',
@@ -1034,29 +1054,29 @@ export const emphasisDoesB1plus: DailyLesson = {
       commonMistakes: "I do be happy! -- XATO (be bilan do faqat imperative da).\nDo be careful! -- TO'G'RI (imperative).\nDo you be careful! -- XATO (savol shaklida be bilan do ishlatilmaydi).",
       examples: [
         { en: 'Do write to us when you arrive!', uz: "Yetib borgach, BIZGA YOZING!" },
-        { en: 'Do enjoy your holiday to the fullest!', uz: "TA'TILDAN to'liq zavqlaning!" },
-      ],
+        { en: 'Do enjoy your holiday to the fullest!', uz: "TA'TILDAN to'liq zavqlaning!" }
+    ],
       drills: [
         { id: 50237, type: 'fill-blank', instruction: "Do + imperative qo'ying:", question: '___ (sit) down and make yourself comfortable.', blanks: ['Do sit'], explanation: 'Do + sit \u2014 polite imperative' },
         { id: 50238, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is a polite imperative with DO?', options: ['Do you go?', 'I do go.', 'Do go now.', 'Not do go.'], correct: 'Do go now.', explanation: 'Do + go \u2014 polite imperative' },
-        { id: 50239, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I do be happy with my new job.', errorPart: 'do be', correct: 'I am happy with my new job.', explanation: 'Be bilan do faqat imperative da' },
-      ],
-    },
-  ],
+        { id: 50239, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I do be happy with my new job.', errorPart: 'do be', correct: 'I am happy with my new job.', explanation: 'Be bilan do faqat imperative da' }
+    ],
+    }
+    ],
   exercises: [
     { id: 50240, type: 'fill-blank', instruction: "Emphatic do/does qo'ying:", question: 'I ___ like this song! It\'s amazing!', blanks: ['do'], explanation: 'Emphatic do \u2014 present, I bilan' },
-    { id: 50241, type: 'fill-blank', instruction: "Emphatic do/does qo'ying:", question: 'She ___ work very hard. Everyone respects her.', blanks: ['does'], explanation: 'Emphatic does \u2014 she bilan' },
-    { id: 50242, type: 'fill-blank', instruction: "Emphatic did qo'ying:", question: 'I ___ see him yesterday at the party.', blanks: ['did'], explanation: 'Emphatic did = o\'tgan zamonda urg\'u. Qoida: Did + V1: I DID finish my homework! (TUGATDIM!) \'Did finished\' XATO!' },
+    { id: 50241, type: 'fill-blank', instruction: "Emphatic do/does qo'ying:", question: 'She ___ work very hard. Everyone respects her.', blanks: ['does'], explanation: 'Emphatic does — she bilan ishlatiladi. Qoida: does + V1: She does work hard (ta\'kid).' },
+    { id: 50242, type: 'fill-blank', instruction: "Emphatic did qo'ying:", question: 'I ___ see him yesterday at the party.', blanks: ['did'], explanation: 'Did + V1 = o\'tgan zamon urg\'u. I DID finish = TUGATDIM! (ta\'kid bilan).' },
     { id: 50243, type: 'fill-blank', instruction: "Emphatic do + imperative qo'ying:", question: '___ (be) careful on the icy roads!', blanks: ['Do be'], explanation: 'Do be \u2014 imperative with be' },
     { id: 50244, type: 'fill-blank', instruction: "Emphatic do bilan to'ldiring:", question: "A: You didn't call me! B: I ___ call you!", blanks: ['did'], explanation: 'Emphatic did \u2014 answer to accusation' },
     { id: 50245, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ understand your point of view.', options: ['do', 'does', 'did', 'done'], correct: 'do', explanation: 'I + do (present emphatic) = hozirgi zamonda urg\'u. Qoida: I + do + V1: I do understand. (Men tushunaman - ta\'kidlab.) Inkor: I don\'t understand. Savol: Do you understand?' },
     { id: 50246, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She ___ work in that office, believe me!', options: ['do', 'does', 'did', 'done'], correct: 'does', explanation: 'She + does (present emphatic) = 3-shaxs urg\'u. Qoida: Does + V1: She does work here. (U shu erda ishlaydi - ta\'kidlab.) \'Does works\' XATO! \'Does\' dan keyin V1 (toza fe\'l).' },
     { id: 50247, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ finish the report yesterday.', options: ['do', 'does', 'did', 'done'], correct: 'did', explanation: 'Yesterday + did (past emphatic)' },
     { id: 50248, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ come in and make yourself at home!', options: ['Do', 'Does', 'Did', 'Done'], correct: 'Do', explanation: 'Do + imperative \u2014 polite invitation' },
-    { id: 50249, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence uses emphatic DO for contrast?', options: ['I do like it!', 'I don\'t agree, but I do respect you.', 'Do come in!', 'I do my homework.'], correct: 'I don\'t agree, but I do respect you.', explanation: 'Contrast \u2014 don\'t agree vs do respect' },
-    { id: 50250, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I did saw him at the station.', errorPart: 'saw', correct: 'I did see him at the station.', explanation: 'Did + V1 = o\'tgan zamon (savol). Qoida: Did you see him? \'Did\' + V1, V2 emas.' },
+    { id: 50249, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence uses emphatic DO for contrast?', options: ['I do like it!', 'I don\'t agree, but I do respect you.', 'Do come in!', 'I do my homework.'], correct: 'I don\'t agree, but I do respect you.', explanation: 'Contrast — don\'t agree vs do respect. Emphatic do qarama-qarshilikni bildiradi.' },
+    { id: 50250, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I did saw him at the station.', errorPart: 'saw', correct: 'I did see him at the station.', explanation: 'Did + V1 — o\'tgan zamon. Qoida: Did you go? (Bordingmi?) V2 emas, V1 ishlatiladi.' },
     { id: 50251, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She does works in a hospital.', errorPart: 'works', correct: 'She does work in a hospital.', explanation: 'Does + V1 = 3-shaxs savol. Qoida: Does she work? (Ishlaydimi?) \'Does\' dan keyin V1 (works emas). Does allaqachon 3-shaxsni bildiradi.' },
-    { id: 50252, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I do be happy with my results.', errorPart: 'do be', correct: 'I am happy with my results.', explanation: 'Be bilan do faqat imperative da' },
+    { id: 50252, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I do be happy with my results.', errorPart: 'do be', correct: 'I am happy with my results.', explanation: 'Be bilan do faqat imperative da ishlatiladi. Oddiy gapda do + be XATO.' },
     { id: 50253, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'A: You didn\'t call! B: I did called you!', errorPart: 'called', correct: 'A: You didn\'t call! B: I did call you!', explanation: 'Did + V1 = o\'tgan zamon (fe\'l V1). Qoida: Did you call me? (Menga qo\'ng\'iroq qildingmi?) \'Did call\' (called emas). Did o\'tgan zamonni bildiradi, V1 qoladi.' },
     { id: 50254, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Do you be quiet, please!', errorPart: 'Do you be', correct: 'Do be quiet, please!', explanation: 'Do + be \u2014 imperative, you kerak emas' },
     { id: 50255, type: 'transformation', instruction: "Emphatic ga o'zgartiring:", question: 'I like this film. (emphatic)', hint: 'I ...', correct: 'I do like this film!', explanation: 'I + do + like = urg\'u berish (do + V1). Qoida: Hozirgi zamonda urg\'u: I do like it! (Menga yoqadi! - ta\'kidlab.) \'Do\' urg\'u fe\'li sifatida: I do love you. (Men seni sevaman! - kuchli his-tuyg\'u.)' },
@@ -1075,20 +1095,24 @@ export const emphasisDoesB1plus: DailyLesson = {
       instruction: 'Ta\'kidlash',
       prompt: 'Do/does/did bilan urg\'u berib, o\'z qobiliyatlaringiz haqida yozing.',
       hints: ['\'I do enjoy...\'', '\'She does speak...\'', '\'He did finish...\''],
-      exampleAnswer: 'I do enjoy learning English every day! She does speak three languages fluently. He did finish the project on time. We do need to practise more.' },
-   ],
+      exampleAnswer: 'I do enjoy learning English every day! She does speak three languages fluently. He did finish the project on time. We do need to practise more.' }
+    ,
+    {"id":100611,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"emphatic do","options":["tasdiq gaplarda urg'u berish","savol yasash","inkor qilish","kelajakni bildirish"],"correct":"tasdiq gaplarda urg'u berish","explanation":"Emphatic do — tasdiq gapida kuch berish: I DO like it!"},
+    {"id":100612,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"did + V1","options":["o'tgan zamonda urg'u","hozirgi zamon urg'u","savol yasash","buyruq"],"correct":"o'tgan zamonda urg'u","explanation":"Did + V1 — o'tmishdagi urg'u: I DID finish!"}
+  ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Do/Does/Did urg\'usi', color: 'bg-emerald-500', icon: '🌱', ids: [4101, 4102, 4103, 4104, 4105] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4106, 4107, 4108, 4109, 4110] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4111, 4112, 4113, 4114, 4115] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4118, 4117, 4115, 4119, 4120, 4116, 4113, 4118, 4117, 4120, 55003, 55012] },
-  ],
+  
+    ],
   tests: [
     { id: 50260, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Emphatic do qanday gaplarda ishlatiladi?', options: ['savol gaplarda', 'inkor gaplarda', 'tasdiq gaplarda (urg\'u)', "buyruq gaplarda"], correct: 'tasdiq gaplarda (urg\'u)', explanation: 'Emphatic do \u2014 tasdiq gaplarda kuch berish uchun' },
     { id: 50261, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Emphatic do dan keyin fe'l qanday shaklda keladi?", options: ['V1', 'V-ing', 'V3', 'to V'], correct: 'V1', explanation: 'Do/does/did + V1 (base form) = urg\'u. Qoida: I do work. (Ishlayman, ta\'kidlab.) She does sing. (U kuylaydi, ta\'kidlab.) \'Does works\' XATO! Does work to\'g\'ri.' },
     { id: 50262, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Present tense, she bilan qaysi emphatic shakl ishlatiladi?', options: ['do', 'does', 'did', 'done'], correct: 'does', explanation: 'She + does + V1 = 3-shaxs urg\'u (does + V1). Qoida: Does + V1 (siz -s qo\'shimchasi): She does work hard. (U qattiq ishlaydi - ta\'kidlab.) Odatiy: She works hard. Urg\'uli: She DOES work hard.' },
-    { id: 50263, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Past tense uchun qaysi emphatic shakl?', options: ['do', 'does', 'did', 'done'], correct: 'did', explanation: 'Past = did + V1 (o\'tgan zamon). Qoida: Did you go? I didn\'t go. \'Did\' + V2 ishlatilmaydi! \'Did\' allaqachon o\'tganlikni bildiradi.' },
-    { id: 50264, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Do + imperative qanday ma'noni beradi?", options: ['savol', 'inkor', "kuchli iltimos/taklif", "o'tmish"], correct: "kuchli iltimos/taklif", explanation: 'Do + imperative = polite but strong' },
+    { id: 50263, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Past tense uchun qaysi emphatic shakl?', options: ['do', 'does', 'did', 'done'], correct: 'did', explanation: 'Past = did + V1. Qoida: Did you see him? (Ko\'rdingmi?) Did allaqachon o\'tganlikni bildiradi.' },
+    { id: 50264, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Do + imperative qanday ma'noni beradi?", options: ['savol', 'inkor', "kuchli iltimos/taklif", "o'tmish"], correct: "kuchli iltimos/taklif", explanation: 'Do + imperative = polite but strong. Iltimosni kuchliroq ifoda etish uchun ishlatiladi.' },
     { id: 50265, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ agree with you!', options: ['do', 'does', 'did', 'done'], correct: 'do', explanation: 'I + do + V1 = ta\'kid uchun do + asosiy fe\'l. I do like it = Menga haqiqatan yoqadi (oddiy I like dan kuchliroq).' },
     { id: 50266, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She ___ know the answer, believe me!', options: ['do', 'does', 'did', 'done'], correct: 'does', explanation: 'She + does + know = urg\'u (does + V1). Qoida: \'Does + know\' = biladi (ta\'kidlab). Oddiy: She knows. Urg\'uli: She DOES know the answer. (U javobni BILADI.)' },
     { id: 50267, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ tell you the truth yesterday!', options: ['do', 'does', 'did', 'done'], correct: 'did', explanation: 'Yesterday + did + tell = kecha + did + tell. Qoida: Yesterday I told him. (Oddiy.) Yesterday I DID tell him. (Kecha men unga AYTDIM - urg\'u). \'Did + tell\' urg\'u beradi.' },
@@ -1098,14 +1122,14 @@ export const emphasisDoesB1plus: DailyLesson = {
     { id: 50271, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is NOT a use of emphatic do?", options: ['insistence', 'contrast', 'question formation', 'surprise'], correct: 'question formation', explanation: 'Question formation = auxiliary, not emphatic' },
     { id: 50272, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ be happy if I pass the exam! (correct emphatic form?)', options: ['do', 'will', 'would', 'am'], correct: 'will', explanation: 'Be bilan do faqat imperative da. Bu yerda will be happy' },
     { id: 50273, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence uses emphatic do CORRECTLY?', options: ['I did went there.', 'She does understands.', 'I do respect your opinion.', 'He do be a teacher.'], correct: 'I do respect your opinion.', explanation: "I + do + V1 \u2014 to'g'ri" },
-    { id: 50274, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "What is the function of 'do' in 'Do come in'?", options: ['auxiliary for question', 'main verb', 'emphatic imperative', 'past tense'], correct: 'emphatic imperative', explanation: 'Do + imperative = polite invitation' },
-  ],
+    { id: 50274, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "What is the function of 'do' in 'Do come in'?", options: ['auxiliary for question', 'main verb', 'emphatic imperative', 'past tense'], correct: 'emphatic imperative', explanation: 'Do + imperative = polite invitation' }
+    ],
   testSections: [
     { title: 'Oson', desc: 'Emphatic do asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [411, 412, 413, 414, 415] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [416, 417, 418, 419, 420] },
     { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [421, 422, 423] },
-    { title: 'Murakkab', desc: 'Emphatic do master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [424, 425] },
-  ],
+    { title: 'Murakkab', desc: 'Emphatic do master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [424, 425] }
+    ],
 }
 
 export const frontingB1plus: DailyLesson = {
@@ -1121,14 +1145,14 @@ export const frontingB1plus: DailyLesson = {
       { word: 'tower', definition: 'minora' },
       { word: 'bell', definition: 'qo\'ng\'iroq' },
       { word: 'portrait', definition: 'portret' },
-      { word: 'peaceful', definition: 'tinch, osoyishta' },
+      { word: 'peaceful', definition: 'tinch, osoyishta' }
     ],
     questions: [
       { id: 90371, type: 'multiple-choice', question: "What stands on the hill?", options: ["A church", "A tower over 500 years old", "A statue", "A bridge"], correctIndex: 1, explanation: "'On the hill stands a tower over 500 years old' — fronting of place adverbial + inversion." },
       { id: 90372, type: 'multiple-choice', question: "What hangs inside the tower?", options: ["A flag", "A huge bell", "A painting", "A clock"], correctIndex: 1, explanation: "'Inside the tower hangs a huge bell.'" },
       { id: 90373, type: 'multiple-choice', question: "What will you find at the top of the stairs?", options: ["A garden", "The best view in the city", "A museum", "A café"], correctIndex: 1, explanation: "'At the top you'll find the best view in the city.'" },
       { id: 90374, type: 'true-false', question: "Many visitors notice the king's portrait.", answer: false, explanation: "'Rarely do visitors notice it' — negative adverb fronting + inversion." },
-      { id: 90375, type: 'multiple-choice', question: "Whose portrait hangs on the wall?", options: ["The guide's", "The first king's", "A famous artist's", "The builder's"], correctIndex: 1, explanation: "'On that wall hangs a portrait of the first king.'" },
+      { id: 90375, type: 'multiple-choice', question: "Whose portrait hangs on the wall?", options: ["The guide's", "The first king's", "A famous artist's", "The builder's"], correctIndex: 1, explanation: "'On that wall hangs a portrait of the first king.'" }
     ],
     difficulty: 'hard',
     topic: "Fronting — gap boshiga ko'chirish va inversiya",
@@ -1139,7 +1163,7 @@ export const frontingB1plus: DailyLesson = {
       { id: 50275, type: 'multiple-choice' as const, question: "'On the top of the hill stood a fortress' — why is the order changed?", options: ["It is a mistake","For emphasis/style (fronting)","To ask a question","To show the future"], correctIndex: 1, explanation: "Fronting — joy iborasi oldinga chiqarilgan." },
       { id: 50276, type: 'multiple-choice' as const, question: "After 'Never had the travellers seen', the order is...", options: ["normal","inverted (auxiliary before subject)","a question","passive"], correctIndex: 1, explanation: "Negativ fronting — inversiya kerak." },
       { id: 50277, type: 'multiple-choice' as const, question: "'Rarely do tourists visit' — which word triggers inversion?", options: ["tourists","visit","Rarely","do"], correctIndex: 2, explanation: "Negativ ravish (Rarely) inversiyaga sabab." },
-      { id: 50278, type: 'multiple-choice' as const, question: "Fronting is mainly used to...", options: ["save space","add emphasis and dramatic effect","ask questions","make negatives"], correctIndex: 1, explanation: "Urg'u va stilistik ta'sir uchun." },
+      { id: 50278, type: 'multiple-choice' as const, question: "Fronting is mainly used to...", options: ["save space","add emphasis and dramatic effect","ask questions","make negatives"], correctIndex: 1, explanation: "Urg'u va stilistik ta'sir uchun." }
     ]
   },
   writing: {
@@ -1149,7 +1173,7 @@ export const frontingB1plus: DailyLesson = {
       "Front a place phrase: 'On the hill stood an old house.'",
       "Front for drama: 'Never had I seen such a view.'",
       "After negative fronting, invert: 'Rarely do we...'",
-      "Use it carefully, not in every sentence",
+      "Use it carefully, not in every sentence"
     ],
   },
   category: 'Emphasis',
@@ -1157,8 +1181,8 @@ export const frontingB1plus: DailyLesson = {
     { label: 'Object Fronting', structure: 'Object + Subject + Verb\nThat book I have already read.\nThis problem we must solve first.\nHis name I can\u2019t remember.', color: 'green' },
     { label: 'Adverb Fronting', structure: 'Adverb/Phrase + Subject + Verb\nNever have I seen such beauty.\nOnly then did she understand.\nNot until Monday will we know.', color: 'blue' },
     { label: 'Adjective/Complement Fronting', structure: 'Adjective/Complement + Verb + Subject\nBeautiful is the only word for it.\nStrange as it may seem, he was right.\nHappy are those who help others.', color: 'purple' },
-    { label: 'Negative Adverb Fronting', structure: 'Negative adverb + auxiliary + S + V\nSeldom do we see such talent.\nRarely does he complain.\nHardly had I arrived when...', color: 'orange' },
-  ],
+    { label: 'Negative Adverb Fronting', structure: 'Negative adverb + auxiliary + S + V\nSeldom do we see such talent.\nRarely does he complain.\nHardly had I arrived when...', color: 'orange' }
+    ],
   rules: [
     "1\uFE0F\u20E3 FRONTING NIMA?\n\nFronting \u2014 gap bo\u2018lagini odatdagi o\u2018rnidan olib, gap boshiga qo\u2018yish. Bu urg\u2018u va stilistik ta\u2019sir yaratadi:\n\n  Normal: I have already read that book.\n  Fronting: That book I have already read.\n  (O\u2018sha kitobni men allaqachon o\u2018qiganman.)\n  \u2192 \u201cthat book\u201d ga urg\u2018u tushadi.\n\n\uD83D\uDCCC Fronting \u2014 yozma ingliz tilida keng ishlatiladi.\n\uD83D\uDCCC So\u2018zlashuvda kam, faqat kuchli urg\u2018u uchun.",
     "2\uFE0F\u20E3 OBJECT FRONTING\n\nTo\u2018ldiruvchini (object) gap boshiga chiqarish:\n\n  Normal: I don\u2018t understand his decision.\n  Fronting: His decision I don\u2018t understand.\n  (Uning qarorini men tushunmayman.)\n  \u2192 \u201chis decision\u201d ga urg\u2018u.\n\n  Normal: We must solve this problem first.\n  Fronting: This problem we must solve first.\n  (Bu muammoni birinchi hal qilishimiz kerak.)\n\n\uD83D\uDD34 Object fronting \u2014 eng oddiy fronting turi. Inversion talab qilmaydi \u2014 faqat object oldinga chiqadi, gap tuzilishi o\u2018zgarmaydi.",
@@ -1167,8 +1191,8 @@ export const frontingB1plus: DailyLesson = {
     "5\uFE0F\u20E3 ONLY + ADVERB FRONTING (INVERSION)\n\nOnly bilan boshlangan phrase lar gap boshida kelsa, inversion kerak:\n\n  Only then did I understand the problem.\n  (Faqat o\u2018shanda men muammoni tushundim.)\n  \u2192 Only then + did + I + understand\n\n  Only later did she realise her mistake.\n  (Faqat keyinroq u xatosini tushundi.)\n\n  Only by working hard can you succeed.\n  (Faqat qattiq ishlash orqali muvaffaqiyatga erishishingiz mumkin.)\n\n  Not until I saw it did I believe it.\n  (Ko\u2018rmagunimcha ishonmadim.)",
     "6\uFE0F\u20E3 SUBJECT/COMPLEMENT FRONTING\n\nBa\u2019zan ot yoki sifatni (complement) oldinga chiqarish mumkin. Bu ko\u2018pincha she\u2019riy yoki adabiy uslub:\n\n  A great man he was, and a great leader too.\n  (U buyuk inson edi va buyuk rahbar ham.)\n\n  Happy are those who remember their past.\n  (Baxtlidir o\u2018tmishini eslaydiganlar.)\n\n  More important is the question of quality.\n  (Muhimroq \u2014 sifat masalasi.)\n\n\uD83D\uDD34 Complement fronting \u2014 adabiy va rasmiy uslub. So\u2018zlashuvda kam ishlatiladi.",
     "7\uFE0F\u20E3 AS / THOUGH FRONTING\n\nAs va though bilan fronting \u2014 concessive ma\u2019no (qaramay):\n\n  Strange as it may seem, I enjoyed the film.\n  (Qanchalik g\u2018alati tuyulmasin, menga film yoqdi.)\n  \u2192 = Although it may seem strange...\n\n  Tired though he was, he continued working.\n  (Qanchalik charchagan bo\u2018lsa ham, u ishlashda davom etdi.)\n\n  Much as I like him, I can\u2018t agree with him.\n  (Uni qanchalik yoqtirsam ham, qo\u2018shila olmayman.)\n\n\uD83D\uDD34 As va though bilan \u2014 adjective/adverb + as/though + subject + verb.",
-    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Negative adverb fronting da inversion unutish: Never I have seen... \u2192 Never have I seen...\n\u2022 Only dan keyin inversion unutish: Only then I understood... \u2192 Only then did I understand...\n\u2022 Inversion ni noto\u2018g\u2018ri qo\u2018llash: Never did he went... \u2192 Never did he go... (V1)\n\u2022 Object fronting da inversion ishlatish: That book have I read \u2192 That book I have read (oddiy fronting)\n\u2022 Frontingni haddan tashqari ko\u2018p ishlatish \u2014 faqat urg\u2018u kerak bo\u2018lganda.",
-  ],
+    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Negative adverb fronting da inversion unutish: Never I have seen... \u2192 Never have I seen...\n\u2022 Only dan keyin inversion unutish: Only then I understood... \u2192 Only then did I understand...\n\u2022 Inversion ni noto\u2018g\u2018ri qo\u2018llash: Never did he went... \u2192 Never did he go... (V1)\n\u2022 Object fronting da inversion ishlatish: That book have I read \u2192 That book I have read (oddiy fronting)\n\u2022 Frontingni haddan tashqari ko\u2018p ishlatish \u2014 faqat urg\u2018u kerak bo\u2018lganda."
+    ],
   vocabulary: [
     { en: 'fronting', uz: 'gap bo\'lagini oldinga chiqarish', example: 'Fronting puts emphasis on a sentence element.', rule: 'Concept' },
     { en: 'inversion', uz: 'teskari tartib', example: 'Negative adverbs cause inversion in fronting.', rule: 'Grammar' },
@@ -1179,8 +1203,8 @@ export const frontingB1plus: DailyLesson = {
     { en: 'subject-auxiliary inversion', uz: 'ega-yordamchi fe\'l teskari tartibi', example: 'Never have I seen \u2014 have before I.', rule: 'Structure' },
     { en: 'auxiliary', uz: 'yordamchi fe\'l', example: 'Do, have, can are auxiliaries in inversion.', rule: 'Grammar' },
     { en: 'fronted element', uz: 'oldinga chiqarilgan bo\'lak', example: 'The fronted element gets special focus.', rule: 'Element' },
-    { en: 'literary style', uz: 'adabiy uslub', example: 'Fronting is common in literary style.', rule: 'Register' },
-  ],
+    { en: 'literary style', uz: 'adabiy uslub', example: 'Fronting is common in literary style.', rule: 'Register' }
+    ],
   examples: [
     { en: "That movie I've already seen three times!", uz: "O'sha filmni men uch marta ko'rganman!" },
     { en: 'Never have I felt so embarrassed in my life.', uz: "Hayotimda hech qachon bunchalik uyalgan emasman." },
@@ -1189,8 +1213,8 @@ export const frontingB1plus: DailyLesson = {
     { en: 'Strange as it may seem, I like rainy weather.', uz: "Qanchalik g'alati tuyulmasin, menga yomg'irli ob-havo yoqadi." },
     { en: 'Not until I tried did I understand how difficult it is.', uz: "Sinab ko'rmagunimcha, bu qanchalik qiyinligini tushunmadim." },
     { en: 'This problem we need to solve before Friday.', uz: "Bu muammoni juma kunigacha hal qilishimiz kerak." },
-    { en: 'Hardly had I sat down when the phone rang.', uz: "O'tirganim bilan telefon jiringladi." },
-  ],
+    { en: 'Hardly had I sat down when the phone rang.', uz: "O'tirganim bilan telefon jiringladi." }
+    ],
   specialCases: [
     {
       id: 'fronting-with-inversion',
@@ -1200,13 +1224,13 @@ export const frontingB1plus: DailyLesson = {
       commonMistakes: "Never I have seen... \u2192 Never have I seen... (inversion kerak)\nOnly then I understood... \u2192 Only then did I understand... (inversion kerak)\nThat book have I read. \u2192 That book I have read. (inversion kerak EMAS)",
       examples: [
         { en: 'Never have I witnessed such a beautiful sunset.', uz: "Hech qachon bunchalik chiroyli quyosh botishini ko'rmaganman." },
-        { en: 'This problem I cannot solve on my own.', uz: "Bu muammoni men o'zim hal qila olmayman." },
-      ],
+        { en: 'This problem I cannot solve on my own.', uz: "Bu muammoni men o'zim hal qila olmayman." }
+    ],
       drills: [
         { id: 50279, type: 'fill-blank', instruction: "Inversion bilan to'ldiring:", question: 'Never ___ I seen such a mess!', blanks: ['have'], explanation: 'Never + inversion = have + I (hech qachon). Qoida: Never have I seen such beauty. (Hech qachon bunday go\'zallik ko\'rmaganman.) Never + have/has + S + V3.' },
         { id: 50280, type: 'fill-blank', instruction: "Inversion bilan to'ldiring:", question: 'Only then ___ she understand the truth.', blanks: ['did'], explanation: 'Only then + did + she + V1 = shundan keyingina u ... Qoida: \'Only then\' gap boshida: Only then did she realize the truth. (Shundan keyingina u haqiqatni tushundi.) Inversiya faqat \'only then\' gap boshida kelganda!' },
-        { id: 50281, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which needs INVERSION?', options: ['That book I read.', 'Yesterday I saw him.', 'Never I saw him.', 'Never have I seen him.'], correct: 'Never have I seen him.', explanation: 'Never + inversion = hech qachon + inversiya. Qoida: \'Never\' gap boshida kelganda inversiya: Never have I seen such beauty. (Men hech qachon bunday go\'zallikni ko\'rmaganman.) Oddiy: I have never seen. Inversiya: Never have I seen.' },
-      ],
+        { id: 50281, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which needs INVERSION?', options: ['That book I read.', 'Yesterday I saw him.', 'Never I saw him.', 'Never have I seen him.'], correct: 'Never have I seen him.', explanation: 'Never + inversion = hech qachon + inversiya. Qoida: \'Never\' gap boshida kelganda inversiya: Never have I seen such beauty. (Men hech qachon bunday go\'zallikni ko\'rmaganman.) Oddiy: I have never seen. Inversiya: Never have I seen.' }
+    ],
     },
     {
       id: 'hardly-no-sooner',
@@ -1216,15 +1240,15 @@ export const frontingB1plus: DailyLesson = {
       commonMistakes: "Hardly I had arrived when... \u2192 Hardly had I arrived when... (inversion)\nNo sooner I sat down when... \u2192 No sooner had I sat down than... (inversion + than)\nHardly...than -- XATO, Hardly...when -- TO'G'RI",
       examples: [
         { en: 'Hardly had I closed the door when the dog started barking.', uz: "Eshikni yopganim bilan it hurishni boshladi." },
-        { en: 'No sooner had we left than it started raining.', uz: "Ketganimiz bilan yomg'ir yog'a boshladi." },
-      ],
+        { en: 'No sooner had we left than it started raining.', uz: "Ketganimiz bilan yomg'ir yog'a boshladi." }
+    ],
       drills: [
         { id: 50282, type: 'fill-blank', instruction: "Hardly ... when bilan to'ldiring:", question: 'Hardly had I ___ (leave) when he called.', blanks: ['left'], explanation: 'Had + V3 (left) = Past Perfect. Qoida: Had left = ketib bo\'lgan edi: The train had left when we arrived. (Poyezd ketib bo\'lgan edi.)' },
         { id: 50283, type: 'fill-blank', instruction: "No sooner ... than bilan to'ldiring:", question: 'No sooner had we ___ (arrive) than the show started.', blanks: ['arrived'], explanation: 'Had + V3 (arrived) = Past Perfect. Qoida: The guests had arrived before we finished. (Mehmonlar kelib bo\'lgan edi.) Ikkala harakat o\'tmishda.' },
-        { id: 50284, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Hardly had she finished ___ the phone rang.', options: ['than', 'when', 'then', 'that'], correct: 'when', explanation: 'Hardly ... when — zudlik bilan (garchi ... deb). \'Hardly had I arrived when it started.\'' },
-      ],
-    },
-  ],
+        { id: 50284, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Hardly had she finished ___ the phone rang.', options: ['than', 'when', 'then', 'that'], correct: 'when', explanation: 'Hardly ... when — zudlik bilan (garchi ... deb). \'Hardly had I arrived when it started.\'' }
+    ],
+    }
+    ],
   exercises: [
     { id: 50285, type: 'fill-blank', instruction: "Object fronting: That film ___ (I / see) already.", question: 'That film ___ .', blanks: ['I have already seen'], explanation: 'Object fronting \u2014 no inversion' },
     { id: 50286, type: 'fill-blank', instruction: "Adverb fronting: Yesterday ___ (I / meet) him.", question: 'Yesterday ___ .', blanks: ['I met him'], explanation: 'Adverb fronting \u2014 no inversion' },
@@ -1257,14 +1281,18 @@ export const frontingB1plus: DailyLesson = {
       instruction: 'Fronting bilan urg\'u',
       prompt: 'Fronting (gap boshiga ko\'chirish) ishlatib, hayotingizdagi muhim voqealar haqida yozing.',
       hints: ['\'Never had I...\'', '\'Only then did I...\'', '\'So beautiful was...\''],
-      exampleAnswer: 'Never had I seen such a beautiful sunset. Only then did I realize how important family is. So happy was she that she cried.' },
-   ],
+      exampleAnswer: 'Never had I seen such a beautiful sunset. Only then did I realize how important family is. So happy was she that she cried.' }
+    ,
+    {"id":100613,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"never","options":["hech qachon (inversiya kerak)","har doim","ba'zan","kamdan-kam"],"correct":"hech qachon (inversiya kerak)","explanation":"Never — inkor ravish, gap boshida inversiya talab qiladi."},
+    {"id":100614,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"seldom","options":["kamdan-kam (inversiya kerak)","tez-tez","hech qachon","har doim"],"correct":"kamdan-kam (inversiya kerak)","explanation":"Seldom — kamdan-kam, inversiya bilan ishlatiladi: Seldom do I go."}
+  ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Fronting turlari', color: 'bg-emerald-500', icon: '🌱', ids: [4201, 4202, 4203, 4204, 4205] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4206, 4207, 4208, 4209, 4210] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4211, 4212, 4213, 4214, 4215] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4218, 4213, 4218, 4217, 4216, 4220, 4215, 4220, 4219, 4217, 55002, 55011] },
-  ],
+  
+    ],
   tests: [
     { id: 50305, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Fronting nima?', options: ["gap bo'lagini oxiriga qo'yish", "gap bo'lagini oldinga chiqarish", "fe'lni o'zgartirish", "savol yasash"], correct: "gap bo'lagini oldinga chiqarish", explanation: 'Fronting = oldinga chiqarish (urg\'u uchun so\'zni gap boshiga olish). Qoida: Fronting: A beautiful garden it was. (Go\'zal bog\' edi u.) Odatiy: It was a beautiful garden. Fronting urg\'u beradi.' },
     { id: 50306, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Negative adverb fronting da nima talab qilinadi?', options: ['hech narsa', 'inversion', 'savol', 'passive'], correct: 'inversion', explanation: 'Negative adverb + inversion = inkor ravish + inversiya. Qoida: Never, rarely, seldom, hardly, scarcely, no sooner, not only, not until kabi inkor ma\'noli so\'zlar gap boshida kelganda inversiya: Never have I seen...' },
@@ -1280,14 +1308,14 @@ export const frontingB1plus: DailyLesson = {
     { id: 50316, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'No sooner ___ than the show started.', options: ['we had arrived', 'had we arrived', 'we arrived', 'did we arrive'], correct: 'had we arrived', explanation: 'No sooner + had + we + V3 + than = ...lati bilan. Qoida: No sooner had we left than it rained. (Ketishimiz bilan yomg\'ir yog\'di.) \'No sooner...than\' inversiyasi: No sooner + had + S + V3 + than.' },
     { id: 50317, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Only by working hard ___ succeed.', options: ['you can', 'can you', 'you will', 'you do'], correct: 'can you', explanation: 'Only by + inversion: can you = ... bilangina. Qoida: Only by + V-ing + inversion: Only by working hard can you succeed. (Qattiq ishlash bilangina muvaffaqiyatga erishishingiz mumkin.)' },
     { id: 50318, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is grammatically CORRECT?', options: ['Never I have been there.', 'Only then I understood.', 'Not until later did she call.', 'Hardly I arrived when.'], correct: 'Not until later did she call.', explanation: "Not until + inversion \u2014 to'g'ri" },
-    { id: 50319, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence uses CORRECT fronting?', options: ['That book have I read.', 'Never have I been so happy!', 'Only then I realised.', 'Seldom we have met.'], correct: 'Never have I been so happy!', explanation: "Never + inversion \u2014 to'g'ri" },
-  ],
+    { id: 50319, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which sentence uses CORRECT fronting?', options: ['That book have I read.', 'Never have I been so happy!', 'Only then I realised.', 'Seldom we have met.'], correct: 'Never have I been so happy!', explanation: "Never + inversion \u2014 to'g'ri" }
+    ],
   testSections: [
     { title: 'Oson', desc: 'Fronting asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [421, 422, 423, 424, 425] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [426, 427, 428, 429, 430] },
     { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [431, 432, 433] },
-    { title: 'Murakkab', desc: 'Fronting master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [434, 435] },
-  ],
+    { title: 'Murakkab', desc: 'Fronting master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [434, 435] }
+    ],
 }
 
 export const ellipsisSubstitutionB1plus: DailyLesson = {
@@ -1303,14 +1331,14 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
       { word: 'homework', definition: 'uy vazifasi' },
       { word: 'shame', definition: 'achinarli holat (a shame)' },
       { word: 'seat', definition: 'o\'rindiq' },
-      { word: 'save', definition: 'saqlab qo\'ymoq (joy)' },
+      { word: 'save', definition: 'saqlab qo\'ymoq (joy)' }
     ],
     questions: [
       { id: 90381, type: 'multiple-choice', question: "Why can't Bek come to the cinema?", options: ["He's ill", "Too much homework", "No money", "He's tired"], correctIndex: 1, explanation: "'I'd love to, but I can't. Too much homework' — ellipsis: 'I'd love to (come)'." },
       { id: 90382, type: 'multiple-choice', question: "Who else is coming?", options: ["Only Dilshod", "Dilshod and Laylo", "Nobody", "Anvar's brother"], correctIndex: 1, explanation: "'Dilshod is coming, and so is Laylo' — substitution with 'so is'." },
       { id: 90383, type: 'true-false', question: "Bek has already seen the film.", answer: false, explanation: "'No, I haven't, but I'd like to' — ellipsis: 'I'd like to (see it)'." },
       { id: 90384, type: 'multiple-choice', question: "What film are they watching?", options: ["A comedy", "The new action one", "A horror film", "A documentary"], correctIndex: 1, explanation: "'The new action one' — 'one' substitutes 'film'." },
-      { id: 90385, type: 'multiple-choice', question: "What will Anvar do for Bek?", options: ["Buy his ticket", "Save him a seat", "Pick him up", "Lend him notes"], correctIndex: 1, explanation: "'I'll save you a seat if you want one' — 'one' = a seat." },
+      { id: 90385, type: 'multiple-choice', question: "What will Anvar do for Bek?", options: ["Buy his ticket", "Save him a seat", "Pick him up", "Lend him notes"], correctIndex: 1, explanation: "'I'll save you a seat if you want one' — 'one' = a seat." }
     ],
     difficulty: 'hard',
     topic: "Ellipsis va substitution — so / one / do",
@@ -1321,7 +1349,7 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
       { id: 50320, type: 'multiple-choice' as const, question: "'Yes, I am' is short for...", options: ["Yes, I am coming","Yes, I will","Yes, I do","Yes, I can"], correctIndex: 0, explanation: "Ellipsis — takroriy 'coming' tushirilgan." },
       { id: 50321, type: 'multiple-choice' as const, question: "'Bring the red ones' — 'ones' replaces...", options: ["a verb","flowers (a noun)","a clause","nothing"], correctIndex: 1, explanation: "Substitution — 'ones' otni almashtiradi." },
       { id: 50322, type: 'multiple-choice' as const, question: "'I think so too' — 'so' replaces...", options: ["a noun","a whole clause","an adjective","a place"], correctIndex: 1, explanation: "'so' butun gapni almashtiradi." },
-      { id: 50323, type: 'multiple-choice' as const, question: "'So can I' is a way to...", options: ["disagree","agree with a positive statement","ask a question","make a negative"], correctIndex: 1, explanation: "Ijobiyga qo'shilish: So + auxiliary + subject." },
+      { id: 50323, type: 'multiple-choice' as const, question: "'So can I' is a way to...", options: ["disagree","agree with a positive statement","ask a question","make a negative"], correctIndex: 1, explanation: "Ijobiyga qo'shilish: So + auxiliary + subject." }
     ]
   },
   writing: {
@@ -1331,7 +1359,7 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
       "Substitute with 'one/ones': 'I'll take the red one.'",
       "'so/do' replace clauses: 'I think so.', 'So do I.'",
       "Leave out repeated words: 'I can go, but she can't.'",
-      "Keep it natural, like real speech",
+      "Keep it natural, like real speech"
     ],
   },
   category: 'Discourse',
@@ -1339,8 +1367,8 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
     { label: 'Ellipsis', structure: "Omitting repeated words\nA: Are you coming? B: Yes, I am (coming).\nShe went home and (she) went to bed.\nHe can swim faster than I can (swim).", color: 'green' },
     { label: 'So / Not substitution', structure: "Replacing clauses with so/not\nA: Is he coming? B: I think so.\nA: Will it rain? B: I hope not.\nDo you think so? I believe so.", color: 'blue' },
     { label: 'Do substitution', structure: "Replacing verb with do/does/did\nShe runs faster than he does.\nA: Who broke it? B: I did.\nI don't like coffee but he does.", color: 'purple' },
-    { label: 'One/Ones substitution', structure: "Replacing noun with one/ones\nWhich car do you like? The red one.\nI prefer the blue ones.\nThis book is better than that one.", color: 'orange' },
-  ],
+    { label: 'One/Ones substitution', structure: "Replacing noun with one/ones\nWhich car do you like? The red one.\nI prefer the blue ones.\nThis book is better than that one.", color: 'orange' }
+    ],
   rules: [
     "1\uFE0F\u20E3 ELLIPSIS VA SUBSTITUTION NIMA?\n\nEllipsis \u2014 takrorlanadigan so\u2018zlarni TUSHIRIB QOLDIRISH:\n  She went home and (she) went to bed.\n  (U uyga keldi va uxlashga ketdi.)\n  \u2192 \u201cshe\u201d takrorlanmaydi.\n\nSubstitution \u2014 takrorlanadigan so\u2018z o\u2018rniga BOSHQA SO\u2018Z ishlatish:\n  A: Do you like coffee? B: Yes, I do. (like coffee \u2192 do)\n  \u2192 \u201clike coffee\u201d o\u2018rniga \u201cdo\u201d.\n\n\uD83D\uDCCC Ellipsis = tushirish (omit)\n\uD83D\uDCCC Substitution = almashtirish (replace)\n\uD83D\uDCCC Ikkala holatda ham gap qisqa va tabiiy bo\u2018ladi.",
     "2\uFE0F\u20E3 SUBJECT ELLIPSIS\n\nIkki gap bir xil subject ga ega bo\u2018lsa, ikkinchi gapda subject tushiriladi (coordinating conjunctions bilan: and, but, or):\n\n  He opened the door and (he) walked in.\n  (U eshikni ochdi va ichkari kirdi.)\n\n  She sat down and (she) began to read.\n  (U o\u2018tirdi va o\u2018qiy boshladi.)\n\n  I went to the store but (I) didn\u2018t buy anything.\n  (Do\u2018konga bordim, lekin hech narsa sotib olmadim.)\n\n\uD83D\uDD34 Agar subject farqli bo\u2018lsa, ellipsis mumkin emas:\n  He arrived and she left. (farqli subject \u2192 ikkalasi ham kerak)",
@@ -1349,8 +1377,8 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
     "5\uFE0F\u20E3 SO / NOT SUBSTITUTION\n\nSo \u2014 tasdiq gap o\u2018rniga (think, hope, believe, suppose, expect, guess, be afraid):\n\n  A: Is he coming? B: I think so.\n  (U kelyaptimi? Men shunday deb o\u2018ylayman.)\n  \u2192 so = that he is coming\n\n  A: Will it rain? B: I hope not.\n  (Yomg\u2018ir yog\u2018adimi? Umid qilamanki, yo\u2018q.)\n  \u2192 not = that it will not rain\n\n  I believe so. \u2022 I suppose so. \u2022 I guess so.\n  I hope not. \u2022 I think not. (rasmiy) \u2022 I\u2019m afraid not.\n\n\uD83D\uDD34 So \u2014 tasdiq, not \u2014 inkor.\n\uD83D\uDD34 Say va tell bilan so ishlatilmaydi: He said so? \u2192 He said that. (so emas)",
     "6\uFE0F\u20E3 ONE / ONES SUBSTITUTION\n\nOne (birlik) va ones (ko\u2018plik) \u2014 takrorlanadigan ot o\u2018rniga:\n\n  Which car is yours? The red one.\n  (Qaysi mashina sizniki? Qizili.)\n  \u2192 one = car\n\n  I prefer the blue ones.\n  (Men ko\u2018k ranglilarini afzal ko\u2018raman.)\n  \u2192 ones = cars\n\n  This book is more interesting than that one.\n  (Bu kitob undan qiziqarliroq.)\n\n  These apples are fresher than those ones.\n  (Bu olmalar ulardan yangiroq.)\n\n\uD83D\uDD34 One/ones \u2014 faqat sanaladigan otlar bilan. Sanalmaydigan otlar bilan ishlatilmaydi: I like this water. (one emas)",
     "7\uFE0F\u20E3 COMPARATIVE ELLIPSIS\n\nTaqqoslash (comparative) gaplarda qisqartirish keng tarqalgan:\n\n  She is taller than I (am tall).\n  \u2192 \u201cam tall\u201d tushirilgan.\n\n  He runs faster than she (does / runs).\n  \u2192 \u201cdoes\u201d yoki \u201cruns\u201d tushirilgan.\n\n  I earn more than I used to (earn).\n  \u2192 \u201cearn\u201d tushirilgan.\n\n  She has more experience than I (have).\n  \u2192 \u201chave\u201d tushirilgan yoki \u201cdo\u201d bilan: than I do.\n\n\uD83D\uDD34 Comparative ellipsis \u2014 than dan keyin qisqartirish.",
-    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 So ni noto\u2018g\u2018ri ishlatish: He said so \u2192 He said that (so emas). Think so \u2714, say so \u274C.\n\u2022 One/ones ni sanalmaydigan otlar bilan: I like this water one \u2192 I like this water.\n\u2022 Do substitution ni unutish: I like coffee more than she likes coffee \u2192 I like coffee more than she does.\n\u2022 Subject ellipsis ni noto\u2018g\u2018ri ishlatish: He went home and she went to bed \u2192 she ni tushirib bo\u2018lmaydi (farqli subject).\n\u2022 Auxiliary dan keyin fe\u2018lni qaytarish: Yes, I have finished. \u2192 Yes, I have. (qisqa)",
-  ],
+    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 So ni noto\u2018g\u2018ri ishlatish: He said so \u2192 He said that (so emas). Think so \u2714, say so \u274C.\n\u2022 One/ones ni sanalmaydigan otlar bilan: I like this water one \u2192 I like this water.\n\u2022 Do substitution ni unutish: I like coffee more than she likes coffee \u2192 I like coffee more than she does.\n\u2022 Subject ellipsis ni noto\u2018g\u2018ri ishlatish: He went home and she went to bed \u2192 she ni tushirib bo\u2018lmaydi (farqli subject).\n\u2022 Auxiliary dan keyin fe\u2018lni qaytarish: Yes, I have finished. \u2192 Yes, I have. (qisqa)"
+    ],
   vocabulary: [
     { en: 'ellipsis', uz: "so'z tushirib qoldirish", example: 'Ellipsis avoids repetition.', rule: 'Concept' },
     { en: 'substitution', uz: "o'rniga boshqa so'z ishlatish", example: 'Do, so, one are substitution words.', rule: 'Concept' },
@@ -1361,8 +1389,8 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
     { en: 'coordinate clause', uz: 'teng bog\'langan gap', example: 'And, but, or connect coordinate clauses.', rule: 'Syntax' },
     { en: 'pro-form', uz: "o'rinbosar shakl", example: 'Do, so, one are pro-forms.', rule: 'Linguistics' },
     { en: 'stranding', uz: 'yolg\'iz qolish', example: 'Preposition stranding occurs in ellipsis.', rule: 'Structure' },
-    { en: 'antecedent', uz: 'oldindagi so\'z', example: 'One/ones refer back to an antecedent noun.', rule: 'Reference' },
-  ],
+    { en: 'antecedent', uz: 'oldindagi so\'z', example: 'One/ones refer back to an antecedent noun.', rule: 'Reference' }
+    ],
   examples: [
     { en: 'She opened the door and (she) walked into the room.', uz: "U eshikni ochdi va xonaga kirdi." },
     { en: 'A: Have you finished? B: Yes, I have.', uz: "A: Tugatdingmi? B: Ha, tugatdim." },
@@ -1371,8 +1399,8 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
     { en: 'A: Will it rain? B: I hope not.', uz: "A: Yomg'ir yog'adimi? B: Umid qilamanki, yo'q." },
     { en: 'Which dress do you like? The red one.', uz: "Qaysi ko'ylak sizga yoqadi? Qizili." },
     { en: 'I prefer the small ones.', uz: "Men kichiklarini afzal ko'raman." },
-    { en: 'She runs faster than he does.', uz: "U undan tezroq yuguradi." },
-  ],
+    { en: 'She runs faster than he does.', uz: "U undan tezroq yuguradi." }
+    ],
   specialCases: [
     {
       id: 'so-vs-not',
@@ -1382,13 +1410,13 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
       commonMistakes: "He said so \u2192 He said that (so emas).\nI know so \u2192 I know that.\nI think not (rasmiy) = I don't think so (norasmiy). Ikkalasi to'g'ri.",
       examples: [
         { en: 'A: Will she pass? B: I think so.', uz: "A: U o'tadimi? B: Shunday deb o'ylayman." },
-        { en: 'A: Is he lying? B: I hope not.', uz: "A: U yolg'on gapiryaptimi? B: Umid qilamanki, yo'q." },
-      ],
+        { en: 'A: Is he lying? B: I hope not.', uz: "A: U yolg'on gapiryaptimi? B: Umid qilamanki, yo'q." }
+    ],
       drills: [
         { id: 50324, type: 'fill-blank', instruction: "So yoki Not bilan to'ldiring:", question: 'A: Is it true? B: I think ___ .', blanks: ['so'], explanation: 'Tasdiq = think so. Qoida: I think so = shunday deb o\'ylayman. Inkor: I don\'t think so. \'So\' oldingi gap o\'rnida.' },
         { id: 50325, type: 'fill-blank', instruction: "So yoki Not bilan to'ldiring:", question: 'A: Will it rain? B: I hope ___ .', blanks: ['not'], explanation: 'Kengaytirish = hope not. Qoida: I hope not (yo\'q deb). \'I don\'t hope so\' XATO! To\'g\'risi: I hope not.' },
-        { id: 50326, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['He said so.', 'I think so.', 'I know so.', 'She told so.'], correct: 'I think so.', explanation: 'Think so \u2714, say/tell/know so \u274C' },
-      ],
+        { id: 50326, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['He said so.', 'I think so.', 'I know so.', 'She told so.'], correct: 'I think so.', explanation: 'Think so \u2714, say/tell/know so \u274C' }
+    ],
     },
     {
       id: 'one-ones-usage',
@@ -1398,15 +1426,15 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
       commonMistakes: "I like this water one \u2192 I like this water (sanalmaydigan)\nThese ones are better \u2192 These are better (these dan keyin ones ba'zan tushiriladi)\nA one \u2192 one: a small one \u2714 (a + adjective + one)",
       examples: [
         { en: 'I need a new phone. This old one is broken.', uz: "Menga yangi telefon kerak. Bu eskisi buzilgan." },
-        { en: 'Which shoes? The black ones.', uz: "Qaysi tufli? Qoralari." },
-      ],
+        { en: 'Which shoes? The black ones.', uz: "Qaysi tufli? Qoralari." }
+    ],
       drills: [
         { id: 50327, type: 'fill-blank', instruction: "One yoki Ones bilan to'ldiring:", question: 'Which jacket? The blue ___ .', blanks: ['one'], explanation: 'Birlik = bitta (singular). Qoida: Ingliz tilida birlik ot bilan birlik fe\'l: one book IS. Ko\'plik ot bilan ko\'plik fe\'l: two books ARE.' },
         { id: 50328, type: 'fill-blank', instruction: "One yoki Ones bilan to'ldiring:", question: 'Which apples? The green ___ .', blanks: ['ones'], explanation: "Ko'plik \u2014 ones" },
-        { id: 50329, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is INCORRECT?', options: ['The red one', 'The blue ones', 'This water one', 'Which one?'], correct: 'This water one', explanation: "Sanalmaydigan \u2014 one ishlatilmaydi" },
-      ],
-    },
-  ],
+        { id: 50329, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is INCORRECT?', options: ['The red one', 'The blue ones', 'This water one', 'Which one?'], correct: 'This water one', explanation: "Sanalmaydigan \u2014 one ishlatilmaydi" }
+    ],
+    }
+    ],
   exercises: [
     { id: 50330, type: 'fill-blank', instruction: "Ellipsis \u2014 subject ni tushiring:", question: 'He sat down and ___ opened his book.', blanks: ['he (optional)'], explanation: "Subject ellipsis \u2014 he tushirilsa ham bo'ladi" },
     { id: 50331, type: 'fill-blank', instruction: "Verb ellipsis:", question: 'A: Can you swim? B: Yes, I ___ .', blanks: ['can'], explanation: 'Can + (swim) tushirilgan = \'can\' dan keyingi fe\'l tushirilgan. Qoida: Kontekstdan tushunarli bo\'lsa, fe\'l tushirilishi mumkin: \'Can you swim?\' \'Yes, I can.\' (Ha, qila olaman - \'swim\' tushirilgan.)' },
@@ -1417,7 +1445,7 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
     { id: 50336, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'A: Who called? B: I ___ .', options: ['did', 'called', 'have', 'was'], correct: 'did', explanation: 'Do substitution: did = called. Qoida: \'Do\' fe\'li oldingi fe\'l o\'rnida ishlatiladi: She called, and I did too. (U qo\'ng\'iroq qildi, men ham qildim.) Bu yerda \'did\' = \'called\' o\'rnida.' },
     { id: 50337, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "A: Will she come? B: I think ___ .", options: ['so', 'not', 'it', 'that'], correct: 'so', explanation: 'Think so = shunday deb o\'ylayman. I think so fikr bildirishda ishlatiladi, I don\'t think so inkor shakli.' },
     { id: 50338, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which dress? The blue ___ .', options: ['one', 'ones', 'do', 'so'], correct: 'one', explanation: 'One = dress (bironta ko\'ylak). One o\'rnida ishlatiladi, takrorlanmaslik uchun. Which dress? The red one.' },
-    { id: 50339, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I like these apples more than those ___ .', options: ['one', 'ones', 'do', 'so'], correct: 'ones', explanation: 'Ones = apples (ko\'plik)' },
+    { id: 50339, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I like these apples more than those ___ .', options: ['one', 'ones', 'do', 'so'], correct: 'ones', explanation: 'Ones = apples (ko\'plik). One o\'rnida ko\'plik ma\'nosida ones ishlatiladi.' },
     { id: 50340, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'A: Is it ready? B: I think not. (informal)', errorPart: 'I think not', correct: "I don't think so.", explanation: "I think not \u2014 rasmiy. Norasmiy: I don't think so" },
     { id: 50341, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I like this water one.', errorPart: 'one', correct: 'I like this water.', explanation: "Sanalmaydigan \u2014 one ishlatilmaydi" },
     { id: 50342, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'He said so, but I disagree.', errorPart: 'said so', correct: 'He said that, but I disagree.', explanation: 'Say + that + gap = aytmoq. Qoida: \'Say\' dan keyin \'so\' ishlatilmaydi, \'that\' ishlatiladi: He said that he was tired. (U charchaganini aytdi.) \'Say so\' XATO! \'Say that\' to\'g\'ri.' },
@@ -1439,14 +1467,18 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
       instruction: 'Qisqa javoblar',
       prompt: 'Do\'stingiz bilan suhbat qiling. Ellipsis va substitution ishlatib, qisqa javoblar bering.',
       hints: ['\'I think so.\'', '\'So do I.\'', '\'I have not seen him.\''],
-      exampleAnswer: 'A: Do you like coffee? B: Yes, I do. A: I think English is important. B: I think so too. A: She hasn\'t finished yet. B: But I have!' },
-   ],
+      exampleAnswer: 'A: Do you like coffee? B: Yes, I do. A: I think English is important. B: I think so too. A: She hasn\'t finished yet. B: But I have!' }
+    ,
+    {"id":100615,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"ellipsis","options":["so'z tushirib qoldirish","so'z o'rniga boshqa so'z","gapni uzaytirish","savol yasash"],"correct":"so'z tushirib qoldirish","explanation":"Ellipsis — takrorlanuvchi so'zlarni tushirib qoldirish."},
+    {"id":100616,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"substitution","options":["so'z o'rniga boshqa so'z ishlatish","so'z tushirib qoldirish","gapni qisqartirish","fe'lni o'zgartirish"],"correct":"so'z o'rniga boshqa so'z ishlatish","explanation":"Substitution — do/so/one kabi so'zlar orqali almashtirish."}
+  ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Ellipsis va substitution asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [4301, 4302, 4303, 4304, 4305] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4306, 4307, 4308, 4309, 4310] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4311, 4312, 4313, 4314, 4315] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4317, 4317, 4320, 4316, 4315, 4313, 4319, 4320, 4318, 4318, 55001, 55010] },
-  ],
+  
+    ],
   tests: [
     { id: 50350, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Ellipsis nima?', options: ["so'z qo'shish", "so'z tushirib qoldirish", "so'z o'zgartirish", "gap uzaytirish"], correct: "so'z tushirib qoldirish", explanation: 'Ellipsis = tushirib qoldirish (kontekstdan tushunarli bo\'lgan so\'zni olib tashlash). Qoida: Takrorlanmaslik uchun: (She) went home and (she) watched TV. (U uyga bordi va TV ko\'rdi.) \'She\' ikkinchi marta aytilmaydi.' },
     { id: 50351, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Substitution nima?', options: ["so'z tushirish", "so'z o'rniga boshqa so'z ishlatish", "so'z qo'shish", "so'zni takrorlash"], correct: "so'z o'rniga boshqa so'z ishlatish", explanation: 'Substitution = almashtirish (so\'z takrorlanmasligi uchun). Qoida: \'Do/does/did\' fe\'l o\'rnida: She sings better than I do. (U mendan yaxshiroq kuylaydi.) \'Do\' = \'sing\' fe\'lini almashtiradi.' },
@@ -1455,21 +1487,21 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
     { id: 50354, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'So/not qaysi fe\'llardan keyin ishlatiladi?', options: ['say, tell', 'think, hope, believe', 'know, understand', 'run, walk'], correct: 'think, hope, believe', explanation: 'Think/hope/believe + so/not = fikr/umid bildirish. Qoida: \'So\' tasdiqda: I believe so. (Ishonaman.) \'Not\' inkorda: I believe not. (Ishonmayman.) \'I don\'t believe so\' ham to\'g\'ri.' },
     { id: 50355, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'A: Is she ready? B: I think ___ .', options: ['so', 'not', 'it', 'that'], correct: 'so', explanation: 'Think so = shunday deb o\'ylayman. I think so fikr bildirishda ishlatiladi, I don\'t think so inkor shakli.' },
     { id: 50356, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'A: Will it snow? B: I hope ___ .', options: ['so', 'not', 'it', 'that'], correct: 'not', explanation: 'Hope not = Umid qilamanki yo\'q. I hope not = Umid qilamanki unday emas. Ellipsis qisqa javob.' },
-    { id: 50357, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which shoes? The black ___ .', options: ['one', 'ones', 'do', 'so'], correct: 'ones', explanation: "Ko'plik \u2014 ones" },
+    { id: 50357, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which shoes? The black ___ .', options: ['one', 'ones', 'do', 'so'], correct: 'ones', explanation: "Ko'plik — ones. Ko'plikdagi otlar uchun ones ishlatiladi: The black ones." },
     { id: 50358, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She sings better than he ___ .', options: ['does', 'do', 'did', 'done'], correct: 'does', explanation: 'Does = sings = \'does\' \'sings\' o\'rnida. Qoida: Do/does/did substitution: She sings better than he does. (U undan yaxshiroq kuylaydi.) \'Does\' = \'sings\' o\'rnida.' },
     { id: 50359, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'A: Have you finished? B: Yes, I ___ .', options: ['have', 'finished', 'did', 'am'], correct: 'have', explanation: 'Verb ellipsis: have (finished)' },
     { id: 50360, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is INCORRECT?', options: ['I think so.', 'He said so.', 'I hope not.', 'I believe so.'], correct: 'He said so.', explanation: 'Say + that, \'say so\' emas = \'say\' bilan \'that\' ishlatiladi. Qoida: \'Tell\' bilan farqli: tell me (menga ayt), say that... (... deb ayt). He told me that he was tired. He said that he was tired.' },
     { id: 50361, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which noun CANNOT use one/ones?', options: ['book', 'car', 'water', 'apple'], correct: 'water', explanation: "Sanalmaydigan \u2014 one ishlatilmaydi" },
     { id: 50362, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'A: Who broke it? B: I ___ .', options: ['did', 'broke', 'have', 'was'], correct: 'did', explanation: 'Do substitution: did = broke it' },
     { id: 50363, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is grammatically CORRECT?', options: ['I know so.', 'This water one is cold.', 'She runs faster than he does.', 'He said so to me.'], correct: 'She runs faster than he does.', explanation: "Comparative + do substitution \u2014 to'g'ri" },
-    { id: 50364, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which contains a CORRECT ellipsis?', options: ['He went home and she had dinner. (same subject)', 'She sat down and began to read.', 'I can swim better than you can swim.', 'A: Finished? B: Yes, I have finished.'], correct: 'She sat down and began to read.', explanation: 'Subject ellipsis: (she) began = ega tushirilishi. Qoida: Bir gapda ikki fe\'l bir ega bilan: She stood up and (she) began to speak. (U o\'rnidan turdi va gapira boshladi.) \'She\' ikkinchi marta aytilmaydi.' },
-  ],
+    { id: 50364, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which contains a CORRECT ellipsis?', options: ['He went home and she had dinner. (same subject)', 'She sat down and began to read.', 'I can swim better than you can swim.', 'A: Finished? B: Yes, I have finished.'], correct: 'She sat down and began to read.', explanation: 'Subject ellipsis: (she) began = ega tushirilishi. Qoida: Bir gapda ikki fe\'l bir ega bilan: She stood up and (she) began to speak. (U o\'rnidan turdi va gapira boshladi.) \'She\' ikkinchi marta aytilmaydi.' }
+    ],
   testSections: [
     { title: 'Oson', desc: 'Ellipsis/substitution asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [431, 432, 433, 434, 435] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [436, 437, 438, 439, 440] },
     { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [441, 442, 443] },
-    { title: 'Murakkab', desc: 'Ellipsis/substitution master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [444, 445] },
-  ],
+    { title: 'Murakkab', desc: 'Ellipsis/substitution master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [444, 445] }
+    ],
 }
 
 export const concessionB1plus: DailyLesson = {
@@ -1485,14 +1517,14 @@ export const concessionB1plus: DailyLesson = {
       { word: 'crowd', definition: 'olomon' },
       { word: 'organise', definition: 'tashkil qilmoq' },
       { word: 'journey', definition: 'safar, yo\'l' },
-      { word: 'complaint', definition: 'shikoyat' },
+      { word: 'complaint', definition: 'shikoyat' }
     ],
     questions: [
       { id: 90391, type: 'multiple-choice', question: "Despite what did thousands come to the festival?", options: ["The heat", "The rain", "The traffic", "The cost"], correctIndex: 1, explanation: "'Despite the rain, thousands came' — despite + noun." },
       { id: 90392, type: 'true-false', question: "The visitor enjoyed the festival even though it was cold.", answer: true, explanation: "'Although it was cold, we enjoyed every minute.'" },
       { id: 90393, type: 'multiple-choice', question: "What does the reporter say about the expensive tickets?", options: ["They were too high", "The show was worth it", "Many refunded them", "They were free later"], correctIndex: 1, explanation: "'Even though tickets were expensive, the show was worth it.'" },
       { id: 90394, type: 'multiple-choice', question: "How well organised was the festival, despite the crowds?", options: ["Badly organised", "Well organised", "Not organised", "Cancelled"], correctIndex: 1, explanation: "'In spite of the crowds, everything was well organised.'" },
-      { id: 90395, type: 'multiple-choice', question: "What was the visitor's only minor complaint?", options: ["The rain", "The cold", "The expensive food", "The long queues"], correctIndex: 2, explanation: "'None, although the food was a little expensive.'" },
+      { id: 90395, type: 'multiple-choice', question: "What was the visitor's only minor complaint?", options: ["The rain", "The cold", "The expensive food", "The long queues"], correctIndex: 2, explanation: "'None, although the food was a little expensive.'" }
     ],
     difficulty: 'hard',
     topic: "Qarama-qarshilik — although / though / despite / even though",
@@ -1503,7 +1535,7 @@ export const concessionB1plus: DailyLesson = {
       { id: 50365, type: 'multiple-choice' as const, question: "'Although the job was excellent, he was not sure' shows...", options: ["a result","a contrast","a reason","a time"], correctIndex: 1, explanation: "'Although' — qarama-qarshilik." },
       { id: 50366, type: 'multiple-choice' as const, question: "After 'Despite' and 'In spite of' we use...", options: ["a full clause","a noun or -ing form","a question","the future"], correctIndex: 1, explanation: "Despite/In spite of + noun/-ing." },
       { id: 50367, type: 'multiple-choice' as const, question: "'The work was hard; however, he learned a lot.' — 'however'...", options: ["joins two nouns","starts a contrasting sentence","shows a reason","is a mistake"], correctIndex: 1, explanation: "'however' yangi gapni boshlaydi, qarama-qarshilik." },
-      { id: 50368, type: 'multiple-choice' as const, question: "Which means the same as 'Although he was tired'?", options: ["Because he was tired","Despite being tired","So he was tired","When he was tired"], correctIndex: 1, explanation: "'Although + clause' = 'Despite + -ing'." },
+      { id: 50368, type: 'multiple-choice' as const, question: "Which means the same as 'Although he was tired'?", options: ["Because he was tired","Despite being tired","So he was tired","When he was tired"], correctIndex: 1, explanation: "'Although + clause' = 'Despite + -ing'." }
     ]
   },
   writing: {
@@ -1513,7 +1545,7 @@ export const concessionB1plus: DailyLesson = {
       "'although/even though' + clause: 'Although it was hard...'",
       "'despite/in spite of' + noun or -ing: 'Despite the rain...'",
       "'however' starts a new sentence: '...; however, ...'",
-      "Balance both sides of the argument",
+      "Balance both sides of the argument"
     ],
   },
   category: 'Linking Words',
@@ -1521,8 +1553,8 @@ export const concessionB1plus: DailyLesson = {
     { label: 'Although / Though / Even though', structure: 'Although/Though/Even though + clause, main clause\nAlthough it rained, we went out.\nThough he was tired, he kept working.\nEven though she was ill, she came to work.', color: 'green' },
     { label: 'Despite / In spite of', structure: 'Despite/In spite of + noun/V-ing, main clause\nDespite the rain, we enjoyed the trip.\nIn spite of being tired, he continued.\nDespite the heat, she wore a jacket.', color: 'blue' },
     { label: 'However / Nevertheless', structure: 'Main clause. However/Nevertheless, main clause\nIt rained. However, we still went out.\nHe was tired. Nevertheless, he kept working.\nShe was late. However, she apologised.', color: 'purple' },
-    { label: 'While / Whereas', structure: 'While/Whereas + clause, main clause (contrast)\nWhile I prefer tea, my brother likes coffee.\nWhereas some enjoy winter, others prefer summer.\nHe is outgoing, while his sister is shy.', color: 'orange' },
-  ],
+    { label: 'While / Whereas', structure: 'While/Whereas + clause, main clause (contrast)\nWhile I prefer tea, my brother likes coffee.\nWhereas some enjoy winter, others prefer summer.\nHe is outgoing, while his sister is shy.', color: 'orange' }
+    ],
   rules: [
     "1\uFE0F\u20E3 CONCESSION NIMA?\n\nConcession \u2014 biror qarama-qarshilikka qaramay sodir bo\u2018lgan harakatni ifodalaydi. \u201c...ga qaramay\u201d, \u201c...bo\u2018lsa ham\u201d ma\u2019nolarini beradi:\n\n  Although it was cold, she went swimming.\n  (Sovuq bo\u2018lsa ham, u suzishga ketdi.)\n  \u2192 Sovuq \u2014 lekin suzishga ketdi (qarama-qarshilik).\n\n\uD83D\uDCCC Although/Though/Even though + clause (S + V)\n\uD83D\uDCCC Despite/In spite of + noun / V-ing\n\uD83D\uDCCC However/Nevertheless \u2014 ikkinchi gapda\n\uD83D\uDCCC While/Whereas \u2014 ikki narsani solishtirish",
     "2\uFE0F\u20E3 ALTHOUGH / THOUGH / EVEN THOUGH\n\nBu linking words lar + subject + verb (full clause) bilan ishlatiladi:\n\n  Although he studied hard, he didn\u2018t pass the exam.\n  (Qattiq o\u2018qigan bo\u2018lsa ham, u imtihondan o\u2018ta olmadi.)\n\n  Though the hotel was expensive, it was worth it.\n  (Mehmonxona qimmat bo\u2018lsa ham, arziydi.)\n\n  Even though she was afraid, she spoke up.\n  (Qo\u2018rqqan bo\u2018lsa ham, u gapirdi.)\n  \u2192 Even though = eng kuchlisi.\n\n\uD83D\uDD34 Though \u2014 eng oddiy va so\u2018zlashuvda keng.\n\uD83D\uDD34 Even though \u2014 eng kuchli urg\u2018u.\n\uD83D\uDD34 Although \u2014 rasmiy va yozma.",
@@ -1531,8 +1563,8 @@ export const concessionB1plus: DailyLesson = {
     "5\uFE0F\u20E3 DESPITE/IN SPITE OF + THE FACT THAT\n\nDespite/In spite of dan keyin full clause ishlatmoqchi bo\u2018lsangiz, \u201cthe fact that\u201d qo\u2018shing:\n\n  Despite the fact that he studied hard, he failed.\n  (Qattiq o\u2018qiganiga qaramay, u yiqildi.)\n  \u2192 despite + the fact that + clause\n\n  In spite of the fact that she was ill, she worked.\n  (Kasal bo\u2018lganiga qaramay, u ishladi.)\n\n\uD83D\uDD34 \u201cDespite the fact that\u201d \u2014 \u201calthough\u201d ning rasmiy versiyasi.\n\uD83D\uDD34 So\u2018zlashuvda \u201calthough\u201d qisqa va tabiiy.",
     "6\uFE0F\u20E3 HOWEVER / NEVERTHELESS / NONETHELESS\n\nBu so\u2018zlar ikkinchi gapni boshlaydi. Vergul bilan ajratiladi:\n\n  The weather was terrible. However, we decided to go.\n  (Ob-havo dahshatli edi. Biroq, biz ketishga qaror qildik.)\n\n  He was exhausted. Nevertheless, he continued working.\n  (U charchagan edi. Shunga qaramay, u ishlashda davom etdi.)\n\n  It was expensive. Nonetheless, it was worth every penny.\n  (Qimmat edi. Shunday bo\u2018lsa ham, har bir tiyiniga arzidi.)\n\n\uD83D\uDD34 However \u2014 eng keng tarqalgan.\n\uD83D\uDD34 Nevertheless, Nonetheless \u2014 rasmiy.\n\uD83D\uDD34 However \u2014 o\u2018rtada ham kelishi mumkin: It was, however, too late.",
     "7\uFE0F\u20E3 WHILE / WHEREAS\n\nWhile va whereas \u2014 ikki narsani solishtirish (usually contrasting):\n\n  While I enjoy cooking, my husband prefers eating out.\n  (Men ovqat pishirishni yoqtirsam, erim tashqarida ovqatlanishni afzal ko\u2018radi.)\n\n  Whereas some people love winter, others hate it.\n  (Ba\u2018zi odamlar qishni sevsa, boshqalar uni yomon ko\u2018radi.)\n\n  In Uzbekistan summer is hot, while winter is cold.\n  (O\u2018zbekistonda yoz issiq, qish esa sovuq.)\n\n\uD83D\uDD34 While/whereas + clause.\n\uD83D\uDD34 Vergul \u2014 while/whereas dan keyin.\n\uD83D\uDD34 Whereas \u2014 rasmiy, while \u2014 hamma uslubda.",
-    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Despite + clause: Despite he studied... \u2192 Despite studying... yoki Despite the fact that he studied...\n\u2022 In spite of \u2014 noto\u2018g\u2018ri yozish: Inspite of \u2192 In spite of (ikki so\u2018z)\n\u2022 Although + but: Although he was tired, but he continued \u2192 Although he was tired, he continued. (but kerak EMAS)\n\u2022 Despite/In spite of vergul: Despite the rain we went out \u2192 Despite the rain, we went out.\n\u2022 However ... but: However, but... \u2192 faqat bittasi.\n\u2022 O\u2018zbek tilida \u201c...ga qaramay, ...ga qaramasdan\u201d \u2014 ingliz tilida although+clause yoki despite+noun.",
-  ],
+    "8\uFE0F\u20E3 O\u2018ZBEKCHA XATOLAR\n\n\u2022 Despite + clause: Despite he studied... \u2192 Despite studying... yoki Despite the fact that he studied...\n\u2022 In spite of \u2014 noto\u2018g\u2018ri yozish: Inspite of \u2192 In spite of (ikki so\u2018z)\n\u2022 Although + but: Although he was tired, but he continued \u2192 Although he was tired, he continued. (but kerak EMAS)\n\u2022 Despite/In spite of vergul: Despite the rain we went out \u2192 Despite the rain, we went out.\n\u2022 However ... but: However, but... \u2192 faqat bittasi.\n\u2022 O\u2018zbek tilida \u201c...ga qaramay, ...ga qaramasdan\u201d \u2014 ingliz tilida although+clause yoki despite+noun."
+    ],
   vocabulary: [
     { en: 'concession', uz: "to'siqsizlik, qaramaylik", example: 'Concession shows contrast with expectation.', rule: 'Concept' },
     { en: 'although', uz: '...ga qaramay, ...bo\'lsa ham', example: 'Although it rained, we went out.', rule: 'Conjunction' },
@@ -1543,8 +1575,8 @@ export const concessionB1plus: DailyLesson = {
     { en: 'while', uz: '...gan holda, ...ganda', example: 'While I like tea, she likes coffee.', rule: 'Conjunction' },
     { en: 'whereas', uz: 'holbuki, ...gan bo\'lsa', example: 'Whereas some like heat, others prefer cold.', rule: 'Conjunction' },
     { en: 'contrast', uz: 'qarama-qarshilik, farq', example: 'Concession shows contrast between ideas.', rule: 'Meaning' },
-    { en: 'expectation', uz: 'kutilma', example: 'Concession goes against expectation.', rule: 'Function' },
-  ],
+    { en: 'expectation', uz: 'kutilma', example: 'Concession goes against expectation.', rule: 'Function' }
+    ],
   examples: [
     { en: 'Although it was raining, we decided to go for a walk.', uz: "Yomg'ir yog'ayotgan bo'lsa ham, biz sayrga ketishga qaror qildik." },
     { en: "Even though she was terrified, she gave a brave speech.", uz: "Qo'rqqan bo'lsa ham, u jasurona nutq so'zladi." },
@@ -1553,8 +1585,8 @@ export const concessionB1plus: DailyLesson = {
     { en: 'The hotel was expensive. However, it was worth the price.', uz: "Mehmonxona qimmat edi. Biroq, bu narxga arzidi." },
     { en: 'While I prefer reading books, my brother watches movies.', uz: "Men kitob o'qishni afzal ko'rsam, akam kino ko'radi." },
     { en: "He was exhausted. Nevertheless, he finished the marathon.", uz: "U charchagan edi. Shunga qaramay, u marafonni tugatdi." },
-    { en: "Whereas some enjoy winter sports, others prefer summer activities.", uz: "Ba'zilar qishki sportlarni yoqtirsa, boshqalar yozgi mashg'ulotlarni afzal ko'radi." },
-  ],
+    { en: "Whereas some enjoy winter sports, others prefer summer activities.", uz: "Ba'zilar qishki sportlarni yoqtirsa, boshqalar yozgi mashg'ulotlarni afzal ko'radi." }
+    ],
   specialCases: [
     {
       id: 'although-vs-despite',
@@ -1564,13 +1596,13 @@ export const concessionB1plus: DailyLesson = {
       commonMistakes: "Despite he studied... \u2192 Despite studying... / Despite the fact that he studied...\nAlthough the rain... \u2192 Although it rained... / Despite the rain...\nAlthough + but: Although he was tired, but he worked \u2192 Although he was tired, he worked.",
       examples: [
         { en: 'Although she was late, she didn\'t apologise.', uz: "Kechikkan bo'lsa ham, u kechirim so'ramadi." },
-        { en: 'Despite being late, she didn\'t apologise.', uz: "Kechikkaniga qaramay, u kechirim so'ramadi." },
-      ],
+        { en: 'Despite being late, she didn\'t apologise.', uz: "Kechikkaniga qaramay, u kechirim so'ramadi." }
+    ],
       drills: [
         { id: 50369, type: 'fill-blank', instruction: "Although yoki Despite?", question: '___ he was tired, he finished the race.', blanks: ['Although'], explanation: 'Although + clause (he was tired)' },
         { id: 50370, type: 'fill-blank', instruction: "Although yoki Despite?", question: '___ the rain, we enjoyed the picnic.', blanks: ['Despite'], explanation: 'Despite + noun (the rain) = yomg\'irga qaramasdan. Qoida: Despite + noun phrase: Despite the heavy rain, they played football. (Kuchli yomg\'irga qaramasdan, ular futbol o\'ynadi.)' },
-        { id: 50371, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Despite he was tired, he continued working.', errorPart: 'Despite he was tired', correct: 'Despite being tired, he continued working.', explanation: 'Despite + V-ing = V-ing bilan, clause emas. Qoida: Despite feeling tired = charchagan his qilishiga qaramasdan. \'Despite + clause\' XATO! \'Despite he was tired\' XATO! \'Although he was tired\' to\'g\'ri.' },
-      ],
+        { id: 50371, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Despite he was tired, he continued working.', errorPart: 'Despite he was tired', correct: 'Despite being tired, he continued working.', explanation: 'Despite + V-ing = V-ing bilan, clause emas. Qoida: Despite feeling tired = charchagan his qilishiga qaramasdan. \'Despite + clause\' XATO! \'Despite he was tired\' XATO! \'Although he was tired\' to\'g\'ri.' }
+    ],
     },
     {
       id: 'however-despite',
@@ -1580,15 +1612,15 @@ export const concessionB1plus: DailyLesson = {
       commonMistakes: "It rained. Despite, we went out \u2192 It rained. However, we went out. (Despite noun kerak)\nHowever the rain, we went out \u2192 Despite the rain, we went out. (However new sentence kerak)",
       examples: [
         { en: 'The weather was bad. However, we had a great time.', uz: "Ob-havo yomon edi. Biroq, biz ajoyib vaqt o'tkazdik." },
-        { en: 'We had a great time despite the bad weather.', uz: "Yomon ob-havoga qaramay, biz ajoyib vaqt o'tkazdik." },
-      ],
+        { en: 'We had a great time despite the bad weather.', uz: "Yomon ob-havoga qaramay, biz ajoyib vaqt o'tkazdik." }
+    ],
       drills: [
         { id: 50372, type: 'fill-blank', instruction: "However yoki Despite?", question: 'The traffic was heavy. ___ , we arrived on time.', blanks: ['However'], explanation: 'New sentence = However (yangi gap). Qoida: \'However\' ikki gap orasida: She was tired. However, she finished. Vergul bilan ajratiladi.' },
         { id: 50373, type: 'fill-blank', instruction: "However yoki Despite?", question: '___ the heavy traffic, we arrived on time.', blanks: ['Despite'], explanation: 'Same sentence \u2014 Despite + noun' },
-        { id: 50374, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['Despite, we went out.', 'However the rain, we went.', 'Despite the rain, we went.', 'However we went out.'], correct: 'Despite the rain, we went.', explanation: 'Despite + noun \u2014 to\'g\'ri' },
-      ],
-    },
-  ],
+        { id: 50374, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is CORRECT?', options: ['Despite, we went out.', 'However the rain, we went.', 'Despite the rain, we went.', 'However we went out.'], correct: 'Despite the rain, we went.', explanation: 'Despite + noun \u2014 to\'g\'ri' }
+    ],
+    }
+    ],
   exercises: [
     { id: 50375, type: 'fill-blank', instruction: "Although bilan to'ldiring:", question: '___ it was cold, she went swimming.', blanks: ['Although'], explanation: 'Although — qarama-qarshilik bildiradi (garchi). \'Although it rained, we went out.\'' },
     { id: 50376, type: 'fill-blank', instruction: "Despite bilan to'ldiring:", question: '___ the cold, she went swimming.', blanks: ['Despite'], explanation: 'Despite — qarama-qarshilik + noun/V-ing. \'Despite the rain, we went out.\'' },
@@ -1599,7 +1631,7 @@ export const concessionB1plus: DailyLesson = {
     { id: 50381, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ it was raining, we enjoyed the day.', options: ['Although', 'Despite', 'However', 'In spite of'], correct: 'Although', explanation: 'Although — qarama-qarshilik bildiradi (garchi). \'Although it rained, we went out.\'' },
     { id: 50382, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He was tired. ___ , he kept working.', options: ['Although', 'Despite', 'However', 'In spite of'], correct: 'However', explanation: 'New sentence = However (yangi gap). Qoida: \'However\' ikki gap orasida: She was tired. However, she finished. Vergul bilan ajratiladi.' },
     { id: 50383, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ I like tea, my brother prefers coffee.', options: ['Although', 'Despite', 'However', 'While'], correct: 'While', explanation: 'While \u2014 contrast between two things' },
-    { id: 50384, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He was late. It was, ___ , not his fault.', options: ['although', 'despite', 'however', 'while'], correct: 'however', explanation: 'However \u2014 o\'rtada' },
+    { id: 50384, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He was late. It was, ___ , not his fault.', options: ['although', 'despite', 'however', 'while'], correct: 'however', explanation: 'However — o\'rtada ishlatiladi. Gap orasida qarama-qarshilikni bildiradi, vergul bilan.' },
     { id: 50385, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Although he was tired, but he continued working.', errorPart: 'but', correct: 'Although he was tired, he continued working.', explanation: "Although va but birga ishlatilmaydi" },
     { id: 50386, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Despite he was ill, he went to work.', errorPart: 'Despite he was ill', correct: 'Despite being ill, he went to work.', explanation: 'Despite + V-ing = V-ing bilan, clause emas. Qoida: Despite feeling tired = charchagan his qilishiga qaramasdan. \'Despite + clause\' XATO! \'Despite he was tired\' XATO! \'Although he was tired\' to\'g\'ri.' },
     { id: 50387, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Inspite of the rain, we went out.', errorPart: 'Inspite', correct: 'In spite of the rain, we went out.', explanation: 'In spite of \u2014 uch so\'z' },
@@ -1621,14 +1653,18 @@ export const concessionB1plus: DailyLesson = {
       instruction: 'Qarama-qarshiliklar',
       prompt: 'Hayotingizdagi qiyinchiliklarga qaramay erishgan muvaffaqiyatlaringiz haqida although/despite bilan yozing.',
       hints: ['\'Although it was difficult...\'', '\'Despite the challenges...\'', '\'Even though I...\''],
-      exampleAnswer: 'Although learning English was difficult at first, I never gave up. Despite the challenges, I improved every day. Even though I made many mistakes, I kept practising.' },
-   ],
+      exampleAnswer: 'Although learning English was difficult at first, I never gave up. Despite the challenges, I improved every day. Even though I made many mistakes, I kept practising.' }
+    ,
+    {"id":100617,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"although","options":["...ga qaramay (+ clause)","...ga qaramay (+ noun)","biroq (yangi gap)","...gan holda"],"correct":"...ga qaramay (+ clause)","explanation":"Although — qarama-qarshilik, to'liq gap bilan ishlatiladi."},
+    {"id":100618,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"despite","options":["...ga qaramay (+ noun/V-ing)","...ga qaramay (+ clause)","biroq (yangi gap)","holbuki"],"correct":"...ga qaramay (+ noun/V-ing)","explanation":"Despite — qarama-qarshilik, noun yoki V-ing bilan ishlatiladi."}
+  ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Concession turlari', color: 'bg-emerald-500', icon: '🌱', ids: [4401, 4402, 4403, 4404, 4405] },
     { title: "O'rtacha", desc: 'Tanlash mashqlari', color: 'bg-blue-500', icon: '📘', ids: [4406, 4407, 4408, 4409, 4410] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4411, 4412, 4413, 4414, 4415] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4417, 4418, 4420, 4420, 4417, 4416, 4418, 4413, 4419, 4415, 55000, 55009] },
-  ],
+  
+    ],
   tests: [
     { id: 50395, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Concession nima?", options: ["sabab", "qaramay, qarama-qarshilik", "natija", "shart"], correct: "qaramay, qarama-qarshilik", explanation: "Concession = qaramay" },
     { id: 50396, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Although dan keyin nima keladi?", options: ['noun', "V-ing", 'full clause (S+V)', 'adjective'], correct: 'full clause (S+V)', explanation: 'Although — qarama-qarshilik bildiradi (garchi). \'Although it rained, we went out.\'' },
@@ -1644,12 +1680,12 @@ export const concessionB1plus: DailyLesson = {
     { id: 50406, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence has the SAME meaning as 'Despite the rain, we went out'?", options: ['Although it rained, we went out.', 'It rained. However, we went out.', 'In spite of the rain, we went out.', 'All of the above'], correct: 'All of the above', explanation: "Barchasi similar meaning" },
     { id: 50407, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "___ the fact that he was ill, he went to work.", options: ['Despite', 'Although', 'However', 'While'], correct: 'Despite', explanation: 'Despite + the fact that + clause' },
     { id: 50408, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is grammatically CORRECT?", options: ['Although he was tired, but he worked.', 'Despite he was tired, he worked.', 'He was tired. However, he worked.', 'Inspite of being tired, he worked.'], correct: 'He was tired. However, he worked.', explanation: "However = new sentence \u2014 to'g'ri" },
-    { id: 50409, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "What is the difference between 'although' and 'despite'?", options: ['no difference', 'although + clause, despite + noun/V-ing', 'although + noun, despite + clause', 'they have different meanings'], correct: 'although + clause, despite + noun/V-ing', explanation: 'Although + clause, Despite + noun/V-ing' },
-  ],
+    { id: 50409, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "What is the difference between 'although' and 'despite'?", options: ['no difference', 'although + clause, despite + noun/V-ing', 'although + noun, despite + clause', 'they have different meanings'], correct: 'although + clause, despite + noun/V-ing', explanation: 'Although + clause, Despite + noun/V-ing' }
+    ],
   testSections: [
     { title: 'Oson', desc: 'Concession asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [441, 442, 443, 444, 445] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [446, 447, 448, 449, 450] },
     { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [451, 452, 453] },
-    { title: 'Murakkab', desc: 'Concession master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [454, 455] },
-  ],
+    { title: 'Murakkab', desc: 'Concession master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [454, 455] }
+    ],
 }
