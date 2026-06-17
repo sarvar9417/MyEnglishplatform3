@@ -3,6 +3,7 @@ import { ArrowRight, FlaskConical } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { supabase } from '../lib/supabase'
 import { monitoring } from '../lib/monitoring'
+import { db } from '../lib/db'
 import { useStore } from '../store/useStore'
 import { useVocabStore, getBatchWords, type GameWord, type ViewMode } from '../store/vocabularyStore'
 import {
@@ -306,7 +307,7 @@ export default function Vocabulary() {
 
       // ── O'rganilgan so'zlar soni (faza A da olingan studiedRows dan) ──
       const learnedCountsMap = new Map<string, number>()
-      const studied = (studiedRowsRes.data ?? []) as unknown as { word_id: string; words: { level: string } | null }[]
+      const studied = db.cast<{ word_id: string; words: { level: string } | null }[]>(studiedRowsRes.data ?? [])
       for (const row of studied) {
         const lvl = row.words?.level
         if (typeof lvl === 'string') {

@@ -112,6 +112,30 @@ class TypedDB {
     if (json === undefined) return undefined as T | undefined
     return json as unknown as T
   }
+
+  /**
+   * Convert app data to Supabase Json type for inserts/updates.
+   * Use this when inserting JSON columns.
+   *
+   * @example
+   *   question_set: db.toJson(questions)
+   */
+  toJson<T>(value: T): Json {
+    return value as unknown as Json
+  }
+
+  /**
+   * Cast a Supabase query result to your app type.
+   * Use this when Supabase Row type doesn't structurally match your app type
+   * (e.g. null vs undefined, or JSON column type differences).
+   *
+   * @example
+   *   const duel = db.cast<Duel>(data)
+   *   const duels = db.cast<Duel[]>(data ?? [])
+   */
+  cast<T>(value: unknown): T {
+    return value as T
+  }
 }
 
 // ─── Singleton ────────────────────────────────────────────────────────────────

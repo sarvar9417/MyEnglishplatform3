@@ -349,7 +349,7 @@ export async function getReviewWordsForLesson(
     }
   }
 
-  return (rows as unknown as { word_id: number; words: { english: string; uzbek: string; example?: string; phonetic?: string } }[]).map((d) => ({
+  return db.cast<{ word_id: number; words: { english: string; uzbek: string; example?: string; phonetic?: string } }[]>(rows).map((d) => ({
     wordId: d.word_id,
     english: d.words.english,
     uzbek: d.words.uzbek,

@@ -11,6 +11,7 @@ import {
   getFriendLeaderboard,
   getEloLeaderboard,
 } from '../../services/tandemService'
+import { db } from '../../lib/db'
 import type { LeaderboardEntry, EloLeaderboardEntry } from '../../services/tandemService'
 import { leagues } from '../../data/leagues'
 import { getEloTierInfo } from '../../utils/eloRating'
@@ -142,7 +143,7 @@ export default function FriendLeaderboard() {
           const rankIcon = getRankIcon(index)
 
           if (tab === 'elo') {
-            const eloEntry = entry as unknown as EloLeaderboardEntry
+            const eloEntry = db.cast<EloLeaderboardEntry>(entry)
             const tierInfo = getEloTierInfo(eloEntry.elo)
             const maxElo = Math.max(...eloEntries.map(e => e.elo), 1)
             const eloPct = (eloEntry.elo / maxElo) * 100

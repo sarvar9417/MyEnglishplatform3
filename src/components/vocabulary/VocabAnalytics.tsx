@@ -4,6 +4,7 @@ import EmptyState from '../ui/EmptyState'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import { supabase } from '../../lib/supabase'
 import { monitoring } from '../../lib/monitoring'
+import { db } from '../../lib/db'
 import type { DaySession } from '../../services/vocabularyService'
 
 interface Props {
@@ -95,10 +96,11 @@ export default function VocabAnalytics({ userId, sessions, levelCounts }: Props)
           }))
         )
 
-        const { data: lvlRows } = await supabase
+        const lvlResult = await supabase
           .from('vocabulary_progress')
           .select('word_id, is_learned, words(level)')
-          .eq('user_id', userId) as unknown as { data: { word_id: number; is_learned: boolean; words: { level: string } | null }[] | null }
+          .eq('user_id', userId)
+        const lvlRows = db.cast<{ word_id: number; is_learned: boolean; words: { level: string } | null }[]>(lvlResult.data ?? [])
 
         const lvlStudiedMap = new Map<string, number>()
         const lvlLearnedMap = new Map<string, number>()

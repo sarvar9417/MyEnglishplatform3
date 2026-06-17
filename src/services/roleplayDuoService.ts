@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 import { supabase } from '../lib/supabase'
-import type { Json } from '../types/supabase'
+import { db } from '../lib/db'
 import { monitoring } from '../lib/monitoring'
 import { sendBrowserNotification } from '../hooks/useNotifications'
 import { getScenario } from '../data/conversationScenarios'
@@ -199,7 +199,7 @@ export async function saveUserAMessages(
     const { error } = await supabase
       .from('roleplay_sessions')
       .update({
-        user_a_messages: messages as Json,
+        user_a_messages: db.toJson(messages),
         updated_at: new Date().toISOString(),
       })
       .eq('id', sessionId)
@@ -223,7 +223,7 @@ export async function saveUserBMessages(
     const { error } = await supabase
       .from('roleplay_sessions')
       .update({
-        user_b_messages: messages as Json,
+        user_b_messages: db.toJson(messages),
         updated_at: new Date().toISOString(),
       })
       .eq('id', sessionId)
@@ -248,8 +248,8 @@ export async function saveRoleplayEvaluations(
     const { error } = await supabase
       .from('roleplay_sessions')
       .update({
-        user_a_evaluation: userAEvaluation as unknown as Json,
-        user_b_evaluation: userBEvaluation as unknown as Json,
+        user_a_evaluation: db.toJson(userAEvaluation),
+        user_b_evaluation: db.toJson(userBEvaluation),
         status: 'completed',
         updated_at: new Date().toISOString(),
       })

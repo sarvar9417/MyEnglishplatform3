@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../lib/supabase'
+import { db } from '../lib/db'
 import { monitoring } from '../lib/monitoring'
 import { useStore } from '../store/useStore'
 import { usePhrasesStore, getBatchPhrases, type GamePhrase } from '../store/phrasesStore'
@@ -156,7 +157,7 @@ export function usePhraseData() {
 
       const studiedRows = studiedRowsRes.data
       const learnedCountsMap = new Map<string, number>()
-      const studied = (studiedRows ?? []) as unknown as { phrase_id: string; phrases: { level: string } | null }[]
+      const studied = db.cast<{ phrase_id: string; phrases: { level: string } | null }[]>(studiedRows ?? [])
       for (const row of studied) {
         const lvl = row.phrases?.level
         if (typeof lvl === 'string') {

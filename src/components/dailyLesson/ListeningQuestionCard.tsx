@@ -1,6 +1,7 @@
 import { CheckCircle, XCircle, ChevronRight, ChevronLeft } from 'lucide-react'
 import type { ListeningQuestion } from '../../data/dailyLessons'
 import { DIFFICULTY_LABEL, checkAnswer } from './listeningUtils'
+import { db } from '../../lib/db'
 
 interface Props {
   q: ListeningQuestion
@@ -33,7 +34,7 @@ export default function ListeningQuestionCard({
           ? ['True', 'False']
           : (shuffledOptions ?? q.options ?? [])
         const correctIdx = q.type === 'true-false'
-          ? ((q.answer as unknown as boolean) === true ? 0 : 1)
+          ? ((db.cast<boolean>(q.answer)) === true ? 0 : 1)
           : (shuffledCorrectIndex ?? q.correctIndex!)
         return (
           <div className="space-y-1.5">

@@ -1,4 +1,5 @@
 import { monitoring } from './monitoring'
+import { db } from './db'
 
 /**
  * Core Web Vitals budjeti (Google "good" chegaralari) — F3-10.
@@ -65,7 +66,7 @@ export function reportWebVitals() {
     let clsValue = 0
     const clsObserver = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        const clsEntry = entry as unknown as { hadRecentInput: boolean; value: number }
+        const clsEntry = db.cast<{ hadRecentInput: boolean; value: number }>(entry)
         if (!clsEntry.hadRecentInput) {
           clsValue += clsEntry.value
         }

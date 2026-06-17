@@ -3,6 +3,7 @@ import { TrendingUp, BookOpen, Brain, CalendarDays, Target, Library, FileQuestio
 import EmptyState from '../ui/EmptyState'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import { supabase } from '../../lib/supabase'
+import { db } from '../../lib/db'
 import { monitoring } from '../../lib/monitoring'
 import type { DaySession } from '../../services/phrasesService'
 
@@ -94,10 +95,11 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
           }))
         )
 
-        const { data: lvlRows } = await supabase
+        const lvlResult = await supabase
           .from('phrase_progress')
           .select('phrase_id, is_learned, phrases(level)')
-          .eq('user_id', userId) as unknown as { data: { phrase_id: number; is_learned: boolean; phrases: { level: string } | null }[] | null }
+          .eq('user_id', userId)
+        const lvlRows = db.cast<{ phrase_id: number; is_learned: boolean; phrases: { level: string } | null }[]>(lvlResult.data ?? [])
 
         const lvlStudiedMap = new Map<string, number>()
         const lvlLearnedMap = new Map<string, number>()

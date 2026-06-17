@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase'
+import { db } from '../lib/db'
 import { addDaysTashkent, getTodayTashkent } from '../utils/tashkentDate'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
@@ -208,7 +209,7 @@ export async function ratePersonalWordInDB(
     throw error instanceof Error ? error : new Error('Rating failed')
   }
 
-  return data as unknown as PersonalWord
+  return db.cast<PersonalWord>(data)
 }
 
 export async function batchAddPersonalWordsToDB(

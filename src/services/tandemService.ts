@@ -4,7 +4,6 @@
 
 import { supabase } from '../lib/supabase'
 import { db } from '../lib/db'
-import type { Json } from '../types/supabase'
 import { monitoring } from '../lib/monitoring'
 import { sendBrowserNotification } from '../hooks/useNotifications'
 import type { TandemPair, Duel, DuelMode, FriendshipStatus, DuelQuestion, DuelResult } from '../types/tandem'
@@ -489,7 +488,7 @@ export async function getDuelById(duelId: string): Promise<Duel | null> {
       .eq('id', duelId)
       .single()
     if (error) throw error
-    return data as unknown as Duel
+    return db.cast<Duel>(data)
   } catch (e) {
     monitoring.captureMessage('getDuelById failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return null
@@ -529,8 +528,7 @@ export async function createDuel(
       opponent: opponentId,
       mode,
       status: 'pending',  // challenger avval o'ynaydi, keyin opponent_turn ga o'tadi
-      question_set: questionSet as unknown as Json,
-      challenger_score: null,
+      question_set: db.toJson(questionSet),      challenger_score: null,
       opponent_score: null,
       is_bot: !opponentId,
       expires_at: expiresAt,
@@ -549,7 +547,7 @@ export async function createDuel(
   }
   // Friend duel: notification opponentga challenger o'ynagandan keyin yuboriladi (submitDuelAnswers da)
 
-  return { success: true, duel: data as unknown as Duel }
+  return { success: true, duel: db.cast<Duel>(data) }
 }
 
 /**
@@ -601,8 +599,7 @@ export async function createLessonDuel(
       opponent: opponentId,
       mode: 'lesson',
       status: 'pending',
-      question_set: questions as unknown as Json,
-      challenger_score: null,
+      question_set: db.toJson(questions),      challenger_score: null,
       opponent_score: null,
       is_bot: !opponentId,
       lesson_id: lessonId,
@@ -622,7 +619,7 @@ export async function createLessonDuel(
     await submitAIAnswer(data.id, questions.length)
   }
 
-  return { success: true, duel: data as unknown as Duel }
+  return { success: true, duel: db.cast<Duel>(data) }
 }
 
 /** AI botning javobini hisoblash (savol soni asosida 70% aniqlik) */
@@ -787,7 +784,7 @@ export async function getOpponentPendingDuels(): Promise<Duel[]> {
     return []
   }
 
-  return (data ?? []) as unknown as Duel[]
+  return db.cast<Duel[]>(data ?? [])
 }
 
 /** Faol duellar ro'yxati */
@@ -808,7 +805,7 @@ export async function getActiveDuels(): Promise<Duel[]> {
     return []
   }
 
-  return (data ?? []) as unknown as Duel[]
+  return db.cast<Duel[]>(data ?? [])
 }
 
 /** Tugagan duellar tarixi */
@@ -829,7 +826,7 @@ export async function getDuelHistory(): Promise<Duel[]> {
     return []
   }
 
-  return (data ?? []) as unknown as Duel[]
+  return db.cast<Duel[]>(data ?? [])
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════

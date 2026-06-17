@@ -3,8 +3,8 @@
 // Jadval: placement_results (migratsiya 20250612000000)
 
 import { supabase } from '../lib/supabase'
+import { db } from '../lib/db'
 import type { PlacementResult } from '../data/placement/types'
-import type { Json } from '../types/supabase'
 import { monitoring } from '../lib/monitoring'
 
 /** Test natijasini DB'ga yozadi (har test — yangi yozuv = tarix) */
@@ -13,7 +13,7 @@ export async function savePlacementResult(userId: string, r: PlacementResult): P
     await supabase.from('placement_results').insert({
       user_id: userId,
       level: r.level,
-      scores: r.bandScores as unknown as Json,
+      scores: db.toJson(r.bandScores),
       correct_count: r.correctCount,
       total_asked: r.totalAsked,
       taken_at: r.takenAt,

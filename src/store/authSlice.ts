@@ -1,6 +1,7 @@
 import type { StateCreator } from 'zustand'
 import { getTodayTashkent } from '../utils/tashkentDate'
 import { monitoring } from '../lib/monitoring'
+import { db } from '../lib/db'
 import type { Level } from './types'
 import type { AppState } from './appState'
 import type { Database } from '../types/supabase'
@@ -16,7 +17,7 @@ async function supabaseUpdate(table: string, values: Record<string, unknown>, ma
     const { supabase } = await import('../lib/supabase')
     const { data: { session } } = await supabase.auth.getSession()
     if (session?.user.id) {
-      const { error } = await supabase.from(table as keyof Database['public']['Tables']).update<never>(values as never).eq(matchField as string, session.user.id)
+      const { error } = await supabase.from(table as keyof Database['public']['Tables']).update(db.cast<never>(values)).eq(matchField as string, session.user.id)
       if (error) monitoring.captureMessage(`supabaseUpdate ${table} error: ${error.message}`, 'error')
     }
   } catch (e) {

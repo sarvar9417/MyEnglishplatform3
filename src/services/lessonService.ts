@@ -116,7 +116,7 @@ export async function fetchLessons(): Promise<(DailyLesson | ReviewLesson)[]> {
 
   const { loadAllLessons } = await import('../data/dailyLessons')
   const DAILY_LESSONS = await loadAllLessons()
-  const supabaseLessons = (Array.isArray(data) ? data : []).map(r => castLesson(r as unknown as LessonRow))
+  const supabaseLessons = (Array.isArray(data) ? data : []).map(r => castLesson(db.cast<LessonRow>(r)))
   const localById = new Map(DAILY_LESSONS.map(l => [l.id, l]))
   const supabaseIds = new Set(supabaseLessons.map(l => l.id))
   // Darslar TO'PLAMI va TARTIBI lokal kurikulum bilan belgilanadi. Supabase faqat
@@ -161,7 +161,7 @@ export async function fetchReviewLessons(): Promise<ReviewLesson[]> {
         const extraReviews = (extra ?? []).map(r => castReviewLesson(r as ReviewLessonRow))
         const allReviews = [...REVIEW_LESSONS, ...extraReviews]
         for (const review of allReviews) {
-          cacheLesson(review as unknown as DailyLesson).catch((e) => monitoring.captureMessage('cacheLesson (review) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
+          cacheLesson(db.cast<DailyLesson>(review)).catch((e) => monitoring.captureMessage('cacheLesson (review) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
         }
         return allReviews
       }
@@ -171,7 +171,7 @@ export async function fetchReviewLessons(): Promise<ReviewLesson[]> {
     const cached = await getCachedLessons()
     if (cached.length > 0) {
       monitoring.captureMessage('Offline: review lessons from cache', 'info')
-      return cached as unknown as ReviewLesson[]
+      return db.cast<ReviewLesson[]>(cached)
     }
   }
 
@@ -198,7 +198,7 @@ export async function fetchLesson(id: string): Promise<(DailyLesson | ReviewLess
   }
 
   if (!data || typeof data !== 'object') return null
-  const lesson = castLesson(data as unknown as LessonRow)
+  const lesson = castLesson(db.cast<LessonRow>(data))
   cacheLesson(lesson).catch((e) => monitoring.captureMessage('cacheLesson (single) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
   return lesson
 }
@@ -642,7 +642,7 @@ export async function loadExerciseAnswersFromDB(lessonId: string): Promise<Loade
   return (data as { exercise_id: number; exercise_type: string; answer: string; is_correct: boolean; section_index: number; section_type: string }[]).map(d => ({
     exerciseId: d.exercise_id,
     exerciseType: d.exercise_type,
-    answer: typeof d.answer === 'string' ? JSON.parse(d.answer) : d.answer as unknown as string[],
+    answer: typeof d.answer === 'string' ? JSON.parse(d.answer) : db.cast<string[]>(d.answer),
     isCorrect: d.is_correct,
     sectionIndex: d.section_index,
     sectionType: d.section_type,

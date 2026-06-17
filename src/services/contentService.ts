@@ -48,7 +48,7 @@ export async function saveScore(
       options?: { onConflict?: string },
     ) => Promise<{ error: { message: string } | null }>
   }
-  const builder = supabase.from(table as TableName) as unknown as UpsertableTable
+  const builder = db.cast<UpsertableTable>(supabase.from(table as TableName))
   const { error } = await builder.upsert(payload, { onConflict: conflictCols.join(',') })
   if (error) {
     monitoring.captureMessage(`${table} upsert error: ${error.message}`, 'error')
