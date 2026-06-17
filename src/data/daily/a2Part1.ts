@@ -93,7 +93,7 @@ export const modalVerbs: DailyLesson = {
         { en: 'I will be able to drive next year.', uz: 'Kelasi yili mashina hayday olaman.' },
       ],
       drills: [
-        { id: 14001, type: 'fill-blank', instruction: "Can yoki be able to — to'g'ri shaklni qo'ying:", question: 'I ___ speak two languages.', blanks: ['can'], explanation: 'Hozirgi qobiliyat uchun can' },
+        { id: 14001, type: 'fill-blank', instruction: "Can yoki be able to — to'g'ri shaklni qo'ying:", question: 'I ___ speak two languages.', blanks: ['can'], explanation: 'Hozirgi qobiliyat uchun \'can\' ishlatiladi. Qoida: \'Can\' + V1 hozirgi zamonda qobiliyat bildiradi: I can swim. (Men suza olaman.) O\'tgan zamonda \'could\': I could swim when I was 5. (5 yoshimda suza olardim.)' },
         { id: 14002, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She ___ finish the project yesterday.', options: ['can', 'could', 'was able to', 'will be able to'], correct: 'was able to', explanation: "O'tgan zamonda muayyan holat: was able to" },
         { id: 14003, type: 'transformation', instruction: 'Can ni will be able to ga o\'zgartiring:', question: 'I can help you tomorrow.', hint: "I ___ help you tomorrow.", correct: 'I will be able to help you tomorrow.', explanation: "Kelasi zamonda 'will be able to' ishlatiladi" },
       ],
@@ -250,7 +250,7 @@ export const modalVerbs: DailyLesson = {
     passage: "A New Student's First Day\n\nAziza is a new student at an international school in Tashkent. She must arrive at school at 8 AM every day. She can't be late. The school rules say students must wear a uniform, but they can choose their own shoes. Aziza can speak English and Russian, but she should practise her English more. She might join the English club after school. The teachers say students should do their homework every day. If they need help, they can ask the teacher after class. Students mustn't use their phones during lessons. However, they can use them during break time. Aziza thinks school is great, but she must study hard to pass her exams.",
     questions: [
       { id: 14059, type: 'multiple-choice', question: 'What time must Aziza arrive at school?', options: ['At 7 AM', 'At 8 AM', 'At 9 AM', 'At 10 AM'], correctIndex: 1, explanation: 'The text says: She must arrive at school at 8 AM.' },
-      { id: 14060, type: 'multiple-choice', question: 'What must students wear?', options: ['Their own clothes', 'A uniform', 'A hat', 'Sports clothes'], correctIndex: 1, explanation: 'Students must wear a uniform.' },
+      { id: 14060, type: 'multiple-choice', question: 'What must students wear?', options: ['Their own clothes', 'A uniform', 'A hat', 'Sports clothes'], correctIndex: 1, explanation: 'Students must wear a uniform. = Talabalar forma kiyishi shart. (must + V1). Qoida: \'Must\' majburiyat bildiradi: must wear (kiyishi shart). \'Mustn\'t\' = taqiq: mustn\'t wear (kiyish mumkin emas).' },
       { id: 14061, type: 'multiple-choice', question: 'What should Aziza do more?', options: ['Speak Russian', 'Practise her English', 'Play sports', 'Watch TV'], correctIndex: 1, explanation: 'She should practise her English more.' },
       { id: 14062, type: 'multiple-choice', question: 'What mustn\'t students do during lessons?', options: ['Ask questions', 'Use their phones', 'Write', 'Read books'], correctIndex: 1, explanation: 'Students mustn\'t use their phones during lessons.' },
       { id: 14063, type: 'multiple-choice', question: 'What might Aziza do after school?', options: ['Go home', 'Join the English club', 'Play football', 'Visit a friend'], correctIndex: 1, explanation: 'She might join the English club after school.' },
@@ -351,8 +351,8 @@ export const articles: DailyLesson = {
         { en: 'This is a one-way street.', uz: 'Bu bir tomonlama ko\'cha.' },
       ],
       drills: [
-        { id: 14064, type: 'fill-blank', instruction: 'A yoki an qo\'ying:', question: 'She is ___ teacher.', blanks: ['a'], explanation: 'Teacher — undosh tovush' },
-        { id: 14065, type: 'fill-blank', instruction: 'A yoki an qo\'ying:', question: 'He is ___ honest man.', blanks: ['an'], explanation: 'Honest — h jim, unli tovush' },
+        { id: 14064, type: 'fill-blank', instruction: 'A yoki an qo\'ying:', question: 'She is ___ teacher.', blanks: ['a'], explanation: 'Teacher — undosh tovush bilan boshlanadi. Qoida: \'Teacher\' [t] undosh tovush bilan boshlanadi, shuning uchun \'a teacher\' (a talaffuzi [ə]). Unli tovush bilan boshlansa \'an\': an apple. \'A\' va \'an\' farqi keyingi so\'zning TALAFUZiga bog\'liq, harfiga emas.' },
+        { id: 14065, type: 'fill-blank', instruction: 'A yoki an qo\'ying:', question: 'He is ___ honest man.', blanks: ['an'], explanation: 'Honest — \'h\' harfi jim, unli tovush bilan boshlanadi. Qoida: \'Honest\' [ɒnɪst] da \'h\' talaffuz qilinmaydi, shuning uchun \'an honest\' ishlatiladi: an honest person. \'H\' jim bo\'lgan so\'zlar: hour, honour, heir.' },
         { id: 14066, type: 'multiple-choice', instruction: "To'g'ri variant:", question: 'I saw ___ owl last night.', options: ['a', 'an', 'the', 'no article'], correct: 'an', explanation: 'Owl — unli tovush bilan boshlanadi' },
       ],
     },
@@ -472,7 +472,22 @@ export const articles: DailyLesson = {
       correct: 'Noaniq narsa bilan ishlatiladi',
       explanation: "Indefinite article = A/AN. Birinchi marta aytilgan noaniq narsa: a cat, an apple. Tovushga qarab a yoki an."
     },
-  ],
+  
+
+    // ── Productive Exercises: Countable/Uncountable ──
+    { id: 99653, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "I went to the supermarket yesterday. I bought ___(1) apples and ___(2) milk. I didn't need ___(3) bread because we had ___(4) at home. There was ___(5) sugar in the cupboard, but only ___(6) chocolate.",
+      blanks: ['some', 'some', 'any', 'a lot', 'a little', 'a little'],
+      acceptedAnswers: [['some', 'a few'], ['some'], ['any'], ['a lot', 'plenty'], ['a little', 'little'], ['a little']],
+      explanation: "Countable (apples) → some/a few. Uncountable (milk) → some. Negative → any. Positive result → a lot. Uncountable small amount → a little."
+    },
+    { id: 99654, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "In my kitchen, there is ___(1) of rice but very ___(2) oil. We have ___(3) eggs left. My mother bought ___(4) vegetables from the market. There isn't ___(5) cheese in the fridge. How ___(6) tomatoes do we need for the salad?",
+      blanks: ['a lot', 'little', 'a few', 'many', 'any', 'many'],
+      acceptedAnswers: [['a lot', 'plenty', 'lots'], ['little'], ['a few', 'some'], ['many', 'a lot of', 'some'], ['any'], ['many']],
+      explanation: "A lot of/lots of = large quantity. Little = not enough (uncountable). A few = small countable. Many = countable questions. Not any = none."
+    },
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'A va An qoidalari', color: 'bg-emerald-500', icon: '🌱', ids: [1501, 1502, 1503, 1504, 1505] },
     { title: "O'rtacha", desc: 'The ishlatilishi', color: 'bg-blue-500', icon: '📘', ids: [1506, 1507, 1508, 1509, 1510] },
@@ -510,7 +525,7 @@ export const articles: DailyLesson = {
       { id: 14122, type: 'multiple-choice', question: 'What kind of museum did the writer visit?', options: ['A modern museum', 'An old museum', 'A science museum', 'An art museum'], correctIndex: 1, explanation: 'The text says: I visited an old museum.' },
       { id: 14123, type: 'multiple-choice', question: 'Where is the park?', options: ['Near the museum', 'Near Amir Temur Square', 'Near Broadway Street', 'In the old city'], correctIndex: 1, explanation: 'The park is near Amir Temur Square.' },
       { id: 14124, type: 'multiple-choice', question: 'What did the writer do for lunch?', options: ['Cooked at home', 'Visited the best restaurant', 'Ate at the museum', 'Had a picnic'], correctIndex: 1, explanation: 'The writer visited the best restaurant in town for lunch.' },
-      { id: 14125, type: 'multiple-choice', question: 'What does the writer\'s mother do?', options: ['She is a doctor', 'She is a teacher', 'She is an engineer', 'She is a student'], correctIndex: 1, explanation: 'The writer bought a souvenir for his mother. She is a teacher.' },
+      { id: 14125, type: 'multiple-choice', question: 'What does the writer\'s mother do?', options: ['She is a doctor', 'She is a teacher', 'She is an engineer', 'She is a student'], correctIndex: 1, explanation: 'Qoida: Past Simple (bought = buy ning V2 shakli). \'A souvenir\' = bir esdalik (birinchi marta eslatish). \'She is a teacher\' = U o\'qituvchi (a + kasb). \'For\' = uchun (maqsad).' },
       { id: 14126, type: 'multiple-choice', question: 'What did the writer buy on Broadway Street?', options: ['Food', 'A souvenir', 'Clothes', 'A phone'], correctIndex: 1, explanation: 'The writer bought a souvenir for his mother.' },
     ],
   },
@@ -689,6 +704,23 @@ export const prepositions: DailyLesson = {
     { id: 95133, type: 'error-correction', instruction: "At + soat (in emas):", question: "The film starts in 8 o'clock.", errorPart: "in 8 o'clock", correct: "The film starts at 8 o'clock.", explanation: "Aniq soat → at 8 o'clock ('in' oy/yil uchun)." },
     { id: 95134, type: 'multiple-choice', instruction: "Present Simple + predlog (jadval):", question: "The train _____ at 7 and _____ in London at noon.", options: ["leaves / arrives", "leave / arrive", "is leaving / arrives", "leaves / arrive"], correct: "leaves / arrives", explanation: "Jadval → Present Simple 3-shaxs +s (leaves, arrives) + at/in." },
     { id: 95135, type: 'transformation', instruction: "To'g'ri predlog bilan yozing:", question: "My birthday is ___ June, ___ the 12th.", hint: "...", correct: "My birthday is in June, on the 12th.", explanation: "Oy → in June. Sana → on the 12th." },
+    { id: 98501, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "My Daily Routine\n\nI wake up ___(1) 7 o'clock ___(2) the morning. I have breakfast ___(3) home and then I go to work ___(4) bus. I work ___(5) an office ___(6) the city centre. I always start work ___(7) 9 AM. I have lunch ___(8) noon ___(9) the canteen. I usually finish work ___(10) 5 PM. ___(11) the evening, I relax ___(12) home and read a book ___(13) bed.",
+      blanks: ['at', 'in', 'at', 'by', 'in', 'in', 'at', 'at', 'in', 'at', 'In', 'at', 'in'],
+      acceptedAnswers: [['at'], ['in'], ['at'], ['by'], ['in'], ['in'], ['at'], ['at'], ['in'], ['at'], ['In'], ['at'], ['in']],
+      explanation: "At — aniq soat (7 o'clock, 9 AM, 5 PM, noon). In — kun qismi (morning, evening) va ochiq makon (office, canteen). At — joy (home). By — transport turi (by bus). In — karavotda uxlash (in bed)."
+    },
+    { id: 98601, type: 'connection', instruction: "Kundalik hayotingiz haqida yozing",
+      prompt: "At, in va on predloglarini ishlatib, o'zingizning typical kuningizni kamida 5 ta turli predlog bilan tasvirlab bering. Vaqt, joy va transport haqida gapiring.",
+      hints: ["I wake up at ... (aniq soat)", "I go to work by ... (transport)", "I have lunch in/at ... (joy)", "I finish work at ... (aniq soat)", "In the evening, I ... (kun qismi)"],
+      exampleAnswer: "I wake up at 6:30 in the morning. I have breakfast at home and then I go to school by bus. I have lessons in the classroom from 8 AM. I have lunch at the canteen at noon. In the evening, I do my homework in my room. I usually go to bed at 10 PM."
+    },
+    { id: 98701, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'since',
+      options: ["ma'lum bir nuqtadan beri (vaqt nuqtasi)", "davomida (davr uchun)", "oldin (o'tgan zamon)", "davomida (kelajak)"],
+      correct: "ma'lum bir nuqtadan beri (vaqt nuqtasi)",
+      explanation: "Since — ma'lum bir boshlanish nuqtasidan beri: since Monday, since 2020, since morning. For — davom uchun: for two hours, for a week."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'At, In, On asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1601, 1602, 1603, 1604, 1605] },
@@ -902,12 +934,42 @@ export const questionsLesson: DailyLesson = {
     { id: 95143, type: 'error-correction', instruction: "Savolда so'z tartibi:", question: "Where you are going?", errorPart: "you are", correct: "Where are you going?", explanation: "Savol tartibi: wh- + auxiliary + subject → Where are you going?" },
     { id: 95144, type: 'multiple-choice', instruction: "Yes/no savol — to be va to do:", question: "_____ they happy? _____ they like coffee?", options: ["Are / Do", "Do / Are", "Are / Are", "Do / Do"], correct: "Are / Do", explanation: "Sifat (happy) → Are they. Fe'l (like) → Do they." },
     { id: 95145, type: 'transformation', instruction: "Gapni savolga aylantiring (Past):", question: "She went to the market.", hint: "Where ...", correct: "Where did she go?", explanation: "Past savol → did + subject + V1 (go), 'went' emas." },
+    { id: 98502, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "A New Friend\n\nA: Hi! ___(1) is your name?\nB: My name is Dilorom. ___(2) are you from?\nA: I'm from Samarkand. ___(3) do you study?\nB: I study at Westminster University. ___(4) are you studying English?\nA: Because I want to work abroad. ___(5) long have you been learning English?\nB: For about two years. ___(6) do you usually study?\nA: I study at the library. It's quiet there.",
+      blanks: ['What', 'Where', 'Where', 'Why', 'How', 'Where'],
+      acceptedAnswers: [['What'], ['Where'], ['Where'], ['Why'], ['How'], ['Where']],
+      explanation: "What — nima (ism). Where — qayerda (joy/maktab). Why — nega (sabab). How long — qancha vaqt (davr). Where — qayerda (o'qish joyi)."
+    },
+    { id: 98602, type: 'connection', instruction: "Yangi do'stingizga savollar yozing",
+      prompt: "Yangi tanishgan do'stingizga 5 ta savol yozing. Har xil turdagi savollardan foydalaning: Yes/No savoli, Where, What, Why, How va boshqalar.",
+      hints: ["Where do you ...? (joy)", "What do you ...? (nima)", "Why do you ...? (sabab)", "How do you ...? (qanday)", "Do you ...? (Yes/No)"],
+      exampleAnswer: "Where do you live? What do you do in your free time? Why are you studying English? How do you go to school every day? Do you have any hobbies?"
+    },
+    { id: 98702, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'How many',
+      options: ["sanaladigan otlar sonini so'rash", "sanalmaydigan otlar miqdorini so'rash", "vaqtni so'rash", "javnob turini so'rash"],
+      correct: "sanaladigan otlar sonini so'rash",
+      explanation: "How many — sanaladigan otlar uchun (many books, many students). How much — sanalmaydigan otlar uchun (much water, much money)."
+    },
+    // ── Productive Exercises: Questions ──
+    { id: 99651, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Yesterday, I had a job interview. ___(1) asked me many questions. '___(2) do you live?' she asked. '___(3) did you leave your last job?' I answered all questions. She asked ___(4) I could work on weekends. She also asked ___(5) I could start.",
+      blanks: ['She', 'Where', 'Why', 'if', 'when'],
+      acceptedAnswers: [['She', 'The interviewer'], ['Where'], ['Why'], ['if', 'whether'], ['when']],
+      explanation: "Wh- questions: Where (joy), Why (sabab). Yes/no reported: asked if. Subject question 'Who asked' needs no auxiliary. Word order: subject + verb."
+    },
+    { id: 99652, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "A woman stopped me on the street. '___ (1) you help me?' she asked. 'I lost my son. ___ (2) is the nearest police station?' I told her ___(3) the station was. She asked ___(4) I had seen a boy in a red jacket. I said I hadn't. 'Who ___(5) I call?' she asked nervously.",
+      blanks: ['Can', 'Where', 'where', 'if', 'should'],
+      acceptedAnswers: [['Can', 'Could'], ['Where'], ['where'], ['if', 'whether'], ['should']],
+      explanation: "Can for requests. Wh- questions: Where (joy). Reported: where the station was (subject+verb). Reported yes/no: asked if. Should for advice."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Yes/No savollari', color: 'bg-emerald-500', icon: '🌱', ids: [1701, 1702, 1703, 1704, 1705] },
     { title: "O'rtacha", desc: 'Wh- savollari', color: 'bg-blue-500', icon: '📘', ids: [1706, 1707, 1708, 1709, 1710] },
     { title: "Qiyin", desc: 'Tag questions', color: 'bg-violet-500', icon: '🎯', ids: [1713, 1714, 1711, 1712, 1715] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1725, 1723, 1724, 1717, 1719, 1727, 1722, 1720, 1718, 1728, 1730, 1721, 1716, 1726, 1729] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1725, 1723, 1724, 1717, 1719, 1727, 1722, 1720, 1718, 1728, 1730, 1721, 1716, 1726, 1729, 99651, 99652] },
     { title: "🔀 Aralash", desc: "Savollar (wh/yes-no) + Present/Past farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95141, 95142, 95143, 95144, 95145] },
   ],
   tests: [
@@ -1104,12 +1166,29 @@ export const countableUncountable: DailyLesson = {
     { id: 95153, type: 'error-correction', instruction: "Uncountable bilan 'a' ishlatilmaydi:", question: "Can you give me an information?", errorPart: "an information", correct: "Can you give me some information?", explanation: "Information = uncountable → 'an' yo'q. → some information." },
     { id: 95154, type: 'multiple-choice', instruction: "A few (countable) va a little (uncountable):", question: "I have _____ friends here and _____ free time.", options: ["a few / a little", "a little / a few", "a few / a few", "a little / a little"], correct: "a few / a little", explanation: "Countable (friends) → a few. Uncountable (time) → a little." },
     { id: 95155, type: 'transformation', instruction: "Uncountable otni 'a piece of' bilan sanang:", question: "I want to give you advice (make it countable).", hint: "I want to give you a ...", correct: "I want to give you a piece of advice.", explanation: "Uncountable (advice) → a piece of advice bilan sanaladi." },
+    { id: 98503, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "At the Supermarket\n\nShopkeeper: Good morning! Can I help you?\nCustomer: Yes, please. I need ___(1) rice. How ___(2) rice do you have?\nShopkeeper: We have ___(3) rice. Do you need ___(4) eggs?\nCustomer: Yes, I need ___(5) eggs. How ___(6) eggs are there in a box?\nShopkeeper: There are twelve. Do you have ___(7) milk at home?\nCustomer: No, I don't have ___(8) milk. I'll take ___(9) bottles.\nShopkeeper: Would you like ___(10) bread too?\nCustomer: Yes, please. I need ___(11) bread for sandwiches.",
+      blanks: ['some', 'much', 'a lot of', 'any', 'some', 'many', 'any', 'any', 'two', 'some', 'a little'],
+      acceptedAnswers: [['some'], ['much'], ['a lot of'], ['any'], ['some'], ['many'], ['any'], ['any'], ['two'], ['some'], ['a little']],
+      explanation: "Some — ijobiy gapda (some rice, some eggs, some bread). Much — sanalmaydigan savolda (how much rice). Many — sanaladigan savolda (how many eggs). Any — inkor va savolda (any milk, any eggs). A lot of — ko'p (a lot of rice). A little — bir oz sanalmaydigan (a little bread)."
+    },
+    { id: 98603, type: 'connection', instruction: "Oshxonangizni tasvirlab bering",
+      prompt: "Oshxona yoki muzlatkichingizda nima borligini tasvirlab bering. Some, any, much, many, a few va a little so'zlarini ishlatib, kamida 5 ta jumla yozing.",
+      hints: ["There is/are some ... (ijobiy)", "There isn't any ... (inkor)", "How much ...? (sanalmaydigan)", "How many ...? (sanaladigan)", "I have a few/a little ..."],
+      exampleAnswer: "In my kitchen, there are some apples and a few eggs in the fridge. There is a little milk, but there isn't any bread. How much sugar do we have? We have a lot of rice. I don't have many vegetables. Would you like some tea?"
+    },
+    { id: 98703, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'much',
+      options: ["sanalmaydigan otlar uchun 'ko'p'", "sanaladigan otlar uchun 'ko'p'", "bir nechta (sanaladigan)", "bir oz (sanalmaydigan)"],
+      correct: "sanalmaydigan otlar uchun 'ko'p'",
+      explanation: "Much — sanalmaydigan otlar bilan: much water, much money, much time. Many — sanaladigan otlar bilan: many books, many students."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Much/Many', color: 'bg-emerald-500', icon: '🌱', ids: [1801, 1802, 1803, 1804, 1805] },
     { title: "O'rtacha", desc: 'Some/Any qoidalari', color: 'bg-blue-500', icon: '📘', ids: [1806, 1807, 1808, 1809, 1810] },
     { title: "Qiyin", desc: 'A few/A little', color: 'bg-violet-500', icon: '🎯', ids: [1813, 1814, 1811, 1812, 1815] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1817, 1821, 1826, 1825, 1819, 1823, 1828, 1829, 1818, 1830, 1816, 1827, 1824, 1820, 1822] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [1817, 1821, 1826, 1825, 1819, 1823, 1828, 1829, 1818, 1830, 1816, 1827, 1824, 1820, 1822, 99653, 99654] },
     { title: "🔀 Aralash", desc: "Sanaladigan/sanalmaydigan + Artikl/quantifier farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95151, 95152, 95153, 95154, 95155] },
   ],
   tests: [
@@ -1141,7 +1220,7 @@ export const countableUncountable: DailyLesson = {
       { id: 14294, type: 'multiple-choice', question: 'What does Lola need to buy for the party?', options: ['Some food and drinks', 'Only drinks', 'Only food', 'Clothes'], correctIndex: 0, explanation: 'She needs to buy some food and drinks.' },
       { id: 14295, type: 'multiple-choice', question: 'How much sugar does Lola need?', options: ['A few', 'A little', 'Many', 'Much'], correctIndex: 1, explanation: 'She needs a little sugar for the cake.' },
       { id: 14296, type: 'multiple-choice', question: 'Does Lola have much money?', options: ['Yes, a lot', 'Not much', 'She has no money', 'Only coins'], correctIndex: 1, explanation: 'The text says: She has some money but not much.' },
-      { id: 14297, type: 'multiple-choice', question: "Why can't Lola buy the cheese?", options: ["It is too expensive and she doesn't have much money", "She doesn't like cheese", "The shop doesn't have cheese", "She forgot her wallet"], correctIndex: 0, explanation: 'The cheese is expensive and she has only a little money left.' },
+      { id: 14297, type: 'multiple-choice', question: "Why can't Lola buy the cheese?", options: ["It is too expensive and she doesn't have much money", "She doesn't like cheese", "The shop doesn't have cheese", "She forgot her wallet"], correctIndex: 0, explanation: 'Qoida: \'The cheese\' = aniq pishloq (the bilan). \'A little\' = ozgina (sanalmas otlar bilan: money). Sanalmas otlar: cheese, money. \'Only\' = faqat, bor-yo\'g\'i.' },
       { id: 14298, type: 'multiple-choice', question: 'What does Lola buy instead of cheese?', options: ['Bread', 'A few cookies', 'More water', 'Juice'], correctIndex: 1, explanation: 'She buys a few cookies instead.' },
     ],
   },

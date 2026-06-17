@@ -131,7 +131,7 @@ export const presentContinuousFuture: DailyLesson = {
     { id: 29017, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Look at those clouds! It ___ rain.', options: ['is going to', 'is raining', 'rains', 'will'], correct: 'is going to', explanation: "Dalil asosida bashorat — be going to" },
     { id: 29018, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ you with your homework right now.', options: ['am helping', 'will help', 'help', 'am going to help'], correct: 'will help', explanation: "Hozir qaror qilish — will" },
     { id: 29019, type: 'transformation', instruction: "Present Continuousga o'zgartiring:", question: 'I plan to visit my grandmother tomorrow.', hint: 'I ___ my grandmother tomorrow.', correct: 'I am visiting my grandmother tomorrow.', explanation: "Reja \u2192 Present Continuous" },
-    { id: 29020, type: 'transformation', instruction: "Savolga o'zgartiring:", question: 'She is coming to the party.', hint: '___ she ___ to the party?', correct: 'Is she coming to the party?', explanation: 'Is + she + V-ing?' },
+    { id: 29020, type: 'transformation', instruction: "Savolga o'zgartiring:", question: 'She is coming to the party.', hint: '___ she ___ to the party?', correct: 'Is she coming to the party?', explanation: 'Is + she + V-ing? = Hozirgi davomli zamonda savol. Qoida: Savol shakli: Is/Am/Are + subject + V-ing? Is she sleeping? (U uxlayaptimi?) Are they playing? (Ular o\'ynayaptimi?)' },
     { id: 29021, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'The film ___ at 8 pm tonight.', options: ['starts', 'is starting', 'start', 'will start'], correct: 'starts', explanation: "Kino jadvali — Present Simple" },
     { id: 29022, type: 'fill-blank', instruction: "Present Simple yoki Continuous:", question: 'I ___ (go) to the dentist on Friday. I have an appointment.', blanks: ['am going'], explanation: "Shaxsiy reja (appointment) — Present Continuous" },
     { id: 29023, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is about a FIXED ARRANGEMENT?", options: ["I am meeting John at 6.", "I will meet John.", "I meet John every day.", "I am meeting John these days."], correct: "I am meeting John at 6.", explanation: "Aniq vaqt bilan — fixed arrangement" },
@@ -143,6 +143,14 @@ export const presentContinuousFuture: DailyLesson = {
     { id: 95263, type: 'error-correction', instruction: "Kelishilgan reja — PC, will emas:", question: "I will meet the doctor at 3 tomorrow, it's arranged.", errorPart: "will meet", correct: "I am meeting the doctor at 3 tomorrow, it's arranged.", explanation: "Aniq kelishilgan → Present Continuous (am meeting)." },
     { id: 95264, type: 'multiple-choice', instruction: "Timetable (PS) va arrangement (PC):", question: "The plane _____ at 9 (schedule). We _____ at 7 to be early (plan).", options: ["leaves / are arriving", "is leaving / arrive", "leave / are arriving", "leaves / arrive"], correct: "leaves / are arriving", explanation: "Jadval → leaves (PS). Kelishilgan reja → are arriving (PC)." },
     { id: 95265, type: 'transformation', instruction: "Kelishilgan rejani PC bilan yozing:", question: "My plan is to visit grandma on Sunday. (arranged)", hint: "I ...", correct: "I am visiting grandma on Sunday.", explanation: "Aniq reja → Present Continuous (am visiting)." },
+
+    // ── Productive Exercises: Present Continuous Future ──
+    { id: 99106, type: 'passage', instruction: "Matnni to'ldiring:", passage: "This weekend is going to be busy. I ___(1) (meet) my friends on Saturday morning. On Sunday, my family ___(2) (visit) my grandparents. I am also ___(3) (start) a new English course next week.", blanks: ['am meeting', 'are visiting', 'starting'], acceptedAnswers: [['am meeting'], ['are visiting'], ['starting']], explanation: "Aniq rejalar → Present Continuous: am meeting, are visiting, starting." },
+    { id: 99206, type: 'connection', instruction: "Keyingi ta'tilingiz haqida yozing", prompt: "Write 3-4 sentences about your next holiday or trip. Use Present Continuous for your fixed arrangements (where, when, who with).", hints: ['I am going to...', 'I am meeting...', 'We are visiting...'], exampleAnswer: "I am going to Samarkand next month. I am visiting the Registan on Saturday. I am meeting my cousin there. We are staying at a nice hotel near the centre." },
+    { id: 99491, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'arrangement', options: ['kelishuv, tayinlangan reja', 'bashorat', 'niyat', 'jadval'], correct: 'kelishuv, tayinlangan reja', explanation: "Arrangement — tayinlangan reja, kelishuv: We have an arrangement to meet." },
+    { id: 99501, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'schedule', options: ['jadval', 'reja', 'taklif', 'qoida'], correct: 'jadval', explanation: "Schedule — rasmiy jadval: The train schedule is on the board." },
+    { id: 99511, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'appointment', options: ['rasmiy uchrashuv', 'taklif', 'reja', 'bayram'], correct: 'rasmiy uchrashuv', explanation: "Appointment — rasmiy uchrashuv: I have a doctor's appointment." },
+    { id: 99521, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'flight', options: ['parvoz, reys', 'poyezd', 'avtobus', 'taksi'], correct: 'parvoz, reys', explanation: "Flight — samolyot parvozi: She is catching a flight to Paris." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Ijobiy shakl asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [2901, 2902, 2903, 2904, 2905] },
@@ -319,6 +327,14 @@ export const quantifiers: DailyLesson = {
     { id: 95273, type: 'error-correction', instruction: "Many + countable:", question: "I don't have much books.", errorPart: "much books", correct: "I don't have many books.", explanation: "Books = countable → many (much uncountable uchun)." },
     { id: 95274, type: 'multiple-choice', instruction: "Too much / too many:", question: "There is _____ noise and _____ cars in the city.", options: ["too much / too many", "too many / too much", "too much / too much", "too many / too many"], correct: "too much / too many", explanation: "Uncountable (noise) → too much. Countable (cars) → too many." },
     { id: 95275, type: 'transformation', instruction: "Enough bilan yozing:", question: "We don't have a sufficient number of chairs.", hint: "We don't have ...", correct: "We don't have enough chairs.", explanation: "Yetarli emas → enough chairs." },
+
+    // ── Productive Exercises: Quantifiers ──
+    { id: 99107, type: 'passage', instruction: "Matnni to'ldiring:", passage: "At the supermarket, I bought ___(1) milk and ___(2) eggs. I didn't buy ___(3) sugar because we have ___(4) at home.", blanks: ['some', 'a few', 'any', 'a lot'], acceptedAnswers: [['some'], ['a few'], ['any'], ['a lot']], explanation: "Ijobiy gap → some. Sanaluvchi (eggs) → a few. Inkor → any. Ijobiy (sugar) → a lot." },
+    { id: 99207, type: 'connection', instruction: "Ovqatlanish odatlaringiz haqida yozing", prompt: "Write 3-4 sentences about your eating habits. Use quantifiers: much, many, a lot of, a few, a little, some. Talk about what you eat and drink.", hints: ['I eat a lot of...', 'I drink a little...', 'I don\'t eat many...'], exampleAnswer: "I eat a lot of fruit every day. I drink a little milk in the morning. I don't eat many sweets because they are unhealthy. I have a few favourite restaurants." },
+    { id: 99531, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'much', options: ["ko'p (sanalmaydigan)", "ko'p (sanaluvchi)", "bir oz", "kam"], correct: "ko'p (sanalmaydigan)", explanation: "Much — sanalmaydigan otlar bilan: How much water? I don't have much time." },
+    { id: 99541, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'many', options: ["ko'p (sanaluvchi)", "ko'p (sanalmaydigan)", "bir oz", "kam"], correct: "ko'p (sanaluvchi)", explanation: "Many — sanaluvchi otlar bilan: How many books? I don't have many friends." },
+    { id: 99551, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'a few', options: ['bir nechta (yetarli, ijobiy)', 'kam (yetarli emas)', 'bir oz (sanalmaydigan)', "ko'p"], correct: 'bir nechta (yetarli, ijobiy)', explanation: "A few — sanaluvchi, ijobiy: I have a few good friends (yetarli)." },
+    { id: 99561, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'a little', options: ['bir oz (yetarli, ijobiy)', 'kam (yetarli emas)', 'bir nechta (sanaluvchi)', "ko'p"], correct: 'bir oz (yetarli, ijobiy)', explanation: "A little — sanalmaydigan, ijobiy: I have a little money (yetarli)." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Much/Many asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3001, 3002, 3003, 3004, 3005] },
@@ -494,6 +510,14 @@ export const tooEnough: DailyLesson = {
     { id: 95283, type: 'error-correction', instruction: "Enough sifatdan keyin keladi:", question: "She isn't enough tall for the team.", errorPart: "enough tall", correct: "She isn't tall enough for the team.", explanation: "Sifat + enough (tall enough), enough + sifat emas." },
     { id: 95284, type: 'multiple-choice', instruction: "Too + sifat va comparative:", question: "This box is _____ heavy. Can you find a _____ one?", options: ["too / lighter", "enough / light", "too / light", "enough / lighter"], correct: "too / lighter", explanation: "Ortiqcha → too heavy. Solishtirish → lighter one." },
     { id: 95285, type: 'transformation', instruction: "Too ... shaklida yozing:", question: "The bag is so heavy that I can't lift it.", hint: "The bag is ...", correct: "The bag is too heavy to lift.", explanation: "So...that → too + adjective + to V (too heavy to lift)." },
+
+    // ── Productive Exercises: Too and Enough ──
+    { id: 99108, type: 'passage', instruction: "Matnni to'ldiring:", passage: "The weather today is ___(1) cold to go outside. I am not ___(2) warm to walk to school. The coat is ___(3) heavy to wear all day. I need a ___(4) coat for winter.", blanks: ['too', 'warm enough', 'too', 'warm enough'], acceptedAnswers: [['too'], ['warm enough'], ['too'], ['warm enough']], explanation: "Too + adj + to (too cold). Adj + enough + to (warm enough). Too + adj + to (too heavy). Adj + enough (warm enough)." },
+    { id: 99208, type: 'connection', instruction: "Maktab qoidalari haqida yozing", prompt: "Write 3-4 sentences about school rules or problems. Use 'too' (too much/too many/too + adj) and 'enough' (adj + enough/enough + noun).", hints: ['Students are not old enough...', 'There is too much...', 'The class is too...'], exampleAnswer: "Students are not old enough to leave school alone. There is too much homework on weekends. The classroom is too small for 30 students. We don't have enough books for everyone." },
+    { id: 99571, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'too', options: ['juda, ortiqcha (salbiy)', 'yetarli', 'juda (neytral)', 'bir oz'], correct: 'juda, ortiqcha (salbiy)', explanation: "Too — keragidan ortiq, muammo: The coffee is too hot to drink." },
+    { id: 99581, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'enough', options: ['yetarli', 'juda (ortiqcha)', 'juda (neytral)', 'kam'], correct: 'yetarli', explanation: "Enough — yetarli: The room is big enough. I have enough money." },
+    { id: 99591, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'too much', options: ["juda ko'p (sanalmaydigan)", "juda ko'p (sanaluvchi)", 'yetarli', 'bir oz'], correct: "juda ko'p (sanalmaydigan)", explanation: "Too much — sanalmaydigan otlar bilan: There is too much sugar." },
+    { id: 99601, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'too many', options: ["juda ko'p (sanaluvchi)", "juda ko'p (sanalmaydigan)", 'yetarli', 'bir oz'], correct: "juda ko'p (sanaluvchi)", explanation: "Too many — sanaluvchi otlar bilan: There are too many people." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Too va Enough asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3101, 3102, 3103, 3104, 3105] },
@@ -669,6 +693,14 @@ export const soSuch: DailyLesson = {
     { id: 95293, type: 'error-correction', instruction: "Such + ot iborasi:", question: "It was so a beautiful day.", errorPart: "so a beautiful day", correct: "It was such a beautiful day.", explanation: "Ot iborasi (a beautiful day) → such, so emas." },
     { id: 95294, type: 'multiple-choice', instruction: "So many / so much:", question: "There were _____ people and _____ noise.", options: ["so many / so much", "so much / so many", "such many / such much", "so many / so many"], correct: "so many / so much", explanation: "Countable (people) → so many. Uncountable (noise) → so much." },
     { id: 95295, type: 'transformation', instruction: "Such ... that bilan yozing:", question: "The book was very interesting, so I finished it in a day.", hint: "It was such ...", correct: "It was such an interesting book that I finished it in a day.", explanation: "Such + a/an + adjective + noun + that (natija)." },
+
+    // ── Productive Exercises: So and Such ──
+    { id: 99109, type: 'passage', instruction: "Matnni to'ldiring:", passage: "Last summer I went to Samarkand. It was ___(1) beautiful city that I didn't want to leave. The Registan was ___(2) amazing! I took ___(3) many photos that my phone ran out of battery.", blanks: ['such a', 'so', 'so'], acceptedAnswers: [['such a'], ['so'], ['so']], explanation: "Such a + adj + noun (such a beautiful city). So + adj (so amazing). So many + sanaluvchi (so many photos)." },
+    { id: 99209, type: 'connection', instruction: "Esda qolarli voqeangiz haqida yozing", prompt: "Write 3-4 sentences about a memorable event or experience. Use 'so + adjective' and 'such + (a/an) + adjective + noun' to describe how you felt.", hints: ['It was so...', 'It was such a...', 'I was so...'], exampleAnswer: "The concert was so loud that I couldn't hear anything. It was such an exciting night that I will never forget it. The band was so talented! There were so many people that we had to stand." },
+    { id: 99611, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'so', options: ['shunchalik (sifat/ravishdosh oldidan)', 'shunchalik (ot oldidan)', "juda ko'p (sanalmaydigan)", 'natija bog\'lamasi'], correct: 'shunchalik (sifat/ravishdosh oldidan)', explanation: "So — faqat sifat yoki ravishdosh oldidan: She is so kind. He runs so fast." },
+    { id: 99621, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'such', options: ['shunchalik (sifat + ot oldidan)', 'shunchalik (faqat sifat)', "juda ko'p", 'natija bog\'lamasi'], correct: 'shunchalik (sifat + ot oldidan)', explanation: "Such + (a/an) + adjective + noun: She is such a kind person. It was such a good film." },
+    { id: 99631, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'so...that', options: ['shunchalik...ki (natija)', 'shunday...ki (ot bilan)', "juda ko'p...ki", 'yetarli...ki'], correct: 'shunchalik...ki (natija)', explanation: "So + adj + that — natija bog'lami: It was so hot that we stayed home." },
+    { id: 99641, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'such...that', options: ['shunday...ki (ot bilan, natija)', 'shunchalik...ki (faqat sifat)', "juda ko'p...ki", 'yetarli...ki'], correct: 'shunday...ki (ot bilan, natija)', explanation: "Such + (a/an) + adj + noun + that: It was such a hot day that we stayed home." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'So va Such asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3201, 3202, 3203, 3204, 3205] },
@@ -825,6 +857,36 @@ export const a2Review2: DailyLesson = {
     { id: 95303, type: 'error-correction', instruction: "Present perfect va for/since:", question: "I have lived here since five years.", errorPart: "since five years", correct: "I have lived here for five years.", explanation: "Davr (five years) → for, since boshlanish nuqtasi uchun." },
     { id: 95304, type: 'multiple-choice', instruction: "Reported speech va modal:", question: "She said she _____ swim. He told me he _____ come tomorrow.", options: ["could / would", "can / will", "could / will", "can / would"], correct: "could / would", explanation: "Reported: can → could, will → would." },
     { id: 95305, type: 'transformation', instruction: "Passivega aylantiring:", question: "Someone stole my bike yesterday.", hint: "My bike ...", correct: "My bike was stolen yesterday.", explanation: "Past passive → was stolen (agent muhim emas)." },
+  
+    // ── Productive Exercises: A2 Review ──
+    { id: 99661, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Last summer, I ___(1) (go) to Samarkand with my family. The Registan was very beautiful. There ___(2) (be) many tourists from different countries. I bought ___(3) (some/any) souvenirs for my friends. We ___(4) (stay) in a hotel near the city centre. I think Samarkand is ___(5) beautiful city!",
+      blanks: ['went', 'were', 'some', 'stayed', 'such a'],
+      acceptedAnswers: [['went'], ['were'], ['some'], ['stayed'], ['such a', 'a very']],
+      explanation: "Past Simple: went (o'tgan zamon). Past: There were (ko'plik). Ijobiy gap: some. Past Simple: stayed. Such a + adjective + noun: such a beautiful."
+    },
+    { id: 99662, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "My friend asked me ___(1) (if/what) I wanted to join a cooking class. I told him that I ___(2) (am/was) interested. He said the class ___(3) (starts/started) next Monday. If we ___(4) (sign up) today, we ___(5) (get) a discount. I think it ___(6) (is/was) a great idea!",
+      blanks: ['if', 'was', 'starts', 'sign up', 'will get', 'is'],
+      acceptedAnswers: [['if', 'whether'], ['was'], ['starts', 'started'], ['sign up'], ['will get', 'get'], ['is']],
+      explanation: "Reported question: asked if. Backshift: am → was. Hali haqiqat: starts (Present Simple). First conditional: If + Present + will. Haqiqat: is."
+    },
+
+    { id: 99860, type: 'connection',
+      instruction: 'A2 Review: O\'tgan yoz',
+      prompt: 'O\'tgan yozda nima qilganingiz haqida 4-5 gap yozing. Past Simple ishlating.',
+      hints: ['Last summer, I...', 'I went to...', 'I visited...', 'I enjoyed...'],
+      exampleAnswer: 'Last summer, I went to Samarkand with my family. We visited Registan Square. I saw many historical buildings. I enjoyed the local food. It was a great trip.' },
+    { id: 99861, type: 'connection',
+      instruction: 'A2 Review: Kelajak rejalar',
+      prompt: 'Kelgusi hafta uchun rejalaringiz haqida yozing. going to va will ishlating.',
+      hints: ['I am going to...', 'I will...', 'Next week, I...'],
+      exampleAnswer: 'Next week, I am going to visit my grandmother. I will help her in the garden. On Saturday, I will play football with my friends. I am going to read a new book.' },
+    { id: 99862, type: 'connection',
+      instruction: 'A2 Review: Taqqoslash',
+      prompt: 'Ikkita shaharni taqqoslab yozing. Comparatives ishlating.',
+      hints: ['... is bigger than ...', '... is more ... than ...', '... is as ... as ...'],
+      exampleAnswer: 'Tashkent is bigger than Samarkand. Samarkand is older than Tashkent. Tashkent is more modern than Samarkand. The weather in Samarkand is as hot as in Tashkent.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Asosiy qoidalar', color: 'bg-emerald-500', icon: '🌱', ids: [3301, 3302, 3303, 3304, 3305] },
@@ -854,6 +916,6 @@ export const a2Review2: DailyLesson = {
     { title: 'Oson', desc: 'Asosiy qoidalar', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [331, 332, 333, 334, 335] },
     { title: "O'rtacha", desc: "Qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [336, 337, 338, 339, 340] },
     { title: 'Qiyin', desc: "Farqlarni tushunish", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [341, 342, 343] },
-    { title: 'Murakkab', desc: "Aralash qoidalar", color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [344, 345] },
+    { title: 'Murakkab', desc: "Aralash qoidalar", color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [344, 345, 99860, 99861, 99862] },
   ],
 }

@@ -161,13 +161,43 @@ export const adjectiveAdverb: DailyLesson = {
     { id: 95163, type: 'error-correction', instruction: "Fe'ldan keyin ravish:", question: "She sings beautiful.", errorPart: "beautiful", correct: "She sings beautifully.", explanation: "Fe'lni (sings) tavsiflaydi → ravish: beautifully." },
     { id: 95164, type: 'multiple-choice', instruction: "Comparative (sifat va ravish):", question: "My car is _____ than yours, and it runs _____.", options: ["faster / faster", "more fast / faster", "faster / more fast", "fast / fast"], correct: "faster / faster", explanation: "Qisqa sifat/ravish → +er (faster) ikkala holда." },
     { id: 95165, type: 'transformation', instruction: "Sifatni ravishga aylantiring:", question: "He is a quick worker.", hint: "He works ...", correct: "He works quickly.", explanation: "Sifat (quick) → ravish (quickly) fe'l bilan." },
+  
+    // ── Productive Exercises: Adjective/Adverb ──
+    { id: 99655, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "My brother is a ___(1) (good/well) football player. He plays very ___(2) (good/well). He runs ___(3) (fast/fastly) and kicks the ball ___(4) (powerful/powerfully). He is a ___(5) (careful/carefully) player. The coach said he did ___(6) (good/well) in the match yesterday.",
+      blanks: ['good', 'well', 'fast', 'powerfully', 'careful', 'well'],
+      acceptedAnswers: [['good'], ['well'], ['fast'], ['powerfully'], ['careful'], ['well']],
+      explanation: "Good + noun (good player). Well + verb (plays well). Fast = adj/adv same (runs fast). Adverb + -ly (powerfully). Adj + noun (careful player). Fe\'ldan keyin adverb (did well)."
+    },
+    { id: 99656, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "My grandmother cooks ___(1) (delicious/deliciously). She is a ___(2) (wonderful/wonderfully) cook. She cuts vegetables ___(3) (quick/quickly) and never makes a mistake. The food always smells ___(4) (good/well) and tastes ___(5) (amazing/amazingly). Everyone eats ___(6) (hungry/hungrily) when she cooks!",
+      blanks: ['deliciously', 'wonderful', 'quickly', 'good', 'amazing', 'hungrily'],
+      acceptedAnswers: [['deliciously'], ['wonderful'], ['quickly'], ['good'], ['amazing', 'great'], ['hungrily']],
+      explanation: "Fe\'ldan keyin adverb -ly: cooks deliciously, cuts quickly, eats hungrily. Ot oldidan adj: wonderful cook. Sezgi fe\'lidan keyin adj: smells good (well emas!), tastes amazing."
+    },
+
+    { id: 99857, type: 'connection',
+      instruction: 'Sportchining kuni',
+      prompt: 'Sportchi bir kuni haqida adjective va adverb ishlatib yozing.',
+      hints: ['He runs quickly', 'She is a good player', '... + ly'],
+      exampleAnswer: 'The athlete wakes up early. He runs quickly in the morning. He is a strong swimmer. He plays football well. He eats healthy food.' },
+    { id: 99858, type: 'connection',
+      instruction: 'O\'zingizni baholang',
+      prompt: 'O\'zingizni adjective va adverb bilan tasvirlab bering: qanday ishlarni yaxshi/bad qilasiz.',
+      hints: ['I am a ... student', 'I ... carefully', 'I speak English ...'],
+      exampleAnswer: 'I am a good student. I do my homework carefully. I speak English slowly but correctly. I run fast. I am a careful driver.' },
+    { id: 99859, type: 'connection',
+      instruction: 'Nonushta tayyorlash',
+      prompt: 'Nonushta tayyorlash jarayonini adjective va adverb bilan tasvirlab bering.',
+      hints: ['I cut ... (adj/adv)', 'I cook ... (adj/adv)', 'The food is ... (adj)'],
+      exampleAnswer: 'I wake up early. I cut the bread carefully. The bread is fresh. I cook eggs quickly. The breakfast is delicious.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Adj vs Adv asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1901, 1902, 1903, 1904, 1905] },
     { title: "O'rtacha", desc: '-ly qo\'shimchasi', color: 'bg-blue-500', icon: '📘', ids: [1906, 1907, 1908, 1909, 1910] },
     { title: "Qiyin", desc: 'Good/Well, Hard/Hardly', color: 'bg-violet-500', icon: '🎯', ids: [1912, 1914, 1911, 1913, 1915] },
     { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [1918, 1920, 1919, 1917, 1915, 1913, 1916, 1918, 1920, 1916] },
-    { title: "O'zgartirish", desc: 'Adj vs Adv farqi', color: 'bg-teal-500', icon: '🔄', ids: [50009, 50010, 50011, 50012] },
+    { title: "O'zgartirish", desc: 'Adj vs Adv farqi', color: 'bg-teal-500', icon: '🔄', ids: [50009, 50010, 50011, 50012, 99655, 99656] },
     { title: "🔀 Aralash", desc: "Sifat/ravish + Comparative farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95161, 95162, 95163, 95164, 95165] },
   ],
   tests: [
@@ -354,12 +384,31 @@ export const gerundsInfinitives: DailyLesson = {
     { id: 95173, type: 'error-correction', instruction: "Like + V-ing/to V (avoid + V-ing):", question: "I avoid to eat late at night.", errorPart: "to eat", correct: "I avoid eating late at night.", explanation: "Avoid + V-ing (eating), to V emas." },
     { id: 95174, type: 'multiple-choice', instruction: "Preposition + V-ing:", question: "She is good at _____, and she is interested in _____ a language.", options: ["cooking / learning", "to cook / to learn", "cooking / to learn", "cook / learn"], correct: "cooking / learning", explanation: "Predlogdan keyin (at, in) → V-ing (cooking, learning)." },
     { id: 95175, type: 'transformation', instruction: "Want + to V shaklida yozing:", question: "Her plan is a trip to London. (use 'want')", hint: "She wants ...", correct: "She wants to travel to London.", explanation: "Want + to V (to travel)." },
-  ],
+
+    // ── Productive Exercises: Gerunds & Infinitives ──
+    { id: 98803, type: 'passage', instruction: "Matnni to'ldiring:", passage: "On Saturdays, I enjoy ___(1) in the morning. I also like ___(2) new recipes. My brother decided ___(3) a hobby. He wants to learn ___(4) the guitar.", blanks: ['waking up early', 'trying', 'to start', 'to play'], acceptedAnswers: [['waking up early', 'waking up', 'wake up early'], ['trying', 'to try'], ['to start'], ['to play']], explanation: "Enjoy va like gerund bilan (waking, trying). Decide va want infinitiv bilan (to start, to play). Gerund — faollikni yoqtirish, infinitiv — kelajak reja." },
+    { id: 98903, type: 'connection', instruction: "Sevimli mashg'ulotlaringiz va rejalaringiz", prompt: "Write about things you enjoy doing and things you want to do. Use at least 3 gerunds (enjoy + V-ing) and 3 infinitives (want/need/plan + to V).", hints: ['Enjoy + V-ing: I enjoy reading books.', 'Want + to V: I want to travel abroad.', 'Need + to V: I need to study harder.'], exampleAnswer: 'I enjoy reading books in the evening. I also enjoy playing football with my friends. I want to learn how to cook. I need to improve my English. I plan to travel to London next year. I avoid eating junk food.' },
+    { id: 99672, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'enjoy', options: ['yoqtirmoq, zavq olmoq', 'to\'xtatmoq', 'qaror qilmoq', 'tugatmoq'], correct: 'yoqtirmoq, zavq olmoq', explanation: "Enjoy — zavq olish, rohatlanish. Enjoy + gerund: I enjoy reading. (Men o'qishdan rohatlanaman.)" },
+  
+    // ── Productive Exercises: Gerunds/Infinitives ──
+    { id: 99659, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "I enjoy ___(1) (read) books in my free time. My sister wants ___(2) (become) a doctor. She decided ___(3) (study) medicine at university. I hope ___(4) (travel) abroad one day. My father suggested ___(5) (take) English classes together. We both need ___(6) (improve) our speaking.",
+      blanks: ['reading', 'to become', 'to study', 'to travel', 'taking', 'to improve'],
+      acceptedAnswers: [['reading'], ['to become'], ['to study'], ['to travel'], ['taking', 'to take'], ['to improve']],
+      explanation: "Enjoy + V-ing (reading). Want + to V (to become). Decide + to V (to study). Hope + to V (to travel). Suggest + V-ing (taking). Need + to V (to improve)."
+    },
+    { id: 99660, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "My teacher told us ___(1) (finish) our homework on time. She advised us ___(2) (practise) English every day. I promised ___(3) (study) harder. I finished ___(4) (write) my essay yesterday. I want ___(5) (get) good grades. The teacher said: 'Keep ___(6) (try) and you will improve!'",
+      blanks: ['to finish', 'to practise', 'to study', 'writing', 'to get', 'trying'],
+      acceptedAnswers: [['to finish'], ['to practise', 'to practice'], ['to study'], ['writing'], ['to get'], ['trying']],
+      explanation: "Tell + person + to V (told us to finish). Advise + to V (advised to practise). Promise + to V (promised to study). Finish + V-ing (finished writing). Want + to V (want to get). Keep + V-ing (keep trying)."
+    },
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Gerund asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [2001, 2002, 2003, 2004, 2005] },
     { title: "O'rtacha", desc: 'Infinitive asoslari', color: 'bg-blue-500', icon: '📘', ids: [2006, 2007, 2008, 2009, 2010] },
     { title: "Qiyin", desc: 'Stop, Remember, Forget', color: 'bg-violet-500', icon: '🎯', ids: [2013, 2014, 2011, 2012, 2015] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2020, 2016, 2015, 2018, 2018, 2020, 2017, 2012, 2019, 2016] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2020, 2016, 2015, 2018, 2018, 2020, 2017, 2012, 2019, 2016, 99659, 99660] },
     { title: "🔀 Aralash", desc: "Gerund/infinitiv + Like/want farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95171, 95172, 95173, 95174, 95175] },
   ],
   tests: [
@@ -543,6 +592,11 @@ export const passiveVoice: DailyLesson = {
     { id: 95183, type: 'error-correction', instruction: "Passive V3 shakli:", question: "The window was break by the storm.", errorPart: "was break", correct: "The window was broken by the storm.", explanation: "Passive: be + V3 (broken), 'break' emas." },
     { id: 95184, type: 'multiple-choice', instruction: "Qachon passive (agent muhim emas):", question: "My car _____ yesterday. Someone _____ it from the street.", options: ["was stolen / stole", "stole / was stolen", "is stolen / steals", "was stole / stolen"], correct: "was stolen / stole", explanation: "Kim qilgani noma'lum/muhim emas → passive (was stolen). Active: someone stole." },
     { id: 95185, type: 'transformation', instruction: "Active gapni passivega aylantiring:", question: "They clean the office every day.", hint: "The office ...", correct: "The office is cleaned every day.", explanation: "Present passive → is cleaned." },
+
+    // ── Productive Exercises: Passive Voice ──
+    { id: 98801, type: 'passage', instruction: "Matnni to'ldiring:", passage: "The internet ___(1) in the 1960s. Today, millions of websites ___(2) every day. New apps ___(3) by developers around the world. Data ___(4) to improve services.", blanks: ['was invented', 'are visited', 'are created', 'is collected'], acceptedAnswers: [['was invented', 'invented'], ['are visited', 'visited'], ['are created', 'created', 'are made', 'are built'], ['is collected', 'collected']], explanation: "Past passive: was invented (1960-yillarda ixtiro qilingan). Present passive: are visited, are created, is collected (har kuni ishlatiladi, yaratiladi, yig'iladi)." },
+    { id: 98901, type: 'connection', instruction: "Kashfiyotlar haqida yozing", prompt: "Describe 3 things that were invented or created using passive voice. Write a full sentence for each using past passive (was/were + V3).", hints: ['The telephone was invented by Alexander Graham Bell.', 'Coca-Cola was created in 1886.', 'This building was built in 2005.'], exampleAnswer: 'The telephone was invented by Alexander Graham Bell in 1876. The light bulb was created by Thomas Edison. The first car was built by Karl Benz in 1885. Many useful things were invented in the 20th century.' },
+    { id: 99670, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'agent (passive voice)', options: ['bajaruvchi — kimga "by" qo\'shiladi', 'harakatning o\'zi', 'og\'irlik bildiradi', 'vaqtni ko\'rsatadi'], correct: 'bajaruvchi — kimga "by" qo\'shiladi', explanation: "Agent — passive voice da bajaruvchi. The cake was made by my mother. 'By my mother' — agent. Bajaruvchi muhim bo'lganda ishlatiladi." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Present Passive', color: 'bg-emerald-500', icon: '🌱', ids: [2101, 2102, 2103, 2104, 2105] },
@@ -581,7 +635,7 @@ export const passiveVoice: DailyLesson = {
       { id: 19137, type: 'multiple-choice', question: 'When are coffee beans picked?', options: ['When they are green', 'When the berries are red', 'When they are dry', 'In winter'], correctIndex: 1, explanation: 'It is picked from coffee plants when the berries are red.' },
       { id: 19138, type: 'multiple-choice', question: 'What is plov cooked in?', options: ['A frying pan', 'A large pot called a kazan', 'An oven', 'A microwave'], correctIndex: 1, explanation: 'The dish is prepared in a large pot called a \'kazan\'.' },
       { id: 19139, type: 'multiple-choice', question: 'Who is plov eaten with?', options: ['Friends', 'The whole family', 'Neighbours', 'Colleagues'], correctIndex: 1, explanation: 'It is eaten with the whole family.' },
-      { id: 19140, type: 'multiple-choice', question: 'What language is used by people all over the world?', options: ['Uzbek', 'Russian', 'English', 'Chinese'], correctIndex: 2, explanation: 'English is used by people all over the world for business and travel.' },
+      { id: 19140, type: 'multiple-choice', question: 'What language is used by people all over the world?', options: ['Uzbek', 'Russian', 'English', 'Chinese'], correctIndex: 2, explanation: 'Qoida: Passive Voice Present Simple: am/is/are + V3. \'Is used\' = ishlatiladi (passive). \'By people\' = odamlar tomonidan. \'For business\' = biznes uchun.' },
     ],
   },
 }
@@ -742,6 +796,11 @@ export const reportedSpeech: DailyLesson = {
     { id: 95193, type: 'error-correction', instruction: "Reported question — inversiya yo'q:", question: "He asked where was I.", errorPart: "where was I", correct: "He asked where I was.", explanation: "Reported question'da inversiya yo'q → where I was." },
     { id: 95194, type: 'multiple-choice', instruction: "Say va tell farqi:", question: "She _____ that she was happy. She _____ me that she was happy.", options: ["said / told", "told / said", "said / said", "told / told"], correct: "said / told", explanation: "Say + that (object yo'q). Tell + object (me) + that." },
     { id: 95195, type: 'transformation', instruction: "Direct gapni reported qiling:", question: "Tom said: 'I live in Tashkent.'", hint: "Tom said that he ...", correct: "Tom said that he lived in Tashkent.", explanation: "Present → past (live → lived), I → he." },
+
+    // ── Productive Exercises: Reported Speech ──
+    { id: 98802, type: 'passage', instruction: "Matnni to'ldiring:", passage: "Yesterday, Ali told me that he ___(1) a new job. He said his boss ___(2) him more money. He also ___(3) me if I wanted to go to lunch. I told him that I ___(4) busy.", blanks: ['had got', 'would pay', 'asked', 'was'], acceptedAnswers: [['had got', 'got', 'had gotten'], ['would pay', 'was going to pay'], ['asked', 'told'], ['was']], explanation: "Reported speech: had got (Present Perfect → Past Perfect), would pay (will → would), asked (savol → asked if), was (am → was). Zamon orqaga siljiydi." },
+    { id: 98902, type: 'connection', instruction: "Do'stingizning so'zlarini qayta aytib bering", prompt: "Report what your friend said yesterday. Write at least 4 sentences using reported speech (said that, told me, asked if). Use tense backshift.", hints: ['He said that...', 'She told me that...', 'He asked if...', 'She asked me to...'], exampleAnswer: 'My friend Said told me that he was feeling tired. He said that he had worked all day. He asked me if I wanted to go to the cinema. He told me to bring some snacks. He said he would pick me up at seven.' },
+    { id: 99671, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'told (reporting verb)', options: ['kimgadir aytdi — tell + person + that', 'faqat aytdi — say + that', 'so\'radi — so\'ramoq', 'taklif qildi — taklif qilmoq'], correct: 'kimgadir aytdi — tell + person + that', explanation: "Told — tell ning o'tgan zamoni. Tell + person + that: He told me (that) he was tired. Say + that (person KERAK EMAS): He said (that) he was tired." },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Say va Tell', color: 'bg-emerald-500', icon: '🌱', ids: [2201, 2202, 2203, 2204, 2205] },
@@ -776,9 +835,9 @@ export const reportedSpeech: DailyLesson = {
   reading: {
     passage: "What My Friends Said\n\nYesterday I talked to my friends about their weekend plans. This is what they told me.\n\nAli said that he was going to visit his grandmother on Saturday. He said his grandmother lived in the countryside and he loved going there. He told me that she always cooked delicious food for him.\n\nMadina said that she had already finished her homework. She told me that she would go to the cinema on Sunday. She asked if I wanted to join her. I told her that I was busy on Sunday.\n\nThe teacher told us that we must finish our projects by Friday. She said that the projects were very important for our grade. She asked if everyone understood the task. We all said that we did.\n\nMy mother told me that I should clean my room. She said that my room was very messy. I promised her that I would clean it after lunch.",
     questions: [
-      { id: 19185, type: 'multiple-choice', question: 'Where did Ali say he was going?', options: ['To the cinema', 'To visit his grandmother', 'To the park', 'To the library'], correctIndex: 1, explanation: 'Ali said that he was going to visit his grandmother on Saturday.' },
+      { id: 19185, type: 'multiple-choice', question: 'Where did Ali say he was going?', options: ['To the cinema', 'To visit his grandmother', 'To the park', 'To the library'], correctIndex: 1, explanation: 'Qoida: Reported Speech (o\'zlashtirma gap). Direct: \'I am going\' -> Reported: he was going. Zamon siljishi: Present Continuous -> Past Continuous. \'That\' tushirilishi mumkin.' },
       { id: 19186, type: 'multiple-choice', question: 'What did Madina say she had already finished?', options: ['Her project', 'Her homework', 'Her book', 'Her lunch'], correctIndex: 1, explanation: 'Madina said that she had already finished her homework.' },
-      { id: 19187, type: 'multiple-choice', question: 'What did the teacher say about the projects?', options: ['They were optional', 'They were very important for our grade', 'They could be late', 'They were easy'], correctIndex: 1, explanation: 'The teacher said that the projects were very important for our grade.' },
+      { id: 19187, type: 'multiple-choice', question: 'What did the teacher say about the projects?', options: ['They were optional', 'They were very important for our grade', 'They could be late', 'They were easy'], correctIndex: 1, explanation: 'Qoida: Reported Speech: said + that + o\'zgargan zamon. \'Are\' -> \'were\' (present -> past). \'Our\' -> o\'zgarmaydi (bir xil gapiruvchi).' },
       { id: 19188, type: 'multiple-choice', question: 'What did the writer\'s mother say about his room?', options: ['It was clean', 'It was very messy', 'It was big', 'It was small'], correctIndex: 1, explanation: 'His mother said that his room was very messy.' },
       { id: 19189, type: 'multiple-choice', question: 'What did the writer promise his mother?', options: ['That he would clean his room after lunch', 'That he would study more', 'That he would go out', 'That he would call his grandmother'], correctIndex: 0, explanation: 'He promised her that he would clean it after lunch.' },
     ],
@@ -939,7 +998,26 @@ export const firstConditional: DailyLesson = {
     { id: 95203, type: 'error-correction', instruction: "If qismida 'will' ishlatilmaydi:", question: "If you will study hard, you will pass.", errorPart: "will study", correct: "If you study hard, you will pass.", explanation: "If qismida Present Simple (study). 'Will' faqat asosiy gapда." },
     { id: 95204, type: 'multiple-choice', instruction: "Unless (agar ...masa):", question: "You will be late _____ you hurry. _____ it stops raining, we will stay in.", options: ["unless / Unless", "if / If", "unless / If", "if / Unless"], correct: "unless / Unless", explanation: "Unless = if...not (agar shoshilmasangiz). Unless it stops = agar to'xtamasa." },
     { id: 95205, type: 'transformation', instruction: "Ikki gapni first conditional bilan birlashtiring:", question: "Maybe you will be tired. Then you should rest.", hint: "If you ...", correct: "If you are tired, you should rest.", explanation: "If + Present Simple (are tired), asosiy gap (should rest)." },
-  ],
+
+    // ── Productive Exercises: First Conditional ──
+    { id: 98800, type: 'passage', instruction: "Matnni to'ldiring:", passage: "The weather forecast says it ___(1) sunny tomorrow. If it is sunny, we ___(2) go to the park. There is a small ___(3) of rain in the afternoon. If it ___(4) raining, we will go home early.", blanks: ['will be', 'will', 'chance', 'starts'], acceptedAnswers: [['will be', 'is'], ['will'], ['chance', 'possibility', 'risk'], ['starts', 'begins']], explanation: "First conditional: If it is sunny, we will go. 'Chance' — imkoniyat, ehtimol. 'Will be sunny' — kelajak haqida bashorat." },
+    { id: 98900, type: 'connection', instruction: "Keyingi hafta uchun rejalaringiz", prompt: "Write 3 first conditional sentences about your plans for next week. Use 'If + present simple, will + V1' structure. Think about weather, health, or time.", hints: ['If it rains, I will...', 'If I have time, I will...', 'If my friend calls, I will...'], exampleAnswer: 'If it rains on Monday, I will stay home and study. If I have enough money, I will buy a new book. If my friend invites me, I will go to the cinema. If I finish my homework early, I will play football.' },
+    { id: 99000, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'forecast', options: ['ob-havo bashorati', 'payshanba', 'tezlik', 'xavf'], correct: 'ob-havo bashorati', explanation: "Forecast — bashorat, oldindan aytish. Weather forecast — ob-havo bashorati. First conditional ob-havo bashoratida ko'p ishlatiladi: If it rains, I will stay home." },
+  
+    // ── Productive Exercises: First Conditional ──
+    { id: 99657, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "If the weather ___(1) (be) nice tomorrow, we ___(2) (go) to the park. If it ___(3) (rain), we ___(4) (stay) home and watch a film. My mother says if I ___(5) (finish) my homework, I ___(6) (can) play outside. What ___(7) you ___(8) (do) if you have free time?",
+      blanks: ['is', 'will go', 'rains', 'will stay', 'finish', 'can', 'will', 'do'],
+      acceptedAnswers: [['is'], ['will go', 'will', 'are going'], ['rains'], ['will stay', 'will'], ['finish'], ['can', 'may', 'will'], ['will'], ['do']],
+      explanation: "If + Present Simple (is, rains, finish). Main clause: will + V1 (will go, will stay). Modal can in main clause. Question form: What will you do if... (will in main clause, Present Simple in if-clause)."
+    },
+    { id: 99658, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "I have an important exam next week. If I ___(1) (study) hard, I ___(2) (pass) easily. My sister says if I ___(3) (not/practise) enough, I ___(4) (not/get) a good score. She also told me: if you ___(5) (feel) tired, ___(6) (take) a short break. If I ___(7) (follow) her advice, I ___(8) (succeed).",
+      blanks: ['study', 'will pass', "don't practise", "won't get", 'feel', 'take', 'follow', 'will succeed'],
+      acceptedAnswers: [['study'], ['will pass'], ["don't practice", "don't practise"], ["won't get", "will not get"], ['feel'], ['take'], ['follow'], ['will succeed', 'will']],
+      explanation: "If + Present Simple (study, don\'t practise, feel, follow). Will/won\'t + V1 in main clause (will pass, won\'t get). Imperative in main clause: take a break (if you feel tired, take a break)."
+    },
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'If + Present, will + V1', color: 'bg-emerald-500', icon: '🌱', ids: [2301, 2302, 2303, 2304, 2305] },
     { title: "O'rtacha", desc: 'Inkor shakllari', color: 'bg-blue-500', icon: '📘', ids: [2306, 2307, 2308, 2309, 2310] },
@@ -968,16 +1046,16 @@ export const firstConditional: DailyLesson = {
     { title: 'Oson', desc: 'If + Present, will + V1', color: 'bg-emerald-500', icon: '🌱', ids: [231, 232, 233, 234, 235] },
     { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [236, 237, 238, 239, 240] },
     { title: 'Qiyin', desc: 'Unless va comma', color: 'bg-violet-500', icon: '💪', ids: [241, 242, 243] },
-    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [244, 245] },
+    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [244, 245, 99857, 99858, 99859] },
   ],
   reading: {
     passage: "A Promise for the Future\n\nIf Aziz studies hard, he will pass all his exams. He wants to become a doctor. If he works hard, he will get into a good university. His parents say they will be very proud if he becomes a doctor.\n\nBut if Aziz doesn't study, he won't pass his exams. He will fail if he plays video games all day. His mother told him: 'If you waste your time now, you will regret it later.'\n\nAziz made a plan. If he studies every day for two hours, he will improve his grades. He will go to the library if it is quiet. He won't watch TV unless he finishes his homework first. If everything goes well, he will become a doctor in ten years!\n\nHis sister Nilufar also has plans. If she saves enough money, she will travel to Europe next summer. She will visit Paris and London. She says: 'If I learn French, I will communicate better in Paris.'",
     questions: [
       { id: 19234, type: 'multiple-choice', question: 'What will happen if Aziz studies hard?', options: ['He will play games', 'He will pass his exams', 'He will travel', 'He will watch TV'], correctIndex: 1, explanation: 'If Aziz studies hard, he will pass all his exams.' },
-      { id: 19235, type: 'multiple-choice', question: 'What does Aziz want to become?', options: ['A teacher', 'A doctor', 'An engineer', 'A writer'], correctIndex: 1, explanation: 'He wants to become a doctor.' },
+      { id: 19235, type: 'multiple-choice', question: 'What does Aziz want to become?', options: ['A teacher', 'A doctor', 'An engineer', 'A writer'], correctIndex: 1, explanation: 'He wants to become a doctor. = U shifokor bo\'lmoqchi. (want + to + V1). Qoida: \'Want\' dan keyin \'to + V1\': want to become. Orzular/maqsadlar uchun: want to be, want to become.' },
       { id: 19236, type: 'multiple-choice', question: 'What will happen if Aziz wastes his time?', options: ['He will still pass', 'He will get a scholarship', 'He will regret it', 'He will travel'], correctIndex: 2, explanation: 'If you waste your time now, you will regret it later.' },
       { id: 19237, type: 'multiple-choice', question: "When won't Aziz watch TV?", options: ['On weekends', 'Unless he finishes his homework first', 'If he studies', 'In the morning'], correctIndex: 1, explanation: "He won't watch TV unless he finishes his homework first." },
-      { id: 19238, type: 'multiple-choice', question: 'What will Nilufar do if she saves enough money?', options: ['Buy a car', 'Travel to Europe', 'Move to a new house', 'Start a business'], correctIndex: 1, explanation: 'If she saves enough money, she will travel to Europe next summer.' },
+      { id: 19238, type: 'multiple-choice', question: 'What will Nilufar do if she saves enough money?', options: ['Buy a car', 'Travel to Europe', 'Move to a new house', 'Start a business'], correctIndex: 1, explanation: 'Qoida: First Conditional: If + Present Simple, will + V1. \'If she saves\' (agar u yig\'sa), \'she will travel\' (u sayohat qiladi). \'Enough\' = yetarli darajada.' },
     ],
   },
 }

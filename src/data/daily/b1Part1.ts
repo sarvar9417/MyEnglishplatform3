@@ -159,6 +159,22 @@ export const futureFormsReview: DailyLesson = {
     { id: 95053, type: 'error-correction', instruction: "Spontan qaror — will, going to emas:", question: "The phone is ringing. I am going to answer it.", errorPart: "am going to answer", correct: "The phone is ringing. I will answer it.", explanation: "O'sha onda qabul qilingan qaror → will. Going to oldindan rejalashtirilgan uchun." },
     { id: 95054, type: 'multiple-choice', instruction: "Reja (going to) va kelishuv (Present Continuous):", question: "I _____ start a new course next month. We _____ dinner with friends on Friday.", options: ["am going to / are having", "will / will have", "am having / am going to", "are going to / will have"], correct: "am going to / are having", explanation: "Niyat/reja → am going to start. Aniq kelishilgan tadbir → are having dinner." },
     { id: 95055, type: 'transformation', instruction: "Dalilga asoslangan bashoratni 'going to' bilan yozing:", question: "Be careful! You / fall!", hint: "You ...", correct: "You are going to fall!", explanation: "Hozirgi dalil asosida darhol sodir bo'ladigan bashorat → are going to fall." },
+  
+    { id: 99980, type: 'connection',
+      instruction: 'Kelajak rejalaringiz',
+      prompt: 'Kelgusi yil uchun rejalaringiz haqida yozing. will, going to, present continuous for future ishlating.',
+      hints: ['I am going to...', 'I will...', 'I am ...-ing on...'],
+      exampleAnswer: 'Next year I am going to study at university. I will probably study engineering. I am meeting my advisor next week.' },
+    { id: 99975, type: 'connection',
+      instruction: 'Bashoratlar',
+      prompt: '10 yildan keyin dunyo qanday bolishi haqida bashorat yozing.',
+      hints: ['People will...', 'There will be...'],
+      exampleAnswer: 'In 10 years people will use more electric cars. Robots will do many jobs. There will be smart cities everywhere.' },
+    { id: 99976, type: 'connection',
+      instruction: 'Haftalik reja',
+      prompt: 'Kelgusi hafta uchun batafsil reja yozing. Turli future formalarini ishlating.',
+      hints: ['On Monday I am ...-ing', 'I will ... on Tuesday', 'I am going to ...'],
+      exampleAnswer: 'On Monday I am meeting my friend for coffee. I will study for my exam on Tuesday. I am going to visit my parents on the weekend.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Will va Going to — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4001, 4002, 4003, 4004] },
@@ -336,6 +352,36 @@ export const modalsObligation: DailyLesson = {
     { id: 95063, type: 'error-correction', instruction: "Should (maslahat) vs must (majburiyat):", question: "You must drink more water if you want, it's just my advice.", errorPart: "must", correct: "You should drink more water if you want, it's just my advice.", explanation: "Maslahat → should. Must = kuchli majburiyat, maslahat uchun emas." },
     { id: 95064, type: 'multiple-choice', instruction: "Have to (tashqi majburiyat) va must (ichki/shaxsiy):", question: "I _____ wear a uniform at work (company rule). I really _____ call my mother — I miss her.", options: ["have to / must", "must / have to", "should / must", "have to / should"], correct: "have to / must", explanation: "Tashqi qoidalar → have to. Ichki, shaxsiy his → must." },
     { id: 95065, type: 'transformation', instruction: "Past majburiyatni 'had to' bilan yozing:", question: "It was necessary for me to work late yesterday.", hint: "I ...", correct: "I had to work late yesterday.", explanation: "O'tmishdagi majburiyat → had to (must'ning o'tgan shakli)." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 99702, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "The doctor said: 'You ___(1) take this medicine three times a day. It is essential for your recovery.' He added, 'You ___(2) also drink plenty of water — it helps your body heal faster.' Then he warned, 'You ___(3) eat spicy food for at least two weeks. It will make your condition worse.'",
+      blanks: ['must', 'should', "mustn't"],
+      acceptedAnswers: [['must'], ['should'], ["mustn't"]],
+      explanation: "Must — shifokorning kuchli buyrug'i (majburiyat). Should — maslahat (tavsiya). Mustn't — taqiqlangan (spicy food yeyish mumkin emas)."
+    },
+    { id: 99802, type: 'connection', instruction: "Uyingizdagi qoidalar haqida yozing",
+      prompt: "Uyingizdagi qoidalar haqida yozing. Must, have to, should ishlatib kamida 4 ta gap yozing. Har bir qoidaning turini (majburiyat, maslahat, taqiq) ko'rsating.",
+      hints: ["'You must ...' bilan boshlang — kuchli qoida", "'You should ...' bilan maslahat bering", "'You don't have to ...' bilan majburiy emasligini ayting"],
+      exampleAnswer: "You must wear shoes when going outside — that's our family rule. You should help with dinner at least twice a week — it's good practice. You don't have to make your bed every day, but it's nice if you do. You mustn't bring food into the bedroom — mom gets angry. You should call your grandparents every weekend — they miss you."
+    },
+    { id: 99902, type: 'vocab-match', instruction: "Majburiyat yoki maslahat?",
+      word: 'must vs should',
+      options: ["Must = kuchli majburiyat, Should = maslahat", "Ikkalasi ham bir xil ma'no", "Must = maslahat, Should = majburiyat", "Ikkalasi ham taqiq"],
+      correct: "Must = kuchli majburiyat, Should = maslahat",
+      explanation: "Must = kuchli majburiyat (You must stop at red light — qonun). Should = maslahat (You should exercise — maslahat, lekin majburiy emas)."
+    },
+  
+    { id: 98000, type: 'connection',
+      instruction: 'Maktab qoidalari',
+      prompt: 'Maktabingizdagi qoidalar haqida must/have to/should bilan 4-5 gap yozing.',
+      hints: ['Students must...', 'We have to...', 'We should...', 'We must not...'],
+      exampleAnswer: 'Students must wear a uniform. We have to arrive on time. We should respect our teachers. We must not use phones in class.' },
+    { id: 98003, type: 'connection',
+      instruction: 'Shaxsiy maslahat',
+      prompt: 'Do\'stingizga should/shouldn\'t bilan maslahat bering.',
+      hints: ['You should...', 'You should not...', 'If I were you, I would...'],
+      exampleAnswer: 'You should study more for the exam. You should not stay up too late. If I were you, I would practice English daily.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Must / Have to — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4101, 4102, 4103, 4104, 4105] },
@@ -512,6 +558,36 @@ export const modalsSpeculation: DailyLesson = {
     { id: 95033, type: 'error-correction', instruction: "Speculation xatosi — mustn't vs can't:", question: "She speaks perfect French, so she mustn't be a beginner.", errorPart: "mustn't be", correct: "She speaks perfect French, so she can't be a beginner.", explanation: "Imkonsiz taxmin → can't be. Mustn't = taqiq (ruxsat yo'q), taxmin emas." },
     { id: 95034, type: 'multiple-choice', instruction: "Might (ehtimol) va must (majburiyat):", question: "It _____ rain later, take an umbrella. You _____ wear a seatbelt — it's the law.", options: ["might / must", "must / might", "can't / should", "should / might"], correct: "might / must", explanation: "Ehtimollik → might rain. Qonuniy majburiyat → must wear." },
     { id: 95035, type: 'transformation', instruction: "Aniq gapni taxminga (must be) aylantiring:", question: "I'm sure he is tired after the trip.", hint: "He must ...", correct: "He must be tired after the trip.", explanation: "Dalilga asoslangan ishonchli taxmin → must be tired." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 99701, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "A detective arrived at the crime scene. The window was broken. Someone ___(1) have entered through it because there were footprints on the floor. The thief ___(2) have taken only the laptop because nothing else was missing. He ___(3) have left through the front door since it was unlocked.",
+      blanks: ['must', "can't", 'might'],
+      acceptedAnswers: [['must'], ["can't"], ['might']],
+      explanation: "Must have — aniq dalil (footprints) asosida ishonchli taxmin. Can't have — hech narsa yo'qolmagan, shuning uchun faqat laptop o'g'irlash mumkin emas deb taxmin qilish noto'g'ri, lekin 'might' ehtimollik bildiradi. Might have — oldinga ketgan yo'l ochiq, shuning uchun ehtimol bor."
+    },
+    { id: 99801, type: 'connection', instruction: "Jinoyat sahnasini tahlil qiling",
+      prompt: "Quyidagi jinoyat sahnasini tasavvur qiling: xonada yong'in chiroq yoqilgan, deraza ochiq, va qo'shni uyda hech kim yo'q. Must, might, could, can't ishlatib nima bo'lganini taxmin qiling.",
+      hints: ["'It must be...' yoki 'He must have...' bilan boshlang", "Dalillarga asoslaning: chiroq, deraza, qo'shnilar", "Kamida 3 ta must/might/could/can't ishlating"],
+      exampleAnswer: "The fire must have started in the kitchen because I can smell smoke. The window might have been opened by the wind, but it could have been the thief's escape route. The neighbours can't have been at home because the lights were off. Someone must have stolen the laptop because the desk is empty."
+    },
+    { id: 99901, type: 'vocab-match', instruction: "Ehtimollik darajasini aniqlang",
+      word: 'must (speculation)',
+      options: ["95% ishonch — deyarli aniq", "50% ishonch — mumkin", "0% — mumkin emas", "30% ishonch — kuchsiz"],
+      correct: "95% ishonch — deyarli aniq",
+      explanation: "Must (speculation) = 90-95% ishonch. 'She must be at home' = U uyda bo'lsa kerak (dallilar asosida). Must obligation ma'nosida ham ishlatiladi: 'You must go'."
+    },
+  
+    { id: 98004, type: 'connection',
+      instruction: 'Mystery deduction',
+      prompt: 'Bir sirli hodisani must/might/can\'t bilan tahlil qiling.',
+      hints: ['It must be...', 'It might be...', 'It can not be...'],
+      exampleAnswer: 'The door is open. Someone must have entered. The footprint is small, so it might be a child. But it can not be a child because the window is too high.' },
+    { id: 98005, type: 'connection',
+      instruction: 'Yo\'qotilgan narsa',
+      prompt: 'Yo\'qotilgan narsangizni must/might/can\'t bilan tahlil qiling.',
+      hints: ['It must be...', 'It might be in...', 'It can not be...', 'Perhaps...'],
+      exampleAnswer: 'I can not find my keys. They must be somewhere in this room. They might be in my bag. They can not be in the kitchen because I did not go there.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Must / Might / Can't be asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4201, 4202, 4203, 4204] },
@@ -724,6 +800,12 @@ export const pastHabits: DailyLesson = {
       correct: "Bolalik",
       explanation: "Childhood = bolalik, bolalik yillari. 'In my childhood, I used to play outside' = Bolaligimda tashqarda o'ynardim."
     },
+  
+    { id: 98016, type: 'connection',
+      instruction: 'Bolalik odatlari',
+      prompt: 'Used to/would bilan bolalik odatlaringiz haqida yozing.',
+      hints: ['I used to...', 'I would...', 'I did not use to...'],
+      exampleAnswer: 'When I was a child, I used to play football every day. I would spend hours reading books. I did not use to like vegetables.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Used to va Would — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4301, 4302, 4303, 4304] },
@@ -938,6 +1020,12 @@ export const causatives: DailyLesson = {
       correct: "Ta'mirlamoq",
       explanation: "Repair = ta'mirlamoq, tuzatmoq. 'I had my car repaired' = Mashinamni ta'mirlatdim."
     },
+  
+    { id: 98017, type: 'connection',
+      instruction: 'Professional xizmatlar',
+      prompt: 'Have/get something done bilan xizmatlar haqida yozing.',
+      hints: ['I have my hair cut...', 'I got my car repaired...', 'I need to have my...'],
+      exampleAnswer: 'I have my hair cut once a month. I got my car repaired at the garage. I need to have my teeth checked.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Have/Get + object + V3", color: 'bg-emerald-500', icon: '🌱', ids: [4401, 4402, 4403, 4404] },
@@ -1111,6 +1199,36 @@ export const questionTags: DailyLesson = {
     { id: 95023, type: 'error-correction', instruction: "Indirect question tartibi xatosi:", question: "Can you tell me where is the station?", errorPart: "where is the station", correct: "Can you tell me where the station is?", explanation: "Indirect question'da inversiya yo'q: where the station IS (subject + verb)." },
     { id: 95024, type: 'multiple-choice', instruction: "Tag — to be va to do mosligi:", question: "They went home early, _____? He doesn't smoke, _____?", options: ["didn't they / does he", "don't they / does he", "weren't they / is he", "didn't they / is he"], correct: "didn't they / does he", explanation: "Past Simple (went) → didn't they. Present (doesn't) → does he. Tag auxiliary'ga mos kelishi kerak." },
     { id: 95025, type: 'transformation', instruction: "Direct question ni indirect qiling:", question: "What time does the bus leave?", hint: "Do you know what time ...", correct: "Do you know what time the bus leaves?", explanation: "Indirect: inversiya yo'q, 's' qaytadi → what time the bus leaves." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 99705, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "You are a student at Tashkent University, ___(1)? Your professors say the exams will be difficult, ___(2)? Nobody has finished the assignment yet, ___(3)? The library is open until 10 PM, ___(4)? Let's study together, ___(5)?",
+      blanks: ["aren't you", "won't they", "have they", "isn't it", "shall we"],
+      acceptedAnswers: [["aren't you"], ["won't they"], ["have they"], ["isn't it"], ["shall we"]],
+      explanation: "Are you → aren't you (positive statement → negative tag). Will → won't they (positive → negative). Have finished → have they (negative → positive). It is → isn't it (positive → negative). Let's → shall we (special rule)."
+    },
+    { id: 99805, type: 'connection', instruction: "5 ta question tag bilan gap yozing",
+      prompt: "O'zingiz haqida yoki atrofingizdagi narsalar haqida 5 ta gap yozing va har biriga question tag qo'shing. Turli fe'llar ishlatishga harakat qiling (be, have, do, will, let's).",
+      hints: ["Musbat gap → inkor tag: 'You are ..., aren't you?'", "Inkor gap → musbat tag: 'She doesn't ..., does she?'", "Let's → shall we?", "I am → aren't I?"],
+      exampleAnswer: "You are learning English, aren't you? She doesn't work on weekends, does he? We have never been to London, have we? They will come to the party, won't they? Let's take a break, shall we?"
+    },
+    { id: 99905, type: 'vocab-match', instruction: "Question tag qoidasini aniqlang",
+      word: 'Positive statement → negative tag',
+      options: ["Musbat gap → inkor tag: You are, aren't you?", "Inkor gap → musbat tag: You are, are you?", "Musbat gap → musbat tag: You are, are you?", "Ikkalasi ham mumkin"],
+      correct: "Musbat gap → inkor tag: You are, aren't you?",
+      explanation: "Asosiy qoida: Musbat gap → inkor tag. Inkor gap → musbat tag. 'You are a student, aren't you?' (positive → negative). 'You aren't tired, are you?' (negative → positive)."
+    },
+  
+    { id: 98006, type: 'connection',
+      instruction: 'Suhbatda question tags',
+      prompt: 'Question tags bilan suhbat yozing (5+ tag).',
+      hints: ['You are... aren\'t you?', 'It is... isn\'t it?', 'You can... can\'t you?'],
+      exampleAnswer: 'You are from Tashkent, are not you? It is a beautiful city, is not it? You can speak Uzbek, can not you? You like studying English, do not you?' },
+    { id: 98007, type: 'connection',
+      instruction: 'Tekshirish savollari',
+      prompt: 'Question tags bilan ma\'lumotni tekshirish savollari yozing.',
+      hints: ['The meeting is at 3, is not it?', 'You finished the report, did not you?'],
+      exampleAnswer: 'The meeting is at 3 o\'clock, is not it? You finished the report, did not you? She has not called yet, has she? They will come tomorrow, will not they?' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Asosiy qoida — musbat/inkor", color: 'bg-emerald-500', icon: '🌱', ids: [4501, 4502, 4503, 4504] },
@@ -1323,6 +1441,12 @@ export const bothEitherNeither: DailyLesson = {
       correct: "Ham...emas (inkor oldinga)",
       explanation: "Nor = ham...emas. 'Neither...nor...' = na...na... 'A: I can't swim. B: Nor can I.' = Men ham suza olmayman."
     },
+  
+    { id: 98014, type: 'connection',
+      instruction: 'Tanlov vaziyati',
+      prompt: 'Both/either/neither bilan 5 ta gap yozing.',
+      hints: ['Both... and...', 'Either... or...', 'Neither... nor...'],
+      exampleAnswer: 'Both my brother and I love football. You can either study engineering or medicine. Neither the blue shirt nor the red one fits me.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Both, Either, Neither farqlari", color: 'bg-emerald-500', icon: '🌱', ids: [4601, 4602, 4603, 4604] },
@@ -1493,6 +1617,36 @@ export const timeClauses: DailyLesson = {
     { id: 95083, type: 'error-correction', instruction: "While + davomli harakat:", question: "While I will cook dinner, you can set the table.", errorPart: "will cook", correct: "While I cook dinner, you can set the table.", explanation: "While'dan keyin kelasida ham Present Simple/Continuous — 'will' emas." },
     { id: 95084, type: 'multiple-choice', instruction: "Before/after time clause + Past:", question: "After she _____ her homework, she went out. Before we _____, we locked the door.", options: ["had finished / left", "finished / had left", "will finish / leave", "finishes / leaves"], correct: "had finished / left", explanation: "Avval tugagan harakat → Past Perfect (had finished), keyin Past Simple (went/left)." },
     { id: 95085, type: 'transformation', instruction: "Ikki gapni 'as soon as' bilan birlashtiring (kelasi):", question: "The bus will arrive. Then we will get on it.", hint: "As soon as the bus ...", correct: "As soon as the bus arrives, we will get on it.", explanation: "As soon as + Present Simple (arrives), asosiy gap will + V1." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 99703, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Last summer I travelled to Samarkand. ___(1) I arrived at the airport, I called my friend to pick me up. ___(2) we were driving to the hotel, I admired the beautiful old buildings. ___(3) we checked in, I took a shower because I was tired from the flight. ___(4) I had rested, we went out to explore the city. ___(5) we were walking through the Registan Square, I took many photos. I stayed there ___(6) it got dark.",
+      blanks: ['When', 'While', 'After', 'Before', 'As', 'until'],
+      acceptedAnswers: [['When'], ['While'], ['After'], ['Before'], ['As'], ['until']],
+      explanation: "When — bir lahza (arrived). While — davomiy (were driving). After — keyin (checked in). Before — oldin (had rested). As — paytida (were walking). Until — guncha (got dark)."
+    },
+    { id: 99803, type: 'connection', instruction: "Shaharga ko'chib kelishdan oldin nima qilganingizni tasvirlab bering",
+      prompt: "Hozir yashayotgan shaharga ko'chib kelishdan oldin nima qilganingizni yozing. When, while, before, after, until, as soon as ishlatib kamida 4 ta gap yozing.",
+      hints: ["'Before I moved here, I ...' bilan boshlang", "'When I first arrived, I ...' bilan davom eting", "'After I settled in, I ...' bilan yakunlang"],
+      exampleAnswer: "Before I moved to Tashkent, I lived in a small village. When I first arrived, I felt nervous about the big city. While I was looking for a flat, I stayed at a hotel. After I found an apartment, I started looking for a job. As soon as I got my first paycheck, I bought new clothes. I didn't feel at home until I made some friends."
+    },
+    { id: 99903, type: 'vocab-match', instruction: "When va While farqini aniqlang",
+      word: 'when vs while',
+      options: ["When = bir lahza, While = davomiy harakat", "Ikkalasi bir xil", "When = davomiy, While = bir lahza", "When = oldin, While = keyin"],
+      correct: "When = bir lahza, While = davomiy harakat",
+      explanation: "When = qachon (bir lahza): When the phone rang, I was cooking. While = paytida (davomiy): While I was cooking, the phone rang. While + continuous, When + simple ko'proq."
+    },
+  
+    { id: 98008, type: 'connection',
+      instruction: 'Kelajak reja',
+      prompt: 'Time clauses (when, after, before, until, as soon as) bilan kelajak reja yozing.',
+      hints: ['When I... I will...', 'Before I... I will...', 'After I... I will...'],
+      exampleAnswer: 'When I finish university, I will travel abroad. Before I start working, I will learn English. After I save enough money, I will buy a car.' },
+    { id: 98009, type: 'connection',
+      instruction: 'Kun tartibi',
+      prompt: 'Time clauses bilan kun tartibingizni tasvirlab bering.',
+      hints: ['Before I go to school...', 'After I come home...', 'When I finish my homework...'],
+      exampleAnswer: 'Before I go to school, I have breakfast. After I come home, I do my homework. When I finish my homework, I watch TV.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Vaqt ergash gaplari asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4701, 4702, 4703, 4704] },
@@ -1665,6 +1819,22 @@ export const indirectQuestions: DailyLesson = {
     { id: 95093, type: 'error-correction', instruction: "Indirect question'da do/does olib tashlanadi:", question: "Can you tell me what time does the train leave?", errorPart: "does the train leave", correct: "Can you tell me what time the train leaves?", explanation: "Indirect: do/does yo'q, 's' qaytadi → what time the train leaves." },
     { id: 95094, type: 'multiple-choice', instruction: "Indirect question vs question tag:", question: "Do you know who _____ this? You don't know the answer, _____?", options: ["wrote / do you", "did write / don't you", "wrote / did you", "did wrote / do you"], correct: "wrote / do you", explanation: "Indirect → who wrote (inversiyasiz). Inkor gap → tasdiq tag (do you)." },
     { id: 95095, type: 'transformation', instruction: "Direct question'ni indirect (polite) qiling:", question: "How much does this cost?", hint: "Could you tell me how much ...", correct: "Could you tell me how much this costs?", explanation: "Indirect: inversiyasiz, 's' qaytadi → how much this costs." },
+  
+    { id: 99979, type: 'connection',
+      instruction: 'Malumot sorash',
+      prompt: '5 ta indirect question yozing. Do you know... / Can you tell me... bilan.',
+      hints: ['Do you know where...', 'Could you tell me what...'],
+      exampleAnswer: 'Do you know where the nearest bank is? Could you tell me what time the bus arrives? Can you tell me how much this costs?' },
+    { id: 99981, type: 'connection',
+      instruction: 'Yogotilgan narsa',
+      prompt: 'Yogotgan narsangiz haqida xodimga indirect question bilan murojaat qiling.',
+      hints: ['Could you tell me if...', 'Do you know where...'],
+      exampleAnswer: 'Excuse me could you tell me if anyone found a blue backpack? Do you know where the lost and found office is?' },
+    { id: 99983, type: 'connection',
+      instruction: 'Mehmonxonada',
+      prompt: 'Mehmonxonada xodimga 4 ta indirect question bering.',
+      hints: ['Could you tell me...', 'I\'d like to know...'],
+      exampleAnswer: 'Could you tell me what time breakfast is served? I\'d like to know when the checkout time is. Can you tell me where the nearest restaurant is?' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Indirect so'roq asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4801, 4802, 4803, 4804] },
@@ -1880,6 +2050,12 @@ export const soNeitherAuxiliaries: DailyLesson = {
       correct: "Men ham (norasmiy rozi)",
       explanation: "Same here = men ham, xuddi shunday. 'So do I' ning norasmiy shakli. Kundalik nutqda ko'p ishlatiladi."
     },
+  
+    { id: 98015, type: 'connection',
+      instruction: 'O\'xshashliklar',
+      prompt: 'So/Neither + aux + I bilan 5 ta javob yozing.',
+      hints: ['So do I', 'Neither do I', 'So am I', 'Neither can I'],
+      exampleAnswer: 'I love learning languages. So do I. I cannot swim. Neither can I. I am tired today. So am I.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "So va Neither asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4901, 4902, 4903, 4904] },
@@ -2050,6 +2226,36 @@ export const wishesRegrets: DailyLesson = {
     { id: 95043, type: 'error-correction', instruction: "Wish xatosi — hozirgi orzu uchun Past:", question: "I wish I have more free time these days.", errorPart: "have", correct: "I wish I had more free time these days.", explanation: "Hozirgi (real bo'lmagan) orzu → wish + Past Simple (had), 'have' emas." },
     { id: 95044, type: 'multiple-choice', instruction: "Wish va third conditional (o'tmish):", question: "I wish I _____ you earlier. If I _____ you, I would have helped.", options: ["had called / had called", "called / called", "have called / called", "had called / called"], correct: "had called / had called", explanation: "Ikkalasi ham o'tmishdagi real bo'lmagan holat → Past Perfect (had called)." },
     { id: 95045, type: 'transformation', instruction: "Real holatni wish (afsus) ga aylantiring:", question: "I didn't buy the tickets, and now they are sold out.", hint: "I wish I ...", correct: "I wish I had bought the tickets.", explanation: "O'tmishdagi qilinmagan ish afsusi → wish + Past Perfect (had bought)." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 99704, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Dear Diary, I have been thinking a lot about my life lately. I wish I ___(1) (had chosen / chose) medicine at university instead of business. If only I ___(2) (had listened / listened) to my parents' advice. I regret ___(3) (to quit / quitting) my first job without a plan. I wish I ___(4) (had saved / saved) more money back then. Now I wish I ___(5) (had / have) more opportunities to start over.",
+      blanks: ['had chosen', 'had listened', 'quitting', 'had saved', 'had'],
+      acceptedAnswers: [['had chosen'], ['had listened'], ['quitting'], ['had saved'], ['had']],
+      explanation: "Had chosen — o'tgan pushaymonlik (Past Perfect). Had listened — o'tgan pushaymonlik. Quitting — regret + V-ing. Had saved — o'tgan pushaymonlik. Had — hozirgi orzu (Past Simple after wish)."
+    },
+    { id: 99804, type: 'connection', instruction: "3 ta orzu va 3 ta pushaymonlik yozing",
+      prompt: "Hozirgi hayotingiz haqida 3 ta orzu (wish + past simple) va o'tmishingiz haqida 3 ta pushaymonlik (wish + past perfect) yozing. If only va regret ishlatib kamida 6 ta gap yozing.",
+      hints: ["'I wish I were/had...' bilan hozirgi orzuingizni ayting", "'I wish I had (not) ...' bilan o'tmish afsusingizni ayting", "'I regret ...' bilan pushaymonlikni ifodalang"],
+      exampleAnswer: "I wish I were more confident in public speaking. I wish I had more free time to travel. I wish I knew how to cook properly. I regret not studying harder at school. I regret not taking that job offer last year. I regret not spending more time with my grandparents when they were alive."
+    },
+    { id: 99904, type: 'vocab-match', instruction: "Wish va Regret farqini aniqlang",
+      word: 'wish vs regret',
+      options: ["Wish = orzu (real emas), Regret = pushaymonlik (sodir bo'lgan)", "Ikkalasi bir xil", "Wish = pushaymonlik, Regret = orzu", "Wish = hozirgi, Regret = kelajak"],
+      correct: "Wish = orzu (real emas), Regret = pushaymonlik (sodir bo'lgan)",
+      explanation: "Wish = real bo'lmagan holatni orzu qilish: 'I wish I were rich'. Regret = sodir bo'lgan narsaga pushaymonlik: 'I regret leaving my job'. Wish + Past/Past Perfect. Regret + V-ing."
+    },
+  
+    { id: 98010, type: 'connection',
+      instruction: 'Otmidagi afsuslar',
+      prompt: 'I wish / If only bilan 5 ta afsus yozing.',
+      hints: ['I wish I had...', 'If only I had...', 'I wish I had not...'],
+      exampleAnswer: 'I wish I had studied harder at school. If only I had learned English earlier. I wish I had not wasted so much time.' },
+    { id: 98013, type: 'connection',
+      instruction: 'Hozirgi istaklar',
+      prompt: 'I wish / If only bilan 5 ta hozirgi istak yozing.',
+      hints: ['I wish I could...', 'I wish I had...', 'If only I were...'],
+      exampleAnswer: 'I wish I could speak three languages. I wish I had more free time. If only I were taller. I wish I lived near the beach.' },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "I wish + Past Simple — hozirgi orzular", color: 'bg-emerald-500', icon: '🌱', ids: [5001, 5002, 5003, 5004] },
@@ -2080,7 +2286,7 @@ export const wishesRegrets: DailyLesson = {
     { title: "Oson", desc: "Asosiy tushunchalar", color: 'bg-emerald-500', icon: '??', ids: [501, 502, 503, 504] },
     { title: "O'rtacha", desc: "Wish va Regret shakllari", color: 'bg-blue-500', icon: '??', ids: [505, 506, 507, 508] },
     { title: "Qiyin", desc: "Wish + Past vs Would", color: 'bg-purple-500', icon: '??', ids: [509, 510, 511] },
-    { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [512, 513, 514, 515] },
+    { title: "Murakkab", desc: "Yuqori daraja", color: 'bg-rose-500', icon: '??', ids: [512, 513, 514, 515, 99980, 99981, 99982, 99981, 99982, 99983, 98000, 98003, 98004, 98005, 98006, 98007, 98008, 98009, 98010, 98013, 98014, 98015, 98016, 98017] },
   ],
   reading: {
     passage: "Things I Would Change\n\nDilnoza often thinks about her past and wishes things were different. She says: \"I wish I had studied harder at university. If only I had chosen a different career! I regret not learning English earlier.\n\nNow, Dilnoza wishes she could travel more. She wishes she lived closer to her family. She wishes she had more time for her hobbies. 'I wish I didn't work so much,' she often tells her friends.\n\nHer friend Aziz has different regrets. He wishes he hadn't spent so much money on things he didn't need. He regrets not saving money for the future. If only he had started a business earlier!\n\nAziz says: \"I wish I were more confident when I was younger. I would have achieved more.\" But Dilnoza replies: \"We can't change the past. We can only learn from it. I wish I could accept that more easily!\"",

@@ -120,6 +120,13 @@ function auditExercise(lessonTitle: string, ex: DailyExercise) {
   // explanation (connection'da yo'q)
   if (ex.type !== 'connection' && (!('explanation' in ex) || !ex.explanation || !ex.explanation.trim()))
     add({ ...where, sev: 'LOW', kind: 'empty-explanation', detail: 'explanation bo\'sh' })
+  else if (ex.type !== 'connection' && 'explanation' in ex && ex.explanation) {
+    const len = ex.explanation.trim().length
+    if (len < 10)
+      add({ ...where, sev: 'HIGH', kind: 'explanation-too-short', detail: `explanation juda qisqa (${len} belgi, min 10): "${ex.explanation.trim()}"` })
+    else if (len < 20)
+      add({ ...where, sev: 'MED', kind: 'explanation-too-short', detail: `explanation juda qisqa (${len} belgi, min 20): "${ex.explanation.trim()}"` })
+  }
 }
 
 // Eslatma: exerciseSections POZITSION (1,2,3..) yoki byId bilan ishlaydi (resolveSectionItems),
