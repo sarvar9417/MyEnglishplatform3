@@ -57,3 +57,4 @@ test-results/
 
 # Backup files
 *.bak
+!scripts/add_rls_policies.sql

@@ -10,9 +10,7 @@ import type { Level } from '../../store/types'
 type Phase =
   | 'placement'
   | 'welcome'
-  | 'name'
   | 'levels'
-  | 'avatar'
   | 'journey'
   | 'ready'
 
@@ -56,7 +54,7 @@ export function OnboardingFlow() {
   }, [])
 
   const handleNext = useCallback(() => {
-    const phases: Phase[] = ['welcome', 'name', 'levels', 'avatar', 'journey', 'ready']
+    const phases: Phase[] = ['welcome', 'levels', 'journey', 'ready']
     const idx = phases.indexOf(phase)
     if (idx < phases.length - 1) {
       setPhase(phases[idx + 1])
@@ -64,7 +62,7 @@ export function OnboardingFlow() {
   }, [phase])
 
   const handleBack = useCallback(() => {
-    const phases: Phase[] = ['welcome', 'name', 'levels', 'avatar', 'journey', 'ready']
+    const phases: Phase[] = ['welcome', 'levels', 'journey', 'ready']
     const idx = phases.indexOf(phase)
     if (idx > 0) {
       setPhase(phases[idx - 1])
@@ -103,12 +101,12 @@ export function OnboardingFlow() {
   const greeting = levelGreeting(placementResult.level)
 
   // Calculate progress through phases
-  const allPhases: Phase[] = ['welcome', 'name', 'levels', 'avatar', 'journey', 'ready']
+  const allPhases: Phase[] = ['welcome', 'levels', 'journey', 'ready']
   const currentPhaseIdx = allPhases.indexOf(phase)
 
   const renderPhaseContent = () => {
     switch (phase) {
-      // ─── WELCOME ──────────────────────────────────────────────────
+      // ─── WELCOME + NAME (merged) ─────────────────────────────────
       case 'welcome':
         return (
           <div className="space-y-5 animate-slide-up">
@@ -136,6 +134,24 @@ export function OnboardingFlow() {
               <p className="text-xs text-gray-400">Test natijasi: {pct}%</p>
             </div>
 
+            {/* Name input */}
+            <div className="space-y-3">
+              <div className="text-center">
+                <span className="text-4xl block mb-2">✍️</span>
+                <h3 className="text-lg font-black text-gray-900 dark:text-white">
+                  Ismingizni kiriting
+                </h3>
+              </div>
+              <input
+                className="input text-lg text-center"
+                placeholder="Ismingiz..."
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                autoFocus
+                autoComplete="name"
+              />
+            </div>
+
             {/* Quick stats */}
             <div className="grid grid-cols-3 gap-2.5">
               {[
@@ -153,78 +169,26 @@ export function OnboardingFlow() {
           </div>
         )
 
-      // ─── NAME ────────────────────────────────────────────────────
-      case 'name':
-        return (
-          <div className="space-y-5 animate-slide-up">
-            <div className="text-center">
-              <span className="text-5xl block mb-3">✍️</span>
-              <h2 className="text-xl font-black text-gray-900 dark:text-white mb-1">
-                Ismingizni kiriting
-              </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                Platformani siz uchun shaxsiylashtiramiz
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <input
-                className="input text-lg text-center"
-                placeholder="Ismingiz..."
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                autoFocus
-                autoComplete="name"
-              />
-
-              <div className="card bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border-indigo-100 dark:border-indigo-800">
-                <p className="text-xs font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
-                  <Sparkles size={12} /> Sizni nima kutmoqda
-                </p>
-                <ul className="space-y-1.5">
-                  {[
-                    'Haftalik testlar va AI feedback',
-                    'Spaced Repetition lug\'at tizimi',
-                    '126 kunlik yo\'l xaritasi',
-                    'Voice recognition — talaffuz mashqlari',
-                    'Real-time gamification va leaderboard',
-                  ].map((item, i) => (
-                    <li key={i} className="text-xs text-gray-600 dark:text-gray-400 flex items-start gap-1.5">
-                      <span className="text-primary-500">✓</span> {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        )
-
-      // ─── LEVELS ──────────────────────────────────────────────────
+      // ─── LEVELS + AVATAR (merged) ────────────────────────────────
       case 'levels':
         return (
-          <LevelExplainer
-            currentLevel={placementResult.level}
-            onNext={handleNext}
-          />
-        )
-
-      // ─── AVATAR ──────────────────────────────────────────────────
-      case 'avatar':
-        return (
-          <div className="space-y-4 animate-slide-up">
-            <div className="text-center mb-2">
-              <span className="text-4xl block mb-2">🎭</span>
-              <h2 className="text-xl font-black text-gray-900 dark:text-white mb-1">
-                Personajingizni tanlang
-              </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                Har bir personaj o'ziga xos xarakterga ega
-              </p>
-            </div>
-            <AvatarSelector
-              current={avatarId}
-              onChange={setAvatarId}
+          <div className="space-y-5 animate-slide-up">
+            <LevelExplainer
+              currentLevel={placementResult.level}
+              onNext={handleNext}
             />
+            <div className="border-t border-gray-100 dark:border-gray-800 pt-4">
+              <div className="text-center mb-3">
+                <span className="text-3xl block mb-1">🎭</span>
+                <h3 className="text-lg font-black text-gray-900 dark:text-white">
+                  Personajingizni tanlang
+                </h3>
+              </div>
+              <AvatarSelector
+                current={avatarId}
+                onChange={setAvatarId}
+              />
+            </div>
           </div>
         )
 
@@ -321,7 +285,7 @@ export function OnboardingFlow() {
               )}
               <button
                 className="btn-primary flex-1"
-                disabled={phase === 'name' && name.trim().length < MIN_NAME_LENGTH}
+                disabled={phase === 'welcome' && name.trim().length < MIN_NAME_LENGTH}
                 onClick={handleNext}
               >
                 {phase === 'journey' ? 'Tayyorman! 🚀' : 'Keyingi →'}
