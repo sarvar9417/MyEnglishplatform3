@@ -4,9 +4,11 @@ import { BookOpen, ChevronRight, X } from 'lucide-react'
 import { supabase } from '../../lib/supabase'
 import { monitoring } from '../../lib/monitoring'
 import { getTodayTashkent } from '../../utils/tashkentDate'
+import { useI18n } from '../../i18n'
 
 export default function ReviewReminder() {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const [dueCount, setDueCount] = useState<number | null>(null)
   const [dismissed, setDismissed] = useState(false)
 
@@ -66,7 +68,7 @@ export default function ReviewReminder() {
         <button
           onClick={() => setDismissed(true)}
           className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
-          aria-label="Yopish"
+          aria-label={t('aria.close')}
         >
           <X size={16} />
         </button>

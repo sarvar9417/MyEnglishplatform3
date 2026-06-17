@@ -1,5 +1,6 @@
 import { Clock, Pause, Play, RotateCcw } from 'lucide-react'
 import { useExamTimer } from '../../hooks/useExamTimer'
+import { useI18n } from '../../i18n'
 
 export interface ExamTimerProps {
   /** Total duration in seconds (e.g. 3600 for 60 min). */
@@ -37,6 +38,7 @@ export default function ExamTimer({
   autoStart = true,
   variant = 'default',
 }: ExamTimerProps) {
+  const { t } = useI18n()
   const { timeLeft, isRunning, isTimeUp, toggle, reset } = useExamTimer({
     duration,
     storageKey,
@@ -97,7 +99,7 @@ export default function ExamTimer({
         </button>
         <button
           onClick={reset}
-          aria-label="Qayta boshlash"
+          aria-label={t('aria.reload')}
           className="p-1.5 rounded-lg hover:bg-black/10
             focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500"
         >

@@ -13,6 +13,7 @@ import { useAudioRecorder } from '../../hooks/useAudioRecorder'
 import { gradeChunk } from '../../services/speakingPathService'
 import { semanticSimilarity, semanticToRating, isSemanticCorrect } from './match'
 import type { SemanticMatchResult } from './match'
+import { useI18n } from '../../i18n'
 import AudioPlayback from '../speaking/AudioPlayback'
 import type { SpeakingChunk } from '../../data/speakingPath/types'
 
@@ -48,6 +49,7 @@ function compareWords(userText: string, targetText: string): WordMatch[] {
 }
 
 export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
+  const { t } = useI18n()
   const { speak, supported } = useSpeechSynthesis()
   const sr = useSpeechRecognition()
   const ar = useAudioRecorder()
@@ -192,7 +194,7 @@ export default function RecallPanel({ chunk, userId, isLast, onDone }: Props) {
                 onClick={() => typed.trim() && evaluate(typed.trim())}
                 disabled={!typed.trim()}
                 className="p-2.5 rounded-xl bg-primary-600 text-white disabled:opacity-40"
-                aria-label="Tekshirish"
+                aria-label={t('aria.check')}
               >
                 <Send size={18} />
               </button>

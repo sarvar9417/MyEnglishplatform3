@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { Flame, ChevronRight, AlertTriangle, Sparkles } from 'lucide-react'
 import { useStore } from '../../store/useStore'
 import { getTodayTashkent } from '../../utils/tashkentDate'
+import { useI18n } from '../../i18n'
 
 export default function StreakWarning() {
   const { lastActiveDate, streak } = useStore()
   const navigate = useNavigate()
+  const { t } = useI18n()
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -78,7 +80,7 @@ export default function StreakWarning() {
         <button
           onClick={() => setShow(false)}
           className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
-          aria-label="Yopish"
+          aria-label={t('aria.close')}
         >
           ✕
         </button>

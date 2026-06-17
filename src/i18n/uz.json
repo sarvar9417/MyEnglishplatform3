@@ -1181,5 +1181,16 @@
   "placementTest.levelA2Plus": "A2+",
   "placementTest.levelB1": "B1",
   "placementTest.levelB1Plus": "B1+",
-  "placementTest.levelB2": "B2"
+  "placementTest.levelB2": "B2",
+  "aria.close": "Yopish",
+  "aria.goBack": "Orqaga",
+  "aria.submit": "Yuborish",
+  "aria.listenAll": "Barcha misollarni tinglash",
+  "aria.reload": "Qayta boshlash",
+  "aria.copy": "Nusxalash",
+  "aria.send": "Yuborish",
+  "aria.audioSettings": "Ovoz sozlamalari",
+  "aria.check": "Tekshirish",
+  "aria.danger": "Xavfli",
+  "writing.essayLabel": "Insho matni"
 }

@@ -4,6 +4,7 @@ import { speak } from '../../lib/tts'
 import { useStore } from '../../store/useStore'
 import { personalizeText } from '../../utils/personalize'
 import type { Dialogue } from '../../data/dailyLessons'
+import { useI18n } from '../../i18n'
 
 interface DialogueCardProps {
   dialogue: Dialogue
@@ -33,6 +34,7 @@ function getSpeakerStyle(speaker: string) {
 
 export default function DialogueCard({ dialogue }: DialogueCardProps) {
   const userName = useStore((s) => s.userName) || 'Talaba'
+  const { t } = useI18n()
   const [expanded, setExpanded] = useState(false)
   const [playingId, setPlayingId] = useState<string | null>(null)
 
@@ -95,7 +97,7 @@ export default function DialogueCard({ dialogue }: DialogueCardProps) {
             onClick={(e) => { e.stopPropagation(); handlePlayAll() }}
             className="p-1.5 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
             title="Hammasini tinglash"
-            aria-label="Dialogue hammasini tinglash"
+            aria-label={t('aria.listenAll')}
           >
             <Volume2 size={14} />
           </button>

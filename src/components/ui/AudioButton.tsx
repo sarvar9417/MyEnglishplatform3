@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Volume2, VolumeX, ChevronDown, Gauge } from 'lucide-react'
 import { isSpeechSupported } from '../../lib/tts'
 import { useSpeechSynthesis, SPEED_OPTIONS } from '../../hooks/useSpeechSynthesis'
+import { useI18n } from '../../i18n'
 
 interface AudioButtonProps {
   text: string
@@ -28,6 +29,7 @@ const ICON_SIZES = { sm: 14, md: 16, lg: 20 }
  * Speed/voice settings are persisted in localStorage and shared across components.
  */
 export function AudioButton({ text, rate, size = 'md', className = '', label, showSettings }: AudioButtonProps) {
+  const { t } = useI18n()
   const { playing, voices, selectedVoice, speed, setVoice, setSpeed, speak: speakTTS, stop } = useSpeechSynthesis()
   const [settingsOpen, setSettingsOpen] = useState(false)
   const settingsRef = useRef<HTMLDivElement>(null)
@@ -95,7 +97,7 @@ export function AudioButton({ text, rate, size = 'md', className = '', label, sh
               : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
           }`}
           title="Ovoz sozlamalari"
-          aria-label="Ovoz sozlamalari"
+          aria-label={t('aria.audioSettings')}
         >
           <ChevronDown size={12} />
         </button>

@@ -8,6 +8,7 @@ import { startSpeakingChat, getSpeakingChatFeedback } from '../../../lib/claude'
 import { monitoring } from '../../../lib/monitoring'
 import MicButton from '../MicButton'
 import type { SpeakingDay } from '../../../data/speakingPath/types'
+import { useI18n } from '../../../i18n'
 
 interface Props {
   day: SpeakingDay
@@ -20,6 +21,7 @@ type Msg = { role: 'user' | 'assistant'; content: string }
 const MIN_USER_TURNS = 3
 
 export default function ConverseStep({ day, level, onNext }: Props) {
+  const { t } = useI18n()
   const topic = `${day.scenario.topic}. You play ${day.scenario.aiRole}; I play ${day.scenario.userRole}.`
   const pronunciationFocus = day.pronunciationFocus
   const grammarTips = day.chunks.filter(c => c.grammarTip).map(c => `"${c.en}" — ${c.grammarTip}`)
@@ -220,7 +222,7 @@ export default function ConverseStep({ day, level, onNext }: Props) {
             placeholder="…yoki javobni yozing"
             className="flex-1 px-3 py-2.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-400 disabled:opacity-50"
           />
-          <button onClick={() => sendUser(typed)} disabled={busy || !typed.trim()} className="p-2.5 rounded-xl bg-primary-600 text-white disabled:opacity-40" aria-label="Yuborish">
+          <button onClick={() => sendUser(typed)} disabled={busy || !typed.trim()} className="p-2.5 rounded-xl bg-primary-600 text-white disabled:opacity-40"           aria-label={t('aria.send')}>
             <Send size={18} />
           </button>
         </div>

@@ -4,6 +4,7 @@ import { HEART_SHOP_ITEMS, MAX_HEARTS, buyHearts } from '../../data/hearts'
 import { useStore } from '../../store/useStore'
 import { playSfx } from '../../lib/sfx'
 import BottomSheet from './BottomSheet'
+import { useI18n } from '../../i18n'
 
 interface HeartShopProps {
   open: boolean
@@ -12,6 +13,7 @@ interface HeartShopProps {
 }
 
 export function HeartShop({ open, onClose, onPurchased }: HeartShopProps) {
+  const { t } = useI18n()
   const { totalXP, addXP } = useStore()
   const [purchasing, setPurchasing] = useState<string | null>(null)
   const [result, setResult] = useState<{ hearts: number; remaining: number } | null>(null)
@@ -48,7 +50,7 @@ export function HeartShop({ open, onClose, onPurchased }: HeartShopProps) {
             onClick={onClose}
             className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center
               text-white hover:bg-white/30 transition-colors"
-            aria-label="Yopish"
+            aria-label={t('aria.close')}
           >
             <X size={16} />
           </button>

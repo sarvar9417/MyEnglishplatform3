@@ -2,12 +2,14 @@ import { Volume2 } from 'lucide-react'
 import { AudioButton } from '../ui/AudioButton'
 import { speak } from '../../lib/tts'
 import { monitoring } from '../../lib/monitoring'
+import { useI18n } from '../../i18n'
 
 interface Props {
   examples: { en: string; uz: string }[]
 }
 
 export default function ExamplesSection({ examples }: Props) {
+  const { t } = useI18n()
   return (
     <div className="pt-2 border-t border-gray-100 dark:border-gray-700">
       <div className="flex items-center justify-between mb-3">
@@ -26,7 +28,7 @@ export default function ExamplesSection({ examples }: Props) {
           }}
           className="flex items-center gap-1 text-[11px] font-medium text-primary-600 hover:text-primary-700 transition-colors"
           title="Barcha misollarni tinglash"
-          aria-label="Barcha misollarni tinglash"
+          aria-label={t('aria.listenAll')}
         >
           <Volume2 size={12} /> Hammasini tinglash
         </button>

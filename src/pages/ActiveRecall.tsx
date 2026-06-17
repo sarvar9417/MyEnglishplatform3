@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { Brain, ArrowLeft, RotateCcw, Eye, Check, X, Trophy } from 'lucide-react'
 import { getAllLessons } from '../data/daily'
 import { useStore } from '../store/useStore'
+import { useI18n } from '../i18n'
 
 const SESSION_SIZE = 10
 
@@ -42,6 +43,7 @@ function buildSession(currentDay: number): RecallItem[] {
 
 export default function ActiveRecall() {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const { currentDay, addXP } = useStore()
 
   const [session, setSession] = useState<RecallItem[]>(() => buildSession(currentDay))
@@ -79,7 +81,7 @@ export default function ActiveRecall() {
   return (
     <div className="p-3 sm:p-6 max-w-2xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
-        <button onClick={() => navigate(-1)} className="btn-ghost p-2 rounded-xl -ml-2" aria-label="Orqaga">
+        <button onClick={() => navigate(-1)} className="btn-ghost p-2 rounded-xl -ml-2" aria-label={t('aria.goBack')}>
           <ArrowLeft size={18} />
         </button>
         <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">

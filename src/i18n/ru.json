@@ -1176,5 +1176,16 @@
   "speaking.promptsCount": "{count} вопросов",
   "speaking.recordDone": "✓ Записано — {duration}",
   "speaking.recordStop": "Остановить",
-  "speaking.wpmLabel": "слов/мин"
+  "speaking.wpmLabel": "слов/мин",
+  "aria.close": "Закрыть",
+  "aria.goBack": "Назад",
+  "aria.submit": "Отправить",
+  "aria.listenAll": "Прослушать все примеры",
+  "aria.reload": "Перезагрузить",
+  "aria.copy": "Копировать",
+  "aria.send": "Отправить",
+  "aria.audioSettings": "Настройки звука",
+  "aria.check": "Проверить",
+  "aria.danger": "Внимание",
+  "writing.essayLabel": "Текст эссе"
 }

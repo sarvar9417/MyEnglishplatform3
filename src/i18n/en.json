@@ -1179,5 +1179,16 @@
   "writing.evaluating": "Evaluating...",
   "writing.ieltsBandLabel": "IELTS Band {band}",
   "writing.belowIELTS": "Below IELTS 4.0",
-  "writing.promptTimeLimit": "{minutes} min"
+  "writing.promptTimeLimit": "{minutes} min",
+  "aria.close": "Close",
+  "aria.goBack": "Go back",
+  "aria.submit": "Submit",
+  "aria.listenAll": "Listen to all examples",
+  "aria.reload": "Reload",
+  "aria.copy": "Copy",
+  "aria.send": "Send",
+  "aria.audioSettings": "Audio settings",
+  "aria.check": "Check",
+  "aria.danger": "Warning",
+  "writing.essayLabel": "Essay text"
 }

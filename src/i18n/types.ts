@@ -1227,5 +1227,16 @@ export interface TranslationStrings {
   'vocabPage.analytics': string
   'vocabPage.export': string
   'vocabPage.xpScore': string
+  'aria.close': string
+  'aria.goBack': string
+  'aria.submit': string
+  'aria.listenAll': string
+  'aria.reload': string
+  'aria.copy': string
+  'aria.send': string
+  'aria.audioSettings': string
+  'aria.check': string
+  'aria.danger': string
+  'writing.essayLabel': string
 }
 

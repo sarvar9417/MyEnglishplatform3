@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AlertCircle, AlertTriangle, WifiOff, RefreshCw, ChevronDown, ChevronUp, Copy } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useToastStore } from '../../utils/toastStore'
+import { useI18n } from '../../i18n'
 
 type ErrorVariant = 'error' | 'warning' | 'offline'
 
@@ -93,6 +94,7 @@ export default function ErrorDisplay({
   retryLabel = 'Qayta urinish',
   size = 'md',
 }: ErrorDisplayProps) {
+  const { t } = useI18n()
   const [showDetail, setShowDetail] = useState(false)
   const toast = useToastStore((s) => s.toast)
   const styles = VARIANT_STYLES[variant]
@@ -147,7 +149,7 @@ export default function ErrorDisplay({
         {detail && (
           <button
             onClick={handleCopy}
-            aria-label="Nusxalash"
+            aria-label={t('aria.copy')}
             className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium
               text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300
               hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all"

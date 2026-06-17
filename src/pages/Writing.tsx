@@ -436,7 +436,7 @@ export default function Writing() {
           </div>
         )}
         <textarea
-          aria-label="Insho matni"
+          aria-label={t('writing.essayLabel')}
           className="w-full min-h-[240px] text-sm text-gray-800 dark:text-gray-100 dark:bg-transparent leading-relaxed resize-none outline-none placeholder-gray-300 dark:placeholder-gray-600"
           placeholder={t('writing.editorPlaceholder')}
           value={essay}

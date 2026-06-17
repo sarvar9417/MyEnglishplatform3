@@ -4,6 +4,7 @@ import { supabase } from '../../lib/supabase'
 import { monitoring } from '../../lib/monitoring'
 import { checkPhraseTranslation } from '../../lib/claude'
 import { getTodayTashkent } from '../../utils/tashkentDate'
+import { useI18n } from '../../i18n'
 
 type Level = 'A1' | 'A2' | 'B1' | 'B2'
 type Phase = 'level-select' | 'playing' | 'result'
@@ -42,6 +43,7 @@ function normalizeAnswer(s: string): string {
 }
 
 export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
+  const { t } = useI18n()
   const [phase, setPhase] = useState<Phase>('level-select')
   const [selectedLevel, setSelectedLevel] = useState<Level | null>(null)
   const [phrases, setPhrases] = useState<PhraseItem[]>([])
@@ -320,7 +322,7 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
           <button
             onClick={handleSubmit}
             disabled={!input.trim() || locked}
-            aria-label="Yuborish"
+            aria-label={t('aria.submit')}
             className="px-5 py-3 bg-indigo-500 text-white font-bold rounded-xl hover:bg-indigo-600 disabled:opacity-40 transition-all"
           >
             <ArrowRight size={20} />

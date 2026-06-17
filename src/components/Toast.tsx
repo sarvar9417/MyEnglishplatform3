@@ -1,4 +1,5 @@
 import { useToastStore, type ToastType } from '../utils/toastStore'
+import { useI18n } from '../i18n'
 
 const TYPE_STYLES: Record<ToastType, string> = {
   success: 'bg-green-50 border-green-200 text-green-700',
@@ -17,6 +18,7 @@ const TYPE_ICONS: Record<ToastType, string> = {
 export default function ToastContainer() {
   const toasts = useToastStore((s) => s.toasts)
   const dismiss = useToastStore((s) => s.dismiss)
+  const { t } = useI18n()
 
   if (toasts.length === 0) return null
 
@@ -31,7 +33,7 @@ export default function ToastContainer() {
           <span className="flex-1">{t.message}</span>
           <button
             onClick={() => dismiss(t.id)}
-            aria-label="Bildirishnomani yopish"
+            aria-label={t('aria.close')}
             className="ml-1 opacity-40 hover:opacity-70 transition-opacity text-xs"
           >
             ✕
