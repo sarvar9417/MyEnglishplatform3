@@ -759,7 +759,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Tenses",
     "formulas": 4,
     "vocabulary": 12,
-    "exercises": 25,
+    "exercises": 32,
     "tests": 15
   },
   {
@@ -853,7 +853,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Grammar",
     "formulas": 4,
     "vocabulary": 12,
-    "exercises": 25,
+    "exercises": 32,
     "tests": 15
   },
   {
@@ -923,7 +923,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Vocabulary",
     "formulas": 4,
     "vocabulary": 11,
-    "exercises": 25,
+    "exercises": 32,
     "tests": 15
   },
   {
@@ -936,7 +936,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Grammar",
     "formulas": 4,
     "vocabulary": 13,
-    "exercises": 25,
+    "exercises": 32,
     "tests": 15
   },
   {
@@ -1674,7 +1674,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Academic Skills",
     "formulas": 4,
     "vocabulary": 12,
-    "exercises": 30,
+    "exercises": 37,
     "tests": 20
   },
   {

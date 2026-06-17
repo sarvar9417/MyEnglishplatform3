@@ -682,6 +682,48 @@ export const pastHabits: DailyLesson = {
     { id: 95003, type: 'error-correction', instruction: "Would xatosi — state fe'llar bilan would ishlatilmaydi:", question: "When I was young, I would have a red bicycle.", errorPart: "would have", correct: "When I was young, I used to have a red bicycle.", explanation: "Have = state fe'l (egalik). Would faqat action fe'llar bilan; state uchun used to." },
     { id: 95004, type: 'multiple-choice', instruction: "Past Continuous (fon) va Past Simple (uzilish):", question: "I _____ TV when the phone suddenly _____.", options: ["was watching / rang", "watched / was ringing", "used to watch / rang", "would watch / rang"], correct: "was watching / rang", explanation: "Davom etgan fon harakat → Past Continuous; uni uzgan qisqa voqea → Past Simple." },
     { id: 95005, type: 'transformation', instruction: "Past Simple ni Used to ga o'zgartiring (odat ekanini ko'rsatish):", question: "He walked to school every day when he was a child.", hint: "He used to ...", correct: "He used to walk to school every day when he was a child.", explanation: "Har kuni yurish = o'tgan odat → used to walk (endi qilmasligini ta'kidlaydi)." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 96001, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "My grandmother ___(1) (used to / be used to) tell us stories every night when we were children. She ___(2) (would / used to) sit by the window and sing old songs. We ___(3) (didn't use to / weren't used to) have smartphones back then, so we played outside until dark. I ___(4) (used to / would) be afraid of the big dog next door, but later we became friends. Now everything is different, and I ___(5) (am used to / used to) living in a big city, but I still miss those quiet summer evenings.",
+      blanks: ['used to', 'would', "didn't use to", 'used to', 'am used to'],
+      acceptedAnswers: [['used to'], ['would'], ["didn't use to"], ['used to'], ['am used to']],
+      explanation: "Used to — o'tmish odatlar (story telling, fear). Would — takrorlanuvchi harakatlar (sing). Didn't use to — inkor odat (smartphones yo'q edi). Am used to — hozir o'rganib qolgan (city life)."
+    },
+    { id: 96002, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "When I was young, I ___(1) (used to / would) play football every weekend with my friends. We ___(2) (would / were used to) run in the park for hours. I ___(3) (didn't use to / wasn't used to) like vegetables, but now I love them. My brother ___(4) (would / used to) always win because he was faster. Those were wonderful ___(5) (childhood / accustomed) memories.",
+      blanks: ['used to', 'would', "didn't use to", 'would', 'childhood'],
+      acceptedAnswers: [['used to'], ['would'], ["didn't use to"], ['would'], ['childhood']],
+      explanation: "Used to — o'tgan odatlar (play). Would — takrorlanuvchi harakatlar (run, win). Didn't use to — inkor odat (vegetables). Childhood — bolalik xotiralari."
+    },
+    { id: 96003, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "In my hometown, there ___(1) (used to be / was used to) a small cinema near our house. Every Saturday, my family ___(2) (would / used to) go there to watch films. I ___(3) (am used to / was used to) waking up early on weekends for that. Unfortunately, the cinema ___(4) (closed / used to close) five years ago. Now I ___(5) (get used to / am used to) watching films at home, but it's not the same.",
+      blanks: ['used to be', 'would', 'was used to', 'closed', 'am used to'],
+      acceptedAnswers: [['used to be'], ['would'], ['was used to'], ['closed'], ['am used to']],
+      explanation: "Used to be — o'tmish holati (cinema bor edi). Would — takrorlanuvchi harakat (go). Was used to — o'tmishda o'rganib qolgan (waking early). Closed — oddiy Past Simple (voqea). Am used to — hozirgi o'rganish (watching at home)."
+    },
+    { id: 97001, type: 'connection', instruction: "Bolalikdagi odatlaringiz haqida gapiring",
+      prompt: "Bolaligingizda nima qilardingiz? Hozirgi hayotingiz bilan taqqoslang. Kamida 3 ta 'used to' yoki 'would' ishlating.",
+      hints: ["'I used to ...' bilan boshlang", "Hozirgi holat bilan solishtiring: 'but now I ...'", "Takrorlanuvchi harakatlar uchun 'would' ishlating"],
+      exampleAnswer: "I used to play outside with my neighbours every day after school. We would build forts and climb trees. I didn't use to have a phone, so we always found creative ways to have fun. Now I work in an office and I am used to sitting at a desk all day, but I miss those carefree afternoons."
+    },
+    { id: 97002, type: 'connection', instruction: "Ota-onangizning bolaligi bilan taqqoslang",
+      prompt: "Ota-onangizning bolaligi siznikidan qanday farq qilgan? Qanday odatlar o'zgargan? Kamida 2 ta 'used to' yoki 'would' ishlating.",
+      hints: ["'My parents used to ...' bilan boshlang", "Texnologiya farqlarini ta'kidlang", "O'z bolaligingiz bilan solishtiring"],
+      exampleAnswer: "My parents used to walk to school every morning because there were no school buses. They would share one textbook between three siblings. I used to have my own laptop and phone. They didn't use to have the internet, so they learned everything from books. Now I am used to online learning, but my parents think it's too easy for us."
+    },
+    { id: 98001, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'accustomed',
+      options: ["O'rganib qolgan (odatlangan)", "Qo'rqib ketgan", "Charchagan", "Hayajonlangan"],
+      correct: "O'rganib qolgan (odatlangan)",
+      explanation: "Accustomed = o'rganib qolgan, odatlangan. 'I am accustomed to waking up early' = Men ertalab erta turishga o'rganib qolganman."
+    },
+    { id: 98002, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'childhood',
+      options: ["Bolalik", "Maktab yillari", "Keksalik", "Yoshlik (18-25)"],
+      correct: "Bolalik",
+      explanation: "Childhood = bolalik, bolalik yillari. 'In my childhood, I used to play outside' = Bolaligimda tashqarda o'ynardim."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Used to va Would — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [4301, 4302, 4303, 4304] },
@@ -854,6 +896,48 @@ export const causatives: DailyLesson = {
     { id: 95013, type: 'error-correction', instruction: "Causative tartibi xatosi:", question: "I had cut my hair yesterday by a barber.", errorPart: "had cut my hair", correct: "I had my hair cut yesterday by a barber.", explanation: "To'g'ri tartib: have + OBJECT + V3 → had my hair cut (object fe'ldan oldin)." },
     { id: 95014, type: 'multiple-choice', instruction: "Passive va Causative farqi:", question: "The window _____ by a thief. Then we _____ by a professional.", options: ["was broken / had it repaired", "broke / repaired it", "is broken / repair it", "had broken / was repaired"], correct: "was broken / had it repaired", explanation: "Oddiy passive (kim sindirgani noma'lum) → was broken. Boshqaga tuzattirish → had it repaired." },
     { id: 95015, type: 'transformation', instruction: "Active ni causative (get something done) ga aylantiring:", question: "A mechanic checks my car every year.", hint: "I get my car ...", correct: "I get my car checked every year.", explanation: "Get + object + V3 = boshqaga qildirish: get my car checked." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 96011, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Last week I ___(1) (had / got) my car ___(2) (repair / repaired) at the new garage. The mechanic was very professional. I also ___(3) (had / got) him ___(4) (check / to check) the brakes. Today I need to ___(5) (have / make) my phone screen ___(6) (fix / fixed) because I dropped it yesterday.",
+      blanks: ['had', 'repaired', 'had', 'check', 'have', 'fixed'],
+      acceptedAnswers: [['had'], ['repaired'], ['had'], ['check'], ['have'], ['fixed']],
+      explanation: "Had my car repaired = have + object + V3 (causative). Had him check = have + person + V1 (to'siz). Have my phone screen fixed = have + object + V3."
+    },
+    { id: 96012, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Sevara is getting married next month. She will ___(1) (have / get) her dress ___(2) (make / made) by a professional tailor. Her brother will ___(3) (get / have) the invitations ___(4) (print / printed) at a local shop. Their parents will ___(5) (have / get) the food ___(6) (prepare / prepared) by a catering company.",
+      blanks: ['have', 'made', 'get', 'printed', 'have', 'prepared'],
+      acceptedAnswers: [['have'], ['made'], ['get'], ['printed'], ['have'], ['prepared']],
+      explanation: "Have + object + V3 (rasmiy) va get + object + V3 (norasmiy) — ikkalasi ham causative."
+    },
+    { id: 96013, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "I can't cut my own hair, so I ___(1) (have / get) it ___(2) (cut / cutting) at the salon every month. My sister ___(3) (got / had) her friend ___(4) (help / to help) her move last weekend. She also ___(5) (had / got) the electrician ___(6) (install / to install) new lights in her flat.",
+      blanks: ['have', 'cut', 'got', 'to help', 'had', 'install'],
+      acceptedAnswers: [['have'], ['cut'], ['got'], ['to help'], ['had'], ['install']],
+      explanation: "Have + object + V3 (hair). Got + person + to V1 (friend to help). Had + person + V1 (electrician install)."
+    },
+    { id: 97011, type: 'connection', instruction: "Professional xizmatlar haqida gapiring",
+      prompt: "O'tgan hafta yoki oyda biror professional xizmatdan foydalandingizmi? Causative tuzilishini ishlatib, nima qildirganingizni tasvirlab bering.",
+      hints: ["'I had my ... done' yoki 'I got my ... done' bilan boshlang", "Qayerda va kim qilganini ayting", "Nega boshqaga qildirganingizni tushuntiring"],
+      exampleAnswer: "Last month I had my car serviced at the new garage because it was making strange noises. I also got my teeth checked by my dentist. I prefer to have professionals do these things because I don't have the skills or equipment to do them myself."
+    },
+    { id: 97012, type: 'connection', instruction: "Siz qanday xizmatlardan foydalanasiz?",
+      prompt: "Har kuni yoki muntazam foydalanadigan xizmatlaringiz ro'yxatini tuzing. Causative tuzilishini ishlatib, har birini tasvirlab bering.",
+      hints: ["'I have my hair cut every month' kabi misollar bering", "Turli xizmatlarni ayting: soch, mashina, uy, telefon", "Causative ni turli zamonlarda ishlating"],
+      exampleAnswer: "I have my hair cut every month at a salon near my house. I get my car washed every week at the car wash. I have my phone screen repaired whenever it breaks. We are having our house painted this summer. I need to get my suit cleaned for a wedding next month."
+    },
+    { id: 98011, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'causative',
+      options: ["Qildirish (grammatik struktura)", "Sabab bo'lmoq", "Kuch ishlatmoq", "Ruxsat bermoq"],
+      correct: "Qildirish (grammatik struktura)",
+      explanation: "Causative = qildirish. Have/get something done — biror ishni boshqaga qildirish grammatik tuzilishi."
+    },
+    { id: 98012, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'repair',
+      options: ["Ta'mirlamoq", "Yaratmoq", "Yo'q qilmoq", "O'zgartirmoq"],
+      correct: "Ta'mirlamoq",
+      explanation: "Repair = ta'mirlamoq, tuzatmoq. 'I had my car repaired' = Mashinamni ta'mirlatdim."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Have/Get + object + V3", color: 'bg-emerald-500', icon: '🌱', ids: [4401, 4402, 4403, 4404] },
@@ -1197,6 +1281,48 @@ export const bothEitherNeither: DailyLesson = {
     { id: 95073, type: 'error-correction', instruction: "Either fe'l mosligi:", question: "Either of the answers are correct.", errorPart: "are", correct: "Either of the answers is correct.", explanation: "Either + birlik fe'l → is correct (each one). 'Are' noto'g'ri." },
     { id: 95074, type: 'multiple-choice', instruction: "Neither...nor va either...or:", question: "_____ Tom _____ Sam came (both absent). You can have _____ tea _____ coffee (one choice).", options: ["Neither / nor / either / or", "Either / or / neither / nor", "Neither / or / either / nor", "Both / and / either / or"], correct: "Neither / nor / either / or", explanation: "Ikkalasi ham yo'q → neither...nor. Ikkidan biri → either...or." },
     { id: 95075, type: 'transformation', instruction: "'Not...and not' ni neither...nor bilan qisqartiring:", question: "She doesn't eat meat and she doesn't eat fish.", hint: "She eats ...", correct: "She eats neither meat nor fish.", explanation: "Ikki inkorni birlashtirish → neither meat nor fish." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 96021, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "For our holiday, we couldn't decide between the beach and the mountains. ___(1) (Both / Either) destinations looked amazing. We chose the beach because ___(2) (neither / either) of us had been there before. On the first day, we tried ___(3) (both / either) swimming and surfing. ___(4) (Neither / Either) of us could surf well, but ___(5) (both / either) of us loved swimming. It was the best holiday!",
+      blanks: ['Both', 'neither', 'both', 'Neither', 'both'],
+      acceptedAnswers: [['Both'], ['neither'], ['both'], ['Neither'], ['both']],
+      explanation: "Both — ikkalasi ham (destinations, swimming and surfing). Neither — ikkalasi ham emas (surfing). Both — ikkalasi ham (loved swimming)."
+    },
+    { id: 96022, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "At the restaurant, the waiter asked: 'Tea or coffee?' I said: '___(1) (Neither / Either), thank you. Just water for ___(2) (both / either) of us.' My friend said: '___(3) (Either / Both) drink is fine for me.' We ___(4) (both / neither) ordered soup. ___(5) (Neither / Either) of us wanted salad.",
+      blanks: ['Neither', 'both', 'Either', 'both', 'Neither'],
+      acceptedAnswers: [['Neither'], ['both'], ['Either'], ['both'], ['Neither']],
+      explanation: "Neither — ikkalasi ham emas (tea/coffee). Both — ikkalasi (of us). Either — qaysi biri bo'lsa ham. Both — ikkalasi (ordered soup). Neither — ikkalasi ham emas (salad)."
+    },
+    { id: 96023, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "My sister and I have ___(1) (both / neither) been to Paris. ___(2) (Neither / Either) of us has visited London though. We ___(3) (both / either) love Italian food, but ___(4) (neither / either) of us can cook it well. We want to try ___(5) (both / either) cooking classes and restaurants to improve.",
+      blanks: ['both', 'Neither', 'both', 'neither', 'both'],
+      acceptedAnswers: [['both'], ['Neither'], ['both'], ['neither'], ['both']],
+      explanation: "Both — ikkalasi ham (been to Paris, love Italian food). Neither — ikkalasi ham emas (London, cook well). Both — ikkalasi ham (cooking classes and restaurants)."
+    },
+    { id: 97021, type: 'connection', instruction: "Do'stingiz bilan o'xshashlik va farqlaringiz",
+      prompt: "Eng yaqin do'stingiz bilan o'xshashlik va farqlaringiz haqida yozing. Both, either, neither ishlatib kamida 4 ta gap yozing.",
+      hints: ["'We both like ...' bilan boshlang", "'Neither of us likes ...' bilan farqni ayting", "'Either of us can ...' bilan imkoniyatni bildiring"],
+      exampleAnswer: "My best friend and I both love music and we both play the guitar. Neither of us likes waking up early. Either of us can cook a good meal, but neither of us enjoys cleaning. We both want to travel to Japan someday. Neither of us has been there, but either of us would love to go."
+    },
+    { id: 97022, type: 'connection', instruction: "Oila a'zolaringizning xohish-istaklari",
+      prompt: "Oila a'zolaringizning o'xshash va farqli xohishlari haqida yozing. Both...and, neither...nor, either...or ishlatib kamida 4 ta gap yozing.",
+      hints: ["'My parents both ...' bilan boshlang", "'Neither my brother nor I ...'", "'Either my mother or my father ...'"],
+      exampleAnswer: "Both my mother and my father enjoy gardening. Neither my brother nor I like cooking. Either my sister or my brother can help with homework. We both love watching films at the weekend. Neither of my parents likes spicy food, but either of them will try new dishes."
+    },
+    { id: 98021, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'as well',
+      options: ["Ham (qo'shimcha)", "Lekin", "Shuning uchun", "Yaxshiroq"],
+      correct: "Ham (qo'shimcha)",
+      explanation: "As well = ham, shuningdek. 'I like coffee as well' = Men kofeni ham yoqtiraman."
+    },
+    { id: 98022, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'nor',
+      options: ["Ham...emas (inkor oldinga)", "Ham (musbat)", "Yoki", "Lekin"],
+      correct: "Ham...emas (inkor oldinga)",
+      explanation: "Nor = ham...emas. 'Neither...nor...' = na...na... 'A: I can't swim. B: Nor can I.' = Men ham suza olmayman."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Both, Either, Neither farqlari", color: 'bg-emerald-500', icon: '🌱', ids: [4601, 4602, 4603, 4604] },
@@ -1712,6 +1838,48 @@ export const soNeitherAuxiliaries: DailyLesson = {
     { id: 95103, type: 'error-correction', instruction: "So/neither dan keyin inversiya:", question: "'I am tired.' 'So I am.'", errorPart: "So I am", correct: "'I am tired.' 'So am I.'", explanation: "Rozilikda inversiya: So + auxiliary + subject → So am I. ('So I am' = boshqa ma'no)." },
     { id: 95104, type: 'multiple-choice', instruction: "Neither (inkor) — auxiliary tanlash:", question: "'I haven't seen it.' '_____ I.' 'They won't come.' '_____ we.'", options: ["Neither have / Neither will", "Neither did / Neither do", "So have / So will", "Neither has / Neither will"], correct: "Neither have / Neither will", explanation: "Present Perfect inkor (haven't) → Neither have. Future inkor (won't) → Neither will." },
     { id: 95105, type: 'transformation', instruction: "Roziligini 'So' bilan qisqa javob qiling:", question: "A: 'I would love to travel more.' B agrees (short answer).", hint: "So ...", correct: "So would I.", explanation: "Would + rozilik → So would I (auxiliary 'would' takrorlanadi)." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 96031, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Aziza: I love travelling.\nBek: ___(1) (So do I / Neither do I)! I went to Turkey last year.\nAziza: ___(2) (So did I / Neither have I)! But I've never been to Europe.\nBek: ___(3) (Neither have I / So have I). I can't speak French.\nAziza: ___(4) (Neither can I / So can I). I'd love to learn, though.\nBek: ___(5) (So would I / Neither would I). I'm saving money for a big trip.",
+      blanks: ['So do I', 'So did I', 'Neither have I', 'Neither can I', 'So would I'],
+      acceptedAnswers: [['So do I'], ['So did I'], ['Neither have I'], ['Neither can I'], ['So would I']],
+      explanation: "So do I — musbat rozilik (love). So did I — o'tgan zamon rozilik (went). Neither have I — inkor rozilik (haven't been). Neither can I — inkor rozilik (can't speak). So would I — musbat rozilik (would love)."
+    },
+    { id: 96032, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "A: I am a student.\nB: ___(1) (So am I / Neither am I). I study at the university.\nA: I don't like early mornings.\nB: ___(2) (Neither do I / So do I). I always oversleep.\nA: I have never been abroad.\nB: ___(3) (Neither have I / So have I). But I want to visit Japan.\nA: I can speak two languages.\nB: ___(4) (So can I / Neither can I). English and Russian.\nA: I won't give up studying.\nB: ___(5) (So will I / Neither will I). We'll succeed together!",
+      blanks: ['So am I', 'Neither do I', 'Neither have I', 'So can I', 'So will I'],
+      acceptedAnswers: [['So am I'], ['Neither do I'], ['Neither have I'], ['So can I'], ['So will I']],
+      explanation: "So am I — musbat (am). Neither do I — inkor (don't). Neither have I — inkor (haven't). So can I — musbat (can). So will I — musbat (will)."
+    },
+    { id: 96033, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "At work, my colleague said: 'I worked overtime yesterday.' I replied: '___(1) (So did I / Neither did I). I was so tired!' She said: 'I haven't taken a holiday this year.' I said: '___(2) (Neither have I / So have I). We both need a break.' She said: 'I can't wait for the weekend.' I agreed: '___(3) (Neither can I / So can I). Let's plan something fun.' She said: 'I would love to go hiking.' I said: '___(4) (So would I / Neither would I). The mountains are beautiful this time of year.'",
+      blanks: ['So did I', 'Neither have I', 'So can I', 'So would I'],
+      acceptedAnswers: [['So did I'], ['Neither have I'], ['So can I'], ['So would I']],
+      explanation: "So did I — musbat o'tgan zamon (worked). Neither have I — inkor (haven't taken). So can I — musbat (can't wait). So would I — musbat (would love)."
+    },
+    { id: 97031, type: 'connection', instruction: "O'zingiz haqida haqiqatlar yozing",
+      prompt: "O'zingiz haqida musbat va inkor gaplar yozing. So do I / Neither do I ishlatib kamida 4 ta javob yozing. O'zingizning ham rozi bo'lishingiz kerak.",
+      hints: ["Musbat gap uchun 'So + auxiliary + I' ishlating", "Inkor gap uchun 'Neither + auxiliary + I' ishlating", "Auxiliary fe'l zamoniga mos bo'lishini tekshiring"],
+      exampleAnswer: "I love reading books. So do I — men ham kitob o'qishni yaxshi ko'raman. I can't cook very well. Neither can I — men ham yaxshi pishira olmayman. I haven't visited Europe. Neither have I — men ham bormaganman. I will study harder next semester. So will I — men ham qattiqroq o'qiman."
+    },
+    { id: 97032, type: 'connection', instruction: "Do'stingiz bilan o'xshashliklarni aniqlang",
+      prompt: "Do'stingiz bilan qaysi narsalarda rozi ekaningizni aniqlang. So do I / Neither do I / I do too / I don't either ishlatib kamida 4 ta javob yozing.",
+      hints: ["'I also like ...' o'rniga 'So do I' ishlating", "'I don't like ... either' o'rniga 'Neither do I' ishlating", "Turli zamonlarni sinab ko'ring"],
+      exampleAnswer: "I enjoy watching comedies. So do I! I don't like horror films. Neither do I! I have been to Istanbul. So have I! I haven't tried sushi yet. Neither have I! I can play the piano. So can I! I won't be late tomorrow. Neither will I!"
+    },
+    { id: 98031, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'inversion',
+      options: ["Teskari tartib (fe'l va egani almashtirish)", "Qo'shimcha so'z", "Gap tuzilishi", "Zamon o'zgarishi"],
+      correct: "Teskari tartib (fe'l va egani almashtirish)",
+      explanation: "Inversion = teskari tartib. So/Neither dan keyin yordamchi fe'l egadan oldin keladi: 'So do I' (I do → So do I)."
+    },
+    { id: 98032, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'same here',
+      options: ["Men ham (norasmiy rozi)", "Boshqacha", "Xuddi shunday", "Farqli"],
+      correct: "Men ham (norasmiy rozi)",
+      explanation: "Same here = men ham, xuddi shunday. 'So do I' ning norasmiy shakli. Kundalik nutqda ko'p ishlatiladi."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "So va Neither asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4901, 4902, 4903, 4904] },

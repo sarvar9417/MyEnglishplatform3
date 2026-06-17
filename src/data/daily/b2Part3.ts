@@ -575,6 +575,48 @@ export const paraphrasingB2: DailyLesson = {
     { id: 95483, type: 'error-correction', instruction: "Paraphrase — bir xil so'zni takrorlamaslik:", question: "The important point is that this point is important.", errorPart: "this point is important", correct: "The key issue is that it carries great weight.", explanation: "Paraphrase: takrorni sinonim bilan almashtirish (key issue, carries great weight)." },
     { id: 95484, type: 'multiple-choice', instruction: "Rephrase (akademik sinonim):", question: "'show' → '_____'. 'big problem' → '_____ issue'.", options: ["demonstrate / major", "tell / small", "see / tiny", "do / little"], correct: "demonstrate / major", explanation: "Akademik paraphrase: show → demonstrate, big → major." },
     { id: 95485, type: 'transformation', instruction: "Gapni paraphrase qiling:", question: "Many people think the plan is very good.", hint: "Numerous individuals consider ...", correct: "Numerous individuals consider the plan highly effective.", explanation: "Paraphrase: many people → numerous individuals, very good → highly effective." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 96041, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Original: 'Climate change is primarily caused by human industrial activity.'\nParaphrase: 'Human industrial ___(1) (processes / activities) represent the primary ___(2) (driver / cause) of global warming.'\n\nOriginal: 'The economy grew rapidly in 2022.'\nParaphrase 1: 'The year 2022 ___(3) (witnessed / saw) rapid economic ___(4) (expansion / growth).'\nParaphrase 2: 'A period of ___(5) (accelerated / fast) economic growth occurred in 2022.'",
+      blanks: ['processes', 'driver', 'witnessed', 'expansion', 'accelerated'],
+      acceptedAnswers: [['processes'], ['driver'], ['witnessed'], ['expansion'], ['accelerated']],
+      explanation: "Paraphrase usullari: sinonim (activities→processes, cause→driver), nominalization (grew→expansion), so'z turkumi o'zgarishi (grew rapidly→accelerated growth)."
+    },
+    { id: 96042, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "According to ___(1) (Smith / Smith, 2023), regular exercise reduces anxiety. Smith (2023) ___(2) (argues / says) that physical activity tends to improve mental health. As Brown (2022) ___(3) (notes / tells), daily exercise is ___(4) (beneficial / good) for stress. The research ___(5) (demonstrates / shows) that 30 minutes of walking can reduce stress by 40%.",
+      blanks: ['Smith (2023)', 'argues', 'notes', 'beneficial', 'demonstrates'],
+      acceptedAnswers: [['Smith (2023)', 'Smith'], ['argues'], ['notes'], ['beneficial'], ['demonstrates']],
+      explanation: "Reporting verbs: According to Smith (2023), argues (kuchli da'vo), notes (kuzatish), demonstrates (isbotlash). Akademik format: Author (Year) + verb + that."
+    },
+    { id: 96043, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "To ___(1) (paraphrase / summarise) a text effectively, you need to change both ___(2) (vocabulary / grammar) and sentence ___(3) (structure / length). A good paraphrase uses ___(4) (synonyms / antonyms) and changes word ___(5) (form / order) from verb to noun or adjective to noun.",
+      blanks: ['paraphrase', 'vocabulary', 'structure', 'synonyms', 'form'],
+      acceptedAnswers: [['paraphrase'], ['vocabulary'], ['structure'], ['synonyms'], ['form']],
+      explanation: "Paraphrase qoidalari: vocabulary + structure o'zgartirish, synonyms ishlatish, word form o'zgartirish (verb→noun, adj→noun)."
+    },
+    { id: 97041, type: 'connection', instruction: "O'z sohangizdan jumlani paraphrase qiling",
+      prompt: "O'z kasbingiz yoki o'rganish sohangizdan bir jumlani paraphrase qiling. Kamida 3 xil paraphrase usulini ishlating: sinonim, tuzilma o'zgarishi, word form o'zgarishi.",
+      hints: ["Birinchi asl jumlani yozing", "Sinonimlar bilan almashtiring", "Active → Passive yoki verb → noun o'zgartiring"],
+      exampleAnswer: "Original: 'Students learn better with digital tools.'\nParaphrase 1: 'Digital tools enhance student learning outcomes.' (verb→noun: learn→learning; synonym: better→enhance)\nParaphrase 2: 'It has been shown that technology improves academic performance.' (active→passive; synonym: digital tools→technology)\nParaphrase 3: 'Research suggests that the use of digital technologies leads to more effective learning.' (reporting verb + structure change)"
+    },
+    { id: 97042, type: 'connection', instruction: "Maqoladan xulosa yozing",
+      prompt: "Quyidagi maqolani o'qing va 2-3 jumlada xulosa yozing. Faqat asosiy fikrlarni saqlang, detallarni olib tashlang.",
+      hints: ["Faqat asosiy g'oyalarni saqlang", "Boshqa so'zlar bilan yozing", "Manba ko'rsating: 'According to...'"],
+      exampleAnswer: "Original (50 words): 'A 2023 WHO study of 15,000 adults across 20 countries found that 30 minutes of daily exercise reduced reported anxiety by 40% and improved mood scores by 35% compared to sedentary individuals.'\nSummary (15 words): 'A WHO study (2023) found that daily exercise significantly improves mental health outcomes.'"
+    },
+    { id: 98041, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'rephrase',
+      options: ["Qayta ifodalamoq (so'zlarini o'zgartirish)", "Tarjima qilmoq", "Ko'chirmoq", "Qisqartirmoq"],
+      correct: "Qayta ifodalamoq (so'zlarini o'zgartirish)",
+      explanation: "Rephrase = qayta ifodalamoq, boshqa so'zlar bilan aytmoq. Paraphrase ga o'xshash, ammo kamroq rasmiy."
+    },
+    { id: 98042, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'synonym',
+      options: ["Sinonim (bir xil ma'noli so'z)", "Antonim (qarama-qarshi ma'noli)", "Homonym (o'xshash yozilishli)", "Pronoun (olmosh)"],
+      correct: "Sinonim (bir xil ma'noli so'z)",
+      explanation: "Synonym = sinonim. 'Increase' sinonimlari: rise, grow, surge, climb. Paraphrase uchun sinonimlar muhim vosita."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Paraphrasing asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [7101, 7102, 7103, 7104, 7105] },
