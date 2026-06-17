@@ -435,7 +435,12 @@ export async function updateTandemStreak(): Promise<void> {
             'success', 5000,
           )
         }).catch((e) => monitoring.captureMessage('tandem milestone toast failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
-      }).catch((e) => monitoring.captureMessage('tandem milestone addXP failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
+      }).catch((e) => {
+        monitoring.captureMessage('tandem milestone addXP failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+        import('../utils/toastStore').then(({ useToastStore }) => {
+          useToastStore.getState().toast('Juftlik Streak bonusi yuklanmadi', 'warning', 4000)
+        }).catch(() => {})
+      })
 
       // Juftlik total_xp ga ham qo'shamiz
       try {
@@ -719,7 +724,12 @@ export async function submitDuelAnswers(
   const xpEarned = correctCount * 10
   import('../store/useStore').then(({ useStore }) => {
     useStore.getState().addXP(xpEarned)
-  }).catch((e) => monitoring.captureMessage('submitDuelAnswers addXP import failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
+  }).catch((e) => {
+    monitoring.captureMessage('submitDuelAnswers addXP import failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+    import('../utils/toastStore').then(({ useToastStore }) => {
+      useToastStore.getState().toast('XP bonusni qo\'lda qo\'shing — avtomatik yuklanmadi', 'warning', 4000)
+    }).catch(() => {})
+  })
 
   // Tandem juftlik total_xp ni oshirish
   try {
@@ -1222,7 +1232,12 @@ export async function submitSpeakingDuelAnswer(
     const xpEarned = avgScore * 15
     import('../store/useStore').then(({ useStore }) => {
       useStore.getState().addXP(xpEarned)
-    }).catch((e) => monitoring.captureMessage('submitSpeakingDuelAnswer addXP failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
+    }).catch((e) => {
+      monitoring.captureMessage('submitSpeakingDuelAnswer addXP failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      import('../utils/toastStore').then(({ useToastStore }) => {
+        useToastStore.getState().toast('XP bonusni qo\'lda qo\'shing — avtomatik yuklanmadi', 'warning', 4000)
+      }).catch(() => {})
+    })
 
     // ─── Speaking duel Elo rating ────────────────────────────────
     if (nextStatus === 'done') {
@@ -1397,7 +1412,12 @@ export async function settleWeeklyDuel(pairId: string): Promise<{ winnerId: stri
       if (currentUserId === winnerId) {
         import('../store/useStore').then(({ useStore }) => {
           useStore.getState().addXP(100)
-        }).catch((e) => monitoring.captureMessage('settleWeeklyDuel addXP failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
+        }).catch((e) => {
+          monitoring.captureMessage('settleWeeklyDuel addXP failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+          import('../utils/toastStore').then(({ useToastStore }) => {
+            useToastStore.getState().toast('Haftalik g\'alaba bonusi yuklanmadi', 'warning', 4000)
+          }).catch(() => {})
+        })
       }
     }
 

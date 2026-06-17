@@ -327,6 +327,9 @@ Rules:
     }
   } catch (e) {
     monitoring.captureMessage('generateAITranslation error: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+    import('../utils/toastStore').then(({ useToastStore }) => {
+      useToastStore.getState().toast('AI tarjima yuklanmadi — qayta urinib ko\'ring', 'warning', 4000)
+    }).catch(() => {})
     return { uzbek: '' }
   }
 }
