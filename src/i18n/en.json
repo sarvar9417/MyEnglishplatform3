@@ -1190,5 +1190,9 @@
   "aria.audioSettings": "Audio settings",
   "aria.check": "Check",
   "aria.danger": "Warning",
-  "writing.essayLabel": "Essay text"
+  "writing.essayLabel": "Essay text",
+  "connectionFeedback.tryWriting": "Please write your own example — it strengthens memory!",
+  "connectionFeedback.writeMore": "Good start! Write more — use at least 5 words.",
+  "connectionFeedback.aiFeedback": "AI Analysis:",
+  "connectionFeedback.exampleAnswer": "Example answer:"
 }

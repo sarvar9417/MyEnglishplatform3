@@ -175,7 +175,14 @@ export const futureFormsReview: DailyLesson = {
       prompt: 'Kelgusi hafta uchun batafsil reja yozing. Turli future formalarini ishlating.',
       hints: ['On Monday I am ...-ing', 'I will ... on Tuesday', 'I am going to ...'],
       exampleAnswer: 'On Monday I am meeting my friend for coffee. I will study for my exam on Tuesday. I am going to visit my parents on the weekend.' },
-  ],
+    { id: 100037, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100038, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100039, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100040, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100041, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100042, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 100043, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Will va Going to — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [40021, 40022, 40023, 40024, 40025] },
     { title: "O'rtacha", desc: "Kontekstga qarab to'g'ri shakl tanlash", color: 'bg-blue-500', icon: '📘', ids: [40026, 40027, 40028, 40029, 40030, 40031, 40032] },
@@ -379,7 +386,13 @@ export const modalsObligation: DailyLesson = {
       prompt: 'Do\'stingizga should/shouldn\'t bilan maslahat bering.',
       hints: ['You should...', 'You should not...', 'If I were you, I would...'],
       exampleAnswer: 'You should study more for the exam. You should not stay up too late. If I were you, I would practice English daily.' },
-  ],
+    { id: 100031, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100032, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100033, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100034, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100035, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 100036, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Must / Have to — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [40065, 40066, 40067, 40068, 40069] },
     { title: "O'rtacha", desc: "Mustn't vs Don't have to", color: 'bg-blue-500', icon: '📘', ids: [40070, 40071, 40072, 40073, 40074] },
@@ -585,7 +598,13 @@ export const modalsSpeculation: DailyLesson = {
       prompt: 'Yo\'qotilgan narsangizni must/might/can\'t bilan tahlil qiling.',
       hints: ['It must be...', 'It might be in...', 'It can not be...', 'Perhaps...'],
       exampleAnswer: 'I can not find my keys. They must be somewhere in this room. They might be in my bag. They can not be in the kitchen because I did not go there.' },
-  ],
+    { id: 100025, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100026, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100027, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100028, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100029, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 100030, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Must / Might / Can't be asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [40110, 40111, 40112, 40113, 40114] },
     { title: "O'rtacha", desc: "Taxmin shakllarini qo'llash", color: 'bg-blue-500', icon: '📘', ids: [40115, 40116, 40117, 40118, 40119] },
@@ -803,7 +822,11 @@ export const pastHabits: DailyLesson = {
       prompt: 'Used to/would bilan bolalik odatlaringiz haqida yozing.',
       hints: ['I used to...', 'I would...', 'I did not use to...'],
       exampleAnswer: 'When I was a child, I used to play football every day. I would spend hours reading books. I did not use to like vegetables.' },
-  ],
+    { id: 100021, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100022, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100023, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 100024, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Used to va Would — asosiy farqlar", color: 'bg-emerald-500', icon: '🌱', ids: [40155, 40156, 40157, 40158, 40159] },
     { title: "O'rtacha", desc: "Used to va Would ni qo'llash", color: 'bg-blue-500', icon: '📘', ids: [40160, 40161, 40162, 40163, 40164] },
@@ -1023,7 +1046,11 @@ export const causatives: DailyLesson = {
       prompt: 'Have/get something done bilan xizmatlar haqida yozing.',
       hints: ['I have my hair cut...', 'I got my car repaired...', 'I need to have my...'],
       exampleAnswer: 'I have my hair cut once a month. I got my car repaired at the garage. I need to have my teeth checked.' },
-  ],
+    { id: 100017, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100018, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100019, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 100020, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Have/Get + object + V3", color: 'bg-emerald-500', icon: '🌱', ids: [40201, 40202, 40203, 40204] },
     { title: "O'rtacha", desc: "Have/Get person variantlari", color: 'bg-blue-500', icon: '📘', ids: [40205, 40206, 40207, 40208] },
@@ -1226,7 +1253,13 @@ export const questionTags: DailyLesson = {
       prompt: 'Question tags bilan ma\'lumotni tekshirish savollari yozing.',
       hints: ['The meeting is at 3, is not it?', 'You finished the report, did not you?'],
       exampleAnswer: 'The meeting is at 3 o\'clock, is not it? You finished the report, did not you? She has not called yet, has she? They will come tomorrow, will not they?' },
-  ],
+    { id: 100011, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100012, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100013, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100014, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100015, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 100016, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Asosiy qoida — musbat/inkor", color: 'bg-emerald-500', icon: '🌱', ids: [40247, 40248, 40249, 40250, 40251] },
     { title: "O'rtacha", desc: "Turli fe'llar bilan", color: 'bg-blue-500', icon: '📘', ids: [40252, 40253, 40254, 40255, 40256] },
@@ -1444,7 +1477,11 @@ export const bothEitherNeither: DailyLesson = {
       prompt: 'Both/either/neither bilan 5 ta gap yozing.',
       hints: ['Both... and...', 'Either... or...', 'Neither... nor...'],
       exampleAnswer: 'Both my brother and I love football. You can either study engineering or medicine. Neither the blue shirt nor the red one fits me.' },
-  ],
+    { id: 100007, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100008, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100009, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 100010, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Both, Either, Neither farqlari", color: 'bg-emerald-500', icon: '🌱', ids: [40293, 40294, 40295, 40296, 40297] },
     { title: "O'rtacha", desc: "Both/Either/Neither of bilan", color: 'bg-blue-500', icon: '📘', ids: [40298, 40299, 40300, 40301, 40302] },
@@ -1644,7 +1681,13 @@ export const timeClauses: DailyLesson = {
       prompt: 'Time clauses bilan kun tartibingizni tasvirlab bering.',
       hints: ['Before I go to school...', 'After I come home...', 'When I finish my homework...'],
       exampleAnswer: 'Before I go to school, I have breakfast. After I come home, I do my homework. When I finish my homework, I watch TV.' },
-  ],
+    { id: 100001, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100002, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100003, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100004, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 100005, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 100006, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Vaqt ergash gaplari asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [40340, 40341, 40342, 40343, 40344] },
     { title: "O'rtacha", desc: "Present Simple vs Future", color: 'bg-blue-500', icon: '📘', ids: [40345, 40346, 40347, 40348, 40349] },
@@ -1832,7 +1875,14 @@ export const indirectQuestions: DailyLesson = {
       prompt: 'Mehmonxonada xodimga 4 ta indirect question bering.',
       hints: ['Could you tell me...', 'I\'d like to know...'],
       exampleAnswer: 'Could you tell me what time breakfast is served? I\'d like to know when the checkout time is. Can you tell me where the nearest restaurant is?' },
-  ],
+    { id: 99994, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99995, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99996, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99997, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99998, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99999, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 100000, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Indirect so'roq asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [40384, 40385, 40386, 40387, 40388] },
     { title: "O'rtacha", desc: "If / Whether bilan", color: 'bg-blue-500', icon: '📘', ids: [40389, 40390, 40391, 40392, 40393] },
@@ -2053,7 +2103,11 @@ export const soNeitherAuxiliaries: DailyLesson = {
       prompt: 'So/Neither + aux + I bilan 5 ta javob yozing.',
       hints: ['So do I', 'Neither do I', 'So am I', 'Neither can I'],
       exampleAnswer: 'I love learning languages. So do I. I cannot swim. Neither can I. I am tired today. So am I.' },
-  ],
+    { id: 99990, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99991, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99992, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 99993, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "So va Neither asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [4901, 4902, 4903, 4904] },
     { title: "O'rtacha", desc: "Turli yordamchi fe'llar", color: 'bg-blue-500', icon: '📘', ids: [4905, 4906, 4907, 4908] },
@@ -2253,7 +2307,13 @@ export const wishesRegrets: DailyLesson = {
       prompt: 'I wish / If only bilan 5 ta hozirgi istak yozing.',
       hints: ['I wish I could...', 'I wish I had...', 'If only I were...'],
       exampleAnswer: 'I wish I could speak three languages. I wish I had more free time. If only I were taller. I wish I lived near the beach.' },
-  ],
+    { id: 99984, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99985, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99986, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99987, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99988, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." },
+    { id: 99989, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "I wish + Past Simple — hozirgi orzular", color: 'bg-emerald-500', icon: '🌱', ids: [5001, 5002, 5003, 5004] },
     { title: "O'rtacha", desc: "I wish + Past Perfect — pushaymonlik", color: 'bg-blue-500', icon: '📘', ids: [5005, 5006, 5007, 5008] },

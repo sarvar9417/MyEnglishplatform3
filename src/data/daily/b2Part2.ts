@@ -184,6 +184,8 @@ export const complexSentencesB2: DailyLesson = {
       hints: ['My friend who... (odam haqida)', 'The thing that... (narsa haqida)', 'Although... (qaramay)', 'The place where... (joy haqida)'],
       exampleAnswer: 'My best friend, who lives in Samarkand, visits me every summer. The thing that I admire most about him is his honesty. Although we do not see each other often, we talk on the phone every week. He is someone whose opinion I always trust.'
     },
+    { id: 99965, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99966, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Bog\'lovchilar va relative pronoun', color: 'bg-emerald-500', icon: '🌱', ids: [6201, 6202, 6203, 6204, 6205] },
@@ -449,6 +451,8 @@ export const advancedModalsB2: DailyLesson = {
       hints: ['He must have... (ishonchli)', 'He could have... (ehtimol)', 'He should have... (kerak edi)', 'He might have... (bolishi mumkin)'],
       exampleAnswer: 'My friend was late for the meeting yesterday. He must have been stuck in traffic. He could have taken the metro instead. He should have left home earlier. He might have forgotten about the meeting.'
     },
+    { id: 99963, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99964, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Needn\'t have va didn\'t need to', color: 'bg-emerald-500', icon: '🌱', ids: [6301, 6302, 6303, 6304, 6305] },
@@ -719,6 +723,8 @@ export const contrastiveStructuresB2: DailyLesson = {
       hints: ['Whereas my brother... (farqli)', 'I enjoy..., however... (ammo)', 'Unlike my sister... (farqli)', 'In contrast to my father...'],
       exampleAnswer: 'Whereas my father is a morning person, I prefer staying up late. I enjoy reading books; however, my brother prefers watching films. Unlike my sister, who loves cooking, I cannot cook. In contrast to my mother, who is patient, I am quite impatient.'
     },
+    { id: 99961, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99962, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'While, whereas, unlike', color: 'bg-emerald-500', icon: '🌱', ids: [6401, 6402, 6403, 6404, 6405] },
@@ -985,6 +991,8 @@ export const punctuationB2: DailyLesson = {
       hints: ['I need to buy: ... (colon bilan lista)', 'I woke up late; however... (semicolon)', 'I enjoy: ... (colon)', 'I finished work early; therefore...'],
       exampleAnswer: 'I have three goals this year: learn English, read 20 books, and travel. I woke up late; however, I still made it to work on time. I enjoy several hobbies: reading, swimming, and chess. The weather was bad; nevertheless, I went for a walk.'
     },
+    { id: 99959, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99960, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Colon, semicolon, dash', color: 'bg-emerald-500', icon: '🌱', ids: [6501, 6502, 6503, 6504, 6505] },
@@ -1250,6 +1258,8 @@ export const academicCollocationsB2: DailyLesson = {
       hints: ['Scientists conducted a study on...', 'The research highlights...', 'The government should take action...', 'Researchers drew a conclusion...'],
       exampleAnswer: 'Researchers conducted a study on education in Uzbekistan. The study shows the importance of English learning. The government has taken action to improve schools. Experts drew a conclusion that early language learning is most effective.'
     },
+    { id: 99957, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99958, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Research va conclusion collocations', color: 'bg-emerald-500', icon: '🌱', ids: [6601, 6602, 6603, 6604, 6605] },
@@ -1515,6 +1525,8 @@ export const criticalThinkingB2: DailyLesson = {
       hints: ['Some people argue that smartphones...', 'They claim that...', 'However, others challenge this view...', 'They point out that...'],
       exampleAnswer: 'Some parents argue that smartphones are bad for children. They claim that too much screen time reduces concentration. However, others challenge this view. They point out that smartphones can be educational. I conclude that smartphones are useful when used responsibly.'
     },
+    { id: 99955, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99956, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Argue, claim, refute', color: 'bg-emerald-500', icon: '🌱', ids: [6701, 6702, 6703, 6704, 6705] },
@@ -1779,6 +1791,8 @@ export const b2Review: DailyLesson = {
       hints: ['I wish I had... (otmish afsus)', 'If I had..., I would... (mixed)', 'The development of... (nominalization)', 'It seems that... (hedging)'],
       exampleAnswer: 'I wish I had started learning English earlier. If I had studied more, I would be fluent now. However, I am happy with my progress. My teacher suggests that I practise speaking daily. It seems that my vocabulary is improving. In conclusion, I will continue learning until I reach my goal.'
     },
+    { id: 99953, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99954, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'All B2 topics mixed', color: 'bg-emerald-500', icon: '🌱', ids: [6801, 6802, 6803, 6804, 6805] },

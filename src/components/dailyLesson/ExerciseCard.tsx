@@ -3,6 +3,7 @@ import type { DailyExercise } from '../../data/dailyLessons'
 import { normalizeAnswer, OPTION_LABELS, getCorrectText, checkAnswer, isBlankAccepted, isAcceptedAnswer } from './helpers'
 import { feelAnswer } from '../../lib/gameFeel'
 import { AudioButton } from '../ui/AudioButton'
+import { ConnectionFeedback } from './ConnectionFeedback'
 
 export default function ExerciseCard({
   ex, num, total, answers, onChange, submitted,
@@ -370,14 +371,14 @@ export default function ExerciseCard({
           <textarea value={answers[0] ?? ''} onChange={(e) => onChange(0, e.target.value)} disabled={submitted}
             rows={3} placeholder="Bu yerga o'z misolingizni yozing..." className="input text-sm resize-none w-full" />
           {submitted && (
-            <div className="mt-3 text-xs">
+            <div className="mt-3">
               {(answers[0] ?? '').trim().length > 0
-                ? <p className="font-semibold text-green-700 dark:text-green-400">✅ Ajoyib! O'z misolingizni yaratish yodda saqlashni mustahkamlaydi. +10 XP</p>
-                : <p className="font-semibold text-amber-600 dark:text-amber-400">✍️ Keyingi safar o'z misolingizni yozib ko'ring — bu yodlashni kuchaytiradi.</p>}
-              <div className="mt-2 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
-                <p className="font-semibold text-gray-500 dark:text-gray-400 mb-0.5">📋 Namuna javob:</p>
-                <p className="text-gray-700 dark:text-gray-300 font-mono leading-relaxed">{ex.exampleAnswer}</p>
-              </div>
+                ? <p className="text-xs font-semibold text-green-700 dark:text-green-400 mb-2">✅ Ajoyib! O'z misolingizni yaratish yodda saqlashni mustahkamlaydi. +10 XP</p>
+                : <p className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-2">✍️ Keyingi safar o'z misolingizni yozib ko'ring — bu yodlashni kuchaytiradi.</p>}
+              <ConnectionFeedback
+                exercise={{ id: ex.id, instruction: ex.instruction, prompt: ex.prompt, hints: ex.hints, exampleAnswer: ex.exampleAnswer }}
+                userAnswer={answers[0] ?? ''}
+              />
             </div>
           )}
         </div>

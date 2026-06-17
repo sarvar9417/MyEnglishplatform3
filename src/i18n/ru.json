@@ -1187,5 +1187,9 @@
   "aria.audioSettings": "Настройки звука",
   "aria.check": "Проверить",
   "aria.danger": "Внимание",
-  "writing.essayLabel": "Текст эссе"
+  "writing.essayLabel": "Текст эссе",
+  "connectionFeedback.tryWriting": "Пожалуйста, напишите свой пример — это укрепляет память!",
+  "connectionFeedback.writeMore": "Хорошее начало! Пишите больше — минимум 5 слов.",
+  "connectionFeedback.aiFeedback": "Анализ ИИ:",
+  "connectionFeedback.exampleAnswer": "Пример ответа:"
 }

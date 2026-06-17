@@ -1238,5 +1238,11 @@ export interface TranslationStrings {
   'aria.check': string
   'aria.danger': string
   'writing.essayLabel': string
+
+  /* ── Connection Feedback ── */
+  'connectionFeedback.tryWriting': string
+  'connectionFeedback.writeMore': string
+  'connectionFeedback.aiFeedback': string
+  'connectionFeedback.exampleAnswer': string
 }
 

@@ -1192,5 +1192,9 @@
   "aria.audioSettings": "Ovoz sozlamalari",
   "aria.check": "Tekshirish",
   "aria.danger": "Xavfli",
-  "writing.essayLabel": "Insho matni"
+  "writing.essayLabel": "Insho matni",
+  "connectionFeedback.tryWriting": "Iltimos, o'z misolingizni yozing — bu yodlashni kuchaytiradi!",
+  "connectionFeedback.writeMore": "Yaxshi boshladingiz! Batafsil yozing — kamida 5 ta so'z ishlating.",
+  "connectionFeedback.aiFeedback": "AI tahlili:",
+  "connectionFeedback.exampleAnswer": "Namuna javob:"
 }

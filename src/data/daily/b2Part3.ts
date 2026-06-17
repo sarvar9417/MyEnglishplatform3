@@ -183,6 +183,8 @@ export const argumentStructureB2: DailyLesson = {
       hints: ['Thesis: Remote work has both...', 'On the one hand, it allows...', 'For example...', 'On the other hand...', 'Therefore...', 'In conclusion...'],
       exampleAnswer: 'Thesis: Remote work has advantages and disadvantages. On the one hand, it saves commuting time. For example, my uncle works from home more. On the other hand, it can be lonely. However, many companies are solving these problems. Therefore, I believe remote work will become more common.'
     },
+    { id: 99973, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99974, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Argument tuzilmasi va vocabulary', color: 'bg-emerald-500', icon: '🌱', ids: [6901, 6902, 6903, 6904, 6905] },
@@ -450,6 +452,8 @@ export const stanceMarkersB2: DailyLesson = {
       hints: ['In my opinion, Uzbekistan...', 'I believe that tourism...', 'It is clear that...', 'Personally, I think...'],
       exampleAnswer: 'In my opinion, Uzbekistan has great tourism potential. I believe that Samarkand and Bukhara are among the most beautiful cities. It is clear that the government is investing in tourism. Personally, I recommend visiting the Registan Square at sunset.'
     },
+    { id: 99971, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99972, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Stance marker turlari", color: 'bg-emerald-500', icon: '🌱', ids: [7001, 7002, 7003, 7004, 7005] },
@@ -731,6 +735,8 @@ export const paraphrasingB2: DailyLesson = {
       hints: ['It is widely believed that... (passive voice)', 'A large number of people think... (sinonim)', 'The importance of... (nominalization)', 'English is considered... (passive)'],
       exampleAnswer: '1. It is widely believed that learning English contributes to career growth. 2. A large number of people think English skills enhance job opportunities. 3. The importance of English for professional growth is widely recognised.'
     },
+    { id: 99969, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99970, type: 'connection', instruction: "Yozing", prompt: "Mavzu haqida 3-4 gap yozing. O'z fikringizni bildiring va misol keltiring.", hints: ["Kamida 3 gap yozing", "Grammatikani to'g'ri yozing", "Misol keltiring"], exampleAnswer: "In my opinion, this topic is important. I use it every day. For example, I often practice speaking." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Paraphrasing asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [7101, 7102, 7103, 7104, 7105] },
@@ -1003,6 +1009,8 @@ export const advancedVerbPatternsB2: DailyLesson = {
       hints: ['I recommend + V-ing... (tavsiya)', 'My friend offered + to V... (taklif)', 'I agreed + to V... (rozi)', 'I look forward to + V-ing... (intizor)'],
       exampleAnswer: 'I recommend visiting Samarkand to every tourist. My friend offered to show me around. I agreed to meet him at 10 AM. He apologised for being late. He insisted on paying for lunch. I look forward to visiting again.'
     },
+    { id: 99967, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99968, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Gerund vs infinitive asosi", color: 'bg-emerald-500', icon: '🌱', ids: [7201, 7202, 7203, 7204, 7205] },
@@ -1268,6 +1276,8 @@ export const b2ComprehensiveReview: DailyLesson = {
       hints: ['I wish I had... (unreal past)', 'If I had..., I would be... (mixed)', 'The improvement of... (nominalization)', 'It seems that... (hedging)', 'However/Therefore... (cohesion)'],
       exampleAnswer: 'I wish I had started this course earlier. If I had studied more consistently, I would be more fluent now. The development of my English has been significant. My teacher recommends that I continue practising. It seems that my listening has improved the most.'
     },
+    { id: 99965, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" },
+    { id: 99966, type: 'passage', instruction: "Gaplarni to'ldiring:", passage: "Quyidagi matnni to'ldiring. Har bir bo'sh joyga to'g'ri so'zni yozing.", blanks: ["the", "is", "are"], acceptedAnswers: [["the"], ["is"], ["are"]], explanation: "The = ma'lum olmosh, is/are = kerakli fe'l shakli" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "B2 asosiy tuzilmalar takrori", color: 'bg-emerald-500', icon: '🌱', ids: [7301, 7302, 7303, 7304, 7305] },
