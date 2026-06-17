@@ -178,6 +178,42 @@ export const modalVerbs: DailyLesson = {
     { id: 95113, type: 'error-correction', instruction: "Can + V1 (to'g'ri shakl):", question: "I can to play the guitar.", errorPart: "can to play", correct: "I can play the guitar.", explanation: "Modal + V1 (to'siz). 'Can to' noto'g'ri → can play." },
     { id: 95114, type: 'multiple-choice', instruction: "Might (ehtimol) va must (ishonchli taxmin):", question: "It _____ rain later (not sure). He isn't here; he _____ be ill (I'm sure).", options: ["might / must", "must / might", "can / must", "might / can"], correct: "might / must", explanation: "Ehtimol → might. Dalilli ishonchli taxmin → must be." },
     { id: 95115, type: 'transformation', instruction: "Qobiliyatni 'can' bilan ifodalang:", question: "She knows how to drive a car.", hint: "She ...", correct: "She can drive a car.", explanation: "Qobiliyat → can + V1 (can drive)." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 99001, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Ali is talking to his friend about school.\nAli: ___(1) I borrow your pen? I forgot mine at home.\nFriend: Sure, you ___(2). But you must give it back after class.\nAli: Of course. I ___(3) speak to the teacher in English now.\nFriend: Really? You ___(4) be joking! Last year you couldn't.\nAli: I studied hard. Now I ___(5) read English books too.\nFriend: That's great! You ___(6) keep practising every day.",
+      blanks: ['Can', 'can', 'can', 'must', 'can', 'should'],
+      acceptedAnswers: [['Can'], ['can'], ['can'], ['must'], ['can'], ['should']],
+      explanation: "Can — ruxsat so'rash va qobiliyat. Must — majburiyat. Should — maslahat."
+    },
+    { id: 99002, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Workplace rules are important. All employees ___(1) wear a uniform at the factory. You ___(2) arrive late — it is not allowed. However, you ___(3) take a break at noon. You ___(4) also eat lunch in the canteen. If you are sick, you ___(5) call the manager before 9 AM. You ___(6) not work overtime without permission.",
+      blanks: ['must', "mustn't", 'can', 'should', 'must', 'must'],
+      acceptedAnswers: [['must', 'have to'], ["mustn't"], ['can', 'may'], ['should'], ['must', 'have to'], ['must']],
+      explanation: "Must/have to — majburiyat. Mustn't — taqiq. Can/may — ruxsat. Should — maslahat."
+    },
+    { id: 99003, type: 'connection', instruction: "Nima qila olishingiz haqida yozing",
+      prompt: "Can va could ishlatib, o'zingiz haqida 4-5 jumla yozing. Qila oladigan narsalaringiz, oldin qila olgan narsalaringiz va qila olmaydigan narsalaringiz haqida yozing.",
+      hints: ['I can ... (hozirgi qobiliyat)', 'I could ... (o\'tgan qobiliyat)', "I can't ... (qila olmaslik)"],
+      exampleAnswer: "I can speak English and Russian. I can play the guitar. When I was a child, I could run very fast. I can't drive a car yet, but I want to learn. I can cook simple meals for my family."
+    },
+    { id: 99004, type: 'connection', instruction: "Maktab yoki ish qoidalari haqida yozing",
+      prompt: "Must, mustn't, should va have to ishlatib, maktabingiz yoki ishingizdagi qoidalar haqida 4-5 jumla yozing. Majburiy qoidalar, taqiqlar va maslahatlarni ayting.",
+      hints: ['Students must ... (majburiyat)', "You mustn't ... (taqiq)", 'You should ... (maslahat)', 'You have to ... (tashqi majburiyat)'],
+      exampleAnswer: "Students must wear a uniform at school. You mustn't use your phone during lessons. You should do your homework every day. You have to arrive before 8 AM. You mustn't run in the hallways. You should always be polite to teachers."
+    },
+    { id: 99005, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'must',
+      options: ["kerak (majburiy, kuchli)", "kerak (maslahat)", "mumkin (ehtimol)", "qila olmoq"],
+      correct: "kerak (majburiy, kuchli)",
+      explanation: "Must — kuchli shaxsiy majburiyat: You must stop. Have to ham shunday, lekin tashqi majburiyat."
+    },
+    { id: 99006, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang",
+      word: 'should',
+      options: ["taqiq (mumkin emas)", "maslahat va tavsiya", "ruxsat (rasmiy)", "o'tgan zamonda qobiliyat"],
+      correct: "maslahat va tavsiya",
+      explanation: "Should — maslahat: You should study more. Shouldn't — maslahat emas: You shouldn't smoke."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Can va Can\'t asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1401, 1402, 1403, 1404, 1405] },
@@ -400,6 +436,42 @@ export const articles: DailyLesson = {
     { id: 95123, type: 'error-correction', instruction: "Umumiy ma'noда the ishlatilmaydi (uncountable):", question: "The water is important for the health.", errorPart: "the health", correct: "The water is important for health.", explanation: "Umumiy tushuncha (health) → artiklsiz. Bu yerda 'the' kerak emas." },
     { id: 95124, type: 'multiple-choice', instruction: "Zero article (umumiy ko'plik) va the:", question: "_____ dogs are loyal animals. _____ dogs in this house are big.", options: ["Zero / The", "The / Zero", "A / The", "The / A"], correct: "Zero / The", explanation: "Umumiy (barcha itlar) → artiklsiz. Aniq (bu uydagi) → The dogs." },
     { id: 95125, type: 'transformation', instruction: "To'g'ri artikl bilan to'ldiring (birinchi eslatish):", question: "I bought ___ apple and ___ orange.", hint: "...", correct: "I bought an apple and an orange.", explanation: "Tovush bilan boshlanadi (apple, orange) → an." },
+
+    // ── Productive Exercises: Passage, Connection, Vocab-Match ──
+    { id: 99007, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "Last summer, I visited ___(1) old city in Turkey. ___(2) city was very beautiful. I saw ___(3) amazing mosque near ___(4) river. The mosque had ___(5) huge dome. I also bought ___(6) souvenir for my mother. ___(7) souvenir was ___(8) ceramic plate. My mother loved it!",
+      blanks: ['an', 'The', 'a', 'the', 'a', 'a', 'The', 'a'],
+      acceptedAnswers: [['an'], ['The'], ['a'], ['the'], ['a'], ['a'], ['The'], ['a']],
+      explanation: "An — unli tovush (old). The — aniq narsa (city, river, mosque, souvenir). A — noaniq narsa (mosque, dome, souvenir, plate)."
+    },
+    { id: 99008, type: 'passage', instruction: "Matnni to'ldiring:",
+      passage: "I live in ___(1) Tashkent. It is ___(2) beautiful city. There is ___(3) park near my house. ___(4) park has ___(5) big fountain. I like to walk in ___(6) park on ___(7) mornings. I usually buy ___(8) coffee from ___(9) café on ___(10) Main Street.",
+      blanks: ['—', 'a', 'a', 'The', 'a', 'the', '—', 'a', 'the', '—'],
+      acceptedAnswers: [['—', '-', ''], ['a'], ['a'], ['The'], ['a'], ['the'], ['—', '-', ''], ['a'], ['the'], ['—', '-', '']],
+      explanation: "Zero article — shaharlar (Tashkent), umumiy kunlar (mornings), ko'chalar (Main Street). A — noaniq narsa. The — aniq narsa."
+    },
+    { id: 99009, type: 'connection', instruction: "Mahallangizni tasvirlang",
+      prompt: "A, an, the va zero article ishlatib, o'zingiz yashaydigan mahalla haqida 4-5 jumla yozing. Do'konlar, ko'chalar, odamlar va boshqa narsalarni tasvirlang.",
+      hints: ["I live in ... (shahar nomi, thesiz)", "There is a/an ... (birinchi marta)", "The ... (aniq narsa)", "I like ... (umumiy ma'no, thesiz)"],
+      exampleAnswer: "I live in Tashkent. There is a big park near my house. The park has beautiful trees. I go to a café on Main Street every morning. The café sells excellent coffee. I like the people in my neighbourhood. They are very friendly."
+    },
+    { id: 99010, type: 'connection', instruction: "Typical kuningizni yozing",
+      prompt: "A, an, the va zero article ishlatib, bir kuningizni tasvirlang. Ertalabdan kechgacha nima qilishingizni 4-5 jumlada yozing.",
+      hints: ["I have ... (ovqat nomi, thesiz)", "I go to ... (maktab/ish, asosiy maqsad)", "In the morning/afternoon (kun qismi)", "I play/watch ... (sport, thesiz)"],
+      exampleAnswer: "I wake up at 7 in the morning. I have breakfast at 8. Then I go to school by bus. I have lunch at school at noon. In the afternoon, I play football in the park. In the evening, I watch TV at home. I go to bed at 10."
+    },
+    { id: 99011, type: 'vocab-match', instruction: "Artikl turini aniqlang",
+      word: 'definite article',
+      options: ['Aniq narsa bilan ishlatiladi', 'Noaniq narsa bilan ishlatiladi', 'Artikl ishlatilmaydi', 'Ko\'plik otlar bilan ishlatiladi'],
+      correct: 'Aniq narsa bilan ishlatiladi',
+      explanation: "Definite article = THE. Aniq, ma'lum yoki noyob narsa bilan: the door, the sun, the best student."
+    },
+    { id: 99012, type: 'vocab-match', instruction: "Artikl turini aniqlang",
+      word: 'indefinite article',
+      options: ['Aniq narsa bilan ishlatiladi', 'Noaniq narsa bilan ishlatiladi', 'Artikl ishlatilmaydi', 'Geografik nomlar bilan'],
+      correct: 'Noaniq narsa bilan ishlatiladi',
+      explanation: "Indefinite article = A/AN. Birinchi marta aytilgan noaniq narsa: a cat, an apple. Tovushga qarab a yoki an."
+    },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'A va An qoidalari', color: 'bg-emerald-500', icon: '🌱', ids: [1501, 1502, 1503, 1504, 1505] },

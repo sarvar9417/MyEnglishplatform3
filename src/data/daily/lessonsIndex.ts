@@ -382,7 +382,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 18,
-    "exercises": 39,
+    "exercises": 45,
     "tests": 15
   },
   {
@@ -394,7 +394,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 3,
     "vocabulary": 18,
-    "exercises": 39,
+    "exercises": 45,
     "tests": 15
   },
   {
