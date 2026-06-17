@@ -316,7 +316,7 @@ export const relativeClausesB1: DailyLesson = {
             "whose"
           ],
           question: "The girl ___ bag was stolen cried.",
-          explanation: "Whose + bag",
+          explanation: "Whose + bag — kimniki: Whose bag is this? (Bu kimniki?)",
           instruction: "Whose:"
         },
         {
@@ -326,7 +326,7 @@ export const relativeClausesB1: DailyLesson = {
             "whom"
           ],
           question: "The actor ___ I admire most is DiCaprio.",
-          explanation: "Whom = obekt",
+          explanation: "Whom = obekt — tarjima",
           instruction: "Fill in the blank with 'whom':"
         },
         {
@@ -335,7 +335,7 @@ export const relativeClausesB1: DailyLesson = {
           correct: "The man whose phone rang left.",
           question: "The man his phone rang left.",
           errorPart: "his phone",
-          explanation: "Whose = egalik",
+          explanation: "Whose = egalik — tarjima",
           instruction: "Error correction:"
         }
       ],
@@ -507,7 +507,7 @@ export const relativeClausesB1: DailyLesson = {
       correct: "The woman whose car was stolen called police.",
       question: "The woman her car was stolen called police.",
       errorPart: "her car",
-      explanation: "Whose = egalik",
+      explanation: "Whose = egalik — tarjima",
       instruction: "Error correction:"
     },
     {
@@ -516,7 +516,7 @@ export const relativeClausesB1: DailyLesson = {
       type: "transformation",
       correct: "I know a girl who can speak five languages.",
       question: "I know a girl. She can speak five languages.",
-      explanation: "Who = birlashtirish",
+      explanation: "Who = birlashtirish — tarjima",
       instruction: "Combine the sentences:"
     },
     {
@@ -525,7 +525,7 @@ export const relativeClausesB1: DailyLesson = {
       type: "transformation",
       correct: "The book which I bought was expensive.",
       question: "I bought a book. It was expensive.",
-      explanation: "Which = narsalar",
+      explanation: "Which = narsalar — tarjima",
       instruction: "Relative clause:"
     },
     {
@@ -568,7 +568,7 @@ export const relativeClausesB1: DailyLesson = {
         "The man whose lives next door is kind"
       ],
       question: "Which is CORRECT?",
-      explanation: "Who = ega",
+      explanation: "Who = ega — tarjima",
       instruction: "Tanlang:"
     },
     {
@@ -578,7 +578,7 @@ export const relativeClausesB1: DailyLesson = {
         "whose"
     ],
     question: "The girl ___ brother is a pilot studies with me.",
-    explanation: "Whose = egalik",
+    explanation: "Whose = egalik — tarjima",
     instruction: "Whose:"
 },
     {
@@ -588,7 +588,7 @@ export const relativeClausesB1: DailyLesson = {
         "whom"
     ],
     question: "The professor ___ I respect most is Dr. Karimov.",
-    explanation: "Whom = obekt",
+    explanation: "Whom = obekt — tarjima",
     instruction: "Fill in the blank with 'whom':"
 },
     {
@@ -608,7 +608,7 @@ export const relativeClausesB1: DailyLesson = {
         "where"
     ],
     question: "Is this the hotel ___ you stayed last summer?",
-    explanation: "Where = joy",
+    explanation: "Where = joy — tarjima",
     instruction: "Where:"
 },
     {
@@ -618,7 +618,7 @@ export const relativeClausesB1: DailyLesson = {
         "when"
     ],
     question: "Do you remember the summer ___ we went to the mountains?",
-    explanation: "When = vaqt",
+    explanation: "When = vaqt — tarjima",
     instruction: "When:"
 },
     {
@@ -632,7 +632,7 @@ export const relativeClausesB1: DailyLesson = {
         "where"
     ],
     question: "The woman ___ won the prize is my aunt.",
-    explanation: "Who = odam",
+    explanation: "Who = odam — tarjima",
     instruction: "Tanlang:"
 },
     {
@@ -646,7 +646,7 @@ export const relativeClausesB1: DailyLesson = {
         "when"
     ],
     question: "I need a job ___ pays well.",
-    explanation: "Which = narsa",
+    explanation: "Which = narsa — tarjima",
     instruction: "Tanlang:"
 },
     {
@@ -660,7 +660,7 @@ export const relativeClausesB1: DailyLesson = {
         "The house whom I bought"
     ],
     question: "CORRECT defining clause:",
-    explanation: "Which = narsa",
+    explanation: "Which = narsa — tarjima",
     instruction: "Tanlang:"
 },
     {
@@ -710,7 +710,7 @@ export const relativeClausesB1: DailyLesson = {
     hint: "The man who...",
     correct: "The man who fixed my car was very professional.",
     question: "The man fixed my car. He was very professional.",
-    explanation: "Who = birlashtirish",
+    explanation: "Who = birlashtirish — tarjima",
     instruction: "Combine the sentences:"
 },
     {
@@ -719,7 +719,7 @@ export const relativeClausesB1: DailyLesson = {
     hint: "The restaurant where...",
     correct: "The restaurant where we ate had excellent service.",
     question: "We ate at a restaurant. It had excellent service.",
-    explanation: "Where = joy",
+    explanation: "Where = joy — tarjima",
     instruction: "Combine the sentences:"
 },
     {
@@ -728,7 +728,7 @@ export const relativeClausesB1: DailyLesson = {
     hint: "The children whose...",
     correct: "The children whose parents volunteered got a prize.",
     question: "Some children got a prize. Their parents volunteered.",
-    explanation: "Whose = egalik",
+    explanation: "Whose = egalik — tarjima",
     instruction: "Combine the sentences:"
 },
     {
@@ -742,7 +742,7 @@ export const relativeClausesB1: DailyLesson = {
         "which"
     ],
     question: "Formal: The candidate ___ we interviewed.",
-    explanation: "Whom = obekt",
+    explanation: "Whom = obekt — tarjima",
     instruction: "Tanlang:"
 },
     {
@@ -752,7 +752,7 @@ export const relativeClausesB1: DailyLesson = {
         "which"
     ],
     question: "The gift ___ I received was very thoughtful.",
-    explanation: "Which = narsa",
+    explanation: "Which = narsa — tarjima",
     instruction: "Pronoun:"
 }
   ],
@@ -839,7 +839,7 @@ export const relativeClausesB1: DailyLesson = {
         "when"
       ],
       question: "Odamlar uchun relative pronoun?",
-      explanation: "Who = odamlar",
+      explanation: "Who = odamlar — tarjima",
       instruction: "Asosiy"
     },
     {
@@ -853,7 +853,7 @@ export const relativeClausesB1: DailyLesson = {
         "when"
       ],
       question: "Narsalar uchun?",
-      explanation: "Which = narsalar",
+      explanation: "Which = narsalar — tarjima",
       instruction: "Asosiy"
     },
     {
@@ -895,7 +895,7 @@ export const relativeClausesB1: DailyLesson = {
         "sabab"
       ],
       question: "Where qachon?",
-      explanation: "Where = joy",
+      explanation: "Where = joy — tarjima",
       instruction: "Asosiy"
     },
     {
@@ -909,7 +909,7 @@ export const relativeClausesB1: DailyLesson = {
         "where"
       ],
       question: "The woman ___ lives next door is kind.",
-      explanation: "Who = odam",
+      explanation: "Who = odam — tarjima",
       instruction: "Ortacha"
     },
     {
@@ -923,7 +923,7 @@ export const relativeClausesB1: DailyLesson = {
         "where"
       ],
       question: "The book ___ I read was interesting.",
-      explanation: "Which = narsa",
+      explanation: "Which = narsa — tarjima",
       instruction: "Ortacha"
     },
     {
@@ -951,7 +951,7 @@ export const relativeClausesB1: DailyLesson = {
         "that"
       ],
       question: "The student ___ phone rang left.",
-      explanation: "Whose = egalik",
+      explanation: "Whose = egalik — tarjima",
       instruction: "Ortacha"
     },
     {
@@ -965,7 +965,7 @@ export const relativeClausesB1: DailyLesson = {
         "when"
       ],
       question: "The town ___ I grew up is small.",
-      explanation: "Where = joy",
+      explanation: "Where = joy — tarjima",
       instruction: "Ortacha"
     },
     {
@@ -993,7 +993,7 @@ export const relativeClausesB1: DailyLesson = {
         "which"
       ],
       question: "The man ___ I met is famous (rasmiy).",
-      explanation: "Whom = obekt",
+      explanation: "Whom = obekt — tarjima",
       instruction: "Qiyin"
     },
     {
@@ -1317,7 +1317,7 @@ export const phrasalVerbsB1: DailyLesson = {
             "I look he after"
           ],
           question: "Which is CORRECT?",
-          explanation: "Inseparable",
+          explanation: "Inseparable — ajralmas phrasal verb, o'zgarishsiz",
           instruction: "Tanlang:"
         }
       ],
@@ -1369,7 +1369,7 @@ export const phrasalVerbsB1: DailyLesson = {
             "to"
           ],
           question: "She couldnt put up ___ the noise.",
-          explanation: "Put up WITH",
+          explanation: "Put up WITH — chidamoq, dosh bermoq: put up with noise",
           instruction: "Tanlang:"
         }
       ],
@@ -1412,7 +1412,7 @@ export const phrasalVerbsB1: DailyLesson = {
             "analyzed"
           ],
           question: "Informal: The company ___ the problem.",
-          explanation: "Phrasal = informal",
+          explanation: "Phrasal = informal — tarjima",
           instruction: "Tanlang:"
         },
         {
@@ -1602,7 +1602,7 @@ export const phrasalVerbsB1: DailyLesson = {
       type: "transformation",
       correct: "Please care for the children.",
       question: "Please look after the children. (use: care for)",
-      explanation: "Synonym",
+      explanation: "Synonym — sinonim, bir xil ma'noli so\'z",
       instruction: "O'zgartiring:"
     },
     {
@@ -1664,7 +1664,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "into"
     ],
     question: "I ran ___ an old friend at the market.",
-    explanation: "Run into",
+    explanation: "Run into — tasodifan uchrashmoq: I ran into my friend",
     instruction: "Inseparable:"
 },
     {
@@ -1674,7 +1674,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "out"
     ],
     question: "We need to find ___ what happened.",
-    explanation: "Find out",
+    explanation: "Find out — aniqlamoq, bilib olmoq: I found out the truth",
     instruction: "Separable:"
 },
     {
@@ -1684,7 +1684,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "through"
     ],
     question: "She has been ___ a lot lately.",
-    explanation: "Go through",
+    explanation: "Go through — o'tmoq, tekshirmoq: Go through the gate",
     instruction: "Phrasal:"
 },
     {
@@ -1698,7 +1698,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "down"
     ],
     question: "Please turn ___ the TV before sleeping.",
-    explanation: "Turn off",
+    explanation: "Turn off — o'chirmoq: Turn off the light",
     instruction: "Tanlang:"
 },
     {
@@ -1712,7 +1712,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "off"
     ],
     question: "We ran ___ of milk.",
-    explanation: "Run out of",
+    explanation: "Run out of — tugamoq, kamaymoq: We ran out of milk",
     instruction: "Tanlang:"
 },
     {
@@ -1726,7 +1726,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "put off"
     ],
     question: "She had to ___ three children alone.",
-    explanation: "Bring up",
+    explanation: "Bring up — tarbiyalamoq, o'stirmoq",
     instruction: "Tanlang:"
 },
     {
@@ -1772,7 +1772,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "along"
     ],
     question: "My sister and I get ___ well.",
-    explanation: "Get along",
+    explanation: "Get along — yaxshi munosabatda bo'lmoq",
     instruction: "Phrasal:"
 },
     {
@@ -1782,7 +1782,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "away"
     ],
     question: "Please put ___ your toys.",
-    explanation: "Put away",
+    explanation: "Put away — joyiga qo'ymoq: Put away your toys",
     instruction: "Separable:"
 },
     {
@@ -1792,7 +1792,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "down"
     ],
     question: "The car broke ___ on the highway.",
-    explanation: "Break down",
+    explanation: "Break down — buzilmoq, yo'qotmoq: The car broke down",
     instruction: "Inseparable:"
 }
   ],
@@ -1945,7 +1945,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "through"
       ],
       question: "I ran ___ an old friend.",
-      explanation: "Run into",
+      explanation: "Run into — tasodifan uchrashmoq: I ran into my friend",
       instruction: "Ortacha"
     },
     {
@@ -1959,7 +1959,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "off"
       ],
       question: "He gave ___ smoking.",
-      explanation: "Give up",
+      explanation: "Give up — voz kechmoq, tashlamoq: Don't give up",
       instruction: "Ortacha"
     },
     {
@@ -1973,7 +1973,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "away"
       ],
       question: "Put ___ your jacket.",
-      explanation: "Put on",
+      explanation: "Put on — kiyinmoq: Put on your coat",
       instruction: "Ortacha"
     },
     {
@@ -1987,7 +1987,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "at"
       ],
       question: "I put up ___ the noise.",
-      explanation: "Put up with",
+      explanation: "Put up with — chidamoq, dosh bermoq: I can't put up with noise",
       instruction: "Ortacha"
     },
     {
@@ -2001,7 +2001,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "in"
       ],
       question: "She takes ___ her father.",
-      explanation: "Take after",
+      explanation: "Take after — o'xshamoq, taqlid qilmoq: She takes after her mother",
       instruction: "Ortacha"
     },
     {
@@ -2043,7 +2043,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "pick up"
       ],
       question: "Three-word phrasal verb?",
-      explanation: "Three-word",
+      explanation: "Three-word — uch so'zli phrasal verb: look forward to",
       instruction: "Qiyin"
     },
     {

@@ -154,7 +154,7 @@ export const linkingWordsAdvanced: DailyLesson = {
     ],
   tests: [
     { id: 52026, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z qo'shimcha ma'lumot uchun?", options: ['However', 'Therefore', 'Furthermore', 'Nevertheless'], correct: 'Furthermore', explanation: "Furthermore = qo'shimcha" },
-    { id: 52027, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z natija uchun?", options: ['However', 'Therefore', 'Furthermore', 'Moreover'], correct: 'Therefore', explanation: "Therefore = natija" },
+    { id: 52027, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z natija uchun?", options: ['However', 'Therefore', 'Furthermore', 'Moreover'], correct: 'Therefore', explanation: "Therefore = natija — tarjima" },
     { id: 52028, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z qarama-qarshilik uchun?", options: ['Therefore', 'Furthermore', 'Moreover', 'Nevertheless'], correct: 'Nevertheless', explanation: "Nevertheless = qarama-qarshilik" },
     { id: 52029, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Misol keltirish uchun qaysi ibora ishlatiladi?", options: ['Such as', 'Therefore', 'However', 'Moreover'], correct: 'Such as', explanation: "Such as = masalan" },
     { id: 52030, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Therefore dan keyin nima qo'yiladi?", options: ['nuqta', 'vergul', 'nuqtali vergul', 'hech narsa'], correct: 'vergul', explanation: "Therefore, (vergul)" },
@@ -298,7 +298,7 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
     ],
       drills: [
         { id: 52041, type: 'fill-blank', instruction: 'Make yoki do?', question: 'I need to ___ a decision.', blanks: ['make'], explanation: "Make a decision" },
-        { id: 52042, type: 'fill-blank', instruction: 'Make yoki do?', question: 'She needs to ___ her homework.', blanks: ['do'], explanation: "Do homework" },
+        { id: 52042, type: 'fill-blank', instruction: 'Make yoki do?', question: 'She needs to ___ her homework.', blanks: ['do'], explanation: "Do homework — uy vazifasini bajarish" },
         { id: 52043, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I need to make my homework.', errorPart: 'make my homework', correct: 'do my homework', explanation: "Do homework, make homework emas" }
     ],
     },
@@ -322,12 +322,12 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
   exercises: [
     { id: 52047, type: 'fill-blank', instruction: "Make yoki do?", question: 'She wants to ___ a complaint about the service.', blanks: ['make'], explanation: "Make a complaint" },
     { id: 52048, type: 'fill-blank', instruction: "Make yoki do?", question: 'They need to ___ the shopping before the store closes.', blanks: ['do'], explanation: "Do the shopping" },
-    { id: 52049, type: 'fill-blank', instruction: "Have yoki take?", question: "I need to ___ a look at your report.", blanks: ['take'], explanation: "Take a look" },
+    { id: 52049, type: 'fill-blank', instruction: "Have yoki take?", question: "I need to ___ a look at your report.", blanks: ['take'], explanation: "Take a look — qarab ko'ring: Take a look at this" },
     { id: 52050, type: 'fill-blank', instruction: "Have yoki take?", question: 'I usually ___ a shower in the morning.', blanks: ['have'], explanation: "Have a shower" },
     { id: 52051, type: 'fill-blank', instruction: "To'g'ri fe'lni qo'ying:", question: 'She wants to ___ progress in English.', blanks: ['make'], explanation: "Make progress" },
-    { id: 52052, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['make business', 'do business', 'have business', 'take business'], correct: 'do business', explanation: "Do business" },
+    { id: 52052, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['make business', 'do business', 'have business', 'take business'], correct: 'do business', explanation: "Do business — biznes qilish, savdo qilish" },
     { id: 52053, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['make a promise', 'do a promise', 'have a promise', 'take a promise'], correct: 'make a promise', explanation: "Make a promise" },
-    { id: 52054, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['make research', 'do research', 'have research', 'take research'], correct: 'do research', explanation: "Do research" },
+    { id: 52054, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['make research', 'do research', 'have research', 'take research'], correct: 'do research', explanation: "Do research — tadqiqot qilish" },
     { id: 52055, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['make a conversation', 'do a conversation', 'have a conversation', 'take a conversation'], correct: 'have a conversation', explanation: "Have a conversation" },
     { id: 52056, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['make an exam', 'do an exam', 'have an exam', 'take an exam'], correct: 'take an exam', explanation: "Take an exam" },
     { id: 52057, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'He needs to make the laundry before dinner.', errorPart: 'make the laundry', correct: 'do the laundry', explanation: "Do the laundry" },
@@ -337,7 +337,7 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
     { id: 52061, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I need to make the laundry.", errorPart: 'make the laundry', correct: 'do the laundry', explanation: "Do the laundry" },
     { id: 52062, type: 'transformation', instruction: "Make yoki do bilan to'ldiring:", question: 'I need to ___ a decision.', hint: "Make yoki do?", correct: 'make', explanation: "Make a decision" },
     { id: 52063, type: 'transformation', instruction: "Make yoki do bilan to'ldiring:", question: 'She needs to ___ the shopping.', hint: "Make yoki do?", correct: 'do', explanation: "Do the shopping" },
-    { id: 52064, type: 'transformation', instruction: "Have yoki take bilan to'ldiring:", question: "Let's ___ a look at this.", hint: "Have yoki take?", correct: 'have', explanation: "Have a look" },
+    { id: 52064, type: 'transformation', instruction: "Have yoki take bilan to'ldiring:", question: "Let's ___ a look at this.", hint: "Have yoki take?", correct: 'have', explanation: "Have a look — bir qarang: Have a look at this" },
     { id: 52065, type: 'transformation', instruction: "To'g'ri kollokatsiyani yozing:", question: 'She ___ care of her sister. (take)', hint: "take ning 3-shaxs birlik shakli", correct: 'takes', explanation: "Take care of" },
     { id: 52066, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is a correct collocation with HAVE?', options: ['have a break', 'have a photo', 'have a decision', 'have homework'], correct: 'have a break', explanation: "Have a break" },
  
@@ -365,18 +365,18 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
     ],
   tests: [
     { id: 52067, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya MAKE bilan?", options: ['homework', 'business', 'a decision', 'research'], correct: 'a decision', explanation: "Make a decision" },
-    { id: 52068, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya DO bilan?", options: ['a decision', 'a promise', 'homework', 'a mistake'], correct: 'homework', explanation: "Do homework" },
+    { id: 52068, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya DO bilan?", options: ['a decision', 'a promise', 'homework', 'a mistake'], correct: 'homework', explanation: "Do homework — uy vazifasini bajarish" },
     { id: 52069, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya HAVE bilan?", options: ['a photo', 'a break', 'a decision', 'a mistake'], correct: 'a break', explanation: "Have a break" },
     { id: 52070, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya TAKE bilan?", options: ['a conversation', 'a decision', 'a photo', 'homework'], correct: 'a photo', explanation: "Take a photo" },
     { id: 52071, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Make a mistake ma\'nosi nima?', options: ['yaxshilik qilish', 'xato qilish', 'qaror qilish', 'va\'da berish'], correct: 'xato qilish', explanation: "Make a mistake = xato qilish" },
     { id: 52072, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I need to ___ my best in this exam.', options: ['make', 'do', 'have', 'take'], correct: 'do', explanation: "Do your best" },
     { id: 52073, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She ___ a promise to help me.', options: ['made', 'did', 'had', 'took'], correct: 'made', explanation: "Make a promise" },
-    { id: 52074, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'They are ___ research on cancer.', options: ['making', 'doing', 'having', 'taking'], correct: 'doing', explanation: "Do research" },
+    { id: 52074, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'They are ___ research on cancer.', options: ['making', 'doing', 'having', 'taking'], correct: 'doing', explanation: "Do research — tadqiqot qilish" },
     { id: 52075, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'We ___ a conversation about politics.', options: ['made', 'did', 'had', 'took'], correct: 'had', explanation: "Have a conversation" },
     { id: 52076, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Can you ___ a photo of us?', options: ['make', 'do', 'have', 'take'], correct: 'take', explanation: "Take a photo" },
     { id: 52077, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gapda MAKE NOTO'G'RI ishlatilgan?", options: ['Make a decision', 'Make a mistake', 'Make homework', 'Make a promise'], correct: 'Make homework', explanation: "Do homework, make homework emas" },
     { id: 52078, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gapda DO NOTO'G'RI ishlatilgan?", options: ['Do business', 'Do research', 'Do a mistake', 'Do your best'], correct: 'Do a mistake', explanation: "Make a mistake, do a mistake emas" },
-    { id: 52079, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Make a cake' va 'Do a cake' farqi?", options: ['Farqi yo\'q', 'Make a cake = kek tayyorlash', 'Do a cake = kek tayyorlash', 'Ikkalasi ham noto\'g\'ri'], correct: 'Make a cake = kek tayyorlash', explanation: "Make = yaratish" },
+    { id: 52079, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Make a cake' va 'Do a cake' farqi?", options: ['Farqi yo\'q', 'Make a cake = kek tayyorlash', 'Do a cake = kek tayyorlash', 'Ikkalasi ham noto\'g\'ri'], correct: 'Make a cake = kek tayyorlash', explanation: "Make = yaratish — tarjima" },
     { id: 52080, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya HAVE bilan ishlatiladi?", options: ['Take part in', 'Make a decision', 'Have a baby', 'Do a favour'], correct: 'Have a baby', explanation: "Have a baby = farzandli bo'lish" },
     { id: 52081, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Take an exam' ma'nosi nima?", options: ['imtihon topshirish', 'imtihon o\'tkazish', 'imtihondan o\'tish', 'imtihonga tayyorlanish'], correct: 'imtihon topshirish', explanation: "Take an exam = imtihon topshirish" }
     ],
@@ -490,7 +490,7 @@ export const advancedPhrasalVerbs: DailyLesson = {
     ],
       drills: [
         { id: 52085, type: 'fill-blank', instruction: "To'g'ri phrasal verb:", question: "I ___ forward to meeting you. (look)", blanks: ['look'], explanation: "Look forward to" },
-        { id: 52086, type: 'fill-blank', instruction: "To'g'ri phrasal verb:", question: 'She ___ after her grandmother.', blanks: ['looks'], explanation: "Look after" },
+        { id: 52086, type: 'fill-blank', instruction: "To'g'ri phrasal verb:", question: 'She ___ after her grandmother.', blanks: ['looks'], explanation: "Look after — qarashmoq, g'amxo'rlik qilmoq" },
         { id: 52087, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "I look ___ to my older brother.", options: ['up', 'after', 'forward', 'down'], correct: 'up', explanation: "Look up to = hurmat qilmoq" }
     ],
     }
@@ -513,8 +513,8 @@ export const advancedPhrasalVerbs: DailyLesson = {
     { id: 52102, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I look up my brother.', errorPart: 'look up my brother', correct: 'look up to my brother', explanation: "Look up to = hurmat qilmoq" },
     { id: 52103, type: 'transformation', instruction: 'Pronoun ishlatib qayta yozing:', question: 'I turned down the offer.', hint: "it bilan almashtiring", correct: 'I turned it down.', explanation: "Pronoun bilan phrasal verb ajratiladi" },
     { id: 52104, type: 'transformation', instruction: 'To\'g\'ri phrasal verb qo\'ying:', question: 'She ___ up with a plan. (come)', hint: "O'tgan zamon", correct: 'came', explanation: "Come up with" },
-    { id: 52105, type: 'transformation', instruction: 'To\'g\'ri phrasal verb qo\'ying:', question: "I can't ___ up with this. (put)", hint: "put + ... + with", correct: 'put', explanation: "Put up with" },
-    { id: 52106, type: 'transformation', instruction: 'To\'g\'ri phrasal verb qo\'ying:', question: "We've ___ out of sugar. (run)", hint: "Present perfect", correct: 'run', explanation: "Run out of" },
+    { id: 52105, type: 'transformation', instruction: 'To\'g\'ri phrasal verb qo\'ying:', question: "I can't ___ up with this. (put)", hint: "put + ... + with", correct: 'put', explanation: "Put up with — chidamoq, dosh bermoq: I can't put up with noise" },
+    { id: 52106, type: 'transformation', instruction: 'To\'g\'ri phrasal verb qo\'ying:', question: "We've ___ out of sugar. (run)", hint: "Present perfect", correct: 'run', explanation: "Run out of — tugamoq, kamaymoq: We ran out of milk" },
     { id: 52107, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which means "amalga oshirmoq"?', options: ['take over', 'carry out', 'break down', 'set up'], correct: 'carry out', explanation: "Carry out = amalga oshirmoq" },
  
     { id: 55024, type: 'passage', instruction: 'Matnni to\'ldiring:',
@@ -1038,7 +1038,7 @@ export const wordFormation: DailyLesson = {
     ],
       drills: [
         { id: 52205, type: 'fill-blank', instruction: "To'g'ri prefix qo'ying:", question: 'It is ___possible to do this. (not possible)', blanks: ['im'], explanation: "In- + p = im-: impossible" },
-        { id: 52206, type: 'fill-blank', instruction: "To'g'ri prefix qo'ying:", question: 'They ___agreed about the plan. (not agree)', blanks: ['dis'], explanation: "Disagree" },
+        { id: 52206, type: 'fill-blank', instruction: "To'g'ri prefix qo'ying:", question: 'They ___agreed about the plan. (not agree)', blanks: ['dis'], explanation: "Disagree — rozi emas: I disagree with you" },
         { id: 52207, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I'm sorry, I ununderstood.", errorPart: 'ununderstood', correct: 'misunderstood', explanation: "Misunderstood (Mis- = noto'g'ri tushunish)" }
     ],
     },
@@ -1053,9 +1053,9 @@ export const wordFormation: DailyLesson = {
         { en: "Education is the key to success.", uz: "Ta'lim muvaffaqiyat kalitidir." }
     ],
       drills: [
-        { id: 52208, type: 'fill-blank', instruction: "-tion yoki -sion?", question: 'educate → educa___', blanks: ['tion'], explanation: "Education" },
-        { id: 52209, type: 'fill-blank', instruction: "-tion yoki -sion?", question: 'decide → deci___', blanks: ['sion'], explanation: "Decision" },
-        { id: 52210, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['informasinn', 'inforation', 'information', 'informtion'], correct: 'information', explanation: "Information" }
+        { id: 52208, type: 'fill-blank', instruction: "-tion yoki -sion?", question: 'educate → educa___', blanks: ['tion'], explanation: "Education — ta'lim (edlangan, ko'plik emas)" },
+        { id: 52209, type: 'fill-blank', instruction: "-tion yoki -sion?", question: 'decide → deci___', blanks: ['sion'], explanation: "Decision — qaror, qaror qilish" },
+        { id: 52210, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is correct?', options: ['informasinn', 'inforation', 'information', 'informtion'], correct: 'information', explanation: "Information — ma'lumot (edlangan, ko'plik emas)" }
     ],
     }
     ],
@@ -1604,9 +1604,9 @@ export const b1plusReview: DailyLesson = {
     { id: 52354, type: 'fill-blank', instruction: "Narrative tenses:", question: 'When I arrived, she ___ (already/leave).', blanks: ['had already left'], explanation: "Past Perfect: earlier action" },
     { id: 52355, type: 'fill-blank', instruction: "Participle clause:", question: '___ (finish) work, she went home.', blanks: ['Having finished'], explanation: "Perfect participle: having + pp" },
     { id: 52356, type: 'fill-blank', instruction: "Modal perfect:", question: 'You ___ (should/tell) me earlier.', blanks: ['should have told'], explanation: "Should have + past participle" },
-    { id: 52357, type: 'fill-blank', instruction: "To'g'ri linking word qo'ying:", question: 'He was tired; ___, he continued working.', blanks: ['however'], explanation: "However = contrast" },
+    { id: 52357, type: 'fill-blank', instruction: "To'g'ri linking word qo'ying:", question: 'He was tired; ___, he continued working.', blanks: ['however'], explanation: "However = contrast — tarjima" },
     { id: 52358, type: 'fill-blank', instruction: "To'g'ri collocation yozing:", question: 'She needs to ___ a decision.', blanks: ['make'], explanation: "Make a decision" },
-    { id: 52359, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He ___ stealing the money.', options: ['admitted', 'denied', 'claimed', 'suggested'], correct: 'denied', explanation: "Deny + -ing" },
+    { id: 52359, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He ___ stealing the money.', options: ['admitted', 'denied', 'claimed', 'suggested'], correct: 'denied', explanation: "Deny + -ing — inkor qilmoq: She denied stealing it" },
     { id: 52360, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ forward to meeting you.', options: ['look', 'am looking', 'looked', 'have looked'], correct: 'look', explanation: "Present tense for general feeling" },
     { id: 52361, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ of the students has a book.', options: ['Every', 'Each', 'All', 'Both'], correct: 'Each', explanation: "Each of + singular verb" },
     { id: 52362, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She ___ up with a brilliant idea.', options: ['put', 'came', 'ran', 'got'], correct: 'came', explanation: "Come up with = o'ylab topmoq" },
@@ -1644,13 +1644,13 @@ export const b1plusReview: DailyLesson = {
     { id: 52374, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Narrative tenses' qaysi zamonlarni o'z ichiga oladi?", options: ['Present tenses', 'Past tenses', 'Future tenses', 'All tenses'], correct: 'Past tenses', explanation: "Narrative = Past Simple/Cont/Perfect/Perf Cont" },
     { id: 52375, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Participle clause' qanday boshlanadi?", options: ['-ing / -ed / Having + pp', 'to + verb', 'that + clause', 'with + noun'], correct: '-ing / -ed / Having + pp', explanation: "Participle clauses: -ing, -ed, Having + pp" },
     { id: 52376, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Modal perfect' qanday tuziladi?", options: ['Modal + verb', 'Modal + have + pp', 'Modal + to + verb', 'Modal + -ing'], correct: 'Modal + have + pp', explanation: "Modal + have + past participle" },
-    { id: 52377, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Nevertheless' qanday ma'noda?", options: ["qo'shimcha", 'qarama-qarshilik', 'natija', 'misol'], correct: 'qarama-qarshilik', explanation: "Nevertheless = contrast" },
+    { id: 52377, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Nevertheless' qanday ma'noda?", options: ["qo'shimcha", 'qarama-qarshilik', 'natija', 'misol'], correct: 'qarama-qarshilik', explanation: "Nevertheless = contrast — tarjima" },
     { id: 52378, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z 'qo'shimcha ma'lumot' uchun?", options: ['Therefore', 'Nevertheless', 'Furthermore', 'However'], correct: 'Furthermore', explanation: "Furthermore = adding information" },
     { id: 52379, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "She suggested ___ to the cinema.", options: ['go', 'to go', 'going', 'went'], correct: 'going', explanation: "Suggest + -ing" },
     { id: 52380, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She ___ me that she was busy.', options: ['said', 'told', 'spoke', 'talked'], correct: 'told', explanation: "Tell + object" },
     { id: 52381, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Each of the students ___ passed.', options: ['have', 'has', 'had', 'having'], correct: 'has', explanation: "Each of + singular verb" },
     { id: 52382, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'You should ___ told me earlier.', options: ['have', 'has', 'had', 'having'], correct: 'have', explanation: "Should have + pp" },
-    { id: 52383, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya DO bilan?", options: ['a decision', 'homework', 'a photo', 'a promise'], correct: 'homework', explanation: "Do homework" },
+    { id: 52383, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya DO bilan?", options: ['a decision', 'homework', 'a photo', 'a promise'], correct: 'homework', explanation: "Do homework — uy vazifasini bajarish" },
     { id: 52384, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Having finished work, she went home' qanday grammatika?", options: ['Narrative tense', 'Participle clause', 'Modal perfect', 'Fronting'], correct: 'Participle clause', explanation: "Having + pp = perfect participle clause" },
     { id: 52385, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gapda TO'G'RI so'z tartibi?", options: ['He was tired, however he continued.', 'He was tired; however, he continued.', 'He was tired however he continued.', 'He was tired. however he continued.'], correct: 'He was tired; however, he continued.', explanation: "; before however, , after however" },
     { id: 52386, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'I picked up him' nima uchun xato?", options: ['xato emas', 'pronoun bilan phrasal verb ajratiladi', 'pick up emas', 'him emas'], correct: 'pronoun bilan phrasal verb ajratiladi', explanation: "I picked HIM up" },

@@ -71,8 +71,8 @@ export async function getOrCreateInviteCode(userId: string): Promise<string> {
         .join('')
       localStorage.setItem(localKey, code)
       return code
-    } catch {
-      // Ultimate fallback
+    } catch (e) {
+      monitoring.captureMessage('tandem inviteCode localStorage fallback failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       return Math.random().toString(36).slice(2, 10).toUpperCase()
     }
   }
@@ -91,7 +91,8 @@ export async function lookupUserIdByInviteCode(code: string): Promise<string | n
       .maybeSingle()
     if (!error && data?.id) return data.id
     return null
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('lookupUserIdByInviteCode failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return null
   }
 }
@@ -116,7 +117,9 @@ export async function addFriendByCode(code: string): Promise<{ success: boolean;
       if (decoded.length > 20 && decoded.includes('-')) {
         inviterId = decoded
       }
-    } catch { /* base64 emas — shunchaki noto'g'ri kod */ }
+    } catch (e) { /* base64 emas — shunchaki noto'g'ri kod */
+      monitoring.captureMessage('addFriendByCode base64 decode failed (expected): ' + (e instanceof Error ? e.message : String(e)), 'info')
+    }
   }
 
   if (!inviterId) {
@@ -438,7 +441,7 @@ export async function updateTandemStreak(): Promise<void> {
         monitoring.captureMessage('tandem milestone addXP failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
         import('../utils/toastStore').then(({ useToastStore }) => {
           useToastStore.getState().toast('Juftlik Streak bonusi yuklanmadi', 'warning', 4000)
-        }).catch(() => {})
+          }).catch((e) => monitoring.captureMessage('settleWeeklyDuel toast import failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
       })
 
       // Juftlik total_xp ga ham qo'shamiz
@@ -725,7 +728,7 @@ export async function submitDuelAnswers(
     monitoring.captureMessage('submitDuelAnswers addXP import failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     import('../utils/toastStore').then(({ useToastStore }) => {
       useToastStore.getState().toast('XP bonusni qo\'lda qo\'shing — avtomatik yuklanmadi', 'warning', 4000)
-    }).catch(() => {})
+    }).catch((e) => monitoring.captureMessage('submitDuelAnswers toast import failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
   })
 
   // Tandem juftlik total_xp ni oshirish
@@ -1222,7 +1225,9 @@ export async function submitSpeakingDuelAnswer(
             topic_score: fluencyScore,
             feedback: feedbackText.slice(0, 2000),
           }, { onConflict: 'duel_id,user_id' })
-      } catch { /* non-critical */ }
+      } catch (e) { /* non-critical */
+        monitoring.captureMessage('submitSpeakingDuelAnswer duel_results save failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      }
     }
 
     // XP bonus
@@ -1331,7 +1336,8 @@ export async function updateWeeklyDuelXP(userId: string, xpAmount: number): Prom
       p_field: field,
       p_amount: xpAmount,
     })
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('updateWeeklyDuelXP RPC failed, trying upsert: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     // RPC bo'lmasa — upsert bilan update
     try {
       const duel = await getOrCreateWeeklyDuel(pair.id)
@@ -1344,7 +1350,9 @@ export async function updateWeeklyDuelXP(userId: string, xpAmount: number): Prom
       } else {
         await supabase.from('weekly_duels').update({ user_b_xp: xpValue }).eq('id', duel.id)
       }
-    } catch { /* ignore */ }
+    } catch (e) {
+      monitoring.captureMessage('updateWeeklyDuelXP upsert fallback failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+    }
   }
 }
 
@@ -1413,7 +1421,7 @@ export async function settleWeeklyDuel(pairId: string): Promise<{ winnerId: stri
           monitoring.captureMessage('settleWeeklyDuel addXP failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
           import('../utils/toastStore').then(({ useToastStore }) => {
             useToastStore.getState().toast('Haftalik g\'alaba bonusi yuklanmadi', 'warning', 4000)
-          }).catch(() => {})
+        }).catch((e) => monitoring.captureMessage('tandem milestone toast import failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
         })
       }
     }
@@ -1433,7 +1441,8 @@ export async function getWeeklyDuelWins(userId: string): Promise<number> {
       .select('*', { count: 'exact', head: true })
       .eq('winner_id', userId)
     return count ?? 0
-  } catch {
+  } catch (e) {
+    monitoring.captureMessage('getWeeklyDuelWins failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     return 0
   }
 }

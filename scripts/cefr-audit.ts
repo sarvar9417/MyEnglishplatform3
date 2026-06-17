@@ -1,5 +1,5 @@
 /**
- * cefr-audit.ts — Curriculum Gap Analysis (F2-10)
+ * cefr-audit.ts -- Curriculum Gap Analysis (F2-10)
  *
  * CEFR darajalari bo'yicha kurrikulum qoplamasini strukturaviy tahlil qiladi:
  *   - Har daraja uchun dars soni
@@ -14,7 +14,7 @@
 import { getAllLessons } from '../src/data/daily/index'
 import type { DailyExercise } from '../src/data/dailyLessons'
 
-// CEFR can-do mos yozuvlari (informatsion — pedagog tekshiruvi uchun)
+// CEFR can-do mos yozuvlari (informatsion - pedagog tekshiruvi uchun)
 const CEFR_CAN_DO: Record<string, string[]> = {
   A1: ['O\'zini tanishtirish', 'Oddiy iboralarni tushunish', 'Sodda savol berish', 'Qisqa eslatma yozish'],
   A2: ['O\'tmishi haqida gapirish', 'Qisqa ijtimoiy muloqot', 'Oddiy yo\'l-yo\'riq', 'Qisqa xat yozish'],
@@ -65,8 +65,8 @@ for (const level of levelOrder) {
     if (l.listening) withListening++
     for (const [t, n] of Object.entries(exTypeDist(l.exercises ?? []))) typeDist[t] = (typeDist[t] ?? 0) + n
     // Per-lesson gaplar
-    if ((l.exercises?.length ?? 0) < MIN_EXERCISES) gaps.push(`⚠️ [${level}] "${l.title}" (kun ${l.day}) — faqat ${l.exercises?.length ?? 0} ta mashq (<${MIN_EXERCISES})`)
-    if ((l.vocabulary?.length ?? 0) < MIN_VOCAB) gaps.push(`⚠️ [${level}] "${l.title}" (kun ${l.day}) — faqat ${l.vocabulary?.length ?? 0} ta lug'at (<${MIN_VOCAB})`)
+    if ((l.exercises?.length ?? 0) < MIN_EXERCISES) gaps.push(`⚠️ [${level}] "${l.title}" (kun ${l.day}) - faqat ${l.exercises?.length ?? 0} ta mashq (<${MIN_EXERCISES})`)
+    if ((l.vocabulary?.length ?? 0) < MIN_VOCAB) gaps.push(`⚠️ [${level}] "${l.title}" (kun ${l.day}) - faqat ${l.vocabulary?.length ?? 0} ta lug'at (<${MIN_VOCAB})`)
   }
   console.log(`── ${level} ──  ${ls.length} dars`)
   console.log(`   Lug'at: ${vocab} | Mashqlar: ${exercises} | reading: ${withReading}/${ls.length} | writing: ${withWriting}/${ls.length} | listening: ${withListening}/${ls.length}`)
@@ -77,7 +77,7 @@ for (const level of levelOrder) {
 // ── Day raqamlash gap/dublikatlari (curriculum izchilligi) ──────────────────
 const days = lessons.map(l => l.day).filter(d => typeof d === 'number').sort((a, b) => a - b)
 const dupDays = days.filter((d, i) => days.indexOf(d) !== i)
-if (dupDays.length) gaps.push(`⚠️ Takrorlangan kun raqamlari: ${[...new Set(dupDays)].join(', ')}`)
+if (dupDays.length) gaps.push(`⚠️ Takrorlangan kun raqamlari: ${Array.from(new Set(dupDays)).join(', ')}`)
 
 // ── Hisobot ─────────────────────────────────────────────────────────────────
 console.log('═══════════════════════════════════════════════════════════')

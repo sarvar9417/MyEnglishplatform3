@@ -277,14 +277,18 @@ export async function getCachedLevelTotals(
         return cached.totals
       }
     }
-  } catch { /* keshda xato — yangidan olamiz */ }
+  } catch (e) { /* keshda xato — yangidan olamiz */
+    monitoring.captureMessage('getCachedLevelTotals localStorage read failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+  }
 
   const pairs = await Promise.all(levels.map(async (lvl) => {
     const { count } = await supabase.from(table).select('*', { count: 'exact', head: true }).eq('level', lvl)
     return [lvl, count ?? 0] as const
   }))
   const totals = Object.fromEntries(pairs)
-  try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), totals })) } catch { /* ignore */ }
+  try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), totals })) } catch (e) {
+    monitoring.captureMessage('getCachedLevelTotals localStorage write failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+  }
   return totals
 }
 

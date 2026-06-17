@@ -524,7 +524,9 @@ const LOCAL_SESSION_PREFIX = 'lesson-session-'
 export function saveLessonSessionLocal(lessonId: string, data: SessionPayload, updatedAt: number = Date.now()): void {
   try {
     localStorage.setItem(LOCAL_SESSION_PREFIX + lessonId, JSON.stringify({ ...data, updatedAt }))
-  } catch { /* quota / SSR guard */ }
+  } catch (e) { /* quota / SSR guard */
+    monitoring.captureMessage('saveLessonSessionLocal failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+  }
 }
 
 export function loadLessonSessionLocal(lessonId: string): LoadedLessonSession | null {
@@ -540,11 +542,13 @@ export function loadLessonSessionLocal(lessonId: string): LoadedLessonSession | 
       completedTestSections: d.completedTestSections ?? {},
       updatedAt: d.updatedAt ?? 0,
     }
-  } catch { return null }
+  } catch (e) { return null }
 }
 
 export function clearLessonSessionLocal(lessonId: string): void {
-  try { localStorage.removeItem(LOCAL_SESSION_PREFIX + lessonId) } catch { /* ignore */ }
+  try { localStorage.removeItem(LOCAL_SESSION_PREFIX + lessonId) } catch (e) {
+    monitoring.captureMessage('clearLessonSessionLocal failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+  }
 }
 
 export function loadAllLessonSessionsLocal(): Record<string, LoadedLessonSession> {
@@ -555,7 +559,9 @@ export function loadAllLessonSessionsLocal(): Record<string, LoadedLessonSession
       const s = loadLessonSessionLocal(key.slice(LOCAL_SESSION_PREFIX.length))
       if (s) out[key.slice(LOCAL_SESSION_PREFIX.length)] = s
     }
-  } catch { /* ignore */ }
+  } catch (e) {
+    monitoring.captureMessage('loadAllLessonSessionsLocal failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+  }
   return out
 }
 

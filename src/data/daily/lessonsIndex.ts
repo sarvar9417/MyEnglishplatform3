@@ -30,7 +30,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 20,
-    "exercises": 23,
+    "exercises": 25,
     "tests": 15
   },
   {
@@ -42,7 +42,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 38,
-    "exercises": 39,
+    "exercises": 41,
     "tests": 15
   },
   {
@@ -54,7 +54,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 22,
-    "exercises": 38,
+    "exercises": 40,
     "tests": 15
   },
   {
@@ -66,7 +66,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 32,
-    "exercises": 36,
+    "exercises": 38,
     "tests": 15
   },
   {
@@ -78,7 +78,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 37,
-    "exercises": 29,
+    "exercises": 31,
     "tests": 15
   },
   {
@@ -109,7 +109,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 26,
-    "exercises": 29,
+    "exercises": 31,
     "tests": 15
   },
   {
@@ -121,7 +121,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 37,
-    "exercises": 29,
+    "exercises": 31,
     "tests": 15
   },
   {
@@ -133,7 +133,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 38,
-    "exercises": 29,
+    "exercises": 31,
     "tests": 15
   },
   {
@@ -188,7 +188,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 15,
-    "exercises": 20,
+    "exercises": 22,
     "tests": 15
   },
   {
@@ -200,7 +200,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 16,
-    "exercises": 20,
+    "exercises": 22,
     "tests": 15
   },
   {
@@ -212,7 +212,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 18,
-    "exercises": 20,
+    "exercises": 22,
     "tests": 15
   },
   {
@@ -224,7 +224,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 18,
-    "exercises": 20,
+    "exercises": 22,
     "tests": 15
   },
   {
@@ -237,7 +237,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 17,
     "exercises": 20,
-    "tests": 15
+    "tests": 17
   },
   {
     "id": "auto-review-3",
@@ -267,7 +267,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 17,
-    "exercises": 20,
+    "exercises": 22,
     "tests": 15
   },
   {
@@ -346,7 +346,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 16,
-    "exercises": 20,
+    "exercises": 22,
     "tests": 15
   },
   {
@@ -358,7 +358,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 18,
-    "exercises": 20,
+    "exercises": 22,
     "tests": 15
   },
   {
@@ -1023,7 +1023,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Storytelling",
     "formulas": 4,
     "vocabulary": 10,
-    "exercises": 24,
+    "exercises": 26,
     "tests": 15
   },
   {
@@ -1036,7 +1036,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Complex Structures",
     "formulas": 4,
     "vocabulary": 17,
-    "exercises": 24,
+    "exercises": 26,
     "tests": 15
   },
   {
@@ -1049,7 +1049,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Complex Structures",
     "formulas": 4,
     "vocabulary": 10,
-    "exercises": 24,
+    "exercises": 26,
     "tests": 15
   },
   {
@@ -1062,7 +1062,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Verb Patterns",
     "formulas": 4,
     "vocabulary": 10,
-    "exercises": 24,
+    "exercises": 26,
     "tests": 15
   },
   {
@@ -1075,7 +1075,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "category": "Modals",
     "formulas": 4,
     "vocabulary": 16,
-    "exercises": 24,
+    "exercises": 26,
     "tests": 15
   },
   {
