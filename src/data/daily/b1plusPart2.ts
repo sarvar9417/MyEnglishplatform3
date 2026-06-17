@@ -993,7 +993,7 @@ export const wordFormation: DailyLesson = {
   ],
   exercises: [
     { id: 52211, type: 'fill-blank', instruction: "Noun yasang:", question: 'educate → educa___', blanks: ['tion'], explanation: 'Education' },
-    { id: 52212, type: 'fill-blank', instruction: "Noun yasang:", question: 'develop → develop___', blanks: ['ment'], explanation: 'Development' },
+    { id: 52212, type: 'fill-blank', instruction: "Noun yasang:", question: 'govern → govern___', blanks: ['ment'], explanation: 'Government' },
     { id: 52213, type: 'fill-blank', instruction: "Adjective yasang:", question: 'beauty → beauti___', blanks: ['ful'], explanation: 'Beautiful' },
     { id: 52214, type: 'fill-blank', instruction: "Adjective yasang:", question: 'danger → danger___', blanks: ['ous'], explanation: 'Dangerous' },
     { id: 52215, type: 'fill-blank', instruction: "Verb yasang:", question: 'modern → modern___', blanks: ['ize'], explanation: 'Modernize' },
@@ -1531,7 +1531,7 @@ export const b1plusReview: DailyLesson = {
     { id: 52377, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Nevertheless' qanday ma'noda?", options: ["qo'shimcha", 'qarama-qarshilik', 'natija', 'misol'], correct: 'qarama-qarshilik', explanation: "Nevertheless = contrast" },
     { id: 52378, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z 'qo'shimcha ma'lumot' uchun?", options: ['Therefore', 'Nevertheless', 'Furthermore', 'However'], correct: 'Furthermore', explanation: "Furthermore = adding information" },
     { id: 52379, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "She suggested ___ to the cinema.", options: ['go', 'to go', 'going', 'went'], correct: 'going', explanation: "Suggest + -ing" },
-    { id: 52380, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He ___ me that he was tired.', options: ['said', 'told', 'spoke', 'talked'], correct: 'told', explanation: "Tell + object" },
+    { id: 52380, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'She ___ me that she was busy.', options: ['said', 'told', 'spoke', 'talked'], correct: 'told', explanation: "Tell + object" },
     { id: 52381, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Each of the students ___ passed.', options: ['have', 'has', 'had', 'having'], correct: 'has', explanation: "Each of + singular verb" },
     { id: 52382, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'You should ___ told me earlier.', options: ['have', 'has', 'had', 'having'], correct: 'have', explanation: "Should have + pp" },
     { id: 52383, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya DO bilan?", options: ['a decision', 'homework', 'a photo', 'a promise'], correct: 'homework', explanation: "Do homework" },

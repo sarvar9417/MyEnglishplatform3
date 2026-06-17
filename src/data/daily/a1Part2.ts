@@ -1600,7 +1600,7 @@ export const a1Review: DailyLesson = {
         { en: 'There is a book.', uz: "Kitob bor." },
       ],
       drills: [
-        { id: 2758, type: 'fill-blank', instruction: "Am/is/are:", question: 'I ___ a student.', blanks: ['am'], explanation: "I + am" },
+        { id: 2758, type: 'fill-blank', instruction: "Am/is/are:", question: 'She ___ a doctor.', blanks: ['is'], explanation: "She + is" },
         { id: 2759, type: 'fill-blank', instruction: "Have/has:", question: 'He ___ a car.', blanks: ['has'], explanation: "He + has" },
         { id: 2760, type: 'fill-blank', instruction: "Can + V1:", question: 'I ___ swim.', blanks: ['can'], explanation: "can + V1" },
         { id: 2761, type: 'error-correction', instruction: "Xatoni toping:", question: 'He work here.', errorPart: 'work', correct: 'He works here.', explanation: "3-shaxs + -s" },
