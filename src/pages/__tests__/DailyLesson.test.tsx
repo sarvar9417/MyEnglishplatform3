@@ -6,10 +6,10 @@ import { BrowserRouter } from 'react-router-dom'
 // dars OCHILGANDA to'liq kontent uchun ishlatiladi. Shu sabab openable mock dars
 // haqiqiy LESSON_INDEX id si bilan mos bo'lishi kerak ('alphabet-greetings', A1, kun 1).
 const mockLesson = {
-  id: 'alphabet-greetings',
-  title: 'Alphabet & Greetings',
-  subtitle: 'Ingliz alifbosi',
-  level: 'A1',
+  id: 'greetings-names',
+  title: 'Salomlashish va ismlar',
+  subtitle: 'Hello, My name is...',
+  level: 'A0',
   day: 1,
   formulas: [],
   rules: [],
@@ -89,8 +89,9 @@ describe('LearnHub', () => {
   it('shows lessons of the default level (A1 — currentDay 1)', () => {
     renderPage()
     // A1 darslari index'dan chiziladi (store.lessons bo'sh bo'lsa ham)
-    expect(screen.getByRole('heading', { name: 'Alphabet & Greetings' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Numbers 1-100' })).toBeInTheDocument()
+    // A0 darslar ham A1 ichida (greetings-names, numbers-alphabet, family-me)
+    expect(screen.getByRole('heading', { name: 'Salomlashish va ismlar' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Raqamlar va alifbo' })).toBeInTheDocument()
   })
 
   it('shows progress overview', () => {
@@ -102,17 +103,17 @@ describe('LearnHub', () => {
 
   it('switches level when a tab is clicked', () => {
     renderPage()
-    expect(screen.getByRole('heading', { name: 'Alphabet & Greetings' })).toBeInTheDocument() // A1
+    expect(screen.getByRole('heading', { name: 'Salomlashish va ismlar' })).toBeInTheDocument() // A0/A1
     fireEvent.click(screen.getByRole('button', { name: /^A2\b/ }))
     expect(screen.getByRole('heading', { name: 'Modal Verbs' })).toBeInTheDocument()          // A2
-    expect(screen.queryByRole('heading', { name: 'Alphabet & Greetings' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Salomlashish va ismlar' })).not.toBeInTheDocument()
   })
 
   it('opens LessonView when a lesson is clicked (content loaded)', () => {
     mockStoreState.lessonsFetched = true
     mockStoreState.lessons = [mockLesson]
     renderPage()
-    fireEvent.click(screen.getByRole('heading', { name: 'Alphabet & Greetings' }))
+    fireEvent.click(screen.getByRole('heading', { name: 'Salomlashish va ismlar' }))
     expect(screen.getByTestId('lesson-view')).toBeInTheDocument()
   })
 
@@ -121,7 +122,7 @@ describe('LearnHub', () => {
     mockStoreState.lessonsLoading = true
     mockStoreState.lessons = []
     const { container } = renderPage()
-    fireEvent.click(screen.getByRole('heading', { name: 'Alphabet & Greetings' }))
+    fireEvent.click(screen.getByRole('heading', { name: 'Salomlashish va ismlar' }))
     expect(container.querySelector('.animate-pulse')).toBeInTheDocument()
   })
 
@@ -129,7 +130,7 @@ describe('LearnHub', () => {
     mockStoreState.lessonsFetched = true
     mockStoreState.lessons = [mockLesson]
     renderPage()
-    fireEvent.click(screen.getByRole('heading', { name: 'Alphabet & Greetings' }))
+    fireEvent.click(screen.getByRole('heading', { name: 'Salomlashish va ismlar' }))
     expect(screen.getByTestId('lesson-view')).toBeInTheDocument()
     fireEvent.click(screen.getByTestId('back-button'))
     expect(screen.queryByTestId('lesson-view')).not.toBeInTheDocument()

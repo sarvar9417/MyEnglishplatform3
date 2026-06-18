@@ -255,6 +255,8 @@
   "dashboard.sectionRecommended": "Recommended",
   "dashboard.showMore": "More",
   "dashboard.showLess": "Show less",
+  "dashboard.tabToday": "Today's Lesson",
+  "dashboard.tabAll": "All",
   "dashboard.duelTitle": "You have {count} duels waiting!",
   "dashboard.duelSubtitle": "You have 24 hours to respond",
   "dashboard.duelButton": "Tandem",

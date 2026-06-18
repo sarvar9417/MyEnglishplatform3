@@ -279,6 +279,8 @@ export interface TranslationStrings {
   'dashboard.sectionRecommended': string
   'dashboard.showMore': string
   'dashboard.showLess': string
+  'dashboard.tabToday': string
+  'dashboard.tabAll': string
   'dashboard.duelTitle': string
   'dashboard.duelSubtitle': string
   'dashboard.duelButton': string

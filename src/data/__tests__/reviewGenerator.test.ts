@@ -14,7 +14,7 @@ describe('auto-generated review lessons', () => {
       expect(r.type).toBe('review')
       expect(r.id).toBeTruthy()
       expect(r.title).toBeTruthy()
-      expect(r.level).toMatch(/^(A1|A2|B1|B1\+|B2)$/)
+      expect(r.level).toMatch(/^(A0|A1|A2|B1|B1\+|B2)$/)
       expect(r.coversDays.length).toBeGreaterThan(0)
       expect(r.afterDay).toBe(Math.max(...r.coversDays))
       expect(r.coversTopics.length).toBe(r.coversDays.length)

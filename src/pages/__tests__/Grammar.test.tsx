@@ -154,9 +154,9 @@ describe('Grammar', () => {
 
   it('renders topic selector after loading', async () => {
     renderPage()
-    // uz.json: grammar.selectTitle = "Grammar Darslar"
+    // uz.json: grammar.selectTitle = "Grammatika darslari"
     await waitFor(() => {
-      expect(screen.getByText('Grammar Darslar')).toBeInTheDocument()
+      expect(screen.getByText('Grammatika darslari')).toBeInTheDocument()
     })
     // uz.json: grammar.selectSubtitle = "Mavzuni tanlang va mashqlarni bajaring"
     expect(screen.getByText('Mavzuni tanlang va mashqlarni bajaring')).toBeInTheDocument()
@@ -225,7 +225,7 @@ describe('Grammar', () => {
 
   it('navigates to explanation phase when topic title is clicked', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
 
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     // uz.json: grammar.formulaLabel = "Formula"
@@ -234,7 +234,7 @@ describe('Grammar', () => {
 
   it('shows formula text in explanation phase', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
 
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => {
@@ -244,7 +244,7 @@ describe('Grammar', () => {
 
   it('shows "when to use" section in explanation', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
 
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     // uz.json: grammar.whenToUse = "Qachon ishlatiladi?"
@@ -255,7 +255,7 @@ describe('Grammar', () => {
 
   it('shows examples in explanation', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
 
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => {
@@ -266,7 +266,7 @@ describe('Grammar', () => {
 
   it('shows examples label in explanation', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
 
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     // uz.json: grammar.examplesLabel = "Misollar"
@@ -277,7 +277,7 @@ describe('Grammar', () => {
 
   it('shows start exercise button in explanation', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
 
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     // uz.json: grammar.startExercise = "{count} ta mashqni boshlash → +{xp} XP"
@@ -288,21 +288,21 @@ describe('Grammar', () => {
 
   it('back button returns to topic selector', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
 
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/Formula/)).toBeInTheDocument())
 
     // Back button
     fireEvent.click(screen.getByText('Orqaga'))
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
   })
 
   // ── Exercise phase ────────────────────────────────────────────────────────
 
   it('shows exercises when started from explanation', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
 
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
@@ -315,7 +315,7 @@ describe('Grammar', () => {
 
   it('renders fill-blank title in exercise phase', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -328,7 +328,7 @@ describe('Grammar', () => {
 
   it('renders MC question title in exercise phase', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -341,7 +341,7 @@ describe('Grammar', () => {
 
   it('renders fill-blank question text parts', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -357,7 +357,7 @@ describe('Grammar', () => {
 
   it('renders MC question options', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -375,7 +375,7 @@ describe('Grammar', () => {
 
   it('shows submit button in exercise phase', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -388,7 +388,7 @@ describe('Grammar', () => {
 
   it('submit shows result view with score', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -407,7 +407,7 @@ describe('Grammar', () => {
 
   it('shows XP earned in result view', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -425,7 +425,7 @@ describe('Grammar', () => {
 
   it('shows retry button after submit', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -445,7 +445,7 @@ describe('Grammar', () => {
 
   it('shows AI feedback button after submit', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -479,7 +479,7 @@ describe('Grammar', () => {
     )
 
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -505,7 +505,7 @@ describe('Grammar', () => {
 
   it('goes back to explanation from exercise phase', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/Formula/)).toBeInTheDocument())
 
@@ -519,17 +519,17 @@ describe('Grammar', () => {
 
   it('goes back to topic selector from explanation', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/Formula/)).toBeInTheDocument())
 
     fireEvent.click(screen.getByText('Orqaga'))
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
   })
 
   it('goes to other topics from result view', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -545,7 +545,7 @@ describe('Grammar', () => {
     })
 
     fireEvent.click(screen.getByText('Boshqa mavzu'))
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
   })
 
   // ── Header renders ────────────────────────────────────────────────────────
@@ -560,7 +560,7 @@ describe('Grammar', () => {
 
   it('shows progress bar in exercise phase', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
     fireEvent.click(screen.getByText('Verb "to be" — am/is/are'))
     await waitFor(() => expect(screen.getByText(/4 ta mashqni boshlash/)).toBeInTheDocument())
     fireEvent.click(screen.getByText(/4 ta mashqni boshlash/))
@@ -575,7 +575,7 @@ describe('Grammar', () => {
 
   it('DNA Map select button triggers topic selection', async () => {
     renderPage()
-    await waitFor(() => expect(screen.getByText('Grammar Darslar')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Grammatika darslari')).toBeInTheDocument())
 
     // Click on DNA Map's selection button
     fireEvent.click(screen.getByTestId('dna-map-select'))

@@ -1,6 +1,13 @@
 // Re-export type
 export type { DailyLesson } from '../dailyLessons'
 
+// Re-export A0 lesson constants
+export {
+  greetingsAndNames,
+  numbersAndAlphabet,
+  familyAndMe,
+} from './a0Part1'
+
 // Re-export A1 lesson constants
 export {
   alphabetAndGreetings,
@@ -140,13 +147,18 @@ import { A2_LESSONS } from './lessonsA2'
 import { B1_LESSONS_NEW } from './lessonsB1'
 import { B1PLUS_LESSONS_NEW } from './lessonsB1plus'
 import { B2_LESSONS_NEW } from './lessonsB2'
+import { greetingsAndNames, numbersAndAlphabet, familyAndMe } from './a0Part1'
 import type { DailyLesson } from '../dailyLessons'
 
 // A1 darslari — pedagogik ketma-ketlikda (loadAllLessons day raqamini massiv
 // indeksidan beradi, shuning uchun TARTIB shu yerda hal bo'ladi):
 //   1) Hayotiy lug'at  2) Asosiy tuzilmalar  3) Fe'l zamonlari  4) Gap qurish + takror
 export const A1_LESSONS_NEW: DailyLesson[] = [
-  // ─── Hayotiy lug'at (kun 1-10) ───
+  // ─── A0: Boshlang'ich (kun 1-3) ───
+  greetingsAndNames,
+  numbersAndAlphabet,
+  familyAndMe,
+  // ─── Hayotiy lug'at (kun 4-13) ───
   alphabetAndGreetings,
   numbers,
   colorsAndShapes,

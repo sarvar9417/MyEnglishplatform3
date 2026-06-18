@@ -367,30 +367,40 @@ export async function pushWordsToSRS(
   userId: string,
   words: { english: string; rating: Rating }[]
 ): Promise<void> {
-  for (const w of words) {
-    const { data: wordRow } = await supabase
-      .from('words')
-      .select('id')
-      .eq('english', w.english)
-      .limit(1)
-      .maybeSingle()
+  if (words.length === 0) return
 
-    if (!wordRow) continue
+  // Batch: barcha word ID larni birdaniga olish
+  const englishList = words.map(w => w.english)
+  const { data: wordRows } = await supabase
+    .from('words')
+    .select('id, english')
+    .in('english', englishList)
 
-    const wordId = wordRow.id
-    const result = computeNextReview(1, w.rating)
+  const wordMap = new Map<string, number>()
+  for (const row of wordRows ?? []) {
+    wordMap.set(row.english, row.id)
+  }
 
-    await supabase.from('vocabulary_progress').upsert({
-      user_id: userId,
-      word_id: wordId,
-      box: result.box,
-      next_review: result.next_review,
-      correct_count: 0,
-      wrong_count: 0,
-      is_learned: result.is_learned,
-      last_rating: w.rating,
-      last_reviewed: new Date().toISOString(),
-    }, { onConflict: 'user_id,word_id' })
+  // Batch: barcha progresslarni birdaniga upsert qilish
+  const rows = words
+    .filter(w => wordMap.has(w.english))
+    .map(w => {
+      const result = computeNextReview(1, w.rating)
+      return {
+        user_id: userId,
+        word_id: wordMap.get(w.english)!,
+        box: result.box,
+        next_review: result.next_review,
+        correct_count: 0,
+        wrong_count: 0,
+        is_learned: result.is_learned,
+        last_rating: w.rating,
+        last_reviewed: new Date().toISOString(),
+      }
+    })
+
+  if (rows.length > 0) {
+    await supabase.from('vocabulary_progress').upsert(rows, { onConflict: 'user_id,word_id' })
   }
 }
 
@@ -413,42 +423,60 @@ export async function pushWordsToSRS_FSRS(
   userId: string,
   words: PushWordInput[]
 ): Promise<void> {
-  for (const w of words) {
-    const { data: wordRow } = await supabase
+  if (words.length === 0) return
+
+  const englishList = words.map(w => w.english)
+
+  // 1) Batch: barcha word ID larni birdaniga olish
+  const { data: existingWords } = await supabase
+    .from('words')
+    .select('id, english')
+    .in('english', englishList)
+
+  const wordMap = new Map<string, number>()
+  for (const row of existingWords ?? []) {
+    wordMap.set(row.english, row.id)
+  }
+
+  // 2) Topilmagan so'zlarni batch insert qilish
+  const missing = words.filter(w => !wordMap.has(w.english))
+  if (missing.length > 0) {
+    const { data: inserted } = await supabase
       .from('words')
-      .select('id')
-      .eq('english', w.english)
-      .limit(1)
-      .maybeSingle()
+      .insert(missing.map(w => ({
+        english: w.english,
+        uzbek: w.uzbek ?? '',
+        level: w.level ?? 'A1',
+        example: w.example ?? '',
+        phonetic: '',
+      })))
+      .select('id, english')
 
-    let wordId: number
-    if (wordRow) {
-      wordId = wordRow.id
-    } else {
-      const { data: inserted } = await supabase
-        .from('words')
-        .insert({
-          english: w.english,
-          uzbek: w.uzbek ?? '',
-          level: w.level ?? 'A1',
-          example: w.example ?? '',
-          phonetic: '',
-        })
-        .select('id')
-        .single()
-      if (!inserted) continue
-      wordId = inserted.id
+    for (const row of inserted ?? []) {
+      wordMap.set(row.english, row.id)
     }
+  }
 
-    // Try to load existing FSRS state from DB
-    const { data: existing } = await supabase
-      .from('vocabulary_progress')
-      .select('fsrs_stability, fsrs_difficulty, fsrs_reps, fsrs_lapses, next_review')
-      .eq('user_id', userId)
-      .eq('word_id', wordId)
-      .limit(1)
-      .maybeSingle()
+  // 3) Batch: barcha mavjud FSRS state larni birdaniga olish
+  const wordIds = words.map(w => wordMap.get(w.english)).filter(Boolean) as number[]
+  const { data: existingProgress } = await supabase
+    .from('vocabulary_progress')
+    .select('word_id, fsrs_stability, fsrs_difficulty, fsrs_reps, fsrs_lapses, next_review')
+    .eq('user_id', userId)
+    .in('word_id', wordIds)
 
+  const progressMap = new Map<number, typeof existingProgress extends (infer T)[] | null ? T : never>()
+  for (const row of existingProgress ?? []) {
+    progressMap.set(row.word_id, row)
+  }
+
+  // 4) Har bir so'z uchun FSRS hisoblash + batch upsert
+  const upsertRows = []
+  for (const w of words) {
+    const wordId = wordMap.get(w.english)
+    if (!wordId) continue
+
+    const existing = progressMap.get(wordId)
     const currentState: FSRSState = existing
       ? {
           stability:  existing.fsrs_stability ?? 0,
@@ -460,11 +488,9 @@ export async function pushWordsToSRS_FSRS(
       : createDefaultFSRSState()
 
     const { state } = computeNextReviewFSRS(currentState, w.rating)
-
-    // Compute box equivalent for backward compatibility
     const box = Math.min(6, Math.max(1, state.stability > 30 ? 6 : state.stability > 14 ? 5 : state.stability > 7 ? 4 : state.stability > 3 ? 3 : state.stability > 1 ? 2 : 1))
 
-    await supabase.from('vocabulary_progress').upsert({
+    upsertRows.push({
       user_id: userId,
       word_id: wordId,
       box,
@@ -478,7 +504,12 @@ export async function pushWordsToSRS_FSRS(
       fsrs_difficulty: state.difficulty,
       fsrs_reps:       state.reps,
       fsrs_lapses:     state.lapses,
-    }, { onConflict: 'user_id,word_id' })
+    })
+  }
+
+  // 5) Batch upsert
+  if (upsertRows.length > 0) {
+    await supabase.from('vocabulary_progress').upsert(upsertRows, { onConflict: 'user_id,word_id' })
   }
 
   // Confusable partnerlarni kechiktirish
@@ -513,46 +544,56 @@ export async function delayConfusablePartners(
 
   if (allPartners.size === 0) return
 
-  // Har bir partner so'zning word_id sini topish
-  for (const partnerEnglish of allPartners) {
-    const { data: wordRow } = await supabase
-      .from('words')
-      .select('id')
-      .eq('english', partnerEnglish)
-      .limit(1)
-      .maybeSingle()
+  const partnerList = Array.from(allPartners)
 
-    if (!wordRow) continue
+  // Batch: barcha partner word ID larni birdaniga olish
+  const { data: wordRows } = await supabase
+    .from('words')
+    .select('id, english')
+    .in('english', partnerList)
 
-    const wordId = wordRow.id
+  if (!wordRows || wordRows.length === 0) return
 
-    // Foydalanuvchining ushbu so'zdagi progressini olish
-    const { data: existing } = await supabase
-      .from('vocabulary_progress')
-      .select('next_review')
-      .eq('user_id', userId)
-      .eq('word_id', wordId)
-      .limit(1)
-      .maybeSingle()
+  const wordIds = wordRows.map(r => r.id)
+  const wordIdToEnglish = new Map<number, string>()
+  for (const r of wordRows) {
+    wordIdToEnglish.set(r.id, r.english)
+  }
 
-    if (!existing) continue
+  // Batch: barcha progresslarni birdaniga olish
+  const { data: progressRows } = await supabase
+    .from('vocabulary_progress')
+    .select('word_id, next_review')
+    .eq('user_id', userId)
+    .in('word_id', wordIds)
 
-    // next_review ni CONFUSABLE_DELAY_DAYS kunga kechiktirish
-    const currentDue = new Date(existing.next_review + 'T00:00:00')
-    const now = new Date()
+  if (!progressRows || progressRows.length === 0) return
+
+  // Har birini kechiktirish
+  const now = new Date()
+  const updates: { word_id: number; next_review: string }[] = []
+
+  for (const row of progressRows) {
+    const currentDue = new Date(row.next_review + 'T00:00:00')
     const baseDate = currentDue > now ? currentDue : now
     baseDate.setDate(baseDate.getDate() + CONFUSABLE_DELAY_DAYS)
     const newDue = baseDate.toISOString().split('T')[0]
 
-    await supabase
-      .from('vocabulary_progress')
-      .update({ next_review: newDue })
-      .eq('user_id', userId)
-      .eq('word_id', wordId)
-
-    monitoring.captureMessage(
-      `delayConfusablePartners: "${partnerEnglish}" delayed to ${newDue} (user ${userId.slice(0, 8)}...)`,
-      'info'
-    )
+    updates.push({ word_id: row.word_id, next_review: newDue })
   }
+
+  // Batch: har birini alohida update qilish (Supabase .update() batch emas)
+  // Lekin parallel qilish mumkin
+  await Promise.all(updates.map(u =>
+    supabase
+      .from('vocabulary_progress')
+      .update({ next_review: u.next_review })
+      .eq('user_id', userId)
+      .eq('word_id', u.word_id)
+  ))
+
+  monitoring.captureMessage(
+    `delayConfusablePartners: ${updates.length} partners delayed (user ${userId.slice(0, 8)}...)`,
+    'info'
+  )
 }

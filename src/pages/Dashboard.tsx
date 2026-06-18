@@ -10,7 +10,7 @@ import { getAllChunks, TOTAL_SPEAKING_DAYS } from '../data/speakingPath'
 import { monitoring } from '../lib/monitoring'
 import {
   BookOpen, BookMarked, Headphones, PenLine,
-  BookText, Mic, Sun, ChevronRight, ChevronDown, LogOut, MessageCircle,
+  BookText, Mic, Sun, ChevronRight, LogOut, MessageCircle,
 } from 'lucide-react'
 import AiInsightsWidget from '../components/dashboard/AiInsightsWidget'
 import TandemCard from '../components/dashboard/TandemCard'
@@ -596,7 +596,7 @@ export default function Dashboard() {
   const { fetchAndSetLessons } = useStore()
   const handleWeakSpotsLoaded = useCallback((_spots: QuickWeakSpot[]) => {}, [])
   const { pendingOpponentDuels, loadDuels } = useTandemStore()
-  const [showMore, setShowMore] = useState(false)
+  const [activeTab, setActiveTab] = useState<'today' | 'all'>('today')
 
   useEffect(() => {
     fetchAndSetLessons()
@@ -635,45 +635,60 @@ export default function Dashboard() {
           <StreakWarning />
           <ReviewReminder />
 
-          {/* ── 1. Asosiy harakat ── */}
-          <StartLessonButton />
-
-          {/* Gapirish Yo'li — 0 dan suhbatgacha */}
-          <SpeakingPathCard />
-
-          {/* ── 2. Ko'nikma halqalari ── */}
-          <TodayProgress />
-
-          {/* ── 3. Bugun ── */}
-          <SectionLabel>{t('dashboard.sectionToday')}</SectionLabel>
-          <LessonProgressCard />
-          <ReviewOverview />
-
-          {/* ── 4. Tavsiya ── */}
-          <SectionLabel>{t('dashboard.sectionRecommended')}</SectionLabel>
-          <WeakSpotsWidget onSpotsLoaded={handleWeakSpotsLoaded} />
-          <AdaptivePlan />
-          <AiInsightsWidget />
-
-          {/* ── 5. Ko'proq (yig'iladigan ikkilamchi) ── */}
-          <div className="pt-1">
+          {/* ── Tab bar ── */}
+          <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-xl">
             <button
-              onClick={() => setShowMore(v => !v)}
-              className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+              onClick={() => setActiveTab('today')}
+              className={`flex-1 py-2 px-3 rounded-lg text-sm font-semibold transition-all ${
+                activeTab === 'today'
+                  ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+              }`}
             >
-              {showMore ? t('dashboard.showLess') : t('dashboard.showMore')}
-              <ChevronDown size={16} className={`transition-transform ${showMore ? 'rotate-180' : ''}`} />
+              📖 {t('dashboard.tabToday')}
             </button>
-            {showMore && (
-              <div className="space-y-3 sm:space-y-4 mt-2 animate-slide-up">
-                <TandemCard />
-                <DailyIdiomCard />
-                <ConfusablePairsCard />
-                <StoryBeatCard />
-                <ProgressMap />
-              </div>
-            )}
+            <button
+              onClick={() => setActiveTab('all')}
+              className={`flex-1 py-2 px-3 rounded-lg text-sm font-semibold transition-all ${
+                activeTab === 'all'
+                  ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+              }`}
+            >
+              📋 {t('dashboard.tabAll')}
+            </button>
           </div>
+
+          {activeTab === 'today' ? (
+            <>
+              {/* ── Bugungi dars — asosiy ── */}
+              <StartLessonButton />
+              <SpeakingPathCard />
+              <TodayProgress />
+              <SectionLabel>{t('dashboard.sectionToday')}</SectionLabel>
+              <LessonProgressCard />
+              <ReviewOverview />
+            </>
+          ) : (
+            <>
+              {/* ── Barchasi — to'liq dashboard ── */}
+              <StartLessonButton />
+              <SpeakingPathCard />
+              <TodayProgress />
+              <SectionLabel>{t('dashboard.sectionToday')}</SectionLabel>
+              <LessonProgressCard />
+              <ReviewOverview />
+              <SectionLabel>{t('dashboard.sectionRecommended')}</SectionLabel>
+              <WeakSpotsWidget onSpotsLoaded={handleWeakSpotsLoaded} />
+              <AdaptivePlan />
+              <AiInsightsWidget />
+              <TandemCard />
+              <DailyIdiomCard />
+              <ConfusablePairsCard />
+              <StoryBeatCard />
+              <ProgressMap />
+            </>
+          )}
         </div>
       </div>
     </div>

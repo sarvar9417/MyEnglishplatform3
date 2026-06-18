@@ -56,7 +56,7 @@ async function typeAndSubmit() {
   await waitFor(() => expect(screen.getByRole('textbox')).toBeInTheDocument())
   fireEvent.change(screen.getByRole('textbox'), { target: { value: Array(200).fill('word').join(' ') } })
   fireEvent.click(screen.getByText('✨ Claude baholaydi'))
-  await waitFor(() => expect(screen.getByText('Writing natijasi')).toBeInTheDocument())
+  await waitFor(() => expect(screen.getByText('Yozish natijasi')).toBeInTheDocument())
 }
 
 describe('Writing', () => {
@@ -115,7 +115,7 @@ describe('Writing', () => {
     await waitFor(() => expect(screen.getByRole('textbox')).toBeInTheDocument())
     fireEvent.change(screen.getByRole('textbox'), { target: { value: Array(200).fill('word').join(' ') } })
     fireEvent.click(screen.getByText('✨ Claude baholaydi'))
-    await waitFor(() => expect(screen.getByText('Writing natijasi')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByText('Yozish natijasi')).toBeInTheDocument())
     expect(screen.getByTestId('writing-history')).toBeInTheDocument()
   })
 })

@@ -197,11 +197,11 @@ describe('Dashboard', () => {
 
   // ── Daily Idiom Card ──────────────────────────────────────────────────────
 
-  it('renders daily idiom card after expanding show more', async () => {
+  it('renders daily idiom card in "All" tab', async () => {
     renderPage()
     await waitFor(() => {
-      const showMoreBtn = screen.queryByText(/Ko'proq/)
-      if (showMoreBtn) fireEvent.click(showMoreBtn)
+      const allTabs = screen.queryAllByRole('button', { name: /Barchasi/ })
+      if (allTabs.length > 0) fireEvent.click(allTabs[0])
     })
     await waitFor(() => {
       expect(document.body.textContent).toContain('Kunning Idiomasi')
@@ -238,12 +238,11 @@ describe('Dashboard', () => {
 
   // ── Expandable section ────────────────────────────────────────────────────
 
-  it('shows more content when "Show more" is clicked', async () => {
+  it('shows all content when "Barchasi" tab is clicked', async () => {
     renderPage()
-    // uz.json: dashboard.showMore = "Ko'proq ko'rsatish"
     await waitFor(() => {
-      const showMoreBtn = screen.queryByText(/Ko'proq/)
-      if (showMoreBtn) fireEvent.click(showMoreBtn)
+      const allTabs = screen.queryAllByRole('button', { name: /Barchasi/ })
+      if (allTabs.length > 0) fireEvent.click(allTabs[0])
     })
     await waitFor(() => {
       expect(screen.getByTestId('tandem-card')).toBeInTheDocument()
@@ -254,11 +253,11 @@ describe('Dashboard', () => {
 
   // ── Story Beat ────────────────────────────────────────────────────────────
 
-  it('renders story beat in expanded section', async () => {
+  it('renders story beat in "All" tab', async () => {
     renderPage()
     await waitFor(() => {
-      const showMoreBtn = screen.queryByText(/Ko'proq/)
-      if (showMoreBtn) fireEvent.click(showMoreBtn)
+      const allTabs = screen.queryAllByRole('button', { name: /Barchasi/ })
+      if (allTabs.length > 0) fireEvent.click(allTabs[0])
     })
     await waitFor(() => {
       expect(screen.getByText(/Toshkentdan Londonga/)).toBeInTheDocument()
