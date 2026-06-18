@@ -6,6 +6,7 @@ import { Volume2, Gauge, ArrowRight, BookOpen, VolumeX, RotateCcw } from 'lucide
 import { useSpeechSynthesis, SPEED_OPTIONS } from '../../../hooks/useSpeechSynthesis'
 import { getChunkById } from '../../../data/speakingPath'
 import type { SpeakingDay, SpeakingChunk } from '../../../data/speakingPath/types'
+import { monitoring } from '../../../lib/monitoring'
 
 interface Props {
   day: SpeakingDay
@@ -21,6 +22,7 @@ function getRecycledStability(userId: string | undefined, chunkId: string): numb
     const map = JSON.parse(raw) as Record<string, { stability: number }>
     return map[chunkId]?.stability ?? null
   } catch {
+    monitoring.captureMessage('Failed to parse SRS stability from localStorage', 'warn')
     return null
   }
 }
@@ -63,7 +65,7 @@ export default function ListenStep({ day, userId, onNext }: Props) {
           <div className="flex items-center gap-1.5 mb-2">
             <RotateCcw size={14} className="text-violet-600 dark:text-violet-400" />
             <span className="text-xs font-bold text-violet-700 dark:text-violet-300 uppercase">Takrorlash — Spiral Curriculum</span>
-            <span className="text-[10px] text-violet-500 dark:text-violet-400 ml-auto">
+            <span className="text-xs text-violet-500 dark:text-violet-400 ml-auto">
               {stableCount}/{totalRecycled} mustahkam
             </span>
           </div>
@@ -146,7 +148,7 @@ export default function ListenStep({ day, userId, onNext }: Props) {
               <p className="text-xs font-mono text-amber-600 dark:text-amber-400">{day.pronunciationFocus.ipaExample}</p>
               <p className="text-xs text-gray-600 dark:text-gray-300 mt-0.5">{day.pronunciationFocus.tipUz}</p>
               {day.pronunciationFocus.commonError && (
-                <p className="text-[11px] text-rose-600 dark:text-rose-400 mt-0.5">⚠️ {day.pronunciationFocus.commonError}</p>
+                <p className="text-xs text-rose-600 dark:text-rose-400 mt-0.5">⚠️ {day.pronunciationFocus.commonError}</p>
               )}
             </div>
           </div>
@@ -161,7 +163,7 @@ export default function ListenStep({ day, userId, onNext }: Props) {
             <button
               key={opt.value}
               onClick={() => setSpeed(opt.value)}
-              className={`text-[11px] font-semibold px-2 py-1 rounded-lg transition-colors
+              className={`text-xs font-semibold px-2 py-1 rounded-lg transition-colors
                 ${speed === opt.value
                   ? 'bg-primary-600 text-white'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
@@ -187,16 +189,16 @@ export default function ListenStep({ day, userId, onNext }: Props) {
             <div className="flex-1 min-w-0">
               <p className="font-bold text-sm text-gray-900 dark:text-gray-100">{c.en}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400">{c.uz}</p>
-              {c.ipa && <p className="text-[10px] font-mono text-gray-400 dark:text-gray-500 mt-0.5">{c.ipa}</p>}
+              {c.ipa && <p className="text-xs font-mono text-gray-400 dark:text-gray-500 mt-0.5">{c.ipa}</p>}
               {c.grammarTip && (
                 <div className="mt-1 flex items-start gap-1">
                   <BookOpen size={11} className="text-primary-500 mt-0.5 shrink-0" />
-                  <span className="text-[10px] leading-tight text-primary-600 dark:text-primary-400">{c.grammarTip}</span>
+                  <span className="text-xs leading-tight text-primary-600 dark:text-primary-400">{c.grammarTip}</span>
                 </div>
               )}
               {c.stressWord && (
                 <div className="mt-0.5 flex items-center gap-1">
-                  <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400">🎯 Urg'u: <span className="underline decoration-amber-400">{c.stressWord}</span></span>
+                  <span className="text-xs font-bold text-amber-600 dark:text-amber-400">🎯 Urg'u: <span className="underline decoration-amber-400">{c.stressWord}</span></span>
                 </div>
               )}
             </div>

@@ -738,6 +738,8 @@ export interface TranslationStrings {
   'confusable.noResults': string
   'confusable.noResultsHint': string
   'confusable.quizButton': string
+  'confusable.nExamples': string
+  'confusable.seeAll': string
   'confusable.detailBack': string
   'confusable.detailRule': string
   'confusable.detailMemory': string
@@ -1151,6 +1153,13 @@ export interface TranslationStrings {
   'phraseDict.notStudied': string
   'phraseDict.lastRating': string
   'phraseDict.boxDays': string
+  'phraseDict.box': string
+  'phraseDict.box1': string
+  'phraseDict.box2': string
+  'phraseDict.box3': string
+  'phraseDict.box4': string
+  'phraseDict.box5': string
+  'phraseDict.box6': string
   'phraseDict.speakTitle': string
   'phraseDict.countResult': string
 
@@ -1246,5 +1255,123 @@ export interface TranslationStrings {
   'connectionFeedback.writeMore': string
   'connectionFeedback.aiFeedback': string
   'connectionFeedback.exampleAnswer': string
+
+  /* ── VocabLearner ── */
+  'vocabLearner.ruleShort': string
+  'vocabLearner.ruleLong': string
+  'vocabLearner.ruleCVC': string
+  'vocabLearner.ruleIncorrect': string
+  'vocabLearner.testEnToUz': string
+  'vocabLearner.testUzToEn': string
+  'vocabLearner.testUsage': string
+  'vocabLearner.testMixed': string
+  'vocabLearner.tabBrowse': string
+  'vocabLearner.tabFlashcard': string
+  'vocabLearner.tabTest': string
+  'vocabLearner.reviewFor': string
+  'vocabLearner.nWords': string
+  'vocabLearner.miniQuizReview': string
+  'vocabLearner.headerEnglish': string
+  'vocabLearner.headerUzbek': string
+  'vocabLearner.headerExample': string
+  'vocabLearner.flashKnown': string
+  'vocabLearner.flashAllKnown': string
+  'vocabLearner.flashEnglish': string
+  'vocabLearner.flashTapReveal': string
+  'vocabLearner.flashUzbek': string
+  'vocabLearner.flashListenAgain': string
+  'vocabLearner.flashTapHide': string
+  'vocabLearner.flashPrev': string
+  'vocabLearner.flashKnowKnown': string
+  'vocabLearner.flashKnowUnknown': string
+  'vocabLearner.flashNext': string
+  'vocabLearner.flashCongrats': string
+  'vocabLearner.flashLearnedAll': string
+  'vocabLearner.flashMiniQuiz': string
+  'vocabLearner.flashFullTest': string
+  'vocabLearner.testNoWords': string
+  'vocabLearner.testPerfect': string
+  'vocabLearner.testGreat': string
+  'vocabLearner.testGood': string
+  'vocabLearner.testTryAgain': string
+  'vocabLearner.testSaving': string
+  'vocabLearner.testSaveSRS': string
+  'vocabLearner.testSaved': string
+  'vocabLearner.testRestart': string
+  'vocabLearner.testMiniQuiz': string
+  'vocabLearner.testSectionOf': string
+  'vocabLearner.testNoQuestions': string
+  'vocabLearner.testNextSection': string
+  'vocabLearner.testQuizTitle': string
+  'vocabLearner.testFillBlank': string
+  'vocabLearner.testCorrect': string
+  'vocabLearner.testWrong': string
+  'vocabLearner.testCorrectAnswer': string
+  'vocabLearner.testNextQuestion': string
+  'vocabLearner.testFinish': string
+  'vocabLearner.nWordsPlural': string
+
+  /* ── VocabSentenceGame ── */
+  'vocabGame.levelA1': string
+  'vocabGame.levelA2': string
+  'vocabGame.levelB1': string
+  'vocabGame.levelB2': string
+  'vocabGame.title': string
+  'vocabGame.subtitle': string
+  'vocabGame.selectLevel': string
+  'vocabGame.nQuestions': string
+  'vocabGame.loadingWords': string
+  'vocabGame.score': string
+  'vocabGame.englishWord': string
+  'vocabGame.aiSentence': string
+  'vocabGame.generating': string
+  'vocabGame.checking': string
+  'vocabGame.correct': string
+  'vocabGame.wrong': string
+  'vocabGame.wrongTranslation': string
+  'vocabGame.correctAnswer': string
+  'vocabGame.analyzing': string
+  'vocabGame.grammarAnalysis': string
+  'vocabGame.writeTranslation': string
+  'vocabGame.next': string
+  'vocabGame.pressEnter': string
+  'vocabGame.percentCorrect': string
+  'vocabGame.playAgain': string
+  'vocabGame.changeLevel': string
+  'vocabGame.mistakes': string
+  'vocabGame.you': string
+  'vocabGame.empty': string
+  'vocabGame.correctLabel': string
+  'vocabGame.perfectResult': string
+  'vocabGame.allCorrect': string
+  'vocabGame.close': string
+  'vocabGame.promptWord': string
+  'vocabGame.correctInstruction': string
+  'vocabGame.aiError': string
+  'vocabGame.aiErrorTitle': string
+  'levelUp.a1Desc': string
+  'levelUp.a2Desc': string
+  'levelUp.b1Desc': string
+  'levelUp.b1pDesc': string
+  'levelUp.b2Desc': string
+  'levelUp.c1Desc': string
+  'levelUp.a1Unlock1': string
+  'levelUp.a1Unlock2': string
+  'levelUp.a1Unlock3': string
+  'levelUp.a2Unlock1': string
+  'levelUp.a2Unlock2': string
+  'levelUp.a2Unlock3': string
+  'levelUp.b1Unlock1': string
+  'levelUp.b1Unlock2': string
+  'levelUp.b1Unlock3': string
+  'levelUp.b1pUnlock1': string
+  'levelUp.b1pUnlock2': string
+  'levelUp.b1pUnlock3': string
+  'levelUp.b2Unlock1': string
+  'levelUp.b2Unlock2': string
+  'levelUp.b2Unlock3': string
+  'levelUp.c1Unlock1': string
+  'levelUp.c1Unlock2': string
+  'levelUp.c1Unlock3': string
 }
 

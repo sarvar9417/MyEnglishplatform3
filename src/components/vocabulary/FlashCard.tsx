@@ -73,7 +73,7 @@ export default function FlashCard({
             <AudioButton text={word.english} size="sm" />
           </div>
           {word.is_new && (
-            <span className="text-[11px] font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/40 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/40 px-2 py-0.5 rounded-full">
               Yangi
             </span>
           )}
@@ -93,7 +93,7 @@ export default function FlashCard({
                 }`}
               />
             ))}
-            <span className="text-[11px] text-gray-400 dark:text-gray-500 ml-1">
+            <span className="text-xs text-gray-400 dark:text-gray-500 ml-1">
               Box {word.box}/6 · {BOX_LABELS[word.box] ?? '90 kun'}
             </span>
           </div>
@@ -117,7 +117,7 @@ export default function FlashCard({
               {word.level}
             </span>
             {word.is_new && (
-              <span className="text-[11px] font-semibold text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">
+              <span className="text-xs font-semibold text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">
                 Yangi
               </span>
             )}

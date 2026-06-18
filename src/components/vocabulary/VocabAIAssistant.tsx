@@ -45,7 +45,7 @@ export default function VocabAIAssistant({ english, level }: Props) {
     <div className="mt-1">
       <button
         onClick={handleOpen}
-        className="flex items-center gap-1.5 text-[10px] font-medium
+        className="flex items-center gap-1.5 text-xs font-medium
           text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50
           dark:text-indigo-400 dark:hover:text-indigo-300 dark:hover:bg-indigo-950/30
           px-2 py-1 rounded-lg transition-all"
@@ -63,7 +63,7 @@ export default function VocabAIAssistant({ english, level }: Props) {
           <div className="flex gap-2 mb-2 pb-2 border-b border-indigo-200 dark:border-indigo-800">
             <button
               onClick={() => setTab('explain')}
-              className={`text-[10px] font-semibold px-2 py-0.5 rounded-md transition-all ${
+              className={`text-xs font-semibold px-2 py-0.5 rounded-md transition-all ${
                 tab === 'explain'
                   ? 'bg-indigo-200 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-300'
                   : 'text-indigo-400 hover:text-indigo-600'
@@ -73,7 +73,7 @@ export default function VocabAIAssistant({ english, level }: Props) {
             </button>
             <button
               onClick={() => setTab('examples')}
-              className={`text-[10px] font-semibold px-2 py-0.5 rounded-md transition-all ${
+              className={`text-xs font-semibold px-2 py-0.5 rounded-md transition-all ${
                 tab === 'examples'
                   ? 'bg-indigo-200 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-300'
                   : 'text-indigo-400 hover:text-indigo-600'

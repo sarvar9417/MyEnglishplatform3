@@ -213,7 +213,7 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
               >
                 <span className={`text-4xl font-black ${s.text}`}>{lvl}</span>
                 <p className="text-xs text-gray-400 mt-1.5">{LEVEL_DESC[lvl]}</p>
-                <p className="text-[10px] text-gray-300 mt-0.5">{QUESTION_COUNT} ta savol</p>
+                <p className="text-xs text-gray-300 mt-0.5">{QUESTION_COUNT} ta savol</p>
               </button>
             )
           })}
@@ -271,7 +271,7 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
               : 'bg-white border-gray-200'
           }`}
         >
-          <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-3">
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
             O'zbekcha gap
           </p>
           <p className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
@@ -337,7 +337,7 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
             Keyingi <ArrowRight size={15} />
           </button>
         ) : (
-          <p className="text-center text-[11px] text-gray-300 mt-3">
+          <p className="text-center text-xs text-gray-300 mt-3">
             Enter tugmasini bosing
           </p>
         )}

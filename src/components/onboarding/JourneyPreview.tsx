@@ -112,7 +112,7 @@ export function JourneyPreview({ currentLevel, startDay, onNext }: JourneyPrevie
 
                 {/* Label */}
                 <div className={`text-center mt-1.5 ${isReached ? '' : 'opacity-40'}`}>
-                  <p className={`text-[10px] font-bold leading-tight ${
+                  <p className={`text-xs font-bold leading-tight ${
                     isCurrent
                       ? 'text-primary-600 dark:text-primary-400'
                       : isReached
@@ -142,7 +142,7 @@ export function JourneyPreview({ currentLevel, startDay, onNext }: JourneyPrevie
             <div key={stat.label} className={`card text-center py-3 bg-gradient-to-br ${stat.color}`}>
               <p className="text-lg">{stat.icon}</p>
               <p className="text-sm font-black text-gray-800 dark:text-white mt-0.5">{stat.value}</p>
-              <p className="text-[11px] text-gray-500 dark:text-gray-400">{stat.label}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -170,7 +170,7 @@ export function JourneyPreview({ currentLevel, startDay, onNext }: JourneyPrevie
                     ? 'bg-green-500 text-white'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
                 }`}>
-                  {reached ? <Check size={12} /> : <span className="text-[10px] font-bold">{i + 1}</span>}
+                  {reached ? <Check size={12} /> : <span className="text-xs font-bold">{i + 1}</span>}
                 </div>
                 <p className={`text-xs ${
                   reached

@@ -266,7 +266,7 @@ export default function ListeningSection({ section, addXP }: Props) {
                 <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all ${isActive ? 'bg-primary-600 text-white' : isPast ? 'bg-green-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-400'}`}>
                   {isPast ? '✓' : i + 1}
                 </div>
-                <span className="text-[10px] font-semibold hidden sm:inline">
+                <span className="text-xs font-semibold hidden sm:inline">
                   {p === 'pre' ? 'Tayyorgarlik' : p === 'listen' ? 'Tinglash' : p === 'post' ? 'Mashqlar' : 'Natija'}
                 </span>
               </div>
@@ -399,7 +399,7 @@ export default function ListeningSection({ section, addXP }: Props) {
                             ▶
                           </button>
                           <div className="flex-1">
-                            <p className="text-[10px] text-gray-400 mb-1">{seg?.speaker || `Qator ${d.startLine + 1}`}</p>
+                            <p className="text-xs text-gray-400 mb-1">{seg?.speaker || `Qator ${d.startLine + 1}`}</p>
                             <input
                               type="text"
                               value={dictationInputs[i] || ''}
@@ -429,7 +429,7 @@ export default function ListeningSection({ section, addXP }: Props) {
                       {d.hints.length > 0 && (
                         <div className="flex flex-wrap gap-1">
                           {d.hints.map((h, j) => (
-                            <span key={j} className="text-[10px] bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-1.5 py-0.5 rounded">{h}</span>
+                            <span key={j} className="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 px-1.5 py-0.5 rounded">{h}</span>
                           ))}
                         </div>
                       )}

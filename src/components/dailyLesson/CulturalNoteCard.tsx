@@ -36,7 +36,7 @@ export default function CulturalNoteCard({ note }: CulturalNoteCardProps) {
         <span className="text-xl shrink-0 mt-0.5">{icon}</span>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${colors.badge}`}>
+            <span className={`text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${colors.badge}`}>
               {label}
             </span>
             <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">{note.title}</span>

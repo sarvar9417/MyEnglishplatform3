@@ -61,7 +61,7 @@ function ProgressTrendChart({ data }: { data: TrendPoint[] }) {
       <div className="flex flex-col items-center justify-center py-8 text-gray-400 dark:text-gray-500">
         <TrendingUp size={28} className="mb-2 opacity-50" />
         <p className="text-xs font-medium">Hali ma'lumot yo'q</p>
-        <p className="text-[10px] mt-0.5">Speaking session yakunlaganingizdan so'ng grafik paydo bo'ladi</p>
+        <p className="text-xs mt-0.5">Speaking session yakunlaganingizdan so'ng grafik paydo bo'ladi</p>
       </div>
     )
   }
@@ -163,7 +163,7 @@ function SRSDistributionChart({ data }: { data: SRSDistribution[] }) {
       <div className="flex flex-col items-center justify-center py-6 text-gray-400 dark:text-gray-500">
         <Brain size={24} className="mb-2 opacity-50" />
         <p className="text-xs font-medium">Hali SRS ma'lumoti yo'q</p>
-        <p className="text-[10px] mt-0.5">Iboralarni o'rganishni boshlaganingizdan so'ng ko'rinadi</p>
+        <p className="text-xs mt-0.5">Iboralarni o'rganishni boshlaganingizdan so'ng ko'rinadi</p>
       </div>
     )
   }
@@ -210,7 +210,7 @@ function SRSDistributionChart({ data }: { data: SRSDistribution[] }) {
               className="h-1.5 rounded-full mb-1"
               style={{ backgroundColor: b.color, opacity: b.count > 0 ? 0.8 : 0.2 }}
             />
-            <p className="text-[10px] font-bold text-gray-700 dark:text-gray-300">{b.count}</p>
+            <p className="text-xs font-bold text-gray-700 dark:text-gray-300">{b.count}</p>
             <p className="text-[8px] text-gray-400 dark:text-gray-500 leading-tight">{b.label}</p>
           </div>
         ))}
@@ -235,7 +235,7 @@ export default function SpeakingCharts({ trend, srsDistribution, avgScore7d, avg
           <span className="font-semibold text-gray-600 dark:text-gray-400">📈 Grafiklar</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-[10px] text-gray-400 dark:text-gray-500">
+          <span className="text-xs text-gray-400 dark:text-gray-500">
             {avgScore7d > 0 && `${avgScore7d}% ball · ${avgStability.toFixed(1)} stability`}
           </span>
           {open ? <ChevronUp size={14} className="text-gray-400" /> : <ChevronDown size={14} className="text-gray-400" />}
@@ -250,7 +250,7 @@ export default function SpeakingCharts({ trend, srsDistribution, avgScore7d, avg
             <div className="p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-indigo-200/50 dark:border-indigo-800/30">
               <div className="flex items-center gap-1.5 mb-2">
                 <TrendingUp size={12} className="text-indigo-500" />
-                <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400">Talaffuz trendi (21 kun)</span>
+                <span className="text-xs font-bold text-gray-600 dark:text-gray-400">Talaffuz trendi (21 kun)</span>
               </div>
               <ProgressTrendChart data={trend} />
             </div>
@@ -259,7 +259,7 @@ export default function SpeakingCharts({ trend, srsDistribution, avgScore7d, avg
             <div className="p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-indigo-200/50 dark:border-indigo-800/30">
               <div className="flex items-center gap-1.5 mb-2">
                 <CalendarDays size={12} className="text-emerald-500" />
-                <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400">Haftalik faollik (daqiqa)</span>
+                <span className="text-xs font-bold text-gray-600 dark:text-gray-400">Haftalik faollik (daqiqa)</span>
               </div>
               <WeeklyActivityChart data={trend} />
             </div>
@@ -269,7 +269,7 @@ export default function SpeakingCharts({ trend, srsDistribution, avgScore7d, avg
           <div className="p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-indigo-200/50 dark:border-indigo-800/30">
             <div className="flex items-center gap-1.5 mb-2">
               <Brain size={12} className="text-purple-500" />
-              <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400">SRS Stability taqsimoti</span>
+              <span className="text-xs font-bold text-gray-600 dark:text-gray-400">SRS Stability taqsimoti</span>
             </div>
             <SRSDistributionChart data={srsDistribution} />
           </div>

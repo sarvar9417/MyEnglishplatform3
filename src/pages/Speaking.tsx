@@ -345,8 +345,8 @@ export default function Speaking() {
             <Sparkles size={20} />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-black text-sm flex items-center gap-1.5">{t('speaking.bannerRoleplay')} <span className="text-[11px] bg-white/25 px-1.5 py-0.5 rounded-full font-bold">{t('speaking.bannerNew')}</span></p>
-            <p className="text-[11px] text-white/85">{t('speaking.bannerRoleplayDesc')}</p>
+            <p className="font-black text-sm flex items-center gap-1.5">{t('speaking.bannerRoleplay')} <span className="text-xs bg-white/25 px-1.5 py-0.5 rounded-full font-bold">{t('speaking.bannerNew')}</span></p>
+            <p className="text-xs text-white/85">{t('speaking.bannerRoleplayDesc')}</p>
           </div>
           <ChevronLeft size={18} className="rotate-180 shrink-0 text-white/70" />
         </button>
@@ -360,8 +360,8 @@ export default function Speaking() {
             <Mic size={20} />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-black text-sm flex items-center gap-1.5">{t('speaking.bannerPronunciation')} <span className="text-[11px] bg-white/25 px-1.5 py-0.5 rounded-full font-bold">{t('speaking.bannerNew')}</span></p>
-            <p className="text-[11px] text-white/85">{t('speaking.bannerPronunciationDesc')}</p>
+            <p className="font-black text-sm flex items-center gap-1.5">{t('speaking.bannerPronunciation')} <span className="text-xs bg-white/25 px-1.5 py-0.5 rounded-full font-bold">{t('speaking.bannerNew')}</span></p>
+            <p className="text-xs text-white/85">{t('speaking.bannerPronunciationDesc')}</p>
           </div>
           <ChevronLeft size={18} className="rotate-180 shrink-0 text-white/70" />
         </button>
@@ -429,7 +429,7 @@ export default function Speaking() {
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1.5">
-                        <span className={`badge text-[11px] ${CATEGORY_COLOR[p.category]}`}>
+                        <span className={`badge text-xs ${CATEGORY_COLOR[p.category]}`}>
                           {CATEGORY_LABEL[p.category]}
                         </span>
                         <span className="text-xs text-gray-400">{Math.floor(p.timeSeconds / 60)}:{String(p.timeSeconds % 60).padStart(2, '0')} {t('common.minutes')}</span>
@@ -437,7 +437,7 @@ export default function Speaking() {
                       <p className="text-sm text-gray-800 dark:text-gray-200 leading-snug">{p.prompt}</p>
                       <div className="flex gap-1 mt-2">
                         {p.tips.slice(0, 2).map((tip, i) => (
-                          <span key={i} className="text-[11px] bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded-full">
+                          <span key={i} className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded-full">
                             {tip}
                           </span>
                         ))}
@@ -462,7 +462,7 @@ export default function Speaking() {
                       onClick={() => { setPrompt(p); resetRecording(); setView('record') }}
                       className="w-full text-left text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 py-1.5 border-b border-gray-50 dark:border-gray-800 last:border-0 flex items-center gap-2"
                     >
-                      <span className={`badge text-[11px] flex-shrink-0 ${CATEGORY_COLOR[p.category]}`}>
+                      <span className={`badge text-xs flex-shrink-0 ${CATEGORY_COLOR[p.category]}`}>
                         {CATEGORY_LABEL[p.category]}
                       </span>
                       <span className="line-clamp-1">{p.prompt}</span>
@@ -511,7 +511,7 @@ export default function Speaking() {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1.5">
-                          <span className={`badge text-[11px] ${CATEGORY_COLOR[p.category]}`}>
+                          <span className={`badge text-xs ${CATEGORY_COLOR[p.category]}`}>
                             {CATEGORY_LABEL[p.category]}
                           </span>
                           <span className="text-xs text-gray-400">{p.level}</span>
@@ -565,7 +565,7 @@ export default function Speaking() {
             <p className="text-sm font-bold text-gray-800 dark:text-gray-200">
               {Math.round(sr.transcript.trim().split(/\s+/).filter(Boolean).length / (timer / 60))} {t('speaking.wpmLabel')}
             </p>
-            <p className="text-[11px] text-gray-400 mt-0.5">
+            <p className="text-xs text-gray-400 mt-0.5">
               {Math.round(timer / 60)}:{String(timer % 60).padStart(2, '0')} {t('common.minutes')} · {sr.transcript.trim().split(/\s+/).filter(Boolean).length} {t('common.words')}
             </p>
           </div>
@@ -634,14 +634,14 @@ export default function Speaking() {
             <div>
               <h2 className="font-bold text-sm text-gray-900 dark:text-white">{t('speaking.chatDescription')}</h2>
               {chatTopic && (
-                <span className={`badge text-[11px] ${CATEGORY_COLOR[chatTopic.category]}`}>
+                <span className={`badge text-xs ${CATEGORY_COLOR[chatTopic.category]}`}>
                   {CATEGORY_LABEL[chatTopic.category]}
                 </span>
               )}
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-[11px] text-gray-400">{t('speaking.chatTurn', { count: String(turnCount) })}</span>
+            <span className="text-xs text-gray-400">{t('speaking.chatTurn', { count: String(turnCount) })}</span>
             <button
               onClick={endChat}
               disabled={chatLoading}
@@ -689,11 +689,11 @@ export default function Speaking() {
                 {msg.role === 'assistant' && (
                   <div className="flex items-center gap-1.5 mb-1">
                     <Brain size={12} className="text-primary-500" />
-                    <span className="text-[11px] font-semibold text-primary-600">{t('speaking.chatClaude')}</span>
+                    <span className="text-xs font-semibold text-primary-600">{t('speaking.chatClaude')}</span>
                   </div>
                 )}
                 <p className="text-sm leading-relaxed">{msg.content}</p>
-                <p className={`text-[11px] mt-1 ${msg.role === 'user' ? 'text-white/60' : 'text-gray-400'}`}>
+                <p className={`text-xs mt-1 ${msg.role === 'user' ? 'text-white/60' : 'text-gray-400'}`}>
                   {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </p>
               </div>
@@ -706,7 +706,7 @@ export default function Speaking() {
               <div className="max-w-[85%] rounded-2xl px-4 py-2.5 bg-gray-100 text-gray-800 rounded-bl-md">
                 <div className="flex items-center gap-1.5 mb-1">
                   <Brain size={12} className="text-primary-500" />
-                  <span className="text-[11px] font-semibold text-primary-600">Claude AI</span>
+                  <span className="text-xs font-semibold text-primary-600">Claude AI</span>
                 </div>
                 <p className="text-sm leading-relaxed">
                   {streamingText}
@@ -813,12 +813,12 @@ export default function Speaking() {
           {/* Tips */}
           <div className="mt-2 text-center">
             {srReady && !chatLoading && (
-              <p className="text-[11px] text-gray-400">
+              <p className="text-xs text-gray-400">
                 {t('speaking.chatInputTip')}
               </p>
             )}
             {chatLoading && (
-              <p className="text-[11px] text-primary-500 animate-pulse">{t('speaking.chatClaudeLoading')}</p>
+              <p className="text-xs text-primary-500 animate-pulse">{t('speaking.chatClaudeLoading')}</p>
             )}
           </div>
         </div>
@@ -899,7 +899,7 @@ export default function Speaking() {
           <div className="space-y-2 mt-3">
             {chatMessages.map((msg) => (
               <div key={msg.timestamp} className={`p-2 rounded-lg ${msg.role === 'user' ? 'bg-b2-50' : 'bg-gray-50'}`}>
-                <p className={`text-[11px] font-semibold mb-0.5 ${msg.role === 'user' ? 'text-b2-600' : 'text-gray-500'}`}>
+                <p className={`text-xs font-semibold mb-0.5 ${msg.role === 'user' ? 'text-b2-600' : 'text-gray-500'}`}>
                   {msg.role === 'user' ? t('speaking.chatYou') : t('speaking.chatClaude')}
                 </p>
                 <p className="text-xs text-gray-700 leading-relaxed">{msg.content}</p>
@@ -939,7 +939,7 @@ export default function Speaking() {
           <ChevronLeft size={18} />
         </button>
         <div>
-          <span className={`badge text-[11px] ${CATEGORY_COLOR[prompt.category]}`}>
+          <span className={`badge text-xs ${CATEGORY_COLOR[prompt.category]}`}>
             {CATEGORY_LABEL[prompt.category]}
           </span>
         </div>

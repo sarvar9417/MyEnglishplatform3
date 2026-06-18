@@ -78,7 +78,7 @@ export default function PhraseScrambleGame({ phrases, onComplete, onClose }: Pro
       </div>
 
       <div className="text-center mb-6">
-        <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">
+        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
           O'zbekcha gap
         </p>
         <p className="text-lg font-medium text-gray-800 leading-relaxed">

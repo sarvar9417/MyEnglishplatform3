@@ -93,7 +93,7 @@ export default function HoldMicButton({
       {sliding && !locked && (
         <div className="flex flex-col items-center text-gray-400 animate-bounce">
           <ChevronUp size={16} />
-          <span className="text-[10px] font-medium">qulflash uchun suring</span>
+          <span className="text-xs font-medium">qulflash uchun suring</span>
         </div>
       )}
 

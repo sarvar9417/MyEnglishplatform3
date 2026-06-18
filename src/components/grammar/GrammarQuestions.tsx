@@ -56,7 +56,7 @@ export function FillBlankQuestion({
         ? isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
         : 'bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800'
     }`}>
-      <p className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-3">
+      <p className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-3">
         {t('grammar.fillBlankTitle')}
       </p>
       <p className="text-sm text-gray-700 leading-loose flex flex-wrap items-center gap-y-1">
@@ -117,7 +117,7 @@ export function MCQuestion({
         ? isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
         : 'bg-violet-50 dark:bg-violet-900/20 border-violet-100 dark:border-violet-800'
     }`}>
-      <p className="text-[11px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider mb-3">
+      <p className="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider mb-3">
         {t('grammar.mcTitle')}
       </p>
       <p className="text-sm font-semibold text-gray-800 mb-3 leading-relaxed">{ex.question}</p>
@@ -141,7 +141,7 @@ export function MCQuestion({
               className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-all ${cls}`}
             >
               <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center
-                text-[10px] font-bold flex-shrink-0">
+                text-xs font-bold flex-shrink-0">
                 {OPTION_LABELS[i]}
               </span>
               {opt}
@@ -174,7 +174,7 @@ export function ErrorCorrectionQuestion({
         ? isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
         : 'bg-amber-50 dark:bg-amber-900/20 border-amber-100 dark:border-amber-800'
     }`}>
-      <p className="text-[11px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-3">
+      <p className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-3">
         {t('grammar.errorCorrectionTitle')}
       </p>
       <div className="bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-700 rounded-xl px-3 py-2 mb-3">
@@ -229,7 +229,7 @@ export function TransformQuestion({
         ? isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
         : 'bg-teal-50 border-teal-100'
     }`}>
-      <p className="text-[11px] font-bold text-teal-600 uppercase tracking-wider mb-3">
+      <p className="text-xs font-bold text-teal-600 uppercase tracking-wider mb-3">
         {t('grammar.transformTitle')}
       </p>
       <div className="bg-white border border-teal-200 rounded-xl px-3 py-2 mb-2">

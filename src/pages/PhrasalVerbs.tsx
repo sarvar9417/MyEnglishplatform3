@@ -170,7 +170,7 @@ function PhrasalVerbCard({ verb, onClick }: { verb: PhrasalVerb; onClick: () => 
         <h3 className="font-bold text-base text-gray-900 dark:text-gray-100">
           {verb.phrasalVerb}
         </h3>
-        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${
+        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${
           verb.level === 'B2'
             ? 'bg-b2-100 text-b2-700 dark:bg-b2-900/30 dark:text-b2-300'
             : 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300'

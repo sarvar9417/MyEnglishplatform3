@@ -66,17 +66,17 @@ export default function CooldownStep({ day, speakScore, spokenSeconds, onNext }:
           <div className="mt-4 flex items-center justify-center gap-6 text-sm">
             <div className="text-center">
               <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{speakScore}%</p>
-              <p className="text-[10px] text-gray-400 uppercase tracking-wider">Talaffuz</p>
+              <p className="text-xs text-gray-400 uppercase tracking-wider">Talaffuz</p>
             </div>
             <div className="w-px h-10 bg-emerald-200 dark:bg-emerald-800" />
             <div className="text-center">
               <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{spokenLabel}</p>
-              <p className="text-[10px] text-gray-400 uppercase tracking-wider">Gapirilgan vaqt</p>
+              <p className="text-xs text-gray-400 uppercase tracking-wider">Gapirilgan vaqt</p>
             </div>
             <div className="w-px h-10 bg-emerald-200 dark:bg-emerald-800" />
             <div className="text-center">
               <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{day.chunks.length}</p>
-              <p className="text-[10px] text-gray-400 uppercase tracking-wider">Iboralar</p>
+              <p className="text-xs text-gray-400 uppercase tracking-wider">Iboralar</p>
             </div>
           </div>
           <button
@@ -105,7 +105,7 @@ export default function CooldownStep({ day, speakScore, spokenSeconds, onNext }:
                 key={c.id}
                 className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
-                <span className="w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-300 text-[11px] font-bold flex items-center justify-center shrink-0">
+                <span className="w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-300 text-xs font-bold flex items-center justify-center shrink-0">
                   {i + 1}
                 </span>
                 <div className="flex-1 min-w-0">
@@ -121,7 +121,7 @@ export default function CooldownStep({ day, speakScore, spokenSeconds, onNext }:
                   </div>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{c.uz}</p>
                   {c.grammarTip && (
-                    <p className="text-[10px] text-primary-600 dark:text-primary-400 mt-0.5 italic">
+                    <p className="text-xs text-primary-600 dark:text-primary-400 mt-0.5 italic">
                       💡 {c.grammarTip}
                     </p>
                   )}
@@ -149,15 +149,15 @@ export default function CooldownStep({ day, speakScore, spokenSeconds, onNext }:
       <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="text-center">
           <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Mini recall</p>
-          <p className="text-[11px] text-gray-400 mt-0.5">{quizIndex + 1} / {quizChunks.length}</p>
+          <p className="text-xs text-gray-400 mt-0.5">{quizIndex + 1} / {quizChunks.length}</p>
         </div>
 
         {!quizRevealed ? (
           <div className="rounded-2xl p-6 bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20 border border-violet-200 dark:border-violet-800/50 text-center">
-            <p className="text-[11px] font-bold text-violet-500 dark:text-violet-400 uppercase tracking-wider">Inglizchasini eslang</p>
+            <p className="text-xs font-bold text-violet-500 dark:text-violet-400 uppercase tracking-wider">Inglizchasini eslang</p>
             <p className="text-xl font-black text-gray-900 dark:text-gray-100 mt-2">{chunk.uz}</p>
             {chunk.ipa && (
-              <p className="text-[11px] text-violet-400 dark:text-violet-500 mt-1 font-mono">{chunk.ipa}</p>
+              <p className="text-xs text-violet-400 dark:text-violet-500 mt-1 font-mono">{chunk.ipa}</p>
             )}
             <div className="mt-5 flex gap-3">
               <button
@@ -182,7 +182,7 @@ export default function CooldownStep({ day, speakScore, spokenSeconds, onNext }:
             <p className="text-lg font-black text-gray-900 dark:text-gray-100 mt-2">{chunk.en}</p>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{chunk.uz}</p>
             {chunk.grammarTip && (
-              <p className="text-[10px] text-primary-600 dark:text-primary-400 mt-2 italic">
+              <p className="text-xs text-primary-600 dark:text-primary-400 mt-2 italic">
                 💡 {chunk.grammarTip}
               </p>
             )}

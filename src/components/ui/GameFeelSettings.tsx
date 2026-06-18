@@ -49,7 +49,7 @@ export default function GameFeelSettings() {
             </div>
             <div>
               <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">Tovush</p>
-              <p className="text-[10px] text-gray-400 dark:text-gray-500">
+              <p className="text-xs text-gray-400 dark:text-gray-500">
                 To'g'ri javob, streak, level-up ovozlari
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function GameFeelSettings() {
             </div>
             <div>
               <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">Vibratsiya</p>
-              <p className="text-[10px] text-gray-400 dark:text-gray-500">
+              <p className="text-xs text-gray-400 dark:text-gray-500">
                 Noto'g'ri javob, combo, boss fight effektlari
               </p>
             </div>

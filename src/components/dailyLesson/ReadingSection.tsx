@@ -72,7 +72,7 @@ export default function ReadingSection({ section, addXP }: Props) {
       <div className="rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 p-5 text-white">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-1.5 flex items-center gap-1.5">
+            <p className="text-xs font-bold uppercase tracking-widest opacity-80 mb-1.5 flex items-center gap-1.5">
               <BookOpen size={12} /> Reading Comprehension
             </p>
             <h3 className="text-xl font-bold leading-snug">{passageTitle}</h3>
@@ -101,7 +101,7 @@ export default function ReadingSection({ section, addXP }: Props) {
             <div className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700 grid gap-2">
               {section.vocabulary.map((v, i) => (
                 <div key={i} className="flex items-start gap-2.5 bg-sky-50/50 dark:bg-sky-900/10 rounded-xl px-3 py-2">
-                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 text-[10px] font-bold shrink-0 mt-0.5">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 text-xs font-bold shrink-0 mt-0.5">
                     {i + 1}
                   </span>
                   <div className="flex-1 min-w-0">
@@ -218,7 +218,7 @@ export default function ReadingSection({ section, addXP }: Props) {
                       else if (isUserWrong) cls = 'border-red-400 dark:border-red-600 bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300'
                       return (
                         <div key={i} className={`flex items-center gap-2.5 px-3 py-2 rounded-xl border text-sm ${cls}`}>
-                          <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-[10px] font-bold shrink-0">
+                          <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold shrink-0">
                             {String.fromCharCode(65 + i)}
                           </span>
                           <span className="flex-1">{opt}</span>
@@ -277,7 +277,7 @@ export default function ReadingSection({ section, addXP }: Props) {
                             : 'border-gray-200 dark:border-gray-600 hover:border-sky-300 dark:hover:border-sky-700 text-gray-700 dark:text-gray-300'
                         }`}
                       >
-                        <span className={`w-5 h-5 rounded-full border flex items-center justify-center text-[10px] font-bold shrink-0 transition-colors ${isSel ? 'bg-sky-500 border-sky-500 text-white' : 'border-current'}`}>
+                        <span className={`w-5 h-5 rounded-full border flex items-center justify-center text-xs font-bold shrink-0 transition-colors ${isSel ? 'bg-sky-500 border-sky-500 text-white' : 'border-current'}`}>
                           {String.fromCharCode(65 + i)}
                         </span>
                         {opt}

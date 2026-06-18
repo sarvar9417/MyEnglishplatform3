@@ -135,7 +135,7 @@ export function LevelExplainer({ currentLevel, onNext }: LevelExplainerProps) {
                     </span>
                   )}
                   {isCurrent && (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-bold text-primary-500 bg-primary-50 dark:bg-primary-900/30 px-2 py-0.5 rounded-full">
+                    <span className="inline-flex items-center gap-1 text-xs font-bold text-primary-500 bg-primary-50 dark:bg-primary-900/30 px-2 py-0.5 rounded-full">
                       <Sparkles size={10} /> Hozir shu yerda
                     </span>
                   )}
@@ -168,7 +168,7 @@ export function LevelExplainer({ currentLevel, onNext }: LevelExplainerProps) {
                         {level.examples.map((ex, i) => (
                           <span
                             key={i}
-                            className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
+                            className={`text-xs font-medium px-2 py-0.5 rounded-full ${
                               isCurrent
                                 ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400'
                                 : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
@@ -187,7 +187,7 @@ export function LevelExplainer({ currentLevel, onNext }: LevelExplainerProps) {
                     <div
                       className={`h-1.5 rounded-full w-full bg-gradient-to-r ${level.color} opacity-40`}
                     />
-                    <p className="text-[10px] text-gray-400 mt-1">
+                    <p className="text-xs text-gray-400 mt-1">
                       {level.skills.length} ta ko'nikma
                     </p>
                   </div>

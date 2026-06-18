@@ -21,7 +21,7 @@ export default function WordRow({
     <div>
       <div className="card flex items-center justify-between py-2.5 px-4">
         <div className="flex items-center gap-2.5 min-w-0 flex-1">
-          <span className="text-[10px] font-mono text-gray-300 dark:text-gray-600 w-5 text-right shrink-0">
+          <span className="text-xs font-mono text-gray-300 dark:text-gray-600 w-5 text-right shrink-0">
             {globalIndex}
           </span>
           <div className="min-w-0 flex-1">
@@ -32,7 +32,7 @@ export default function WordRow({
               </p>
               <AudioButton text={word.english} size="sm" />
               {word.phonetic && (
-                <span className="text-[10px] text-gray-400 dark:text-gray-500 font-mono shrink-0">/{word.phonetic}/</span>
+                <span className="text-xs text-gray-400 dark:text-gray-500 font-mono shrink-0">/{word.phonetic}/</span>
               )}
             </div>
             <p className="text-xs text-gray-400 dark:text-gray-500 truncate">
@@ -44,7 +44,7 @@ export default function WordRow({
         <div className="flex items-center gap-1 flex-shrink-0 ml-2">
           <button
             onClick={() => setShowAI(v => !v)}
-            className={`text-[10px] font-medium px-1.5 py-0.5 rounded transition-all
+            className={`text-xs font-medium px-1.5 py-0.5 rounded transition-all
               flex items-center gap-1
               ${showAI
                 ? 'bg-indigo-100 text-indigo-700'
@@ -54,7 +54,7 @@ export default function WordRow({
           >
             🤖
           </button>
-          <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${
+          <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${
             word.is_learned ? 'bg-yellow-50 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400' :
             word.level === 'A1' ? 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400' :
             word.level === 'A2' ? 'bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400' :
@@ -64,7 +64,7 @@ export default function WordRow({
             {word.is_learned ? '⭐ Yodlagan' : word.level}
           </span>
           {!word.is_learned && (
-            <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${
+            <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${
               word.is_new ? 'bg-gray-50 dark:bg-gray-700 text-gray-400 dark:text-gray-500' : 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
             }`}>
               {word.is_new ? 'Yangi' : `Box ${word.box}`}

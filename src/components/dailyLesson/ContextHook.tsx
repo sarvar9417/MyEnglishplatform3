@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { Headphones, Eye, EyeOff, Play, Check } from 'lucide-react'
 import { speak, stopSpeaking, isSpeaking as isTTSpeaking } from '../../lib/tts'
+import { monitoring } from '../../lib/monitoring'
 
 // ─── Transcript split helpers ───────────────────────────────────────────
 
@@ -88,7 +89,7 @@ export function ContextHook({ transcript, isExamples = false }: ContextHookProps
         setActiveSectionIdx(null)
       }
     } catch {
-      // Stopped or error
+      monitoring.captureMessage('TTS playback failed or was interrupted', 'warn')
     } finally {
       setIsPlaying(false)
       setActiveSectionIdx(null)
@@ -195,7 +196,7 @@ export function ContextHook({ transcript, isExamples = false }: ContextHookProps
                 style={{ width: `${(completedCount / sections.length) * 100}%` }}
               />
             </div>
-            <span className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 shrink-0">
+            <span className="text-xs font-semibold text-gray-400 dark:text-gray-500 shrink-0">
               {completedCount}/{sections.length}
             </span>
           </div>
@@ -217,7 +218,7 @@ export function ContextHook({ transcript, isExamples = false }: ContextHookProps
               </div>
               <div className="text-left">
                 <p className="text-sm font-bold">{audioLabel}</p>
-                <p className="text-[11px] text-white/70">
+                <p className="text-xs text-white/70">
                   {sections.length > 1 ? `${sections.length} ta qism` : '1 ta qism'}
                   {completedCount > 0 && completedCount < sections.length && ` · ${completedCount}/${sections.length} tugallandi`}
                   {completedCount === sections.length && sections.length > 0 && ' ✅ Barchasi tinglandi'}
@@ -239,7 +240,7 @@ export function ContextHook({ transcript, isExamples = false }: ContextHookProps
                 <p className="text-sm font-bold text-indigo-700 dark:text-indigo-300">
                   Tinglanmoqda...
                 </p>
-                <p className="text-[11px] text-indigo-500 dark:text-indigo-400">
+                <p className="text-xs text-indigo-500 dark:text-indigo-400">
                   {activeSectionIdx !== null ? `Qism ${activeSectionIdx + 1}/${sections.length}` : ''} · Bosing → to'xtatish
                 </p>
               </div>
@@ -306,7 +307,7 @@ export function ContextHook({ transcript, isExamples = false }: ContextHookProps
                 `}
               >
                 {/* Section number badge */}
-                <span className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors
+                <span className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors
                   ${isActive
                     ? 'bg-indigo-500 text-white'
                     : isCompleted

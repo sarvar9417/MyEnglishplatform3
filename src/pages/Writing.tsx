@@ -292,7 +292,7 @@ export default function Writing() {
             <div className="flex items-center gap-2 mb-2.5">
               <span className="text-sm font-semibold text-rose-600">{t('writing.errorAnalysisTitle')}</span>
               {errors.length > 0 && (
-                <span className="text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-600">{errors.length}</span>
+                <span className="text-xs font-bold px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-600">{errors.length}</span>
               )}
             </div>
             {errorsLoading && errors.length === 0 ? (
@@ -301,7 +301,7 @@ export default function Writing() {
               <div className="space-y-2.5">
                 {errors.map((e, i) => (
                   <div key={`err-${e.category}-${i}`} className="p-2.5 rounded-lg bg-gray-50 dark:bg-gray-800 text-xs space-y-1">
-                    <span className="inline-block text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">{e.category}</span>
+                    <span className="inline-block text-xs font-bold px-1.5 py-0.5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">{e.category}</span>
                     <p className="text-rose-500 line-through">{e.wrong}</p>
                     <p className="text-emerald-600 dark:text-emerald-400 font-semibold">✓ {e.correct}</p>
                     <p className="text-gray-500 dark:text-gray-400">💡 {e.explanation}</p>
@@ -393,7 +393,7 @@ export default function Writing() {
         <button
           onClick={() => setIeltsMode((v) => !v)}
           disabled={evaluating}
-          className={`text-[11px] font-semibold px-2.5 py-1 rounded-full border transition-all ${
+          className={`text-xs font-semibold px-2.5 py-1 rounded-full border transition-all ${
             ieltsMode
               ? 'bg-b2-100 border-b2-200 text-b2-700'
               : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-400 hover:text-gray-600'
@@ -406,7 +406,7 @@ export default function Writing() {
       {/* Prompt */}
       <div className="card mb-4">
         <div className="flex items-center gap-2 mb-2">
-          <span className={`badge text-[11px] ${TYPE_COLOR[prompt.type]}`}>
+          <span className={`badge text-xs ${TYPE_COLOR[prompt.type]}`}>
             {TYPE_LABEL[prompt.type]}
           </span>
           <span className="text-xs text-gray-400">{t('writing.wordCount', { count: String(prompt.wordLimit), limit: '' })} · {t('writing.promptTimeLimit', { minutes: String(prompt.timeMinutes) })}</span>
@@ -430,7 +430,7 @@ export default function Writing() {
       <div className="card mb-3">
         {/* Draft indikator */}
         {essay.trim().length > 0 && (
-          <div className="flex items-center gap-1.5 text-[11px] text-gray-400 mb-2">
+          <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             {t('writing.draftSaved')}
           </div>

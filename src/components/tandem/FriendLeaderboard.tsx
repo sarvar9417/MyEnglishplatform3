@@ -93,7 +93,7 @@ export default function FriendLeaderboard() {
         <div className="flex items-center gap-1">
           <button
             onClick={() => { setTab('xp'); setExpanded(false) }}
-            className={`px-2.5 py-1 text-[11px] font-semibold rounded-lg transition-all ${
+            className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all ${
               tab === 'xp'
                 ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300'
                 : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
@@ -103,7 +103,7 @@ export default function FriendLeaderboard() {
           </button>
           <button
             onClick={() => { setTab('elo'); setExpanded(false) }}
-            className={`px-2.5 py-1 text-[11px] font-semibold rounded-lg transition-all flex items-center gap-1 ${
+            className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all flex items-center gap-1 ${
               tab === 'elo'
                 ? 'bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300'
                 : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
@@ -116,7 +116,7 @@ export default function FriendLeaderboard() {
 
       {/* Elo info banner */}
       {tab === 'elo' && (
-        <div className="p-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/30 text-[11px] text-purple-600 dark:text-purple-400 flex items-start gap-1.5">
+        <div className="p-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/30 text-xs text-purple-600 dark:text-purple-400 flex items-start gap-1.5">
           <Swords size={13} className="shrink-0 mt-0.5" />
           <span>Elo rating — duel natijalariga asoslangan mahorat darajasi. Yangi foydalanuvchilar 1000 Elo dan boshlaydi.</span>
         </div>
@@ -185,7 +185,7 @@ export default function FriendLeaderboard() {
                       {eloEntry.name}
                     </p>
                     {isUser && (
-                      <span className="text-[10px] font-bold text-primary-600 bg-primary-100 dark:bg-primary-900/40 px-1.5 py-0.5 rounded-full shrink-0">Siz</span>
+                      <span className="text-xs font-bold text-primary-600 bg-primary-100 dark:bg-primary-900/40 px-1.5 py-0.5 rounded-full shrink-0">Siz</span>
                     )}
                   </div>
                   <div className="relative mt-1.5 h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
@@ -201,11 +201,11 @@ export default function FriendLeaderboard() {
                     <p className="text-sm font-bold text-gray-900 dark:text-gray-100">
                       {tierInfo.emoji} {eloEntry.elo}
                     </p>
-                    <p className="text-[10px] text-gray-400">Elo</p>
+                    <p className="text-xs text-gray-400">Elo</p>
                   </div>
                   <div className="text-xs text-gray-400 text-right min-w-[24px]">
                     <span className="font-bold">{eloEntry.matchesPlayed}</span>
-                    <p className="text-[10px]">o'yin</p>
+                    <p className="text-xs">o'yin</p>
                   </div>
                 </div>
               </div>
@@ -257,7 +257,7 @@ export default function FriendLeaderboard() {
                     {xpEntry.name}
                   </p>
                   {isUser && (
-                    <span className="text-[10px] font-bold text-primary-600 bg-primary-100 dark:bg-primary-900/40 px-1.5 py-0.5 rounded-full shrink-0">
+                    <span className="text-xs font-bold text-primary-600 bg-primary-100 dark:bg-primary-900/40 px-1.5 py-0.5 rounded-full shrink-0">
                       Siz
                     </span>
                   )}
@@ -284,7 +284,7 @@ export default function FriendLeaderboard() {
                   <p className="text-sm font-bold text-gray-900 dark:text-gray-100">
                     {emoji} {xpEntry.totalXP.toLocaleString()}
                   </p>
-                  <p className="text-[10px] text-gray-400">XP</p>
+                  <p className="text-xs text-gray-400">XP</p>
                 </div>
                 <div className="flex items-center gap-1 text-xs text-orange-500 min-w-[32px] justify-end">
                   <Flame size={11} />

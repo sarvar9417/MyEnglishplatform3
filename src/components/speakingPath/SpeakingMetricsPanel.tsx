@@ -77,7 +77,7 @@ export default function SpeakingMetricsPanel({ stats, showWeeklyGoal, className 
           {/* Weekly progress bar */}
           {showWeeklyGoal && (
             <div>
-              <div className="flex items-center justify-between text-[10px] text-gray-400 mb-1">
+              <div className="flex items-center justify-between text-xs text-gray-400 mb-1">
                 <span>Haftalik maqsad</span>
                 <span>{stats.todayMinutes}/15 daq bugun</span>
               </div>
@@ -95,9 +95,9 @@ export default function SpeakingMetricsPanel({ stats, showWeeklyGoal, className 
             <div className="pt-1 border-t border-gray-100 dark:border-gray-700">
               <div className="flex items-center gap-1.5 mb-2">
                 <AlertTriangle size={12} className="text-amber-500" />
-                <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400">Eng ko'p xato qilingan tovushlar</span>
+                <span className="text-xs font-bold text-gray-600 dark:text-gray-400">Eng ko'p xato qilingan tovushlar</span>
                 {errorDelta > 0 && (
-                  <span className="text-[10px] text-rose-500 font-semibold">+{errorDelta} (7 kun)</span>
+                  <span className="text-xs text-rose-500 font-semibold">+{errorDelta} (7 kun)</span>
                 )}
               </div>
 
@@ -107,7 +107,7 @@ export default function SpeakingMetricsPanel({ stats, showWeeklyGoal, className 
                   const pct = totalErrorCount > 0 ? (err.count / totalErrorCount) * 100 : 0
                   return (
                     <div key={err.soundId}>
-                      <div className="flex items-center justify-between text-[11px]">
+                      <div className="flex items-center justify-between text-xs">
                         <span className="text-gray-700 dark:text-gray-300">{err.label}</span>
                         <span className="text-gray-500">{err.count}×</span>
                       </div>
@@ -127,14 +127,14 @@ export default function SpeakingMetricsPanel({ stats, showWeeklyGoal, className 
                 <div className="mt-2.5">
                   <div className="flex items-center gap-1.5 mb-1.5">
                     <TrendingUp size={12} className="text-emerald-500" />
-                    <span className="text-[11px] font-bold text-gray-600 dark:text-gray-400">Tavsiya qilingan mashqlar</span>
+                    <span className="text-xs font-bold text-gray-600 dark:text-gray-400">Tavsiya qilingan mashqlar</span>
                   </div>
                   <div className="space-y-1">
                     {drillSuggestions.map(d => (
                       <button
                         key={d.categoryId}
                         onClick={() => navigate('/pronunciation')}
-                        className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-gray-50 dark:bg-gray-700/50 hover:bg-rose-50 dark:hover:bg-rose-900/20 text-[11px] transition-colors"
+                        className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-gray-50 dark:bg-gray-700/50 hover:bg-rose-50 dark:hover:bg-rose-900/20 text-xs transition-colors"
                       >
                         <span className="text-gray-700 dark:text-gray-300">{d.label}</span>
                         <span className="text-gray-400">{d.count}× xato</span>

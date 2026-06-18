@@ -301,8 +301,8 @@ export default function FreePractice() {
             <Sparkles size={20} />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-black text-sm flex items-center gap-1.5">AI Suhbat Hamrohi <span className="text-[11px] bg-white/25 px-1.5 py-0.5 rounded-full font-bold">YANGI</span></p>
-            <p className="text-[11px] text-white/85">Real vaziyatlarda rol o'ynang — restoran, ish suhbati, aeroport…</p>
+            <p className="font-black text-sm flex items-center gap-1.5">AI Suhbat Hamrohi <span className="text-xs bg-white/25 px-1.5 py-0.5 rounded-full font-bold">YANGI</span></p>
+            <p className="text-xs text-white/85">Real vaziyatlarda rol o'ynang — restoran, ish suhbati, aeroport…</p>
           </div>
           <ChevronLeft size={18} className="rotate-180 shrink-0 text-white/70" />
         </button>
@@ -315,8 +315,8 @@ export default function FreePractice() {
             <Mic size={20} />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-black text-sm flex items-center gap-1.5">AI Talaffuz Murabbiysi <span className="text-[11px] bg-white/25 px-1.5 py-0.5 rounded-full font-bold">YANGI</span></p>
-            <p className="text-[11px] text-white/85">Tovushlarni mashq qiling — th, w/v, unlilar, urg'u…</p>
+            <p className="font-black text-sm flex items-center gap-1.5">AI Talaffuz Murabbiysi <span className="text-xs bg-white/25 px-1.5 py-0.5 rounded-full font-bold">YANGI</span></p>
+            <p className="text-xs text-white/85">Tovushlarni mashq qiling — th, w/v, unlilar, urg'u…</p>
           </div>
           <ChevronLeft size={18} className="rotate-180 shrink-0 text-white/70" />
         </button>
@@ -357,13 +357,13 @@ export default function FreePractice() {
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className={`badge text-[11px] ${CATEGORY_COLOR[p.category]}`}>{CATEGORY_LABEL[p.category]}</span>
+                    <span className={`badge text-xs ${CATEGORY_COLOR[p.category]}`}>{CATEGORY_LABEL[p.category]}</span>
                     <span className="text-xs text-gray-400">{Math.floor(p.timeSeconds / 60)}:{String(p.timeSeconds % 60).padStart(2, '0')}</span>
                   </div>
                   <p className="text-sm text-gray-800 dark:text-gray-200 leading-snug">{p.prompt}</p>
                   <div className="flex gap-1 mt-1.5">
                     {p.tips.slice(0, 2).map((tip, i) => (
-                      <span key={i} className="text-[11px] bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded-full">{tip}</span>
+                      <span key={i} className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded-full">{tip}</span>
                     ))}
                   </div>
                 </div>
@@ -391,7 +391,7 @@ export default function FreePractice() {
                 onClick={() => startChat(topic)}
                 className="card text-left p-3 hover:shadow-md active:scale-[0.98] transition-all"
               >
-                <span className={`badge text-[10px] ${CATEGORY_COLOR[p.category]}`}>{CATEGORY_LABEL[p.category]}</span>
+                <span className={`badge text-xs ${CATEGORY_COLOR[p.category]}`}>{CATEGORY_LABEL[p.category]}</span>
                 <p className="text-xs text-gray-700 dark:text-gray-300 mt-1 line-clamp-2">{p.prompt}</p>
               </button>
             )
@@ -412,7 +412,7 @@ export default function FreePractice() {
                   onClick={() => { setPrompt(p); resetRecording(); setView('record') }}
                   className="w-full text-left text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 py-1.5 border-b border-gray-50 dark:border-gray-800 last:border-0 flex items-center gap-2"
                 >
-                  <span className={`badge text-[10px] flex-shrink-0 ${CATEGORY_COLOR[p.category]}`}>{CATEGORY_LABEL[p.category]}</span>
+                  <span className={`badge text-xs flex-shrink-0 ${CATEGORY_COLOR[p.category]}`}>{CATEGORY_LABEL[p.category]}</span>
                   <span className="line-clamp-1">{p.prompt}</span>
                 </button>
               ))}
@@ -535,7 +535,7 @@ export default function FreePractice() {
           <div className="card bg-gray-50 dark:bg-gray-800/60">
             <p className="text-xs font-semibold text-gray-500 mb-1">⚡ Nutq tezligi</p>
             <p className="text-sm font-bold text-gray-800 dark:text-gray-200">{Math.round(sr.transcript.trim().split(/\s+/).filter(Boolean).length / (timer / 60))} so'z/daqiqa</p>
-            <p className="text-[11px] text-gray-400 mt-0.5">{Math.round(timer / 60)}:{String(timer % 60).padStart(2, '0')} · {sr.transcript.trim().split(/\s+/).filter(Boolean).length} so'z</p>
+            <p className="text-xs text-gray-400 mt-0.5">{Math.round(timer / 60)}:{String(timer % 60).padStart(2, '0')} · {sr.transcript.trim().split(/\s+/).filter(Boolean).length} so'z</p>
           </div>
         )}
 
@@ -601,7 +601,7 @@ export default function FreePractice() {
           {chatMessages.map((msg) => (
             <div key={msg.timestamp} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 ${msg.role === 'user' ? 'bg-primary-600 text-white rounded-br-md' : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-bl-md'}`}>
-                {msg.role === 'assistant' && <div className="flex items-center gap-1.5 mb-1"><Brain size={12} className="text-primary-500" /><span className="text-[11px] font-semibold text-primary-600">Claude AI</span></div>}
+                {msg.role === 'assistant' && <div className="flex items-center gap-1.5 mb-1"><Brain size={12} className="text-primary-500" /><span className="text-xs font-semibold text-primary-600">Claude AI</span></div>}
                 <p className="text-sm leading-relaxed">{msg.content}</p>
               </div>
             </div>
@@ -674,8 +674,8 @@ export default function FreePractice() {
             )}
           </div>
 
-          {srReady && !chatLoading && <p className="text-[11px] text-gray-400 text-center">Mikrofon tugmasini bosing, gapiring va "Yuborish" ni bosing.</p>}
-          {chatLoading && <p className="text-[11px] text-primary-500 animate-pulse text-center">Claude javob yozmoqda...</p>}
+          {srReady && !chatLoading && <p className="text-xs text-gray-400 text-center">Mikrofon tugmasini bosing, gapiring va "Yuborish" ni bosing.</p>}
+          {chatLoading && <p className="text-xs text-primary-500 animate-pulse text-center">Claude javob yozmoqda...</p>}
         </div>
       </div>
     )

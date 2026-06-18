@@ -96,6 +96,7 @@ export default function LessonDuelComparison({ lessonId, lessonTitle, lessonScor
         setLoading(false)
       }).catch(() => setLoading(false))
     } catch {
+      monitoring.captureMessage('Failed to load lesson challenge data from localStorage', 'warn')
       setLoading(false)
     }
   }, [lessonId])
@@ -185,7 +186,7 @@ export default function LessonDuelComparison({ lessonId, lessonTitle, lessonScor
             </div>
             <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-0.5">Siz</p>
             <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{myScore}<span className="text-sm text-gray-400 font-medium">/{duelTotal}</span></p>
-            <p className="text-[11px] text-gray-500">{myPct}%</p>
+            <p className="text-xs text-gray-500">{myPct}%</p>
           </div>
 
           {/* VS Badge */}
@@ -212,7 +213,7 @@ export default function LessonDuelComparison({ lessonId, lessonTitle, lessonScor
               {theirScore !== null ? theirScore : '?'}
               <span className="text-sm text-gray-400 font-medium">/{duelTotal}</span>
             </p>
-            <p className="text-[11px] text-gray-500">{theirScore !== null ? `${theirPct}%` : '⏳'}</p>
+            <p className="text-xs text-gray-500">{theirScore !== null ? `${theirPct}%` : '⏳'}</p>
           </div>
         </div>
 
@@ -222,7 +223,7 @@ export default function LessonDuelComparison({ lessonId, lessonTitle, lessonScor
             <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
               ⏳ {opponentName} o'ynashini kuting
             </p>
-            <p className="text-[11px] text-amber-600 dark:text-amber-400 mt-0.5">
+            <p className="text-xs text-amber-600 dark:text-amber-400 mt-0.5">
               Natija bilinishi uchun ikkala o'yinchi ham o'ynashi kerak
             </p>
           </div>
@@ -240,7 +241,7 @@ export default function LessonDuelComparison({ lessonId, lessonTitle, lessonScor
             <p className={`font-bold text-sm ${resultColor}`}>
               {resultEmoji} {resultText}
             </p>
-            <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
               Dars natijangiz: {lessonScore}% · Duel: {myScore}/{duelTotal}
             </p>
           </div>

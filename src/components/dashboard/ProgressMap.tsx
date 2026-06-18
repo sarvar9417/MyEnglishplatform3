@@ -130,7 +130,7 @@ export default function ProgressMap() {
           </div>
           <div>
             <h3 className="font-bold text-gray-900 text-sm">90-Kunlik Yo'l Xaritasi</h3>
-            <p className="text-[10px] text-gray-400">
+            <p className="text-xs text-gray-400">
               {currentLevel} · {currentWeek}-hafta (kun {currentDay})
             </p>
           </div>
@@ -141,7 +141,7 @@ export default function ProgressMap() {
           {PHASES.map((p) => (
             <span
               key={p.label}
-              className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border transition-all
+              className={`text-xs font-semibold px-2 py-0.5 rounded-full border transition-all
                 ${currentPhase?.label === p.label
                   ? `${p.bg} text-white border-transparent`
                   : `${p.lightBg} ${p.border} text-gray-600`
@@ -462,7 +462,7 @@ export default function ProgressMap() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               {/* Status badge */}
-              <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+              <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
                 highlight === currentWeek
                   ? 'bg-primary-100 text-primary-700'
                   : highlight < currentWeek
@@ -475,13 +475,13 @@ export default function ProgressMap() {
               <span className="text-xs font-semibold text-gray-800">
                 Hafta {highlight}
               </span>
-              <span className="text-[10px] text-gray-400">
+              <span className="text-xs text-gray-400">
                 (kun {weekDayStart(highlight)}–{weekDayEnd(highlight)})
               </span>
             </div>
             <button
               onClick={() => setSelectedWeek(null)}
-              className="text-[10px] text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
             >
               ✕
             </button>
@@ -499,7 +499,7 @@ export default function ProgressMap() {
         {PHASES.map((p) => (
           <span
             key={p.label}
-            className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border transition-all
+            className={`text-xs font-semibold px-2 py-0.5 rounded-full border transition-all
               ${currentPhase?.label === p.label
                 ? `${p.bg} text-white border-transparent`
                 : `${p.lightBg} ${p.border} text-gray-600`
@@ -514,7 +514,7 @@ export default function ProgressMap() {
       {/* Bottom: story beat + current week detail */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <div className="mt-3 pt-3 border-t border-gray-50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <div className="flex items-center gap-2 text-[11px] text-gray-500 min-w-0">
+        <div className="flex items-center gap-2 text-xs text-gray-500 min-w-0">
           <span className="text-sm leading-none">{currentBeat.emoji}</span>
           <span className="font-medium text-gray-700 truncate">
             {currentBeat.title}
@@ -525,11 +525,11 @@ export default function ProgressMap() {
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-[10px] text-gray-400 flex items-center gap-1">
+          <span className="text-xs text-gray-400 flex items-center gap-1">
             <MapPin size={10} /> {currentPhase?.label} · Hafta {currentWeek}
           </span>
           <div className="flex items-center gap-1">
-            <span className="text-[10px] text-gray-400">
+            <span className="text-xs text-gray-400">
               Kun {currentDay}/126
             </span>
             <div className="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden">
@@ -542,7 +542,7 @@ export default function ProgressMap() {
         </div>
       </div>
       {currentDay >= 1 && (
-        <p className="text-[10px] text-gray-400 mt-1 leading-relaxed">
+        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
           {currentBeat.context}
         </p>
       )}

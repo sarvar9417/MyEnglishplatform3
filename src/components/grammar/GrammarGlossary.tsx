@@ -62,7 +62,7 @@ export default function GrammarGlossary() {
                     <span className="text-sm text-gray-600">— {t.uz}</span>
                   </div>
                   {t.description && (
-                    <div className="flex items-start gap-1.5 text-[11px] text-gray-500 leading-relaxed">
+                    <div className="flex items-start gap-1.5 text-xs text-gray-500 leading-relaxed">
                       <Info size={10} className="mt-0.5 shrink-0 text-gray-400" />
                       <span>{t.description}</span>
                     </div>

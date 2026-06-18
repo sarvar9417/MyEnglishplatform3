@@ -177,7 +177,7 @@ export default function VocabAnalytics({ userId, sessions, levelCounts }: Props)
               <Icon size={16} className={color} />
             </div>
             <p className="text-lg font-bold text-gray-900 dark:text-gray-100">{value}</p>
-            <p className="text-[10px] text-gray-500 dark:text-gray-400">{label}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">{label}</p>
           </div>
         ))}
       </div>
@@ -189,7 +189,7 @@ export default function VocabAnalytics({ userId, sessions, levelCounts }: Props)
             <TrendingUp size={16} className="text-b1-500" />
             <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200">Kunlik aktivlik (14 kun)</h3>
           </div>
-          <span className="text-[10px] text-gray-400 dark:text-gray-500">So'zlar soni</span>
+          <span className="text-xs text-gray-400 dark:text-gray-500">So'zlar soni</span>
         </div>
         <div className="h-44">
           <ResponsiveContainer width="100%" height="100%">
@@ -248,7 +248,7 @@ export default function VocabAnalytics({ userId, sessions, levelCounts }: Props)
                   </div>
                 )
               })}
-              <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-2">
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
                 <span className="font-semibold text-green-600 dark:text-green-400">{totalWordsLearned}</span> ta yodlangan
                 <span className="mx-1">·</span>
                 <span className="font-semibold">{totalBoxWords}</span> ta jami

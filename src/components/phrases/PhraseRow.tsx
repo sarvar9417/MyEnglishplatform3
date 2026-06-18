@@ -18,7 +18,7 @@ export default function PhraseRow({
   return (
     <div className="card flex items-center justify-between py-2.5 px-4">
       <div className="flex items-center gap-2.5 min-w-0 flex-1">
-        <span className="text-[10px] font-mono text-gray-300 dark:text-gray-600 w-5 text-right shrink-0">
+        <span className="text-xs font-mono text-gray-300 dark:text-gray-600 w-5 text-right shrink-0">
           {globalIndex}
         </span>
         <div className="min-w-0 flex-1">
@@ -44,10 +44,10 @@ export default function PhraseRow({
         >
           <Volume2 size={13} />
         </button>
-        <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${cat.bg} ${cat.text}`}>
+        <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${cat.bg} ${cat.text}`}>
           {cat.label}
         </span>
-        <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${
+        <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${
           phrase.is_learned ? 'bg-yellow-50 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400' :
           phrase.level === 'A1' ? 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400' :
           phrase.level === 'A2' ? 'bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400' :
@@ -57,7 +57,7 @@ export default function PhraseRow({
           {phrase.is_learned ? '⭐ Yodlagan' : phrase.level}
         </span>
         {!phrase.is_learned && (
-          <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${
+          <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${
             phrase.is_new
               ? 'bg-gray-50 dark:bg-gray-700 text-gray-400 dark:text-gray-500'
               : 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'

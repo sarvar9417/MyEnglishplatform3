@@ -201,7 +201,7 @@ export function GrammarDNAMap({ onTopicSelect }: GrammarDNAMapProps) {
             <h3 className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">
               Grammar DNA — Bilimlar tarmog'i
             </h3>
-            <p className="text-[11px] text-gray-400 mt-0.5">
+            <p className="text-xs text-gray-400 mt-0.5">
               {nodes.length} ta mavzu · {connections.length} ta bog'lanish
             </p>
           </div>
@@ -216,7 +216,7 @@ export function GrammarDNAMap({ onTopicSelect }: GrammarDNAMapProps) {
           >
             <ZoomOut size={13} className="text-gray-500" />
           </button>
-          <span className="text-[11px] text-gray-400 w-8 text-center font-mono">
+          <span className="text-xs text-gray-400 w-8 text-center font-mono">
             {Math.round(zoom * 100)}%
           </span>
           <button
@@ -313,7 +313,7 @@ export function GrammarDNAMap({ onTopicSelect }: GrammarDNAMapProps) {
                     x={cfg.x}
                     y={44}
                     textAnchor="middle"
-                    className="text-[10px]"
+                    className="text-xs"
                     fill={cfg.color}
                     opacity={dimOthers ? 0.3 : 0.6}
                   >
@@ -427,7 +427,7 @@ export function GrammarDNAMap({ onTopicSelect }: GrammarDNAMapProps) {
                     x={node.x}
                     y={node.y + (node.y < 70 ? 18 : node.y > 560 ? -14 : 16)}
                     textAnchor="middle"
-                    className="text-[11px] font-medium"
+                    className="text-xs font-medium"
                     fill={isHighlighted && dimOthers ? node.tagColor : '#6b7280'}
                     style={{ pointerEvents: 'none' }}
                   >
@@ -457,11 +457,11 @@ export function GrammarDNAMap({ onTopicSelect }: GrammarDNAMapProps) {
                     className="w-2.5 h-2.5 rounded-full inline-block"
                     style={{ backgroundColor: cfg.color }}
                   />
-                  <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: cfg.color }}>
+                  <span className="text-xs font-bold uppercase tracking-wider" style={{ color: cfg.color }}>
                     {node.level} · {topic.tag}
                   </span>
                   {topic.week && (
-                    <span className="text-[10px] text-gray-400">hafta {topic.week}</span>
+                    <span className="text-xs text-gray-400">hafta {topic.week}</span>
                   )}
                 </div>
                 <h4 className="font-bold text-gray-900 dark:text-white text-sm">
@@ -470,10 +470,10 @@ export function GrammarDNAMap({ onTopicSelect }: GrammarDNAMapProps) {
                 <p className="text-xs text-gray-500 mt-0.5">{topic.subtitle}</p>
 
                 <div className="flex items-center gap-3 mt-2">
-                  <span className="text-[11px] text-gray-400">
+                  <span className="text-xs text-gray-400">
                     📝 {topic.exercises.length} ta mashq
                   </span>
-                  <span className="text-[11px] text-gray-400">
+                  <span className="text-xs text-gray-400">
                     +{topic.exercises.length * 10} XP
                   </span>
                 </div>
@@ -486,7 +486,7 @@ export function GrammarDNAMap({ onTopicSelect }: GrammarDNAMapProps) {
                   if (related.length === 0) return null
                   return (
                     <div className="flex flex-wrap items-center gap-1.5 mt-2">
-                      <span className="text-[10px] text-gray-400">Bog'langan:</span>
+                      <span className="text-xs text-gray-400">Bog'langan:</span>
                       {related.map(r => (
                         <button
                           key={r.topic.id}
@@ -495,7 +495,7 @@ export function GrammarDNAMap({ onTopicSelect }: GrammarDNAMapProps) {
                             setSelectedId(r.topic.id)
                             onTopicSelect?.(r.topic)
                           }}
-                          className="text-[10px] px-1.5 py-0.5 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                          className="text-xs px-1.5 py-0.5 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                         >
                           {r.topic.title}
                         </button>
@@ -523,7 +523,7 @@ export function GrammarDNAMap({ onTopicSelect }: GrammarDNAMapProps) {
             const cat = TAG_TO_CATEGORY[tag] ?? 'other'
             const col = GRAMMAR_COLORS[cat]
             return (
-              <span key={tag} className="flex items-center gap-1 text-[10px] text-gray-400">
+              <span key={tag} className="flex items-center gap-1 text-xs text-gray-400">
                 <span
                   className="w-2 h-2 rounded-full inline-block"
                   style={{ backgroundColor: col.text }}

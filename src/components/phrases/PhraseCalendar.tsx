@@ -75,7 +75,7 @@ export default function PhraseCalendar({ sessions, selectedDate, onDateSelect, o
 
         <div className="grid grid-cols-7 gap-0.5 sm:gap-1 text-center">
           {WEEKDAYS.map(d => (
-            <div key={d} className="text-[11px] sm:text-[10px] font-semibold text-gray-400 py-1">{d}</div>
+            <div key={d} className="text-xs sm:text-xs font-semibold text-gray-400 py-1">{d}</div>
           ))}
           {days.map((day, i) => {
             if (day === null) return <div key={`e-${i}`} />
@@ -113,7 +113,7 @@ export default function PhraseCalendar({ sessions, selectedDate, onDateSelect, o
           })}
         </div>
 
-        <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-100 dark:border-gray-700 text-[10px] text-gray-400 dark:text-gray-500">
+        <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-100 dark:border-gray-700 text-xs text-gray-400 dark:text-gray-500">
           <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500" /> To'liq</span>
           <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-orange-400" /> Qisman</span>
           <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-gray-200" /> Boshlanmagan</span>

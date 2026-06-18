@@ -280,7 +280,7 @@ export default function AsyncDuel({ duel, mode, onComplete, userRole }: Props) {
       {/* Question */}
       <div className="card p-6 space-y-4 animate-pop-in">
         <div className="flex items-center justify-between">
-          <span className="text-[11px] font-bold text-orange-500 uppercase tracking-wider">
+          <span className="text-xs font-bold text-orange-500 uppercase tracking-wider">
             {mode === 'lesson' ? (duel.lesson_title ?? 'Dars dueli') :
              mode === 'vocab' ? 'So\'z — ma\'nosi?' :
              mode === 'grammar' ? 'Grammatika — to\'g\'ri variant' :

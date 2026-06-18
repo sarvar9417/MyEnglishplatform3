@@ -36,10 +36,6 @@ const LEVEL_BADGES: Record<string, string> = {
 
 const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2']
 
-const BOX_LABELS: Record<number, string> = {
-  1: '1 kun', 2: '3 kun', 3: '7 kun', 4: '14 kun', 5: '30 kun', 6: '90 kun',
-}
-
 function catBadge(cat: string) {
   const s = getCategoryStyle(cat)
   return `${s.bg} ${s.text}`
@@ -246,7 +242,7 @@ export default function PhraseDictionary() {
       {categories.length > 0 && (
         <div className="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide flex-wrap">
           <button onClick={() => setCatFilter('')}
-            className={`flex-shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all whitespace-nowrap ${
+            className={`flex-shrink-0 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
               !categoryFilter ? 'bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800'
                 : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
             }`}>
@@ -254,7 +250,7 @@ export default function PhraseDictionary() {
           </button>
           {categories.map(cat => (
             <button key={cat} onClick={() => setCatFilter(cat === categoryFilter ? '' : cat)}
-              className={`flex-shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all whitespace-nowrap ${
+              className={`flex-shrink-0 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
                 categoryFilter === cat ? `${catBadge(cat)} ring-2 ring-offset-1 dark:ring-offset-gray-900`
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}>
@@ -366,7 +362,7 @@ function LevelGroup({ level, entries }: { level: string; entries: PhraseDictEntr
         </span>
         <span className="text-xs text-gray-400 dark:text-gray-500">{t('phraseDict.countResult', { start: 1, end: entries.length, total: entries.length })}</span>
         {learned > 0 && (
-          <span className="text-[10px] text-green-600 dark:text-green-400 font-medium">
+          <span className="text-xs text-green-600 dark:text-green-400 font-medium">
             ({learned} {t('phraseDict.yodlangan')})
           </span>
         )}
@@ -408,19 +404,19 @@ function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
             <span className="font-bold text-gray-900 dark:text-gray-100 text-base line-clamp-2">{phrase.english}</span>
-            <span className={`badge text-[10px] ${LEVEL_BADGES[phrase.level]}`}>{phrase.level}</span>
-            <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${catBadge(phrase.category)}`}>
+            <span className={`badge text-xs ${LEVEL_BADGES[phrase.level]}`}>{phrase.level}</span>
+            <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${catBadge(phrase.category)}`}>
               {catLabel(phrase.category)}
             </span>
             {progress && (
-              <span className={`badge text-[10px] ${
+              <span className={`badge text-xs ${
                 progress.is_learned
                   ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400'
                   : progress.box >= 3
                   ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
               }`}>
-                {progress.is_learned ? t('phraseDict.yodlangan') : `Box ${progress.box}`}
+                {progress.is_learned ? t('phraseDict.yodlangan') : `${t('phraseDict.box')} ${progress.box}`}
               </span>
             )}
           </div>
@@ -444,7 +440,7 @@ function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
           {progress ? (
             <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 flex-wrap">
               <span className="flex items-center gap-1">
-                <Clock size={12} /> Box {progress.box}/6 · {BOX_LABELS[progress.box] ?? '90 kun'}
+                <Clock size={12} /> {t('phraseDict.box')} {progress.box}/6 · {t(`phraseDict.box${progress.box}` as any) ?? t('phraseDict.box6')}
               </span>
               <span className="flex items-center gap-1">
                 <CheckCircle size={12} className={progress.is_learned ? 'text-green-500' : 'text-gray-300 dark:text-gray-600'} />

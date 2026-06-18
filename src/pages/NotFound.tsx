@@ -26,7 +26,7 @@ export default function NotFound() {
         </button>
       </div>
       <div className="pt-4">
-        <p className="text-[11px] text-gray-400 dark:text-gray-500">{t('notFound.footer')}</p>
+        <p className="text-xs text-gray-400 dark:text-gray-500">{t('notFound.footer')}</p>
       </div>
     </div>
   )

@@ -136,7 +136,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
               style={{ width: `${xpProgress}%` }}
             />
           </div>
-          <p className="text-[11px] text-gray-400 mt-1">{t('sidebar.xpProgress', { current: totalXP % xpToNextLevel, total: xpToNextLevel })}</p>
+          <p className="text-xs text-gray-400 mt-1">{t('sidebar.xpProgress', { current: totalXP % xpToNextLevel, total: xpToNextLevel })}</p>
         </div>
       )}
 
@@ -166,7 +166,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
               <span className="flex items-center gap-1.5">
                 {t(ROUTE_T_KEY[item.to] ?? item.to)}
                 {item.to === '/tandem' && pendingDuelCount > 0 && (
-                  <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                  <span className="bg-rose-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full leading-none">
                     {pendingDuelCount}
                   </span>
                 )}
@@ -221,7 +221,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
                      <span className="flex items-center gap-1.5">
                        {t(ROUTE_T_KEY[item.to] ?? item.to)}
                        {item.to === '/tandem' && pendingDuelCount > 0 && (
-                         <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                         <span className="bg-rose-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full leading-none">
                            {pendingDuelCount}
                          </span>
                        )}
@@ -360,7 +360,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
               style={{ width: `${xpProgress}%` }}
             />
           </div>
-          <p className="text-[11px] text-gray-400 mt-1">{t('sidebar.xpProgress', { current: totalXP % xpToNextLevel, total: xpToNextLevel })}</p>
+          <p className="text-xs text-gray-400 mt-1">{t('sidebar.xpProgress', { current: totalXP % xpToNextLevel, total: xpToNextLevel })}</p>
         </div>
 
         {/* Navigation */}
@@ -386,7 +386,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
               <span className="flex items-center gap-1.5">
                 {t(ROUTE_T_KEY[item.to] ?? item.to)}
                 {item.to === '/tandem' && pendingDuelCount > 0 && (
-                  <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                  <span className="bg-rose-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full leading-none">
                     {pendingDuelCount}
                   </span>
                 )}
@@ -435,7 +435,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boole
                      <span className="flex items-center gap-1.5">
                        {t(ROUTE_T_KEY[item.to] ?? item.to)}
                        {item.to === '/tandem' && pendingDuelCount > 0 && (
-                         <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                         <span className="bg-rose-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full leading-none">
                            {pendingDuelCount}
                          </span>
                        )}

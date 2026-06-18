@@ -172,8 +172,8 @@ function SelectScreen({ onStart, loading }: { onStart: (t: TestType) => void; lo
                   <p className={`font-bold ${test.tc}`}>{test.title}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{test.sub}</p>
                   <div className="flex gap-3 mt-1.5">
-                    <span className="text-[11px] text-gray-400">{t('mockTest.minutes', { mins: String(test.mins) })}</span>
-                    <span className="text-[11px] text-gray-400">{t('mockTest.questions', { count: String(test.type === 'ielts' ? 4 : test.qs) })}</span>
+                    <span className="text-xs text-gray-400">{t('mockTest.minutes', { mins: String(test.mins) })}</span>
+                    <span className="text-xs text-gray-400">{t('mockTest.questions', { count: String(test.type === 'ielts' ? 4 : test.qs) })}</span>
                   </div>
                 </div>
               </div>
@@ -194,7 +194,7 @@ function SelectScreen({ onStart, loading }: { onStart: (t: TestType) => void; lo
         ].map((s) => (
           <div key={s.name} className="flex items-center justify-between py-1.5 border-b border-purple-100 last:border-0">
             <span className="text-xs font-medium text-purple-800">{s.name}</span>
-            <span className="text-[11px] text-purple-500">{s.time} · {s.desc}</span>
+            <span className="text-xs text-purple-500">{s.time} · {s.desc}</span>
           </div>
         ))}
       </div>
@@ -257,7 +257,7 @@ function WeeklyTest({ questions, level, mins, onDone }: {
       </div>
 
       {/* Section badge */}
-      <span className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full mb-3 inline-block">
+      <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full mb-3 inline-block">
         {sectionLabel[q.section]}
       </span>
 
@@ -454,7 +454,7 @@ function IELTSListening({ data, onDone }: { data: MockTestData | null; onDone: (
               <span className="text-xs text-gray-500">Tezlik:</span>
               {SPEED_OPTIONS.map(sp => (
                 <button key={sp.value} onClick={() => tts.setSpeed(sp.value)}
-                  className={`text-[11px] px-2 py-1 rounded-lg border transition-colors ${tts.speed === sp.value ? 'bg-orange-500 text-white border-orange-500' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-600'}`}>
+                  className={`text-xs px-2 py-1 rounded-lg border transition-colors ${tts.speed === sp.value ? 'bg-orange-500 text-white border-orange-500' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-600'}`}>
                   {sp.label}
                 </button>
               ))}
@@ -570,7 +570,7 @@ function IELTSWriting({ data, onDone }: { data: MockTestData | null; onDone: (t1
           <span className="text-xs font-semibold text-b2-600">✍️ Writing</span>
           <div className="flex gap-2 mt-1">
             {[1, 2].map((t) => (
-              <span key={t} className={`text-[11px] px-2 py-0.5 rounded-full font-semibold
+              <span key={t} className={`text-xs px-2 py-0.5 rounded-full font-semibold
                 ${task === t ? 'bg-b2-100 text-b2-700' : done1 && t === 1 ? 'bg-green-100 text-green-700' : 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500'}`}>
                 Task {t} {done1 && t === 1 ? '✓' : ''}
               </span>
@@ -686,7 +686,7 @@ function IELTSSpeaking({ prompts, onDone }: { prompts: import('@/services/speaki
         <p className="text-sm font-medium text-purple-900 leading-relaxed">{p.prompt}</p>
         <div className="mt-2 space-y-1">
           {p.tips.map((tip, i) => (
-            <p key={i} className="text-[11px] text-purple-600">💡 {tip}</p>
+            <p key={i} className="text-xs text-purple-600">💡 {tip}</p>
           ))}
         </div>
       </div>

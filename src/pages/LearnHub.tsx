@@ -111,7 +111,7 @@ export default function LearnHub() {
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
               >
-                {lv} <span className={`text-[11px] ${active ? 'text-primary-100' : 'text-gray-400'}`}>{count}</span>
+                {lv} <span className={`text-xs ${active ? 'text-primary-100' : 'text-gray-400'}`}>{count}</span>
               </button>
             )
           })}
@@ -142,15 +142,15 @@ export default function LearnHub() {
               <div className="grid grid-cols-3 gap-3 mb-3">
                 <div className="text-center">
                   <p className="text-xl font-bold text-green-600">{completed}</p>
-                  <p className="text-[11px] text-gray-500">{t('learnHub.progressCompleted')}</p>
+                  <p className="text-xs text-gray-500">{t('learnHub.progressCompleted')}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-xl font-bold text-amber-500">{inProgress}</p>
-                  <p className="text-[11px] text-gray-500">{t('learnHub.progressInProgress')}</p>
+                  <p className="text-xs text-gray-500">{t('learnHub.progressInProgress')}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-xl font-bold text-gray-300">{notStarted}</p>
-                  <p className="text-[11px] text-gray-500">{t('learnHub.progressPending')}</p>
+                  <p className="text-xs text-gray-500">{t('learnHub.progressPending')}</p>
                 </div>
               </div>
 
@@ -224,7 +224,7 @@ export default function LearnHub() {
                   </div>
                   <div className="flex flex-wrap gap-1">
                     {(review.coversTopics ?? []).map(t => (
-                      <span key={t} className="text-[11px] bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 px-1.5 py-0.5 rounded">{t}</span>
+                      <span key={t} className="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 px-1.5 py-0.5 rounded">{t}</span>
                     ))}
                   </div>
                   <div className="flex items-center gap-4 text-xs text-amber-700 dark:text-amber-400">
@@ -280,7 +280,7 @@ export default function LearnHub() {
                     {(pct !== undefined || session) ? t('learnHub.lessonContinue') : t('learnHub.lessonStart')} <ChevronRight size={15} />
                   </div>
                   {session && (
-                    <span className="text-[11px] text-gray-400 dark:text-gray-500">
+                    <span className="text-xs text-gray-400 dark:text-gray-500">
                       {tabLabels[session.tab] ?? session.tab}
                       {session.tab === 'drill' && ` · ${session.currentSection + 1}-bo'lim`}
                     </span>

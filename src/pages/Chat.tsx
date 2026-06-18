@@ -207,7 +207,7 @@ function MessageBubble({ msg, onRegenerate }: {
             </div>
           )}
         </div>
-        <span className="text-[10px] text-gray-400 dark:text-gray-600 px-1">
+        <span className="text-xs text-gray-400 dark:text-gray-600 px-1">
           {msg.timestamp.toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' })}
         </span>
       </div>
@@ -429,7 +429,7 @@ export default function Chat() {
           </div>
           <div>
             <p className="font-bold text-gray-900 dark:text-gray-100 text-sm">{t('chat.title')}</p>
-            <p className="text-[11px] text-green-500 font-medium flex items-center gap-1">
+            <p className="text-xs text-green-500 font-medium flex items-center gap-1">
               <span className="w-1.5 h-1.5 bg-green-500 rounded-full inline-block" />
               {MODEL}
             </p>
@@ -556,7 +556,7 @@ export default function Chat() {
             disabled={isStreaming || API_KEY_MISSING}
             rows={1}
           />
-          <div className="flex flex-col items-end justify-between gap-1">              <span className="text-[10px] text-gray-300 dark:text-gray-600 font-mono">
+          <div className="flex flex-col items-end justify-between gap-1">              <span className="text-xs text-gray-300 dark:text-gray-600 font-mono">
               {input.length > 0 ? `${input.length}` : ''}
             </span>
             <button
@@ -576,7 +576,7 @@ export default function Chat() {
             </button>
           </div>
         </div>
-        <p className="text-[10px] text-gray-400 dark:text-gray-600 text-center mt-1.5">
+        <p className="text-xs text-gray-400 dark:text-gray-600 text-center mt-1.5">
           {t('chat.footerHint')}
         </p>
       </div>

@@ -67,7 +67,7 @@ function TopBar() {
         </h1>
       </div>
 
-      <div className={`flex items-center gap-1 px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-full border font-semibold text-[11px] sm:text-sm flex-shrink-0 ${levelColor}`}>
+      <div className={`flex items-center gap-1 px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-full border font-semibold text-xs sm:text-sm flex-shrink-0 ${levelColor}`}>
         <span>{t('dashboard.topBarLevel', { level: currentLevel })}</span>
         <span className="text-xs opacity-60 hidden sm:inline">·</span>
         <span className="text-xs font-medium opacity-80 hidden sm:inline">{t('dashboard.topBarWeek', { week: currentWeek })}</span>
@@ -80,20 +80,20 @@ function TopBar() {
           <span className="text-base sm:text-lg leading-none">🔥</span>
           <div className="hidden sm:block">
             <p className="text-sm font-bold text-gray-900 leading-tight">{t('dashboard.topBarStreak', { streak })}</p>
-            <p className="text-[11px] text-gray-400">{t('dashboard.streakLabel')}</p>
+            <p className="text-xs text-gray-400">{t('dashboard.streakLabel')}</p>
           </div>
           <span className="text-xs font-bold text-gray-900 sm:hidden">{streak}</span>
         </div>
         <div className="h-7 w-px bg-gray-100 hidden sm:block" />
         <div className="text-right hidden sm:block">
           <p className="text-sm font-bold text-gray-900 leading-tight">{t('dashboard.topBarDaysLeft', { daysLeft })}</p>
-          <p className="text-[11px] text-gray-400">{t('dashboard.daysLeftLabel')}</p>
+          <p className="text-xs text-gray-400">{t('dashboard.daysLeftLabel')}</p>
         </div>
         <div className="hidden sm:flex items-center gap-1.5">
           <span className="text-base leading-none">📚</span>
           <div>
             <p className="text-sm font-bold text-gray-900 leading-tight">{totalWordsLearned}</p>
-            <p className="text-[11px] text-gray-400">{t('dashboard.totalWordsLabel')}</p>
+            <p className="text-xs text-gray-400">{t('dashboard.totalWordsLabel')}</p>
           </div>
         </div>
         <div className="h-7 w-px bg-gray-100" />
@@ -158,8 +158,8 @@ function SkillRing({ pct, stroke, track, label, hours, Icon, iconColor, onClick 
         </div>
       </div>
       <div className="text-center">
-        <p className="text-[11px] sm:text-xs font-semibold text-gray-700">{label}</p>
-        <p className="text-[11px] sm:text-xs text-gray-400">{hours}</p>
+        <p className="text-xs sm:text-xs font-semibold text-gray-700">{label}</p>
+        <p className="text-xs sm:text-xs text-gray-400">{hours}</p>
       </div>
     </button>
   )
@@ -307,7 +307,7 @@ function LessonProgressCard() {
             />
             <span className="text-gray-600 group-hover:text-primary-700">{p.title}</span>
             {p.done && (
-              <span className={`text-[11px] font-bold ml-auto ${
+              <span className={`text-xs font-bold ml-auto ${
                 p.pct >= 80 ? 'text-green-600' :
                 p.pct >= 50 ? 'text-yellow-600' :
                 'text-red-500'
@@ -347,10 +347,10 @@ function DailyIdiomCard() {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-yellow-600 dark:text-yellow-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-yellow-600 dark:text-yellow-400">
               {t('dashboard.dailyIdiomTitle')}
             </span>
-            <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 ${
+            <span className={`text-xs font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 ${
               idiom.level === 'B2'
                 ? 'bg-b2-100 text-b2-700 dark:bg-b2-900/30 dark:text-b2-300'
                 : 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300'
@@ -489,7 +489,7 @@ function StoryBeatCard() {
     <section className={`card border-l-4 overflow-hidden`}
       style={{ borderLeftColor: act.color }}>
       <div className="flex items-center gap-2 mb-4">
-        <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full text-white ${act.bgClass}`}>
+        <span className={`text-xs font-bold px-2 py-0.5 rounded-full text-white ${act.bgClass}`}>
           {act.emoji} {act.label}
         </span>
         <span className="text-xs font-medium text-gray-400">
@@ -534,7 +534,7 @@ function StoryBeatCard() {
               className="w-6 h-6 rounded-full border-2 border-white dark:border-gray-800 shadow-lg flex items-center justify-center"
               style={{ backgroundColor: act.color }}
             >
-              <span className="text-[11px]">👤</span>
+              <span className="text-xs">👤</span>
             </div>
           </div>
         </div>
@@ -554,7 +554,7 @@ function StoryBeatCard() {
               >
                 <span className="text-xs leading-none">{stop.emoji}</span>
               </div>
-              <span className={`text-[11px] font-semibold whitespace-nowrap
+              <span className={`text-xs font-semibold whitespace-nowrap
                 ${reached ? `${act.textClass}` : 'text-gray-400 dark:text-gray-500'}`}>
                 {stop.label}
               </span>
@@ -567,7 +567,7 @@ function StoryBeatCard() {
         })}
       </div>
 
-      <div className="flex items-center justify-between text-[11px] text-gray-400 mt-1 pt-2 border-t border-gray-50 dark:border-gray-700">
+      <div className="flex items-center justify-between text-xs text-gray-400 mt-1 pt-2 border-t border-gray-50 dark:border-gray-700">
         <span>{t('dashboard.storyBeatProgress', { pct: progress })}</span>
         <span className="font-medium text-gray-500 dark:text-gray-400">
           {t('dashboard.storyBeatDay', { day: currentDay })}
@@ -584,7 +584,7 @@ function StoryBeatCard() {
 // Bo'lim sarlavhasi — yengil, izchil ierarxiya uchun
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider px-1 pt-1">
+    <p className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider px-1 pt-1">
       {children}
     </p>
   )

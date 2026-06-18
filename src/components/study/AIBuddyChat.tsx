@@ -94,7 +94,7 @@ export default function AIBuddyChat({ context, onClose }: AIBuddyChatProps) {
             <p className="text-xs text-gray-400">{context.currentLevel} · Day {context.currentDay} · {context.streak} day streak</p>
           </div>
           {context.weakSpots && context.weakSpots.length > 0 && (
-            <div className="hidden sm:flex items-center gap-1 px-2 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-lg text-[11px] text-amber-600 dark:text-amber-400">
+            <div className="hidden sm:flex items-center gap-1 px-2 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-lg text-xs text-amber-600 dark:text-amber-400">
               <span>🎯</span>
               <span className="font-semibold">{context.weakSpots[0].label}</span>
             </div>

@@ -72,7 +72,7 @@ export default function PhraseFlashCard({
             </button>
           </div>
           {phrase.is_new && (
-            <span className="text-[10px] font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/40 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/40 px-2 py-0.5 rounded-full">
               Yangi
             </span>
           )}
@@ -92,7 +92,7 @@ export default function PhraseFlashCard({
                 }`}
               />
             ))}
-            <span className="text-[10px] text-gray-400 dark:text-gray-500 ml-1">
+            <span className="text-xs text-gray-400 dark:text-gray-500 ml-1">
               Box {phrase.box}/6 · {BOX_LABELS[phrase.box] ?? '90 kun'}
             </span>
           </div>
@@ -117,12 +117,12 @@ export default function PhraseFlashCard({
               <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${LEVEL_BADGES[phrase.level] || LEVEL_BADGES.A1}`}>
                 {phrase.level}
               </span>
-              <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${cat.bg} ${cat.text}`}>
+              <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${cat.bg} ${cat.text}`}>
                 {cat.label}
               </span>
             </div>
             {phrase.is_new && (
-              <span className="text-[10px] font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/40 px-2 py-0.5 rounded-full">
+              <span className="text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/40 px-2 py-0.5 rounded-full">
                 Yangi
               </span>
             )}

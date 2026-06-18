@@ -2,6 +2,8 @@ import { useEffect, useState, useCallback, useMemo, useRef } from 'react'
 import { Zap, Star, Trophy, Crown, Shield, Flame, Rocket, Share2, ChevronRight, Target } from 'lucide-react'
 import { feelLevelUp } from '../../lib/gameFeel'
 import { playSfx } from '../../lib/sfx'
+import { monitoring } from '../../lib/monitoring'
+import { useI18n, type TranslationStrings } from '../../i18n'
 
 interface LevelUpCelebrationProps {
   fromLevel: string
@@ -11,48 +13,48 @@ interface LevelUpCelebrationProps {
 }
 
 const LEVEL_THEME: Record<string, {
-  emoji: string; gradient: string; icon: typeof Star; color: string; desc: string
+  emoji: string; gradient: string; icon: typeof Star; color: string; descKey: string
 }> = {
-  'A1':  { emoji: '🌱', gradient: 'from-gray-500 to-gray-400',      icon: Star,  color: '#9CA3AF', desc: "Yo'lning boshlanishi" },
-  'A2':  { emoji: '🌿', gradient: 'from-blue-500 to-cyan-400',     icon: Shield, color: '#60A5FA', desc: 'Asosiy bilimlar' },
-  'B1':  { emoji: '🌳', gradient: 'from-purple-500 to-pink-400',   icon: Trophy, color: '#A78BFA', desc: 'Mustaqil foydalanuvchi' },
-  'B1+': { emoji: '🔥', gradient: 'from-orange-500 to-red-400',    icon: Flame, color: '#FB923C', desc: "Ishonchli so'zlovchi" },
-  'B2':  { emoji: '👑', gradient: 'from-yellow-400 to-amber-600',  icon: Crown, color: '#FBBF24', desc: 'Professional daraja' },
-  'C1':  { emoji: '🚀', gradient: 'from-emerald-500 to-teal-400',  icon: Rocket,color: '#34D399', desc: 'Mukammal egallash' },
+  'A1':  { emoji: '🌱', gradient: 'from-gray-500 to-gray-400',      icon: Star,  color: '#9CA3AF', descKey: 'levelUp.a1Desc' },
+  'A2':  { emoji: '🌿', gradient: 'from-blue-500 to-cyan-400',     icon: Shield, color: '#60A5FA', descKey: 'levelUp.a2Desc' },
+  'B1':  { emoji: '🌳', gradient: 'from-purple-500 to-pink-400',   icon: Trophy, color: '#A78BFA', descKey: 'levelUp.b1Desc' },
+  'B1+': { emoji: '🔥', gradient: 'from-orange-500 to-red-400',    icon: Flame, color: '#FB923C', descKey: 'levelUp.b1pDesc' },
+  'B2':  { emoji: '👑', gradient: 'from-yellow-400 to-amber-600',  icon: Crown, color: '#FBBF24', descKey: 'levelUp.b2Desc' },
+  'C1':  { emoji: '🚀', gradient: 'from-emerald-500 to-teal-400',  icon: Rocket,color: '#34D399', descKey: 'levelUp.c1Desc' },
 }
 
 const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B1+', 'B2', 'C1']
 
-const LEVEL_UNLOCKS: Record<string, { icon: string; label: string }[]> = {
+const LEVEL_UNLOCKS: Record<string, { icon: string; labelKey: string }[]> = {
   'A1': [
-    { icon: '📖', label: 'Asosiy so\'zlar (500+)' },
-    { icon: '🔤', label: 'Alifbo va talaffuz' },
-    { icon: '👋', label: 'Oddiy gaplar' },
+    { icon: '📖', labelKey: 'levelUp.a1Unlock1' },
+    { icon: '🔤', labelKey: 'levelUp.a1Unlock2' },
+    { icon: '👋', labelKey: 'levelUp.a1Unlock3' },
   ],
   'A2': [
-    { icon: '💬', label: 'Kundalik muloqot' },
-    { icon: '📝', label: 'Qisqa matnlar' },
-    { icon: '🎧', label: 'Oddiy audio' },
+    { icon: '💬', labelKey: 'levelUp.a2Unlock1' },
+    { icon: '📝', labelKey: 'levelUp.a2Unlock2' },
+    { icon: '🎧', labelKey: 'levelUp.a2Unlock3' },
   ],
   'B1': [
-    { icon: '🗣️', label: 'Erkin suhbat' },
-    { icon: '📄', label: 'Rasmiy yozishmalar' },
-    { icon: '🎥', label: 'Video kontent' },
+    { icon: '🗣️', labelKey: 'levelUp.b1Unlock1' },
+    { icon: '📄', labelKey: 'levelUp.b1Unlock2' },
+    { icon: '🎥', labelKey: 'levelUp.b1Unlock3' },
   ],
   'B1+': [
-    { icon: '🎯', label: 'Ishbilarmonlik' },
-    { icon: '📊', label: 'Prezentatsiyalar' },
-    { icon: '🎭', label: 'Idiomalar' },
+    { icon: '🎯', labelKey: 'levelUp.b1pUnlock1' },
+    { icon: '📊', labelKey: 'levelUp.b1pUnlock2' },
+    { icon: '🎭', labelKey: 'levelUp.b1pUnlock3' },
   ],
   'B2': [
-    { icon: '🏆', label: 'Professional til' },
-    { icon: '📚', label: 'Akademik yozuv' },
-    { icon: '🌍', label: 'Global muloqot' },
+    { icon: '🏆', labelKey: 'levelUp.b2Unlock1' },
+    { icon: '📚', labelKey: 'levelUp.b2Unlock2' },
+    { icon: '🌍', labelKey: 'levelUp.b2Unlock3' },
   ],
   'C1': [
-    { icon: '🎓', label: 'Akademik daraja' },
-    { icon: '✍️', label: 'Ilmiy maqolalar' },
-    { icon: '🎙️', label: 'Ommaviy nutq' },
+    { icon: '🎓', labelKey: 'levelUp.c1Unlock1' },
+    { icon: '✍️', labelKey: 'levelUp.c1Unlock2' },
+    { icon: '🎙️', labelKey: 'levelUp.c1Unlock3' },
   ],
 }
 
@@ -242,7 +244,7 @@ function ProgressRing({ toLevel }: { toLevel: string }) {
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="text-white font-black text-lg leading-none">{toLevel}</span>
-        <span className="text-white/50 text-[10px] mt-0.5">{Math.round(progress)}%</span>
+        <span className="text-white/50 text-xs mt-0.5">{Math.round(progress)}%</span>
       </div>
     </div>
   )
@@ -266,7 +268,7 @@ function SocialShareButton({ fromLevel, toLevel, xpEarned }: { fromLevel: string
         setShared(true)
         setTimeout(() => setShared(false), 3000)
       } catch {
-        // User cancelled or share failed — do nothing
+        monitoring.captureMessage('Native share failed or was cancelled', 'warn')
       }
     } else {
       // Fallback: copy to clipboard
@@ -275,7 +277,7 @@ function SocialShareButton({ fromLevel, toLevel, xpEarned }: { fromLevel: string
         setShared(true)
         setTimeout(() => setShared(false), 3000)
       } catch {
-        // Clipboard not available
+        monitoring.captureMessage('Clipboard write failed', 'warn')
       }
     }
   }, [fromLevel, toLevel, xpEarned])
@@ -302,12 +304,13 @@ function SocialShareButton({ fromLevel, toLevel, xpEarned }: { fromLevel: string
 
 function LevelDetails({ level }: { level: string }) {
   const unlocks = LEVEL_UNLOCKS[level] ?? LEVEL_UNLOCKS['A1']
+  const { t } = useI18n()
 
   return (
     <div className="flex flex-wrap justify-center gap-2 mb-4">
       {unlocks.map((item, idx) => (
         <div
-          key={item.label}
+          key={item.labelKey}
           className="bg-white/15 backdrop-blur-sm rounded-lg px-3 py-1.5 flex items-center gap-1.5 animate-pop-in"
           style={{
             animationDelay: `${300 + idx * 100}ms`,
@@ -315,7 +318,7 @@ function LevelDetails({ level }: { level: string }) {
           }}
         >
           <span className="text-lg">{item.icon}</span>
-          <span className="text-[11px] text-white/80 font-medium whitespace-nowrap">{item.label}</span>
+          <span className="text-xs text-white/80 font-medium whitespace-nowrap">{t(item.labelKey as keyof TranslationStrings)}</span>
         </div>
       ))}
     </div>
@@ -362,6 +365,7 @@ export function LevelUpCelebration({
   const [showShareHint, setShowShareHint] = useState(false)
   const theme = LEVEL_THEME[toLevel] ?? LEVEL_THEME.B2
   const themeFrom = LEVEL_THEME[fromLevel] ?? LEVEL_THEME.A1
+  const { t } = useI18n()
 
   const dismiss = useCallback(() => {
     setVisible(false)
@@ -407,6 +411,9 @@ export function LevelUpCelebration({
         transition-all duration-500
         ${visible ? 'opacity-100' : 'opacity-0'}
       `}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Level up celebration"
       onClick={dismiss}
     >
       {/* Background with gradient */}
@@ -455,7 +462,7 @@ export function LevelUpCelebration({
 
         {/* Description */}
         <p className="text-white/50 text-sm mb-3 animate-fade-in" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
-          {theme.desc}
+          {t(theme.descKey as keyof TranslationStrings)}
         </p>
 
         {/* XP badge — animated count */}
@@ -481,7 +488,7 @@ export function LevelUpCelebration({
               className="bg-white/15 backdrop-blur-sm rounded-xl px-3 py-2 flex flex-col items-center gap-1 min-w-[64px]"
             >
               <span className="text-xl">{ach.emoji}</span>
-              <span className="text-[10px] text-white/80 font-medium">{ach.label}</span>
+              <span className="text-xs text-white/80 font-medium">{ach.label}</span>
             </div>
           ))}
         </div>
@@ -513,7 +520,7 @@ export function LevelUpCelebration({
           </button>
 
           {/* Hint text */}
-          <p className="text-white/20 text-[10px]">
+          <p className="text-white/20 text-xs">
             Yoki ekranga bosing
           </p>
         </div>

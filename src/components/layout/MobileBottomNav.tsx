@@ -75,7 +75,7 @@ export default function MobileBottomNav() {
                 <span className="relative">
                   <Icon size={20} className={active ? 'stroke-[2.5]' : ''} />
                 </span>
-                <span className="text-[10px] font-semibold leading-tight">
+                <span className="text-xs font-semibold leading-tight">
                   {t(ROUTE_T_KEY[item.to] ?? item.to)}
                 </span>
               </button>
@@ -97,7 +97,7 @@ export default function MobileBottomNav() {
             <span className="relative">
               <LayoutGrid size={20} className={resourcesActive ? 'stroke-[2.5]' : ''} />
             </span>
-            <span className="text-[10px] font-semibold leading-tight">
+            <span className="text-xs font-semibold leading-tight">
               {t('nav.resources')}
             </span>
           </button>

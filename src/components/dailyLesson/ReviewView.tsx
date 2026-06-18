@@ -460,7 +460,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
                         }`}
                         title={isUnderstood ? "Tushunmadim deb belgilash" : "Tushundim deb belgilash"}
                       >
-                        {isUnderstood && <span className="text-[10px]">✓</span>}
+                        {isUnderstood && <span className="text-xs">✓</span>}
                       </button>
                       <ChevronDown size={15} className={`text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                     </div>
@@ -499,7 +499,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
             </div>
             <div className="text-right">
               <p className={`text-2xl font-bold font-mono ${mastery.color}`}>{combinedPct}%</p>
-              <p className="text-[10px] text-gray-400 dark:text-gray-500">{totalExerciseCorrect + totalTestCorrect} / {lesson.exercises.length + lesson.tests.length}</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500">{totalExerciseCorrect + totalTestCorrect} / {lesson.exercises.length + lesson.tests.length}</p>
             </div>
           </div>
           {/* Overall progress bar */}
@@ -520,7 +520,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
               return (
                 <div key={s.title} className={`rounded-lg p-2 text-center transition-all ${sectionPct !== null ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-800/50'}`}>
                   <p className="text-xs mb-0.5">{s.icon}</p>
-                  <p className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 truncate">{s.title}</p>
+                  <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 truncate">{s.title}</p>
                   {sectionPct !== null ? (
                     <p className={`text-xs font-bold font-mono ${
                       sectionPct >= 80 ? 'text-green-600 dark:text-green-400' :
@@ -530,7 +530,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
                       {sectionPct}%
                     </p>
                   ) : (
-                    <p className="text-[11px] text-gray-300 dark:text-gray-600">—</p>
+                    <p className="text-xs text-gray-300 dark:text-gray-600">—</p>
                   )}
                 </div>
               )
@@ -550,7 +550,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
               tab === t.id ? 'border-amber-500 text-amber-700 dark:text-amber-400' : 'border-transparent text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'
             }`}>
             {t.label}
-            <span className="ml-1 text-[10px] text-gray-400">({t.desc})</span>
+            <span className="ml-1 text-xs text-gray-400">({t.desc})</span>
           </button>
         ))}
       </div>
@@ -566,7 +566,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
               return (
                 <button key={s.title} className="flex-1 text-left cursor-pointer hover:opacity-80 transition-opacity" onClick={() => handleJumpToSection(i)}>
                   <div className={`h-1.5 rounded-full transition-all ${done ? 'bg-green-500' : active ? 'bg-amber-500' : 'bg-gray-200 dark:bg-gray-700'}`} />
-                  <p className={`text-[11px] mt-0.5 text-center font-medium ${active ? 'text-amber-700 dark:text-amber-400' : done ? 'text-green-600 dark:text-green-400' : 'text-gray-400 dark:text-gray-500'}`}>
+                  <p className={`text-xs mt-0.5 text-center font-medium ${active ? 'text-amber-700 dark:text-amber-400' : done ? 'text-green-600 dark:text-green-400' : 'text-gray-400 dark:text-gray-500'}`}>
                     {s.icon} <span className="hidden sm:inline">{s.title}</span>
                   </p>
                 </button>
@@ -715,7 +715,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
               return (
                 <button key={s.title} className="flex-1 text-left cursor-pointer hover:opacity-80 transition-opacity" onClick={() => handleJumpToTestSection(i)}>
                   <div className={`h-1.5 rounded-full transition-all ${done ? 'bg-green-500' : active ? 'bg-amber-500' : 'bg-gray-200 dark:bg-gray-700'}`} />
-                  <p className={`text-[11px] mt-0.5 text-center font-medium ${active ? 'text-amber-700 dark:text-amber-400' : done ? 'text-green-600 dark:text-green-400' : 'text-gray-400 dark:text-gray-500'}`}>
+                  <p className={`text-xs mt-0.5 text-center font-medium ${active ? 'text-amber-700 dark:text-amber-400' : done ? 'text-green-600 dark:text-green-400' : 'text-gray-400 dark:text-gray-500'}`}>
                     {s.icon} <span className="hidden sm:inline">{s.title}</span>
                   </p>
                 </button>
@@ -789,7 +789,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
                         return (
                           <div key={t.id} className="relative rounded-2xl border border-gray-200 dark:border-gray-700 p-4">
                             <div className="absolute -left-3 -top-3 z-10 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-sm bg-amber-500 text-white">{i + 1}</div>
-                            <p className="text-[11px] font-bold text-amber-600 uppercase tracking-wider mb-3">🧪 Test savoli</p>
+                            <p className="text-xs font-bold text-amber-600 uppercase tracking-wider mb-3">🧪 Test savoli</p>
                             <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-3 leading-relaxed">{t.question}</p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                               {(shuffledTestOptionsMap.get(t.id) ?? t.options).map((opt, oi) => {
@@ -800,7 +800,7 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
                                 return (
                                   <button key={opt} onClick={() => setTestAnswers(prev => ({ ...prev, [t.id]: opt }))}
                                     className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-all ${cls}`}>
-                                    <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-[10px] font-bold flex-shrink-0">{['A', 'B', 'C', 'D'][oi]}</span>
+                                    <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold flex-shrink-0">{['A', 'B', 'C', 'D'][oi]}</span>
                                     {opt}
                                   </button>
                                 )

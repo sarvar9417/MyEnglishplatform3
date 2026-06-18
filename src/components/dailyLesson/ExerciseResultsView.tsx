@@ -98,12 +98,12 @@ export default function ExerciseResultsView({
           <p className="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
             <Trophy size={14} className="text-yellow-600 dark:text-yellow-400" /> Batafsil natija
           </p>
-          <span className="text-[11px] text-gray-400 dark:text-gray-500">{total} ta mashq</span>
+          <span className="text-xs text-gray-400 dark:text-gray-500">{total} ta mashq</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b-2 border-gray-100 dark:border-gray-700 text-left text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <tr className="border-b-2 border-gray-100 dark:border-gray-700 text-left text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                 <th className="pb-2 pr-2 font-semibold w-8">#</th>
                 <th className="pb-2 pr-3 font-semibold">Savol</th>
                 <th className="pb-2 pr-3 font-semibold">Sizning javobingiz</th>

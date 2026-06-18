@@ -487,7 +487,7 @@ export default function VocabBattle() {
                     <span className="text-xl">{level.emoji}</span>
                     <div>
                       <p className="text-xs font-bold text-gray-800 dark:text-gray-200">{level.label}</p>
-                      <p className="text-[11px] text-gray-400">
+                      <p className="text-xs text-gray-400">
                         {level.id === 'A1' ? 'Asosiy so\'zlar' :
                          level.id === 'A2' ? 'Kundalik so\'zlar' :
                          level.id === 'B1' ? 'Akademik so\'zlar' :
@@ -540,7 +540,7 @@ export default function VocabBattle() {
                 >
                   <span className="text-2xl block mb-1">{icons[diff]}</span>
                   <p className="text-xs font-bold text-gray-800 dark:text-gray-200">{ai.name}</p>
-                  <p className="text-[11px] text-gray-400">{Math.round(ai.accuracy * 100)}%</p>
+                  <p className="text-xs text-gray-400">{Math.round(ai.accuracy * 100)}%</p>
                 </button>
               )
             })}
@@ -716,7 +716,7 @@ export default function VocabBattle() {
         {/* Question card */}
         <div className="card p-6 space-y-4 animate-pop-in">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold text-orange-500 uppercase tracking-wider">
+            <span className="text-xs font-bold text-orange-500 uppercase tracking-wider">
               {q.english} — ma'nosi?
             </span>
             <span className="flex items-center gap-1 text-sm font-semibold text-gray-500">

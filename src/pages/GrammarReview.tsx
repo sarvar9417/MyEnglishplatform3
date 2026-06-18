@@ -87,7 +87,7 @@ export function ReviewOverview() {
             <span className="text-xl">{['📖', '📝', '🎯', '📚', '✍️', '🧪'][i % 6]}</span>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">{review.lessonId}</p>
-              <p className="text-[10px] text-gray-400">Daraja {review.box + 1}/6 · {review.lapses > 0 ? `${review.lapses} marta qiyin` : 'yangi'}</p>
+              <p className="text-xs text-gray-400">Daraja {review.box + 1}/6 · {review.lapses > 0 ? `${review.lapses} marta qiyin` : 'yangi'}</p>
             </div>
             <CheckCircle size={16} className="text-gray-300" />
           </div>

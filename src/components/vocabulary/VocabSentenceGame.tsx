@@ -3,6 +3,8 @@ import { CheckCircle, XCircle, ArrowRight, RotateCcw, X, Loader2, FlaskConical }
 import { supabase } from '../../lib/supabase'
 import { monitoring } from '../../lib/monitoring'
 import { generateUzbekSentence, checkSentenceTranslation, analyzeGrammar } from '../../lib/claude'
+import { useI18n } from '../../i18n'
+import type { TranslationStrings } from '../../i18n'
 import GrammarAnalysisPanel from './GrammarAnalysisPanel'
 
 type Level = 'A1' | 'A2' | 'B1' | 'B2'
@@ -32,16 +34,17 @@ const LEVEL_STYLES: Record<Level, { bg: string; text: string; border: string; ba
   B2: { bg: 'bg-purple-50 dark:bg-purple-900/20', text: 'text-purple-700 dark:text-purple-300', border: 'border-purple-200 dark:border-purple-700', badge: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300', btn: 'hover:bg-purple-100 hover:border-purple-400 dark:hover:bg-purple-900/30 dark:hover:border-purple-500' },
 }
 
-const LEVEL_DESC: Record<Level, string> = {
-  A1: 'Boshlang\'ich',
-  A2: 'Elementar',
-  B1: 'O\'rta',
-  B2: 'O\'rta-yuqori',
-}
-
 const QUESTION_COUNT = 20
 
+const LEVEL_KEY: Record<Level, keyof TranslationStrings> = {
+  A1: 'vocabGame.levelA1',
+  A2: 'vocabGame.levelA2',
+  B1: 'vocabGame.levelB1',
+  B2: 'vocabGame.levelB2',
+}
+
 export default function VocabSentenceGame({ onClose }: { onClose: () => void }) {
+  const { t } = useI18n()
   const [phase, setPhase] = useState<Phase>('level-select')
   const [selectedLevel, setSelectedLevel] = useState<Level | null>(null)
   const [words, setWords] = useState<Word[]>([])
@@ -123,7 +126,7 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
   }
 
   function setUzbekSegmentFallback(word: Word) {
-    setUzbekSentence(`${word.uzbek} — bu so'zni ishlatib gap tuzing.`)
+    setUzbekSentence(t('vocabGame.promptWord', { word: word.uzbek }))
   }
 
   function handleAnalysis() {
@@ -198,15 +201,15 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
       monitoring.captureMessage('VocabSentenceGame checkSentenceTranslation failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       setChecking(false)
       setFlash('wrong')
-      const fallback = `To'g'ri javob: "${currentWord.english}" so'zini ishlatib, o'zbekcha gapni ingliz tiliga tarjima qiling.`
-      setFeedback({ explanation: 'AI tekshirishda xatolik yuz berdi. Qayta urinib ko\'ring.', correctAnswer: fallback })
+      const fallback = t('vocabGame.correctInstruction', { word: currentWord.english })
+      setFeedback({ explanation: t('vocabGame.aiError'), correctAnswer: fallback })
 
       const newRounds = [...rounds, {
         word: currentWord,
         uzbekSentence,
         userAnswer: trimmed,
         correct: false,
-        explanation: 'AI xatosi',
+        explanation: t('vocabGame.aiErrorTitle'),
         correctAnswer: fallback,
       }]
       const nextIdx = currentIdx + 1
@@ -227,9 +230,9 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
       <div className="p-4 max-w-md mx-auto">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">Gap tarjima o'yini</h2>
+            <h2 className="text-xl font-bold text-gray-900">{t('vocabGame.title')}</h2>
             <p className="text-sm text-gray-500 mt-0.5">
-              AI gap tuzadi · Siz ingliz tiliga o'girasiz · {QUESTION_COUNT} savol
+              {t('vocabGame.subtitle', { count: QUESTION_COUNT })}
             </p>
           </div>
           <button onClick={onClose} className="p-2 rounded-xl hover:bg-gray-100 transition-all">
@@ -238,7 +241,7 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
         </div>
 
         <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-          Daraja tanlang
+          {t('vocabGame.selectLevel')}
         </p>
 
         <div className="grid grid-cols-2 gap-3">
@@ -252,8 +255,8 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
                 className={`rounded-2xl border-2 py-8 text-center transition-all ${s.bg} ${s.border} ${s.btn} disabled:opacity-50`}
               >
                 <span className={`text-4xl font-black ${s.text}`}>{lvl}</span>
-                <p className="text-xs text-gray-400 mt-1.5">{LEVEL_DESC[lvl]}</p>
-                <p className="text-[10px] text-gray-300 mt-0.5">{QUESTION_COUNT} ta savol</p>
+                <p className="text-xs text-gray-400 mt-1.5">{t(LEVEL_KEY[lvl])}</p>
+                <p className="text-xs text-gray-300 mt-0.5">{t('vocabGame.nQuestions', { count: QUESTION_COUNT })}</p>
               </button>
             )
           })}
@@ -262,7 +265,7 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
         {loading && (
           <div className="flex items-center justify-center gap-2 mt-6 text-gray-400">
             <Loader2 size={16} className="animate-spin" />
-            <span className="text-sm">So'zlar yuklanmoqda...</span>
+            <span className="text-sm">{t('vocabGame.loadingWords')}</span>
           </div>
         )}
       </div>
@@ -287,7 +290,7 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-sm font-bold text-green-600">{score} ball</span>
+            <span className="text-sm font-bold text-green-600">{t('vocabGame.score', { score })}</span>
             <button onClick={onClose} className="p-1.5 rounded-xl hover:bg-gray-100">
               <X size={16} className="text-gray-400" />
             </button>
@@ -304,19 +307,19 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
 
         {/* So'z va kontekst */}
         <div className="rounded-2xl border-2 border-indigo-200 bg-indigo-50 py-6 px-4 text-center mb-4">
-          <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">
-            Inglizcha so'z
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+            {t('vocabGame.englishWord')}
           </p>
           {currentWord && (
             <p className="text-3xl font-bold text-gray-900 mb-4">{currentWord.english}</p>
           )}
           <div className="border-t border-indigo-200 pt-3">
-            <p className="text-[11px] font-semibold text-indigo-500 uppercase tracking-wider mb-2">
-              🇺🇿 AI tuzgan o'zbekcha gap
+            <p className="text-xs font-semibold text-indigo-500 uppercase tracking-wider mb-2">
+              {t('vocabGame.aiSentence')}
             </p>
             {generating ? (
               <div className="flex items-center justify-center gap-2 text-indigo-600 text-sm font-medium">
-                <Loader2 size={16} className="animate-spin" /> Gap tuzilmoqda...
+                <Loader2 size={16} className="animate-spin" /> {t('vocabGame.generating')}
               </div>
             ) : (
               <p className="text-lg font-medium text-indigo-800 leading-relaxed">{uzbekSentence}</p>
@@ -339,14 +342,14 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
           >
             {checking && (
               <div className="flex items-center justify-center gap-2 text-yellow-600 text-sm font-medium">
-                <Loader2 size={16} className="animate-spin" /> Tekshirilmoqda...
+                <Loader2 size={16} className="animate-spin" /> {t('vocabGame.checking')}
               </div>
             )}
 
             {!checking && flash === 'correct' && (
               <div>
                 <div className="flex items-center justify-center gap-1.5 text-green-600 font-semibold text-sm">
-                  <CheckCircle size={18} /> To'g'ri! +1 ball
+                  <CheckCircle size={18} /> {t('vocabGame.correct')}
                 </div>
               </div>
             )}
@@ -354,14 +357,14 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
             {!checking && flash === 'wrong' && feedback && (
               <div className="text-left">
                 <p className="text-red-500 text-sm font-semibold flex items-center justify-center gap-1.5 mb-2">
-                  <XCircle size={16} /> Noto'g'ri
+                  <XCircle size={16} /> {t('vocabGame.wrong')}
                 </p>
                 <p className="text-sm text-gray-700 bg-red-50 rounded-xl p-3 mb-2">
-                  {feedback.explanation || 'Tarjima noto\'g\'ri.'}
+                  {feedback.explanation || t('vocabGame.wrongTranslation')}
                 </p>
                 {feedback.correctAnswer && (
                   <p className="text-sm text-green-700 bg-green-50 rounded-xl p-3 font-medium">
-                    ✅ To'g'ri javob: {feedback.correctAnswer}
+                    ✅ {t('vocabGame.correctAnswer')} {feedback.correctAnswer}
                   </p>
                 )}
               </div>
@@ -378,7 +381,7 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
                 }`}
               >
                 <FlaskConical size={15} />
-                {showAnalysis ? 'Tahlil ko\'rilmoqda' : 'Grammatik tahlil ko\'rish'}
+                {showAnalysis ? t('vocabGame.analyzing') : t('vocabGame.grammarAnalysis')}
                 {analysisLoading && <Loader2 size={13} className="animate-spin ml-1" />}
               </button>
             )}
@@ -401,7 +404,7 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={locked}
-                placeholder="Inglizcha tarjimani yozing..."
+                placeholder={t('vocabGame.writeTranslation')}
                 autoComplete="off"
                 autoCorrect="off"
                 spellCheck={false}
@@ -421,11 +424,11 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
                 onClick={goNext}
                 className="w-full mt-3 py-2.5 border-2 border-indigo-200 text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-all text-sm flex items-center justify-center gap-2"
               >
-                Keyingi <ArrowRight size={15} />
+                {t('vocabGame.next')} <ArrowRight size={15} />
               </button>
             ) : (
-              <p className="text-center text-[11px] text-gray-300 mt-3">
-                Enter tugmasini bosing
+              <p className="text-center text-xs text-gray-300 mt-3">
+                {t('vocabGame.pressEnter')}
               </p>
             )}
           </>
@@ -448,9 +451,9 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
             {score}
             <span className="text-gray-300">/{words.length}</span>
           </h2>
-          <p className="text-gray-500 mt-1">{pct}% to'g'ri</p>
+          <p className="text-gray-500 mt-1">{t('vocabGame.percentCorrect', { pct })}</p>
           <span className={`inline-block mt-2 text-xs font-bold px-3 py-1 rounded-full ${LEVEL_STYLES[selectedLevel!].badge}`}>
-            {selectedLevel} · {LEVEL_DESC[selectedLevel!]}
+            {selectedLevel} · {t(LEVEL_KEY[selectedLevel!])}
           </span>
         </div>
 
@@ -460,13 +463,13 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
             onClick={() => startGame(selectedLevel!)}
             className="flex-1 py-3 bg-indigo-500 text-white font-bold rounded-xl hover:bg-indigo-600 transition-all flex items-center justify-center gap-2"
           >
-            <RotateCcw size={16} /> Qayta o'ynash
+            <RotateCcw size={16} /> {t('vocabGame.playAgain')}
           </button>
           <button
             onClick={() => setPhase('level-select')}
             className="flex-1 py-3 border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-all"
           >
-            Daraja o'zgartir
+            {t('vocabGame.changeLevel')}
           </button>
         </div>
 
@@ -474,27 +477,27 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
         {wrongRounds.length > 0 ? (
           <div>
             <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-              Xatolar — {wrongRounds.length} ta
+              {t('vocabGame.mistakes', { count: wrongRounds.length })}
             </p>
             <div className="space-y-3">
               {wrongRounds.map((r, i) => (
                 <div key={i} className="rounded-xl border border-gray-100 bg-gray-50 py-3 px-4">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-sm font-bold text-indigo-600">{r.word.english}</span>
-                    <span className="text-[10px] text-gray-400">{r.word.level}</span>
+                    <span className="text-xs text-gray-400">{r.word.level}</span>
                   </div>
                   <p className="text-xs text-indigo-500 italic mb-2">🇺🇿 {r.uzbekSentence}</p>
                   <div className="flex flex-col gap-1">
                     <p className="text-xs text-red-500 flex items-center gap-1">
                       <XCircle size={11} />
-                      Siz: <span className="font-mono font-semibold">{r.userAnswer || '(bo\'sh)'}</span>
+                      {t('vocabGame.you')} <span className="font-mono font-semibold">{r.userAnswer || t('vocabGame.empty')}</span>
                     </p>
                     <p className="text-xs text-green-600 flex items-center gap-1">
                       <CheckCircle size={11} />
-                      To'g'ri: <span className="font-bold">{r.correctAnswer || r.word.english}</span>
+                      {t('vocabGame.correctLabel')} <span className="font-bold">{r.correctAnswer || r.word.english}</span>
                     </p>
                     {r.explanation && !r.explanation.includes('AI xatosi') && (
-                      <p className="text-[11px] text-gray-500 mt-1">{r.explanation}</p>
+                      <p className="text-xs text-gray-500 mt-1">{r.explanation}</p>
                     )}
                   </div>
                 </div>
@@ -504,13 +507,13 @@ export default function VocabSentenceGame({ onClose }: { onClose: () => void }) 
         ) : (
           <div className="text-center py-8">
             <CheckCircle size={36} className="text-green-500 mx-auto mb-3" />
-            <p className="font-bold text-green-700 text-lg">Mukammal natija!</p>
-            <p className="text-sm text-gray-400 mt-1">Barcha tarjimalar to'g'ri</p>
+            <p className="font-bold text-green-700 text-lg">{t('vocabGame.perfectResult')}</p>
+            <p className="text-sm text-gray-400 mt-1">{t('vocabGame.allCorrect')}</p>
           </div>
         )}
 
         <button onClick={onClose} className="w-full mt-5 py-3 text-gray-400 text-sm hover:text-gray-600 transition-all">
-          Yopish
+          {t('vocabGame.close')}
         </button>
       </div>
     )

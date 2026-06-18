@@ -424,12 +424,12 @@ export default function RoleplayDuoPlayer({ session, currentUserId, currentUserN
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-3xl">{s.emoji}</span>
                 <div className="flex items-center gap-1.5">
-                  <span className={`text-[11px] font-bold px-1.5 py-0.5 rounded-full ${CATEGORY_COLOR[s.category]}`}>{CATEGORY_LABEL[s.category]}</span>
-                  <span className="text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500">{s.minLevel}+</span>
+                  <span className={`text-xs font-bold px-1.5 py-0.5 rounded-full ${CATEGORY_COLOR[s.category]}`}>{CATEGORY_LABEL[s.category]}</span>
+                  <span className="text-xs font-bold px-1.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500">{s.minLevel}+</span>
                 </div>
               </div>
               <p className="font-bold text-sm text-gray-900 dark:text-white">{s.titleUz}</p>
-              <p className="text-[11px] text-gray-500 mt-0.5 line-clamp-2">{s.goalUz}</p>
+              <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{s.goalUz}</p>
             </button>
           ))}
         </div>

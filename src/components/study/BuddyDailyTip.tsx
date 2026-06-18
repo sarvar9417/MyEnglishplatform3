@@ -1,6 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { Bot, Sparkles, MessageCircle, RefreshCw } from 'lucide-react'
 import { generateDailyTip, getContextFromStore, type BuddyContext } from '../../services/aiBuddyService'
+import { monitoring } from '../../lib/monitoring'
 
 const AIBuddyChat = lazy(() => import('./AIBuddyChat'))
 
@@ -23,6 +24,7 @@ export default function BuddyDailyTip() {
       const generated = await generateDailyTip(ctx)
       setTip(generated)
     } catch {
+      monitoring.captureMessage('Failed to generate daily AI tip', 'warn')
       setTip(null)
     }
     setLoading(false)

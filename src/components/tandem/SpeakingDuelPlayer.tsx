@@ -150,15 +150,15 @@ export default function SpeakingDuelPlayer({ duel, question, onComplete }: Props
           <div className="grid grid-cols-3 gap-2 mt-4">
             <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-2">
               <p className="text-lg font-bold text-blue-600">{fb.fluency}</p>
-              <p className="text-[10px] text-gray-500">Ravonlik</p>
+              <p className="text-xs text-gray-500">Ravonlik</p>
             </div>
             <div className="bg-green-50 dark:bg-green-950/30 rounded-lg p-2">
               <p className="text-lg font-bold text-green-600">{fb.grammar}</p>
-              <p className="text-[10px] text-gray-500">Grammatika</p>
+              <p className="text-xs text-gray-500">Grammatika</p>
             </div>
             <div className="bg-purple-50 dark:bg-purple-950/30 rounded-lg p-2">
               <p className="text-lg font-bold text-purple-600">{fb.vocabulary}</p>
-              <p className="text-[10px] text-gray-500">Lug'at</p>
+              <p className="text-xs text-gray-500">Lug'at</p>
             </div>
           </div>
         </div>
@@ -307,7 +307,7 @@ export default function SpeakingDuelPlayer({ duel, question, onComplete }: Props
 
       {/* Prompt */}
       <div className="card p-6 space-y-4">
-        <span className="text-[11px] font-bold text-orange-500 uppercase tracking-wider">
+        <span className="text-xs font-bold text-orange-500 uppercase tracking-wider">
           Speaking — gapiring va AI baholaydi
         </span>
 
@@ -320,7 +320,7 @@ export default function SpeakingDuelPlayer({ duel, question, onComplete }: Props
           <div className="bg-blue-50 dark:bg-blue-950/30 rounded-xl p-3 space-y-1 border border-blue-100 dark:border-blue-900/50">
             <p className="text-xs font-semibold text-blue-600 dark:text-blue-400">💡 Maslahatlar:</p>
             {tips.map((tip, i) => (
-              <p key={i} className="text-[11px] text-gray-600 dark:text-gray-400">• {tip}</p>
+              <p key={i} className="text-xs text-gray-600 dark:text-gray-400">• {tip}</p>
             ))}
           </div>
         )}

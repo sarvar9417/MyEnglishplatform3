@@ -47,7 +47,7 @@ function SpeakingAchCard({ ach, unlocked, progress }: { ach: Achievement; unlock
           </p>
           {unlocked && <Sparkles size={10} className="text-amber-500 shrink-0" />}
         </div>
-        <p className={`text-[10px] leading-tight mt-0.5 ${unlocked ? 'text-gray-600 dark:text-gray-400' : 'text-gray-400 dark:text-gray-500'}`}>
+        <p className={`text-xs leading-tight mt-0.5 ${unlocked ? 'text-gray-600 dark:text-gray-400' : 'text-gray-400 dark:text-gray-500'}`}>
           {ach.description}
         </p>
 
@@ -98,14 +98,14 @@ export default function SpeakingAchievements({ unlockedIds, progress, className 
       <div className={className}>
         <div className="flex items-center gap-1.5 mb-2">
           <Trophy size={14} className="text-amber-500" />
-          <p className="text-[11px] font-bold text-gray-600 dark:text-gray-400">Speaking yutuqlari</p>
+          <p className="text-xs font-bold text-gray-600 dark:text-gray-400">Speaking yutuqlari</p>
         </div>
         <div className="space-y-1.5">
           {recentUnlocked.map(ach => (
             <div key={ach.id} className="flex items-center gap-2 p-2 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/30">
               <span className="text-lg">{ach.icon}</span>
               <div className="min-w-0">
-                <p className="text-[11px] font-bold text-gray-900 dark:text-gray-100 truncate">{ach.title}</p>
+                <p className="text-xs font-bold text-gray-900 dark:text-gray-100 truncate">{ach.title}</p>
                 <p className="text-[9px] text-gray-500 dark:text-gray-400 truncate">{ach.description}</p>
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function SpeakingAchievements({ unlockedIds, progress, className 
           <span className="font-semibold text-gray-600 dark:text-gray-400">🏆 Speaking yutuqlari</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-[10px] text-gray-400 dark:text-gray-500">
+          <span className="text-xs text-gray-400 dark:text-gray-500">
             {unlockedCount}/{achievements.length}
           </span>
           {open ? <ChevronUp size={14} className="text-gray-400" /> : <ChevronDown size={14} className="text-gray-400" />}
@@ -139,8 +139,8 @@ export default function SpeakingAchievements({ unlockedIds, progress, className 
           {/* Overall progress */}
           <div className="p-3 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-amber-200/50 dark:border-amber-800/30">
             <div className="flex items-center justify-between mb-1">
-              <p className="text-[10px] font-semibold text-gray-500 dark:text-gray-400">Umumiy progress</p>
-              <p className="text-[10px] font-bold text-amber-600 dark:text-amber-400">
+              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">Umumiy progress</p>
+              <p className="text-xs font-bold text-amber-600 dark:text-amber-400">
                 {unlockedCount}/{achievements.length}
               </p>
             </div>

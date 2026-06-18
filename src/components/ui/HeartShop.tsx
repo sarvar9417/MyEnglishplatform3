@@ -84,7 +84,7 @@ export function HeartShop({ open, onClose, onPurchased }: HeartShopProps) {
               <p className="text-sm font-bold text-green-700 dark:text-green-400">
                 +{result.hearts} yurak qo'shildi! 🎉
               </p>
-              <p className="text-[11px] text-gray-400 mt-0.5">
+              <p className="text-xs text-gray-400 mt-0.5">
                 Qolgan XP: {result.remaining.toLocaleString()}
               </p>
             </div>
@@ -115,7 +115,7 @@ export function HeartShop({ open, onClose, onPurchased }: HeartShopProps) {
                     {item.popular && (
                       <div className="absolute -top-2.5 left-1/2 -translate-x-1/2
                         px-3 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-rose-500
-                        text-white text-[11px] font-bold whitespace-nowrap shadow-lg">
+                        text-white text-xs font-bold whitespace-nowrap shadow-lg">
                         ⭐ Eng yaxshi tanlov
                       </div>
                     )}
@@ -139,7 +139,7 @@ export function HeartShop({ open, onClose, onPurchased }: HeartShopProps) {
                           </span>
                         </div>
                         {'savedXp' in item && item.savedXp && (
-                          <span className="text-[11px] text-green-500 font-semibold">
+                          <span className="text-xs text-green-500 font-semibold">
                             ({item.savedXp} XP tejash)
                           </span>
                         )}

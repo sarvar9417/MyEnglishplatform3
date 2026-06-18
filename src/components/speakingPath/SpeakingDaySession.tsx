@@ -200,7 +200,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
         {activeSteps.map((s, i) => (
           <div key={s} className="flex-1">
             <div className={`h-1.5 rounded-full transition-colors ${i < doneCount ? 'bg-primary-600' : i === doneCount && effectiveStep !== 'done' ? 'bg-primary-400' : 'bg-gray-200 dark:bg-gray-700'}`} />
-            <p className={`text-[10px] text-center mt-1 font-semibold ${i <= doneCount ? 'text-primary-600 dark:text-primary-400' : 'text-gray-400 dark:text-gray-600'}`}>{STEP_LABEL[s]}</p>
+            <p className={`text-xs text-center mt-1 font-semibold ${i <= doneCount ? 'text-primary-600 dark:text-primary-400' : 'text-gray-400 dark:text-gray-600'}`}>{STEP_LABEL[s]}</p>
           </div>
         ))}
       </div>
@@ -215,7 +215,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
                 Avvalgi kunlardan takrorlash · {reviewIndex + 1} / {recycledChunks.length}
               </p>
             </div>
-            <p className="text-[11px] text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               Iboralarni esga oling va talaffuz qiling — natijangiz SRS da yangilanadi.
             </p>
           </div>
@@ -238,7 +238,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
               <RotateCcw size={16} className="text-amber-600 dark:text-amber-400" />
               <p className="text-xs font-bold text-amber-700 dark:text-amber-300">Takrorlash yakuni</p>
             </div>
-            <p className="text-[11px] text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               {recycledChunks.length} ta ibora takrorlandi. Endi yangi mavzuga o'tamiz!
             </p>
           </div>
@@ -388,7 +388,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
                     ))}
                   </div>
                   {/* Summary */}
-                  <p className="text-[10px] text-gray-400 mt-2 text-center">
+                  <p className="text-xs text-gray-400 mt-2 text-center">
                     Jami {globalSrsDist.reduce((s, b) => s + b.count, 0)} ta iboradan {(globalSrsDist[3]?.count || 0) + (globalSrsDist[4]?.count || 0)} tasi o'zlashtirilgan
                   </p>
                 </div>

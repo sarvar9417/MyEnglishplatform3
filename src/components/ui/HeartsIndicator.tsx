@@ -83,14 +83,14 @@ export function HeartsIndicator({ size = 'md', onShopClick }: HeartsIndicatorPro
         <div className="relative">
           <button
             onClick={() => setShowTimer(s => !s)}
-            className="ml-1 text-[10px] text-gray-400 hover:text-red-400 transition-colors font-medium"
+            className="ml-1 text-xs text-gray-400 hover:text-red-400 transition-colors font-medium"
             title="Yurak tiklanish vaqti"
           >
             ⏳
           </button>
           {showTimer && (
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 z-20
-              bg-gray-900 text-white text-[10px] px-2 py-1 rounded-lg whitespace-nowrap shadow-lg animate-scale-in">
+              bg-gray-900 text-white text-xs px-2 py-1 rounded-lg whitespace-nowrap shadow-lg animate-scale-in">
               <p>Keyingi yurak: {formatTime(timeLeft)}</p>
               <div className="absolute top-full left-1/2 -translate-x-1/2
                 border-4 border-transparent border-t-gray-900" />
@@ -101,7 +101,7 @@ export function HeartsIndicator({ size = 'md', onShopClick }: HeartsIndicatorPro
 
       {/* Empty state message */}
       {emptyHearts && (
-        <span className="text-[10px] text-red-400 font-semibold ml-1 animate-pulse">
+        <span className="text-xs text-red-400 font-semibold ml-1 animate-pulse">
           Yuraklar tugadi!
         </span>
       )}
@@ -111,7 +111,7 @@ export function HeartsIndicator({ size = 'md', onShopClick }: HeartsIndicatorPro
         <button
           onClick={onShopClick}
           className="ml-1.5 px-1.5 py-0.5 rounded-md bg-red-50 text-red-500
-            text-[11px] font-bold hover:bg-red-100 transition-colors"
+            text-xs font-bold hover:bg-red-100 transition-colors"
           title="Yurak sotib olish"
         >
           +{iconPx}
@@ -147,7 +147,7 @@ export function HeartRegenBar({ hearts, heartsLastLostAt }: { hearts: number; he
 
   return (
     <div className="w-full">
-      <div className="flex justify-between text-[10px] text-gray-400 mb-1">
+      <div className="flex justify-between text-xs text-gray-400 mb-1">
         <span>Yurak tiklanishi</span>
         <span className="font-medium">{formatTime(timeLeft)}</span>
       </div>

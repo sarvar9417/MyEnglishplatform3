@@ -22,7 +22,7 @@ export default function PhraseQuickRating({
   return (
     <div className="relative flex items-center gap-1 sm:gap-0.5 ml-1 sm:ml-1.5 border-l border-gray-200 pl-1 sm:pl-1.5">
       {flash && (
-        <span className="absolute -top-4 right-0 text-[10px] font-semibold whitespace-nowrap animate-bounce text-green-600">
+        <span className="absolute -top-4 right-0 text-xs font-semibold whitespace-nowrap animate-bounce text-green-600">
           {RATING_CONFIG.find(r => r.key === flash)?.emoji}
         </span>
       )}

@@ -73,7 +73,7 @@ export default function WritingHistory() {
                       <PenLine size={14} className="text-b2-400 flex-shrink-0" />
                       <div className="min-w-0 text-left">
                         <p className="text-xs font-medium text-gray-800 dark:text-gray-200 truncate">{r.prompt?.slice(0, 60)}...</p>
-                        <p className="text-[10px] text-gray-400">{r.date} · {r.word_count} so'z</p>
+                        <p className="text-xs text-gray-400">{r.date} · {r.word_count} so'z</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
@@ -87,16 +87,16 @@ export default function WritingHistory() {
                   {expanded === r.id && (
                     <div className="px-3 pb-3 pt-0 border-t border-gray-50 dark:border-gray-700 space-y-2">
                       <div className="mt-2">
-                        <p className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1">📝 Vazifa</p>
+                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">📝 Vazifa</p>
                         <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">{r.prompt}</p>
                       </div>
                       <div>
-                        <p className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1">✍️ Sizning matningiz</p>
+                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">✍️ Sizning matningiz</p>
                         <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">{r.user_text}</p>
                       </div>
                       {r.ai_feedback && (
                         <div>
-                          <p className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1">💡 AI Feedback</p>
+                          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">💡 AI Feedback</p>
                           <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{r.ai_feedback}</p>
                         </div>
                       )}

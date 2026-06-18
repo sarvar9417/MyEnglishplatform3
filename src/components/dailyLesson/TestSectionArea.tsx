@@ -49,7 +49,7 @@ export default function TestSectionArea({
     <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
       <div className="flex items-center gap-2 mb-4">
         <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
-        <span className="text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+        <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
           🧪 Testlar
         </span>
         <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
@@ -72,7 +72,7 @@ export default function TestSectionArea({
                 }`}
               />
               <p
-                className={`text-[11px] mt-0.5 text-center font-medium ${
+                className={`text-xs mt-0.5 text-center font-medium ${
                   active
                     ? 'text-yellow-700 dark:text-yellow-400'
                     : done
@@ -233,12 +233,12 @@ function TestSubmittedView({
           <p className="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
             <Trophy size={14} className="text-yellow-600 dark:text-yellow-400" /> Batafsil natija
           </p>
-          <span className="text-[11px] text-gray-400 dark:text-gray-500">{total} ta savol</span>
+          <span className="text-xs text-gray-400 dark:text-gray-500">{total} ta savol</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b-2 border-gray-100 text-left text-[11px] text-gray-500 uppercase tracking-wider">
+              <tr className="border-b-2 border-gray-100 text-left text-xs text-gray-500 uppercase tracking-wider">
                 <th className="pb-2 pr-2 font-semibold w-8">#</th>
                 <th className="pb-2 pr-3 font-semibold">Savol</th>
                 <th className="pb-2 pr-3 font-semibold">Sizning javobingiz</th>
@@ -353,7 +353,7 @@ function TestQuestionsView({
               >
                 {i + 1}
               </div>
-              <p className="text-[11px] font-bold text-yellow-600 uppercase tracking-wider mb-3">
+              <p className="text-xs font-bold text-yellow-600 uppercase tracking-wider mb-3">
                 🧪 Test savoli
               </p>
               {t.instruction && (
@@ -386,7 +386,7 @@ function TestQuestionsView({
                         onClick={() => onChangeAnswer(t.id, opt)}
                         className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-all ${cls}`}
                       >
-                        <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-[11px] font-bold flex-shrink-0">
+                        <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold flex-shrink-0">
                           {['A', 'B', 'C', 'D'][oi]}
                         </span>
                         {opt}

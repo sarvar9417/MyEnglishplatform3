@@ -117,9 +117,9 @@ export default function WeakSpotsWidget({ onSpotsLoaded }: WeakSpotsWidgetProps)
           <h3 className="font-bold text-gray-900 text-sm">Zaif tomonlar tahlili</h3>
         </div>
         {isAllGood ? (
-          <span className="badge badge-b1 text-[10px]">Barchasi yaxshi ✅</span>
+          <span className="badge badge-b1 text-xs">Barchasi yaxshi ✅</span>
         ) : (
-          <span className="text-[10px] text-orange-600 font-semibold bg-orange-50 px-2 py-1 rounded-full">
+          <span className="text-xs text-orange-600 font-semibold bg-orange-50 px-2 py-1 rounded-full">
             {spots.length} ta zaif joy
           </span>
         )}
@@ -139,7 +139,7 @@ export default function WeakSpotsWidget({ onSpotsLoaded }: WeakSpotsWidgetProps)
               <span className="text-lg">{weakest.icon}</span>
               <div>
                 <p className="text-sm font-bold text-gray-800">{weakest.label}</p>
-                <p className="text-[10px] text-gray-500">Eng zaif soha</p>
+                <p className="text-xs text-gray-500">Eng zaif soha</p>
               </div>
               <span className="ml-auto text-2xl font-bold text-red-500">{weakest.score}%</span>
             </div>
@@ -163,7 +163,7 @@ export default function WeakSpotsWidget({ onSpotsLoaded }: WeakSpotsWidgetProps)
                   </span>
                 </div>
                 <ScoreBar score={spot.score} />
-                <p className="text-[10px] text-gray-400 mt-1 leading-relaxed">{spot.detail}</p>
+                <p className="text-xs text-gray-400 mt-1 leading-relaxed">{spot.detail}</p>
               </div>
             ))}
           </div>
@@ -173,7 +173,7 @@ export default function WeakSpotsWidget({ onSpotsLoaded }: WeakSpotsWidgetProps)
             <AlertTriangle size={14} className="text-primary-500 mt-0.5 flex-shrink-0" />
             <div>
               <p className="text-xs font-semibold text-primary-700">Tavsiya</p>
-              <p className="text-[11px] text-gray-600 mt-0.5 leading-relaxed">
+              <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
                 Eng zaif soha — <strong>{weakest.label}</strong>. Shu sohaga ko'proq vaqt ajrating.
               </p>
             </div>

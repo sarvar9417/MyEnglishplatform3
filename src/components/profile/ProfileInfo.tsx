@@ -92,13 +92,13 @@ function StudyBuddySection({ userId, onOpenAIChat }: { userId?: string; onOpenAI
     const max = Math.max(myVal, buddyVal, 1)
     return (
       <div className="space-y-1">
-        <div className="flex items-center gap-2 text-[11px]">
+        <div className="flex items-center gap-2 text-xs">
           <span className="w-10 text-right text-gray-400 font-medium">{t('profile.studyBuddy.youLabel')}</span>
           <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
             <div className="h-full bg-primary-500 rounded-full" style={{ width: `${(myVal / max) * 100}%` }} />
           </div>
         </div>
-        <div className="flex items-center gap-2 text-[11px]">
+        <div className="flex items-center gap-2 text-xs">
           <span className="w-10 text-right text-gray-400 font-medium">{t('profile.studyBuddy.buddyLabel')}</span>
           <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
             <div className="h-full bg-green-500 rounded-full" style={{ width: `${(buddyVal / max) * 100}%` }} />
@@ -123,7 +123,7 @@ function StudyBuddySection({ userId, onOpenAIChat }: { userId?: string; onOpenAI
             </div>
             <div className="flex-1">
               <p className="text-sm font-bold text-gray-800 dark:text-white">{buddy.name}</p>
-              <p className="text-[11px] text-green-600 dark:text-green-400">
+              <p className="text-xs text-green-600 dark:text-green-400">
                 {t('profile.studyBuddy.studyingTogether')}
               </p>
             </div>
@@ -134,7 +134,7 @@ function StudyBuddySection({ userId, onOpenAIChat }: { userId?: string; onOpenAI
                   {duoStreakToday ? t('profile.studyBuddy.duoStreakToday') : t('profile.studyBuddy.duoStreakNotToday')}
                 </span>
               </div>
-              <span className="text-[11px] text-gray-400">{t('profile.studyBuddy.duoStreakLabel')}</span>
+              <span className="text-xs text-gray-400">{t('profile.studyBuddy.duoStreakLabel')}</span>
             </div>
           </div>
 
@@ -143,24 +143,24 @@ function StudyBuddySection({ userId, onOpenAIChat }: { userId?: string; onOpenAI
               <p className="text-xs font-semibold text-gray-700 dark:text-gray-300">{t('profile.studyBuddy.progressTitle')}</p>
               <div className="grid grid-cols-3 gap-2 text-center">
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-2 border border-gray-100 dark:border-gray-700">
-                  <p className="text-[11px] text-gray-400">{t('profile.studyBuddy.xpLabel')}</p>
+                  <p className="text-xs text-gray-400">{t('profile.studyBuddy.xpLabel')}</p>
                   <p className="text-sm font-bold text-primary-600">{totalXP.toLocaleString()}</p>
-                  <p className="text-[11px] text-green-600">{buddyXP.toLocaleString()}</p>
+                  <p className="text-xs text-green-600">{buddyXP.toLocaleString()}</p>
                 </div>
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-2 border border-gray-100 dark:border-gray-700">
-                  <p className="text-[11px] text-gray-400">{t('profile.studyBuddy.streakLabel')}</p>
+                  <p className="text-xs text-gray-400">{t('profile.studyBuddy.streakLabel')}</p>
                   <p className="text-sm font-bold text-orange-500">{streak} {t('profile.info.dayLabel').toLowerCase()}</p>
-                  <p className="text-[11px] text-green-600">{buddyStreak} {t('profile.info.dayLabel').toLowerCase()}</p>
+                  <p className="text-xs text-green-600">{buddyStreak} {t('profile.info.dayLabel').toLowerCase()}</p>
                 </div>
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-2 border border-gray-100 dark:border-gray-700">
-                  <p className="text-[11px] text-gray-400">{t('profile.studyBuddy.wordsLabel')}</p>
+                  <p className="text-xs text-gray-400">{t('profile.studyBuddy.wordsLabel')}</p>
                   <p className="text-sm font-bold text-b1-600">{totalWordsLearned}</p>
-                  <p className="text-[11px] text-green-600">{buddyWords}</p>
+                  <p className="text-xs text-green-600">{buddyWords}</p>
                 </div>
               </div>
 
               <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-3">
-                <p className="text-[11px] font-semibold text-gray-500 mb-2">{t('profile.studyBuddy.comparisonTitle')}</p>
+                <p className="text-xs font-semibold text-gray-500 mb-2">{t('profile.studyBuddy.comparisonTitle')}</p>
                 {myBar(totalXP, buddyXP)}
               </div>
             </div>
@@ -221,7 +221,7 @@ function StudyBuddySection({ userId, onOpenAIChat }: { userId?: string; onOpenAI
           </div>
           <div className="flex-1">
             <p className="text-xs font-bold text-gray-800 dark:text-gray-200">{t('profile.studyBuddy.aiTitle')}</p>
-            <p className="text-[11px] text-gray-400">{t('profile.studyBuddy.aiDesc')}</p>
+            <p className="text-xs text-gray-400">{t('profile.studyBuddy.aiDesc')}</p>
           </div>
         </div>
         <button
@@ -352,7 +352,7 @@ export default function ProfileInfo({
             </div>
             <div>
               <p className="text-lg font-bold text-gray-900 leading-tight">{stat.value}</p>
-              <p className="text-[11px] text-gray-500">{stat.label}</p>
+              <p className="text-xs text-gray-500">{stat.label}</p>
             </div>
           </div>
         ))}
@@ -368,7 +368,7 @@ export default function ProfileInfo({
             <p className="text-lg font-bold text-gray-900 leading-tight">
               {weeklyWinsLoading ? '...' : weeklyWins}
             </p>
-            <p className="text-[11px] text-gray-500">{t('profile.info.weeklyWinsLabel')}</p>
+            <p className="text-xs text-gray-500">{t('profile.info.weeklyWinsLabel')}</p>
           </div>
         </div>
       )}
@@ -393,7 +393,7 @@ export default function ProfileInfo({
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <h3 className="font-bold text-base text-gray-900 dark:text-white">{av.label}</h3>
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/70 dark:bg-gray-800/70 text-primary-600 dark:text-primary-400 font-semibold border border-primary-200 dark:border-primary-700">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-white/70 dark:bg-gray-800/70 text-primary-600 dark:text-primary-400 font-semibold border border-primary-200 dark:border-primary-700">
                     {av.personality}
                   </span>
                 </div>
@@ -401,7 +401,7 @@ export default function ProfileInfo({
                   "{av.trait}"
                 </p>
                 {av.achievementHint && av.isSpecial && (
-                  <p className="text-[11px] text-amber-600 dark:text-amber-400 mt-1.5 flex items-center gap-1">
+                  <p className="text-xs text-amber-600 dark:text-amber-400 mt-1.5 flex items-center gap-1">
                     <Sparkles size={10} />
                     {av.achievementHint}
                   </p>
@@ -450,7 +450,7 @@ export default function ProfileInfo({
             disabled
             className="input opacity-60 cursor-not-allowed"
           />
-          <p className="text-[11px] text-gray-400 mt-1">{t('profile.info.emailChangeNote')}</p>
+          <p className="text-xs text-gray-400 mt-1">{t('profile.info.emailChangeNote')}</p>
         </div>
 
         <div>
@@ -473,7 +473,7 @@ export default function ProfileInfo({
                   }`}
               >
                 <p className={`font-bold text-sm ${level === l.value ? '' : 'text-gray-700'}`}>{l.label}</p>
-                <p className="text-[11px] mt-0.5 opacity-70">{t(l.descKey as keyof TranslationStrings)}</p>
+                <p className="text-xs mt-0.5 opacity-70">{t(l.descKey as keyof TranslationStrings)}</p>
               </button>
             ))}
           </div>
@@ -504,7 +504,7 @@ export default function ProfileInfo({
               style={{ width: `${(currentDay / 126) * 100}%` }}
             />
           </div>
-          <div className="flex justify-between text-[11px] text-gray-500 mt-1.5">
+          <div className="flex justify-between text-xs text-gray-500 mt-1.5">
             <span>{t('profile.info.goalStarted', { date: startDate })}</span>
             <span>{t('profile.info.goalTarget', { date: targetDate, days: String(daysLeft) })}</span>
           </div>

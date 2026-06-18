@@ -197,7 +197,7 @@ function SkillCard({
                       style={{ width: `${userPct}%` }}
                     />
                   </div>
-                  <span className="text-[10px] font-bold text-gray-400">{Math.round(userPct)}%</span>
+                  <span className="text-xs font-bold text-gray-400">{Math.round(userPct)}%</span>
                 </div>
               )}
             </div>
@@ -220,7 +220,7 @@ function SkillCard({
 
             return (
               <div key={`${key}-${level}`} className="flex items-center gap-2">
-                <span className={`text-[10px] font-semibold w-7 flex-shrink-0 transition-colors ${
+                <span className={`text-xs font-semibold w-7 flex-shrink-0 transition-colors ${
                   isActive ? lc.color : 'text-gray-300 dark:text-gray-600'
                 }`}>
                   {level}
@@ -233,7 +233,7 @@ function SkillCard({
                     style={{ width: `${barWidth}%` }}
                   />
                 </div>
-                <span className={`text-[10px] font-semibold w-5 text-right flex-shrink-0 transition-colors ${
+                <span className={`text-xs font-semibold w-5 text-right flex-shrink-0 transition-colors ${
                   isActive ? 'text-gray-500 dark:text-gray-400' : 'text-gray-300 dark:text-gray-600'
                 }`}>
                   {count}
@@ -398,7 +398,7 @@ export default function SkillsPage() {
                   <span className="text-xs font-bold text-gray-600 dark:text-gray-400">{count}</span>
                 </div>
                 <div className="w-16 flex-shrink-0 text-right">
-                  <span className="text-[10px] text-gray-400">{Math.round(pct)}%</span>
+                  <span className="text-xs text-gray-400">{Math.round(pct)}%</span>
                 </div>
               </button>
             )

@@ -147,7 +147,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
     <div className="space-y-5">
       {/* Task card */}
       <div className="rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 p-5 text-white">
-        <p className="text-[11px] font-bold uppercase tracking-widest opacity-80 mb-2 flex items-center gap-1.5">
+        <p className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2 flex items-center gap-1.5">
           <PenLine size={12} /> Writing Task
         </p>
         <p className="text-sm leading-relaxed font-medium">{activeSection.prompt}</p>
@@ -221,7 +221,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
                   <ol className="mt-2 space-y-1.5">
                     {activeSection.structure.map((step, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-                        <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-[10px] font-bold shrink-0 mt-0.5">
+                        <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-xs font-bold shrink-0 mt-0.5">
                           {i + 1}
                         </span>
                         {step}

@@ -118,7 +118,7 @@ export default function ActiveRecall() {
           </div>
 
           <div className="card">
-            <p className="text-[11px] font-medium text-gray-400 mb-2">{current.level} · {current.lessonTitle}</p>
+            <p className="text-xs font-medium text-gray-400 mb-2">{current.level} · {current.lessonTitle}</p>
 
             {/* Prompt — formula nomi */}
             <div className="rounded-2xl p-5 bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800/40 text-center">

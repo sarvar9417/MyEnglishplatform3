@@ -941,3 +941,40 @@ button, a, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-
   0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
   50%      { opacity: 1; transform: translateX(-50%) scale(1.15); }
 }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   ACCESSIBILITY: prefers-reduced-motion
+   ════════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-slide-in,
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-scale-in,
+  .animate-pop-in,
+  .animate-fade-in-left,
+  .animate-fade-in-right,
+  .animate-stagger > * {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .xp-bar-animate {
+    transition: none !important;
+  }
+
+  /* Confetti / particles disabled */
+  [data-confetti],
+  [data-particles] {
+    display: none !important;
+  }
+}

@@ -229,7 +229,7 @@ export function AvatarSelector({
                 }`}>
                   {av.label}
                 </span>
-                <span className={`text-[11px] font-medium block mt-0.5 ${
+                <span className={`text-xs font-medium block mt-0.5 ${
                   selected ? 'text-primary-500' : 'text-gray-400 dark:text-gray-500'
                 }`}>
                   {av.personality}
@@ -238,7 +238,7 @@ export function AvatarSelector({
 
               {/* Trait tooltip on hover */}
               <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100
-                pointer-events-none transition-opacity duration-200 z-30 w-48 bg-gray-900 text-white text-[10px]
+                pointer-events-none transition-opacity duration-200 z-30 w-48 bg-gray-900 text-white text-xs
                 rounded-lg p-2 shadow-lg text-center hidden sm:block">
                 {av.trait}
               </div>

@@ -31,7 +31,7 @@ export function ConnectionFeedback({ exercise, userAnswer, aiFeedback }: Connect
           {exercise.hints.length > 0 && (
             <div className="flex flex-wrap gap-1.5 mt-1.5">
               {exercise.hints.map((h, i) => (
-                <span key={i} className="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">
+                <span key={i} className="text-xs px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">
                   💡 {h}
                 </span>
               ))}

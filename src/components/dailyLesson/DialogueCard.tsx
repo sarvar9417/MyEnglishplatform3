@@ -5,6 +5,7 @@ import { useStore } from '../../store/useStore'
 import { personalizeText } from '../../utils/personalize'
 import type { Dialogue } from '../../data/dailyLessons'
 import { useI18n } from '../../i18n'
+import { monitoring } from '../../lib/monitoring'
 
 interface DialogueCardProps {
   dialogue: Dialogue
@@ -72,6 +73,7 @@ export default function DialogueCard({ dialogue }: DialogueCardProps) {
     try {
       await speak(personalize(line.text), { rate: 0.85 })
     } catch {
+      monitoring.captureMessage('TTS playback failed in dialogue', 'warn')
       setPlayingId(null)
       return
     }
@@ -124,7 +126,7 @@ export default function DialogueCard({ dialogue }: DialogueCardProps) {
                 <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${style.dot}`} />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-0.5">
-                    <span className={`text-[11px] font-bold uppercase tracking-wider ${style.text}`}>
+                    <span className={`text-xs font-bold uppercase tracking-wider ${style.text}`}>
                       {displaySpeaker}
                     </span>
                     <button

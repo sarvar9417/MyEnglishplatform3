@@ -230,7 +230,7 @@ export default function AudioPlayback({
           <Volume2 size={14} className={color} />
           <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">{label}</span>
         </div>
-        <span className="text-[11px] font-mono text-gray-400">
+        <span className="text-xs font-mono text-gray-400">
           {formatTime(currentTime)} / {formatTime(duration)}
         </span>
       </div>
@@ -299,7 +299,7 @@ function ComparisonRow({ url, label }: { url: string; label: string; color?: str
         {playing ? <Pause size={12} /> : <Play size={12} className="ml-0.5" />}
       </button>
       <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{label}</span>
-      {playing && <span className="text-[10px] text-violet-500 animate-pulse">🔊 eshitilmoqda...</span>}
+      {playing && <span className="text-xs text-violet-500 animate-pulse">🔊 eshitilmoqda...</span>}
     </div>
   )
 }

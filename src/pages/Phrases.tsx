@@ -255,8 +255,8 @@ function CatalogView({ d, streak }: { d: ReturnType<typeof usePhraseData>; strea
               return (
                 <button key={batchNum} onClick={() => d.selectBatch(batchNum)} disabled={batchSlice.length === 0} className={`card py-3 text-center transition-all ${isCurrent ? 'ring-2 ring-b1-500 border-b1-500' : ''} ${batchSlice.length === 0 ? 'opacity-40 cursor-not-allowed' : ''}`}>
                   <p className={`text-sm font-bold ${isCurrent ? 'text-b1-600' : 'text-gray-700'}`}>{t('phrases.batchLabel', { num: String(batchNum) })}</p>
-                  <p className="text-[10px] text-gray-400">{t('phrases.batchRange', { start: String(startNum), end: String(endNum) })}</p>
-                  <p className="text-[10px] font-medium text-b1-500 mt-0.5">
+                  <p className="text-xs text-gray-400">{t('phrases.batchRange', { start: String(startNum), end: String(endNum) })}</p>
+                  <p className="text-xs font-medium text-b1-500 mt-0.5">
                     {t('phrases.batchReviewLabel', { count: String(batchSlice.filter(p => !p.is_new && !p.is_learned).length) })}
                     {batchSlice.filter(p => p.is_learned).length > 0 && <> · {t('phrases.batchLearnedLabel', { count: String(batchSlice.filter(p => p.is_learned).length) })}</>}
                   </p>
@@ -279,7 +279,7 @@ function CatalogView({ d, streak }: { d: ReturnType<typeof usePhraseData>; strea
                   <button key={phase.mode} onClick={() => d.enterStudyMode(phase.mode)} className="card py-4 text-center hover:shadow-sm hover:border-b1-200 transition-all">
                     <span className="text-2xl">{phase.icon}</span>
                     <p className="text-sm font-semibold text-gray-800 mt-1">{phase.label}</p>
-                    <p className="text-[10px] text-gray-400">{phase.desc}</p>
+                    <p className="text-xs text-gray-400">{phase.desc}</p>
                   </button>
                 ))}
               </div>
@@ -302,7 +302,7 @@ function CatalogView({ d, streak }: { d: ReturnType<typeof usePhraseData>; strea
                 {['A1', 'A2', 'B1', 'B2'].map(lvl => (
                   <button key={lvl} onClick={() => { const next = new Set(d.filterLevel); if (next.has(lvl)) next.delete(lvl); else next.add(lvl); d.setFilterLevel(next) }} className={`text-xs font-semibold px-3 py-1.5 rounded-xl border transition-all ${d.filterLevel.has(lvl) ? (lvl === 'A1' ? 'bg-gray-200 border-gray-400 text-gray-700' : lvl === 'A2' ? 'bg-primary-100 border-primary-400 text-primary-700' : lvl === 'B1' ? 'bg-b1-100 border-b1-400 text-b1-700' : 'bg-b2-100 border-b2-400 text-b2-700') : 'border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'}`}>{lvl}</button>
                 ))}
-                <span className="text-[10px] text-gray-300 dark:text-gray-600">|</span>
+                <span className="text-xs text-gray-300 dark:text-gray-600">|</span>
                 {([
                   { key: 'all' as const, label: t('phrases.filterAll') },
                   { key: 'new' as const, label: t('phrases.filterNew') },
@@ -318,7 +318,7 @@ function CatalogView({ d, streak }: { d: ReturnType<typeof usePhraseData>; strea
           <div className="mt-4 space-y-1">
             <div className="flex items-center justify-between mb-2">
               <p className="text-xs text-gray-400">{d.filteredBatchPhrases.length} / {d.batchPhrases.length} {t('common.words')}</p>
-              <div className="flex items-center gap-2 text-[10px] text-gray-400">
+              <div className="flex items-center gap-2 text-xs text-gray-400">
                 <span>{t('phrases.statsNew', { count: String(d.batchPhrases.filter(p => p.is_new).length) })}</span>
                 {d.batchPhrases.filter(p => !p.is_new && !p.is_learned).length > 0 && <span>· {t('phrases.statsReview', { count: String(d.batchPhrases.filter(p => !p.is_new && !p.is_learned).length) })}</span>}
                 {d.batchPhrases.filter(p => p.is_learned).length > 0 && <span>· {t('phrases.statsLearned', { count: String(d.batchPhrases.filter(p => p.is_learned).length) })}</span>}

@@ -25,7 +25,7 @@ export default function VocabProgress({ stats, totalLearned, totalWords, dueCoun
             <div key={s.level}>
               <div className="flex items-center justify-between text-xs mb-0.5">
                 <span className="font-semibold text-gray-700 dark:text-gray-300">{s.level}</span>
-                <span className="text-[10px] text-gray-400 dark:text-gray-500">
+                <span className="text-xs text-gray-400 dark:text-gray-500">
                   {s.learned.toLocaleString()}/{s.total.toLocaleString()}
                 </span>
               </div>

@@ -735,13 +735,13 @@ export default function HotSeatDuel({ onBack }: { onBack: () => void }) {
           <div className={`h-full rounded-full transition-all duration-300 ${
             olTimeLeft > 3 ? 'bg-green-500' : olTimeLeft > 1 ? 'bg-yellow-500' : 'bg-red-500'
           }`} style={{ width: `${timerPct}%` }} />
-          <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white drop-shadow">{olTimeLeft}s</span>
+          <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white drop-shadow">{olTimeLeft}s</span>
         </div>
 
         {/* Question */}
         <div className="card p-5 space-y-4 animate-pop-in">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold text-orange-500 uppercase tracking-wider">
+            <span className="text-xs font-bold text-orange-500 uppercase tracking-wider">
               {selectedMode === 'vocab' ? "So'z — ma'nosi?" : 'Grammatika'}
             </span>
             <span className="flex items-center gap-1 text-sm font-bold text-gray-500">
@@ -914,11 +914,11 @@ export default function HotSeatDuel({ onBack }: { onBack: () => void }) {
           <div className={`h-full rounded-full transition-all duration-300 ${
             sdTimeLeft > 3 ? 'bg-green-500' : sdTimeLeft > 1 ? 'bg-yellow-500' : 'bg-red-500'
           }`} style={{ width: `${timerPct}%` }} />
-          <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white drop-shadow">{sdTimeLeft}s</span>
+          <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white drop-shadow">{sdTimeLeft}s</span>
         </div>
         <div className="card p-5 space-y-4 animate-pop-in">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold text-orange-500 uppercase tracking-wider">
+            <span className="text-xs font-bold text-orange-500 uppercase tracking-wider">
               {selectedMode === 'vocab' ? "So'z — ma'nosi?" : 'Grammatika'}
             </span>
             <span className="flex items-center gap-1 text-sm font-bold text-gray-500"><Clock size={14} /> {sdTimeLeft}s</span>

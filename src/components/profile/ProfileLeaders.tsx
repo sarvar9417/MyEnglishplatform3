@@ -102,9 +102,9 @@ function LeaderRowItem({
       <div className="flex-1 min-w-0">
         <p className={`text-sm font-semibold truncate ${isMe ? 'text-primary-700 dark:text-primary-300' : 'text-gray-800 dark:text-gray-200'}`}>
           {row.name ?? t('profile.leaderRow.userFallback')}
-          {isMe && <span className="ml-1.5 text-[11px] text-primary-500 dark:text-primary-400 font-normal">{t('profile.meLabel')}</span>}
+          {isMe && <span className="ml-1.5 text-xs text-primary-500 dark:text-primary-400 font-normal">{t('profile.meLabel')}</span>}
         </p>
-        <p className="text-[11px] text-gray-400 dark:text-gray-500">
+        <p className="text-xs text-gray-400 dark:text-gray-500">
           {formatValue(value, sort)}
           {achievementCount > 0 && (
             <span className="ml-1.5">· {achievementCount} 🏆</span>
@@ -113,7 +113,7 @@ function LeaderRowItem({
       </div>
 
       {sort === 'xp' && value >= 1000 && (
-        <span className="text-[11px] px-2 py-0.5 rounded-full bg-yellow-50 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 font-semibold border border-yellow-100 dark:border-yellow-800">
+        <span className="text-xs px-2 py-0.5 rounded-full bg-yellow-50 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 font-semibold border border-yellow-100 dark:border-yellow-800">
           VIP
         </span>
       )}
@@ -242,7 +242,7 @@ export default function ProfileLeaders({
       {/* My position */}
       {!leadersLoading && !leadersError && me && myIndex >= 100 && (
         <div className="mt-4 pt-4 border-t border-gray-100">
-          <p className="text-[11px] text-gray-400 mb-2 text-center">{t('profile.leaders.myPosition')}</p>
+          <p className="text-xs text-gray-400 mb-2 text-center">{t('profile.leaders.myPosition')}</p>
           <LeaderRowItem row={me} index={myIndex} sort={sortBy} isMe achievementCount={achievementCounts[me.id] ?? 0} />
         </div>
       )}
@@ -251,7 +251,7 @@ export default function ProfileLeaders({
       <div className="text-center pt-2 pb-4">
         <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 rounded-full border border-gray-100">
           <Users size={11} className="text-gray-400" />
-          <span className="text-[11px] text-gray-400">
+          <span className="text-xs text-gray-400">
             {t('profile.leaders.activeUsers', { count: String(leaders.length) })}
           </span>
         </div>

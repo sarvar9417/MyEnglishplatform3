@@ -33,7 +33,7 @@ export default function MnemonicCard({ rule, mnemonic, visual, acronym }: Mnemon
           {/* Header */}
           <div className="flex items-center gap-2 mb-1.5">
             <Lightbulb size={14} className="text-yellow-600 dark:text-yellow-400 flex-shrink-0" />
-            <span className="text-[11px] font-bold text-yellow-700 dark:text-yellow-300 uppercase tracking-wider">
+            <span className="text-xs font-bold text-yellow-700 dark:text-yellow-300 uppercase tracking-wider">
               Yodda saqlash
             </span>
           </div>
@@ -54,7 +54,7 @@ export default function MnemonicCard({ rule, mnemonic, visual, acronym }: Mnemon
 
           {/* Rule label */}
           {rule && (
-            <p className="text-[11px] font-semibold text-yellow-800 dark:text-yellow-200 mb-1">
+            <p className="text-xs font-semibold text-yellow-800 dark:text-yellow-200 mb-1">
               {rule}
             </p>
           )}

@@ -865,8 +865,8 @@ export default function Vocabulary() {
                   <p className={`text-sm font-bold ${isCurrent ? 'text-b1-600' : 'text-gray-700'}`}>
                     {t('vocabPage.batchLabel', { num: batchNum })}
                   </p>
-                  <p className="text-[10px] text-gray-400">{bStart}-{bEnd}</p>
-                  <p className="text-[10px] font-medium text-b1-500 mt-0.5">
+                  <p className="text-xs text-gray-400">{bStart}-{bEnd}</p>
+                  <p className="text-xs font-medium text-b1-500 mt-0.5">
                     {t('vocabPage.reviewCount', { count: batchWordsSlice.filter((w) => !w.is_new && !w.is_learned).length })}
                     {batchWordsSlice.filter((w) => w.is_learned).length > 0 && (
                       <> · {t('vocabPage.learnedCount', { count: batchWordsSlice.filter((w) => w.is_learned).length })}</>
@@ -921,7 +921,7 @@ export default function Vocabulary() {
               <p className="text-xs text-gray-400">
                 {filteredBatchWords.length} / {batchWords.length} {t('common.words')}
               </p>
-              <div className="flex items-center gap-2 text-[10px] text-gray-400">
+              <div className="flex items-center gap-2 text-xs text-gray-400">
                 <span>{t('vocabPage.newCount', { count: batchWords.filter((w) => w.is_new).length })}</span>
                 {batchWords.filter((w) => !w.is_new && !w.is_learned).length > 0 && (
                   <span>· {t('vocabPage.reviewCount', { count: batchWords.filter((w) => !w.is_new && !w.is_learned).length })}</span>

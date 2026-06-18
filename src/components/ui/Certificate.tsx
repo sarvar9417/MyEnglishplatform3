@@ -87,7 +87,7 @@ export function Certificate({ userName, completionDate, totalXP, onClose }: Cert
                 { label: 'Jami XP', value: totalXP.toLocaleString() },
               ].map(item => (
                 <div key={item.label} className="bg-gray-50 rounded-xl p-3">
-                  <p className="text-[10px] text-gray-400 uppercase tracking-wide mb-1">{item.label}</p>
+                  <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">{item.label}</p>
                   <p className="text-lg font-black text-gray-800">{item.value}</p>
                 </div>
               ))}

@@ -118,7 +118,7 @@ export default function MixedReview() {
           <div className="space-y-3">
             {session.map((s, i) => (
               <div key={s.ex.id}>
-                <p className="text-[11px] font-medium text-gray-400 mb-1 ml-1">
+                <p className="text-xs font-medium text-gray-400 mb-1 ml-1">
                   {s.level} · {s.lessonTitle}
                 </p>
                 <ExerciseCard

@@ -81,13 +81,13 @@ export default function OfflineBanner({ isOnline, onDismiss }: Props) {
             <WifiOff size={16} className="shrink-0 animate-pulse" />
             <div className="min-w-0">
               <span className="text-sm font-bold block truncate">{t('offline.title')}</span>
-              <span className="text-[11px] text-white/80 block truncate">{t('offline.subtitle')}</span>
+              <span className="text-xs text-white/80 block truncate">{t('offline.subtitle')}</span>
             </div>
           </div>
           <div className="flex items-center gap-1 shrink-0">
             <button
               onClick={() => setShowDetails((v) => !v)}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 active:bg-white/35 transition-colors text-[11px] font-semibold whitespace-nowrap"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 active:bg-white/35 transition-colors text-xs font-semibold whitespace-nowrap"
               aria-expanded={showDetails}
             >
               {showDetails ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
@@ -111,14 +111,14 @@ export default function OfflineBanner({ isOnline, onDismiss }: Props) {
         <div className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 shadow-md animate-slide-down">
           <div className="px-4 py-3 space-y-3">
             {/* Sync note */}
-            <div className="flex items-start gap-2 text-[11px] text-gray-500 dark:text-gray-400 bg-amber-50 dark:bg-amber-900/20 rounded-lg p-2.5 border border-amber-100 dark:border-amber-900/40">
+            <div className="flex items-start gap-2 text-xs text-gray-500 dark:text-gray-400 bg-amber-50 dark:bg-amber-900/20 rounded-lg p-2.5 border border-amber-100 dark:border-amber-900/40">
               <RefreshCw size={12} className="shrink-0 mt-0.5" />
               <span>{t('offline.syncPending')}</span>
             </div>
 
             {/* Available offline */}
             <div>
-              <h4 className="text-[11px] font-bold text-green-600 dark:text-green-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <h4 className="text-xs font-bold text-green-600 dark:text-green-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                 <CheckCircle2 size={11} />
                 {t('offline.available')}
               </h4>
@@ -137,7 +137,7 @@ export default function OfflineBanner({ isOnline, onDismiss }: Props) {
 
             {/* Unavailable */}
             <div>
-              <h4 className="text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <h4 className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                 <Wifi size={11} />
                 {t('offline.unavailable')}
               </h4>

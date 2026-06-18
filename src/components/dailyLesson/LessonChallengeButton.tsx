@@ -70,6 +70,7 @@ export default function LessonChallengeButton({ lesson, lessonCompleted, lessonS
         }
       }
     } catch {
+      monitoring.captureMessage('Failed to parse localStorage challenge state', 'warn')
       localStorage.removeItem(`lesson-challenge-${lesson.id}`)
     }
   }, [lesson.id])
@@ -88,7 +89,9 @@ export default function LessonChallengeButton({ lesson, lessonCompleted, lessonS
     try {
       const saved = localStorage.getItem(`lesson-challenge-bonus-${lesson.id}`)
       if (saved === 'true') setBonusApplied(true)
-    } catch { /* ignore */ }
+    } catch {
+      monitoring.captureMessage('Failed to read bonusApplied from localStorage', 'warn')
+    }
   }, [lesson.id])
 
   // Duel natijasini olish (challenger_score ni bilish uchun)
@@ -103,7 +106,9 @@ export default function LessonChallengeButton({ lesson, lessonCompleted, lessonS
           setDuelScore(duel.challenger_score)
           setDuelTotal((duel.question_set as unknown[]).length)
         }
-      } catch { /* ignore */ }
+      } catch {
+        monitoring.captureMessage('Failed to fetch duel score', 'warn')
+      }
     }
     // Har 5 sekundda tekshirib turamiz (chunki duel o'ynalishi async)
     fetchDuelScore()
@@ -258,7 +263,7 @@ export default function LessonChallengeButton({ lesson, lessonCompleted, lessonS
           )}
           <button
             onClick={cancelChallenge}
-            className="ml-auto text-gray-400 hover:text-red-500 transition-colors text-[11px] underline"
+            className="ml-auto text-gray-400 hover:text-red-500 transition-colors text-xs underline"
           >
             Bekor qilish
           </button>
@@ -277,7 +282,7 @@ export default function LessonChallengeButton({ lesson, lessonCompleted, lessonS
               Duel natijasini darsga qo'shish (+{duelScore}/{duelTotal})
               <Zap size={14} />
             </button>
-            <p className="text-[11px] text-gray-400 text-center mt-1.5">
+            <p className="text-xs text-gray-400 text-center mt-1.5">
               Dueldagi to'g'ri javoblar dars progressiga qo'shiladi va bonus XP olasiz
             </p>
           </div>
@@ -359,7 +364,7 @@ export default function LessonChallengeButton({ lesson, lessonCompleted, lessonS
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">AI bot bilan</p>
-                    <p className="text-[11px] text-gray-400">Darhol natijani ko'rish</p>
+                    <p className="text-xs text-gray-400">Darhol natijani ko'rish</p>
                   </div>
                   <ChevronRight size={16} className="text-gray-300" />
                 </button>
@@ -394,7 +399,7 @@ export default function LessonChallengeButton({ lesson, lessonCompleted, lessonS
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">{f.name}</p>
-                        <p className="text-[11px] text-gray-400">{f.level}</p>
+                        <p className="text-xs text-gray-400">{f.level}</p>
                       </div>
                       <ChevronRight size={16} className="text-gray-300" />
                     </button>

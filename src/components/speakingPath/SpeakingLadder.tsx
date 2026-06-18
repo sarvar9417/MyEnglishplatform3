@@ -4,6 +4,7 @@
 
 import { Lock, CheckCircle2, ChevronDown, Mic, Clock, Star, Sparkles } from 'lucide-react'
 import type { SpeakingDay, SpeakingDayProgress } from '../../data/speakingPath/types'
+import { monitoring } from '../../lib/monitoring'
 
 interface Props {
   days: SpeakingDay[]
@@ -93,6 +94,7 @@ function getChunkStability(userId: string | undefined, chunkId: string): number 
     const map = JSON.parse(raw) as Record<string, { stability: number }>
     return map[chunkId]?.stability ?? null
   } catch {
+    monitoring.captureMessage('Failed to parse SRS stability from localStorage', 'warn')
     return null
   }
 }
@@ -143,11 +145,11 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                       style={{ width: `${zonePct}%`, backgroundColor: zone.color }}
                     />
                   </div>
-                  <span className="text-[11px] font-semibold text-gray-500 dark:text-gray-400">
+                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">
                     {doneInZone}/{totalInZone} kun
                   </span>
                   {!isZoneUnlocked && (
-                    <span className="text-[11px] text-gray-400 dark:text-gray-500 flex items-center gap-0.5">
+                    <span className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-0.5">
                       <Lock size={10} /> Yopiq
                     </span>
                   )}
@@ -218,12 +220,12 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                       {/* Matn */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${CEFR_BADGE[d.cefr]}`}>{d.cefr}</span>
+                          <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${CEFR_BADGE[d.cefr]}`}>{d.cefr}</span>
                           <span className={`font-bold text-sm truncate ${isLocked ? 'text-gray-400' : 'text-gray-900 dark:text-gray-100'}`}>
                             {d.day}-kun
                           </span>
                           {isCurrent && (
-                            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300">
+                            <span className="text-xs font-bold px-1.5 py-0.5 rounded-full bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300">
                               HOZIR
                             </span>
                           )}
@@ -240,13 +242,13 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                             <span className="text-xs font-bold text-amber-600 dark:text-amber-400 flex items-center gap-0.5">
                               <Star size={11} /> {score}%
                             </span>
-                            <span className="text-[10px] text-gray-400 dark:text-gray-500 flex items-center gap-0.5">
+                            <span className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-0.5">
                               <Clock size={9} /> {spokenLabel}
                             </span>
                           </div>
                         )}
                         {!isLocked && !isCompleted && (
-                          <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500">
+                          <span className="text-xs font-semibold text-gray-400 dark:text-gray-500">
                             ~{d.estMinutes} daq
                           </span>
                         )}
@@ -267,13 +269,13 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                         {/* Grammar badge — linkedLessonId / grammarPoint */}
                         {d.linkedLessonId && (
                           <div className="flex items-center gap-2 p-2 rounded-lg bg-primary-50/60 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800/30">
-                            <span className="text-[10px] font-semibold text-primary-600 dark:text-primary-400 flex items-center gap-1">
+                            <span className="text-xs font-semibold text-primary-600 dark:text-primary-400 flex items-center gap-1">
                               📚 Grammar:
                             </span>
-                            <span className="text-[11px] font-medium text-primary-700 dark:text-primary-300">
+                            <span className="text-xs font-medium text-primary-700 dark:text-primary-300">
                               {d.grammarPoint ?? d.linkedLessonId}
                             </span>
-                            <span className="text-[10px] font-mono text-gray-400 dark:text-gray-500 ml-auto">
+                            <span className="text-xs font-mono text-gray-400 dark:text-gray-500 ml-auto">
                               {d.linkedLessonId}
                             </span>
                           </div>
@@ -281,7 +283,7 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
 
                         {/* SRS Stability — per-chunk mastery dots */}
                         <div className="flex items-center gap-2 p-2 rounded-lg bg-white/40 dark:bg-gray-700/30">
-                          <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 shrink-0">SRS:</span>
+                          <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 shrink-0">SRS:</span>
                           {d.chunks.map(c => {
                             const stab = getChunkStability(userId, c.id)
                             return (
@@ -305,18 +307,18 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                                 <div className="flex items-center gap-1.5">
                                   <span className="font-semibold text-gray-800 dark:text-gray-100">{c.en}</span>
                                   {c.pattern && (
-                                    <span className="text-[10px] text-primary-500 dark:text-primary-400 font-medium bg-primary-50 dark:bg-primary-900/30 px-1 py-0.5 rounded truncate max-w-[120px]">
+                                    <span className="text-xs text-primary-500 dark:text-primary-400 font-medium bg-primary-50 dark:bg-primary-900/30 px-1 py-0.5 rounded truncate max-w-[120px]">
                                       {c.pattern}
                                     </span>
                                   )}
                                 </div>
                                 <span className="text-gray-400 dark:text-gray-500 block leading-tight">{c.uz}</span>
                                 {c.grammarTip && (
-                                  <span className="text-[10px] text-primary-600 dark:text-primary-400 italic block mt-0.5">📖 {c.grammarTip}</span>
+                                  <span className="text-xs text-primary-600 dark:text-primary-400 italic block mt-0.5">📖 {c.grammarTip}</span>
                                 )}
                               </div>
                               {c.ipa && (
-                                <span className="text-[10px] font-mono text-gray-400 dark:text-gray-500 bg-white/50 dark:bg-gray-700/50 px-1.5 py-0.5 rounded shrink-0">
+                                <span className="text-xs font-mono text-gray-400 dark:text-gray-500 bg-white/50 dark:bg-gray-700/50 px-1.5 py-0.5 rounded shrink-0">
                                   {c.ipa}
                                 </span>
                               )}
@@ -326,15 +328,15 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
 
                         {/* Stsenariy prevyusi */}
                         <div className="p-2 rounded-lg bg-violet-50/60 dark:bg-violet-900/20 border border-violet-100 dark:border-violet-800/30">
-                          <div className="flex items-center gap-1 text-[11px] font-semibold text-violet-600 dark:text-violet-400 mb-1">
+                          <div className="flex items-center gap-1 text-xs font-semibold text-violet-600 dark:text-violet-400 mb-1">
                             <Mic size={12} /> AI suhbat stsenariysi
                           </div>
-                          <div className="flex items-center gap-3 text-[11px] text-gray-600 dark:text-gray-400">
+                          <div className="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400">
                             <span>🤖 {d.scenario.aiRole}</span>
                             <span className="text-gray-300 dark:text-gray-600">|</span>
                             <span>👤 {d.scenario.userRole}</span>
                           </div>
-                          <p className="text-[11px] text-gray-500 dark:text-gray-500 mt-1 italic truncate">
+                          <p className="text-xs text-gray-500 dark:text-gray-500 mt-1 italic truncate">
                             "{d.scenario.opening}"
                           </p>
                         </div>

@@ -163,7 +163,7 @@ export default function ShadowStep({ day, level, onNext }: Props) {
         {chunk.grammarTip && (
           <div className="mt-2 inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 border border-primary-100 dark:border-primary-800/40">
             <BookOpen size={11} className="text-primary-500" />
-            <span className="text-[10px] text-primary-600 dark:text-primary-400">{chunk.grammarTip}</span>
+            <span className="text-xs text-primary-600 dark:text-primary-400">{chunk.grammarTip}</span>
           </div>
         )}
         <button
@@ -180,7 +180,7 @@ export default function ShadowStep({ day, level, onNext }: Props) {
         <div className="rounded-xl p-2.5 bg-amber-50/70 dark:bg-amber-900/15 border border-amber-200 dark:border-amber-800/40">
           <div className="flex items-start gap-2">
             <span className="text-lg font-black font-mono text-amber-600 dark:text-amber-400 leading-none mt-0.5">{day.pronunciationFocus.sound}</span>
-            <p className="text-[11px] text-gray-600 dark:text-gray-300">{day.pronunciationFocus.tipUz}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-300">{day.pronunciationFocus.tipUz}</p>
           </div>
         </div>
       )}

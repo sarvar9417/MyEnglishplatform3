@@ -429,7 +429,7 @@ export default function TandemDashboard() {
             {[3, 7, 14, 30].map((milestone) => (
               <span
                 key={milestone}
-                className={`text-[11px] px-2 py-0.5 rounded-full ${
+                className={`text-xs px-2 py-0.5 rounded-full ${
                   streak >= milestone
                     ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-400'
@@ -802,7 +802,7 @@ export default function TandemDashboard() {
           <div className="flex items-center gap-2">
             <Theater size={18} className="text-pink-500" />
             <h3 className="font-bold text-sm text-gray-900 dark:text-gray-100">AI Roleplay Duo</h3>
-            <span className="ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 dark:from-pink-900/40 dark:to-purple-900/40 text-pink-600 dark:text-pink-400">
+            <span className="ml-auto text-xs font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 dark:from-pink-900/40 dark:to-purple-900/40 text-pink-600 dark:text-pink-400">
               Premium
             </span>
           </div>

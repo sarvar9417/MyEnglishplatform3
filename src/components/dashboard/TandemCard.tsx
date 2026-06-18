@@ -55,7 +55,7 @@ export default function TandemCard() {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900 text-sm">Tandem Juftlik</h3>
-                <p className="text-[11px] text-gray-500">Do'st bilan birga o'rganing</p>
+                <p className="text-xs text-gray-500">Do'st bilan birga o'rganing</p>
               </div>
             </div>
             <button
@@ -70,15 +70,15 @@ export default function TandemCard() {
           <div className="grid grid-cols-3 gap-2 mb-4">
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-3 text-center border border-indigo-100/50">
               <p className="text-xl font-bold text-indigo-600">{tandemPair.combined_streak}</p>
-              <p className="text-[10px] text-gray-500 mt-0.5">🔥 Birga streak</p>
+              <p className="text-xs text-gray-500 mt-0.5">🔥 Birga streak</p>
             </div>
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-3 text-center border border-indigo-100/50">
               <p className="text-xl font-bold text-purple-600">{tandemPair.total_xp}</p>
-              <p className="text-[10px] text-gray-500 mt-0.5">⚡ Birga XP</p>
+              <p className="text-xs text-gray-500 mt-0.5">⚡ Birga XP</p>
             </div>
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-3 text-center border border-indigo-100/50">
               <p className="text-xl font-bold text-amber-600">{activeDuels.length}</p>
-              <p className="text-[10px] text-gray-500 mt-0.5">⚔️ Faol duel</p>
+              <p className="text-xs text-gray-500 mt-0.5">⚔️ Faol duel</p>
             </div>
           </div>
 
@@ -120,7 +120,7 @@ export default function TandemCard() {
           </div>
           <div>
             <h3 className="font-bold text-gray-900 text-sm">Tandem Juftlik</h3>
-            <p className="text-[11px] text-gray-500">{friends.length} ta do'st</p>
+            <p className="text-xs text-gray-500">{friends.length} ta do'st</p>
           </div>
         </div>
 
@@ -150,7 +150,7 @@ export default function TandemCard() {
         </div>
         <div>
           <h3 className="font-bold text-gray-900 text-sm">Tandem</h3>
-          <p className="text-[11px] text-gray-500">Do'st bilan o'rganing</p>
+          <p className="text-xs text-gray-500">Do'st bilan o'rganing</p>
         </div>
       </div>
 

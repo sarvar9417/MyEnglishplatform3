@@ -194,12 +194,12 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
         <div className="flex items-center gap-2 min-w-0">
           <span className="font-semibold text-gray-900 dark:text-white text-sm truncate">{word.english}</span>
           <span className="text-xs text-gray-400 truncate">— {word.uzbek}</span>
-          <span className="text-[10px] bg-blue-100 text-blue-600 font-semibold px-1.5 py-0.5 rounded">{t('dictionary.userWordBadge')}</span>
+          <span className="text-xs bg-blue-100 text-blue-600 font-semibold px-1.5 py-0.5 rounded">{t('dictionary.userWordBadge')}</span>
         </div>
         <div className="flex items-center gap-1.5 flex-shrink-0">
           {word.phonetic && (
-            <span className="text-[10px] text-gray-300 font-mono hidden sm:inline">/{word.phonetic}/</span>
-          )}                  <span className={`badge text-[10px] ${LEVEL_BADGES[word.level] ?? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>{word.level}</span>
+            <span className="text-xs text-gray-300 font-mono hidden sm:inline">/{word.phonetic}/</span>
+          )}                  <span className={`badge text-xs ${LEVEL_BADGES[word.level] ?? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>{word.level}</span>
           <ChevronDown size={14} className="text-gray-200 group-hover:text-gray-400 transition-colors" />
         </div>
       </button>
@@ -217,14 +217,14 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
             <span className="font-bold text-gray-900 dark:text-white text-base">{word.english}</span>
-            <span className={`badge text-[10px] ${LEVEL_BADGES[word.level] ?? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>
+            <span className={`badge text-xs ${LEVEL_BADGES[word.level] ?? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>
               {word.level}
             </span>
             {word.source === 'user' && (
-              <span className="text-[10px] bg-blue-100 text-blue-600 font-semibold px-1.5 py-0.5 rounded">{t('dictionary.userWordBadge')}</span>
+              <span className="text-xs bg-blue-100 text-blue-600 font-semibold px-1.5 py-0.5 rounded">{t('dictionary.userWordBadge')}</span>
             )}
             {word.box && (
-              <span className={`badge text-[10px] ${
+              <span className={`badge text-xs ${
                 word.box >= 5 ? 'bg-green-100 text-green-700' :
                 word.box >= 3 ? 'bg-blue-100 text-blue-700' :
                 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
@@ -265,13 +265,13 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
         <div className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700 space-y-2">
           {word.example && (
             <div>
-              <p className="text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5">{t('dictionary.exampleLabel')}</p>
+              <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-0.5">{t('dictionary.exampleLabel')}</p>
               <p className="text-sm text-gray-700 italic">"{word.example}"</p>
             </div>
           )}
           {word.box !== null && (
             <div className="flex items-center gap-4 text-xs text-gray-500 flex-wrap">
-              <span className="flex items-center gap-1"><Clock size={12} /> Box {word.box}/5</span>
+              <span className="flex items-center gap-1"><Clock size={12} /> {t('dictionary.boxLabel', { box: word.box })}</span>
               <span className="flex items-center gap-1">
                 <CheckCircle size={12} className={word.is_learned ? 'text-green-500' : 'text-gray-300'} />
                 {word.is_learned ? t('dictionary.wordLearned') : t('dictionary.wordStudying')}
@@ -282,7 +282,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
             </div>
           )}
           {word.source === 'user' && (
-            <p className="text-[10px] text-blue-400 font-medium">{t('dictionary.personalWordLabel')}</p>
+            <p className="text-xs text-blue-400 font-medium">{t('dictionary.personalWordLabel')}</p>
           )}
         </div>
       )}
@@ -317,10 +317,10 @@ function LevelGroup({ level, words, userId, onDeleted }: {
         </span>
         <span className="text-xs text-gray-400">{words.length} {t('common.words')}</span>
         {countUser > 0 && (
-          <span className="text-[10px] text-blue-500 font-medium">({t('dictionary.yourWords', { count: countUser })})</span>
+          <span className="text-xs text-blue-500 font-medium">({t('dictionary.yourWords', { count: countUser })})</span>
         )}
         {countLearned > 0 && (
-          <span className="text-[10px] text-green-600 font-medium">
+          <span className="text-xs text-green-600 font-medium">
             ({t('dictionary.wordLearned')} {countLearned})
           </span>
         )}

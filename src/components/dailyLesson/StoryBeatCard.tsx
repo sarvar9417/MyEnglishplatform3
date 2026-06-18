@@ -33,14 +33,14 @@ export default function StoryBeatCard({ storyBeat, day, lessonId }: Props) {
           <div className="min-w-0 flex-1">
             {/* Badge row */}
             <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-              <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full text-white ${act.bgClass}`}>
+              <span className={`text-xs font-bold px-2 py-0.5 rounded-full text-white ${act.bgClass}`}>
                 {act.emoji} {act.label}
               </span>
-              <span className="text-[11px] font-medium text-gray-400 dark:text-gray-500">
+              <span className="text-xs font-medium text-gray-400 dark:text-gray-500">
                 {storyBeat.location}
               </span>
-              <span className="text-[11px] font-medium text-gray-300 dark:text-gray-600">·</span>
-              <span className="text-[11px] font-medium text-gray-400 dark:text-gray-500">
+              <span className="text-xs font-medium text-gray-300 dark:text-gray-600">·</span>
+              <span className="text-xs font-medium text-gray-400 dark:text-gray-500">
                 Kun {day ?? 1}/126
               </span>
             </div>
@@ -68,7 +68,7 @@ export default function StoryBeatCard({ storyBeat, day, lessonId }: Props) {
                   }}
                 />
               </div>
-              <span className="text-[11px] font-medium text-gray-400 dark:text-gray-500 whitespace-nowrap">
+              <span className="text-xs font-medium text-gray-400 dark:text-gray-500 whitespace-nowrap">
                 {progress}% yo'l
               </span>
             </div>

@@ -102,7 +102,7 @@ function AchievementCard({
           {unlockCount > 0 && (
             <div className="flex items-center gap-1 mt-2">
               <Users size={11} className="text-gray-400" />
-              <span className="text-[11px] text-gray-400">
+              <span className="text-xs text-gray-400">
                 {unlockCount} / {totalUsers} {t('profile.achievements.users')}
               </span>
               <div className="flex-1 max-w-[60px] ml-1">
@@ -255,7 +255,7 @@ export default function ProfileAchievements({
           >
             <CategoryIcon cat={cat} />
             <p className="text-xs font-bold text-gray-800 mt-1">{CATEGORY_INFO[cat].label}</p>
-            <p className="text-[11px] text-gray-400">{unlocked}/{total}</p>
+            <p className="text-xs text-gray-400">{unlocked}/{total}</p>
           </button>
         ))}
       </div>

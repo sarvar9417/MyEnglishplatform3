@@ -96,7 +96,7 @@ export default function VocabExportModal({ words, open, onClose, onImport }: Pro
               </div>
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">{label}</p>
-                <p className="text-[10px] text-gray-400 dark:text-gray-500">{desc}</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500">{desc}</p>
               </div>
             </button>
           ))}
@@ -155,7 +155,7 @@ export default function VocabExportModal({ words, open, onClose, onImport }: Pro
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   Faylni tashlang yoki <span className="text-b1-500 font-semibold">tanlang</span>
                 </p>
-                <p className="text-[10px] text-gray-400 mt-0.5">.json yoki .csv formatda</p>
+                <p className="text-xs text-gray-400 mt-0.5">.json yoki .csv formatda</p>
               </>
             )}
           </div>

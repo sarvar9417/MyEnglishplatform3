@@ -52,7 +52,7 @@ export default function SpecialCaseCard({ sc, addXP, lessonId }: { sc: SpecialCa
         {sc.examples.map((ex, i) => (
           <div key={i} className="border-l-[3px] border-primary-300 pl-3 py-1">
             <p className="text-xs font-semibold text-gray-900 dark:text-gray-100 leading-relaxed">{ex.en}</p>
-            <p className="text-[11px] text-gray-500 dark:text-gray-400 italic">{ex.uz}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 italic">{ex.uz}</p>
           </div>
         ))}
       </div>
@@ -67,14 +67,14 @@ export default function SpecialCaseCard({ sc, addXP, lessonId }: { sc: SpecialCa
 
           return (
             <div key={ex.id} className={`relative rounded-xl border p-3 transition-colors ${borderCls}`}>
-              <div className={`absolute -left-2 -top-2 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shadow-sm text-white ${sub ? (ok ? 'bg-green-500' : 'bg-red-500') : 'bg-primary-600'}`}>
+              <div className={`absolute -left-2 -top-2 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shadow-sm text-white ${sub ? (ok ? 'bg-green-500' : 'bg-red-500') : 'bg-primary-600'}`}>
                 {sub ? (ok ? '✓' : '✗') : i + 1}
               </div>
 
               <div className="ml-0">
                 {ex.type === 'fill-blank' && (
                   <div>
-                    <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-2">📝 Bo'sh joyni to'ldiring</p>
+                    <p className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2">📝 Bo'sh joyni to'ldiring</p>
                     <p className="text-xs text-gray-700 dark:text-gray-300 leading-loose">
                       {ex.question.split(/_{3,}/).map((part, pi, arr) => (
                         <span key={pi}>
@@ -92,7 +92,7 @@ export default function SpecialCaseCard({ sc, addXP, lessonId }: { sc: SpecialCa
 
                 {ex.type === 'multiple-choice' && (
                   <div>
-                    <p className="text-[10px] font-bold text-violet-600 uppercase tracking-wider mb-2">🔘 To'g'ri variantni tanlang</p>
+                    <p className="text-xs font-bold text-violet-600 uppercase tracking-wider mb-2">🔘 To'g'ri variantni tanlang</p>
                     <p className="text-xs font-semibold text-gray-800 dark:text-gray-200 mb-2">{ex.question}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                       {ex.options.map((opt, oi) => {
@@ -109,7 +109,7 @@ export default function SpecialCaseCard({ sc, addXP, lessonId }: { sc: SpecialCa
                         return (
                           <button key={opt} disabled={sub} onClick={() => handleChange(ex.id, 0, opt)}
                             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs transition-all ${cls}`}>
-                            <span className="w-4 h-4 rounded-full border border-current flex items-center justify-center text-[11px] font-bold flex-shrink-0">{['A','B','C','D'][oi]}</span>
+                            <span className="w-4 h-4 rounded-full border border-current flex items-center justify-center text-xs font-bold flex-shrink-0">{['A','B','C','D'][oi]}</span>
                             {opt}
                           </button>
                         )
@@ -120,7 +120,7 @@ export default function SpecialCaseCard({ sc, addXP, lessonId }: { sc: SpecialCa
 
                 {ex.type === 'error-correction' && (
                   <div>
-                    <p className="text-[10px] font-bold text-amber-600 uppercase tracking-wider mb-2">🔍 Xatoni toping</p>
+                    <p className="text-xs font-bold text-amber-600 uppercase tracking-wider mb-2">🔍 Xatoni toping</p>
                     <div className="bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-800 rounded-lg px-2.5 py-1.5 mb-2">
                       <p className="text-xs text-gray-700 dark:text-gray-300">
                         {ex.question.split(ex.errorPart).map((part, pi, arr) => (
@@ -134,11 +134,11 @@ export default function SpecialCaseCard({ sc, addXP, lessonId }: { sc: SpecialCa
 
                 {ex.type === 'transformation' && (
                   <div>
-                    <p className="text-[10px] font-bold text-teal-600 uppercase tracking-wider mb-2">🔄 Gapni o'zgartiring</p>
+                    <p className="text-xs font-bold text-teal-600 uppercase tracking-wider mb-2">🔄 Gapni o'zgartiring</p>
                     <div className="bg-white dark:bg-gray-800 border border-teal-200 dark:border-teal-800 rounded-lg px-2.5 py-1.5 mb-1">
                       <p className="text-xs text-gray-800 dark:text-gray-200 font-medium">{ex.question}</p>
                     </div>
-                    <p className="text-[10px] text-teal-600 mb-1 font-medium">Boshlang'ich: <span className="font-mono font-bold">{ex.hint}</span></p>
+                    <p className="text-xs text-teal-600 mb-1 font-medium">Boshlang'ich: <span className="font-mono font-bold">{ex.hint}</span></p>
                     <input type="text" value={answers[0] ?? ''} onChange={(e) => handleChange(ex.id, 0, e.target.value)} disabled={sub} placeholder="Javob..." className="input text-xs" />
                   </div>
                 )}

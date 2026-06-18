@@ -152,7 +152,7 @@ export default function LessonDuelButton({ lesson }: { lesson: DailyLesson }) {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">AI bot bilan</p>
-                    <p className="text-[11px] text-gray-400">Darrov o'ynash</p>
+                    <p className="text-xs text-gray-400">Darrov o'ynash</p>
                   </div>
                   <ChevronRight size={16} className="text-gray-300" />
                 </button>
@@ -187,7 +187,7 @@ export default function LessonDuelButton({ lesson }: { lesson: DailyLesson }) {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">{f.name}</p>
-                        <p className="text-[11px] text-gray-400">{f.level}</p>
+                        <p className="text-xs text-gray-400">{f.level}</p>
                       </div>
                       <ChevronRight size={16} className="text-gray-300" />
                     </button>

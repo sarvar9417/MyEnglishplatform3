@@ -108,7 +108,7 @@ export function AudioButton({ text, rate, size = 'md', className = '', label, sh
         <div className="absolute z-50 top-full mt-1 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl p-3 min-w-[200px] space-y-3">
           {/* Speed */}
           <div>
-            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-500 dark:text-gray-400 mb-1.5">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">
               <Gauge size={12} />
               <span>Tezlik</span>
               <span className="ml-auto text-gray-400 font-mono">{speed}x</span>
@@ -118,7 +118,7 @@ export function AudioButton({ text, rate, size = 'md', className = '', label, sh
                 <button
                   key={opt.value}
                   onClick={() => setSpeed(opt.value)}
-                  className={`flex-1 text-[10px] font-semibold px-1 py-1.5 rounded-lg transition-colors ${
+                  className={`flex-1 text-xs font-semibold px-1 py-1.5 rounded-lg transition-colors ${
                     speed === opt.value
                       ? 'bg-primary-600 text-white'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
@@ -134,13 +134,13 @@ export function AudioButton({ text, rate, size = 'md', className = '', label, sh
           {/* Voice */}
           {voices.length > 0 && (
             <div>
-              <div className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Ovoz</div>
+              <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">Ovoz</div>
               <div className="max-h-[120px] overflow-y-auto space-y-0.5">
                 {voices.map((v) => (
                   <button
                     key={v.name}
                     onClick={() => setVoice(v.name)}
-                    className={`w-full text-left text-[11px] px-2 py-1 rounded-lg transition-colors ${
+                    className={`w-full text-left text-xs px-2 py-1 rounded-lg transition-colors ${
                       selectedVoice?.name === v.name
                         ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 font-semibold'
                         : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700/50'

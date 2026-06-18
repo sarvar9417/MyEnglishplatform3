@@ -82,7 +82,7 @@ export default function FriendLessonRecommendation({ onStartLesson }: Props) {
                   <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">
                     {lesson.lessonTitle}
                   </p>
-                  <p className="text-[11px] text-gray-400">
+                  <p className="text-xs text-gray-400">
                     {friend.friendName} {lesson.score}% bilan o'tgan
                   </p>
                 </div>
@@ -94,7 +94,7 @@ export default function FriendLessonRecommendation({ onStartLesson }: Props) {
           {friend.lessons.length > 3 && (
             <button
               onClick={() => navigate('/tandem')}
-              className="w-full text-center text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mt-2 hover:underline"
+              className="w-full text-center text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-2 hover:underline"
             >
               Yana {friend.lessons.length - 3} ta darsni ko'rish →
             </button>

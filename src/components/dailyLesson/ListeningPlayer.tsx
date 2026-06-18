@@ -56,11 +56,11 @@ export default function ListeningPlayer({
       {/* Audio player */}
       <div className="rounded-2xl bg-gradient-to-r from-primary-600 to-violet-600 p-5 text-white shadow-lg">
         <div className="flex items-center justify-between mb-3">
-          <p className="text-[11px] font-bold uppercase tracking-widest opacity-80 flex items-center gap-1.5">
+          <p className="text-xs font-bold uppercase tracking-widest opacity-80 flex items-center gap-1.5">
             <Headphones size={12} /> Listening Exercise
           </p>
           {section.difficulty && (
-            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${DIFFICULTY_LABEL[section.difficulty]?.color} text-white/90`}>
+            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${DIFFICULTY_LABEL[section.difficulty]?.color} text-white/90`}>
               {DIFFICULTY_LABEL[section.difficulty]?.label}
             </span>
           )}
@@ -80,7 +80,7 @@ export default function ListeningPlayer({
           <div className="flex items-center gap-1">
             {SPEED_OPTIONS.map(s => (
               <button key={s} onClick={() => setSpeed(s)}
-                className={`text-[10px] font-bold px-2 py-1 rounded-md transition-all ${speed === s ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}>
+                className={`text-xs font-bold px-2 py-1 rounded-md transition-all ${speed === s ? 'bg-white/30 text-white' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}>
                 {s}×
               </button>
             ))}

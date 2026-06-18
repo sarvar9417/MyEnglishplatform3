@@ -80,7 +80,7 @@ export default function AdaptivePlan() {
           </div>
           <div>
             <h3 className="font-bold text-gray-900 text-sm">{userName} uchun bugun</h3>
-            <p className="text-[11px] text-gray-400">Adaptiv plan — zaif tomonlarga asoslangan</p>
+            <p className="text-xs text-gray-400">Adaptiv plan — zaif tomonlarga asoslangan</p>
           </div>
         </div>
         <div className="text-right">
@@ -99,7 +99,7 @@ export default function AdaptivePlan() {
           <AlertTriangle size={14} className="text-red-500 mt-0.5 flex-shrink-0" />
           <div>
             <p className="text-xs font-semibold text-red-700 dark:text-red-400">{plan.focusArea}</p>
-            <p className="text-[11px] text-red-500 dark:text-red-400/80 mt-0.5">{plan.focusReason}</p>
+            <p className="text-xs text-red-500 dark:text-red-400/80 mt-0.5">{plan.focusReason}</p>
           </div>
         </div>
       )}
@@ -117,7 +117,7 @@ export default function AdaptivePlan() {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5">
                 <span className="text-xs font-semibold text-gray-800 dark:text-gray-200">{task.label}</span>
-                <span className={`text-[11px] font-medium px-1 py-0.5 rounded ${
+                <span className={`text-xs font-medium px-1 py-0.5 rounded ${
                   task.priority === 'high' ? 'bg-red-100 text-red-600' :
                   task.priority === 'medium' ? 'bg-amber-100 text-amber-600' :
                   'bg-green-100 text-green-600'
@@ -125,12 +125,12 @@ export default function AdaptivePlan() {
                   {task.priority === 'high' ? 'Muhim' : task.priority === 'medium' ? 'O\'rta' : 'Oddiy'}
                 </span>
               </div>
-              <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">{task.detail}</p>
-              <p className="text-[11px] text-gray-400 italic mt-0.5">💡 {task.reason}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{task.detail}</p>
+              <p className="text-xs text-gray-400 italic mt-0.5">💡 {task.reason}</p>
             </div>
             <div className="flex items-center gap-2 shrink-0">
-              <span className="text-[11px] text-gray-400 whitespace-nowrap">{task.estimatedMinutes} min</span>
-              <span className="text-[11px] font-bold text-yellow-600">+{task.xp}</span>
+              <span className="text-xs text-gray-400 whitespace-nowrap">{task.estimatedMinutes} min</span>
+              <span className="text-xs font-bold text-yellow-600">+{task.xp}</span>
             </div>
           </div>
         ))}

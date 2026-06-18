@@ -5,9 +5,11 @@
 import { Brain, ChevronRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { CONFUSABLE_PAIRS } from '../../data/confusable-pairs'
+import { useI18n } from '../../i18n'
 
 export default function ConfusablePairsCard() {
   const navigate = useNavigate()
+  const { t } = useI18n()
 
   // Deterministic daily pick based on day of year
   const today = new Date()
@@ -30,8 +32,8 @@ export default function ConfusablePairsCard() {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
-              Chalkash So'zlar
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+              {t('confusable.title')}
             </span>
           </div>
           <p className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-0.5">
@@ -50,10 +52,10 @@ export default function ConfusablePairsCard() {
           <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-400 dark:text-gray-500 flex-wrap">
             <span className="flex items-center gap-1">
               <Brain size={12} />
-              {pair.examples.length} ta misol
+              {t('confusable.nExamples', { count: pair.examples.length })}
             </span>
             <span className="group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors flex items-center gap-0.5">
-              Barchasi <ChevronRight size={12} />
+              {t('confusable.seeAll')} <ChevronRight size={12} />
             </span>
           </div>
         </div>

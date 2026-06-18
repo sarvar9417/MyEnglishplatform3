@@ -214,7 +214,7 @@ export default function Reading() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className={`badge text-[10px] ${item.level === 'B2' ? 'badge-b2' : item.level === 'B1+' ? 'badge-b1' : 'badge-primary'}`}>
+                      <span className={`badge text-xs ${item.level === 'B2' ? 'badge-b2' : item.level === 'B1+' ? 'badge-b1' : 'badge-primary'}`}>
                         {item.level}
                       </span>
                       <span className="text-xs text-gray-400">{item.topic}</span>

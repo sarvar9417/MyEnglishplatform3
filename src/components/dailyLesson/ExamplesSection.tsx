@@ -26,7 +26,7 @@ export default function ExamplesSection({ examples }: Props) {
               ),
             )
           }}
-          className="flex items-center gap-1 text-[11px] font-medium text-primary-600 hover:text-primary-700 transition-colors"
+          className="flex items-center gap-1 text-xs font-medium text-primary-600 hover:text-primary-700 transition-colors"
           title="Barcha misollarni tinglash"
           aria-label={t('aria.listenAll')}
         >

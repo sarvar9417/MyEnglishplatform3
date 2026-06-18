@@ -76,7 +76,7 @@ export default function SpeakingReviewSession({ chunks, userId, onExit }: Props)
             <p className="mt-3 font-black text-gray-900 dark:text-gray-100">Takror tugadi! 🎉</p>
             <p className="text-2xl font-black text-primary-600 dark:text-primary-400 mt-1">{avgScore}%</p>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{chunks.length} ibora · {correctCount}/{chunks.length} to'g'ri</p>
-            <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-2">Natijalar FSRS rejasiga yozildi.</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">Natijalar FSRS rejasiga yozildi.</p>
           </div>
 
           {/* 📊 Per-chunk breakdown */}
@@ -93,7 +93,7 @@ export default function SpeakingReviewSession({ chunks, userId, onExit }: Props)
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-semibold text-gray-900 dark:text-gray-100 truncate">{c.en}</p>
-                      <p className="text-[10px] text-gray-400">{c.uz}</p>
+                      <p className="text-xs text-gray-400">{c.uz}</p>
                     </div>
                     <div className="text-right shrink-0">
                       <p className={`text-sm font-bold ${correct ? 'text-emerald-600 dark:text-emerald-400' : 'text-gray-400'}`}>{score}%</p>
@@ -145,7 +145,7 @@ export default function SpeakingReviewSession({ chunks, userId, onExit }: Props)
                       </div>
                     ))}
                   </div>
-                  <p className="text-[10px] text-gray-400 mt-2 text-center">
+                  <p className="text-xs text-gray-400 mt-2 text-center">
                     Jami {globalSrsDist.reduce((s, b) => s + b.count, 0)} ta iboradan {(globalSrsDist[3]?.count || 0) + (globalSrsDist[4]?.count || 0)} tasi o'zlashtirilgan
                   </p>
                 </div>

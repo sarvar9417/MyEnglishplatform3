@@ -77,7 +77,7 @@ export default function SpeakingHistory() {
                       <Mic size={14} className="text-b2-400 flex-shrink-0" />
                       <div className="min-w-0 text-left">
                         <p className="text-xs font-medium text-gray-800 dark:text-gray-200 truncate">{r.prompt_text?.slice(0, 60)}...</p>
-                        <p className="text-[10px] text-gray-400">{r.date}</p>
+                        <p className="text-xs text-gray-400">{r.date}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
@@ -89,7 +89,7 @@ export default function SpeakingHistory() {
                   {expanded === r.id && (
                     <div className="px-3 pb-3 pt-0 border-t border-gray-50 dark:border-gray-700 space-y-2">
                       <div className="mt-2">
-                        <p className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1">🎯 Savol</p>
+                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">🎯 Savol</p>
                         <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">{r.prompt_text}</p>
                       </div>
 
@@ -102,14 +102,14 @@ export default function SpeakingHistory() {
                         ].map(({ label, score }) => (
                           <div key={label} className="text-center py-1.5 bg-gray-50 dark:bg-gray-800 rounded-lg">
                             <p className={`text-sm font-bold ${avgColor(score)}`}>{score}</p>
-                            <p className="text-[10px] text-gray-400">{label}</p>
+                            <p className="text-xs text-gray-400">{label}</p>
                           </div>
                         ))}
                       </div>
 
                       {r.feedback && (
                         <div>
-                          <p className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 mb-1">💡 Feedback</p>
+                          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">💡 Feedback</p>
                           <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{r.feedback}</p>
                         </div>
                       )}

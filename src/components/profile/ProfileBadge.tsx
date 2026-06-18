@@ -43,7 +43,7 @@ function RewardBadge({
           <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">
             {reward.streakDays} kun
           </p>
-          <p className="text-[11px] text-gray-400 dark:text-gray-500">
+          <p className="text-xs text-gray-400 dark:text-gray-500">
             {reward.type === 'emblem' ? 'Emblem' : reward.type === 'badge' ? 'Badge' : 'Bonus'}
           </p>
         </div>
@@ -67,7 +67,7 @@ function RewardBadge({
 
       <div className="text-left">
         <p className="text-xs font-bold drop-shadow-sm">{reward.title}</p>
-        <p className="text-[10px] text-white/80 drop-shadow-sm">
+        <p className="text-xs text-white/80 drop-shadow-sm">
           {reward.type === 'emblem' ? '🏆 Maxsus Emblem' : reward.type === 'badge' ? '🏅 Badge' : '✨ Bonus'}
         </p>
       </div>
@@ -137,7 +137,7 @@ export default function ProfileBadges({
             />
           </div>
 
-          <p className="text-[11px] text-gray-400 mt-1.5">
+          <p className="text-xs text-gray-400 mt-1.5">
             {nextInfo.next.type === 'xp_bonus'
               ? `+${nextInfo.next.xpBonus} XP bonus`
               : nextInfo.next.type === 'badge'

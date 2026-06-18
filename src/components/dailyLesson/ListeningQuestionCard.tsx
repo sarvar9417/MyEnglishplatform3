@@ -52,7 +52,7 @@ export default function ListeningQuestionCard({
                 <button key={i} onClick={() => !isSubmitted && (q.type === 'true-false' ? onTrueFalse(q.id, i === 0) : onChoice(q.id, i))}
                   disabled={isSubmitted}
                   className={`w-full text-left flex items-center gap-2.5 px-3 py-2.5 rounded-xl border text-sm transition-all ${cls}`}>
-                  <span className={`w-5 h-5 rounded-full border flex items-center justify-center text-[10px] font-bold shrink-0 ${isSelected && !isSubmitted ? 'bg-primary-500 border-primary-500 text-white' : isSubmitted && i === correctIdx ? 'bg-green-500 border-green-500 text-white' : isSubmitted && isSelected && !isCorrect ? 'bg-red-500 border-red-500 text-white' : 'border-current'}`}>
+                  <span className={`w-5 h-5 rounded-full border flex items-center justify-center text-xs font-bold shrink-0 ${isSelected && !isSubmitted ? 'bg-primary-500 border-primary-500 text-white' : isSubmitted && i === correctIdx ? 'bg-green-500 border-green-500 text-white' : isSubmitted && isSelected && !isCorrect ? 'bg-red-500 border-red-500 text-white' : 'border-current'}`}>
                     {String.fromCharCode(65 + i)}
                   </span>
                   <span className="flex-1">{opt}</span>
@@ -113,7 +113,7 @@ export default function ListeningQuestionCard({
               return (
                 <button key={i} onClick={() => !isSubmitted && onMultiChoice(q.id, i)} disabled={isSubmitted}
                   className={`w-full text-left flex items-center gap-2.5 px-3 py-2.5 rounded-xl border text-sm transition-all ${cls}`}>
-                  <span className={`w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold shrink-0 border ${isSelected && !isSubmitted ? 'bg-primary-500 border-primary-500 text-white' : isSubmitted && correctIndices.includes(i) ? 'bg-green-500 border-green-500 text-white' : isSubmitted && isSelected ? 'bg-red-500 border-red-500 text-white' : 'border-current'}`}>
+                  <span className={`w-5 h-5 rounded flex items-center justify-center text-xs font-bold shrink-0 border ${isSelected && !isSubmitted ? 'bg-primary-500 border-primary-500 text-white' : isSubmitted && correctIndices.includes(i) ? 'bg-green-500 border-green-500 text-white' : isSubmitted && isSelected ? 'bg-red-500 border-red-500 text-white' : 'border-current'}`}>
                     {isSelected ? '✓' : String.fromCharCode(65 + i)}
                   </span>
                   {opt}
@@ -198,7 +198,7 @@ export default function ListeningQuestionCard({
           </span>
           <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">{q.question}</p>
         </div>
-        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${d.color}`}>{d.label}</span>
+        <span className={`text-xs font-bold px-1.5 py-0.5 rounded-full ${d.color}`}>{d.label}</span>
       </div>
       {renderOptions()}
       {isSubmitted && (

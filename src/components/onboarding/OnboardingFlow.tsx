@@ -162,7 +162,7 @@ export function OnboardingFlow() {
                 <div key={stat.label} className="card text-center py-3">
                   <p className="text-lg">{stat.emoji}</p>
                   <p className="text-sm font-black text-gray-800 dark:text-white">{stat.value}</p>
-                  <p className="text-[11px] text-gray-400">{stat.label}</p>
+                  <p className="text-xs text-gray-400">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -224,7 +224,7 @@ export function OnboardingFlow() {
                 <div key={item.label} className="card text-center py-3">
                   <p className="text-xl">{item.emoji}</p>
                   <p className="text-sm font-bold text-gray-800 dark:text-white">{item.label}</p>
-                  <p className="text-[10px] text-gray-400">{item.desc}</p>
+                  <p className="text-xs text-gray-400">{item.desc}</p>
                 </div>
               ))}
             </div>

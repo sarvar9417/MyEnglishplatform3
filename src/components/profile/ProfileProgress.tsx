@@ -70,13 +70,13 @@ function StreakCalendar({ days }: { days: DayData[] }) {
           <div className="h-4" />
           {dayLabels.map((lbl) => (
             <div key={lbl} className="h-3 flex items-center">
-              <span className="text-[11px] text-gray-400 w-4">{lbl}</span>
+              <span className="text-xs text-gray-400 w-4">{lbl}</span>
             </div>
           ))}
         </div>
         {weeks.map((week, wi) => (
           <div key={wi} className="flex flex-col gap-1">
-            <span className="text-[11px] text-gray-400 h-4 flex items-center">
+            <span className="text-xs text-gray-400 h-4 flex items-center">
               {wi % 2 === 0 ? `${wi + 1}h` : ''}
             </span>
             {[0, 1, 2, 3, 4, 5, 6].map((di) => {
@@ -95,11 +95,11 @@ function StreakCalendar({ days }: { days: DayData[] }) {
         ))}
       </div>
       <div className="flex items-center gap-1.5 mt-3">
-        <span className="text-[11px] text-gray-400">{t('profile.progress.heatLow')}</span>
+        <span className="text-xs text-gray-400">{t('profile.progress.heatLow')}</span>
         {['bg-gray-100', 'bg-green-200', 'bg-green-400', 'bg-green-600', 'bg-green-800'].map((cls) => (
           <div key={cls} className={`w-3 h-3 rounded-sm ${cls}`} />
         ))}
-        <span className="text-[11px] text-gray-400">{t('profile.progress.heatHigh')}</span>
+        <span className="text-xs text-gray-400">{t('profile.progress.heatHigh')}</span>
       </div>
     </div>
   )
@@ -152,7 +152,7 @@ function GrowthSnapshot({ timeline, currentDay }: { timeline: DayData[]; current
       </h3>
       <div className="grid grid-cols-3 gap-2">            {items.map((item, i) => (
           <div key={i} className="text-center bg-white dark:bg-gray-800 rounded-xl p-2.5">
-            <p className="text-[11px] text-gray-400 mb-1">{t(item.labelKey as keyof TranslationStrings)}</p>
+            <p className="text-xs text-gray-400 mb-1">{t(item.labelKey as keyof TranslationStrings)}</p>
             <p className="text-xs text-gray-400 line-through">{item.before}</p>
             <p className="text-base font-bold text-green-600 dark:text-green-400">{item.after}</p>
           </div>
@@ -264,7 +264,7 @@ export default function ProfileProgress({
           <div key={i} className="card text-center py-3">
             <div className={`flex justify-center mb-1 ${s.color}`}>{s.icon}</div>
             <p className="text-lg font-bold text-gray-900">{s.value}</p>
-            <p className="text-[11px] text-gray-500">{t(s.labelKey as keyof TranslationStrings)}</p>
+            <p className="text-xs text-gray-500">{t(s.labelKey as keyof TranslationStrings)}</p>
           </div>
         ))}
       </div>

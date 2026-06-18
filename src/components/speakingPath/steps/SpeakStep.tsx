@@ -63,11 +63,11 @@ export default function SpeakStep({ day, userId, onNext }: Props) {
               return (
                 <div key={c.id} className="flex items-center gap-3">
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${correct ? 'bg-emerald-500' : 'bg-gray-200 dark:bg-gray-700'}`}>
-                    {correct ? <Check size={13} className="text-white" /> : <span className="text-[10px] text-gray-400">{i + 1}</span>}
+                    {correct ? <Check size={13} className="text-white" /> : <span className="text-xs text-gray-400">{i + 1}</span>}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-semibold text-gray-900 dark:text-gray-100 truncate">{c.en}</p>
-                    <p className="text-[10px] text-gray-400">{c.uz}</p>
+                    <p className="text-xs text-gray-400">{c.uz}</p>
                   </div>
                   <div className="text-right shrink-0">
                     <p className={`text-sm font-bold ${correct ? 'text-emerald-600 dark:text-emerald-400' : 'text-gray-400'}`}>{score}%</p>

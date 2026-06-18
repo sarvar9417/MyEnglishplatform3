@@ -26,7 +26,7 @@ export default function SectionProgressBar({
               className={`h-1.5 rounded-full transition-all ${done ? 'bg-green-500' : active ? 'bg-primary-500' : 'bg-gray-200'}`}
             />
             <p
-              className={`text-[11px] mt-0.5 text-center font-medium ${active ? 'text-primary-700' : done ? 'text-green-600' : 'text-gray-400'}`}
+              className={`text-xs mt-0.5 text-center font-medium ${active ? 'text-primary-700' : done ? 'text-green-600' : 'text-gray-400'}`}
             >
               {s.icon} <span className="hidden sm:inline">{s.title}</span>
             </p>

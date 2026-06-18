@@ -163,10 +163,10 @@ export default function Pronunciation() {
             >
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-3xl">{c.emoji}</span>
-                <span className="text-[11px] font-bold px-1.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500">{t('pronunciation.phrasesCount', { count: String(c.phrases.length) })}</span>
+                <span className="text-xs font-bold px-1.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500">{t('pronunciation.phrasesCount', { count: String(c.phrases.length) })}</span>
               </div>
               <p className="font-bold text-sm text-gray-900 dark:text-white">{c.titleUz}</p>
-              <p className="text-[11px] text-gray-500 mt-0.5 line-clamp-2">{c.whyUz}</p>
+              <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{c.whyUz}</p>
             </button>
           ))}
         </div>
@@ -229,13 +229,13 @@ export default function Pronunciation() {
         <div className="flex flex-col items-center gap-2">
           {sr.permissionError && !sr.isRecording && !analyzing && (
             <div className="rounded-xl p-2.5 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40 w-full text-center">
-              <p className="text-[11px] text-amber-700 dark:text-amber-300 font-medium flex items-center justify-center gap-1">
+              <p className="text-xs text-amber-700 dark:text-amber-300 font-medium flex items-center justify-center gap-1">
                 <MicOff size={12} className="text-amber-500" />
                 {t('speaking.micPermissionDenied')}
               </p>
               <button
                 onClick={() => { sr.reset(); sr.start() }}
-                className="mt-1 text-[11px] font-semibold text-amber-800 bg-amber-200/60 hover:bg-amber-200 px-2.5 py-1 rounded-lg transition-colors"
+                className="mt-1 text-xs font-semibold text-amber-800 bg-amber-200/60 hover:bg-amber-200 px-2.5 py-1 rounded-lg transition-colors"
               >
                 <RotateCcw size={10} className="inline mr-1" />
                 {t('speaking.micRetry')}
@@ -256,7 +256,7 @@ export default function Pronunciation() {
           >
             {sr.isRecording ? <Square size={24} /> : <Mic size={26} />}
           </button>
-          <p className="text-[11px] text-gray-400">{sr.isRecording ? t('pronunciation.micStopHint') : analyzing ? t('pronunciation.analyzing') : sr.permissionError ? '' : t('pronunciation.micStartHint')}</p>
+          <p className="text-xs text-gray-400">{sr.isRecording ? t('pronunciation.micStopHint') : analyzing ? t('pronunciation.analyzing') : sr.permissionError ? '' : t('pronunciation.micStartHint')}</p>
         </div>
       )}
 
@@ -287,7 +287,7 @@ export default function Pronunciation() {
                       <button onClick={() => tts.speak(iss.word)} className="flex items-center gap-1 font-bold text-gray-800 dark:text-gray-200">
                         <Volume2 size={12} className="text-gray-400" /> {iss.word}
                       </button>
-                      <span className="text-violet-500 font-mono text-[11px]">{iss.ipa}</span>
+                      <span className="text-violet-500 font-mono text-xs">{iss.ipa}</span>
                     </div>
                     {iss.heard && iss.heard !== '—' && <p className="text-gray-400">{t('pronunciation.heardPrefix')}"{iss.heard}"</p>}
                     <p className="text-gray-600 dark:text-gray-400">💡 {iss.tip}</p>
@@ -314,7 +314,7 @@ export default function Pronunciation() {
           {/* Intonation contour */}
           {pitchContour.length > 1 && (
             <div className="card">
-              <p className="text-[11px] font-bold text-gray-500 dark:text-gray-400 mb-2">{t('pronunciation.intonationTitle')}</p>
+              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2">{t('pronunciation.intonationTitle')}</p>
               <div className="h-16">
                 <IntonationContour
                   pitchData={pitchContour}
@@ -323,7 +323,7 @@ export default function Pronunciation() {
                   height={64}
                 />
               </div>
-              <div className="flex items-center gap-3 mt-1.5 text-[10px] text-gray-400">
+              <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-400">
                 <span><span className="text-emerald-500">↗</span> {t('pronunciation.intonationRise')}</span>
                 <span><span className="text-red-500">↘</span> {t('pronunciation.intonationFall')}</span>
                 <span>{t('pronunciation.intonationLine')}</span>
@@ -401,7 +401,7 @@ function VoiceSettingsPopover({ speed, voices, selectedVoice, onSpeedChange, onV
     >
       {/* Speed */}
       <div>
-        <div className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-500 dark:text-gray-400 mb-1.5">
+        <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">
           <Gauge size={12} />
           <span>{t('pronunciation.speedLabel')}</span>
           <span className="ml-auto text-gray-400 font-mono">{speed}x</span>
@@ -411,7 +411,7 @@ function VoiceSettingsPopover({ speed, voices, selectedVoice, onSpeedChange, onV
             <button
               key={opt.value}
               onClick={() => onSpeedChange(opt.value)}
-              className={`flex-1 text-[10px] font-semibold px-1 py-1.5 rounded-lg transition-colors ${
+              className={`flex-1 text-xs font-semibold px-1 py-1.5 rounded-lg transition-colors ${
                 speed === opt.value
                   ? 'bg-primary-600 text-white'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
@@ -427,13 +427,13 @@ function VoiceSettingsPopover({ speed, voices, selectedVoice, onSpeedChange, onV
       {/* Voice */}
       {voices.length > 0 && (
         <div>
-          <div className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mb-1.5">{t('pronunciation.voiceLabel')}</div>
+          <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1.5">{t('pronunciation.voiceLabel')}</div>
           <div className="max-h-[120px] overflow-y-auto space-y-0.5">
             {voices.map((v) => (
               <button
                 key={v.name}
                 onClick={() => onVoiceChange(v.name)}
-                className={`w-full text-left text-[11px] px-2 py-1 rounded-lg transition-colors ${
+                className={`w-full text-left text-xs px-2 py-1 rounded-lg transition-colors ${
                   selectedVoice?.name === v.name
                     ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 font-semibold'
                     : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700/50'

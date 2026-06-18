@@ -150,7 +150,7 @@ export default function SpeakingSection({ topic, level, addXP, onSkillProgress, 
             {[['Ravonlik', scores.fluency], ['Grammatika', scores.grammar], ['Lug\'at', scores.vocabulary]].map(([l, v]) => (
               <div key={l as string} className="card text-center py-3">
                 <p className="text-2xl font-black text-rose-500">{v as number}<span className="text-sm text-gray-400">/10</span></p>
-                <p className="text-[10px] text-gray-500">{l as string}</p>
+                <p className="text-xs text-gray-500">{l as string}</p>
               </div>
             ))}
           </div>

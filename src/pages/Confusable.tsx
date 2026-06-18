@@ -182,7 +182,7 @@ function ConfusableCard({ pair, onClick }: { pair: ConfusablePair; onClick: () =
         <span className="text-lg opacity-0 group-hover:opacity-100 transition-opacity">→</span>
       </div>
       <p className="text-xs text-gray-500 mb-1.5">{pair.uzTitle}</p>
-      <div className="flex items-center gap-1 text-[11px] text-gray-400">
+      <div className="flex items-center gap-1 text-xs text-gray-400">
         <Brain size={12} />
         <span>{pair.memoryHook.slice(0, 60)}{pair.memoryHook.length > 60 ? '...' : ''}</span>
       </div>

@@ -13,7 +13,7 @@ interface RatingBadgeProps {
 }
 
 const SIZE_MAP = {
-  sm: { emoji: 'text-base', rating: 'text-xs', label: 'text-[10px]', px: 'px-2', py: 'py-0.5' },
+  sm: { emoji: 'text-base', rating: 'text-xs', label: 'text-xs', px: 'px-2', py: 'py-0.5' },
   md: { emoji: 'text-xl', rating: 'text-sm', label: 'text-xs', px: 'px-3', py: 'py-1' },
   lg: { emoji: 'text-2xl', rating: 'text-base', label: 'text-sm', px: 'px-4', py: 'py-1.5' },
 }

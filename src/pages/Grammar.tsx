@@ -66,7 +66,7 @@ function TopicCard({
         {(() => {
           const uzName = termUzBilingual(topic.title)
           if (uzName === topic.title) return null
-          return <p className="text-[11px] text-primary-600 font-medium mt-0.5">{uzName}</p>
+          return <p className="text-xs text-primary-600 font-medium mt-0.5">{uzName}</p>
         })()}
         <p className="text-xs text-gray-500 mt-0.5">{topic.subtitle}</p>
       </div>

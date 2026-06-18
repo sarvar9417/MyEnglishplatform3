@@ -318,7 +318,7 @@ export function useLessonState(lessonProp: DailyLesson) {
               const d = JSON.parse(existing)
               if (d?.answers && Object.keys(d.answers).length > 0) continue
             } catch {
-              /* broken — overwrite */
+              monitoring.captureMessage('Failed to parse existing localStorage exercise data', 'warn')
             }
           }
           try {
@@ -331,7 +331,7 @@ export function useLessonState(lessonProp: DailyLesson) {
               }),
             )
           } catch {
-            /* ignore */
+            monitoring.captureMessage('Failed to save exercise state to localStorage', 'warn')
           }
         }
 
@@ -353,7 +353,7 @@ export function useLessonState(lessonProp: DailyLesson) {
               const d = JSON.parse(existing)
               if (d?.testAnswers && Object.keys(d.testAnswers).length > 0) continue
             } catch {
-              /* broken — overwrite */
+              monitoring.captureMessage('Failed to parse existing localStorage test data', 'warn')
             }
           }
           try {
@@ -367,7 +367,7 @@ export function useLessonState(lessonProp: DailyLesson) {
               }),
             )
           } catch {
-            /* ignore */
+            monitoring.captureMessage('Failed to save test state to localStorage', 'warn')
           }
         }
 
@@ -523,7 +523,7 @@ export function useLessonState(lessonProp: DailyLesson) {
       try {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } catch {
-        /* jsdom guard */
+        monitoring.captureMessage('Failed to scroll to top', 'warn')
       }
     }, 50)
   }
@@ -539,7 +539,7 @@ export function useLessonState(lessonProp: DailyLesson) {
         }
       }
     } catch {
-      /* ignore */
+      monitoring.captureMessage('Failed to parse localStorage exercise section state', 'warn')
     }
     const rows = dbAnswersRef.current.filter(
       (a) => a.sectionIndex === idx && a.sectionType === 'exercise',
@@ -576,7 +576,7 @@ export function useLessonState(lessonProp: DailyLesson) {
         }
       }
     } catch {
-      /* ignore */
+      monitoring.captureMessage('Failed to parse localStorage test section state', 'warn')
     }
     const rows = dbAnswersRef.current.filter(
       (a) => a.sectionIndex === idx && a.sectionType === 'test',
@@ -755,7 +755,7 @@ export function useLessonState(lessonProp: DailyLesson) {
     try {
       localStorage.removeItem(exerciseStorageKey)
     } catch {
-      /* ignore */
+      monitoring.captureMessage('Failed to remove exercise state from localStorage', 'warn')
     }
     clearExerciseAnswersFromDB(lesson.id, currentSection, 'exercise')
   }
@@ -851,7 +851,7 @@ export function useLessonState(lessonProp: DailyLesson) {
     try {
       localStorage.removeItem(testStorageKey)
     } catch {
-      /* ignore */
+      monitoring.captureMessage('Failed to remove test state from localStorage', 'warn')
     }
     clearExerciseAnswersFromDB(lesson.id, testSection, 'test')
   }

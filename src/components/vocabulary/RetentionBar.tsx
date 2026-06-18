@@ -41,7 +41,7 @@ export function RetentionBar({ box, nextReview }: RetentionBarProps) {
           style={{ width: `${retention}%` }}
         />
       </div>
-      <span className={`text-[10px] font-medium ${textColor}`}>
+      <span className={`text-xs font-medium ${textColor}`}>
         {retention}%
       </span>
     </div>

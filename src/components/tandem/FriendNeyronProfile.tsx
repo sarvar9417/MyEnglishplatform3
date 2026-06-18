@@ -399,7 +399,7 @@ export default function FriendNeyronProfile({ friendId, friendName, onClose }: P
               <div key={s.label} className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-3 text-center">
                 <p className="text-lg">{s.icon}</p>
                 <p className="text-lg font-bold text-gray-900 dark:text-white">{s.value}</p>
-                <p className="text-[11px] text-gray-500">{s.label}</p>
+                <p className="text-xs text-gray-500">{s.label}</p>
               </div>
             ))}
           </div>
@@ -426,7 +426,7 @@ export default function FriendNeyronProfile({ friendId, friendName, onClose }: P
                   Neyron Profil — Zaif tomonlar
                 </h3>
                 {weakSpots[0] && (
-                  <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${scoreBg(weakSpots[0].score)} ${scoreColor(weakSpots[0].score)}`}>
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${scoreBg(weakSpots[0].score)} ${scoreColor(weakSpots[0].score)}`}>
                     Eng zaif: {weakSpots[0].score}%
                   </span>
                 )}

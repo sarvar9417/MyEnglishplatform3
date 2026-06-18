@@ -39,8 +39,8 @@ export default function StressVisualizer({ word, ipa, onSpeak }: StressVisualize
   return (
     <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-3">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">So'z urg'usi</span>
-        <span className="text-[10px] text-gray-400 font-mono">{pattern}</span>
+        <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">So'z urg'usi</span>
+        <span className="text-xs text-gray-400 font-mono">{pattern}</span>
       </div>
 
       <div className="flex items-center gap-1 flex-wrap">
@@ -61,11 +61,11 @@ export default function StressVisualizer({ word, ipa, onSpeak }: StressVisualize
       <div className="flex items-center gap-2 mt-2">
         <div className="flex items-center gap-1.5">
           <div className="w-3 h-3 rounded bg-rose-200 dark:bg-rose-800 ring-1 ring-rose-300 dark:ring-rose-700" />
-          <span className="text-[10px] text-gray-500">Urg'uli bo'g'in</span>
+          <span className="text-xs text-gray-500">Urg'uli bo'g'in</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-3 h-3 rounded bg-gray-100 dark:bg-gray-600" />
-          <span className="text-[10px] text-gray-500">Urg'usiz</span>
+          <span className="text-xs text-gray-500">Urg'usiz</span>
         </div>
         {onSpeak && (
           <button

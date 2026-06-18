@@ -71,7 +71,7 @@ export default function FilterBar(props: FilterBarProps) {
             </button>
           ))}
 
-          <span className="text-[10px] text-gray-300 dark:text-gray-600">|</span>
+          <span className="text-xs text-gray-300 dark:text-gray-600">|</span>
 
           {/* Mastery filter */}
           {([

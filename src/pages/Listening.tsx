@@ -639,7 +639,7 @@ function TranscriptCard({ line }: { line: { startSec: number; text: string; spea
         </span>
         <div className="flex-1 min-w-0">
           {line.speaker && (
-            <span className="text-[11px] font-bold text-orange-600 uppercase tracking-wide">
+            <span className="text-xs font-bold text-orange-600 uppercase tracking-wide">
               {line.speaker}:{' '}
             </span>
           )}
