@@ -18,11 +18,11 @@ export const inversionB2: DailyLesson = {
       { "word": "rise", "definition": "ko'tarilmoq, chiqmoq" }
     ],
     "questions": [
-      { "id": 90831, "type": "multiple-choice", "question": "What had the speaker never seen before?", "options": ["Such a beautiful sunrise", "A bird", "A hill", "A storm"], "correctIndex": 0, "explanation": "'Never have I seen such a beautiful sunrise' — negative adverb fronting + inversion." },
-      { "id": 90832, "type": "true-false", "question": "The place is beautiful but noisy.", "answer": false, "explanation": "'Not only is it beautiful, but it's also peaceful.'" },
-      { "id": 90833, "type": "multiple-choice", "question": "When did the colours change?", "options": ["Before they arrived", "Just after they arrived", "At noon", "At night"], "correctIndex": 1, "explanation": "'Hardly had we arrived when the colours changed.'" },
-      { "id": 90834, "type": "multiple-choice", "question": "When did they see the full view?", "options": ["From the car", "Only after climbing the hill", "At the start", "From home"], "correctIndex": 1, "explanation": "'Only after climbing the hill did we see the full view' — fronting + inversion." },
-      { "id": 90835, "type": "multiple-choice", "question": "What happened no sooner than the sun rose?", "options": ["It rained", "The birds began to sing", "They left", "It got dark"], "correctIndex": 1, "explanation": "'No sooner had the sun risen than the birds began to sing.'" }
+      { "id": 101713, "type": "multiple-choice", "question": "What had the speaker never seen before?", "options": ["Such a beautiful sunrise", "A bird", "A hill", "A storm"], "correctIndex": 0, "explanation": "'Never have I seen such a beautiful sunrise' — negative adverb fronting + inversion." },
+      { "id": 101714, "type": "true-false", "question": "The place is beautiful but noisy.", "answer": false, "explanation": "'Not only is it beautiful, but it's also peaceful.'" },
+      { "id": 101715, "type": "multiple-choice", "question": "When did the colours change?", "options": ["Before they arrived", "Just after they arrived", "At noon", "At night"], "correctIndex": 1, "explanation": "'Hardly had we arrived when the colours changed.'" },
+      { "id": 101716, "type": "multiple-choice", "question": "When did they see the full view?", "options": ["From the car", "Only after climbing the hill", "At the start", "From home"], "correctIndex": 1, "explanation": "'Only after climbing the hill did we see the full view' — fronting + inversion." },
+      { "id": 101717, "type": "multiple-choice", "question": "What happened no sooner than the sun rose?", "options": ["It rained", "The birds began to sing", "They left", "It got dark"], "correctIndex": 1, "explanation": "'No sooner had the sun risen than the birds began to sing.'" }
     ],
     "difficulty": "hard",
     "topic": "Inversiya — Never have I / Not only / Hardly had / No sooner"
@@ -879,11 +879,11 @@ export const cleftSentencesB2: DailyLesson = {
       { "word": "mistake", "definition": "xato" }
     ],
     "questions": [
-      { "id": 90841, "type": "multiple-choice", "question": "Who broke the window?", "options": ["The maid", "The gardener", "The detective", "A guest"], "correctIndex": 1, "explanation": "'It was the gardener who broke the window' — cleft sentence for emphasis." },
-      { "id": 90842, "type": "multiple-choice", "question": "What did he want?", "options": ["The money", "The painting", "The keys", "The car"], "correctIndex": 1, "explanation": "'What he wanted was the painting, not the money' — wh-cleft." },
-      { "id": 90843, "type": "true-false", "question": "He entered the house at noon.", "answer": false, "explanation": "'It was at midnight that he entered the house.'" },
-      { "id": 90844, "type": "multiple-choice", "question": "What scared him away?", "options": ["A dog", "The alarm", "A light", "The maid"], "correctIndex": 1, "explanation": "'It was the alarm that scared him away.'" },
-      { "id": 90845, "type": "multiple-choice", "question": "What gave him away?", "options": ["A witness", "His own mistake", "A camera", "The police"], "correctIndex": 1, "explanation": "'It was his own mistake that gave him away.'" }
+      { "id": 101718, "type": "multiple-choice", "question": "Who broke the window?", "options": ["The maid", "The gardener", "The detective", "A guest"], "correctIndex": 1, "explanation": "'It was the gardener who broke the window' — cleft sentence for emphasis." },
+      { "id": 101719, "type": "multiple-choice", "question": "What did he want?", "options": ["The money", "The painting", "The keys", "The car"], "correctIndex": 1, "explanation": "'What he wanted was the painting, not the money' — wh-cleft." },
+      { "id": 101720, "type": "true-false", "question": "He entered the house at noon.", "answer": false, "explanation": "'It was at midnight that he entered the house.'" },
+      { "id": 101721, "type": "multiple-choice", "question": "What scared him away?", "options": ["A dog", "The alarm", "A light", "The maid"], "correctIndex": 1, "explanation": "'It was the alarm that scared him away.'" },
+      { "id": 101722, "type": "multiple-choice", "question": "What gave him away?", "options": ["A witness", "His own mistake", "A camera", "The police"], "correctIndex": 1, "explanation": "'It was his own mistake that gave him away.'" }
     ],
     "difficulty": "hard",
     "topic": "Cleft gaplar — It is/was...that/who, What...was"
@@ -1747,11 +1747,11 @@ export const advancedPassiveB2: DailyLesson = {
       { "word": "economist", "definition": "iqtisodchi" }
     ],
     "questions": [
-      { "id": 90851, "type": "multiple-choice", "question": "What is said about the new policy?", "options": ["It will fail", "It will help thousands", "It is illegal", "It is expensive"], "correctIndex": 1, "explanation": "'It is said that the new policy will help thousands' — impersonal passive." },
-      { "id": 90852, "type": "multiple-choice", "question": "What is the plan believed to reduce?", "options": ["Taxes", "Poverty", "Schools", "Jobs"], "correctIndex": 1, "explanation": "'The plan is believed to reduce poverty' — passive + infinitive." },
-      { "id": 90853, "type": "true-false", "question": "New schools are being built already.", "answer": true, "explanation": "'New schools are being built already' — present continuous passive." },
-      { "id": 90854, "type": "multiple-choice", "question": "How do most economists consider the policy?", "options": ["Unfair", "Fair", "Risky", "Useless"], "correctIndex": 1, "explanation": "'The policy is considered fair by most economists.'" },
-      { "id": 90855, "type": "multiple-choice", "question": "Where was the policy trialled?", "options": ["In one city", "In two regions", "Nationwide", "Abroad"], "correctIndex": 1, "explanation": "'it was trialled in two regions and is known to work.'" }
+      { "id": 101723, "type": "multiple-choice", "question": "What is said about the new policy?", "options": ["It will fail", "It will help thousands", "It is illegal", "It is expensive"], "correctIndex": 1, "explanation": "'It is said that the new policy will help thousands' — impersonal passive." },
+      { "id": 101724, "type": "multiple-choice", "question": "What is the plan believed to reduce?", "options": ["Taxes", "Poverty", "Schools", "Jobs"], "correctIndex": 1, "explanation": "'The plan is believed to reduce poverty' — passive + infinitive." },
+      { "id": 101725, "type": "true-false", "question": "New schools are being built already.", "answer": true, "explanation": "'New schools are being built already' — present continuous passive." },
+      { "id": 101726, "type": "multiple-choice", "question": "How do most economists consider the policy?", "options": ["Unfair", "Fair", "Risky", "Useless"], "correctIndex": 1, "explanation": "'The policy is considered fair by most economists.'" },
+      { "id": 101727, "type": "multiple-choice", "question": "Where was the policy trialled?", "options": ["In one city", "In two regions", "Nationwide", "Abroad"], "correctIndex": 1, "explanation": "'it was trialled in two regions and is known to work.'" }
     ],
     "difficulty": "hard",
     "topic": "Murakkab majhul nisbat — It is said that / is believed to"
@@ -2626,11 +2626,11 @@ export const academicVocabularyB2: DailyLesson = {
       { "word": "analyse", "definition": "tahlil qilmoq" }
     ],
     "questions": [
-      { "id": 90861, "type": "multiple-choice", "question": "What word should replace 'big'?", "options": ["Large", "Significant", "Huge", "Wide"], "correctIndex": 1, "explanation": "'Instead of big, say significant' — precise academic vocabulary." },
-      { "id": 90862, "type": "multiple-choice", "question": "What can be used instead of 'show'?", "options": ["Tell", "Demonstrate or illustrate", "See", "Look"], "correctIndex": 1, "explanation": "'Use demonstrate or illustrate.'" },
-      { "id": 90863, "type": "true-false", "question": "'A lot' can be replaced with 'numerous'.", "answer": true, "explanation": "'instead of a lot, say numerous.'" },
-      { "id": 90864, "type": "multiple-choice", "question": "What replaces 'important'?", "options": ["Big", "Crucial or vital", "Nice", "Good"], "correctIndex": 1, "explanation": "'Crucial or vital.'" },
-      { "id": 90865, "type": "multiple-choice", "question": "What phrase replaces 'in my opinion'?", "options": ["I think", "It could be argued that", "Maybe", "I guess"], "correctIndex": 1, "explanation": "'Try it could be argued that.'" }
+      { "id": 101728, "type": "multiple-choice", "question": "What word should replace 'big'?", "options": ["Large", "Significant", "Huge", "Wide"], "correctIndex": 1, "explanation": "'Instead of big, say significant' — precise academic vocabulary." },
+      { "id": 101729, "type": "multiple-choice", "question": "What can be used instead of 'show'?", "options": ["Tell", "Demonstrate or illustrate", "See", "Look"], "correctIndex": 1, "explanation": "'Use demonstrate or illustrate.'" },
+      { "id": 101730, "type": "true-false", "question": "'A lot' can be replaced with 'numerous'.", "answer": true, "explanation": "'instead of a lot, say numerous.'" },
+      { "id": 101731, "type": "multiple-choice", "question": "What replaces 'important'?", "options": ["Big", "Crucial or vital", "Nice", "Good"], "correctIndex": 1, "explanation": "'Crucial or vital.'" },
+      { "id": 101732, "type": "multiple-choice", "question": "What phrase replaces 'in my opinion'?", "options": ["I think", "It could be argued that", "Maybe", "I guess"], "correctIndex": 1, "explanation": "'Try it could be argued that.'" }
     ],
     "difficulty": "hard",
     "topic": "Akademik lug'at — IELTS uchun aniq so'zlar"
