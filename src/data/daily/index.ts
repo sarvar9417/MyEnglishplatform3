@@ -35,6 +35,8 @@ export {
   basicAdjectives,
 } from './a1Part2'
 
+export { articles as articlesA1 } from './a1Articles'
+
 // Re-export individual lesson constants
 export {
   modalVerbs,
@@ -82,6 +84,8 @@ export {
   wishesRegrets,
 } from './b1Part1'
 
+export { pragmaticsFormalInformal } from './b1Pragmatics'
+
 export {
   narrativeTensesB1plus,
   advancedRelativeClausesB1plus,
@@ -118,6 +122,10 @@ export {
 } from './b2Part1'
 
 export {
+  britishAmericanDifferencesB2,
+} from './b2BritishAmerican'
+
+export {
   complexSentencesB2,
   advancedModalsB2,
   contrastiveStructuresB2,
@@ -138,6 +146,7 @@ export {
 // Combined export arrays
 import { alphabetAndGreetings, numbers, colorsAndShapes, family, daysAndMonths, timeAndRoutines, foodAndDrinks, animals, bodyParts, clothes } from './a1Part1'
 import { demonstratives, thereIsAre, canCant, haveGot, questionWords, conjunctions, a1Review, prepositionsOfPlace, basicAdjectives } from './a1Part2'
+import { articles as articlesA1 } from './a1Articles'
 // A1 zamon darslari — bu yerda ketma-ketlikka qo'shiladi (oldin loadAllLessons'da
 // A1_TENSES alohida, lug'at darslaridan OLDIN kelib, tartibni buzar edi)
 import { simplePresent, presentContinuous, simplePast, simpleFuture } from '../tenses/tensesData'
@@ -174,6 +183,7 @@ export const A1_LESSONS_NEW: DailyLesson[] = [
   thereIsAre,
   prepositionsOfPlace,
   basicAdjectives,
+  articlesA1,
   haveGot,
   canCant,
   // ─── Fe'l zamonlari (kun 17-20) — Present Simple bu yerda (a1Part2 dublikati olib tashlandi) ───

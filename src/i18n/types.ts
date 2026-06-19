@@ -497,6 +497,8 @@ export interface TranslationStrings {
   'profile.leaderSortStreak': string
   'profile.leaderSortWords': string
   'profile.leaderSortDay': string
+  'profile.canDoTitle': string
+  'profile.canDoSubtitle': string
 
   /* ── Speaking ── */
   'speaking.title': string
@@ -1659,5 +1661,12 @@ export interface TranslationStrings {
   'writing.ieltsBand65': string
   'writing.ieltsBand55': string
   'writing.ieltsBand45': string
+  'writing.rubricTitle': string
+  'writing.rubricContent': string
+  'writing.rubricGrammar': string
+  'writing.rubricVocabulary': string
+  'writing.rubricCoherence': string
+  'writing.rubricShow': string
+  'writing.rubricHide': string
 }
 

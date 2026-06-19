@@ -11,6 +11,7 @@ import {
 } from '../tenses/tensesData'
 // Kurikulum bo'shliqlari to'ldirildi (Supabase'dan): asosiy Relative Clauses va Phrasal Verbs
 import { relativeClausesB1, phrasalVerbsB1 } from './b1Extra'
+import { pragmaticsFormalInformal } from './b1Pragmatics'
 
 // B1 — perfect/continuous zamonlari oldinroq, keyin modallar va murakkab tuzilmalar:
 //   perfect zamonlar → past habits → kelasi zamonlar → modallar → relative → struktura → phrasal → wishes
@@ -33,4 +34,5 @@ export const B1_LESSONS_NEW: DailyLesson[] = [
   timeClauses,
   phrasalVerbsB1,
   wishesRegrets,
+  pragmaticsFormalInformal,
 ]

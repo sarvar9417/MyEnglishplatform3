@@ -3,6 +3,7 @@ import {
   unrealPastB2, advancedConditionalsB2, nominalizationB2, subjunctiveB2,
   hedgingB2, complexPrepositionsB2, cohesionB2, registerB2,
 } from './b2Part1'
+import { britishAmericanDifferencesB2 } from './b2BritishAmerican'
 import {
   complexSentencesB2, advancedModalsB2, contrastiveStructuresB2,
   punctuationB2, academicCollocationsB2, criticalThinkingB2, b2Review,
@@ -37,6 +38,7 @@ export const B2_LESSONS_NEW: DailyLesson[] = [
   academicCollocationsB2,
   academicVocabularyB2,
   criticalThinkingB2,
+  britishAmericanDifferencesB2,
   b2Review,
   argumentStructureB2,
   stanceMarkersB2,

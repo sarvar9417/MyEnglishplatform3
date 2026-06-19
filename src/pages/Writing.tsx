@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { PenLine, Clock, ChevronDown, ChevronUp, ChevronLeft, Loader2 } from 'lucide-react'
+import { PenLine, Clock, ChevronDown, ChevronUp, ChevronLeft, Loader2, Target, BookOpen, Lightbulb, GitBranch } from 'lucide-react'
 import { useNavigationGuard } from '../hooks/useNavigationGuard'
 import WritingHistory from '../components/writing/WritingHistory'
 import { TYPE_LABEL, TYPE_COLOR } from '@/data/writingPrompts'
@@ -105,6 +105,7 @@ export default function Writing() {
   const [ieltsMode,    setIeltsMode]    = useState(false)
   const [errors,       setErrors]       = useState<WritingError[]>([])
   const [errorsLoading, setErrorsLoading] = useState(false)
+  const [showRubric,    setShowRubric]    = useState(false)
 
   useNavigationGuard(view === 'write' && essay.length > 0)
 
@@ -401,6 +402,43 @@ export default function Writing() {
         >
           {ieltsMode ? 'IELTS ✅' : 'IELTS'}
         </button>
+      </div>
+
+      {/* Rubric */}
+      <div className="card mb-4 border-primary-100">
+        <button
+          onClick={() => setShowRubric((v) => !v)}
+          className="w-full flex items-center justify-between"
+        >
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-semibold text-primary-700">{t('writing.rubricTitle')}</span>
+            <span className="text-xs text-primary-400">/100</span>
+          </div>
+          {showRubric ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
+        </button>
+        {showRubric && (
+          <div className="mt-3 pt-3 border-t border-primary-100 space-y-2.5">
+            {[
+              { icon: Target,       label: 'Content / Mazmun',        score: '0–25', desc: t('writing.rubricContent'),      color: 'text-primary-600 bg-primary-50' },
+              { icon: BookOpen,     label: 'Grammar / Grammatika',    score: '0–25', desc: t('writing.rubricGrammar'),      color: 'text-b2-600 bg-b2-50' },
+              { icon: Lightbulb,    label: 'Vocabulary / Lug\'at',     score: '0–25', desc: t('writing.rubricVocabulary'),   color: 'text-orange-600 bg-orange-50' },
+              { icon: GitBranch,    label: 'Coherence / Bog\'liqlik',  score: '0–25', desc: t('writing.rubricCoherence'),    color: 'text-emerald-600 bg-emerald-50' },
+            ].map(({ icon: Icon, label, score, desc, color }) => (
+              <div key={label} className="flex items-start gap-3 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-800">
+                <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${color}`}>
+                  <Icon size={16} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold text-gray-700 dark:text-gray-200">{label}</span>
+                    <span className="text-xs font-bold text-gray-400">{score}</span>
+                  </div>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Prompt */}
