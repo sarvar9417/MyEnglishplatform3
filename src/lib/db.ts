@@ -76,7 +76,7 @@ class TypedDB {
     if (args === undefined) {
       return supabase.rpc(name)
     }
-    return supabase.rpc(name, args as never)
+    return supabase.rpc(name, args as Database['public']['Functions'][Name]['Args'])
   }
 
   /**
