@@ -666,11 +666,11 @@ export const relativeClausesB1: DailyLesson = {
 },
 
     // ── Interleaved Practice: Relative clauses + Defining/Non-defining ──
-    { id: 95601, type: 'fill-blank', instruction: "Relative pronoun + defining/non-defining:", question: "My mother, ___ is a nurse, works at the hospital. The man ___ lives next door ___ a doctor.", blanks: ['who', 'who', 'is'], explanation: "Non-defining (commas) + who. Defining (no commas) + who." },
-    { id: 95602, type: 'multiple-choice', instruction: "Defining vs Non-defining:", question: "The students ___ study hard pass. The students, ___, study hard.", options: ['who / who study hard', 'which / which', 'that / that', 'where / when'], correct: 'who / who study hard', explanation: "First = defining (no commas, essential). Second = non-defining (commas)." },
-    { id: 95603, type: 'error-correction', instruction: "Relative clause structure:", question: "The woman lives next door is a doctor. My sister, that is kind, helps me.", errorPart: 'lives / that', correct: "The woman who lives next door is a doctor. My sister, who is kind, helps me.", explanation: "Defining: 'who lives' (subject pronoun can't be omitted). Non-defining: 'who', not 'that'." },
-    { id: 95604, type: 'fill-blank', instruction: "Whose + Where + When:", question: "The city ___ I was born is Tashkent. The girl ___ bag was stolen cried. I remember the day ___ we met.", blanks: ['where', 'whose', 'when'], explanation: "Where = place, whose = possession, when = time." },
-    { id: 95605, type: 'transformation', instruction: "Join sentences with relative clause:", question: "I have a friend. She can speak five languages.", hint: "I have a friend who...", correct: "I have a friend who can speak five languages.", explanation: "Who = people in defining relative clauses." }
+    { id: 65255, type: 'fill-blank', instruction: "Relative pronoun + defining/non-defining:", question: "My mother, ___ is a nurse, works at the hospital. The man ___ lives next door ___ a doctor.", blanks: ['who', 'who', 'is'], explanation: "Non-defining (commas) + who. Defining (no commas) + who." },
+    { id: 65256, type: 'multiple-choice', instruction: "Defining vs Non-defining:", question: "The students ___ study hard pass. The students, ___, study hard.", options: ['who / who study hard', 'which / which', 'that / that', 'where / when'], correct: 'who / who study hard', explanation: "First = defining (no commas, essential). Second = non-defining (commas)." },
+    { id: 65257, type: 'error-correction', instruction: "Relative clause structure:", question: "The woman lives next door is a doctor. My sister, that is kind, helps me.", errorPart: 'lives / that', correct: "The woman who lives next door is a doctor. My sister, who is kind, helps me.", explanation: "Defining: 'who lives' (subject pronoun can't be omitted). Non-defining: 'who', not 'that'." },
+    { id: 65258, type: 'fill-blank', instruction: "Whose + Where + When:", question: "The city ___ I was born is Tashkent. The girl ___ bag was stolen cried. I remember the day ___ we met.", blanks: ['where', 'whose', 'when'], explanation: "Where = place, whose = possession, when = time." },
+    { id: 65259, type: 'transformation', instruction: "Join sentences with relative clause:", question: "I have a friend. She can speak five languages.", hint: "I have a friend who...", correct: "I have a friend who can speak five languages.", explanation: "Who = people in defining relative clauses." }
 ],
   exerciseSections: [
     {
@@ -742,7 +742,7 @@ export const relativeClausesB1: DailyLesson = {
       color: "bg-rose-500",
       title: "Murakkab"
     },
-    { title: "🔀 Aralash", desc: "Relative clauses + Defining/Non-defining farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95601, 95602, 95603, 95604, 95605] }
+    { title: "🔀 Aralash", desc: "Relative clauses + Defining/Non-defining farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [65255, 65256, 65257, 65258, 65259] }
   ],
   tests: [
     {
@@ -1610,11 +1610,11 @@ export const phrasalVerbsB1: DailyLesson = {
 },
 
     // ── Interleaved Practice: Phrasal verbs + Separable/Inseparable ──
-    { id: 95611, type: 'fill-blank', instruction: "Separable vs inseparable:", question: "I picked my friend ___ after work. I look ___ my sister on weekends.", blanks: ['up', 'after'], explanation: "Pick up = separable (noun can go between). Look after = inseparable (always together)." },
-    { id: 95612, type: 'multiple-choice', instruction: "Pronoun position:", question: "Which is CORRECT? Pick ___ up at 5.", options: ['me / Pick up me', 'me / Pick me up', 'I / Pick I up', 'my / Pick my up'], correct: 'me / Pick me up', explanation: "Pronoun always goes between verb and particle for separable phrasal verbs." },
-    { id: 95613, type: 'error-correction', instruction: "Phrasal verb word order:", question: "Please pick up me at 5. I look forward to meet you.", errorPart: 'up me / to meet', correct: "Please pick me up at 5. I look forward to meeting you.", explanation: "Pronoun = verb + pronoun + particle. Look forward to + V-ing." },
-    { id: 95614, type: 'fill-blank', instruction: "Three-word phrasal verbs:", question: "I look forward ___ hearing from you. She came up ___ a great idea. We ran out ___ milk.", blanks: ['to', 'with', 'of'], explanation: "Three-word phrasal verbs: look forward to, come up with, run out of." },
-    { id: 95615, type: 'transformation', instruction: "Formal to phrasal:", question: "I cannot tolerate this noise anymore. (use: put up with)", hint: "I cannot...", correct: "I cannot put up with this noise anymore.", explanation: "Tolerate = formal. Put up with = phrasal verb (informal)." }
+    { id: 65260, type: 'fill-blank', instruction: "Separable vs inseparable:", question: "I picked my friend ___ after work. I look ___ my sister on weekends.", blanks: ['up', 'after'], explanation: "Pick up = separable (noun can go between). Look after = inseparable (always together)." },
+    { id: 65261, type: 'multiple-choice', instruction: "Pronoun position:", question: "Which is CORRECT? Pick ___ up at 5.", options: ['me / Pick up me', 'me / Pick me up', 'I / Pick I up', 'my / Pick my up'], correct: 'me / Pick me up', explanation: "Pronoun always goes between verb and particle for separable phrasal verbs." },
+    { id: 65262, type: 'error-correction', instruction: "Phrasal verb word order:", question: "Please pick up me at 5. I look forward to meet you.", errorPart: 'up me / to meet', correct: "Please pick me up at 5. I look forward to meeting you.", explanation: "Pronoun = verb + pronoun + particle. Look forward to + V-ing." },
+    { id: 65263, type: 'fill-blank', instruction: "Three-word phrasal verbs:", question: "I look forward ___ hearing from you. She came up ___ a great idea. We ran out ___ milk.", blanks: ['to', 'with', 'of'], explanation: "Three-word phrasal verbs: look forward to, come up with, run out of." },
+    { id: 65264, type: 'transformation', instruction: "Formal to phrasal:", question: "I cannot tolerate this noise anymore. (use: put up with)", hint: "I cannot...", correct: "I cannot put up with this noise anymore.", explanation: "Tolerate = formal. Put up with = phrasal verb (informal)." }
 ],
   exerciseSections: [
     {
