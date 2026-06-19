@@ -54,8 +54,8 @@ export default function MobileBottomNav() {
 
   return (
     <>
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 safe-area-bottom shadow-[0_-1px_6px_rgba(0,0,0,0.06)] dark:shadow-[0_-1px_6px_rgba(0,0,0,0.3)]">
-        <div className="flex items-center justify-around h-14">
+      <nav aria-label={t('bottomNav.home')} className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 safe-area-bottom shadow-[0_-1px_6px_rgba(0,0,0,0.06)] dark:shadow-[0_-1px_6px_rgba(0,0,0,0.3)]">
+        <div className="flex items-center justify-around h-14" role="tablist">
           {NAV_ITEMS.map((item) => {
             const active = isActive(item.to)
             const Icon = item.icon
@@ -63,6 +63,9 @@ export default function MobileBottomNav() {
               <button
                 key={item.to}
                 onClick={() => navigate(item.to)}
+                aria-label={t(ROUTE_T_KEY[item.to] ?? item.to)}
+                role="tab"
+                aria-selected={active}
                 className={`relative flex flex-col items-center justify-center gap-0.5 w-full h-full pt-1 transition-colors
                   ${active
                     ? 'text-primary-600 dark:text-primary-400'
@@ -85,6 +88,7 @@ export default function MobileBottomNav() {
           {/* Resources button */}
           <button
             onClick={() => setResourcesOpen(true)}
+            aria-label={t('nav.resources')}
             className={`relative flex flex-col items-center justify-center gap-0.5 w-full h-full pt-1 transition-colors
               ${resourcesActive
                 ? 'text-primary-600 dark:text-primary-400'
@@ -113,6 +117,7 @@ export default function MobileBottomNav() {
               <button
                 key={item.to}
                 onClick={() => { navigate(item.to); setResourcesOpen(false) }}
+                aria-label={t(item.labelKey)}
                 className={`w-full flex items-center gap-3 px-5 py-3.5 text-sm font-medium transition-colors
                   ${active
                     ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20'

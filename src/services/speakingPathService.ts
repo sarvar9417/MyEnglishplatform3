@@ -102,8 +102,11 @@ export async function getUnlockedDay(userId: string): Promise<number> {
 
 // ── Jumla darajasidagi SRS (FSRS) ─────────────────────────────────────────────
 
-/** Joriy SRS xaritasini olish (Supabase → localStorage fallback) */
+/** Joriy SRS xaritasini olish (Supabase + localStorage merge).
+ *  Race condition oldini olish uchun: Supabase va localStorage data'sini
+ *  merge qilamiz — reps ko'p bo'lgan (yangiroq baholangan) versionni saqlaymiz. */
 export async function loadSrsMap(userId: string): Promise<SrsMap> {
+  const localMap = readJSON<SrsMap>(srsKey(userId), {})
   try {
     const { data, error } = await supabase
       .from('user_speaking_chunks')
@@ -111,9 +114,9 @@ export async function loadSrsMap(userId: string): Promise<SrsMap> {
       .eq('user_id', userId)
     if (error) throw error
     if (data) {
-      const map: SrsMap = {}
+      const remoteMap: SrsMap = {}
       for (const r of data) {
-        map[r.chunk_id] = {
+        remoteMap[r.chunk_id] = {
           stability: r.stability,
           difficulty: r.difficulty,
           due: r.due,
@@ -121,13 +124,30 @@ export async function loadSrsMap(userId: string): Promise<SrsMap> {
           lapses: r.lapses,
         }
       }
-      writeJSON(srsKey(userId), map)
-      return map
-    }    } catch (e) {
+      // Merge: Supabase data asosiy, lekin localStorage'dagi yangiroq entry'larni saqlaymiz
+      // (reps ko'p = ko'proq baholangan = yangiroq)
+      const mergedMap: SrsMap = { ...remoteMap }
+      for (const [id, localSt] of Object.entries(localMap)) {
+        const remoteSt = mergedMap[id]
+        if (!remoteSt) {
+          // Supabase'da yo'q — localStorage'dagi entry'ni saqlaymiz (offline yozilgan bo'lishi mumkin)
+          mergedMap[id] = localSt
+        } else if (localSt.reps > remoteSt.reps) {
+          // localStorage'da ko'proq baholangan — demak gradeChunk yangiroq yozgan
+          mergedMap[id] = localSt
+        } else if (localSt.reps === remoteSt.reps && localSt.due > remoteSt.due) {
+          // Reps teng, lekin localStorage'da due keyinroq — yangiroq
+          mergedMap[id] = localSt
+        }
+      }
+      writeJSON(srsKey(userId), mergedMap)
+      return mergedMap
+    }
+  } catch (e) {
     monitoring.captureMessage('loadSrsMap Supabase failed, fallback to localStorage: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* fall through */
   }
-  return readJSON<SrsMap>(srsKey(userId), {})
+  return localMap
 }
 
 /** Yangi bloklarni SRS ga kiritish (faqat hali yo'qlari) */

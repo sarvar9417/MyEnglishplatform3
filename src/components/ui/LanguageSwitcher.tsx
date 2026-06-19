@@ -34,6 +34,8 @@ export default function LanguageSwitcher({ collapsed }: LanguageSwitcherProps) {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
+        aria-label={currentLabel}
+        aria-expanded={open}
         className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-xs font-medium
           text-gray-400 dark:text-gray-500
           hover:text-primary-600 dark:hover:text-primary-400
