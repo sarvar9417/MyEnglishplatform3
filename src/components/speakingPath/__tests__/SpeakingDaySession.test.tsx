@@ -67,7 +67,23 @@ vi.mock('../steps/CooldownStep', () => ({
 vi.mock('../steps/WarmupStep', () => ({
   default: ({ onNext }: { onNext: () => void }) => (
     <div data-testid="warmup-step">
-      <button data-testid="mock-warmup-next" onClick={onNext}>Warmup → Listen</button>
+      <button data-testid="mock-warmup-next" onClick={onNext}>Warmup → Vocab</button>
+    </div>
+  ),
+}))
+
+vi.mock('../steps/VocabStep', () => ({
+  default: ({ onNext }: { onNext: () => void }) => (
+    <div data-testid="vocab-step">
+      <button data-testid="mock-vocab-next" onClick={onNext}>Vocab → Grammar</button>
+    </div>
+  ),
+}))
+
+vi.mock('../steps/GrammarStep', () => ({
+  default: ({ onNext }: { onNext: () => void }) => (
+    <div data-testid="grammar-step">
+      <button data-testid="mock-grammar-next" onClick={onNext}>Grammar → Listen</button>
     </div>
   ),
 }))
@@ -92,6 +108,8 @@ const makeDay = (overrides?: Partial<SpeakingDay>): SpeakingDay => ({
 // Yordamchi: warmup'dan cooldown gacha tez o'tish
 function goToCooldown() {
   fireEvent.click(screen.getByTestId('mock-warmup-next'))
+  fireEvent.click(screen.getByTestId('mock-vocab-next'))
+  fireEvent.click(screen.getByTestId('mock-grammar-next'))
   fireEvent.click(screen.getByTestId('mock-listen-next'))
   fireEvent.click(screen.getByTestId('mock-shadow-next'))
   fireEvent.click(screen.getByTestId('mock-speak-next'))
@@ -116,12 +134,14 @@ describe('SpeakingDaySession', () => {
     expect(screen.getByText(/Yoshingizni ayta olasiz/)).toBeInTheDocument()
   })
 
-  it('boshlang\'ich holatda WarmupStep ko\'rinadi, progress bar 6 qadam', () => {
+  it('boshlang\'ich holatda WarmupStep ko\'rinadi, progress bar 8 qadam', () => {
     render(<SpeakingDaySession day={makeDay()} userId="u1" onExit={vi.fn()} />)
     expect(screen.getByTestId('warmup-step')).toBeInTheDocument()
     expect(screen.getByTestId('mock-warmup-next')).toBeInTheDocument()
-    // 6 qadam label (review yo'q)
+    // 8 qadam label (review yo'q)
     expect(screen.getByText('Kirish')).toBeInTheDocument()
+    expect(screen.getByText("Lug'at")).toBeInTheDocument()
+    expect(screen.getByText('Grammatika')).toBeInTheDocument()
     expect(screen.getByText('Eshit')).toBeInTheDocument()
     expect(screen.getByText('Shadow')).toBeInTheDocument()
     expect(screen.getByText('Gapir')).toBeInTheDocument()
@@ -129,10 +149,16 @@ describe('SpeakingDaySession', () => {
     expect(screen.getByText('Mulohaza')).toBeInTheDocument()
   })
 
-  it('Warmup → Listen → Shadow → Speak → Converse ketma-ketlikda o\'tadi', () => {
+  it('Warmup → Vocab → Grammar → Listen → Shadow → Speak → Converse ketma-ketlikda o\'tadi', () => {
     render(<SpeakingDaySession day={makeDay()} userId="u1" onExit={vi.fn()} />)
 
     fireEvent.click(screen.getByTestId('mock-warmup-next'))
+    expect(screen.getByTestId('vocab-step')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByTestId('mock-vocab-next'))
+    expect(screen.getByTestId('grammar-step')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByTestId('mock-grammar-next'))
     expect(screen.getByTestId('listen-step')).toBeInTheDocument()
 
     fireEvent.click(screen.getByTestId('mock-listen-next'))
@@ -199,7 +225,9 @@ describe('SpeakingDaySession', () => {
 
   it('A0 level → level="A1" sifatida uzatiladi', () => {
     render(<SpeakingDaySession day={makeDay({ cefr: 'A0' })} userId="u1" onExit={vi.fn()} />)
-    fireEvent.click(screen.getByTestId('mock-warmup-next')) // warmup → listen
+    fireEvent.click(screen.getByTestId('mock-warmup-next')) // warmup → vocab
+    fireEvent.click(screen.getByTestId('mock-vocab-next')) // vocab → grammar
+    fireEvent.click(screen.getByTestId('mock-grammar-next')) // grammar → listen
     fireEvent.click(screen.getByTestId('mock-listen-next')) // listen → shadow, level saqlanadi
     expect(capturedLevel.current).toBe('A1')
   })

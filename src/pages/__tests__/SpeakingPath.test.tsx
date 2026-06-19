@@ -79,6 +79,7 @@ vi.mock('../../services/speakingPathService', () => ({
   loadSrsMap: vi.fn().mockResolvedValue({
     'sp-d1-c1': { stability: 25, difficulty: 5, due: '2026-06-01', reps: 3, lapses: 0 },
   }),
+  clearSrsCache: vi.fn(),
   computeTrend: vi.fn(() => mockTrend),
   computeSRSDistribution: vi.fn(() => mockSrsDist),
 }))
