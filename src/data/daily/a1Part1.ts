@@ -149,6 +149,14 @@ export const alphabetAndGreetings: DailyLesson = {
       exampleAnswer: "O'zbek alifbosida o'ziga xos harflar bor: o', g', q, sh, ch — bu harflar ingliz tilida yo'q. Ingliz tilida 'sh' ikki harf (s+h) bilan yoziladi, lekin o'zbek tilida bitta harf. Shuning uchun o'zbek tilida ko'proq harf — tilimizdagi ovozlarni aniq ifodalash uchun. Masalan, 'shahar' so'zida inglizchada 5 ta harf (s-h-a-h-r), o'zbekchada esa 5 ta harf, lekin 'sh' bitta harf deb hisoblanadi." },
     { id: 99501, type: 'multiple-choice', instruction: "Oldingi darsdan takrorlash:", question: "Which is the correct greeting in the morning?", options: ["Good morning", "Good night", "Good evening", "Goodbye"], correct: "Good morning", explanation: "Good morning — ertalabki salomlashish (Lesson 1 dan takrorlash)" },
     { id: 99502, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "Good ___! See you tomorrow! (xayrlashish)", blanks: ["bye"], explanation: "Goodbye = xayr (Lesson 1 dan takrorlash)" },
+
+
+    // ── Interleaved Practice: Greetings + be verbs ──
+    { id: 95391, type: 'fill-blank', instruction: "Greeting va be fe'lini birlashtiring:", question: "Good morning! I ___ (be) a student. What ___ (be) your name?", blanks: ['am', 'is'], explanation: "I am, your name is — be fe'lining shakllari." },
+    { id: 95392, type: 'multiple-choice', instruction: "Vaqtga qarab salom va am/is/are:", question: "It ___ 3 PM. We ___ in class. You say: 'Good ___!'", options: ['is / are / afternoon', 'am / are / morning', 'is / is / evening', 'are / is / night'], correct: 'is / are / afternoon', explanation: "3 PM = afternoon, It is, We are." },
+    { id: 95393, type: 'error-correction', instruction: "Be fe'li xatosi:", question: "I is from Tashkent. She are a teacher.", errorPart: 'is / are', correct: 'I am from Tashkent. She is a teacher.', explanation: "I am, She is — be fe'lining shakllari." },
+    { id: 95394, type: 'fill-blank', instruction: "Salom + be fe'li:", question: "___ evening! It ___ (be) 7 PM. I ___ (be) at home.", blanks: ['Good', 'is', 'am'], explanation: "Good evening! It is 7 PM. I am at home." },
+    { id: 95395, type: 'transformation', instruction: "I am dan She is ga:", question: "I am a student. → She ___.", hint: "She ___ a student.", correct: 'She is a student.', explanation: "She is — uchinchi shaxs." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Salomlashish asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3010, 3011, 3012, 3013, 3014, 3015, 3016, 3017] },
@@ -156,7 +164,8 @@ export const alphabetAndGreetings: DailyLesson = {
     { title: "Qiyin", desc: 'Error-correction, vaqtga qarab salom', color: 'bg-violet-500', icon: '🎯', ids: [3023, 3024, 3025, 3026, 3027] },
     { title: "O'zgartirish", desc: 'Transformation, passage, connection', color: 'bg-teal-500', icon: '🔄', ids: [3028, 3029, 99800, 99965, 99966] },
     { title: "Chuqur fikrlash", desc: 'Elaborative — nima uchun?', color: 'bg-emerald-600', icon: '🤔', ids: [99700, 99701, 99702] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Salomlashish + Am/is/are farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95391, 95392, 95393, 95394, 95395] },],
   tests: [
     { id: 3030, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ you later! (keyinroq)', options: ['See', 'Look', 'Watch', 'Hear'], correct: 'See', explanation: "See you later = keyinroq ko'rishguncha" },
     { id: 3031, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ a student.', options: ['am', 'is', 'are', 'be'], correct: 'am', explanation: "I am — birinchi shaxs bilan am ishlatiladi" },
@@ -395,6 +404,14 @@ export const numbers: DailyLesson = {
       exampleAnswer: 'I wake up at 7 o\'clock. I go to school at 8 o\'clock. I go to bed at 9 o\'clock.' },
     { id: 99503, type: 'multiple-choice', instruction: "Oldingi darsdan takrorlash:", question: "Which is the correct greeting at night?", options: ["Good night", "Good morning", "Good afternoon", "Goodbye"], correct: "Good night", explanation: "Good night — kechasi salomlashish (Lesson 1 dan takrorlash)" },
     { id: 99504, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "My ___ is Ali. (ism)", blanks: ["name"], explanation: "My name is Ali (Lesson 1 dan takrorlash)" },
+
+
+    // ── Interleaved Practice: Numbers + be verbs ──
+    { id: 95401, type: 'fill-blank', instruction: "Yosh va sonlar:", question: "I am ___ years old. (25) My sister is ___ (18).", blanks: ['twenty-five', 'eighteen'], explanation: "25 = twenty-five, 18 = eighteen." },
+    { id: 95402, type: 'multiple-choice', instruction: "Telefon raqami va be:", question: "My phone number ___ 90-123-45-67. Twenty-five plus ten ___ thirty-five.", options: ['is / is', 'are / are', 'is / are', 'am / is'], correct: 'is / is', explanation: "Phone number singular → is. 25+10=35 singular → is." },
+    { id: 95403, type: 'error-correction', instruction: "Yosh xatosi:", question: "I am twenty-five age. She is fourty.", errorPart: 'age / fourty', correct: 'I am twenty-five years old. She is forty.', explanation: "Years old, not age. Forty (U yo'q)." },
+    { id: 95404, type: 'fill-blank', instruction: "Son + am/is/are:", question: "There ___ (be) 50 students. I ___ (be) number 15.", blanks: ['are', 'am'], explanation: "50 students = plural → are. I → am." },
+    { id: 95405, type: 'transformation', instruction: "Raqamni so'z bilan:", question: "35 + 12 = 47", hint: "Thirty-five plus twelve is ___.", correct: 'thirty-seven', explanation: "47 = forty-seven (chiziqcha bilan)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: '1-20 sonlar', color: 'bg-emerald-500', icon: '🌱', ids: [201, 202, 203, 204, 205] },
@@ -402,7 +419,8 @@ export const numbers: DailyLesson = {
     { title: "Qiyin", desc: "100+ sonlar", color: 'bg-violet-500', icon: '🎯', ids: [211, 212, 213, 214, 215] },
     { title: "Kengaytish", desc: "4-9, 11-12, 60-90", color: 'bg-amber-500', icon: '🔤', ids: [216, 217, 218, 219, 220] },
     { title: "O'zgartirish", desc: "Frequent mistakes, million", color: 'bg-teal-500', icon: '🔄', ids: [221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Sonlar + How old / How much farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95401, 95402, 95403, 95404, 95405] },],
   tests: [
     { id: 1131, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '13 = ___', blanks: ['thirteen'], explanation: "13 = thirteen — inglizcha yozuvi" },
     { id: 1132, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '30 = ___', blanks: ['thirty'], explanation: "30 = thirty — inglizcha yozuvi" },
@@ -621,6 +639,14 @@ export const colorsAndShapes: DailyLesson = {
       exampleAnswer: 'My school is white and blue. The walls in my classroom are yellow. The board is green. The chairs are blue.' },
     { id: 99505, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "14 = ___ — inglizcha yozuvi", blanks: ["fourteen"], explanation: "14 = fourteen (Lesson 2 dan takrorlash)" },
     { id: 99506, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'How ___ are you?', blanks: ['old'], explanation: 'How old are you? (Lesson 2 dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Colors + This/That ──
+    { id: 95411, type: 'fill-blank', instruction: "Rang va this/that:", question: "This apple ___ red. That cloud ___ white.", blanks: ['is', 'is'], explanation: "This/That + is + rang (artiklsiz)." },
+    { id: 95412, type: 'multiple-choice', instruction: "Shakl va rang:", question: "___ is a circle. ___ is a square. The circle ___ blue.", options: ['This / That / is', 'That / This / are', 'This / That / are', 'That / This / am'], correct: 'This / That / is', explanation: "This (yaqin), That (uzoq), circle singular → is." },
+    { id: 95413, type: 'error-correction', instruction: "Rang xatosi:", question: "The car is a red. It is a circle.", errorPart: 'a red / a circle', correct: 'The car is red. It is a circle.', explanation: "Rang predikatda artiklsiz. Shakl oldida a bor." },
+    { id: 95414, type: 'fill-blank', instruction: "Ko'plik va rang:", question: "These stars ___ (be) yellow. Those circles ___ (be) blue.", blanks: ['are', 'are'], explanation: "These/Those + plural noun + are." },
+    { id: 95415, type: 'transformation', instruction: "Birlikdan ko'plikka:", question: "This is a red circle. → These ___.", hint: "These ___ red circles.", correct: 'are', explanation: "This → These, is → are, a red circle → red circles." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Asosiy ranglar", color: 'bg-emerald-500', icon: '🌱', ids: [301, 302, 303, 304, 305] },
@@ -628,7 +654,8 @@ export const colorsAndShapes: DailyLesson = {
     { title: "Qiyin", desc: "Ko'plik va tasvir", color: 'bg-violet-500', icon: '🎯', ids: [311, 312, 313, 314, 315] },
     { title: "Kengaytish", desc: "brown, purple, gray", color: 'bg-amber-500', icon: '🔤', ids: [316, 317, 318, 319, 320] },
     { title: "O'zgartirish", desc: "Birlik va ko'plik", color: 'bg-teal-500', icon: '🔄', ids: [321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Ranglar/shakllar + This/That farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95411, 95412, 95413, 95414, 95415] },],
   tests: [
     { id: 1192, type: 'fill-blank', instruction: "Rangni yozing:", question: 'The sky is ___.', blanks: ['blue'], explanation: "Osmon = blue — tarjima" },
     { id: 1193, type: 'fill-blank', instruction: "Rangni yozing:", question: 'The sun is ___.', blanks: ['yellow'], explanation: "Quyosh = yellow — tarjima" },
@@ -860,6 +887,14 @@ export const family: DailyLesson = {
       exampleAnswer: 'My favorite family member is my mother. She is kind. She helps me with my homework. I love her because she is always with me.' },
     { id: 99507, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "My car is ___. (qizil)", blanks: ["red"], explanation: "Qizil = red (Lesson 3 dan takrorlash)" },
     { id: 99508, type: 'multiple-choice', instruction: "Oldingi darsdan takrorlash:", question: "What color is the sky?", options: ["blue", "red", "green", "black"], correct: "blue", explanation: "Osmon = blue (Lesson 3 dan takrorlash)" },
+
+
+    // ── Interleaved Practice: Family + have/has ──
+    { id: 95421, type: 'fill-blank', instruction: "Oila va have/has:", question: "I ___ (have) a brother. She ___ (have) two sisters.", blanks: ['have', 'has'], explanation: "I have, She has — have/has qoidasi." },
+    { id: 95422, type: 'multiple-choice', instruction: "Possessive va oila:", question: "___ mother is a doctor. ___ brother is a student.", options: ['My / Her', 'I / She', 'Me / Her', 'My / His'], correct: 'My / Her', explanation: "My (mening), Her (uning — ayol)." },
+    { id: 95423, type: 'error-correction', instruction: "Have/has va his/her:", question: "He have a sister. She name is Lola.", errorPart: 'have / She name', correct: 'He has a sister. Her name is Lola.', explanation: "He → has. She → Her (possessive)." },
+    { id: 95424, type: 'fill-blank', instruction: "Oila va sonlar:", question: "My grandmother ___ (be) 70 years old. She ___ (have) three children.", blanks: ['is', 'has'], explanation: "Grandmother singular → is. She → has." },
+    { id: 95425, type: 'transformation', instruction: "My dan His ga:", question: "My mother is 40. → (He) ___ mother is 40.", hint: "___ mother is 40.", correct: 'His', explanation: "He → His (uning — erkak)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Oila a'zolari", color: 'bg-emerald-500', icon: '🌱', ids: [401, 402, 403, 404, 405] },
@@ -867,7 +902,8 @@ export const family: DailyLesson = {
     { title: "Qiyin", desc: "Gaplar va tuzatishlar", color: 'bg-violet-500', icon: '🎯', ids: [411, 412, 413, 414, 415] },
     { title: "Kengaytish", desc: "Ko'rsatish va child→children", color: 'bg-amber-500', icon: '🔤', ids: [416, 417, 418, 419, 420] },
     { title: "O'zgartirish", desc: "nephew, niece, cousin, sibling", color: 'bg-teal-500', icon: '🔄', ids: [421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Oila + Have/has + my/his/her farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95421, 95422, 95423, 95424, 95425] },],
   tests: [
     { id: 1255, type: 'fill-blank', instruction: "Tarjima qiling:", question: 'Mening onam o\'qituvchi. ___ mother is a teacher.', blanks: ['My'], explanation: "Mening = my — tarjima" },
     { id: 1256, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'He ___ a brother.', options: ['have', 'has', 'haves', 'having'], correct: 'has', explanation: "He has — uchinchi shaxs (erkak) bilan has ishlatiladi" },
@@ -1091,6 +1127,14 @@ export const daysAndMonths: DailyLesson = {
       exampleAnswer: 'I like summer. In summer, it is hot. I can swim in the sea. I don\'t go to school in summer. It is my favorite season.' },
     { id: 99509, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "We ___ a big family.", blanks: ["have"], explanation: "We + have (Lesson 4 dan takrorlash)" },
     { id: 99510, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'My mother ___ a teacher.', blanks: ['is'], explanation: 'She + is (Lesson 4 dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Days/Months + Prepositions ──
+    { id: 95431, type: 'fill-blank', instruction: "Kun va predlog:", question: "My birthday is ___ June 15. I was born ___ 2010.", blanks: ['on', 'in'], explanation: "Sana → on June 15. Yil → in 2010." },
+    { id: 95432, type: 'multiple-choice', instruction: "Kun va vaqt predlogi:", question: "We have English ___ Monday ___ 9 o'clock ___ the morning.", options: ['on / at / in', 'in / on / at', 'at / in / on', 'on / in / at'], correct: 'on / at / in', explanation: "Kun → on. Soat → at. Vaqt qismi → in." },
+    { id: 95433, type: 'error-correction', instruction: "Predlog xatosi:", question: "I go to school in Monday.", errorPart: 'in Monday', correct: 'I go to school on Monday.', explanation: "Kunlar bilan on ishlatiladi." },
+    { id: 95434, type: 'fill-blank', instruction: "Oy va mavsum:", question: "January is ___ winter. Summer is ___ June, July, August.", blanks: ['in', 'in'], explanation: "Mavsum va oylar bilan in ishlatiladi." },
+    { id: 95435, type: 'transformation', instruction: "To'g'ri predlog bilan:", question: "The meeting is ___ Friday ___ 3 pm.", hint: "...", correct: 'on Friday at 3 pm', explanation: "Kun → on, soat → at." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Kunlar va oylar", color: 'bg-emerald-500', icon: '🌱', ids: [501, 502, 503, 504, 505] },
@@ -1098,7 +1142,8 @@ export const daysAndMonths: DailyLesson = {
     { title: "Qiyin", desc: "Was/were born", color: 'bg-violet-500', icon: '🎯', ids: [511, 512, 513, 514, 515] },
     { title: "Kengaytish", desc: "12 oy va fasllar", color: 'bg-amber-500', icon: '🔤', ids: [516, 517, 518, 519, 520] },
     { title: "O'zgartirish", desc: "on/in/at, weekday/weekend", color: 'bg-teal-500', icon: '🔄', ids: [521, 522, 523, 524, 525] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Kun/oy nomlari + In/on/at predloglari farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95431, 95432, 95433, 95434, 95435] },],
   tests: [
     { id: 1307, type: 'multiple-choice', instruction: "Qaysi kun dam olish kuni?", question: 'Which is a weekend day?', options: ['Monday', 'Wednesday', 'Saturday', 'Friday'], correct: 'Saturday', explanation: "Saturday = weekend — tarjima" },
     { id: 1308, type: 'fill-blank', instruction: "On, in yoki at qo'ying:", question: 'I have a test ___ Friday.', blanks: ['on'], explanation: "Kun = on — tarjima" },
@@ -1315,6 +1360,14 @@ export const timeAndRoutines: DailyLesson = {
       exampleAnswer: 'I wake up at 7 o\'clock. I have breakfast at 7:30. I go to school at 8 o\'clock. I go to bed at 9 o\'clock.' },
     { id: 99511, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "I work ___ Monday.", blanks: ["on"], explanation: "on + haftaning kunlari (Lesson 5 dan takrorlash)" },
     { id: 99512, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'Today is ___.', blanks: ['Tuesday'], explanation: 'Kunlar: Monday, Tuesday... (Lesson 5 dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Time + Present Simple ──
+    { id: 95441, type: 'fill-blank', instruction: "Vaqt va odat:", question: "I ___ (wake) up at 7 o'clock every day. She ___ (wake) up at 8.", blanks: ['wake', 'wakes'], explanation: "I wake, She wakes — 3-shaxs +s." },
+    { id: 95442, type: 'multiple-choice', instruction: "Soat va Present Simple:", question: "She ___ (go) to school at 8. They ___ (have) lunch at 12.", options: ['goes / have', 'go / has', 'goes / has', 'go / have'], correct: 'goes / have', explanation: "She → goes (3-shaxs). They → have." },
+    { id: 95443, type: 'error-correction', instruction: "3-shaxs qoidasi:", question: "He go to school at 8 o'clock.", errorPart: 'go', correct: 'He goes to school at 8 o\'clock.', explanation: "He → goes (3-shaxs birlik +s)." },
+    { id: 95444, type: 'fill-blank', instruction: "Vaqtni aytish:", question: "It is half past seven = ___:___", blanks: ['7:30'], explanation: "Half past seven = 7:30." },
+    { id: 95445, type: 'transformation', instruction: "I dan He ga:", question: "I wake up at 6. → He ___ at 6.", hint: "He ___ up at 6.", correct: 'wakes', explanation: "I wake → He wakes (3-shaxs +s)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Soat va kun tartibi", color: 'bg-emerald-500', icon: '🌱', ids: [601, 602, 603, 604, 605] },
@@ -1322,7 +1375,8 @@ export const timeAndRoutines: DailyLesson = {
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [611, 612, 613, 614, 615] },
     { title: "Kengaytish", desc: "Brush, wash, sleep, get dressed", color: 'bg-amber-500', icon: '🔤', ids: [616, 617, 618, 619, 620] },
     { title: "O'zgartirish", desc: "Midnight, noon, quarter past/to", color: 'bg-teal-500', icon: '🔄', ids: [621, 622, 623, 624, 625] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Vaqt + Present Simple (odat) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95441, 95442, 95443, 95444, 95445] },],
   tests: [
     { id: 1363, type: 'fill-blank', instruction: "Soatni yozing:", question: '7:30 = half ___ seven', blanks: ['past'], explanation: "half past — yarim soat o'tgandan keyin" },
     { id: 1364, type: 'fill-blank', instruction: "Soatni yozing:", question: '7:45 = quarter ___ eight', blanks: ['to'], explanation: "quarter to — chorak soat qolganida" },
@@ -1548,14 +1602,23 @@ export const foodAndDrinks: DailyLesson = {
       exampleAnswer: 'I have breakfast at 7 AM. I eat eggs and bread. For lunch I eat rice and chicken. For dinner I eat soup.' },
     { id: 99513, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "I ___ up at 7 AM.", blanks: ["wake"], explanation: "I wake up at... (Lesson 6 dan takrorlash)" },
     { id: 99514, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'It is ___ o\'clock.', blanks: ['three'], explanation: 'Soat: one, two, three... (Lesson 6 dan takrorlash)' },
-  ],
+  
+
+    // ── Interleaved Practice: Food + some/any ──
+    { id: 95451, type: 'fill-blank', instruction: "Ovqat va some/any:", question: "I want ___ water. Do you have ___ bread?", blanks: ['some', 'any'], explanation: "Tasdiq → some. Savol → any." },
+    { id: 95452, type: 'multiple-choice', instruction: "Countable/uncountable:", question: "I have ___ apple and ___ milk.", options: ['an / some', 'a / a', 'some / an', 'any / some'], correct: 'an / some', explanation: "Apple countable → an. Milk uncountable → some." },
+    { id: 95453, type: 'error-correction', instruction: "Some/any xatosi:", question: "I don't have some money.", errorPart: 'some', correct: "I don't have any money.", explanation: "I have → some. I don't have → any." },
+    { id: 95454, type: 'fill-blank', instruction: "Like + V-ing:", question: "I like ___ (eat) apples. She likes ___ (drink) tea.", blanks: ['eating', 'drinking'], explanation: "Like + V-ing (like eating, likes drinking)." },
+    { id: 95455, type: 'transformation', instruction: "Tasdiqdan inkorga:", question: "I have some sugar. → I don't have ___ sugar.", hint: "...", correct: 'any', explanation: "Inkor → any (not some)." }
+],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Some/any, sanaluvchi/sanalmas", color: 'bg-emerald-500', icon: '🌱', ids: [701, 702, 703, 704, 705] },
     { title: "O'rtacha", desc: "There is/are, a glass of", color: 'bg-blue-500', icon: '📘', ids: [706, 707, 708, 709, 710] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [711, 712, 713, 714, 715] },
     { title: "Kengaytish", desc: "Orange, tomato, sugar, butter", color: 'bg-amber-500', icon: '🔤', ids: [716, 717, 718, 719, 720] },
     { title: "O'zgartirish", desc: "Like/likes, a glass of, any", color: 'bg-teal-500', icon: '🔄', ids: [721, 722, 723, 724, 725] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Ovqat/ichimlik + Some/any farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95451, 95452, 95453, 95454, 95455] },],
   tests: [
     { id: 1415, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I want ___ rice.', options: ['a', 'some', 'an', 'two'], correct: 'some', explanation: "Sanalmas + some" },
     { id: 1416, type: 'fill-blank', instruction: "Some yoki any:", question: 'I have ___ cookies.', blanks: ['some'], acceptedAnswers: [['some', 'many', 'a lot of']], explanation: "Ijobiy — some; many/a lot of ham grammatik to'g'ri." },
@@ -1780,6 +1843,14 @@ export const animals: DailyLesson = {
       exampleAnswer: 'My favorite animal is the dog. It is friendly. It can run fast. I want to have a dog.' },
     { id: 99515, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "I drink ___ every day. (suv)", blanks: ["water"], explanation: "water = suv (Lesson 7 dan takrorlash)" },
     { id: 99516, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'There ___ some milk on the table.', blanks: ['is'], explanation: 'There is + uncountable noun (Lesson 7 dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Animals + have got/can ──
+    { id: 95461, type: 'fill-blank', instruction: "Hayvon va have got:", question: "A dog ___ (have got) four legs. Cats ___ (can) climb trees.", blanks: ['has got', 'can'], explanation: "A dog singular → has got. Can + V1." },
+    { id: 95462, type: 'multiple-choice', instruction: "Can (qobiliyat) va have got:", question: "Birds ___ fly. A fish ___ fins.", options: ['can / has got', 'have got / can', 'can / have got', 'has got / can'], correct: 'can / has got', explanation: "Qobiliyat → can fly. Egalik → has got fins." },
+    { id: 95463, type: 'error-correction', instruction: "Can va have got:", question: "A cat can to climb. A dog have got a tail.", errorPart: 'can to / have got', correct: 'A cat can climb. A dog has got a tail.', explanation: "Can + V1 (to'siz). A dog → has got." },
+    { id: 95464, type: 'fill-blank', instruction: "Hayvon va rang:", question: "My cat ___ (be) black. It ___ (have got) green eyes.", blanks: ['is', 'has got'], explanation: "My cat singular → is. It → has got." },
+    { id: 95465, type: 'transformation', instruction: "Have got ni have ga:", question: "A rabbit has got long ears. → A rabbit ___ long ears.", hint: "...", correct: 'has', explanation: "Has got → has (bir xil ma'no)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Hayvonlar va artikllar", color: 'bg-emerald-500', icon: '🌱', ids: [801, 802, 803, 804, 805] },
@@ -1787,7 +1858,8 @@ export const animals: DailyLesson = {
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [811, 812, 813, 814, 815] },
     { title: "Kengaytish", desc: "Sheep, chicken, duck, bear, snake", color: 'bg-amber-500', icon: '🔤', ids: [816, 817, 818, 819, 820] },
     { title: "O'zgartirish", desc: "Adjectives, it for animals", color: 'bg-teal-500', icon: '🔄', ids: [821, 822, 823, 824, 825] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Hayvonlar + Have got / can farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95461, 95462, 95463, 95464, 95465] },],
   tests: [
     { id: 1467, type: 'fill-blank', instruction: "Artikl bilan to'ldiring:", question: 'I have ___ elephant toy.', blanks: ['an'], explanation: "elephant = unli — tarjima" },
     { id: 1468, type: 'fill-blank', instruction: "To'g'ri ko'plik:", question: 'Three ___ (deer) in the forest.', blanks: ['deer'], explanation: "deer o'zgarmas" },
@@ -2010,6 +2082,14 @@ export const bodyParts: DailyLesson = {
       prompt: 'Sport bilan shug\'ullanish tanaga qanday ta\'sir qilishi haqida yozing.',
       hints: ['When I run, my...', 'Exercise is good for...'],
       exampleAnswer: 'When I run, I use my legs. Exercise is good for my body. I feel strong and healthy.' },
+
+
+    // ── Interleaved Practice: Body Parts + have/has ──
+    { id: 95471, type: 'fill-blank', instruction: "Tana va have/has:", question: "I ___ (have) two eyes. She ___ (have) blue eyes.", blanks: ['have', 'has'], explanation: "I have, She has." },
+    { id: 95472, type: 'multiple-choice', instruction: "Tana a'zolari va possessive:", question: "___ eyes are brown. ___ hair is long.", options: ['His / Her', 'He / She', 'Him / Her', 'His / She'], correct: 'His / Her', explanation: "His (uning — erkak), Her (uning — ayol)." },
+    { id: 95473, type: 'error-correction', instruction: "Have got va tana:", question: "He have got two hand.", errorPart: 'have / hand', correct: 'He has got two hands.', explanation: "He → has. Hands (ko'plik)." },
+    { id: 95474, type: 'fill-blank', instruction: "Tana va sonlar:", question: "A person ___ (have) ___ (10) fingers and ___ (2) hands.", blanks: ['has', 'ten', 'two'], explanation: "A person singular → has. 10 = ten, 2 = two." },
+    { id: 95475, type: 'transformation', instruction: "My dan His ga o'zgartiring:", question: "My head hurts. → (He) ___ head hurts.", hint: "___ head hurts.", correct: 'His', explanation: "My → His (uning — erkak)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Tana a'zolari", color: 'bg-emerald-500', icon: '🌱', ids: [901, 902, 903, 904, 905] },
@@ -2017,7 +2097,8 @@ export const bodyParts: DailyLesson = {
     { title: "Qiyin", desc: "Ache, teeth, murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [911, 912, 913, 914, 915] },
     { title: "Kengaytish", desc: "Have got = have (Rule 5)", color: 'bg-amber-500', icon: '🔤', ids: [916, 917, 918, 919, 920] },
     { title: "O'zgartirish", desc: "Neck, knee, stomach, toe, elbow", color: 'bg-teal-500', icon: '🔄', ids: [921, 922, 923, 924, 925] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Tana a'zolari + Have got / his/her farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95471, 95472, 95473, 95474, 95475] },],
   tests: [
     { id: 1519, type: 'fill-blank', instruction: "To'g'ri ko'plikni yozing:", question: 'I have 32 ___ (tooth).', blanks: ['teeth'], explanation: "tooth → teeth — nomuntazam ko'plik: tish (bitta) → tishlar" },
     { id: 1520, type: 'fill-blank', instruction: "To'g'ri ko'plikni yozing:", question: 'I have two ___ (foot).', blanks: ['feet'], explanation: "foot → feet — nomuntazam ko'plik: oyoq (bitta) → oyoqlar" },
@@ -2247,6 +2328,14 @@ export const clothes: DailyLesson = {
       prompt: 'Eng sevimli kiyimingiz haqida 3 gap yozing. Nega uni yoqtirasiz?',
       hints: ['My favorite ... is...', 'It is ... (color/pattern)', 'I wear it...'],
       exampleAnswer: 'My favorite piece of clothing is my blue jacket. It is warm and comfortable. I wear it to school every day.' },
+
+
+    // ── Interleaved Practice: Clothes + Colors + This/These ──
+    { id: 95481, type: 'fill-blank', instruction: "Kiyim va rang:", question: "This shirt ___ (be) blue. These shoes ___ (be) black.", blanks: ['is', 'are'], explanation: "This + singular → is. These + plural → are." },
+    { id: 95482, type: 'multiple-choice', instruction: "Kiyim va this/that:", question: "___ is my jacket (close). ___ are my pants (close).", options: ['This / These', 'That / Those', 'This / Those', 'That / These'], correct: 'This / These', explanation: "Yaqin + birlik → This. Yaqin + ko'plik → These." },
+    { id: 95483, type: 'error-correction', instruction: "This/these va be:", question: "This shoes are red. These dress is blue.", errorPart: 'This shoes / These dress', correct: 'These shoes are red. This dress is blue.', explanation: "Shoes ko'plik → These. Dress birlik → This." },
+    { id: 95484, type: 'fill-blank', instruction: "Kiyim va possessive:", question: "I have a red dress. ___ (I) dress is red. ___ (She) coat is blue.", blanks: ['My', 'Her'], explanation: "I → My, She → Her." },
+    { id: 95485, type: 'transformation', instruction: "Birlikdan ko'plikka:", question: "This is a white shirt. → These ___ white shirts.", hint: "These ___ white shirts.", correct: 'are', explanation: "This → These, is → are, a → (articlesiz ko'plik)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Kiyim nomlari", color: 'bg-emerald-500', icon: '🌱', ids: [1001, 1002, 1003, 1004, 1005] },
@@ -2255,7 +2344,8 @@ export const clothes: DailyLesson = {
     { title: "Qo'shimcha", desc: "I am wearing (present continuous)", color: 'bg-purple-500', icon: '📖', ids: [1016, 1017, 1018, 1019, 1020] },
     { title: "O'zgartirish", desc: "Coat, sandals, scarf, skirt", color: 'bg-teal-500', icon: '🔄', ids: [1021, 1022, 1023, 1024, 1025] },
     { title: "Yangι", desc: "Jewelry, suit, tie, leggings, glasses, slippers", color: 'bg-pink-500', icon: '💎', ids: [1032, 1033, 1034, 1035, 1036, 1037] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Kiyim + This/these + Colors farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95481, 95482, 95483, 95484, 95485] },],
   tests: [
     { id: 1577, type: 'fill-blank', instruction: "To'g'ri shaklni yozing:", question: 'My ___ (pant) are blue.', blanks: ['pants'], explanation: "pants ko'plik" },
     { id: 1578, type: 'fill-blank', instruction: "To'g'ri shaklni yozing:", question: 'I love these ___ (jean).', blanks: ['jeans'], explanation: "jeans ko'plik" },

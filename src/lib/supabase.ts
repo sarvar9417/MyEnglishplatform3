@@ -1,5 +1,13 @@
 import { createClient } from '@supabase/supabase-js'
 import type { Database, Json, Tables } from '../types/supabase'
+import { addToSyncQueue } from './syncQueue'
+
+/** Tarmoq xatoligini aniqlaydi — agar fetch/NetworkError bo'lsa, offline deb hisoblaymiz */
+function isNetworkError(error: { message?: string } | null): boolean {
+  if (!error?.message) return false
+  const msg = error.message
+  return msg.includes('fetch') || msg.includes('Failed to fetch') || msg.includes('NetworkError')
+}
 
 type DbUser = Tables<'users'>
 type DbSession = Tables<'sessions'>
@@ -51,6 +59,15 @@ export async function upsertUserProfile(profile: Omit<DbUser, 'created_at'>) {
   const { error } = await supabase
     .from('users')
     .upsert({ ...profile, state: profile.state as Json }, { onConflict: 'id' })
+  if (isNetworkError(error)) {
+    await addToSyncQueue({
+      table: 'users',
+      operation: 'upsert',
+      data: { ...profile, state: profile.state as Json } as Record<string, unknown>,
+      conflictField: 'id',
+      priority: 5,
+    })
+  }
   return error
 }
 
@@ -67,6 +84,14 @@ export async function getUserProfile(userId: string): Promise<DbUser | null> {
 
 export async function saveSession(session: Omit<DbSession, 'id' | 'created_at'>) {
   const { error } = await supabase.from('sessions').insert(session)
+  if (isNetworkError(error)) {
+    await addToSyncQueue({
+      table: 'sessions',
+      operation: 'insert',
+      data: session as Record<string, unknown>,
+      priority: 3,
+    })
+  }
   return error
 }
 
@@ -76,6 +101,15 @@ export async function syncVocabWord(word: Omit<DbVocabWord, 'id'>) {
   const { error } = await supabase
     .from('vocabulary')
     .upsert(word, { onConflict: 'user_id,word' })
+  if (isNetworkError(error)) {
+    await addToSyncQueue({
+      table: 'vocabulary',
+      operation: 'upsert',
+      data: word as Record<string, unknown>,
+      conflictField: 'user_id,word',
+      priority: 4,
+    })
+  }
   return error
 }
 
@@ -94,6 +128,15 @@ export async function saveDailyProgress(progress: Omit<DbDailyProgress, 'id'>) {
   const { error } = await supabase
     .from('daily_progress')
     .upsert(progress, { onConflict: 'user_id,date' })
+  if (isNetworkError(error)) {
+    await addToSyncQueue({
+      table: 'daily_progress',
+      operation: 'upsert',
+      data: progress as Record<string, unknown>,
+      conflictField: 'user_id,date',
+      priority: 2,
+    })
+  }
   return error
 }
 
@@ -120,6 +163,14 @@ export async function saveWriting(writing: Omit<DbWriting, 'id'>) {
     .insert(writing)
     .select()
     .single()
+  if (isNetworkError(error)) {
+    await addToSyncQueue({
+      table: 'writings',
+      operation: 'insert',
+      data: writing as Record<string, unknown>,
+      priority: 3,
+    })
+  }
   return { data, error }
 }
 
@@ -131,6 +182,14 @@ export async function saveMockTest(test: Omit<DbMockTest, 'id'>) {
     .insert(test)
     .select()
     .single()
+  if (isNetworkError(error)) {
+    await addToSyncQueue({
+      table: 'mock_tests',
+      operation: 'insert',
+      data: test as Record<string, unknown>,
+      priority: 3,
+    })
+  }
   return { data, error }
 }
 

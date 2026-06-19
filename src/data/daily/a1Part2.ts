@@ -93,13 +93,22 @@ export const demonstratives: DailyLesson = {
     { id: 2358, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'What is ___? (u, uzoq, birlik)', blanks: ['that'], explanation: "uzoq birlik = that " },
     { id: 99517, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "The cat ___ the box. (ichida)", blanks: ["is in"], explanation: "is in = ichida (Lesson 8 — Animals dan takrorlash)" },
     { id: 99518, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'I have ___ cat.', blanks: ['a'], explanation: 'a + singular noun (Lesson 8 — Animals dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Demonstratives + Plurals ──
+    { id: 95491, type: 'fill-blank', instruction: "This/that va these/those:", question: "___ (yaqin, birlik) is a book. ___ (uzoq, ko'plik) are pens.", blanks: ['This', 'Those'], explanation: "Yaqin + birlik = This. Uzoq + ko'plik = Those." },
+    { id: 95492, type: 'multiple-choice', instruction: "Demonstrative + be:", question: "___ a cat near me. ___ cats far away.", options: ['This is / Those are', 'That is / This is', 'These are / That is', 'This is / These are'], correct: 'This is / Those are', explanation: "Yaqin birlik → This is. Uzoq ko'plik → Those are." },
+    { id: 95493, type: 'error-correction', instruction: "This/these xatosi:", question: "This are my books. These is my pen.", errorPart: 'This are / These is', correct: 'These are my books. This is my pen.', explanation: "This + is. These + are." },
+    { id: 95494, type: 'fill-blank', instruction: "Demonstrative + possession:", question: "___ (this) is my car. ___ (those) are his cars.", blanks: ['This', 'Those'], explanation: "This is, Those are." },
+    { id: 95495, type: 'transformation', instruction: "Birlikdan ko'plikka:", question: "This is a pen. → These ___.", hint: "These ___ pens.", correct: 'are', explanation: "This is → These are." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "This/that, these/those", color: 'bg-emerald-500', icon: '🌱', ids: [1101, 1102, 1103, 1104, 1105] },
     { title: "O'rtacha", desc: "Is/are va here/there", color: 'bg-blue-500', icon: '📘', ids: [1106, 1107, 1108, 1109, 1110] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1111, 1112, 1113, 1114, 1115] },
     { title: "O'zgartirish", desc: "Ko'plik, o'tgan vaqt, savollar", color: 'bg-teal-500', icon: '🔄', ids: [1116, 1117, 1118, 1119, 1120] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "This/that/these/those + Plurals farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95491, 95492, 95493, 95494, 95495] },],
   tests: [
     { id: 2359, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which word means 'bu (yaqin)'?", options: ['This', 'That', 'These', 'Those'], correct: 'This', explanation: 'this = bu (yaqin). Qoida: \'This\' yaqin turgan birlik otlar bilan: this book (bu kitob). Uzoq narsalar uchun \'that\': that book (u kitob). Ko\'plikda: these (bular), those (ular).' },
     { id: 2360, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "What are 'these'?", options: ['bu (yaqin birlik)', 'u (uzoq birlik)', 'bular (yaqin ko\'plik)', 'ular (uzoq ko\'plik)'], correct: 'bular (yaqin ko\'plik)', explanation: 'these = bular (\'this\'ning ko\'pligi). Qoida: \'These\' yaqin turgan ko\'plik otlar bilan: these books (bu kitoblar). \'This\'ning ko\'plik shakli: this -> these.' },
@@ -284,13 +293,22 @@ export const prepositionsOfPlace: DailyLesson = {
     { id: 2409, type: 'fill-blank', instruction: 'To\'g\'ri predlogni tanlang:', question: 'Library maktab qarshisida. The library is ___ the school.', blanks: ['opposite'], explanation: 'Qarshi tomonda — OPPOSITE' },
     { id: 99519, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "___ is my book. (bu, yaqin)", blanks: ["This"], explanation: "This = bu (yaqin) (Lesson 9 — Demonstratives dan takrorlash)" },
     { id: 99520, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'What ___ those?', blanks: ['are'], explanation: 'Those + are (Lesson 9 — Demonstratives dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Prepositions + There is/are ──
+    { id: 95501, type: 'fill-blank', instruction: "Predlog va there is/are:", question: "The book is ___ the table. There ___ a lamp on the desk.", blanks: ['on', 'is'], explanation: "Sirt → on. Singular → there is." },
+    { id: 95502, type: 'multiple-choice', instruction: "Joy va predlog:", question: "The cat is ___ the box. The birds are ___ the tree.", options: ['in / in', 'on / on', 'in / on', 'at / in'], correct: 'in / in', explanation: "Ichida → in (box, tree)." },
+    { id: 95503, type: 'error-correction', instruction: "Predlog xatosi:", question: "The pen is at the table. (sirtida)", errorPart: 'at', correct: 'The pen is on the table.', explanation: "Sirt → on, at emas." },
+    { id: 95504, type: 'fill-blank', instruction: "There is/are + predlog:", question: "There ___ a cat under the chair. There ___ two dogs in the garden.", blanks: ['is', 'are'], explanation: "Singular → there is. Plural → there are." },
+    { id: 95505, type: 'transformation', instruction: "Inkor va so'roq:", question: "There is a book on the table. → (inkor) There ___ a book...", hint: "There ___ a book on the table.", correct: 'isn\'t', explanation: "Inkor → there isn't." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "IN, ON, UNDER", color: 'bg-emerald-500', icon: '🌱', ids: [1901, 1902, 1903, 1904, 1905] },
     { title: "O'rtacha", desc: "NEXT TO, BEHIND, IN FRONT OF", color: 'bg-blue-500', icon: '📘', ids: [1906, 1907, 1908, 1909, 1910] },
     { title: "Qiyin", desc: "OPPOSITE, AMONG, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [1911, 1912, 1913, 1914, 1915] },
     { title: "O'zgartirish", desc: "Bed, bag, floor, opposite", color: 'bg-teal-500', icon: '🔄', ids: [1916, 1917, 1918, 1919, 1920] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Joy predloglari + There is/are farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95501, 95502, 95503, 95504, 95505] },],
   tests: [
     { id: 2410, type: 'multiple-choice', instruction: "To'g'ri predlogni tanlang:", question: 'The cat is ___ the box.', options: ['in', 'on', 'at', 'to'], correct: 'in', explanation: "Quti ichida — IN" },
     { id: 2411, type: 'multiple-choice', instruction: "To'g'ri predlogni tanlang:", question: 'The book is ___ the table.', options: ['in', 'on', 'at', 'to'], correct: 'on', explanation: "Stol ustida — ON" },
@@ -474,13 +492,22 @@ export const basicAdjectives: DailyLesson = {
     { id: 2460, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I am ___. I want to eat. (och)', blanks: ['hungry'], explanation: "hungry = och — tarjima" },
     { id: 99521, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "The book is ___ the table. (ustida)", blanks: ["on"], explanation: "on = ustida (Lesson 10 — Prepositions of Place dan takrorlash)" },
     { id: 99522, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'The cat is ___ the box. (ichida)', blanks: ['in'], explanation: 'in = ichida (Lesson 10 — Prepositions of Place dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Adjectives + be ──
+    { id: 95511, type: 'fill-blank', instruction: "Sifat va be:", question: "The weather ___ (be) nice today. I ___ (be) happy.", blanks: ['is', 'am'], explanation: "The weather singular → is. I → am." },
+    { id: 95512, type: 'multiple-choice', instruction: "Sifat tartibi (oldinda va predikatda):", question: "This is a ___ car. The car ___.", options: ['fast / is fast', 'fast / is fastly', 'fastly / is fast', 'fastly / is fastly'], correct: 'fast / is fast', explanation: "Ot oldida: a fast car. Predikat: The car is fast." },
+    { id: 95513, type: 'error-correction', instruction: "Sifat va ravish:", question: "She is a beautifully girl. The girl is beautifully.", errorPart: 'beautifully', correct: 'She is a beautiful girl. The girl is beautiful.', explanation: "Sifat (beautiful) ot oldida va be dan keyin." },
+    { id: 95514, type: 'fill-blank', instruction: "Sifat + am/is/are:", question: "They ___ (be) very tall. My mother ___ (be) kind.", blanks: ['are', 'is'], explanation: "They → are. My mother → is." },
+    { id: 95515, type: 'transformation', instruction: "Gapni tuzing:", question: "She / be / a / good / student", hint: "She ___ a ___ student.", correct: 'is, good', explanation: "She is a good student." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "A/An, oddiy sifat", color: 'bg-emerald-500', icon: '🌱', ids: [2001, 2002, 2003, 2004, 2005] },
     { title: "O'rtacha", desc: "Yosh, his, rang", color: 'bg-blue-500', icon: '📘', ids: [2006, 2007, 2008, 2009, 2010] },
     { title: "Qiyin", desc: "Tartib, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [2011, 2012, 2013, 2014, 2015] },
     { title: "O'zgartirish", desc: "Is vs looks, sifat tartibi", color: 'bg-teal-500', icon: '🔄', ids: [2016, 2017, 2018, 2019, 2020] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Sifatlar + Be fe'li farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95511, 95512, 95513, 95514, 95515] },],
   tests: [
     { id: 2461, type: 'fill-blank', instruction: "A/An:", question: 'I have ___ big house.', blanks: ['a'], explanation: "'big' undosh tovush" },
     { id: 2462, type: 'fill-blank', instruction: "A/An:", question: 'She has ___ old car.', blanks: ['an'], explanation: "'old' unli tovush" },
@@ -641,13 +668,22 @@ export const thereIsAre: DailyLesson = {
     { id: 2824, type: 'connection', instruction: 'O\'z xonangizni tasvirlang:', prompt: 'There is va There are ishlatib, xonangizdagi narsalar haqida 3 ta gap yozing:', hints: ['There is a ___ in my room.', 'There are ___ in my room.', 'There is no ___ in my room.'], exampleAnswer: 'There is a bed in my room. There are two chairs near the window. There is no TV in my room.' },
     { id: 99523, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "She has ___ old car.", blanks: ["an"], explanation: "an + old (unli tovush) (Lesson 11 — Basic Adjectives dan takrorlash)" },
     { id: 99524, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'It is ___ day today. (35°C)', blanks: ['hot'], explanation: 'hot = issiq (Lesson 11 — Basic Adjectives dan takrorlash)' },
+
+
+    // ── Interleaved Practice: There is/are + some/any ──
+    { id: 95521, type: 'fill-blank', instruction: "There is/are va some/any:", question: "There ___ some water. There ___ any chairs.", blanks: ['is', 'aren\'t'], explanation: "Uncountable (water) → there is. Plural inkor → there aren't." },
+    { id: 95522, type: 'multiple-choice', instruction: "There is/are + son:", question: "How ___ chairs are there? There ___ one chair.", options: ['many / is', 'much / are', 'many / are', 'much / is'], correct: 'many / is', explanation: "Countable + many. Singular → there is." },
+    { id: 95523, type: 'error-correction', instruction: "There is/are xatosi:", question: "There is two cats in the garden.", errorPart: 'is', correct: 'There are two cats in the garden.', explanation: "Ko'plik → there are." },
+    { id: 95524, type: 'fill-blank', instruction: "There is/are + joy:", question: "There ___ (be) a book on the table and there ___ (be) some pens.", blanks: ['is', 'are'], explanation: "Singular → is. Ko'plik → are." },
+    { id: 95525, type: 'transformation', instruction: "Savolga aylantiring:", question: "There is a cat under the chair. → ___ a cat under the chair?", hint: "___ there a cat...", correct: 'Is', explanation: "Yes/no question → Is there...?" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Is/are asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1, 2, 3, 4, 5] },
     { title: "O'rtacha", desc: 'Some/any, no, predloglar', color: 'bg-blue-500', icon: '📘', ids: [6, 7, 8, 9, 10] },
     { title: "Qiyin", desc: 'Error-correction, savol shakli', color: 'bg-violet-500', icon: '🎯', ids: [11, 12, 13, 14, 15] },
     { title: "O'zgartirish", desc: 'Passage + mustahkamlash', color: 'bg-teal-500', icon: '🔄', ids: [16, 17, 18, 19, 20] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "There is/are + Quantifiers (some/any) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95521, 95522, 95523, 95524, 95525] },],
   tests: [
     { id: 2825, type: 'multiple-choice', instruction: 'To\'g\'ri variantni tanlang:', question: 'There ___ some water in the glass.', options: ['is', 'are', 'am', 'be'], correct: 'is', explanation: 'sanalmas (water) = is (sanalmas ot + is). Qoida: Water = suv (sanalmas). \'Water is\' (suv ...): Water is important for life. Sanalmas otlar bilan \'are\' ishlatilmaydi.' },
     { id: 2826, type: 'multiple-choice', instruction: 'To\'g\'ri variantni tanlang:', question: 'There ___ two cats in the garden.', options: ['is', 'are', 'am', 'be'], correct: 'are', explanation: "ko'plik (two cats) = are" },
@@ -809,13 +845,22 @@ export const canCant: DailyLesson = {
     { id: 2552, type: 'fill-blank', instruction: "Can/can't:", question: "I ___ understand this. (tushunmayman)", blanks: ["can't"], explanation: "can't understand" },
     { id: 99525, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "There ___ a cat in the garden.", blanks: ["is"], explanation: "There is + birlik (Lesson 12 — There is/are dan takrorlash)" },
     { id: 99526, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'There ___ two chairs in the room.', blanks: ['are'], explanation: 'There are + ko\'plik (Lesson 12 — There is/are dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Can + Present Simple ──
+    { id: 95531, type: 'fill-blank', instruction: "Can va Present Simple:", question: "I ___ (can) swim. She ___ (swim) every morning.", blanks: ['can', 'swims'], explanation: "Qobiliyat → can + V1. Odat → Present Simple (swims)." },
+    { id: 95532, type: 'multiple-choice', instruction: "Can't (qila olmaslik) va don't:", question: "He ___ speak English. He ___ speak Uzbek every day.", options: ["can't / speaks", "doesn't can / speaks", "can't / speak", "isn't / speaks"], correct: "can't / speaks", explanation: "Qila olmaslik → can't + V1. Odat → speaks (3-shaxs)." },
+    { id: 95533, type: 'error-correction', instruction: "Can + V1 qoidasi:", question: "I can to swim very well.", errorPart: 'can to', correct: 'I can swim very well.', explanation: "Can + V1 (to'siz)." },
+    { id: 95534, type: 'fill-blank', instruction: "Can va be:", question: "I ___ (can) ride a bike. I ___ (be) 10 years old.", blanks: ['can', 'am'], explanation: "Qobiliyat → can ride. I → am." },
+    { id: 95535, type: 'transformation', instruction: "Can bilan so'roq:", question: "You can help me. → ___ you help me?", hint: "___ you help me?", correct: 'Can', explanation: "Yes/no question → Can + subject + V1." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Can + V1", color: 'bg-emerald-500', icon: '🌱', ids: [1301, 1302, 1303, 1304, 1305] },
     { title: "O'rtacha", desc: "Savol va ruxsat", color: 'bg-blue-500', icon: '📘', ids: [1306, 1307, 1308, 1309, 1310] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1311, 1312, 1313, 1314, 1315] },
     { title: "O'zgartirish", desc: "Can → could, o'tgan qobiliyat", color: 'bg-teal-500', icon: '🔄', ids: [1316, 1317, 1318, 1319, 1320] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Can (qobiliyat) + Present Simple (odat) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95531, 95532, 95533, 95534, 95535] },],
   tests: [
     { id: 2553, type: 'fill-blank', instruction: "Can + V1:", question: 'I ___ swim.', blanks: ['can'], explanation: "can + V1 — imkonlik: can + asosiy fe'l (V1)" },
     { id: 2554, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I can to dance.', errorPart: 'to', correct: 'I can dance.', explanation: "to'siz — to'siz so'z, sifatdosh" },
@@ -975,13 +1020,22 @@ export const haveGot: DailyLesson = {
     { id: 2596, type: 'fill-blank', instruction: 'To\'g\'ri qisqa javob:', question: 'Have you got a pen? — Yes, ___', blanks: ['I have'], explanation: 'Yes, I have. (qisqa javob)' },
     { id: 2597, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'Has you got a car?', errorPart: 'Has', correct: 'Have you got a car?', explanation: "You uchun Have (Has emas)" },
     { id: 2598, type: 'fill-blank', instruction: "Have got yoki has got:", question: "My brother ___ (have) a bicycle.", blanks: ['has got'], explanation: "My brother = he → has got" },
+
+
+    // ── Interleaved Practice: Have got + Possessives ──
+    { id: 95541, type: 'fill-blank', instruction: "Have got va possessive:", question: "I ___ (have got) a sister. ___ (I) sister is 8 years old.", blanks: ['have got', 'My'], explanation: "I → have got. I → my (possessive)." },
+    { id: 95542, type: 'multiple-choice', instruction: "Has got va his/her:", question: "She ___ a new bag. ___ bag is red. He ___ a brother.", options: ['has got / Her / has got', 'has got / His / has got', 'have got / Her / has got', 'has got / Her / have got'], correct: 'has got / Her / has got', explanation: "She → has got. Her (uning). He → has got." },
+    { id: 95543, type: 'error-correction', instruction: "Have got xatosi:", question: "She have got a car. He has got a new bike, it's bike is blue.", errorPart: 'have got / it\'s bike', correct: 'She has got a car. He has got a new bike, his bike is blue.', explanation: "She → has got. His (uning — erkak)." },
+    { id: 95544, type: 'fill-blank', instruction: "Have got + oila:", question: "We ___ (have got) a big family. They ___ (have got) two children.", blanks: ['have got', 'have got'], explanation: "We/They → have got." },
+    { id: 95545, type: 'transformation', instruction: "I dan He ga:", question: "I have got a brother. → He ___ a brother.", hint: "He ___ a brother.", correct: 'has got', explanation: "He → has got (3-shaxs)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Have/has got", color: 'bg-emerald-500', icon: '🌱', ids: [1401, 1402, 1403, 1404, 1405] },
     { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [1406, 1407, 1408, 1409, 1410] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1411, 1412, 1413, 1414, 1415] },
     { title: "O'zgartirish", desc: "Have/Has got savollar", color: 'bg-teal-500', icon: '🔄', ids: [1416, 1417, 1418, 1419, 1420] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Have got + Possessive (my/his/her) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95541, 95542, 95543, 95544, 95545] },],
   tests: [
     { id: 2599, type: 'fill-blank', instruction: "Have/has got:", question: 'I ___ a bike.', blanks: ['have got'], explanation: "I + have got" },
     { id: 2600, type: 'fill-blank', instruction: "Have/has got:", question: 'He ___ a dog.', blanks: ['has got'], explanation: "He + has got" },
@@ -1145,13 +1199,22 @@ export const presentSimple: DailyLesson = {
     { id: 2644, type: 'fill-blank', instruction: 'To\'g\'ri joylashuvni tanlang:', question: 'She ___ is late.', blanks: ['is always'], explanation: 'be fe\'lidan KEYIN: She is always late.' },
     { id: 99529, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "I ___ got a car. (menda yo'q)", blanks: ["haven't"], explanation: "haven't got = yo'q (Lesson 14 — Have got/Has got dan takrorlash)" },
     { id: 99530, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'She ___ got a sister.', blanks: ['has got'], explanation: 'She + has got (Lesson 14 — Have got/Has got dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Present Simple + Frequency ──
+    { id: 95551, type: 'fill-blank', instruction: "Present Simple va always/often:", question: "I ___ (always / wake) up at 6. She ___ (often / play) tennis.", blanks: ['always wake', 'often plays'], explanation: "Always/often + fe'l (3-shaxs +s)." },
+    { id: 95552, type: 'multiple-choice', instruction: "Frequency adverb + be:", question: "He ___ never late. They ___ sometimes happy.", options: ['is / are', 'am / are', 'is / is', 'are / are'], correct: 'is / are', explanation: "He → is. They → are. Adverb be dan keyin." },
+    { id: 95553, type: 'error-correction', instruction: "3-shaxs qoidasi:", question: "She always eat breakfast at 7.", errorPart: 'eat', correct: 'She always eats breakfast at 7.', explanation: "3-shaxs → eats (+s)." },
+    { id: 95554, type: 'fill-blank', instruction: "Present Simple inkor:", question: "He ___ (not / like) coffee. They ___ (not / live) here.", blanks: ['doesn\'t like', 'don\'t live'], explanation: "He → doesn't like. They → don't live." },
+    { id: 95555, type: 'transformation', instruction: "Tasdiqdan inkorga:", question: "She likes tea. → She ___ like tea.", hint: "She ___ like tea.", correct: 'doesn\'t', explanation: "She likes → She doesn't like." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "3-shaxs -s", color: 'bg-emerald-500', icon: '🌱', ids: [1501, 1502, 1503, 1504, 1505] },
     { title: "O'rtacha", desc: "Don't/doesn't va savol", color: 'bg-blue-500', icon: '📘', ids: [1506, 1507, 1508, 1509, 1510] },
     { title: "Qiyin", desc: "Frequency + murakkab", color: 'bg-violet-500', icon: '🎯', ids: [1511, 1512, 1513, 1514, 1515] },
     { title: "O'zgartirish", desc: "Usually, often, sometimes, rarely", color: 'bg-teal-500', icon: '🔄', ids: [1516, 1517, 1518, 1519, 1520] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Present Simple + Adverbs of frequency farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95551, 95552, 95553, 95554, 95555] },],
   tests: [
     { id: 2645, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'He ___ (work) at a hospital.', blanks: ['works'], explanation: "work + s — 3-shaxs: work → works" },
     { id: 2646, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'She ___ (study) English.', blanks: ['studies'], explanation: "study → studies" },
@@ -1314,13 +1377,22 @@ export const questionWords: DailyLesson = {
     { id: 2690, type: 'fill-blank', instruction: "To'g'ri tartibda yozing:", question: 'Where / does / she / live → ___', blanks: ['Where does she live'], explanation: "Wh- + does + S + V1" },
     { id: 99531, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "He ___ English. (3-shaxs)", blanks: ["speaks"], explanation: "speak + s (Lesson 15 — Present Simple dan takrorlash)" },
     { id: 99532, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: 'She ___ her homework every day.', blanks: ['does'], explanation: 'She + does (Lesson 15 — Present Simple dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Question Words + Tenses ──
+    { id: 95561, type: 'fill-blank', instruction: "Savol so'zi va zamon:", question: "___ do you live? (joy) ___ did you go yesterday? (vaqt)", blanks: ['Where', 'When'], explanation: "Where = joy. When = vaqt." },
+    { id: 95562, type: 'multiple-choice', instruction: "What/Who/Where:", question: "___ is your name? ___ is your teacher? ___ are you from?", options: ['What / Who / Where', 'Who / What / Where', 'Where / Who / What', 'What / Where / Who'], correct: 'What / Who / Where', explanation: "What = nima. Who = kim. Where = qayerda." },
+    { id: 95563, type: 'error-correction', instruction: "Savol tartibi:", question: "Where you are from?", errorPart: 'you are', correct: 'Where are you from?', explanation: "Wh- + be + subject: Where are you?" },
+    { id: 95564, type: 'fill-blank', instruction: "Do/Does savollari:", question: "___ she like pizza? ___ they play football?", blanks: ['Does', 'Do'], explanation: "She → Does. They → Do." },
+    { id: 95565, type: 'transformation', instruction: "Gapni savolga:", question: "She lives in Tashkent. → Where ___ she ___?", hint: "Where ___ she ___?", correct: 'does, live', explanation: "Savol: Where does she live?" }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "Wh- so'zlar", color: 'bg-emerald-500', icon: '🌱', ids: [1601, 1602, 1603, 1604, 1605] },
     { title: "O'rtacha", desc: "Tartib va how", color: 'bg-blue-500', icon: '📘', ids: [1606, 1607, 1608, 1609, 1610] },
     { title: "Qiyin", desc: "Murakkab savollar", color: 'bg-violet-500', icon: '🎯', ids: [1611, 1612, 1613, 1614, 1615] },
     { title: "O'zgartirish", desc: "Javob berish, How many/old/much", color: 'bg-teal-500', icon: '🔄', ids: [1616, 1617, 1618, 1619, 1620] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "Savol so'zlari + Present Simple/past farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95561, 95562, 95563, 95564, 95565] },],
   tests: [
     { id: 2691, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: '___ is your name?', blanks: ['What'], explanation: "What — nima (narsalar uchun)" },
     { id: 2692, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: '___ do you live?', blanks: ['Where'], explanation: "Where — qayer (joy uchun)" },
@@ -1484,13 +1556,22 @@ export const conjunctions: DailyLesson = {
     { id: 2736, type: 'fill-blank', instruction: "So yoki because?", question: "I was tired, ___ I slept early.", blanks: ['so'], explanation: "SO = result/natija, BECAUSE = sabab" },
     { id: 99533, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "___ is your name? (nima)", blanks: ["What"], explanation: "What = nima (Lesson 16 — Question Words dan takrorlash)" },
     { id: 99534, type: 'fill-blank', instruction: 'Oldingi darsdan takrorlash:', question: '___ do you live?', blanks: ['Where'], explanation: 'Where = qayerda (Lesson 16 — Question Words dan takrorlash)' },
+
+
+    // ── Interleaved Practice: Conjunctions + Present Simple ──
+    { id: 95571, type: 'fill-blank', instruction: "And/but/because:", question: "I like tea ___ coffee. I like tea ___ I don't like coffee. I like tea ___ it's good.", blanks: ['and', 'but', 'because'], explanation: "And = va. But = lekin. Because = chunki." },
+    { id: 95572, type: 'multiple-choice', instruction: "So (natija) va because (sabab):", question: "It was raining, ___ I stayed home. I stayed home ___ it was raining.", options: ['so / because', 'because / so', 'and / because', 'so / and'], correct: 'so / because', explanation: "So = natija. Because = sabab." },
+    { id: 95573, type: 'error-correction', instruction: "Or (yoki) va and (va):", question: "Do you want tea and coffee? (one choice)", errorPart: 'and', correct: 'Do you want tea or coffee?', explanation: "Tanlov → or." },
+    { id: 95574, type: 'fill-blank', instruction: "Conjunction + Present Simple:", question: "She gets up early ___ (because / so) she goes to school. She ___ (get) up at 7.", blanks: ['because', 'gets'], explanation: "Because = sabab. 3-shaxs → gets." },
+    { id: 95575, type: 'transformation', instruction: "Ikki gapni birlashtiring:", question: "I am tired. I want to sleep. → I am tired ___ I want to sleep.", hint: "...", correct: 'so', explanation: "Natija → so." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "And, but, or, because", color: 'bg-emerald-500', icon: '🌱', ids: [1701, 1702, 1703, 1704, 1705] },
     { title: "O'rtacha", desc: "So, but, and farqlari", color: 'bg-blue-500', icon: '📘', ids: [1706, 1707, 1708, 1709, 1710] },
     { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1711, 1712, 1713, 1714, 1715] },
     { title: "O'zgartirish", desc: "Natija, tanlash, travel, rain", color: 'bg-teal-500', icon: '🔄', ids: [1716, 1717, 1718, 1719, 1720] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "And/but/or/because + Present Simple farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95571, 95572, 95573, 95574, 95575] },],
   tests: [
     { id: 2737, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I like tea ___ coffee.', options: ['but', 'or', 'and', 'because'], correct: 'and', explanation: "AND — qo'shish: and (va)" },
     { id: 2738, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I like tea ___ not coffee.', options: ['and', 'or', 'but', 'so'], correct: 'but', explanation: "BUT — qarama-qarshi: but (ammo, lekin)" },
@@ -1642,12 +1723,21 @@ export const a1Review: DailyLesson = {
     { id: 2775, type: 'fill-blank', instruction: "Wh- so'z:", question: '___ is your name?', blanks: ['What'], explanation: "What — nima (narsalar uchun)" },
     { id: 2776, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'This is ___ book.', blanks: ['a'], explanation: 'undosh — unli: consonant (undosh harf)' },
     { id: 2777, type: 'fill-blank', instruction: "Have got + inkor:", question: 'I ___ (have) a car.', blanks: ["haven't got"], explanation: "I haven't got" },
+
+
+    // ── Interleaved Practice: A1 mixed review ──
+    { id: 95581, type: 'fill-blank', instruction: "Am/is/are + have/has:", question: "I ___ (be) a student. She ___ (have) a book.", blanks: ['am', 'has'], explanation: "I am. She has." },
+    { id: 95582, type: 'multiple-choice', instruction: "Can + Present Simple:", question: "He ___ swim. He ___ every weekend.", options: ['can / swims', 'cans / swim', 'can / swim', 'can / is swimming'], correct: 'can / swims', explanation: "Can + V1. 3-shaxs → swims." },
+    { id: 95583, type: 'error-correction', instruction: "Be fe'li xatosi:", question: "They is happy. She are a teacher.", errorPart: 'is / are', correct: 'They are happy. She is a teacher.', explanation: "They → are. She → is." },
+    { id: 95584, type: 'fill-blank', instruction: "There is/are + some/any:", question: "There ___ some milk. There aren't ___ eggs.", blanks: ['is', 'any'], explanation: "Uncountable (milk) → is. Inkor → any." },
+    { id: 95585, type: 'transformation', instruction: "I dan She ga:", question: "I have got a car. → She ___ a car.", hint: "She ___ a car.", correct: 'has got', explanation: "She → has got." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: "To be, have/has", color: 'bg-emerald-500', icon: '🌱', ids: [1801, 1802, 1803, 1804, 1805] },
     { title: "O'rtacha", desc: "Can, 3-shaxs, there", color: 'bg-blue-500', icon: '📘', ids: [1806, 1807, 1808, 1809, 1810] },
     { title: "Qiyin", desc: "Wh-, modallar, review", color: 'bg-violet-500', icon: '🎯', ids: [1811, 1812, 1813, 1814, 1815] },
-  ],
+  
+    { title: "🔀 Aralash", desc: "A1 mavzularini aralash takrorlash", color: 'bg-fuchsia-500', icon: '🔄', ids: [95581, 95582, 95583, 95584, 95585] },],
   tests: [
     { id: 2778, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'I ___ a student.', options: ['am', 'is', 'are', 'be'], correct: 'am', explanation: "I am — birinchi shaxs bilan am ishlatiladi" },
     { id: 2779, type: 'fill-blank', instruction: "Have/has:", question: 'He ___ a car.', blanks: ['has'], explanation: "He has — uchinchi shaxs (erkak) bilan has ishlatiladi" },

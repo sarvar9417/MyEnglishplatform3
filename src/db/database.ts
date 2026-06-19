@@ -123,6 +123,35 @@ export interface CatalogEntry {
   filledAt:       number    // when Claude generated the card
 }
 
+// ─── Sync Queue Item — offline->online sync uchun ─────────────────────────
+
+export interface SyncQueueItem {
+  id?: number
+  /** Supabase table nomi */
+  table: string
+  /** Operatsiya turi */
+  operation: 'upsert' | 'insert' | 'update' | 'delete'
+  /** Supabase ga yuboriladigan data */
+  data: Record<string, unknown>
+  /** Conflict field (upsert uchun: onConflict) */
+  conflictField?: string
+  /** WHERE filter (update/delete uchun) */
+  filterField?: string
+  filterValue?: unknown
+  /** Prioritet (yuqori = avval) */
+  priority: number
+  /** Urinishlar soni */
+  retries: number
+  /** Maksimal urinishlar */
+  maxRetries: number
+  /** Oxirgi xatolik */
+  lastError: string | null
+  /** Yaratilgan vaqt */
+  createdAt: number
+  /** Keyingi urinish vaqti */
+  nextRetryAt: number
+}
+
 // --- Dexie DB ---
 
 class EnglishPathDB extends Dexie {
@@ -136,6 +165,7 @@ class EnglishPathDB extends Dexie {
   lessonProgress!: Table<LessonProgress>
   cachedLessons!: Table<DailyLesson & { cached_at: string }>
   pronunciationErrors!: Table<PronunciationErrorRecord>
+  syncQueue!: Table<SyncQueueItem>
 
   constructor() {
     super('EnglishPathDB')
@@ -205,6 +235,20 @@ class EnglishPathDB extends Dexie {
       lessonProgress: '++id, userId, lessonId, date, completedAt',
       cachedLessons: 'id, level, day, cached_at',
       pronunciationErrors: '++id, soundId, context, createdAt',
+    })
+
+    this.version(7).stores({
+      sessions:      '++id, date, type, createdAt',
+      vocabulary:    '++id, word, level, category, nextReviewAt, masteryLevel',
+      dailyProgress: '++id, &date, day, week',
+      writings:      '++id, date, day, createdAt',
+      mockTests:     '++id, date, day, week, type, createdAt',
+      stats:         '++id, &key, updatedAt',
+      catalog:       '&word, status',
+      lessonProgress: '++id, userId, lessonId, date, completedAt',
+      cachedLessons: 'id, level, day, cached_at',
+      pronunciationErrors: '++id, soundId, context, createdAt',
+      syncQueue:     '++id, [priority+nextRetryAt], priority, nextRetryAt, createdAt',
     })
   }
 }

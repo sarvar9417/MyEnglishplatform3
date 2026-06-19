@@ -145,13 +145,22 @@ export const linkingWordsAdvanced: DailyLesson = {
       prompt: 'Kompaniyangizdagi o\'zgarishlar haqida linking words ishlatib yozing. Furthermore, nevertheless, consequently so\'zlarini ishlating.',
       hints: ['\'Furthermore, we have...\'', '\'Nevertheless, the results...\'', '\'Consequently, our team...\''],
       exampleAnswer: 'Our company has grown significantly this year. Furthermore, we have opened three new offices. The market was challenging; nevertheless, our team succeeded. Consequently, we are hiring more staff.' },
+
+
+    // ── Interleaved Practice: Linking Words + Cohesion ──
+    { id: 95681, type: 'multiple-choice', instruction: "Furthermore (qo'shimcha) va consequently (natija):", question: "The company is growing. ___, profits are rising. ___, we are expanding abroad.", options: ['Consequently / Furthermore', 'Furthermore / Consequently', 'However / Therefore', 'Moreover / Nevertheless'], correct: 'Consequently / Furthermore', explanation: "Natija → Consequently. Qo'shimcha → Furthermore." },
+    { id: 95682, type: 'fill-blank', instruction: "However/nevertheless (qarama-qarshilik):", question: "It was raining; ___ we went out. The task was hard; ___ she succeeded.", blanks: ['however', 'nevertheless'], explanation: "However (ammo). Nevertheless (shunga qaramay)." },
+    { id: 95683, type: 'error-correction', instruction: "Punctuation — linking words:", question: "He was tired, however he continued. The plan failed therefore we changed it.", errorPart: ', however / therefore we', correct: 'He was tired; however, he continued. The plan failed; therefore, we changed it.', explanation: "Linking word oldidan ; (nuqtali vergul) kerak." },
+    { id: 95684, type: 'fill-blank', instruction: "Such as vs for example:", question: "Many countries, ___ Japan, are developed. The plan has problems; ___ the budget is too small.", blanks: ['such as', 'for example'], explanation: "Such as (list oldida). For example (gap boshida)." },
+    { id: 95685, type: 'transformation', instruction: "And → Moreover:", question: "The hotel is nice and it is cheap. → The hotel is nice. ___ it is cheap.", hint: "...", correct: 'Moreover,', explanation: "And → Moreover (qo'shimcha, rasmiy)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Linking words asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [4501, 4502, 4503, 4504, 4505] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [4506, 4507, 4508, 4509, 4510] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4511, 4512, 4513, 4514, 4515] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4517, 4519, 4515, 4513, 4520, 4518, 4516, 4520, 4517, 4518, 55026, 55035] }
-    ],
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4517, 4519, 4515, 4513, 4520, 4518, 4516, 4520, 4517, 4518, 55026, 55035] },
+    
+    { title: "🔀 Aralash", desc: "Bog'lovchi so'zlar + Cohesion farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95681, 95682, 95683, 95684, 95685] },],
   tests: [
     { id: 52026, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z qo'shimcha ma'lumot uchun?", options: ['However', 'Therefore', 'Furthermore', 'Nevertheless'], correct: 'Furthermore', explanation: "Furthermore = qo'shimcha" },
     { id: 52027, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi so'z natija uchun?", options: ['However', 'Therefore', 'Furthermore', 'Moreover'], correct: 'Therefore', explanation: "Therefore = natija — tarjima" },
@@ -355,6 +364,14 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
     ,
     {"id":101751,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"make a decision","options":["qaror qabul qilish","uy vazifasini bajarish","suhbatlashish","tanaffus qilish"],"correct":"qaror qabul qilish","explanation":"Make a decision — qaror qabul qilish (make + noun)."},
     {"id":101752,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"do research","options":["tadqiqot olib borish","qaror qilish","suratga olish","dam olish"],"correct":"tadqiqot olib borish","explanation":"Do research — tadqiqot olib borish (do + noun)."},
+
+
+    // ── Interleaved Practice: Collocations + Verb Patterns ──
+    { id: 95691, type: 'multiple-choice', instruction: "Make vs Do:", question: "I need to ___ a decision. She needs to ___ her homework.", options: ['make / do', 'do / make', 'make / make', 'do / do'], correct: 'make / do', explanation: "Make a decision. Do homework." },
+    { id: 95692, type: 'fill-blank', instruction: "Have vs Take:", question: "Let's ___ a break. I ___ a shower every morning.", blanks: ['take', 'have'], explanation: "Take a break (AmE) / have a break (BrE). Have a shower." },
+    { id: 95693, type: 'error-correction', instruction: "Collocation xatolari:", question: "I need to make the laundry. She did a mistake.", errorPart: 'make the laundry / did a mistake', correct: 'I need to do the laundry. She made a mistake.', explanation: "Do the laundry. Make a mistake." },
+    { id: 95694, type: 'fill-blank', instruction: "Collocations + V-ing:", question: "She enjoys ___ (make) photos. I look forward to ___ (have) dinner.", blanks: ['taking', 'having'], explanation: "Take a photo (make emas). Look forward to + V-ing." },
+    { id: 95695, type: 'transformation', instruction: "Make bilan rewrite:", question: "He decided to purchase a car. → He ___ a decision to buy a car.", hint: "He ___ a decision...", correct: 'made', explanation: "Decide → make a decision." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Make/Do tanlash', color: 'bg-emerald-500', icon: '🌱', ids: [4601, 4602, 4603, 4604, 4605] },
@@ -362,7 +379,8 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4611, 4612, 4613, 4614, 4615] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4619, 4613, 4617, 4620, 4617, 4615, 4616, 4620, 4618, 4618, 55025, 55034] },
   
-    ],
+    
+    { title: "🔀 Aralash", desc: "Make/do/have/take + Verb patterns farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95691, 95692, 95693, 95694, 95695] },],
   tests: [
     { id: 52067, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya MAKE bilan?", options: ['homework', 'business', 'a decision', 'research'], correct: 'a decision', explanation: "Make a decision" },
     { id: 52068, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi kollokatsiya DO bilan?", options: ['a decision', 'a promise', 'homework', 'a mistake'], correct: 'homework', explanation: "Do homework — uy vazifasini bajarish" },
@@ -531,6 +549,14 @@ export const advancedPhrasalVerbs: DailyLesson = {
     ,
     {"id":101753,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"give up","options":["voz kechmoq, tashlamoq","berkitmoq","topmoq","chiqmoq"],"correct":"voz kechmoq, tashlamoq","explanation":"Give up — umidni uzmoq yoki biror ishni tashlamoq."},
     {"id":101754,"type":"vocab-match","instruction":"So'zning ma'nosini tanlang","word":"put up with","options":["chidamoq, to'qat qilmoq","qo'ymoq","kechiktirmoq","tashlamoq"],"correct":"chidamoq, to'qat qilmoq","explanation":"Put up with — biror narsaga chiday olmoq, to'qat qilmoq."},
+
+
+    // ── Interleaved Practice: Phrasal Verbs + Idioms ──
+    { id: 95701, type: 'multiple-choice', instruction: "Phrasal verb va idiom:", question: "She ___ up with a great idea. The exam was a ___ of cake.", options: ['came / piece', 'put / piece', 'ran / cup', 'came / bit'], correct: 'came / piece', explanation: "Come up with = o'ylab topmoq. Piece of cake = juda oson." },
+    { id: 95702, type: 'fill-blank', instruction: "Put up with / run out of:", question: "I can't ___ up with this noise. We've ___ out of sugar.", blanks: ['put', 'run'], explanation: "Put up with = chidamoq. Run out of = tugatmoq." },
+    { id: 95703, type: 'error-correction', instruction: "Pronoun + phrasal verb:", question: "I picked up him from the station. Look forward to hear from you.", errorPart: 'picked up him / to hear', correct: 'I picked him up from the station. Look forward to hearing from you.', explanation: "Pronoun + separable phrasal verb. Look forward to + V-ing." },
+    { id: 95704, type: 'fill-blank', instruction: "Look phrasal verbs:", question: "I look ___ to meeting you. She looks ___ her grandmother. I look ___ to my brother.", blanks: ['forward', 'after', 'up'], explanation: "Look forward to, look after, look up to." },
+    { id: 95705, type: 'transformation', instruction: "Think of → come up with:", question: "She thought of a great idea. → She ___ up with a great idea.", hint: "She ___ up with...", correct: 'came', explanation: "Think of = come up with (o'ylab topmoq)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Common phrasal verbs', color: 'bg-emerald-500', icon: '🌱', ids: [4701, 4702, 4703, 4704, 4705] },
@@ -538,7 +564,8 @@ export const advancedPhrasalVerbs: DailyLesson = {
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4711, 4712, 4713, 4714, 4715] },
     { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4718, 4717, 4719, 4720, 4718, 4716, 4720, 4713, 4717, 4715, 55024, 55033] },
   
-    ],
+    
+    { title: "🔀 Aralash", desc: "Phrasal verbs + Idioms farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95701, 95702, 95703, 95704, 95705] },],
   tests: [
     { id: 52108, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Put up with' ma'nosi nima?", options: ["o'ylab topmoq", 'chidamoq', 'tugatmoq', 'qidirmoq'], correct: 'chidamoq', explanation: "Put up with = chidamoq" },
     { id: 52109, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Come up with' ma'nosi nima?", options: ["o'ylab topmoq", 'chidamoq', 'tugatmoq', 'qidirmoq'], correct: "o'ylab topmoq", explanation: "Come up with = o'ylab topmoq" },
@@ -713,13 +740,22 @@ export const idiomsCommon: DailyLesson = {
       prompt: 'Bugun siz bilan sodir bo\'lgan voqealarni idiomalar bilan tasvirlab bering.',
       hints: ['\'It was a piece of cake...\'', '\'I was over the moon...\'', '\'I hit the nail on the head...\''],
       exampleAnswer: 'The exam was a piece of cake. I was over the moon when I saw my results! My friend was down in the dumps, so I tried to cheer him up.' },
+
+
+    // ── Interleaved Practice: Idioms + Collocations ──
+    { id: 95711, type: 'multiple-choice', instruction: "Idiom (ko'chma) va literal:", question: "The exam was a ___ of cake (easy). He ___ the sack at 10 (go to bed).", options: ['piece / hit', 'bit / made', 'piece / took', 'slice / did'], correct: 'piece / hit', explanation: "Piece of cake = oson. Hit the sack = uxlash." },
+    { id: 95712, type: 'fill-blank', instruction: "Body idioms:", question: "The car cost an arm and a ___. Don't pull my ___.", blanks: ['leg', 'leg'], explanation: "Cost an arm and a leg = qimmat. Pull someone's leg = hazil." },
+    { id: 95713, type: 'error-correction', instruction: "Idiom so'zma-so'z tarjima:", question: "It was raining cats and dogs = mushuk va it yomg'iri. Break a leg = oyog'ingni sindir.", errorPart: 'mushuk va it yomg\'iri / oyog\'ingni sindir', correct: "It's raining cats and dogs = kuchli yomg'ir. Break a leg = omad tilayman.", explanation: "Idioms so'zma-so'z tarjima qilinmaydi." },
+    { id: 95714, type: 'fill-blank', instruction: "Situation idioms:", question: "I only go there once in a ___ moon. She's ___ the weather (ill).", blanks: ['blue', 'under'], explanation: "Once in a blue moon = kamdan-kam. Under the weather = kasal." },
+    { id: 95715, type: 'transformation', instruction: "Very easy → idiom:", question: "The test was very easy. → The test was a ___ of ___.", hint: "...", correct: 'piece, cake', explanation: "Piece of cake = juda oson." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Common idioms', color: 'bg-emerald-500', icon: '🌱', ids: [4801, 4802, 4803, 4804, 4805] },
     { title: "O'rtacha", desc: "Idiom ma'nolari", color: 'bg-blue-500', icon: '📘', ids: [4806, 4807, 4808, 4809, 4810] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4811, 4812, 4813, 4814, 4815] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4815, 4818, 4813, 4817, 4819, 4820, 4820, 4818, 4816, 4817, 55023, 55032] }
-    ],
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4815, 4818, 4813, 4817, 4819, 4820, 4820, 4818, 4816, 4817, 55023, 55032] },
+    
+    { title: "🔀 Aralash", desc: "Idioms + Phrasal verbs farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95711, 95712, 95713, 95714, 95715] },],
   tests: [
     { id: 52149, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Break the ice' ma'nosi nima?", options: ['muzni sindirish', 'suhbatni boshlash', 'muz ustida yurish', 'sovuq ob-havo'], correct: 'suhbatni boshlash', explanation: "Break the ice = suhbatni boshlash" },
     { id: 52150, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Piece of cake' ma'nosi nima?", options: ['bir parcha tort', 'juda oson', 'juda mazali', 'shirinlik'], correct: 'juda oson', explanation: "Piece of cake = juda oson" },
@@ -920,13 +956,22 @@ export const prepositionalPhrases: DailyLesson = {
       prompt: 'Ish yoki maktabda rasmiy taqdimot bering. Prepositional phrases ishlating.',
       hints: ['\'In terms of...\'', '\'On behalf of...\'', '\'In accordance with...\''],
       exampleAnswer: 'On behalf of the team, I welcome you. In terms of progress, we have achieved 80% of our goals. We will act in accordance with the company policy.' },
+
+
+    // ── Interleaved Practice: Prepositional Phrases + Linking ──
+    { id: 95721, type: 'multiple-choice', instruction: "In terms of / with regard to:", question: "___ terms of cost, it's cheap. ___ regard to the budget, we need more.", options: ['In / With', 'With / In', 'On / With', 'In / On'], correct: 'In / With', explanation: "In terms of, with regard to." },
+    { id: 95722, type: 'fill-blank', instruction: "On behalf of / in addition to:", question: "___ behalf of the team, I thank you. ___ addition to that, we need staff.", blanks: ['On', 'In'], explanation: "On behalf of = nomidan. In addition to = qo'shimcha." },
+    { id: 95723, type: 'error-correction', instruction: "Due to vs because:", question: "The delay was because of heavy rain. The delay was due to it rained.", errorPart: 'because of / due to it rained', correct: 'The delay was due to heavy rain. The delay was because it rained.', explanation: "Due to + noun. Because + clause." },
+    { id: 95724, type: 'fill-blank', instruction: "In spite of vs despite:", question: "In spite ___ the rain, we went. ___ the cost, it was worth it.", blanks: ['of', 'Despite'], explanation: "In spite of (+ of). Despite (of'siz)." },
+    { id: 95725, type: 'transformation', instruction: "Because → due to:", question: "The flight was cancelled because the weather was bad. → The flight was cancelled due to ___ ___.", hint: "...", correct: 'bad weather', explanation: "Due to + noun phrase (bad weather)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Prepositional phrases asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [4901, 4902, 4903, 4904, 4905] },
     { title: "O'rtacha", desc: "Predlog tanlash", color: 'bg-blue-500', icon: '📘', ids: [4906, 4907, 4908, 4909, 4910] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4911, 4912, 4913, 4914, 4915] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4918, 4920, 4916, 4920, 4915, 4918, 4917, 4913, 4917, 4919, 55022, 55031] }
-    ],
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4918, 4920, 4916, 4920, 4915, 4918, 4917, 4913, 4917, 4919, 55022, 55031] },
+    
+    { title: "🔀 Aralash", desc: "Prepositional phrases + Linking words farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95721, 95722, 95723, 95724, 95725] },],
   tests: [
     { id: 52190, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '"By accident" ma\'nosi nima?', options: ['ataylab', 'tasodifan', 'xato bilan', 'tezda'], correct: 'tasodifan', explanation: 'By accident = tasodifan (rejalashtirilmagan). Qoida: \'By accident\' = by chance, unintentionally. Qarama-qarshisi: on purpose (ataylab). Qo\'llanishi: I found it by accident. (Men uni tasodifan topdim.)' },
     { id: 52191, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '"On purpose" ma\'nosi nima?', options: ['tasodifan', 'xato bilan', 'ataylab', 'nihoyat'], correct: 'ataylab', explanation: 'On purpose = ataylab (qasddan). Qoida: \'On purpose\' = intentionally, deliberately. Qarama-qarshisi: by accident (tasodifan). Qo\'llanishi: He did it on purpose. (U buni ataylab qildi.)' },
@@ -1092,13 +1137,22 @@ export const wordFormation: DailyLesson = {
       prompt: 'So\'z yasash qoidalaridan foydalanib, o\'z kelajak rejalaringiz haqida yozing.',
       hints: ['\'My decision to...\'', '\'It is important to...\'', '\'I have a strong belief...\''],
       exampleAnswer: 'My decision to study abroad was not easy. Education is very important for my future. I have a strong belief that I will succeed. My determination helps me overcome challenges.' },
+
+
+    // ── Interleaved Practice: Word Formation + Nominalization ──
+    { id: 95731, type: 'multiple-choice', instruction: "Noun suffixes (-tion, -ment, -ness):", question: "inform → inform___ ; employ → employ___ ; happy → happi___", options: ['ation / ment / ness', 'ment / tion / ness', 'ness / ment / tion', 'tion / ness / ment'], correct: 'ation / ment / ness', explanation: "-tion, -ment, -ness eng keng tarqalgan noun suffixes." },
+    { id: 95732, type: 'fill-blank', instruction: "Adjective to noun:", question: "improve → improve___ ; protect → protect___ ; achieve → achieve___", blanks: ['ment', 'ion', 'ment'], explanation: "Improve → improvement. Protect → protection. Achieve → achievement." },
+    { id: 95733, type: 'error-correction', instruction: "Negative prefixes:", question: "This is unpossible. The answer is unlegal.", errorPart: 'unpossible / unlegal', correct: 'This is impossible. The answer is illegal.', explanation: "Possible → impossible (im-). Legal → illegal (il-)." },
+    { id: 95734, type: 'fill-blank', instruction: "Verb → noun (nominalization):", question: "They decided → They made a ___. She analysed → Her ___ was good.", blanks: ['decision', 'analysis'], explanation: "Decide → decision. Analyse → analysis." },
+    { id: 95735, type: 'transformation', instruction: "Verb → noun with suffix:", question: "They invest in new technology. → Their ___ in new technology...", hint: "Their ___ in new technology...", correct: 'investment', explanation: "Invest → investment (-ment suffix)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Suffix qo\'shish', color: 'bg-emerald-500', icon: '🌱', ids: [5001, 5002, 5003, 5004, 5005] },
     { title: "O'rtacha", desc: "Suffix tanlash", color: 'bg-blue-500', icon: '📘', ids: [5006, 5007, 5008, 5009, 5010] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5011, 5012, 5013, 5014, 5015] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5020, 5017, 5016, 5013, 5018, 5020, 5015, 5017, 5019, 5018, 55021, 55030] }
-    ],
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5020, 5017, 5016, 5013, 5018, 5020, 5015, 5017, 5019, 5018, 55021, 55030] },
+    
+    { title: "🔀 Aralash", desc: "So'z yasalishi + Nominalization farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95731, 95732, 95733, 95734, 95735] },],
   tests: [
     { id: 52231, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Education' qanday yasalgan?", options: ['educate + -tion', 'educate + -sion', 'educate + -ment', 'educate + -ness'], correct: 'educate + -tion', explanation: 'Educate + -tion = education (ta\'lim). Qoida: educate (ta\'lim bermoq) + -tion = education (ta\'lim). -tion fe\'ldan ot yasaydi: celebrate + -tion = celebration.' },
     { id: 52232, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Development' qanday yasalgan?", options: ['develop + -tion', 'develop + -sion', 'develop + -ment', 'develop + -ness'], correct: 'develop + -ment', explanation: 'Develop + -ment = development (rivojlanish). Qoida: develop (rivojlantirmoq) + -ment = development (rivojlanish). -ment fe\'ldan ot yasovchi qo\'shimcha.' },
@@ -1279,13 +1333,22 @@ export const reportingVerbs: DailyLesson = {
       prompt: 'Kecha bir do\'stingiz bilan suhbatlashdingiz. Reporting verbs ishlatib, suhbatni aytib bering.',
       hints: ['\'He suggested...\'', '\'She admitted...\'', '\'They promised...\''],
       exampleAnswer: 'My friend suggested going to the cinema. He admitted that he had forgotten his wallet. I offered to pay. He promised to return the money the next day.' },
+
+
+    // ── Interleaved Practice: Reporting Verbs + Reported Speech ──
+    { id: 95741, type: 'multiple-choice', instruction: "Say vs tell vs ask:", question: "She ___ that she was tired. She ___ me to help. She ___ if I was free.", options: ['said / told / asked', 'told / said / asked', 'said / asked / told', 'asked / told / said'], correct: 'said / told / asked', explanation: "Say + that. Tell + object. Ask + if/whether." },
+    { id: 95742, type: 'fill-blank', instruction: "Reporting verb + to V:", question: "She advised me ___ (wait). He warned us ___ (not / go).", blanks: ['to wait', 'not to go'], explanation: "Advise + object + to V. Warn + object + not to V." },
+    { id: 95743, type: 'error-correction', instruction: "Say vs tell:", question: "She told that she was happy. He said me the truth.", errorPart: 'told that / said me', correct: 'She said that she was happy. He told me the truth.', explanation: "Say + (that) - no object. Tell + object." },
+    { id: 95744, type: 'fill-blank', instruction: "Reported + tense backshift:", question: "'I am tired.' → He said he ___ tired. 'I will come.' → She said she ___ come.", blanks: ['was', 'would'], explanation: "Present → past (am → was). Will → would." },
+    { id: 95745, type: 'transformation', instruction: "Direct → reported:", question: "'I live in Tashkent.' → He said that he ___ in Tashkent.", hint: "He said that he ___ in Tashkent.", correct: 'lived', explanation: "Direct present → reported past (live → lived)." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Reporting verbs asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5101, 5102, 5103, 5104, 5105] },
     { title: "O'rtacha", desc: "To'g'ri fe'l tanlash", color: 'bg-blue-500', icon: '📘', ids: [5106, 5107, 5108, 5109, 5110] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5111, 5112, 5113, 5114, 5115] },
-    { title: "O'zgartirish", desc: 'Prepositions + advanced verbs', color: 'bg-teal-500', icon: '🔄', ids: [5117, 5126, 5118, 5128, 5127, 5124, 5125, 5116, 5119, 5129, 5122, 5121, 5130, 5120, 5123, 55020, 55029] }
-    ],
+    { title: "O'zgartirish", desc: 'Prepositions + advanced verbs', color: 'bg-teal-500', icon: '🔄', ids: [5117, 5126, 5118, 5128, 5127, 5124, 5125, 5116, 5119, 5129, 5122, 5121, 5130, 5120, 5123, 55020, 55029] },
+    
+    { title: "🔀 Aralash", desc: "Reporting verbs + Reported speech farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95741, 95742, 95743, 95744, 95745] },],
   tests: [
     { id: 52282, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Admit' dan keyin nima keladi?", options: ['to + infinitive', '-ing / that', 'object + to', 'on + -ing'], correct: '-ing / that', explanation: 'Admit + V-ing / that = tan olmoq. Qoida: Admit + V-ing: He admitted stealing. (O\'g\'irlikni tan oldi.) Admit + that: He admitted that he stole.' },
     { id: 52283, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Deny' dan keyin nima keladi?", options: ['to + infinitive', '-ing', 'that', 'on + -ing'], correct: '-ing', explanation: 'Deny + V-ing — inkor qilmoq. \'He denied stealing the money.\' (mol o\'g\'irlikni inkor qildi)' },
@@ -1461,13 +1524,22 @@ export const determinersAdvanced: DailyLesson = {
       prompt: 'Each, every, neither, either, both so\'zlarini ishlatib, tanlovlaringiz haqida yozing.',
       hints: ['\'Each student...\'', '\'Neither option...\'', '\'Either ... or ...\''],
       exampleAnswer: 'Each student in my class has a different opinion. Neither option is perfect, but I prefer the first one. Either we study hard or we fail. Both of my parents support my decision.' },
+
+
+    // ── Interleaved Practice: Determiners + Article Usage ──
+    { id: 95751, type: 'multiple-choice', instruction: "Each (har biri alohida) vs every (umumiy):", question: "___ student has their own desk. ___ child needs love.", options: ['Each / Every', 'Every / Each', 'All / Every', 'Both / Each'], correct: 'Each / Every', explanation: "Each = individual. Every = general (collective)." },
+    { id: 95752, type: 'fill-blank', instruction: "All vs both:", question: "___ (all) of them passed. ___ (both) my parents are teachers.", blanks: ['All', 'Both'], explanation: "All = 3+. Both = exactly 2." },
+    { id: 95753, type: 'error-correction', instruction: "Either/neither + verb:", question: "Either of the answers are correct. Neither of them are coming.", errorPart: 'are / are', correct: 'Either of the answers is correct. Neither of them is coming.', explanation: "Either/neither + singular verb." },
+    { id: 95754, type: 'fill-blank', instruction: "Every + singular:", question: "Every student ___ (be) responsible. Every house ___ (have) a garden.", blanks: ['is', 'has'], explanation: "Every + singular noun + singular verb." },
+    { id: 95755, type: 'transformation', instruction: "All → Each:", question: "All students must bring a book. → ___ student must bring a book.", hint: "___ student must bring a book.", correct: 'Each', explanation: "All + plural → Each + singular." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Determiners asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5201, 5202, 5203, 5204, 5205] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5206, 5207, 5208, 5209, 5210] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5211, 5212, 5213, 5214, 5215] },
-    { title: "O'zgartirish", desc: 'None/No va Either/Neither chuqurlashtirilgan', color: 'bg-teal-500', icon: '🔄', ids: [5223, 5228, 5225, 5226, 5219, 5224, 5217, 5222, 5216, 5230, 5229, 5220, 5227, 5218, 5221, 55019, 55028] }
-    ],
+    { title: "O'zgartirish", desc: 'None/No va Either/Neither chuqurlashtirilgan', color: 'bg-teal-500', icon: '🔄', ids: [5223, 5228, 5225, 5226, 5219, 5224, 5217, 5222, 5216, 5230, 5229, 5220, 5227, 5218, 5221, 55019, 55028] },
+    
+    { title: "🔀 Aralash", desc: "Each/every/all/both + Quantifiers farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95751, 95752, 95753, 95754, 95755] },],
   tests: [
     { id: 52333, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'All' nechta narsa uchun?", options: ['2', '3+', '1', 'har qanday'], correct: '3+', explanation: 'All = hammasi (3+ narsa/odam uchun). All + ko\'plik ot. All students passed (3+ talaba).' },
     { id: 52334, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Both' nechta narsa uchun?", options: ['1', '2', '3+', '4+'], correct: '2', explanation: 'Both = ikkalasi (aniq 2 ta uchun). Both + ko\'plik ot. Both brothers are tall (2 aka-uka).' },
@@ -1633,13 +1705,22 @@ export const b1plusReview: DailyLesson = {
       prompt: 'B1+ da o\'rgangan grammatikangizni ishlatib, o\'z hayotingiz haqida yozing.',
       hints: ['\'I enjoy learning...\'', '\'Having studied hard...\'', '\'Furthermore, I...\''],
       exampleAnswer: 'I enjoy learning English because it helps me communicate. Having studied for three years, I can now speak confidently. Furthermore, I have improved my writing skills. I decided to take the IELTS exam next year.' },
+
+
+    // ── Interleaved Practice: B1+ mixed review ──
+    { id: 95761, type: 'multiple-choice', instruction: "Narrative tenses + reporting:", question: "When I arrived, the film ___. She said that she ___ happy.", options: ['had already started / was', 'already started / is', 'had already started / is', 'started / was'], correct: 'had already started / was', explanation: "Past Perfect (had started). Reported → past (was)." },
+    { id: 95762, type: 'fill-blank', instruction: "Relative clause + participle:", question: "The woman ___ lives next door is a doctor. The car ___ in 2020 is mine.", blanks: ['who', 'made'], explanation: "Who (relative). Made (past participle)." },
+    { id: 95763, type: 'error-correction', instruction: "Gerund/infinitive + collocation:", question: "I enjoy to swim. She made a decision but did a mistake.", errorPart: 'to swim / did a mistake', correct: 'I enjoy swimming. She made a decision but made a mistake.', explanation: "Enjoy + V-ing. Make a mistake (do emas)." },
+    { id: 95764, type: 'fill-blank', instruction: "Phrasal verb + idiom:", question: "She came ___ with a solution. The exam was a piece of ___.", blanks: ['up', 'cake'], explanation: "Come up with. Piece of cake." },
+    { id: 95765, type: 'transformation', instruction: "Active → passive participle:", question: "Because the book was written in 1990, it is famous. → ___ in 1990, the book is famous.", hint: "...", correct: 'Written', explanation: "Passive participle: Written in 1990 = Because it was written in 1990." }
 ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Grammar va vocab review', color: 'bg-emerald-500', icon: '🌱', ids: [5301, 5302, 5303, 5304, 5305] },
     { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5306, 5307, 5308, 5309, 5310] },
     { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5311, 5312, 5313, 5314, 5315] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5318, 5317, 5317, 5313, 5316, 5320, 5320, 5318, 5315, 5319, 55018, 55027] }
-    ],
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5318, 5317, 5317, 5313, 5316, 5320, 5320, 5318, 5315, 5319, 55018, 55027] },
+    
+    { title: "🔀 Aralash", desc: "B1+ mavzularini aralash takrorlash", color: 'bg-fuchsia-500', icon: '🔄', ids: [95761, 95762, 95763, 95764, 95765] },],
   tests: [
     { id: 52374, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Narrative tenses' qaysi zamonlarni o'z ichiga oladi?", options: ['Present tenses', 'Past tenses', 'Future tenses', 'All tenses'], correct: 'Past tenses', explanation: "Narrative = Past Simple/Cont/Perfect/Perf Cont" },
     { id: 52375, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "'Participle clause' qanday boshlanadi?", options: ['-ing / -ed / Having + pp', 'to + verb', 'that + clause', 'with + noun'], correct: '-ing / -ed / Having + pp', explanation: "Participle clauses: -ing, -ed, Having + pp" },

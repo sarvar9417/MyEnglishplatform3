@@ -5,6 +5,7 @@ import './index.css'
 import { initTheme } from './utils/theme'
 import { setMonitoringProvider } from './lib/monitoring'
 import { createSentryProvider, initSentry } from './lib/sentryProvider'
+import { initSyncQueueListener } from './lib/syncQueue'
 
 initTheme()
 
@@ -40,6 +41,8 @@ window.addEventListener('unhandledrejection', (event) => {
     })
   }
 })
+
+initSyncQueueListener()
 
 // ─── Service Worker auto-register (via vite-plugin-pwa / Workbox) ─────────
 // The VitePWA plugin injects SW registration during build.
