@@ -8,6 +8,7 @@ import { fetchWritingPrompts, getDailyWritingPrompt, saveWritingResult } from '@
 import type { WritingPrompt } from '@/services/writingService'
 import { evaluateWriting, analyzeWritingIELTS, analyzeWritingErrors, type WritingError } from '@/lib/claude'
 import { useI18n } from '../i18n'
+import Breadcrumb from '../components/ui/Breadcrumb'
 import { useStore } from '@/store/useStore'
 import { supabase } from '@/lib/supabase'
 import { monitoring } from '@/lib/monitoring'
@@ -246,6 +247,10 @@ export default function Writing() {
 
     return (
       <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <Breadcrumb items={[
+          { label: t('breadcrumb.home'), path: '/' },
+          { label: t('breadcrumb.writing') },
+        ]} />
         <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
           <div className="w-10 h-10 bg-b2-100 rounded-xl flex items-center justify-center">
             <PenLine size={20} className="text-b2-600" />
@@ -369,6 +374,10 @@ export default function Writing() {
     return <WritingSkeleton />
   }    return (
       <div className="p-3 sm:p-6 max-w-2xl mx-auto">
+        <Breadcrumb items={[
+          { label: t('breadcrumb.home'), path: '/' },
+          { label: t('breadcrumb.writing') },
+        ]} />
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">

@@ -3,6 +3,7 @@ import { useStore } from '../store/useStore'
 import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
 import { useI18n } from '../i18n'
+import Breadcrumb from '../components/ui/Breadcrumb'
 import type { TranslationStrings } from '../i18n/types'
 import { LogOut } from 'lucide-react'
 import { Certificate } from '../components/ui/Certificate'
@@ -367,6 +368,10 @@ export default function Profile() {
 
   return (
     <div className="max-w-2xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
+      <Breadcrumb items={[
+        { label: t('breadcrumb.home'), path: '/' },
+        { label: t('breadcrumb.profile') },
+      ]} />
       {showCert && (
         <Certificate
           userName={userName || t('profile.userFallback')}

@@ -90,6 +90,14 @@
   "offline.dismiss": "Tushunarli",
   "offline.showDetails": "Nima ishlashini ko'rsat",
   "offline.hideDetails": "Yashirish",
+  "breadcrumb.home": "Bosh sahifa",
+  "breadcrumb.lessons": "Darslar",
+  "breadcrumb.grammar": "Grammatika",
+  "breadcrumb.vocabulary": "Lug'at",
+  "breadcrumb.writing": "Yozish",
+  "breadcrumb.speaking": "Gapirish",
+  "breadcrumb.profile": "Profil",
+  "breadcrumb.dictionary": "Lug'at kitobi",
   "pwa.installTitle": "EnglishPath ni o'rnatish",
   "pwa.installDesc": "Ilovani o'rnating va darslarga offline ham kirish imkoniga ega bo'ling.",
   "pwa.install": "O'rnatish",
@@ -1535,5 +1543,13 @@
   "writing.ieltsBand75": "IELTS 7.0–7.5",
   "writing.ieltsBand65": "IELTS 6.0–6.5",
   "writing.ieltsBand55": "IELTS 5.0–5.5",
-  "writing.ieltsBand45": "IELTS 4.0–4.5"
+  "writing.ieltsBand45": "IELTS 4.0–4.5",
+
+  "ielts.title": "IELTS Namunaviy test",
+  "ielts.timeRemaining": "Qolgan vaqt",
+  "ielts.submit": "Topshirish",
+  "ielts.score": "Natija",
+  "ielts.pass": "O'tdingiz!",
+  "ielts.fail": "Yana urinib ko'ring",
+  "ielts.readingPassage": "O'qish matni"
 }

@@ -38,6 +38,10 @@ vi.mock('../../lib/supabase', () => ({
   },
 }))
 
+vi.mock('../../components/ui/Breadcrumb', () => ({
+  default: () => <nav data-testid="breadcrumb" />,
+}))
+
 vi.mock('../../components/profile/ProfileInfo', () => ({
   default: (props: Record<string, unknown>) => (
     <div data-testid="profile-info">
@@ -110,7 +114,7 @@ describe('Profile', () => {
   it('renders profile title', () => {
     renderPage()
     // uz.json: profile.title = "Profil"
-    expect(screen.getByText('Profil')).toBeInTheDocument()
+    expect(screen.getAllByText('Profil').length).toBeGreaterThanOrEqual(1)
   })
 
   it('shows greeting with user name', () => {

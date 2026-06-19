@@ -1,9 +1,12 @@
 import { createClient } from '@supabase/supabase-js'
-import type { Database, Json } from '../types/supabase'
-import type {
-  DbUser, DbSession, DbVocabWord,
-  DbDailyProgress, DbWriting, DbMockTest,
-} from '../types/database'
+import type { Database, Json, Tables } from '../types/supabase'
+
+type DbUser = Tables<'users'>
+type DbSession = Tables<'sessions'>
+type DbVocabWord = Tables<'vocabulary'>
+type DbDailyProgress = Tables<'daily_progress'>
+type DbWriting = Tables<'writings'>
+type DbMockTest = Tables<'mock_tests'>
 
 const SUPABASE_URL      = import.meta.env.VITE_SUPABASE_URL      as string
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string

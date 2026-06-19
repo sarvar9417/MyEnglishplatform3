@@ -71,6 +71,7 @@ const lazyPages = {
   SpeakingPath: lazyWithReload(() => import('./pages/SpeakingPath')),
   PlacementTest: lazyWithReload(() => import('./pages/PlacementTest')),
   NotFound: lazyWithReload(() => import('./pages/NotFound')),
+  IeltsMockTest: lazyWithReload(() => import('./components/ielts/IeltsMockTest')),
 }
 
 // ─── App Shell ────────────────────────────────────────────────────────────────

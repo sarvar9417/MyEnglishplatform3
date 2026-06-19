@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { supabase } from '../lib/supabase'
-import type { DbDailyProgress, DbMockTest } from '../types/database'
+import type { Tables } from '../types/supabase'
+
+type DbDailyProgress = Tables<'daily_progress'>
+type DbMockTest = Tables<'mock_tests'>
 import { getTodayTashkent } from '../utils/tashkentDate'
 
 function today(): string {

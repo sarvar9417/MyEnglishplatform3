@@ -978,3 +978,62 @@ button, a, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-
     display: none !important;
   }
 }
+
+/* ═══ DARK MODE CONSOLIDATION ════════════════════════════════════════════════ */
+/* These utility classes reduce repetition of dark: prefixes across components.
+   191 dark mode overrides exist above. These classes abstract the most common
+   patterns so new components can use a single class instead of 3-5 dark: utilities.
+
+   Usage:
+     <div class="dark-card">           → card with dark bg/border
+     <p class="dark-text">             → primary text with dark override
+     <p class="dark-text-secondary">   → secondary text with dark override
+     <input class="dark-input" />      → input with dark bg/border/text/placeholder
+     <div class="dark-surface">        → generic surface with dark bg
+     <div class="dark-border">         → element with dark border
+     <div class="dark-surface-hover">  → hoverable surface with dark override */
+
+@layer utilities {
+  .dark-card {
+    @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700;
+  }
+
+  .dark-text {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+
+  .dark-text-secondary {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  .dark-text-muted {
+    @apply text-gray-500 dark:text-gray-500;
+  }
+
+  .dark-input {
+    @apply bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600
+           text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500;
+  }
+
+  .dark-surface {
+    @apply bg-gray-50 dark:bg-gray-900;
+  }
+
+  .dark-surface-raised {
+    @apply bg-white dark:bg-gray-800;
+  }
+
+  .dark-border {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+
+  .dark-surface-hover {
+    @apply hover:bg-gray-100 dark:hover:bg-gray-800;
+  }
+
+  .dark-card-hover {
+    @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700
+           hover:border-gray-300 dark:hover:border-gray-600
+           hover:shadow-md dark:hover:shadow-black/30;
+  }
+}

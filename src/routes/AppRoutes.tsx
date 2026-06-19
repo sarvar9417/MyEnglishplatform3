@@ -43,6 +43,7 @@ export function buildRoutes(lazyPages: Record<string, React.LazyExoticComponent<
     { path: '/profile', element: safe(<P.Profile />) },
     { path: '/review', element: safe(<P.GrammarReview />) },
     { path: '/reset-password', element: safe(<P.ResetPassword />) },
+    { path: '/ielts', element: safe(<P.IeltsMockTest />) },
   ]
 
   const redirectRoutes: RouteItem[] = [

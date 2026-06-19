@@ -3,6 +3,7 @@ import { Search, BookOpen, Volume2, ChevronDown, ChevronUp, CheckCircle, Clock, 
 import EmptyState from '../components/ui/EmptyState'
 import { DictionarySkeleton } from '../components/ui/PageSkeleton'
 import { useI18n } from '../i18n'
+import Breadcrumb from '../components/ui/Breadcrumb'
 import { supabase } from '../lib/supabase'
 import { monitoring } from '../lib/monitoring'
 import { searchDictionary, fetchWordList, addUserWord, deleteUserWord, type DictWord } from '../services/dictionaryService'
@@ -450,6 +451,10 @@ export default function Dictionary() {
 
   return (
     <div className="p-3 sm:p-6 max-w-3xl mx-auto">
+      <Breadcrumb items={[
+        { label: t('breadcrumb.home'), path: '/' },
+        { label: t('breadcrumb.dictionary') },
+      ]} />
       <div className="flex items-center gap-3 mb-4 sm:mb-6">
         <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
           <BookText size={20} className="text-blue-600" />

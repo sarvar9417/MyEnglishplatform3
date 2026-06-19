@@ -126,6 +126,10 @@ export {
 } from './b2BritishAmerican'
 
 export {
+  modalsPragmaticsB2,
+} from './b2ModalsPragmatics'
+
+export {
   complexSentencesB2,
   advancedModalsB2,
   contrastiveStructuresB2,

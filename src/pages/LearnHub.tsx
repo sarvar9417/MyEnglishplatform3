@@ -6,6 +6,7 @@ import {
 import type { DailyLesson, ReviewLesson } from '../data/dailyLessons'
 import { useStore } from '../store/useStore'
 import { useI18n } from '../i18n'
+import Breadcrumb from '../components/ui/Breadcrumb'
 import type { TranslationStrings } from '../i18n/types'
 import { useTandemStore } from '../store/tandemSlice'
 import { fetchAllLessonProgress } from '../services/lessonService'
@@ -325,6 +326,10 @@ export default function LearnHub() {
 
   return (
     <div className="p-3 sm:p-6 max-w-4xl mx-auto">
+      <Breadcrumb items={[
+        { label: t('breadcrumb.home'), path: '/' },
+        { label: t('breadcrumb.lessons') },
+      ]} />
       <div className="mb-5">
         <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">{t('learnHub.title')}</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">

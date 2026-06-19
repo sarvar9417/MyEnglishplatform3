@@ -181,6 +181,16 @@ export interface TranslationStrings {
   'grammar.explanationLabel': string
   'grammar.noAnswer': string
 
+  /* ── Breadcrumb ── */
+  'breadcrumb.home': string
+  'breadcrumb.lessons': string
+  'breadcrumb.grammar': string
+  'breadcrumb.vocabulary': string
+  'breadcrumb.writing': string
+  'breadcrumb.speaking': string
+  'breadcrumb.profile': string
+  'breadcrumb.dictionary': string
+
   /* ── PWA install prompt ── */
   'pwa.installTitle': string
   'pwa.installDesc': string
@@ -1668,5 +1678,14 @@ export interface TranslationStrings {
   'writing.rubricCoherence': string
   'writing.rubricShow': string
   'writing.rubricHide': string
+
+  /* ── IELTS Mock Test ── */
+  'ielts.title': string
+  'ielts.timeRemaining': string
+  'ielts.submit': string
+  'ielts.score': string
+  'ielts.pass': string
+  'ielts.fail': string
+  'ielts.readingPassage': string
 }
 

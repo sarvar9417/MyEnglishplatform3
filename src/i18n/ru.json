@@ -113,6 +113,14 @@
   "grammar.conjunctions": "Conjunctions — Союзы",
   "grammar.causative": "Causative — Каузативная форма",
   "grammar.gerundInfinitive": "Gerund & Infinitive — Герундий и инфинитив",
+  "breadcrumb.home": "Главная",
+  "breadcrumb.lessons": "Уроки",
+  "breadcrumb.grammar": "Грамматика",
+  "breadcrumb.vocabulary": "Словарь",
+  "breadcrumb.writing": "Письмо",
+  "breadcrumb.speaking": "Говорение",
+  "breadcrumb.profile": "Профиль",
+  "breadcrumb.dictionary": "Словарь",
   "pwa.installTitle": "Установить приложение",
   "pwa.installDesc": "Установите для быстрого доступа и работы офлайн",
   "pwa.install": "Установить",
@@ -1535,5 +1543,13 @@
   "writing.ieltsBand75": "IELTS 7.0–7.5",
   "writing.ieltsBand65": "IELTS 6.0–6.5",
   "writing.ieltsBand55": "IELTS 5.0–5.5",
-  "writing.ieltsBand45": "IELTS 4.0–4.5"
+  "writing.ieltsBand45": "IELTS 4.0–4.5",
+
+  "ielts.title": "Пробный тест IELTS",
+  "ielts.timeRemaining": "Оставшееся время",
+  "ielts.submit": "Отправить",
+  "ielts.score": "Результат",
+  "ielts.pass": "Вы прошли!",
+  "ielts.fail": "Попробуйте снова",
+  "ielts.readingPassage": "Текст для чтения"
 }

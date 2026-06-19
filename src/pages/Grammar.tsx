@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { useNavigationGuard } from '../hooks/useNavigationGuard'
 import { useI18n } from '../i18n'
+import Breadcrumb from '../components/ui/Breadcrumb'
 import { type GrammarTopic } from '../data/grammar'
 import { GRAMMAR_COLORS, type GrammarCategory } from '../lib/grammarColors'
 import { fetchGrammarTopics, saveGrammarResult } from '../services/grammarService'
@@ -93,6 +94,10 @@ function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect:
   const fromSkills = location.state?.from === '/skills'
   return (
     <div className="p-3 sm:p-6 max-w-4xl mx-auto">
+      <Breadcrumb items={[
+        { label: t('breadcrumb.home'), path: '/' },
+        { label: t('breadcrumb.grammar') },
+      ]} />
       <div className="flex items-center gap-3 mb-6">
         {fromSkills && (
           <button onClick={() => navigate('/skills')} className="btn-ghost p-2 rounded-xl -ml-2" aria-label={t('common.backToSkills')}>

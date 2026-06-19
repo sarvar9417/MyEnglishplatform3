@@ -189,6 +189,7 @@ export const LESSON_CAN_DO: Record<string, string> = {
   'advanced-verb-patterns-b2':       "Stop/remember/try + ing vs to farqini bilaman",
   'b2-comprehensive-review':         "Barcha B2 mavzularini takrorlab, IELTS ga tayyorman!",
   'british-american-differences':    "British va American ingliz farqlarini bilaman va ishlata olaman",
+  'modals-pragmatics-b2':            "Modallar yordamida shakl bildirish va ehtiyotkorlik bilan gapira olaman",
   'auto-review-22':                  "B2 darajasidagi barcha mavzularni yakunlab takrorlayman",
   'auto-review-17':                  "B2 birinchi 5 mavzusini takrorlayman",
   'auto-review-18':                  "B2 akademik yozuv mavzularini takrorlayman",

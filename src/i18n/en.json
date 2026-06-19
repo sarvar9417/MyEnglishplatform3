@@ -72,6 +72,14 @@
   "offline.dismiss": "Got it",
   "offline.showDetails": "Show what works",
   "offline.hideDetails": "Hide details",
+  "breadcrumb.home": "Home",
+  "breadcrumb.lessons": "Lessons",
+  "breadcrumb.grammar": "Grammar",
+  "breadcrumb.vocabulary": "Vocabulary",
+  "breadcrumb.writing": "Writing",
+  "breadcrumb.speaking": "Speaking",
+  "breadcrumb.profile": "Profile",
+  "breadcrumb.dictionary": "Dictionary",
   "pwa.installTitle": "Install EnglishPath",
   "pwa.installDesc": "Install the app for quick access to your lessons, even offline.",
   "pwa.install": "Install",
@@ -1535,5 +1543,13 @@
   "writing.ieltsBand75": "IELTS 7.0–7.5",
   "writing.ieltsBand65": "IELTS 6.0–6.5",
   "writing.ieltsBand55": "IELTS 5.0–5.5",
-  "writing.ieltsBand45": "IELTS 4.0–4.5"
+  "writing.ieltsBand45": "IELTS 4.0–4.5",
+
+  "ielts.title": "IELTS Mock Test",
+  "ielts.timeRemaining": "Time remaining",
+  "ielts.submit": "Submit",
+  "ielts.score": "Score",
+  "ielts.pass": "You passed!",
+  "ielts.fail": "Try again",
+  "ielts.readingPassage": "Reading passage"
 }
