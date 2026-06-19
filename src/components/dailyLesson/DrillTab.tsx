@@ -1,4 +1,4 @@
-import { CheckCircle, Sparkles } from 'lucide-react'
+import { CheckCircle, Sparkles, Zap, Target, Trophy } from 'lucide-react'
 import type { DailyLesson, DailyExercise } from '../../data/dailyLessons'
 
 type Answers = Record<number, string[]>
@@ -90,8 +90,38 @@ export default function DrillTab({
   onClearTest,
   onTestAnswerChange,
 }: DrillTabProps) {
+  const totalCorrect = Object.values(completedSections).reduce((a, b) => a + b, 0)
+  const totalExercises = exercises.length
+  const sectionsDone = Object.keys(completedSections).length
+  const sectionsTotal = exerciseSections.length
+
   return (
     <div className="space-y-5">
+      {/* Stats row */}
+      <div className="grid grid-cols-3 gap-2">
+        <div className="card text-center py-2 px-3">
+          <div className="flex items-center justify-center gap-1 mb-0.5">
+            <Target size={12} className="text-primary-600" />
+            <span className="text-[10px] font-bold text-gray-500 uppercase">Bosqich</span>
+          </div>
+          <p className="text-lg font-bold text-gray-900">{sectionsDone}<span className="text-xs text-gray-400">/{sectionsTotal}</span></p>
+        </div>
+        <div className="card text-center py-2 px-3">
+          <div className="flex items-center justify-center gap-1 mb-0.5">
+            <Trophy size={12} className="text-amber-500" />
+            <span className="text-[10px] font-bold text-gray-500 uppercase">To'g'ri</span>
+          </div>
+          <p className="text-lg font-bold text-gray-900">{totalCorrect}<span className="text-xs text-gray-400">/{totalExercises}</span></p>
+        </div>
+        <div className="card text-center py-2 px-3">
+          <div className="flex items-center justify-center gap-1 mb-0.5">
+            <Zap size={12} className="text-orange-500" />
+            <span className="text-[10px] font-bold text-gray-500 uppercase">Combo</span>
+          </div>
+          <p className={`text-lg font-bold ${combo > 0 ? 'text-orange-500' : 'text-gray-300'}`}>{combo}x</p>
+        </div>
+      </div>
+
       {/* Exercise sections progress */}
       <div className="space-y-4">
         <SectionProgressBar
