@@ -57,6 +57,7 @@ export const LESSON_CAN_DO: Record<string, string> = {
   'auto-review-1':         "A0 darajasidagi barcha mavzularni takrorlayman",
 
   // ── A1 ───────────────────────────────────────────────────────────────
+  'greetings-introductions': "Hello, goodbye va o'zimni tanishtira olaman",
   'alphabet-greetings':    "Ingliz alifbosini aytib, odamlar bilan salomlasha olaman",
   'numbers-1-100':         "1 dan 100 gacha sanay, yosh va narxlarni ayta olaman",
   'colors-shapes':         "Ranglar va shakllarni ingliz tilida ayta olaman",

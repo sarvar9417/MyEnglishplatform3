@@ -37,6 +37,8 @@ export {
 
 export { articles as articlesA1 } from './a1Articles'
 
+export { greetingsAndIntroductions } from './a1Greetings'
+
 // Re-export individual lesson constants
 export {
   modalVerbs,
@@ -148,6 +150,7 @@ export {
 } from './b2Part3'
 
 // Combined export arrays
+import { greetingsAndIntroductions } from './a1Greetings'
 import { alphabetAndGreetings, numbers, colorsAndShapes, family, daysAndMonths, timeAndRoutines, foodAndDrinks, animals, bodyParts, clothes } from './a1Part1'
 import { demonstratives, thereIsAre, canCant, haveGot, questionWords, conjunctions, a1Review, prepositionsOfPlace, basicAdjectives } from './a1Part2'
 import { articles as articlesA1 } from './a1Articles'
@@ -171,7 +174,9 @@ export const A1_LESSONS_NEW: DailyLesson[] = [
   greetingsAndNames,
   numbersAndAlphabet,
   familyAndMe,
-  // ─── Hayotiy lug'at (kun 4-13) ───
+  // ─── Salomlashish (kun 4) — yengil boshlang'ich ───
+  greetingsAndIntroductions,
+  // ─── Hayotiy lug'at (kun 5-13) ───
   alphabetAndGreetings,
   numbers,
   colorsAndShapes,
