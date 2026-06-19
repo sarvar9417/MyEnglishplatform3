@@ -146,8 +146,7 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     const hasPermission = await requestMicPermission()
     if (!hasPermission) {
       setPermissionError(true)
-      // eslint-disable-next-line no-console
-      console.warn('[SpeechRecognition] Mikrofon ruxsati yo\'q yoki qurilmada mikrofon topilmadi')
+      monitoring.captureMessage('SpeechRecognition: Mikrofon ruxsati yo\'q yoki qurilmada mikrofon topilmadi', 'warn')
       return
     }
     setPermissionError(false)
@@ -190,8 +189,7 @@ export function useSpeechRecognition(): SpeechRecognitionState {
 
     rec.onerror = (e) => {
       const err = e.error ?? 'unknown'
-      // eslint-disable-next-line no-console
-      console.warn('[SpeechRecognition] Xatolik:', err)
+      monitoring.captureMessage(`SpeechRecognition xatolik: ${String(err)}`, 'warn')
       if (err === 'not-allowed' || err === 'service-not-allowed') {
         setPermissionError(true)
       }
