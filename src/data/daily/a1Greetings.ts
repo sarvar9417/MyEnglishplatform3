@@ -66,7 +66,7 @@ export const greetingsAndIntroductions: DailyLesson = {
     { id: 7011, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Hello! My ___ is Ali.', blanks: ['name'], explanation: "My name is ..." },
     { id: 7012, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I am ___ Uzbekistan.', blanks: ['from'], explanation: "I am from ..." },
     { id: 7013, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Good ___! This is a new day! (06:00)', blanks: ['morning'], explanation: "06:00 = Good morning", visualHint: "☀️" },
-    { id: 7014, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ are you? I am fine.', options: ['What', 'How', 'Where', 'Who'], correct: 'How', explanation: "How are you? = Qandaysiz?" },
+    { id: 7014, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ are you? I am fine.', blanks: ['How'], explanation: 'How are you? = Qandaysiz?' },
     { id: 7015, type: 'multiple-choice', instruction: "To'g'ri tarjimani tanlang:", question: '"Tanishganimdan xursandman" English?', options: ['How are you', 'Nice to meet you', 'Good morning', 'Goodbye'], correct: 'Nice to meet you', explanation: "Nice to meet you = tanishganimdan xursandman" },
     { id: 7016, type: 'fill-blank', instruction: "Salomni yozing (soat 19:00):", question: 'It is 7 PM. I say: "Good ___"', blanks: ['evening'], explanation: "7 PM = evening — vaqtga qarab salom", visualHint: "🌆" },
     { id: 7017, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '___ afternoon! (soat 14:00)', blanks: ['Good'], explanation: "Good afternoon = xayrli kun" },

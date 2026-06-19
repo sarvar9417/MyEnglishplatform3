@@ -404,62 +404,10 @@ export const relativeClausesB1: DailyLesson = {
       explanation: "'When' is used for time expressions — 'the year' refers to time.",
       instruction: "When:"
     },
-    {
-      id: 45014,
-      type: "multiple-choice",
-      correct: "who",
-      options: [
-        "which",
-        "whose",
-        "who",
-        "where"
-      ],
-      question: "The man ___ called you is my brother.",
-      explanation: "'Who' is used for people — 'the man' is a person.",
-      instruction: "Tanlang:"
-    },
-    {
-      id: 45015,
-      type: "multiple-choice",
-      correct: "which",
-      options: [
-        "who",
-        "whose",
-        "which",
-        "where"
-      ],
-      question: "The film ___ we saw was boring.",
-      explanation: "'Which' is used for things — 'the film' is a thing.",
-      instruction: "Tanlang:"
-    },
-    {
-      id: 45016,
-      type: "multiple-choice",
-      correct: "who",
-      options: [
-        "that",
-        "which",
-        "who",
-        "whose"
-      ],
-      question: "My sister, ___ lives in Paris, is coming.",
-      explanation: "Non-defining -> who",
-      instruction: "Tanlang:"
-    },
-    {
-      id: 45017,
-      type: "multiple-choice",
-      correct: "whose",
-      options: [
-        "who",
-        "which",
-        "whose",
-        "that"
-      ],
-      question: "The student ___ phone rang was embarrassed.",
-      explanation: "'Whose' shows possession — the phone belongs to the student.",
-      instruction: "Tanlang:"
-    },
+    { id: 45014, type: 'fill-blank', instruction: 'Tanlang:', question: 'The man ___ called you is my brother.', blanks: ['who'], explanation: '\'Who\' is used for people — \'the man\' is a person.' },
+    { id: 45015, type: 'fill-blank', instruction: 'Tanlang:', question: 'The film ___ we saw was boring.', blanks: ['which'], explanation: '\'Which\' is used for things — \'the film\' is a thing.' },
+    { id: 45016, type: 'fill-blank', instruction: 'Tanlang:', question: 'My sister, ___ lives in Paris, is coming.', blanks: ['who'], explanation: 'Non-defining -> who' },
+    { id: 45017, type: 'fill-blank', instruction: 'Tanlang:', question: 'The student ___ phone rang was embarrassed.', blanks: ['whose'], explanation: '\'Whose\' shows possession — the phone belongs to the student.' },
     {
       id: 45018,
       type: "multiple-choice",
@@ -621,34 +569,8 @@ export const relativeClausesB1: DailyLesson = {
     explanation: "When = vaqt — tarjima",
     instruction: "When:"
 },
-    {
-    id: 45034,
-    type: "multiple-choice",
-    correct: "who",
-    options: [
-        "which",
-        "who",
-        "whose",
-        "where"
-    ],
-    question: "The woman ___ won the prize is my aunt.",
-    explanation: "Who = odam — tarjima",
-    instruction: "Tanlang:"
-},
-    {
-    id: 45035,
-    type: "multiple-choice",
-    correct: "which",
-    options: [
-        "who",
-        "whose",
-        "which",
-        "when"
-    ],
-    question: "I need a job ___ pays well.",
-    explanation: "Which = narsa — tarjima",
-    instruction: "Tanlang:"
-},
+    { id: 45034, type: 'fill-blank', instruction: 'Tanlang:', question: 'The woman ___ won the prize is my aunt.', blanks: ['who'], explanation: 'Who = odam — tarjima' },
+    { id: 45035, type: 'fill-blank', instruction: 'Tanlang:', question: 'I need a job ___ pays well.', blanks: ['which'], explanation: 'Which = narsa — tarjima' },
     {
     id: 45036,
     type: "multiple-choice",
@@ -731,20 +653,7 @@ export const relativeClausesB1: DailyLesson = {
     explanation: "Whose = egalik — tarjima",
     instruction: "Combine the sentences:"
 },
-    {
-    id: 45044,
-    type: "multiple-choice",
-    correct: "whom",
-    options: [
-        "who",
-        "whom",
-        "whose",
-        "which"
-    ],
-    question: "Formal: The candidate ___ we interviewed.",
-    explanation: "Whom = obekt — tarjima",
-    instruction: "Tanlang:"
-},
+    { id: 45044, type: 'fill-blank', instruction: 'Tanlang:', question: 'Formal: The candidate ___ we interviewed.', blanks: ['whom'], explanation: 'Whom = obekt — tarjima' },
     {
     id: 45045,
     type: "fill-blank",
@@ -1490,76 +1399,11 @@ export const phrasalVerbsB1: DailyLesson = {
       explanation: "Look forward TO",
       instruction: "Three-word:"
     },
-    {
-      id: 45080,
-      type: "multiple-choice",
-      correct: "into",
-      options: [
-        "after",
-        "over",
-        "into",
-        "for"
-      ],
-      question: "I ran ___ an old friend yesterday.",
-      explanation: "Run into = tasodifan uchrashish",
-      instruction: "Tanlang:"
-    },
-    {
-      id: 45081,
-      type: "multiple-choice",
-      correct: "up",
-      options: [
-        "up",
-        "in",
-        "out",
-        "off"
-      ],
-      question: "He gave ___ smoking last year.",
-      explanation: "Give up = tashlamoq",
-      instruction: "Tanlang:"
-    },
-    {
-      id: 45082,
-      type: "multiple-choice",
-      correct: "on",
-      options: [
-        "off",
-        "on",
-        "out",
-        "away"
-      ],
-      question: "Put ___ your jacket, its cold.",
-      explanation: "Put on = kiymoq",
-      instruction: "Tanlang:"
-    },
-    {
-      id: 45083,
-      type: "multiple-choice",
-      correct: "up",
-      options: [
-        "off",
-        "up",
-        "out",
-        "on"
-      ],
-      question: "I can't put ___ with this noise.",
-      explanation: "Put up with = chidamoq",
-      instruction: "Tanlang:"
-    },
-    {
-      id: 45084,
-      type: "multiple-choice",
-      correct: "after",
-      options: [
-        "after",
-        "over",
-        "up",
-        "down"
-      ],
-      question: "She takes ___ her mother.",
-      explanation: "Take after = oxshamoq",
-      instruction: "Tanlang:"
-    },
+    { id: 45080, type: 'fill-blank', instruction: 'Tanlang:', question: 'I ran ___ an old friend yesterday.', blanks: ['into'], explanation: 'Run into = tasodifan uchrashish' },
+    { id: 45081, type: 'fill-blank', instruction: 'Tanlang:', question: 'He gave ___ smoking last year.', blanks: ['up'], explanation: 'Give up = tashlamoq' },
+    { id: 45082, type: 'fill-blank', instruction: 'Tanlang:', question: 'Put ___ your jacket, its cold.', blanks: ['on'], explanation: 'Put on = kiymoq' },
+    { id: 45083, type: 'fill-blank', instruction: 'Tanlang:', question: 'I can\'t put ___ with this noise.', blanks: ['up'], explanation: 'Put up with = chidamoq' },
+    { id: 45084, type: 'fill-blank', instruction: 'Tanlang:', question: 'She takes ___ her mother.', blanks: ['after'], explanation: 'Take after = oxshamoq' },
     {
       id: 45085,
       type: "error-correction",
@@ -1687,48 +1531,9 @@ export const phrasalVerbsB1: DailyLesson = {
     explanation: "Go through — o'tmoq, tekshirmoq: Go through the gate",
     instruction: "Phrasal:"
 },
-    {
-    id: 45098,
-    type: "multiple-choice",
-    correct: "off",
-    options: [
-        "on",
-        "off",
-        "up",
-        "down"
-    ],
-    question: "Please turn ___ the TV before sleeping.",
-    explanation: "Turn off — o'chirmoq: Turn off the light",
-    instruction: "Tanlang:"
-},
-    {
-    id: 45099,
-    type: "multiple-choice",
-    correct: "out",
-    options: [
-        "in",
-        "out",
-        "up",
-        "off"
-    ],
-    question: "We ran ___ of milk.",
-    explanation: "Run out of — tugamoq, kamaymoq: We ran out of milk",
-    instruction: "Tanlang:"
-},
-    {
-    id: 45100,
-    type: "multiple-choice",
-    correct: "bring up",
-    options: [
-        "bring up",
-        "look after",
-        "give up",
-        "put off"
-    ],
-    question: "She had to ___ three children alone.",
-    explanation: "Bring up — tarbiyalamoq, o'stirmoq",
-    instruction: "Tanlang:"
-},
+    { id: 45098, type: 'fill-blank', instruction: 'Tanlang:', question: 'Please turn ___ the TV before sleeping.', blanks: ['off'], explanation: 'Turn off — o\'chirmoq: Turn off the light' },
+    { id: 45099, type: 'fill-blank', instruction: 'Tanlang:', question: 'We ran ___ of milk.', blanks: ['out'], explanation: 'Run out of — tugamoq, kamaymoq: We ran out of milk' },
+    { id: 45100, type: 'fill-blank', instruction: 'Tanlang:', question: 'She had to ___ three children alone.', blanks: ['bring up'], explanation: 'Bring up — tarbiyalamoq, o\'stirmoq' },
     {
     id: 45101,
     type: "error-correction",

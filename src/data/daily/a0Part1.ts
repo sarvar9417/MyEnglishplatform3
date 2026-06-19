@@ -38,7 +38,7 @@ export const greetingsAndNames: DailyLesson = {
   exercises: [
     { id: 100001, type: 'multiple-choice', instruction: "To'g'ri salomni tanlang:", question: "Siz do'stingizga norasmiy salom ayting. Qaysi?", options: ['Good morning', 'Hi', 'Good evening', 'Goodbye'], correct: 'Hi', explanation: "Hi — norasmiy salom. Do'stlarga ishlatiladi." },
     { id: 100002, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "My ___ is Ali.", blanks: ['name'], explanation: "My name is Ali — Mening ismim Ali." },
-    { id: 100003, type: 'multiple-choice', instruction: "I am a ___. (talaba)", question: "I am a student. student nima degani?", options: ["o'qituvchi", 'talaba', 'shifokor', 'boshqa'], correct: 'talaba', explanation: "Student = talaba" },
+    { id: 100003, type: 'fill-blank', instruction: 'I am a ___. (talaba)', question: 'I am a student. student nima degani?', blanks: ['talaba'], explanation: 'Student = talaba' },
     { id: 100004, type: 'multiple-choice', instruction: "Ertalab 9:00 da qanday salom aytiladi?", question: "It is 9 AM. You say:", options: ['Good night', 'Good morning', 'Good evening', 'Goodbye'], correct: 'Good morning', explanation: "9 AM = morning — Good morning!" },
     { id: 100005, type: 'multiple-choice', instruction: "Xatoni toping:", question: "Qaysi jumla noto'g'ri?", options: ["My name is Ali.", "I am Ali ismim.", "I name Ali.", "Ali my name."], correct: "My name is Ali.", explanation: "To'g'ri: My name is Ali." },
   ],
@@ -144,7 +144,7 @@ export const familyAndMe: DailyLesson = {
   exercises: [
     { id: 100020, type: 'multiple-choice', instruction: "'Mother' nima degani?", question: "What does 'mother' mean?", options: ['Opa', 'Ona', 'Singil', 'Bobi'], correct: 'Ona', explanation: 'Mother = ona' },
     { id: 100021, type: 'multiple-choice', instruction: "To'g'ri jumlani toping:", question: 'Which sentence is correct?', options: ['I have brother.', 'I have a brother.', 'I have the brother.', 'I has a brother.'], correct: 'I have a brother.', explanation: "Artikl 'a' kerak: I have a brother." },
-    { id: 100022, type: 'multiple-choice', instruction: "'She is my ___' (ona):", question: "She is my ___. (mother)", options: ['father', 'brother', 'mother', 'sister'], correct: 'mother', explanation: 'mother = ona' },
+    { id: 100022, type: 'fill-blank', instruction: '\'She is my ___\' (ona):', question: 'She is my ___. (mother)', blanks: ['mother'], explanation: 'mother = ona' },
     { id: 100023, type: 'multiple-choice', instruction: "O'zbektilida 'brother' qanday tarjima qilinadi?", question: "'Brother' = ?", options: ['Faqat aka', 'Faqat uka', 'Aka yoki uka', 'Opa'], correct: 'Aka yoki uka', explanation: "Ingliztilida brother = aka HAM, uka HAM." },
     { id: 100024, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "I ___ two sisters.", blanks: ['have'], explanation: "I have two sisters — Mening ikki opa-singlim bor." },
   ],
