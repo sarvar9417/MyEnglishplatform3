@@ -908,6 +908,8 @@
   "speakingPath.reviewDesc": "{count} фраз готовы к повторению",
   "speakingPath.stepReview": "Повторение",
   "speakingPath.stepWarmup": "Разминка",
+  "speakingPath.stepVocab": "Словарь",
+  "speakingPath.stepGrammar": "Грамматика",
   "speakingPath.stepListen": "Слушай",
   "speakingPath.stepShadow": "Shadow",
   "speakingPath.stepSpeak": "Говори",

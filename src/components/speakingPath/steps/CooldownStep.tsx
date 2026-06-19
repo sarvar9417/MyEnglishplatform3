@@ -3,7 +3,7 @@
 // Suhbatdan keyin: tabrik, chunklarni takrorlash + 2 ta recall mini-quiz
 
 import { useState, useMemo } from 'react'
-import { Sparkles, Check, X, Volume2, ArrowRight, Brain } from 'lucide-react'
+import { Sparkles, Check, X, Volume2, ArrowRight, Brain, BookOpen, BookMarked, Star, Trophy } from 'lucide-react'
 import { useSpeechSynthesis } from '../../../hooks/useSpeechSynthesis'
 import type { SpeakingDay } from '../../../data/speakingPath/types'
 
@@ -50,6 +50,9 @@ export default function CooldownStep({ day, speakScore, spokenSeconds, onNext }:
 
   // ── Congratulation ──
   if (phase === 'congrats') {
+    const vocabCount = day.vocab?.length ?? 0
+    const starRating = speakScore >= 85 ? 3 : speakScore >= 65 ? 2 : speakScore >= 40 ? 1 : 0
+
     return (
       <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="rounded-2xl p-6 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border border-emerald-200 dark:border-emerald-800/50 text-center">
@@ -61,24 +64,62 @@ export default function CooldownStep({ day, speakScore, spokenSeconds, onNext }:
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 leading-relaxed">
             Siz bugun <strong>{day.chunks.length} ta</strong> yangi iborani o'rgandiz
-            va AI bilan <strong>{day.scenario.topic}</strong> mavzusida suhbatlashdiz.
+            {vocabCount > 0 && <> va <strong>{vocabCount} ta</strong> yangi so'z bilan tanishdingiz</>}
+            {day.grammarPoint && <>, grammatika: <strong>{day.grammarPoint}</strong></>}.
           </p>
-          <div className="mt-4 flex items-center justify-center gap-6 text-sm">
-            <div className="text-center">
-              <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{speakScore}%</p>
-              <p className="text-xs text-gray-400 uppercase tracking-wider">Talaffuz</p>
+
+          {/* Star rating */}
+          <div className="flex items-center justify-center gap-1 mt-3">
+            {[1, 2, 3].map(n => (
+              <Star
+                key={n}
+                size={24}
+                className={n <= starRating ? 'text-amber-400 fill-amber-400' : 'text-gray-300 dark:text-gray-600'}
+              />
+            ))}
+          </div>
+
+          {/* Stats grid */}
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <div className="rounded-xl p-3 bg-white/60 dark:bg-gray-800/60 border border-emerald-100 dark:border-emerald-800/40">
+              <div className="flex items-center justify-center gap-1.5 mb-1">
+                <Volume2 size={14} className="text-emerald-600 dark:text-emerald-400" />
+                <p className="text-xs text-gray-500 dark:text-gray-400">Talaffuz</p>
+              </div>
+              <p className="text-xl font-black text-emerald-600 dark:text-emerald-400">{speakScore}%</p>
             </div>
-            <div className="w-px h-10 bg-emerald-200 dark:bg-emerald-800" />
-            <div className="text-center">
-              <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{spokenLabel}</p>
-              <p className="text-xs text-gray-400 uppercase tracking-wider">Gapirilgan vaqt</p>
+            <div className="rounded-xl p-3 bg-white/60 dark:bg-gray-800/60 border border-emerald-100 dark:border-emerald-800/40">
+              <div className="flex items-center justify-center gap-1.5 mb-1">
+                <Trophy size={14} className="text-emerald-600 dark:text-emerald-400" />
+                <p className="text-xs text-gray-500 dark:text-gray-400">Vaqt</p>
+              </div>
+              <p className="text-xl font-black text-emerald-600 dark:text-emerald-400">{spokenLabel}</p>
             </div>
-            <div className="w-px h-10 bg-emerald-200 dark:bg-emerald-800" />
-            <div className="text-center">
-              <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{day.chunks.length}</p>
-              <p className="text-xs text-gray-400 uppercase tracking-wider">Iboralar</p>
+            <div className="rounded-xl p-3 bg-white/60 dark:bg-gray-800/60 border border-emerald-100 dark:border-emerald-800/40">
+              <div className="flex items-center justify-center gap-1.5 mb-1">
+                <BookOpen size={14} className="text-emerald-600 dark:text-emerald-400" />
+                <p className="text-xs text-gray-500 dark:text-gray-400">Iboralar</p>
+              </div>
+              <p className="text-xl font-black text-emerald-600 dark:text-emerald-400">{day.chunks.length}</p>
+            </div>
+            <div className="rounded-xl p-3 bg-white/60 dark:bg-gray-800/60 border border-emerald-100 dark:border-emerald-800/40">
+              <div className="flex items-center justify-center gap-1.5 mb-1">
+                <BookMarked size={14} className="text-emerald-600 dark:text-emerald-400" />
+                <p className="text-xs text-gray-500 dark:text-gray-400">So'zlar</p>
+              </div>
+              <p className="text-xl font-black text-emerald-600 dark:text-emerald-400">{vocabCount}</p>
             </div>
           </div>
+
+          {/* Pronunciation focus */}
+          {day.pronunciationFocus && (
+            <div className="mt-4 rounded-xl p-3 bg-violet-50 dark:bg-violet-900/20 border border-violet-100 dark:border-violet-800/40">
+              <p className="text-xs font-bold text-violet-700 dark:text-violet-300">
+                🎙️ Talaffuz fokusi: /{day.pronunciationFocus.sound}/ — {day.pronunciationFocus.ipaExample}
+              </p>
+            </div>
+          )}
+
           <button
             onClick={() => setPhase('recap')}
             className="mt-5 w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold text-sm hover:from-emerald-600 hover:to-green-700 active:scale-[0.98] transition-all shadow-md"
@@ -206,16 +247,55 @@ export default function CooldownStep({ day, speakScore, spokenSeconds, onNext }:
   }
 
   // ── Done ──
+  const vocabCount = day.vocab?.length ?? 0
+  const quizCorrect = quizResults.filter(Boolean).length
+
   return (
     <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="rounded-2xl p-6 bg-gradient-to-br from-primary-50 to-emerald-50 dark:from-primary-900/20 dark:to-emerald-900/20 border border-primary-200 dark:border-primary-800/50 text-center">
         <div className="w-14 h-14 mx-auto rounded-2xl bg-emerald-500 flex items-center justify-center">
-          <Sparkles size={28} className="text-white" />
+          <Trophy size={28} className="text-white" />
         </div>
         <p className="mt-3 font-black text-gray-900 dark:text-gray-100">Ajoyib! {day.day}-kun yakunlandi 🎉</p>
-        <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-          Bugun {day.chunks.length} ta ibora o'rganildi · {spokenLabel} gapirildi · ⭐ {speakScore}%
-        </p>
+
+        {/* Summary cards */}
+        <div className="mt-4 space-y-2 text-left">
+          <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/60 dark:bg-gray-800/60">
+            <Volume2 size={16} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <span className="text-xs text-gray-700 dark:text-gray-300">Talaffuz bahosi:</span>
+            <span className="ml-auto text-xs font-black text-emerald-600 dark:text-emerald-400">{speakScore}%</span>
+          </div>
+          <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/60 dark:bg-gray-800/60">
+            <Brain size={16} className="text-violet-600 dark:text-violet-400 shrink-0" />
+            <span className="text-xs text-gray-700 dark:text-gray-300">Vaqt:</span>
+            <span className="ml-auto text-xs font-black text-violet-600 dark:text-violet-400">{spokenLabel}</span>
+          </div>
+          <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/60 dark:bg-gray-800/60">
+            <BookOpen size={16} className="text-primary-600 dark:text-primary-400 shrink-0" />
+            <span className="text-xs text-gray-700 dark:text-gray-300">Iboralar:</span>
+            <span className="ml-auto text-xs font-black text-primary-600 dark:text-primary-400">{day.chunks.length} ta</span>
+          </div>
+          {vocabCount > 0 && (
+            <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/60 dark:bg-gray-800/60">
+              <BookMarked size={16} className="text-amber-600 dark:text-amber-400 shrink-0" />
+              <span className="text-xs text-gray-700 dark:text-gray-300">So'zlar:</span>
+              <span className="ml-auto text-xs font-black text-amber-600 dark:text-amber-400">{vocabCount} ta</span>
+            </div>
+          )}
+          <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/60 dark:bg-gray-800/60">
+            <Check size={16} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <span className="text-xs text-gray-700 dark:text-gray-300">Recall natijasi:</span>
+            <span className="ml-auto text-xs font-black text-emerald-600 dark:text-emerald-400">{quizCorrect}/{quizChunks.length}</span>
+          </div>
+        </div>
+
+        {day.grammarPoint && (
+          <div className="mt-3 rounded-xl p-2.5 bg-violet-50 dark:bg-violet-900/20 border border-violet-100 dark:border-violet-800/40 text-left">
+            <p className="text-xs text-violet-700 dark:text-violet-300">
+              📖 Grammatika mavzusi: <strong>{day.grammarPoint}</strong>
+            </p>
+          </div>
+        )}
       </div>
       <button
         onClick={onNext}

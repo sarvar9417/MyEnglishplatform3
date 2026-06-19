@@ -971,6 +971,8 @@
   "speakingPath.reviewDesc": "{count} ta ibora takrorga tayyor",
   "speakingPath.stepReview": "Takrorlash",
   "speakingPath.stepWarmup": "Kirish",
+  "speakingPath.stepVocab": "Lug'at",
+  "speakingPath.stepGrammar": "Grammatika",
   "speakingPath.stepListen": "Eshit",
   "speakingPath.stepShadow": "Shadow",
   "speakingPath.stepSpeak": "Gapir",

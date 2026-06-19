@@ -8,6 +8,8 @@ import SpeakStep from './steps/SpeakStep'
 import ConverseStep from './steps/ConverseStep'
 import CooldownStep from './steps/CooldownStep'
 import WarmupStep from './steps/WarmupStep'
+import VocabStep from './steps/VocabStep'
+import GrammarStep from './steps/GrammarStep'
 import RecallPanel from './RecallPanel'
 import { saveSpeakingDayProgress, enrollChunks, loadSrsMap, computeSRSDistribution, type SRSDistribution } from '../../services/speakingPathService'
 import { monitoring } from '../../lib/monitoring'
@@ -24,12 +26,14 @@ interface Props {
   onExit: () => void
 }
 
-type Step = 'review' | 'warmup' | 'listen' | 'shadow' | 'speak' | 'converse' | 'cooldown' | 'done'
+type Step = 'review' | 'warmup' | 'vocab' | 'grammar' | 'listen' | 'shadow' | 'speak' | 'converse' | 'cooldown' | 'done'
 
-const STEP_ORDER: Step[] = ['review', 'warmup', 'listen', 'shadow', 'speak', 'converse', 'cooldown']
+const STEP_ORDER: Step[] = ['review', 'warmup', 'vocab', 'grammar', 'listen', 'shadow', 'speak', 'converse', 'cooldown']
 const STEP_LABEL_MAP: Record<Exclude<Step, 'done'>, keyof TranslationStrings> = {
   review: 'speakingPath.stepReview',
   warmup: 'speakingPath.stepWarmup',
+  vocab: 'speakingPath.stepVocab',
+  grammar: 'speakingPath.stepGrammar',
   listen: 'speakingPath.stepListen',
   shadow: 'speakingPath.stepShadow',
   speak: 'speakingPath.stepSpeak',
@@ -323,7 +327,9 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
       )}
 
       {/* Asosiy qadamlar */}
-      {effectiveStep === 'warmup' && <WarmupStep day={day} onNext={() => setStep('listen')} />}
+      {effectiveStep === 'warmup' && <WarmupStep day={day} onNext={() => setStep('vocab')} />}
+      {effectiveStep === 'vocab' && <VocabStep day={day} onNext={() => setStep('grammar')} />}
+      {effectiveStep === 'grammar' && <GrammarStep day={day} onNext={() => setStep('listen')} />}
       {effectiveStep === 'listen' && <ListenStep day={day} onNext={() => setStep('shadow')} />}
       {effectiveStep === 'shadow' && <ShadowStep day={day} level={level} onNext={() => setStep('speak')} />}
       {effectiveStep === 'speak' && <SpeakStep day={day} userId={userId} onNext={(avg) => { setSpeakScore(avg); setStep('converse') }} />}

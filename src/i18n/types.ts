@@ -906,6 +906,8 @@ export interface TranslationStrings {
   'speakingPath.reviewDesc': string
   'speakingPath.stepReview': string
   'speakingPath.stepWarmup': string
+  'speakingPath.stepVocab': string
+  'speakingPath.stepGrammar': string
   'speakingPath.stepListen': string
   'speakingPath.stepShadow': string
   'speakingPath.stepSpeak': string
