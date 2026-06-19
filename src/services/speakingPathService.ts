@@ -13,6 +13,38 @@ import { monitoring } from '../lib/monitoring'
 import type { GrammarProgress, SpeakingChunk, SpeakingDayProgress } from '../data/speakingPath/types'
 import { SpeakingDayProgressSchema, SpeakingChunkGradeSchema, SpeakingChunkEnrollSchema } from '../lib/validations'
 
+// ── In-memory SRS cache ─────────────────────────────────────────────────────
+// Takroriy localStorage o'qishlarni oldini oladi. Cache `gradeChunk`/`enrollChunks`
+// chaqirilganda yoki 60 soniyadan keyin avtomatik tozalanadi (TTL).
+let srsCache: { map: SrsMap; userId: string; ts: number } | null = null
+const SRS_CACHE_TTL = 60_000 // 1 daqiqa
+
+/** In-memory cache'dan SRS map ni sinxron o'qish. Agar cache bo'lmasa,
+ *  localStorage dan sync o'qib, cache'ni to'ldiradi (Supabase'siz — tez).
+ *  @returns null agar hech qanday ma'lumot topilmasa */
+export function getCachedSrsMapSync(userId: string): SrsMap | null {
+  if (srsCache && srsCache.userId === userId && Date.now() - srsCache.ts < SRS_CACHE_TTL) {
+    return srsCache.map
+  }
+  // Cache yo'q — localStorage dan tez o'qib, cache'ni to'ldiramiz
+  try {
+    const raw = localStorage.getItem(srsKey(userId))
+    if (raw) {
+      const map = JSON.parse(raw) as SrsMap
+      srsCache = { map, userId, ts: Date.now() }
+      return map
+    }
+  } catch {
+    // ignore
+  }
+  return null
+}
+
+/** SRS cache ni tozalaydi. gradeChunk() yoki enrollChunks() dan keyin chaqiriladi. */
+export function clearSrsCache(): void {
+  srsCache = null
+}
+
 // ── localStorage kalitlari — userId bilan prefikslanadi (multi-user izolatsiya) ──
 const progressKey = (uid: string) => `sp_progress_${uid}`
 const srsKey = (uid: string) => `sp_srs_${uid}`
@@ -102,10 +134,17 @@ export async function getUnlockedDay(userId: string): Promise<number> {
 
 // ── Jumla darajasidagi SRS (FSRS) ─────────────────────────────────────────────
 
-/** Joriy SRS xaritasini olish (Supabase + localStorage merge).
+/** Joriy SRS xaritasini olish (in-memory cache → Supabase + localStorage merge).
+ *  Birinchi chaqiriqda Supabase + localStorage merge qilib cache'laydi.
+ *  Keyingi chaqiriqlarda (TTL ichida) cached natijani qaytaradi — localStorage o'qilmaydi.
  *  Race condition oldini olish uchun: Supabase va localStorage data'sini
  *  merge qilamiz — reps ko'p bo'lgan (yangiroq baholangan) versionni saqlaymiz. */
 export async function loadSrsMap(userId: string): Promise<SrsMap> {
+  // In-memory cache ni tekshirish
+  if (srsCache && srsCache.userId === userId && Date.now() - srsCache.ts < SRS_CACHE_TTL) {
+    return srsCache.map
+  }
+
   const localMap = readJSON<SrsMap>(srsKey(userId), {})
   try {
     const { data, error } = await supabase
@@ -141,11 +180,17 @@ export async function loadSrsMap(userId: string): Promise<SrsMap> {
         }
       }
       writeJSON(srsKey(userId), mergedMap)
+      // Cache'ga yozish
+      srsCache = { map: mergedMap, userId, ts: Date.now() }
       return mergedMap
     }
   } catch (e) {
     monitoring.captureMessage('loadSrsMap Supabase failed, fallback to localStorage: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* fall through */
+  }
+  // localStorage dan o'qilgan bo'lsa ham cache'laymiz (offline mode)
+  if (Object.keys(localMap).length > 0) {
+    srsCache = { map: localMap, userId, ts: Date.now() }
   }
   return localMap
 }
@@ -168,6 +213,8 @@ export async function enrollChunks(userId: string, chunkIds: string[]): Promise<
   }
   if (newRows.length === 0) return
   writeJSON(srsKey(userId), map)
+  // Cache ni tozalash — yangi chunklar qo'shilgan bo'lishi mumkin
+  clearSrsCache()
   try {
     // mavjudlarni o'zgartirmaydi (FSRS holatini saqlaydi)
     await supabase.from('user_speaking_chunks').upsert(newRows, {
@@ -192,6 +239,8 @@ export async function gradeChunk(userId: string, chunkId: string, rating: string
   const { state } = computeNextReviewFSRS(current, rating)
   map[chunkId] = state
   writeJSON(srsKey(userId), map)
+  // Cache ni tozalash — chunk baholangan, eski cache endi yangi emas
+  clearSrsCache()
   try {
     await supabase.from('user_speaking_chunks').upsert({
       user_id: userId,
@@ -203,7 +252,7 @@ export async function gradeChunk(userId: string, chunkId: string, rating: string
       lapses: state.lapses,
       updated_at: new Date().toISOString(),
     })    } catch (e) {
-    monitoring.captureMessage('enrollChunks Supabase failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
+    monitoring.captureMessage('gradeChunk Supabase failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
     /* oflayn */
   }
 }

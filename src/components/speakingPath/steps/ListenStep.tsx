@@ -5,8 +5,8 @@
 import { Volume2, Gauge, ArrowRight, BookOpen, VolumeX, RotateCcw } from 'lucide-react'
 import { useSpeechSynthesis, SPEED_OPTIONS } from '../../../hooks/useSpeechSynthesis'
 import { getChunkById } from '../../../data/speakingPath'
+import { getCachedSrsMapSync } from '../../../services/speakingPathService'
 import type { SpeakingDay, SpeakingChunk } from '../../../data/speakingPath/types'
-import { monitoring } from '../../../lib/monitoring'
 
 interface Props {
   day: SpeakingDay
@@ -16,15 +16,9 @@ interface Props {
 
 function getRecycledStability(userId: string | undefined, chunkId: string): number | null {
   if (!userId) return null
-  try {
-    const raw = localStorage.getItem(`sp_srs_${userId}`)
-    if (!raw) return null
-    const map = JSON.parse(raw) as Record<string, { stability: number }>
-    return map[chunkId]?.stability ?? null
-  } catch {
-    monitoring.captureMessage('Failed to parse SRS stability from localStorage', 'warn')
-    return null
-  }
+  const map = getCachedSrsMapSync(userId)
+  if (!map) return null
+  return map[chunkId]?.stability ?? null
 }
 
 function stabilityLabel(s: number | null): string {
@@ -205,6 +199,14 @@ export default function ListenStep({ day, userId, onNext }: Props) {
           </button>
         ))}
       </div>
+
+      {/* Ovoz qo'llab-quvvatlanmasa — tushuntirish */}
+      {!supported && (
+        <div className="rounded-xl p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 text-xs text-amber-700 dark:text-amber-300">
+          <p className="font-semibold">⚠️ Brauzeringiz ovoz sintezini qo'llab-quvvatlamaydi.</p>
+          <p className="mt-0.5 text-amber-600/80 dark:text-amber-400/80">Iboralarni o'qish uchun matnni ko'rib chiqing va davom eting.</p>
+        </div>
+      )}
 
       <button
         onClick={onNext}

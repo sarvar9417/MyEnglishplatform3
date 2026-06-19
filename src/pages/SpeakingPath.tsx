@@ -6,7 +6,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, Mic, Flame, Trophy, RotateCcw, ChevronRight } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import { SPEAKING_DAYS, TOTAL_SPEAKING_DAYS, getSpeakingDay, getAllChunks, getCefrForDay, type SpeakingChunk, type SpeakingDayProgress } from '../data/speakingPath'
-import { getSpeakingProgress, getDueChunks, getSpeakingStats, loadSrsMap, computeTrend, computeSRSDistribution, type SpeakingStats, type TrendPoint, type SRSDistribution } from '../services/speakingPathService'
+import { getSpeakingProgress, getDueChunks, getSpeakingStats, loadSrsMap, clearSrsCache, computeTrend, computeSRSDistribution, type SpeakingStats, type TrendPoint, type SRSDistribution } from '../services/speakingPathService'
 import SpeakingLadder from '../components/speakingPath/SpeakingLadder'
 import SpeakingDaySession from '../components/speakingPath/SpeakingDaySession'
 import SpeakingReviewSession from '../components/speakingPath/SpeakingReviewSession'
@@ -38,22 +38,24 @@ export default function SpeakingPath() {
 
   // Tab: 'path' (narvon) | 'free' (erkin amaliyot). /speaking → ?tab=free redirect.
   const [searchParams, setSearchParams] = useSearchParams()
-  const [tab, setTab] = useState<'path' | 'free'>(searchParams.get('tab') === 'free' ? 'free' : 'path')    // ?day=N param — daily lesson dan kelganda o'sha speaking kunga scroll
+  const [tab, setTab] = useState<'path' | 'free'>(searchParams.get('tab') === 'free' ? 'free' : 'path')
+
+  // ?day=N param — daily lesson dan kelganda o'sha speaking kunga scroll
+  useEffect(() => {
     const dayParam = searchParams.get('day')
-    useEffect(() => {
-      if (dayParam && !loading) {
-        const dayNum = parseInt(dayParam, 10)
-        if (!isNaN(dayNum) && dayNum >= 1 && dayNum <= TOTAL_SPEAKING_DAYS) {
-          setExpandedDay(dayNum)
+    if (dayParam && !loading) {
+      const dayNum = parseInt(dayParam, 10)
+      if (!isNaN(dayNum) && dayNum >= 1 && dayNum <= TOTAL_SPEAKING_DAYS) {
+        setExpandedDay(dayNum)
+        requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              const el = document.querySelector(`[data-day="${dayNum}"]`)
-              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
-            })
+            const el = document.querySelector(`[data-day="${dayNum}"]`)
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
           })
-        }
+        })
       }
-    }, [dayParam, loading])
+    }
+  }, [searchParams, loading])
 
   const loadProgress = useCallback(async () => {
     if (!userId) return
@@ -94,6 +96,9 @@ export default function SpeakingPath() {
   const handleExitSession = useCallback(() => {
     setActiveDay(null)
     setReviewMode(false)
+    // SRS cache ni tozalaymiz — session davomida gradeChunk/enrollChunks
+    // orqali SRS holati o'zgargan bo'lishi mumkin
+    clearSrsCache()
     loadProgress()
   }, [loadProgress])
 

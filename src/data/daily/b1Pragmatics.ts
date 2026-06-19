@@ -103,12 +103,20 @@ export const pragmaticsFormalInformal: DailyLesson = {
     { id: 950017, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "Could you please to send me the report?", errorPart: "to send", correct: "Could you please send me the report?", explanation: "'Could you + V1' — 'to' qo'shilmaydi. 'Could you send' to'g'ri." },
     { id: 950018, type: 'multiple-choice', instruction: "Qaysi gap NOTO'G'RI?", question: "Which sentence is INCORRECT for a formal email?", options: ["Dear Mr Smith,", "I would like to inquire...", "Hey, what's up?", "Yours sincerely,"], correct: "Hey, what's up?", explanation: "Rasmiy emailda 'Hey, what's up?' noto'g'ri. Bu norasmiy so'zlashish uslubi." },
     { id: 950019, type: 'multiple-choice', instruction: "Rasmiy email yopilishini tanlang:", question: "Which is a correct formal closing?", options: ["Bye bye!", "See ya!", "Kind regards,", "Cheers!"], correct: "Kind regards,", explanation: "'Kind regards' — rasmiy/yarim-rasmiy yopilish. Qolganlari norasmiy." },
+
+    // ── Interleaved Practice: Register + Polite request shakllari ──
+    { id: 95621, type: 'fill-blank', instruction: "Register + polite request:", question: "___ you please send me the report? I ___ wondering if you could help.", blanks: ['Could', 'was'], explanation: "Could you = polite request. I was wondering = very formal polite request." },
+    { id: 95622, type: 'multiple-choice', instruction: "Formal vs informal word pairs:", question: "Match: inquire = ___, purchase = ___, assist = ___.", options: ['ask / buy / help', 'tell / get / support', 'question / sell / serve', 'demand / trade / aid'], correct: 'ask / buy / help', explanation: "Formal synonyms: inquire=ask, purchase=buy, assist=help." },
+    { id: 95623, type: 'error-correction', instruction: "Register mismatch fix:", question: "Dear Sir, I wanna inquire about the job. Can you forward the attachment?", errorPart: 'wanna / Can', correct: "Dear Sir, I would like to inquire about the job. Could you forward the attachment?", explanation: "Formal email: 'wanna' → 'would like to', 'Can you' → 'Could you'." },
+    { id: 95624, type: 'fill-blank', instruction: "Polite request levels:", question: "___ you mind opening the window? I ___ wondering if you could help me. ___ you help me?", blanks: ['Would', 'was', 'Could'], explanation: "Would you mind + V-ing = polite. I was wondering = most formal. Could you = medium formal." },
+    { id: 95625, type: 'transformation', instruction: "Change informal to formal:", question: "Hey, I want to ask about the meeting. Can you tell me when it is?", hint: "Dear Sir/Madam, I would like to...", correct: "Dear Sir/Madam, I would like to inquire about the meeting. Could you please tell me when it is?", explanation: "Formal: 'Hey' → 'Dear Sir/Madam', 'want to ask' → 'would like to inquire', 'Can you' → 'Could you please'." }
   ],
   exerciseSections: [
     { title: "Rasmiy Register", desc: "Formal vs informal farqi", color: 'bg-blue-500', icon: '📧', ids: [950010, 950011, 950012] },
     { title: "Polite Requests", desc: "Proshva shakllari", color: 'bg-emerald-500', icon: '🙏', ids: [950015, 950016, 950017] },
     { title: "Xatolarni Topish", desc: "Register xatolarini tuzatish", color: 'bg-violet-500', icon: '🔍', ids: [950013, 950018] },
     { title: "So'z Tanlash", desc: "Rasmiy vs norasmiy so'zlar", color: 'bg-orange-500', icon: '📝', ids: [950014, 950019] },
+    { title: "🔀 Aralash", desc: "Register + Polite request shakllari", color: 'bg-fuchsia-500', icon: '🔄', ids: [95621, 95622, 95623, 95624, 95625] },
   ],
   tests: [
     { id: 950020, type: 'multiple-choice', instruction: "Qaysi gap rasmiy registerda yozilgan?", question: "Which sentence is written in formal register?", options: ["Hey, gimme the file!", "Could you please send me the file?", "Send me the file, bro!", "Gimme the file, dude!"], correct: "Could you please send me the file?", explanation: "'Could you please...' — rasmiy polite request. Qolganlari norasmiy yoki buyruq." },

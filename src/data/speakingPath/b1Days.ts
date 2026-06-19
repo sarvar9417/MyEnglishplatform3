@@ -374,7 +374,7 @@ const day66: SpeakingDay = {
     tipEn: "/θ/ — tongue between teeth, breathe out (voiceless). 'Strength' = /streŋθ/ — the /ŋ/ + /θ/ combination is tricky.",
     commonError: "O'zbeklar 'strength' ni /strɛng/ deb talaffuz qiladi. So'z oxiridagi /θ/ ni unutmang!",
   },
-  recycledChunkIds: ['sp-d66-c1', 'sp-d66-c1', 'sp-d66-c2'],
+  recycledChunkIds: ['sp-d66-c1', 'sp-d66-c2', 'sp-d66-c4'],
   chunks: [
     { id: 'sp-d66-c1', en: "Tell me about yourself.", uz: "O'zingiz haqingizda gapiring.", grammarTip: "'Tell me about …' = … haqida gapiring. 'Tell' = aytmoq (tell → told → told). 'Yourself' = o'zingiz (reflexive pronoun).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'TELL'},
@@ -594,7 +594,7 @@ const day71: SpeakingDay = {
     tipUz: "/aɪ/ - 'a' dan 'i' ga o'tish. 'Tired' = /taɪəd/. 'Try' = /traɪ/.",
     tipEn: "/aɪ/ - glide from 'a' to 'i'. 'Tired' = /taɪəd/. 'Try' = /traɪ/.",
   },
-  recycledChunkIds: ['sp-d71-c3', 'sp-d71-c5', 'sp-d71-c5'],
+  recycledChunkIds: ['sp-d71-c3', 'sp-d71-c4', 'sp-d71-c5'],
   chunks: [
     { id: 'sp-d71-c1', en: "My internet isn't working.", uz: "Mening internetim ishlamayapti.", grammarTip: "'My internet isn't working' - internetim ishlamayapti. 'Isn't' = 'is not'.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'WORKING'},
@@ -946,7 +946,7 @@ const day79: SpeakingDay = {
     tipUz: "/iː/ - uzun va tarang 'i'. O'zbek 'i'sidan cho'ziqroq. 'Media' = /ˈmiːdiə/.",
     tipEn: "/iː/ - long and tense 'e'. Longer than Uzbek 'i'. 'Media' = /ˈmiːdiə/.",
   },
-  recycledChunkIds: ['sp-d79-c3', 'sp-d79-c5', 'sp-d79-c3'],
+  recycledChunkIds: ['sp-d79-c3', 'sp-d79-c4', 'sp-d79-c5'],
   chunks: [
     { id: 'sp-d79-c1', en: "I spend too much time on my phone.", uz: "Men telefonimda juda ko'p vaqt sarflayman.", grammarTip: "'Spend time on' = vaqt sarflamoq. 'Spend' -> 'spent' -> 'spent'.", commonMistake: "'Much' = sanalmaydigan otlar bilan: 'much water', 'much time'.",
   stressWord: 'SPEND'},
@@ -990,7 +990,7 @@ const day80: SpeakingDay = {
     tipUz: "Tilni tishlar orasiga qo'ying va nafas chiqaring (ovozsiz) - /θ/ o'zbek tilida yo'q tovush.",
     tipEn: "Place your tongue between your teeth and breathe out (voiceless) - /θ/ doesn't exist in Uzbek.",
   },
-  recycledChunkIds: ['sp-d80-c1', 'sp-d80-c6', 'sp-d80-c1'],
+  recycledChunkIds: ['sp-d80-c1', 'sp-d80-c4', 'sp-d80-c6'],
   chunks: [
     { id: 'sp-d80-c1', en: "I'm studying to improve my skills.", uz: "Men ko'nikmalarimni oshirish uchun o'qiyapman.", grammarTip: "'To + V' = maqsad. 'Improve' = yaxshilamoq.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'STUDYING'},
@@ -1034,7 +1034,7 @@ const day81: SpeakingDay = {
     tipUz: "/aɪ/ - diftong. 'Price' = /praɪs/. 'Item' = /ˈaɪtəm/. 'Buy' = /baɪ/.",
     tipEn: "/aɪ/ - diphthong. 'Price' = /praɪs/. 'Item' = /ˈaɪtəm/. 'Buy' = /baɪ/.",
   },
-  recycledChunkIds: ['sp-d81-c2', 'sp-d81-c5', 'sp-d81-c5'],
+  recycledChunkIds: ['sp-d81-c2', 'sp-d81-c4', 'sp-d81-c5'],
   chunks: [
     { id: 'sp-d81-c1', en: "I'm trying to save money.", uz: "Men pul tejashga harakat qilyapman.", grammarTip: "'Try to + V' = harakat qilmoq. 'Save money' = pul tejamoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'TRYING'},
@@ -1254,7 +1254,7 @@ const day86: SpeakingDay = {
     tipUz: "/ʌ/ - qisqa va ochiq 'a'. O'zbek 'a'siga o'xshaydi, lekin qisqaroq.",
     tipEn: "/ʌ/ - short and open 'a'. Similar to Uzbek 'a' but shorter.",
   },
-  recycledChunkIds: ['sp-d86-c2', 'sp-d86-c3', 'sp-d86-c3'],
+  recycledChunkIds: ['sp-d86-c1', 'sp-d86-c2', 'sp-d86-c3'],
   chunks: [
     { id: 'sp-d86-c1', en: "I think there's been a misunderstanding.", uz: "Menimcha, tushunmovchilik bo'lgan.", grammarTip: "'There's been' = 'there has been' (Present Perfect). 'Misunderstanding' = tushunmovchilik.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'THINK'},
@@ -1386,7 +1386,7 @@ const day89: SpeakingDay = {
     tipUz: "/ʊ/ qisqa va bo'sh - lablarni yumaloqlang, lekin tarang emas.",
     tipEn: "/ʊ/ is short and relaxed - round your lips but don't tense.",
   },
-  recycledChunkIds: ['sp-d89-c1', 'sp-d89-c4', 'sp-d89-c1'],
+  recycledChunkIds: ['sp-d89-c1', 'sp-d89-c3', 'sp-d89-c4'],
   chunks: [
     { id: 'sp-d89-c1', en: "I should have studied more.", uz: "Men ko'proq o'qishim kerak edi.", grammarTip: "'Should have + PP' = ... kerak edi (afsus).", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'SHOULD'},
@@ -1430,7 +1430,7 @@ const day90: SpeakingDay = {
     tipUz: "Lablaringizni 'o' shakliga keltiring va tezda oching - /w/ lablar orqali chiqadi.",
     tipEn: "Round your lips like 'o' and quickly open them - /w/ comes through your lips.",
   },
-  recycledChunkIds: ['sp-d90-c4', 'sp-d90-c4', 'sp-d90-c5'],
+  recycledChunkIds: ['sp-d90-c4', 'sp-d90-c2', 'sp-d90-c5'],
   chunks: [
     { id: 'sp-d90-c1', en: "If I had more money, I would travel.", uz: "Agar ko'proq pulim bo'lsa, sayohat qilardim.", grammarTip: "Second Conditional: If + Past Simple, would + V.", commonMistake: "/v/ tovushi — tish labga tegadi. O'zbeklar /w/ bilan almashtiradi: 'very' → 'wery' emas.",
   stressWord: 'WOULD'},
@@ -1474,7 +1474,7 @@ const day91: SpeakingDay = {
     tipUz: "Tilingizni orqaga buking - /r/ yumshoq. 'Really' = /ˈriːəli/.",
     tipEn: "Curl your tongue back - /r/ is soft. 'Really' = /ˈriːəli/.",
   },
-  recycledChunkIds: ['sp-d91-c4', 'sp-d91-c5', 'sp-d91-c5'],
+  recycledChunkIds: ['sp-d91-c4', 'sp-d91-c5', 'sp-d91-c2'],
   chunks: [
     { id: 'sp-d91-c1', en: "I would recommend trying it.", uz: "Men buni sinab ko'rishni tavsiya qilaman.", grammarTip: "'Recommend + V-ing' = ...ni tavsiya qilmoq.", commonMistake: "Bu fe'llardan keyin V-ing keladi: 'enjoy DOING', 'suggest GOING'.",
   stressWord: 'WOULD'},
@@ -1518,7 +1518,7 @@ const day92: SpeakingDay = {
     tipUz: "/ɪ/ qisqa va bo'sh - og'zingizni katta ochmang. 'City' = /ˈsɪti/.",
     tipEn: "/ɪ/ is short and relaxed. 'City' = /ˈsɪti/.",
   },
-  recycledChunkIds: ['sp-d92-c4', 'sp-d92-c5', 'sp-d92-c4'],
+  recycledChunkIds: ['sp-d92-c4', 'sp-d92-c5', 'sp-d92-c1'],
   chunks: [
     { id: 'sp-d92-c1', en: "I prefer living in the city.", uz: "Men shaharda yashashni afzal ko'raman.", grammarTip: "'Prefer + V-ing' = ...ni afzal ko'rmoq.", commonMistake: "/ð/ tovushi — til tishlar orasida, ovoz chiqar. O'zbeklar /d/ yoki /z/ bilan almashtiradi.",
   stressWord: 'PREFER'},
@@ -1650,7 +1650,7 @@ const day95: SpeakingDay = {
     tipUz: "/aɪ/ - 'a' dan 'i' ga o'tish. 'Myself' = /maɪˈself/.",
     tipEn: "/aɪ/ - glide from 'a' to 'i'. 'Myself' = /maɪˈself/.",
   },
-  recycledChunkIds: ['sp-d95-c4', 'sp-d95-c6', 'sp-d95-c4'],
+  recycledChunkIds: ['sp-d95-c4', 'sp-d95-c6', 'sp-d95-c2'],
   chunks: [
     { id: 'sp-d95-c1', en: "I set goals for myself.", uz: "Men o'zimga maqsadlar qo'yaman.", grammarTip: "'Set goals' = maqsad qo'ymoq. 'Myself' = o'zimga (reflexive).", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'SET'},
@@ -1694,7 +1694,7 @@ const day96: SpeakingDay = {
     tipUz: "/aɪ/ - ikki tovushli diftong. Ingliz tilida eng ko'p ishlatiladigan diftonglardan biri.",
     tipEn: "/aɪ/ - a two-sound diphthong. One of the most common English diphthongs.",
   },
-  recycledChunkIds: ['sp-d96-c1', 'sp-d96-c5', 'sp-d96-c1'],
+  recycledChunkIds: ['sp-d96-c1', 'sp-d96-c5', 'sp-d96-c2'],
   chunks: [
     { id: 'sp-d96-c1', en: "Let me introduce myself properly.", uz: "O'zimni to'liq tanishtiray.", grammarTip: "'Introduce + reflexive' = o'zini tanishtirmoq.", commonMistake: "Ingliz tilida harflar har doim o'qilmaydi — talaffuzga e'tibor ber. Lug'atdan tekshir.",
   stressWord: 'LET'},

@@ -4,7 +4,8 @@
 
 import { Lock, CheckCircle2, ChevronDown, Mic, Clock, Star, Sparkles } from 'lucide-react'
 import type { SpeakingDay, SpeakingDayProgress } from '../../data/speakingPath/types'
-import { monitoring } from '../../lib/monitoring'
+import { getCachedSrsMapSync } from '../../services/speakingPathService'
+import { getLevelRange, CEFR_ORDER } from '../../data/speakingPath'
 
 interface Props {
   days: SpeakingDay[]
@@ -22,7 +23,7 @@ interface Props {
   userId?: string
 }
 
-// ── CEFR zonalari ──────────────────────────────────────────────────────────────
+// ── CEFR zonalari (dinamik — ma'lumotlardan hisoblanadi) ────────────────────────
 
 interface CefrZone {
   label: string
@@ -36,43 +37,58 @@ interface CefrZone {
   icon: string
 }
 
-const CEFR_ZONES: CefrZone[] = [
-  {
-    label: "Boshlang'ich", cefr: 'A0', dayMin: 1, dayMax: 3,
+/** CEFR darajalari uchun vizual xususiyatlar (o'zgarmas qism) */
+const CEFR_VISUALS: Record<string, Omit<CefrZone, 'dayMin' | 'dayMax'>> = {
+  A0: {
+    label: "Boshlang'ich", cefr: 'A0',
     color: '#059669', bgClass: 'bg-emerald-50 dark:bg-emerald-900/20',
     textClass: 'text-emerald-700 dark:text-emerald-300',
     borderClass: 'border-emerald-200 dark:border-emerald-800/50',
     icon: '🌱',
   },
-  {
-    label: 'Asosiy', cefr: 'A1', dayMin: 4, dayMax: 29,
+  A1: {
+    label: 'Asosiy', cefr: 'A1',
     color: '#2563eb', bgClass: 'bg-blue-50 dark:bg-blue-900/20',
     textClass: 'text-blue-700 dark:text-blue-300',
     borderClass: 'border-blue-200 dark:border-blue-800/50',
     icon: '📘',
   },
-  {
-    label: "O'rta", cefr: 'A2', dayMin: 30, dayMax: 57,
+  A2: {
+    label: "O'rta", cefr: 'A2',
     color: '#6d28d9', bgClass: 'bg-violet-50 dark:bg-violet-900/20',
     textClass: 'text-violet-700 dark:text-violet-300',
     borderClass: 'border-violet-200 dark:border-violet-800/50',
     icon: '📗',
   },
-  {
-    label: "Yuqori o'rta", cefr: 'B1', dayMin: 58, dayMax: 98,
+  B1: {
+    label: "Yuqori o'rta", cefr: 'B1',
     color: '#d97706', bgClass: 'bg-amber-50 dark:bg-amber-900/20',
     textClass: 'text-amber-700 dark:text-amber-300',
     borderClass: 'border-amber-200 dark:border-amber-800/50',
     icon: '📕',
   },
-  {
-    label: "Yuqori", cefr: 'B2', dayMin: 99, dayMax: 125,
+  B2: {
+    label: 'Yuqori', cefr: 'B2',
     color: '#e11d48', bgClass: 'bg-rose-50 dark:bg-rose-900/20',
     textClass: 'text-rose-700 dark:text-rose-300',
     borderClass: 'border-rose-200 dark:border-rose-800/50',
     icon: '📙',
   },
-]
+}
+
+/** CEFR zonalarini ma'lumotlardan hisoblash — kelajakda kun qo'shilsa avtomatik yangilanadi */
+function computeCefrZones(): CefrZone[] {
+  return CEFR_ORDER
+    .map(cefr => {
+      const range = getLevelRange(cefr)
+      const visual = CEFR_VISUALS[cefr]
+      if (!range || !visual) return null
+      return { ...visual, dayMin: range.dayMin, dayMax: range.dayMax }
+    })
+    .filter((z): z is CefrZone => z !== null)
+}
+
+const CEFR_ZONES = computeCefrZones()
 
 // ── Ranglar ────────────────────────────────────────────────────────────────────
 
@@ -88,15 +104,9 @@ const CEFR_BADGE: Record<string, string> = {
 
 function getChunkStability(userId: string | undefined, chunkId: string): number | null {
   if (!userId) return null
-  try {
-    const raw = localStorage.getItem(`sp_srs_${userId}`)
-    if (!raw) return null
-    const map = JSON.parse(raw) as Record<string, { stability: number }>
-    return map[chunkId]?.stability ?? null
-  } catch {
-    monitoring.captureMessage('Failed to parse SRS stability from localStorage', 'warn')
-    return null
-  }
+  const map = getCachedSrsMapSync(userId)
+  if (!map) return null
+  return map[chunkId]?.stability ?? null
 }
 
 function stabilityColorClass(stability: number | null): string {

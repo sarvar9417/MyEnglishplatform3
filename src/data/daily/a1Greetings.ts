@@ -76,11 +76,18 @@ export const greetingsAndIntroductions: DailyLesson = {
     { id: 7021, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Good ___! See you tomorrow!', blanks: ['bye'], explanation: "Goodbye = xayr", visualHint: "👋" },
     { id: 7022, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'How are you ___? (bugun)', blanks: ['today'], explanation: "How are you today? = Bugun qandaysiz?" },
     { id: 7023, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '___ you for your help! (rahmat)', blanks: ['Thank'], explanation: "Thank you = rahmat" },
+    // ── Interleaved Practice: Greetings + Introductions + Farewells ──
+    { id: 7036, type: 'fill-blank', instruction: "Greeting + Introduction birlashtiring (vaqtga qarab):", question: "___! My name is Ali. I ___ from Tashkent.", blanks: ['Good morning', 'am'], explanation: "Good morning (ertalab) + I am from (men ...danman)" },
+    { id: 7037, type: 'multiple-choice', instruction: "Vaqtga qarab salom + savol kombinatsiyasi:", question: "It is 3 PM. You meet a friend. What do you say?", options: ['Good morning! How are you?', 'Good afternoon! How are you?', 'Good night! How are you?', 'Hello! Where are you from?'], correct: 'Good afternoon! How are you?', explanation: '3 PM = afternoon + How are you? = Qandaysan?' },
+    { id: 7038, type: 'error-correction', instruction: "Xatoni toping (vaqt + salom + tanishtirish):", question: 'Good evening! It is 8 AM. My name is Bobur. I from Samarkand.', errorPart: 'Good evening', correct: 'Good morning! It is 8 AM. My name is Bobur. I am from Samarkand.', explanation: "8 AM = Good morning. 'I from' → 'I am from'" },
+    { id: 7039, type: 'fill-blank', instruction: "To'liq dialog — salomlashish, tanishtirish va xayrlashish:", question: "A: ___! My ___ is Aziz.\nB: Hello! ___ to meet you! I am Kamila.\nA: Nice to meet you ___, Kamila!\nB: See you ___!", blanks: ['Hello', 'name', 'Nice', 'too', 'later'], explanation: "To'liq salomlashish + tanishtirish + xayrlashish" },
+    { id: 7040, type: 'transformation', instruction: "Rasmiy gapni norasmiyga o'zgartiring:", question: 'Good morning! My name is Sardor. I am from Uzbekistan. Goodbye!', correct: 'Hi! I am Sardor. I am from Uzbekistan. Bye!', hint: "Rasmiy salom → norasmiy (Hi), My name is → I am, Goodbye → Bye", explanation: "Good morning → Hi (norasmiy), My name is → I am (qisqa), Goodbye → Bye (norasmiy)" },
   ],
   exerciseSections: [
     { title: "Boshlang'ich", desc: 'Greetings & time of day', color: 'bg-emerald-500', icon: '🌱', ids: [7010, 7011, 7012, 7013, 7014] },
     { title: "O'rtacha", desc: 'Introductions & farewells', color: 'bg-blue-500', icon: '📘', ids: [7015, 7016, 7017, 7018, 7019] },
     { title: "Mustahkamlash", desc: 'Putting it all together', color: 'bg-violet-500', icon: '🎯', ids: [7020, 7021, 7022, 7023, 7024] },
+    { title: "🔀 Aralash", desc: 'Greetings + Introductions + Farewells', color: 'bg-fuchsia-500', icon: '🔄', ids: [7036, 7037, 7038, 7039, 7040] },
   ],
   tests: [
     { id: 7025, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: '___ you later! (keyinroq)', options: ['See', 'Look', 'Watch', 'Hear'], correct: 'See', explanation: "See you later = keyinroq ko'rishguncha" },

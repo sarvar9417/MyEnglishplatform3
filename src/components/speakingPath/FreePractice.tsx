@@ -10,7 +10,7 @@ import { CATEGORY_LABEL, CATEGORY_COLOR } from '../../data/speakingPrompts'
 import { fetchSpeakingPrompts, getDailyPrompts, saveSpeakingResult, saveChatResult } from '../../services/speakingService'
 import { evaluateSpeech, startSpeakingChat, getSpeakingChatFeedback } from '../../lib/claude'
 import { useStore } from '../../store/useStore'
-import { supabase } from '../../lib/supabase'
+import { useAuth } from '../../hooks/useAuth'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import HoldMicButton from './HoldMicButton'
 import { useNavigate } from 'react-router-dom'
@@ -73,6 +73,8 @@ function ScoreCard({ label, score, color }: { label: string; score: number; colo
 
 export default function FreePractice() {
   const navigate = useNavigate()
+  const { user } = useAuth()
+  const userId = user?.id
   const { addXP, updateSkillProgress, currentDay, currentLevel, toggleChecklistItem, todayChecklist } = useStore()
   const sr = useSpeechRecognition()
 
@@ -157,21 +159,19 @@ export default function FreePractice() {
         const avg = Math.round((s.fluency + s.grammar + s.vocabulary) / 3)
         addXP(avg * 3)
         updateSkillProgress('todaySpeakingPct', avg * 10)
-        supabase.auth.getSession().then(({ data: { session } }) => {
-          if (session?.user.id && prompt) {
-            saveSpeakingResult({
-              userId: session.user.id,
-              promptId: prompt.id,
-              promptText: prompt.prompt,
-              fluencyScore: s.fluency,
-              grammarScore: s.grammar,
-              vocabularyScore: s.vocabulary,
-              avgScore: avg,
-              xpEarned: avg * 3,
-              feedback: f,
-            })
-          }
-        })
+        if (userId && prompt) {
+          saveSpeakingResult({
+            userId,
+            promptId: prompt.id,
+            promptText: prompt.prompt,
+            fluencyScore: s.fluency,
+            grammarScore: s.grammar,
+            vocabularyScore: s.vocabulary,
+            avgScore: avg,
+            xpEarned: avg * 3,
+            feedback: f,
+          })
+        }
         setRecordState('done')
         setView('result')
       },
@@ -265,19 +265,17 @@ export default function FreePractice() {
       toggleChecklistItem('speaking')
     }
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user.id && chatTopic?.id) {
-        saveChatResult({
-          userId: session.user.id,
-          promptId: `chat_${chatTopic.id}`,
-          promptText: chatTopic.prompt,
-          turnCount: userTurns,
-          xpEarned,
-          feedback: feedbackText,
-          userScore: Math.max(5, Math.min(10, Math.round(userTurns * 0.7 + 3))),
-        })
-      }
-    })
+    if (userId && chatTopic?.id) {
+      saveChatResult({
+        userId,
+        promptId: `chat_${chatTopic.id}`,
+        promptText: chatTopic.prompt,
+        turnCount: userTurns,
+        xpEarned,
+        feedback: feedbackText,
+        userScore: Math.max(5, Math.min(10, Math.round(userTurns * 0.7 + 3))),
+      })
+    }
 
     setChatLoading(false)
     setView('chat-feedback')

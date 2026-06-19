@@ -21,7 +21,7 @@ const day4: SpeakingDay = {
     tipEn: "Open your mouth wide — the /æ/ sound is between 'a' and 'e'. Uzbek doesn't have this sound.",
     commonError: "O'zbeklar /æ/ ni /a/ yoki /e/ bilan almashtiradi (ken → can, hev → have). Og'iz kattaroq ochilishi kerak!",
   },
-  recycledChunkIds: ['sp-d4-c4', 'sp-d4-c5', 'sp-d4-c4'],
+  recycledChunkIds: ['sp-d4-c1', 'sp-d4-c4', 'sp-d4-c5'],
   chunks: [
     { id: 'sp-d4-c1', en: "Can I have a coffee, please?", uz: "Iltimos, menga qahva bering.", pattern: "Can I have …, please?", ipa: "/kæn aɪ hæv/", grammarTip: "'Can I have …?' — buyurtma berish uchun muloyim ibora. 'Please' = iltimos (oxirida yoki boshida ishlatiladi).", commonMistake: "'Can I have a coffee?' da 'have' ni /hev/ deb aytma — /hæv/, 'æ' tovushi og'iz katta ochiladi.",
   stressWord: 'CAN'},
@@ -244,7 +244,7 @@ const day9: SpeakingDay = {
     tipEn: "/iː/ is long and tense, /ɪ/ is short and relaxed. Notice the difference between 'seat' (/iː/) and 'sit' (/ɪ/) — they're different words!",
     commonError: "O'zbeklar /iː/ va /ɪ/ ni farqlamaydi. 'Ship' va 'sheep' bir xil talaffuz qilinmasligi kerak — ma'nosi butunlay boshqa!",
   },
-  recycledChunkIds: ['sp-d9-c5', 'sp-d9-c4', 'sp-d9-c4'],
+  recycledChunkIds: ['sp-d9-c4', 'sp-d9-c5', 'sp-d9-c6'],
   chunks: [
     { id: 'sp-d9-c1', en: "I get up at seven.", uz: "Men yettida turaman.", pattern: "I get up at …", grammarTip: "'Get up' = uyg'onib turmoq (phrasal verb). 'At + vaqt' — aniq vaqtni ko'rsatadi. 'Get' → 'got' → 'got' (noto'g'ri fe'l).", commonMistake: "'I get up seven' dema (at ni tushirib) — 'at' + vaqt: 'I get up AT seven'.",
   stressWord: 'GET'},
@@ -288,7 +288,7 @@ const day10: SpeakingDay = {
     tipUz: "'A' dan boshlanib 'u' ga o'ting — /aʊ/ tovushi o'zbek tilidagi 'au' ga o'xshaydi. Lablarni yumaloqlang.",
     tipEn: "Start with 'a' and glide to 'u' — the /aʊ/ sound is like 'ow' in 'how'. Round your lips.",
   },
-  recycledChunkIds: ['sp-d10-c4', 'sp-d10-c5', 'sp-d10-c5'],
+  recycledChunkIds: ['sp-d10-c1', 'sp-d10-c4', 'sp-d10-c5'],
   chunks: [
     { id: 'sp-d10-c1', en: "How are you doing?", uz: "Qalaysiz, ishlar qalay?", grammarTip: "'How are you doing?' — norasmiy so'rash. 'Doing' = 'do' ning davomli zamon shakli. 'How are you?' dan ko'ra norasmiyroq.", commonMistake: "'How are you doing?' da 'doing' ni /duing/ deb aytma — /ˈduː.ɪŋ/, 'do' + 'ing'.",
   stressWord: 'HOW'},
@@ -467,7 +467,7 @@ const day14: SpeakingDay = {
     tipEn: "Start with 'e' and glide to 'ə' — the /eə/ sound is pronounced like 'air'. Uzbek doesn't have this sound.",
     commonError: "O'zbeklar /eə/ ni /e/ bilan almashtiradi. 'There' → 'zer' emas! Tovush cho'zilgan va ikki qismdan iborat.",
   },
-  recycledChunkIds: ['sp-d14-c1', 'sp-d14-c5', 'sp-d14-c5'],
+  recycledChunkIds: ['sp-d14-c1', 'sp-d14-c3', 'sp-d14-c5'],
   chunks: [
     { id: 'sp-d14-c1', en: "There is a big kitchen.", uz: "Katta oshxona bor.", pattern: "There is …", grammarTip: "'There is + birlik ot' — biror narsa borligini aytish. 'There is' birlik va sanalmaydigan otlar bilan. 'A big kitchen' = katta oshxona.", commonMistake: "'There is' ni /zer is/ deb aytma — /ðeər ɪz/. 'Th' /ð/ tovushi tishlar orasida.",
   stressWord: 'IS'},
@@ -511,7 +511,7 @@ const day15: SpeakingDay = {
     tipUz: "/k/ tilsiz (ovoz chiqmaydi), /g/ ovozli. Qo'lingizni bo'g'zingizga qo'ying: /k/ da titrash yo'q, /g/ da bor.",
     tipEn: "/k/ is voiceless (no vibration), /g/ is voiced (vibration). Put your hand on your throat: /k/ no vibration, /g/ yes.",
   },
-  recycledChunkIds: ['sp-d15-c1', 'sp-d15-c1', 'sp-d15-c5'],
+  recycledChunkIds: ['sp-d15-c1', 'sp-d15-c2', 'sp-d15-c5'],
   chunks: [
     { id: 'sp-d15-c1', en: "I have a cat.", uz: "Mening mushugim bor.", grammarTip: "'I have a …' — menda … bor. 'A cat' = bitta mushuk. 'Cat' sanaladigan ot, shuning uchun 'a' artikli kerak.", commonMistake: "'I have cat' dema (a ni tushirib) — sanaladigan ot bilan 'a' kerak: 'I have A cat'.",
   stressWord: 'HAVE'},
@@ -599,7 +599,7 @@ const day17: SpeakingDay = {
     tipUz: "Tilingizni tanglayga yaqinlashtirib, nafas chiqaring — /ʃ/ tovushi o'zbek tilidagi 'sh' ga o'xshaydi.",
     tipEn: "Bring your tongue close to the palate and breathe out — the /ʃ/ sound is like 'sh'.",
   },
-  recycledChunkIds: ['sp-d17-c4', 'sp-d17-c3', 'sp-d17-c4'],
+  recycledChunkIds: ['sp-d17-c1', 'sp-d17-c3', 'sp-d17-c4'],
   chunks: [
     { id: 'sp-d17-c1', en: "I'm very happy today.", uz: "Bugun men juda baxtliman.", grammarTip: "'I'm + adjective' — holatni bildirish. 'Very' = juda (daraja ravishi). 'Happy' = baxtli. 'Today' = bugun (vaqt belgisi).", commonMistake: "'I very happy' dema — 'am' kerak: 'I AM very happy'. 'Happy' /ˈhæp.i/.",
   stressWord: 'VERY'},

@@ -904,6 +904,29 @@ export interface TranslationStrings {
   'speakingPath.days': string
   'speakingPath.reviewTitle': string
   'speakingPath.reviewDesc': string
+  'speakingPath.stepReview': string
+  'speakingPath.stepWarmup': string
+  'speakingPath.stepListen': string
+  'speakingPath.stepShadow': string
+  'speakingPath.stepSpeak': string
+  'speakingPath.stepConverse': string
+  'speakingPath.stepCooldown': string
+  'speakingPath.seconds': string
+  'speakingPath.minutes': string
+  'speakingPath.backToLadder': string
+  'speakingPath.reviewComplete': string
+  'speakingPath.reviewCompleteDesc': string
+  'speakingPath.reviewAvgScore': string
+  'speakingPath.startLesson': string
+  'speakingPath.dayComplete': string
+  'speakingPath.dayStats': string
+  'speakingPath.srsProgress': string
+  'speakingPath.pronunciationFocus': string
+  'speakingPath.globalSrs': string
+  'speakingPath.nextDay': string
+  'speakingPath.zoneLocked': string
+  'speakingPath.zoneKun': string
+  'speakingPath.estMinutes': string
 
   /* ── MockTest ── */
   'mockTest.title': string

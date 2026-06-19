@@ -68,9 +68,14 @@ export default function ConverseStep({ day, level, onNext }: Props) {
     runAi([])
   }, [runAi])
 
-  // pastga skroll
+  // pastga skroll — debounced (streaming har bir tokenda scrollni chaqirmasligi uchun)
+  const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   useEffect(() => {
-    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
+    if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current)
+    scrollTimerRef.current = setTimeout(() => {
+      scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
+    }, 100)
+    return () => { if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current) }
   }, [history, streaming])
 
   const sendUser = useCallback((text: string) => {

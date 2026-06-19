@@ -10,13 +10,14 @@ export type { SpeakingChunk, SpeakingDay, SpeakingScenario, SpeakingDayProgress,
 /** CEFR darajalari tartibli ro'yxati */
 export const CEFR_ORDER = ['A0', 'A1', 'A2', 'B1', 'B2'] as const
 
-/** Kun raqamiga qarab CEFR darajasini qaytaradi */
+/** Kun raqamiga qarab CEFR darajasini qaytaradi.
+ *  Dinamik — ma'lumotlardagi haqiqiy kun diapazonlaridan hisoblanadi. */
 export function getCefrForDay(day: number): string {
-  if (day >= 99) return 'B2'
-  if (day >= 58) return 'B1'
-  if (day >= 30) return 'A2'
-  if (day >= 4) return 'A1'
-  return 'A0'
+  for (const cefr of [...CEFR_ORDER].reverse()) {
+    const range = getLevelRange(cefr)
+    if (range && day >= range.dayMin && day <= range.dayMax) return cefr
+  }
+  return CEFR_ORDER[0]
 }
 
 /** Jami kunlar soni */

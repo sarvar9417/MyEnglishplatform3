@@ -1,5 +1,7 @@
 import { useState, useRef, useCallback, useMemo, useEffect } from 'react'
 import { X, Sparkles, Brain, Volume2, ArrowRight, Clock, Zap, RotateCcw, Check } from 'lucide-react'
+import { useI18n } from '../../i18n'
+import type { TranslationStrings } from '../../i18n/types'
 import ListenStep from './steps/ListenStep'
 import ShadowStep from './steps/ShadowStep'
 import SpeakStep from './steps/SpeakStep'
@@ -13,7 +15,7 @@ import { checkSpeakingAchievements, unlockSpeakingAchievements } from '../../ser
 import { useToastStore } from '../../utils/toastStore'
 import { ACHIEVEMENTS } from '../../data/achievements'
 import { useStore } from '../../store/useStore'
-import { getSpeakingDay, getChunkById, TOTAL_SPEAKING_DAYS } from '../../data/speakingPath'
+import { getSpeakingDay, getChunksUpToDay, TOTAL_SPEAKING_DAYS } from '../../data/speakingPath'
 import type { SpeakingDay, SpeakingChunk } from '../../data/speakingPath/types'
 
 interface Props {
@@ -25,13 +27,20 @@ interface Props {
 type Step = 'review' | 'warmup' | 'listen' | 'shadow' | 'speak' | 'converse' | 'cooldown' | 'done'
 
 const STEP_ORDER: Step[] = ['review', 'warmup', 'listen', 'shadow', 'speak', 'converse', 'cooldown']
-const STEP_LABEL: Record<string, string> = {
-  review: 'Takrorlash', warmup: 'Kirish', listen: 'Eshit', shadow: 'Shadow', speak: 'Gapir', converse: 'Suhbat', cooldown: 'Mulohaza',
+const STEP_LABEL_MAP: Record<Exclude<Step, 'done'>, keyof TranslationStrings> = {
+  review: 'speakingPath.stepReview',
+  warmup: 'speakingPath.stepWarmup',
+  listen: 'speakingPath.stepListen',
+  shadow: 'speakingPath.stepShadow',
+  speak: 'speakingPath.stepSpeak',
+  converse: 'speakingPath.stepConverse',
+  cooldown: 'speakingPath.stepCooldown',
 }
 
 export default function SpeakingDaySession({ day, userId, onExit }: Props) {
-  const [step, setStep] = useState<Step>(day.recycledChunkIds?.length ? 'review' : 'warmup')
-  const [speakScore, setSpeakScore] = useState(0)
+  const { t } = useI18n()
+  const [step, setStep] = useState<Step>(day.day > 1 && day.recycledChunkIds?.length ? 'review' : 'warmup')
+  const [speakScore, setSpeakScore] = useState<number | null>(null)
   const [spokenSeconds, setSpokenSeconds] = useState(0)
   const [daySrsStats, setDaySrsStats] = useState<{ label: string; count: number; color: string }[] | null>(null)
   const [globalSrsDist, setGlobalSrsDist] = useState<SRSDistribution[] | null>(null)
@@ -43,21 +52,50 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
   const startRef = useRef(Date.now())
   const level = day.cefr === 'A0' ? 'A1' : day.cefr
 
-  // Load recycled chunks from ids
+  // Avvalgi kunlardan SRS bo'yicha eng zaif chunk'larni yuklaymiz
+  const [recycledLoading, setRecycledLoading] = useState(true)
   useEffect(() => {
-    if (day.recycledChunkIds && day.recycledChunkIds.length > 0) {
-      const chunks = day.recycledChunkIds
-        .map(id => getChunkById(id))
-        .filter((c): c is SpeakingChunk => c !== undefined)
-      setRecycledChunks(chunks)
+    setRecycledLoading(true)
+
+    // 1-kun yoki userId yo'q bo'lsa — review qadamini o'tkazib yuboramiz
+    if (!userId || day.day <= 1) {
+      setRecycledChunks([])
+      setRecycledLoading(false)
+      return
     }
-  }, [day.recycledChunkIds])
+
+    // SRS orqali avvalgi kunlarning eng zaif chunk'larini topamiz
+    loadSrsMap(userId).then(map => {
+      const previousChunks = getChunksUpToDay(day.day - 1)
+
+      // SRS stability bo'yicha saralash (zaif → kuchli) va eng zaif 3 tani olish
+      const dueChunks = previousChunks
+        .filter(c => {
+          const st = map[c.id]
+          // Hali o'rganilmagan (SRSda yo'q) yoki stability < 30 bo'lganlar
+          return !st || st.stability < 30
+        })
+        .sort((a, b) => {
+          const sa = map[a.id]?.stability ?? 0
+          const sb = map[b.id]?.stability ?? 0
+          return sa - sb
+        })
+        .slice(0, 3)
+
+      setRecycledChunks(dueChunks)
+      setRecycledLoading(false)
+    }).catch(() => {
+      // SRS ishlamasa — reviewni o'tkazib yuboramiz
+      setRecycledChunks([])
+      setRecycledLoading(false)
+    })
+  }, [userId, day.day])
 
   // Agar recycled chunklar bo'lmasa (data yo'q yoki hammasi invalid ID) — review qadamini o'tkazib yuboramiz
-  const effectiveStep = step === 'review' && recycledChunks.length === 0 ? 'warmup' : step
+  const effectiveStep = step === 'review' && !recycledLoading && recycledChunks.length === 0 ? 'warmup' : step
 
   // Faqat recycled chunklari bor kunlarda review qadami ko'rsatiladi
-  const hasReview = recycledChunks.length > 0
+  const hasReview = !recycledLoading && recycledChunks.length > 0
   const activeSteps: Step[] = hasReview ? STEP_ORDER : STEP_ORDER.filter(s => s !== 'review') as Step[]
 
   // progress: nechta qadam tugagani
@@ -74,6 +112,11 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
   // Achievementlarni tekshirish (session yakunida, progress saqlangandan keyin)
   const checkAchRef = useRef(false)
   useEffect(() => {
+    // StrictMode da 2 marta chaqirilmasligi uchun ref tozalanadi
+    checkAchRef.current = false
+    return () => { checkAchRef.current = false }
+  }, [day.day])
+  useEffect(() => {
     if (step === 'cooldown' && userId && !checkAchRef.current) {
       checkAchRef.current = true
       const run = async () => {
@@ -81,10 +124,10 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
         const mastered = Object.values(srsMap).filter(st => st.stability >= 30).length
         const { unlockedAchievements } = useStore.getState()
         const result = await checkSpeakingAchievements(userId, unlockedAchievements, {
-          completedCount: day.day, // session progress saqlangach, day.day = exact count
+          completedCount: day.day, // sequential path: day number = completed count after finish
           streakDays: 0,
           chunksMastered: mastered,
-          bestSpeakScore: speakScore,
+          bestSpeakScore: speakScore ?? 0,
           cefr: day.cefr,
         })
         if (result.newlyUnlocked.length > 0) {
@@ -108,7 +151,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
       saveSpeakingDayProgress(userId, {
         day: day.day,
         completed: true,
-        bestSpeakScore: speakScore,
+        bestSpeakScore: speakScore ?? 0,
         spokenSeconds: secs,
         completedAt: new Date().toISOString(),
       }).catch((e: unknown) => {
@@ -177,8 +220,8 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
     : 0
 
   const spokenLabel = spokenSeconds < 60
-    ? `${spokenSeconds} soniya`
-    : `${Math.round(spokenSeconds / 60)} daqiqa`
+    ? t('speakingPath.seconds').replace('{count}', String(spokenSeconds))
+    : t('speakingPath.minutes').replace('{count}', String(Math.round(spokenSeconds / 60)))
 
   const nextDay = useMemo(() => day.day < TOTAL_SPEAKING_DAYS ? getSpeakingDay(day.day + 1) : undefined, [day.day])
 
@@ -195,18 +238,29 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
         </div>
       </div>
 
-      {/* Progress bar — review bo'lsa 5, bo'lmasa 4 qadam */}
+      {/* Progress bar */}
       <div className="flex gap-1.5">
         {activeSteps.map((s, i) => (
           <div key={s} className="flex-1">
             <div className={`h-1.5 rounded-full transition-colors ${i < doneCount ? 'bg-primary-600' : i === doneCount && effectiveStep !== 'done' ? 'bg-primary-400' : 'bg-gray-200 dark:bg-gray-700'}`} />
-            <p className={`text-xs text-center mt-1 font-semibold ${i <= doneCount ? 'text-primary-600 dark:text-primary-400' : 'text-gray-400 dark:text-gray-600'}`}>{STEP_LABEL[s]}</p>
+            <p className={`text-xs text-center mt-1 font-semibold ${i <= doneCount ? 'text-primary-600 dark:text-primary-400' : 'text-gray-400 dark:text-gray-600'}`}>{t(STEP_LABEL_MAP[s as Exclude<Step, 'done'>])}</p>
           </div>
         ))}
       </div>
 
+      {/* 🔄 Takrorlash qadami — loading */}
+      {effectiveStep === 'review' && recycledLoading && (
+        <div className="space-y-3">
+          <div className="rounded-2xl p-4 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 border border-amber-200 dark:border-amber-800/40 animate-pulse">
+            <div className="h-4 w-40 bg-amber-200 dark:bg-amber-700/50 rounded mb-2" />
+            <div className="h-3 w-60 bg-amber-200/60 dark:bg-amber-700/30 rounded" />
+          </div>
+          <div className="h-[200px] rounded-2xl bg-gray-100 dark:bg-gray-800 animate-pulse" />
+        </div>
+      )}
+
       {/* 🔄 Takrorlash qadami — RecallPanel bilan SRS scoring */}
-      {effectiveStep === 'review' && !reviewSummary && recycledChunks.length > 0 && (
+      {effectiveStep === 'review' && !recycledLoading && !reviewSummary && recycledChunks.length > 0 && (
         <div className="space-y-4">
           <div className="rounded-2xl p-4 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 border border-amber-200 dark:border-amber-800/40">
             <div className="flex items-center gap-2 mb-2">
@@ -236,16 +290,16 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
           <div className="rounded-2xl p-4 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 border border-amber-200 dark:border-amber-800/40">
             <div className="flex items-center gap-2 mb-2">
               <RotateCcw size={16} className="text-amber-600 dark:text-amber-400" />
-              <p className="text-xs font-bold text-amber-700 dark:text-amber-300">Takrorlash yakuni</p>
+              <p className="text-xs font-bold text-amber-700 dark:text-amber-300">{t('speakingPath.reviewComplete')}</p>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              {recycledChunks.length} ta ibora takrorlandi. Endi yangi mavzuga o'tamiz!
+              {t('speakingPath.reviewCompleteDesc').replace('{count}', String(recycledChunks.length))}
             </p>
           </div>
 
           {/* Umumiy natija */}
           <div className="rounded-2xl p-5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-center">
-            <p className="text-sm font-bold text-gray-700 dark:text-gray-300">O'rtacha takrorlash balli</p>
+            <p className="text-sm font-bold text-gray-700 dark:text-gray-300">{t('speakingPath.reviewAvgScore')}</p>
             <p className="text-3xl font-black text-amber-600 dark:text-amber-400 mt-1">{reviewAvg}%</p>
             <div className="mt-3 space-y-1.5">
               {recycledChunks.map((ch, i) => (
@@ -263,7 +317,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
             onClick={handleStartLesson}
             className="w-full py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-sm hover:from-amber-600 hover:to-orange-600 active:scale-[0.98] transition-all shadow-md"
           >
-            Darsni boshlash →
+            {t('speakingPath.startLesson')}
           </button>
         </div>
       )}
@@ -274,7 +328,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
       {effectiveStep === 'shadow' && <ShadowStep day={day} level={level} onNext={() => setStep('speak')} />}
       {effectiveStep === 'speak' && <SpeakStep day={day} userId={userId} onNext={(avg) => { setSpeakScore(avg); setStep('converse') }} />}
       {effectiveStep === 'converse' && <ConverseStep day={day} level={level} onNext={handleConversationDone} />}
-      {effectiveStep === 'cooldown' && <CooldownStep day={day} speakScore={speakScore} spokenSeconds={spokenSeconds} onNext={handleCooldownDone} />}
+      {effectiveStep === 'cooldown' && <CooldownStep day={day} speakScore={speakScore ?? 0} spokenSeconds={spokenSeconds} onNext={handleCooldownDone} />}
 
       {effectiveStep === 'done' && (
         <div className="space-y-3">
@@ -283,10 +337,10 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
             <div className="w-14 h-14 mx-auto rounded-2xl bg-emerald-500 flex items-center justify-center">
               <Sparkles size={28} className="text-white" />
             </div>
-            <p className="mt-3 font-black text-gray-900 dark:text-gray-100">{day.day}-kun yakunlandi! 🎉</p>
+            <p className="mt-3 font-black text-gray-900 dark:text-gray-100">{t('speakingPath.dayComplete').replace('{day}', String(day.day))}</p>
             <div className="mt-2 flex items-center justify-center gap-4 text-sm font-semibold">
               <span className="text-gray-700 dark:text-gray-200">🎙️ {spokenLabel}</span>
-              <span className="text-gray-700 dark:text-gray-200">⭐ {speakScore}%</span>
+              <span className="text-gray-700 dark:text-gray-200">⭐ {speakScore ?? 0}%</span>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
               Ajoyib! Iboralar takror rejasiga (SRS) yozildi va keyingi kun ochildi.
@@ -298,7 +352,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
             <div className="rounded-2xl p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-1.5 mb-3">
                 <Brain size={16} className="text-violet-600 dark:text-violet-400" />
-                <p className="text-xs font-bold text-gray-700 dark:text-gray-300">SRS o'zlashtirish</p>
+                <p className="text-xs font-bold text-gray-700 dark:text-gray-300">{t('speakingPath.srsProgress')}</p>
               </div>
               {/* Stacked bar */}
               <div className="h-3 rounded-full bg-gray-100 dark:bg-gray-700 flex overflow-hidden">
@@ -330,7 +384,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
             <div className="rounded-2xl p-4 bg-gradient-to-r from-violet-50 to-indigo-50 dark:from-violet-900/20 dark:to-indigo-900/20 border border-violet-200 dark:border-violet-800/30">
               <div className="flex items-center gap-1.5 mb-2">
                 <Volume2 size={16} className="text-violet-600 dark:text-violet-400" />
-                <p className="text-xs font-bold text-violet-700 dark:text-violet-300">Bugungi talaffuz</p>
+                <p className="text-xs font-bold text-violet-700 dark:text-violet-300">{t('speakingPath.pronunciationFocus')}</p>
               </div>
               <p className="text-sm font-bold text-gray-900 dark:text-gray-100">
                 /{day.pronunciationFocus.sound}/ — {day.pronunciationFocus.ipaExample}
@@ -358,7 +412,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
               >
                 <div className="flex items-center gap-1.5">
                   <Brain size={16} className="text-purple-600 dark:text-purple-400" />
-                  <p className="text-xs font-bold text-gray-700 dark:text-gray-300">Umumiy SRS holati</p>
+                  <p className="text-xs font-bold text-gray-700 dark:text-gray-300">{t('speakingPath.globalSrs')}</p>
                 </div>
                 <span className="text-xs text-gray-400">{showGlobalSrs ? '▲' : '▼'}</span>
               </button>
@@ -401,13 +455,13 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
             <div className="rounded-2xl p-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-1.5 mb-2">
                 <ArrowRight size={16} className="text-blue-600 dark:text-blue-400" />
-                <p className="text-xs font-bold text-gray-700 dark:text-gray-300">Keyingi kun: {nextDay.day}-kun</p>
+                <p className="text-xs font-bold text-gray-700 dark:text-gray-300">{t('speakingPath.nextDay').replace('{day}', String(nextDay.day))}</p>
               </div>
               <p className="text-sm font-bold text-gray-900 dark:text-gray-100">{nextDay.title}</p>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">🎯 {nextDay.goalUz}</p>
               <div className="flex items-center gap-3 mt-2 text-xs text-gray-500 dark:text-gray-400">
                 <span className="flex items-center gap-1">
-                  <Clock size={12} /> {nextDay.estMinutes} daqiqa
+                  <Clock size={12} /> {t('speakingPath.estMinutes').replace('{count}', String(nextDay.estMinutes))}
                 </span>
                 <span className="flex items-center gap-1">
                   <Zap size={12} /> {nextDay.chunks.length} ta ibora
@@ -420,7 +474,7 @@ export default function SpeakingDaySession({ day, userId, onExit }: Props) {
             onClick={onExit}
             className="w-full py-3 rounded-2xl bg-primary-600 text-white font-bold text-sm hover:bg-primary-700 active:scale-[0.98] transition-all"
           >
-            Narvonga qaytish
+            {t('speakingPath.backToLadder')}
           </button>
         </div>
       )}

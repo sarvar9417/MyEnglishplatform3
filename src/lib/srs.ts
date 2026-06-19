@@ -60,10 +60,15 @@ export interface FSRSState {
 }
 
 export function createDefaultFSRSState(): FSRSState {
+  // Tomorrow — yangi chunk'lar darhol "due" bo'lib qolmasin.
+  // Main review card (getDueChunks) faqat SRS bo'yicha haqiqatan
+  // muddati o'tgan chunk'larni ko'rsatishi uchun.
+  const tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
   return {
     stability:  0,
     difficulty: 5,
-    due:        new Date().toISOString().split('T')[0],
+    due:        tomorrow.toISOString().split('T')[0],
     reps:       0,
     lapses:     0,
   }

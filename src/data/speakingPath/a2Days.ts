@@ -243,7 +243,7 @@ const day35: SpeakingDay = {
     tipEn: "Curl your tongue back and don't touch anything — the /r/ sound is softer than Uzbek 'r'.",
     commonError: "O'zbeklar /r/ ni qattiq talaffuz qiladi. Ingliz /r/ yumshoq — til hech narsaga tegmaydi.",
   },
-  recycledChunkIds: ['sp-d35-c1', 'sp-d35-c5', 'sp-d35-c1'],
+  recycledChunkIds: ['sp-d35-c1', 'sp-d35-c5', 'sp-d35-c4'],
   chunks: [
     { id: 'sp-d35-c1', en: "What do you recommend?", uz: "Nimani tavsiya qilasiz?", grammarTip: "'What do you recommend?' — tavsiya so'rash. 'Recommend' = tavsiya qilmoq. 'Do you' + asosiy fe'l so'rog'i.", commonMistake: "'Recommend' ni /rekamend/ deb aytma — /ˌrek.əˈmend/ (uch bo'g'in). 'What you recommend?' - 'do' kerak.",
   stressWord: 'WHAT'},
@@ -287,7 +287,7 @@ const day36: SpeakingDay = {
     tipUz: "/aɪ/ dan /ə/ ga o'ting: 'a' + 'i' + 'ə' — tovush silliq o'tishi kerak. Bu diftong + schwa birikmasi.",
     tipEn: "Glide from /aɪ/ to /ə/ — the sound transitions smoothly. This is a diphthong + schwa combination.",
   },
-  recycledChunkIds: ['sp-d36-c1', 'sp-d36-c1', 'sp-d36-c1'],
+  recycledChunkIds: ['sp-d36-c1', 'sp-d36-c4', 'sp-d36-c5'],
   chunks: [
     { id: 'sp-d36-c1', en: "Where is the check-in desk?", uz: "Ro'yxatdan o'tish joyi qayerda?", grammarTip: "'Where is the …?' — joy so'rash. 'Check-in desk' = ro'yxatdan o'tish joyi. 'Check-in' ikki so'z birlashmasi.", commonMistake: "'Check-in' ni /chekin/ deb aytma — /tʃek ɪn/. 'Desk' /desk/.",
   stressWord: 'WHERE'},
@@ -420,7 +420,7 @@ const day39: SpeakingDay = {
     tipUz: "Lablaringizni bir-biriga yoping va burun orqali ovoz chiqaring — /m/ tovushi lablar orqali chiqadi.",
     tipEn: "Close your lips together and let the sound come through your nose — the /m/ sound is nasal.",
   },
-  recycledChunkIds: ['sp-d39-c4', 'sp-d39-c1', 'sp-d39-c1'],
+  recycledChunkIds: ['sp-d39-c4', 'sp-d39-c1', 'sp-d39-c6'],
   chunks: [
     { id: 'sp-d39-c1', en: "What's the weather like today?", uz: "Bugun ob-havo qanday?", grammarTip: "'What's … like?' = … qanday? 'What's the weather like?' = ob-havo qanday? 'Like' bu yerda 'similar to' emas, 'how' ma'nosida.", commonMistake: "'Weather' ni /veather/ deb aytma — /ˈweð.ər/ (th /ð/ bilan). 'What's weather like?' - 'the' kerak.",
   stressWord: 'TODAY'},
@@ -730,7 +730,7 @@ const day46: SpeakingDay = {
     tipUz: "'A' dan 'u' ga silliq o'ting — /aʊ/ tovushi og'izni katta ochib, keyin lablarni yumaloqlash orqali chiqadi.",
     tipEn: "Glide smoothly from 'a' to 'u' — the /aʊ/ sound starts with mouth wide and ends with lips rounded.",
   },
-  recycledChunkIds: ['sp-d46-c5', 'sp-d46-c1', 'sp-d46-c1'],
+  recycledChunkIds: ['sp-d46-c5', 'sp-d46-c1', 'sp-d46-c4'],
   chunks: [
     { id: 'sp-d46-c1', en: "Can I return this, please?", uz: "Buni qaytarsam bo'ladimi?", grammarTip: "'Can I return …?' = qaytarsam bo'ladimi? 'Return' = qaytarmoq. 'This' = buni. 'Return' ikki ma'noda: qaytmoq va qaytarmoq.", commonMistake: "'Return' ni /riturn/ deb aytma — /rɪˈtɜːn/. 'Can I return this please?' - 'please' ni oxiriga qo'ying.",
   stressWord: 'CAN'},
@@ -774,7 +774,7 @@ const day47: SpeakingDay = {
     tipUz: "/aɪ/ tovushi 'a' dan boshlanib 'i' ga o'tadi. O'zbek tilidagi 'ay' ga o'xshaydi, lekin tezroq talaffuz qilinadi.",
     tipEn: "The /aɪ/ sound starts with 'a' and glides to 'i'. Similar to Uzbek 'ay' but quicker.",
   },
-  recycledChunkIds: ['sp-d47-c2', 'sp-d47-c5', 'sp-d47-c5'],
+  recycledChunkIds: ['sp-d47-c2', 'sp-d47-c5', 'sp-d47-c4'],
   chunks: [
     { id: 'sp-d47-c1', en: "I think it's a good idea.", uz: "Menimcha, bu yaxshi fikr.", grammarTip: "'I think + gap' = menimcha. 'Think' = o'ylamoq. 'It's a good idea' = bu yaxshi fikr. Fikr bildirish: I think + sub'ekt + fe'l.", commonMistake: "/θ/ tovushi — tilni tishlar orasiga qo'y. O'zbeklar /s/ yoki /t/ bilan almashtiradi.",
   stressWord: 'THINK'},
@@ -819,7 +819,7 @@ const day48: SpeakingDay = {
     tipEn: "The -er suffix is unstressed /\u0259/, not /er/. 'Cheaper' = /\u02c8t\u0283i\u02d0p\u0259/, not /chee-per/.",
     commonError: "-er ni /\u025cr/ yoki /er/ deb talaffuz qilish. To'g'risi: qisqa /\u0259/ tovushi. 'Faster' = /\u02c8f\u0251\u02d0st\u0259/ (fah-st\u0259).",
   },
-  recycledChunkIds: ['sp-d48-c1', 'sp-d48-c1', 'sp-d48-c1'],
+  recycledChunkIds: ['sp-d48-c1', 'sp-d48-c4', 'sp-d48-c5'],
   chunks: [
     { id: 'sp-d48-c1', en: 'This phone is cheaper than that one.', uz: "Bu telefon o'shasidan arzonroq.", pattern: "Subject + is + comparative + than + object", grammarTip: "Qisqa sifatlar + -er + than. 'Cheap' \u2192 'cheaper' (cheap + er = arzonroq).", commonMistake: "'This phone is more cheap than that one' dema \u2014 qisqa sifat: 'CHEAPER than' (more emas).", stressWord: 'CHEAPER' },
     { id: 'sp-d48-c2', en: 'A car is more expensive than a bike.', uz: "Noutbuk planshetdan qimmatroq.", pattern: "Subject + is + more + adjective + than + object", grammarTip: "Uzoq sifatlar: 'more + adjective'. 'Expensive' = 3 bo'g'inli \u2192 'more expensive'.", commonMistake: "'The laptop is expensiver than the tablet' dema \u2014 uzoq sifat: 'MORE expensive'.", stressWord: 'MORE' },
@@ -858,7 +858,7 @@ const day49: SpeakingDay = {
     tipEn: "The -ed ending has 3 pronunciations: /t/ (voiceless: washed), /d/ (voiced: cleaned), /\u026ad/ (after t/d: wanted). Pay attention in passive voice!",
     commonError: "O'zbeklar -ed ni doim /\u026ad/ deb talaffuz qiladi. 'Watched' \u2192 'watch-id' emas, /w\u0252t\u0283t/ (bir bo'g'in!).",
   },
-  recycledChunkIds: ['sp-d49-c1', 'sp-d49-c1', 'sp-d49-c1'],
+  recycledChunkIds: ['sp-d49-c1', 'sp-d49-c2', 'sp-d49-c4'],
   chunks: [
     { id: 'sp-d49-c1', en: 'Tea is grown in India.', uz: "Qahva Braziliyada yetishtiriladi.", pattern: "Subject + is + V3 + place", grammarTip: "Present Passive = am/is/are + V3. 'Is grown' = yetishtiriladi. Bajaruvchi muhim emas.", commonMistake: "'Coffee is grow in Brazil' dema \u2014 V3: 'is GROWN' (grow \u2192 grew \u2192 GROWN).", stressWord: 'GROWN' },
     { id: 'sp-d49-c2', en: 'This house was built in 2005.', uz: "Bu uy 2005 yilda qurilgan.", pattern: "Subject + was + V3 + time", grammarTip: "Past Passive = was/were + V3. 'Was built' = qurilgan. 'In 2005' = 2005 yilda.", commonMistake: "'This house was build in 2005' dema \u2014 V3: 'was BUILT' (build \u2192 built \u2192 BUILT).", stressWord: 'BUILT' },
@@ -897,7 +897,7 @@ const day50: SpeakingDay = {
     tipEn: "'Said' rhymes with 'bed' (/sed/). 'Says' rhymes with 'fez' (/sez/). 'Asked' is ONE syllable /\u0251\u02d0skt/, not two.",
     commonError: "'Said' ni /se\u026ad/ deb talaffuz qilish. To'g'risi: /sed/ (ey \u2192 e). 'Says' ni /se\u026az/ deb talaffuz qilish. To'g'risi: /sez/ (say \u2192 sez).",
   },
-  recycledChunkIds: ['sp-d50-c1', 'sp-d50-c1', 'sp-d50-c1'],
+  recycledChunkIds: ['sp-d50-c1', 'sp-d50-c2', 'sp-d50-c3'],
   chunks: [
     { id: 'sp-d50-c1', en: 'She said (that) she was hungry.', uz: "U charchaganini aytdi.", pattern: "Subject + said + (that) + subject + past tense", grammarTip: "'Said + that' = birovning gapini aytish. Present 'I am tired' \u2192 past 'she was tired' (backshift).", commonMistake: "'She said that she is tired' dema \u2014 present emas, past: 'she WAS tired'.", stressWord: 'SAID' },
     { id: 'sp-d50-c2', en: 'Mum told me (that) she was happy.', uz: "U menga bandligini aytdi.", pattern: "Subject + told + person + (that) + clause", grammarTip: "'Told' + person (me/him/her). 'Tell' \u2192 'told' (irregular). 'Told' dan keyin 'to' KERAK EMAS.", commonMistake: "'He told to me that he was busy' dema \u2014 'told me' (to'siz): 'He TOLD me'.", stressWord: 'TOLD' },

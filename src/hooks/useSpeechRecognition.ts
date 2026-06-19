@@ -83,6 +83,12 @@ export function isMobileDevice(): boolean {
  *  Desktop'da stream'ni saqlaymiz, useAudioRecorder uni qayta ishlatadi (ovoz yozish). */
 async function requestMicPermission(): Promise<boolean> {
   try {
+    // Avvalgi stream'ni to'xtatamiz — aks holda brauzer mikrofoni indikatori yoniq qoladi
+    if (_sharedMicStream) {
+      _sharedMicStream.getTracks().forEach(t => t.stop())
+      _sharedMicStream = null
+    }
+
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
     if (isMobileDevice()) {
       // Mobil: SR mikrofonni mustaqil ochadi — probe'ni bo'shatamiz (toza mic).
@@ -98,8 +104,6 @@ async function requestMicPermission(): Promise<boolean> {
     return true
   } catch (e) {
     monitoring.captureMessage('requestMicPermission failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
-    _streamPromise = null
-    _streamResolve = null
     return false
   }
 }
@@ -127,7 +131,12 @@ export function useSpeechRecognition(): SpeechRecognitionState {
   }, [])
 
   useEffect(() => {
-    return () => { try { recRef.current?.abort() } catch { /* noop */ } }
+    return () => {
+      try { recRef.current?.abort() } catch { /* noop */ }
+      // Komponent unmount bo'lganda shared stream'ni tozalaymiz — brauzer indikatori
+      // o'chishi va mikrofonga ruxsat to'g'ri yopilishi uchun.
+      clearSharedMicStream()
+    }
   }, [])
 
   const start = useCallback(async () => {
@@ -205,6 +214,10 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     try { recRef.current?.stop() } catch { /* noop */ }
     setInterim('')
     setIsRecording(false)
+    // Yozish tugagach shared stream'ni tozalaymiz — brauzer indikatori o'chishi uchun.
+    // AudioRecorder hali stream'dan foydalanayotgan bo'lsa ham, MediaRecorder
+    // bufferlangan ma'lumotni saqlab qoladi (stop() chaqirilgan track'lar xavfsiz).
+    clearSharedMicStream()
   }, [])
 
   const reset = useCallback(() => {
