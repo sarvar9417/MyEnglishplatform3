@@ -1577,5 +1577,9 @@
   "ielts.readingPassage": "Текст для чтения",
   "sync.offline": "Не в сети",
   "sync.syncing": "Синхронизация...",
-  "sync.complete": "Синхронизация завершена"
+  "sync.complete": "Синхронизация завершена",
+  "mixedReview.description": "Вопросы из разных разделов перемешиваются для лучшего запоминания.",
+  "mixedReview.start": "Начать",
+  "mixedReview.complete": "Завершено!",
+  "mixedReview.retry": "Попробовать снова"
 }

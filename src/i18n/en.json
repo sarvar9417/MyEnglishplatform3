@@ -1577,5 +1577,9 @@
   "ielts.readingPassage": "Reading passage",
   "sync.offline": "Offline",
   "sync.syncing": "Syncing...",
-  "sync.complete": "Sync complete"
+  "sync.complete": "Sync complete",
+  "mixedReview.description": "Questions from different sections are shuffled for better long-term retention.",
+  "mixedReview.start": "Start",
+  "mixedReview.complete": "Complete!",
+  "mixedReview.retry": "Try Again"
 }

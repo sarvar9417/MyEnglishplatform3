@@ -1,6 +1,6 @@
 import type { DailyLesson } from '../../data/dailyLessons'
 
-export type Tab = 'theory' | 'drill' | 'reading' | 'speaking' | 'writing' | 'listening'
+export type Tab = 'theory' | 'drill' | 'reading' | 'speaking' | 'writing' | 'listening' | 'mixed'
 
 interface LessonNavigationProps {
   lesson: DailyLesson
@@ -16,6 +16,7 @@ export default function LessonNavigation({ lesson, tab, onTabChange }: LessonNav
     { id: 'speaking' as Tab, label: 'Gapirish', icon: '🎤' },
     { id: 'writing' as Tab, label: 'Yozish', icon: '✍️' },
     ...(lesson.listening ? [{ id: 'listening' as Tab, label: 'Tinglash', icon: '🎧' }] : []),
+    { id: 'mixed' as Tab, label: 'Aralash', icon: '🔀' },
   ]
 
   return (

@@ -1713,5 +1713,9 @@ export interface TranslationStrings {
   'sync.offline': string
   'sync.syncing': string
   'sync.complete': string
+  'mixedReview.description': string
+  'mixedReview.start': string
+  'mixedReview.complete': string
+  'mixedReview.retry': string
 }
 

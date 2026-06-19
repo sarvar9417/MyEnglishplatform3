@@ -1577,5 +1577,9 @@
   "ielts.readingPassage": "O'qish matni",
   "sync.offline": "Offline",
   "sync.syncing": "Sinxronizatsiya...",
-  "sync.complete": "Sinxronizatsiya tugadi"
+  "sync.complete": "Sinxronizatsiya tugadi",
+  "mixedReview.description": "Turli bo'limlardagi savollar aralashtiriladi. Bu uzoq muddatli xotirani yaxshilaydi.",
+  "mixedReview.start": "Boshlash",
+  "mixedReview.complete": "Tugadi!",
+  "mixedReview.retry": "Qaytadan"
 }

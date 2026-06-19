@@ -12,6 +12,7 @@ import DrillTab from './DrillTab'
 import LessonHeader from './LessonHeader'
 import LessonNavigation from './LessonNavigation'
 import SelfAssessment from '../ui/SelfAssessment'
+import MixedReview from './MixedReview'
 
 type Props = { lesson: DailyLesson; onBack: () => void }
 
@@ -172,6 +173,13 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
       {tab === 'listening' && lesson.listening && (
         <div role="tabpanel" aria-label="Listening content" className="pt-2">
           <ListeningSection section={lesson.listening} addXP={addXP} />
+        </div>
+      )}
+
+      {/* ── MIXED REVIEW TAB ── */}
+      {tab === 'mixed' && (
+        <div role="tabpanel" aria-label="Mixed review" className="pt-2">
+          <MixedReview lesson={lesson} addXP={addXP} />
         </div>
       )}
 
