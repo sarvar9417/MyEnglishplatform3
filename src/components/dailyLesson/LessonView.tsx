@@ -41,6 +41,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
     completedSections,
     sectionCelebration,
     currentSection,
+    combo,
     testSection,
     testAnswers,
     testSubmitted,
@@ -114,6 +115,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
             isAiChecking={isAiChecking}
             completedSections={completedSections}
             sectionCelebration={sectionCelebration}
+            combo={combo}
             testSection={testSection}
             testAnswers={testAnswers}
             testSubmitted={testSubmitted}

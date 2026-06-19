@@ -87,6 +87,7 @@ export function useLessonState(lessonProp: DailyLesson) {
   const [isAiChecking, setIsAiChecking] = useState(false)
   const [sectionCelebration, setSectionCelebration] = useState<'idle' | 'visible' | 'fading'>('idle')
   const celebrationTimerRef = useRef<ReturnType<typeof setTimeout>>()
+  const [combo, setCombo] = useState(0)
 
   // ── Test state ──
   const [testSection, setTestSection] = useState(savedSession?.testSection ?? 0)
@@ -693,6 +694,7 @@ export function useLessonState(lessonProp: DailyLesson) {
       setAiResults(newAiResults)
       setScore(correct)
       setSubmitted(true)
+      setCombo((prev) => correct > 0 ? prev + correct : 0)
       setCompletedSections((prev) => ({ ...prev, [currentSection]: correct }))
       const sectionKey = `${currentSection}`
       if (!rewardedSectionsRef.current.has(sectionKey)) {
@@ -760,6 +762,7 @@ export function useLessonState(lessonProp: DailyLesson) {
     setAnswers(st.answers)
     setSubmitted(st.submitted)
     setScore(st.score)
+    setCombo(0)
     setAiResults({})
     setCurrentSection(nextIdx)
     scrollToTop()
@@ -948,6 +951,7 @@ export function useLessonState(lessonProp: DailyLesson) {
     completedSections,
     sectionCelebration,
     currentSection,
+    combo,
 
     // Test state
     testSection,

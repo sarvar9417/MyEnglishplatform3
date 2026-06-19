@@ -32,6 +32,7 @@ interface DrillTabProps {
   isAiChecking: boolean
   completedSections: Record<number, number>
   sectionCelebration: 'idle' | 'visible' | 'fading'
+  combo: number
 
   // Test state
   testSection: number
@@ -72,6 +73,7 @@ export default function DrillTab({
   isAiChecking,
   completedSections,
   sectionCelebration,
+  combo,
   testSection,
   testAnswers,
   testSubmitted,
@@ -131,6 +133,7 @@ export default function DrillTab({
                   answers={answers[ex.id] ?? []}
                   onChange={(blankIdx, val) => onChangeAnswer(ex.id, blankIdx, val)}
                   submitted={false}
+                  combo={combo}
                 />
               ))}
             </div>
