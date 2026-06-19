@@ -1592,5 +1592,11 @@
   "accessibility.vocab.batch": "Batch",
   "accessibility.dict.addWord": "Add new word",
   "accessibility.dict.filterAll": "All levels",
-  "accessibility.dict.filterLevel": "Filter by level"
+  "accessibility.dict.filterLevel": "Filter by level",
+
+  "crossReview.title": "Mixed Review",
+  "crossReview.description": "Mixed questions from all {{level}} level lessons",
+  "mixedReview.loading": "Loading lessons...",
+  "mixedReview.noExercises": "No exercises yet for this level",
+  "crossReview.selectLevel": "Select level"
 }

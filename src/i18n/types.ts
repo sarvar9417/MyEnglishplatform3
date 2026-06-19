@@ -1728,5 +1728,11 @@ export interface TranslationStrings {
   'accessibility.dict.addWord': string
   'accessibility.dict.filterAll': string
   'accessibility.dict.filterLevel': string
+
+  'crossReview.title': string
+  'crossReview.description': string
+  'mixedReview.loading': string
+  'mixedReview.noExercises': string
+  'crossReview.selectLevel': string
 }
 

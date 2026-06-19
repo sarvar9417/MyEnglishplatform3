@@ -1592,5 +1592,11 @@
   "accessibility.vocab.batch": "To'plam",
   "accessibility.dict.addWord": "Yangi so'z qo'shish",
   "accessibility.dict.filterAll": "Barcha darajalar",
-  "accessibility.dict.filterLevel": "Daraja filtri"
+  "accessibility.dict.filterLevel": "Daraja filtri",
+
+  "crossReview.title": "Aralash takrorlash",
+  "crossReview.description": "{{level}} darajasidagi barcha darslardan aralash savollar",
+  "mixedReview.loading": "Darslar yuklanmoqda...",
+  "mixedReview.noExercises": "Bu darajada hali mashqlar yo'q",
+  "crossReview.selectLevel": "Darajani tanlang"
 }

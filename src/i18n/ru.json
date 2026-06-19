@@ -1592,5 +1592,11 @@
   "accessibility.vocab.batch": "Пакет",
   "accessibility.dict.addWord": "Добавить новое слово",
   "accessibility.dict.filterAll": "Все уровни",
-  "accessibility.dict.filterLevel": "Фильтр по уровню"
+  "accessibility.dict.filterLevel": "Фильтр по уровню",
+
+  "crossReview.title": "Смешанное повторение",
+  "crossReview.description": "Смешанные вопросы из всех уроков уровня {{level}}",
+  "mixedReview.loading": "Загрузка уроков...",
+  "mixedReview.noExercises": "Упражнений пока нет для этого уровня",
+  "crossReview.selectLevel": "Выберите уровень"
 }

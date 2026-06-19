@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   RefreshCw, Sparkles, Trophy, ChevronRight, Lightbulb, Target,
-  Clock, Mic, Headphones, Newspaper, PenLine,
+  Clock, Mic, Headphones, Newspaper, PenLine, Shuffle,
 } from 'lucide-react'
 import type { DailyLesson, ReviewLesson } from '../data/dailyLessons'
 import { useStore } from '../store/useStore'
@@ -17,6 +17,7 @@ import FriendLessonRecommendation from '../components/dailyLesson/FriendLessonRe
 import { DailyLessonSkeleton } from '../components/ui/PageSkeleton'
 import { LESSON_INDEX, type LessonMeta } from '../data/daily/lessonsIndex'
 import { getLessonCanDo } from '../data/cefrCanDo'
+const CrossLessonMixedReview = lazy(() => import('../components/dailyLesson/CrossLessonMixedReview'))
 type LearnTab = 'grammar' | 'speaking' | 'listening' | 'reading' | 'writing'
 
 // Mavjud daraja tablari (dars darajalari tartibida)
@@ -214,6 +215,23 @@ export default function LearnHub() {
         <FriendLessonRecommendation
           onStartLesson={(id) => setSelected(id)}
         />
+
+        {/* ── Cross-lesson mixed review ── */}
+        {(() => {
+          const levelLessonCount = LESSON_INDEX.filter(l => l.level === activeLevel && !l.isReview).length
+          if (levelLessonCount < 2) return null
+          return (
+            <div>
+              <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
+                <Shuffle size={14} className="text-violet-500" />
+                {t('crossReview.title')}
+              </h3>
+              <Suspense fallback={<div className="card text-center py-4 text-sm text-gray-400">...</div>}>
+                <CrossLessonMixedReview level={activeLevel} addXP={() => {}} />
+              </Suspense>
+            </div>
+          )
+        })()}
 
         {/* ── Lesson list — odd lessons and reviews in correct order ── */}
         <div className="grid grid-cols-1 gap-3">
