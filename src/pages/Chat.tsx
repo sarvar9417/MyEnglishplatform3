@@ -13,6 +13,7 @@ import { useStore } from '../store/useStore'
 import { addSession } from '../db/database'
 import { getTodayTashkent } from '../utils/tashkentDate'
 import { monitoring } from '../lib/monitoring'
+import { sanitizeHtml } from '../lib/sanitizeHtml'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -234,7 +235,7 @@ function ApiKeyBanner() {
       <p className="font-semibold text-amber-800 dark:text-amber-300 flex items-center gap-2">
         <AlertCircle size={16} /> {t('chat.apiKeyTitle')}
       </p>
-      <p className="text-amber-700 dark:text-amber-400 mt-1 text-xs" dangerouslySetInnerHTML={{ __html: t('chat.apiKeyDesc') }} />
+      <p className="text-amber-700 dark:text-amber-400 mt-1 text-xs" dangerouslySetInnerHTML={{ __html: sanitizeHtml(t('chat.apiKeyDesc')) }} />
       <a
         href="https://console.anthropic.com/"
         target="_blank"

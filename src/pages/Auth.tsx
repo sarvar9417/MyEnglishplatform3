@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useI18n } from '../i18n'
 import { X, MailCheck, RefreshCw, AlertTriangle } from 'lucide-react'
+import { sanitizeHtml, escapeHtml } from '../lib/sanitizeHtml'
 
 type Tab = 'login' | 'signup'
 type SignupState = 'form' | 'sent' | 'resent'
@@ -178,7 +179,7 @@ export default function Auth() {
                 {signupState === 'resent' ? t('auth.signupResent') : t('auth.signupSuccess')}
               </h2>
 
-              <p className="text-sm text-gray-500 mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('auth.signupSuccessBody').replace('{email}', signedUpEmail) }} />
+              <p className="text-sm text-gray-500 mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: sanitizeHtml(t('auth.signupSuccessBody').replace('{email}', escapeHtml(signedUpEmail))) }} />
 
               {/* Instructions */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-5 mb-5 text-left border border-blue-100 dark:border-blue-800">
@@ -199,7 +200,7 @@ export default function Auth() {
               {/* Spam folder tip */}
               <div className="flex items-start gap-2.5 p-3 bg-amber-50 border border-amber-100 rounded-xl text-left mb-5">
                 <AlertTriangle size={16} className="text-amber-500 mt-0.5 shrink-0" />
-                <p className="text-xs text-amber-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('auth.spamTip') }} />
+                <p className="text-xs text-amber-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: sanitizeHtml(t('auth.spamTip')) }} />
               </div>
 
               {/* Error in success screen */}
@@ -312,7 +313,7 @@ export default function Auth() {
 
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6" dangerouslySetInnerHTML={{ __html: t('auth.supportText') }} />
+        <p className="text-center text-xs text-gray-400 mt-6" dangerouslySetInnerHTML={{ __html: sanitizeHtml(t('auth.supportText')) }} />
       </div>
 
       {/* ─── Forgot Password Modal ───────────────────────────────────── */}
@@ -342,7 +343,7 @@ export default function Auth() {
               <div className="text-center py-4">
                 <div className="text-4xl mb-3">📧</div>
                 <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">{t('auth.resetSentTitle')}</p>
-                <p className="text-xs text-gray-500" dangerouslySetInnerHTML={{ __html: t('auth.resetSentBody').replace('{email}', resetEmail) }} />
+                <p className="text-xs text-gray-500" dangerouslySetInnerHTML={{ __html: sanitizeHtml(t('auth.resetSentBody').replace('{email}', escapeHtml(resetEmail))) }} />
                 <button
                   onClick={() => setShowReset(false)}
                   className="btn-primary w-full mt-5"

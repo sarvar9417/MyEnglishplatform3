@@ -15,6 +15,7 @@ import { fetchGrammarTopics, saveGrammarResult } from '../services/grammarServic
 import { type GrammarResult } from '../lib/claude'
 import { useStore } from '../store/useStore'
 import { monitoring } from '../lib/monitoring'
+import { sanitizeHtml } from '../lib/sanitizeHtml'
 import { supabase } from '../lib/supabase'
 import { GrammarDNAMap } from '../components/grammar/GrammarDNAMap'
 import GrammarGlossary from '../components/grammar/GrammarGlossary'
@@ -131,7 +132,7 @@ function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect:
       <div className="mt-6 card bg-primary-50 border-primary-100">
         <p className="text-sm text-primary-800 font-medium flex items-center gap-2">
           <Lightbulb size={16} />
-          <span dangerouslySetInnerHTML={{ __html: t('grammar.tipText') }} />
+          <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(t('grammar.tipText')) }} />
         </p>
       </div>
     </div>
