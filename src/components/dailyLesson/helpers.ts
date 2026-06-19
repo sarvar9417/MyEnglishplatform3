@@ -81,6 +81,9 @@ export function checkAnswer(ex: DailyExercise, userAns: string[]): boolean {
     case 'connection':
       // Elaborative encoding — ochiq javob; yozilgan bo'lsa bajarilgan deb hisoblanadi
       return (userAns[0] ?? '').trim().length > 0
+    case 'elaborative':
+      // Elaborative interrogation — har doim to'g'ri (o'z-o'zini tekshirish uchun)
+      return true
   }
 }
 
@@ -103,6 +106,8 @@ export function getExerciseContext(ex: DailyExercise): string {
       return ex.passage
     case 'connection':
       return ex.prompt
+    case 'elaborative':
+      return ex.question
   }
 }
 
@@ -119,6 +124,8 @@ export function getCorrectText(ex: DailyExercise): string {
     case 'fill-table':
       return ex.rows.map(r => `${r.adj}: ${r.comp}/${r.sup}`).join('; ')
     case 'connection':
+      return ex.exampleAnswer
+    case 'elaborative':
       return ex.exampleAnswer
   }
 }

@@ -311,7 +311,7 @@ function LevelDetails({ level }: { level: string }) {
       {unlocks.map((item, idx) => (
         <div
           key={item.labelKey}
-          className="bg-white/15 backdrop-blur-sm rounded-lg px-3 py-1.5 flex items-center gap-1.5 animate-pop-in"
+          className="bg-white/15 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg px-3 py-1.5 flex items-center gap-1.5 animate-pop-in"
           style={{
             animationDelay: `${300 + idx * 100}ms`,
             animationFillMode: 'both',
@@ -424,7 +424,7 @@ export function LevelUpCelebration({
           ${visible ? 'opacity-80' : 'opacity-0'}
         `}
       />
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm" />
 
       {/* Confetti & effects */}
       {visible && <ConfettiRain level={toLevel} />}
@@ -449,27 +449,27 @@ export function LevelUpCelebration({
 
         {/* Level title */}
         <h1
-          className="text-4xl font-black text-white mb-1 drop-shadow-lg animate-slide-up"
+          className="text-4xl font-black text-white dark:text-gray-50 mb-1 drop-shadow-lg animate-slide-up"
           style={{ textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
         >
           {toLevel} darajasi!
         </h1>
 
         {/* From → To */}
-        <p className="text-white/70 text-base mb-1 animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+        <p className="text-white/70 dark:text-gray-300 text-base mb-1 animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
           {fromLevel} → {toLevel}
         </p>
 
         {/* Description */}
-        <p className="text-white/50 text-sm mb-3 animate-fade-in" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+        <p className="text-white/50 dark:text-gray-400 text-sm mb-3 animate-fade-in" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
           {t(theme.descKey as keyof TranslationStrings)}
         </p>
 
         {/* XP badge — animated count */}
         <div className="flex items-center justify-center gap-2 mb-4">
-          <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 flex items-center gap-2 animate-pop-in" style={{ animationDelay: '500ms', animationFillMode: 'both' }}>
-            <Zap size={18} className="text-yellow-300" />
-            <span className="text-white font-black text-lg">
+          <div className="bg-white/20 dark:bg-gray-800/50 backdrop-blur-sm rounded-full px-4 py-1.5 flex items-center gap-2 animate-pop-in" style={{ animationDelay: '500ms', animationFillMode: 'both' }}>
+            <Zap size={18} className="text-yellow-300 dark:text-yellow-400" />
+            <span className="text-white dark:text-gray-100 font-black text-lg">
               +<CountUp value={xpEarned} /> XP
             </span>
           </div>
@@ -485,10 +485,10 @@ export function LevelUpCelebration({
           {achievements.filter(a => a.label).map(ach => (
             <div
               key={ach.label}
-              className="bg-white/15 backdrop-blur-sm rounded-xl px-3 py-2 flex flex-col items-center gap-1 min-w-[64px]"
+              className="bg-white/15 dark:bg-gray-800/40 backdrop-blur-sm rounded-xl px-3 py-2 flex flex-col items-center gap-1 min-w-[64px]"
             >
               <span className="text-xl">{ach.emoji}</span>
-              <span className="text-xs text-white/80 font-medium">{ach.label}</span>
+              <span className="text-xs text-white/80 dark:text-gray-300 font-medium">{ach.label}</span>
             </div>
           ))}
         </div>
@@ -507,8 +507,8 @@ export function LevelUpCelebration({
             onClick={(e) => { e.stopPropagation(); dismiss() }}
             className="
               group flex items-center gap-2 px-6 py-3 rounded-xl
-              bg-white/20 hover:bg-white/30
-              text-white font-bold text-sm
+              bg-white/20 dark:bg-gray-700/50 hover:bg-white/30 dark:hover:bg-gray-600/50
+              text-white dark:text-gray-100 font-bold text-sm
               transition-all duration-200
               hover:scale-105 active:scale-95
               shadow-lg hover:shadow-xl
@@ -520,7 +520,7 @@ export function LevelUpCelebration({
           </button>
 
           {/* Hint text */}
-          <p className="text-white/20 text-xs">
+          <p className="text-white/20 dark:text-gray-500 text-xs">
             Yoki ekranga bosing
           </p>
         </div>

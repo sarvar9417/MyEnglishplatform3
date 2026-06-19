@@ -83,7 +83,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "isReview": false,
     "formulas": 4,
     "vocabulary": 20,
-    "exercises": 51,
+    "exercises": 28,
     "tests": 15
   },
   {

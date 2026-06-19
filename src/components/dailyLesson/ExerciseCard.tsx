@@ -60,7 +60,7 @@ export default function ExerciseCard({
     : ''
 
   return (
-    <div ref={cardRef} className={`relative rounded-2xl border p-4 transition-all duration-300 animate-pop-in ${animateCls} ${borderCls} ${
+    <div ref={cardRef} role="group" aria-label={`Exercise ${num}${total ? ` of ${total}` : ''}: ${ex.type.replace('-', ' ')}`} className={`relative rounded-2xl border p-4 transition-all duration-300 animate-pop-in ${animateCls} ${borderCls} ${
       submitted
         ? 'scale-[1.01] shadow-md'
         : 'hover:shadow-sm'
@@ -85,6 +85,12 @@ export default function ExerciseCard({
         <div>
           <p className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">📝 Bo'sh joyni to'ldiring</p>
           {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
+          {ex.visualHint && (
+            <div className="flex items-center gap-2 mb-2 px-2 py-1 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+              <span className="text-xl">{ex.visualHint}</span>
+              <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">Ko'rsatma</span>
+            </div>
+          )}
           <div className="flex items-start gap-1.5 mb-1">
             <AudioButton text={ex.question.replace(/_{3,}/g, '___ ')} size="sm" />
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-loose">
@@ -92,7 +98,7 @@ export default function ExerciseCard({
               <span key={i}>
                 {part}
                 {i < arr.length - 1 && (
-                  <input type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder="___"
+                  <input type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder="___" aria-label={`Blank ${i + 1} answer`}
                     className={`inline-block border-b-2 w-32 text-center text-sm font-semibold outline-none bg-transparent transition-all duration-200 ${
                       submitted
                         ? isBlankAccepted(ex, i, answers[i] ?? '')
@@ -107,7 +113,7 @@ export default function ExerciseCard({
             ))}
           </p>
           </div>
-          {submitted && feedbackBlock(ex, answers, isCorrect)}
+          {submitted && <div aria-live="polite">{feedbackBlock(ex, answers, isCorrect)}</div>}
         </div>
       )}
 
@@ -115,6 +121,12 @@ export default function ExerciseCard({
         <div>
           <p className="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider mb-1">🔘 To'g'ri variantni tanlang</p>
           {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
+          {ex.visualHint && (
+            <div className="flex items-center gap-2 mb-2 px-2 py-1 bg-violet-50 dark:bg-violet-900/20 rounded-lg">
+              <span className="text-xl">{ex.visualHint}</span>
+              <span className="text-xs text-violet-600 dark:text-violet-400 font-medium">Ko'rsatma</span>
+            </div>
+          )}
           <div className="flex items-start gap-1.5 mb-3">
             <AudioButton text={ex.question} size="sm" />
             <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">{ex.question}</p>
@@ -132,7 +144,7 @@ export default function ExerciseCard({
                 cls = 'border-violet-500 bg-violet-100 dark:bg-violet-900/40 text-violet-800 dark:text-violet-300 font-semibold ring-2 ring-violet-300 dark:ring-violet-600 ring-offset-1 animate-pulse-glow'
               }
               return (
-                <button key={opt} disabled={submitted} onClick={() => onChange(0, opt)}
+                <button key={opt} disabled={submitted} onClick={() => onChange(0, opt)} aria-label={`Option ${OPTION_LABELS[i]}: ${opt}${selected ? ', selected' : ''}`}
                   className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-all ${cls}`}>
                   <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold flex-shrink-0">
                     {OPTION_LABELS[i]}
@@ -142,7 +154,7 @@ export default function ExerciseCard({
               )
             })}
           </div>
-          {submitted && feedbackBlock(ex, answers, isCorrect)}
+          {submitted && <div aria-live="polite">{feedbackBlock(ex, answers, isCorrect)}</div>}
         </div>
       )}
 
@@ -166,8 +178,8 @@ export default function ExerciseCard({
             </div>
           </div>
           <input type="text" value={answers[0] ?? ''} onChange={(e) => onChange(0, e.target.value)} disabled={submitted}
-            placeholder="To'g'ri gapni yozing..." className="input text-sm" autoFocus={!submitted} />
-          {submitted && feedbackBlock(ex, answers, isCorrect)}
+            placeholder="To'g'ri gapni yozing..." className="input text-sm" autoFocus={!submitted} aria-label="Correct the error and write the correct sentence" />
+          {submitted && <div aria-live="polite">{feedbackBlock(ex, answers, isCorrect)}</div>}
         </div>
       )}
 
@@ -186,8 +198,8 @@ export default function ExerciseCard({
             <span className="font-mono font-bold">{ex.hint}</span>
           </p>
           <input type="text" value={answers[0] ?? ''} onChange={(e) => onChange(0, e.target.value)} disabled={submitted}
-            placeholder="To'liq javobni yozing..." className="input text-sm" autoFocus={!submitted} />
-          {submitted && feedbackBlock(ex, answers, isCorrect)}
+            placeholder="To'liq javobni yozing..." className="input text-sm" autoFocus={!submitted} aria-label="Write the transformed sentence" />
+          {submitted && <div aria-live="polite">{feedbackBlock(ex, answers, isCorrect)}</div>}
         </div>
       )}
 
@@ -211,7 +223,7 @@ export default function ExerciseCard({
                 cls = 'border-orange-500 bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-300 font-semibold ring-2 ring-orange-300 dark:ring-orange-600 ring-offset-1'
               }
               return (
-                <button key={opt} disabled={submitted} onClick={() => onChange(0, opt)}
+                <button key={opt} disabled={submitted} onClick={() => onChange(0, opt)} aria-label={`Option ${String.fromCharCode(97 + i)}: ${opt}${selected ? ', selected' : ''}`}
                   className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-all ${cls}`}>
                   <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold flex-shrink-0">
                     {String.fromCharCode(97 + i)}
@@ -221,7 +233,7 @@ export default function ExerciseCard({
               )
             })}
           </div>
-          {submitted && feedbackBlock(ex, answers, isCorrect)}
+          {submitted && <div aria-live="polite">{feedbackBlock(ex, answers, isCorrect)}</div>}
         </div>
       )}
 
@@ -256,7 +268,7 @@ export default function ExerciseCard({
                           }`}>
                             {submitted ? (answers[compIdx] ?? '—') : (
                               <input type="text" value={answers[compIdx] ?? ''} onChange={(e) => onChange(compIdx, e.target.value)} disabled={submitted}
-                                placeholder="___" className="w-28 border-b-2 border-dashed border-indigo-300 dark:border-indigo-600 text-center text-sm font-semibold outline-none bg-transparent focus:border-indigo-600 dark:focus:border-indigo-400 transition-colors" />
+                                placeholder="___" className="w-28 border-b-2 border-dashed border-indigo-300 dark:border-indigo-600 text-center text-sm font-semibold outline-none bg-transparent focus:border-indigo-600 dark:focus:border-indigo-400 transition-colors" aria-label={`Comparative form of ${row.adj}`} />
                             )}
                           </span>
                         ) : <span className="text-gray-300 dark:text-gray-600 italic">—</span>}
@@ -272,7 +284,7 @@ export default function ExerciseCard({
                           }`}>
                             {submitted ? (answers[supIdx] ?? '—') : (
                               <input type="text" value={answers[supIdx] ?? ''} onChange={(e) => onChange(supIdx, e.target.value)} disabled={submitted}
-                                placeholder="___" className="w-28 border-b-2 border-dashed border-indigo-300 dark:border-indigo-600 text-center text-sm font-semibold outline-none bg-transparent focus:border-indigo-600 dark:focus:border-indigo-400 transition-colors" />
+                                placeholder="___" className="w-28 border-b-2 border-dashed border-indigo-300 dark:border-indigo-600 text-center text-sm font-semibold outline-none bg-transparent focus:border-indigo-600 dark:focus:border-indigo-400 transition-colors" aria-label={`Superlative form of ${row.adj}`} />
                             )}
                           </span>
                         ) : <span className="text-gray-300 dark:text-gray-600 italic">—</span>}
@@ -284,7 +296,7 @@ export default function ExerciseCard({
             </table>
           </div>
           {submitted && (
-            <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
+            <div aria-live="polite" className={`mt-3 text-xs ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
               {!isCorrect && (
                 <>
                   <p className="font-semibold">✍️ Sizning javobingiz:</p>
@@ -336,7 +348,7 @@ export default function ExerciseCard({
               <span key={i}>
                 {part}
                 {i < arr.length - 1 && (
-                  <input type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder={`(${i + 1})`}
+                  <input type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder={`(${i + 1})`} aria-label={`Passage blank ${i + 1} answer`}
                     className={`inline-block border-b-2 w-28 text-center text-sm font-semibold outline-none bg-transparent transition-all duration-200 ${
                       submitted
                         ? normalizeAnswer(answers[i] ?? '') === normalizeAnswer((ex.blanks[i] ?? '').split('/')[0])
@@ -350,7 +362,7 @@ export default function ExerciseCard({
               </span>
             ))}
           </div>
-          {submitted && feedbackBlock(ex, answers, isCorrect)}
+          {submitted && <div aria-live="polite">{feedbackBlock(ex, answers, isCorrect)}</div>}
         </div>
       )}
 
@@ -369,9 +381,9 @@ export default function ExerciseCard({
             )}
           </div>
           <textarea value={answers[0] ?? ''} onChange={(e) => onChange(0, e.target.value)} disabled={submitted}
-            rows={3} placeholder="Bu yerga o'z misolingizni yozing..." className="input text-sm resize-none w-full" />
+            rows={3} placeholder="Bu yerga o'z misolingizni yozing..." className="input text-sm resize-none w-full" aria-label="Write your personal example connection" />
           {submitted && (
-            <div className="mt-3">
+            <div className="mt-3" aria-live="polite">
               {(answers[0] ?? '').trim().length > 0
                 ? <p className="text-xs font-semibold text-green-700 dark:text-green-400 mb-2">✅ Ajoyib! O'z misolingizni yaratish yodda saqlashni mustahkamlaydi. +10 XP</p>
                 : <p className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-2">✍️ Keyingi safar o'z misolingizni yozib ko'ring — bu yodlashni kuchaytiradi.</p>}
@@ -379,6 +391,27 @@ export default function ExerciseCard({
                 exercise={{ id: ex.id, instruction: ex.instruction, prompt: ex.prompt, hints: ex.hints, exampleAnswer: ex.exampleAnswer }}
                 userAnswer={answers[0] ?? ''}
               />
+            </div>
+          )}
+        </div>
+      )}
+
+      {ex.type === 'elaborative' && (
+        <div>
+          <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">🤔 Nima uchun? — Chuqur o'ylang</p>
+          {ex.instruction && <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 italic">{ex.instruction}</p>}
+          <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-xl px-4 py-3 mb-3">
+            <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">{ex.question}</p>
+          </div>
+          <textarea value={answers[0] ?? ''} onChange={(e) => onChange(0, e.target.value)} disabled={submitted}
+            rows={4} placeholder="O'z so'zlaringiz bilan tushuntiring..." className="input text-sm resize-none w-full" aria-label="Write your explanation in your own words" />
+          {submitted && (
+            <div className="mt-3" aria-live="polite">
+              <p className="text-xs font-semibold text-green-700 dark:text-green-400 mb-2">✅ Ajoyib! Chuqur o'ylash — til o'rganishning eng kuchli usuli. +10 XP</p>
+              <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-xl px-4 py-3">
+                <p className="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-1">💡 Misol javob:</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{ex.exampleAnswer}</p>
+              </div>
             </div>
           )}
         </div>
@@ -414,7 +447,7 @@ function feedbackBlock(ex: DailyExercise, answers: string[], isCorrect: boolean)
   const blanks = getBlanks(ex)
   
   return (
-    <div className={`mt-3 text-xs ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
+    <div aria-live="polite" className={`mt-3 text-xs ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
       {!isCorrect && (
         <>
           <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{

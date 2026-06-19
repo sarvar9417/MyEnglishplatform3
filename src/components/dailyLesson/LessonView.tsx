@@ -10,6 +10,7 @@ import TheoryTab from './TheoryTab'
 import DrillTab from './DrillTab'
 import LessonHeader from './LessonHeader'
 import LessonNavigation from './LessonNavigation'
+import SelfAssessment from '../ui/SelfAssessment'
 
 type Props = { lesson: DailyLesson; onBack: () => void }
 
@@ -59,6 +60,8 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
 
   return (
     <div className="p-3 sm:p-6 max-w-4xl mx-auto space-y-4 sm:space-y-5">
+      <SelfAssessment lessonId={lesson.id} />
+
       <LessonHeader
         lesson={lesson}
         prevScore={prevScore}
@@ -72,68 +75,72 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
 
       {/* ── THEORY TAB ── */}
       {tab === 'theory' && (
-        <TheoryTab
-          lesson={lesson}
-          storyBeat={storyBeat}
-          navigate={navigate}
-          addXP={addXP}
-          onVocabDone={(pushedCount) => {
-            setVocabDone(true)
-            setVocabPushedCount(prev => Math.max(prev, pushedCount))
-            if (pushedCount > 0) addLearnedWords(pushedCount)
-          }}
-        />
+        <div role="tabpanel" aria-label="Theory content">
+          <TheoryTab
+            lesson={lesson}
+            storyBeat={storyBeat}
+            navigate={navigate}
+            addXP={addXP}
+            onVocabDone={(pushedCount) => {
+              setVocabDone(true)
+              setVocabPushedCount(prev => Math.max(prev, pushedCount))
+              if (pushedCount > 0) addLearnedWords(pushedCount)
+            }}
+          />
+        </div>
       )}
 
       {/* ── DRILL TAB: Exercises ── */}
       {tab === 'drill' && (
-        <DrillTab
-          lessonId={lesson.id}
-          exerciseSections={lesson.exerciseSections}
-          exercises={lesson.exercises}
-          testSections={lesson.testSections}
-          tests={lesson.tests}
-          section={section}
-          sectionExercises={sectionExercises}
-          isLastSection={isLastSection}
-          currentSection={currentSection}
-          sectionTotal={lesson.exerciseSections.length}
-          shuffledTestOptionsMap={shuffledTestOptionsMap}
-          submitted={submitted}
-          score={score}
-          answers={answers}
-          aiResults={aiResults}
-          isAiChecking={isAiChecking}
-          completedSections={completedSections}
-          sectionCelebration={sectionCelebration}
-          testSection={testSection}
-          testAnswers={testAnswers}
-          testSubmitted={testSubmitted}
-          testScore={testScore}
-          testResults={testResults}
-          completedTestSections={completedTestSections}
-          onJumpToSection={handleJumpToSection}
-          onSubmitSection={handleSubmitSection}
-          onClearSection={handleClearSection}
-          onNextSection={handleNextSection}
-          onChangeAnswer={handleChangeAnswer}
-          onJumpToTestSection={handleJumpToTestSection}
-          onSubmitTest={handleSubmitTest}
-          onClearTest={handleClearTest}
-          onTestAnswerChange={(id, value) => setTestAnswers((prev) => ({ ...prev, [id]: value }))}
-        />
+        <div role="tabpanel" aria-label="Drill exercises">
+          <DrillTab
+            lessonId={lesson.id}
+            exerciseSections={lesson.exerciseSections}
+            exercises={lesson.exercises}
+            testSections={lesson.testSections}
+            tests={lesson.tests}
+            section={section}
+            sectionExercises={sectionExercises}
+            isLastSection={isLastSection}
+            currentSection={currentSection}
+            sectionTotal={lesson.exerciseSections.length}
+            shuffledTestOptionsMap={shuffledTestOptionsMap}
+            submitted={submitted}
+            score={score}
+            answers={answers}
+            aiResults={aiResults}
+            isAiChecking={isAiChecking}
+            completedSections={completedSections}
+            sectionCelebration={sectionCelebration}
+            testSection={testSection}
+            testAnswers={testAnswers}
+            testSubmitted={testSubmitted}
+            testScore={testScore}
+            testResults={testResults}
+            completedTestSections={completedTestSections}
+            onJumpToSection={handleJumpToSection}
+            onSubmitSection={handleSubmitSection}
+            onClearSection={handleClearSection}
+            onNextSection={handleNextSection}
+            onChangeAnswer={handleChangeAnswer}
+            onJumpToTestSection={handleJumpToTestSection}
+            onSubmitTest={handleSubmitTest}
+            onClearTest={handleClearTest}
+            onTestAnswerChange={(id, value) => setTestAnswers((prev) => ({ ...prev, [id]: value }))}
+          />
+        </div>
       )}
 
       {/* ── READING TAB ── */}
       {tab === 'reading' && lesson.reading && (
-        <div className="pt-2">
+        <div role="tabpanel" aria-label="Reading content" className="pt-2">
           <ReadingSection section={lesson.reading} addXP={addXP} />
         </div>
       )}
 
       {/* ── SPEAKING TAB ── */}
       {tab === 'speaking' && (
-        <div className="pt-2 space-y-4">
+        <div role="tabpanel" aria-label="Speaking content" className="pt-2 space-y-4">
           <ConfusableBanner pairs={getConfusablePairs(lesson.vocabulary)} navigate={navigate} variant="speaking" />
           <SpeakingSection
             topic={lesson.title}
@@ -149,7 +156,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
 
       {/* ── WRITING TAB ── */}
       {tab === 'writing' && (
-        <div className="pt-2 space-y-4">
+        <div role="tabpanel" aria-label="Writing content" className="pt-2 space-y-4">
           <ConfusableBanner pairs={getConfusablePairs(lesson.vocabulary)} navigate={navigate} variant="writing" />
           <WritingSection
             section={lesson.writing}
@@ -162,7 +169,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
 
       {/* ── LISTENING TAB ── */}
       {tab === 'listening' && lesson.listening && (
-        <div className="pt-2">
+        <div role="tabpanel" aria-label="Listening content" className="pt-2">
           <ListeningSection section={lesson.listening} addXP={addXP} />
         </div>
       )}

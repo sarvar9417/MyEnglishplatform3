@@ -131,14 +131,15 @@ export interface ListeningQuestion {
 }
 
 export type DailyExercise =
-  | { id: number; type: 'fill-blank'; instruction: string; question: string; blanks: string[]; acceptedAnswers?: string[][]; explanation: string }
-  | { id: number; type: 'multiple-choice'; instruction: string; question: string; options: [string, string, string, string]; correct: string; explanation: string }
+  | { id: number; type: 'fill-blank'; instruction: string; question: string; blanks: string[]; acceptedAnswers?: string[][]; explanation: string; visualHint?: string }
+  | { id: number; type: 'multiple-choice'; instruction: string; question: string; options: [string, string, string, string]; correct: string; explanation: string; visualHint?: string }
   | { id: number; type: 'error-correction'; instruction: string; question: string; errorPart: string; correct: string; explanation: string }
   | { id: number; type: 'transformation'; instruction: string; question: string; hint: string; correct: string; explanation: string }
   | { id: number; type: 'fill-table'; instruction: string; rows: { adj: string; comp: string; sup: string }[]; explanation: string }
   | { id: number; type: 'vocab-match'; instruction: string; word: string; options: string[]; correct: string; explanation: string }
   | { id: number; type: 'passage'; instruction: string; passage: string; blanks: string[]; acceptedAnswers?: string[][]; explanation: string }
   | { id: number; type: 'connection'; instruction: string; prompt: string; hints: string[]; exampleAnswer: string }
+  | { id: number; type: 'elaborative'; instruction: string; question: string; exampleAnswer: string }
 
 
 export const comparativesSuperlatives: DailyLesson = {

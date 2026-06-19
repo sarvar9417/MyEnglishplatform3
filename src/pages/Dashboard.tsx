@@ -11,7 +11,7 @@ import { getAllChunks, TOTAL_SPEAKING_DAYS } from '../data/speakingPath'
 import { monitoring } from '../lib/monitoring'
 import {
   BookOpen, BookMarked, Headphones, PenLine, Target,
-  BookText, Mic, Sun, ChevronRight, LogOut, MessageCircle,
+  BookText, Mic, Sun, ChevronRight, ChevronDown, LogOut, MessageCircle,
 } from 'lucide-react'
 import AiInsightsWidget from '../components/dashboard/AiInsightsWidget'
 import TandemCard from '../components/dashboard/TandemCard'
@@ -103,6 +103,7 @@ function TopBar() {
         <button
           onClick={signOut}
           title={t('dashboard.signOutTitle')}
+          aria-label={t('dashboard.signOutTitle')}
           className="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
         >
           <LogOut size={18} />
@@ -273,6 +274,7 @@ function LessonProgressCard() {
         </div>
         <button
           onClick={() => navigate('/lesson')}
+          aria-label={t('dashboard.lessonProgressViewAll')}
           className="text-xs text-primary-600 font-semibold flex items-center gap-0.5 hover:gap-1.5 transition-all"
         >
           {t('dashboard.lessonProgressViewAll')} <ChevronRight size={12} />
@@ -300,6 +302,7 @@ function LessonProgressCard() {
             className="flex items-center gap-1 px-2 py-1 rounded-lg border text-xs transition-all
               hover:border-primary-200 hover:bg-primary-50 group"
             title={`${p.title}: ${p.pct}%`}
+            aria-label={`${p.title}: ${p.pct}%`}
           >
             <div
               className={`w-1.5 h-1.5 rounded-full ${
@@ -341,6 +344,7 @@ function DailyIdiomCard() {
   return (
     <button
       onClick={() => navigate('/idioms')}
+      aria-label={t('dashboard.dailyIdiomTitle')}
       className="card w-full text-left group hover:shadow-md hover:border-primary-200 dark:hover:border-primary-700
         transition-all active:scale-[0.98]"
     >
@@ -391,6 +395,7 @@ function StartLessonButton() {
   return (
     <button
       onClick={() => navigate('/lesson')}
+      aria-label={t('dashboard.startLessonTitle')}
       className="w-full rounded-2xl p-4 flex items-center gap-4 text-left
         bg-gradient-to-r from-primary-600 to-primary-700
         hover:from-primary-700 hover:to-primary-800 transition-all
@@ -433,6 +438,7 @@ function SpeakingPathCard() {
   return (
     <button
       onClick={() => navigate('/speaking-path')}
+      aria-label={t('dashboard.speakingPathTitle')}
       className="w-full rounded-2xl p-4 flex items-center gap-4 text-left
         bg-gradient-to-r from-rose-500 to-orange-500
         hover:from-rose-600 hover:to-orange-600 transition-all
@@ -502,6 +508,7 @@ function CefrProgressCard() {
         </div>
         <button
           onClick={() => navigate('/lesson')}
+          aria-label={t('cefrProgress.viewAll')}
           className="text-xs text-primary-600 font-semibold flex items-center gap-0.5 hover:gap-1.5 transition-all"
         >
           {t('cefrProgress.viewAll')} <ChevronRight size={12} />
@@ -675,6 +682,46 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   )
 }
 
+function CollapsibleSection({
+  title,
+  children,
+  defaultExpanded = false,
+  alwaysExpanded = false,
+}: {
+  title: string
+  children: React.ReactNode
+  defaultExpanded?: boolean
+  alwaysExpanded?: boolean
+}) {
+  const [expanded, setExpanded] = useState(defaultExpanded)
+
+  if (alwaysExpanded) {
+    return <>{children}</>
+  }
+
+  return (
+    <div role="region" aria-label={title}>
+      <button
+        onClick={() => setExpanded(!expanded)}
+        aria-expanded={expanded}
+        className="w-full flex items-center justify-between py-2 px-1 text-sm font-bold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
+      >
+        <span>{title}</span>
+        <ChevronDown
+          size={16}
+          className={`transition-transform duration-200 ${expanded ? 'rotate-0' : '-rotate-90'}`}
+        />
+      </button>
+      <div
+        className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+        style={{ maxHeight: expanded ? '2000px' : '0px' }}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
 export default function Dashboard() {
   const { t } = useI18n()
   const navigate = useNavigate()
@@ -697,6 +744,7 @@ export default function Dashboard() {
           {pendingOpponentDuels.length > 0 && (
             <button
               onClick={() => navigate('/tandem')}
+              aria-label={t('dashboard.duelTitle', { count: pendingOpponentDuels.length })}
               className="w-full flex items-center gap-3 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-rose-50 to-orange-50 dark:from-rose-950/30 dark:to-orange-950/20 border border-rose-200 dark:border-rose-800/50 text-left hover:shadow-md active:scale-[0.98] transition-all group"
             >
               <div className="w-10 h-10 rounded-xl bg-rose-100 dark:bg-rose-900/40 flex items-center justify-center flex-shrink-0">
@@ -717,13 +765,19 @@ export default function Dashboard() {
           )}
 
           {/* Bildirishnomalar — faqat kerak bo'lganda ko'rinadi */}
-          <StreakWarning />
-          <ReviewReminder />
+          <CollapsibleSection title="Streak Warning" defaultExpanded={false}>
+            <StreakWarning />
+          </CollapsibleSection>
+          <CollapsibleSection title="Review Reminder" defaultExpanded={false}>
+            <ReviewReminder />
+          </CollapsibleSection>
 
           {/* ── Tab bar ── */}
           <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-xl">
             <button
               onClick={() => setActiveTab('today')}
+              aria-label={t('dashboard.tabToday')}
+              aria-pressed={activeTab === 'today'}
               className={`flex-1 py-2 px-3 rounded-lg text-sm font-semibold transition-all ${
                 activeTab === 'today'
                   ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
@@ -734,6 +788,8 @@ export default function Dashboard() {
             </button>
             <button
               onClick={() => setActiveTab('all')}
+              aria-label={t('dashboard.tabAll')}
+              aria-pressed={activeTab === 'all'}
               className={`flex-1 py-2 px-3 rounded-lg text-sm font-semibold transition-all ${
                 activeTab === 'all'
                   ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
@@ -749,33 +805,57 @@ export default function Dashboard() {
               {/* ── Bugungi dars — asosiy ── */}
               <StartLessonButton />
               <SpeakingPathCard />
-              <TodayProgress />
+              <CollapsibleSection title={t('dashboard.skillProgressTitle')} alwaysExpanded>
+                <TodayProgress />
+              </CollapsibleSection>
               <CefrProgressCard />
               <SectionLabel>{t('dashboard.sectionToday')}</SectionLabel>
               <LessonProgressCard />
-              <ReviewOverview />
-              <GrammarSrsCard />
+              <CollapsibleSection title="Review Overview">
+                <ReviewOverview />
+              </CollapsibleSection>
+              <CollapsibleSection title="Grammar SRS">
+                <GrammarSrsCard />
+              </CollapsibleSection>
             </>
           ) : (
             <>
               {/* ── Barchasi — to'liq dashboard ── */}
               <StartLessonButton />
               <SpeakingPathCard />
-              <TodayProgress />
+              <CollapsibleSection title={t('dashboard.skillProgressTitle')} alwaysExpanded>
+                <TodayProgress />
+              </CollapsibleSection>
               <CefrProgressCard />
               <SectionLabel>{t('dashboard.sectionToday')}</SectionLabel>
               <LessonProgressCard />
-              <ReviewOverview />
-              <GrammarSrsCard />
+              <CollapsibleSection title="Review Overview">
+                <ReviewOverview />
+              </CollapsibleSection>
+              <CollapsibleSection title="Grammar SRS">
+                <GrammarSrsCard />
+              </CollapsibleSection>
               <SectionLabel>{t('dashboard.sectionRecommended')}</SectionLabel>
-              <WeakSpotsWidget onSpotsLoaded={handleWeakSpotsLoaded} />
-              <AdaptivePlan />
-              <AiInsightsWidget />
-              <TandemCard />
+              <CollapsibleSection title="Weak Spots">
+                <WeakSpotsWidget onSpotsLoaded={handleWeakSpotsLoaded} />
+              </CollapsibleSection>
+              <CollapsibleSection title="Adaptive Plan">
+                <AdaptivePlan />
+              </CollapsibleSection>
+              <CollapsibleSection title="AI Insights">
+                <AiInsightsWidget />
+              </CollapsibleSection>
+              <CollapsibleSection title="Tandem Partner">
+                <TandemCard />
+              </CollapsibleSection>
               <DailyIdiomCard />
-              <ConfusablePairsCard />
+              <CollapsibleSection title="Confusable Pairs">
+                <ConfusablePairsCard />
+              </CollapsibleSection>
               <StoryBeatCard />
-              <ProgressMap />
+              <CollapsibleSection title="Progress Map">
+                <ProgressMap />
+              </CollapsibleSection>
             </>
           )}
         </div>

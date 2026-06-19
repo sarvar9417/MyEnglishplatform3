@@ -2,10 +2,10 @@ import { useToastStore, type ToastType } from '../utils/toastStore'
 import { useI18n } from '../i18n'
 
 const TYPE_STYLES: Record<ToastType, string> = {
-  success: 'bg-green-50 border-green-200 text-green-700',
-  error: 'bg-red-50 border-red-200 text-red-600',
-  warning: 'bg-orange-50 border-orange-200 text-orange-600',
-  info: 'bg-blue-50 border-blue-200 text-blue-600',
+  success: 'bg-green-50 dark:bg-green-900/30 border-green-200 dark:border-green-800 text-green-700 dark:text-green-300',
+  error: 'bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-800 text-red-600 dark:text-red-300',
+  warning: 'bg-orange-50 dark:bg-orange-900/30 border-orange-200 dark:border-orange-800 text-orange-600 dark:text-orange-300',
+  info: 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-300',
 }
 
 const TYPE_ICONS: Record<ToastType, string> = {
@@ -34,7 +34,7 @@ export default function ToastContainer() {
           <button
             onClick={() => dismiss(toast.id)}
             aria-label={t('aria.close')}
-            className="ml-1 opacity-40 hover:opacity-70 transition-opacity text-xs"
+            className="ml-1 opacity-40 hover:opacity-70 dark:hover:opacity-100 transition-opacity text-xs"
           >
             ✕
           </button>
