@@ -1,4 +1,4 @@
-import { Star, BookOpen, Lightbulb, MessageCircle } from 'lucide-react'
+import { Star, BookOpen, Lightbulb, MessageCircle, Target, Clock } from 'lucide-react'
 import type { NavigateFunction } from 'react-router-dom'
 import type { DailyLesson, ReadingSection, WritingSection, ListeningSection } from '../../data/dailyLessons'
 import type { StoryBeat } from '../../data/narrative/storyline'
@@ -27,6 +27,62 @@ interface Props {
 export default function TheoryTab({ lesson, storyBeat, navigate, addXP, onVocabDone }: Props) {
   return (
     <div className="space-y-6">
+      {/* Bugun nimani o'rganamiz? — Learning Objectives */}
+      <div className="bg-gradient-to-r from-primary-50 to-emerald-50 dark:from-primary-900/20 dark:to-emerald-900/20 rounded-2xl p-4 border border-primary-100 dark:border-primary-800">
+        <div className="flex items-center gap-2 mb-3">
+          <Target size={18} className="text-primary-600 dark:text-primary-400" />
+          <h3 className="font-bold text-primary-800 dark:text-primary-200 text-sm">Bugun nimani o'rganamiz?</h3>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs">
+          {lesson.formulas.length > 0 && (
+            <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
+              <span className="w-5 h-5 rounded bg-primary-100 dark:bg-primary-800 flex items-center justify-center text-[10px] font-bold text-primary-600">{lesson.formulas.length}</span>
+              formulalar
+            </div>
+          )}
+          {lesson.vocabulary.length > 0 && (
+            <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
+              <span className="w-5 h-5 rounded bg-emerald-100 dark:bg-emerald-800 flex items-center justify-center text-[10px] font-bold text-emerald-600">{lesson.vocabulary.length}</span>
+              yangi so'zlar
+            </div>
+          )}
+          {lesson.exercises.length > 0 && (
+            <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
+              <span className="w-5 h-5 rounded bg-amber-100 dark:bg-amber-800 flex items-center justify-center text-[10px] font-bold text-amber-600">{lesson.exercises.length}</span>
+              mashqlar
+            </div>
+          )}
+          {lesson.specialCases.length > 0 && (
+            <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
+              <span className="w-5 h-5 rounded bg-rose-100 dark:bg-rose-800 flex items-center justify-center text-[10px] font-bold text-rose-600">{lesson.specialCases.length}</span>
+              maxsus holatlar
+            </div>
+          )}
+          {lesson.reading && (
+            <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
+              <span className="w-5 h-5 rounded bg-blue-100 dark:bg-blue-800 flex items-center justify-center text-[10px] font-bold text-blue-600">1</span>
+              o'qish matni
+            </div>
+          )}
+          {lesson.writing && (
+            <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
+              <span className="w-5 h-5 rounded bg-violet-100 dark:bg-violet-800 flex items-center justify-center text-[10px] font-bold text-violet-600">1</span>
+              yozish mashqi
+            </div>
+          )}
+          {lesson.listening && (
+            <div className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
+              <span className="w-5 h-5 rounded bg-orange-100 dark:bg-orange-800 flex items-center justify-center text-[10px] font-bold text-orange-600">1</span>
+              tinglash mashqi
+            </div>
+          )}
+        </div>
+        <div className="flex items-center gap-1.5 mt-3 text-xs text-gray-500 dark:text-gray-400">
+          <Clock size={12} />
+          Taxminiy vaqt: ~{Math.max(5, Math.round((Array.isArray(lesson.exercises) ? lesson.exercises.length : 0) * 0.5 + (Array.isArray(lesson.vocabulary) ? lesson.vocabulary.length : 0) * 0.3 + (Array.isArray(lesson.tests) ? lesson.tests.length : 0) * 0.5 + 3))} daqiqa
+        </div>
+      </div>
+
       {/* O'rganish yo'li konteksti — dars boshida */}
       {storyBeat && <StoryBeatCard storyBeat={storyBeat} day={lesson.day} lessonId={lesson.id} />}
 

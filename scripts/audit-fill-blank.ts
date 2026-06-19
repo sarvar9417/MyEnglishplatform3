@@ -25,9 +25,11 @@ interface FillBlankIssue {
   blanksCount?: number
 }
 
-// Count ___ occurrences in a string
+// Count ___ or _____ occurrences in a string (3+ underscores = 1 blank)
 function countBlanks(s: string): number {
-  return (s.match(/___/g) || []).length
+  // _{3,} matches 3+ consecutive underscores as one blank
+  // This avoids overlapping matches in _____ (5 underscores)
+  return (s.match(/_{3,}/g) || []).length
 }
 
 function extractExercises(content: string): Array<{

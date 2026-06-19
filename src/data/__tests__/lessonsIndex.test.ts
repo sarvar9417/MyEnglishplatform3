@@ -18,6 +18,10 @@ function toMeta(x: Record<string, unknown>): LessonMeta {
     vocabulary: arr('vocabulary'),
     exercises: arr('exercises'),
     tests: arr('tests'),
+    hasReading: !!x.reading,
+    hasWriting: !!x.writing,
+    hasListening: !!x.listening,
+    hasSpeaking: !!x.speaking,
   }
 }
 
@@ -35,7 +39,8 @@ test('LESSON_INDEX is in sync with loadAllLessons', async () => {
       `export interface LessonMeta {\n` +
       `  id: string\n  title: string\n  subtitle: string\n  level: string\n  day: number\n` +
       `  isReview: boolean\n  category?: string\n  coversTopics?: string[]\n` +
-      `  formulas: number\n  vocabulary: number\n  exercises: number\n  tests: number\n}\n\n` +
+      `  formulas: number\n  vocabulary: number\n  exercises: number\n  tests: number\n` +
+      `  hasReading: boolean\n  hasWriting: boolean\n  hasListening: boolean\n  hasSpeaking: boolean\n}\n\n` +
       `export const LESSON_INDEX: LessonMeta[] = ${JSON.stringify(computed, null, 2)}\n`
     writeFileSync('src/data/daily/lessonsIndex.ts', header)
     return

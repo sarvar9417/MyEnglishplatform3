@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   RefreshCw, Sparkles, Trophy, ChevronRight, Lightbulb, Target,
+  Clock, Mic, Headphones, Newspaper, PenLine,
 } from 'lucide-react'
 import type { DailyLesson, ReviewLesson } from '../data/dailyLessons'
 import { useStore } from '../store/useStore'
@@ -16,14 +17,29 @@ import FriendLessonRecommendation from '../components/dailyLesson/FriendLessonRe
 import { DailyLessonSkeleton } from '../components/ui/PageSkeleton'
 import { LESSON_INDEX, type LessonMeta } from '../data/daily/lessonsIndex'
 import { getLessonCanDo } from '../data/cefrCanDo'
-type LearnTab = 'grammar'
+type LearnTab = 'grammar' | 'speaking' | 'listening' | 'reading' | 'writing'
 
 // Mavjud daraja tablari (dars darajalari tartibida)
 const LEVELS = ['A0', 'A1', 'A2', 'B1', 'B1+', 'B2'].filter(lv => LESSON_INDEX.some(l => l.level === lv))
 
-const TABS: { id: LearnTab; labelKey: string; emoji: string }[] = [
-  { id: 'grammar', labelKey: 'learnHub.tabGrammar', emoji: '📚' },
+const TABS: { id: LearnTab; labelKey: string; emoji: string; filter: (l: LessonMeta) => boolean }[] = [
+  { id: 'grammar', labelKey: 'learnHub.tabGrammar', emoji: '📚', filter: () => true },
+  { id: 'speaking', labelKey: 'learnHub.tabSpeaking', emoji: '🎤', filter: (l) => l.hasSpeaking },
+  { id: 'listening', labelKey: 'learnHub.tabListening', emoji: '🎧', filter: (l) => l.hasListening },
+  { id: 'reading', labelKey: 'learnHub.tabReading', emoji: '📰', filter: (l) => l.hasReading },
+  { id: 'writing', labelKey: 'learnHub.tabWriting', emoji: '✍️', filter: (l) => l.hasWriting },
 ]
+
+function estimateMinutes(l: LessonMeta): number {
+  return Math.max(5, Math.round((l.exercises * 0.5 + l.vocabulary * 0.3 + l.tests * 0.5 + 3)))
+}
+
+function difficultyLabel(l: LessonMeta): { label: string; color: string } {
+  const score = l.exercises + l.tests
+  if (score <= 15) return { label: 'Oson', color: 'bg-green-100 text-green-700' }
+  if (score <= 30) return { label: "O'rtacha", color: 'bg-amber-100 text-amber-700' }
+  return { label: 'Qiyin', color: 'bg-red-100 text-red-700' }
+}
 
 export default function LearnHub() {
   const navigate = useNavigate()
@@ -83,8 +99,9 @@ export default function LearnHub() {
     if (lessonsLoading || !lessonsFetched) return <DailyLessonSkeleton />
   }
 
-  function renderGrammarTab() {
-    const levelLessons: LessonMeta[] = LESSON_INDEX.filter(l => l.level === activeLevel)
+  function renderLessonsTab() {
+    const activeFilter = TABS.find(t => t.id === activeTab)?.filter ?? (() => true)
+    const levelLessons: LessonMeta[] = LESSON_INDEX.filter(l => l.level === activeLevel && activeFilter(l))
 
     return (
       <div className="space-y-5">
@@ -107,6 +124,8 @@ export default function LearnHub() {
               <button
                 key={lv}
                 onClick={() => setActiveLevel(lv)}
+                aria-label={`${lv} darajasi — ${count} dars`}
+                aria-pressed={active}
                 className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-bold transition-all ${
                   active
                     ? 'bg-primary-600 text-white shadow-sm'
@@ -180,7 +199,8 @@ export default function LearnHub() {
                   return (
                     <div key={l.id}
                       className={`w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold text-white cursor-help transition-transform hover:scale-125 ${color}`}
-                      title={`${l.title}: ${pct !== undefined ? pct + '%' : hasSession ? t('learnHub.progressInProgress') : t('learnHub.progressPending')}`}>
+                      title={`${l.title}: ${pct !== undefined ? pct + '%' : hasSession ? t('learnHub.progressInProgress') : t('learnHub.progressPending')}`}
+                      aria-label={`${l.title}: ${pct !== undefined ? pct + '%' : hasSession ? t('learnHub.progressInProgress') : t('learnHub.progressPending')}`}>
                       {l.day ?? '?'}
                     </div>
                   )
@@ -202,10 +222,11 @@ export default function LearnHub() {
               const review = item
               const pct = lessonScores[review.id]
               return (
-                <button
-                  key={review.id}
-                  onClick={() => setSelectedReview(review.id)}
-                  className="text-left flex flex-col gap-3 p-3 sm:p-5 rounded-2xl border border-amber-200 dark:border-amber-800 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+              <button
+                key={review.id}
+                onClick={() => setSelectedReview(review.id)}
+                aria-label={`${review.title} — ${review.subtitle}`}
+                className="text-left flex flex-col gap-3 p-3 sm:p-5 rounded-2xl border border-amber-200 dark:border-amber-800 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2">
@@ -244,6 +265,14 @@ export default function LearnHub() {
             const lesson = item
             const pct = lessonScores[lesson.id]
             const session = lessonSessions[lesson.id]
+            const mins = estimateMinutes(lesson)
+            const diff = difficultyLabel(lesson)
+            const contentIcons: { key: boolean; Icon: typeof Newspaper; label: string }[] = [
+              { key: lesson.hasReading, Icon: Newspaper, label: 'Reading' },
+              { key: lesson.hasListening, Icon: Headphones, label: 'Listening' },
+              { key: lesson.hasSpeaking, Icon: Mic, label: 'Speaking' },
+              { key: lesson.hasWriting, Icon: PenLine, label: 'Writing' },
+            ]
             const tabLabels: Record<string, string> = {
               theory: '📖 ' + t('learnHub.tabTheory'), drill: '⚡ ' + t('learnHub.tabDrill'), reading: "📰 " + t('learnHub.tabReading'),
               speaking: '🎤 ' + t('learnHub.tabSpeaking'), writing: '✍️ ' + t('learnHub.tabWriting'), listening: '🎧 ' + t('learnHub.tabListening'),
@@ -252,6 +281,7 @@ export default function LearnHub() {
               <button
                 key={lesson.id}
                 onClick={() => setSelected(lesson.id)}
+                aria-label={`${lesson.title} — ${lesson.subtitle}`}
                 className="card-hover text-left flex flex-col gap-3 p-3 sm:p-5 group"
               >
                 <div className="flex items-start justify-between gap-2">
@@ -268,14 +298,18 @@ export default function LearnHub() {
                     {pct !== undefined && (
                       <span className={`badge text-xs font-bold ${pct >= 80 ? 'bg-green-100 text-green-700' : pct >= 50 ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'}`}>{pct}%</span>
                     )}
+                    <span className={`badge text-xs font-bold ${diff.color}`}>{diff.label}</span>
                     <span className="badge border bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-600">{lesson.level}</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500">
-                  <span>📚 {t('learnHub.formulasCount', { count: lesson.formulas })}</span>
-                  <span>📝 {t('learnHub.wordsCount', { count: lesson.vocabulary })}</span>
-                  <span>✍️ {t('learnHub.exercisesCount', { count: lesson.exercises })}</span>
-                  <span>{t('learnHub.xpCount', { count: lesson.exercises * 10 })}</span>
+                <div className="flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500 flex-wrap">
+                  <span className="flex items-center gap-1"><Clock size={12} /> {mins} daqiqa</span>
+                  <span>📝 {lesson.vocabulary} so'z</span>
+                  <span>✍️ {lesson.exercises} mashq</span>
+                  <span>⭐ {lesson.exercises * 10} XP</span>
+                  <span className="flex items-center gap-1">
+                    {contentIcons.filter(c => c.key).map(c => <c.Icon key={c.label} size={12} />)}
+                  </span>
                 </div>
                 {/* CEFR Can-Do Statement */}
                 {(() => {
@@ -320,7 +354,12 @@ export default function LearnHub() {
 
   function renderActiveTab() {
     switch (activeTab) {
-      case 'grammar': return renderGrammarTab()
+      case 'grammar':
+      case 'speaking':
+      case 'listening':
+      case 'reading':
+      case 'writing':
+        return renderLessonsTab()
     }
   }
 
@@ -341,6 +380,7 @@ export default function LearnHub() {
       {pendingOpponentDuels.length > 0 && (
         <button
           onClick={() => navigate('/tandem')}
+          aria-label={`${pendingOpponentDuels.length} ta jang kutmoqda`}
           className="w-full flex items-center gap-3 p-3 sm:p-4 mb-5 rounded-2xl bg-gradient-to-r from-rose-50 to-orange-50 dark:from-rose-950/30 dark:to-orange-950/20 border border-rose-200 dark:border-rose-800/50 text-left hover:shadow-md active:scale-[0.98] transition-all group"
         >
           <div className="w-10 h-10 rounded-xl bg-rose-100 dark:bg-rose-900/40 flex items-center justify-center flex-shrink-0">
@@ -360,10 +400,13 @@ export default function LearnHub() {
         </button>
       )}
 
-      <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-5">
+      <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-5" role="tablist" aria-label="Mavzu filtrlari">
         {TABS.map((tab) => (
           <button
             key={tab.id}
+            role="tab"
+            aria-selected={activeTab === tab.id}
+            aria-label={t(tab.labelKey as keyof TranslationStrings)}
             onClick={() => setActiveTab(tab.id)}
             className={`
               flex-1 flex items-center justify-center gap-1.5 px-2 py-2.5 rounded-xl

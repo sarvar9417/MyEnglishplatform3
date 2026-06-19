@@ -290,9 +290,9 @@ function CatalogView({ d, streak }: { d: ReturnType<typeof usePhraseData>; strea
             <div className="flex items-center gap-2">
               <div className="relative flex-1">
                 <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input type="text" value={d.filterText} onChange={e => d.setFilterText(e.target.value)} placeholder={t('phrases.searchPlaceholder')} className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-b1-500 focus:border-b1-500 outline-none transition-all" />
+                <input type="text" value={d.filterText} onChange={e => d.setFilterText(e.target.value)} placeholder={t('phrases.searchPlaceholder')} aria-label={t('phrases.searchPlaceholder')} className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-b1-500 focus:border-b1-500 outline-none transition-all" />
               </div>
-              <button onClick={() => d.setShowFilters(!d.showFilters)} className={`p-2 rounded-xl border transition-all ${d.showFilters || d.filterLevel.size > 0 || d.filterMastery !== 'all' ? 'border-b1-300 bg-b1-50 text-b1-600 dark:bg-b1-900/30 dark:text-b1-400' : 'border-gray-200 dark:border-gray-600 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'}`}>
+              <button onClick={() => d.setShowFilters(!d.showFilters)} aria-label="Filtrlar" className={`p-2 rounded-xl border transition-all ${d.showFilters || d.filterLevel.size > 0 || d.filterMastery !== 'all' ? 'border-b1-300 bg-b1-50 text-b1-600 dark:bg-b1-900/30 dark:text-b1-400' : 'border-gray-200 dark:border-gray-600 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'}`}>
                 <Filter size={16} />
               </button>
             </div>
@@ -327,7 +327,7 @@ function CatalogView({ d, streak }: { d: ReturnType<typeof usePhraseData>; strea
             {d.filteredBatchPhrases.length === 0 ? (
               <div className="py-8 text-center">
                 <p className="text-sm text-gray-400">{t('phrases.noResults')}</p>
-                <button onClick={() => { d.setFilterText(''); d.setFilterLevel(new Set()); d.setFilterMastery('all') }} className="mt-2 text-xs text-b1-500 font-semibold hover:underline">{t('phrases.filterClear')}</button>
+                <button onClick={() => { d.setFilterText(''); d.setFilterLevel(new Set()); d.setFilterMastery('all') }} aria-label={t('phrases.filterClear')} className="mt-2 text-xs text-b1-500 font-semibold hover:underline">{t('phrases.filterClear')}</button>
               </div>
             ) : (
               d.filteredBatchPhrases.map((p) => (

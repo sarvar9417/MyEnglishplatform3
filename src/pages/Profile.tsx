@@ -389,6 +389,7 @@ export default function Profile() {
         {activeTab === 'info' && (
           <button
             onClick={signOut}
+            aria-label={t('profile.signOut')}
             className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-50 text-red-600
               hover:bg-red-100 transition-colors text-sm font-medium"
           >
@@ -399,10 +400,13 @@ export default function Profile() {
       </div>
 
       {/* Tab Bar */}
-      <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-2xl sticky top-14 z-10">
+      <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-2xl sticky top-14 z-10" role="tablist" aria-label="Profil bo'limlari">
         {PROFILE_TABS.map((tab) => (
           <button
             key={tab.id}
+            role="tab"
+            aria-selected={activeTab === tab.id}
+            aria-label={t(tab.labelKey as keyof TranslationStrings)}
             onClick={() => setActiveTab(tab.id)}
             className={`
               flex-1 flex items-center justify-center gap-1.5 px-2 py-2 rounded-xl

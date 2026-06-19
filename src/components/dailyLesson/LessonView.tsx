@@ -1,3 +1,4 @@
+import { Trophy, Star, RotateCcw } from 'lucide-react'
 import type { DailyLesson } from '../../data/dailyLessons'
 import { getConfusablePairs } from './lessonHelpers'
 import { useLessonState } from './useLessonState'
@@ -171,6 +172,53 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
       {tab === 'listening' && lesson.listening && (
         <div role="tabpanel" aria-label="Listening content" className="pt-2">
           <ListeningSection section={lesson.listening} addXP={addXP} />
+        </div>
+      )}
+
+      {/* ── LESSON COMPLETE SUMMARY ── */}
+      {allDone && (
+        <div className="bg-gradient-to-br from-emerald-50 to-primary-50 dark:from-emerald-900/20 dark:to-primary-900/20 rounded-2xl p-5 border border-emerald-200 dark:border-emerald-800 space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/40 rounded-xl flex items-center justify-center">
+              <Trophy size={24} className="text-emerald-600 dark:text-emerald-400" />
+            </div>
+            <div>
+              <h3 className="font-bold text-emerald-800 dark:text-emerald-200 text-lg">Dars yakunlandi!</h3>
+              <p className="text-sm text-emerald-600 dark:text-emerald-400">Ajoyib natija! Davom eting.</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-3 text-center">
+              <p className="text-2xl font-bold text-primary-600">{currentLessonScore ?? 0}%</p>
+              <p className="text-xs text-gray-500 mt-1">Natija</p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-3 text-center">
+              <p className="text-2xl font-bold text-emerald-600">{lesson.exercises.length * 10}</p>
+              <p className="text-xs text-gray-500 mt-1">XP olindi</p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-3 text-center">
+              <p className="text-2xl font-bold text-amber-600">{lesson.vocabulary.length}</p>
+              <p className="text-xs text-gray-500 mt-1">Yangi so'z</p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-3 text-center">
+              <div className="flex justify-center gap-0.5">
+                {[1,2,3,4,5].map(s => (
+                  <Star key={s} size={16} className={s <= Math.round((currentLessonScore ?? 0) / 20) ? 'text-amber-400 fill-amber-400' : 'text-gray-200'} />
+                ))}
+              </div>
+              <p className="text-xs text-gray-500 mt-1">Yulduzlar</p>
+            </div>
+          </div>
+
+          <div className="flex gap-2">
+            <button onClick={onBack} className="btn-primary flex-1 flex items-center justify-center gap-2">
+              <RotateCcw size={16} /> Qaytadan o'qish
+            </button>
+            <button onClick={onBack} className="btn-ghost flex-1 flex items-center justify-center gap-2">
+              Boshqa darslar
+            </button>
+          </div>
         </div>
       )}
     </div>

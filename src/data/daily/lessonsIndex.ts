@@ -18,6 +18,10 @@ export interface LessonMeta {
   vocabulary: number
   exercises: number
   tests: number
+  hasReading: boolean
+  hasWriting: boolean
+  hasListening: boolean
+  hasSpeaking: boolean
 }
 
 export const LESSON_INDEX: LessonMeta[] = [
@@ -31,7 +35,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 10,
     "exercises": 5,
-    "tests": 2
+    "tests": 2,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "numbers-alphabet",
@@ -43,7 +51,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 2,
     "vocabulary": 10,
     "exercises": 5,
-    "tests": 2
+    "tests": 2,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "family-me",
@@ -55,7 +67,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 10,
     "exercises": 5,
-    "tests": 2
+    "tests": 2,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-1",
@@ -72,7 +88,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 5,
-    "tests": 3
+    "tests": 3,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "greetings-introductions",
@@ -84,7 +104,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 12,
     "exercises": 19,
-    "tests": 11
+    "tests": 11,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "alphabet-greetings",
@@ -96,7 +120,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 20,
     "exercises": 33,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "numbers-1-100",
@@ -108,7 +136,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 38,
     "exercises": 46,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "colors-shapes",
@@ -120,7 +152,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 22,
     "exercises": 45,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "family",
@@ -132,7 +168,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 32,
     "exercises": 43,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-2",
@@ -151,7 +191,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "days-months",
@@ -163,7 +207,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 37,
     "exercises": 36,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "time-routines",
@@ -175,7 +223,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 26,
     "exercises": 36,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "food-drinks",
@@ -187,7 +239,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 37,
     "exercises": 36,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "animals",
@@ -199,7 +255,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 38,
     "exercises": 36,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "body-parts",
@@ -211,7 +271,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 38,
     "exercises": 34,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-3",
@@ -230,7 +294,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "clothes",
@@ -242,7 +310,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 39,
     "exercises": 40,
-    "tests": 20
+    "tests": 20,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "demonstratives",
@@ -254,7 +326,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "there-is-are",
@@ -266,7 +342,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "prepositions-of-place",
@@ -278,7 +358,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 18,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "basic-adjectives",
@@ -290,7 +374,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 18,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-4",
@@ -309,7 +397,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "articles-a-an-the",
@@ -321,7 +413,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 10,
     "exercises": 20,
-    "tests": 10
+    "tests": 10,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "have-got",
@@ -333,7 +429,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 17,
     "exercises": 25,
-    "tests": 17
+    "tests": 17,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "can-cant",
@@ -345,7 +445,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 17,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "simple-present",
@@ -357,7 +461,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 15,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "present-continuous",
@@ -369,7 +477,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 15,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-5",
@@ -388,7 +500,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "simple-past",
@@ -400,7 +516,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 15,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "simple-future",
@@ -412,7 +532,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 15,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "question-words",
@@ -424,7 +548,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "conjunctions",
@@ -436,7 +564,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 18,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-6",
@@ -454,7 +586,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 8,
-    "tests": 4
+    "tests": 4,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "a1-review",
@@ -466,7 +602,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 20,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": true
   },
   {
     "id": "modal-verbs",
@@ -478,7 +618,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 18,
     "exercises": 45,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "articles",
@@ -490,7 +634,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 18,
     "exercises": 47,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "prepositions",
@@ -502,7 +650,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 38,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "questions",
@@ -514,7 +666,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 40,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "countable-uncountable",
@@ -526,7 +682,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 16,
     "exercises": 38,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-7",
@@ -545,7 +705,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "adjective-adverb",
@@ -557,7 +721,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 16,
     "exercises": 34,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "comparatives-superlatives",
@@ -569,7 +737,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 23,
     "exercises": 47,
-    "tests": 25
+    "tests": 25,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "gerunds-infinitives",
@@ -581,7 +753,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 30,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "past-continuous",
@@ -593,7 +769,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 20,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "present-perfect",
@@ -605,7 +785,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 12,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-8",
@@ -624,7 +808,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "passive-voice",
@@ -636,7 +824,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 16,
     "exercises": 28,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "reported-speech",
@@ -648,7 +840,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 16,
     "exercises": 28,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "first-conditional",
@@ -660,7 +856,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 15,
     "exercises": 30,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "verb-patterns",
@@ -672,7 +872,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 37,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "time-prepositions",
@@ -684,7 +888,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 36,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-9",
@@ -703,7 +911,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "possessives",
@@ -715,7 +927,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 36,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "some-any-no-every",
@@ -727,7 +943,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 14,
     "exercises": 36,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "present-continuous-future",
@@ -739,7 +959,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 14,
     "exercises": 31,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "quantifiers",
@@ -751,7 +975,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 14,
     "exercises": 31,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "too-enough",
@@ -763,7 +991,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 13,
     "exercises": 31,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-10",
@@ -782,7 +1014,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "so-such",
@@ -794,7 +1030,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 13,
     "exercises": 31,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "a2-review-2",
@@ -806,7 +1046,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 30,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "present-perfect-continuous",
@@ -818,7 +1062,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 19,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "past-perfect",
@@ -830,7 +1078,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 18,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "past-perfect-continuous",
@@ -842,7 +1094,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 19,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "past-habits",
@@ -855,7 +1111,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 33,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-11",
@@ -873,7 +1133,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 8,
-    "tests": 4
+    "tests": 4,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "future-forms-review",
@@ -886,7 +1150,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 35,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "future-continuous",
@@ -898,7 +1166,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 18,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "future-perfect",
@@ -910,7 +1182,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 18,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "modals-obligation",
@@ -923,7 +1199,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 30,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "modals-speculation",
@@ -936,7 +1216,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 17,
     "exercises": 30,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "causatives",
@@ -949,7 +1233,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 33,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-12",
@@ -968,7 +1256,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "relative-clauses-b1",
@@ -980,7 +1272,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 42,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "question-tags",
@@ -993,7 +1289,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 13,
     "exercises": 30,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "indirect-questions",
@@ -1006,7 +1306,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 13,
     "exercises": 28,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "both-either-neither",
@@ -1019,7 +1323,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 11,
     "exercises": 33,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "so-neither-auxiliaries",
@@ -1032,7 +1340,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 13,
     "exercises": 33,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-13",
@@ -1051,7 +1363,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "time-clauses",
@@ -1064,7 +1380,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 30,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "phrasal-verbs-b1",
@@ -1076,7 +1396,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 38,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "wishes-regrets",
@@ -1089,7 +1413,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 11,
     "exercises": 30,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "pragmatics-formal-informal",
@@ -1101,7 +1429,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 15,
-    "tests": 5
+    "tests": 5,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-14",
@@ -1119,7 +1451,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 8,
-    "tests": 4
+    "tests": 4,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "narrative-tenses-b1plus",
@@ -1132,7 +1468,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 31,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "advanced-relative-clauses-b1plus",
@@ -1145,7 +1485,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 17,
     "exercises": 31,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "participle-clauses-b1plus",
@@ -1158,7 +1502,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 31,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "infinitive-gerund-advanced-b1plus",
@@ -1171,7 +1519,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 31,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "modal-perfects-b1plus",
@@ -1184,7 +1536,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 31,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-15",
@@ -1203,7 +1559,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "emphasis-does-b1plus",
@@ -1216,7 +1576,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 29,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "fronting-b1plus",
@@ -1229,7 +1593,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 29,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "ellipsis-substitution-b1plus",
@@ -1242,7 +1610,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 29,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "concession-b1plus",
@@ -1255,7 +1627,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 29,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "linking-words-advanced-b1plus",
@@ -1268,7 +1644,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-16",
@@ -1287,7 +1667,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "collocations-make-do-have-take-b1plus",
@@ -1300,7 +1684,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 45,
     "exercises": 29,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "advanced-phrasal-verbs-b1plus",
@@ -1313,7 +1701,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 29,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "idioms-common-b1plus",
@@ -1326,7 +1718,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 19,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "prepositional-phrases-b1plus",
@@ -1339,7 +1735,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 45,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "word-formation-b1plus",
@@ -1352,7 +1752,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-17",
@@ -1371,7 +1775,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "reporting-verbs-b1plus",
@@ -1384,7 +1792,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 37,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "determiners-advanced-b1plus",
@@ -1397,7 +1809,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 37,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "b1plus-review",
@@ -1410,7 +1826,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 10,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "unreal-past-b2",
@@ -1423,7 +1843,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 33,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "advanced-conditionals-b2",
@@ -1436,7 +1860,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 41,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "future-perfect-continuous",
@@ -1448,7 +1876,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 19,
     "exercises": 35,
-    "tests": 28
+    "tests": 28,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "nominalization-b2",
@@ -1461,7 +1893,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 18,
     "exercises": 32,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "subjunctive-b2",
@@ -1474,7 +1910,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 14,
     "exercises": 32,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-18",
@@ -1493,7 +1933,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "advanced-passive-b2",
@@ -1506,7 +1950,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 20,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "hedging-b2",
@@ -1519,7 +1967,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 14,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "complex-prepositions-b2",
@@ -1532,7 +1984,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 13,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "cohesion-b2",
@@ -1545,7 +2001,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 15,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "register-b2",
@@ -1558,7 +2018,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 13,
     "exercises": 27,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-19",
@@ -1577,7 +2041,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "complex-sentences-b2",
@@ -1590,7 +2058,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 39,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "advanced-modals-b2",
@@ -1603,7 +2075,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 38,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "contrastive-structures-b2",
@@ -1616,7 +2092,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 43,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "inversion-b2",
@@ -1629,7 +2109,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 20,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "cleft-sentences-b2",
@@ -1642,7 +2126,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 20,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-20",
@@ -1661,7 +2149,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "punctuation-b2",
@@ -1674,7 +2166,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 38,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "academic-collocations-b2",
@@ -1687,7 +2183,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 38,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "academic-vocabulary-b2",
@@ -1700,7 +2200,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 53,
     "exercises": 20,
-    "tests": 15
+    "tests": 15,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "critical-thinking-b2",
@@ -1713,7 +2217,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 38,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "british-american-differences",
@@ -1725,7 +2233,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 20,
     "exercises": 40,
-    "tests": 10
+    "tests": 10,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-21",
@@ -1744,7 +2256,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 10,
-    "tests": 5
+    "tests": 5,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "modals-pragmatics-b2",
@@ -1756,7 +2272,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 3,
     "vocabulary": 10,
     "exercises": 21,
-    "tests": 10
+    "tests": 10,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "b2-review",
@@ -1769,7 +2289,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 11,
     "exercises": 38,
-    "tests": 18
+    "tests": 18,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "argument-structure-b2",
@@ -1782,7 +2306,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 16,
     "exercises": 38,
-    "tests": 20
+    "tests": 20,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "stance-markers-b2",
@@ -1795,7 +2323,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 14,
     "exercises": 38,
-    "tests": 20
+    "tests": 20,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "paraphrasing-b2",
@@ -1808,7 +2340,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 12,
     "exercises": 40,
-    "tests": 20
+    "tests": 20,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "advanced-verb-patterns-b2",
@@ -1821,7 +2357,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 15,
     "exercises": 38,
-    "tests": 20
+    "tests": 20,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   },
   {
     "id": "auto-review-22",
@@ -1839,7 +2379,11 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 0,
     "vocabulary": 0,
     "exercises": 8,
-    "tests": 4
+    "tests": 4,
+    "hasReading": false,
+    "hasWriting": false,
+    "hasListening": false,
+    "hasSpeaking": false
   },
   {
     "id": "b2-comprehensive-review",
@@ -1852,6 +2396,10 @@ export const LESSON_INDEX: LessonMeta[] = [
     "formulas": 4,
     "vocabulary": 11,
     "exercises": 38,
-    "tests": 20
+    "tests": 20,
+    "hasReading": true,
+    "hasWriting": true,
+    "hasListening": true,
+    "hasSpeaking": false
   }
 ]

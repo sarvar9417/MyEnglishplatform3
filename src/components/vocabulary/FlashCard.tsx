@@ -46,8 +46,11 @@ export default function FlashCard({
     <div
       className="w-full cursor-pointer select-none touch-pan-y"
     >
-      <div
-        className="relative w-full min-h-[260px] sm:min-h-[280px]"
+        <div
+          className="relative w-full min-h-[260px] sm:min-h-[280px]"
+          role="region"
+          aria-label={`Flash card: ${word.english}`}
+          aria-roledescription="flash card"
         style={{
           transform: isDragging ? `translateX(${offsetX}px) rotate(${offsetX * 0.03}deg)` : '',
           transition: isDragging ? 'none' : 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -95,6 +98,7 @@ export default function FlashCard({
           {!flipped && (
             <button
               onClick={(e) => { e.stopPropagation(); onFlip() }}
+              aria-label={t('flashCard.view')}
               className="btn-primary mt-6 text-sm flex items-center gap-2"
             >
               {t('flashCard.view')} <ChevronRight size={14} />
