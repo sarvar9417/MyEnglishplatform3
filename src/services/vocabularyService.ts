@@ -582,8 +582,10 @@ export async function delayConfusablePartners(
     updates.push({ word_id: row.word_id, next_review: newDue })
   }
 
-  // Batch: har birini alohida update qilish (Supabase .update() batch emas)
-  // Lekin parallel qilish mumkin
+  // Parallel individual UPDATE — bu yerda har bir partner uchun alohida qiymat
+  // kerak (next_review har xil), shuning uchun batch upsert ishlamaydi
+  // (upsert butun qatorni o'rniga yozadi, qolgan ustunlar yo'qoladi).
+  // Promise.all orqali parallel ishga tushiriladi, ketma-ket emas.
   await Promise.all(updates.map(u =>
     supabase
       .from('vocabulary_progress')

@@ -25,6 +25,10 @@ function setStoredLocale(locale: Locale) {
 
 /* ─── Loader ─── */
 
+function asTranslations(data: Record<string, unknown>): TranslationStrings {
+  return data as unknown as TranslationStrings
+}
+
 const cache = new Map<Locale, TranslationStrings>()
 
 async function loadLocale(locale: Locale): Promise<TranslationStrings> {
@@ -34,14 +38,14 @@ async function loadLocale(locale: Locale): Promise<TranslationStrings> {
   let data: TranslationStrings
   switch (locale) {
     case 'en':
-      data = (await import('./en.json')).default as unknown as TranslationStrings
+      data = asTranslations((await import('./en.json')).default)
       break
     case 'ru':
-      data = (await import('./ru.json')).default as unknown as TranslationStrings
+      data = asTranslations((await import('./ru.json')).default)
       break
     case 'uz':
     default:
-      data = (await import('./uz.json')).default as unknown as TranslationStrings
+      data = asTranslations((await import('./uz.json')).default)
       break
   }
   cache.set(locale, data)

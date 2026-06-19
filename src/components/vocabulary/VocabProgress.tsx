@@ -1,4 +1,5 @@
 import { Flame } from 'lucide-react'
+import { useI18n } from '../../i18n'
 
 interface LevelStat {
   level: string
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export default function VocabProgress({ stats, totalLearned, totalWords, dueCount, streak }: Props) {
+  const { t } = useI18n()
   return (
     <div className="card p-3">
       <div className="grid grid-cols-2 gap-x-4 gap-y-2">
@@ -43,16 +45,16 @@ export default function VocabProgress({ stats, totalLearned, totalWords, dueCoun
       <div className="flex items-center justify-between mt-3 pt-2 border-t border-gray-100 dark:border-gray-700 text-center">
         <div>
           <p className="text-sm font-bold text-gray-900 dark:text-gray-100">{totalLearned.toLocaleString()}</p>
-          <p className="text-[9px] text-gray-400">{totalWords.toLocaleString()} ta so'zdan</p>
+          <p className="text-[9px] text-gray-400">{t('vocabProgress.totalWords', { total: totalWords.toLocaleString() })}</p>
         </div>
         <div>
           <p className="text-sm font-bold text-orange-600">{dueCount}</p>
-          <p className="text-[9px] text-gray-400">Takror</p>
+          <p className="text-[9px] text-gray-400">{t('vocabProgress.review')}</p>
         </div>
         <div className="flex items-center gap-1">
           <Flame size={14} className="text-orange-500" />
           <p className="text-sm font-bold text-gray-900 dark:text-gray-100">{streak}</p>
-          <p className="text-[9px] text-gray-400">kun</p>
+          <p className="text-[9px] text-gray-400">{t('vocabProgress.days')}</p>
         </div>
       </div>
     </div>

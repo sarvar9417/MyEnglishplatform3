@@ -1,7 +1,11 @@
+interface WebkitWindow extends Window {
+  webkitAudioContext?: typeof AudioContext
+}
+
 let audioCtx: AudioContext | null = null
 if (typeof window !== 'undefined') {
   try {
-    const Ctor = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+    const Ctor = window.AudioContext || (window as WebkitWindow).webkitAudioContext
     if (Ctor) audioCtx = new Ctor()
   } catch {
     // Audio not available (test environment, server-side, etc.)

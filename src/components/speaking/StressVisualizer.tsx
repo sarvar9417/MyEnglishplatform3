@@ -1,4 +1,5 @@
 import { Volume2 } from 'lucide-react'
+import { useI18n } from '../../i18n'
 
 interface StressVisualizerProps {
   word: string
@@ -33,13 +34,14 @@ function getStressPattern(syllables: { stressed: boolean }[]): string {
 }
 
 export default function StressVisualizer({ word, ipa, onSpeak }: StressVisualizerProps) {
+  const { t } = useI18n()
   const syllables = parseStressedSyllables(word, ipa)
   const pattern = getStressPattern(syllables)
 
   return (
     <div className="rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-3">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">So'z urg'usi</span>
+        <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('stressVis.title')}</span>
         <span className="text-xs text-gray-400 font-mono">{pattern}</span>
       </div>
 
@@ -61,11 +63,11 @@ export default function StressVisualizer({ word, ipa, onSpeak }: StressVisualize
       <div className="flex items-center gap-2 mt-2">
         <div className="flex items-center gap-1.5">
           <div className="w-3 h-3 rounded bg-rose-200 dark:bg-rose-800 ring-1 ring-rose-300 dark:ring-rose-700" />
-          <span className="text-xs text-gray-500">Urg'uli bo'g'in</span>
+          <span className="text-xs text-gray-500">{t('stressVis.stressed')}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-3 h-3 rounded bg-gray-100 dark:bg-gray-600" />
-          <span className="text-xs text-gray-500">Urg'usiz</span>
+          <span className="text-xs text-gray-500">{t('stressVis.unstressed')}</span>
         </div>
         {onSpeak && (
           <button

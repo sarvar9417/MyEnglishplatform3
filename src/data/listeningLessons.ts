@@ -26,6 +26,8 @@ export interface ListeningLesson {
   youtubeId: string
   /** Backup YouTube ID in case the primary video is taken down */
   backupYoutubeId?: string
+  /** Professional audio file path (public/audio/listening/...) for A1-A2 levels */
+  audioUrl?: string
   topic: string
   description: string
   vocabulary: { word: string; definition: string }[]
@@ -43,6 +45,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A1',
     duration: '2:30',
     youtubeId: 'mfxC-C27Nco',
+    audioUrl: '/audio/listening/a1-greetings.mp3',
     topic: 'Greetings',
     description: 'Learn basic greetings and introductions in English: hello, goodbye, how are you, and more.',
     vocabulary: [
@@ -82,6 +85,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A1',
     duration: '3:00',
     youtubeId: 'D0Ajq682yrA',
+    audioUrl: '/audio/listening/a1-numbers.mp3',
     topic: 'Numbers',
     description: 'Learn to count from one to twenty. Practice saying numbers and answering "How many?"',
     vocabulary: [
@@ -121,6 +125,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A1',
     duration: '2:45',
     youtubeId: '48MDYwdwMvY',
+    audioUrl: '/audio/listening/a1-colors.mp3',
     topic: 'Colors',
     description: 'Learn the names of colors in English. Practice asking and answering "What color is it?"',
     vocabulary: [
@@ -163,6 +168,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A1',
     duration: '3:00',
     youtubeId: 'x72gP4HrU58',
+    audioUrl: '/audio/listening/a1-family-members.mp3',
     topic: 'Family',
     description: 'Learn the names of family members: mother, father, brother, sister, and more.',
     vocabulary: [
@@ -203,6 +209,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A1',
     duration: '3:15',
     youtubeId: 'fG7dJ6A3l7w',
+    audioUrl: '/audio/listening/a1-food-drinks.mp3',
     topic: 'Food',
     description: 'Learn words for food and drinks. Practice saying what you like and don\'t like.',
     vocabulary: [
@@ -244,6 +251,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A1',
     duration: '3:00',
     youtubeId: 'sMg4vj6ugSs',
+    audioUrl: '/audio/listening/a1-weather-seasons.mp3',
     topic: 'Weather',
     description: 'Learn how to describe the weather: sunny, rainy, cold, hot. Talk about the four seasons.',
     vocabulary: [
@@ -285,6 +293,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'B1',
     duration: '6:00',
     youtubeId: 'TL61VKkme14',
+    audioUrl: '/audio/listening/b1-working-from-home.mp3',
     topic: 'Work & Lifestyle',
     description: 'Explore the pros and cons of remote work and how it changed our work culture forever.',
     vocabulary: [
@@ -410,6 +419,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A2',
     duration: '5:41',
     youtubeId: '_5x_h23rXWE',
+    audioUrl: '/audio/listening/a2-daily-routines.mp3',
     topic: 'Daily Life',
     description: 'Neil and Beth talk about their daily routines and meal times in easy English',
     vocabulary: [
@@ -452,6 +462,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A2',
     duration: '3:52',
     youtubeId: 'fLB70DZdqIE',
+    audioUrl: '/audio/listening/a2-shopping.mp3',
     topic: 'Shopping',
     description: 'Learn how to ask for things in a shop using "Can I have...?" and other useful shopping phrases',
     vocabulary: [
@@ -494,6 +505,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A2',
     duration: '6:09',
     youtubeId: 'Fxi4uYmCrPo',
+    audioUrl: '/audio/listening/a2-travel-transport.mp3',
     topic: 'Travel',
     description: "Follow a family's journey through the airport — from check-in to boarding the plane",
     vocabulary: [
@@ -536,6 +548,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A2',
     duration: '5:43',
     youtubeId: 'qI2LxF5sR2c',
+    audioUrl: '/audio/listening/a2-food-cooking.mp3',
     topic: 'Food & Cooking',
     description: 'Neil and Beth talk about their favourite foods, how often they eat them, and what they cook at home',
     vocabulary: [
@@ -579,6 +592,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'B1',
     duration: '6:00',
     youtubeId: 'IozMTwnat3o',
+    audioUrl: '/audio/listening/b1-healthy-lifestyle.mp3',
     topic: 'Health',
     description: 'What does it really mean to live a healthy lifestyle? Experts discuss diet, exercise, and daily habits.',
     vocabulary: [
@@ -622,6 +636,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'B1',
     duration: '6:00',
     youtubeId: 'LZYCjqAOhEE',
+    audioUrl: '/audio/listening/b1-environmental-problems.mp3',
     topic: 'Environment',
     description: 'From plastic pollution to climate change — what are the biggest environmental problems facing our planet today?',
     vocabulary: [
@@ -665,6 +680,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'B1',
     duration: '6:00',
     youtubeId: 'hhmNNs47PMo',
+    audioUrl: '/audio/listening/b1-technology-future.mp3',
     topic: 'Technology',
     description: 'How will artificial intelligence and new technologies shape our lives in the coming decades?',
     vocabulary: [
@@ -708,6 +724,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'B1',
     duration: '6:00',
     youtubeId: 'd2gitF9_CS4',
+    audioUrl: '/audio/listening/b1-education-systems.mp3',
     topic: 'Education',
     description: 'How do education systems differ across countries? What can we learn from the best-performing schools worldwide?',
     vocabulary: [
@@ -751,6 +768,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'B1',
     duration: '6:00',
     youtubeId: 'iKJhhKUuuGg',
+    audioUrl: '/audio/listening/b1-travel-experiences.mp3',
     topic: 'Travel',
     description: 'Why do we love to travel? Discover how exploring new places changes the way we see the world and ourselves.',
     vocabulary: [
@@ -1052,6 +1070,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A2',
     duration: '5:30',
     youtubeId: 'eK5Tsornvng',
+    audioUrl: '/audio/listening/a2-talking-mistakes.mp3',
     topic: 'Learning & Growth',
     description: 'Learn how to talk about mistakes in English — from small errors to big life lessons.',
     vocabulary: [
@@ -1095,6 +1114,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A2',
     duration: '5:30',
     youtubeId: 's8YxQkCCwAc',
+    audioUrl: '/audio/listening/a2-creativity.mp3',
     topic: 'Hobbies & Creativity',
     description: 'What does creativity mean to you? Explore different ways to express your creative side.',
     vocabulary: [
@@ -1138,6 +1158,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'A2',
     duration: '5:30',
     youtubeId: 'gL6DT-PdLoQ',
+    audioUrl: '/audio/listening/a2-confidence.mp3',
     topic: 'Personal Development',
     description: 'What makes us feel confident? Discuss self-belief and tips for building confidence.',
     vocabulary: [
@@ -1181,6 +1202,7 @@ export const LISTENING_LESSONS: ListeningLesson[] = [
     level: 'B1',
     duration: '6:00',
     youtubeId: 'YjwHsdFZPxE',
+    audioUrl: '/audio/listening/b1-future-of-food.mp3',
     topic: 'Food & Future',
     description: 'How will we produce food in the future? From lab-grown meat to vertical farming — explore the innovations changing what we eat.',
     vocabulary: [

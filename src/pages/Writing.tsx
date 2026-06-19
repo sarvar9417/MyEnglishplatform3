@@ -265,7 +265,7 @@ export default function Writing() {
           <p className="text-xs text-b2-400 mt-1">
             {ieltsMode
               ? `${t('writing.ieltsBandLabel', { band: avg >= 9 ? '9.0' : avg >= 8 ? '8.0' : avg >= 7 ? '7.0' : avg >= 6 ? '6.0' : avg >= 5 ? '5.0' : avg >= 4 ? '4.0' : t('writing.belowIELTS') })}`
-              : avg >= 10 ? 'IELTS 9.0' : avg >= 9 ? 'IELTS 8.0–8.5' : avg >= 8 ? 'IELTS 7.0–7.5' : avg >= 7 ? 'IELTS 6.0–6.5' : avg >= 6 ? 'IELTS 5.0–5.5' : avg >= 5 ? 'IELTS 4.0–4.5' : t('writing.belowIELTS')
+              : avg >= 10 ? t('writing.ieltsBand9') : avg >= 9 ? t('writing.ieltsBand85') : avg >= 8 ? t('writing.ieltsBand75') : avg >= 7 ? t('writing.ieltsBand65') : avg >= 6 ? t('writing.ieltsBand55') : avg >= 5 ? t('writing.ieltsBand45') : t('writing.belowIELTS')
             }
           </p>
         </div>

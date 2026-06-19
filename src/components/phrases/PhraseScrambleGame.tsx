@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { CheckCircle, XCircle, ArrowRight, X } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import type { GamePhrase } from '../../store/phrasesStore'
 
 interface Props {
@@ -54,6 +55,7 @@ export default function PhraseScrambleGame({ phrases, onComplete, onClose }: Pro
     }
   }
 
+  const { t } = useI18n()
   const score = results.filter(r => r.correct).length
 
   if (!currentPhrase) return null
@@ -70,7 +72,7 @@ export default function PhraseScrambleGame({ phrases, onComplete, onClose }: Pro
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-sm font-bold text-green-600">{score} ball</span>
+          <span className="text-sm font-bold text-green-600">{t('scrambleGame.score', { score })}</span>
           <button onClick={onClose} className="p-1.5 rounded-xl hover:bg-gray-100">
             <X size={16} className="text-gray-400" />
           </button>
@@ -79,7 +81,7 @@ export default function PhraseScrambleGame({ phrases, onComplete, onClose }: Pro
 
       <div className="text-center mb-6">
         <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
-          O'zbekcha gap
+          {t('scrambleGame.uzbekPhrase')}
         </p>
         <p className="text-lg font-medium text-gray-800 leading-relaxed">
           {currentPhrase.uzbek}
@@ -89,7 +91,7 @@ export default function PhraseScrambleGame({ phrases, onComplete, onClose }: Pro
       <div className="min-h-[80px] p-4 rounded-xl border-2 border-dashed border-indigo-300 bg-indigo-50/50 mb-4 flex flex-wrap items-center gap-2">
         {selectedWords.length === 0 ? (
           <p className="text-sm text-gray-400 w-full text-center">
-            So'zlarni bosib gapni tuzing
+            {t('scrambleGame.clickWords')}
           </p>
         ) : (
           selectedWords.map((word, i) => (
@@ -122,7 +124,7 @@ export default function PhraseScrambleGame({ phrases, onComplete, onClose }: Pro
           disabled={selectedWords.length === 0 || showResult}
           className="px-4 py-2 border-2 border-gray-200 text-gray-500 font-semibold rounded-xl hover:border-gray-300 disabled:opacity-30 transition-all text-sm"
         >
-          Ortga
+          {t('scrambleGame.undo')}
         </button>
         {!showResult ? (
           <button
@@ -130,14 +132,14 @@ export default function PhraseScrambleGame({ phrases, onComplete, onClose }: Pro
             disabled={selectedWords.length === 0}
             className="flex-1 py-2 bg-indigo-500 text-white font-bold rounded-xl hover:bg-indigo-600 disabled:opacity-40 transition-all text-sm"
           >
-            Tekshirish <ArrowRight size={16} className="inline" />
+            {t('scrambleGame.check')} <ArrowRight size={16} className="inline" />
           </button>
         ) : (
           <button
             onClick={handleNext}
             className="flex-1 py-2 bg-indigo-500 text-white font-bold rounded-xl hover:bg-indigo-600 transition-all text-sm"
           >
-            Keyingi <ArrowRight size={16} className="inline" />
+            {t('scrambleGame.next')} <ArrowRight size={16} className="inline" />
           </button>
         )}
       </div>
@@ -150,14 +152,14 @@ export default function PhraseScrambleGame({ phrases, onComplete, onClose }: Pro
         }`}>
           <div className="flex items-center justify-center gap-1.5 font-semibold text-sm">
             {results[results.length - 1]?.correct ? (
-              <><CheckCircle size={18} className="text-green-600" /> <span className="text-green-700">To'g'ri!</span></>
+              <><CheckCircle size={18} className="text-green-600" /> <span className="text-green-700">{t('scrambleGame.correct')}</span></>
             ) : (
-              <><XCircle size={18} className="text-red-500" /> <span className="text-red-600">Noto'g'ri</span></>
+              <><XCircle size={18} className="text-red-500" /> <span className="text-red-600">{t('scrambleGame.wrong')}</span></>
             )}
           </div>
           {!results[results.length - 1]?.correct && (
             <p className="text-xs text-gray-500 mt-1">
-              To'g'ri javob: <span className="font-bold text-gray-700">{currentPhrase.english}</span>
+              {t('scrambleGame.correctAnswer', { answer: currentPhrase.english })}
             </p>
           )}
         </div>

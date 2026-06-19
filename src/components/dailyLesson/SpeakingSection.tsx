@@ -4,6 +4,7 @@ import { generateSpeakingTask, evaluateSpeech, type SpeakingTask } from '../../l
 import { speak } from '../../lib/tts'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { feelLevelUp } from '../../lib/gameFeel'
+import { useI18n } from '../../i18n'
 
 interface SpeakingSectionProps {
   topic: string
@@ -24,6 +25,7 @@ function parseFeedback(text: string) {
 }
 
 export default function SpeakingSection({ topic, level, addXP, onSkillProgress, formulas, rules, vocabulary }: SpeakingSectionProps) {
+  const { t } = useI18n()
   const [task, setTask] = useState<SpeakingTask | null>(null)
   const [loadingTask, setLoadingTask] = useState(true)
   const [evaluating, setEvaluating] = useState(false)
@@ -76,7 +78,7 @@ export default function SpeakingSection({ topic, level, addXP, onSkillProgress, 
     return (
       <div className="flex flex-col items-center justify-center py-12 text-gray-400">
         <Loader2 size={28} className="animate-spin mb-2" />
-        <p className="text-sm">AI mavzuga oid speaking topshirig'i tayyorlamoqda…</p>
+        <p className="text-sm">{t('dailySpeaking.aiGeneratingTask')}</p>
       </div>
     )
   }
@@ -87,18 +89,18 @@ export default function SpeakingSection({ topic, level, addXP, onSkillProgress, 
       {/* Topshiriq */}
       <div className="card bg-rose-50 dark:bg-rose-950/20 border-rose-100 dark:border-rose-900/40">
         <div className="flex items-center gap-1.5 text-xs font-bold text-rose-500 uppercase tracking-wider mb-2">
-          <Sparkles size={13} /> Speaking topshirig'i
+          <Sparkles size={13} /> {t('dailySpeaking.taskTitle')}
         </div>
         <p className="text-base font-semibold text-gray-900 dark:text-white leading-relaxed">{task.prompt}</p>
         <button onClick={() => speak(task.prompt)} className="mt-2 inline-flex items-center gap-1.5 text-xs text-rose-600 dark:text-rose-300 font-semibold">
-          <Volume2 size={13} /> Eshitish
+          <Volume2 size={13} /> {t('dailySpeaking.listen')}
         </button>
       </div>
 
       {/* Maslahatlar */}
       {task.tips.length > 0 && (
         <div className="card">
-          <p className="text-xs font-bold text-gray-500 mb-2">💡 Maslahatlar</p>
+          <p className="text-xs font-bold text-gray-500 mb-2">{t('dailySpeaking.tips')}</p>
           <ul className="space-y-1">
             {task.tips.map((t, i) => <li key={i} className="text-sm text-gray-700 dark:text-gray-300">• {t}</li>)}
           </ul>
@@ -108,7 +110,7 @@ export default function SpeakingSection({ topic, level, addXP, onSkillProgress, 
       {/* Foydali iboralar */}
       {task.keyPhrases.length > 0 && (
         <div className="card">
-          <p className="text-xs font-bold text-gray-500 mb-2">🔑 Foydali iboralar</p>
+          <p className="text-xs font-bold text-gray-500 mb-2">{t('dailySpeaking.keyPhrases')}</p>
           <div className="space-y-1.5">
             {task.keyPhrases.map((k, i) => (
               <div key={i} className="flex items-center justify-between gap-2 text-sm">
@@ -125,7 +127,7 @@ export default function SpeakingSection({ topic, level, addXP, onSkillProgress, 
       {/* Mikrofon */}
       {sr.isSupported ? (
         <div className="flex flex-col items-center gap-2 py-2">
-          {sr.isRecording && <p className="text-xs text-rose-500 font-semibold animate-pulse">🎤 Gapiring…</p>}
+          {sr.isRecording && <p className="text-xs text-rose-500 font-semibold animate-pulse">{t('dailySpeaking.speakNow')}</p>}
           <button onClick={toggleMic} disabled={evaluating}
             className={`w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg active:scale-95 transition disabled:opacity-50 ${sr.isRecording ? 'bg-rose-500 animate-pulse' : 'bg-gradient-to-br from-rose-500 to-pink-600'}`}>
             {sr.isRecording ? <Square size={24} /> : <Mic size={26} />}
@@ -135,19 +137,19 @@ export default function SpeakingSection({ topic, level, addXP, onSkillProgress, 
           )}
           {sr.transcript.trim() && !sr.isRecording && !scores && (
             <button onClick={evaluate} disabled={evaluating} className="btn-primary px-6 py-2.5 font-bold flex items-center gap-1.5 mt-1">
-              {evaluating ? <><Loader2 size={15} className="animate-spin" /> Baholanmoqda…</> : 'Baholash'}
+              {evaluating ? <><Loader2 size={15} className="animate-spin" /> {t('dailySpeaking.evaluating')}</> : t('dailySpeaking.evaluate')}
             </button>
           )}
         </div>
       ) : (
-        <p className="text-xs text-amber-600 text-center">⚠️ Brauzeringiz ovozni tanimaydi. Chrome/Safari ishlating.</p>
+        <p className="text-xs text-amber-600 text-center">{t('dailySpeaking.browserNotSupported')}</p>
       )}
 
       {/* Natija */}
       {scores && (
         <div className="space-y-3">
           <div className="grid grid-cols-3 gap-2">
-            {[['Ravonlik', scores.fluency], ['Grammatika', scores.grammar], ['Lug\'at', scores.vocabulary]].map(([l, v]) => (
+            {[[t('dailySpeaking.fluency'), scores.fluency], [t('dailySpeaking.grammar'), scores.grammar], [t('dailySpeaking.vocabulary'), scores.vocabulary]].map(([l, v]) => (
               <div key={l as string} className="card text-center py-3">
                 <p className="text-2xl font-black text-rose-500">{v as number}<span className="text-sm text-gray-400">/10</span></p>
                 <p className="text-xs text-gray-500">{l as string}</p>
@@ -156,10 +158,10 @@ export default function SpeakingSection({ topic, level, addXP, onSkillProgress, 
           </div>
           {feedback && <div className="card text-sm text-gray-700 dark:text-gray-300">{feedback}</div>}
           <div className="flex items-center justify-center gap-1.5 text-xs text-amber-600 font-bold">
-            <Trophy size={13} /> +{Math.round((scores.fluency + scores.grammar + scores.vocabulary) / 3) * 3} XP
+            <Trophy size={13} /> {t('dailySpeaking.xpEarned', { xp: String(Math.round((scores.fluency + scores.grammar + scores.vocabulary) / 3) * 3) })}
           </div>
           <button onClick={() => { sr.reset(); setScores(null); setFeedback(''); awarded.current = false }} className="w-full btn-secondary py-2.5 font-bold flex items-center justify-center gap-1.5">
-            <RotateCcw size={15} /> Qayta urinish
+            <RotateCcw size={15} /> {t('dailySpeaking.retry')}
           </button>
         </div>
       )}

@@ -627,6 +627,7 @@ export type Database = {
           tf_total: number
           summary_done: boolean
           xp_earned: number
+          play_count: number
           completed_at: string
         }
         Insert: {
@@ -642,6 +643,7 @@ export type Database = {
           tf_total: number
           summary_done: boolean
           xp_earned: number
+          play_count?: number
           completed_at?: string
         }
         Update: {
@@ -657,6 +659,7 @@ export type Database = {
           tf_total?: number
           summary_done?: boolean
           xp_earned?: number
+          play_count?: number
           completed_at?: string
         }
         Relationships: []

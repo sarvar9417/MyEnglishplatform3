@@ -17,7 +17,7 @@ export function buildRoutes(lazyPages: Record<string, React.LazyExoticComponent<
   const mainRoutes: RouteItem[] = [
     { path: '/', element: safe(<P.Dashboard />) },
     { path: '/lesson', element: safe(<P.LearnHub />) },
-    { path: '/grammar', element: safe(<P.Grammar />) },
+    { path: '/grammar', element: <Navigate to="/lesson" replace /> },
     { path: '/vocabulary', element: safe(<P.VocabHub />) },
     { path: '/mock-test', element: safe(<P.MockTest />) },
     { path: '/mixed-review', element: safe(<P.MixedReview />) },

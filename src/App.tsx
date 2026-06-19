@@ -47,7 +47,6 @@ const lazyPages = {
   Dashboard: lazyWithReload(() => import('./pages/Dashboard')),
   VocabHub: lazyWithReload(() => import('./pages/VocabHub')),
   LearnHub: lazyWithReload(() => import('./pages/LearnHub')),
-  Grammar: lazyWithReload(() => import('./pages/Grammar')),
   MockTest: lazyWithReload(() => import('./pages/MockTest')),
   MixedReview: lazyWithReload(() => import('./pages/MixedReview')),
   ActiveRecall: lazyWithReload(() => import('./pages/ActiveRecall')),
@@ -157,7 +156,7 @@ function RouteMetaUpdater() {
 
   useEffect(() => {
     const seoKeys: Record<string, keyof import('./i18n').TranslationStrings> = {
-      '/': 'seo.dashboard', '/lesson': 'seo.lessons', '/grammar': 'seo.grammar',
+      '/': 'seo.dashboard', '/lesson': 'seo.lessons',
       '/vocabulary': 'seo.vocabulary', '/mock-test': 'seo.mockTest', '/tandem': 'seo.tandem',
       '/phrasal-verbs': 'seo.phrasalVerbs', '/idioms': 'seo.idioms',
       '/confusable-pairs': 'seo.confusablePairs', '/chat': 'seo.chat',

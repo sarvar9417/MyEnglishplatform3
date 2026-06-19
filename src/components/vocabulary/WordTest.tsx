@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Check, X } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import type { GameWord } from '../../store/vocabularyStore'
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export default function WordTest({ word, allWords, onAnswer }: Props) {
+  const { t } = useI18n()
   const [selected, setSelected] = useState<string | null>(null)
   const [revealed, setRevealed] = useState(false)
 
@@ -68,7 +70,7 @@ export default function WordTest({ word, allWords, onAnswer }: Props) {
         </span>
         <p className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">{question}</p>
         <p className="text-sm text-gray-400 mt-1">
-          {direction === 'en→uz' ? "O'zbekcha tarjimasini toping" : 'Inglizcha tarjimasini toping'}
+          {t(direction === 'en→uz' ? 'wordTest.findUzbek' : 'wordTest.findEnglish')}
         </p>
       </div>
 

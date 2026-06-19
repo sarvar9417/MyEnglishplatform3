@@ -522,8 +522,11 @@ export async function updateGrammarProgress(
       used_in_free_mode: g.usedInFreeMode,
       updated_at: new Date().toISOString(),
     }))
-    const builder = (supabase as unknown as { from: (t: string) => { upsert: (payload: Record<string, unknown>[], options?: { onConflict?: string }) => Promise<{ error: { message: string } | null }> } }).from('user_grammar_progress')
-    const { error } = await builder.upsert(rows, { onConflict: 'user_id,lesson_id' })
+    // user_grammar_progress is not in generated Supabase types
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await (supabase as any)
+      .from('user_grammar_progress')
+      .upsert(rows, { onConflict: 'user_id,lesson_id' })
     if (error) throw error
   } catch (e) {
     monitoring.captureMessage('updateGrammarProgress Supabase failed (offline): ' + (e instanceof Error ? e.message : String(e)), 'warn')
@@ -578,6 +581,7 @@ export async function getLevelMastery(
 /** Foydalanuvchining barcha grammar progressini qaytaradi (Supabase → localStorage fallback) */
 export async function getGrammarProgress(userId: string): Promise<GrammarProgress[]> {
   try {
+    // user_grammar_progress is not in generated Supabase types
     type GrammarRow = {
       lesson_id: string
       grammar_point: string
@@ -588,12 +592,14 @@ export async function getGrammarProgress(userId: string): Promise<GrammarProgres
       last_practiced_at: string | null
       used_in_free_mode: boolean
     }
-    const { data, error } = await (supabase as unknown as { from: (table: string) => { select: (cols: string) => { eq: (col: string, val: string) => Promise<{ data: GrammarRow[] | null; error: { message: string } | null }> } } }).from('user_grammar_progress')
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data, error } = await (supabase as any)
+      .from('user_grammar_progress')
       .select('lesson_id, grammar_point, level, status, best_score, practice_count, last_practiced_at, used_in_free_mode')
       .eq('user_id', userId)
     if (error) throw error
     if (data) {
-      const mapped: GrammarProgress[] = data.map(r => ({
+      const mapped: GrammarProgress[] = (data as GrammarRow[]).map(r => ({
         lessonId: r.lesson_id,
         grammarPoint: r.grammar_point,
         level: r.level,

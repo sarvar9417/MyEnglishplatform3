@@ -11,6 +11,8 @@ import { checkAnswer, getExerciseContext, getCorrectText } from './helpers'
 import { checkDailyExerciseAnswers } from '../../lib/claude'
 import type { DailyExerciseCheckItem } from '../../lib/claude'
 import { getStoryBeat } from '../../data/narrative/storyline'
+import { scheduleReview } from '../../lib/grammarSrs'
+import { GRAMMAR_TOPICS } from '../../data/grammar'
 import { monitoring } from '../../lib/monitoring'
 import {
   pushLessonProgress,
@@ -394,12 +396,37 @@ export function useLessonState(lessonProp: DailyLesson) {
     }
   }, [tab, lesson.id])
 
-  // ── All done → clear session ──
+  // ── Grammar topic ID lookup — daily lesson ID → grammar topic ID ──
+  const grammarTopicId = useMemo(() => {
+    // Manual mapping for daily lesson IDs that differ from grammar topic IDs
+    const LESSON_TO_GRAMMAR_TOPIC: Record<string, string> = {
+      'can-cant': 'can-cannot',
+      'simple-present': 'present-simple-i-you-we-they',
+      'simple-past': 'past-simple',
+      'simple-future': 'future-forms',
+      'there-is-are': 'there-is-there-are',
+      'modal-verbs': 'modal-verbs-a2',
+      'articles': 'articles-a2',
+      'present-perfect': 'present-perfect-a2',
+      'relative-clauses-b1': 'relative-clauses',
+      'phrasal-verbs-b1': 'phrasal-verbs',
+      'wishes-regrets': 'wish-if-only',
+      'advanced-relative-clauses-b1plus': 'advanced-relative-clauses',
+    }
+    const grammarTopicIds = new Set(GRAMMAR_TOPICS.map(t => t.id))
+    const mapped = LESSON_TO_GRAMMAR_TOPIC[lesson.id] ?? lesson.id
+    return grammarTopicIds.has(mapped) ? mapped : null
+  }, [lesson.id])
+
+  // ── All done → clear session + schedule grammar SRS review ──
   useEffect(() => {
     if (allDone) {
       clearLessonSession(lesson.id)
+      if (grammarTopicId && currentLessonScore !== null) {
+        scheduleReview(grammarTopicId, currentLessonScore)
+      }
     }
-  }, [allDone, lesson.id, clearLessonSession])
+  }, [allDone, lesson.id, clearLessonSession, grammarTopicId, currentLessonScore])
 
   // ── Save session periodically ──
   useEffect(() => {

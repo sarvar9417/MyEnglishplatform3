@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { CheckCircle, XCircle, ArrowRight, RotateCcw, X, Loader2, FlaskConical } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import { supabase } from '../../lib/supabase'
 import { monitoring } from '../../lib/monitoring'
 import { checkVocabAnswer, generateUzbekSentence, analyzeGrammar } from '../../lib/claude'
@@ -40,6 +41,7 @@ const LEVEL_DESC: Record<Level, string> = {
 const QUESTION_COUNT = 20
 
 export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
+  const { t } = useI18n()
   const [phase, setPhase] = useState<Phase>('level-select')
   const [selectedLevel, setSelectedLevel] = useState<Level | null>(null)
   const [words, setWords] = useState<Word[]>([])
@@ -58,7 +60,7 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
   const pendingRef = useRef<{ results: QuizResult[]; nextIdx: number; finished: boolean } | null>(null)
   const savedRef = useRef(false)
 
-  // O'yin natijalarini vocabulary_progress ga saqlash
+  // Save game results to vocabulary_progress
   useEffect(() => {
     if (phase !== 'result' || savedRef.current || results.length === 0) return
     savedRef.current = true
@@ -84,7 +86,6 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
           correct_count: r.correct ? 1 : 0,
           wrong_count: r.correct ? 0 : 1,
           is_learned: false,
-          // last_rating yozilmaydi — mavjud "yodladim" statusi o'chib ketmasligi uchun
           last_reviewed: new Date().toISOString(),
         }, { onConflict: 'user_id,word_id' })
       }
@@ -159,20 +160,17 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
     const word = words[currentIdx]
     setLocked(true)
 
-    // Aniq mos kelsa — API chaqirmasdan darhol to'g'ri
     if (trimmed.toLowerCase() === word.english.toLowerCase()) {
       processResult(word, trimmed, true)
       return
     }
 
-    // Mos kelmasa — Claude orqali tekshirish (bir nechta ma'no bo'lishi mumkin)
     setChecking(true)
     try {
       const correct = await checkVocabAnswer(word.uzbek, word.english, trimmed)
       processResult(word, trimmed, correct)
     } catch (e) {
       monitoring.captureMessage('checkVocabAnswer API error, marking as wrong: ' + (e instanceof Error ? e.message : String(e)), 'warn')
-      // API ishlamasa — noto'g'ri deb hisoblash
       processResult(word, trimmed, false)
     }
   }
@@ -184,27 +182,24 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
   const score = results.filter(r => r.correct).length
   const wrongResults = results.filter(r => !r.correct)
 
-  // ── Level tanlash ─────────────────────────────────────────────
+  // ── Level select ─────────────────────────────────────────────
   if (phase === 'level-select') {
     return (
       <div className="p-4 max-w-md mx-auto">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">Lug'at O'yini</h2>
+            <h2 className="text-xl font-bold text-gray-900">{t('typingGame.title')}</h2>
             <p className="text-sm text-gray-500 mt-0.5">
-              O'zbek → Ingliz · {QUESTION_COUNT} savol
+              {t('typingGame.subtitle', { count: QUESTION_COUNT })}
             </p>
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-xl hover:bg-gray-100 transition-all"
-          >
+          <button onClick={onClose} className="p-2 rounded-xl hover:bg-gray-100 transition-all">
             <X size={20} className="text-gray-500" />
           </button>
         </div>
 
         <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-          Daraja tanlang
+          {t('typingGame.selectLevel')}
         </p>
 
         <div className="grid grid-cols-2 gap-3">
@@ -219,7 +214,7 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
               >
                 <span className={`text-4xl font-black ${s.text}`}>{lvl}</span>
                 <p className="text-xs text-gray-400 mt-1.5">{LEVEL_DESC[lvl]}</p>
-                <p className="text-xs text-gray-300 mt-0.5">{QUESTION_COUNT} ta savol</p>
+                <p className="text-xs text-gray-300 mt-0.5">{t('typingGame.questions', { count: QUESTION_COUNT })}</p>
               </button>
             )
           })}
@@ -228,14 +223,14 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
         {loading && (
           <div className="flex items-center justify-center gap-2 mt-6 text-gray-400">
             <Loader2 size={16} className="animate-spin" />
-            <span className="text-sm">So'zlar yuklanmoqda...</span>
+            <span className="text-sm">{t('typingGame.loadingWords')}</span>
           </div>
         )}
       </div>
     )
   }
 
-  // ── O'yin ─────────────────────────────────────────────────────
+  // ── Playing ─────────────────────────────────────────────────────
   if (phase === 'playing') {
     const word = words[currentIdx]
     const progressPct = (currentIdx / words.length) * 100
@@ -243,7 +238,6 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
 
     return (
       <div className="p-4 max-w-md mx-auto">
-        {/* Sarlavha */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${lvlStyle.badge}`}>
@@ -255,7 +249,7 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
           </div>
           <div className="flex items-center gap-3">
             <span className="text-sm font-bold text-green-600">
-              {score} ball
+              {t('typingGame.score', { score })}
             </span>
             <button onClick={onClose} className="p-1.5 rounded-xl hover:bg-gray-100">
               <X size={16} className="text-gray-400" />
@@ -263,106 +257,86 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
           </div>
         </div>
 
-        {/* Progress bar */}
         <div className="w-full h-1.5 bg-gray-100 rounded-full mb-5 overflow-hidden">
-          <div
-            className="h-full bg-indigo-500 rounded-full transition-all duration-500"
-            style={{ width: `${progressPct}%` }}
-          />
+          <div className="h-full bg-indigo-500 rounded-full transition-all duration-500" style={{ width: `${progressPct}%` }} />
         </div>
 
-        {/* Savol kartochkasi */}
-        <div
-          className={`rounded-2xl border-2 py-10 px-6 text-center mb-5 transition-all duration-300 ${
-            checking
-              ? 'bg-yellow-50 border-yellow-200'
-              : flash === 'correct'
-              ? 'bg-green-50 border-green-300'
-              : flash === 'wrong'
-              ? 'bg-red-50 border-red-300'
-              : 'bg-white border-gray-200'
-          }`}
-        >
+        <div className={`rounded-2xl border-2 py-10 px-6 text-center mb-5 transition-all duration-300 ${
+          checking ? 'bg-yellow-50 border-yellow-200' :
+          flash === 'correct' ? 'bg-green-50 border-green-300' :
+          flash === 'wrong' ? 'bg-red-50 border-red-300' :
+          'bg-white border-gray-200'
+        }`}>
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-            O'zbekcha
+            {t('typingGame.uzbek')}
           </p>
-          <p className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
-            {word.uzbek}
-          </p>            {checking && (
-              <div className="flex items-center justify-center gap-2 mt-4 text-yellow-600 text-sm font-medium">
-                <Loader2 size={16} className="animate-spin" /> Tekshirilmoqda...
-              </div>
-            )}
+          <p className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">{word.uzbek}</p>
 
-            {!checking && flash === 'correct' && (
-              <div className="mt-4">
-                <div className="flex items-center justify-center gap-1.5 text-green-600 font-semibold text-sm">
-                  <CheckCircle size={18} /> To'g'ri!
-                </div>
-                <p className="font-bold text-gray-900 mt-1">{word.english}</p>
-                {word.example && (
-                  <p className="text-xs text-gray-400 mt-2 italic px-2">{word.example}</p>
-                )}
-              </div>
-            )}
-            {!checking && flash === 'wrong' && (
-              <div className="mt-4">
-                <p className="text-red-500 text-sm font-semibold flex items-center justify-center gap-1.5">
-                  <XCircle size={16} /> Noto'g'ri
-                </p>
-                <p className="text-gray-600 text-sm mt-1">
-                  To'g'ri javob:{' '}
-                  <span className="font-bold text-gray-900">{word.english}</span>
-                </p>
-                {word.example && (
-                  <p className="text-xs text-gray-400 mt-2 italic px-2">{word.example}</p>
-                )}
-              </div>
-            )}
+          {checking && (
+            <div className="flex items-center justify-center gap-2 mt-4 text-yellow-600 text-sm font-medium">
+              <Loader2 size={16} className="animate-spin" /> {t('typingGame.checking')}
+            </div>
+          )}
 
-            {/* Grammar Analysis toggle */}
-            {!checking && flash && (
-              <button
-                onClick={async () => {
-                  if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null }
-                  if (showAnalysisFor === currentIdx) return
-                  setShowAnalysisFor(currentIdx)
-                  setAnalysisText('')
-                  setAnalysisLoading(true)
-                  try {
-                    const sentence = await generateUzbekSentence(word.english, word.uzbek, selectedLevel!)
-                    analyzeGrammar(
-                      sentence,
-                      input,
-                      selectedLevel!,
-                      (token) => setAnalysisText((p) => p + token),
-                      () => { setAnalysisLoading(false) },
-                      (err) => { monitoring.captureException(err instanceof Error ? err : new Error(String(err)), { context: 'analyzeGrammar' }); setAnalysisLoading(false) }
-                    )
-                  } catch (e) {
-                    monitoring.captureMessage('Grammar analysis failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
-                    setAnalysisLoading(false)
-                  }
-                }}
-                className={`w-full mt-3 py-2 px-3 rounded-xl border-2 text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
-                  showAnalysisFor === currentIdx
-                    ? 'border-indigo-400 bg-indigo-50 text-indigo-700'
-                    : 'border-indigo-200 text-indigo-600 hover:bg-indigo-50 hover:border-indigo-400'
-                }`}
-              >
-                <FlaskConical size={15} />
-                {showAnalysisFor === currentIdx ? 'Tahlil ko\'rilmoqda' : 'Grammatik tahlil ko\'rish'}
-                {analysisLoading && showAnalysisFor === currentIdx && <Loader2 size={13} className="animate-spin ml-1" />}
-              </button>
-            )}
+          {!checking && flash === 'correct' && (
+            <div className="mt-4">
+              <div className="flex items-center justify-center gap-1.5 text-green-600 font-semibold text-sm">
+                <CheckCircle size={18} /> {t('typingGame.correct')}
+              </div>
+              <p className="font-bold text-gray-900 mt-1">{word.english}</p>
+              {word.example && <p className="text-xs text-gray-400 mt-2 italic px-2">{word.example}</p>}
+            </div>
+          )}
+          {!checking && flash === 'wrong' && (
+            <div className="mt-4">
+              <p className="text-red-500 text-sm font-semibold flex items-center justify-center gap-1.5">
+                <XCircle size={16} /> {t('typingGame.wrong')}
+              </p>
+              <p className="text-gray-600 text-sm mt-1">
+                {t('typingGame.correctAnswer', { answer: word.english })}
+              </p>
+              {word.example && <p className="text-xs text-gray-400 mt-2 italic px-2">{word.example}</p>}
+            </div>
+          )}
 
-            {/* Grammar Analysis Panel */}
-            {showAnalysisFor === currentIdx && (
-              <GrammarAnalysisPanel text={analysisText} loading={analysisLoading} />
-            )}
+          {!checking && flash && (
+            <button
+              onClick={async () => {
+                if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null }
+                if (showAnalysisFor === currentIdx) return
+                setShowAnalysisFor(currentIdx)
+                setAnalysisText('')
+                setAnalysisLoading(true)
+                try {
+                  const sentence = await generateUzbekSentence(word.english, word.uzbek, selectedLevel!)
+                  analyzeGrammar(
+                    sentence, input, selectedLevel!,
+                    (token) => setAnalysisText((p) => p + token),
+                    () => { setAnalysisLoading(false) },
+                    (err) => { monitoring.captureException(err instanceof Error ? err : new Error(String(err)), { context: 'analyzeGrammar' }); setAnalysisLoading(false) }
+                  )
+                } catch (e) {
+                  monitoring.captureMessage('Grammar analysis failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+                  setAnalysisLoading(false)
+                }
+              }}
+              className={`w-full mt-3 py-2 px-3 rounded-xl border-2 text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
+                showAnalysisFor === currentIdx
+                  ? 'border-indigo-400 bg-indigo-50 text-indigo-700'
+                  : 'border-indigo-200 text-indigo-600 hover:bg-indigo-50 hover:border-indigo-400'
+              }`}
+            >
+              <FlaskConical size={15} />
+              {showAnalysisFor === currentIdx ? t('typingGame.analyzing') : t('typingGame.viewAnalysis')}
+              {analysisLoading && showAnalysisFor === currentIdx && <Loader2 size={13} className="animate-spin ml-1" />}
+            </button>
+          )}
+
+          {showAnalysisFor === currentIdx && (
+            <GrammarAnalysisPanel text={analysisText} loading={analysisLoading} />
+          )}
         </div>
 
-        {/* Input */}
         <div className="flex gap-2">
           <input
             ref={inputRef}
@@ -371,7 +345,7 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             disabled={locked}
-            placeholder="Inglizcha yozing..."
+            placeholder={t('typingGame.inputPlaceholder')}
             autoComplete="off"
             autoCorrect="off"
             spellCheck={false}
@@ -391,82 +365,69 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
             onClick={goNext}
             className="w-full mt-3 py-2.5 border-2 border-indigo-200 text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-all text-sm flex items-center justify-center gap-2"
           >
-            Keyingi <ArrowRight size={15} />
+            {t('typingGame.next')} <ArrowRight size={15} />
           </button>
         ) : (
-          <p className="text-center text-xs text-gray-300 mt-3">
-            Enter tugmasini bosing
-          </p>
+          <p className="text-center text-xs text-gray-300 mt-3">{t('typingGame.pressEnter')}</p>
         )}
       </div>
     )
   }
 
-  // ── Natija ────────────────────────────────────────────────────
+  // ── Result ────────────────────────────────────────────────────
   if (phase === 'result') {
     const pct = Math.round((score / words.length) * 100)
     const emoji = pct >= 90 ? '🏆' : pct >= 70 ? '🎉' : pct >= 50 ? '👍' : '💪'
 
     return (
       <div className="p-4 max-w-md mx-auto">
-        {/* Natija */}
         <div className="text-center mb-6">
           <div className="text-5xl mb-3">{emoji}</div>
           <h2 className="text-3xl font-black text-gray-900">
-            {score}
-            <span className="text-gray-300">/{words.length}</span>
+            {score}<span className="text-gray-300">/{words.length}</span>
           </h2>
-          <p className="text-gray-500 mt-1">{pct}% to'g'ri</p>
+          <p className="text-gray-500 mt-1">{t('typingGame.percentCorrect', { pct })}</p>
           <span className={`inline-block mt-2 text-xs font-bold px-3 py-1 rounded-full ${LEVEL_STYLES[selectedLevel!].badge}`}>
             {selectedLevel} · {LEVEL_DESC[selectedLevel!]}
           </span>
         </div>
 
-        {/* Tugmalar */}
         <div className="flex gap-3 mb-6">
           <button
             onClick={() => startGame(selectedLevel!)}
             className="flex-1 py-3 bg-indigo-500 text-white font-bold rounded-xl hover:bg-indigo-600 transition-all flex items-center justify-center gap-2"
           >
-            <RotateCcw size={16} /> Qayta o'ynash
+            <RotateCcw size={16} /> {t('typingGame.playAgain')}
           </button>
           <button
             onClick={() => setPhase('level-select')}
             className="flex-1 py-3 border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-all"
           >
-            Daraja o'zgartir
+            {t('typingGame.changeLevel')}
           </button>
         </div>
 
-        {/* Xatolar */}
         {wrongResults.length > 0 ? (
           <div>
             <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-              Xatolar — {wrongResults.length} ta
+              {t('typingGame.mistakes', { count: wrongResults.length })}
             </p>
             <div className="space-y-2">
               {wrongResults.map((r, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl border border-gray-100 bg-gray-50 py-3 px-4"
-                >
+                <div key={i} className="rounded-xl border border-gray-100 bg-gray-50 py-3 px-4">
                   <p className="text-sm font-semibold text-gray-800 mb-1">{r.word.uzbek}</p>
                   <div className="flex flex-col gap-0.5">
                     <p className="text-xs text-red-500 flex items-center gap-1">
                       <XCircle size={11} />
-                      Sizning javob:{' '}
-                      <span className="font-mono font-semibold">
-                        {r.userAnswer || '(bo\'sh)'}
-                      </span>
+                      {t('typingGame.you')}{' '}
+                      <span className="font-mono font-semibold">{r.userAnswer || t('typingGame.empty')}</span>
                     </p>
                     <p className="text-xs text-green-600 flex items-center gap-1">
                       <CheckCircle size={11} />
-                      To'g'ri:{' '}
+                      {t('typingGame.correctLabel')}{' '}
                       <span className="font-bold">{r.word.english}</span>
                     </p>
-                    {r.word.example && (
-                      <p className="text-xs text-gray-400 mt-1 italic">{r.word.example}</p>
-                    )}
+                    {r.word.example && <p className="text-xs text-gray-400 mt-1 italic">{r.word.example}</p>}
                   </div>
                 </div>
               ))}
@@ -475,16 +436,13 @@ export default function VocabTypingGame({ onClose }: { onClose: () => void }) {
         ) : (
           <div className="text-center py-8">
             <CheckCircle size={36} className="text-green-500 mx-auto mb-3" />
-            <p className="font-bold text-green-700 text-lg">Mukammal natija!</p>
-            <p className="text-sm text-gray-400 mt-1">Barcha so'zlar to'g'ri yozildi</p>
+            <p className="font-bold text-green-700 text-lg">{t('typingGame.perfectResult')}</p>
+            <p className="text-sm text-gray-400 mt-1">{t('typingGame.allCorrect')}</p>
           </div>
         )}
 
-        <button
-          onClick={onClose}
-          className="w-full mt-5 py-3 text-gray-400 text-sm hover:text-gray-600 transition-all"
-        >
-          Yopish
+        <button onClick={onClose} className="w-full mt-5 py-3 text-gray-400 text-sm hover:text-gray-600 transition-all">
+          {t('typingGame.close')}
         </button>
       </div>
     )

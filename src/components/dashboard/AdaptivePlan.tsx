@@ -138,10 +138,10 @@ export default function AdaptivePlan() {
 
       {/* CTA */}
       <button
-        onClick={() => navigate('/grammar')}
+        onClick={() => navigate('/lesson')}
         className="mt-3 w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900/30 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:text-primary-700 dark:hover:text-primary-300 transition-all border border-gray-100 dark:border-gray-700"
       >
-        Grammatikaga o'tish <ChevronRight size={13} />
+        Darslarga o'tish <ChevronRight size={13} />
       </button>
     </section>
   )

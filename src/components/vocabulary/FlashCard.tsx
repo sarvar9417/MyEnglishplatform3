@@ -1,4 +1,5 @@
 import { ChevronRight } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import type { GameWord } from '../../store/vocabularyStore'
 import { useSwipe } from '../../hooks/useSwipe'
 import { AudioButton } from '../ui/AudioButton'
@@ -12,14 +13,7 @@ const BOX_COLORS: Record<number, string> = {
   6: 'bg-orange-50 dark:bg-orange-900/30 border-orange-300 dark:border-orange-700',
 }
 
-const BOX_LABELS: Record<number, string> = {
-  1: '1 kun',
-  2: '3 kun',
-  3: '7 kun',
-  4: '14 kun',
-  5: '30 kun',
-  6: '90 kun',
-}
+const SRS_INTERVALS = [1, 3, 7, 14, 30, 90]
 
 const LEVEL_BADGES: Record<string, string> = {
   A1: 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400',
@@ -41,6 +35,7 @@ export default function FlashCard({
   onSwipeLeft?: () => void
   onSwipeRight?: () => void
 }) {
+  const { t } = useI18n()
   const [, { offsetX, isDragging }] = useSwipe({
     onSwipeLeft: onSwipeLeft,
     onSwipeRight: onSwipeRight,
@@ -74,7 +69,7 @@ export default function FlashCard({
           </div>
           {word.is_new && (
             <span className="text-xs font-semibold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/40 px-2 py-0.5 rounded-full">
-              Yangi
+              {t('flashCard.new')}
             </span>
           )}
           <div className="flex items-center gap-1.5 mt-4">
@@ -94,7 +89,7 @@ export default function FlashCard({
               />
             ))}
             <span className="text-xs text-gray-400 dark:text-gray-500 ml-1">
-              Box {word.box}/6 · {BOX_LABELS[word.box] ?? '90 kun'}
+              {t('flashCard.box', { box: word.box })}/6 · {t('flashCard.boxInterval', { interval: SRS_INTERVALS[word.box - 1] ?? 90 })}
             </span>
           </div>
           {!flipped && (
@@ -102,7 +97,7 @@ export default function FlashCard({
               onClick={(e) => { e.stopPropagation(); onFlip() }}
               className="btn-primary mt-6 text-sm flex items-center gap-2"
             >
-              Ko'rish <ChevronRight size={14} />
+              {t('flashCard.view')} <ChevronRight size={14} />
             </button>
           )}
         </div>
@@ -118,7 +113,7 @@ export default function FlashCard({
             </span>
             {word.is_new && (
               <span className="text-xs font-semibold text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">
-                Yangi
+                {t('flashCard.new')}
               </span>
             )}
           </div>
@@ -139,11 +134,11 @@ export default function FlashCard({
           )}
           <div className="mt-auto pt-4 flex items-center justify-between text-xs text-gray-400 dark:text-gray-500">
             {word.is_learned ? (
-              <span className="text-yellow-600 font-semibold">⭐ Yodlagan</span>
+              <span className="text-yellow-600 font-semibold">{t('flashCard.learned')}</span>
             ) : (
-              <span>Box {word.box}</span>
+              <span>{t('flashCard.box', { box: word.box })}</span>
             )}
-            <span>✅ {word.correct_count} | ❌ {word.wrong_count}</span>
+            <span>{t('flashCard.correct', { count: word.correct_count })} | {t('flashCard.wrong', { count: word.wrong_count })}</span>
           </div>
         </div>
       </div>

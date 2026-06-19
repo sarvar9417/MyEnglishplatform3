@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useI18n } from '../../i18n'
 
 export interface PitchPoint {
   time: number
@@ -51,6 +52,7 @@ export default function IntonationContour({
   height = 48,
   color = '#818cf8',
 }: IntonationContourProps) {
+  const { t } = useI18n()
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -71,7 +73,7 @@ export default function IntonationContour({
       ctx.fillStyle = isDark ? '#4b5563' : '#d1d5db'
       ctx.font = '10px sans-serif'
       ctx.textAlign = 'center'
-      ctx.fillText('Pitch maʼlumoti yetarli emas', width / 2, height / 2 + 3)
+      ctx.fillText(t('intonation.noPitchData'), width / 2, height / 2 + 3)
       return
     }
 

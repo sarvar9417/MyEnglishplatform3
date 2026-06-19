@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Check, X } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import type { GamePhrase } from '../../store/phrasesStore'
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export default function PhraseTest({ phrase, allPhrases, onAnswer }: Props) {
+  const { t } = useI18n()
   const [selected, setSelected] = useState<string | null>(null)
   const [revealed, setRevealed] = useState(false)
 
@@ -67,7 +69,7 @@ export default function PhraseTest({ phrase, allPhrases, onAnswer }: Props) {
         </span>
         <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-3 leading-relaxed">{question}</p>
         <p className="text-sm text-gray-400 mt-1">
-          {direction === 'en→uz' ? "O'zbekcha tarjimasini toping" : 'Inglizcha gapni toping'}
+          {t(direction === 'en→uz' ? 'phraseTest.findUzbek' : 'phraseTest.findEnglish')}
         </p>
       </div>
 

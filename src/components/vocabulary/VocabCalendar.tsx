@@ -1,14 +1,17 @@
 import { useState, useMemo } from 'react'
 import { ChevronLeft, ChevronRight, CalendarDays, ArrowRight } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import type { DaySession } from '../../services/vocabularyService'
 import { getTodayTashkent } from '../../utils/tashkentDate'
 
-const WEEKDAYS = ['Du', 'Se', 'Ch', 'Po', 'Ju', 'Sh', 'Ya']
-
-const MONTH_NAMES = [
-  'Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun',
-  'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr',
-]
+function useCalendarLocale() {
+  const { t } = useI18n()
+  const weekdays = t('calendar.weekdays').split(',')
+  const months = t('calendar.months').split(',')
+  const shortMonths = months.map(m => m.substring(0, 3))
+  const fullWeekdays = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba']
+  return { weekdays, months, shortMonths, fullWeekdays }
+}
 
 interface Props {
   sessions: Map<string, DaySession>
@@ -28,14 +31,14 @@ function getMonthGrid(year: number, month: number): (number | null)[] {
   return cells
 }
 
-function fmt(dateStr: string): string {
+function fmt(dateStr: string, locale: ReturnType<typeof useCalendarLocale>): string {
   const d = new Date(dateStr + 'T00:00:00')
-  const months = ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul', 'Avg', 'Sen', 'Okt', 'Noy', 'Dek']
-  const weekdays = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba']
-  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}, ${weekdays[d.getDay()]}`
+  return `${d.getDate()} ${locale.shortMonths[d.getMonth()]} ${d.getFullYear()}, ${locale.fullWeekdays[d.getDay()]}`
 }
 
 export default function VocabCalendar({ sessions, selectedDate, onDateSelect, onContinue, onClose }: Props) {
+  const { t } = useI18n()
+  const calLocale = useCalendarLocale()
   const today = getTodayTashkent()
   const [year, setYear] = useState(new Date().getFullYear())
   const [month, setMonth] = useState(new Date().getMonth())
@@ -67,7 +70,7 @@ export default function VocabCalendar({ sessions, selectedDate, onDateSelect, on
             <ChevronLeft size={18} />
           </button>
           <span className="text-sm font-bold text-gray-800 dark:text-gray-200">
-            {MONTH_NAMES[month]} {year}
+            {calLocale.months[month]} {year}
           </span>
           <button onClick={nextMonth} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 transition-all">
             <ChevronRight size={18} />
@@ -75,7 +78,7 @@ export default function VocabCalendar({ sessions, selectedDate, onDateSelect, on
         </div>
 
         <div className="grid grid-cols-7 gap-0.5 sm:gap-1 text-center">
-          {WEEKDAYS.map(d => (
+          {calLocale.weekdays.map(d => (
             <div key={d} className="text-xs sm:text-xs font-semibold text-gray-400 py-1">{d}</div>
           ))}
           {days.map((day, i) => {
@@ -115,9 +118,9 @@ export default function VocabCalendar({ sessions, selectedDate, onDateSelect, on
         </div>
 
         <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-100 dark:border-gray-700 text-xs text-gray-400 dark:text-gray-500">
-          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500" /> To'liq</span>
-          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-orange-400" /> Qisman</span>
-          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-gray-200" /> Boshlanmagan</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500" /> {t('calendar.completed')}</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-orange-400" /> {t('calendar.partial')}</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-gray-200" /> {t('calendar.notStarted')}</span>
         </div>
       </div>
 
@@ -129,17 +132,17 @@ export default function VocabCalendar({ sessions, selectedDate, onDateSelect, on
               <CalendarDays size={16} className="text-b1-600 dark:text-b1-400" />
             </div>
             <div className="flex-1">
-              <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">{fmt(selectedDate)}</p>
+              <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">{fmt(selectedDate, calLocale)}</p>
               {selectedSession ? (
                 <div className="text-xs text-gray-500 space-y-0.5">
                   <p>
-                    {selectedSession.completed_batches}/4 batch
+                    {t('calendar.batch', { completed: selectedSession.completed_batches, total: 4 })}
                     {selectedSession.all_completed && <span className="text-green-600 ml-1">✅</span>}
                   </p>
                   <p>
-                    <span className="font-semibold text-green-700">{selectedSession.total_score}</span> ta yodlangan
+                    <span className="font-semibold text-green-700">{t('calendar.learned', { count: selectedSession.total_score })}</span>
                     <span className="text-gray-300 mx-1">·</span>
-                    <span>{selectedSession.total_words} ta ko'rilgan</span>
+                    <span>{t('calendar.viewed', { count: selectedSession.total_words })}</span>
                   </p>
                   {selectedSession.total_words > 0 && (
                     <div className="w-full h-1.5 bg-gray-100 rounded-full mt-1 overflow-hidden">
@@ -152,7 +155,7 @@ export default function VocabCalendar({ sessions, selectedDate, onDateSelect, on
                 </div>
               ) : (
                 <p className="text-xs text-gray-500 dark:text-gray-400">
-                  {selectedDate === today ? 'Bugungi vazifa boshlanmagan' : 'Bu kuni vazifa bajarilmagan'}
+                  {selectedDate === today ? t('calendar.taskNotStarted') : t('calendar.taskNotDone')}
                 </p>
               )}
             </div>
@@ -164,14 +167,14 @@ export default function VocabCalendar({ sessions, selectedDate, onDateSelect, on
               className="mt-3 w-full py-3 bg-gradient-to-r from-b1-500 to-b1-600 text-white font-bold text-sm rounded-xl shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2"
             >
               <CalendarDays size={14} />
-              {selectedDate === today ? 'Bugungi vazifani boshlash' : `${fmt(selectedDate)} — vazifani davom ettirish`}
+              {selectedDate === today ? t('calendar.startTask') : t('calendar.continueTask', { date: fmt(selectedDate, calLocale) })}
               <ArrowRight size={14} />
             </button>
           )}
 
           {selectedDate !== today && (
             <button onClick={onClose} className="mt-2 w-full py-2 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-all">
-              ← Bugungi vazifaga qaytish
+              {t('calendar.backToToday')}
             </button>
           )}
         </div>

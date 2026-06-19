@@ -111,7 +111,7 @@ function buildSkillCards(t: (k: keyof TranslationStrings, params?: Record<string
       iconBg: 'bg-blue-100 dark:bg-blue-900/30',
       iconColor: 'text-blue-600',
       accentColor: 'bg-blue-400',
-      route: '/grammar',
+      route: '/lesson',
       getCounts: (level) => GRAMMAR_TOPICS.filter((t) => t.level === level).length,
       getTotal: () => GRAMMAR_TOPICS.length,
     },

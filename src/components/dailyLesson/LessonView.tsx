@@ -88,6 +88,7 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
       {/* ── DRILL TAB: Exercises ── */}
       {tab === 'drill' && (
         <DrillTab
+          lessonId={lesson.id}
           exerciseSections={lesson.exerciseSections}
           exercises={lesson.exercises}
           testSections={lesson.testSections}

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useI18n } from '../../i18n'
 import type { GameWord } from '../../store/vocabularyStore'
 import type { Rating } from '../../services/vocabularyService'
 import QuickRating from './QuickRating'
@@ -15,6 +16,7 @@ export default function WordRow({
   globalIndex: number
   onRate: (wordId: number, rating: Rating) => void
 }) {
+  const { t } = useI18n()
   const [showAI, setShowAI] = useState(false)
 
   return (
@@ -50,7 +52,7 @@ export default function WordRow({
                 ? 'bg-indigo-100 text-indigo-700'
                 : 'text-gray-400 hover:text-indigo-500 hover:bg-indigo-50'
               }`}
-            title="AI yordamchi"
+            title={t('wordRow.aiAssistant')}
           >
             🤖
           </button>
@@ -61,13 +63,13 @@ export default function WordRow({
             word.level === 'B1' ? 'bg-b1-50 dark:bg-b1-900/30 text-b1-600 dark:text-b1-400' :
             'bg-b2-50 dark:bg-b2-900/30 text-b2-600 dark:text-b2-400'
           }`}>
-            {word.is_learned ? '⭐ Yodlagan' : word.level}
+            {word.is_learned ? t('wordRow.learned') : word.level}
           </span>
           {!word.is_learned && (
             <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${
               word.is_new ? 'bg-gray-50 dark:bg-gray-700 text-gray-400 dark:text-gray-500' : 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
             }`}>
-              {word.is_new ? 'Yangi' : `Box ${word.box}`}
+              {word.is_new ? t('wordRow.new') : t('wordRow.box', { box: word.box })}
             </span>
           )}
           {!word.is_new && (

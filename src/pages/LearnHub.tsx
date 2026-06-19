@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
-  RefreshCw, Sparkles, Trophy, ChevronRight, Lightbulb,
+  RefreshCw, Sparkles, Trophy, ChevronRight, Lightbulb, Target,
 } from 'lucide-react'
 import type { DailyLesson, ReviewLesson } from '../data/dailyLessons'
 import { useStore } from '../store/useStore'
@@ -14,10 +14,11 @@ import ReviewView from '../components/dailyLesson/ReviewView'
 import FriendLessonRecommendation from '../components/dailyLesson/FriendLessonRecommendation'
 import { DailyLessonSkeleton } from '../components/ui/PageSkeleton'
 import { LESSON_INDEX, type LessonMeta } from '../data/daily/lessonsIndex'
+import { getLessonCanDo } from '../data/cefrCanDo'
 type LearnTab = 'grammar'
 
 // Mavjud daraja tablari (dars darajalari tartibida)
-const LEVELS = ['A1', 'A2', 'B1', 'B1+', 'B2'].filter(lv => LESSON_INDEX.some(l => l.level === lv))
+const LEVELS = ['A0', 'A1', 'A2', 'B1', 'B1+', 'B2'].filter(lv => LESSON_INDEX.some(l => l.level === lv))
 
 const TABS: { id: LearnTab; labelKey: string; emoji: string }[] = [
   { id: 'grammar', labelKey: 'learnHub.tabGrammar', emoji: '📚' },
@@ -275,6 +276,20 @@ export default function LearnHub() {
                   <span>✍️ {t('learnHub.exercisesCount', { count: lesson.exercises })}</span>
                   <span>{t('learnHub.xpCount', { count: lesson.exercises * 10 })}</span>
                 </div>
+                {/* CEFR Can-Do Statement */}
+                {(() => {
+                  const canDo = getLessonCanDo(lesson.id)
+                  if (!canDo) return null
+                  return (
+                    <div className="flex items-start gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 mt-0.5">
+                      <Target size={12} className="mt-0.5 flex-shrink-0" />
+                      <span>
+                        <span className="font-medium">{t('cefrCanDo.lessonCanDo')}</span>{' '}
+                        <span className="text-emerald-500 dark:text-emerald-400">{canDo}</span>
+                      </span>
+                    </div>
+                  )
+                })()}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-primary-600 font-semibold text-sm group-hover:gap-3 transition-all">
                     {(pct !== undefined || session) ? t('learnHub.lessonContinue') : t('learnHub.lessonStart')} <ChevronRight size={15} />

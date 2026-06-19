@@ -1,3 +1,5 @@
+import { useI18n } from '../../i18n'
+
 interface RetentionBarProps {
   box: number
   nextReview: string
@@ -6,6 +8,7 @@ interface RetentionBarProps {
 const SRS_INTERVALS = [1, 3, 7, 14, 30, 90]
 
 export function RetentionBar({ box, nextReview }: RetentionBarProps) {
+  const { t } = useI18n()
   const interval = SRS_INTERVALS[box - 1] ?? 1
 
   // `nextReview` is the date when the word is due for review.
@@ -33,7 +36,7 @@ export function RetentionBar({ box, nextReview }: RetentionBarProps) {
   return (
     <div
       className="flex items-center gap-1.5"
-      title={`Esda qolish: ~${retention}% · Box ${box} · ${interval} kun`}
+      title={t('retentionBar.tooltip', { retention, box, interval })}
     >
       <div className="w-14 h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
         <div

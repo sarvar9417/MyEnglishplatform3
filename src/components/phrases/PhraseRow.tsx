@@ -1,4 +1,5 @@
 import { Volume2 } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import type { GamePhrase } from '../../store/phrasesStore'
 import type { PhraseRating } from '../../types/phrases'
 import PhraseQuickRating from './PhraseQuickRating'
@@ -13,6 +14,7 @@ export default function PhraseRow({
   globalIndex: number
   onRate: (phraseId: number, rating: PhraseRating) => void
 }) {
+  const { t } = useI18n()
   const cat = getCategoryStyle(phrase.category)
 
   return (
@@ -40,7 +42,7 @@ export default function PhraseRow({
             }
           }}
           className="p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-300 hover:text-b1-500 transition-colors"
-          title="Talaffuz"
+          title={t('phraseRow.pronounce')}
         >
           <Volume2 size={13} />
         </button>
@@ -54,7 +56,7 @@ export default function PhraseRow({
           phrase.level === 'B1' ? 'bg-b1-50 dark:bg-b1-900/30 text-b1-600 dark:text-b1-400' :
           'bg-b2-50 dark:bg-b2-900/30 text-b2-600 dark:text-b2-400'
         }`}>
-          {phrase.is_learned ? '⭐ Yodlagan' : phrase.level}
+          {phrase.is_learned ? t('phraseRow.learned') : phrase.level}
         </span>
         {!phrase.is_learned && (
           <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${
@@ -62,7 +64,7 @@ export default function PhraseRow({
               ? 'bg-gray-50 dark:bg-gray-700 text-gray-400 dark:text-gray-500'
               : 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
           }`}>
-            {phrase.is_new ? 'Yangi' : `Box ${phrase.box}`}
+            {phrase.is_new ? t('phraseRow.new') : t('phraseRow.box', { box: phrase.box })}
           </span>
         )}
         <PhraseQuickRating phraseId={phrase.phrase_id} lastRating={phrase.last_rating} onRate={onRate} />

@@ -1,8 +1,10 @@
-import { CheckCircle, XCircle, Trophy, RotateCcw, ChevronRight } from 'lucide-react'
+import { CheckCircle, XCircle, Trophy, RotateCcw, ChevronRight, Target } from 'lucide-react'
 import type { DailyExercise } from '../../data/dailyLessons'
 import { checkAnswer, getExerciseContext, getCorrectText } from './helpers'
+import { getLessonCanDo } from '../../data/cefrCanDo'
 
 interface Props {
+  lessonId: string
   score: number
   sectionExercises: DailyExercise[]
   answers: Record<number, string[]>
@@ -15,6 +17,7 @@ interface Props {
 }
 
 export default function ExerciseResultsView({
+  lessonId,
   score,
   sectionExercises,
   answers,
@@ -26,6 +29,7 @@ export default function ExerciseResultsView({
   onNext,
 }: Props) {
   const total = sectionExercises.length
+  const canDo = getLessonCanDo(lessonId)
 
   return (
     <>
@@ -91,6 +95,25 @@ export default function ExerciseResultsView({
           )}
         </div>
       </div>
+
+      {/* CEFR Can-Do Statement */}
+      {canDo && (
+        <div className="card border-emerald-200 bg-emerald-50/60 dark:bg-emerald-900/20 dark:border-emerald-800">
+          <div className="flex items-start gap-2.5">
+            <div className="mt-0.5 w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-800 flex items-center justify-center flex-shrink-0">
+              <Target size={14} className="text-emerald-600 dark:text-emerald-400" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider mb-1">
+                🎯 Endi men...
+              </p>
+              <p className="text-sm font-medium text-emerald-800 dark:text-emerald-200 leading-relaxed">
+                {canDo}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Detailed results table */}
       <div className="card border-gray-200 dark:border-gray-700 overflow-hidden">

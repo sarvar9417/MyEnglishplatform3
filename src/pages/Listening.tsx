@@ -61,6 +61,9 @@ export default function Listening() {
   const [summaryText,  setSummaryText]  = useState('')
   const [,   setSubmitted]    = useState(false)
 
+  // Audio tracking
+  const [playCount, setPlayCount] = useState(0)
+
   // Result
   const [fillCorrect, setFillCorrect] = useState(0)
   const [tfCorrect,   setTfCorrect]   = useState(0)
@@ -84,6 +87,7 @@ export default function Listening() {
     setTab('watch')
     setSegIdx(0)
     setSegRevealed(false)
+    setPlayCount(0)
     setExStep(0)
     setFillAnswers(Array(l.fillBlanks.length).fill(''))
     setTfAnswers(Array(l.trueFalse.length).fill(null))
@@ -127,6 +131,7 @@ export default function Listening() {
           tfTotal:     lesson.trueFalse.length,
           summaryDone: summaryBonus === 1,
           xpEarned:    xp,
+          playCount,
         })
       }
     })
@@ -439,56 +444,91 @@ export default function Listening() {
             {t.label}
           </button>
         ))}
-        <button
-          onClick={() => setAudioOnly(!audioOnly)}
-          className={`text-xs font-semibold py-1.5 px-2 rounded-lg transition-all ${
-            audioOnly ? 'bg-b1-500 text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'
-          }`}
-          title={audioOnly ? t('listening.videoMode') : t('listening.audioOnlyMode')}
-        >
-          {audioOnly ? '🔊' : '🎬'}
-        </button>
+        {!lesson.audioUrl && (
+          <button
+            onClick={() => setAudioOnly(!audioOnly)}
+            className={`text-xs font-semibold py-1.5 px-2 rounded-lg transition-all ${
+              audioOnly ? 'bg-b1-500 text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'
+            }`}
+            title={audioOnly ? t('listening.videoMode') : t('listening.audioOnlyMode')}
+          >
+            {audioOnly ? '🔊' : '🎬'}
+          </button>
+        )}
       </div>
 
       {/* ── Watch tab ── */}
       {tab === 'watch' && (
         <div className="space-y-3">
-          <div className="rounded-xl overflow-hidden aspect-video bg-black relative">
-            {ytError ? (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-white bg-gray-900 p-4 text-center">
-                <span className="text-3xl">⚠️</span>
-                <p className="text-sm font-medium">{t('listening.videoError')}</p>
-                <p className="text-xs text-gray-400">
-                  <a href={`https://www.youtube.com/watch?v=${lesson.youtubeId}`} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
-                    {t('listening.openYouTube')}
-                  </a>
-                </p>
-                <button onClick={() => setYtError(false)} className="text-xs text-b1-300 underline mt-1">
-                  {t('listening.retryVideo')}
-                </button>
+          {/* Audio player for A1-A2 lessons with professional audio, YouTube for others */}
+          {lesson.audioUrl ? (
+            <div className="rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 text-white shadow-lg">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-2xl">🎧</span>
+                <div>
+                  <p className="text-sm font-semibold">{lesson.title}</p>
+                  <p className="text-xs text-white/70">{t('listening.professionalAudio')}</p>
+                </div>
+                <span className="ml-auto bg-white/20 text-xs font-semibold px-2 py-1 rounded-full">{lesson.duration}</span>
               </div>
-            ) : audioOnly ? (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-b1-900 to-gray-900 p-6">
-                <span className="text-5xl">🎧</span>
-                <p className="text-white text-sm font-medium">{lesson.title}</p>
+              <audio
+                controls
+                className="w-full [&::-webkit-media-controls-panel]:bg-emerald-600 [&::-webkit-media-controls-current-time-display]:text-white [&::-webkit-media-controls-time-remaining-display]:text-white"
+                style={{ height: '48px', borderRadius: '8px' }}
+                onPlay={() => setPlayCount((c) => c + 1)}
+              >
+                <source src={lesson.audioUrl} type="audio/mpeg" />
+                {t('listening.audioNotSupported')}
+              </audio>
+              <div className="flex items-center justify-between mt-3 text-xs text-white/60">
+                <span>{playCount > 0 ? `${t('listening.listenedTimes', { count: String(playCount) })}` : t('listening.listenAndFollow')}</span>
                 <a
                   href={`https://www.youtube.com/watch?v=${lesson.youtubeId}`}
                   target="_blank" rel="noopener noreferrer"
-                  className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white text-xs rounded-xl transition-colors"
+                  className="underline hover:text-white transition-colors"
                 >
                   {t('listening.openYouTube')}
                 </a>
               </div>
-            ) : (
-              <iframe
-                src={iframeSrc}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title={lesson.title}
-              />
-            )}
-          </div>
+            </div>
+          ) : (
+            <div className="rounded-xl overflow-hidden aspect-video bg-black relative">
+              {ytError ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-white bg-gray-900 p-4 text-center">
+                  <span className="text-3xl">⚠️</span>
+                  <p className="text-sm font-medium">{t('listening.videoError')}</p>
+                  <p className="text-xs text-gray-400">
+                    <a href={`https://www.youtube.com/watch?v=${lesson.youtubeId}`} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+                      {t('listening.openYouTube')}
+                    </a>
+                  </p>
+                  <button onClick={() => setYtError(false)} className="text-xs text-b1-300 underline mt-1">
+                    {t('listening.retryVideo')}
+                  </button>
+                </div>
+              ) : audioOnly ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-b1-900 to-gray-900 p-6">
+                  <span className="text-5xl">🎧</span>
+                  <p className="text-white text-sm font-medium">{lesson.title}</p>
+                  <a
+                    href={`https://www.youtube.com/watch?v=${lesson.youtubeId}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white text-xs rounded-xl transition-colors"
+                  >
+                    {t('listening.openYouTube')}
+                  </a>
+                </div>
+              ) : (
+                <iframe
+                  src={iframeSrc}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={lesson.title}
+                />
+              )}
+            </div>
+          )}
 
           {/* Key vocabulary */}
           <div className="card">

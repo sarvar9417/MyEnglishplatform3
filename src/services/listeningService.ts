@@ -13,8 +13,9 @@ export async function saveListeningResult(params: {
   tfTotal:      number
   summaryDone:  boolean
   xpEarned:     number
+  playCount:    number
 }) {
-  const { userId, lessonId, lessonTitle, fillCorrect, fillTotal, tfCorrect, tfTotal, summaryDone, xpEarned } = params
+  const { userId, lessonId, lessonTitle, fillCorrect, fillTotal, tfCorrect, tfTotal, summaryDone, xpEarned, playCount } = params
   const total = fillTotal + tfTotal + 1
   const correct = fillCorrect + tfCorrect + (summaryDone ? 1 : 0)
   const score = total > 0 ? Math.round((correct / total) * 100) : 0
@@ -31,6 +32,7 @@ export async function saveListeningResult(params: {
     tf_total:      tfTotal,
     summary_done:  summaryDone,
     xp_earned:     xpEarned,
+    play_count:    playCount,
     completed_at:  new Date().toISOString(),
   })
 }

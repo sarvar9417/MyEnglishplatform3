@@ -1373,5 +1373,291 @@ export interface TranslationStrings {
   'levelUp.c1Unlock1': string
   'levelUp.c1Unlock2': string
   'levelUp.c1Unlock3': string
+
+  /* ── VocabProgress ── */
+  'vocabProgress.totalWords': string
+  'vocabProgress.review': string
+  'vocabProgress.days': string
+
+  /* ── WordRow ── */
+  'wordRow.aiAssistant': string
+  'wordRow.learned': string
+  'wordRow.new': string
+  'wordRow.box': string
+
+  /* ── WordTest ── */
+  'wordTest.findUzbek': string
+  'wordTest.findEnglish': string
+
+  /* ── WordGame ── */
+  'wordGame.matchWords': string
+
+  /* ── FlashCard ── */
+  'flashCard.new': string
+  'flashCard.view': string
+  'flashCard.learned': string
+  'flashCard.box': string
+  'flashCard.boxInterval': string
+  'flashCard.correct': string
+  'flashCard.wrong': string
+
+  /* ── RetentionBar ── */
+  'retentionBar.tooltip': string
+
+  /* ── GrammarAnalysisPanel ── */
+  'grammarAnalysis.title': string
+  'grammarAnalysis.loading': string
+
+  /* ── VocabCalendar / PhraseCalendar ── */
+  'calendar.today': string
+  'calendar.months': string
+  'calendar.weekdays': string
+  'calendar.completed': string
+  'calendar.partial': string
+  'calendar.notStarted': string
+  'calendar.taskNotStarted': string
+  'calendar.taskNotDone': string
+  'calendar.startTask': string
+  'calendar.continueTask': string
+  'calendar.backToToday': string
+  'calendar.batch': string
+  'calendar.learned': string
+  'calendar.viewed': string
+
+  /* ── VocabAnalytics ── */
+  'analytics.loading': string
+  'analytics.studied': string
+  'analytics.learned': string
+  'analytics.dailyAvg': string
+  'analytics.sessions': string
+  'analytics.wordCount': string
+  'analytics.phraseCount': string
+  'analytics.dailyActivity': string
+  'analytics.last14Days': string
+  'analytics.boxDistribution': string
+  'analytics.byLevel': string
+  'analytics.total': string
+  'analytics.wordsViewed': string
+  'analytics.phrasesViewed': string
+  'analytics.noData': string
+  'analytics.noWordsYet': string
+  'analytics.addWordsDesc': string
+  'analytics.noPhrasesYet': string
+  'analytics.addPhrasesDesc': string
+  'analytics.learnedPerLevel': string
+  'analytics.studiedPerLevel': string
+
+  /* ── VocabTypingGame ── */
+  'typingGame.title': string
+  'typingGame.subtitle': string
+  'typingGame.selectLevel': string
+  'typingGame.questions': string
+  'typingGame.loadingWords': string
+  'typingGame.score': string
+  'typingGame.uzbek': string
+  'typingGame.checking': string
+  'typingGame.correct': string
+  'typingGame.wrong': string
+  'typingGame.correctAnswer': string
+  'typingGame.yourAnswer': string
+  'typingGame.inputPlaceholder': string
+  'typingGame.next': string
+  'typingGame.pressEnter': string
+  'typingGame.result': string
+  'typingGame.percentCorrect': string
+  'typingGame.playAgain': string
+  'typingGame.changeLevel': string
+  'typingGame.mistakes': string
+  'typingGame.you': string
+  'typingGame.empty': string
+  'typingGame.correctLabel': string
+  'typingGame.perfectResult': string
+  'typingGame.allCorrect': string
+  'typingGame.close': string
+  'typingGame.grammarAnalysis': string
+  'typingGame.viewAnalysis': string
+  'typingGame.analyzing': string
+
+  /* ── PhraseScrambleGame ── */
+  'scrambleGame.uzbekPhrase': string
+  'scrambleGame.clickWords': string
+  'scrambleGame.undo': string
+  'scrambleGame.check': string
+  'scrambleGame.next': string
+  'scrambleGame.correct': string
+  'scrambleGame.wrong': string
+  'scrambleGame.correctAnswer': string
+  'scrambleGame.score': string
+
+  /* ── PhraseRow ── */
+  'phraseRow.pronounce': string
+  'phraseRow.learned': string
+  'phraseRow.new': string
+  'phraseRow.box': string
+
+  /* ── PhraseProgress ── */
+  'phraseProgress.totalPhrases': string
+  'phraseProgress.review': string
+  'phraseProgress.days': string
+
+  /* ── PhraseTest ── */
+  'phraseTest.findUzbek': string
+  'phraseTest.findEnglish': string
+
+  /* ── Listening Professional Audio ── */
+  'listening.professionalAudio': string
+  'listening.listenAndFollow': string
+  'listening.audioNotSupported': string
+  'listening.listenedTimes': string
+
+  /* ── CEFR Can-Do Statements ── */
+  'cefrCanDo.title': string
+  'cefrCanDo.levelTitle': string
+  'cefrCanDo.lessonCanDo': string
+
+  /* CEFR Progress Dashboard */
+  'cefrProgress.title': string
+  'cefrProgress.subtitle': string
+  'cefrProgress.completed': string
+  'cefrProgress.of': string
+  'cefrProgress.lessons': string
+  'cefrProgress.viewAll': string
+
+  /* ── Daily Lesson: Listening ── */
+  'dailyListening.preparing': string
+  'dailyListening.listening': string
+  'dailyListening.exercises': string
+  'dailyListening.result': string
+  'dailyListening.stepFirst': string
+  'dailyListening.stepQuestions': string
+  'dailyListening.goToQuestions': string
+  'dailyListening.relisten': string
+  'dailyListening.comprehensionTitle': string
+  'dailyListening.answeredCount': string
+  'dailyListening.replayAudio': string
+  'dailyListening.dictation': string
+  'dailyListening.dictationHint': string
+  'dailyListening.dictationPlaceholder': string
+  'dailyListening.lineNumber': string
+  'dailyListening.discussion': string
+  'dailyListening.checkAnswers': string
+  'dailyListening.answerReview': string
+  'dailyListening.dictationResults': string
+  'dailyListening.backToListen': string
+  'dailyListening.nextPhase': string
+  'dailyListening.resultComplete': string
+  'dailyListening.resultExcellent': string
+  'dailyListening.resultGood': string
+  'dailyListening.percentCorrect': string
+  'dailyListening.listenedCount': string
+  'dailyListening.restartFromStart': string
+
+  /* ── Daily Lesson: Listening Player ── */
+  'dailyListening.backupLink': string
+  'dailyListening.exerciseLabel': string
+  'dailyListening.speakerSpeaking': string
+  'dailyListening.linesCount': string
+  'dailyListening.hideTranscript': string
+  'dailyListening.showTranscript': string
+  'dailyListening.afterListenOnly': string
+  'dailyListening.transcript': string
+  'dailyListening.listenAllText': string
+
+  /* ── Speaking History ── */
+  'speakingHistory.title': string
+  'speakingHistory.loading': string
+  'speakingHistory.noResults': string
+  'speakingHistory.noResultsDesc': string
+  'speakingHistory.question': string
+  'speakingHistory.feedback': string
+
+  /* ── Audio Playback ── */
+  'audioPlayback.yourAudio': string
+  'audioPlayback.sample': string
+  'audioPlayback.playing': string
+  'audioPlayback.play': string
+  'audioPlayback.pause': string
+
+  /* ── Intonation Contour ── */
+  'intonation.noPitchData': string
+
+  /* ── Stress Visualizer ── */
+  'stressVis.title': string
+  'stressVis.stressed': string
+  'stressVis.unstressed': string
+
+  /* ── Daily Lesson: Speaking ── */
+  'dailySpeaking.aiGeneratingTask': string
+  'dailySpeaking.taskTitle': string
+  'dailySpeaking.listen': string
+  'dailySpeaking.tips': string
+  'dailySpeaking.keyPhrases': string
+  'dailySpeaking.speakNow': string
+  'dailySpeaking.evaluate': string
+  'dailySpeaking.evaluating': string
+  'dailySpeaking.fluency': string
+  'dailySpeaking.grammar': string
+  'dailySpeaking.vocabulary': string
+  'dailySpeaking.retry': string
+  'dailySpeaking.browserNotSupported': string
+  'dailySpeaking.xpEarned': string
+  'dailySpeaking.paused': string
+
+  /* ── Writing History ── */
+  'writingHistory.title': string
+  'writingHistory.loading': string
+  'writingHistory.noResults': string
+  'writingHistory.noResultsDesc': string
+  'writingHistory.task': string
+  'writingHistory.yourText': string
+  'writingHistory.aiFeedback': string
+  'writingHistory.wordCount': string
+
+  /* ── Daily Lesson: Writing ── */
+  'dailyWriting.aiGeneratingTask': string
+  'dailyWriting.taskTitle': string
+  'dailyWriting.targetWords': string
+  'dailyWriting.estimatedTime': string
+  'dailyWriting.tipsTitle': string
+  'dailyWriting.keyPhrases': string
+  'dailyWriting.suggestedStructure': string
+  'dailyWriting.yourResponse': string
+  'dailyWriting.placeholder': string
+  'dailyWriting.goodLength': string
+  'dailyWriting.overLimit': string
+  'dailyWriting.submitButton': string
+  'dailyWriting.evaluating': string
+  'dailyWriting.analysing': string
+  'dailyWriting.overallScore': string
+  'dailyWriting.feedback': string
+  'dailyWriting.improvedVersion': string
+  'dailyWriting.editResubmit': string
+  'dailyWriting.resultExcellent': string
+  'dailyWriting.resultGood': string
+  'dailyWriting.resultAverage': string
+  'dailyWriting.resultPoor': string
+  'dailyWriting.aiError': string
+  'dailyWriting.wordCount': string
+  'dailyWriting.scoreTaskAchievement': string
+  'dailyWriting.scoreCoherence': string
+  'dailyWriting.scoreVocabulary': string
+  'dailyWriting.scoreGrammar': string
+
+  /* ── Grammar Analysis sections ── */
+  'grammarAnalysis.sectionTense': string
+  'grammarAnalysis.sectionArticle': string
+  'grammarAnalysis.sectionConjunctions': string
+  'grammarAnalysis.sectionWordOrder': string
+  'grammarAnalysis.sectionErrors': string
+  'grammarAnalysis.sectionOverall': string
+  'grammarAnalysis.sectionFallback': string
+
+  /* ── Writing IELTS bands ── */
+  'writing.ieltsBand9': string
+  'writing.ieltsBand85': string
+  'writing.ieltsBand75': string
+  'writing.ieltsBand65': string
+  'writing.ieltsBand55': string
+  'writing.ieltsBand45': string
 }
 

@@ -140,7 +140,8 @@ describe('Dashboard', () => {
   it('renders level badge in top bar', async () => {
     renderPage()
     await waitFor(() => {
-      expect(screen.getByText(/B1/)).toBeInTheDocument()
+      const badges = screen.getAllByText(/B1/)
+      expect(badges.length).toBeGreaterThanOrEqual(1)
     })
   })
 

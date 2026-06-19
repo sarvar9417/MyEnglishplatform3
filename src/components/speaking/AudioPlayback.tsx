@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Play, Pause, Volume2 } from 'lucide-react'
 import { monitoring } from '../../lib/monitoring'
+import { useI18n } from '../../i18n'
 
 export interface PitchPoint {
   time: number
@@ -52,13 +53,14 @@ function drawIntonationContour(
 
 export default function AudioPlayback({
   audioUrl,
-  label = 'Ovozingiz',
+  label,
   color = 'text-primary-600',
   comparisonUrl,
-  comparisonLabel = 'Namuna',
+  comparisonLabel,
   onEnded,
   intonationData,
 }: AudioPlaybackProps) {
+  const { t } = useI18n()
   const [playing, setPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -228,7 +230,7 @@ export default function AudioPlayback({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Volume2 size={14} className={color} />
-          <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">{label}</span>
+          <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">{label ?? t('audioPlayback.yourAudio')}</span>
         </div>
         <span className="text-xs font-mono text-gray-400">
           {formatTime(currentTime)} / {formatTime(duration)}
@@ -240,7 +242,7 @@ export default function AudioPlayback({
         <button
           onClick={togglePlay}
           className="w-10 h-10 rounded-full bg-primary-600 hover:bg-primary-700 text-white flex items-center justify-center shrink-0 active:scale-95 transition-all"
-          aria-label={playing ? 'Pause' : 'Play'}
+          aria-label={playing ? t('audioPlayback.pause') : t('audioPlayback.play')}
         >
           {playing ? <Pause size={16} fill="white" /> : <Play size={16} fill="white" className="ml-0.5" />}
         </button>
@@ -264,7 +266,7 @@ export default function AudioPlayback({
       {/* Comparison mode */}
       {comparisonUrl && (
         <div className="pt-1 border-t border-gray-100 dark:border-gray-700">
-          <ComparisonRow url={comparisonUrl} label={comparisonLabel} color="text-violet-500" />
+          <ComparisonRow url={comparisonUrl} label={comparisonLabel ?? t('audioPlayback.sample')} color="text-violet-500" />
         </div>
       )}
     </div>
@@ -272,6 +274,7 @@ export default function AudioPlayback({
 }
 
 function ComparisonRow({ url, label }: { url: string; label: string; color?: string }) {
+  const { t } = useI18n()
   const [playing, setPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
@@ -294,12 +297,12 @@ function ComparisonRow({ url, label }: { url: string; label: string; color?: str
           })
         }}
         className="w-8 h-8 rounded-full bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-300 flex items-center justify-center shrink-0 active:scale-95 transition-all"
-        aria-label={playing ? 'Pause' : 'Play'}
+        aria-label={playing ? t('audioPlayback.pause') : t('audioPlayback.play')}
       >
         {playing ? <Pause size={12} /> : <Play size={12} className="ml-0.5" />}
       </button>
       <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{label}</span>
-      {playing && <span className="text-xs text-violet-500 animate-pulse">🔊 eshitilmoqda...</span>}
+      {playing && <span className="text-xs text-violet-500 animate-pulse">{t('audioPlayback.playing')}</span>}
     </div>
   )
 }

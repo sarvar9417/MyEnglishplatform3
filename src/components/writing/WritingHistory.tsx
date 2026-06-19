@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../../lib/supabase'
 import { History, ChevronDown, ChevronUp, PenLine } from 'lucide-react'
 import EmptyState from '../ui/EmptyState'
+import { useI18n } from '../../i18n'
 
 interface WritingRecord {
   id: number
@@ -15,6 +16,7 @@ interface WritingRecord {
 }
 
 export default function WritingHistory() {
+  const { t } = useI18n()
   const [records, setRecords] = useState<WritingRecord[]>([])
   const [loading, setLoading] = useState(true)
   const [expanded, setExpanded] = useState<number | null>(null)
@@ -50,7 +52,7 @@ export default function WritingHistory() {
       >
         <div className="flex items-center gap-2">
           <History size={16} className="text-b2-500" />
-          <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm">Writing tarixi</h3>
+          <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm">{t('writingHistory.title')}</h3>
         </div>
         {open ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
       </button>
@@ -58,9 +60,9 @@ export default function WritingHistory() {
       {open && (
         <div className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
           {loading ? (
-            <div className="text-center py-6 text-sm text-gray-400 animate-pulse">Yuklanmoqda...</div>
+            <div className="text-center py-6 text-sm text-gray-400 animate-pulse">{t('writingHistory.loading')}</div>
           ) : records.length === 0 ? (
-            <EmptyState icon={PenLine} title="Hali writing natijalari yo'q" description="Writing topshiriqlarini bajarib, o'z natijalaringizni ko'ring" size="sm" />
+            <EmptyState icon={PenLine} title={t('writingHistory.noResults')} description={t('writingHistory.noResultsDesc')} size="sm" />
           ) : (
             <div className="space-y-2">
               {records.map((r) => (
@@ -73,7 +75,7 @@ export default function WritingHistory() {
                       <PenLine size={14} className="text-b2-400 flex-shrink-0" />
                       <div className="min-w-0 text-left">
                         <p className="text-xs font-medium text-gray-800 dark:text-gray-200 truncate">{r.prompt?.slice(0, 60)}...</p>
-                        <p className="text-xs text-gray-400">{r.date} · {r.word_count} so'z</p>
+                        <p className="text-xs text-gray-400">{r.date} · {t('writingHistory.wordCount', { count: String(r.word_count) })}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
@@ -87,16 +89,16 @@ export default function WritingHistory() {
                   {expanded === r.id && (
                     <div className="px-3 pb-3 pt-0 border-t border-gray-50 dark:border-gray-700 space-y-2">
                       <div className="mt-2">
-                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">📝 Vazifa</p>
+                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">{t('writingHistory.task')}</p>
                         <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">{r.prompt}</p>
                       </div>
                       <div>
-                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">✍️ Sizning matningiz</p>
+                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">{t('writingHistory.yourText')}</p>
                         <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">{r.user_text}</p>
                       </div>
                       {r.ai_feedback && (
                         <div>
-                          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">💡 AI Feedback</p>
+                          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">{t('writingHistory.aiFeedback')}</p>
                           <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{r.ai_feedback}</p>
                         </div>
                       )}

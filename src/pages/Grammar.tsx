@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { scheduleReview } from '../lib/grammarSrs'
 import {
   ArrowLeft, BookOpen, CheckCircle, XCircle,
   RotateCcw, ChevronRight, Lightbulb,
@@ -247,6 +248,7 @@ export default function Grammar() {
   const [results, setResults]   = useState<GrammarResult[]>([])
   const [topics, setTopics]     = useState<GrammarTopic[]>([])
   const [loading, setLoading]   = useState(true)
+  const location = useLocation()
 
   useNavigationGuard(!submitted && Object.keys(answers).length > 0)
 
@@ -256,6 +258,12 @@ export default function Grammar() {
     fetchGrammarTopics().then((data) => {
       setTopics(data)
       setLoading(false)
+      // Auto-select grammar topic from review state (e.g. GrammarReview da bosilganda)
+      const rti = (location.state as { reviewTopicId?: string } | null)?.reviewTopicId
+      if (rti) {
+        const found = data.find(t => t.id === rti)
+        if (found) handleSelectTopic(found)
+      }
     })
   }, [])
 
@@ -303,6 +311,9 @@ export default function Grammar() {
     setPhase('result')
     addXP(correct * 10)
     updateSkillProgress('todayGrammarPct', Math.round((correct / topic.exercises.length) * 100))
+    // Schedule FSRS-5 grammar review (localStorage orqali)
+    const scorePct = Math.round((correct / topic.exercises.length) * 100)
+    scheduleReview(topic.id, scorePct)
     // Save to Supabase (fire-and-forget, errors logged in saveGrammarResult)
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user.id) {

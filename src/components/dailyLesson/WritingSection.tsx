@@ -6,6 +6,7 @@ import {
 import type { WritingSection as WritingSectionType } from '../../data/dailyLessons'
 import { evaluateWriting, generateWritingTask } from '../../lib/claude'
 import type { LessonContent } from '../../lib/aiPrompts'
+import { useI18n } from '../../i18n'
 
 interface Props {
   section?: WritingSectionType
@@ -62,6 +63,7 @@ function ScorePill({ label, score }: { label: string; score: number }) {
 }
 
 export default function WritingSection({ section, level = 'A2', addXP, lesson }: Props) {
+  const { t } = useI18n()
   const [text, setText] = useState('')
   const [showTips, setShowTips] = useState(false)
   const [showKeyPhrases, setShowKeyPhrases] = useState(false)
@@ -136,7 +138,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
     return (
       <div className="flex flex-col items-center justify-center py-12 text-gray-400">
         <Loader2 size={28} className="animate-spin mb-2" />
-        <p className="text-sm">AI writing topshirig'i tayyorlamoqda…</p>
+        <p className="text-sm">{t('dailyWriting.aiGeneratingTask')}</p>
       </div>
     )
   }
@@ -148,13 +150,13 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
       {/* Task card */}
       <div className="rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 p-5 text-white">
         <p className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2 flex items-center gap-1.5">
-          <PenLine size={12} /> Writing Task
+          <PenLine size={12} /> {t('dailyWriting.taskTitle')}
         </p>
         <p className="text-sm leading-relaxed font-medium">{activeSection.prompt}</p>
         <div className="flex items-center gap-3 mt-3 text-xs opacity-80">
-          <span>Target: {wordLimit} words</span>
+          <span>{t('dailyWriting.targetWords', { count: String(wordLimit) })}</span>
           <span className="w-px h-3 bg-white/40" />
-          <span>~{Math.round(wordLimit / 80 * 10)} min</span>
+          <span>{t('dailyWriting.estimatedTime', { time: String(Math.round(wordLimit / 80 * 10)) })}</span>
         </div>
       </div>
 
@@ -164,7 +166,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
           onClick={() => setShowTips(p => !p)}
           className="w-full flex items-center justify-between text-sm font-semibold text-gray-700 dark:text-gray-300"
         >
-          <span className="flex items-center gap-2"><Lightbulb size={16} className="text-amber-500" /> Useful Tips & Structures</span>
+          <span className="flex items-center gap-2"><Lightbulb size={16} className="text-amber-500" /> {t('dailyWriting.tipsTitle')}</span>
           {showTips ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
         </button>
         {showTips && (
@@ -187,7 +189,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
                 >
                   <span className="flex items-center gap-2">
                     <Quote size={15} className="text-emerald-500" />
-                    Key Phrases
+                    {t('dailyWriting.keyPhrases')}
                   </span>
                   {showKeyPhrases ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                 </button>
@@ -213,7 +215,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
                 >
                   <span className="flex items-center gap-2">
                     <Layout size={15} className="text-violet-500" />
-                    Suggested Structure
+                    {t('dailyWriting.suggestedStructure')}
                   </span>
                   {showStructure ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                 </button>
@@ -238,9 +240,9 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
       {/* Text area */}
       <div>
         <div className="flex items-center justify-between mb-2">
-          <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Your Response</p>
+          <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('dailyWriting.yourResponse')}</p>
           <span className={`text-xs font-semibold tabular-nums ${isOver ? 'text-red-500' : isUnder ? 'text-gray-400' : 'text-green-600 dark:text-green-400'}`}>
-            {wordCount} / {wordLimit} words
+            {t('dailyWriting.wordCount', { count: String(wordCount), limit: String(wordLimit) })}
           </span>
         </div>
 
@@ -255,19 +257,19 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
         <textarea
           value={text}
           onChange={e => setText(e.target.value)}
-          placeholder="Write your response here..."
+          placeholder={t('dailyWriting.placeholder')}
           rows={8}
           className="w-full p-4 border border-gray-200 dark:border-gray-600 rounded-2xl text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 resize-y focus:outline-none focus:ring-2 focus:ring-amber-400 dark:focus:ring-amber-500 leading-relaxed"
         />
 
         {!isUnder && !isOver && !hasEvaluated.current && (
           <p className="mt-1.5 text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
-            <CheckCircle size={12} /> Good length — you can submit for AI feedback
+            <CheckCircle size={12} /> {t('dailyWriting.goodLength')}
           </p>
         )}
         {isOver && (
           <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
-            <AlertCircle size={12} /> Over limit by {wordCount - wordLimit} words — try to reduce
+            <AlertCircle size={12} /> {t('dailyWriting.overLimit', { count: String(wordCount - wordLimit) })}
           </p>
         )}
       </div>
@@ -280,8 +282,8 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
           className={`btn-primary w-full py-3 flex items-center justify-center gap-2 text-sm ${!canSubmit ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           {isEvaluating
-            ? <><Sparkles size={17} className="animate-pulse" /> AI is evaluating...</>
-            : <><Sparkles size={17} /> Get AI Feedback</>
+            ? <><Sparkles size={17} className="animate-pulse" /> {t('dailyWriting.evaluating')}</>
+            : <><Sparkles size={17} /> {t('dailyWriting.submitButton')}</>
           }
         </button>
       )}
@@ -289,7 +291,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
       {/* Streaming raw text (before parsed) */}
       {isEvaluating && streamText && !parsed && (
         <div className="card bg-gray-50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700">
-          <p className="text-xs text-gray-400 mb-2 flex items-center gap-1.5"><Sparkles size={12} className="animate-pulse" /> Analysing your writing...</p>
+          <p className="text-xs text-gray-400 mb-2 flex items-center gap-1.5"><Sparkles size={12} className="animate-pulse" /> {t('dailyWriting.analysing')}</p>
           <p className="text-xs text-gray-600 dark:text-gray-400 font-mono whitespace-pre-wrap opacity-60">{streamText}</p>
         </div>
       )}
@@ -297,7 +299,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
       {/* Error */}
       {error && (
         <div className="card bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800">
-          <p className="text-sm text-red-600 dark:text-red-400 flex items-center gap-2"><AlertCircle size={15} /> {error}</p>
+          <p className="text-sm text-red-600 dark:text-red-400 flex items-center gap-2"><AlertCircle size={15} /> {error === 'Evaluation failed. Please try again.' ? t('dailyWriting.aiError') : error}</p>
         </div>
       )}
 
@@ -309,30 +311,30 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
             <p className={`text-4xl font-bold font-mono mb-1 ${overallScore >= 8 ? 'text-green-600 dark:text-green-400' : overallScore >= 6 ? 'text-yellow-600 dark:text-yellow-400' : 'text-red-500 dark:text-red-400'}`}>
               {overallScore}<span className="text-xl text-gray-400">/10</span>
             </p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Overall Score</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">{t('dailyWriting.overallScore')}</p>
             <p className="text-sm text-gray-700 dark:text-gray-300">
-              {overallScore >= 9 ? '🎯 Excellent writing! Outstanding work.' :
-               overallScore >= 7 ? '👍 Good writing! A few things to polish.' :
-               overallScore >= 5 ? '📚 Keep practising — your ideas are there.' :
-               '💪 Focus on grammar and structure first.'}
+              {overallScore >= 9 ? t('dailyWriting.resultExcellent') :
+               overallScore >= 7 ? t('dailyWriting.resultGood') :
+               overallScore >= 5 ? t('dailyWriting.resultAverage') :
+               t('dailyWriting.resultPoor')}
             </p>
           </div>
 
           {/* Scores grid */}
           <div className="grid grid-cols-2 gap-2">
-            <ScorePill label="Task Achievement" score={parsed.taskAchievement.score} />
-            <ScorePill label="Coherence" score={parsed.coherence.score} />
-            <ScorePill label="Vocabulary" score={parsed.vocabulary.score} />
-            <ScorePill label="Grammar" score={parsed.grammar.score} />
+            <ScorePill label={t('dailyWriting.scoreTaskAchievement')} score={parsed.taskAchievement.score} />
+            <ScorePill label={t('dailyWriting.scoreCoherence')} score={parsed.coherence.score} />
+            <ScorePill label={t('dailyWriting.scoreVocabulary')} score={parsed.vocabulary.score} />
+            <ScorePill label={t('dailyWriting.scoreGrammar')} score={parsed.grammar.score} />
           </div>
 
           {/* Score comments */}
           <div className="card space-y-2">
             {[
-              { label: 'Task Achievement', ...parsed.taskAchievement },
-              { label: 'Coherence', ...parsed.coherence },
-              { label: 'Vocabulary', ...parsed.vocabulary },
-              { label: 'Grammar', ...parsed.grammar },
+            { label: t('dailyWriting.scoreTaskAchievement'), ...parsed.taskAchievement },
+            { label: t('dailyWriting.scoreCoherence'), ...parsed.coherence },
+            { label: t('dailyWriting.scoreVocabulary'), ...parsed.vocabulary },
+            { label: t('dailyWriting.scoreGrammar'), ...parsed.grammar },
             ].map(({ label, score, comment }) => (
               <div key={label} className="flex items-start gap-2 text-sm">
                 <span className={`font-bold tabular-nums text-xs pt-0.5 w-7 shrink-0 ${score >= 8 ? 'text-green-600' : score >= 6 ? 'text-yellow-600' : 'text-red-500'}`}>{score}/10</span>
@@ -348,7 +350,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
           {parsed.feedback && (
             <div className="card bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800">
               <p className="text-xs font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                <Lightbulb size={13} /> Feedback
+                <Lightbulb size={13} /> {t('dailyWriting.feedback')}
               </p>
               <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{parsed.feedback}</p>
             </div>
@@ -361,7 +363,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
                 onClick={() => setShowImproved(p => !p)}
                 className="w-full flex items-center justify-between text-sm font-semibold text-emerald-700 dark:text-emerald-400"
               >
-                <span className="flex items-center gap-2">✨ Improved Version</span>
+                <span className="flex items-center gap-2">{t('dailyWriting.improvedVersion')}</span>
                 {showImproved ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
               </button>
               {showImproved && (
@@ -377,7 +379,7 @@ export default function WritingSection({ section, level = 'A2', addXP, lesson }:
             onClick={() => { setParsed(null); setStreamText(''); hasEvaluated.current = false }}
             className="btn-secondary w-full text-sm py-2.5 flex items-center justify-center gap-2"
           >
-            <PenLine size={15} /> Edit & Re-submit
+            <PenLine size={15} /> {t('dailyWriting.editResubmit')}
           </button>
         </div>
       )}

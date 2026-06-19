@@ -206,7 +206,7 @@ function CatalogView({ d, streak }: { d: ReturnType<typeof usePhraseData>; strea
           <div className="w-8 h-8 bg-b1-100 dark:bg-b1-900/40 rounded-lg flex items-center justify-center">
             <BookText size={16} className="text-b1-600 dark:text-b1-400" />
           </div>
-          <h1 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100">Gap o'rganish</h1>
+          <h1 className="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100">{t('phrases.title')}</h1>
         </div>
         <div className="flex items-center gap-1">
           <button onClick={() => d.setShowTypingGame(true)} className="btn-secondary p-2 rounded-lg" title={t('phrases.tooltipTyping')}><span className="text-sm">⌨️</span></button>

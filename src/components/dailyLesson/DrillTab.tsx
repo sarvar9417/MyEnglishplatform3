@@ -10,6 +10,7 @@ import TestSectionArea from './TestSectionArea'
 
 interface DrillTabProps {
   // Lesson data
+  lessonId: string
   exerciseSections: DailyLesson['exerciseSections']
   exercises: DailyLesson['exercises']
   testSections: DailyLesson['testSections']
@@ -53,6 +54,7 @@ interface DrillTabProps {
 }
 
 export default function DrillTab({
+  lessonId,
   exerciseSections,
   exercises,
   testSections,
@@ -106,6 +108,7 @@ export default function DrillTab({
 
         {submitted ? (
           <ExerciseResultsView
+            lessonId={lessonId}
             score={score}
             sectionExercises={sectionExercises}
             answers={answers}
@@ -158,6 +161,7 @@ export default function DrillTab({
 
       {/* Test sections area */}
       <TestSectionArea
+        lessonId={lessonId}
         testSections={testSections}
         tests={tests}
         testSection={testSection}

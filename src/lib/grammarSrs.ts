@@ -48,7 +48,10 @@ function gradeToBox(grade: string): number {
 function loadAll(): Record<string, GrammarReview> {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    return raw ? JSON.parse(raw) : {}
+    if (!raw) return {}
+    const parsed = JSON.parse(raw)
+    if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) return {}
+    return parsed
   } catch { return {} }
 }
 

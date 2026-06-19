@@ -2,6 +2,7 @@ import { Play, Pause, Square, Volume2, Headphones } from 'lucide-react'
 import { AudioButton } from '../ui/AudioButton'
 import { SPEED_OPTIONS, DIFFICULTY_LABEL, SPEAKER_COLORS, type SpeakerSegment } from './listeningUtils'
 import type { ListeningSection as ListeningSectionType } from '../../data/dailyLessons'
+import { useI18n } from '../../i18n'
 
 interface Props {
   section: ListeningSectionType
@@ -29,6 +30,7 @@ export default function ListeningPlayer({
   speed, setSpeed, playSpeech, togglePause, stopSpeech, playSegment,
   showTranscript, setShowTranscript,
 }: Props) {
+  const { t } = useI18n()
   return (
     <div className="space-y-4">
       {/* YouTube video embed */}
@@ -49,7 +51,7 @@ export default function ListeningPlayer({
       {section.backupUrl && (
         <a href={section.backupUrl} target="_blank" rel="noopener noreferrer"
           className="flex items-center gap-2 text-xs text-primary-600 dark:text-primary-400 hover:underline">
-          <Headphones size={14} /> Video ochilmasa — zaxira audio manbasini oching
+          <Headphones size={14} /> {t('dailyListening.backupLink')}
         </a>
       )}
 
@@ -57,7 +59,7 @@ export default function ListeningPlayer({
       <div className="rounded-2xl bg-gradient-to-r from-primary-600 to-violet-600 p-5 text-white shadow-lg">
         <div className="flex items-center justify-between mb-3">
           <p className="text-xs font-bold uppercase tracking-widest opacity-80 flex items-center gap-1.5">
-            <Headphones size={12} /> Listening Exercise
+            <Headphones size={12} /> {t('dailyListening.exerciseLabel')}
           </p>
           {section.difficulty && (
             <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${DIFFICULTY_LABEL[section.difficulty]?.color} text-white/90`}>
@@ -118,14 +120,14 @@ export default function ListeningPlayer({
           )}
 
           <div className="ml-auto text-right text-xs opacity-80">
-            {playCount > 0 && <p>Eshitildi: {playCount}×</p>}
-            <p>{segments.length} qator</p>
+            {playCount > 0 && <p>{t('dailyListening.listenedCount', { count: String(playCount) })}</p>}
+            <p>{t('dailyListening.linesCount', { count: String(segments.length) })}</p>
           </div>
         </div>
 
         {playing && activeSpeaker && (
           <p className="mt-3 text-xs font-semibold opacity-80 flex items-center gap-1.5">
-            <Volume2 size={12} /> {activeSpeaker} gapirishi...
+            <Volume2 size={12} /> {t('dailyListening.speakerSpeaking', { speaker: activeSpeaker })}
           </p>
         )}
       </div>
@@ -135,9 +137,9 @@ export default function ListeningPlayer({
         className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl border text-sm font-semibold transition-all ${showTranscript ? 'border-primary-300 dark:border-primary-700 text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20' : 'border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:border-primary-200 dark:hover:border-primary-800'}`}>
         <span className="flex items-center gap-2">
           {showTranscript ? '👁️' : '👁️‍🗨️'}
-          {showTranscript ? 'Transkriptni Yashirish' : "Transkriptni Ko'rsatish"}
+          {showTranscript ? t('dailyListening.hideTranscript') : t('dailyListening.showTranscript')}
         </span>
-        <span className="text-xs font-normal text-gray-400">(faqat tinglagandan keyin)</span>
+        <span className="text-xs font-normal text-gray-400">{t('dailyListening.afterListenOnly')}</span>
       </button>
 
       {showTranscript && (
@@ -145,9 +147,9 @@ export default function ListeningPlayer({
           <div className="flex items-center justify-between mb-3 sticky top-0 bg-white dark:bg-gray-900 py-2 z-10">
             <div className="flex items-center gap-2">
               <Volume2 size={14} className="text-primary-500" />
-              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Transkript</p>
+              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('dailyListening.transcript')}</p>
             </div>
-            <AudioButton text={segments.map(s => `${s.speaker}: ${s.text}`).join('. ')} size="sm" rate={0.85} label="Butun matnni tinglash" />
+            <AudioButton text={segments.map(s => `${s.speaker}: ${s.text}`).join('. ')} size="sm" rate={0.85} label={t('dailyListening.listenAllText')} />
           </div>
           <div className="space-y-1">
             {segments.map((seg, i) => {

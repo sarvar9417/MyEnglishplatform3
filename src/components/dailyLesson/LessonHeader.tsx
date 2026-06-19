@@ -1,6 +1,8 @@
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Target } from 'lucide-react'
 import LessonChallengeButton from './LessonChallengeButton'
 import type { DailyLesson } from '../../data/dailyLessons'
+import { getLessonCanDo } from '../../data/cefrCanDo'
+import { useI18n } from '../../i18n'
 
 interface LessonHeaderProps {
   lesson: DailyLesson
@@ -11,6 +13,9 @@ interface LessonHeaderProps {
 }
 
 export default function LessonHeader({ lesson, prevScore, allDone, currentLessonScore, onBack }: LessonHeaderProps) {
+  const { t } = useI18n()
+  const canDo = getLessonCanDo(lesson.id)
+
   return (
     <>
       <div className="flex items-center gap-2 sm:gap-3">
@@ -36,6 +41,15 @@ export default function LessonHeader({ lesson, prevScore, allDone, currentLesson
       <div>
         <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100">{lesson.title}</h1>
         <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-1">{lesson.subtitle}</p>
+        {canDo && (
+          <div className="flex items-start gap-1.5 mt-2 text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl px-3 py-2 border border-emerald-100 dark:border-emerald-800/30">
+            <Target size={14} className="mt-0.5 flex-shrink-0" />
+            <span>
+              <span className="font-semibold">{t('cefrCanDo.lessonCanDo')}</span>{' '}
+              <span>{canDo}</span>
+            </span>
+          </div>
+        )}
       </div>
     </>
   )

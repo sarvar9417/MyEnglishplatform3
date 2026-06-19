@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { Shuffle } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import type { GameWord } from '../../store/vocabularyStore'
 import { feelAnswer, feelLevelUp } from '../../lib/gameFeel'
 import { emitXpBurst } from '../ui/XpBurst'
@@ -82,12 +83,14 @@ export default function WordGame({ words, onComplete, onMatch }: Props) {
     }
   }
 
+  const { t } = useI18n()
+
   return (
     <div className="w-full">
       <div className="flex items-center justify-center gap-2 mb-4">
         <Shuffle size={16} className="text-b1-500" />
         <p className="text-sm font-medium text-gray-600">
-          Ingliz va o'zbek so'zlarini juftlang
+          {t('wordGame.matchWords')}
         </p>
       </div>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { TrendingUp, BookOpen, Brain, CalendarDays, Target, Library, FileQuestion } from 'lucide-react'
+import { useI18n } from '../../i18n'
 import EmptyState from '../ui/EmptyState'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import { supabase } from '../../lib/supabase'
@@ -58,6 +59,7 @@ function getLast14Days(): string[] {
 }
 
 export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props) {
+  const { t } = useI18n()
   const [boxData, setBoxData] = useState<BoxStat[]>([])
   const [levelData, setLevelData] = useState<LevelStat[]>([])
   const [totalSessions, setTotalSessions] = useState(0)
@@ -154,7 +156,7 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
   if (loading) {
     return (
       <div className="card p-6 text-center text-sm text-gray-400 dark:text-gray-500">
-        Ma'lumotlar yuklanmoqda...
+        {t('analytics.loading')}
       </div>
     )
   }
@@ -163,10 +165,10 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
     <div className="space-y-4">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         {[
-          { icon: BookOpen, label: "O'rganilgan", value: totalPhrasesStudied, color: 'text-blue-600', bg: 'bg-blue-50' },
-          { icon: Brain, label: 'Yodlangan', value: totalPhrasesLearned, color: 'text-green-600', bg: 'bg-green-50' },
-          { icon: CalendarDays, label: "Kunlik o'rtacha", value: `${avgDaily} ta`, color: 'text-purple-600', bg: 'bg-purple-50' },
-          { icon: Target, label: 'Sessiyalar', value: totalSessions, color: 'text-orange-600', bg: 'bg-orange-50' },
+          { icon: BookOpen, label: t('analytics.studied'), value: totalPhrasesStudied, color: 'text-blue-600', bg: 'bg-blue-50' },
+          { icon: Brain, label: t('analytics.learned'), value: totalPhrasesLearned, color: 'text-green-600', bg: 'bg-green-50' },
+          { icon: CalendarDays, label: t('analytics.dailyAvg'), value: `${avgDaily} ${t('analytics.phraseCount', { count: '' })}`, color: 'text-purple-600', bg: 'bg-purple-50' },
+          { icon: Target, label: t('analytics.sessions'), value: totalSessions, color: 'text-orange-600', bg: 'bg-orange-50' },
         ].map(({ icon: Icon, label, value, color, bg }) => (
           <div key={label} className={`card p-3 text-center ${bg}/30 dark:bg-gray-800/50`}>
             <div className={`w-8 h-8 rounded-lg ${bg} dark:bg-gray-700 flex items-center justify-center mx-auto mb-1.5`}>
@@ -182,9 +184,9 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <TrendingUp size={16} className="text-b1-500" />
-            <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200">Kunlik aktivlik (14 kun)</h3>
+            <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200">{t('analytics.dailyActivity')}</h3>
           </div>
-          <span className="text-xs text-gray-400 dark:text-gray-500">Gaplar soni</span>
+          <span className="text-xs text-gray-400 dark:text-gray-500">{t('analytics.phrasesViewed')}</span>
         </div>
         <div className="h-44">
           <ResponsiveContainer width="100%" height="100%">
@@ -204,7 +206,7 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
               />
               <Tooltip
                 contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #E5E7EB' }}
-                formatter={(value: number) => [value, "Ko'rilgan gaplar"]}
+                formatter={(value: number) => [value, t('analytics.phrasesViewed')]}
                 labelFormatter={(label: string) => {
                   const day = dailyChartData.find(d => d.label === label)
                   return day ? day.date : label
@@ -220,7 +222,7 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
         <div className="card p-4 dark:bg-gray-800 dark:border-gray-700">
           <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200 mb-3 flex items-center gap-2">
             <Brain size={15} className="text-purple-500" />
-            Box taqsimoti
+            {t('analytics.boxDistribution')}
           </h3>
           {totalBoxPhrases > 0 ? (
             <div className="space-y-2">
@@ -230,7 +232,7 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
                   <div key={box.name}>
                     <div className="flex items-center justify-between text-xs mb-0.5">
                       <span className="font-medium text-gray-700 dark:text-gray-300">Box {i + 1}</span>
-                      <span className="text-gray-400 dark:text-gray-500">{box.value} ta · {pct}%</span>
+                      <span className="text-gray-400 dark:text-gray-500">{t('analytics.phraseCount', { count: box.value })} · {pct}%</span>
                     </div>
                     <div className="w-full h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
                       <div
@@ -242,20 +244,18 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
                 )
               })}
               <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
-                <span className="font-semibold text-green-600 dark:text-green-400">{totalPhrasesLearned}</span> ta yodlangan
-                <span className="mx-1">·</span>
-                <span className="font-semibold">{totalBoxPhrases}</span> ta jami
+                <span className="font-semibold text-green-600 dark:text-green-400">{t('analytics.learnedPerLevel', { learned: totalPhrasesLearned, studied: totalBoxPhrases, total: totalBoxPhrases })}</span>
               </p>
             </div>
           ) : (
-            <EmptyState icon={Library} title="Hali gap o'rganilmagan" description="Lug'atdan gap qo'shib yoki darslarni boshlab, gap boyligingizni oshiring" size="sm" />
+            <EmptyState icon={Library} title={t('analytics.noPhrasesYet')} description={t('analytics.addPhrasesDesc')} size="sm" />
           )}
         </div>
 
         <div className="card p-4 dark:bg-gray-800 dark:border-gray-700">
           <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200 mb-3 flex items-center gap-2">
             <BookOpen size={15} className="text-blue-500" />
-            Daraja bo'yicha
+            {t('analytics.byLevel')}
           </h3>
           {levelData.length > 0 ? (
             <div className="space-y-2.5">
@@ -266,7 +266,7 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
                     <div className="flex items-center justify-between text-xs mb-0.5">
                       <span className="font-semibold text-gray-700 dark:text-gray-300">{lvl.level}</span>
                       <span className="text-gray-400 dark:text-gray-500">
-                        {lvl.learned} yod / {lvl.studied} o'rganilgan / {lvl.total} ta
+                        {t('analytics.learnedPerLevel', { learned: lvl.learned, studied: lvl.studied, total: lvl.total })}
                       </span>
                     </div>
                     <div className="w-full h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden relative">
@@ -287,7 +287,7 @@ export default function PhraseAnalytics({ userId, sessions, levelCounts }: Props
               })}
             </div>
           ) : (
-            <EmptyState icon={FileQuestion} title="Ma'lumot yo'q" description="Gaplarni o'rganishni boshlaganingizdan so'ng, bu yerda darajalar bo'yicha statistika ko'rsatiladi" size="sm" />
+            <EmptyState icon={FileQuestion} title={t('analytics.noData')} description={t('analytics.addPhrasesDesc')} size="sm" />
           )}
         </div>
       </div>

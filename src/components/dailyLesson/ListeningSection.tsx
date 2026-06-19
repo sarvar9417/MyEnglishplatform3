@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
 import { RotateCcw, ChevronRight, ChevronLeft } from 'lucide-react'
 import type { ListeningSection as ListeningSectionType } from '../../data/dailyLessons'
+import { useI18n } from '../../i18n'
 import ListeningPrePhase from './ListeningPrePhase'
 import ListeningPlayer from './ListeningPlayer'
 import ListeningQuestionCard from './ListeningQuestionCard'
@@ -17,6 +18,7 @@ type Phase = 'pre' | 'listen' | 'post' | 'result'
 type ListenStep = 'first' | 'questions' | 'dictation'
 
 export default function ListeningSection({ section, addXP }: Props) {
+  const { t } = useI18n()
   const [phase, setPhase] = useState<Phase>('pre')
   const [listenStep, setListenStep] = useState<ListenStep>('first')
   const [showTranscript, setShowTranscript] = useState(false)
@@ -267,7 +269,7 @@ export default function ListeningSection({ section, addXP }: Props) {
                   {isPast ? '✓' : i + 1}
                 </div>
                 <span className="text-xs font-semibold hidden sm:inline">
-                  {p === 'pre' ? 'Tayyorgarlik' : p === 'listen' ? 'Tinglash' : p === 'post' ? 'Mashqlar' : 'Natija'}
+                  {p === 'pre' ? t('dailyListening.preparing') : p === 'listen' ? t('dailyListening.listening') : p === 'post' ? t('dailyListening.exercises') : t('dailyListening.result')}
                 </span>
               </div>
               {i < 3 && <div className={`flex-1 h-px ${isPast ? 'bg-green-400' : 'bg-gray-200 dark:bg-gray-700'}`} />}
@@ -313,16 +315,16 @@ export default function ListeningSection({ section, addXP }: Props) {
           {/* Step navigation */}
           <div className="flex justify-between items-center pt-2">
             <p className="text-xs text-gray-400">
-              {listenStep === 'first' ? '1/2 · Audio tinglang va tushuning' : '2/2 · Savollarga javob bering'}
+              {listenStep === 'first' ? t('dailyListening.stepFirst') : t('dailyListening.stepQuestions')}
             </p>
             <div className="flex gap-2">
               {listenStep === 'first' ? (
                 <button onClick={() => setPhase('post')} className="btn-primary py-2 px-4 text-sm flex items-center gap-1.5">
-                  Savollarga O'tish <ChevronRight size={14} />
+                  {t('dailyListening.goToQuestions')} <ChevronRight size={14} />
                 </button>
               ) : (
                 <button onClick={() => setListenStep('first')} className="btn-ghost py-2 px-4 text-sm flex items-center gap-1.5">
-                  <ChevronLeft size={14} /> Qayta Tinglash
+                  <ChevronLeft size={14} /> {t('dailyListening.relisten')}
                 </button>
               )}
             </div>
@@ -336,10 +338,10 @@ export default function ListeningSection({ section, addXP }: Props) {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-primary-600">🎯</span>
-              <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm">Tushunish Savollari</h3>
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm">{t('dailyListening.comprehensionTitle')}</h3>
             </div>
             <span className="text-xs text-gray-400 dark:text-gray-500">
-              {uniqueQuestionCount.answered}/{uniqueQuestionCount.total} javob berildi
+              {t('dailyListening.answeredCount', { answered: String(uniqueQuestionCount.answered), total: String(uniqueQuestionCount.total) })}
             </span>
           </div>
 
@@ -357,7 +359,7 @@ export default function ListeningSection({ section, addXP }: Props) {
 
           {/* Audio replay button */}
           <button onClick={playSpeech} className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 dark:text-gray-400 hover:border-primary-300 hover:text-primary-600 transition-all">
-            🔄 Matnni qayta tinglash ({speed}×)
+            {t('dailyListening.replayAudio', { speed: String(speed) })}
           </button>
 
           {/* Questions */}
@@ -386,8 +388,8 @@ export default function ListeningSection({ section, addXP }: Props) {
                 <div className="card border-primary-200 dark:border-primary-800">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-primary-600">🎧</span>
-                    <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm">Diktant</h3>
-                    <span className="text-xs text-gray-400">Eshitganingizni yozing</span>
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm">{t('dailyListening.dictation')}</h3>
+                    <span className="text-xs text-gray-400">{t('dailyListening.dictationHint')}</span>
                   </div>
                   <div className="space-y-3">
                     {section.dictation.map((d, i) => {
@@ -399,12 +401,12 @@ export default function ListeningSection({ section, addXP }: Props) {
                             ▶
                           </button>
                           <div className="flex-1">
-                            <p className="text-xs text-gray-400 mb-1">{seg?.speaker || `Qator ${d.startLine + 1}`}</p>
+                            <p className="text-xs text-gray-400 mb-1">{seg?.speaker || t('dailyListening.lineNumber', { n: String(d.startLine + 1) })}</p>
                             <input
                               type="text"
                               value={dictationInputs[i] || ''}
                               onChange={e => handleDictation(i, e.target.value)}
-                              placeholder="Eshitganingizni yozing..."
+                              placeholder={t('dailyListening.dictationPlaceholder')}
                               className="input text-sm py-2"
                               autoComplete="off"
                             />
@@ -421,7 +423,7 @@ export default function ListeningSection({ section, addXP }: Props) {
                 <div className="card bg-amber-50/50 dark:bg-amber-900/10 border-amber-200 dark:border-amber-800">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-amber-600">⚠️</span>
-                    <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm">Mulohaza</h3>
+                    <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm">{t('dailyListening.discussion')}</h3>
                   </div>
                   {section.discussion.map((d, i) => (
                     <div key={i} className="mb-3 last:mb-0">
@@ -441,7 +443,7 @@ export default function ListeningSection({ section, addXP }: Props) {
               <button onClick={handleSubmit}
                 disabled={!allAnswered}
                 className={`btn-primary w-full py-3 flex items-center justify-center gap-2 text-sm ${!allAnswered ? 'opacity-50 cursor-not-allowed' : ''}`}>
-                ✅ Javoblarni Tekshirish
+                {t('dailyListening.checkAnswers')}
                 {addXP && ` (+${((section.questions.length + (section.dictation?.length || 0)) * 10)} XP)`}
               </button>
             </div>
@@ -462,7 +464,7 @@ export default function ListeningSection({ section, addXP }: Props) {
               />
 
               {/* Answer review */}
-              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Javoblar Tahlili</p>
+              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('dailyListening.answerReview')}</p>
               {section.questions.map((q, i) => (
                 <ListeningQuestionCard
                   key={q.id}
@@ -486,7 +488,7 @@ export default function ListeningSection({ section, addXP }: Props) {
                 <div className="card">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-primary-600">🎧</span>
-                    <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Diktant Natijalari</p>
+                    <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('dailyListening.dictationResults')}</p>
                   </div>
                   <div className="space-y-2">
                     {section.dictation.map((d, i) => {
@@ -512,11 +514,11 @@ export default function ListeningSection({ section, addXP }: Props) {
           {/* Navigation */}
           <div className="flex justify-between pt-2">
             <button onClick={() => setPhase('listen')} className="btn-ghost py-2 px-4 text-sm flex items-center gap-1.5">
-              <ChevronLeft size={14} /> Tinglashga Qaytish
+              <ChevronLeft size={14} /> {t('dailyListening.backToListen')}
             </button>
             {submitted && pct >= 60 && (
               <button onClick={() => setPhase('result')} className="btn-primary py-2 px-4 text-sm flex items-center gap-1.5">
-                Keyingi Bosqich <ChevronRight size={14} />
+                {t('dailyListening.nextPhase')} <ChevronRight size={14} />
               </button>
             )}
           </div>
@@ -527,9 +529,9 @@ export default function ListeningSection({ section, addXP }: Props) {
       {phase === 'result' && (
         <div className="card text-center py-8">
           <div className="text-5xl mb-4">{pct === 100 ? '🏆' : pct >= 60 ? '👍' : '💪'}</div>
-          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Listening Complete!</h3>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{t('dailyListening.resultComplete')}</h3>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-            {pct >= 80 ? "Ajoyib natija! Ingliz tili listening qobiliyatingiz o'sib bormoqda." : "Yaxshi urinish! Qayta tinglash orqali natijangizni yaxshilang."}
+            {pct >= 80 ? t('dailyListening.resultExcellent') : t('dailyListening.resultGood')}
           </p>
           <div className="flex items-center justify-center gap-2 mb-6">
             <div className={`text-3xl font-bold font-mono ${pct === 100 ? 'text-green-600' : pct >= 60 ? 'text-yellow-600' : 'text-red-500'}`}>
@@ -537,13 +539,13 @@ export default function ListeningSection({ section, addXP }: Props) {
             </div>
             <div className="h-8 w-px bg-gray-200" />
             <div className="text-sm text-gray-400">
-              <p>{Math.round(pct)}% to'g'ri</p>
-              <p>Eshitildi: {playCount}×</p>
+              <p>{t('dailyListening.percentCorrect', { pct: String(Math.round(pct)) })}</p>
+              <p>{t('dailyListening.listenedCount', { count: String(playCount) })}</p>
             </div>
           </div>
           <button onClick={() => { handleRetry(); setPhase('pre'); setListenStep('first'); setPlayCount(0) }}
             className="btn-secondary text-sm py-2 px-5 inline-flex items-center gap-2">
-            <RotateCcw size={14} /> Boshidan Boshlash
+            <RotateCcw size={14} /> {t('dailyListening.restartFromStart')}
           </button>
         </div>
       )}

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Loader2, BookOpen } from 'lucide-react'
+import { useI18n } from '../../i18n'
 
 interface Props {
   text: string        // streaming yoki to'liq matn
@@ -16,15 +17,16 @@ interface Section {
 }
 
 const SECTION_DEFS = [
-  { key: 'ZAMON',                     icon: '⏱',  title: 'Zamon',                    color: 'text-blue-800 dark:text-blue-300',  headerBg: 'bg-blue-100 dark:bg-blue-900/30',   border: 'border-blue-200 dark:border-blue-700'   },
-  { key: 'ARTIKL',                    icon: '📖', title: 'Artikl',                   color: 'text-green-800 dark:text-green-300', headerBg: 'bg-green-100 dark:bg-green-900/30',  border: 'border-green-200 dark:border-green-700'  },
-  { key: "BOG'LOVCHILAR",             icon: '🔗', title: "Bog'lovchilar",            color: 'text-orange-800 dark:text-orange-300',headerBg: 'bg-orange-100 dark:bg-orange-900/30', border: 'border-orange-200 dark:border-orange-700' },
-  { key: "SO'Z TARTIBI VA TUZILISH",  icon: '🧩', title: "So'z tartibi va tuzilish", color: 'text-purple-800 dark:text-purple-300', headerBg: 'bg-purple-100 dark:bg-purple-900/30', border: 'border-purple-200 dark:border-purple-700' },
-  { key: 'XATOLAR VA TAVSIYALAR',     icon: '✏️', title: 'Xatolar va tavsiyalar',    color: 'text-red-800 dark:text-red-300',   headerBg: 'bg-red-100 dark:bg-red-900/30',    border: 'border-red-200 dark:border-red-700'    },
-  { key: 'UMUMIY BAHO',               icon: '🎯', title: 'Umumiy baho',              color: 'text-teal-800 dark:text-teal-300',  headerBg: 'bg-teal-100 dark:bg-teal-900/30',   border: 'border-teal-200 dark:border-teal-700'   },
+  { key: 'ZAMON',                     icon: '⏱',  i18nKey: 'sectionTense',        color: 'text-blue-800 dark:text-blue-300',  headerBg: 'bg-blue-100 dark:bg-blue-900/30',   border: 'border-blue-200 dark:border-blue-700'   },
+  { key: 'ARTIKL',                    icon: '📖', i18nKey: 'sectionArticle',      color: 'text-green-800 dark:text-green-300', headerBg: 'bg-green-100 dark:bg-green-900/30',  border: 'border-green-200 dark:border-green-700'  },
+  { key: "BOG'LOVCHILAR",             icon: '🔗', i18nKey: 'sectionConjunctions', color: 'text-orange-800 dark:text-orange-300',headerBg: 'bg-orange-100 dark:bg-orange-900/30', border: 'border-orange-200 dark:border-orange-700' },
+  { key: "SO'Z TARTIBI VA TUZILISH",  icon: '🧩', i18nKey: 'sectionWordOrder',   color: 'text-purple-800 dark:text-purple-300', headerBg: 'bg-purple-100 dark:bg-purple-900/30', border: 'border-purple-200 dark:border-purple-700' },
+  { key: 'XATOLAR VA TAVSIYALAR',     icon: '✏️', i18nKey: 'sectionErrors',      color: 'text-red-800 dark:text-red-300',   headerBg: 'bg-red-100 dark:bg-red-900/30',    border: 'border-red-200 dark:border-red-700'    },
+  { key: 'UMUMIY BAHO',               icon: '🎯', i18nKey: 'sectionOverall',     color: 'text-teal-800 dark:text-teal-300',  headerBg: 'bg-teal-100 dark:bg-teal-900/30',   border: 'border-teal-200 dark:border-teal-700'   },
 ]
 
-function parseSections(raw: string): Section[] {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function parseSections(raw: string, t: (key: any, params?: Record<string, string | number>) => string): Section[] {
   const sections: Section[] = []
 
   for (const def of SECTION_DEFS) {
@@ -37,7 +39,7 @@ function parseSections(raw: string): Section[] {
     if (match) {
       sections.push({
         icon:      def.icon,
-        title:     def.title,
+        title:     t(`grammarAnalysis.${def.i18nKey}`),
         color:     def.color,
         headerBg:  def.headerBg,
         border:    def.border,
@@ -50,7 +52,7 @@ function parseSections(raw: string): Section[] {
   if (sections.length === 0 && raw.trim()) {
     return [{
       icon: '📝',
-      title: 'Tahlil',
+      title: t('grammarAnalysis.sectionFallback'),
       color: 'text-gray-800',
       headerBg: 'bg-gray-100',
       border: 'border-gray-200',
@@ -127,6 +129,7 @@ function renderLine(line: string, idx: number) {
 }
 
 export default function GrammarAnalysisPanel({ text, loading }: Props) {
+  const { t } = useI18n()
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -135,18 +138,18 @@ export default function GrammarAnalysisPanel({ text, loading }: Props) {
     }
   }, [text, loading])
 
-  const sections = parseSections(text)
+  const sections = parseSections(text, t)
 
   return (
     <div className="mt-3 rounded-2xl border-2 border-indigo-100 dark:border-indigo-800 bg-gradient-to-b from-indigo-50/60 to-white dark:from-indigo-950/30 dark:to-gray-900 overflow-hidden">
       {/* Header */}
       <div className="flex items-center gap-2 px-4 py-3 bg-indigo-50 dark:bg-indigo-950/40 border-b border-indigo-100 dark:border-indigo-800">
         <BookOpen size={16} className="text-indigo-500 dark:text-indigo-400" />
-        <span className="text-sm font-bold text-indigo-700 dark:text-indigo-300">Chuqur grammatik tahlil</span>
+        <span className="text-sm font-bold text-indigo-700 dark:text-indigo-300">{t('grammarAnalysis.title')}</span>
         {loading && (
           <div className="ml-auto flex items-center gap-1.5 text-indigo-400 dark:text-indigo-500 text-xs">
             <Loader2 size={12} className="animate-spin" />
-            <span>Tahlil qilinmoqda...</span>
+            <span>{t('grammarAnalysis.loading')}</span>
           </div>
         )}
       </div>
