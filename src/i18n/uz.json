@@ -1574,5 +1574,8 @@
   "ielts.score": "Natija",
   "ielts.pass": "O'tdingiz!",
   "ielts.fail": "Yana urinib ko'ring",
-  "ielts.readingPassage": "O'qish matni"
+  "ielts.readingPassage": "O'qish matni",
+  "sync.offline": "Offline",
+  "sync.syncing": "Sinxronizatsiya...",
+  "sync.complete": "Sinxronizatsiya tugadi"
 }

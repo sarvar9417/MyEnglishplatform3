@@ -36,18 +36,18 @@ export const greetingsAndNames: DailyLesson = {
   ],
   specialCases: [],
   exercises: [
-    { id: 100001, type: 'multiple-choice', instruction: "To'g'ri salomni tanlang:", question: "Siz do'stingizga norasmiy salom ayting. Qaysi?", options: ['Good morning', 'Hi', 'Good evening', 'Goodbye'], correct: 'Hi', explanation: "Hi — norasmiy salom. Do'stlarga ishlatiladi." },
+    { id: 100001, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Siz do'stingizga norasmiy salom ayting. Qaysi?", blanks: ["Hi"], explanation: "Hi — norasmiy salom. Do'stlarga ishlatiladi." },
     { id: 100002, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "My ___ is Ali.", blanks: ['name'], explanation: "My name is Ali — Mening ismim Ali." },
     { id: 100003, type: 'fill-blank', instruction: "So'zni tarjima qiling:", question: 'I am a student. Student = ___', blanks: ['talaba'], explanation: 'Student = talaba' },
-    { id: 100004, type: 'multiple-choice', instruction: "Ertalab 9:00 da qanday salom aytiladi?", question: "It is 9 AM. You say:", options: ['Good night', 'Good morning', 'Good evening', 'Goodbye'], correct: 'Good morning', explanation: "9 AM = morning — Good morning!" },
-    { id: 100005, type: 'multiple-choice', instruction: "To'g'ri javobni tanlang:", question: "Qaysi jumla to'g'ri?", options: ["My name is Ali.", "I am Ali ismim.", "I name Ali.", "Ali my name."], correct: "My name is Ali.", explanation: "To'g'ri: My name is Ali." },
+    { id: 100004, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "It is 9 AM. You say:", blanks: ["Good morning"], explanation: "9 AM = morning — Good morning!" },
+    { id: 100005, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi jumla to'g'ri?", blanks: ["My name is Ali."], explanation: "To'g'ri: My name is Ali." },
   ],
   exerciseSections: [
     { title: 'Salomlashish', desc: "Salomlashish usullarini sinab ko'ring", color: 'green', icon: '👋', ids: [100001, 100002, 100003, 100004, 100005] },
   ],
   tests: [
-    { id: 200001, type: 'multiple-choice', instruction: "Salomlashishni tanlang (ertalab, rasmiy):", question: "Which greeting is correct for 8 AM?", options: ['Good night', 'Good morning', 'Good evening', 'Bye'], correct: 'Good morning', explanation: "8 AM = Good morning!" },
-    { id: 200002, type: 'multiple-choice', instruction: "O'zini tanishtirish:", question: "My name is Ali. — bu nima?", options: ['Salomlashish', "O'zini tanishtirish", 'Xayrlashish', 'So rash'], correct: "O'zini tanishtirish", explanation: "My name is = Mening ismim" },
+    { id: 200001, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which greeting is correct for 8 AM?", blanks: ["Good morning"], explanation: "8 AM = Good morning!" },
+    { id: 200002, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "My name is Ali. — bu nima?", blanks: ["O'zini tanishtirish"], explanation: "My name is = Mening ismim" },
   ],
   testSections: [
     { title: 'Test', desc: 'Bilimingizni tekshiring', color: 'purple', icon: '📝', ids: [200001, 200002] },
@@ -88,9 +88,9 @@ export const numbersAndAlphabet: DailyLesson = {
   ],
   specialCases: [],
   exercises: [
-    { id: 100010, type: 'multiple-choice', instruction: "'3' inglizchada qanday yoziladi?", question: 'How do you write 3 in English?', options: ['two', 'three', 'four', 'five'], correct: 'three', explanation: '3 = three' },
+    { id: 100010, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "How do you write 3 in English?", blanks: ["three"], explanation: "3 = three" },
     { id: 100011, type: 'multiple-choice', instruction: "'Seven' — bu nechchi?", question: "What number is 'seven'?", options: ['5', '6', '7', '8'], correct: '7', explanation: 'seven = 7' },
-    { id: 100012, type: 'multiple-choice', instruction: "Ingliz tilida nechta harf bor?", question: 'How many letters are in the English alphabet?', options: ['21', '24', '26', '28'], correct: '26', explanation: 'Ingliz alifbosida 26 ta harf bor.' },
+    { id: 100012, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "How many letters are in the English alphabet?", blanks: ["26"], explanation: "Ingliz alifbosida 26 ta harf bor." },
     { id: 100013, type: 'multiple-choice', instruction: "Qaysi harf UNLI?", question: 'Which letter is a vowel?', options: ['B', 'E', 'F', 'G'], correct: 'E', explanation: 'E — unli harf (A, E, I, O, U).' },
     { id: 100014, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "There are ___ days in a week.", blanks: ['seven'], explanation: "Seven days = yeti kun (dushanba-yakshanba)." },
   ],
@@ -142,18 +142,18 @@ export const familyAndMe: DailyLesson = {
   ],
   specialCases: [],
   exercises: [
-    { id: 100020, type: 'multiple-choice', instruction: "'Mother' nima degani?", question: "What does 'mother' mean?", options: ['Opa', 'Ona', 'Singil', 'Bobi'], correct: 'Ona', explanation: 'Mother = ona' },
-    { id: 100021, type: 'multiple-choice', instruction: "To'g'ri jumlani toping:", question: 'Which sentence is correct?', options: ['I have brother.', 'I have a brother.', 'I have the brother.', 'I has a brother.'], correct: 'I have a brother.', explanation: "Artikl 'a' kerak: I have a brother." },
+    { id: 100020, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What does 'mother' mean?", blanks: ["Ona"], explanation: "Mother = ona" },
+    { id: 100021, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which sentence is correct?", blanks: ["I have a brother."], explanation: "Artikl 'a' kerak: I have a brother." },
     { id: 100022, type: 'fill-blank', instruction: '\'She is my ___\' (ona):', question: 'She is my ___. (mother)', blanks: ['mother'], explanation: 'mother = ona' },
-    { id: 100023, type: 'multiple-choice', instruction: "O'zbektilida 'brother' qanday tarjima qilinadi?", question: "'Brother' = ?", options: ['Faqat aka', 'Faqat uka', 'Aka yoki uka', 'Opa'], correct: 'Aka yoki uka', explanation: "Ingliztilida brother = aka HAM, uka HAM." },
+    { id: 100023, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Brother' = ?", blanks: ["Aka yoki uka"], explanation: "Ingliztilida brother = aka HAM, uka HAM." },
     { id: 100024, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "I ___ two sisters.", blanks: ['have'], explanation: "I have two sisters — Mening ikki opa-singlim bor." },
   ],
   exerciseSections: [
     { title: 'Oila', desc: "Oila a'zolarini sinab ko'ring", color: 'blue', icon: '👨‍👩‍👧‍👦', ids: [100020, 100021, 100022, 100023, 100024] },
   ],
   tests: [
-    { id: 200020, type: 'multiple-choice', instruction: "'Father' nima degani?", question: "What does 'father' mean?", options: ['Ona', 'Ota', 'Aka', 'Singil'], correct: 'Ota', explanation: 'Father = ota' },
-    { id: 200021, type: 'multiple-choice', instruction: "To'g'ri jumlani tanlang:", question: 'Which is correct?', options: ['She is my the mother.', 'She is my mother.', 'She is a my mother.', 'She my mother.'], correct: 'She is my mother.', explanation: "To'g'ri: She is my mother." },
+    { id: 200020, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What does 'father' mean?", blanks: ["Ota"], explanation: "Father = ota" },
+    { id: 200021, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is correct?", blanks: ["She is my mother."], explanation: "To'g'ri: She is my mother." },
   ],
   testSections: [
     { title: 'Test', desc: 'Bilimingizni tekshiring', color: 'purple', icon: '📝', ids: [200020, 200021] },

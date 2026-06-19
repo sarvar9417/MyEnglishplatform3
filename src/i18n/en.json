@@ -1574,5 +1574,8 @@
   "ielts.score": "Score",
   "ielts.pass": "You passed!",
   "ielts.fail": "Try again",
-  "ielts.readingPassage": "Reading passage"
+  "ielts.readingPassage": "Reading passage",
+  "sync.offline": "Offline",
+  "sync.syncing": "Syncing...",
+  "sync.complete": "Sync complete"
 }

@@ -1574,5 +1574,8 @@
   "ielts.score": "Результат",
   "ielts.pass": "Вы прошли!",
   "ielts.fail": "Попробуйте снова",
-  "ielts.readingPassage": "Текст для чтения"
+  "ielts.readingPassage": "Текст для чтения",
+  "sync.offline": "Не в сети",
+  "sync.syncing": "Синхронизация...",
+  "sync.complete": "Синхронизация завершена"
 }

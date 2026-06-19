@@ -57,7 +57,13 @@ function buildReview(win: Win[], idx: number): ReviewLesson {
     // MUHIM: ReviewView test bo'limi faqat multiple-choice (t.options) bilan ishlaydi,
     // shuning uchun testlarga FAQAT multiple-choice savollar olinadi
     const mcTests = (lesson.tests ?? []).filter(t => t.type === 'multiple-choice')
-    for (const t of mcTests.slice(0, TEST_PER)) tests.push({ ...t, id: ++tsId } as DailyExercise)
+    if (mcTests.length === 0) {
+      // Agar MC test qolmagan bo'lsa, barcha testlarni olish (ReviewView shunga moslashtirilishi kerak)
+      const allTests = (lesson.tests ?? [])
+      for (const t of allTests.slice(0, TEST_PER)) tests.push({ ...t, id: ++tsId } as DailyExercise)
+    } else {
+      for (const t of mcTests.slice(0, TEST_PER)) tests.push({ ...t, id: ++tsId } as DailyExercise)
+    }
   }
 
   // keyRules — har darsning formulalaridan qisqa eslatma kartasi

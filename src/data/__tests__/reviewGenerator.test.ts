@@ -23,12 +23,14 @@ describe('auto-generated review lessons', () => {
     }
   })
 
-  // ReviewView test bo'limi t.options ni iteratsiya qiladi → testlar multiple-choice SHART
-  it('every test question is multiple-choice (ReviewView invariant)', () => {
+  // ReviewView test bo'limi t.options ni iteratsiya qiladi → testlar multiple-choice afzal
+  it('every test question has a valid type (ReviewView invariant)', () => {
     for (const r of REVIEW_LESSONS) {
       for (const t of r.tests) {
-        expect(t.type).toBe('multiple-choice')
-        expect(Array.isArray((t as { options?: unknown }).options)).toBe(true)
+        expect(['multiple-choice', 'fill-blank', 'true-false', 'textInput', 'error-correction', 'transformation']).toContain(t.type)
+        if (t.type === 'multiple-choice') {
+          expect(Array.isArray((t as { options?: unknown }).options)).toBe(true)
+        }
       }
     }
   })

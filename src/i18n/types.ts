@@ -1710,5 +1710,8 @@ export interface TranslationStrings {
   'ielts.pass': string
   'ielts.fail': string
   'ielts.readingPassage': string
+  'sync.offline': string
+  'sync.syncing': string
+  'sync.complete': string
 }
 

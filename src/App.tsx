@@ -9,6 +9,7 @@ import { monitoring } from './lib/monitoring'
 import Sidebar from './components/layout/Sidebar'
 import MobileBottomNav from './components/layout/MobileBottomNav'
 import OfflineBanner from './components/layout/OfflineBanner'
+import SyncIndicator from './components/ui/SyncIndicator'
 import { OnboardingFlow } from './components/onboarding/OnboardingFlow'
 import { Menu, X } from 'lucide-react'
 import { I18nProvider, useI18n } from './i18n'
@@ -95,6 +96,7 @@ function AppShell() {
   return (
     <>
       <OfflineBanner isOnline={isOnline} />
+      <SyncIndicator />
       <PwaInstallPrompt />
       <SentryFeedback />
       <NotificationInitializer />
