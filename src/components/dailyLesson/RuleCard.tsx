@@ -58,13 +58,34 @@ export default memo(function RuleCard({ rule, index }: { rule: string; index: nu
           }
 
           return (
-            <div key={si} className="space-y-1">
+            <div key={si} className="space-y-2">
               {lines.filter(l => {
                 if (lines[0] === titleClean && l === lines[0]) return false
                 return true
-              }).map((l, li) => (
-                <p key={li} className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line">{l}</p>
-              ))}
+              }).map((l, li) => {
+                // Highlight lines with arrows (examples)
+                if (l.startsWith('→') || l.startsWith('  →')) {
+                  return (
+                    <div key={li} className="flex items-start gap-2 pl-1">
+                      <span className="text-indigo-400 font-bold flex-shrink-0 mt-0.5 text-xs">→</span>
+                      <code className="text-xs bg-white dark:bg-gray-800 px-2 py-1 rounded text-gray-800 dark:text-gray-200 font-mono border border-gray-200 dark:border-gray-700">
+                        {l.replace(/^→\s*/, '').replace(/^  →\s*/, '')}
+                      </code>
+                    </div>
+                  )
+                }
+                // Highlight lines with bullets
+                if (l.startsWith('•') || l.startsWith('  •')) {
+                  return (
+                    <p key={li} className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2 pl-1">
+                      <span className="text-gray-400 mt-0.5 flex-shrink-0">•</span>
+                      <span>{l.replace(/^[•\s]+/, '')}</span>
+                    </p>
+                  )
+                }
+                // Default: plain text
+                return <p key={li} className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed">{l}</p>
+              })}
             </div>
           )
         })}
