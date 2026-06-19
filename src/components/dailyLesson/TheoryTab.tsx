@@ -97,7 +97,7 @@ export default function TheoryTab({ lesson, storyBeat, navigate, addXP, onVocabD
         <p className="text-xs font-semibold opacity-70 mb-3 uppercase tracking-wider">Formulalar</p>
         <div className="grid grid-cols-1 gap-2">
           {lesson.formulas.map((row) => (
-            <FormulaRecallCard key={row.label} label={row.label} structure={row.structure} color={row.color} />
+            <FormulaRecallCard key={row.label} label={row.label} structure={row.structure} color={row.color} explanation={row.explanation} example={row.example} whenToUse={row.whenToUse} pronunciation={row.pronunciation} />
           ))}
         </div>
       </div>

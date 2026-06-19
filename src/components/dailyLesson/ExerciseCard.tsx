@@ -1,12 +1,13 @@
-import { useMemo, useEffect, useRef } from 'react'
+import { useMemo, useEffect, useRef, useState } from 'react'
 import type { DailyExercise } from '../../data/dailyLessons'
 import { normalizeAnswer, OPTION_LABELS, getCorrectText, checkAnswer, isBlankAccepted, isAcceptedAnswer } from './helpers'
 import { feelAnswer } from '../../lib/gameFeel'
 import { AudioButton } from '../ui/AudioButton'
 import { ConnectionFeedback } from './ConnectionFeedback'
+import { Lightbulb, Zap, CheckCircle, XCircle } from 'lucide-react'
 
 export default function ExerciseCard({
-  ex, num, total, answers, onChange, submitted,
+  ex, num, total, answers, onChange, submitted, combo = 0,
 }: {
   ex: DailyExercise
   num: number
@@ -14,8 +15,11 @@ export default function ExerciseCard({
   answers: string[]
   onChange: (idx: number, val: string) => void
   submitted: boolean
+  combo?: number
 }) {
   const cardRef = useRef<HTMLDivElement>(null)
+  const [hintUsed, setHintUsed] = useState(false)
+  const [hintText, setHintText] = useState('')
 
   // Auto-focus first input when card mounts
   useEffect(() => {
@@ -81,6 +85,13 @@ export default function ExerciseCard({
         {submitted ? (isCorrect ? '✓' : '✗') : num}
       </div>
 
+      {/* Combo badge */}
+      {submitted && isCorrect && combo > 1 && (
+        <div className="absolute -right-2 -top-2 z-10 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-0.5 animate-bounce">
+          <Zap size={10} /> {combo}x combo!
+        </div>
+      )}
+
       {ex.type === 'fill-blank' && (
         <div>
           <p className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">📝 Bo'sh joyni to'ldiring</p>
@@ -89,6 +100,30 @@ export default function ExerciseCard({
             <div className="flex items-center gap-2 mb-2 px-2 py-1 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
               <span className="text-xl">{ex.visualHint}</span>
               <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">Ko'rsatma</span>
+            </div>
+          )}
+          {/* Hint button */}
+          {!submitted && !hintUsed && ex.blanks && ex.blanks.length > 0 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                setHintUsed(true)
+                const correct = ex.blanks[0] ?? ''
+                const hint = correct.length > 2
+                  ? `${correct[0]}${'_'.repeat(Math.max(0, correct.length - 2))}${correct[correct.length - 1]}`
+                  : `${correct[0]}_`
+                setHintText(hint)
+              }}
+              className="mb-2 text-[10px] text-amber-600 dark:text-amber-400 flex items-center gap-1 hover:underline"
+            >
+              <Lightbulb size={11} /> Yordam olish (1 marta)
+            </button>
+          )}
+          {hintUsed && hintText && (
+            <div className="mb-2 px-2 py-1 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+              <span className="text-[10px] text-amber-700 dark:text-amber-300 font-medium">
+                💡 Maslahat: <span className="font-mono">{hintText}</span>
+              </span>
             </div>
           )}
           <div className="flex items-start gap-1.5 mb-1">
@@ -125,6 +160,28 @@ export default function ExerciseCard({
             <div className="flex items-center gap-2 mb-2 px-2 py-1 bg-violet-50 dark:bg-violet-900/20 rounded-lg">
               <span className="text-xl">{ex.visualHint}</span>
               <span className="text-xs text-violet-600 dark:text-violet-400 font-medium">Ko'rsatma</span>
+            </div>
+          )}
+          {/* MC Hint button — eliminates one wrong answer */}
+          {!submitted && !hintUsed && ex.options && ex.options.length > 2 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                setHintUsed(true)
+                const wrongOptions = ex.options.filter(o => o !== ex.correct)
+                const eliminated = wrongOptions[Math.floor(Math.random() * wrongOptions.length)]
+                setHintText(`❌ ${eliminated} — bu noto'g'ri`)
+              }}
+              className="mb-2 text-[10px] text-amber-600 dark:text-amber-400 flex items-center gap-1 hover:underline"
+            >
+              <Lightbulb size={11} /> Yordam — bitta noto'g'ri javobni olib tashlash
+            </button>
+          )}
+          {hintUsed && hintText && (
+            <div className="mb-2 px-2 py-1 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+              <span className="text-[10px] text-amber-700 dark:text-amber-300 font-medium">
+                💡 {hintText}
+              </span>
             </div>
           )}
           <div className="flex items-start gap-1.5 mb-3">
@@ -447,29 +504,56 @@ function feedbackBlock(ex: DailyExercise, answers: string[], isCorrect: boolean)
   const blanks = getBlanks(ex)
   
   return (
-    <div aria-live="polite" className={`mt-3 text-xs ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
+    <div aria-live="polite" className={`mt-3 text-xs rounded-xl p-3 border ${
+      isCorrect
+        ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-700 dark:text-green-400'
+        : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-700 dark:text-red-400'
+    }`}>
+      {/* Result header */}
+      <div className="flex items-center gap-2 mb-2">
+        {isCorrect ? (
+          <CheckCircle size={16} className="text-green-500 flex-shrink-0" />
+        ) : (
+          <XCircle size={16} className="text-red-500 flex-shrink-0" />
+        )}
+        <span className="font-bold text-sm">
+          {isCorrect
+            ? isAlternative
+              ? `To'g'ri! (${blanks.join(', ')} ham ishlatish mumkin)`
+              : 'To\'g\'ri!'
+            : 'Noto\'g\'ri'}
+        </span>
+        {isCorrect && <span className="text-green-600 dark:text-green-400 font-semibold">+10 XP</span>}
+      </div>
+
+      {/* Wrong answer details */}
       {!isCorrect && (
-        <>
-          <p className="font-semibold">✍️ Sizning javobingiz: <span className="font-mono">{
-            ex.type === 'fill-blank' || ex.type === 'passage'
-              ? (answers.join(' / ') || "(bo'sh)")
-              : (answers[0] || "(bo'sh)")
-          }</span></p>
-          <p className="font-semibold">✅ To'g'ri javob: <span className="font-mono">{
-            ex.type === 'fill-table' ? 'jadvalda ko\'rsatilgan' : getCorrectText(ex)
-          }</span></p>
-        </>
+        <div className="space-y-1 mb-2 pl-6">
+          <p className="text-gray-600 dark:text-gray-400">
+            <span className="font-semibold">Sizning javobingiz:</span>{' '}
+            <span className="font-mono line-through text-red-500">
+              {ex.type === 'fill-blank' || ex.type === 'passage'
+                ? (answers.join(' / ') || "(bo'sh)")
+                : (answers[0] || "(bo'sh)")}
+            </span>
+          </p>
+          <p className="text-gray-600 dark:text-gray-400">
+            <span className="font-semibold">To'g'ri javob:</span>{' '}
+            <span className="font-mono text-green-600 dark:text-green-400 font-bold">
+              {ex.type === 'fill-table' ? "jadvalda ko'rsatilgan" : getCorrectText(ex)}
+            </span>
+          </p>
+        </div>
       )}
-      {isCorrect && (
-        <>
-          {isAlternative ? (
-            <p className="font-semibold">✅ To'g'ri! ({blanks.join(', ')} ham ishlatish mumkin) +10 XP</p>
-          ) : (
-            <p className="font-semibold">✅ To'g'ri! +10 XP</p>
-          )}
-        </>
+
+      {/* Explanation */}
+      {'explanation' in ex && ex.explanation && (
+        <div className="mt-2 pt-2 border-t border-green-200/50 dark:border-green-800/50 pl-6">
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            💡 <span className="font-semibold">Tushuntirish:</span> {ex.explanation}
+          </p>
+        </div>
       )}
-      {'explanation' in ex && <p className="mt-1 text-gray-600 dark:text-gray-400">💡 {ex.explanation}</p>}
     </div>
   )
 }

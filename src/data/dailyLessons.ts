@@ -15,7 +15,7 @@ export interface DailyLesson {
   level: string
   day: number
   category?: string
-  formulas: { label: string; structure: string; color: string }[]
+  formulas: { label: string; structure: string; color: string; explanation?: string; example?: string; whenToUse?: string; pronunciation?: string }[]
   rules: string[]
   vocabulary: { en: string; uz: string; example: string; rule: string }[]
   examples: { en: string; uz: string }[]
