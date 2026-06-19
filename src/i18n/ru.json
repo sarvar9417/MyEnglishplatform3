@@ -1581,5 +1581,16 @@
   "mixedReview.description": "Вопросы из разных разделов перемешиваются для лучшего запоминания.",
   "mixedReview.start": "Начать",
   "mixedReview.complete": "Завершено!",
-  "mixedReview.retry": "Попробовать снова"
+  "mixedReview.retry": "Попробовать снова",
+
+  "accessibility.vocab.exitFlashcard": "Выйти из карточек",
+  "accessibility.vocab.exitTest": "Выйти из теста",
+  "accessibility.vocab.exitGame": "Выйти из игры",
+  "accessibility.vocab.grammarAnalysis": "Начать грамматический анализ",
+  "accessibility.vocab.nextWord": "Следующее слово",
+  "accessibility.vocab.startReview": "Начать повторение ({{count}} слов)",
+  "accessibility.vocab.batch": "Пакет",
+  "accessibility.dict.addWord": "Добавить новое слово",
+  "accessibility.dict.filterAll": "Все уровни",
+  "accessibility.dict.filterLevel": "Фильтр по уровню"
 }

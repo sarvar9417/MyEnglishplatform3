@@ -1581,5 +1581,16 @@
   "mixedReview.description": "Turli bo'limlardagi savollar aralashtiriladi. Bu uzoq muddatli xotirani yaxshilaydi.",
   "mixedReview.start": "Boshlash",
   "mixedReview.complete": "Tugadi!",
-  "mixedReview.retry": "Qaytadan"
+  "mixedReview.retry": "Qaytadan",
+
+  "accessibility.vocab.exitFlashcard": "Flashcarddan chiqish",
+  "accessibility.vocab.exitTest": "Testdan chiqish",
+  "accessibility.vocab.exitGame": "O'yindan chiqish",
+  "accessibility.vocab.grammarAnalysis": "Grammatik tahlilni boshlash",
+  "accessibility.vocab.nextWord": "Keyingi so'z",
+  "accessibility.vocab.startReview": "Takrorlashni boshlash ({{count}} ta so'z)",
+  "accessibility.vocab.batch": "To'plam",
+  "accessibility.dict.addWord": "Yangi so'z qo'shish",
+  "accessibility.dict.filterAll": "Barcha darajalar",
+  "accessibility.dict.filterLevel": "Daraja filtri"
 }

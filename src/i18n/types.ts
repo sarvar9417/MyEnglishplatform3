@@ -1717,5 +1717,16 @@ export interface TranslationStrings {
   'mixedReview.start': string
   'mixedReview.complete': string
   'mixedReview.retry': string
+
+  'accessibility.vocab.exitFlashcard': string
+  'accessibility.vocab.exitTest': string
+  'accessibility.vocab.exitGame': string
+  'accessibility.vocab.grammarAnalysis': string
+  'accessibility.vocab.nextWord': string
+  'accessibility.vocab.startReview': string
+  'accessibility.vocab.batch': string
+  'accessibility.dict.addWord': string
+  'accessibility.dict.filterAll': string
+  'accessibility.dict.filterLevel': string
 }
 

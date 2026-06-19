@@ -1581,5 +1581,16 @@
   "mixedReview.description": "Questions from different sections are shuffled for better long-term retention.",
   "mixedReview.start": "Start",
   "mixedReview.complete": "Complete!",
-  "mixedReview.retry": "Try Again"
+  "mixedReview.retry": "Try Again",
+
+  "accessibility.vocab.exitFlashcard": "Exit flashcard mode",
+  "accessibility.vocab.exitTest": "Exit test mode",
+  "accessibility.vocab.exitGame": "Exit game mode",
+  "accessibility.vocab.grammarAnalysis": "Start grammar analysis",
+  "accessibility.vocab.nextWord": "Next word",
+  "accessibility.vocab.startReview": "Start review ({{count}} words)",
+  "accessibility.vocab.batch": "Batch",
+  "accessibility.dict.addWord": "Add new word",
+  "accessibility.dict.filterAll": "All levels",
+  "accessibility.dict.filterLevel": "Filter by level"
 }

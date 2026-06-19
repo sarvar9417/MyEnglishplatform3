@@ -490,6 +490,7 @@ export default function Dictionary() {
         </div>
         <button
           onClick={() => setAddModalOpen(true)}
+          aria-label={t('accessibility.dict.addWord')}
           className="flex-shrink-0 px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-2xl transition-all flex items-center gap-2"
         >
           <Plus size={16} />
@@ -501,6 +502,8 @@ export default function Dictionary() {
       <div className="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide">
         <button
           onClick={() => handleLevelFilter('')}
+          aria-label={t('accessibility.dict.filterAll')}
+          aria-pressed={!levelFilter}
           className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${
             !levelFilter
               ? 'bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900'
@@ -515,6 +518,8 @@ export default function Dictionary() {
             <button
               key={lvl}
               onClick={() => handleLevelFilter(lvl)}
+              aria-label={t('accessibility.dict.filterLevel', { level: lvl })}
+              aria-pressed={levelFilter === lvl}
               className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap ${
                 levelFilter === lvl
                   ? `${LEVEL_BADGES[lvl]} ring-2 ring-offset-1`

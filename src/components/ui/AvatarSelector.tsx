@@ -186,6 +186,8 @@ export function AvatarSelector({
               key={av.id}
               onClick={() => unlocked && onChange(av.id)}
               disabled={!unlocked}
+              aria-label={`${av.emoji} ${av.label} — ${av.personality}${!unlocked ? ` (locked: ${av.achievementHint})` : ''}`}
+              aria-pressed={selected}
               className={`
                 group relative flex flex-col items-center gap-2 p-4 rounded-xl border-2
                 transition-all duration-300

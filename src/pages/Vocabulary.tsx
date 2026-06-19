@@ -613,7 +613,7 @@ export default function Vocabulary() {
     return (
       <div className="p-3 sm:p-6 max-w-lg mx-auto select-none">
         <div className="flex items-center justify-between mb-4">
-          <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">
+          <button onClick={goToCatalog} aria-label={t('accessibility.vocab.exitFlashcard')} className="btn-ghost text-sm px-2 py-1">
             {t('vocabPage.exitButton')}
           </button>
           <div className="flex items-center gap-3">
@@ -662,7 +662,7 @@ export default function Vocabulary() {
     return (
       <div className="p-3 sm:p-6 max-w-lg mx-auto">
         <div className="flex items-center justify-between mb-4">
-          <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">
+          <button onClick={goToCatalog} aria-label={t('accessibility.vocab.exitTest')} className="btn-ghost text-sm px-2 py-1">
             {t('vocabPage.exitButton')}
           </button>
           <div className="flex items-center gap-3">
@@ -707,6 +707,7 @@ export default function Vocabulary() {
                     setTestAnalysisLoading(false)
                   }
                 }}
+                aria-label={t('accessibility.vocab.grammarAnalysis')}
                 className="w-full py-2.5 px-3 rounded-xl border-2 border-indigo-200 dark:border-indigo-700 text-indigo-600 dark:text-indigo-400 font-semibold hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:border-indigo-400 transition-all text-sm flex items-center justify-center gap-2"
               >
                 <FlaskConical size={15} />
@@ -719,6 +720,7 @@ export default function Vocabulary() {
             {/* Next button */}
             <button
               onClick={handleTestAdvance}
+              aria-label={t('accessibility.vocab.nextWord')}
               className="w-full py-3 bg-b1-500 text-white font-bold rounded-xl hover:bg-b1-600 transition-all text-sm flex items-center justify-center gap-2"
             >
               {t('vocabPage.nextButton')} <ArrowRight size={16} />
@@ -735,7 +737,7 @@ export default function Vocabulary() {
     return (
       <div className="p-3 sm:p-6 max-w-lg mx-auto">
         <div className="flex items-center justify-between mb-4">
-          <button onClick={goToCatalog} className="btn-ghost text-sm px-2 py-1">
+          <button onClick={goToCatalog} aria-label={t('accessibility.vocab.exitGame')} className="btn-ghost text-sm px-2 py-1">
             {t('vocabPage.exitButton')}
           </button>
           <span className="text-sm font-medium text-gray-500">{t('vocabPage.batchLabel', { num: currentBatch })}</span>
@@ -837,6 +839,7 @@ export default function Vocabulary() {
               </p>
               <button
                 onClick={() => { selectReview(); setTimeout(() => enterStudyMode('flashcard'), 0) }}
+                aria-label={t('accessibility.vocab.startReview', { count: reviewWords.length })}
                 className="shrink-0 px-3 py-1 bg-orange-500 text-white font-bold rounded-lg text-xs hover:bg-orange-600 transition-all"
               >
                 {t('vocabPage.reviewStart')}
@@ -858,6 +861,7 @@ export default function Vocabulary() {
                   key={batchNum}
                   onClick={() => selectBatch(batchNum)}
                   disabled={batchWordsSlice.length === 0}
+                  aria-label={t('accessibility.vocab.batch', { num: batchNum })}
                   className={`card py-3 text-center transition-all ${
                     isCurrent ? 'ring-2 ring-b1-500 border-b1-500' : ''
                   } ${batchWordsSlice.length === 0 ? 'opacity-40 cursor-not-allowed' : ''}`}
@@ -892,6 +896,7 @@ export default function Vocabulary() {
                   <button
                     key={phase.mode}
                     onClick={() => enterStudyMode(phase.mode)}
+                    aria-label={phase.label}
                     className="card py-3 text-center hover:shadow-sm hover:border-b1-200 transition-all"
                   >
                     <span className="text-xl">{phase.icon}</span>
