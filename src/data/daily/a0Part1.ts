@@ -38,7 +38,7 @@ export const greetingsAndNames: DailyLesson = {
   exercises: [
     { id: 100001, type: 'multiple-choice', instruction: "To'g'ri salomni tanlang:", question: "Siz do'stingizga norasmiy salom ayting. Qaysi?", options: ['Good morning', 'Hi', 'Good evening', 'Goodbye'], correct: 'Hi', explanation: "Hi — norasmiy salom. Do'stlarga ishlatiladi." },
     { id: 100002, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "My ___ is Ali.", blanks: ['name'], explanation: "My name is Ali — Mening ismim Ali." },
-    { id: 100003, type: 'fill-blank', instruction: 'I am a ___. (talaba)', question: 'I am a student. student nima degani?', blanks: ['talaba'], explanation: 'Student = talaba' },
+    { id: 100003, type: 'fill-blank', instruction: "So'zni tarjima qiling:", question: 'I am a student. Student = ___', blanks: ['talaba'], explanation: 'Student = talaba' },
     { id: 100004, type: 'multiple-choice', instruction: "Ertalab 9:00 da qanday salom aytiladi?", question: "It is 9 AM. You say:", options: ['Good night', 'Good morning', 'Good evening', 'Goodbye'], correct: 'Good morning', explanation: "9 AM = morning — Good morning!" },
     { id: 100005, type: 'multiple-choice', instruction: "To'g'ri javobni tanlang:", question: "Qaysi jumla to'g'ri?", options: ["My name is Ali.", "I am Ali ismim.", "I name Ali.", "Ali my name."], correct: "My name is Ali.", explanation: "To'g'ri: My name is Ali." },
   ],

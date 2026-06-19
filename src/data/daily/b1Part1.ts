@@ -1191,7 +1191,7 @@ export const questionTags: DailyLesson = {
 
 
     // ── Interleaved Practice: Question Tags + Direct/Indirect questions ──
-    { id: 95021, type: 'fill-blank', instruction: 'Tag question va direct question:', question: ', question: ', blanks: ['aren\'t you / Do'], explanation: 'Tasdiq gap → inkor tag (aren\'t you). Direct question → Do + subject + verb.' },
+    { id: 95021, type: 'fill-blank', instruction: 'Tag question va direct question:', question: 'You are John, _____? and _____ you like coffee?', blanks: ['aren\'t you / Do'], explanation: 'Tasdiq gap → inkor tag (aren\'t you). Direct question → Do + subject + verb.' },
     { id: 95022, type: 'fill-blank', instruction: "Tag qo'shing (inkor gap → tasdiq tag):", question: "She hasn't finished yet, _____?", blanks: ["has she"], explanation: "Inkor gap (hasn't) → tasdiq tag (has she). Auxiliary mosligi: have/has." },
     { id: 95023, type: 'error-correction', instruction: "Indirect question tartibi xatosi:", question: "Can you tell me where is the station?", errorPart: "where is the station", correct: "Can you tell me where the station is?", explanation: "Indirect question'da inversiya yo'q: where the station IS (subject + verb)." },
     { id: 95024, type: 'fill-blank', instruction: 'Tag — to be va to do mosligi:', question: 'They went home early, _____? He doesn\'t smoke, _____?', blanks: ['didn\'t they / does he'], explanation: 'Past Simple (went) → didn\'t they. Present (doesn\'t) → does he. Tag auxiliary\'ga mos kelishi kerak.' },
