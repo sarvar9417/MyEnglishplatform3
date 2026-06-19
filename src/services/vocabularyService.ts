@@ -6,6 +6,7 @@ import { monitoring } from '../lib/monitoring'
 import { computeNextReviewFSRS, createDefaultFSRSState, type FSRSState } from '../lib/srs'
 import { mergeVocabProgress } from './conflictResolution'
 import { getConfusablePartnerWords } from '../data/confusable-pairs'
+import { VocabularyProgressSchema, VocabularySessionSchema, FSRSWordInputSchema } from '../lib/validations'
 
 export type WordLevel = 'A1' | 'A2' | 'B1' | 'B2'
 
@@ -79,6 +80,11 @@ export async function upsertProgress(
   wrongCount: number,
   isLearned: boolean
 ) {
+  const validation = VocabularyProgressSchema.safeParse({ userId, wordId, box, nextReview, correctCount, wrongCount, isLearned })
+  if (!validation.success) {
+    monitoring.captureMessage(`Validation failed in upsertProgress: ${validation.error.message}`, 'warn')
+  }
+
   // Smart merge: fetch existing row and merge box/correct/wrong counts
   // to prevent SRS regression (e.g. device A has box=3, device B has box=1)
   const { data: existing } = await supabase
@@ -127,6 +133,11 @@ export async function saveSession(
   timeSpent: number,
   sessionDate?: string
 ) {
+  const validation = VocabularySessionSchema.safeParse({ userId, batchNumber, wordsJson, score, timeSpent, sessionDate })
+  if (!validation.success) {
+    monitoring.captureMessage(`Validation failed in saveSession: ${validation.error.message}`, 'warn')
+  }
+
   const dateToUse = sessionDate ?? new Date().toISOString().split('T')[0]
 
   const { error } = await supabase
@@ -369,6 +380,13 @@ export async function pushWordsToSRS(
 ): Promise<void> {
   if (words.length === 0) return
 
+  for (const w of words) {
+    const validation = FSRSWordInputSchema.safeParse({ english: w.english, rating: w.rating })
+    if (!validation.success) {
+      monitoring.captureMessage(`Validation failed in pushWordsToSRS: ${validation.error.message}`, 'warn')
+    }
+  }
+
   // Batch: barcha word ID larni birdaniga olish
   const englishList = words.map(w => w.english)
   const { data: wordRows } = await supabase
@@ -424,6 +442,13 @@ export async function pushWordsToSRS_FSRS(
   words: PushWordInput[]
 ): Promise<void> {
   if (words.length === 0) return
+
+  for (const w of words) {
+    const validation = FSRSWordInputSchema.safeParse({ english: w.english, rating: w.rating, uzbek: w.uzbek, example: w.example, level: w.level })
+    if (!validation.success) {
+      monitoring.captureMessage(`Validation failed in pushWordsToSRS_FSRS: ${validation.error.message}`, 'warn')
+    }
+  }
 
   const englishList = words.map(w => w.english)
 

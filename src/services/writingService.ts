@@ -4,6 +4,7 @@ import type { WritingPrompt } from '../data/writingPrompts'
 import { todayDate, fetchContent } from './contentService'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
+import { WritingSubmissionSchema } from '../lib/validations'
 
 export { TYPE_LABEL, TYPE_COLOR }
 export type { WritingPrompt }
@@ -19,7 +20,12 @@ export async function saveWritingResult(params: {
   avgScore:   number
   xpEarned:   number
 }) {
-  const { userId, day, prompt, essay, wordCount, feedback, avgScore } = params
+  const { userId, day, prompt, essay, wordCount, feedback, avgScore, xpEarned } = params
+
+  const validation = WritingSubmissionSchema.safeParse({ userId, day, prompt, essay, wordCount, feedback, avgScore, xpEarned })
+  if (!validation.success) {
+    monitoring.captureMessage(`Validation failed in saveWritingResult: ${validation.error.message}`, 'warn')
+  }
 
   const { error } = await supabase.from('writings').insert({
     user_id:     userId,

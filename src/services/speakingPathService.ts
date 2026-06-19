@@ -11,6 +11,7 @@ import { createDefaultFSRSState, computeNextReviewFSRS, type FSRSState } from '.
 import { LESSON_INDEX } from '../data/daily/lessonsIndex'
 import { monitoring } from '../lib/monitoring'
 import type { GrammarProgress, SpeakingChunk, SpeakingDayProgress } from '../data/speakingPath/types'
+import { SpeakingDayProgressSchema, SpeakingChunkGradeSchema, SpeakingChunkEnrollSchema } from '../lib/validations'
 
 // ── localStorage kalitlari — userId bilan prefikslanadi (multi-user izolatsiya) ──
 const progressKey = (uid: string) => `sp_progress_${uid}`
@@ -65,6 +66,11 @@ export async function getSpeakingProgress(userId: string): Promise<SpeakingDayPr
 
 /** Bitta kun progressini saqlash (Supabase upsert + localStorage) */
 export async function saveSpeakingDayProgress(userId: string, p: SpeakingDayProgress): Promise<void> {
+  const validation = SpeakingDayProgressSchema.safeParse({ userId, ...p })
+  if (!validation.success) {
+    monitoring.captureMessage(`Validation failed in saveSpeakingDayProgress: ${validation.error.message}`, 'warn')
+  }
+
   // localStorage (darhol, oflayn)
   const all = readJSON<SpeakingDayProgress[]>(progressKey(userId), [])
   const idx = all.findIndex(x => x.day === p.day)
@@ -126,6 +132,11 @@ export async function loadSrsMap(userId: string): Promise<SrsMap> {
 
 /** Yangi bloklarni SRS ga kiritish (faqat hali yo'qlari) */
 export async function enrollChunks(userId: string, chunkIds: string[]): Promise<void> {
+  const validation = SpeakingChunkEnrollSchema.safeParse({ userId, chunkIds })
+  if (!validation.success) {
+    monitoring.captureMessage(`Validation failed in enrollChunks: ${validation.error.message}`, 'warn')
+  }
+
   const map = readJSON<SrsMap>(srsKey(userId), {})
   const newRows: { user_id: string; chunk_id: string; stability: number; difficulty: number; due: string; reps: number; lapses: number }[] = []
   for (const id of chunkIds) {
@@ -151,6 +162,11 @@ export async function enrollChunks(userId: string, chunkIds: string[]): Promise<
 /** Blokni baholash → FSRS keyingi takrorni hisoblaydi va saqlaydi.
  *  rating: 'bilmadim' | 'qiynaldim' | 'bildim' | 'yodladim' (src/lib/srs.ts) */
 export async function gradeChunk(userId: string, chunkId: string, rating: string): Promise<void> {
+  const validation = SpeakingChunkGradeSchema.safeParse({ userId, chunkId, rating })
+  if (!validation.success) {
+    monitoring.captureMessage(`Validation failed in gradeChunk: ${validation.error.message}`, 'warn')
+  }
+
   const map = readJSON<SrsMap>(srsKey(userId), {})
   const current = map[chunkId] ?? createDefaultFSRSState()
   const { state } = computeNextReviewFSRS(current, rating)

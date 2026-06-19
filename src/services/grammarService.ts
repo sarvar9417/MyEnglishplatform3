@@ -1,6 +1,8 @@
 import { GRAMMAR_TOPICS } from '../data/grammar'
 import type { GrammarTopic } from '../data/grammar'
 import { todayDate, fetchContent, saveScore } from './contentService'
+import { monitoring } from '../lib/monitoring'
+import { GrammarResultSchema } from '../lib/validations'
 
 /** Save grammar exercise result to Supabase */
 export async function saveGrammarResult(params: {
@@ -12,6 +14,12 @@ export async function saveGrammarResult(params: {
   xpEarned:     number
 }) {
   const { userId, topicId, topicTitle, correctCount, total, xpEarned } = params
+
+  const validation = GrammarResultSchema.safeParse({ userId, topicId, topicTitle, correctCount, total, xpEarned })
+  if (!validation.success) {
+    monitoring.captureMessage(`Validation failed in saveGrammarResult: ${validation.error.message}`, 'warn')
+  }
+
   const score = total > 0 ? Math.round((correctCount / total) * 100) : 0
 
   await saveScore('grammar_progress', ['user_id', 'date', 'topic_id'], {
