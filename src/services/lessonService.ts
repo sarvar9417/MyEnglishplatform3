@@ -546,8 +546,8 @@ export function loadLessonSessionLocal(lessonId: string): LoadedLessonSession | 
 }
 
 export function clearLessonSessionLocal(lessonId: string): void {
-  try { localStorage.removeItem(LOCAL_SESSION_PREFIX + lessonId)  } catch {
-    // ignore
+  try { localStorage.removeItem(LOCAL_SESSION_PREFIX + lessonId) } catch (e) {
+    monitoring.captureMessage('clearLessonSessionLocal failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
   }
 }
 
