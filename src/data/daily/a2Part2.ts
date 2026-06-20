@@ -160,7 +160,7 @@ export const adjectiveAdverb: DailyLesson = {
     { id: 19025, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'She ___ ever goes out.', blanks: ['hardly'], explanation: 'Hardly ever = deyarli hech qachon' },
     { id: 19026, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I feel badly today.', errorPart: 'badly', correct: 'I feel bad today.', explanation: "Sezgi fe'lidan keyin adjective: bad" },
     { id: 19027, type: 'fill-blank', instruction: "Intensifier:", question: 'It is ___ hot today. (juda/haqiqatan)', blanks: ['very'], explanation: "Sifatdan oldin intensifier" },
-    { id: 19028, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["She sings well"], explanation: "Fe'ldan keyin — well" },
+    { id: 19028, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["She sings well", "She sings good", "She sing well", "She well sings"], correct: "She sings well", explanation: "Fe'ldan keyin — well" },
     { id: 19029, type: 'vocab-match', instruction: "Sifat (adjective) yoki ravish (adverb) ekanini aniqlang:", word: 'quick (tez)', options: ['adjective', 'adverb', 'ikkala', 'fe\'l'], correct: 'adjective', explanation: "Quick — sifat: a quick car (tez mashina)." },
     { id: 19030, type: 'vocab-match', instruction: "Sifat (adjective) yoki ravish (adverb) ekanini aniqlang:", word: 'quickly (tezda)', options: ['adjective', 'adverb', 'ikkala', 'fe\'l'], correct: 'adverb', explanation: "Quickly — ravish: He runs quickly (tez yuguradi). -ly qo'shimchasi." },
     { id: 19031, type: 'vocab-match', instruction: "To'g'ri shaklni tanlang (adjective yoki adverb):", word: 'She sings ____ (beautiful)', options: ['beautiful', 'beautifully', 'beauty', 'beautify'], correct: 'beautifully', explanation: "Fe'ldan keyin adverb: sings beautifully." },
@@ -225,7 +225,7 @@ export const adjectiveAdverb: DailyLesson = {
     { id: 19042, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She runs ___.", blanks: ["fast"], explanation: "Fast — adj/adv bir xil" },
     { id: 19043, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is an adverb?", blanks: ["quickly"], explanation: "-ly bilan tugagan — adverb" },
     { id: 19044, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I feel ___ today (health).", blanks: ["well"], explanation: "Sog'lik — well" },
-    { id: 19045, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which sentence is CORRECT?", blanks: ["She speaks English well"], explanation: "Fe'ldan keyin adverb" },
+    { id: 19045, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is CORRECT?", options: ["She speaks English well", "She speaks well English", "She speaks English good", "She well speaks English"], correct: "She speaks English well", explanation: "Fe'ldan keyin adverb" },
     { id: 19046, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ we arrived on time.", blanks: ["Luckily"], explanation: "Sentence adverb — gap boshida" },
     { id: 19047, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He ___ ever calls me.", blanks: ["hardly"], explanation: "Hardly ever = deyarli hech qachon" },
   ],
@@ -387,7 +387,7 @@ export const gerundsInfinitives: DailyLesson = {
     { id: 19073, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'She is good at ___.', blanks: ['dancing'], explanation: 'Predlogdan keyin V-ing' },
     { id: 19074, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I suggest to take a break.', errorPart: 'to take', correct: 'I suggest taking a break.', explanation: "Suggest + V-ing" },
     { id: 19075, type: 'fill-blank', instruction: "Infinitive bilan:", question: 'She promised ___ me.', blanks: ['to help'], explanation: "Promise + to + V1" },
-    { id: 19076, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["I enjoy reading"], explanation: "Enjoy + V-ing" },
+    { id: 19076, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["I enjoy reading", "I enjoy to read", "I enjoy read", "I enjoy reads"], correct: "I enjoy reading", explanation: "Enjoy + V-ing" },
 
 
     // ── Interleaved Practice: Gerunds/Infinitives + verb patterns ──
@@ -438,7 +438,7 @@ export const gerundsInfinitives: DailyLesson = {
     { id: 19088, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I stopped ___ smoke.", blanks: ["to smoke"], explanation: "Stop + to + V1 = maqsad" },
     { id: 19089, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I remember ___ her.", blanks: ["meeting"], explanation: "O'tganni eslash — V-ing" },
     { id: 19090, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I forgot ___ milk.", blanks: ["to buy"], explanation: "Qilishni unutdim — to + V1" },
-    { id: 19091, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["I want to learn"], explanation: "Want + to + V1 (to'g'ri)" },
+    { id: 19091, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["I want to learn", "I want learn", "I want learning", "I want to learning"], correct: "I want to learn", explanation: "Want + to + V1 (to'g'ri)" },
   ],
   testSections: [
     { title: 'Oson', desc: 'Gerund va Infinitive', color: 'bg-emerald-500', icon: '🌱', ids: [201, 202, 203, 204, 205] },
@@ -593,7 +593,7 @@ export const passiveVoice: DailyLesson = {
     { id: 19115, type: 'fill-blank', instruction: "V3 qo'ying:", question: 'The food was ___ quickly.', blanks: ['eaten'], explanation: "Eat → eaten — o'tmishi: eat (yemoq) → eaten (yengan)" },
     { id: 19116, type: 'transformation', instruction: "Active → Passive:", question: 'The chef cooks the meal.', hint: 'The meal ___ by the chef.', correct: 'The meal is cooked by the chef.', explanation: "Present → is + V3" },
     { id: 19117, type: 'transformation', instruction: "Active → Passive:", question: 'My grandmother made this cake.', hint: 'This cake ___ by my grandmother.', correct: 'This cake was made by my grandmother.', explanation: "Past → was + V3" },
-    { id: 19118, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["The house was built"], explanation: "Past Passive: was built" },
+    { id: 19118, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["The house was built", "The house is built", "The house were built", "The house was builded"], correct: "The house was built", explanation: "Past Passive: was built" },
     { id: 19119, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The letter was wrote yesterday.', errorPart: 'wrote', correct: 'The letter was written yesterday.', explanation: "Write → written" },
     { id: 19120, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "By nima uchun ishlatiladi?", blanks: ["bajaruvchini ko\'rsatish"], explanation: "By + agent = bajaruvchi" },
 
@@ -632,7 +632,7 @@ export const passiveVoice: DailyLesson = {
     { id: 19132, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The Mona Lisa ___ by da Vinci.", blanks: ["was painted"], explanation: "Past Passive" },
     { id: 19133, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is the correct V3 of 'write'?", blanks: ["written"], explanation: "Write → written" },
     { id: 19134, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Active: 'People speak English here.' Passive: ___", blanks: ["English is spoken here"], explanation: "Present Passive: is spoken" },
-    { id: 19135, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["The house was built in 2000"], explanation: "Past Passive: was built" },
+    { id: 19135, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["The house was built in 2000", "The house builded in 2000", "The house was build in 2000", "The house is built in 2000"], correct: "The house was built in 2000", explanation: "Past Passive: was built" },
   ],
   testSections: [
     { title: 'Oson', desc: 'Passive asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [211, 212, 213, 214, 215] },
@@ -797,7 +797,7 @@ export const reportedSpeech: DailyLesson = {
     { id: 19164, type: 'fill-blank', instruction: "Reported:", question: '"I work here." → He said he worked ___.', blanks: ['there'], explanation: "Here → there" },
     { id: 19165, type: 'transformation', instruction: "Direct → Reported:", question: '"I am tired." She said...', hint: 'She said that ___.', correct: 'She said that she was tired.', explanation: "Backshift: am → was" },
     { id: 19166, type: 'transformation', instruction: "Direct → Reported:", question: '"I will help you." He said...', hint: 'He said that ___.', correct: 'He said that he would help me.', explanation: "Will → would" },
-    { id: 19167, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["He told me that he was tired"], explanation: "Tell + person + that" },
+    { id: 19167, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["He told me that he was tired", "He told that he was tired", "He said me that he was tired", "He told to me that he was tired"], correct: "He told me that he was tired", explanation: "Tell + person + that" },
     { id: 19168, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She asked what did I want.', errorPart: 'did I want', correct: 'She asked what I wanted.', explanation: "Subject + verb, no auxiliary" },
     { id: 19169, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'She asked ___ I liked coffee.', blanks: ['if'], explanation: 'Yes/no → if/whether' },
 
@@ -826,7 +826,7 @@ export const reportedSpeech: DailyLesson = {
     { id: 19171, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Tense backshift: 'like' nima bo'ladi?", blanks: ["liked"], explanation: "Present → Past" },
     { id: 19172, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'will' reported da nima bo'ladi?", blanks: ["would"], explanation: "Will → Would" },
     { id: 19173, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'can' reported da nima bo'ladi?", blanks: ["could"], explanation: "Can → Could — o'tmishda imkonlik: could do" },
-    { id: 19174, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["He told me"], explanation: "Tell + person (to'siz)" },
+    { id: 19174, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["He told me", "He told to me", "He said me", "He telled me"], correct: "He told me", explanation: "Tell + person (to'siz)" },
     { id: 19175, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I am tired.' → She said she ___ tired.", blanks: ["was"], explanation: "Backshift: am → was" },
     { id: 19176, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I will help.' → He said he ___ help.", blanks: ["would"], explanation: "Will → Would" },
     { id: 19177, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Do you like tea?' → She asked ___ I liked tea.", blanks: ["if"], explanation: "Yes/no → if — reported speech: Do you like...? → She asked if..." },
@@ -835,8 +835,8 @@ export const reportedSpeech: DailyLesson = {
     { id: 19180, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I have seen him.' → She said she ___ him.", blanks: ["had seen"], explanation: "Present Perf → Past Perf" },
     { id: 19181, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I must go.' → She said she ___ go.", blanks: ["had to"], explanation: "Must → Had to" },
     { id: 19182, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Don't be late.' → She told me ___ late.", blanks: ["not to be"], explanation: "Inkor buyruq → not to + V1" },
-    { id: 19183, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["He asked where I lived"], explanation: "Subject + verb (auxiliary YO'Q)" },
-    { id: 19184, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["She told me to wait"], explanation: "Tell + person + to + V1" },
+    { id: 19183, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["He asked where I lived", "He asked where did I live", "He asked where I live", "He asked where I lives"], correct: "He asked where I lived", explanation: "Subject + verb (auxiliary YO'Q)" },
+    { id: 19184, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["She told me to wait", "She told me wait", "She said me to wait", "She told to me to wait"], correct: "She told me to wait", explanation: "Tell + person + to + V1" },
   ],
   testSections: [
     { title: 'Oson', desc: 'Say/Tell va Backshift', color: 'bg-emerald-500', icon: '🌱', ids: [221, 222, 223, 224, 225] },
@@ -999,7 +999,7 @@ export const firstConditional: DailyLesson = {
     { id: 19213, type: 'fill-blank', instruction: "Savol:", question: '___ you go if she invites you?', blanks: ['Will'], explanation: "Savol: Will + subject + V1?" },
     { id: 19214, type: 'transformation', instruction: "Unless → If not:", question: 'Unless you study, you will fail.', hint: 'If you ___, you will fail.', correct: "If you don't study, you will fail.", explanation: "Unless = if not" },
     { id: 19215, type: 'transformation', instruction: "If first → If second:", question: 'If you study, you will pass.', hint: 'You will pass ___.', correct: 'You will pass if you study.', explanation: "If ikkinchi bo'lsa, vergul kerak emas" },
-    { id: 19216, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["If I have time, I will help"], explanation: "If + Present, will + V1" },
+    { id: 19216, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["If I have time, I will help", "If I will have time, I will help", "If I have time, I help", "If I have time, I would help"], correct: "If I have time, I will help", explanation: "If + Present, will + V1" },
     { id: 19217, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Unless you don\'t hurry, you will be late.', errorPart: "don't hurry", correct: 'Unless you hurry, you will be late.', explanation: "Unless + ijobiy shakl (+ inkor KERAK EMAS)" },
     { id: 19218, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'What ___ if she says no?', blanks: ['will you do'], explanation: 'Wh- + will + subject + V1?' },
 
@@ -1048,11 +1048,11 @@ export const firstConditional: DailyLesson = {
     { id: 19226, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ you go if she invites you?", blanks: ["Will"], explanation: "Savol: Will + subject?" },
     { id: 19227, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Unless you ___, you will fail.", blanks: ["study"], explanation: "Unless + ijobiy shakl" },
     { id: 19228, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "If you eat too much, you ___ sick.", blanks: ["will feel"], explanation: "Natija: will feel" },
-    { id: 19229, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which sentence is CORRECT?", blanks: ["If I have time, I will help"], explanation: "If + Present, will + V1" },
+    { id: 19229, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is CORRECT?", options: ["If I have time, I will help", "If I will have time, I will help", "If I have time, I help", "If I have time, I would help"], correct: "If I have time, I will help", explanation: "If + Present, will + V1" },
     { id: 19230, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Unless you hurry = ___", blanks: ["If you don\'t hurry"], explanation: "Unless = if not" },
     { id: 19231, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which has the correct comma?", blanks: ["If you study, you will pass"], explanation: "If first → comma" },
     { id: 19232, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What will you do ___ you lose your job?", blanks: ["if"], explanation: "Shart uchun if" },
-    { id: 19233, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["If you don\'t study, you will fail"], explanation: "If + don't, will + V1" },
+    { id: 19233, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["If you don't study, you will fail", "If you don't study, you fail", "If you won't study, you will fail", "If you don't study, you would fail"], correct: "If you don't study, you will fail", explanation: "If + don't, will + V1" },
   ],
   testSections: [
     { title: 'Oson', desc: 'If + Present, will + V1', color: 'bg-emerald-500', icon: '🌱', ids: [231, 232, 233, 234, 235] },
