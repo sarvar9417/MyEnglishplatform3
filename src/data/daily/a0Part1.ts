@@ -144,7 +144,7 @@ export const familyAndMe: DailyLesson = {
   exercises: [
     { id: 100020, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What does 'mother' mean?", blanks: ["Ona"], explanation: "Mother = ona" },
     { id: 100021, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which sentence is correct?", blanks: ["I have a brother."], explanation: "Artikl 'a' kerak: I have a brother." },
-    { id: 100022, type: 'fill-blank', instruction: '\'She is my ___\' (ona):', question: 'She is my ___. (mother)', blanks: ['mother'], explanation: 'mother = ona' },
+    { id: 100022, type: 'fill-blank', instruction: '\'She is my ___\' (ona):', question: 'She is my ___. (ona)', blanks: ['mother'], explanation: 'mother = ona' },
     { id: 100023, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Brother' = ?", blanks: ["Aka yoki uka"], explanation: "Ingliztilida brother = aka HAM, uka HAM." },
     { id: 100024, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "I ___ two sisters.", blanks: ['have'], explanation: "I have two sisters — Mening ikki opa-singlim bor." },
   ],

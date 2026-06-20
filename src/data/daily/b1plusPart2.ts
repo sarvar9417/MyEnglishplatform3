@@ -507,7 +507,7 @@ export const advancedPhrasalVerbs: DailyLesson = {
         { en: "I'm looking forward to the weekend.", uz: "Dam olish kunlarini intiqlik bilan kutyapman." }
     ],
       drills: [
-        { id: 52085, type: 'fill-blank', instruction: "To'g'ri phrasal verb:", question: "I ___ forward to meeting you. (look)", blanks: ['look'], explanation: "Look forward to" },
+        { id: 52085, type: 'fill-blank', instruction: "To'g'ri phrasal verb:", question: "I ___ forward to meeting you. (kutmoq)", blanks: ['look'], explanation: "Look forward to" },
         { id: 52086, type: 'fill-blank', instruction: "To'g'ri phrasal verb:", question: 'She ___ after her grandmother.', blanks: ['looks'], explanation: "Look after — qarashmoq, g'amxo'rlik qilmoq" },
         { id: 52087, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "I look ___ to my older brother.", options: ['up', 'after', 'forward', 'down'], correct: 'up', explanation: "Look up to = hurmat qilmoq" }
     ],
@@ -703,7 +703,7 @@ export const idiomsCommon: DailyLesson = {
       drills: [
         { id: 52126, type: 'fill-blank', instruction: "To'g'ri idiom:", question: "It's raining ___ and dogs.", blanks: ['cats'], explanation: "Raining cats and dogs = kuchli yomg'ir" },
         { id: 52127, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "It's raining cats and dogs ma'nosi?", options: ['yomg\'ir yog\'moqda', 'kuchli yomg\'ir', 'mushuklar yomg\'iri', 'kuchsiz yomg\'ir'], correct: 'kuchli yomg\'ir', explanation: "Raining cats and dogs = kuchli yomg'ir" },
-        { id: 52128, type: 'fill-blank', instruction: "Zamonaviy variant:", question: "It's ___ outside. (pouring)", blanks: ['pouring'], explanation: "Zamonaviy ingliz tilida pouring ko'proq ishlatiladi" }
+        { id: 52128, type: 'fill-blank', instruction: "Zamonaviy variant:", question: "It's ___ outside. (yog'moqda)", blanks: ['pouring'], explanation: "Zamonaviy ingliz tilida pouring ko'proq ishlatiladi" }
     ],
     }
     ],
@@ -1528,7 +1528,7 @@ export const determinersAdvanced: DailyLesson = {
 
     // ── Interleaved Practice: Determiners + Article Usage ──
     { id: 95751, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ student has their own desk. ___ child needs love.", blanks: ["Each / Every"], explanation: "Each = individual. Every = general (collective)." },
-    { id: 95752, type: 'fill-blank', instruction: "All vs both:", question: "___ (all) of them passed. ___ (both) my parents are teachers.", blanks: ['All', 'Both'], explanation: "All = 3+. Both = exactly 2." },
+    { id: 95752, type: 'fill-blank', instruction: "All vs both:", question: "___ (barchasi) of them passed. ___ (ikkalasi) my parents are teachers.", blanks: ['All', 'Both'], explanation: "All = 3+. Both = exactly 2." },
     { id: 95753, type: 'error-correction', instruction: "Either/neither + verb:", question: "Either of the answers are correct. Neither of them are coming.", errorPart: 'are / are', correct: 'Either of the answers is correct. Neither of them is coming.', explanation: "Either/neither + singular verb." },
     { id: 95754, type: 'fill-blank', instruction: "Every + singular:", question: "Every student ___ (be) responsible. Every house ___ (have) a garden.", blanks: ['is', 'has'], explanation: "Every + singular noun + singular verb." },
     { id: 95755, type: 'transformation', instruction: "All → Each:", question: "All students must bring a book. → ___ student must bring a book.", hint: "___ student must bring a book.", correct: 'Each', explanation: "All + plural → Each + singular." }

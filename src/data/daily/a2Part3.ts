@@ -669,7 +669,7 @@ export const possessives: DailyLesson = {
     { id: 24145, type: 'fill-blank', instruction: 'My, your, his, her:', question: 'She has a cat. That is ___ cat.', blanks: ['her'], explanation: "'She' → 'her'. Uning mushugi." },
     { id: 24146, type: 'fill-blank', instruction: 'Our yoki their:', question: 'We have a house. This is ___ house.', blanks: ['our'], explanation: "'We' → 'our'. Bizning uyimiz." },
     { id: 24147, type: 'fill-blank', instruction: "His yoki her:", question: 'John has a car. That is ___ car.', blanks: ['his'], explanation: "'John' (erkak) → 'his'." },
-    { id: 24148, type: 'fill-blank', instruction: "Possessive 's:", question: "This is ___ car. (John)", blanks: ["John's"], explanation: "John + 's = John's car." },
+    { id: 24148, type: 'fill-blank', instruction: "Possessive 's:", question: "This is ___ car. (Jonning)", blanks: ["John's"], explanation: "John + 's = John's car." },
     { id: 24149, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'This book is ___.', blanks: ['mine'], explanation: 'Otsiz → possessive pronoun: \'mine\'.' },
     { id: 24150, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ bag is this?', blanks: ['Whose'], explanation: 'Kimning? → \'Whose\'.' },
     { id: 24151, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'The dog wagged ___ tail.', blanks: ['its'], explanation: 'Egalik → \'its\' (apostrof yo\'q!).' },
@@ -694,7 +694,7 @@ export const possessives: DailyLesson = {
 
     // ── Interleaved Practice: Possessives + Pronouns ──
     { id: 95241, type: 'fill-blank', instruction: 'Possessive adjective (my) va pronoun (mine):', question: 'This is _____ book. The book is _____.', blanks: ['my / mine'], explanation: 'Ot oldida → my book (adjective). Ot o\'rniga → it\'s mine (pronoun).' },
-    { id: 95242, type: 'fill-blank', instruction: "Possessive 's (egalik):", question: "This is _____ (Ali) car. These are the _____ (children) toys.", blanks: ["Ali's", "children's"], explanation: "Egalik → Ali's car, children's toys (apostrof + s)." },
+    { id: 95242, type: 'fill-blank', instruction: "Possessive 's (egalik):", question: "This is _____ (Alining) car. These are the _____ (bolalarning) toys.", blanks: ["Ali's", "children's"], explanation: "Egalik → Ali's car, children's toys (apostrof + s)." },
     { id: 95243, type: 'error-correction', instruction: "Its (egalik) va it's (it is):", question: "The dog wagged it's tail.", errorPart: "it's", correct: "The dog wagged its tail.", explanation: "Egalik → its (apostrofsiz). It's = it is." },
     { id: 95244, type: 'fill-blank', instruction: 'Whose (kimning) va who\'s (who is):', question: '_____ bag is this? _____ coming to the party?', blanks: ['Whose / Who\'s'], explanation: 'Egalik savoli → Whose. Who is → Who\'s.' },
     { id: 95245, type: 'transformation', instruction: "Of o'rniga 's ishlating:", question: "The car of my brother is new.", hint: "My ...", correct: "My brother's car is new.", explanation: "Egalik → brother's car ('s bilan)." },

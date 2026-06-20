@@ -1160,7 +1160,7 @@ export const emphasisDoesB1plus: DailyLesson = {
     { id: 95641, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I ___ like coffee! (really!) She ___ finish it! (indeed)", blanks: ["do / did"], explanation: "Present I → do. Past → did." },
     { id: 95642, type: 'fill-blank', instruction: "Emphatic imperative:", question: "___ (do) be careful! ___ (do) come on time!", blanks: ['Do', 'Do'], explanation: "Do + imperative (kuchli buyruq)." },
     { id: 95643, type: 'error-correction', instruction: "Do + V1 (V2 emas):", question: "I did finished it on time! She does goes there.", errorPart: 'finished / goes', correct: 'I did finish it on time! She does go there.', explanation: "Do/does/did + V1 (base form)." },
-    { id: 95644, type: 'fill-blank', instruction: "Fronting (what + clause):", question: "___ (what) I need is a break. ___ (what) she said was true.", blanks: ['What', 'What'], explanation: "What + clause + be + focus (fronting)." },
+    { id: 95644, type: 'fill-blank', instruction: "Fronting (what + clause):", question: "___ (nima) I need is a break. ___ (nima) she said was true.", blanks: ['What', 'What'], explanation: "What + clause + be + focus (fronting)." },
     { id: 95645, type: 'transformation', instruction: "Normal → emphatic:", question: "She likes coffee. → She ___ like coffee! (emphasis)", hint: "She ___ like coffee!", correct: 'does', explanation: "Emphasis → does + V1 (likes → like)." }
 ],
   exerciseSections: [

@@ -334,7 +334,7 @@ export const advancedConditionalsB2: DailyLesson = {
       ],
       drills: [
         { id: 54059, type: 'fill-blank', instruction: "To'g'ri inversion yozing:", question: "___ I known, I would have helped. (If I had)", blanks: ['Had'], explanation: "Had I known — o'tmish shart: Agar bilgan bo'lsam..." },
-        { id: 54060, type: 'fill-blank', instruction: "To'g'ri inversion yozing:", question: "___ I you, I would accept. (If I were)", blanks: ['Were'], explanation: "Were I you — shart: Agar men siz bo'lsam..." },
+        { id: 54060, type: 'fill-blank', instruction: "To'g'ri inversion yozing:", question: "___ I you, I would accept. (Agar men bo'lsam)", blanks: ['Were'], explanation: "Were I you — shart: Agar men siz bo'lsam..." },
         { id: 54061, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "___ you need help, call me.", options: ['If should', 'Should', 'Had', 'Were'], correct: 'Should', explanation: "Should + S + V (first conditional inversion)" },
       ],
     },
@@ -343,7 +343,7 @@ export const advancedConditionalsB2: DailyLesson = {
     { id: 54062, type: 'fill-blank', instruction: "Mixed conditional:", question: "If I ___ medicine, I would be a doctor now.", blanks: ['had studied'], explanation: "O'tmish shart — past perfect, natija hozirgi → would + V" },
     { id: 54063, type: 'fill-blank', instruction: "Mixed conditional:", question: "If I ___ more careful, I wouldn't have made that mistake.", blanks: ['were'], explanation: "Hozirgi shart — past simple, natija o'tmishgi → would have + V3" },
     { id: 54064, type: 'fill-blank', instruction: "To'g'ri inversion yozing:", question: "___ I known, I would have come. (If I had)", blanks: ['Had'], explanation: "Inversion: If I had → Had I (if tashlab auxiliary oldinga)" },
-    { id: 54065, type: 'fill-blank', instruction: "To'g'ri inversion yozing:", question: "___ I you, I would accept. (If I were)", blanks: ['Were'], explanation: "Inversion: If I were → Were I (if tashlab auxiliary oldinga)" },
+    { id: 54065, type: 'fill-blank', instruction: "To'g'ri inversion yozing:", question: "___ I you, I would accept. (Agar men bo'lsam)", blanks: ['Were'], explanation: "Inversion: If I were → Were I (if tashlab auxiliary oldinga)" },
     { id: 54066, type: 'fill-blank', instruction: "Implied conditional:", question: "___ your help, I would have failed.", blanks: ['Without'], explanation: "Without = if not for — shartsiz shart gap" },
     { id: 54067, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'If I ___ rich, I would travel.', blanks: ['were'], explanation: 'Second conditional → were' },
     { id: 54068, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ I known earlier, I would have helped.', blanks: ['Had'], explanation: 'Had I known = If I had known' },
@@ -1759,7 +1759,7 @@ export const registerB2: DailyLesson = {
 
     // ── Interleaved Practice: Register + Reported Speech ──
     { id: 95381, type: 'fill-blank', instruction: 'Norasmiy va rasmiy:', question: 'Informal: \'I wanna know...\' Formal: \'I would like _____ know...\' Informal: \'kids\' Formal: \'_____\'', blanks: ['to / children'], explanation: 'Rasmiy: would like to know, children (kids emas).' },
-    { id: 95382, type: 'fill-blank', instruction: "Rasmiy phrasal o'rniga lotin fe'l:", question: "Informal: 'find out'. Formal: '_____' (discover). Informal: 'put off'. Formal: '_____' (postpone).", blanks: ["discover", "postpone"], explanation: "Rasmiy uslubda lotin fe'llar: discover, postpone (phrasal o'rniga)." },
+    { id: 95382, type: 'fill-blank', instruction: "Rasmiy phrasal o'rniga lotin fe'l:", question: "Informal: 'find out'. Formal: '_____' (aniqlamoq). Informal: 'put off'. Formal: '_____' (keyinroqga qoldirmoq).", blanks: ["discover", "postpone"], explanation: "Rasmiy uslubda lotin fe'llar: discover, postpone (phrasal o'rniga)." },
     { id: 95383, type: 'error-correction', instruction: "Rasmiy xatda qisqartma yo'q:", question: "I'm writing to inform you that we can't proceed.", errorPart: "I'm writing", correct: "I am writing to inform you that we cannot proceed.", explanation: "Rasmiy register: qisqartmasiz (I am, cannot)." },
     { id: 95384, type: 'fill-blank', instruction: 'Reported speech + rasmiy:', question: 'She said: \'I\'ll sort it out.\' Formal report: She stated that she _____ _____ the matter.', blanks: ['would resolve'], explanation: 'Reported (will → would) + rasmiy (sort out → resolve).' },
     { id: 95385, type: 'transformation', instruction: "Norasmiy gapni rasmiy qiling:", question: "Can you help me out with this ASAP?", hint: "I would be grateful if ...", correct: "I would be grateful if you could assist me with this as soon as possible.", explanation: "Rasmiy register: would be grateful, assist, as soon as possible." },
@@ -1789,7 +1789,7 @@ export const registerB2: DailyLesson = {
   tests: [
     { id: 54391, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Which is informal?', errorPart: 'investigate', correct: 'look into', explanation: "'Look into' = phrasal verb (informal)." },
     { id: 54392, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'Formal: "do not" → Informal: "_____"', blanks: ["don't"], explanation: "Contraction = informal." },
-    { id: 54393, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '"Gonna" is _______ (academic/colloquial/formal/neutral) language.', blanks: ['colloquial'], acceptedAnswers: [['colloquial']], explanation: "'Gonna' = colloquial (so'zlashuv tili)." },
+    { id: 54393, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '"Gonna" is _______ (ilmiy/nonrasmiy/rasmiy/neytral) language.', blanks: ['colloquial'], acceptedAnswers: [['colloquial']], explanation: "'Gonna' = colloquial (so'zlashuv tili)." },
     { id: 54394, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'She _____ go home. (colloquial)', blanks: ["wants to"], explanation: "'Wanna' = colloquial. Bu yerda neutral: 'wants to'." },
     { id: 54395, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is a contraction?", blanks: ["don't"], explanation: "'Don't' = contraction (do + not). Others = full forms." },
     { id: 54396, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Formal version of \"put up with\"?", blanks: ["tolerate"], explanation: "'Tolerate' = formal Latinate verb." },

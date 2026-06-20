@@ -115,7 +115,7 @@ export const demonstratives: DailyLesson = {
     { id: 95491, type: 'fill-blank', instruction: "This/that va these/those:", question: "___ (yaqin, birlik) is a book. ___ (uzoq, ko'plik) are pens.", blanks: ['This', 'Those'], explanation: "Yaqin + birlik = This. Uzoq + ko'plik = Those." },
     { id: 95492, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ a cat near me. ___ cats far away.", blanks: ["This is / Those are"], explanation: "Yaqin birlik → This is. Uzoq ko'plik → Those are." },
     { id: 95493, type: 'error-correction', instruction: "This/these xatosi:", question: "This are my books. These is my pen.", errorPart: 'This are / These is', correct: 'These are my books. This is my pen.', explanation: "This + is. These + are." },
-    { id: 95494, type: 'fill-blank', instruction: "Demonstrative + possession:", question: "___ (this) is my car. ___ (those) are his cars.", blanks: ['This', 'Those'], explanation: "This is, Those are." },
+    { id: 95494, type: 'fill-blank', instruction: "Demonstrative + possession:", question: "___ (shu/bu) is my car. ___ (ular/shular) are his cars.", blanks: ['This', 'Those'], explanation: "This is, Those are." },
     { id: 95495, type: 'transformation', instruction: "Birlikdan ko'plikka:", question: "This is a pen. → These ___.", hint: "These ___ pens.", correct: 'are', explanation: "This is → These are." }
 ],
   exerciseSections: [
@@ -864,10 +864,10 @@ export const canCant: DailyLesson = {
 
 
     // ── Interleaved Practice: Can + Present Simple ──
-    { id: 95531, type: 'fill-blank', instruction: "Can va Present Simple:", question: "I ___ (can) swim. She ___ (swim) every morning.", blanks: ['can', 'swims'], explanation: "Qobiliyat → can + V1. Odat → Present Simple (swims)." },
+    { id: 95531, type: 'fill-blank', instruction: "Can va Present Simple:", question: "I ___ (qila olmoq) swim. She ___ (suzmoq) every morning.", blanks: ['can', 'swims'], explanation: "Qobiliyat → can + V1. Odat → Present Simple (swims)." },
     { id: 95532, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He ___ speak English. He ___ speak Uzbek every day.", blanks: ["can't / speaks"], explanation: "Qila olmaslik → can't + V1. Odat → speaks (3-shaxs)." },
     { id: 95533, type: 'error-correction', instruction: "Can + V1 qoidasi:", question: "I can to swim very well.", errorPart: 'can to', correct: 'I can swim very well.', explanation: "Can + V1 (to'siz)." },
-    { id: 95534, type: 'fill-blank', instruction: "Can va be:", question: "I ___ (can) ride a bike. I ___ (be) 10 years old.", blanks: ['can', 'am'], explanation: "Qobiliyat → can ride. I → am." },
+    { id: 95534, type: 'fill-blank', instruction: "Can va be:", question: "I ___ (qila olmoq) ride a bike. I ___ (bo'lmoq) 10 years old.", blanks: ['can', 'am'], explanation: "Qobiliyat → can ride. I → am." },
     { id: 95535, type: 'transformation', instruction: "Can bilan so'roq:", question: "You can help me. → ___ you help me?", hint: "___ you help me?", correct: 'Can', explanation: "Yes/no question → Can + subject + V1." }
 ],
   exerciseSections: [
@@ -1039,10 +1039,10 @@ export const haveGot: DailyLesson = {
 
 
     // ── Interleaved Practice: Have got + Possessives ──
-    { id: 95541, type: 'fill-blank', instruction: "Have got va possessive:", question: "I ___ (have got) a sister. ___ (I) sister is 8 years old.", blanks: ['have got', 'My'], explanation: "I → have got. I → my (possessive)." },
+    { id: 95541, type: 'fill-blank', instruction: "Have got va possessive:", question: "I ___ (ega/bor) a sister. ___ (mening) sister is 8 years old.", blanks: ['have got', 'My'], explanation: "I → have got. I → my (possessive)." },
     { id: 95542, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ a new bag. ___ bag is red. He ___ a brother.", blanks: ["has got / Her / has got"], explanation: "She → has got. Her (uning). He → has got." },
     { id: 95543, type: 'error-correction', instruction: "Have got xatosi:", question: "She have got a car. He has got a new bike, it's bike is blue.", errorPart: 'have got / it\'s bike', correct: 'She has got a car. He has got a new bike, his bike is blue.', explanation: "She → has got. His (uning — erkak)." },
-    { id: 95544, type: 'fill-blank', instruction: "Have got + oila:", question: "We ___ (have got) a big family. They ___ (have got) two children.", blanks: ['have got', 'have got'], explanation: "We/They → have got." },
+    { id: 95544, type: 'fill-blank', instruction: "Have got + oila:", question: "We ___ (ega/bor) a big family. They ___ (ega/bor) two children.", blanks: ['have got', 'have got'], explanation: "We/They → have got." },
     { id: 95545, type: 'transformation', instruction: "I dan He ga:", question: "I have got a brother. → He ___ a brother.", hint: "He ___ a brother.", correct: 'has got', explanation: "He → has got (3-shaxs)." }
 ],
   exerciseSections: [
@@ -1201,8 +1201,8 @@ export const presentSimple: DailyLesson = {
     { id: 2630, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ he work here?', blanks: ['Does'], explanation: 'He → Does — 3-shaxs (erkak) savolda does ishlatiladi' },
     { id: 2631, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'She ___ (play) tennis.', blanks: ['plays'], explanation: "play + s — 3-shaxs: play → plays (o'ynamoq)" },
     { id: 2632, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'Does he works here?', errorPart: 'works', correct: 'Does he work here?', explanation: "Does + V1 — 3-shaxs: Does she like...?" },
-    { id: 2633, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I ___ (always) wake up at 7 AM.', blanks: ['always'], explanation: "always - fe'ldan oldin" },
-    { id: 2634, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'She ___ (never) watches TV.', blanks: ['never'], explanation: 'never - fe\'ldan oldin' },
+    { id: 2633, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I ___ (har doim) wake up at 7 AM.', blanks: ['always'], explanation: "always - fe'ldan oldin" },
+    { id: 2634, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'She ___ (hech qachon) watches TV.', blanks: ['never'], explanation: 'never - fe\'ldan oldin' },
     { id: 2635, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'He ___ (watch) TV every day.', blanks: ['watches'], explanation: "watch + es — ch bilan tugagan + es (3-shaxs)" },
     { id: 2636, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I don\'t works on Sundays.', errorPart: 'works', correct: 'I don\'t work on Sundays.', explanation: "don't + V1 — inkor: don't + asosiy fe'l" },
     { id: 2637, type: 'fill-blank', instruction: "Don/doesn't:", question: 'She ___ (not) drink coffee.', blanks: ["doesn't"], explanation: "She → doesn't" },
@@ -1240,8 +1240,8 @@ export const presentSimple: DailyLesson = {
     { id: 2650, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ she work here?", blanks: ["Does"], explanation: "She → Does — 3-shaxs (ayol) savolda does ishlatiladi" },
     { id: 2651, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'She ___ (play) tennis.', blanks: ['plays'], explanation: "play + s — 3-shaxs: play → plays (o'ynamoq)" },
     { id: 2652, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'Does she works here?', errorPart: 'works', correct: 'Does she work here?', explanation: "Does + V1 — 3-shaxs: Does she like...?" },
-    { id: 2653, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I ___ (always) eat breakfast.', blanks: ['always'], explanation: "always - oldin" },
-    { id: 2654, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He ___ (never) smokes.", blanks: ["never"], explanation: "never — hech qachon, umuman yo'q" },
+    { id: 2653, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I ___ (har doim) eat breakfast.', blanks: ['always'], explanation: "always - oldin" },
+    { id: 2654, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He ___ (hech qachon) smokes.", blanks: ["never"], explanation: "never — hech qachon, umuman yo'q" },
     { id: 2655, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'He ___ (watch) TV every day.', blanks: ['watches'], explanation: "watch + es — ch bilan tugagan + es (3-shaxs)" },
     { id: 2656, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'She doesn\'t works here.', errorPart: 'works', correct: 'She doesn\'t work here.', explanation: "doesn't + V1" },
     { id: 2657, type: 'fill-blank', instruction: "Don't/doesn't:", question: 'He ___ (not) drink coffee.', blanks: ["doesn't"], explanation: "He → doesn't" },
@@ -1578,7 +1578,7 @@ export const conjunctions: DailyLesson = {
     { id: 95571, type: 'fill-blank', instruction: "And/but/because:", question: "I like tea ___ coffee. I like tea ___ I don't like coffee. I like tea ___ it's good.", blanks: ['and', 'but', 'because'], explanation: "And = va. But = lekin. Because = chunki." },
     { id: 95572, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "It was raining, ___ I stayed home. I stayed home ___ it was raining.", blanks: ["so / because"], explanation: "So = natija. Because = sabab." },
     { id: 95573, type: 'error-correction', instruction: "Or (yoki) va and (va):", question: "Do you want tea and coffee? (one choice)", errorPart: 'and', correct: 'Do you want tea or coffee?', explanation: "Tanlov → or." },
-    { id: 95574, type: 'fill-blank', instruction: "Conjunction + Present Simple:", question: "She gets up early ___ (because / so) she goes to school. She ___ (get) up at 7.", blanks: ['because', 'gets'], explanation: "Because = sabab. 3-shaxs → gets." },
+    { id: 95574, type: 'fill-blank', instruction: "Conjunction + Present Simple:", question: "She gets up early ___ (chunki/shuning uchun) she goes to school. She ___ (get) up at 7.", blanks: ['because', 'gets'], explanation: "Because = sabab. 3-shaxs → gets." },
     { id: 95575, type: 'transformation', instruction: "Ikki gapni birlashtiring:", question: "I am tired. I want to sleep. → I am tired ___ I want to sleep.", hint: "...", correct: 'so', explanation: "Natija → so." }
 ],
   exerciseSections: [

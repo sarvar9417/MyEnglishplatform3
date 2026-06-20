@@ -141,7 +141,7 @@ export const adjectiveAdverb: DailyLesson = {
     },
   ],
   exercises: [
-    { id: 19009, type: 'fill-blank', instruction: "Adjective yoki adverb:", question: 'She is a ___ singer. (good)', blanks: ['good'], explanation: "Ot oldidan — adjective" },
+    { id: 19009, type: 'fill-blank', instruction: "Adjective yoki adverb:", question: 'She is a ___ singer. (yaxshi)', blanks: ['good'], explanation: "Ot oldidan — adjective" },
     { id: 19010, type: 'fill-blank', instruction: "Adjective yoki adverb:", question: 'She dances ___. (graceful)', blanks: ['gracefully'], explanation: "Fe'ldan keyin — adverb" },
     { id: 19011, type: 'fill-blank', instruction: "-ly qo'shimchasi:", question: 'He drives ___. (careful)', blanks: ['carefully'], explanation: "Careful → carefully" },
     { id: 19012, type: 'fill-blank', instruction: "Good yoki well:", question: 'She is a ___ teacher.', blanks: ['good'], explanation: "Teacher ot — good" },
@@ -159,7 +159,7 @@ export const adjectiveAdverb: DailyLesson = {
     { id: 19024, type: 'transformation', instruction: "Adjective ni adverbga:", question: 'He is a quick runner. He runs ___.', hint: "Adverb:", correct: 'He runs quickly.', explanation: "Quick → quickly" },
     { id: 19025, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'She ___ ever goes out.', blanks: ['hardly'], explanation: 'Hardly ever = deyarli hech qachon' },
     { id: 19026, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I feel badly today.', errorPart: 'badly', correct: 'I feel bad today.', explanation: "Sezgi fe'lidan keyin adjective: bad" },
-    { id: 19027, type: 'fill-blank', instruction: "Intensifier:", question: 'It is ___ hot today. (very/really)', blanks: ['very'], explanation: "Sifatdan oldin intensifier" },
+    { id: 19027, type: 'fill-blank', instruction: "Intensifier:", question: 'It is ___ hot today. (juda/haqiqatan)', blanks: ['very'], explanation: "Sifatdan oldin intensifier" },
     { id: 19028, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is CORRECT?", blanks: ["She sings well"], explanation: "Fe'ldan keyin — well" },
     { id: 19029, type: 'vocab-match', instruction: "Sifat (adjective) yoki ravish (adverb) ekanini aniqlang:", word: 'quick (tez)', options: ['adjective', 'adverb', 'ikkala', 'fe\'l'], correct: 'adjective', explanation: "Quick — sifat: a quick car (tez mashina)." },
     { id: 19030, type: 'vocab-match', instruction: "Sifat (adjective) yoki ravish (adverb) ekanini aniqlang:", word: 'quickly (tezda)', options: ['adjective', 'adverb', 'ikkala', 'fe\'l'], correct: 'adverb', explanation: "Quickly — ravish: He runs quickly (tez yuguradi). -ly qo'shimchasi." },

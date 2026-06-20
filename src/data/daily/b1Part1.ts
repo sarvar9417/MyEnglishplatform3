@@ -1474,7 +1474,7 @@ export const bothEitherNeither: DailyLesson = {
     { id: 40314, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi so'z 'ikkalasidan biri' ma'nosini bildiradi?", blanks: ["either"], explanation: "Either = ikkalasidan biri (tanlash)." },
     { id: 40315, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi so'z 'ikkalasi ham emas' ma'nosini bildiradi?", blanks: ["neither"], explanation: "Neither = ikkalasi ham emas." },
     { id: 40316, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Neither of + plural noun + ___ verb", blanks: ["singular"], explanation: "Neither of ? singular verb." },
-    { id: 40317, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ of my parents are doctors. (both)", blanks: ["Both"], explanation: "Both of + plural verb (are)." },
+    { id: 40317, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ of my parents are doctors. (ikkalasi)", blanks: ["Both"], explanation: "Both of + plural verb (are)." },
     { id: 40318, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "You can take ___ road. They both lead to the city.", blanks: ["either"], explanation: "Ikkala yo'ldan birini tanlash ? either." },
     { id: 40319, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ of them knows the answer. They are both clueless.", blanks: ["Neither"], explanation: "Ikkalasi ham bilmaydi ? Neither of." },
     { id: 40320, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She is ___ intelligent ___ hardworking.", blanks: ["both / and"], explanation: "Both... and... = ham... ham..." },
