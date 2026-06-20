@@ -128,25 +128,49 @@ export default function ExerciseCard({
           )}
           <div className="flex items-start gap-1.5 mb-1">
             <AudioButton text={ex.question.replace(/_{3,}/g, '___ ')} size="sm" />
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-loose">
-            {ex.question.split(/_{3,}/).map((part, i, arr) => (
-              <span key={i}>
-                {part}
-                {i < arr.length - 1 && (
-                  <input type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder="___" aria-label={`Blank ${i + 1} answer`}
-                    className={`inline-block border-b-2 w-32 text-center text-sm font-semibold outline-none bg-transparent transition-all duration-200 ${
-                      submitted
-                        ? isBlankAccepted(ex, i, answers[i] ?? '')
-                          ? 'border-green-500 text-green-700 dark:text-green-400'
-                          : 'border-red-400 text-red-700 dark:text-red-400'
-                        : 'border-primary-400 text-primary-700 dark:text-primary-300 focus:border-primary-600 focus:scale-105'
-                    }`}
-                    autoFocus={i === 0 && !submitted}
-                  />
+            <div className="text-sm text-gray-700 dark:text-gray-300 leading-loose">
+            {ex.question.split(/_{3,}/).length > 1 ? (
+              /* Standard fill-blank: ___ in question → render inputs inline */
+              ex.question.split(/_{3,}/).map((part, i, arr) => (
+                <span key={i}>
+                  {part}
+                  {i < arr.length - 1 && (
+                    <input type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder="___" aria-label={`Blank ${i + 1} answer`}
+                      className={`inline-block border-b-2 w-32 text-center text-sm font-semibold outline-none bg-transparent transition-all duration-200 ${
+                        submitted
+                          ? isBlankAccepted(ex, i, answers[i] ?? '')
+                            ? 'border-green-500 text-green-700 dark:text-green-400'
+                            : 'border-red-400 text-red-700 dark:text-red-400'
+                          : 'border-primary-400 text-primary-700 dark:text-primary-300 focus:border-primary-600 focus:scale-105'
+                      }`}
+                      autoFocus={i === 0 && !submitted}
+                    />
+                  )}
+                </span>
+              ))
+            ) : (
+              /* No ___ in question → show question text + inputs below */
+              <>
+                <p>{ex.question}</p>
+                {ex.blanks && ex.blanks.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {ex.blanks.map((_, i) => (
+                      <input key={i} type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder="Javob yozing" aria-label={`Answer ${i + 1}`}
+                        className={`border-b-2 w-40 text-center text-sm font-semibold outline-none bg-transparent transition-all duration-200 ${
+                          submitted
+                            ? isBlankAccepted(ex, i, answers[i] ?? '')
+                              ? 'border-green-500 text-green-700 dark:text-green-400'
+                              : 'border-red-400 text-red-700 dark:text-red-400'
+                            : 'border-primary-400 text-primary-700 dark:text-primary-300 focus:border-primary-600 focus:scale-105'
+                        }`}
+                        autoFocus={i === 0 && !submitted}
+                      />
+                    ))}
+                  </div>
                 )}
-              </span>
-            ))}
-          </p>
+              </>
+            )}
+          </div>
           </div>
           {submitted && <div aria-live="polite">{feedbackBlock(ex, answers, isCorrect)}</div>}
         </div>
