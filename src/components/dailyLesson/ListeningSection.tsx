@@ -71,7 +71,6 @@ export default function ListeningSection({ section, addXP }: Props) {
     const cleanup = () => { SS?.cancel(); stoppedRef.current = true }
     cleanup()
     return cleanup
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [section.transcript])
 
   const stopSpeech = useCallback(() => {
