@@ -179,13 +179,13 @@ export const adjectiveAdverb: DailyLesson = {
       passage: "My brother is a ___(1) (good/well) football player. He plays very ___(2) (good/well). He runs ___(3) (fast/fastly) and kicks the ball ___(4) (powerful/powerfully). He is a ___(5) (careful/carefully) player. The coach said he did ___(6) (good/well) in the match yesterday.",
       blanks: ['good', 'well', 'fast', 'powerfully', 'careful', 'well'],
       acceptedAnswers: [['good'], ['well'], ['fast'], ['powerfully'], ['careful'], ['well']],
-      explanation: "Good + noun (good player). Well + verb (plays well). Fast = adj/adv same (runs fast). Adverb + -ly (powerfully). Adj + noun (careful player). Fe\'ldan keyin adverb (did well)."
+      explanation: "Good + noun (good player). Well + verb (plays well). Fast = adj/adv same (runs fast). Adverb + -ly (powerfully). Adj + noun (careful player). Fe'ldan keyin adverb (did well)."
     },
     { id: 100629, type: 'passage', instruction: "Matnni to'ldiring:",
       passage: "My grandmother cooks ___(1) (delicious/deliciously). She is a ___(2) (wonderful/wonderfully) cook. She cuts vegetables ___(3) (quick/quickly) and never makes a mistake. The food always smells ___(4) (good/well) and tastes ___(5) (amazing/amazingly). Everyone eats ___(6) (hungry/hungrily) when she cooks!",
       blanks: ['deliciously', 'wonderful', 'quickly', 'good', 'amazing', 'hungrily'],
       acceptedAnswers: [['deliciously'], ['wonderful'], ['quickly'], ['good'], ['amazing', 'great'], ['hungrily']],
-      explanation: "Fe\'ldan keyin adverb -ly: cooks deliciously, cuts quickly, eats hungrily. Ot oldidan adj: wonderful cook. Sezgi fe\'lidan keyin adj: smells good (well emas!), tastes amazing."
+      explanation: "Fe'ldan keyin adverb -ly: cooks deliciously, cuts quickly, eats hungrily. Ot oldidan adj: wonderful cook. Sezgi fe'lidan keyin adj: smells good (well emas!), tastes amazing."
     },
 
     { id: 99857, type: 'connection',
@@ -595,7 +595,7 @@ export const passiveVoice: DailyLesson = {
     { id: 19117, type: 'transformation', instruction: "Active → Passive:", question: 'My grandmother made this cake.', hint: 'This cake ___ by my grandmother.', correct: 'This cake was made by my grandmother.', explanation: "Past → was + V3" },
     { id: 19118, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["The house was built", "The house is built", "The house were built", "The house was builded"], correct: "The house was built", explanation: "Past Passive: was built" },
     { id: 19119, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The letter was wrote yesterday.', errorPart: 'wrote', correct: 'The letter was written yesterday.', explanation: "Write → written" },
-    { id: 19120, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "By nima uchun ishlatiladi?", blanks: ["bajaruvchini ko\'rsatish"], explanation: "By + agent = bajaruvchi" },
+    { id: 19120, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "By nima uchun ishlatiladi?", blanks: ["bajaruvchini ko'rsatish"], explanation: "By + agent = bajaruvchi" },
 
 
     // ── Interleaved Practice: Passive + Active/Tenses ──
@@ -1027,7 +1027,7 @@ export const firstConditional: DailyLesson = {
       passage: "I have an important exam next week. If I ___(1) (study) hard, I ___(2) (pass) easily. My sister says if I ___(3) (not/practise) enough, I ___(4) (not/get) a good score. She also told me: if you ___(5) (feel) tired, ___(6) (take) a short break. If I ___(7) (follow) her advice, I ___(8) (succeed).",
       blanks: ['study', 'will pass', "don't practise", "won't get", 'feel', 'take', 'follow', 'will succeed'],
       acceptedAnswers: [['study'], ['will pass'], ["don't practice", "don't practise"], ["won't get", "will not get"], ['feel'], ['take'], ['follow'], ['will succeed', 'will']],
-      explanation: "If + Present Simple (study, don\'t practise, feel, follow). Will/won\'t + V1 in main clause (will pass, won\'t get). Imperative in main clause: take a break (if you feel tired, take a break)."
+      explanation: "If + Present Simple (study, don't practise, feel, follow). Will/won't + V1 in main clause (will pass, won't get). Imperative in main clause: take a break (if you feel tired, take a break)."
     },
 ],
   exerciseSections: [
@@ -1049,7 +1049,7 @@ export const firstConditional: DailyLesson = {
     { id: 19227, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Unless you ___, you will fail.", blanks: ["study"], explanation: "Unless + ijobiy shakl" },
     { id: 19228, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "If you eat too much, you ___ sick.", blanks: ["will feel"], explanation: "Natija: will feel" },
     { id: 19229, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is CORRECT?", options: ["If I have time, I will help", "If I will have time, I will help", "If I have time, I help", "If I have time, I would help"], correct: "If I have time, I will help", explanation: "If + Present, will + V1" },
-    { id: 19230, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Unless you hurry = ___", blanks: ["If you don\'t hurry"], explanation: "Unless = if not" },
+    { id: 19230, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Unless you hurry = ___", blanks: ["If you don't hurry"], explanation: "Unless = if not" },
     { id: 19231, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which has the correct comma?", options: ["If you study, you will pass", "If you study you will pass", "If you study, you will pass,", "If, you study you will pass"], correct: "If you study, you will pass", explanation: "If first → comma" },
     { id: 19232, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What will you do ___ you lose your job?", blanks: ["if"], explanation: "Shart uchun if" },
     { id: 19233, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["If you don't study, you will fail", "If you don't study, you fail", "If you won't study, you will fail", "If you don't study, you would fail"], correct: "If you don't study, you will fail", explanation: "If + don't, will + V1" },
