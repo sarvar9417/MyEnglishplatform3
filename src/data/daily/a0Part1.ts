@@ -40,7 +40,7 @@ export const greetingsAndNames: DailyLesson = {
     { id: 100002, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "My ___ is Ali.", blanks: ['name'], explanation: "My name is Ali — Mening ismim Ali." },
     { id: 100003, type: 'fill-blank', instruction: "So'zni tarjima qiling:", question: 'I am a student. Student = ___', blanks: ['talaba'], explanation: 'Student = talaba' },
     { id: 100004, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "It is 9 AM. You say:", blanks: ["Good morning"], explanation: "9 AM = morning — Good morning!" },
-    { id: 100005, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi jumla to'g'ri?", blanks: ["My name is Ali."], explanation: "To'g'ri: My name is Ali." },
+    { id: 100005, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi jumla to'g'ri?", options: ["My name is Ali.", "My name Ali.", "I name is Ali.", "My am Ali."], correct: "My name is Ali.", explanation: "To'g'ri: My name is Ali." },
   ],
   exerciseSections: [
     { title: 'Salomlashish', desc: "Salomlashish usullarini sinab ko'ring", color: 'green', icon: '👋', ids: [100001, 100002, 100003, 100004, 100005] },
