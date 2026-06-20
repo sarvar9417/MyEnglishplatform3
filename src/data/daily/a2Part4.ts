@@ -540,7 +540,7 @@ export const tooEnough: DailyLesson = {
     { id: 29116, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Too va Very farqi: qaysi biri muammoni bildiradi?", blanks: ["too"], explanation: "Too — muammo (ortiqcha)" },
     { id: 29117, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He is too young to drive = ?", blanks: ["He is not old enough to drive."], explanation: "Too young = not old enough" },
     { id: 29118, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gap NOTO'G'RI?", options: ["She is too tired to studying.", "She is too tired to study.", "She is too tired studying.", "She is too tired for studying."], correct: "She is too tired to studying.", explanation: "Too + adj + to + V1 (V1, V-ing emas)" },
-    { id: 29119, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi gap to'g'ri?", blanks: ["There is too much sugar."], explanation: "Too much + sanalmaydigan" },
+    { id: 29119, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gap to'g'ri?", options: ["There is too much sugar.", "There are too much sugar.", "There is too many sugar.", "There is much too sugar."], correct: "There is too much sugar.", explanation: "Too much + sanalmaydigan" },
     { id: 29120, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She has ___ experience for this job. She got it.", blanks: ["enough"], explanation: "Ishni olgan — yetarli tajriba" },
   ],
   testSections: [
@@ -906,7 +906,7 @@ export const a2Review2: DailyLesson = {
     { id: 29194, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She is ___ young to drive.", blanks: ["too"], explanation: "Haydash uchun juda yosh — too" },
     { id: 29195, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "They are ___ good friends!", blanks: ["such"], explanation: "Ko'plik \u2192 such" },
     { id: 29196, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The train ___ at 6 am every morning.", blanks: ["leaves"], explanation: "Jadval — Present Simple" },
-    { id: 29197, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi gap to'g'ri?", blanks: ["He is tall enough."], explanation: "Sifat + enough" },
+    { id: 29197, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gap to'g'ri?", options: ["He is tall enough.", "He is enough tall.", "He is so enough tall.", "He is tall so enough."], correct: "He is tall enough.", explanation: "Sifat + enough" },
     { id: 29198, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Would you like ___ tea? (taklif)", blanks: ["some"], explanation: "Taklif \u2192 some" },
     { id: 29199, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "It was such a hot day = ?", blanks: ["The day was so hot."], explanation: "Such a + adj + noun = so + adj" },
     { id: 29200, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gap NOTO'G'RI?", options: ["She is such a kind.", "She is so kind.", "She is such a kind person.", "She is a such kind person."], correct: "She is such a kind.", explanation: "Such dan keyin ot kerak" },

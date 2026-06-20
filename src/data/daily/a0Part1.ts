@@ -46,7 +46,7 @@ export const greetingsAndNames: DailyLesson = {
     { title: 'Salomlashish', desc: "Salomlashish usullarini sinab ko'ring", color: 'green', icon: '👋', ids: [100001, 100002, 100003, 100004, 100005] },
   ],
   tests: [
-    { id: 200001, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which greeting is correct for 8 AM?", blanks: ["Good morning"], explanation: "8 AM = Good morning!" },
+    { id: 200001, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which greeting is correct for 8 AM?", options: ["Good morning", "Good afternoon", "Good evening", "Good night"], correct: "Good morning", explanation: "8 AM = Good morning!" },
     { id: 200002, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "My name is Ali. — bu nima?", blanks: ["O'zini tanishtirish"], explanation: "My name is = Mening ismim" },
   ],
   testSections: [
@@ -153,7 +153,7 @@ export const familyAndMe: DailyLesson = {
   ],
   tests: [
     { id: 200020, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What does 'father' mean?", blanks: ["Ota"], explanation: "Father = ota" },
-    { id: 200021, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is correct?", blanks: ["She is my mother."], explanation: "To'g'ri: She is my mother." },
+    { id: 200021, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is correct?", options: ["She is my mother.", "She is my mothers.", "She am my mother.", "She is mine mother."], correct: "She is my mother.", explanation: "To'g'ri: She is my mother." },
   ],
   testSections: [
     { title: 'Test', desc: 'Bilimingizni tekshiring', color: 'purple', icon: '📝', ids: [200020, 200021] },

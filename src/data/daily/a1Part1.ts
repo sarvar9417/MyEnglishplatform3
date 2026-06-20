@@ -163,7 +163,7 @@ export const alphabetAndGreetings: DailyLesson = {
       instruction: "Nima uchunligini o'z so'zlaringiz bilan tushuntiring:",
       question: "Nima uchun ingliz tilida 26 ta harf bor, o'zbek tilida esa 35?",
       exampleAnswer: "O'zbek alifbosida o'ziga xos harflar bor: o', g', q, sh, ch — bu harflar ingliz tilida yo'q. Ingliz tilida 'sh' ikki harf (s+h) bilan yoziladi, lekin o'zbek tilida bitta harf. Shuning uchun o'zbek tilida ko'proq harf — tilimizdagi ovozlarni aniq ifodalash uchun. Masalan, 'shahar' so'zida inglizchada 5 ta harf (s-h-a-h-r), o'zbekchada esa 5 ta harf, lekin 'sh' bitta harf deb hisoblanadi." },
-    { id: 99501, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is the correct greeting in the morning?", blanks: ["Good morning"], explanation: "Good morning — ertalabki salomlashish (Lesson 1 dan takrorlash)" },
+    { id: 99501, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is the correct greeting in the morning?", options: ["Good morning", "Good afternoon", "Good evening", "Good night"], correct: "Good morning", explanation: "Good morning — ertalabki salomlashish (Lesson 1 dan takrorlash)" },
     { id: 99502, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "Good ___! See you tomorrow! (xayrlashish)", blanks: ["bye"], explanation: "Goodbye = xayr (Lesson 1 dan takrorlash)" },
 
 
@@ -418,7 +418,7 @@ export const numbers: DailyLesson = {
       prompt: 'Kun tartibingizni soatlar bilan yozing (3-4 gap).',
       hints: ['I wake up at...', 'I go to school at...', 'I go to bed at...'],
       exampleAnswer: 'I wake up at 7 o\'clock. I go to school at 8 o\'clock. I go to bed at 9 o\'clock.' },
-    { id: 99503, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is the correct greeting at night?", blanks: ["Good night"], explanation: "Good night — kechasi salomlashish (Lesson 1 dan takrorlash)" },
+    { id: 99503, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is the correct greeting at night?", options: ["Good night", "Good evening", "Good afternoon", "Good morning"], correct: "Good night", explanation: "Good night — kechasi salomlashish (Lesson 1 dan takrorlash)" },
     { id: 99504, type: 'fill-blank', instruction: "Oldingi darsdan takrorlash:", question: "My ___ is Ali. (ism)", blanks: ["name"], explanation: "My name is Ali (Lesson 1 dan takrorlash)" },
 
 
