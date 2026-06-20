@@ -542,12 +542,12 @@ export function loadLessonSessionLocal(lessonId: string): LoadedLessonSession | 
       completedTestSections: d.completedTestSections ?? {},
       updatedAt: d.updatedAt ?? 0,
     }
-  } catch (e) { return null }
+  } catch { return null }
 }
 
 export function clearLessonSessionLocal(lessonId: string): void {
-  try { localStorage.removeItem(LOCAL_SESSION_PREFIX + lessonId) } catch (e) {
-    monitoring.captureMessage('clearLessonSessionLocal failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+  try { localStorage.removeItem(LOCAL_SESSION_PREFIX + lessonId)  } catch {
+    // ignore
   }
 }
 

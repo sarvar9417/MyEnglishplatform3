@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../lib/supabase'
 import { db } from '../lib/db'
@@ -69,8 +70,7 @@ export function usePhraseData() {
       const tk = target.split('-').map(Number)
       reloadMonthSessions(uid, tk[0], tk[1] - 1)
 
-      const [allPhraseProgressRes, totals, reviewProgressRes, studiedRowsRes] = await Promise.all([
-        supabase.from('phrase_progress').select('phrase_id').eq('user_id', uid),
+      const [totals, reviewProgressRes, studiedRowsRes] = await Promise.all([
         getCachedLevelTotals('phrases', LEVEL_ORDER),
         supabase.from('phrase_progress')
           .select('phrase_id, box, next_review, correct_count, wrong_count, is_learned, last_rating')
@@ -78,35 +78,43 @@ export function usePhraseData() {
         supabase.from('phrase_progress').select('phrase_id, phrases(level)').eq('user_id', uid),
       ])
 
-      const studiedPhraseSet = new Set((allPhraseProgressRes.data ?? []).map((p: any) => p.phrase_id))
-      const phraseSetCounts = new Map<number, number>()
-      for (const pid of studiedPhraseSet) {
-        const sn = Math.floor((pid - 1) / PHRASES_PER_DAY)
-        phraseSetCounts.set(sn, (phraseSetCounts.get(sn) ?? 0) + 1)
-      }
-      let completedPhraseSets = 0
-      for (const [sn, cnt] of phraseSetCounts) {
-        if (cnt >= PHRASES_PER_DAY) completedPhraseSets = Math.max(completedPhraseSets, sn + 1)
-      }
       const totalsMap = new Map<string, number>(LEVEL_ORDER.map(l => [l, totals[l] ?? 0]))
 
+      // phrases jadvalidan level ASC, id ASC bo'ylab yurib, phrase_progress da
+      // umuman yo'q (hech qachon teginilmagan) birinchi 45 ta iborani olish.
+      // Har bir batch bilan birga progress tekshiriladi.
       interface PhraseRow { id: number; english: string; uzbek: string; level: string; category: string | null }
       const dailyPhraseRows: PhraseRow[] = []
-      let setNum = completedPhraseSets
+      const FETCH_BATCH = PHRASES_PER_DAY * 2 // 90 tadan
+      let dbOffset = 0
       while (dailyPhraseRows.length < PHRASES_PER_DAY) {
-        const off = setNum * PHRASES_PER_DAY
         const { data: rows, error: pe } = await supabase
           .from('phrases')
           .select('id, english, uzbek, level, category')
           .order('level', { ascending: true })
           .order('id', { ascending: true })
-          .range(off, off + PHRASES_PER_DAY - 1)
-        if (pe) monitoring.captureMessage(`phrases query error: ${pe.message}`, 'error')
+          .range(dbOffset, dbOffset + FETCH_BATCH - 1)
+        if (pe) { monitoring.captureMessage(`phrases query error: ${pe.message}`, 'error'); break }
         if (!rows || rows.length === 0) break
-        const unstudied = (rows as PhraseRow[]).filter(p => !studiedPhraseSet.has(p.id))
-        const need = PHRASES_PER_DAY - dailyPhraseRows.length
-        dailyPhraseRows.push(...unstudied.slice(0, need))
-        setNum++
+
+        // Aynan shu batch'dagi iboralarning progressini tekshirish
+        const phraseIds = rows.map(p => p.id)
+        const { data: batchProg, error: bpErr } = await supabase
+          .from('phrase_progress')
+          .select('phrase_id')
+          .eq('user_id', uid)
+          .in('phrase_id', phraseIds)
+        if (bpErr) { monitoring.captureMessage(`phrase progress query error: ${bpErr.message}`, 'error'); break }
+
+        const batchSeen = new Set((batchProg ?? []).map((p: any) => p.phrase_id))
+
+        for (const p of rows as PhraseRow[]) {
+          if (!batchSeen.has(p.id)) {
+            dailyPhraseRows.push(p)
+            if (dailyPhraseRows.length >= PHRASES_PER_DAY) break
+          }
+        }
+        dbOffset += rows.length
       }
 
       const reviewProgress = reviewProgressRes.data as any[]

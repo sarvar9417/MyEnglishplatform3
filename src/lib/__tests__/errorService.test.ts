@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { isNetworkError, normalizeError, captureError, withErrorHandling, tryOrDefault } from '../errorService'
 import { AppError, ERROR_CODES } from '../errors'
 

@@ -100,13 +100,6 @@ describe('tts', () => {
 
     it('calls speechSynthesis.speak', async () => {
       // Mock SpeechSynthesisUtterance as a constructor
-      const mockUtterance = {
-        rate: 0.9, pitch: 1, volume: 1, lang: 'en-US', voice: null,
-        onstart: null as (() => void) | null,
-        onend: null as (() => void) | null,
-        onerror: null as ((e: { error: string }) => void) | null,
-        text: '',
-      }
       class MockUtterance {
         rate = 0.9; pitch = 1; volume = 1; lang = 'en-US'; voice = null; text = ''
         onstart: (() => void) | null = null

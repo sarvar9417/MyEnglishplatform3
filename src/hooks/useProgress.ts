@@ -156,6 +156,7 @@ export function useProgress() {
     })
 
     // Background DB sync (fire-and-forget)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     supabase
       .from('daily_progress')
       .upsert(

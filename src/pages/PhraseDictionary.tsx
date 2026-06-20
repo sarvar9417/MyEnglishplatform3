@@ -440,7 +440,7 @@ function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
           {progress ? (
             <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 flex-wrap">
               <span className="flex items-center gap-1">
-                <Clock size={12} /> {t('phraseDict.box')} {progress.box}/6 · {t(`phraseDict.box${progress.box}` as any) ?? t('phraseDict.box6')}
+                <Clock size={12} /> {t('phraseDict.box')} {progress.box}/6 · {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}{t(`phraseDict.box${progress.box}` as any) ?? t('phraseDict.box6')}
               </span>
               <span className="flex items-center gap-1">
                 <CheckCircle size={12} className={progress.is_learned ? 'text-green-500' : 'text-gray-300 dark:text-gray-600'} />

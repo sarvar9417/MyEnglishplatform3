@@ -148,6 +148,7 @@ export async function processSyncQueue(): Promise<void> {
 async function executeSyncItem(item: SyncQueueItem): Promise<void> {
   // TypeScript strict typed client chetlab o'tish: queue dagi table nomi
   // runtime da aniqlanadi, lekin barcha table lar Database types da mavjud.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const qb = supabase.from(item.table as any)
 
   switch (item.operation) {

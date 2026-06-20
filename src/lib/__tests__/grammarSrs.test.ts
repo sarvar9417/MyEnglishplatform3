@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import { describe, it, expect, afterEach, vi } from 'vitest'
 import {
   scheduleReview,
   getDueReviews,
@@ -10,7 +10,6 @@ import {
   getAllReviews,
   getWeakGrammarLessonIds,
 } from '../grammarSrs'
-import type { GrammarReview } from '../grammarSrs'
 
 beforeEach(() => {
   localStorage.clear()
@@ -277,7 +276,7 @@ describe('getDueReviews / getDueCount — edge cases', () => {
     expect(due.length).toBeGreaterThanOrEqual(1)
     expect(due.some(r => r.lessonId === 'due-old')).toBe(true)
     // 'still-future' hali due bo'lmasligi mumkin
-    const scheduledCount = getScheduledCount()
+    getScheduledCount()
     expect(getAllReviews().length).toBe(2)
   })
 
