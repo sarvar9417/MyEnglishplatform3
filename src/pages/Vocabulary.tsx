@@ -197,11 +197,14 @@ export default function Vocabulary() {
       const dbStartDate = userData.data?.start_date ?? today
       useStore.setState({ startDate: dbStartDate })
 
-      // ── Yodlangan so'zlar (is_learned=true) va to'liq yodlangan to'plamlar ──
-      // "Yodlanmagan" = is_learned=false. Faqat TO'LIQ yodlangan so'zlar kunlik
-      // tanlovdan chiqariladi; boshlangan-lekin-yodlanmagan so'zlar QOLADI.
+      // ── Ko'rilgan so'zlar (har qanday progress) va to'liq yodlangan to'plamlar ──
+      // seenSet: DB da progressi bor BARCHA so'zlar (har qachon baholangan).
+      // Kunlik 100 ta so'z tanlashda seenSet chiqariladi — shu kun davomida
+      // baholangan so'zlar ertaga qayta chiqmaydi.
+      const allProgress = allProgressRes.data ?? []
+      const seenSet = new Set(allProgress.map(p => p.word_id))
       const learnedSet = new Set(
-        (allProgressRes.data ?? []).filter(p => p.is_learned).map(p => p.word_id)
+        allProgress.filter(p => p.is_learned).map(p => p.word_id)
       )
       const setCounts = new Map<number, number>()
       for (const wid of learnedSet) {
@@ -217,9 +220,9 @@ export default function Vocabulary() {
 
       // ── 2. Kunlik 100 so'z ──
       // KUNLIK SNAPSHOT: bugungi to'plam kun davomida QAT'IY. Agar shu kun uchun
-      // snapshot mavjud bo'lsa — aynan o'sha so'zlar qaytariladi (bugun yodlangan
-      // so'zlar ham kun oxirigacha qoladi). Faqat YANGI kunda keyingi 100 ta
-      // yodlanmagan so'z qaytadan tanlanadi (yodlanganlar chiqib, yangilari qo'shilib).
+      // snapshot mavjud bo'lsa — aynan o'sha so'zlar qaytariladi (bugun baholangan
+      // so'zlar ham kun oxirigacha qoladi). Faqat YANGI kunda seenSet (DB da
+      // progressi bor so'zlar) chiqariladi va yangi 100 ta so'z tanlanadi.
       const dailyWordRows: { id: number; english: string; uzbek: string; level: string; example: string | null; phonetic: string | null }[] = []
       const vocabSnap = useVocabStore.getState()
       const hasSnapshot = vocabSnap.dailyDate === today && vocabSnap.dailyWords.length > 0
@@ -249,7 +252,7 @@ export default function Vocabulary() {
             .range(off, off + WORDS_PER_DAY - 1)
           if (we) setRpcError(`words query error: ${we.message}`)
           if (!rows || rows.length === 0) break
-          const unlearned = rows.filter(w => !learnedSet.has(w.id))
+          const unlearned = rows.filter(w => !seenSet.has(w.id))
           const need = WORDS_PER_DAY - dailyWordRows.length
           dailyWordRows.push(...unlearned.slice(0, need))
           setNum++
