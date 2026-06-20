@@ -153,9 +153,11 @@ export default function ExerciseCard({
               <>
                 <p>{ex.question}</p>
                 {ex.blanks && ex.blanks.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-2">
+                  <div className="mt-2">
+                    <p className="text-[10px] text-gray-400 dark:text-gray-500 mb-1">To'g'ri javobni kiriting:</p>
+                    <div className="flex flex-wrap gap-2">
                     {ex.blanks.map((_, i) => (
-                      <input key={i} type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder="Javob yozing" aria-label={`Answer ${i + 1}`}
+                       <input key={i} type="text" value={answers[i] ?? ''} onChange={(e) => onChange(i, e.target.value)} disabled={submitted} placeholder={ex.blanks?.[i] ?? 'Javob yozing'} aria-label={`Answer ${i + 1}`}
                         className={`border-b-2 w-40 text-center text-sm font-semibold outline-none bg-transparent transition-all duration-200 ${
                           submitted
                             ? isBlankAccepted(ex, i, answers[i] ?? '')
@@ -166,7 +168,8 @@ export default function ExerciseCard({
                         autoFocus={i === 0 && !submitted}
                       />
                     ))}
-                  </div>
+                    </div>
+                    </div>
                 )}
               </>
             )}
