@@ -40,8 +40,6 @@ describe('LEVEL_CAN_DO — data validligi', () => {
   })
 
   it('har bir can-do statement ozbekcha — ozbekcha belgilar mavjud', () => {
-    // Check for common Uzbek letters: oʻ, gʻ, sh, ch, ng
-    const uzbekPattern = /[o\u02BB]\/?['\u2018\u2019]?[\/]?[g\u02BC][\'\\u2018]?|q|h|sh|ch|ng|\u02BB|\u2018|\u2019/i
     for (const [level, statements] of Object.entries(LEVEL_CAN_DO)) {
       for (const s of statements) {
         expect(s.length, `${level}: "${s}" — bosh emas`).toBeGreaterThan(0)

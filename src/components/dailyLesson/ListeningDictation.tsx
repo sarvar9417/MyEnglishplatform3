@@ -9,9 +9,10 @@ interface Props {
 export default function ListeningDictation({ correctText, onComplete }: Props) {
   const [status, setStatus] = useState<'idle' | 'recording' | 'review'>('idle')
   const [correctWords, setCorrectWords] = useState<{ word: string; correct: boolean }[]>([])
-  const recognitionRef = useRef<any>(null)
+  const recognitionRef = useRef<{ stop: () => void } | null>(null)
 
   const startRecording = useCallback(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
     if (!SpeechRecognition) {
       alert('Browser qo\'llab-quvvatlamaydi')
@@ -23,6 +24,7 @@ export default function ListeningDictation({ correctText, onComplete }: Props) {
     recognition.maxAlternatives = 1
     recognitionRef.current = recognition
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     recognition.onresult = (event: any) => {
       const transcript = event.results[0][0].transcript
       setStatus('review')

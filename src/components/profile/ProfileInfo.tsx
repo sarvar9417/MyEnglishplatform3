@@ -292,15 +292,15 @@ export default function ProfileInfo({
 
     try {
       const { data: { session } } = await supabase.auth.getSession()
-      if (session) {
-        const { error: dbError } = await supabase
-          .from('users')
-          .upsert({
-            id: session.user.id,
-            name: trimmedName,
-            level,
-            email: session.user.email ?? '',
-          } as any, { onConflict: 'id' })
+      if (session) {          const { error: dbError } = await supabase
+            .from('users')
+            .upsert({
+              id: session.user.id,
+              name: trimmedName,
+              level,
+              email: session.user.email ?? '',
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } as any, { onConflict: 'id' })
 
         if (dbError) throw dbError
 

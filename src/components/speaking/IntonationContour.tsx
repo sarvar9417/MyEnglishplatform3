@@ -139,7 +139,7 @@ export default function IntonationContour({
     ctx.textAlign = 'right'
     ctx.fillText(`${Math.round(maxFreq)}Hz`, pad - 2, pad + 8)
     ctx.fillText(`${Math.round(minFreq)}Hz`, pad - 2, pad + drawH)
-  }, [pitchData, duration, color, width, height])
+  }, [pitchData, duration, color, width, height, t])
 
   return (
     <canvas
