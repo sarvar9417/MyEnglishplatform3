@@ -43,7 +43,7 @@ export const pragmaticsFormalInformal: DailyLesson = {
     {
       id: 'could-you-vs-can-you',
       title: 'Could you va Can you farqi',
-      rule: "Could you — rasmiy va muloyim (ish, e\'lon, notanish odamga).\nCan you — norasmiy (do'stlar, oila, tanish odamlar).\n\nCould you bilan boshlanadigan jumlalar har doim polite:\n  Could you help me? (Iltimos yordam bera olasizmi?)\n  Could you open the door? (Eshikni ochib bera olasizmi?)\n\nCan you ham politeness beradi, lekin kamroq:\n  Can you help me? (Yordam bera olasanmi?)\n  Can you open the door? (Eshikni ochasanmi?)",
+      rule: "Could you — rasmiy va muloyim (ish, e'lon, notanish odamga).\nCan you — norasmiy (do'stlar, oila, tanish odamlar).\n\nCould you bilan boshlanadigan jumlalar har doim polite:\n  Could you help me? (Iltimos yordam bera olasizmi?)\n  Could you open the door? (Eshikni ochib bera olasizmi?)\n\nCan you ham politeness beradi, lekin kamroq:\n  Can you help me? (Yordam bera olasanmi?)\n  Can you open the door? (Eshikni ochasanmi?)",
       mnemonic: "COULD = polite, CAN = casual. Rasmiy vaziyatda 'Could you' ishlating, do'stlaringiz bilan 'Can you' ishlatishingiz mumkin.",
       commonMistakes: "❌ Could you help me (rasmiy emailda) → ✅ to'g'ri, lekin 'Can you' do'stlar uchun.\n❌ Can you help me (rasmiy emailda) → ✅ 'Could you' yaxshiroq.",
       examples: [

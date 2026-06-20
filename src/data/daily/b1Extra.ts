@@ -1454,7 +1454,7 @@ export const phrasalVerbsB1: DailyLesson = {
       type: "transformation",
       correct: "Please care for the children.",
       question: "Please look after the children. (use: care for)",
-      explanation: "Synonym — sinonim, bir xil ma'noli so\'z",
+      explanation: "Synonym — sinonim, bir xil ma'noli so'z",
       instruction: "O'zgartiring:"
     },
     {
