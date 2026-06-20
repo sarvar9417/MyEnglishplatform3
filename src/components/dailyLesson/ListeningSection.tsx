@@ -253,7 +253,7 @@ export default function ListeningSection({ section, addXP }: Props) {
       if (answers[key] !== undefined && !(Array.isArray(answers[key]) && (answers[key] as Array<unknown>).length === 0)) answeredCount++
     }
     return { answered: answeredCount, total: section.questions.length + (section.dictation?.length || 0) }
-  }, [section, answers, dictationInputs])
+  }, [section, answers])
 
   return (
     <div className="space-y-5">
