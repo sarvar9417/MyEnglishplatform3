@@ -134,7 +134,7 @@ export const presentContinuousFuture: DailyLesson = {
     { id: 29020, type: 'transformation', instruction: "Savolga o'zgartiring:", question: 'She is coming to the party.', hint: '___ she ___ to the party?', correct: 'Is she coming to the party?', explanation: 'Is + she + V-ing? = Hozirgi davomli zamonda savol. Qoida: Savol shakli: Is/Am/Are + subject + V-ing? Is she sleeping? (U uxlayaptimi?) Are they playing? (Ular o\'ynayaptimi?)' },
     { id: 29021, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'The film ___ at 8 pm tonight.', blanks: ['starts'], explanation: 'Kino jadvali — Present Simple' },
     { id: 29022, type: 'fill-blank', instruction: "Present Simple yoki Continuous:", question: 'I ___ (go) to the dentist on Friday. I have an appointment.', blanks: ['am going'], explanation: "Shaxsiy reja (appointment) — Present Continuous" },
-    { id: 29023, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which sentence is about a FIXED ARRANGEMENT?", blanks: ["I am meeting John at 6."], explanation: "Aniq vaqt bilan — fixed arrangement" },
+    { id: 29023, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is about a FIXED ARRANGEMENT?", options: ["I am meeting John at 6.", "I am meeting John in 6.", "meeting am I John at 6.", "John am meeting I at 6."], correct: "I am meeting John at 6.", explanation: "Aniq vaqt bilan — fixed arrangement" },
 
 
     // ── Interleaved Practice: PC Future + Will/Going to ──
@@ -162,7 +162,7 @@ export const presentContinuousFuture: DailyLesson = {
   tests: [
     { id: 29024, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Present Continuous kelasi zamonda nima uchun ishlatiladi?", blanks: ["Rejalashtirilgan ishlar"], explanation: "Present Continuous — aniq rejalar uchun" },
     { id: 29025, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi zamon bilan Present Continuous kelasi zamonda ishlatiladi?", blanks: ["be + V-ing"], explanation: "Present Continuous = be + V-ing" },
-    { id: 29026, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi gap kelasi zamondagi rejani bildiradi?", blanks: ["I am reading a book tonight."], explanation: "Tonight — kelasi zamon vaqti" },
+    { id: 29026, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gap kelasi zamondagi rejani bildiradi?", options: ["I am reading a book tonight.", "I am reading the book tonight.", "reading am I a book tonight.", "a am reading I book tonight."], correct: "I am reading a book tonight.", explanation: "Tonight — kelasi zamon vaqti" },
     { id: 29027, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi vaqt belgisi kelasi zamonga tegishli?", blanks: ["next week"], explanation: "Kelasi zamon vaqti" },
     { id: 29028, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Present Continuous kelasi zamonda qanday ma'noni bildiradi?", blanks: ["rejalashtirilgan ish"], explanation: "Rejalashtirilgan ish-harakat" },
     { id: 29029, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gap NOTO'G'RI?", options: ["They are go to London.", "They go to London.", "They are going to London.", "They goes to London."], correct: "They are go to London.", explanation: "Are go emas, are going" },
