@@ -271,6 +271,7 @@ export default function Grammar() {
         if (found) handleSelectTopic(found)
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const scrollTop = () => topRef.current?.scrollTo({ top: 0, behavior: 'smooth' })

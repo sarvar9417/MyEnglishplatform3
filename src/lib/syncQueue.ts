@@ -137,6 +137,7 @@ export async function processSyncQueue(): Promise<void> {
   }
 
   if (processedCount > 0 || errorCount > 0) {
+    // eslint-disable-next-line no-console
     console.log(
       `[SyncQueue] processed=${processedCount} errors=${errorCount} remaining=${await getQueueLength()}`,
     )
@@ -270,6 +271,7 @@ export function initSyncQueueListener(): void {
   listenerInitialized = true
 
   const handleOnline = () => {
+    // eslint-disable-next-line no-console
     console.log('[SyncQueue] Online detected — processing queue...')
     processSyncQueue()
   }

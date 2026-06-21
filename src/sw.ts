@@ -94,7 +94,8 @@ setCatchHandler(async ({ request }) => {
       await cache.put(OFFLINE_PAGE, response.clone())
       return response
     }
-  } catch (e) { console.warn('[SW] offline fallback fetch failed:', e) }
+  } catch (e) { // eslint-disable-next-line no-console
+    console.warn('[SW] offline fallback fetch failed:', e) }
 
   // Last resort: return a minimal inline response
   return new Response(

@@ -143,7 +143,7 @@ describe('i18n Listening keys (F4-4a)', () => {
 
   describe('interpolation — dailyListening', () => {
     it('dailyListening.answeredCount — {answered} va {total} to\'g\'ri almashtiriladi', () => {
-      for (const [name, dict] of Object.entries(locales)) {
+      for (const [, dict] of Object.entries(locales)) {
         const result = interpolate(dict['dailyListening.answeredCount'], { answered: '3', total: '5' })
         expect(result).toContain('3')
         expect(result).toContain('5')
@@ -153,7 +153,7 @@ describe('i18n Listening keys (F4-4a)', () => {
     })
 
     it('dailyListening.replayAudio — {speed} to\'g\'ri almashtiriladi', () => {
-      for (const [name, dict] of Object.entries(locales)) {
+      for (const [, dict] of Object.entries(locales)) {
         const result = interpolate(dict['dailyListening.replayAudio'], { speed: '1.5' })
         expect(result).toContain('1.5')
         expect(result).not.toContain('{speed}')
@@ -161,7 +161,7 @@ describe('i18n Listening keys (F4-4a)', () => {
     })
 
     it('dailyListening.lineNumber — {n} to\'g\'ri almashtiriladi', () => {
-      for (const [name, dict] of Object.entries(locales)) {
+      for (const [, dict] of Object.entries(locales)) {
         const result = interpolate(dict['dailyListening.lineNumber'], { n: '3' })
         expect(result).toContain('3')
         expect(result).not.toContain('{n}')
@@ -169,7 +169,7 @@ describe('i18n Listening keys (F4-4a)', () => {
     })
 
     it('dailyListening.percentCorrect — {pct} to\'g\'ri almashtiriladi', () => {
-      for (const [name, dict] of Object.entries(locales)) {
+      for (const [, dict] of Object.entries(locales)) {
         const result = interpolate(dict['dailyListening.percentCorrect'], { pct: '80' })
         expect(result).toContain('80')
         expect(result).not.toContain('{pct}')
@@ -177,7 +177,7 @@ describe('i18n Listening keys (F4-4a)', () => {
     })
 
     it('dailyListening.listenedCount — {count} to\'g\'ri almashtiriladi', () => {
-      for (const [name, dict] of Object.entries(locales)) {
+      for (const [, dict] of Object.entries(locales)) {
         const result = interpolate(dict['dailyListening.listenedCount'], { count: '3' })
         expect(result).toContain('3')
         expect(result).not.toContain('{count}')
@@ -185,7 +185,7 @@ describe('i18n Listening keys (F4-4a)', () => {
     })
 
     it('dailyListening.speakerSpeaking — {speaker} to\'g\'ri almashtiriladi', () => {
-      for (const [name, dict] of Object.entries(locales)) {
+      for (const [, dict] of Object.entries(locales)) {
         const result = interpolate(dict['dailyListening.speakerSpeaking'], { speaker: 'John' })
         expect(result).toContain('John')
         expect(result).not.toContain('{speaker}')
@@ -193,7 +193,7 @@ describe('i18n Listening keys (F4-4a)', () => {
     })
 
     it('dailyListening.linesCount — {count} to\'g\'ri almashtiriladi', () => {
-      for (const [name, dict] of Object.entries(locales)) {
+      for (const [, dict] of Object.entries(locales)) {
         const result = interpolate(dict['dailyListening.linesCount'], { count: '12' })
         expect(result).toContain('12')
         expect(result).not.toContain('{count}')
@@ -238,7 +238,7 @@ describe('i18n Speaking keys (F4-4b)', () => {
 
   describe('interpolation — dailySpeaking', () => {
     it('dailySpeaking.xpEarned — {xp} to\'g\'ri almashtiriladi', () => {
-      for (const [name, dict] of Object.entries(locales)) {
+      for (const [, dict] of Object.entries(locales)) {
         const result = interpolate(dict['dailySpeaking.xpEarned'], { xp: '45' })
         expect(result).toContain('45')
         expect(result).not.toContain('{xp}')
@@ -268,7 +268,7 @@ describe('i18n Speaking keys (F4-4b)', () => {
     })
 
     it('writingHistory.wordCount — {count} to\'g\'ri almashtiriladi', () => {
-      for (const [name, dict] of Object.entries(locales)) {
+      for (const [, dict] of Object.entries(locales)) {
         const result = interpolate(dict['writingHistory.wordCount'], { count: '42' })
         expect(result).toContain('42')
         expect(result).not.toContain('{count}')
@@ -353,7 +353,7 @@ describe('useI18n fallback (F4-4c)', () => {
 describe('i18n natija matnlari (F4-4d)', () => {
   // Daily Listening result phase messages should be meaningful in each locale
   it('dailyListening.resultComplete — barcha tilda mavjud va ma\'noli', () => {
-    for (const [name, dict] of Object.entries(locales)) {
+    for (const [, dict] of Object.entries(locales)) {
       const val = dict['dailyListening.resultComplete']
       expect(val).toBeDefined()
       expect(val?.length).toBeGreaterThan(5)
@@ -363,13 +363,13 @@ describe('i18n natija matnlari (F4-4d)', () => {
   })
 
   it('dailyListening.resultExcellent ≠ dailyListening.resultGood', () => {
-    for (const [name, dict] of Object.entries(locales)) {
+    for (const [, dict] of Object.entries(locales)) {
       expect(dict['dailyListening.resultExcellent']).not.toBe(dict['dailyListening.resultGood'])
     }
   })
 
   it('dailyListening.percentCorrect — {pct} placeholder to\'g\'ri', () => {
-    for (const [name, dict] of Object.entries(locales)) {
+    for (const [, dict] of Object.entries(locales)) {
       expect(dict['dailyListening.percentCorrect']).toMatch(/\{pct\}/)
     }
   })
