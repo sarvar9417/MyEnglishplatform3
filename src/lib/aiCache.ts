@@ -20,13 +20,27 @@ const memCache = new Map<string, CacheEntry<unknown>>()
 const inflight = new Map<string, Promise<unknown>>()
 
 // Periodic cleanup
+let cleanupIntervalId: ReturnType<typeof setInterval> | undefined
 if (typeof window !== 'undefined') {
-  setInterval(() => {
+  cleanupIntervalId = setInterval(() => {
     const now = Date.now()
     for (const [key, entry] of memCache) {
       if (now > entry.expiry) memCache.delete(key)
     }
   }, CLEANUP_INTERVAL)
+}
+
+/** Cleanup interval — hot-reload yoki test cleanup uchun */
+export function destroyCache(): void {
+  if (cleanupIntervalId !== undefined) {
+    clearInterval(cleanupIntervalId)
+    cleanupIntervalId = undefined
+  }
+}
+
+// Vite HMR: modul hot-reloaded bo'lganda eski intervalni tozalaymiz
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => destroyCache())
 }
 
 // ── localStorage cache ──────────────────────────────────────────────────────

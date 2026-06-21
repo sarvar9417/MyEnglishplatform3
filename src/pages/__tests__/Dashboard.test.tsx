@@ -274,4 +274,24 @@ describe('Dashboard', () => {
       expect(logoutIcon).toBeInTheDocument()
     })
   })
+
+  // ── ReviewOverview widget ────────────────────────────────────────────────
+
+  it('renders ReviewOverview in today tab', async () => {
+    renderPage()
+    await waitFor(() => {
+      expect(screen.getByTestId('review-overview')).toBeInTheDocument()
+    })
+  })
+
+  it('renders ReviewOverview in all tab', async () => {
+    renderPage()
+    await waitFor(() => {
+      const allTabs = screen.queryAllByRole('button', { name: /Barchasi/ })
+      if (allTabs.length > 0) fireEvent.click(allTabs[0])
+    })
+    await waitFor(() => {
+      expect(screen.getByTestId('review-overview')).toBeInTheDocument()
+    })
+  })
 })

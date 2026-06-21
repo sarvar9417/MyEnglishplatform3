@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../lib/supabase'
 import { db } from '../lib/db'
@@ -84,6 +83,18 @@ export function usePhraseData() {
       // umuman yo'q (hech qachon teginilmagan) birinchi 45 ta iborani olish.
       // Har bir batch bilan birga progress tekshiriladi.
       interface PhraseRow { id: number; english: string; uzbek: string; level: string; category: string | null }
+
+// Supabase query natijalari uchun tiplar
+interface PhraseProgressRow {
+  phrase_id: number
+  box: number
+  next_review: string
+  correct_count: number
+  wrong_count: number
+  is_learned: boolean
+  last_rating: string | null
+}
+
       const dailyPhraseRows: PhraseRow[] = []
       const FETCH_BATCH = PHRASES_PER_DAY * 2 // 90 tadan
       let dbOffset = 0
@@ -106,7 +117,7 @@ export function usePhraseData() {
           .in('phrase_id', phraseIds)
         if (bpErr) { monitoring.captureMessage(`phrase progress query error: ${bpErr.message}`, 'error'); break }
 
-        const batchSeen = new Set((batchProg ?? []).map((p: any) => p.phrase_id))
+        const batchSeen = new Set((batchProg ?? []).map((p: { phrase_id: number }) => p.phrase_id))
 
         for (const p of rows as PhraseRow[]) {
           if (!batchSeen.has(p.id)) {
@@ -117,10 +128,10 @@ export function usePhraseData() {
         dbOffset += rows.length
       }
 
-      const reviewProgress = reviewProgressRes.data as any[]
+      const reviewProgress = reviewProgressRes.data as PhraseProgressRow[] | null
       const dailyIds = dailyPhraseRows.map(p => p.id)
-      const reviewCandidates = (reviewProgress ?? []).filter((r: any) => !dailyIds.includes(r.phrase_id))
-      const reviewIds = reviewCandidates.map((r: any) => r.phrase_id)
+      const reviewCandidates = (reviewProgress ?? []).filter((r: PhraseProgressRow) => !dailyIds.includes(r.phrase_id))
+      const reviewIds = reviewCandidates.map((r: PhraseProgressRow) => r.phrase_id)
 
       const [dailyProgressRes, reviewPhraseRes] = await Promise.all([
         dailyIds.length > 0
@@ -132,11 +143,11 @@ export function usePhraseData() {
           ? supabase.from('phrases').select('id, english, uzbek, level, category').in('id', reviewIds)
           : Promise.resolve({ data: [] as { id: number; english: string; uzbek: string; level: string; category: string | null }[] }),
       ])
-      const progressByPhrase = new Map((dailyProgressRes.data ?? []).map((p: any) => [p.phrase_id, p]))
-      const reviewPhrasesMap = new Map((reviewPhraseRes.data ?? []).map((p: any) => [p.id, p]))
+      const progressByPhrase = new Map((dailyProgressRes.data ?? []).map((p: PhraseProgressRow) => [p.phrase_id, p]))
+      const reviewPhrasesMap = new Map((reviewPhraseRes.data ?? []).map((p: PhraseRow) => [p.id, p]))
 
       const todayPhrases: DailyPhraseRow[] = dailyPhraseRows.map(p => {
-        const prog = progressByPhrase.get(p.id) as any
+        const prog = progressByPhrase.get(p.id) as PhraseProgressRow | undefined
         return {
           phrase_id: p.id, english: p.english, uzbek: p.uzbek,
           level: p.level as DailyPhraseRow['level'], category: p.category as DailyPhraseRow['category'],
@@ -148,16 +159,16 @@ export function usePhraseData() {
       })
 
       const reviewDuePhrases: DailyPhraseRow[] = reviewCandidates
-        .map((prog: any) => {
-          const p = reviewPhrasesMap.get(prog.phrase_id) as any
+        .map((reviewProg: PhraseProgressRow) => {
+          const p = reviewPhrasesMap.get(reviewProg.phrase_id) as PhraseRow | undefined
           if (!p) return null
           return {
             phrase_id: p.id, english: p.english, uzbek: p.uzbek,
             level: p.level, category: p.category,
-            box: prog.box, next_review: prog.next_review,
-            correct_count: prog.correct_count, wrong_count: prog.wrong_count,
-            is_new: false, is_learned: prog.is_learned,
-            last_rating: prog.last_rating,
+            box: reviewProg.box, next_review: reviewProg.next_review,
+            correct_count: reviewProg.correct_count, wrong_count: reviewProg.wrong_count,
+            is_new: false, is_learned: reviewProg.is_learned,
+            last_rating: reviewProg.last_rating,
           } as DailyPhraseRow
         })
         .filter((r): r is DailyPhraseRow => r !== null)

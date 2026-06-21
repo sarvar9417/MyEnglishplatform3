@@ -4,7 +4,6 @@
   "description": "A2+ dan B2 darajasiga 90 kunda yetish uchun intensiv ingliz tili o'quv platformasi",
   "type": "module",
   "scripts": {
-    "postinstall": "node scripts/patch-vite-pwa.mjs",
     "dev": "vite",
     "prebuild": "npm run validate:ids && UPDATE_INDEX=1 vitest run src/data/__tests__/lessonsIndex.test.ts 2>&1 | tail -1",
     "build": "tsc && vite build",

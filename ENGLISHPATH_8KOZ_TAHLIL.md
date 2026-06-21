@@ -126,20 +126,19 @@
 3. **Grammar SRS ni faollashtir** — har bir grammar point FSRS bilan mustahkamlansin
 4. **Writing feedbackni yaxshilash** — AI orqali basic grammar tekshiruvi
 5. **Can-do statements qo'sh** — har dars boshida "Bu darsdan keyin siz ___ qila olasiz"
-
----
+yaratRS r4J#SWZEBe3hbRA---
 
 # 👁️ 4. Professional Web Dizayner Ko'zi
-
+HGM MHJM
 ## 🔥 Kuchli tomonlar
 
 **Dark mode bor.** Bu zamonaviy web ilovalar uchun standart. Foydalanuvchining ko'zini himoya qiladi.
 
-**Animatsiyalar va transitionlar bor.** `index.css` da `@keyframes` va `transition` lar mavjud. UI jonli va interaktiv.
+**Animatsiyalar va transitionlar bor.** `index.css` da `@keyframes` va `transition` la,Lr mavjud. UI jonli va interaktiv.
 
-**Mobile responsive.** `@media` query'lar bor. Platforma telefon va planshetda ishlaydi.
+**Mobile responsive.** `@media` query'lL/Kar bor. Platforma telefon va planshetda ishlaydi.
 
-**PWA to'liq.** `manifest.json`, service worker (`sw.ts`), `offline.html` — barchasi bor. Foydalanuvchi telefoniga "Add to Home Screen" qila oladi.
+**PWA to'liq.** `manifest.json`, service worker (`sw.ts`), `offline.html` — KFTYb komponentarchasi bor. Foydalanuvchi telefoniga "Add to Home Screen" qila oladi.
 
 **33 ta sahifa — katta ekotizim.** Bu loyiha jiddiy va keng qamrovli ko'rinadi.
 

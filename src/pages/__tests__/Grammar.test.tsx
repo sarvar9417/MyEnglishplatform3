@@ -129,10 +129,19 @@ vi.mock('../../data/grammarGlossary', () => ({
 
 // ─── Import ─────────────────────────────────────────────────────────────────
 
+import { MemoryRouter } from 'react-router-dom'
 import Grammar from '../Grammar'
 
 function renderPage() {
   return render(<BrowserRouter><Grammar /></BrowserRouter>)
+}
+
+function renderWithState(state: Record<string, unknown>) {
+  return render(
+    <MemoryRouter initialEntries={[{ pathname: '/grammar', state }]}>
+      <Grammar />
+    </MemoryRouter>
+  )
 }
 
 // ─── Tests ──────────────────────────────────────────────────────────────────
@@ -580,5 +589,46 @@ describe('Grammar', () => {
     // Click on DNA Map's selection button
     fireEvent.click(screen.getByTestId('dna-map-select'))
     await waitFor(() => expect(screen.getByText(/Formula/)).toBeInTheDocument())
+  })
+
+  // ── Auto-selection from location state (GrammarReview → /grammar) ──────────────
+
+  describe('auto-selection from reviewTopicId state', () => {
+    it('skips topic selector and goes to explanation when reviewTopicId matches', async () => {
+      renderWithState({ reviewTopicId: 'verb-to-be' })
+
+      // Should NOT show the topic selector title
+      await waitFor(() => {
+        expect(screen.queryByText('Grammatika darslari')).not.toBeInTheDocument()
+      })
+      // Should go directly to explanation — shows formula
+      expect(screen.getByText(mockTopic.formula)).toBeInTheDocument()
+    })
+
+    it('shows the matched topic title in explanation phase', async () => {
+      renderWithState({ reviewTopicId: 'verb-to-be' })
+
+      await waitFor(() => {
+        expect(screen.getByText('Verb "to be" — am/is/are')).toBeInTheDocument()
+      })
+    })
+
+    it('starts in topic selector when reviewTopicId does not match any topic', async () => {
+      renderWithState({ reviewTopicId: 'nonexistent-topic' })
+
+      await waitFor(() => {
+        expect(screen.getByText('Grammatika darslari')).toBeInTheDocument()
+      })
+      // Should not show any topic's formula
+      expect(screen.queryByText(mockTopic.formula)).not.toBeInTheDocument()
+    })
+
+    it('starts in topic selector when no reviewTopicId state', async () => {
+      renderWithState({})
+
+      await waitFor(() => {
+        expect(screen.getByText('Grammatika darslari')).toBeInTheDocument()
+      })
+    })
   })
 })

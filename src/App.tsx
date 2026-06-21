@@ -70,6 +70,7 @@ const lazyPages = {
   Confusable: lazyWithReload(() => import('./pages/Confusable')),
   PersonalVocabulary: lazyWithReload(() => import('./pages/PersonalVocabulary')),
   SpeakingPath: lazyWithReload(() => import('./pages/SpeakingPath')),
+  Grammar: lazyWithReload(() => import('./pages/Grammar')),
   PlacementTest: lazyWithReload(() => import('./pages/PlacementTest')),
   NotFound: lazyWithReload(() => import('./pages/NotFound')),
   IeltsMockTest: lazyWithReload(() => import('./components/ielts/IeltsMockTest')),

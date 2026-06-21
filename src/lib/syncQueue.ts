@@ -16,6 +16,10 @@ import { monitoring } from './monitoring'
 import { supabase } from './supabase'
 import { db } from '../db/database'
 import type { SyncQueueItem } from '../db/database'
+import type { Database } from '../types/supabase'
+
+/** Supabase table name type — SyncQueueItem.table runtime string'ni cast qilish uchun */
+type TableName = keyof Database['public']['Tables']
 
 // ─── Konfiguratsiya ─────────────────────────────────────────────────────────
 
@@ -137,9 +141,9 @@ export async function processSyncQueue(): Promise<void> {
   }
 
   if (processedCount > 0 || errorCount > 0) {
-    // eslint-disable-next-line no-console
-    console.log(
-      `[SyncQueue] processed=${processedCount} errors=${errorCount} remaining=${await getQueueLength()}`,
+    monitoring.captureMessage(
+      `syncQueue: processed=${processedCount} errors=${errorCount} remaining=${await getQueueLength()}`,
+      'info',
     )
   }
 }
@@ -147,10 +151,7 @@ export async function processSyncQueue(): Promise<void> {
 // ─── Bitta elementni bajarish ────────────────────────────────────────────────
 
 async function executeSyncItem(item: SyncQueueItem): Promise<void> {
-  // TypeScript strict typed client chetlab o'tish: queue dagi table nomi
-  // runtime da aniqlanadi, lekin barcha table lar Database types da mavjud.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const qb = supabase.from(item.table as any)
+  const qb = supabase.from(item.table as TableName)
 
   switch (item.operation) {
     case 'upsert': {
@@ -271,8 +272,7 @@ export function initSyncQueueListener(): void {
   listenerInitialized = true
 
   const handleOnline = () => {
-    // eslint-disable-next-line no-console
-    console.log('[SyncQueue] Online detected — processing queue...')
+    monitoring.captureMessage('syncQueue: Online detected — processing queue...', 'info')
     processSyncQueue()
   }
 

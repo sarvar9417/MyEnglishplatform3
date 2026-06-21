@@ -29,7 +29,7 @@ export default function GrammarReview() {
           {t('grammarReview.noReviewsDesc')}
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
-          <button onClick={() => navigate('/lesson')} className="btn-primary px-8 py-3 font-bold">
+          <button onClick={() => navigate('/grammar')} className="btn-primary px-8 py-3 font-bold">
             {t('grammarReview.goToLessons')}
           </button>
           <button onClick={() => navigate('/mixed-review')} className="btn-ghost px-8 py-3 font-bold border border-gray-200 dark:border-gray-700 rounded-xl">
@@ -70,7 +70,7 @@ export default function GrammarReview() {
           return (
             <button
               key={review.lessonId}
-              onClick={() => navigate('/lesson')}
+              onClick={() => navigate('/grammar', { state: { reviewTopicId: review.lessonId } })}
               className="w-full card-hover text-left p-4"
             >
               <div className="flex items-start justify-between gap-3">
@@ -108,7 +108,7 @@ export default function GrammarReview() {
       </div>
 
       <button
-        onClick={() => navigate('/lesson')}
+        onClick={() => navigate('/grammar')}
         className="btn-ghost w-full border border-dashed border-gray-300 dark:border-gray-600 rounded-xl py-3 text-sm font-medium text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
       >
         {t('grammarReview.goToLessons')}
@@ -142,7 +142,7 @@ export function ReviewOverview() {
           return (
             <button
               key={review.lessonId}
-              onClick={() => navigate('/lesson')}
+              onClick={() => navigate('/grammar', { state: { reviewTopicId: review.lessonId } })}
               className="w-full flex items-center gap-3 p-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left"
             >
               <span className="text-xl">{['📖', '📝', '🎯', '📚', '✍️'][dueReviews.indexOf(review) % 5]}</span>

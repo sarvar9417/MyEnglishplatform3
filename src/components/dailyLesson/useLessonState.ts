@@ -29,10 +29,22 @@ import {
 } from '../../services/lessonService'
 import { resolveSectionItems } from './lessonHelpers'
 import type { Tab } from './LessonNavigation'
+import {
+  saveExerciseStateToLS,
+  loadExerciseStateFromLS,
+  removeExerciseStateFromLS,
+  saveTestStateToLS,
+  loadTestStateFromLS,
+  removeTestStateFromLS,
+  makeExerciseStorageKey,
+  makeTestStorageKey,
+  saveSessionLocal,
+  loadSessionLocal,
+  clearSessionLocal,
+} from './lessonPersistence'
+import { trackLessonStarted, trackLessonAbandoned } from './lessonAnalytics'
 
-type Answers = Record<number, string[]>
-
-export type { Answers }
+export type Answers = Record<number, string[]>
 
 export function useLessonState(lessonProp: DailyLesson) {
   const [skillsData, setSkillsData] = useState<
@@ -182,23 +194,17 @@ export function useLessonState(lessonProp: DailyLesson) {
   useEffect(() => {
     lessonStartRef.current = Date.now()
     lessonDoneRef.current = false
-    monitoring.trackEvent('lesson_started', {
-      lessonId: lesson.id,
-      day: lesson.day ?? null,
-      level: lesson.level ?? null,
-      timestamp: Date.now(),
-    })
+    trackLessonStarted(lesson.id, lesson.day ?? null, lesson.level ?? null)
     return () => {
       if (!lessonDoneRef.current) {
-        monitoring.trackEvent('lesson_abandoned', {
-          lessonId: lesson.id,
-          day: lesson.day ?? null,
-          level: lesson.level ?? null,
-          currentSection: lessonProgressRef.current.section,
-          currentTab: lessonProgressRef.current.tab,
-          timeSpentSec: Math.round((Date.now() - lessonStartRef.current) / 1000),
-          timestamp: Date.now(),
-        })
+        trackLessonAbandoned(
+          lesson.id,
+          lesson.day ?? null,
+          lesson.level ?? null,
+          lessonProgressRef.current.section,
+          lessonProgressRef.current.tab,
+          Math.round((Date.now() - lessonStartRef.current) / 1000),
+        )
       }
     }
   }, [lesson.id, lesson.day, lesson.level])
@@ -461,11 +467,7 @@ export function useLessonState(lessonProp: DailyLesson) {
     const cur = { answers, submitted, score }
     if (JSON.stringify(cur) === JSON.stringify(prevExerciseStateRef.current)) return
     prevExerciseStateRef.current = cur
-    try {
-      localStorage.setItem(exerciseStorageKey, JSON.stringify(cur))
-    } catch {
-      monitoring.captureMessage('localStorage write failed (exercise state)', 'warn')
-    }
+    saveExerciseStateToLS(lesson.id, currentSection, answers, submitted, score)
     if (exerciseDBSaveTimerRef.current) clearTimeout(exerciseDBSaveTimerRef.current)
     if (!submitted && sectionExercises.length > 0) {
       const payloads = sectionExercises
@@ -489,11 +491,7 @@ export function useLessonState(lessonProp: DailyLesson) {
     const cur = { testAnswers, testSubmitted, testScore, testResults }
     if (JSON.stringify(cur) === JSON.stringify(prevTestStateRef.current)) return
     prevTestStateRef.current = cur
-    try {
-      localStorage.setItem(testStorageKey, JSON.stringify(cur))
-    } catch {
-      monitoring.captureMessage('localStorage write failed (test state)', 'warn')
-    }
+    saveTestStateToLS(lesson.id, testSection, testAnswers, testSubmitted, testScore, testResults)
     if (testDBSaveTimerRef.current) clearTimeout(testDBSaveTimerRef.current)
     if (!testSubmitted && Object.keys(testAnswers).length > 0) {
       testDBSaveTimerRef.current = setTimeout(() => {
@@ -558,17 +556,8 @@ export function useLessonState(lessonProp: DailyLesson) {
 
   // ── Load section state (localStorage → DB fallback) ──
   const loadExerciseSectionState = (idx: number): { answers: Answers; submitted: boolean; score: number } => {
-    try {
-      const saved = localStorage.getItem(`exercise-answers-${lesson.id}-${idx}`)
-      if (saved) {
-        const d = JSON.parse(saved)
-        if (d?.answers && Object.keys(d.answers).length > 0) {
-          return { answers: d.answers, submitted: !!d.submitted, score: d.score ?? 0 }
-        }
-      }
-    } catch {
-      monitoring.captureMessage('Failed to parse localStorage exercise section state', 'warn')
-    }
+    const fromLS = loadExerciseStateFromLS(lesson.id, idx)
+    if (fromLS) return fromLS
     const rows = dbAnswersRef.current.filter(
       (a) => a.sectionIndex === idx && a.sectionType === 'exercise',
     )
@@ -590,22 +579,8 @@ export function useLessonState(lessonProp: DailyLesson) {
     testScore: number
     testResults: Record<number, boolean>
   } => {
-    try {
-      const saved = localStorage.getItem(`test-state-${lesson.id}-${idx}`)
-      if (saved) {
-        const d = JSON.parse(saved)
-        if (d?.testAnswers && Object.keys(d.testAnswers).length > 0) {
-          return {
-            testAnswers: d.testAnswers,
-            testSubmitted: !!d.testSubmitted,
-            testScore: d.testScore ?? 0,
-            testResults: d.testResults ?? {},
-          }
-        }
-      }
-    } catch {
-      monitoring.captureMessage('Failed to parse localStorage test section state', 'warn')
-    }
+    const fromLS = loadTestStateFromLS(lesson.id, idx)
+    if (fromLS) return fromLS
     const rows = dbAnswersRef.current.filter(
       (a) => a.sectionIndex === idx && a.sectionType === 'test',
     )
@@ -782,11 +757,7 @@ export function useLessonState(lessonProp: DailyLesson) {
     setSubmitted(false)
     setScore(0)
     setAiResults({})
-    try {
-      localStorage.removeItem(exerciseStorageKey)
-    } catch {
-      monitoring.captureMessage('Failed to remove exercise state from localStorage', 'warn')
-    }
+    removeExerciseStateFromLS(lesson.id, currentSection)
     clearExerciseAnswersFromDB(lesson.id, currentSection, 'exercise')
   }
 
@@ -878,11 +849,7 @@ export function useLessonState(lessonProp: DailyLesson) {
     setTestScore(0)
     setTestResults({})
     setTestShuffleKey((k) => k + 1)
-    try {
-      localStorage.removeItem(testStorageKey)
-    } catch {
-      monitoring.captureMessage('Failed to remove test state from localStorage', 'warn')
-    }
+    removeTestStateFromLS(lesson.id, testSection)
     clearExerciseAnswersFromDB(lesson.id, testSection, 'test')
   }
 

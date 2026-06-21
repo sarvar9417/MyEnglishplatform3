@@ -294,6 +294,8 @@ export interface TranslationStrings {
   'dashboard.duelTitle': string
   'dashboard.duelSubtitle': string
   'dashboard.duelButton': string
+  'dashboard.sectionReviewOverview': string
+  'dashboard.sectionGrammarSrs': string
   'dashboard.storyBeatProgress': string
   'dashboard.storyBeatDay': string
 
