@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
   Headphones, ChevronLeft, ChevronRight, Eye, EyeOff,
-  Clock, BookOpen, Mic,
+  CheckCircle2, Clock, BookOpen, Mic,
 } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { type ListeningLesson } from '@/data/listeningLessons'
