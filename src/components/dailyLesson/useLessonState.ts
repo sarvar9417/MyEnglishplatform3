@@ -36,11 +36,6 @@ import {
   saveTestStateToLS,
   loadTestStateFromLS,
   removeTestStateFromLS,
-  makeExerciseStorageKey,
-  makeTestStorageKey,
-  saveSessionLocal,
-  loadSessionLocal,
-  clearSessionLocal,
 } from './lessonPersistence'
 import { trackLessonStarted, trackLessonAbandoned } from './lessonAnalytics'
 

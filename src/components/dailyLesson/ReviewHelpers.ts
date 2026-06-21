@@ -1,5 +1,3 @@
-import type { DailyExercise } from '../../data/dailyLessons'
-
 export type Answers = Record<number, string[]>
 export type Tab = 'exercises' | 'tests'
 

@@ -1,10 +1,10 @@
 import { Target, Sword, Zap, ArrowRight } from 'lucide-react'
 import { getDuelById } from '../../services/tandemService'
-import type { DuelData } from '../../store/tandemSlice'
+import type { DuellistItem } from '../../types/tandem'
 
 interface TandemDuelListsProps {
-  pendingOpponentDuels: DuelData[]
-  activeDuels: DuelData[]
+  pendingOpponentDuels: DuellistItem[]
+  activeDuels: DuellistItem[]
   onSetActiveDuel: (duel: any) => void
   onCancelDuel: (duelId: string) => void
 }

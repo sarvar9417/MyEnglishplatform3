@@ -1,7 +1,6 @@
 import { Clock, Check } from 'lucide-react'
-import { feelTap, feelAnswer } from '../../lib/gameFeel'
-import { emitXpBurst } from '../ui/XpBurst'
-import type { BattleQuestion, PlayerId, GameMode } from './VocabBattleHelpers'
+import { feelTap } from '../../lib/gameFeel'
+import type { BattleQuestion } from './VocabBattleHelpers'
 import { QUESTIONS_PER_GAME, QUESTION_TIME } from './VocabBattleHelpers'
 
 interface Props {

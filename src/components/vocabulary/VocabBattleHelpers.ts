@@ -1,9 +1,8 @@
-import type { LevelId } from '../../services/battleService'
-
 // ─── Types ──────────────────────────────────────────────────────────────
 
 export type GameState = 'lobby' | 'waiting' | 'playing' | 'results' | 'error'
 export type PlayerId = 'host' | 'guest'
+export type LevelId = 'A1' | 'A2' | 'B1' | 'B2'
 export type AIDifficulty = 'easy' | 'medium' | 'hard'
 export type GameMode = 'multiplayer' | 'ai'
 

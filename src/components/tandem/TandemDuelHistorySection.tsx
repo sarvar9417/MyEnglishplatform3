@@ -1,8 +1,8 @@
 import { Trophy } from 'lucide-react'
-import type { DuelData } from '../../store/tandemSlice'
+import type { DuellistItem } from '../../types/tandem'
 
 interface TandemDuelHistorySectionProps {
-  duelHistory: DuelData[]
+  duelHistory: DuellistItem[]
 }
 
 export default function TandemDuelHistorySection({ duelHistory }: TandemDuelHistorySectionProps) {

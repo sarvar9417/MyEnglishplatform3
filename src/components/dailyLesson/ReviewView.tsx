@@ -11,7 +11,7 @@ import {
   saveExerciseAnswersToDB, clearExerciseAnswersFromDB,
 } from '../../services/lessonService'
 import type { Answers, Tab } from './ReviewHelpers'
-import { LEVEL_COLOR, REVIEW_EX_LS_PREFIX, REVIEW_TEST_LS_PREFIX, REVIEW_RULES_LS_PREFIX, scrollToTop } from './ReviewHelpers'
+import { LEVEL_COLOR, REVIEW_RULES_LS_PREFIX } from './ReviewHelpers'
 import ReviewKeyRules from './ReviewKeyRules'
 import ReviewMasteryMeter from './ReviewMasteryMeter'
 import ReviewExercisesTab from './ReviewExercisesTab'

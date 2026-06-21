@@ -3,7 +3,6 @@ import { CATEGORY_LABEL, CATEGORY_COLOR } from '@/data/speakingPrompts'
 import type { SpeakingPrompt } from '@/services/speakingService'
 import type { SpeechRecognitionState } from '@/hooks/useSpeechRecognition'
 import type { AudioRecorderState } from '@/hooks/useAudioRecorder'
-import type { RecordState } from './speakingHelpers'
 import { speakText } from './speakingHelpers'
 import AudioPlayback from './AudioPlayback'
 
@@ -11,7 +10,6 @@ interface SpeakingRecordViewProps {
   prompt: SpeakingPrompt
   sr: SpeechRecognitionState
   ar: AudioRecorderState
-  recordState: RecordState
   timer: number
   evaluation: string
   isRecording: boolean
@@ -26,7 +24,7 @@ interface SpeakingRecordViewProps {
 }
 
 export default function SpeakingRecordView({
-  prompt, sr, ar, recordState, timer, evaluation,
+  prompt, sr, ar, timer, evaluation,
   isRecording, isDone, isEvaluating,
   t, onStartRecording, onStopRecording, onReset, onEvaluate, onBack,
 }: SpeakingRecordViewProps) {

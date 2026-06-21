@@ -1,4 +1,4 @@
-import { Theater, Loader2, Trophy } from 'lucide-react'
+import { Theater, Loader2 } from 'lucide-react'
 
 interface TandemRoleplaySectionProps {
   tandemPair: { id: string } | null

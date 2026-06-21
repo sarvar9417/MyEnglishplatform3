@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useStore } from '../../store/useStore'
 import { monitoring } from '../../lib/monitoring'
 import { supabase } from '../../lib/supabase'

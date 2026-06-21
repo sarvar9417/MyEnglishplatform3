@@ -5,12 +5,11 @@ import type { DailyWordRow } from '../../services/vocabularyService'
 interface VocabBatchTabsProps {
   dailyWords: DailyWordRow[]
   currentBatch: number
-  batchWordsLength: number
   onSelectBatch: (batch: number) => void
 }
 
 export default function VocabBatchTabs({
-  dailyWords, currentBatch, batchWordsLength, onSelectBatch,
+  dailyWords, currentBatch, onSelectBatch,
 }: VocabBatchTabsProps) {
   const { t } = useI18n()
 

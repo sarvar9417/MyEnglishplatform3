@@ -1,15 +1,12 @@
 import { CheckCircle, XCircle, Trophy, RotateCcw, ChevronRight, Sparkles, Target } from 'lucide-react'
 import type { ReviewLesson, DailyExercise } from '../../data/dailyLessons'
 import { checkAnswer, getExerciseContext, getCorrectText } from './helpers'
-import { checkDailyExerciseAnswers } from '../../lib/claude'
-import type { DailyExerciseCheckItem } from '../../lib/claude'
 import ExerciseCard from './ExerciseCard'
-import { monitoring } from '../../lib/monitoring'
 import {
   pushLessonProgress, saveExerciseAnswersToDB, clearExerciseAnswersFromDB,
 } from '../../services/lessonService'
 import type { Answers } from './ReviewHelpers'
-import { LEVEL_COLOR, REVIEW_EX_LS_PREFIX, scrollToTop } from './ReviewHelpers'
+import { LEVEL_COLOR } from './ReviewHelpers'
 
 interface Props {
   lesson: ReviewLesson

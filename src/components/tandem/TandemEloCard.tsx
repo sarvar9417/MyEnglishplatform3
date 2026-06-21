@@ -3,14 +3,14 @@ import RatingBadge from './RatingBadge'
 
 interface TandemEloCardProps {
   rating: number
-  tier: string
+  _tier: string
   matchesPlayed: number
   wins: number
   losses: number
   draws: number
 }
 
-export default function TandemEloCard({ rating, tier, matchesPlayed, wins, losses, draws }: TandemEloCardProps) {
+export default function TandemEloCard({ rating, matchesPlayed, wins, losses, draws }: TandemEloCardProps) {
   return (
     <div className="card p-5 space-y-3 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/20 border-2 border-purple-100 dark:border-purple-900/50">
       <div className="flex items-center justify-between">

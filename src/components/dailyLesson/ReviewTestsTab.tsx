@@ -1,14 +1,6 @@
-import { CheckCircle, Trophy, RotateCcw, ChevronRight } from 'lucide-react'
+import { CheckCircle, XCircle, Trophy, RotateCcw, ChevronRight } from 'lucide-react'
 import type { ReviewLesson, DailyExercise } from '../../data/dailyLessons'
-import { LEVEL_COLOR, scrollToTop } from './ReviewHelpers'
-
-interface TestSection {
-  title: string
-  desc: string
-  color: string
-  icon: string
-  ids: number[]
-}
+import { LEVEL_COLOR } from './ReviewHelpers'
 
 interface Props {
   lesson: ReviewLesson
@@ -19,7 +11,6 @@ interface Props {
   testResults: Record<number, boolean>
   completedTestSections: Record<number, number>
   shuffledTestOptionsMap: Map<number, string[]>
-  testDBSaveTimerRef: React.MutableRefObject<ReturnType<typeof setTimeout> | undefined>
   onJumpToTestSection: (idx: number) => void
   onSetTestAnswers: (fn: (prev: Record<number, string>) => Record<number, string>) => void
   onSubmit: () => void
@@ -30,7 +21,7 @@ interface Props {
 export default function ReviewTestsTab({
   lesson, testSection, testAnswers, testSubmitted, testScore, testResults,
   completedTestSections, shuffledTestOptionsMap,
-  testDBSaveTimerRef, onJumpToTestSection, onSetTestAnswers,
+  onJumpToTestSection, onSetTestAnswers,
   onSubmit, onClear, onNextTestSection,
 }: Props) {
   const sec = lesson.testSections[testSection]

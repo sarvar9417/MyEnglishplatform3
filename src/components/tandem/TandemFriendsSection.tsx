@@ -1,10 +1,10 @@
 import { Users, Loader2, UserPlus, Target, Link as LinkIcon, Sword, UserX, Clock } from 'lucide-react'
 import { StatusDot } from './tandemHelpers'
-import type { FriendData, PendingInviteData } from '../../store/tandemSlice'
+import type { FriendWithProfile } from '../../types/tandem'
 
 interface TandemFriendsSectionProps {
-  friends: FriendData[]
-  pendingInvites: PendingInviteData[]
+  friends: FriendWithProfile[]
+  pendingInvites: FriendWithProfile[]
   tandemPair: { id: string } | null
   loadingFriends: boolean
   onNeyronProfile: (id: string, name: string) => void

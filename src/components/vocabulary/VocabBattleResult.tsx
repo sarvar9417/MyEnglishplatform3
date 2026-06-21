@@ -1,5 +1,5 @@
-import { Sparkles, Sword } from 'lucide-react'
-import type { GameMode, AIDifficulty, AIOpponent } from './VocabBattleHelpers'
+import { Sparkles } from 'lucide-react'
+import type { GameMode, AIDifficulty } from './VocabBattleHelpers'
 import { AI_OPPONENTS } from './VocabBattleHelpers'
 
 interface ResultsProps {

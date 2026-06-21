@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Clock } from 'lucide-react'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -33,6 +33,7 @@ export interface SpeechTypes {
 }
 
 export interface SpeechRecognitionEventType extends Event {
+  resultIndex: number
   results: {
     length: number
     [index: number]: {

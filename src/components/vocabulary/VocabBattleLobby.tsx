@@ -1,7 +1,7 @@
 import { Sword, Bot, Zap, Users, Check, Layers } from 'lucide-react'
 import { LEVEL_OPTIONS } from '../../services/battleService'
 import {
-  type AIDifficulty, type LevelId, type GameMode,
+  type AIDifficulty, type LevelId,
   AI_OPPONENTS, LEVEL_COLORS, LEVEL_RING_COLORS,
   DIFFICULTY_COLORS, DIFFICULTY_RING_COLORS, DIFFICULTY_ICONS, LEVEL_DESCRIPTIONS,
 } from './VocabBattleHelpers'

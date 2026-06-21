@@ -8,7 +8,7 @@ import {
   Sparkles, Trophy,
 } from 'lucide-react'
 import { supabase } from '../../lib/supabase'
-import { monitoring } from '../../lib/monitoring'
+
 import { useStore } from '../../store/useStore'
 import { fetchBattleQuestionsByMode } from '../../services/battleService'
 import { saveHotSeatResult } from '../../services/tandemService'
@@ -52,7 +52,6 @@ export default function HotSeatDuel({ onBack }: { onBack: () => void }) {
   // ── Online state ─────────────────────────────────────────────────────
   const [onlinePhase, setOnlinePhase] = useState<OnlinePhase>('lobby')
   const [roomId, setRoomId] = useState('')
-  const [joinRoomId, setJoinRoomId] = useState('')
   const [playerRole, setPlayerRole] = useState<'host' | 'guest' | null>(null)
   const [opponentName, setOpponentName] = useState('')
   const [olQuestions, setOlQuestions] = useState<HotSeatQuestion[]>([])
@@ -429,7 +428,7 @@ export default function HotSeatDuel({ onBack }: { onBack: () => void }) {
     if (timerRef.current) clearInterval(timerRef.current)
     if (countdownRef.current) clearInterval(countdownRef.current)
     if (channelRef.current) { supabase.removeChannel(channelRef.current); channelRef.current = null }
-    setOnlinePhase('lobby'); setRoomId(''); setJoinRoomId(''); setPlayerRole(null)
+    setOnlinePhase('lobby'); setRoomId(''); setPlayerRole(null)
     setOpponentName(''); setOlQuestions([]); setOlCurrentQ(0); setOlSelected(null)
     setOlLocked(false); setOlTimeLeft(QUESTION_TIME); setOlMyScore(0); setOlMyAnswers([])
     setOlOpponentScore(0); setOlCountdown(3)

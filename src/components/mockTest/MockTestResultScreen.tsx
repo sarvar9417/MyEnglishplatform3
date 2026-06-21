@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { CheckCircle } from 'lucide-react'
 import { useI18n } from '../../i18n'
-import { BandBadge, SectionBar, type ResultData } from './mockTestHelpers'
+import { SectionBar, type ResultData } from './mockTestHelpers'
 import { pctToBand, scoreToBand, roundBand } from '@/data/mockTestData'
 
 interface MockTestResultScreenProps {
