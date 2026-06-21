@@ -202,7 +202,7 @@ describe('i18n Listening keys (F4-4a)', () => {
 
     it('barcha dailyListening keylar parametrsiz chaqirilganda {var} ko\'rinmaydi', () => {
       for (const key of LISTENING_DAILY_KEYS) {
-        for (const [name, dict] of Object.entries(locales)) {
+        for (const [, dict] of Object.entries(locales)) {
           const template = dict[key]
           if (!template) continue
           // Agar template'da {xxx} bo'lsa va hech qanday params berilmasa,

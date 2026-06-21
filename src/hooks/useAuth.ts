@@ -40,8 +40,8 @@ export function useAuth() {
     })
     if (!error && data.user) {
       // Upsert into public.users so the trigger or RLS-protected insert lands
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await supabase.from('users').upsert(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         { id: data.user.id, email, name } as any,
         { onConflict: 'id' }
       )

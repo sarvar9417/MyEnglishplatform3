@@ -87,7 +87,8 @@ export const createAuthSlice: StateCreator<AppState, [], [], AuthSlice> = (set, 
       ;(async () => {
         try {
           const { supabase } = await import('../lib/supabase')
-          const { data: { session } } = await supabase.auth.getSession()            if (session?.user.id) {
+          const { data: { session } } = await supabase.auth.getSession()
+          if (session?.user.id) {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const { error } = await supabase.from('users').upsert({
                 id: session.user.id,
