@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
   Headphones, ChevronLeft, ChevronRight, Eye, EyeOff,
-  CheckCircle2, XCircle, Clock, BookOpen, Mic,
+  Clock, BookOpen, Mic,
 } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { type ListeningLesson } from '@/data/listeningLessons'
@@ -59,7 +59,7 @@ export default function Listening() {
   const [fillAnswers,  setFillAnswers]  = useState<string[]>([])
   const [tfAnswers,    setTfAnswers]    = useState<(boolean | null)[]>([])
   const [summaryText,  setSummaryText]  = useState('')
-  const [,   setSubmitted]    = useState(false)
+  const [, setSubmitted] = useState(false)
 
   // Audio tracking
   const [playCount, setPlayCount] = useState(0)
@@ -704,7 +704,3 @@ function TranscriptCard({ line }: { line: { startSec: number; text: string; spea
     </button>
   )
 }
-
-// silence unused import warning
-void CheckCircle2
-void XCircle

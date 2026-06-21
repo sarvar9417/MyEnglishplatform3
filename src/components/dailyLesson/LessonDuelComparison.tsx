@@ -123,8 +123,7 @@ export default function LessonDuelComparison({ lessonId, lessonTitle, lessonScor
     })
 
     const bonusXP = duelScore * 15
-    const { useStore: store } = await import('../../store/useStore')
-    store.getState().addXP(bonusXP)
+    useStore.getState().addXP(bonusXP)
 
     useToastStore.getState().toast(
       `🎯 Duel bonusi qo'shildi! ${bonusXP} XP, dars natijasi ${lessonScore}% → ${newScore}%`,

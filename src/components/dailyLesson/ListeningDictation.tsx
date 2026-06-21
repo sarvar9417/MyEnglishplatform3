@@ -49,12 +49,12 @@ export default function ListeningDictation({ correctText, onComplete }: Props) {
 
     recognition.onerror = () => setStatus('review')
     recognition.onend = () => {
-      if (status === 'recording') setStatus('review')
+      setStatus((prev) => (prev === 'recording' ? 'review' : prev))
     }
 
     recognition.start()
     setStatus('recording')
-  }, [correctText, onComplete, status])
+  }, [correctText, onComplete])
 
   const stopRecording = useCallback(() => {
     recognitionRef.current?.stop()

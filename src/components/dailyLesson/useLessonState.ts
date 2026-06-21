@@ -184,7 +184,7 @@ export function useLessonState(lessonProp: DailyLesson) {
   useEffect(() => {
     lessonDoneRef.current = allDone
     lessonProgressRef.current = { section: currentSection, tab }
-  })
+  }, [allDone, currentSection, tab])
 
   useEffect(() => {
     lessonStartRef.current = Date.now()

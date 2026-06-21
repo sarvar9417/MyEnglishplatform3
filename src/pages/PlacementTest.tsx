@@ -19,10 +19,10 @@ type Phase = 'intro' | 'testing' | 'result'
 
 
 const LEVEL_DESC: Record<Level, string> = {
-  'A2+': '',
-  'B1': '',
-  'B1+': '',
-  'B2': '',
+  'A2+': 'Siz oddiy mavzularda muloqot qila olasiz',
+  'B1': 'Kundalik hayotda erkin gaplasha olasiz',
+  'B1+': 'Murakkab mavzularda fikr yurita olasiz',
+  'B2': 'Deyarli har qanday mavzuda ravon gaplasha olasiz',
 }
 
 export default function PlacementTest() {

@@ -88,7 +88,7 @@ function TopicCard({
   )
 }
 
-function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect: (t: GrammarTopic) => void }) {
+function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect: (topic: GrammarTopic) => void }) {
   const { t } = useI18n()
   const navigate = useNavigate()
   const location = useLocation()
@@ -120,8 +120,8 @@ function TopicSelector({ topics, onSelect }: { topics: GrammarTopic[]; onSelect:
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-        {topics.map((t) => (
-          <TopicCard key={t.id} topic={t} onSelect={() => onSelect(t)} />
+        {topics.map((topic) => (
+          <TopicCard key={topic.id} topic={topic} onSelect={() => onSelect(topic)} />
         ))}
       </div>
 
@@ -267,7 +267,7 @@ export default function Grammar() {
       // Auto-select grammar topic from review state (e.g. GrammarReview da bosilganda)
       const rti = (location.state as { reviewTopicId?: string } | null)?.reviewTopicId
       if (rti) {
-        const found = data.find(t => t.id === rti)
+        const found = data.find((topic) => topic.id === rti)
         if (found) handleSelectTopic(found)
       }
     })
@@ -276,8 +276,8 @@ export default function Grammar() {
 
   const scrollTop = () => topRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
 
-  const handleSelectTopic = (t: GrammarTopic) => {
-    setTopic(t)
+  const handleSelectTopic = (selectedTopic: GrammarTopic) => {
+    setTopic(selectedTopic)
     setAnswers({})
     setSubmitted(false)
     setScore(0)

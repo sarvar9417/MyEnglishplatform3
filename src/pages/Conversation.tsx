@@ -105,7 +105,7 @@ export default function Conversation() {
         setLoading(false)
         if (voiceOn) tts.speak(full).catch((e) => monitoring.captureMessage('TTS speak (response) failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
       },
-      () => { setLoading(false); setStreaming('') },
+      () => { setLoading(false); setStreaming(''); monitoring.captureMessage('Streaming error in conversation', 'warn') },
     )
   }
 

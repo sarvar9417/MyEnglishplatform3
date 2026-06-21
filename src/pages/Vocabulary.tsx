@@ -521,7 +521,8 @@ export default function Vocabulary() {
     setTestAnalysisText('')
     setTestAnalysisLoading(true)
     try {
-      const w = testWordForAnalysis!
+      const w = testWordForAnalysis
+      if (!w) return
       const sentence = await generateUzbekSentence(w.english, w.uzbek, w.level)
       analyzeGrammar(
         sentence,
@@ -634,7 +635,7 @@ export default function Vocabulary() {
   if (viewMode === 'game') {
     return (
       <VocabGameView
-        words={batchWords as any}
+        words={batchWords}
         currentBatch={currentBatch}
         onComplete={handleGameComplete}
         onMatch={(wordId, correct) => {

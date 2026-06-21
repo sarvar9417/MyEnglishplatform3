@@ -24,13 +24,7 @@ const SPEAKER_COLORS: Record<string, { bg: string; text: string; border: string;
 const SARVAR_STYLE = SPEAKER_COLORS['Sarvar']
 
 function getSpeakerStyle(speaker: string) {
-  // If speaker matches the user name (originally 'Sarvar' in data), use Sarvar's rose style
-  return SPEAKER_COLORS[speaker] ?? SARVAR_STYLE ?? {
-    bg: 'bg-gray-50 dark:bg-gray-800',
-    text: 'text-gray-600 dark:text-gray-400',
-    border: 'border-gray-200 dark:border-gray-700',
-    dot: 'bg-gray-400',
-  }
+  return SPEAKER_COLORS[speaker] ?? SARVAR_STYLE
 }
 
 export default function DialogueCard({ dialogue }: DialogueCardProps) {
@@ -57,7 +51,8 @@ export default function DialogueCard({ dialogue }: DialogueCardProps) {
   }
 
   function handlePlayAll() {
-    const firstId = dialogue.lines[0]?.speaker + '-0'
+    if (dialogue.lines.length === 0) return
+    const firstId = dialogue.lines[0].speaker + '-0'
     setPlayingId(firstId)
     speakAll(0)
   }

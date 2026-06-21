@@ -25,7 +25,10 @@ export default function ExerciseCard({
   useEffect(() => {
     if (!submitted && cardRef.current) {
       const firstInput = cardRef.current.querySelector('input')
-      if (firstInput) setTimeout(() => firstInput.focus(), 100)
+      if (firstInput) {
+        const timer = setTimeout(() => firstInput.focus(), 100)
+        return () => clearTimeout(timer)
+      }
     }
   }, [ex.id, submitted])
 
