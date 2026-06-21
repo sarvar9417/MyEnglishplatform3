@@ -93,7 +93,7 @@ export const pragmaticsFormalInformal: DailyLesson = {
     },
   ],
   exercises: [
-    { id: 950010, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence uses formal register?", options: ["Could you help me?", "Could not you help me?", "Could to you help me?", "help you Could me?"], correct: "Could you help me?", explanation: "" },
+    { id: 950010, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence uses formal register?", options: ["Could you help me?", "Could not you help me?", "Could to you help me?", "help you Could me?"], correct: "Could you help me?", explanation: "'Could you help me?' — rasmiy (formal) register. 'Can you help me?' norasmiy. 'Could' rasmiy va muloyim so'roq shakli." },
     { id: 950011, type: 'fill-blank', instruction: "Rasmiy email boshlanishini to'ldiring:", question: "___ Sir/Madam, I am writing to inquire about...", blanks: ["Dear"], explanation: "Rasmiy emailda 'Dear Sir/Madam' yoki 'Dear Mr/Mrs + surname' ishlatiladi." },
     { id: 950012, type: 'fill-blank', instruction: "Rasmiy email yopilishini to'ldiring:", question: "___ regards, John Smith", blanks: ["Kind"], explanation: "'Kind regards' — yarim-rasmiy yopilish. 'Sincerely' — rasmiy yopilish. 'Best' ham mumkin: 'Best regards'." },
     { id: 950013, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "Hey, I am writing to inquire about the position.", errorPart: "Hey", correct: "Dear Sir/Madam, I am writing to inquire about the position.", explanation: "Rasmiy emailda 'Hey' emas. 'Dear Sir/Madam' yoki 'Dear Mr/Mrs + surname' ishlatiladi." },
@@ -119,7 +119,7 @@ export const pragmaticsFormalInformal: DailyLesson = {
     { title: "🔀 Aralash", desc: "Register + Polite request shakllari", color: 'bg-fuchsia-500', icon: '🔄', ids: [65265, 65266, 65267, 65268, 65269] },
   ],
   tests: [
-    { id: 950020, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is written in formal register?", options: ["Could you please send me the file?", "Could not you please send me the file?", "Could to you please send me the file?", "Could you please send me a file?"], correct: "Could you please send me the file?", explanation: "" },
+    { id: 950020, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is written in formal register?", options: ["Could you please send me the file?", "Could not you please send me the file?", "Could to you please send me the file?", "Could you please send me a file?"], correct: "Could you please send me the file?", explanation: "'Could you please send me the file?' — rasmiy register. 'Please' va 'could' rasmiylikni oshiradi. 'Send me a file' (noaniq) emas, 'the file' (aniq) ishlatilgan." },
     { id: 950021, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "How should a formal email begin?", blanks: ["Dear Sir/Madam,"], explanation: "Rasmiy email 'Dear Sir/Madam,' yoki 'Dear Mr/Mrs + surname,' bilan boshlanadi." },
     { id: 950022, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What comes after 'Would you mind'?", blanks: ["V-ing"], explanation: "'Would you mind + V-ing?' — 'Would you mind opening the window?'" },
     { id: 950023, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which word is used in INFORMAL register?", blanks: ["wanna"], explanation: "'Wanna' — slang (want to). Rasmiyda 'would like to', norasmiyda 'want to' yoki 'wanna'." },
