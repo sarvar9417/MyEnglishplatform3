@@ -621,7 +621,6 @@ export default function Vocabulary() {
         testAnalysisText={testAnalysisText}
         testAnalysisLoading={testAnalysisLoading}
         testAnalysisShown={testAnalysisShown}
-        testWordForAnalysis={testWordForAnalysis}
         onAnswer={handleTestAnswer}
         onAdvance={handleTestAdvance}
         onAnalyze={handleAnalyzeGrammar}
@@ -732,7 +731,6 @@ export default function Vocabulary() {
           <VocabBatchTabs
             dailyWords={dailyWords}
             currentBatch={currentBatch}
-            batchWordsLength={batchWords.length}
             onSelectBatch={selectBatch}
           />
 
