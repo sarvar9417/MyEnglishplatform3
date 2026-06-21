@@ -46,12 +46,24 @@ if (typeof window.matchMedia !== 'function') {
 
 // Suppress act() warnings from async effects — tests handle this correctly via await renderPage()
 // Suppress jsdom 'Not implemented: window.scrollTo' error — guarded with try/catch in source
+// HTMLCanvasElement.getContext — jsdom doesn't implement canvas
+if (typeof HTMLCanvasElement.prototype.getContext !== 'function') {
+  HTMLCanvasElement.prototype.getContext = (() => null) as typeof HTMLCanvasElement.prototype.getContext
+}
+
+// HTMLMediaElement.prototype.pause — jsdom doesn't implement media elements
+if (typeof HTMLMediaElement.prototype.pause !== 'function') {
+  HTMLMediaElement.prototype.pause = (() => {}) as typeof HTMLMediaElement.prototype.pause
+}
+
 const origConsoleError = console.error
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 console.error = (...args: any[]) => {
   const msg = typeof args[0] === 'string' ? args[0] : ''
   if (msg.includes('inside a test was not wrapped in act(')) return
   if (msg.includes('Not implemented: window.scrollTo')) return
+  if (msg.includes('Not implemented: HTMLCanvasElement')) return
+  if (msg.includes('Not implemented: HTMLMediaElement')) return
   origConsoleError.call(console, ...args)
 }
 

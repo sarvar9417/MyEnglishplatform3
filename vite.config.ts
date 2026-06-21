@@ -80,27 +80,30 @@ function anthropicProxyPlugin() {
   }
 }
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     anthropicProxyPlugin(),
-    viteCompression({ algorithm: 'gzip', threshold: 10240 }),
-    VitePWA({
-      strategies: 'injectManifest',
-      srcDir: 'src',
-      filename: 'sw.ts',
-      registerType: 'autoUpdate',
-      includeAssets: [
-        'favicon.svg',
-        'icon-192.png',
-        'icon-512.png',
-        'icon-maskable-512.png',
-        'apple-touch-icon.png',
-      ],
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,gif,webp,woff2,ttf,eot,ico}'],
-      },
-    }),
+    // Compression va PWA faqat production build'da — dev'da keraksiz yuk
+    ...(command === 'build' ? [
+      viteCompression({ algorithm: 'gzip', threshold: 10240 }),
+      VitePWA({
+        strategies: 'injectManifest',
+        srcDir: 'src',
+        filename: 'sw.ts',
+        registerType: 'autoUpdate',
+        includeAssets: [
+          'favicon.svg',
+          'icon-192.png',
+          'icon-512.png',
+          'icon-maskable-512.png',
+          'apple-touch-icon.png',
+        ],
+        workbox: {
+          globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,gif,webp,woff2,ttf,eot,ico}'],
+        },
+      }),
+    ] : []),
   ],
   resolve: {
     alias: {
@@ -109,7 +112,19 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    open: true,
+    open: false,
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'lucide-react',
+      'recharts',
+      'zustand',
+      '@supabase/supabase-js',
+      'dexie',
+    ],
   },
   build: {
     outDir: 'dist',
@@ -169,6 +184,10 @@ export default defineConfig({
     include: ['src/**/*.test.{ts,tsx}'],
     setupFiles: ['./src/test/setup.ts'],
     css: false,
+    env: {
+      VITE_SUPABASE_URL: 'http://localhost:54321',
+      VITE_SUPABASE_ANON_KEY: 'test-anon-key',
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'lcov'],
@@ -181,4 +200,4 @@ export default defineConfig({
       exclude: ['src/data/**', 'src/**/*.test.ts', 'src/lib/monitoring.ts'],
     },
   },
-})
+}))
