@@ -113,6 +113,12 @@ export default defineConfig(({ command }) => ({
   server: {
     port: 3000,
     open: false,
+    watch: {
+      ignored: ['**/node_modules/**', '**/src/data/**', '**/*.test.*', '**/__tests__/**'],
+    },
+  },
+  esbuild: {
+    target: 'esnext',
   },
   optimizeDeps: {
     include: [
