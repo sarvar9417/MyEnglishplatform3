@@ -1,6 +1,5 @@
 import { CheckCircle, XCircle, Trophy, RotateCcw, ChevronRight } from 'lucide-react'
 import type { ReviewLesson, DailyExercise } from '../../data/dailyLessons'
-import { LEVEL_COLOR } from './ReviewHelpers'
 
 interface Props {
   lesson: ReviewLesson

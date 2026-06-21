@@ -155,7 +155,7 @@ async function executeSyncItem(item: SyncQueueItem): Promise<void> {
 
   switch (item.operation) {
     case 'upsert': {
-      const { error } = await qb.upsert(item.data, {
+      const { error } = await qb.upsert(item.data as any, {
         onConflict: item.conflictField ?? undefined,
       })
       if (error) throw error
@@ -163,7 +163,7 @@ async function executeSyncItem(item: SyncQueueItem): Promise<void> {
     }
 
     case 'insert': {
-      const { error } = await qb.insert(item.data)
+      const { error } = await qb.insert(item.data as any)
       if (error) throw error
       break
     }
@@ -173,8 +173,8 @@ async function executeSyncItem(item: SyncQueueItem): Promise<void> {
         throw new Error('update requires filterField and filterValue')
       }
       const { error } = await qb
-        .update(item.data)
-        .eq(item.filterField as string, item.filterValue)
+        .update(item.data as any)
+        .eq(item.filterField as string, item.filterValue as any)
       if (error) throw error
       break
     }
@@ -185,7 +185,7 @@ async function executeSyncItem(item: SyncQueueItem): Promise<void> {
       }
       const { error } = await qb
         .delete()
-        .eq(item.filterField as string, item.filterValue)
+        .eq(item.filterField as string, item.filterValue as any)
       if (error) throw error
       break
     }

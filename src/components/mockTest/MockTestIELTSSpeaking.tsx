@@ -26,7 +26,7 @@ export default function MockTestIELTSSpeaking({ prompts, onDone }: MockTestIELTS
   function startRec() {
     const Ctor = window.SpeechRecognition || window.webkitSpeechRecognition
     if (!Ctor) return
-    const r: SpeechRec = new Ctor()
+    const r = new Ctor() as unknown as SpeechRec
     r.lang     = 'en-US'; r.continuous = true; r.interimResults = true
     r.onresult = (e) => {
       let t = ''

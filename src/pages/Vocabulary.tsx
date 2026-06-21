@@ -635,7 +635,7 @@ export default function Vocabulary() {
   if (viewMode === 'game') {
     return (
       <VocabGameView
-        words={batchWords}
+        words={batchWords as any}
         currentBatch={currentBatch}
         onComplete={handleGameComplete}
         onMatch={(wordId, correct) => {

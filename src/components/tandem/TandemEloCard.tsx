@@ -3,7 +3,7 @@ import RatingBadge from './RatingBadge'
 
 interface TandemEloCardProps {
   rating: number
-  _tier: string
+  tier: string
   matchesPlayed: number
   wins: number
   losses: number

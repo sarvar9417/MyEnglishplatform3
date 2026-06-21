@@ -402,7 +402,6 @@ export default function ReviewView({ lesson, onBack }: { lesson: ReviewLesson; o
           testResults={testResults}
           completedTestSections={completedTestSections}
           shuffledTestOptionsMap={shuffledTestOptionsMap}
-          testDBSaveTimerRef={testDBSaveTimerRef as React.MutableRefObject<ReturnType<typeof setTimeout> | undefined>}
           onJumpToTestSection={handleJumpToTestSection}
           onSetTestAnswers={setTestAnswers}
           onSubmit={handleSubmitTest}

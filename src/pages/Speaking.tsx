@@ -262,7 +262,7 @@ export default function Speaking() {
         dailyPrompts={dailyPrompts}
         currentDay={currentDay}
         sr={sr}
-        t={t}
+        t={t as (key: string, params?: Record<string, string>) => string}
         onModeChange={setMode}
         onSelectPrompt={(p) => { setPrompt(p); resetRecording(); setView('record') }}
         onStartChat={startChat}
@@ -283,7 +283,7 @@ export default function Speaking() {
         timer={timer}
         transcript={sr.transcript}
         audioUrl={ar.audioUrl}
-        t={t}
+        t={t as (key: string, params?: Record<string, string>) => string}
         onBack={() => setView('select')}
         onRetry={() => { resetRecording(); setEvaluation(''); setView('record') }}
         onNext={() => setView('select')}
@@ -306,7 +306,7 @@ export default function Speaking() {
         turnCount={turnCount}
         canSend={canSend}
         srReady={srReady}
-        t={t}
+        t={t as (key: string, params?: Record<string, string>) => string}
         onSendMessage={sendChatMessage}
         onEndChat={endChat}
         onBack={() => { setView('select'); if ('speechSynthesis' in window) speechSynthesis.cancel(); sr.reset() }}
@@ -329,7 +329,7 @@ export default function Speaking() {
         todayChecklist={todayChecklist}
         xpEarned={xpEarned}
         progressPct={progressPct}
-        t={t}
+        t={t as (key: string, params?: Record<string, string>) => string}
         onBack={() => setView('select')}
       />
     )
@@ -354,7 +354,7 @@ export default function Speaking() {
       isRecording={isRecording}
       isDone={isDone}
       isEvaluating={isEvaluating}
-      t={t}
+      t={t as (key: string, params?: Record<string, string>) => string}
       onStartRecording={startRecording}
       onStopRecording={stopRecording}
       onReset={resetRecording}
