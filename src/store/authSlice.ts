@@ -89,7 +89,6 @@ export const createAuthSlice: StateCreator<AppState, [], [], AuthSlice> = (set, 
           const { supabase } = await import('../lib/supabase')
           const { data: { session } } = await supabase.auth.getSession()
           if (session?.user.id) {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const { error } = await supabase.from('users').upsert({
                 id: session.user.id,
                 name,
@@ -99,7 +98,7 @@ export const createAuthSlice: StateCreator<AppState, [], [], AuthSlice> = (set, 
                 target_date: target,
                 current_day: day,
                 current_week: week,
-              } as any, { onConflict: 'id' })
+              } as any, { onConflict: 'id' }) // eslint-disable-line @typescript-eslint/no-explicit-any
             if (error) monitoring.captureMessage('onboarding sync error: ' + error.message, 'error')
           }
         } catch (e) {
