@@ -205,11 +205,11 @@ export const adjectiveAdverb: DailyLesson = {
       exampleAnswer: 'I wake up early. I cut the bread carefully. The bread is fresh. I cook eggs quickly. The breakfast is delicious.' },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Adj vs Adv asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1901, 1902, 1903, 1904, 1905] },
-    { title: "O'rtacha", desc: '-ly qo\'shimchasi', color: 'bg-blue-500', icon: '📘', ids: [1906, 1907, 1908, 1909, 1910] },
-    { title: "Qiyin", desc: 'Good/Well, Hard/Hardly', color: 'bg-violet-500', icon: '🎯', ids: [1912, 1914, 1911, 1913, 1915] },
-    { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [1918, 1920, 1919, 1917, 1915, 1913, 1916, 1918, 1920, 1916] },
-    { title: "O'zgartirish", desc: 'Adj vs Adv farqi', color: 'bg-teal-500', icon: '🔄', ids: [50009, 50010, 50011, 50012, 99655, 99656] },
+    { title: "Boshlang'ich", desc: 'Adj vs Adv asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [19009, 19010, 19011, 19012, 19013] },
+    { title: "O'rtacha", desc: '-ly qo\'shimchasi', color: 'bg-blue-500', icon: '📘', ids: [19014, 19015, 19016, 19017, 19018] },
+    { title: "Qiyin", desc: 'Good/Well, Hard/Hardly', color: 'bg-violet-500', icon: '🎯', ids: [19019, 19020, 19021, 19022, 19023] },
+    { title: "Inkor", desc: 'Aralash — yakuniy sinov', color: 'bg-red-500', icon: '🚫', ids: [19024, 19025, 19026, 19027, 19028, 19029, 19030, 19031, 19032, 100626] },
+    { title: "O'zgartirish", desc: 'Adj vs Adv farqi', color: 'bg-teal-500', icon: '🔄', ids: [100629, 99857, 99858, 99859, 19009, 19010] },
     { title: "🔀 Aralash", desc: "Sifat/ravish + Comparative farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95161, 95162, 95163, 95164, 95165] },
   ],
   tests: [
@@ -230,10 +230,10 @@ export const adjectiveAdverb: DailyLesson = {
     { id: 19047, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He ___ ever calls me.", blanks: ["hardly"], explanation: "Hardly ever = deyarli hech qachon" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Adj/Adv asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [191, 192, 193, 194, 195] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [196, 197, 198, 199, 200] },
-    { title: 'Qiyin', desc: 'Good/Well, Hard/Hardly', color: 'bg-violet-500', icon: '💪', ids: [201, 202, 203] },
-    { title: 'Murakkab', desc: 'Adverb joylashuvi', color: 'bg-rose-500', icon: '🏆', ids: [204, 205] },
+    { title: 'Oson', desc: 'Adj/Adv asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [19033, 19034, 19035, 19036, 19037] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [19038, 19039, 19040, 19041, 19042] },
+    { title: 'Qiyin', desc: 'Good/Well, Hard/Hardly', color: 'bg-violet-500', icon: '💪', ids: [19043, 19044, 19045] },
+    { title: 'Murakkab', desc: 'Adverb joylashuvi', color: 'bg-rose-500', icon: '🏆', ids: [19046, 19047] },
   ],
 }
 
@@ -417,10 +417,10 @@ export const gerundsInfinitives: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Gerund asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [2001, 2002, 2003, 2004, 2005] },
-    { title: "O'rtacha", desc: 'Infinitive asoslari', color: 'bg-blue-500', icon: '📘', ids: [2006, 2007, 2008, 2009, 2010] },
-    { title: "Qiyin", desc: 'Stop, Remember, Forget', color: 'bg-violet-500', icon: '🎯', ids: [2013, 2014, 2011, 2012, 2015] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2020, 2016, 2015, 2018, 2018, 2020, 2017, 2012, 2019, 2016, 99659, 99660] },
+    { title: "Boshlang'ich", desc: 'Gerund asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [19057, 19058, 19059, 19060, 19061] },
+    { title: "O'rtacha", desc: 'Infinitive asoslari', color: 'bg-blue-500', icon: '📘', ids: [19062, 19063, 19064, 19065, 19066] },
+    { title: "Qiyin", desc: 'Stop, Remember, Forget', color: 'bg-violet-500', icon: '🎯', ids: [19067, 19068, 19069, 19070, 19071] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [19072, 19073, 19074, 19075, 19076, 98803, 98903, 100670, 100638, 100641] },
     { title: "🔀 Aralash", desc: "Gerund/infinitiv + Like/want farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95171, 95172, 95173, 95174, 95175] },
   ],
   tests: [
@@ -441,10 +441,10 @@ export const gerundsInfinitives: DailyLesson = {
     { id: 19091, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["I want to learn", "I want learn", "I want learning", "I want to learning"], correct: "I want to learn", explanation: "Want + to + V1 (to'g'ri)" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Gerund va Infinitive', color: 'bg-emerald-500', icon: '🌱', ids: [201, 202, 203, 204, 205] },
-    { title: "O'rtacha", desc: "Fe'l patternlari", color: 'bg-blue-500', icon: '📘', ids: [206, 207, 208, 209, 210] },
-    { title: 'Qiyin', desc: 'Stop/Remember/Forget', color: 'bg-violet-500', icon: '💪', ids: [211, 212, 213] },
-    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [214, 215] },
+    { title: 'Oson', desc: 'Gerund va Infinitive', color: 'bg-emerald-500', icon: '🌱', ids: [19077, 19078, 19079, 19080, 19081] },
+    { title: "O'rtacha", desc: "Fe'l patternlari", color: 'bg-blue-500', icon: '📘', ids: [19082, 19083, 19084, 19085, 19086] },
+    { title: 'Qiyin', desc: 'Stop/Remember/Forget', color: 'bg-violet-500', icon: '💪', ids: [19087, 19088, 19089] },
+    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [19090, 19091] },
   ],
 }
 
@@ -611,10 +611,10 @@ export const passiveVoice: DailyLesson = {
     { id: 100664, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'agent (passive voice)', options: ['bajaruvchi — kimga "by" qo\'shiladi', 'harakatning o\'zi', 'og\'irlik bildiradi', 'vaqtni ko\'rsatadi'], correct: 'bajaruvchi — kimga "by" qo\'shiladi', explanation: "Agent — passive voice da bajaruvchi. The cake was made by my mother. 'By my mother' — agent. Bajaruvchi muhim bo'lganda ishlatiladi." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Present Passive', color: 'bg-emerald-500', icon: '🌱', ids: [2101, 2102, 2103, 2104, 2105] },
-    { title: "O'rtacha", desc: 'Past Passive', color: 'bg-blue-500', icon: '📘', ids: [2106, 2107, 2108, 2109, 2110] },
-    { title: "Qiyin", desc: 'Inkor va savol shakllari', color: 'bg-violet-500', icon: '🎯', ids: [2113, 2114, 2111, 2115, 2112] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2115, 2120, 2120, 2117, 2112, 2116, 2119, 2117, 2118, 2119] },
+    { title: "Boshlang'ich", desc: 'Present Passive', color: 'bg-emerald-500', icon: '🌱', ids: [19101, 19102, 19103, 19104, 19105] },
+    { title: "O'rtacha", desc: 'Past Passive', color: 'bg-blue-500', icon: '📘', ids: [19106, 19107, 19108, 19109, 19110] },
+    { title: "Qiyin", desc: 'Inkor va savol shakllari', color: 'bg-violet-500', icon: '🎯', ids: [19111, 19112, 19113, 19114, 19115] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [19116, 19117, 19118, 19119, 19120, 98801, 98901, 100664] },
     { title: "🔀 Aralash", desc: "Passive + Active/Tenses farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95181, 95182, 95183, 95184, 95185] },
   ],
   tests: [
@@ -635,10 +635,10 @@ export const passiveVoice: DailyLesson = {
     { id: 19135, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["The house was built in 2000", "The house builded in 2000", "The house was build in 2000", "The house is built in 2000"], correct: "The house was built in 2000", explanation: "Past Passive: was built" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Passive asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [211, 212, 213, 214, 215] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [216, 217, 218, 219, 220] },
-    { title: 'Qiyin', desc: 'V3 va agent', color: 'bg-violet-500', icon: '💪', ids: [221, 222, 223] },
-    { title: 'Murakkab', desc: 'Active ↔ Passive', color: 'bg-rose-500', icon: '🏆', ids: [224, 225] },
+    { title: 'Oson', desc: 'Passive asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [19121, 19122, 19123, 19124, 19125] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [19126, 19127, 19128, 19129, 19130] },
+    { title: 'Qiyin', desc: 'V3 va agent', color: 'bg-violet-500', icon: '💪', ids: [19131, 19132, 19133] },
+    { title: 'Murakkab', desc: 'Active ↔ Passive', color: 'bg-rose-500', icon: '🏆', ids: [19134, 19135] },
   ],
   reading: {
     passage: "How Things Are Made\n\nCoffee is grown in many countries around the world. It is picked from coffee plants when the berries are red. Then the beans are dried and roasted. After that, they are packed and sent to different countries. Coffee is drunk all over the world. In the morning, coffee is made in millions of homes. It is often served with milk and sugar.\n\nIn Uzbekistan, plov is cooked every day in many homes. Rice is washed first, and then it is cooked with meat, carrots, and oil. The dish is prepared in a large pot called a 'kazan'. Plov is served on a large plate. It is eaten with the whole family. My grandmother's plov is made with love, and it is always the most delicious! English is also spoken in many countries. In fact, English is used by people all over the world for business and travel.",
@@ -815,10 +815,10 @@ export const reportedSpeech: DailyLesson = {
     { id: 100667, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'told (reporting verb)', options: ['kimgadir aytdi — tell + person + that', 'faqat aytdi — say + that', 'so\'radi — so\'ramoq', 'taklif qildi — taklif qilmoq'], correct: 'kimgadir aytdi — tell + person + that', explanation: "Told — tell ning o'tgan zamoni. Tell + person + that: He told me (that) he was tired. Say + that (person KERAK EMAS): He said (that) he was tired." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Say va Tell', color: 'bg-emerald-500', icon: '🌱', ids: [2201, 2202, 2203, 2204, 2205] },
-    { title: "O'rtacha", desc: 'Tense backshift', color: 'bg-blue-500', icon: '📘', ids: [2206, 2207, 2208, 2209, 2210] },
-    { title: "Qiyin", desc: 'Reported questions', color: 'bg-violet-500', icon: '🎯', ids: [2213, 2214, 2211, 2212, 2215] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2220, 2215, 2219, 2219, 2217, 2218, 2212, 2216, 2220, 2217] },
+    { title: "Boshlang'ich", desc: 'Say va Tell', color: 'bg-emerald-500', icon: '🌱', ids: [19150, 19151, 19152, 19153, 19154] },
+    { title: "O'rtacha", desc: 'Tense backshift', color: 'bg-blue-500', icon: '📘', ids: [19155, 19156, 19157, 19158, 19159] },
+    { title: "Qiyin", desc: 'Reported questions', color: 'bg-violet-500', icon: '🎯', ids: [19160, 19161, 19162, 19163, 19164] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [19165, 19166, 19167, 19168, 19169, 98802, 98902, 100667] },
     { title: "🔀 Aralash", desc: "Reported speech + Tenses (backshift) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95191, 95192, 95193, 95194, 95195] },
   ],
   tests: [
@@ -839,10 +839,10 @@ export const reportedSpeech: DailyLesson = {
     { id: 19184, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["She told me to wait", "She told me wait", "She said me to wait", "She told to me to wait"], correct: "She told me to wait", explanation: "Tell + person + to + V1" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Say/Tell va Backshift', color: 'bg-emerald-500', icon: '🌱', ids: [221, 222, 223, 224, 225] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [226, 227, 228, 229, 230] },
-    { title: 'Qiyin', desc: 'Murakkab backshift', color: 'bg-violet-500', icon: '💪', ids: [231, 232, 233] },
-    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [234, 235] },
+    { title: 'Oson', desc: 'Say/Tell va Backshift', color: 'bg-emerald-500', icon: '🌱', ids: [19170, 19171, 19172, 19173, 19174] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [19175, 19176, 19177, 19178, 19179] },
+    { title: 'Qiyin', desc: 'Murakkab backshift', color: 'bg-violet-500', icon: '💪', ids: [19180, 19181, 19182] },
+    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [19183, 19184] },
   ],
   reading: {
     passage: "What My Friends Said\n\nYesterday I talked to my friends about their weekend plans. This is what they told me.\n\nAli said that he was going to visit his grandmother on Saturday. He said his grandmother lived in the countryside and he loved going there. He told me that she always cooked delicious food for him.\n\nMadina said that she had already finished her homework. She told me that she would go to the cinema on Sunday. She asked if I wanted to join her. I told her that I was busy on Sunday.\n\nThe teacher told us that we must finish our projects by Friday. She said that the projects were very important for our grade. She asked if everyone understood the task. We all said that we did.\n\nMy mother told me that I should clean my room. She said that my room was very messy. I promised her that I would clean it after lunch.",
@@ -1031,10 +1031,10 @@ export const firstConditional: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'If + Present, will + V1', color: 'bg-emerald-500', icon: '🌱', ids: [2301, 2302, 2303, 2304, 2305] },
-    { title: "O'rtacha", desc: 'Inkor shakllari', color: 'bg-blue-500', icon: '📘', ids: [2306, 2307, 2308, 2309, 2310] },
-    { title: "Qiyin", desc: 'Unless va savol shakli', color: 'bg-violet-500', icon: '🎯', ids: [2313, 2314, 2311, 2312, 2315] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2319, 2320, 2320, 2312, 2317, 2316, 2318, 2319, 2315, 2317] },
+    { title: "Boshlang'ich", desc: 'If + Present, will + V1', color: 'bg-emerald-500', icon: '🌱', ids: [19199, 19200, 19201, 19202, 19203] },
+    { title: "O'rtacha", desc: 'Inkor shakllari', color: 'bg-blue-500', icon: '📘', ids: [19204, 19205, 19206, 19207, 19208] },
+    { title: "Qiyin", desc: 'Unless va savol shakli', color: 'bg-violet-500', icon: '🎯', ids: [19209, 19210, 19211, 19212, 19213] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [19214, 19215, 19216, 19217, 19218, 98800, 98900, 99000, 100632, 100635] },
     { title: "🔀 Aralash", desc: "First conditional + Time clauses / future farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95201, 95202, 95203, 95204, 95205] },
   ],
   tests: [
@@ -1055,10 +1055,10 @@ export const firstConditional: DailyLesson = {
     { id: 19233, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["If you don't study, you will fail", "If you don't study, you fail", "If you won't study, you will fail", "If you don't study, you would fail"], correct: "If you don't study, you will fail", explanation: "If + don't, will + V1" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'If + Present, will + V1', color: 'bg-emerald-500', icon: '🌱', ids: [231, 232, 233, 234, 235] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [236, 237, 238, 239, 240] },
-    { title: 'Qiyin', desc: 'Unless va comma', color: 'bg-violet-500', icon: '💪', ids: [241, 242, 243] },
-    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [244, 245, 99857, 99858, 99859] },
+    { title: 'Oson', desc: 'If + Present, will + V1', color: 'bg-emerald-500', icon: '🌱', ids: [19219, 19220, 19221, 19222, 19223] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [19224, 19225, 19226, 19227, 19228] },
+    { title: 'Qiyin', desc: 'Unless va comma', color: 'bg-violet-500', icon: '💪', ids: [19229, 19230, 19231] },
+    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [19232, 19233] },
   ],
   reading: {
     passage: "A Promise for the Future\n\nIf Aziz studies hard, he will pass all his exams. He wants to become a doctor. If he works hard, he will get into a good university. His parents say they will be very proud if he becomes a doctor.\n\nBut if Aziz doesn't study, he won't pass his exams. He will fail if he plays video games all day. His mother told him: 'If you waste your time now, you will regret it later.'\n\nAziz made a plan. If he studies every day for two hours, he will improve his grades. He will go to the library if it is quiet. He won't watch TV unless he finishes his homework first. If everything goes well, he will become a doctor in ten years!\n\nHis sister Nilufar also has plans. If she saves enough money, she will travel to Europe next summer. She will visit Paris and London. She says: 'If I learn French, I will communicate better in Paris.'",

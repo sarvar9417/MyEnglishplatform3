@@ -119,12 +119,12 @@ export const demonstratives: DailyLesson = {
     { id: 95495, type: 'transformation', instruction: "Birlikdan ko'plikka:", question: "This is a pen. → These ___.", hint: "These ___ pens.", correct: 'are', explanation: "This is → These are." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "This/that, these/those", color: 'bg-emerald-500', icon: '🌱', ids: [1101, 1102, 1103, 1104, 1105] },
-    { title: "O'rtacha", desc: "Is/are va here/there", color: 'bg-blue-500', icon: '📘', ids: [1106, 1107, 1108, 1109, 1110] },
-    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1111, 1112, 1113, 1114, 1115] },
-    { title: "O'zgartirish", desc: "Ko'plik, o'tgan vaqt, savollar", color: 'bg-teal-500', icon: '🔄', ids: [1116, 1117, 1118, 1119, 1120] },
+    { title: "Boshlang'ich", desc: "This/that, these/those", color: 'bg-emerald-500', icon: '🌱', ids: [2339, 2340, 2341, 2342, 2343] },
+    { title: "O'rtacha", desc: "Is/are va here/there", color: 'bg-blue-500', icon: '📘', ids: [2344, 2345, 2346, 2347, 2348] },
+    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [2349, 2350, 2351, 2352, 2353] },
+    { title: "O'zgartirish", desc: "Ko'plik, o'tgan vaqt, savollar", color: 'bg-teal-500', icon: '🔄', ids: [2354, 2355, 2356, 2357, 2358] },
   
-    { title: "🔀 Aralash", desc: "This/that/these/those + Plurals farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95491, 95492, 95493, 95494, 95495] },],
+    { title: "🔀 Aralash", desc: "This/that/these/those + Plurals farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [99517, 99518, 95491, 95492, 95493, 95494, 95495] },],
   tests: [
     { id: 2359, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which word means 'bu (yaqin)'?", blanks: ["This"], explanation: "this = bu (yaqin). Qoida: 'This' yaqin turgan birlik otlar bilan: this book (bu kitob). Uzoq narsalar uchun 'that': that book (u kitob). Ko'plikda: these (bular), those (ular)." },
     { id: 2360, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What are 'these'?", blanks: ["bular (yaqin ko'plik)"], explanation: "these = bular ('this'ning ko'pligi). Qoida: 'These' yaqin turgan ko'plik otlar bilan: these books (bu kitoblar). 'This'ning ko'plik shakli: this -> these." },
@@ -143,9 +143,9 @@ export const demonstratives: DailyLesson = {
     { id: 2373, type: 'fill-blank', instruction: "Bu yerda / u yerda:", question: 'Put it ___.', blanks: ['here'], explanation: "here — bu yerda, shu joyda" },
   ],
   testSections: [
-    { title: 'Oson', desc: "Demonstratives", color: 'bg-emerald-500', icon: '🌱', ids: [111, 112, 113, 114, 115] },
-    { title: "O'rtacha", desc: "Is/are, here/there", color: 'bg-blue-500', icon: '📘', ids: [116, 117, 118, 119, 120] },
-    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1111, 1112, 1113, 1114, 1115] },
+    { title: 'Oson', desc: "Demonstratives", color: 'bg-emerald-500', icon: '🌱', ids: [2359, 2360, 2361, 2362, 2363] },
+    { title: "O'rtacha", desc: "Is/are, here/there", color: 'bg-blue-500', icon: '📘', ids: [2364, 2365, 2366, 2367, 2368] },
+    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [2369, 2370, 2371, 2372, 2373] },
   ],
   reading: {
     passage: "My name is Saida. I am in a big classroom. This is my desk. That is the teacher's desk. These are my books, and those are my friend's books on the table over there. This pen is blue. That pencil is red. These pencils are new. Those notebooks are old. What is this? It is a ruler. What is that? It is a bag. I like this classroom!",
@@ -319,12 +319,12 @@ export const prepositionsOfPlace: DailyLesson = {
     { id: 95505, type: 'transformation', instruction: "Inkor va so'roq:", question: "There is a book on the table. → (inkor) There ___ a book...", hint: "There ___ a book on the table.", correct: 'isn\'t', explanation: "Inkor → there isn't." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "IN, ON, UNDER", color: 'bg-emerald-500', icon: '🌱', ids: [1901, 1902, 1903, 1904, 1905] },
-    { title: "O'rtacha", desc: "NEXT TO, BEHIND, IN FRONT OF", color: 'bg-blue-500', icon: '📘', ids: [1906, 1907, 1908, 1909, 1910] },
-    { title: "Qiyin", desc: "OPPOSITE, AMONG, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [1911, 1912, 1913, 1914, 1915] },
-    { title: "O'zgartirish", desc: "Bed, bag, floor, opposite", color: 'bg-teal-500', icon: '🔄', ids: [1916, 1917, 1918, 1919, 1920] },
+    { title: "Boshlang'ich", desc: "IN, ON, UNDER", color: 'bg-emerald-500', icon: '🌱', ids: [2390, 2391, 2392, 2393, 2394] },
+    { title: "O'rtacha", desc: "NEXT TO, BEHIND, IN FRONT OF", color: 'bg-blue-500', icon: '📘', ids: [2395, 2396, 2397, 2398, 2399] },
+    { title: "Qiyin", desc: "OPPOSITE, AMONG, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [2400, 2401, 2402, 2403, 2404] },
+    { title: "O'zgartirish", desc: "Bed, bag, floor, opposite", color: 'bg-teal-500', icon: '🔄', ids: [2405, 2406, 2407, 2408, 2409] },
   
-    { title: "🔀 Aralash", desc: "Joy predloglari + There is/are farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95501, 95502, 95503, 95504, 95505] },],
+    { title: "🔀 Aralash", desc: "Joy predloglari + There is/are farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [99519, 99520, 95501, 95502, 95503, 95504, 95505] },],
   tests: [
     { id: 2410, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The cat is ___ the box.", blanks: ["in"], explanation: "Quti ichida — IN" },
     { id: 2411, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The book is ___ the table.", blanks: ["on"], explanation: "Stol ustida — ON" },
@@ -343,9 +343,9 @@ export const prepositionsOfPlace: DailyLesson = {
     { id: 2424, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I live ___ Tashkent.", blanks: ["in"], explanation: "Shahar/davlat — IN" },
   ],
   testSections: [
-    { title: 'Oson', desc: "IN, ON, UNDER, NEXT TO", color: 'bg-emerald-500', icon: '🌱', ids: [191, 192, 193, 194, 195] },
-    { title: "O'rtacha", desc: "BEHIND, IN FRONT OF, AMONG", color: 'bg-blue-500', icon: '📘', ids: [196, 197, 198, 199, 200] },
-    { title: "Qiyin", desc: "OPPOSITE, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [1911, 1912, 1913, 1914, 1915] },
+    { title: 'Oson', desc: "IN, ON, UNDER, NEXT TO", color: 'bg-emerald-500', icon: '🌱', ids: [2410, 2411, 2412, 2413, 2414] },
+    { title: "O'rtacha", desc: "BEHIND, IN FRONT OF, AMONG", color: 'bg-blue-500', icon: '📘', ids: [2415, 2416, 2417, 2418, 2419] },
+    { title: "Qiyin", desc: "OPPOSITE, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [2420, 2421, 2422, 2423, 2424] },
   ],
   reading: {
     passage: "This is my room. The bed is in the corner. The desk is next to the window. A lamp is on the desk. My school bag is under the desk. The bookshelf is between the bed and the door. There is a picture on the wall. The cat is behind the door. My shoes are in front of the bookshelf. The mirror is opposite my bed. I love my room!",
@@ -518,12 +518,12 @@ export const basicAdjectives: DailyLesson = {
     { id: 95515, type: 'transformation', instruction: "Gapni tuzing:", question: "She / be / a / good / student", hint: "She ___ a ___ student.", correct: 'is, good', explanation: "She is a good student." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "A/An, oddiy sifat", color: 'bg-emerald-500', icon: '🌱', ids: [2001, 2002, 2003, 2004, 2005] },
-    { title: "O'rtacha", desc: "Yosh, his, rang", color: 'bg-blue-500', icon: '📘', ids: [2006, 2007, 2008, 2009, 2010] },
-    { title: "Qiyin", desc: "Tartib, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [2011, 2012, 2013, 2014, 2015] },
-    { title: "O'zgartirish", desc: "Is vs looks, sifat tartibi", color: 'bg-teal-500', icon: '🔄', ids: [2016, 2017, 2018, 2019, 2020] },
+    { title: "Boshlang'ich", desc: "A/An, oddiy sifat", color: 'bg-emerald-500', icon: '🌱', ids: [2441, 2442, 2443, 2444, 2445] },
+    { title: "O'rtacha", desc: "Yosh, his, rang", color: 'bg-blue-500', icon: '📘', ids: [2446, 2447, 2448, 2449, 2450] },
+    { title: "Qiyin", desc: "Tartib, error-correction", color: 'bg-violet-500', icon: '🎯', ids: [2451, 2452, 2453, 2454, 2455] },
+    { title: "O'zgartirish", desc: "Is vs looks, sifat tartibi", color: 'bg-teal-500', icon: '🔄', ids: [2456, 2457, 2458, 2459, 2460] },
   
-    { title: "🔀 Aralash", desc: "Sifatlar + Be fe'li farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95511, 95512, 95513, 95514, 95515] },],
+    { title: "🔀 Aralash", desc: "Sifatlar + Be fe'li farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [99521, 99522, 95511, 95512, 95513, 95514, 95515] },],
   tests: [
     { id: 2461, type: 'fill-blank', instruction: "A/An:", question: 'I have ___ big house.', blanks: ['a'], explanation: "'big' undosh tovush" },
     { id: 2462, type: 'fill-blank', instruction: "A/An:", question: 'She has ___ old car.', blanks: ['an'], explanation: "'old' unli tovush" },
@@ -542,9 +542,9 @@ export const basicAdjectives: DailyLesson = {
     { id: 2475, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Are you ___? (chanqoq)", blanks: ["thirsty"], explanation: "thirsty = chanqoq — tarjima" },
   ],
   testSections: [
-    { title: 'Oson', desc: "A/An, oddiy sifat", color: 'bg-emerald-500', icon: '🌱', ids: [201, 202, 203, 204, 205] },
-    { title: "O'rtacha", desc: "Yosh, his, tartib", color: 'bg-blue-500', icon: '📘', ids: [206, 207, 208, 209, 2010] },
-    { title: "Qiyin", desc: "Error-correction, A/An", color: 'bg-violet-500', icon: '🎯', ids: [2011, 2012, 2013, 2014, 2015] },
+    { title: 'Oson', desc: "A/An, oddiy sifat", color: 'bg-emerald-500', icon: '🌱', ids: [2461, 2462, 2463, 2464, 2465] },
+    { title: "O'rtacha", desc: "Yosh, his, tartib", color: 'bg-blue-500', icon: '📘', ids: [2466, 2467, 2468, 2469, 2470] },
+    { title: "Qiyin", desc: "Error-correction, A/An", color: 'bg-violet-500', icon: '🎯', ids: [2471, 2472, 2473, 2474, 2475] },
   ],
   reading: {
     passage: "My family is big and happy. My father is a tall man. He has a new car. My mother is a young woman. She is beautiful. I have a small brother. He is five years old. He is very cute. My sister is older than me. She has long hair. Our house is big. It has a large garden. We have a small dog. Its name is Bobik. I am happy because I have a wonderful family!",
@@ -694,12 +694,12 @@ export const thereIsAre: DailyLesson = {
     { id: 95525, type: 'transformation', instruction: "Savolga aylantiring:", question: "There is a cat under the chair. → ___ a cat under the chair?", hint: "___ there a cat...", correct: 'Is', explanation: "Yes/no question → Is there...?" }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Is/are asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [1, 2, 3, 4, 5] },
-    { title: "O'rtacha", desc: 'Some/any, no, predloglar', color: 'bg-blue-500', icon: '📘', ids: [6, 7, 8, 9, 10] },
-    { title: "Qiyin", desc: 'Error-correction, savol shakli', color: 'bg-violet-500', icon: '🎯', ids: [11, 12, 13, 14, 15] },
-    { title: "O'zgartirish", desc: 'Passage + mustahkamlash', color: 'bg-teal-500', icon: '🔄', ids: [16, 17, 18, 19, 20] },
+    { title: "Boshlang'ich", desc: 'Is/are asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [2805, 2806, 2807, 2808, 2809] },
+    { title: "O'rtacha", desc: 'Some/any, no, predloglar', color: 'bg-blue-500', icon: '📘', ids: [2810, 2811, 2812, 2813, 2814] },
+    { title: "Qiyin", desc: 'Error-correction, savol shakli', color: 'bg-violet-500', icon: '🎯', ids: [2815, 2816, 2817, 2818, 2819] },
+    { title: "O'zgartirish", desc: 'Passage + mustahkamlash', color: 'bg-teal-500', icon: '🔄', ids: [2820, 2821, 2822, 2823, 2824] },
   
-    { title: "🔀 Aralash", desc: "There is/are + Quantifiers (some/any) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95521, 95522, 95523, 95524, 95525] },],
+    { title: "🔀 Aralash", desc: "There is/are + Quantifiers (some/any) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [99523, 99524, 95521, 95522, 95523, 95524, 95525] },],
   tests: [
     { id: 2825, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "There ___ some water in the glass.", blanks: ["is"], explanation: "sanalmas (water) = is (sanalmas ot + is). Qoida: Water = suv (sanalmas). 'Water is' (suv ...): Water is important for life. Sanalmas otlar bilan 'are' ishlatilmaydi." },
     { id: 2826, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "There ___ two cats in the garden.", blanks: ["are"], explanation: "ko'plik (two cats) = are" },
@@ -718,9 +718,9 @@ export const thereIsAre: DailyLesson = {
     { id: 2839, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "There is a garden ___ our house, on the left side.", blanks: ["next to"], explanation: "on the left side = yonida = next to" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Is/are va some/any', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [1, 2, 3, 4, 5] },
-    { title: "O'rtacha", desc: 'Predloglar va so\'roq so\'zlari', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [6, 7, 8, 9, 10] },
-    { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83C\uDFAF', ids: [11, 12, 13, 14, 15] },
+    { title: 'Oson', desc: 'Is/are va some/any', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [2825, 2826, 2827, 2828, 2829] },
+    { title: "O'rtacha", desc: 'Predloglar va so\'roq so\'zlari', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [2830, 2831, 2832, 2833, 2834] },
+    { title: 'Qiyin', desc: 'Murakkab holatlar', color: 'bg-violet-500', icon: '\uD83C\uDFAF', ids: [2835, 2836, 2837, 2838, 2839] },
   ],
   reading: {
     passage: 'My Favourite Park\n\nThere is a beautiful park near my house. There are many trees in the park. There is a small fountain in the middle. There are three benches next to the path. There is a playground for children behind the fountain. There are some flowers in front of the café. There is a big tree between the fountain and the playground. There is no swimming pool in the park. There are some birds in the trees. There is a small café next to the park. The park is my favourite place!',
@@ -871,12 +871,12 @@ export const canCant: DailyLesson = {
     { id: 95535, type: 'transformation', instruction: "Can bilan so'roq:", question: "You can help me. → ___ you help me?", hint: "___ you help me?", correct: 'Can', explanation: "Yes/no question → Can + subject + V1." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "Can + V1", color: 'bg-emerald-500', icon: '🌱', ids: [1301, 1302, 1303, 1304, 1305] },
-    { title: "O'rtacha", desc: "Savol va ruxsat", color: 'bg-blue-500', icon: '📘', ids: [1306, 1307, 1308, 1309, 1310] },
-    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1311, 1312, 1313, 1314, 1315] },
-    { title: "O'zgartirish", desc: "Can → could, o'tgan qobiliyat", color: 'bg-teal-500', icon: '🔄', ids: [1316, 1317, 1318, 1319, 1320] },
+    { title: "Boshlang'ich", desc: "Can + V1", color: 'bg-emerald-500', icon: '🌱', ids: [2533, 2534, 2535, 2536, 2537] },
+    { title: "O'rtacha", desc: "Savol va ruxsat", color: 'bg-blue-500', icon: '📘', ids: [2538, 2539, 2540, 2541, 2542] },
+    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [2543, 2544, 2545, 2546, 2547] },
+    { title: "O'zgartirish", desc: "Can → could, o'tgan qobiliyat", color: 'bg-teal-500', icon: '🔄', ids: [2548, 2549, 2550, 2551, 2552] },
   
-    { title: "🔀 Aralash", desc: "Can (qobiliyat) + Present Simple (odat) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95531, 95532, 95533, 95534, 95535] },],
+    { title: "🔀 Aralash", desc: "Can (qobiliyat) + Present Simple (odat) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [99525, 99526, 95531, 95532, 95533, 95534, 95535] },],
   tests: [
     { id: 2553, type: 'fill-blank', instruction: "Can + V1:", question: 'I ___ swim.', blanks: ['can'], explanation: "can + V1 — imkonlik: can + asosiy fe'l (V1)" },
     { id: 2554, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I can to dance.', errorPart: 'to', correct: 'I can dance.', explanation: "to'siz — to'siz so'z, sifatdosh" },
@@ -895,9 +895,9 @@ export const canCant: DailyLesson = {
     { id: 2567, type: 'fill-blank', instruction: "Can/can't:", question: 'He ___ come tomorrow.', blanks: ["can't"], explanation: "can't = cannot — imkonsizlik, qila olmaslik" },
   ],
   testSections: [
-    { title: 'Oson', desc: "Can + V1", color: 'bg-emerald-500', icon: '🌱', ids: [131, 132, 133, 134, 135] },
-    { title: "O'rtacha", desc: "Can/can't, savol", color: 'bg-blue-500', icon: '📘', ids: [136, 137, 138, 139, 1310] },
-    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1311, 1312, 1313, 1314, 1315] },
+    { title: 'Oson', desc: "Can + V1", color: 'bg-emerald-500', icon: '🌱', ids: [2553, 2554, 2555, 2556, 2557] },
+    { title: "O'rtacha", desc: "Can/can't, savol", color: 'bg-blue-500', icon: '📘', ids: [2558, 2559, 2560, 2561, 2562] },
+    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [2563, 2564, 2565, 2566, 2567] },
   ],
   reading: {
     passage: "My name is Sanjar. I can do many things. I can swim very well. I can play football, but I cannot play basketball. My sister Malika can sing beautifully. She can also dance. My father can drive a car. He can speak Russian and English. My mother can cook delicious plov. I cannot cook, but I can help her in the kitchen. My little brother cannot read yet. He is only three years old. Can you swim? Can you play football? I can teach you!",
@@ -1046,10 +1046,10 @@ export const haveGot: DailyLesson = {
     { id: 95545, type: 'transformation', instruction: "I dan He ga:", question: "I have got a brother. → He ___ a brother.", hint: "He ___ a brother.", correct: 'has got', explanation: "He → has got (3-shaxs)." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "Have/has got", color: 'bg-emerald-500', icon: '🌱', ids: [1401, 1402, 1403, 1404, 1405] },
-    { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [1406, 1407, 1408, 1409, 1410] },
-    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1411, 1412, 1413, 1414, 1415] },
-    { title: "O'zgartirish", desc: "Have/Has got savollar", color: 'bg-teal-500', icon: '🔄', ids: [1416, 1417, 1418, 1419, 1420] },
+    { title: "Boshlang'ich", desc: "Have/has got", color: 'bg-emerald-500', icon: '🌱', ids: [2579, 2580, 2581, 2582, 2583] },
+    { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [2584, 2585, 2586, 2587, 2588] },
+    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [2589, 2590, 2591, 2592, 2593] },
+    { title: "O'zgartirish", desc: "Have/Has got savollar", color: 'bg-teal-500', icon: '🔄', ids: [2594, 2595, 2596, 2597, 2598] },
   
     { title: "🔀 Aralash", desc: "Have got + Possessive (my/his/her) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95541, 95542, 95543, 95544, 95545] },],
   tests: [
@@ -1072,9 +1072,9 @@ export const haveGot: DailyLesson = {
     { id: 99528, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ fly.", blanks: ["can't"], explanation: "can't = qila olmaydi (Lesson 13 — Can/Can't dan takrorlash)" },
   ],
   testSections: [
-    { title: 'Oson', desc: "Have/has got", color: 'bg-emerald-500', icon: '🌱', ids: [141, 142, 143, 144, 145] },
-    { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [146, 147, 148, 149, 1410] },
-    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1411, 1412, 1413, 1414, 1415] },
+    { title: 'Oson', desc: "Have/has got", color: 'bg-emerald-500', icon: '🌱', ids: [2599, 2600, 2601, 2602, 2603, 2604] },
+    { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [2605, 2606, 2607, 2608, 2609, 2610] },
+    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [2611, 2612, 2613, 99527, 99528] },
   ],
   reading: {
     passage: "Hello! My name is Gulnora. I have got a big family. I have got two brothers and one sister. My brothers have got a bicycle. My sister has got a beautiful doll. I have got a new phone. My mother has got a car. She has got a blue car. My father has got a job at a bank. We have got a big house with a garden. I have not got a pet, but I want a cat. Have you got any pets? What have you got? Tell me!",
@@ -1126,7 +1126,7 @@ export const presentSimple: DailyLesson = {
   title: 'Present Simple — Hozirgi oddiy zamon',
   subtitle: "Men har kuni ishlayman — I work every day. He works every day.",
   level: 'A1',
-  day: 15,
+  day: 17,
   formulas: [
     { label: "Ijobiy (I/you/we/they)", structure: "Subject + V1\nI work every day.\nThey play football.", color: 'green' },
     { label: "Ijobiy (he/she/it)", structure: "Subject + V1 + -s/-es\nHe works. She plays. He goes.", color: 'blue' },
@@ -1225,12 +1225,12 @@ export const presentSimple: DailyLesson = {
     { id: 95555, type: 'transformation', instruction: "Tasdiqdan inkorga:", question: "She likes tea. → She ___ like tea.", hint: "She ___ like tea.", correct: 'doesn\'t', explanation: "She likes → She doesn't like." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "3-shaxs -s", color: 'bg-emerald-500', icon: '🌱', ids: [1501, 1502, 1503, 1504, 1505] },
-    { title: "O'rtacha", desc: "Don't/doesn't va savol", color: 'bg-blue-500', icon: '📘', ids: [1506, 1507, 1508, 1509, 1510] },
-    { title: "Qiyin", desc: "Frequency + murakkab", color: 'bg-violet-500', icon: '🎯', ids: [1511, 1512, 1513, 1514, 1515] },
-    { title: "O'zgartirish", desc: "Usually, often, sometimes, rarely", color: 'bg-teal-500', icon: '🔄', ids: [1516, 1517, 1518, 1519, 1520] },
+    { title: "Boshlang'ich", desc: "3-shaxs -s", color: 'bg-emerald-500', icon: '🌱', ids: [2625, 2626, 2627, 2628, 2629] },
+    { title: "O'rtacha", desc: "Don't/doesn't va savol", color: 'bg-blue-500', icon: '📘', ids: [2630, 2631, 2632, 2633, 2634] },
+    { title: "Qiyin", desc: "Frequency + murakkab", color: 'bg-violet-500', icon: '🎯', ids: [2635, 2636, 2637, 2638, 2639] },
+    { title: "O'zgartirish", desc: "Usually, often, sometimes, rarely", color: 'bg-teal-500', icon: '🔄', ids: [2640, 2641, 2642, 2643, 2644] },
   
-    { title: "🔀 Aralash", desc: "Present Simple + Adverbs of frequency farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95551, 95552, 95553, 95554, 95555] },],
+    { title: "🔀 Aralash", desc: "Present Simple + Adverbs of frequency farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [99529, 99530, 95551, 95552, 95553, 95554, 95555] },],
   tests: [
     { id: 2645, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'He ___ (work) at a hospital.', blanks: ['works'], explanation: "work + s — 3-shaxs: work → works" },
     { id: 2646, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'She ___ (study) English.', blanks: ['studies'], explanation: "study → studies" },
@@ -1249,9 +1249,9 @@ export const presentSimple: DailyLesson = {
     { id: 2659, type: 'fill-blank', instruction: "Qisqa javob:", question: 'Does he work? — Yes, he ___.', blanks: ['does'], explanation: "Yes, he does" },
   ],
   testSections: [
-    { title: 'Oson', desc: "3-shaxs, don't/doesn't", color: 'bg-emerald-500', icon: '🌱', ids: [151, 152, 153, 154, 155] },
-    { title: "O'rtacha", desc: "Do/Does, frequency", color: 'bg-blue-500', icon: '📘', ids: [156, 157, 158, 159, 1510] },
-    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1511, 1512, 1513, 1514, 1515] },
+    { title: 'Oson', desc: "3-shaxs, don't/doesn't", color: 'bg-emerald-500', icon: '🌱', ids: [2645, 2646, 2647, 2648, 2649] },
+    { title: "O'rtacha", desc: "Do/Does, frequency", color: 'bg-blue-500', icon: '📘', ids: [2650, 2651, 2652, 2653, 2654] },
+    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [2655, 2656, 2657, 2658, 2659] },
   ],
   reading: {
     passage: "My name is Lola. I get up at 7 o'clock every day. I have breakfast at 7:30. I go to university at 8 o'clock. My classes start at 9 AM. I study English every day. My friend Dilshod studies with me. He speaks English very well. In the evening, I do my homework. I watch TV at 9 PM. I go to bed at 11 PM. My mother works at a hospital. She starts work at 8 AM. She does not work on Sundays. My father drives a bus. He loves his job. Every weekend, we visit my grandmother. She makes delicious plov for us.",
@@ -1403,12 +1403,12 @@ export const questionWords: DailyLesson = {
     { id: 95565, type: 'transformation', instruction: "Gapni savolga:", question: "She lives in Tashkent. → Where ___ she ___?", hint: "Where ___ she ___?", correct: 'does, live', explanation: "Savol: Where does she live?" }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "Wh- so'zlar", color: 'bg-emerald-500', icon: '🌱', ids: [1601, 1602, 1603, 1604, 1605] },
-    { title: "O'rtacha", desc: "Tartib va how", color: 'bg-blue-500', icon: '📘', ids: [1606, 1607, 1608, 1609, 1610] },
-    { title: "Qiyin", desc: "Murakkab savollar", color: 'bg-violet-500', icon: '🎯', ids: [1611, 1612, 1613, 1614, 1615] },
-    { title: "O'zgartirish", desc: "Javob berish, How many/old/much", color: 'bg-teal-500', icon: '🔄', ids: [1616, 1617, 1618, 1619, 1620] },
+    { title: "Boshlang'ich", desc: "Wh- so'zlar", color: 'bg-emerald-500', icon: '🌱', ids: [2671, 2672, 2673, 2674, 2675] },
+    { title: "O'rtacha", desc: "Tartib va how", color: 'bg-blue-500', icon: '📘', ids: [2676, 2677, 2678, 2679, 2680] },
+    { title: "Qiyin", desc: "Murakkab savollar", color: 'bg-violet-500', icon: '🎯', ids: [2681, 2682, 2683, 2684, 2685] },
+    { title: "O'zgartirish", desc: "Javob berish, How many/old/much", color: 'bg-teal-500', icon: '🔄', ids: [2686, 2687, 2688, 2689, 2690] },
   
-    { title: "🔀 Aralash", desc: "Savol so'zlari + Present Simple/past farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95561, 95562, 95563, 95564, 95565] },],
+    { title: "🔀 Aralash", desc: "Savol so'zlari + Present Simple/past farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [99531, 99532, 95561, 95562, 95563, 95564, 95565] },],
   tests: [
     { id: 2691, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: '___ is your name?', blanks: ['What'], explanation: "What — nima (narsalar uchun)" },
     { id: 2692, type: 'fill-blank', instruction: "Wh- so'zni qo'ying:", question: '___ do you live?', blanks: ['Where'], explanation: "Where — qayer (joy uchun)" },
@@ -1427,9 +1427,9 @@ export const questionWords: DailyLesson = {
     { id: 2705, type: 'fill-blank', instruction: "To'g'ri tartibda yozing:", question: 'How / you / are → ___', blanks: ['How are you'], explanation: "How are you — qandaysiz? (hol so'roq)" },
   ],
   testSections: [
-    { title: 'Oson', desc: "Wh- so'zlar", color: 'bg-emerald-500', icon: '🌱', ids: [161, 162, 163, 164, 165] },
-    { title: "O'rtacha", desc: "Tartib va how", color: 'bg-blue-500', icon: '📘', ids: [166, 167, 168, 169, 1610] },
-    { title: "Qiyin", desc: "Murakkab savollar", color: 'bg-violet-500', icon: '🎯', ids: [1611, 1612, 1613, 1614, 1615] },
+    { title: 'Oson', desc: "Wh- so'zlar", color: 'bg-emerald-500', icon: '🌱', ids: [2691, 2692, 2693, 2694, 2695] },
+    { title: "O'rtacha", desc: "Tartib va how", color: 'bg-blue-500', icon: '📘', ids: [2696, 2697, 2698, 2699, 2700] },
+    { title: "Qiyin", desc: "Murakkab savollar", color: 'bg-violet-500', icon: '🎯', ids: [2701, 2702, 2703, 2704, 2705] },
   ],
   reading: {
     passage: "Hello! My name is Tom. I am a student from England. I have some questions for you. What is your name? Where are you from? How old are you? When is your birthday? Why do you study English? Who is your teacher? Which subjects do you like? How many languages do you speak? These are important questions! Now let me answer for myself. My name is Tom. I am from London. I am 22 years old. My birthday is in March. I study English because I want to be a teacher. My teacher is Mr. Brown. I like Math and History. I speak two languages: English and French.",
@@ -1582,12 +1582,12 @@ export const conjunctions: DailyLesson = {
     { id: 95575, type: 'transformation', instruction: "Ikki gapni birlashtiring:", question: "I am tired. I want to sleep. → I am tired ___ I want to sleep.", hint: "...", correct: 'so', explanation: "Natija → so." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "And, but, or, because", color: 'bg-emerald-500', icon: '🌱', ids: [1701, 1702, 1703, 1704, 1705] },
-    { title: "O'rtacha", desc: "So, but, and farqlari", color: 'bg-blue-500', icon: '📘', ids: [1706, 1707, 1708, 1709, 1710] },
-    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1711, 1712, 1713, 1714, 1715] },
-    { title: "O'zgartirish", desc: "Natija, tanlash, travel, rain", color: 'bg-teal-500', icon: '🔄', ids: [1716, 1717, 1718, 1719, 1720] },
+    { title: "Boshlang'ich", desc: "And, but, or, because", color: 'bg-emerald-500', icon: '🌱', ids: [2717, 2718, 2719, 2720, 2721] },
+    { title: "O'rtacha", desc: "So, but, and farqlari", color: 'bg-blue-500', icon: '📘', ids: [2722, 2723, 2724, 2725, 2726] },
+    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [2727, 2728, 2729, 2730, 2731] },
+    { title: "O'zgartirish", desc: "Natija, tanlash, travel, rain", color: 'bg-teal-500', icon: '🔄', ids: [2732, 2733, 2734, 2735, 2736] },
   
-    { title: "🔀 Aralash", desc: "And/but/or/because + Present Simple farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95571, 95572, 95573, 95574, 95575] },],
+    { title: "🔀 Aralash", desc: "And/but/or/because + Present Simple farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [99533, 99534, 95571, 95572, 95573, 95574, 95575] },],
   tests: [
     { id: 2737, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I like tea ___ coffee.", blanks: ["and"], explanation: "AND — qo'shish: and (va)" },
     { id: 2738, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I like tea ___ not coffee.", blanks: ["but"], explanation: "BUT — qarama-qarshi: but (ammo, lekin)" },
@@ -1606,9 +1606,9 @@ export const conjunctions: DailyLesson = {
     { id: 2751, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I am happy because because it is Friday.', errorPart: 'because because', correct: 'I am happy because it is Friday.', explanation: "bir marta because" },
   ],
   testSections: [
-    { title: 'Oson', desc: "Conjunctions", color: 'bg-emerald-500', icon: '🌱', ids: [171, 172, 173, 174, 175] },
-    { title: "O'rtacha", desc: "So, but, and farqlari", color: 'bg-blue-500', icon: '📘', ids: [176, 177, 178, 179, 1710] },
-    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [1711, 1712, 1713, 1714, 1715] },
+    { title: 'Oson', desc: "Conjunctions", color: 'bg-emerald-500', icon: '🌱', ids: [2737, 2738, 2739, 2740, 2741] },
+    { title: "O'rtacha", desc: "So, but, and farqlari", color: 'bg-blue-500', icon: '📘', ids: [2742, 2743, 2744, 2745, 2746] },
+    { title: "Qiyin", desc: "Murakkab gaplar", color: 'bg-violet-500', icon: '🎯', ids: [2747, 2748, 2749, 2750, 2751] },
   ],
   reading: {
     passage: "My name is Anna. I like tea and coffee, but I prefer tea. I get up early so I can study. I study English because I want to travel. I can play the guitar and the piano, but I cannot sing. Do you like cats or dogs? I like cats because they are cute. My brother likes dogs, so we have a cat and a dog. I want to visit Paris or London next summer. I am happy because I have good friends. I study hard so I can pass my exams.",
@@ -1749,9 +1749,9 @@ export const a1Review: DailyLesson = {
     { id: 95585, type: 'transformation', instruction: "I dan She ga:", question: "I have got a car. → She ___ a car.", hint: "She ___ a car.", correct: 'has got', explanation: "She → has got." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "To be, have/has", color: 'bg-emerald-500', icon: '🌱', ids: [1801, 1802, 1803, 1804, 1805] },
-    { title: "O'rtacha", desc: "Can, 3-shaxs, there", color: 'bg-blue-500', icon: '📘', ids: [1806, 1807, 1808, 1809, 1810] },
-    { title: "Qiyin", desc: "Wh-, modallar, review", color: 'bg-violet-500', icon: '🎯', ids: [1811, 1812, 1813, 1814, 1815] },
+    { title: "Boshlang'ich", desc: "To be, have/has", color: 'bg-emerald-500', icon: '🌱', ids: [2763, 2764, 2765, 2766, 2767] },
+    { title: "O'rtacha", desc: "Can, 3-shaxs, there", color: 'bg-blue-500', icon: '📘', ids: [2768, 2769, 2770, 2771, 2772] },
+    { title: "Qiyin", desc: "Wh-, modallar, review", color: 'bg-violet-500', icon: '🎯', ids: [2773, 2774, 2775, 2776, 2777] },
   
     { title: "🔀 Aralash", desc: "A1 mavzularini aralash takrorlash", color: 'bg-fuchsia-500', icon: '🔄', ids: [95581, 95582, 95583, 95584, 95585] },],
   tests: [
@@ -1772,9 +1772,9 @@ export const a1Review: DailyLesson = {
     { id: 2792, type: 'fill-blank', instruction: "Have got + inkor:", question: 'He ___ (have) a car.', blanks: ["hasn't got"], explanation: "He hasn't got" },
   ],
   testSections: [
-    { title: 'Oson', desc: "Asosiy grammatika", color: 'bg-emerald-500', icon: '🌱', ids: [181, 182, 183, 184, 185] },
-    { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [186, 187, 188, 189, 1810] },
-    { title: "Qiyin", desc: "Review va murakkab", color: 'bg-violet-500', icon: '🎯', ids: [1811, 1812, 1813, 1814, 1815] },
+    { title: 'Oson', desc: "Asosiy grammatika", color: 'bg-emerald-500', icon: '🌱', ids: [2778, 2779, 2780, 2781, 2782] },
+    { title: "O'rtacha", desc: "Inkor va savol", color: 'bg-blue-500', icon: '📘', ids: [2783, 2784, 2785, 2786, 2787] },
+    { title: "Qiyin", desc: "Review va murakkab", color: 'bg-violet-500', icon: '🎯', ids: [2788, 2789, 2790, 2791, 2792] },
   ],
   reading: {
     passage: "Hello! I am Dilshod. I am from Uzbekistan. I am 18 years old. I have a big family. There are five people in my family: my mother, my father, my two sisters, and me. I have got a dog. Its name is Rex. I can swim, but I cannot play football. There is a park near my house. There are many trees in the park. Every morning, I get up at 6 o'clock and go to the park. I like my city because it is beautiful. This is my life. What about you?",

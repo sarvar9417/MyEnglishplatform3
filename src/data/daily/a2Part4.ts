@@ -153,10 +153,10 @@ export const presentContinuousFuture: DailyLesson = {
     { id: 100453, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'flight', options: ['parvoz, reys', 'poyezd', 'avtobus', 'taksi'], correct: 'parvoz, reys', explanation: "Flight — samolyot parvozi: She is catching a flight to Paris." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Ijobiy shakl asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [2901, 2902, 2903, 2904, 2905] },
-    { title: "O'rtacha", desc: 'Savol va tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [2906, 2907, 2908, 2909, 2910] },
-    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [2914, 2915, 2913, 2911, 2912] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [2920, 2916, 2915, 2912, 2917, 2919, 2916, 2918, 2920, 2919] },
+    { title: "Boshlang'ich", desc: 'Ijobiy shakl asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [29004, 29005, 29006, 29007, 29008] },
+    { title: "O'rtacha", desc: 'Savol va tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [29009, 29010, 29011, 29012, 29013] },
+    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [29014, 29015, 29016, 29017, 29018] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [29019, 29020, 29021, 29022, 29023] },
     { title: "🔀 Aralash", desc: "PC kelajak (arrangement) + Will/Going to farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95261, 95262, 95263, 95264, 95265] },
   ],
   tests: [
@@ -177,10 +177,10 @@ export const presentContinuousFuture: DailyLesson = {
     { id: 29038, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Present Continuous va will farqi: qaysi biri hozir qaror qilishni bildiradi?", blanks: ["will"], explanation: "Will — hozir qaror qilish (spontaneous decision)" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Asosiy tushunchalar', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [291, 292, 293, 294, 295] },
-    { title: "O'rtacha", desc: "Farqlarni tushunish", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [296, 297, 298, 299, 300] },
-    { title: 'Qiyin', desc: "To'g'ri shakl tanlash", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [301, 302, 303] },
-    { title: 'Murakkab', desc: 'Zamon farqlari', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [304, 305] },
+    { title: 'Oson', desc: 'Asosiy tushunchalar', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [29024, 29025, 29026, 29027, 29028] },
+    { title: "O'rtacha", desc: "Farqlarni tushunish", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [29029, 29030, 29031, 29032, 29033] },
+    { title: 'Qiyin', desc: "To'g'ri shakl tanlash", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [29034, 29035, 29036] },
+    { title: 'Murakkab', desc: 'Zamon farqlari', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [29037, 29038] },
   ],
 }
 
@@ -337,10 +337,10 @@ export const quantifiers: DailyLesson = {
     { id: 100497, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'a little', options: ['bir oz (yetarli, ijobiy)', 'kam (yetarli emas)', 'bir nechta (sanaluvchi)', "ko'p"], correct: 'bir oz (yetarli, ijobiy)', explanation: "A little — sanalmaydigan, ijobiy: I have a little money (yetarli)." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Much/Many asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3001, 3002, 3003, 3004, 3005] },
-    { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3006, 3007, 3008, 3009, 3010] },
-    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3015, 3013, 3014, 3011, 3012] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3019, 3019, 3020, 3017, 3018, 3016, 3020, 3015, 3012, 3016] },
+    { title: "Boshlang'ich", desc: 'Much/Many asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [29045, 29046, 29047, 29048, 29049] },
+    { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [29050, 29051, 29052, 29053, 29054] },
+    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [29055, 29056, 29057, 29058, 29059] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [29060, 29061, 29062, 29063, 29064] },
     { title: "🔀 Aralash", desc: "Quantifiers (much/many/few) + Countable farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95271, 95272, 95273, 95274, 95275] },
   ],
   tests: [
@@ -361,10 +361,10 @@ export const quantifiers: DailyLesson = {
     { id: 29079, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which quantifier can be used with BOTH countable and uncountable nouns?", blanks: ["a lot of"], explanation: "A lot of — hamma otlar bilan" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Quantifier turlari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [301, 302, 303, 304, 305] },
-    { title: "O'rtacha", desc: "Qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [306, 307, 308, 309, 310] },
-    { title: 'Qiyin', desc: 'Nozik farqlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [311, 312, 313] },
-    { title: 'Murakkab', desc: 'Aralash qoidalar', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [314, 315] },
+    { title: 'Oson', desc: 'Quantifier turlari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [29065, 29066, 29067, 29068, 29069] },
+    { title: "O'rtacha", desc: "Qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [29070, 29071, 29072, 29073, 29074] },
+    { title: 'Qiyin', desc: 'Nozik farqlar', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [29075, 29076, 29077] },
+    { title: 'Murakkab', desc: 'Aralash qoidalar', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [29078, 29079] },
   ],
 }
 
@@ -520,10 +520,10 @@ export const tooEnough: DailyLesson = {
     { id: 100542, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'too many', options: ["juda ko'p (sanaluvchi)", "juda ko'p (sanalmaydigan)", 'yetarli', 'bir oz'], correct: "juda ko'p (sanaluvchi)", explanation: "Too many — sanaluvchi otlar bilan: There are too many people." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Too va Enough asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3101, 3102, 3103, 3104, 3105] },
-    { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3106, 3107, 3108, 3109, 3110] },
-    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3113, 3111, 3112, 3114, 3115] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3117, 3120, 3117, 3118, 3119, 3120, 3116, 3112, 3115, 3119] },
+    { title: "Boshlang'ich", desc: 'Too va Enough asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [29086, 29087, 29088, 29089, 29090] },
+    { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [29091, 29092, 29093, 29094, 29095] },
+    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [29096, 29097, 29098, 29099, 29100] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [29101, 29102, 29103, 29104, 29105] },
     { title: "🔀 Aralash", desc: "Too/enough + Comparative/sifat farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95281, 95282, 95283, 95284, 95285] },
   ],
   tests: [
@@ -544,10 +544,10 @@ export const tooEnough: DailyLesson = {
     { id: 29120, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She has ___ experience for this job. She got it.", blanks: ["enough"], explanation: "Ishni olgan — yetarli tajriba" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Too/Enough qoidalari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [311, 312, 313, 314, 315] },
-    { title: "O'rtacha", desc: "Qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [316, 317, 318, 319, 320] },
-    { title: 'Qiyin', desc: 'Too/Very farqi', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [321, 322, 323] },
-    { title: 'Murakkab', desc: 'Much/Many farqlari', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [324, 325] },
+    { title: 'Oson', desc: 'Too/Enough qoidalari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [29106, 29107, 29108, 29109, 29110] },
+    { title: "O'rtacha", desc: "Qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [29111, 29112, 29113, 29114, 29115] },
+    { title: 'Qiyin', desc: 'Too/Very farqi', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [29116, 29117, 29118] },
+    { title: 'Murakkab', desc: 'Much/Many farqlari', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [29119, 29120] },
   ],
 }
 
@@ -703,10 +703,10 @@ export const soSuch: DailyLesson = {
     { id: 100606, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'such...that', options: ['shunday...ki (ot bilan, natija)', 'shunchalik...ki (faqat sifat)', "juda ko'p...ki", 'yetarli...ki'], correct: 'shunday...ki (ot bilan, natija)', explanation: "Such + (a/an) + adj + noun + that: It was such a hot day that we stayed home." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'So va Such asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [3201, 3202, 3203, 3204, 3205] },
-    { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3206, 3207, 3208, 3209, 3210] },
-    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3213, 3214, 3211, 3212, 3215] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3216, 3218, 3215, 3217, 3220, 3220, 3219, 3219, 3218, 3212] },
+    { title: "Boshlang'ich", desc: 'So va Such asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [29127, 29128, 29129, 29130, 29131] },
+    { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [29132, 29133, 29134, 29135, 29136] },
+    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [29137, 29138, 29139, 29140, 29141] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [29142, 29143, 29144, 29145, 29146] },
     { title: "🔀 Aralash", desc: "So/such + Sifat/comparative farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95291, 95292, 95293, 95294, 95295] },
   ],
   tests: [
@@ -727,10 +727,10 @@ export const soSuch: DailyLesson = {
     { id: 29161, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "There was ___ traffic that we were three hours late.", blanks: ["so much"], explanation: "Traffic — sanalmaydigan \u2192 so much" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'So/Such qoidalari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [321, 322, 323, 324, 325] },
-    { title: "O'rtacha", desc: "Qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [326, 327, 328, 329, 330] },
-    { title: 'Qiyin', desc: "Farqlarni tushunish", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [331, 332, 333] },
-    { title: 'Murakkab', desc: "That bog'lamasi", color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [334, 335] },
+    { title: 'Oson', desc: 'So/Such qoidalari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [29147, 29148, 29149, 29150, 29151] },
+    { title: "O'rtacha", desc: "Qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [29152, 29153, 29154, 29155, 29156] },
+    { title: 'Qiyin', desc: "Farqlarni tushunish", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [29157, 29158, 29159] },
+    { title: 'Murakkab', desc: "That bog'lamasi", color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [29160, 29161] },
   ],
 }
 
@@ -889,10 +889,10 @@ export const a2Review2: DailyLesson = {
       exampleAnswer: 'Tashkent is bigger than Samarkand. Samarkand is older than Tashkent. Tashkent is more modern than Samarkand. The weather in Samarkand is as hot as in Tashkent.' },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Asosiy qoidalar', color: 'bg-emerald-500', icon: '🌱', ids: [3301, 3302, 3303, 3304, 3305] },
-    { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [3306, 3307, 3308, 3309, 3310] },
-    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [3315, 3311, 3312, 3313, 3314] },
-    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [3319, 3319, 3320, 3317, 3320, 3316, 3318, 3312, 3317, 3315] },
+    { title: "Boshlang'ich", desc: 'Asosiy qoidalar', color: 'bg-emerald-500', icon: '🌱', ids: [29167, 29168, 29169, 29170, 29171] },
+    { title: "O'rtacha", desc: 'Tanlov mashqlari', color: 'bg-blue-500', icon: '📘', ids: [29172, 29173, 29174, 29175, 29176] },
+    { title: "Qiyin", desc: 'Xato tuzatish', color: 'bg-violet-500', icon: '🎯', ids: [29177, 29178, 29179, 29180, 29181] },
+    { title: "O'zgartirish", desc: 'Aralash mashqlar', color: 'bg-teal-500', icon: '🔄', ids: [29182, 29183, 29184, 29185, 29186] },
     { title: "🔀 Aralash", desc: "A2 mavzularini aralash takrorlash", color: 'bg-fuchsia-500', icon: '🔄', ids: [95301, 95302, 95303, 95304, 95305] },
   ],
   tests: [
@@ -913,9 +913,9 @@ export const a2Review2: DailyLesson = {
     { id: 29201, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "There were so many people that we couldn't find seats. — So many nima uchun?", blanks: ["people sanaluvchi"], explanation: "People — sanaluvchi ko'plik \u2192 so many" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Asosiy qoidalar', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [331, 332, 333, 334, 335] },
-    { title: "O'rtacha", desc: "Qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [336, 337, 338, 339, 340] },
-    { title: 'Qiyin', desc: "Farqlarni tushunish", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [341, 342, 343] },
-    { title: 'Murakkab', desc: "Aralash qoidalar", color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [344, 345, 99860, 99861, 99862] },
+    { title: 'Oson', desc: 'Asosiy qoidalar', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [29187, 29188, 29189, 29190, 29191] },
+    { title: "O'rtacha", desc: "Qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [29192, 29193, 29194, 29195, 29196] },
+    { title: 'Qiyin', desc: "Farqlarni tushunish", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [29197, 29198, 29199] },
+    { title: 'Murakkab', desc: "Aralash qoidalar", color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [29200, 29201] },
   ],
 }

@@ -146,10 +146,10 @@ export const verbPatterns: DailyLesson = {
     { id: 99331, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'hope', options: ['umid qilmoq', 'qochmoq', 'xohlamoq', 'aytmoq'], correct: 'umid qilmoq', explanation: "Hope = umid qilmoq. Hope + to V1: I hope to see you soon." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "V-ing va to V1 asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2701, 2702, 2703, 2704, 2705] },
-    { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [2706, 2707, 2708, 2709, 2710] },
-    { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2713, 2714, 2715, 2711, 2712] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2720, 2724, 2721, 2722, 2718, 2717, 2716, 2725, 2723, 2719] },
+    { title: "Boshlang'ich", desc: "V-ing va to V1 asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [24002, 24003, 24004, 24005, 24006] },
+    { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [24007, 24008, 24009, 24010, 24011] },
+    { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [24012, 24013, 24014, 24015, 24016] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [24017, 24018, 24019, 24020, 24021, 24022, 24023, 24024, 24025, 24026, 24027] },
     { title: "🔀 Aralash", desc: "Verb + object + to V + Gerund/infinitiv farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95211, 95212, 95213, 95214, 95215] },
   ],
   tests: [
@@ -170,10 +170,10 @@ export const verbPatterns: DailyLesson = {
     { id: 24042, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "What is the difference between 'remember doing' and 'remember to do'?", options: ["farqi yo'q", "remember doing = o'tmishni eslash, remember to do = kelajakni eslash", "remember doing = kelajak, remember to do = o'tmish", "ikkalasi ham bir xil ma'no"], correct: "remember doing = o'tmishni eslash, remember to do = kelajakni eslash", explanation: "Remember + V-ing = oldin qilgan ishni eslash. Remember + to V1 = qilishi kerak bo'lgan ishni eslash." },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Verb patterns asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [271, 272, 273, 274, 275] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [276, 277, 278, 279, 280] },
-    { title: 'Qiyin', desc: 'Stop/Remember/Forget', color: 'bg-violet-500', icon: '💪', ids: [281, 282, 283] },
-    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [284, 285] },
+    { title: 'Oson', desc: 'Verb patterns asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [24028, 24029, 24030, 24031, 24032] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [24033, 24034, 24035, 24036, 24037] },
+    { title: 'Qiyin', desc: 'Stop/Remember/Forget', color: 'bg-violet-500', icon: '💪', ids: [24038, 24039, 24040] },
+    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [24041, 24042] },
   ],
   reading: {
     passage: "My Hobbies and Dreams\n\nI really enjoy reading books in my free time. My favourite hobby is reading fantasy novels. I also like listening to music while I read. My friend Akbar enjoys playing football. He wants to become a famous footballer one day. He practises every day because he hopes to join a professional club.\n\nMy sister Lola loves drawing. She can draw very beautifully. Her teacher told her to enter an art competition. Lola decided to take part in it. She promised to do her best. I also want to learn how to draw, so she agreed to teach me.\n\nOur parents want us to study hard. They expect us to get good grades at school. My father advised me to spend less time on video games. He said I should practise English more. I promised him to study at least one hour every day. My mother reminded me to call my grandmother every week. I enjoy talking to her — she always gives me good advice!",
@@ -289,7 +289,7 @@ export const timePrepositions: DailyLesson = {
   exercises: [
     { id: 24051, type: 'fill-blank', instruction: "At, in yoki on bilan to'ldiring:", question: 'The train leaves ___ 7 AM.', blanks: ['at'], explanation: "Aniq vaqt → 'at'." },
     { id: 24052, type: 'fill-blank', instruction: "At, in yoki on:", question: 'I was born ___ May.', blanks: ['in'], explanation: "Oy → in — oylar oldida in: in May (mayda)" },
-    { id: 24053, type: 'fill-blank', instruction: "At, in yoki on:", question: 'See you ___ tomorrow.', blanks: ['on'], explanation: "Kun → on — kunlar oldida on: on Monday (dushanba)" },
+    { id: 24053, type: 'fill-blank', instruction: "At, in yoki on:", question: 'See you ___ tomorrow.', blanks: ['—'], acceptedAnswers: [['—', '-', '']], explanation: "'Tomorrow' — maxsus kun, oldida hech qanday preposition qo'yilmaydi." },
     { id: 24054, type: 'fill-blank', instruction: "At, in yoki on:", question: 'I wake up ___ 7 o\'clock.', blanks: ['at'], explanation: "Soat → 'at'." },
     { id: 24055, type: 'fill-blank', instruction: "Since yoki for:", question: 'I have studied English ___ three years.', blanks: ['for'], explanation: "Vaqt oralig'i → 'for'." },
     { id: 24056, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'He was born ___ 2020.', blanks: ['in'], explanation: 'Yil → in — yillar oldida in: in 2024 (2024-yilda)' },
@@ -330,10 +330,10 @@ export const timePrepositions: DailyLesson = {
     { id: 99361, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'on (time)', options: ['kun/sana bilan (on Monday)', 'aniq vaqt bilan (at 5)', 'oy/yil/fasl bilan (in May)', 'davomida (during)'], correct: 'kun/sana bilan (on Monday)', explanation: "ON — kunlar va sanalar uchun: on Monday, on 5 May, on my birthday." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "At / In / On asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2801, 2802, 2803, 2804, 2805] },
-    { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [2806, 2807, 2808, 2809, 2810] },
-    { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2813, 2814, 2815, 2811, 2812] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2817, 2820, 2821, 2823, 2825, 2818, 2819, 2816, 2824, 2822] },
+    { title: "Boshlang'ich", desc: "At / In / On asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [24051, 24052, 24053, 24054, 24055] },
+    { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [24056, 24057, 24058, 24059, 24060] },
+    { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [24061, 24062, 24063, 24064, 24065] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [24066, 24067, 24068, 24069, 24070, 24071, 24072, 24073, 24074, 24075, 24076] },
     { title: "🔀 Aralash", desc: "Vaqt predloglari + Present Simple farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95221, 95222, 95223, 95224, 95225] },
   ],
   tests: [
@@ -354,10 +354,10 @@ export const timePrepositions: DailyLesson = {
     { id: 24091, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What is the difference between 'during' and 'while'?", blanks: ["during + noun, while + subject + verb"], explanation: "During + noun (during the lesson). While + subject + verb (while I was studying)." },
   ],
   testSections: [
-    { title: 'Oson', desc: 'At / In / On asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [281, 282, 283, 284, 285] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [286, 287, 288, 289, 290] },
-    { title: 'Qiyin', desc: 'Since/For va prepozitsiyasiz', color: 'bg-violet-500', icon: '💪', ids: [291, 292, 293] },
-    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [294, 295] },
+    { title: 'Oson', desc: 'At / In / On asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [24077, 24078, 24079, 24080, 24081] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [24082, 24083, 24084, 24085, 24086] },
+    { title: 'Qiyin', desc: 'Since/For va prepozitsiyasiz', color: 'bg-violet-500', icon: '💪', ids: [24087, 24088, 24089] },
+    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [24090, 24091] },
   ],
 }
 
@@ -518,10 +518,10 @@ export const thereIsThereAre: DailyLesson = {
     { id: 99401, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: "there aren't", options: ["yo'q (ko'plik)", 'bor (ko\'plik)', 'bor (birlik)', 'yo\'q (birlik)'], correct: "yo'q (ko'plik)", explanation: "There aren't — ko'plik otlarda inkor: There aren't any books." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "There is / There are asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2401, 2402, 2403, 2404, 2405] },
-    { title: "O'rtacha", desc: "So'roq va tanlov", color: 'bg-blue-500', icon: '📘', ids: [2406, 2407, 2408, 2409, 2410] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [2413, 2414, 2415, 2411, 2412] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2422, 2424, 2417, 2419, 2423, 2421, 2418, 2416, 2420, 2425] },
+    { title: "Boshlang'ich", desc: "There is / There are asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [24098, 24099, 24100, 24101, 24102] },
+    { title: "O'rtacha", desc: "So'roq va tanlov", color: 'bg-blue-500', icon: '📘', ids: [24103, 24104, 24105, 24106, 24107] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [24108, 24109, 24110, 24111, 24112] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [24113, 24114, 24115, 24116, 24117, 24118, 24119, 24120, 24121, 24122] },
     { title: "🔀 Aralash", desc: "There is/are + Countable/some/any farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95231, 95232, 95233, 95234, 95235] },
   ],
   tests: [
@@ -542,10 +542,10 @@ export const thereIsThereAre: DailyLesson = {
     { id: 24137, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What is the difference between 'There is a book' and 'It is a book'?", blanks: ["There is = mavjudlik, It is = tavsif"], explanation: "There is = bor/yo'q (mavjudlik). It is = bu nima/nima ekanligi (tavsif)." },
   ],
   testSections: [
-    { title: 'Oson', desc: 'There is / There are asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [241, 242, 243, 244, 245] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [246, 247, 248, 249, 250] },
-    { title: 'Qiyin', desc: 'There was/were va xatolar', color: 'bg-violet-500', icon: '💪', ids: [251, 252, 253] },
-    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [254, 255] },
+    { title: 'Oson', desc: 'There is / There are asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [24123, 24124, 24125, 24126, 24127] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [24128, 24129, 24130, 24131, 24132] },
+    { title: 'Qiyin', desc: 'There was/were va xatolar', color: 'bg-violet-500', icon: '💪', ids: [24133, 24134, 24135] },
+    { title: 'Murakkab', desc: 'Yuqori daraja', color: 'bg-rose-500', icon: '🏆', ids: [24136, 24137] },
   ],
 }
 
@@ -708,10 +708,10 @@ export const possessives: DailyLesson = {
     { id: 99441, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: "possessive 's", options: ["egalik belgisi (John's car)", "ko'plik belgisi", "savol belgisi", "gap oxiri"], correct: "egalik belgisi (John's car)", explanation: "Possessive 's — odamlar va hayvonlar uchun egalik: John's car." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "Possessive adjectives", color: 'bg-emerald-500', icon: '🌱', ids: [2501, 2502, 2503, 2504, 2505] },
-    { title: "O'rtacha", desc: "Pronoun va tanlov", color: 'bg-blue-500', icon: '📘', ids: [2506, 2507, 2508, 2509, 2510] },
-    { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2513, 2514, 2515, 2511, 2512] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2517, 2521, 2516, 2519, 2522, 2520, 2523, 2525, 2524, 2518] },
+    { title: "Boshlang'ich", desc: "Possessive adjectives", color: 'bg-emerald-500', icon: '🌱', ids: [24144, 24145, 24146, 24147, 24148] },
+    { title: "O'rtacha", desc: "Pronoun va tanlov", color: 'bg-blue-500', icon: '📘', ids: [24149, 24150, 24151, 24152, 24153] },
+    { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [24154, 24155, 24156, 24157, 24158] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [24159, 24160, 24161, 24162, 24163, 24164, 24165, 24166, 24167, 24168] },
     { title: "🔀 Aralash", desc: "Egalik (mine/'s) + Olmoshlar farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95241, 95242, 95243, 95244, 95245] },
   ],
   tests: [
@@ -732,10 +732,10 @@ export const possessives: DailyLesson = {
     { id: 24183, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "What is the difference between 'my friend' and 'a friend of mine'?", options: ["farqi yo'q", "my friend = aniq do'st, a friend of mine = do'stlardan biri", "my friend = ko'plik, a friend of mine = birlik", "my friend = rasmiy, a friend of mine = norasmiy"], correct: "my friend = aniq do'st, a friend of mine = do'stlardan biri", explanation: "My friend = ma'lum bir do'st. A friend of mine = ko'p do'stlardan biri." },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Possessive adjectives asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [251, 252, 253, 254, 255] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [256, 257, 258, 259, 260] },
-    { title: 'Qiyin', desc: "Its/It's va Whose/Who's", color: 'bg-violet-500', icon: '💪', ids: [261, 262, 263] },
-    { title: 'Murakkab', desc: 'Double possessive', color: 'bg-rose-500', icon: '🏆', ids: [264, 265] },
+    { title: 'Oson', desc: 'Possessive adjectives asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [24169, 24170, 24171, 24172, 24173] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [24174, 24175, 24176, 24177, 24178] },
+    { title: 'Qiyin', desc: "Its/It's va Whose/Who's", color: 'bg-violet-500', icon: '💪', ids: [24179, 24180, 24181] },
+    { title: 'Murakkab', desc: 'Double possessive', color: 'bg-rose-500', icon: '🏆', ids: [24182, 24183] },
   ],
 }
 
@@ -896,10 +896,10 @@ export const someAnyNoEvery: DailyLesson = {
     { id: 99481, type: 'vocab-match', instruction: "So'zning ma'nosini tanlang", word: 'nothing', options: ['hech narsa', 'hamma narsa', 'nimadir', 'hech kim'], correct: 'hech narsa', explanation: "Nothing = no + thing: There is nothing in the box." },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: "Some / Any / No asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [2601, 2602, 2603, 2604, 2605] },
-    { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [2606, 2607, 2608, 2609, 2610] },
-    { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [2613, 2614, 2615, 2611, 2612] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [2622, 2621, 2620, 2616, 2618, 2624, 2623, 2619, 2625, 2617] },
+    { title: "Boshlang'ich", desc: "Some / Any / No asoslari", color: 'bg-emerald-500', icon: '🌱', ids: [24190, 24191, 24192, 24193, 24194] },
+    { title: "O'rtacha", desc: "Tanlov va qoida", color: 'bg-blue-500', icon: '📘', ids: [24195, 24196, 24197, 24198, 24199] },
+    { title: "Qiyin", desc: "Xatolarni topish", color: 'bg-violet-500', icon: '🎯', ids: [24200, 24201, 24202, 24203, 24204] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [24205, 24206, 24207, 24208, 24209, 24210, 24211, 24212, 24213, 24214] },
     { title: "🔀 Aralash", desc: "Some/any/no + Countable/much-many farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95251, 95252, 95253, 95254, 95255] },
   ],
   tests: [
@@ -920,10 +920,10 @@ export const someAnyNoEvery: DailyLesson = {
     { id: 24229, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which sentence means the SAME as 'I have no friends'?", blanks: ["I don't have any friends."], explanation: "'No' = 'not any'. 'I have no friends' = 'I don't have any friends'." },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Some / Any / No asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [261, 262, 263, 264, 265] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [266, 267, 268, 269, 270] },
-    { title: 'Qiyin', desc: 'Double negative va any', color: 'bg-violet-500', icon: '💪', ids: [271, 272, 273] },
-    { title: 'Murakkab', desc: 'Nobody/No/Any chalkashliklari', color: 'bg-rose-500', icon: '🏆', ids: [274, 275] },
+    { title: 'Oson', desc: 'Some / Any / No asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [24215, 24216, 24217, 24218, 24219] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '📘', ids: [24220, 24221, 24222, 24223, 24224] },
+    { title: 'Qiyin', desc: 'Double negative va any', color: 'bg-violet-500', icon: '💪', ids: [24225, 24226, 24227] },
+    { title: 'Murakkab', desc: 'Nobody/No/Any chalkashliklari', color: 'bg-rose-500', icon: '🏆', ids: [24228, 24229] },
   ],
 }
 

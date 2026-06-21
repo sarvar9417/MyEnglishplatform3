@@ -153,11 +153,11 @@ export const unrealPastB2: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Unreal Past asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5401, 5402, 5403, 5404, 5405] },
-    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5406, 5407, 5408, 5409, 5410] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5411, 5412, 5413, 5414, 5415] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5420, 5416, 5417, 5418, 5419] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5421, 5422, 5423, 5424, 5425, 5426] },
+    { title: "Boshlang'ich", desc: 'Unreal Past asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [54007, 54008, 54009, 54010, 54011] },
+    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [54012, 54013, 54014, 54015, 54016] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [54017, 54018, 54019, 54020, 54021] },
+    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [54022, 54023, 54024, 54025, 54026] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [54027, 54028, 54029, 54030, 54031, 54032] },
     { title: "🔀 Aralash", desc: "Unreal past (wish/if only) + Conditionals farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95311, 95312, 95313, 95314, 95315, 56000, 56001] },
   ],
   tests: [
@@ -181,10 +181,10 @@ export const unrealPastB2: DailyLesson = {
     { id: 54050, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gap Unreal Past ni TO'G'RI ifodalaydi?", options: ["I wish I were taller.", "I wish I was taller.", "I wish I am taller.", "I wish I would be taller."], correct: "I wish I were taller.", explanation: "Wish + were — unreal past ning to'g'ri shakli (to be bilan)" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Unreal Past asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [541, 542, 543, 544, 545] },
-    { title: "O'rtacha", desc: "Wish, If only, Would rather", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [546, 547, 548, 549, 550] },
-    { title: 'Qiyin', desc: "Wish + would va I'd rather past", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [551, 552, 553] },
-    { title: 'Murakkab', desc: 'Unreal Past master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [554, 555, 5431, 5432, 5433] },
+    { title: 'Oson', desc: 'Advanced Conditionals asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [54096, 54097, 54098, 54099, 54100] },
+    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [54101, 54102, 54103, 54104, 54105] },
+    { title: 'Qiyin', desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [54106, 54107, 54108] },
+    { title: 'Murakkab', desc: 'B2 darajasidagi murakkab test', color: 'bg-rose-500', icon: '🏆', ids: [54109, 54110, 54111, 54112, 54113] },
   ],
 
   dialogues: [
@@ -398,13 +398,13 @@ export const advancedConditionalsB2: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Conditionals asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5501, 5502, 5503, 5504, 5505] },
-    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5506, 5507, 5508, 5509, 5510] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5511, 5512, 5513, 5514, 5515] },
-    { title: "Kengaytirish", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5520, 5516, 5517, 5518, 5519] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5521, 5522, 5523, 5524, 5525] },
-    { title: "Qo'shimcha", desc: 'As long as, Otherwise, In case, Were to', color: 'bg-amber-500', icon: '📌', ids: [5526, 5527, 5528, 5529] },
-    { title: "Mixed qo'shimcha", desc: "Present→past mixed + 3rd vs Mixed", color: 'bg-rose-500', icon: '🔀', ids: [5530, 5531, 5532, 5533, 5534] },
+    { title: "Boshlang'ich", desc: 'Conditionals asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [54062, 54063, 54064, 54065, 54066] },
+    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [54067, 54068, 54069, 54070, 54071] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [54072, 54073, 54074, 54075, 54076] },
+    { title: "Kengaytirish", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [54077, 54078, 54079, 54080, 54081] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [54082, 54083, 54084, 54085, 54086, 54087] },
+    { title: "Qo'shimcha", desc: 'As long as, Otherwise, In case, Were to', color: 'bg-amber-500', icon: '📌', ids: [54088, 54089, 54090, 54091] },
+    { title: "Mixed qo'shimcha", desc: "Present→past mixed + 3rd vs Mixed", color: 'bg-rose-500', icon: '🔀', ids: [54092, 54093, 54094, 54095] },
     { title: "🔀 Aralash", desc: "Mixed conditionals + inversion + Unreal past farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95321, 95322, 95323, 95324, 95325, 56002, 56003] },
   ],
   tests: [
@@ -428,10 +428,10 @@ export const advancedConditionalsB2: DailyLesson = {
     { id: 54113, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi gap NOTO'G'RI grammatik?", options: ["Should you need help, please to ask", "Should you need help, please ask", "If you need help, please ask", "Should you need help, please asking"], correct: "Should you need help, please to ask", explanation: "Should you need help, please ask ('to ask' xato)" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Conditionals asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [551, 552, 553, 554, 555] },
-    { title: "O'rtacha", desc: "Mixed/Inverted/Implied", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [556, 557, 558, 559, 560] },
-    { title: 'Qiyin', desc: 'Mixed va Inversion', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [561, 562, 563] },
-    { title: 'Murakkab', desc: 'Advanced Conditionals master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [564, 565, 5531, 5532, 5533] },
+    { title: 'Oson', desc: 'Conditionals asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [54096, 54097, 54098, 54099, 54100] },
+    { title: "O'rtacha", desc: "Mixed/Inverted/Implied", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [54101, 54102, 54103, 54104, 54105] },
+    { title: 'Qiyin', desc: 'Mixed va Inversion', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [54106, 54107, 54108] },
+    { title: 'Murakkab', desc: 'Advanced Conditionals master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [54109, 54110, 54111, 54112, 54113] },
   ],
 
   dialogues: [
@@ -639,11 +639,11 @@ export const nominalizationB2: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Noun yasash asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5601, 5602, 5603, 5604, 5605] },
-    { title: "O'rtacha", desc: "To'g'ri noun tanlash", color: 'bg-blue-500', icon: '📘', ids: [5606, 5607, 5608, 5609, 5610] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5611, 5612, 5613, 5614, 5615] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5620, 5616, 5617, 5618, 5619] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5621, 5622, 5623, 5624, 5625] },
+    { title: "Boshlang'ich", desc: 'Noun yasash asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [54125, 54126, 54127, 54128, 54129] },
+    { title: "O'rtacha", desc: "To'g'ri noun tanlash", color: 'bg-blue-500', icon: '📘', ids: [54130, 54131, 54132, 54133, 54134] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [54135, 54136, 54137, 54138, 54139] },
+    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [54140, 54141, 54142, 54143, 54144] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [54145, 54146, 54147, 54148, 54149] },
     { title: "🔀 Aralash", desc: "Nominalizatsiya + Passive (rasmiy uslub) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95331, 95332, 95333, 95334, 95335, 56004, 56005] },
   ],
   tests: [
@@ -667,10 +667,10 @@ export const nominalizationB2: DailyLesson = {
     { id: 54167, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Academic writing da nominalization nega ishlatiladi?", blanks: ["rasmiy va ixcham ifoda uchun"], explanation: "Nominalization = formal, concise, academic style (IELTS 7+)" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Nominalization asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [561, 562, 563, 564, 565] },
-    { title: "O'rtacha", desc: "Noun shaklini topish", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [566, 567, 568, 569, 570] },
-    { title: 'Qiyin', desc: 'Suffixlarni farqlash', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [571, 572, 573] },
-    { title: 'Murakkab', desc: 'Nominalization master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [574, 575, 5631, 5632, 5633] },
+    { title: 'Oson', desc: 'Nominalization asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [54150, 54151, 54152, 54153, 54154] },
+    { title: "O'rtacha", desc: "Noun shaklini topish", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [54155, 54156, 54157, 54158, 54159] },
+    { title: 'Qiyin', desc: 'Suffixlarni farqlash', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [54160, 54161, 54162] },
+    { title: 'Murakkab', desc: 'Nominalization master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [54163, 54164, 54165, 54166, 54167] },
   ],
 
   dialogues: [
@@ -873,12 +873,12 @@ export const subjunctiveB2: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Subjunctive asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5701, 5702, 5703, 5704, 5705] },
-    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5706, 5707, 5708, 5709, 5710] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5711, 5712, 5713, 5714, 5715] },
-    { title: "Inkor", desc: 'Transformatsiya', color: 'bg-red-500', icon: '🚫', ids: [5720, 5716, 5717, 5718, 5719] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5721, 5722, 5723, 5724, 5725] },
-    { title: "🔀 Aralash", desc: "Subjunktiv + Modals farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95341, 95342, 95343, 95344, 95345, 56006, 56007] },
+    { title: "Boshlang'ich", desc: 'Subjunctive asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [54179, 54180, 54181, 54182, 54183] },
+    { title: "O'rtacha", desc: "That + base verb", color: 'bg-blue-500', icon: '📘', ids: [54184, 54185, 54186, 54187, 54188] },
+    { title: "Qiyin", desc: 'Subjunctive vs Indicative', color: 'bg-violet-500', icon: '🎯', ids: [54189, 54190, 54191, 54192, 54193] },
+    { title: "Inkor", desc: 'Passive subjunctive', color: 'bg-red-500', icon: '🚫', ids: [54194, 54195, 54196, 54197, 54198] },
+    { title: "O'zgartirish", desc: 'Inverted conditional', color: 'bg-teal-500', icon: '🔄', ids: [54199, 54200, 54201, 54202, 54203] },
+    { title: "🔀 Aralash", desc: "Subjunctive + Advanced conditionals", color: 'bg-fuchsia-500', icon: '🔄', ids: [95341, 95342, 95343, 95344, 95345, 56006, 56007] },
   ],
   tests: [
     { id: 54204, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "Subjunctive present = _______ verb (no -s).", blanks: ['base'], acceptedAnswers: [['base']], explanation: 'Subjunctive = base verb (no -s)' },
@@ -901,10 +901,10 @@ export const subjunctiveB2: DailyLesson = {
     { id: 54221, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Were I to accept this position...' — bu qanday tuzilma?", blanks: ["inverted conditional subjunctive"], explanation: "Were + S + to V = inverted conditional with subjunctive (formal)" },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Subjunctive asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [571, 572, 573, 574, 575] },
-    { title: "O'rtacha", desc: "That + base verb va Were", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [576, 577, 578, 579, 580] },
-    { title: 'Qiyin', desc: 'Subjunctive vs Indicative', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [581, 582, 583] },
-    { title: 'Murakkab', desc: 'Subjunctive master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [584, 585, 5731, 5732, 5733] },
+    { title: 'Oson', desc: 'Subjunctive asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [54204, 54205, 54206, 54207, 54208] },
+    { title: "O'rtacha", desc: "That + base verb va Were", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [54209, 54210, 54211, 54212, 54213] },
+    { title: 'Qiyin', desc: 'Subjunctive vs Indicative', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [54214, 54215, 54216] },
+    { title: 'Murakkab', desc: 'Subjunctive master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [54217, 54218, 54219, 54220, 54221] },
   ],
 
   dialogues: [
@@ -1102,11 +1102,11 @@ export const hedgingB2: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'May, might, could', color: 'bg-emerald-500', icon: '🌱', ids: [5801, 5802, 5803, 5804] },
-    { title: "O'rtacha", desc: 'Seem, appear, tend', color: 'bg-blue-500', icon: '📘', ids: [5805, 5806, 5810, 5807, 5809, 5811, 5808, 5812] },
-    { title: "Qiyin", desc: 'Adverb hedging + suggest', color: 'bg-violet-500', icon: '🎯', ids: [5813, 5817, 5814, 5815, 5816] },
-    { title: "Inkor", desc: 'Academic hedging', color: 'bg-red-500', icon: '🚫', ids: [5820, 5818, 5819] },
-    { title: "O'zgartirish", desc: 'Essay hedging practice', color: 'bg-teal-500', icon: '🔄', ids: [5820, 5818, 5816] },
+    { title: "Boshlang'ich", desc: 'May, might, could', color: 'bg-emerald-500', icon: '🌱', ids: [54233, 54234, 54235, 54236] },
+    { title: "O'rtacha", desc: 'Seem, appear, tend', color: 'bg-blue-500', icon: '📘', ids: [54237, 54238, 54239, 54240, 54241] },
+    { title: "Qiyin", desc: 'Adverb hedging + suggest', color: 'bg-violet-500', icon: '🎯', ids: [54242, 54243, 54244, 54245, 54246] },
+    { title: "Inkor", desc: 'Academic hedging', color: 'bg-red-500', icon: '🚫', ids: [54247, 54248, 54249] },
+    { title: "O'zgartirish", desc: 'Essay hedging practice', color: 'bg-teal-500', icon: '🔄', ids: [54250, 54251, 54252] },
     { title: "🔀 Aralash", desc: "Hedging (ehtiyotkor til) + Stance/modal farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95351, 95352, 95353, 95354, 95355, 56008, 56009] },
   ],
   tests: [
@@ -1127,10 +1127,10 @@ export const hedgingB2: DailyLesson = {
     { id: 54267, type: 'transformation', instruction: "To'g'ri variantni tanlang:", question: 'The economy will definitely recover. (Make cautious)', hint: 'The economy ...', correct: 'The economy is likely to recover.', explanation: "'Definitely' → 'is likely to' = hedging." },
   ],
   testSections: [
-    { title: 'Oson', desc: 'May, might, could asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [581, 582, 583, 584, 585] },
-    { title: "O'rtacha", desc: 'Seem, appear, suggest', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [586, 587, 588, 589, 590] },
-    { title: 'Qiyin', desc: 'Hedging vs Boosting', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [591, 592, 593] },
-    { title: 'Murakkab', desc: 'Academic hedging master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [594, 595] },
+    { title: 'Oson', desc: 'May, might, could asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [54253, 54254, 54255, 54256, 54257] },
+    { title: "O'rtacha", desc: 'Seem, appear, suggest', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [54258, 54259, 54260, 54261, 54262] },
+    { title: 'Qiyin', desc: 'Hedging vs Boosting', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [54263, 54264, 54265] },
+    { title: 'Murakkab', desc: 'Academic hedging master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [54266, 54267] },
   ],
 
   dialogues: [
@@ -1327,11 +1327,11 @@ export const complexPrepositionsB2: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Despite, in spite of, on behalf of', color: 'bg-emerald-500', icon: '🌱', ids: [5901, 5903, 5902, 5904] },
-    { title: "O'rtacha", desc: 'In terms of, by means of', color: 'bg-blue-500', icon: '📘', ids: [5905, 5907, 5911, 5906, 5910, 5908, 5912, 5909] },
-    { title: "Qiyin", desc: 'With regard to, in the event of', color: 'bg-violet-500', icon: '🎯', ids: [5914, 5913, 5916, 5915, 5917] },
-    { title: "Inkor", desc: 'Formal prepositions master', color: 'bg-red-500', icon: '🚫', ids: [5918, 5919, 5920] },
-    { title: "O'zgartirish", desc: 'Business letter practice', color: 'bg-teal-500', icon: '🔄', ids: [5909, 5915, 5920] },
+    { title: "Boshlang'ich", desc: 'Despite, in spite of, on behalf of', color: 'bg-emerald-500', icon: '🌱', ids: [54279, 54280, 54281, 54282] },
+    { title: "O'rtacha", desc: 'In terms of, by means of', color: 'bg-blue-500', icon: '📘', ids: [54283, 54284, 54285, 54286, 54287] },
+    { title: "Qiyin", desc: 'With regard to, in the event of', color: 'bg-violet-500', icon: '🎯', ids: [54288, 54289, 54290, 54291, 54292] },
+    { title: "Inkor", desc: 'Formal prepositions master', color: 'bg-red-500', icon: '🚫', ids: [54293, 54294, 54295] },
+    { title: "O'zgartirish", desc: 'Business letter practice', color: 'bg-teal-500', icon: '🔄', ids: [54296, 54297, 54298] },
     { title: "🔀 Aralash", desc: "Murakkab predloglar + Linking words farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95361, 95362, 95363, 95364, 95365, 56010, 56011] },
   ],
   tests: [
@@ -1352,10 +1352,10 @@ export const complexPrepositionsB2: DailyLesson = {
     { id: 54313, type: 'transformation', instruction: "To'g'ri variantni tanlang:", question: 'The CEO is speaking as a representative of the board. (Use on behalf of)', hint: 'The CEO ...', correct: 'The CEO is speaking on behalf of the board.', explanation: "'On behalf of' = nomidan." },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Despite, on behalf of, in the event of', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [591, 592, 593, 594, 595] },
-    { title: "O'rtacha", desc: 'In terms of, due to, with regard to', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [596, 597, 598, 599, 600] },
-    { title: 'Qiyin', desc: 'Complex prepositions in context', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [601, 602, 603] },
-    { title: 'Murakkab', desc: 'Formal writing master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [604, 605] },
+    { title: 'Oson', desc: 'Despite, on behalf of, in the event of', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [54299, 54300, 54301, 54302, 54303] },
+    { title: "O'rtacha", desc: 'In terms of, due to, with regard to', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [54304, 54305, 54306, 54307, 54308] },
+    { title: 'Qiyin', desc: 'Complex prepositions in context', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [54309, 54310, 54311] },
+    { title: 'Murakkab', desc: 'Formal writing master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [54312, 54313] },
   ],
 
   dialogues: [
@@ -1554,11 +1554,11 @@ export const cohesionB2: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Reference, one/do substitution', color: 'bg-emerald-500', icon: '🌱', ids: [6001, 6003, 6002, 6004] },
-    { title: "O'rtacha", desc: 'Ellipsis, conjunctions', color: 'bg-blue-500', icon: '📘', ids: [6005, 6007, 6010, 6006, 6011, 6009, 6008, 6012] },
-    { title: "Qiyin", desc: 'Anaphora, so/not substitution', color: 'bg-violet-500', icon: '🎯', ids: [6013, 6014, 6017, 6015, 6016] },
-    { title: "Inkor", desc: 'Lexical chains, text analysis', color: 'bg-red-500', icon: '🚫', ids: [6018, 6020, 6019] },
-    { title: "O'zgartirish", desc: 'Cohesion in paragraphs', color: 'bg-teal-500', icon: '🔄', ids: [6018, 6020, 6016] },
+    { title: "Boshlang'ich", desc: 'Reference, one/do substitution', color: 'bg-emerald-500', icon: '🌱', ids: [54329, 54330, 54331, 54332] },
+    { title: "O'rtacha", desc: 'Ellipsis, conjunctions', color: 'bg-blue-500', icon: '📘', ids: [54333, 54334, 54335, 54336, 54337] },
+    { title: "Qiyin", desc: 'Anaphora, so/not substitution', color: 'bg-violet-500', icon: '🎯', ids: [54338, 54339, 54340, 54341, 54342] },
+    { title: "Inkor", desc: 'Lexical chains, text analysis', color: 'bg-red-500', icon: '🚫', ids: [54343, 54344] },
+    { title: "O'zgartirish", desc: 'Cohesion in paragraphs', color: 'bg-teal-500', icon: '🔄', ids: [54345, 54346, 54347] },
     { title: "🔀 Aralash", desc: "Kogeziya (this/such/former) + Reference farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95371, 95372, 95373, 95374, 95375, 56012, 56013] },
   ],
   tests: [
@@ -1579,10 +1579,10 @@ export const cohesionB2: DailyLesson = {
     { id: 54359, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is a lexical chain for \"hospital\"?", blanks: ["doctor, nurse, patient"], explanation: "'Hospital → doctor → nurse → patient' = lexical chain (bir mavzu)." },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Reference, one substitution', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [601, 602, 603, 604, 605] },
-    { title: "O'rtacha", desc: 'Ellipsis, conjunctions', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [606, 607, 608, 609, 610] },
-    { title: 'Qiyin', desc: 'Substitution types, anaphora', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [611, 612, 613] },
-    { title: 'Murakkab', desc: 'Lexical chains, text cohesion', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [614, 615] },
+    { title: 'Oson', desc: 'Reference, one substitution', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [54345, 54346, 54347, 54348, 54349] },
+    { title: "O'rtacha", desc: 'Ellipsis, conjunctions', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [54350, 54351, 54352, 54353, 54354] },
+    { title: 'Qiyin', desc: 'Substitution types, anaphora', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [54355, 54356, 54357] },
+    { title: 'Murakkab', desc: 'Lexical chains, text cohesion', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [54358, 54359] },
   ],
 
   dialogues: [
@@ -1779,11 +1779,11 @@ export const registerB2: DailyLesson = {
     },
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Formal vs Informal, contractions', color: 'bg-emerald-500', icon: '🌱', ids: [6101, 6103, 6102, 6104] },
-    { title: "O'rtacha", desc: 'Phrasal → Latinate, discourse markers', color: 'bg-blue-500', icon: '📘', ids: [6105, 6109, 6106, 6111, 6107, 6112, 6108, 6110] },
-    { title: "Qiyin", desc: 'Academic vocabulary, formality levels', color: 'bg-violet-500', icon: '🎯', ids: [6113, 6117, 6114, 6116, 6115] },
-    { title: "Inkor", desc: 'Full register transformation', color: 'bg-red-500', icon: '🚫', ids: [6120, 6119, 6118] },
-    { title: "O'zgartirish", desc: 'Formal letter/essay practice', color: 'bg-teal-500', icon: '🔄', ids: [6120, 6116, 6118] },
+    { title: "Boshlang'ich", desc: 'Formal vs Informal, contractions', color: 'bg-emerald-500', icon: '🌱', ids: [54365, 54366, 54367, 54368] },
+    { title: "O'rtacha", desc: 'Phrasal → Latinate, discourse markers', color: 'bg-blue-500', icon: '📘', ids: [54369, 54370, 54371, 54372, 54373] },
+    { title: "Qiyin", desc: 'Academic vocabulary, formality levels', color: 'bg-violet-500', icon: '🎯', ids: [54374, 54375, 54376, 54377, 54378] },
+    { title: "Inkor", desc: 'Full register transformation', color: 'bg-red-500', icon: '🚫', ids: [54379, 54380, 54381] },
+    { title: "O'zgartirish", desc: 'Formal letter/essay practice', color: 'bg-teal-500', icon: '🔄', ids: [54382, 54383, 54384] },
     { title: "🔀 Aralash", desc: "Register (rasmiy/norasmiy) + Reported speech farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95381, 95382, 95383, 95384, 95385, 56014, 56015] },
   ],
   tests: [
@@ -1804,9 +1804,9 @@ export const registerB2: DailyLesson = {
     { id: 54405, type: 'transformation', instruction: "To'g'ri variantni tanlang:", question: 'Make this completely formal: "So, we think the plan will work, but we need to check it out more."', hint: 'Therefore, ...', correct: 'Therefore, it is believed that the plan will be effective; however, further investigation is required.', explanation: "'So' → 'Therefore'. 'We think' → 'it is believed'. 'Check it out' → 'investigation'." },
   ],
   testSections: [
-    { title: 'Oson', desc: 'Formal vs informal basics', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [611, 612, 613, 614, 615] },
-    { title: "O'rtacha", desc: 'Phrasal verbs, discourse markers', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [616, 617, 618, 619, 620] },
-    { title: 'Qiyin', desc: 'Latinate vocabulary, no contractions', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [621, 622, 623] },
-    { title: 'Murakkab', desc: 'Full register transformation', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [624, 625] },
+    { title: 'Oson', desc: 'Formal vs informal basics', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [54391, 54392, 54393, 54394, 54395] },
+    { title: "O'rtacha", desc: 'Phrasal verbs, discourse markers', color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [54396, 54397, 54398, 54399, 54400] },
+    { title: 'Qiyin', desc: 'Latinate vocabulary, no contractions', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [54401, 54402, 54403] },
+    { title: 'Murakkab', desc: 'Full register transformation', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [54404, 54405] },
   ],
 }

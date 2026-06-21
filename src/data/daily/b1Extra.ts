@@ -675,11 +675,11 @@ export const relativeClausesB1: DailyLesson = {
   exerciseSections: [
     {
       ids: [
-        2601,
-        2602,
-        2603,
-        2604,
-        2605
+        45009,
+        45010,
+        45011,
+        45012,
+        45013
       ],
       desc: "Who/Which/That",
       icon: "F1",
@@ -688,11 +688,11 @@ export const relativeClausesB1: DailyLesson = {
     },
     {
       ids: [
-        2606,
-        2607,
-        2608,
-        2609,
-        2610
+        45014,
+        45015,
+        45016,
+        45017,
+        45018
       ],
       desc: "MCQ",
       icon: "B8",
@@ -701,11 +701,11 @@ export const relativeClausesB1: DailyLesson = {
     },
     {
       ids: [
-        2611,
-        2612,
-        2613,
-        2614,
-        2615
+        45019,
+        45020,
+        45021,
+        45022,
+        45023
       ],
       desc: "Error correction",
       icon: "AA",
@@ -714,28 +714,27 @@ export const relativeClausesB1: DailyLesson = {
     },
     {
       ids: [
-        2616,
-        2617,
-        2618,
-        2619,
-        2620,
-        2621,
-        2622,
-        2623,
-        2624,
-        2625,
-        2626,
-        2627,
-        2628,
-        2629,
-        2630,
-        2631,
-        2632,
-        2633,
-        2634,
-        2635,
-        2636,
-        2637
+        45027,
+        45028,
+        45029,
+        45030,
+        45031,
+        45032,
+        45033,
+        45034,
+        45035,
+        45036,
+        45037,
+        45038,
+        45039,
+        45040,
+        45041,
+        45042,
+        45043,
+        45044,
+        45045,
+        65255,
+        65256
       ],
       desc: "Transformation + Qo'shimcha",
       icon: "C6",
@@ -958,32 +957,25 @@ export const relativeClausesB1: DailyLesson = {
   ],
   testSections: [
     {
-      ids: [45041, 45042, 45043, 45044, 45045],
+      ids: [45046, 45047, 45048, 45049, 45050],
       desc: "Pronounlar",
       icon: "F1",
       color: "bg-emerald-500",
       title: "Oson"
     },
     {
-      ids: [45046, 45047, 45048, 45049, 45050],
+      ids: [45051, 45052, 45053, 45054, 45055],
       desc: "Qollash",
       icon: "B8",
       color: "bg-blue-500",
       title: "Ortacha"
     },
     {
-      ids: [45051, 45052, 45053, 45054, 45055],
+      ids: [45056, 45057, 45058, 45059, 45060],
       desc: "Defining/Non-defining",
       icon: "AA",
       color: "bg-violet-500",
       title: "Qiyin"
-    },
-    {
-      ids: [45056, 45057, 45058, 45059, 45060],
-      desc: "Sinov",
-      icon: "C6",
-      color: "bg-rose-500",
-      title: "Murakkab"
     }
   ],
   reading: {

@@ -25,6 +25,7 @@ export function normalizeAnswer(s: string): string {
     .replace(/(\w)'ve\b/g, '$1 have')
     .replace(/(\w)'re\b/g, '$1 are')
     .replace(/(\w)'m\b/g, '$1 am')
+    .replace(/(\w)'d better\b/g, '$1 had better')
     .replace(/(\w)'d\b/g, '$1 would')
     // standalone contractions at start of string or after space
     // e.g. "'m going to buy" (blank answer without subject) → "am going to buy"
@@ -32,6 +33,7 @@ export function normalizeAnswer(s: string): string {
     .replace(/(^|\s)'ve\b/g, '$1have')
     .replace(/(^|\s)'re\b/g, '$1are')
     .replace(/(^|\s)'m\b/g, '$1am')
+    .replace(/(^|\s)'d better\b/g, '$1had better')
     .replace(/(^|\s)'d\b/g, '$1would')
     // n't → not  (do not, does not, did not, is not, are not, was not …)
     .replace(/n't\b/g, ' not')

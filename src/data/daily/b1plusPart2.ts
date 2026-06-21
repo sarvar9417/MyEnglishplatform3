@@ -155,10 +155,10 @@ export const linkingWordsAdvanced: DailyLesson = {
     { id: 95685, type: 'transformation', instruction: "And → Moreover:", question: "The hotel is nice and it is cheap. → The hotel is nice. ___ it is cheap.", hint: "...", correct: 'Moreover,', explanation: "And → Moreover (qo'shimcha, rasmiy)." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Linking words asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [4501, 4502, 4503, 4504, 4505] },
-    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [4506, 4507, 4508, 4509, 4510] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4511, 4512, 4513, 4514, 4515] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4517, 4519, 4515, 4513, 4520, 4518, 4516, 4520, 4517, 4518, 55026, 55035] },
+    { title: "Boshlang'ich", desc: 'Linking words asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [52006, 52007, 52008, 52009, 52010] },
+    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [52011, 52012, 52013, 52014, 52015] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [52016, 52017, 52018, 52019, 52020] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [52021, 52022, 52023, 52024, 52025, 55026, 55035] },
     
     { title: "🔀 Aralash", desc: "Bog'lovchi so'zlar + Cohesion farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95681, 95682, 95683, 95684, 95685] },],
   tests: [
@@ -179,10 +179,10 @@ export const linkingWordsAdvanced: DailyLesson = {
     { id: 52040, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "IELTS Writing da qaysi biri tavsiya etiladi?", blanks: ["Such as (misol uchun)"], explanation: "IELTS Writing da such as rasmiy va tavsiya etiladi" },
     ],
   testSections: [
-    { title: 'Oson', desc: 'Linking words asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [451, 452, 453, 454, 455] },
-    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [456, 457, 458, 459, 460] },
-    { title: 'Qiyin', desc: 'However vs Nevertheless', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [461, 462, 463] },
-    { title: 'Murakkab', desc: 'Linking words master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [464, 465] }
+    { title: 'Oson', desc: 'Linking words asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [52026, 52027, 52028, 52029, 52030] },
+    { title: "O'rtacha", desc: "Qoidani qo'llash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [52031, 52032, 52033, 52034, 52035] },
+    { title: 'Qiyin', desc: 'However vs Nevertheless', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [52036, 52037, 52038] },
+    { title: 'Murakkab', desc: 'Linking words master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [52039, 52040] }
     ],
 }
 
@@ -374,10 +374,10 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
     { id: 95695, type: 'transformation', instruction: "Make bilan rewrite:", question: "He decided to purchase a car. → He ___ a decision to buy a car.", hint: "He ___ a decision...", correct: 'made', explanation: "Decide → make a decision." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Make/Do tanlash', color: 'bg-emerald-500', icon: '🌱', ids: [4601, 4602, 4603, 4604, 4605] },
-    { title: "O'rtacha", desc: "Have/Take tanlash", color: 'bg-blue-500', icon: '📘', ids: [4606, 4607, 4608, 4609, 4610] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4611, 4612, 4613, 4614, 4615] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4619, 4613, 4617, 4620, 4617, 4615, 4616, 4620, 4618, 4618, 55025, 55034] },
+    { title: "Boshlang'ich", desc: 'Make/Do tanlash', color: 'bg-emerald-500', icon: '🌱', ids: [52047, 52048, 52049, 52050, 52051] },
+    { title: "O'rtacha", desc: "Have/Take tanlash", color: 'bg-blue-500', icon: '📘', ids: [52052, 52053, 52054, 52055, 52056] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [52057, 52058, 52059, 52060, 52061] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [52062, 52063, 52064, 52065, 52066, 55025, 55034, 101751, 101752] },
   
     
     { title: "🔀 Aralash", desc: "Make/do/have/take + Verb patterns farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95691, 95692, 95693, 95694, 95695] },],
@@ -399,10 +399,10 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
     { id: 52081, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Take an exam' ma'nosi nima?", blanks: ["imtihon topshirish"], explanation: "Take an exam = imtihon topshirish" },
     ],
   testSections: [
-    { title: 'Oson', desc: 'Kollokatsiya asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [461, 462, 463, 464, 465] },
-    { title: "O'rtacha", desc: "To'g'ri fe'lni tanlash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [466, 467, 468, 469, 470] },
-    { title: 'Qiyin', desc: 'Make/Do farqlash', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [471, 472, 473] },
-    { title: 'Murakkab', desc: 'Collocations master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [474, 475] }
+    { title: 'Oson', desc: 'Kollokatsiya asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [52067, 52068, 52069, 52070, 52071] },
+    { title: "O'rtacha", desc: "To'g'ri fe'lni tanlash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [52072, 52073, 52074, 52075, 52076] },
+    { title: 'Qiyin', desc: 'Make/Do farqlash', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [52077, 52078, 52079] },
+    { title: 'Murakkab', desc: 'Collocations master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [52080, 52081] }
     ],
 }
 
@@ -559,10 +559,10 @@ export const advancedPhrasalVerbs: DailyLesson = {
     { id: 95705, type: 'transformation', instruction: "Think of → come up with:", question: "She thought of a great idea. → She ___ up with a great idea.", hint: "She ___ up with...", correct: 'came', explanation: "Think of = come up with (o'ylab topmoq)." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Common phrasal verbs', color: 'bg-emerald-500', icon: '🌱', ids: [4701, 4702, 4703, 4704, 4705] },
-    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [4706, 4707, 4708, 4709, 4710] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4711, 4712, 4713, 4714, 4715] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4718, 4717, 4719, 4720, 4718, 4716, 4720, 4713, 4717, 4715, 55024, 55033] },
+    { title: "Boshlang'ich", desc: 'Common phrasal verbs', color: 'bg-emerald-500', icon: '🌱', ids: [52088, 52089, 52090, 52091, 52092] },
+    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [52093, 52094, 52095, 52096, 52097] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [52098, 52099, 52100, 52101, 52102] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [52103, 52104, 52105, 52106, 52107, 55024, 55033, 101753, 101754] },
   
     
     { title: "🔀 Aralash", desc: "Phrasal verbs + Idioms farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95701, 95702, 95703, 95704, 95705] },],
@@ -584,10 +584,10 @@ export const advancedPhrasalVerbs: DailyLesson = {
     { id: 52122, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi phrasal verb 'jazosiz qolmoq' ma'nosida?", blanks: ["get away with"], explanation: "Get away with = jazosiz qolmoq" },
     ],
   testSections: [
-    { title: 'Oson', desc: "Phrasal verbs ma'nolari", color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [471, 472, 473, 474, 475] },
-    { title: "O'rtacha", desc: "Ishtatilishi va farqlash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [476, 477, 478, 479, 480] },
-    { title: 'Qiyin', desc: "3-word va ma'no farqlari", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [481, 482, 483] },
-    { title: 'Murakkab', desc: 'Advanced phrasal verbs', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [484, 485] }
+    { title: 'Oson', desc: "Phrasal verbs ma'nolari", color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [52108, 52109, 52110, 52111, 52112] },
+    { title: "O'rtacha", desc: "Ishtatilishi va farqlash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [52113, 52114, 52115, 52116, 52117] },
+    { title: 'Qiyin', desc: "3-word va ma'no farqlari", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [52118, 52119, 52120] },
+    { title: 'Murakkab', desc: 'Advanced phrasal verbs', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [52121, 52122] }
     ],
 }
 
@@ -750,10 +750,10 @@ export const idiomsCommon: DailyLesson = {
     { id: 95715, type: 'transformation', instruction: "Very easy → idiom:", question: "The test was very easy. → The test was a ___ of ___.", hint: "...", correct: 'piece, cake', explanation: "Piece of cake = juda oson." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Common idioms', color: 'bg-emerald-500', icon: '🌱', ids: [4801, 4802, 4803, 4804, 4805] },
-    { title: "O'rtacha", desc: "Idiom ma'nolari", color: 'bg-blue-500', icon: '📘', ids: [4806, 4807, 4808, 4809, 4810] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4811, 4812, 4813, 4814, 4815] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4815, 4818, 4813, 4817, 4819, 4820, 4820, 4818, 4816, 4817, 55023, 55032] },
+    { title: "Boshlang'ich", desc: 'Common idioms', color: 'bg-emerald-500', icon: '🌱', ids: [52129, 52130, 52131, 52132, 52133] },
+    { title: "O'rtacha", desc: "Idiom ma'nolari", color: 'bg-blue-500', icon: '📘', ids: [52134, 52135, 52136, 52137, 52138] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [52139, 52140, 52141, 52142, 52143] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [52144, 52145, 52146, 52147, 52148, 55023, 55032] },
     
     { title: "🔀 Aralash", desc: "Idioms + Phrasal verbs farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95711, 95712, 95713, 95714, 95715] },],
   tests: [
@@ -774,10 +774,10 @@ export const idiomsCommon: DailyLesson = {
     { id: 52163, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'The early bird catches the worm' ma'nosi?", blanks: ["erta turgan odam muvaffaqiyatli"], explanation: "The early bird catches the worm = erta turgan odam muvaffaqiyatli" },
     ],
   testSections: [
-    { title: 'Oson', desc: "20 ta idiom ma'nolari", color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [481, 482, 483, 484, 485] },
-    { title: "O'rtacha", desc: "Idiom ma'nosini bilish", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [486, 487, 488, 489, 490] },
-    { title: 'Qiyin', desc: 'Idiom ishlatilishi', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [491, 492, 493] },
-    { title: 'Murakkab', desc: 'Idioms master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [494, 495] }
+    { title: 'Oson', desc: "20 ta idiom ma'nolari", color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [52149, 52150, 52151, 52152, 52153] },
+    { title: "O'rtacha", desc: "Idiom ma'nosini bilish", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [52154, 52155, 52156, 52157, 52158] },
+    { title: 'Qiyin', desc: 'Idiom ishlatilishi', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [52159, 52160, 52161] },
+    { title: 'Murakkab', desc: 'Idioms master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [52162, 52163] }
     ],
 }
 
@@ -966,10 +966,10 @@ export const prepositionalPhrases: DailyLesson = {
     { id: 95725, type: 'transformation', instruction: "Because → due to:", question: "The flight was cancelled because the weather was bad. → The flight was cancelled due to ___ ___.", hint: "...", correct: 'bad weather', explanation: "Due to + noun phrase (bad weather)." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Prepositional phrases asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [4901, 4902, 4903, 4904, 4905] },
-    { title: "O'rtacha", desc: "Predlog tanlash", color: 'bg-blue-500', icon: '📘', ids: [4906, 4907, 4908, 4909, 4910] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [4911, 4912, 4913, 4914, 4915] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [4918, 4920, 4916, 4920, 4915, 4918, 4917, 4913, 4917, 4919, 55022, 55031] },
+    { title: "Boshlang'ich", desc: 'Prepositional phrases asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [52170, 52171, 52172, 52173, 52174] },
+    { title: "O'rtacha", desc: "Predlog tanlash", color: 'bg-blue-500', icon: '📘', ids: [52175, 52176, 52177, 52178, 52179] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [52180, 52181, 52182, 52183, 52184] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [52185, 52186, 52187, 52188, 52189, 55022, 55031] },
     
     { title: "🔀 Aralash", desc: "Prepositional phrases + Linking words farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95721, 95722, 95723, 95724, 95725] },],
   tests: [
@@ -990,10 +990,10 @@ export const prepositionalPhrases: DailyLesson = {
     { id: 52204, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'On the one hand... on the other hand' qanday ma'noda ishlatiladi?", blanks: ["ikki tomonlama solishtirish"], explanation: "Qoida: 'On the one hand' = bir tomondan (akademik bog'lovchi). Jufti: 'On the other hand' = boshqa tomondan. Ikki qarama-qarshi fikrni solishtirishda ishlatiladi." },
     ],
   testSections: [
-    { title: 'Oson', desc: 'Prepositional phrases asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [491, 492, 493, 494, 495] },
-    { title: "O'rtacha", desc: "Predlogni tanlash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [496, 497, 498, 499, 500] },
-    { title: 'Qiyin', desc: "On time/In time va By/On farqlash", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [501, 502, 503] },
-    { title: 'Murakkab', desc: 'Prepositional phrases master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [504, 505] }
+    { title: 'Oson', desc: 'Prepositional phrases asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [52190, 52191, 52192, 52193, 52194] },
+    { title: "O'rtacha", desc: "Predlogni tanlash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [52195, 52196, 52197, 52198, 52199] },
+    { title: 'Qiyin', desc: "On time/In time va By/On farqlash", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [52200, 52201, 52202] },
+    { title: 'Murakkab', desc: 'Prepositional phrases master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [52203, 52204] }
     ],
 }
 
@@ -1147,10 +1147,10 @@ export const wordFormation: DailyLesson = {
     { id: 95735, type: 'transformation', instruction: "Verb → noun with suffix:", question: "They invest in new technology. → Their ___ in new technology...", hint: "Their ___ in new technology...", correct: 'investment', explanation: "Invest → investment (-ment suffix)." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Suffix qo\'shish', color: 'bg-emerald-500', icon: '🌱', ids: [5001, 5002, 5003, 5004, 5005] },
-    { title: "O'rtacha", desc: "Suffix tanlash", color: 'bg-blue-500', icon: '📘', ids: [5006, 5007, 5008, 5009, 5010] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5011, 5012, 5013, 5014, 5015] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5020, 5017, 5016, 5013, 5018, 5020, 5015, 5017, 5019, 5018, 55021, 55030] },
+    { title: "Boshlang'ich", desc: 'Suffix qo\'shish', color: 'bg-emerald-500', icon: '🌱', ids: [52211, 52212, 52213, 52214, 52215] },
+    { title: "O'rtacha", desc: "Suffix tanlash", color: 'bg-blue-500', icon: '📘', ids: [52216, 52217, 52218, 52219, 52220] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [52221, 52222, 52223, 52224, 52225] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [52226, 52227, 52228, 52229, 52230, 55021, 55030] },
     
     { title: "🔀 Aralash", desc: "So'z yasalishi + Nominalization farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95731, 95732, 95733, 95734, 95735] },],
   tests: [
@@ -1171,10 +1171,10 @@ export const wordFormation: DailyLesson = {
     { id: 52245, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Wide' so'zining verb shakli?", blanks: ["widen"], explanation: "Wide + -en = widen (kengaytirmoq). Qoida: -en qo'shimchasi sifatdan fe'l yasaydi: wide (keng) → widen (kengaytirmoq). -en bilan: short → shorten, dark → darken, bright → brighten." },
     ],
   testSections: [
-    { title: 'Oson', desc: 'Suffix qo\'shish asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [501, 502, 503, 504, 505] },
-    { title: "O'rtacha", desc: "So'z yasash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [506, 507, 508, 509, 510] },
-    { title: 'Qiyin', desc: "Kengaytirish prefikslari va -tion/-sion", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [511, 512, 513] },
-    { title: 'Murakkab', desc: 'Word formation master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [514, 515] }
+    { title: 'Oson', desc: 'Suffix qo\'shish asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [52231, 52232, 52233, 52234, 52235] },
+    { title: "O'rtacha", desc: "So'z yasash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [52236, 52237, 52238, 52239, 52240] },
+    { title: 'Qiyin', desc: "Kengaytirish prefikslari va -tion/-sion", color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [52241, 52242, 52243] },
+    { title: 'Murakkab', desc: 'Word formation master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [52244, 52245] }
     ],
 }
 
@@ -1343,10 +1343,10 @@ export const reportingVerbs: DailyLesson = {
     { id: 95745, type: 'transformation', instruction: "Direct → reported:", question: "'I live in Tashkent.' → He said that he ___ in Tashkent.", hint: "He said that he ___ in Tashkent.", correct: 'lived', explanation: "Direct present → reported past (live → lived)." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Reporting verbs asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5101, 5102, 5103, 5104, 5105] },
-    { title: "O'rtacha", desc: "To'g'ri fe'l tanlash", color: 'bg-blue-500', icon: '📘', ids: [5106, 5107, 5108, 5109, 5110] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5111, 5112, 5113, 5114, 5115] },
-    { title: "O'zgartirish", desc: 'Prepositions + advanced verbs', color: 'bg-teal-500', icon: '🔄', ids: [5117, 5126, 5118, 5128, 5127, 5124, 5125, 5116, 5119, 5129, 5122, 5121, 5130, 5120, 5123, 55020, 55029] },
+    { title: "Boshlang'ich", desc: 'Reporting verbs asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [52252, 52253, 52254, 52255, 52256] },
+    { title: "O'rtacha", desc: "To'g'ri fe'l tanlash", color: 'bg-blue-500', icon: '📘', ids: [52257, 52258, 52259, 52260, 52261] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [52262, 52263, 52264, 52265, 52266] },
+    { title: "O'zgartirish", desc: 'Prepositions + advanced verbs', color: 'bg-teal-500', icon: '🔄', ids: [52267, 52268, 52269, 52270, 52271, 52272, 52273, 52274, 52275, 52276, 52277, 52278, 52279, 52280, 52281, 55020, 55029] },
     
     { title: "🔀 Aralash", desc: "Reporting verbs + Reported speech farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95741, 95742, 95743, 95744, 95745] },],
   tests: [
@@ -1367,10 +1367,10 @@ export const reportingVerbs: DailyLesson = {
     { id: 52296, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Direct speech → Reported speech: 'You should see a doctor' → ?", blanks: ["She advised me to see a doctor"], explanation: "Advise + object + to = maslahat bermoq. Qoida: 'Advise + object + to V': I advised him to apply. (Men unga ariza topshirishni maslahat berdim.) Inkor: advised him not to apply." },
     ],
   testSections: [
-    { title: 'Oson', desc: "Reporting verbs strukturasi", color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [511, 512, 513, 514, 515] },
-    { title: "O'rtacha", desc: "Say/Tell va prepositionlar", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [516, 517, 518, 519, 520] },
-    { title: 'Qiyin', desc: 'Suggest va Recommend', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [521, 522, 523] },
-    { title: 'Murakkab', desc: 'Reporting verbs master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [524, 525] }
+    { title: 'Oson', desc: "Reporting verbs strukturasi", color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [52282, 52283, 52284, 52285, 52286] },
+    { title: "O'rtacha", desc: "Say/Tell va prepositionlar", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [52287, 52288, 52289, 52290, 52291] },
+    { title: 'Qiyin', desc: 'Suggest va Recommend', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [52292, 52293, 52294] },
+    { title: 'Murakkab', desc: 'Reporting verbs master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [52295, 52296] }
     ],
 }
 
@@ -1534,10 +1534,10 @@ export const determinersAdvanced: DailyLesson = {
     { id: 95755, type: 'transformation', instruction: "All → Each:", question: "All students must bring a book. → ___ student must bring a book.", hint: "___ student must bring a book.", correct: 'Each', explanation: "All + plural → Each + singular." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Determiners asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [5201, 5202, 5203, 5204, 5205] },
-    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5206, 5207, 5208, 5209, 5210] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5211, 5212, 5213, 5214, 5215] },
-    { title: "O'zgartirish", desc: 'None/No va Either/Neither chuqurlashtirilgan', color: 'bg-teal-500', icon: '🔄', ids: [5223, 5228, 5225, 5226, 5219, 5224, 5217, 5222, 5216, 5230, 5229, 5220, 5227, 5218, 5221, 55019, 55028] },
+    { title: "Boshlang'ich", desc: 'Determiners asoslari', color: 'bg-emerald-500', icon: '🌱', ids: [52303, 52304, 52305, 52306, 52307] },
+    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [52308, 52309, 52310, 52311, 52312] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [52313, 52314, 52315, 52316, 52317] },
+    { title: "O'zgartirish", desc: 'None/No va Either/Neither chuqurlashtirilgan', color: 'bg-teal-500', icon: '🔄', ids: [52318, 52319, 52320, 52321, 52322, 52323, 52324, 52325, 52326, 52327, 52328, 52329, 52330, 52331, 52332, 55019, 55028] },
     
     { title: "🔀 Aralash", desc: "Each/every/all/both + Quantifiers farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95751, 95752, 95753, 95754, 95755] },],
   tests: [
@@ -1558,10 +1558,10 @@ export const determinersAdvanced: DailyLesson = {
     { id: 52347, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Every' qanday so'zlar bilan ishlatiladi?", blanks: ["everyone, everything, everywhere"], explanation: "Every + body/thing/where = everyone, everything, everywhere" },
     ],
   testSections: [
-    { title: 'Oson', desc: 'Determiners asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [521, 522, 523, 524, 525] },
-    { title: "O'rtacha", desc: "To'g'ri determiner tanlash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [526, 527, 528, 529, 530] },
-    { title: 'Qiyin', desc: 'Each/Every va Either/Neither', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [531, 532, 533] },
-    { title: 'Murakkab', desc: 'Determiners master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [534, 535] }
+    { title: 'Oson', desc: 'Determiners asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [52333, 52334, 52335, 52336, 52337] },
+    { title: "O'rtacha", desc: "To'g'ri determiner tanlash", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [52338, 52339, 52340, 52341, 52342] },
+    { title: 'Qiyin', desc: 'Each/Every va Either/Neither', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [52343, 52344, 52345] },
+    { title: 'Murakkab', desc: 'Determiners master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [52346, 52347] }
     ],
 }
 
@@ -1715,10 +1715,10 @@ export const b1plusReview: DailyLesson = {
     { id: 95765, type: 'transformation', instruction: "Active → passive participle:", question: "Because the book was written in 1990, it is famous. → ___ in 1990, the book is famous.", hint: "...", correct: 'Written', explanation: "Passive participle: Written in 1990 = Because it was written in 1990." }
 ],
   exerciseSections: [
-    { title: "Boshlang'ich", desc: 'Grammar va vocab review', color: 'bg-emerald-500', icon: '🌱', ids: [5301, 5302, 5303, 5304, 5305] },
-    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [5306, 5307, 5308, 5309, 5310] },
-    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [5311, 5312, 5313, 5314, 5315] },
-    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [5318, 5317, 5317, 5313, 5316, 5320, 5320, 5318, 5315, 5319, 55018, 55027] },
+    { title: "Boshlang'ich", desc: 'Grammar va vocab review', color: 'bg-emerald-500', icon: '🌱', ids: [52354, 52355, 52356, 52357, 52358] },
+    { title: "O'rtacha", desc: "Tanlash va farqlash", color: 'bg-blue-500', icon: '📘', ids: [52359, 52360, 52361, 52362, 52363] },
+    { title: "Qiyin", desc: 'Xatolarni topish', color: 'bg-violet-500', icon: '🎯', ids: [52364, 52365, 52366, 52367, 52368] },
+    { title: "O'zgartirish", desc: 'Aralash — yakuniy sinov', color: 'bg-teal-500', icon: '🔄', ids: [52369, 52370, 52371, 52372, 52373, 55018, 55027] },
     
     { title: "🔀 Aralash", desc: "B1+ mavzularini aralash takrorlash", color: 'bg-fuchsia-500', icon: '🔄', ids: [95761, 95762, 95763, 95764, 95765] },],
   tests: [
@@ -1739,9 +1739,9 @@ export const b1plusReview: DailyLesson = {
     { id: 52388, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi gapda 'Concession' ishlatilgan?", blanks: ["Although it rained, we went out."], explanation: "Although = concession (qarama-qarshilik)" },
     ],
   testSections: [
-    { title: 'Oson', desc: 'B1+ asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [531, 532, 533, 534, 535] },
-    { title: "O'rtacha", desc: "Grammar va vocab", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [536, 537, 538, 539, 540] },
-    { title: 'Qiyin', desc: 'B1+ grammar deep dive', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [541, 542, 543] },
-    { title: 'Murakkab', desc: 'B1+ master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [544, 545] }
+    { title: 'Oson', desc: 'B1+ asoslari', color: 'bg-emerald-500', icon: '\uD83C\uDF31', ids: [52374, 52375, 52376, 52377, 52378] },
+    { title: "O'rtacha", desc: "Grammar va vocab", color: 'bg-blue-500', icon: '\uD83D\uDCD8', ids: [52379, 52380, 52381, 52382, 52383] },
+    { title: 'Qiyin', desc: 'B1+ grammar deep dive', color: 'bg-violet-500', icon: '\uD83D\uDCAA', ids: [52384, 52385, 52386] },
+    { title: 'Murakkab', desc: 'B1+ master', color: 'bg-rose-500', icon: '\uD83C\uDFC6', ids: [52387, 52388] }
     ],
 }
