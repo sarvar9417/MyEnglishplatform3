@@ -348,7 +348,6 @@ export default function Speaking() {
       prompt={prompt}
       sr={sr}
       ar={ar}
-      recordState={recordState}
       timer={timer}
       evaluation={evaluation}
       isRecording={isRecording}

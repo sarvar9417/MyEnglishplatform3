@@ -12,7 +12,7 @@ export interface GameWord {
   word_id:      number
   english:      string
   uzbek:        string
-  level:        string
+  level:        DailyWordRow['level']
   box:          number
   next_review:  string
   is_learned:   boolean

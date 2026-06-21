@@ -3,7 +3,6 @@ import type { ReviewLesson, DailyExercise } from '../../data/dailyLessons'
 import { checkAnswer, getExerciseContext, getCorrectText } from './helpers'
 import ExerciseCard from './ExerciseCard'
 import type { Answers } from './ReviewHelpers'
-import type { DailyExercise } from '../../data/dailyLessons'
 
 interface Props {
   lesson: ReviewLesson
