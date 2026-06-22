@@ -14,6 +14,9 @@ let currentReject: ((reason: Error) => void) | null = null
 let _isSpeaking = false
 let _cachedVoices: SpeechSynthesisVoice[] = []
 
+// Persistent utterance reference — Chrome GC'sidan saqlaydi
+let _currentUtterance: SpeechSynthesisUtterance | null = null
+
 // ====== Ovoz boshqaruvi ======
 
 /** Brauzerdagi mavjud ovozlar ro'yxatini qaytaradi */
@@ -63,7 +66,7 @@ export function getBestVoice(lang = 'en-US'): SpeechSynthesisVoice | undefined {
 
 /** Hozir gapirilyaptimi? */
 export function isSpeaking(): boolean {
-  return _isSpeaking
+  return _isSpeaking || _currentUtterance !== null
 }
 
 /** Brauzer TTS ni qo'llaydimi? */
@@ -89,6 +92,9 @@ export function speak(text: string, options: TTSOptions = {}): Promise<void> {
     window.speechSynthesis.cancel()
     _isSpeaking = false
 
+    // Eski utteranceni bo'shatamiz
+    _currentUtterance = null
+
     const utterance = new SpeechSynthesisUtterance(text)
     utterance.rate   = options.rate   ?? 0.9
     utterance.pitch  = options.pitch  ?? 1.0
@@ -106,10 +112,12 @@ export function speak(text: string, options: TTSOptions = {}): Promise<void> {
     utterance.onstart = () => { _isSpeaking = true }
     utterance.onend   = () => {
       _isSpeaking = false
+      _currentUtterance = null
       resolve()
     }
     utterance.onerror = (e) => {
       _isSpeaking = false
+      _currentUtterance = null
       // 'canceled' is normal when a new speak call interrupts — don't reject
       if (e.error === 'canceled') {
         resolve()
@@ -119,6 +127,12 @@ export function speak(text: string, options: TTSOptions = {}): Promise<void> {
     }
 
     currentReject = reject
+    // Persistent reference — GC'dan saqlaydi
+    _currentUtterance = utterance
+
+    // Chrome compat: cancel() dan keyin engine "to'xtab" qolmasligi uchun
+    try { window.speechSynthesis.resume() } catch { /* noop */ }
+
     window.speechSynthesis.speak(utterance)
   })
 }
@@ -148,6 +162,7 @@ export async function speakWord(word: string): Promise<void> {
 export function stopSpeaking(): void {
   window.speechSynthesis.cancel()
   _isSpeaking = false
+  _currentUtterance = null
 
   if (currentReject) {
     currentReject(new Error('Nutq to\'xtatildi'))

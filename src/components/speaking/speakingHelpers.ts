@@ -1,4 +1,5 @@
 import type { SpeakingPrompt } from '@/services/speakingService'
+import { speak as ttsSpeak } from '../../lib/tts'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -23,12 +24,11 @@ export interface ChatTopic {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
+/** Matnni TTS orqali o'qish — src/lib/tts.ts dan foydalanadi (voice, cancel, GC himoya) */
 export function speakText(text: string) {
-  if ('speechSynthesis' in window) {
-    const u = new SpeechSynthesisUtterance(text)
-    u.lang = 'en-US'; u.rate = 0.85
-    speechSynthesis.speak(u)
-  }
+  ttsSpeak(text, { rate: 0.85 }).catch(() => {
+    // TTS ishlamasa — indamay o'tib ketamiz (UX buzilmasin)
+  })
 }
 
 export function parseScores(text: string): Scores {

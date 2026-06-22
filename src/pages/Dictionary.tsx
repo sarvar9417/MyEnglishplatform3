@@ -7,6 +7,7 @@ import Breadcrumb from '../components/ui/Breadcrumb'
 import { supabase } from '../lib/supabase'
 import { monitoring } from '../lib/monitoring'
 import { searchDictionary, fetchWordList, addUserWord, deleteUserWord, type DictWord } from '../services/dictionaryService'
+import { speak } from '../lib/tts'
 
 const LEVEL_BADGES: Record<string, string> = {
   A1: 'bg-green-100 text-green-700',
@@ -167,14 +168,8 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
   const [expanded, setExpanded] = useState(false)
   const [deleting, setDeleting] = useState(false)
 
-  const speak = useCallback(() => {
-    if ('speechSynthesis' in window) {
-      const u = new SpeechSynthesisUtterance(word.english)
-      u.lang = 'en-US'
-      u.rate = 0.9
-      speechSynthesis.cancel()
-      speechSynthesis.speak(u)
-    }
+  const speakWord = useCallback(() => {
+    speak(word.english, { rate: 0.9 }).catch(() => {})
   }, [word.english])
 
   const handleDelete = async (e: React.MouseEvent) => {
@@ -241,7 +236,7 @@ function WordCard({ word, userId, onDeleted }: { word: DictWord; userId?: string
         </div>
         <div className="flex items-center gap-1.5 flex-shrink-0">
           <button
-            onClick={(e) => { e.stopPropagation(); speak() }}
+            onClick={(e) => { e.stopPropagation(); speakWord() }}
             className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 hover:text-primary-600 transition-colors"
             title={t('dictionary.speakTitle')}
           >

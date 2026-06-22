@@ -4,6 +4,7 @@ import { useI18n } from '../i18n'
 import { supabase } from '../lib/supabase'
 import { monitoring } from '../lib/monitoring'
 import { getCategoryStyle } from '../utils/phraseConfig'
+import { speak } from '../lib/tts'
 
 interface PhraseRow {
   id: number
@@ -388,13 +389,9 @@ function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const boxTranslation = progress ? t(`phraseDict.box${progress.box}` as any) ?? t('phraseDict.box6') : ''
 
-  function speak(e: React.MouseEvent) {
+  function speakPhrase(e: React.MouseEvent) {
     e.stopPropagation()
-    if ('speechSynthesis' in window) {
-      const u = new SpeechSynthesisUtterance(phrase.english)
-      u.lang = 'en-US'; u.rate = 0.9
-      speechSynthesis.cancel(); speechSynthesis.speak(u)
-    }
+    speak(phrase.english, { rate: 0.9 }).catch(() => {})
   }
 
   return (
@@ -425,7 +422,7 @@ function PhraseCard({ entry }: { entry: PhraseDictEntry }) {
           <p className="text-sm text-gray-500 dark:text-gray-400">{phrase.uzbek}</p>
         </div>
         <div className="flex items-center gap-1.5 flex-shrink-0">
-          <button onClick={speak}
+          <button onClick={speakPhrase}
             className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 hover:text-b1-600 dark:hover:text-b1-400 transition-colors"
             title={t('phraseDict.speakTitle')}>
             <Volume2 size={16} />

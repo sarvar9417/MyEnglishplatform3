@@ -14,6 +14,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import HoldMicButton from './HoldMicButton'
 import { useNavigate } from 'react-router-dom'
+import { speak as ttsSpeak } from '../../lib/tts'
 import type { SpeakingPrompt } from '../../services/speakingService'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -39,11 +40,9 @@ interface ChatTopic {
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function speakText(text: string) {
-  if ('speechSynthesis' in window) {
-    const u = new SpeechSynthesisUtterance(text)
-    u.lang = 'en-US'; u.rate = 0.85
-    speechSynthesis.speak(u)
-  }
+  ttsSpeak(text, { rate: 0.85 }).catch(() => {
+    // TTS ishlamasa — indamay o'tib ketamiz
+  })
 }
 
 function parseScores(text: string): Scores {

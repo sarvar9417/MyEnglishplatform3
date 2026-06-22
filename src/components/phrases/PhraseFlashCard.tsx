@@ -1,6 +1,7 @@
 import { ChevronRight, Volume2 } from 'lucide-react'
 import type { GamePhrase } from '../../store/phrasesStore'
 import { getCategoryStyle } from '../../utils/phraseConfig'
+import { speak } from '../../lib/tts'
 
 const BOX_COLORS: Record<number, string> = {
   1: 'bg-gray-100 dark:bg-gray-700 border-gray-200 dark:border-gray-600',
@@ -38,13 +39,9 @@ export default function PhraseFlashCard({
 }) {
   const cat = getCategoryStyle(phrase.category)
 
-  function speak(e: React.MouseEvent) {
+  function speakPhrase(e: React.MouseEvent) {
     e.stopPropagation()
-    if ('speechSynthesis' in window) {
-      const u = new SpeechSynthesisUtterance(phrase.english)
-      u.lang = 'en-US'; u.rate = 0.9
-      speechSynthesis.cancel(); speechSynthesis.speak(u)
-    }
+    speak(phrase.english, { rate: 0.9 }).catch(() => {})
   }
 
   return (
@@ -64,7 +61,7 @@ export default function PhraseFlashCard({
               {phrase.english}
             </p>
             <button
-              onClick={speak}
+              onClick={speakPhrase}
               className="p-1.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-400 hover:text-b1-600 dark:hover:text-b1-400 transition-colors flex-shrink-0"
               title="Talaffuz"
             >

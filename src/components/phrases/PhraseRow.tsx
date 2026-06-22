@@ -4,6 +4,7 @@ import type { GamePhrase } from '../../store/phrasesStore'
 import type { PhraseRating } from '../../types/phrases'
 import PhraseQuickRating from './PhraseQuickRating'
 import { getCategoryStyle } from '../../utils/phraseConfig'
+import { speak } from '../../lib/tts'
 
 export default function PhraseRow({
   phrase,
@@ -35,11 +36,7 @@ export default function PhraseRow({
         <button
           onClick={(e) => {
             e.stopPropagation()
-            if ('speechSynthesis' in window) {
-              const u = new SpeechSynthesisUtterance(phrase.english)
-              u.lang = 'en-US'; u.rate = 0.9
-              speechSynthesis.cancel(); speechSynthesis.speak(u)
-            }
+            speak(phrase.english, { rate: 0.9 }).catch(() => {})
           }}
           className="p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-300 hover:text-b1-500 transition-colors"
           title={t('phraseRow.pronounce')}
