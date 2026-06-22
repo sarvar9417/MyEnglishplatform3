@@ -67,7 +67,7 @@ export async function checkVocabAnswer(
   return text.startsWith('CORRECT')
 }
 
-// ── Check phrase translation ───────────────────────────────────────────────
+// ── Check phrase translation (simple boolean) ──────────────────────────────
 
 export async function checkPhraseTranslation(
   uzbek: string,
@@ -90,6 +90,76 @@ export async function checkPhraseTranslation(
     ? data.content[0].text.trim().toUpperCase()
     : 'WRONG'
   return text.startsWith('CORRECT')
+}
+
+// ── Check phrase translation (with explanation) ────────────────────────────
+
+export interface PhraseCheckResult {
+  correct: boolean
+  explanation: string
+  correctAnswer: string
+}
+
+export async function checkPhraseTranslationDetailed(
+  uzbek: string,
+  correctEnglish: string,
+  userAnswer: string
+): Promise<PhraseCheckResult> {
+  const res = await proxyFetch({
+    model: MODEL,
+    max_tokens: 400,
+    system: `Siz ingliz tili o'qituvchisisiz. O'quvchi o'zbekcha gapni ingliz tiliga tarjima qilgan.
+
+Tekshirish QOIDALARI:
+1. Tarjima o'zbekcha gap ma'nosiga mos bo'lishi kerak.
+2. Sinonimlar va boshqa to'g'ri variantlar qabul qilinadi.
+3. Kichik grammatik xatolar (artikl, prefiks) — NOTO'G'RI deb hisoblanadi va tushuntiriladi.
+
+MUHIM TARJIMA QOIDALARI:
+- Har bir o'zbekcha so'zning aniq inglizcha mosini ishlat. Masalan: "chiroyli" = "beautiful" (emas "cute"), "katta" = "big" (emas "large").
+- "u" va "uning" = "his" yoki "her" (ikkalasi ham to'g'ri).
+
+ARTIKLLAR (a/an/the) XATOLARI — EXPLANATION da qoidani o'zbekcha tushuntir:
+• A/AN — noma'lum otlar: "I have a book." (bitta, ma'lum emas)
+  A — undosh oldidan: a book, a cat
+  AN — unli oldidan: an apple, an hour
+• THE — ma'lum/yagona: "The sun is bright." (yagona quyosh)
+• Artiklsiz — umumiy: "I like music." (umumiy musiqa)
+
+EXPLANATION formati: "❌ [xato] → ✅ [to'g'ri]. Sababi: [qoida, 1-2 gap]"
+
+JAVOB FORMATI — faqat quyidagi 3 qator:
+CORRECT: yes
+yoki
+CORRECT: no
+EXPLANATION: [o'zbekcha tushuntirish]
+CORRECT_ANSWER: [eng oddiy to'g'ri tarjima]`,
+    messages: [{
+      role: 'user',
+      content: `O'zbekcha gap: "${uzbek}"
+To'g'ri javob: "${correctEnglish}"
+O'quvchi yozdi: "${userAnswer}"`,
+    }],
+    stream: false,
+  })
+
+  const data = await res.json()
+  const text = data.content?.[0]?.type === 'text' ? data.content[0].text.trim() : ''
+
+  const getBlock = (key: string, nextKey?: string): string => {
+    const pattern = nextKey
+      ? new RegExp(`^${key}:\\s*(.+?)(?=\\n${nextKey}:|$)`, 'ms')
+      : new RegExp(`^${key}:\\s*(.+)`, 'm')
+    const match = text.match(pattern)
+    return match ? match[1].trim() : ''
+  }
+
+  const correctRaw = getBlock('CORRECT', 'EXPLANATION').toLowerCase()
+  const correct = correctRaw.startsWith('yes') || correctRaw === 'ha'
+  const explanation = correct ? '' : getBlock('EXPLANATION', 'CORRECT_ANSWER')
+  const correctAnswer = correct ? '' : getBlock('CORRECT_ANSWER') || correctEnglish
+
+  return { correct, explanation, correctAnswer }
 }
 
 // ── Generate Uzbek sentence ────────────────────────────────────────────────

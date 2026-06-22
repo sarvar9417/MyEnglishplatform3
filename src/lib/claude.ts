@@ -14,10 +14,11 @@ export {
   generateWordCard,
   checkVocabAnswer,
   checkPhraseTranslation,
+  checkPhraseTranslationDetailed,
   generateUzbekSentence,
   checkSentenceTranslation,
 } from './ai/claude-vocab'
-export type { WordCard, SentenceCheckResult } from './ai/claude-vocab'
+export type { WordCard, SentenceCheckResult, PhraseCheckResult } from './ai/claude-vocab'
 
 export {
   generateSpeakingTask,

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { CheckCircle, XCircle, ArrowRight, RotateCcw, X, Loader2 } from 'lucide-react'
 import { supabase } from '../../lib/supabase'
 import { monitoring } from '../../lib/monitoring'
-import { checkPhraseTranslation } from '../../lib/claude'
+import { checkPhraseTranslationDetailed } from '../../lib/ai/claude-vocab'
 import { getTodayTashkent } from '../../utils/tashkentDate'
 import { useI18n } from '../../i18n'
 
@@ -20,6 +20,8 @@ interface QuizResult {
   phrase: PhraseItem
   userAnswer: string
   correct: boolean
+  explanation?: string
+  correctAnswer?: string
 }
 
 const LEVEL_STYLES: Record<Level, { bg: string; text: string; border: string; badge: string; btn: string }> = {
@@ -54,6 +56,8 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
   const [flash, setFlash] = useState<'correct' | 'wrong' | null>(null)
   const [locked, setLocked] = useState(false)
   const [checking, setChecking] = useState(false)
+  const [aiExplanation, setAiExplanation] = useState('')
+  const [aiCorrectAnswer, setAiCorrectAnswer] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pendingRef = useRef<{ results: QuizResult[]; nextIdx: number; finished: boolean } | null>(null)
@@ -133,6 +137,8 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
     setLocked(false)
     setResults(pending.results)
     setInput('')
+    setAiExplanation('')
+    setAiCorrectAnswer('')
     if (pending.finished) {
       setPhase('result')
     } else {
@@ -143,7 +149,13 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
   function processResult(phrase: PhraseItem, userAnswer: string, correct: boolean) {
     setFlash(correct ? 'correct' : 'wrong')
     setLocked(true)
-    const newResults = [...results, { phrase, userAnswer, correct }]
+    const newResults = [...results, {
+      phrase,
+      userAnswer,
+      correct,
+      explanation: correct ? undefined : aiExplanation || undefined,
+      correctAnswer: correct ? undefined : aiCorrectAnswer || undefined,
+    }]
     const nextIdx = currentIdx + 1
     pendingRef.current = { results: newResults, nextIdx, finished: nextIdx >= phrases.length }
   }
@@ -154,6 +166,8 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
 
     const phrase = phrases[currentIdx]
     setLocked(true)
+    setAiExplanation('')
+    setAiCorrectAnswer('')
 
     // Aniq mos kelsa — API chaqirmasdan darhol to'g'ri
     if (normalizeAnswer(trimmed) === normalizeAnswer(phrase.english)) {
@@ -164,11 +178,17 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
     // Mos kelmasa — AI orqali tekshirish (boshqa tarjima varianti bo'lishi mumkin)
     setChecking(true)
     try {
-      const correct = await checkPhraseTranslation(phrase.uzbek, phrase.english, trimmed)
+      const result = await checkPhraseTranslationDetailed(phrase.uzbek, phrase.english, trimmed)
       setChecking(false)
-      processResult(phrase, trimmed, correct)
+      if (result.correct) {
+        processResult(phrase, trimmed, true)
+      } else {
+        setAiExplanation(result.explanation)
+        setAiCorrectAnswer(result.correctAnswer)
+        processResult(phrase, trimmed, false)
+      }
     } catch (e) {
-      monitoring.captureMessage('checkPhraseTranslation API error, marking as wrong: ' + (e instanceof Error ? e.message : String(e)), 'warn')
+      monitoring.captureMessage('checkPhraseTranslationDetailed API error, marking as wrong: ' + (e instanceof Error ? e.message : String(e)), 'warn')
       // API ishlamasa — noto'g'ri deb hisoblash
       setChecking(false)
       processResult(phrase, trimmed, false)
@@ -299,8 +319,14 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
               </p>
               <p className="text-gray-600 text-sm mt-1">
                 To'g'ri javob:{' '}
-                <span className="font-bold text-gray-900">{phrase.english}</span>
+                <span className="font-bold text-gray-900">{aiCorrectAnswer || phrase.english}</span>
               </p>
+              {aiExplanation && (
+                <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-xl text-left">
+                  <p className="text-xs font-semibold text-amber-700 mb-1">Tushuntirish:</p>
+                  <p className="text-sm text-amber-800 leading-relaxed">{aiExplanation}</p>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -396,9 +422,14 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
                     <p className="text-xs text-green-600 flex items-center gap-1">
                       <CheckCircle size={11} />
                       To'g'ri:{' '}
-                      <span className="font-bold">{r.phrase.english}</span>
+                      <span className="font-bold">{r.correctAnswer || r.phrase.english}</span>
                     </p>
                   </div>
+                  {r.explanation && (
+                    <div className="mt-2 p-2 bg-amber-50 border border-amber-200 rounded-lg">
+                      <p className="text-xs text-amber-800 leading-relaxed">{r.explanation}</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
