@@ -141,7 +141,7 @@ export async function checkSentenceTranslation(
 ): Promise<SentenceCheckResult> {
   const res = await proxyFetch({
     model: MODEL,
-    max_tokens: 350,
+    max_tokens: 500,
     system: `Siz ${level} darajasidagi ingliz tili o'qituvchisisiz. O'quvchi o'zbekcha gapni ingliz tiliga tarjima qilgan.
 
 Tekshirish QOIDALARI (uchala shart bajarilsa — to'g'ri):
@@ -149,12 +149,34 @@ Tekshirish QOIDALARI (uchala shart bajarilsa — to'g'ri):
 2. Tarjima o'zbekcha gap ma'nosiga mos bo'lishi kerak.
 3. Grammatika ${level} darajasiga mos qabul qilinadi (kichik xatolar ok).
 
+MUHIM TARJIMA QOIDALARI (CORRECT_ANSWER uchun):
+- Har bir o'zbekcha so'zning aniq inglizcha mosini ishlat. Masalan: "chiroyli" = "beautiful" (emas "cute"), "katta" = "big" (emas "large"), "yaxshi" = "good" (emas "nice").
+- O'zbekchada "u" va "uning" so'zlari jinsiy aniqlanmagan — "his" yoki "her" (yoki "its") bo'lishi mumkin. Ikkala variant ham to'g'ri deb qabul qil.
+- CORRECT_ANSWER da faqat eng oddiy va to'g'ri tarjimani yoz — murakkab yoki boshqacha shaklda emas.
+
+ARTIKLLAR (a/an/the) XATOLARI BO'LSA — EXPLANATION da quyidagi qoidalarni o'zbekcha tushuntir:
+• A/AN — noma'lum otlar uchun (birinchi marta tilga olinayotgan, umumiy narsa):
+  "I have a book." (Bitta kitob bor — qaysi kitobligi ma'lum emas)
+  "She is a teacher." (U o'qituvchi — qaysi o'qituvchi emas)
+  • A — undosh tovushdan oldin: a book, a cat, a university
+  • AN — unli tovushdan oldin: an apple, an orange, an hour
+• THE — ma'lum otlar uchun (ikkinchi marta tilga olinayotgan, yagona, ma'lum narsa):
+  "The book is on the table." (Ma'lum kitob — avval aytildi)
+  "The sun is bright." (Yagona quyosh)
+  "I like the teacher." (Ma'lum o'qituvchi — hamma biladi)
+• ARTIKLSIZ — umumiy ko'plik yoki abstrakt otlar:
+  "I like music." (Umumiy musiqa)
+  "Water is important." (Umumiy suv)
+  "Children play." (Barcha bolalar)
+
+EXPLANATION formati: "❌ [xato] → ✅ [to'g'ri]. Sababi: [qoida o'zbekcha, 1-2 gap]"
+
 JAVOB FORMATI — faqat quyidagi 3 qatorni yoz, boshqa hech narsa yozma:
 CORRECT: yes
 yoki:
 CORRECT: no
-EXPLANATION: [o'zbekcha — nima noto'g'ri, qisqa va aniq]
-CORRECT_ANSWER: [to'g'ri inglizcha tarjima]`,
+EXPLANATION: [o'zbekcha — nima noto'g'ri, qisqa va aniq, artikl xatosi bo'lsa qoidani tushuntir]
+CORRECT_ANSWER: [to'g'ri inglizcha tarjima — eng oddiy variantini yoz]`,
     messages: [{
       role: 'user',
       content: `O'zbekcha gap: "${uzbekSentence}"
