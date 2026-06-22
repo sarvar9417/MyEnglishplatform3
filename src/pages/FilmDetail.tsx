@@ -7,6 +7,7 @@ import {
   Eye, EyeOff, Zap,
 } from 'lucide-react'
 import { getFilmById, type FilmWord } from '../data/filmVocabulary'
+import { speak as ttsSpeak } from '../lib/tts'
 
 const PAGE_SIZE = 20
 
@@ -18,16 +19,8 @@ const LEVEL_COLORS: Record<string, { bg: string; text: string; dot: string }> = 
   'B2': { bg: 'bg-rose-100 dark:bg-rose-900/30', text: 'text-rose-700 dark:text-rose-400', dot: 'bg-rose-500' },
 }
 
-function speak(text: string, lang = 'en-US') {
-  if (!window.speechSynthesis) return
-  window.speechSynthesis.cancel()
-  const u = new SpeechSynthesisUtterance(text)
-  u.lang = lang
-  u.rate = 0.9
-  u.pitch = 1
-  window.speechSynthesis.speak(u)
-  // Chrome/Safari bug: cancel() pauses synthesis — need resume()
-  window.speechSynthesis.resume()
+function speak(text: string) {
+  ttsSpeak(text, { rate: 0.9, lang: 'en-US' })
 }
 
 type PracticeMode = 'list' | 'flashcard' | 'quiz'
