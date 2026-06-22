@@ -301,7 +301,7 @@ export async function batchAddPersonalWordsToDB(
 export async function generateAITranslation(
   word: string,
   context?: string
-): Promise<{ uzbek: string; phonetic?: string; example?: string }> {
+): Promise<{ uzbek: string; phonetic?: string; example?: string; level?: 'A1' | 'A2' | 'B1' | 'B2'; category?: string; part_of_speech?: string }> {
   try {
     const prompt = `You are an English-Uzbek dictionary assistant. Translate the English word "${word}"${context ? ` in the context of "${context}"` : ''}.
 
@@ -309,13 +309,19 @@ Respond with ONLY a valid JSON object (no markdown, no extra text):
 {
   "uzbek": "Uzbek translation",
   "phonetic": "IPA pronunciation if applicable",
-  "example": "Example sentence in English using this word"
+  "example": "Example sentence in English using this word",
+  "level": "A1, A2, B1, or B2 based on word difficulty",
+  "category": "one of: custom, grammar, travel, formal, ielts, business, food, health, education, social, work, shopping, relationships, environment, economy, culture, feelings, discussion, technology, communication",
+  "part_of_speech": "noun, verb, adjective, adverb, preposition, conjunction, pronoun, interjection, or other"
 }
 
 Rules:
 - uzbek: concise Uzbek translation (1-3 words max)
 - phonetic: IPA notation like /ˈwɜːrd/ or empty string if not applicable
 - example: a simple English sentence showing the word in context
+- level: A1 (basic daily words like cat, go, big), A2 (elementary like comfortable, develop), B1 (intermediate like analyze, significant), B2 (advanced like ambivalent, pragmatic)
+- category: most relevant category from the list
+- part_of_speech: the grammatical role of the word
 - Respond ONLY with the JSON object, nothing else`
 
     const response = await fetch('/api/claude', {
@@ -345,6 +351,9 @@ Rules:
       uzbek: parsed.uzbek || '',
       phonetic: parsed.phonetic || undefined,
       example: parsed.example || undefined,
+      level: parsed.level || undefined,
+      category: parsed.category || undefined,
+      part_of_speech: parsed.part_of_speech || undefined,
     }
   } catch (e) {
     monitoring.captureMessage('generateAITranslation error: ' + (e instanceof Error ? e.message : String(e)), 'warn')

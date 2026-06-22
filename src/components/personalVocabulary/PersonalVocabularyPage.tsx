@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { useStore } from '../../store/useStore'
 import { useI18n } from '../../i18n'
 import { exportPersonalVocabulary, importPersonalVocabulary, generateAITranslation } from '../../services/personalVocabularyService'
@@ -7,12 +7,14 @@ import { getTodayTashkent } from '../../utils/tashkentDate'
 import { useToastStore } from '../../utils/toastStore'
 import type { PersonalWord, AddWordDTO, UpdateWordDTO } from '../../types/personalVocabulary'
 import type { VocabRating } from '../../types/personalVocabulary'
-import { Plus, Search, Download, Upload, Play, BookOpen, Filter, Loader2 } from 'lucide-react'
+import { Plus, Search, Download, Upload, Play, BookOpen, Filter, Loader2, ChevronLeft, ChevronRight } from 'lucide-react'
 import AddWordForm from './AddWordForm'
 import WordList from './WordList'
 import FlashCardTest from './FlashCardTest'
 
 type ViewMode = 'list' | 'add' | 'test'
+
+const PAGE_SIZE = 20
 
 let cachedUserId: string | null = null
 async function getUserId(): Promise<string> {
@@ -61,6 +63,7 @@ export default function PersonalVocabularyPage() {
   const [importLoading, setImportLoading] = useState(false)
   const [testWords, setTestWords] = useState<PersonalWord[]>([])
   const [editingWord, setEditingWord] = useState<PersonalWord | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
   const mountedRef = useRef(true)
 
   // Fetch words on mount
@@ -77,15 +80,27 @@ export default function PersonalVocabularyPage() {
     return () => { mountedRef.current = false }
   }, [personalWordsFetched, fetchPersonalWords])
 
+  // Reset page when filters change
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchQuery, filterCategory, filterLevel, showDueOnly])
+
   // Filter words
-  const filteredWords = personalWords.filter((w) => {
+  const filteredWords = useMemo(() => personalWords.filter((w) => {
     const matchesSearch = w.english.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          w.uzbek.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesCategory = filterCategory === 'all' || w.category === filterCategory
     const matchesLevel = filterLevel === 'all' || w.level === filterLevel
     const matchesDue = !showDueOnly || !w.is_learned && w.next_review <= getTodayTashkent()
     return matchesSearch && matchesCategory && matchesLevel && matchesDue
-  })
+  }), [personalWords, searchQuery, filterCategory, filterLevel, showDueOnly])
+
+  // Pagination
+  const totalPages = Math.ceil(filteredWords.length / PAGE_SIZE)
+  const paginatedWords = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE
+    return filteredWords.slice(start, start + PAGE_SIZE)
+  }, [filteredWords, currentPage])
 
   // Stats
   const totalWords = personalWords.length
@@ -165,7 +180,7 @@ export default function PersonalVocabularyPage() {
     }
   }
 
-  const handleAITranslation = async (word: string): Promise<{ uzbek: string; phonetic?: string; example?: string }> => {
+  const handleAITranslation = async (word: string) => {
     return await generateAITranslation(word)
   }
 
@@ -174,7 +189,6 @@ export default function PersonalVocabularyPage() {
       <FlashCardTest
         words={testWords}
         onComplete={(results) => {
-          // Save results — pass through the actual rating from the test
           results.forEach((r) => {
             if (r.result === 'correct' && r.rating) {
               handleRateWord(r.vocabId, r.rating as VocabRating)
@@ -330,12 +344,62 @@ export default function PersonalVocabularyPage() {
       {loading ? (
         <LoadingSkeleton />
       ) : filteredWords.length > 0 ? (
-        <WordList
-          words={filteredWords}
-          onDelete={handleDeleteWord}
-          onRate={handleRateWord}
-          onEdit={handleEditWord}
-        />
+        <>
+          <WordList
+            words={paginatedWords}
+            onDelete={handleDeleteWord}
+            onRate={handleRateWord}
+            onEdit={handleEditWord}
+          />
+          {totalPages > 1 && (
+            <div className="flex items-center justify-between pt-2">
+              <p className="text-sm text-gray-500">
+                {(currentPage - 1) * PAGE_SIZE + 1}–{Math.min(currentPage * PAGE_SIZE, filteredWords.length)} / {filteredWords.length}
+              </p>
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed text-gray-600 dark:text-gray-400"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
+                  let page: number
+                  if (totalPages <= 7) {
+                    page = i + 1
+                  } else if (currentPage <= 4) {
+                    page = i + 1
+                  } else if (currentPage >= totalPages - 3) {
+                    page = totalPages - 6 + i
+                  } else {
+                    page = currentPage - 3 + i
+                  }
+                  return (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
+                        page === currentPage
+                          ? 'bg-primary-500 text-white'
+                          : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                })}
+                <button
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed text-gray-600 dark:text-gray-400"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <div className="text-center py-12">
           <BookOpen size={48} className="mx-auto text-gray-300 mb-4" />

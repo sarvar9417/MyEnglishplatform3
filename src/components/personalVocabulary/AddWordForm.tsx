@@ -6,7 +6,7 @@ import { monitoring } from '../../lib/monitoring'
 interface AddWordFormProps {
   onAdd: (wordData: AddWordDTO) => Promise<void>
   onCancel: () => void
-  onAITranslate: (word: string, context?: string) => Promise<{ uzbek: string; phonetic?: string; example?: string }>
+  onAITranslate: (word: string, context?: string) => Promise<{ uzbek: string; phonetic?: string; example?: string; level?: 'A1' | 'A2' | 'B1' | 'B2'; category?: string; part_of_speech?: string }>
   editWord?: { english: string; uzbek: string; phonetic?: string; example?: string; category: VocabCategory; level: 'A1' | 'A2' | 'B1' | 'B2'; part_of_speech?: PartOfSpeech } | null
 }
 
@@ -33,12 +33,16 @@ const CATEGORIES: { value: VocabCategory; label: string }[] = [
   { value: 'communication', label: 'Communication' },
 ]
 
+const VALID_CATEGORIES = new Set(CATEGORIES.map(c => c.value))
+
 const LEVELS = [
   { value: 'A1', label: 'A1' },
   { value: 'A2', label: 'A2' },
   { value: 'B1', label: 'B1' },
   { value: 'B2', label: 'B2' },
 ]
+
+const VALID_LEVELS = new Set(['A1', 'A2', 'B1', 'B2'])
 
 const PARTS_OF_SPEECH: { value: PartOfSpeech; label: string }[] = [
   { value: 'noun', label: 'Ot (Noun)' },
@@ -51,6 +55,8 @@ const PARTS_OF_SPEECH: { value: PartOfSpeech; label: string }[] = [
   { value: 'interjection', label: 'Undov (Interjection)' },
   { value: 'other', label: 'Boshqa (Other)' },
 ]
+
+const VALID_POS = new Set(PARTS_OF_SPEECH.map(p => p.value))
 
 export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }: AddWordFormProps) {
   const [english, setEnglish] = useState(editWord?.english || '')
@@ -73,6 +79,9 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
       if (result.uzbek && !uzbek) setUzbek(result.uzbek)
       if (result.phonetic && !phonetic) setPhonetic(result.phonetic)
       if (result.example && !example) setExample(result.example)
+      if (result.level && VALID_LEVELS.has(result.level)) setLevel(result.level)
+      if (result.category && VALID_CATEGORIES.has(result.category as VocabCategory)) setCategory(result.category as VocabCategory)
+      if (result.part_of_speech && VALID_POS.has(result.part_of_speech as PartOfSpeech)) setPartOfSpeech(result.part_of_speech as PartOfSpeech)
     } catch (e) {
       monitoring.captureMessage('AI translation failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     } finally {
