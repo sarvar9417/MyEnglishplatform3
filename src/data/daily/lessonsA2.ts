@@ -1,5 +1,5 @@
 import type { DailyLesson } from '../dailyLessons'
-import { comparativesSuperlatives } from '../dailyLessons'
+import { comparativesSuperlatives } from './a2Comparatives'
 import { modalVerbs, articles, prepositions, questionsLesson, countableUncountable } from './a2Part1'
 import { adjectiveAdverb, gerundsInfinitives, passiveVoice, reportedSpeech, firstConditional } from './a2Part2'
 // thereIsThereAre — A1 'There is/are' (thereIsAre) bilan dublikat → ketma-ketlikdan chiqarildi

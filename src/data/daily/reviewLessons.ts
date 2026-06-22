@@ -11,7 +11,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 import type { DailyLesson, DailyExercise, ReviewLesson } from '../dailyLessons'
-import { A1_LESSONS_NEW } from './index'
+import { A1_LESSONS_NEW } from './a1Registry'
 import { A2_LESSONS } from './lessonsA2'
 import { B1_LESSONS_NEW } from './lessonsB1'
 import { B1PLUS_LESSONS_NEW } from './lessonsB1plus'

@@ -6,11 +6,10 @@ import { useState, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { Shuffle, CheckCircle, ArrowLeft, RotateCcw, Trophy } from 'lucide-react'
-import { getAllLessons } from '../data/daily'
 import ExerciseCard from '../components/dailyLesson/ExerciseCard'
 import { checkAnswer } from '../components/dailyLesson/helpers'
 import { useStore } from '../store/useStore'
-import type { DailyExercise } from '../data/dailyLessons'
+import type { DailyLesson, DailyExercise } from '../data/dailyLessons'
 
 const SESSION_SIZE = 12
 
@@ -31,8 +30,8 @@ function shuffle<T>(arr: T[]): T[] {
 
 // Yetilgan darslardan mashqlarni round-robin bilan aralashtirib oladi:
 // ketma-ket mashqlar har xil darsdan bo'ladi (haqiqiy interleaving).
-function buildSession(currentDay: number): SessionItem[] {
-  const reached = getAllLessons().filter(
+function buildSession(currentDay: number, lessons: DailyLesson[]): SessionItem[] {
+  const reached = lessons.filter(
     (l) => (l.day ?? 9999) <= Math.max(currentDay, 1) && l.exercises?.length > 0,
   )
   const groups = shuffle(reached).map((l) => ({
@@ -53,9 +52,9 @@ function buildSession(currentDay: number): SessionItem[] {
 export default function MixedReview() {
   const navigate = useNavigate()
   const { t } = useI18n()
-  const { currentDay, addXP } = useStore()
+  const { currentDay, addXP, lessons } = useStore()
 
-  const [session, setSession] = useState<SessionItem[]>(() => buildSession(currentDay))
+  const [session, setSession] = useState<SessionItem[]>(() => buildSession(currentDay, lessons as DailyLesson[]))
   const [answers, setAnswers] = useState<Record<number, string[]>>({})
   const [submitted, setSubmitted] = useState(false)
 
@@ -80,7 +79,7 @@ export default function MixedReview() {
   const restart = () => {
     setAnswers({})
     setSubmitted(false)
-    setSession(buildSession(currentDay))
+    setSession(buildSession(currentDay, lessons as DailyLesson[]))
   }
 
   const scorePct = session.length ? Math.round((correctCount / session.length) * 100) : 0

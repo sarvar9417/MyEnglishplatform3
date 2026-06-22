@@ -6,9 +6,9 @@
 import { useState, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Brain, ArrowLeft, RotateCcw, Eye, Check, X, Trophy } from 'lucide-react'
-import { getAllLessons } from '../data/daily'
 import { useStore } from '../store/useStore'
 import { useI18n } from '../i18n'
+import type { DailyLesson } from '../data/dailyLessons'
 
 const SESSION_SIZE = 10
 
@@ -28,8 +28,8 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
-function buildSession(currentDay: number): RecallItem[] {
-  const reached = getAllLessons().filter((l) => (l.day ?? 9999) <= Math.max(currentDay, 1))
+function buildSession(currentDay: number, lessons: DailyLesson[]): RecallItem[] {
+  const reached = lessons.filter((l) => (l.day ?? 9999) <= Math.max(currentDay, 1))
   const all: RecallItem[] = []
   for (const l of reached) {
     for (const f of l.formulas ?? []) {
@@ -44,9 +44,9 @@ function buildSession(currentDay: number): RecallItem[] {
 export default function ActiveRecall() {
   const navigate = useNavigate()
   const { t } = useI18n()
-  const { currentDay, addXP } = useStore()
+  const { currentDay, addXP, lessons } = useStore()
 
-  const [session, setSession] = useState<RecallItem[]>(() => buildSession(currentDay))
+  const [session, setSession] = useState<RecallItem[]>(() => buildSession(currentDay, lessons as DailyLesson[]))
   const [idx, setIdx] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [knownCount, setKnownCount] = useState(0)
@@ -69,7 +69,7 @@ export default function ActiveRecall() {
   }, [idx, session.length, addXP])
 
   const restart = useCallback(() => {
-    setSession(buildSession(currentDay))
+    setSession(buildSession(currentDay, lessons as DailyLesson[]))
     setIdx(0)
     setRevealed(false)
     setKnownCount(0)

@@ -149,62 +149,16 @@ export {
   b2ComprehensiveReview,
 } from './b2Part3'
 
-// Combined export arrays
-import { greetingsAndIntroductions } from './a1Greetings'
-import { alphabetAndGreetings, numbers, colorsAndShapes, family, daysAndMonths, timeAndRoutines, foodAndDrinks, animals, bodyParts, clothes } from './a1Part1'
-import { demonstratives, thereIsAre, canCant, haveGot, questionWords, conjunctions, a1Review, prepositionsOfPlace, basicAdjectives } from './a1Part2'
-import { articles as articlesA1 } from './a1Articles'
-// A1 zamon darslari — bu yerda ketma-ketlikka qo'shiladi (oldin loadAllLessons'da
-// A1_TENSES alohida, lug'at darslaridan OLDIN kelib, tartibni buzar edi)
-import { simplePresent, presentContinuous, simplePast, simpleFuture } from '../tenses/tensesData'
-// A2/B1/B1+/B2 daraja massivlari endi lessonsX.ts da YAGONA manba sifatida saqlanadi
-// va pastda re-export qilinadi (oldin bu yerda eski tartibda dublikat turardi).
+// Re-export A1 lesson constants
+export { A1_LESSONS_NEW } from './a1Registry'
+
+// Combined export arrays — re-export from lesson registries
+import { A1_LESSONS_NEW } from './a1Registry'
 import { A2_LESSONS } from './lessonsA2'
 import { B1_LESSONS_NEW } from './lessonsB1'
 import { B1PLUS_LESSONS_NEW } from './lessonsB1plus'
 import { B2_LESSONS_NEW } from './lessonsB2'
-import { greetingsAndNames, numbersAndAlphabet, familyAndMe } from './a0Part1'
 import type { DailyLesson } from '../dailyLessons'
-
-// A1 darslari — pedagogik ketma-ketlikda (loadAllLessons day raqamini massiv
-// indeksidan beradi, shuning uchun TARTIB shu yerda hal bo'ladi):
-//   1) Hayotiy lug'at  2) Asosiy tuzilmalar  3) Fe'l zamonlari  4) Gap qurish + takror
-export const A1_LESSONS_NEW: DailyLesson[] = [
-  // ─── A0: Boshlang'ich (kun 1-3) ───
-  greetingsAndNames,
-  numbersAndAlphabet,
-  familyAndMe,
-  // ─── Salomlashish (kun 4) — yengil boshlang'ich ───
-  greetingsAndIntroductions,
-  // ─── Hayotiy lug'at (kun 5-13) ───
-  alphabetAndGreetings,
-  numbers,
-  colorsAndShapes,
-  family,
-  daysAndMonths,
-  timeAndRoutines,
-  foodAndDrinks,
-  animals,
-  bodyParts,
-  clothes,
-  // ─── Asosiy tuzilmalar (kun 11-16) ───
-  demonstratives,
-  thereIsAre,
-  prepositionsOfPlace,
-  basicAdjectives,
-  articlesA1,
-  haveGot,
-  canCant,
-  // ─── Fe'l zamonlari (kun 17-20) — Present Simple bu yerda (a1Part2 dublikati olib tashlandi) ───
-  simplePresent,
-  presentContinuous,
-  simplePast,
-  simpleFuture,
-  // ─── Gap qurish + takrorlash (kun 21-23) ───
-  questionWords,
-  conjunctions,
-  a1Review,
-]
 
 // Daraja massivlari — YAGONA manba lessonsX.ts (loadAllLessons aynan shularni ishlatadi;
 // zamonlar va comparatives pedagogik tartibda o'sha fayllarga singdirilgan)
