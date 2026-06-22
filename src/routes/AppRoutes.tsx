@@ -40,6 +40,8 @@ export function buildRoutes(lazyPages: Record<string, React.LazyExoticComponent<
     { path: '/writing', element: safe(<P.Writing />) },
     { path: '/skills', element: safe(<P.SkillsPage />) },
     { path: '/personal-vocabulary', element: safe(<P.PersonalVocabulary />) },
+    { path: '/films', element: safe(<P.FilmHub />) },
+    { path: '/films/:id', element: safe(<P.FilmDetail />) },
     { path: '/profile', element: safe(<P.Profile />) },
     { path: '/review', element: safe(<P.GrammarReview />) },
     { path: '/reset-password', element: safe(<P.ResetPassword />) },

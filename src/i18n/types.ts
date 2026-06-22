@@ -26,6 +26,7 @@ export interface TranslationStrings {
   'nav.phrasalVerbs': string
   'nav.idioms': string
   'nav.confusablePairs': string
+  'nav.films': string
 
   /* ── Personal Vocabulary ── */
   'personalVocab.title': string

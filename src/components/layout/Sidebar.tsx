@@ -11,7 +11,7 @@ import {
   ChevronLeft, ChevronRight, ChevronDown, Zap, Flame,
   Trophy, Sun, Moon, Monitor, X, User, Users,
   BookText, MessageCircle, Mic, Brain, BookmarkCheck,
-  Download,
+  Download, Film,
 } from 'lucide-react'
 import { cycleTheme, getThemePreference, subscribeToTheme } from '../../utils/theme'
 
@@ -38,6 +38,7 @@ const RESOURCES_SUBITEMS: NavItem[] = [
   { to: '/phrasal-verbs', icon: <BookText size={20} />,        label: 'Phrasal Verbs' },
   { to: '/idioms',        icon: <MessageCircle size={20} />,   label: 'Idioms' },
   { to: '/confusable-pairs', icon: <Brain size={20} />,       label: 'Confusable Pairs' },
+  { to: '/films',         icon: <Film size={20} />,            label: 'Film Vocabulary' },
 ]
 
 const LEVEL_COLORS: Record<string, string> = {
@@ -62,6 +63,7 @@ const ROUTE_T_KEY: Record<string, keyof import('../../i18n').TranslationStrings>
   '/phrasal-verbs': 'nav.phrasalVerbs',
   '/idioms': 'nav.idioms',
   '/confusable-pairs': 'nav.confusablePairs',
+  '/films': 'nav.films',
 }
 
 export default React.memo(function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose?: () => void }) {
