@@ -97,6 +97,7 @@ export async function updatePersonalWordInDB(
     example?: string
     category?: string
     level?: string
+    part_of_speech?: string | null
   } = { updated_at: new Date().toISOString() }
   if (updates.english !== undefined) payload.english = updates.english
   if (updates.uzbek !== undefined) payload.uzbek = updates.uzbek
@@ -104,10 +105,12 @@ export async function updatePersonalWordInDB(
   if (updates.example !== undefined) payload.example = updates.example
   if (updates.category !== undefined) payload.category = updates.category
   if (updates.level !== undefined) payload.level = updates.level
+  if (updates.part_of_speech !== undefined) payload.part_of_speech = updates.part_of_speech
 
   const { error } = await supabase
     .from('personal_vocabulary')
-    .update(payload)
+    // part_of_speech column exists in DB but not yet in generated Supabase types
+    .update(payload as never)
     .eq('user_id', userId)
     .eq('id', wordId)
 
