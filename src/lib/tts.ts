@@ -12,13 +12,31 @@ export interface TTSOptions {
 
 let currentReject: ((reason: Error) => void) | null = null
 let _isSpeaking = false
+let _cachedVoices: SpeechSynthesisVoice[] = []
 
 // ====== Ovoz boshqaruvi ======
 
 /** Brauzerdagi mavjud ovozlar ro'yxatini qaytaradi */
 export function getVoices(): SpeechSynthesisVoice[] {
   if (!('speechSynthesis' in window)) return []
-  return window.speechSynthesis.getVoices()
+  const voices = window.speechSynthesis.getVoices()
+  if (voices.length > 0) {
+    _cachedVoices = voices
+  }
+  return _cachedVoices
+}
+
+// Chrome loads voices async — cache them when available
+if ('speechSynthesis' in window) {
+  const synth = window.speechSynthesis
+  const loadVoices = () => {
+    const voices = synth.getVoices()
+    if (voices.length > 0) {
+      _cachedVoices = voices
+    }
+  }
+  loadVoices()
+  synth.onvoiceschanged = loadVoices
 }
 
 /** Ingliz tili uchun eng yaxshi ovozni topadi (imkon qadar tabiiy) */
@@ -69,8 +87,6 @@ export function speak(text: string, options: TTSOptions = {}): Promise<void> {
       currentReject = null
     }
     window.speechSynthesis.cancel()
-    // Chrome bug: cancel() pauses synthesis — must resume before new speak
-    window.speechSynthesis.resume()
     _isSpeaking = false
 
     const utterance = new SpeechSynthesisUtterance(text)
@@ -94,6 +110,11 @@ export function speak(text: string, options: TTSOptions = {}): Promise<void> {
     }
     utterance.onerror = (e) => {
       _isSpeaking = false
+      // 'canceled' is normal when a new speak call interrupts — don't reject
+      if (e.error === 'canceled') {
+        resolve()
+        return
+      }
       reject(new Error(`TTS xatosi: ${e.error}`))
     }
 
@@ -126,7 +147,6 @@ export async function speakWord(word: string): Promise<void> {
 /** Nutqni to'xtatish */
 export function stopSpeaking(): void {
   window.speechSynthesis.cancel()
-  window.speechSynthesis.resume()
   _isSpeaking = false
 
   if (currentReject) {
