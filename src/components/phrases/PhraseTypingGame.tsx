@@ -322,9 +322,9 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
                 <span className="font-bold text-gray-900">{aiCorrectAnswer || phrase.english}</span>
               </p>
               {aiExplanation && (
-                <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-xl text-left">
-                  <p className="text-xs font-semibold text-amber-700 mb-1">Tushuntirish:</p>
-                  <p className="text-sm text-amber-800 leading-relaxed">{aiExplanation}</p>
+                <div className="mt-3 p-3 bg-white border border-amber-300 rounded-xl text-left shadow-sm">
+                  <p className="text-xs font-bold text-amber-600 uppercase tracking-wide mb-1.5">💡 Tushuntirish:</p>
+                  <p className="text-sm text-gray-800 leading-relaxed font-medium">{aiExplanation}</p>
                 </div>
               )}
             </div>
@@ -426,8 +426,8 @@ export default function PhraseTypingGame({ onClose }: { onClose: () => void }) {
                     </p>
                   </div>
                   {r.explanation && (
-                    <div className="mt-2 p-2 bg-amber-50 border border-amber-200 rounded-lg">
-                      <p className="text-xs text-amber-800 leading-relaxed">{r.explanation}</p>
+                    <div className="mt-2 p-2 bg-white border border-amber-300 rounded-lg shadow-sm">
+                      <p className="text-xs text-gray-800 leading-relaxed font-medium">{r.explanation}</p>
                     </div>
                   )}
                 </div>
