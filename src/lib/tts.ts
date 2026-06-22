@@ -69,6 +69,8 @@ export function speak(text: string, options: TTSOptions = {}): Promise<void> {
       currentReject = null
     }
     window.speechSynthesis.cancel()
+    // Chrome bug: cancel() pauses synthesis — must resume before new speak
+    window.speechSynthesis.resume()
     _isSpeaking = false
 
     const utterance = new SpeechSynthesisUtterance(text)
@@ -124,6 +126,7 @@ export async function speakWord(word: string): Promise<void> {
 /** Nutqni to'xtatish */
 export function stopSpeaking(): void {
   window.speechSynthesis.cancel()
+  window.speechSynthesis.resume()
   _isSpeaking = false
 
   if (currentReject) {
