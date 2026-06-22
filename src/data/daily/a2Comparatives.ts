@@ -242,4 +242,13 @@ export const comparativesSuperlatives: DailyLesson = {
     { id: 34077, type: 'multiple-choice', instruction: "Asosiy qoidalar — oson", question: '"Tall" so\'zining comparative shaklini toping:', options: ['tall', 'taller', 'tallest', 'more tall'], correct: 'taller', explanation: 'Tall → qisqa sifat (1 bo\'g\'in) → taller.' },
     { id: 34078, type: 'multiple-choice', instruction: "Asosiy qoidalar — oson", question: '"Expensive" so\'zining superlative shaklini toping:', options: ['the most expensive', 'the expensivest', 'more expensive', 'expensiver'], correct: 'the most expensive', explanation: 'Expensive → uzun sifat → the most expensive.' },
   ],
+  exerciseSections: [
+    { title: 'Comparative asoslari', desc: 'Qisqa va uzun sifatlar bilan taqqoslash', color: 'green', icon: '📝', ids: [34001, 34002, 34003, 34004, 34005, 34006, 34007, 34008, 34009, 34010, 34011, 34012, 34013, 34014, 34015, 34016, 34017, 34018, 34019, 34020] },
+    { title: 'Superlative asoslari', desc: 'Eng yaxshi/yomon shakllar', color: 'purple', icon: '📝', ids: [34021, 34022, 34023, 34024, 34025, 34026, 34027, 34028, 34029, 34030, 34031, 34032, 34033, 34034, 34035, 34036, 34037, 34038, 34039, 34040] },
+    { title: 'Maxsus holatlar', desc: 'Irregular, as...as, qoidalar', color: 'amber', icon: '📝', ids: [34041, 34042, 34043, 34044, 34045, 34046, 34047, 34048, 34049, 34050, 34051, 34052, 34053, 34054, 34055, 34056, 34057, 34058, 34059, 34060] },
+    { title: 'Amaliy mashqlar', desc: 'Kundalik hayotda qo\'llash', color: 'blue', icon: '📝', ids: [34061, 34062, 34063, 34064, 34065, 34066, 34067, 34068, 34069, 34070, 34071, 34072, 34073, 34074, 34200, 34201] },
+  ],
+  testSections: [
+    { title: 'Asosiy qoidalar', desc: 'Comparative va superlative asoslari', color: 'green', icon: '🧪', ids: [34075, 34076, 34077, 34078] },
+  ],
 }

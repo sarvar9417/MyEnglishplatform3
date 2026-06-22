@@ -5,6 +5,8 @@ export type VocabCategory =
   | 'relationships' | 'environment' | 'economy' | 'culture' | 'feelings'
   | 'discussion' | 'technology' | 'communication'
 
+export type PartOfSpeech = 'noun' | 'verb' | 'adjective' | 'adverb' | 'preposition' | 'conjunction' | 'pronoun' | 'interjection' | 'other'
+
 export interface PersonalWord {
   id: number
   user_id: string
@@ -12,6 +14,7 @@ export interface PersonalWord {
   uzbek: string
   phonetic?: string
   example?: string
+  part_of_speech?: PartOfSpeech
   category: VocabCategory
   level: 'A1' | 'A2' | 'B1' | 'B2'
   source: VocabSource
@@ -45,6 +48,7 @@ export interface AddWordDTO {
   uzbek: string
   phonetic?: string
   example?: string
+  part_of_speech?: PartOfSpeech
   category?: VocabCategory
   level?: 'A1' | 'A2' | 'B1' | 'B2'
   source?: VocabSource
@@ -56,6 +60,7 @@ export interface UpdateWordDTO {
   uzbek?: string
   phonetic?: string
   example?: string
+  part_of_speech?: PartOfSpeech
   category?: VocabCategory
   level?: 'A1' | 'A2' | 'B1' | 'B2'
 }

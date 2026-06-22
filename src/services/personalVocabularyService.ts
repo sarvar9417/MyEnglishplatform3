@@ -4,7 +4,7 @@ import { addDaysTashkent, getTodayTashkent } from '../utils/tashkentDate'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
 import { createDefaultFSRSState, computeNextReviewFSRS } from '../lib/srs'
-import type { PersonalWord, AddWordDTO, UpdateWordDTO, VocabRating } from '../types/personalVocabulary'
+import type { PersonalWord, AddWordDTO, UpdateWordDTO, VocabRating, PartOfSpeech } from '../types/personalVocabulary'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Personal Vocabulary Service
@@ -68,6 +68,8 @@ export async function addPersonalWordToDB(
       fsrs_lapses: 0,
       created_at: now,
       updated_at: now,
+      // @ts-expect-error part_of_speech column may not exist in generated types yet
+      part_of_speech: wordData.part_of_speech || null,
     })
     .select()
     .single()
@@ -89,6 +91,7 @@ export async function updatePersonalWordInDB(
 ): Promise<void> {
   const { error } = await supabase
     .from('personal_vocabulary')
+    // @ts-expect-error part_of_speech column may not exist in generated types yet
     .update({
       ...updates,
       updated_at: new Date().toISOString(),
@@ -260,11 +263,13 @@ export async function batchAddPersonalWordsToDB(
     fsrs_lapses: 0,
     created_at: now,
     updated_at: now,
+    part_of_speech: w.part_of_speech || null,
   }))
 
   const { data, error } = await supabase
     .from('personal_vocabulary')
-    .insert(rows)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .insert(rows as any)
     .select()
 
   if (error) {
@@ -343,6 +348,7 @@ export function exportPersonalVocabulary(words: PersonalWord[]): string {
     uzbek: w.uzbek,
     phonetic: w.phonetic,
     example: w.example,
+    part_of_speech: w.part_of_speech,
     category: w.category,
     level: w.level,
   }))
@@ -359,6 +365,7 @@ export function importPersonalVocabulary(jsonString: string): AddWordDTO[] {
         uzbek: String(item.uzbek || '').trim(),
         phonetic: item.phonetic ? String(item.phonetic) : undefined,
         example: item.example ? String(item.example) : undefined,
+        part_of_speech: (item.part_of_speech as PartOfSpeech) || undefined,
         category: (item.category as AddWordDTO['category']) || 'custom',
         level: (item.level as AddWordDTO['level']) || 'A2',
         source: 'imported' as const,

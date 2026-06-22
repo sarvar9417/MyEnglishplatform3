@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { AddWordDTO, VocabCategory } from '../../types/personalVocabulary'
+import type { AddWordDTO, VocabCategory, PartOfSpeech } from '../../types/personalVocabulary'
 import { Sparkles, Loader2 } from 'lucide-react'
 import { monitoring } from '../../lib/monitoring'
 
@@ -7,6 +7,7 @@ interface AddWordFormProps {
   onAdd: (wordData: AddWordDTO) => Promise<void>
   onCancel: () => void
   onAITranslate: (word: string, context?: string) => Promise<{ uzbek: string; phonetic?: string; example?: string }>
+  editWord?: { english: string; uzbek: string; phonetic?: string; example?: string; category: VocabCategory; level: 'A1' | 'A2' | 'B1' | 'B2'; part_of_speech?: PartOfSpeech } | null
 }
 
 const CATEGORIES: { value: VocabCategory; label: string }[] = [
@@ -39,15 +40,30 @@ const LEVELS = [
   { value: 'B2', label: 'B2' },
 ]
 
-export default function AddWordForm({ onAdd, onCancel, onAITranslate }: AddWordFormProps) {
-  const [english, setEnglish] = useState('')
-  const [uzbek, setUzbek] = useState('')
-  const [phonetic, setPhonetic] = useState('')
-  const [example, setExample] = useState('')
-  const [category, setCategory] = useState<VocabCategory>('custom')
-  const [level, setLevel] = useState<'A1' | 'A2' | 'B1' | 'B2'>('A2')
+const PARTS_OF_SPEECH: { value: PartOfSpeech; label: string }[] = [
+  { value: 'noun', label: 'Ot (Noun)' },
+  { value: 'verb', label: "Fe'l (Verb)" },
+  { value: 'adjective', label: 'Sifat (Adjective)' },
+  { value: 'adverb', label: 'Ravish (Adverb)' },
+  { value: 'preposition', label: 'Predlog (Preposition)' },
+  { value: 'conjunction', label: "Bog'lovchi (Conjunction)" },
+  { value: 'pronoun', label: "O'zlik (Pronoun)" },
+  { value: 'interjection', label: 'Undov (Interjection)' },
+  { value: 'other', label: 'Boshqa (Other)' },
+]
+
+export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }: AddWordFormProps) {
+  const [english, setEnglish] = useState(editWord?.english || '')
+  const [uzbek, setUzbek] = useState(editWord?.uzbek || '')
+  const [phonetic, setPhonetic] = useState(editWord?.phonetic || '')
+  const [example, setExample] = useState(editWord?.example || '')
+  const [category, setCategory] = useState<VocabCategory>(editWord?.category || 'custom')
+  const [level, setLevel] = useState<'A1' | 'A2' | 'B1' | 'B2'>(editWord?.level || 'A2')
+  const [partOfSpeech, setPartOfSpeech] = useState<PartOfSpeech>(editWord?.part_of_speech || 'other')
   const [aiLoading, setAiLoading] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+
+  const isEditing = !!editWord
 
   const handleAITranslate = async () => {
     if (!english.trim()) return
@@ -76,6 +92,7 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate }: AddWordF
         example: example.trim() || undefined,
         category,
         level,
+        part_of_speech: partOfSpeech,
         source: 'manual',
       })
     } catch (e) {
@@ -88,7 +105,7 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate }: AddWordF
   return (
     <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm space-y-4">
       <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-        Yangi so'z qo'shish
+        {isEditing ? "So'zni tahrirlash" : "Yangi so'z qo'shish"}
       </h3>
 
       {/* English Word */}
@@ -192,6 +209,22 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate }: AddWordF
         </div>
       </div>
 
+      {/* Part of Speech */}
+      <div>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          So'z turi (ixtiyoriy)
+        </label>
+        <select
+          value={partOfSpeech}
+          onChange={(e) => setPartOfSpeech(e.target.value as PartOfSpeech)}
+          className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+        >
+          {PARTS_OF_SPEECH.map((pos) => (
+            <option key={pos.value} value={pos.value}>{pos.label}</option>
+          ))}
+        </select>
+      </div>
+
       {/* Actions */}
       <div className="flex gap-3 pt-2">
         <button
@@ -199,7 +232,7 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate }: AddWordF
           disabled={submitting || !english.trim() || !uzbek.trim()}
           className="flex-1 px-4 py-2.5 rounded-xl bg-primary-500 text-white font-medium hover:bg-primary-600 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {submitting ? 'Saqlanmoqda...' : "So'zni qo'shish"}
+          {submitting ? 'Saqlanmoqda...' : (isEditing ? "Saqlash" : "So'zni qo'shish")}
         </button>
         <button
           type="button"

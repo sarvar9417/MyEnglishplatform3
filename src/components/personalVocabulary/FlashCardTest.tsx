@@ -41,6 +41,37 @@ export default function FlashCardTest({ words, onComplete, onExit }: FlashCardTe
     resetCard()
   }, [currentIndex, resetCard])
 
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if typing in input
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
+
+      if (!showAnswer) {
+        // Space = show answer
+        if (e.key === ' ') {
+          e.preventDefault()
+          handleShowAnswer()
+        }
+      } else {
+        // 1 = bilmadim, 2 = qiynaldim, 3 = bildim, 4 = yodladim
+        const ratingMap: Record<string, VocabRating> = {
+          '1': 'bilmadim',
+          '2': 'qiynaldim',
+          '3': 'bildim',
+          '4': 'yodladim',
+        }
+        if (ratingMap[e.key]) {
+          e.preventDefault()
+          handleRate(ratingMap[e.key])
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [showAnswer])
+
   const handleShowAnswer = () => {
     setShowAnswer(true)
     setIsFlipped(true)
@@ -207,7 +238,13 @@ export default function FlashCardTest({ words, onComplete, onExit }: FlashCardTe
                 >
                   Tekshirish
                 </button>
-              </div>
+      {/* Keyboard hint */}
+      {!showAnswer && mode !== 'type-answer' && (
+        <p className="text-center text-xs text-gray-400">
+          Space — javobni ko'rish | 1-4 — baho berish
+        </p>
+      )}
+    </div>
             )}
             {(mode === 'translation' || mode === 'definition') && (
               <button
@@ -241,7 +278,7 @@ export default function FlashCardTest({ words, onComplete, onExit }: FlashCardTe
               Siz bu so'zni qanchalik yaxshi bilasiz?
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              {RATING_OPTIONS.map((opt) => (
+              {RATING_OPTIONS.map((opt, idx) => (
                 <button
                   key={opt.value}
                   onClick={() => handleRate(opt.value)}
@@ -249,6 +286,7 @@ export default function FlashCardTest({ words, onComplete, onExit }: FlashCardTe
                 >
                   {opt.icon}
                   {opt.label}
+                  <span className="hidden sm:inline text-xs opacity-50 ml-1">({idx + 1})</span>
                 </button>
               ))}
             </div>

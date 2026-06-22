@@ -4,7 +4,9 @@ import { useI18n } from '../../i18n'
 import { exportPersonalVocabulary, importPersonalVocabulary, generateAITranslation } from '../../services/personalVocabularyService'
 import { supabase } from '../../lib/supabase'
 import { getTodayTashkent } from '../../utils/tashkentDate'
-import type { PersonalWord, AddWordDTO, VocabRating } from '../../types/personalVocabulary'
+import { useToastStore } from '../../utils/toastStore'
+import type { PersonalWord, AddWordDTO, UpdateWordDTO } from '../../types/personalVocabulary'
+import type { VocabRating } from '../../types/personalVocabulary'
 import { Plus, Search, Download, Upload, Play, BookOpen, Filter, Loader2 } from 'lucide-react'
 import AddWordForm from './AddWordForm'
 import WordList from './WordList'
@@ -20,9 +22,35 @@ async function getUserId(): Promise<string> {
   return cachedUserId
 }
 
+function LoadingSkeleton() {
+  return (
+    <div className="space-y-3">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <div key={i} className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm animate-pulse">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1 space-y-2">
+              <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/3" />
+              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2" />
+              <div className="flex gap-2 mt-2">
+                <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded-full w-12" />
+                <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded-full w-16" />
+                <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded-full w-20" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1 shrink-0">
+              <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-lg w-8" />
+              <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-lg w-8" />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function PersonalVocabularyPage() {
   const { t } = useI18n()
-  const { personalWords, personalWordsFetched, deletePersonalWord, ratePersonalWord, fetchPersonalWords, batchAddPersonalWords } = useStore()
+  const { personalWords, personalWordsFetched, deletePersonalWord, ratePersonalWord, updatePersonalWord, fetchPersonalWords, batchAddPersonalWords } = useStore()
   
   const [viewMode, setViewMode] = useState<ViewMode>('list')
   const [searchQuery, setSearchQuery] = useState('')
@@ -32,6 +60,7 @@ export default function PersonalVocabularyPage() {
   const [loading, setLoading] = useState(false)
   const [importLoading, setImportLoading] = useState(false)
   const [testWords, setTestWords] = useState<PersonalWord[]>([])
+  const [editingWord, setEditingWord] = useState<PersonalWord | null>(null)
   const mountedRef = useRef(true)
 
   // Fetch words on mount
@@ -65,13 +94,26 @@ export default function PersonalVocabularyPage() {
 
   const handleAddWord = async (wordData: AddWordDTO) => {
     const userId = await getUserId()
-    await useStore.getState().addPersonalWord(wordData, userId)
+    if (editingWord) {
+      await updatePersonalWord(editingWord.id, wordData as UpdateWordDTO, userId)
+      useToastStore.getState().toast("So'z yangilandi", 'success')
+    } else {
+      await useStore.getState().addPersonalWord(wordData, userId)
+      useToastStore.getState().toast("So'z qo'shildi", 'success')
+    }
+    setEditingWord(null)
     setViewMode('list')
+  }
+
+  const handleEditWord = (word: PersonalWord) => {
+    setEditingWord(word)
+    setViewMode('add')
   }
 
   const handleDeleteWord = async (id: number) => {
     const userId = await getUserId()
     await deletePersonalWord(id, userId)
+    useToastStore.getState().toast("So'z o'chirildi", 'info')
   }
 
   const handleRateWord = async (id: number, rating: VocabRating) => {
@@ -106,11 +148,12 @@ export default function PersonalVocabularyPage() {
       const text = await file.text()
       const words = importPersonalVocabulary(text)
       if (words.length === 0) {
-        alert('Noto\'g\'ri fayl formati')
+        useToastStore.getState().toast("Noto'g'ri fayl formati", 'error')
         return
       }
       const userId = await getUserId()
       await batchAddPersonalWords(words, userId)
+      useToastStore.getState().toast(`${words.length} ta so'z import qilindi`, 'success')
     } finally {
       setImportLoading(false)
       e.target.value = ''
@@ -190,7 +233,7 @@ export default function PersonalVocabularyPage() {
       {/* Actions */}
       <div className="flex flex-wrap gap-3">
         <button
-          onClick={() => setViewMode('add')}
+          onClick={() => { setEditingWord(null); setViewMode('add') }}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-500 text-white font-medium hover:bg-primary-600 shadow-sm"
         >
           <Plus size={18} />
@@ -273,20 +316,20 @@ export default function PersonalVocabularyPage() {
       {viewMode === 'add' && (
         <AddWordForm
           onAdd={handleAddWord}
-          onCancel={() => setViewMode('list')}
+          onCancel={() => { setEditingWord(null); setViewMode('list') }}
           onAITranslate={handleAITranslation}
+          editWord={editingWord}
         />
       )}
 
       {loading ? (
-        <div className="text-center py-12 text-gray-500">
-          {t('personalVocab.loading') || 'Yuklanmoqda...'}
-        </div>
+        <LoadingSkeleton />
       ) : filteredWords.length > 0 ? (
         <WordList
           words={filteredWords}
           onDelete={handleDeleteWord}
           onRate={handleRateWord}
+          onEdit={handleEditWord}
         />
       ) : (
         <div className="text-center py-12">

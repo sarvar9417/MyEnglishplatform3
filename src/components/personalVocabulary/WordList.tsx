@@ -1,42 +1,55 @@
-import type { PersonalWord, VocabRating } from '../../types/personalVocabulary'
-import { Trash2, Star, Clock, CheckCircle2, XCircle } from 'lucide-react'
+import { useState } from 'react'
+import type { PersonalWord, VocabRating, PartOfSpeech } from '../../types/personalVocabulary'
+import { Trash2, Star, Clock, CheckCircle2, XCircle, Pencil } from 'lucide-react'
 
 interface WordListProps {
   words: PersonalWord[]
   onDelete: (id: number) => void
   onRate: (id: number, rating: VocabRating) => void
+  onEdit?: (word: PersonalWord) => void
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
-  custom: 'Shaxsiy',
-  grammar: 'Grammar',
-  travel: 'Travel',
-  formal: 'Formal',
-  ielts: 'IELTS',
-  business: 'Business',
-  food: 'Food',
-  health: 'Health',
-  education: 'Education',
-  social: 'Social',
-  work: 'Work',
-  shopping: 'Shopping',
-  relationships: 'Relationships',
-  environment: 'Environment',
-  economy: 'Economy',
-  culture: 'Culture',
-  feelings: 'Feelings',
-  discussion: 'Discussion',
-  technology: 'Technology',
-  communication: 'Communication',
+  custom: 'Shaxsiy', grammar: 'Grammar', travel: 'Travel', formal: 'Formal',
+  ielts: 'IELTS', business: 'Business', food: 'Food', health: 'Health',
+  education: 'Education', social: 'Social', work: 'Work', shopping: 'Shopping',
+  relationships: 'Relationships', environment: 'Environment', economy: 'Economy',
+  culture: 'Culture', feelings: 'Feelings', discussion: 'Discussion',
+  technology: 'Technology', communication: 'Communication',
 }
 
-export default function WordList({ words, onDelete, onRate }: WordListProps) {
+const POS_LABELS: Record<PartOfSpeech, string> = {
+  noun: 'Ot', verb: "Fe'l", adjective: 'Sifat', adverb: 'Ravish',
+  preposition: 'Predlog', conjunction: 'Bog\'lovchi', pronoun: 'O\'zlik',
+  interjection: 'Undov', other: 'Boshqa',
+}
+
+const POS_COLORS: Record<PartOfSpeech, string> = {
+  noun: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
+  verb: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
+  adjective: 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300',
+  adverb: 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300',
+  preposition: 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400',
+  conjunction: 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400',
+  pronoun: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300',
+  interjection: 'bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300',
+  other: 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400',
+}
+
+export default function WordList({ words, onDelete, onRate, onEdit }: WordListProps) {
+  const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null)
+
   if (words.length === 0) {
     return (
       <div className="text-center py-8 text-gray-500">
         Hech narsa topilmadi
       </div>
     )
+  }
+
+  const handleDeleteConfirm = (id: number) => {
+    onDelete(id)
+    setDeleteConfirmId(null)
   }
 
   return (
@@ -62,13 +75,18 @@ export default function WordList({ words, onDelete, onRate }: WordListProps) {
               <p className="text-gray-600 dark:text-gray-400 mb-2">{word.uzbek}</p>
               {word.example && (
                 <p className="text-sm text-gray-500 dark:text-gray-500 italic mb-2">
-                  "{word.example}"
+                  &ldquo;{word.example}&rdquo;
                 </p>
               )}
               <div className="flex flex-wrap items-center gap-2 text-xs">
                 <span className="px-2 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300">
                   {word.level}
                 </span>
+                {word.part_of_speech && (
+                  <span className={`px-2 py-1 rounded-full ${POS_COLORS[word.part_of_speech]}`}>
+                    {POS_LABELS[word.part_of_speech]}
+                  </span>
+                )}
                 <span className="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
                   {CATEGORY_LABELS[word.category] || word.category}
                 </span>
@@ -103,13 +121,41 @@ export default function WordList({ words, onDelete, onRate }: WordListProps) {
                   </button>
                 </div>
               )}
-              <button
-                onClick={() => onDelete(word.id)}
-                className="p-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-600"
-                title="O'chirish"
-              >
-                <Trash2 size={16} />
-              </button>
+              {onEdit && (
+                <button
+                  onClick={() => onEdit(word)}
+                  className="p-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600"
+                  title="Tahrirlash"
+                >
+                  <Pencil size={16} />
+                </button>
+              )}
+              {deleteConfirmId === word.id ? (
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => handleDeleteConfirm(word.id)}
+                    className="p-1.5 rounded-lg bg-red-500 text-white hover:bg-red-600"
+                    title="Ha, o'chirish"
+                  >
+                    <CheckCircle2 size={16} />
+                  </button>
+                  <button
+                    onClick={() => setDeleteConfirmId(null)}
+                    className="p-1.5 rounded-lg bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-400"
+                    title="Bekor qilish"
+                  >
+                    <XCircle size={16} />
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setDeleteConfirmId(word.id)}
+                  className="p-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-600"
+                  title="O'chirish"
+                >
+                  <Trash2 size={16} />
+                </button>
+              )}
             </div>
           </div>
         </div>
