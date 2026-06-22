@@ -19,12 +19,15 @@ const LEVEL_COLORS: Record<string, { bg: string; text: string; dot: string }> = 
 }
 
 function speak(text: string, lang = 'en-US') {
+  if (!window.speechSynthesis) return
   window.speechSynthesis.cancel()
   const u = new SpeechSynthesisUtterance(text)
   u.lang = lang
   u.rate = 0.9
   u.pitch = 1
   window.speechSynthesis.speak(u)
+  // Chrome/Safari bug: cancel() pauses synthesis — need resume()
+  window.speechSynthesis.resume()
 }
 
 type PracticeMode = 'list' | 'flashcard' | 'quiz'
