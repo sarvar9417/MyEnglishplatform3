@@ -95,8 +95,13 @@ export default function PersonalVocabularyPage() {
   const handleAddWord = async (wordData: AddWordDTO) => {
     const userId = await getUserId()
     if (editingWord) {
-      await updatePersonalWord(editingWord.id, wordData as UpdateWordDTO, userId)
-      useToastStore.getState().toast("So'z yangilandi", 'success')
+      try {
+        await updatePersonalWord(editingWord.id, wordData as UpdateWordDTO, userId)
+        useToastStore.getState().toast("So'z yangilandi", 'success')
+      } catch {
+        useToastStore.getState().toast("So'zni yangilashda xatolik", 'error')
+        return
+      }
     } else {
       await useStore.getState().addPersonalWord(wordData, userId)
       useToastStore.getState().toast("So'z qo'shildi", 'success')

@@ -89,13 +89,25 @@ export async function updatePersonalWordInDB(
   wordId: number,
   updates: UpdateWordDTO
 ): Promise<void> {
+  const payload: {
+    updated_at: string
+    english?: string
+    uzbek?: string
+    phonetic?: string
+    example?: string
+    category?: string
+    level?: string
+  } = { updated_at: new Date().toISOString() }
+  if (updates.english !== undefined) payload.english = updates.english
+  if (updates.uzbek !== undefined) payload.uzbek = updates.uzbek
+  if (updates.phonetic !== undefined) payload.phonetic = updates.phonetic
+  if (updates.example !== undefined) payload.example = updates.example
+  if (updates.category !== undefined) payload.category = updates.category
+  if (updates.level !== undefined) payload.level = updates.level
+
   const { error } = await supabase
     .from('personal_vocabulary')
-    // @ts-expect-error part_of_speech column may not exist in generated types yet
-    .update({
-      ...updates,
-      updated_at: new Date().toISOString(),
-    })
+    .update(payload)
     .eq('user_id', userId)
     .eq('id', wordId)
 

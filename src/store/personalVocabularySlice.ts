@@ -64,17 +64,13 @@ export const createPersonalVocabularySlice: StateCreator<AppState, [], [], Perso
   },
 
   updatePersonalWord: async (id, updates, userId = 'guest') => {
-    try {
-      const { updatePersonalWordInDB } = await import('../services/personalVocabularyService')
-      await updatePersonalWordInDB(userId, id, updates)
-      set((s) => ({
-        personalWords: s.personalWords.map((w) =>
-          w.id === id ? { ...w, ...updates, updated_at: new Date().toISOString() } : w
-        ),
-      }))
-    } catch (e) {
-      monitoring.captureMessage(`updatePersonalWord error: ${e instanceof Error ? e.message : String(e)}`, 'error')
-    }
+    const { updatePersonalWordInDB } = await import('../services/personalVocabularyService')
+    await updatePersonalWordInDB(userId, id, updates)
+    set((s) => ({
+      personalWords: s.personalWords.map((w) =>
+        w.id === id ? { ...w, ...updates, updated_at: new Date().toISOString() } : w
+      ),
+    }))
   },
 
   deletePersonalWord: async (id, userId = 'guest') => {
