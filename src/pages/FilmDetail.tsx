@@ -346,6 +346,11 @@ function WordList({
                       <p className="text-sm text-gray-700 dark:text-gray-300 italic leading-relaxed">
                         "{word.example}"
                       </p>
+                      {word.exampleUz && (
+                        <p className="text-sm text-primary-600 dark:text-primary-400 mt-1.5 leading-relaxed">
+                          "{word.exampleUz}"
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -541,6 +546,11 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center italic leading-relaxed">
                   "{current.example}"
                 </p>
+                {current.exampleUz && (
+                  <p className="text-sm text-primary-500 dark:text-primary-400 text-center mt-1.5 leading-relaxed">
+                    "{current.exampleUz}"
+                  </p>
+                )}
               </div>
             </>
           )}

@@ -5,6 +5,7 @@ export interface FilmWord {
   translation: string
   phonetic: string
   example: string
+  exampleUz: string
   level: 'A1' | 'A2' | 'B1' | 'B1+' | 'B2'
 }
 
