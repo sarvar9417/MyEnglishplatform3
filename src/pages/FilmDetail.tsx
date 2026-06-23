@@ -1,13 +1,14 @@
-import { useState, useMemo, useCallback, useEffect } from 'react'
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import {
   ArrowLeft, Search, BookOpen, Shuffle, CheckCircle,
   XCircle, Volume2, ChevronLeft, ChevronRight, RotateCcw,
   X, Target, Film, Volume,
-  Eye, EyeOff, Zap,
+  Eye, EyeOff, Zap, TrendingUp, Clock, BarChart3, Award,
 } from 'lucide-react'
 import { getFilmById, type FilmWord } from '../data/filmVocabulary'
 import { speak as ttsSpeak } from '../lib/tts'
+import { useSwipe } from '../hooks/useSwipe'
 
 const PAGE_SIZE = 20
 
@@ -35,6 +36,8 @@ export default function FilmDetail() {
   const [levelFilter, setLevelFilter] = useState<string>('all')
   const [practiceMode, setPracticeMode] = useState<PracticeMode>('list')
   const [page, setPage] = useState(1)
+  const [knownFilter, setKnownFilter] = useState<'all' | 'known' | 'unknown'>('all')
+  const [sortOrder, setSortOrder] = useState<'default' | 'alpha' | 'level'>('default')
   const [knownWords, setKnownWords] = useState<Set<string>>(() => {
     try {
       const saved = localStorage.getItem(`film_known_${id}`)
@@ -55,6 +58,13 @@ export default function FilmDetail() {
     })
   }, [])
 
+  // Save last viewed timestamp for FilmHub
+  useEffect(() => {
+    if (id) {
+      localStorage.setItem(`film_lastviewed_${id}`, String(Date.now()))
+    }
+  }, [id])
+
   if (!film) {
     return (
       <div className="p-6 text-center animate-fade-in">
@@ -72,8 +82,10 @@ export default function FilmDetail() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
-    return film.words.filter((w) => {
+    let result = film.words.filter((w) => {
       if (levelFilter !== 'all' && w.level !== levelFilter) return false
+      if (knownFilter === 'known' && !knownWords.has(w.word)) return false
+      if (knownFilter === 'unknown' && knownWords.has(w.word)) return false
       if (!q) return true
       return (
         w.word.toLowerCase().includes(q) ||
@@ -81,7 +93,14 @@ export default function FilmDetail() {
         w.example.toLowerCase().includes(q)
       )
     })
-  }, [film.words, query, levelFilter])
+    // Sort
+    if (sortOrder === 'alpha') {
+      result = [...result].sort((a, b) => a.word.localeCompare(b.word))
+    } else if (sortOrder === 'level') {
+      result = [...result].sort((a, b) => a.level.localeCompare(b.level))
+    }
+    return result
+  }, [film.words, query, levelFilter, knownFilter, sortOrder, knownWords])
 
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
   const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
@@ -141,6 +160,18 @@ export default function FilmDetail() {
               </span>
             ))}
           </div>
+
+          {/* Progress bar */}
+          {knownCount > 0 && (
+            <div className="mt-3">
+              <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-white rounded-full transition-all duration-500"
+                  style={{ width: `${Math.round((knownCount / film.words.length) * 100)}%` }}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -169,7 +200,7 @@ export default function FilmDetail() {
         ))}
       </div>
 
-      {/* Search & Filter (only for list mode) */}
+      {/* List Mode */}
       {practiceMode === 'list' && (
         <div className="animate-fade-in">
           <div className="relative mb-3">
@@ -191,7 +222,8 @@ export default function FilmDetail() {
             )}
           </div>
 
-          <div className="flex gap-1.5 mb-4 overflow-x-auto pb-1 -mx-1 px-1">
+          {/* Filters */}
+          <div className="flex gap-1.5 mb-2 overflow-x-auto pb-1 -mx-1 px-1">
             <button
               onClick={() => { setLevelFilter('all'); setPage(1) }}
               className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all
@@ -220,6 +252,46 @@ export default function FilmDetail() {
             })}
           </div>
 
+          {/* Known/Unknown filter + Sort */}
+          <div className="flex items-center gap-1.5 mb-3 overflow-x-auto pb-1">
+            {([
+              { value: 'all' as const, label: "Barchasi" },
+              { value: 'known' as const, label: "Bilaman", icon: CheckCircle },
+              { value: 'unknown' as const, label: "Bilmiman", icon: XCircle },
+            ]).map(({ value, label, icon: Icon }) => (
+              <button
+                key={value}
+                onClick={() => { setKnownFilter(value); setPage(1) }}
+                className={`shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all
+                  ${knownFilter === value
+                    ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                  }`}
+              >
+                {Icon && <Icon size={11} />}
+                {label}
+              </button>
+            ))}
+            <span className="text-[10px] text-gray-300 mx-1">|</span>
+            {([
+              { value: 'default' as const, label: "Standart" },
+              { value: 'alpha' as const, label: "A-Z" },
+              { value: 'level' as const, label: "Level" },
+            ]).map(({ value, label }) => (
+              <button
+                key={value}
+                onClick={() => { setSortOrder(value); setPage(1) }}
+                className={`shrink-0 px-2 py-1 rounded-lg text-[10px] font-medium transition-all
+                  ${sortOrder === value
+                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                    : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-400'
+                  }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
           <WordList
             words={paginated}
             totalCount={filtered.length}
@@ -233,11 +305,15 @@ export default function FilmDetail() {
       )}
 
       {practiceMode === 'flashcard' && (
-        <FlashcardMode words={film.words} />
+        <FlashcardMode
+          words={film.words}
+          onToggleKnown={toggleKnown}
+          knownWords={knownWords}
+        />
       )}
 
       {practiceMode === 'quiz' && (
-        <QuizMode words={film.words} />
+        <QuizMode words={film.words} filmId={film.id} />
       )}
     </div>
   )
@@ -257,6 +333,23 @@ function WordList({
   onToggleKnown: (word: string) => void
 }) {
   const [expandedIdx, setExpandedIdx] = useState<number | null>(null)
+  const [selected, setSelected] = useState<Set<string>>(new Set())
+  const [batchMode, setBatchMode] = useState(false)
+
+  const toggleSelect = (word: string) => {
+    setSelected(prev => {
+      const next = new Set(prev)
+      if (next.has(word)) next.delete(word)
+      else next.add(word)
+      return next
+    })
+  }
+
+  const markSelectedAsKnown = () => {
+    selected.forEach(w => onToggleKnown(w))
+    setSelected(new Set())
+    setBatchMode(false)
+  }
 
   if (words.length === 0) {
     return (
@@ -272,9 +365,31 @@ function WordList({
 
   return (
     <>
+      {/* Batch mode toggle */}
+      <div className="flex items-center justify-between mb-2">
+        <button
+          onClick={() => { setBatchMode(!batchMode); setSelected(new Set()) }}
+          className={`text-xs font-semibold flex items-center gap-1 transition-colors
+            ${batchMode ? 'text-primary-600 dark:text-primary-400' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'}`}
+        >
+          <CheckCircle size={12} />
+          {batchMode ? 'Bekor qilish' : "Bir nechtasini belgilash"}
+        </button>
+        {batchMode && selected.size > 0 && (
+          <button
+            onClick={markSelectedAsKnown}
+            className="text-xs font-semibold flex items-center gap-1 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700"
+          >
+            <Eye size={12} />
+            {selected.size} ta so'zni o'rganilgan deb belgilash
+          </button>
+        )}
+      </div>
+
       <div className="space-y-1.5 animate-stagger">
         {words.map((word, idx) => {
           const isKnown = knownWords.has(word.word)
+          const isSelected = selected.has(word.word)
           const colors = LEVEL_COLORS[word.level] || { bg: 'bg-gray-100', text: 'text-gray-600', dot: 'bg-gray-400' }
           return (
             <div
@@ -283,11 +398,24 @@ function WordList({
                 ${isKnown
                   ? 'border-emerald-200 dark:border-emerald-800/40 bg-emerald-50/50 dark:bg-emerald-900/10'
                   : 'border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900'
-                }`}
+                }
+                ${isSelected ? 'ring-2 ring-primary-400 dark:ring-primary-600' : ''}`}
             >
               <div className="flex items-center gap-2 p-3">
+                {batchMode && (
+                  <button
+                    onClick={() => toggleSelect(word.word)}
+                    className={`w-6 h-6 rounded-md border-2 flex items-center justify-center shrink-0 transition-colors
+                      ${isSelected
+                        ? 'bg-primary-600 border-primary-600 text-white'
+                        : 'border-gray-300 dark:border-gray-600 hover:border-primary-400'
+                      }`}
+                  >
+                    {isSelected && <CheckCircle size={14} />}
+                  </button>
+                )}
                 <button
-                  onClick={() => setExpandedIdx(expandedIdx === idx ? null : idx)}
+                  onClick={() => batchMode ? toggleSelect(word.word) : setExpandedIdx(expandedIdx === idx ? null : idx)}
                   className="flex-1 min-w-0 text-left"
                 >
                   <div className="flex items-center gap-2">
@@ -303,28 +431,32 @@ function WordList({
                     {word.translation}
                   </p>
                 </button>
-                <button
-                  onClick={(e) => { e.stopPropagation(); onToggleKnown(word.word) }}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200
-                    ${isKnown
-                      ? 'text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 hover:bg-emerald-200 dark:hover:bg-emerald-900/50'
-                      : 'text-gray-300 dark:text-gray-600 hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-900/20'
-                    }`}
-                  title={isKnown ? "O'rganilmagan deb belgilash" : "O'rganilgan deb belgilash"}
-                >
-                  {isKnown ? <Eye size={15} /> : <EyeOff size={15} />}
-                </button>
-                <button
-                  onClick={(e) => { e.stopPropagation(); speak(word.word) }}
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-gray-300 dark:text-gray-600
-                    hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors shrink-0"
-                  title="Eshitish"
-                >
-                  <Volume2 size={15} />
-                </button>
+                {!batchMode && (
+                  <>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onToggleKnown(word.word) }}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200
+                        ${isKnown
+                          ? 'text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 hover:bg-emerald-200 dark:hover:bg-emerald-900/50'
+                          : 'text-gray-300 dark:text-gray-600 hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-900/20'
+                        }`}
+                      title={isKnown ? "O'rganilmagan deb belgilash" : "O'rganilgan deb belgilash"}
+                    >
+                      {isKnown ? <Eye size={15} /> : <EyeOff size={15} />}
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); speak(word.word) }}
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-gray-300 dark:text-gray-600
+                        hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors shrink-0"
+                      title="Eshitish"
+                    >
+                      <Volume2 size={15} />
+                    </button>
+                  </>
+                )}
               </div>
 
-              {expandedIdx === idx && (
+              {expandedIdx === idx && !batchMode && (
                 <div className="px-3 pb-3 border-t border-gray-100 dark:border-gray-800 animate-fade-in">
                   <div className="mt-2.5 space-y-2">
                     <p className="text-xs text-gray-400 font-mono">{word.phonetic}</p>
@@ -410,22 +542,50 @@ function WordList({
   )
 }
 
-/* ─── Flashcard Mode ──────────────────────────────────────────────────────── */
+/* ─── Flashcard Mode (with 3D flip + swipe) ──────────────────────────────────── */
 
-function FlashcardMode({ words }: { words: FilmWord[] }) {
+function FlashcardMode({
+  words,
+  onToggleKnown,
+  knownWords,
+}: {
+  words: FilmWord[]
+  onToggleKnown: (word: string) => void
+  knownWords: Set<string>
+}) {
   const [currentIdx, setCurrentIdx] = useState(0)
   const [flipped, setFlipped] = useState(false)
   const [shuffled, setShuffled] = useState<FilmWord[]>(() => shuffleArray([...words]))
-  const [known, setKnown] = useState<Set<number>>(new Set())
+  const [sessionKnown, setSessionKnown] = useState<Set<number>>(new Set())
+  const [sessionUnknown, setSessionUnknown] = useState<Set<number>>(new Set())
+  const [sessionStart] = useState(Date.now())
+  const [showStats, setShowStats] = useState(false)
 
   const current = shuffled[currentIdx]
   const progress = shuffled.length > 0 ? ((currentIdx + 1) / shuffled.length) * 100 : 0
+
+  // Auto-speak when card shows (front)
+  useEffect(() => {
+    if (current && !flipped) {
+      speak(current.word)
+    }
+  }, [currentIdx, flipped])
+
+  // Swipe gesture
+  const [bind, { offsetX, isDragging }] = useSwipe({
+    onSwipeLeft: () => { markUnknown(); return true },
+    onSwipeRight: () => { markKnown(); return true },
+    onTap: () => {
+      if (!flipped) speak(current.word)
+      else speak(current.example)
+      setFlipped(f => !f)
+    },
+  })
 
   const next = useCallback(() => {
     setFlipped(false)
     setCurrentIdx((i) => {
       const n = (i + 1) % shuffled.length
-      setTimeout(() => speak(shuffled[n].word), 100)
       return n
     })
   }, [shuffled.length])
@@ -434,7 +594,6 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
     setFlipped(false)
     setCurrentIdx((i) => {
       const p = (i - 1 + shuffled.length) % shuffled.length
-      setTimeout(() => speak(shuffled[p].word), 100)
       return p
     })
   }, [shuffled.length])
@@ -443,18 +602,40 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
     setShuffled(shuffleArray([...words]))
     setCurrentIdx(0)
     setFlipped(false)
-    setKnown(new Set())
-    setTimeout(() => speak(words[0]?.word), 100)
+    setSessionKnown(new Set())
+    setSessionUnknown(new Set())
+    setShowStats(false)
   }, [words])
 
   const markKnown = useCallback(() => {
-    setKnown(prev => new Set(prev).add(currentIdx))
-    next()
-  }, [currentIdx, next])
+    if (shuffled[currentIdx]) {
+      setSessionKnown(prev => new Set(prev).add(currentIdx))
+      if (!knownWords.has(shuffled[currentIdx].word)) {
+        onToggleKnown(shuffled[currentIdx].word)
+      }
+      next()
+    }
+  }, [currentIdx, next, shuffled, onToggleKnown, knownWords])
 
   const markUnknown = useCallback(() => {
-    next()
-  }, [next])
+    if (shuffled[currentIdx]) {
+      setSessionUnknown(prev => new Set(prev).add(currentIdx))
+      if (knownWords.has(shuffled[currentIdx].word)) {
+        onToggleKnown(shuffled[currentIdx].word)
+      }
+      next()
+    }
+  }, [currentIdx, next, shuffled, onToggleKnown, knownWords])
+
+  const goToMistakes = useCallback(() => {
+    const wrongWords = [...sessionUnknown].map(i => shuffled[i])
+    if (wrongWords.length === 0) return
+    setShuffled(shuffleArray(wrongWords))
+    setCurrentIdx(0)
+    setFlipped(false)
+    setSessionKnown(new Set())
+    setSessionUnknown(new Set())
+  }, [sessionUnknown, shuffled])
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -463,6 +644,7 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
       else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); setFlipped(f => !f) }
       else if (e.key === '1') markUnknown()
       else if (e.key === '2') markKnown()
+      else if (e.key === 's') setShowStats(s => !s)
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
@@ -480,22 +662,41 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
   }
 
   const colors = LEVEL_COLORS[current.level] || { bg: 'bg-gray-100', text: 'text-gray-600', dot: 'bg-gray-400' }
+  const isCurrentKnown = knownWords.has(current.word)
+  const sessionTime = Math.floor((Date.now() - sessionStart) / 1000)
+  const sessionMinutes = Math.floor(sessionTime / 60)
+  const sessionSeconds = sessionTime % 60
+
+  // Swipe visual feedback
+  const swipeRotation = offsetX * 0.05
+  const swipeOverlayOpacity = Math.min(Math.abs(offsetX) / 200, 0.3)
+  const swipeColor = offsetX > 0 ? 'rgba(34,197,94,' : 'rgba(239,68,68,'
 
   return (
     <div className="flex flex-col items-center gap-4 py-4 animate-fade-in">
-      {/* Progress bar */}
+      {/* Progress bar + Stats */}
       <div className="w-full max-w-sm">
         <div className="flex items-center justify-between mb-1.5">
           <span className="text-xs text-gray-500 dark:text-gray-400 tabular-nums">
             {currentIdx + 1} / {shuffled.length}
           </span>
           <div className="flex items-center gap-2">
-            <span className="flex items-center gap-1 text-[10px] text-emerald-500">
-              <Eye size={10} /> {known.size}
-            </span>
-            <span className="text-xs text-primary-600 dark:text-primary-400 font-semibold tabular-nums">
-              {Math.round(progress)}%
-            </span>
+            {sessionKnown.size > 0 && (
+              <span className="inline-flex items-center gap-1 text-[10px] text-emerald-500">
+                <CheckCircle size={10} /> {sessionKnown.size}
+              </span>
+            )}
+            {sessionUnknown.size > 0 && (
+              <span className="inline-flex items-center gap-1 text-[10px] text-red-500">
+                <XCircle size={10} /> {sessionUnknown.size}
+              </span>
+            )}
+            <button
+              onClick={() => setShowStats(!showStats)}
+              className="text-[10px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            >
+              <BarChart3 size={12} />
+            </button>
           </div>
         </div>
         <div className="w-full h-1.5 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
@@ -506,21 +707,60 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
         </div>
       </div>
 
-      {/* Card */}
-      <div className="w-full max-w-sm">
-        <button
-          onClick={() => {
-            if (!flipped) speak(current.word)
-            else speak(current.example)
-            setFlipped(!flipped)
+      {/* Session Stats */}
+      {showStats && (
+        <div className="w-full max-w-sm p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 animate-fade-in">
+          <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+            <span className="flex items-center gap-1">
+              <Clock size={11} />
+              {sessionMinutes}:{sessionSeconds.toString().padStart(2, '0')}
+            </span>
+            <span className="flex items-center gap-1">
+              <TrendingUp size={11} />
+              {shuffled.length} ta so'z
+            </span>
+            <span className="flex items-center gap-1 text-emerald-500">
+              <CheckCircle size={11} />
+              {sessionKnown.size}
+            </span>
+            <span className="flex items-center gap-1 text-red-500">
+              <XCircle size={11} />
+              {sessionUnknown.size}
+            </span>
+          </div>
+          {sessionUnknown.size > 0 && (
+            <button
+              onClick={goToMistakes}
+              className="mt-2 w-full py-1.5 rounded-lg text-[11px] font-semibold
+                bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400
+                hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors"
+            >
+              <RotateCcw size={11} className="inline mr-1" />
+              Xatolarni takrorlash ({sessionUnknown.size})
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Card with 3D flip + Swipe */}
+      <div
+        className="flashcard-scene w-full max-w-sm select-none"
+        {...bind}
+        style={{ touchAction: 'pan-y' }}
+      >
+        <div
+          className={`flashcard-inner ${flipped ? 'is-flipped' : ''}`}
+          style={{
+            transform: isDragging
+              ? `translateX(${offsetX}px) rotate(${swipeRotation}deg)`
+              : undefined,
+            transition: isDragging ? 'none' : undefined,
           }}
-          className="w-full aspect-[4/3] rounded-2xl border-2 border-gray-200 dark:border-gray-700
-            bg-white dark:bg-gray-900 shadow-lg flex flex-col items-center justify-center
-            p-6 cursor-pointer hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-200
-            select-none active:scale-[0.98]"
         >
-          {!flipped ? (
-            <>
+          {/* Front face */}
+          <div className="flashcard-face is-front">
+            <div className="w-full h-full rounded-2xl border-2 border-gray-200 dark:border-gray-700
+              bg-white dark:bg-gray-900 shadow-lg flex flex-col items-center justify-center p-6">
               <span className={`px-2 py-0.5 rounded-lg text-[10px] font-bold mb-4 ${colors.bg} ${colors.text}`}>
                 {current.level}
               </span>
@@ -530,49 +770,74 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
               <p className="text-sm text-gray-400 font-mono">{current.phonetic}</p>
               <p className="text-xs text-primary-500 mt-4 flex items-center gap-1">
                 <Zap size={12} />
-                Tekshirish uchun bosing
+                Ko'rish uchun bosing yoki Space
               </p>
-            </>
-          ) : (
-            <>
+            </div>
+            {/* Swipe overlay */}
+            {isDragging && (
+              <div
+                className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity"
+                style={{
+                  background: `${swipeColor}${swipeOverlayOpacity})`,
+                }}
+              />
+            )}
+          </div>
+
+          {/* Back face */}
+          <div className="flashcard-face is-back">
+            <div className="w-full h-full rounded-2xl border-2 border-primary-200 dark:border-primary-800
+              bg-white dark:bg-gray-900 shadow-lg flex flex-col items-center justify-center p-6 overflow-y-auto">
+              <span className={`px-2 py-0.5 rounded-lg text-[10px] font-bold mb-3 ${colors.bg} ${colors.text}`}>
+                {current.level}
+              </span>
               <p className="text-xl sm:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-3">
                 {current.translation}
               </p>
-              <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl px-4 py-2.5 max-w-full">
+              <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl px-4 py-3 max-w-full w-full">
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center italic leading-relaxed">
                   "{current.example}"
                 </p>
                 {current.exampleUz && (
-                  <p className="text-sm text-primary-500 dark:text-primary-400 text-center mt-1.5 leading-relaxed">
+                  <p className="text-sm text-primary-500 dark:text-primary-400 text-center mt-2 leading-relaxed">
                     "{current.exampleUz}"
                   </p>
                 )}
               </div>
-            </>
-          )}
-        </button>
-
-        {/* Speaker buttons under card */}
-        <div className="flex items-center justify-center gap-2 mt-3">
-          <button
-            onClick={() => speak(current.word)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold
-              bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400
-              hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors"
-          >
-            <Volume2 size={13} />
-            So'z
-          </button>
-          <button
-            onClick={() => speak(current.example)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold
-              bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400
-              hover:bg-pink-200 dark:hover:bg-pink-900/50 transition-colors"
-          >
-            <Volume size={13} />
-            Misol
-          </button>
+              <p className="text-xs text-gray-400 mt-3 font-mono">{current.phonetic}</p>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* Speaker buttons under card */}
+      <div className="flex items-center justify-center gap-2">
+        <button
+          onClick={() => speak(current.word)}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold
+            bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400
+            hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors active:scale-95"
+        >
+          <Volume2 size={13} />
+          So'z
+        </button>
+        <button
+          onClick={() => speak(current.example)}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold
+            bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400
+            hover:bg-pink-200 dark:hover:bg-pink-900/50 transition-colors active:scale-95"
+        >
+          <Volume size={13} />
+          Misol
+        </button>
+        <span className={`inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[10px] font-semibold
+          ${isCurrentKnown
+            ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
+            : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+          }`}>
+          {isCurrentKnown ? <Eye size={11} /> : <EyeOff size={11} />}
+          {isCurrentKnown ? "Bilaman" : "Bilmiman"}
+        </span>
       </div>
 
       {/* Controls */}
@@ -585,7 +850,7 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
         <button onClick={markUnknown}
           className="w-11 h-11 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center
             text-red-500 hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors active:scale-95"
-          title="O'rganilmagan (1)">
+          title="Bilmiman (1)">
           <XCircle size={20} />
         </button>
         <button onClick={reshuffle}
@@ -593,10 +858,18 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
             text-purple-600 dark:text-purple-400 hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors active:scale-95">
           <RotateCcw size={18} />
         </button>
+        <button onClick={() => goToMistakes()}
+          disabled={sessionUnknown.size === 0}
+          className="w-11 h-11 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center
+            text-amber-600 dark:text-amber-400 hover:bg-amber-200 dark:hover:bg-amber-900/50
+            disabled:opacity-30 disabled:cursor-not-allowed transition-colors active:scale-95"
+          title="Xatolarni takrorlash">
+          <Target size={18} />
+        </button>
         <button onClick={markKnown}
           className="w-11 h-11 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center
             text-emerald-500 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors active:scale-95"
-          title="O'rganilgan (2)">
+          title="Bilaman (2)">
           <CheckCircle size={20} />
         </button>
         <button onClick={next}
@@ -608,17 +881,24 @@ function FlashcardMode({ words }: { words: FilmWord[] }) {
 
       {/* Keyboard hint */}
       <p className="text-[10px] text-gray-400 dark:text-gray-500 text-center leading-relaxed">
-        ← → harakat · Space aylantirish · 1 noto'g'ri · 2 to'g'ri
+        ← → harakat · Space aylantirish · 1 bilmiman · 2 bilaman · S statsiya · Surish bilan ham
       </p>
     </div>
   )
 }
 
-/* ─── Quiz Mode ───────────────────────────────────────────────────────────── */
+/* ─── Quiz Mode (with review mistakes) ──────────────────────────────────────── */
 
 const QUIZ_SIZES = [10, 20, 30] as const
 
-function QuizMode({ words }: { words: FilmWord[] }) {
+interface QuizAttempt {
+  word: string
+  correct: boolean
+  selected: string
+  correctAnswer: string
+}
+
+function QuizMode({ words, filmId }: { words: FilmWord[]; filmId: string }) {
   const [direction, setDirection] = useState<QuizDirection>('en-uz')
   const [quizSize, setQuizSize] = useState(10)
   const [quizWords, setQuizWords] = useState<FilmWord[]>(() => shuffleArray([...words]).slice(0, quizSize))
@@ -629,6 +909,10 @@ function QuizMode({ words }: { words: FilmWord[] }) {
   const [finished, setFinished] = useState(false)
   const [streak, setStreak] = useState(0)
   const [bestStreak, setBestStreak] = useState(0)
+  const [attempts, setAttempts] = useState<QuizAttempt[]>([])
+  const [reviewMode, setReviewMode] = useState(false)
+  const [timeLeft, setTimeLeft] = useState<number | null>(null)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const current = quizWords[currentIdx]
 
@@ -643,12 +927,42 @@ function QuizMode({ words }: { words: FilmWord[] }) {
     return shuffleArray([correct, ...others])
   }, [current, direction, words])
 
+  // Timer per question - track expiry in a ref to avoid side effects in state updater
+  const timeoutTriggeredRef = useRef(false)
+
+  useEffect(() => {
+    if (answered || finished || reviewMode) return
+    setTimeLeft(15)
+    timeoutTriggeredRef.current = false
+    timerRef.current = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev === null || prev <= 1) {
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [currentIdx, answered, finished, reviewMode])
+
+  // Handle timeout separately to keep state updater pure
+  useEffect(() => {
+    if (timeLeft === 0 && !answered && !finished && !timeoutTriggeredRef.current) {
+      timeoutTriggeredRef.current = true
+      handleAnswer('__timeout__')
+    }
+  }, [timeLeft, answered, finished])
+
   const handleAnswer = (opt: string) => {
     if (answered) return
+    if (timerRef.current) clearInterval(timerRef.current)
     setAnswered(true)
     setSelectedOpt(opt)
     const correct = direction === 'en-uz' ? current.translation : current.word
-    if (opt === correct) {
+    const isCorrect = opt === correct
+    if (isCorrect) {
       setScore((s) => s + 1)
       setStreak(s => s + 1)
       setBestStreak(prev => Math.max(prev, streak + 1))
@@ -656,24 +970,51 @@ function QuizMode({ words }: { words: FilmWord[] }) {
     } else {
       setStreak(0)
     }
+    setAttempts(prev => [...prev, {
+      word: current.word,
+      correct: isCorrect,
+      selected: opt,
+      correctAnswer: correct,
+    }])
   }
 
   const nextQuestion = () => {
     if (currentIdx + 1 >= quizWords.length) {
       setFinished(true)
+      saveQuizResult(score, quizWords.length, bestStreak)
     } else {
       setCurrentIdx((i) => i + 1)
       setAnswered(false)
       setSelectedOpt(null)
-      const next = quizWords[currentIdx + 1]
-      if (next) speak(next.word)
+      setTimeLeft(15)
     }
   }
 
-  const restart = (size?: number) => {
+  const saveQuizResult = (finalScore: number, finalTotal: number, finalStreak: number) => {
+    try {
+      const history = JSON.parse(localStorage.getItem(`film_quiz_history_${filmId}`) || '[]')
+      history.push({
+        score: finalScore,
+        total: finalTotal,
+        date: new Date().toISOString(),
+        streak: finalStreak,
+      })
+      if (history.length > 20) history.shift()
+      localStorage.setItem(`film_quiz_history_${filmId}`, JSON.stringify(history))
+    } catch {}
+  }
+
+  const restart = (size?: number, mistakesOnly?: boolean) => {
     const s = size ?? quizSize
     setQuizSize(s)
-    const newWords = shuffleArray([...words]).slice(0, s)
+    let newWords: FilmWord[]
+    if (mistakesOnly) {
+      const wrongWords = attempts.filter(a => !a.correct).map(a => words.find(w => w.word === a.word)).filter(Boolean) as FilmWord[]
+      if (wrongWords.length === 0) return
+      newWords = shuffleArray(wrongWords)
+    } else {
+      newWords = shuffleArray([...words]).slice(0, s)
+    }
     setQuizWords(newWords)
     setCurrentIdx(0)
     setScore(0)
@@ -682,9 +1023,12 @@ function QuizMode({ words }: { words: FilmWord[] }) {
     setFinished(false)
     setStreak(0)
     setBestStreak(0)
+    setAttempts([])
+    setReviewMode(!!mistakesOnly)
     if (newWords[0]) speak(newWords[0].word)
   }
 
+  // Keyboard handler
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (finished) return
@@ -716,52 +1060,111 @@ function QuizMode({ words }: { words: FilmWord[] }) {
 
   if (finished) {
     const pct = Math.round((score / quizWords.length) * 100)
-    const emoji = pct >= 90 ? '🏆' : pct >= 70 ? '🎯' : pct >= 50 ? '📝' : '💪'
+    const wrongCount = quizWords.length - score
+    const wrongWords = attempts.filter(a => !a.correct)
+
+    const getEmoji = () => {
+      if (pct >= 100) return '🏆'
+      if (pct >= 90) return '🎯'
+      if (pct >= 70) return '🌟'
+      if (pct >= 50) return '📝'
+      return '💪'
+    }
+
+    const getMessage = () => {
+      if (pct >= 100) return 'Mukammal! Barchasini to\'g\'ri topdingiz!'
+      if (pct >= 90) return 'Ajoyib natija! Zo\'r!'
+      if (pct >= 70) return 'Juda yaxshi! Davom eting!'
+      if (pct >= 50) return 'Yaxshi harakat! Yana sinab ko\'ring!'
+      if (pct >= 30) return 'O\'rtacha. Ko\'proq mashq qiling!'
+      return 'Qaytadan urinib ko\'ring!'
+    }
+
     return (
       <div className="text-center py-8 animate-fade-in">
-        <div className="text-5xl mb-4">{emoji}</div>
+        {/* Confetti-like celebration for high scores */}
+        {pct >= 90 && (
+          <div className="relative">
+            <div className="text-6xl mb-4 animate-pop-in">{getEmoji()}</div>
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-2xl animate-star-confetti" style={{ animationDelay: '0.2s' }}>✨</div>
+            <div className="absolute top-0 left-1/3 text-xl animate-emoji-confetti" style={{ animationDelay: '0.4s' }}>🎉</div>
+            <div className="absolute top-2 right-1/3 text-xl animate-emoji-confetti" style={{ animationDelay: '0.6s' }}>🎊</div>
+          </div>
+        )}
+        {pct < 90 && (
+          <div className="text-6xl mb-4 animate-pop-in">{getEmoji()}</div>
+        )}
+
         <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">
           {score} / {quizWords.length}
         </h2>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-          {pct >= 90 ? 'Ajoyib natija! Mukammal!' :
-           pct >= 70 ? 'Juda yaxshi! Davom eting!' :
-           pct >= 50 ? 'Yaxshi harakat! Yana sinab ko\'ring!' :
-           pct >= 30 ? 'O\'rtacha. Ko\'proq mashq qiling!' :
-           "Qaytadan urinib ko'ring!"}
+          {getMessage()}
         </p>
 
-        <div className="flex items-center justify-center gap-6 my-6">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 my-6">
           <div className="text-center">
-            <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{score}</p>
+            <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 animate-count-up">{score}</p>
             <p className="text-[10px] text-gray-400 font-medium">To'g'ri</p>
           </div>
           <div className="w-px h-10 bg-gray-200 dark:bg-gray-700" />
           <div className="text-center">
-            <p className="text-2xl font-bold text-red-500 dark:text-red-400">{quizWords.length - score}</p>
+            <p className="text-2xl font-bold text-red-500 dark:text-red-400 animate-count-up" style={{ animationDelay: '0.1s' }}>{wrongCount}</p>
             <p className="text-[10px] text-gray-400 font-medium">Noto'g'ri</p>
           </div>
           <div className="w-px h-10 bg-gray-200 dark:bg-gray-700" />
           <div className="text-center">
-            <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">{pct}%</p>
+            <p className="text-2xl font-bold text-primary-600 dark:text-primary-400 animate-count-up" style={{ animationDelay: '0.2s' }}>{pct}%</p>
             <p className="text-[10px] text-gray-400 font-medium">Foiz</p>
           </div>
           <div className="w-px h-10 bg-gray-200 dark:bg-gray-700" />
           <div className="text-center">
-            <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">{bestStreak}</p>
-            <p className="text-[10px] text-gray-400 font-medium">Eng uzun streak</p>
+            <p className="text-2xl font-bold text-purple-600 dark:text-purple-400 animate-count-up" style={{ animationDelay: '0.3s' }}>{bestStreak}</p>
+            <p className="text-[10px] text-gray-400 font-medium">Streak</p>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2">
-          <button onClick={() => restart()}
-            className="btn-primary text-sm">
-            Qaytadan
-          </button>
-          <button onClick={() => { setFinished(false); setCurrentIdx(0); setScore(0); setAnswered(false); setSelectedOpt(null); setStreak(0) }}
-            className="btn-secondary text-sm">
-            O'zgartirish
-          </button>
+        <div className="flex flex-col items-center gap-2">
+          <div className="flex items-center gap-2">
+            <button onClick={() => restart()}
+              className="btn-primary text-sm">
+              Qaytadan
+            </button>
+            <button onClick={() => restart(quizSize, true)}
+              disabled={wrongWords.length === 0}
+              className={`text-sm px-5 py-2.5 rounded-xl font-semibold transition-all
+                ${wrongWords.length > 0
+                  ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/50 shadow-sm'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed'
+                }`}>
+              <RotateCcw size={14} className="inline mr-1" />
+              Xatolarni takrorlash ({wrongWords.length})
+            </button>
+          </div>
+
+          {/* Wrong words list */}
+          {wrongWords.length > 0 && (
+            <div className="w-full max-w-sm mt-3 animate-fade-in">
+              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 text-left">Xatolar:</p>
+              <div className="space-y-1">
+                {wrongWords.map((a, i) => {
+                  const wordData = words.find(w => w.word === a.word)
+                  return (
+                    <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-red-50 dark:bg-red-900/10 text-left">
+                      <span className="text-xs font-semibold text-gray-700 dark:text-gray-300 w-24 truncate">{a.word}</span>
+                      <span className="text-[10px] text-red-500 line-through truncate">{a.selected === '__timeout__' ? '(vaqt tugadi)' : a.selected}</span>
+                      <span className="text-[10px] text-emerald-600 dark:text-emerald-400 truncate">→ {a.correctAnswer}</span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Quiz history */}
+          <div className="w-full max-w-sm mt-2">
+            <QuizHistory filmId={filmId} />
+          </div>
         </div>
       </div>
     )
@@ -772,11 +1175,11 @@ function QuizMode({ words }: { words: FilmWord[] }) {
 
   return (
     <div className="max-w-md mx-auto py-4 animate-fade-in">
-      {/* Direction toggle + Streak */}
+      {/* Direction toggle + Streak + Timer */}
       <div className="flex items-center gap-2 mb-4">
         <div className="flex-1 flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-xl">
           <button
-            onClick={() => { setDirection('en-uz'); restart() }}
+            onClick={() => { setDirection('en-uz'); reviewMode || restart() }}
             className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all
               ${direction === 'en-uz'
                 ? 'bg-white dark:bg-gray-900 text-primary-600 shadow-sm'
@@ -786,7 +1189,7 @@ function QuizMode({ words }: { words: FilmWord[] }) {
             EN → UZ
           </button>
           <button
-            onClick={() => { setDirection('uz-en'); restart() }}
+            onClick={() => { setDirection('uz-en'); reviewMode || restart() }}
             className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all
               ${direction === 'uz-en'
                 ? 'bg-white dark:bg-gray-900 text-primary-600 shadow-sm'
@@ -797,40 +1200,62 @@ function QuizMode({ words }: { words: FilmWord[] }) {
           </button>
         </div>
         {streak >= 2 && (
-          <div className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-orange-100 dark:bg-orange-900/30 animate-pop-in">
+          <div className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-orange-100 dark:bg-orange-900/30 animate-combo-pop">
             <Zap size={14} className="text-orange-500" />
             <span className="text-xs font-bold text-orange-600 dark:text-orange-400">{streak}</span>
           </div>
         )}
+        {timeLeft !== null && !answered && (
+          <div className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl font-bold text-xs
+            ${timeLeft <= 5
+              ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 animate-pulse'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-500'
+            }`}>
+            <Clock size={12} />
+            {timeLeft}
+          </div>
+        )}
       </div>
 
+      {/* Review mode indicator */}
+      {reviewMode && (
+        <div className="mb-3 p-2 rounded-xl bg-amber-100 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800 text-center">
+          <p className="text-xs font-semibold text-amber-700 dark:text-amber-400">
+            <RotateCcw size={12} className="inline mr-1" />
+            Xatolar ustida ishlash
+          </p>
+        </div>
+      )}
+
       {/* Quiz size selector */}
-      <div className="flex items-center gap-1.5 mb-4 overflow-x-auto pb-1">
-        <span className="text-[10px] text-gray-400 font-semibold shrink-0 mr-1">SAVOL:</span>
-        {QUIZ_SIZES.map((size) => (
+      {!reviewMode && (
+        <div className="flex items-center gap-1.5 mb-4 overflow-x-auto pb-1">
+          <span className="text-[10px] text-gray-400 font-semibold shrink-0 mr-1">SAVOL:</span>
+          {QUIZ_SIZES.map((size) => (
+            <button
+              key={size}
+              onClick={() => restart(size)}
+              className={`shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all
+                ${quizSize === size
+                  ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                }`}
+            >
+              {size}
+            </button>
+          ))}
           <button
-            key={size}
-            onClick={() => restart(size)}
+            onClick={() => restart(words.length)}
             className={`shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all
-              ${quizSize === size
+              ${quizSize === words.length
                 ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400'
                 : 'bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
               }`}
           >
-            {size}
+            Barchasi
           </button>
-        ))}
-        <button
-          onClick={() => restart(words.length)}
-          className={`shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all
-            ${quizSize === words.length
-              ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
-            }`}
-        >
-          Barchasi
-        </button>
-      </div>
+        </div>
+      )}
 
       {/* Progress */}
       <div className="flex items-center justify-between mb-2">
@@ -869,8 +1294,8 @@ function QuizMode({ words }: { words: FilmWord[] }) {
 
           let bgClass = 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800/50'
           if (answered) {
-            if (isCorrect) bgClass = 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-400 dark:border-emerald-600'
-            else if (isSelected && !isCorrect) bgClass = 'bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-600'
+            if (isCorrect) bgClass = 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-400 dark:border-emerald-600 animate-correct-flash'
+            else if (isSelected && !isCorrect) bgClass = 'bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-600 animate-wrong-shake'
             else bgClass = 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 opacity-40'
           }
 
@@ -904,6 +1329,15 @@ function QuizMode({ words }: { words: FilmWord[] }) {
           <p className="text-xs text-emerald-600 dark:text-emerald-400">
             <span className="font-semibold">To'g'ri javob:</span> {correctAnswer}
           </p>
+          {direction === 'en-uz' && (
+            <button
+              onClick={() => speak(current.word)}
+              className="mt-1.5 flex items-center gap-1 text-[10px] text-emerald-500 hover:text-emerald-600 transition-colors"
+            >
+              <Volume2 size={10} />
+              So'zni eshitish
+            </button>
+          )}
         </div>
       )}
 
@@ -914,6 +1348,57 @@ function QuizMode({ words }: { words: FilmWord[] }) {
           {currentIdx + 1 >= quizWords.length ? "Natijani ko'rish" : 'Keyingisi'}
         </button>
       )}
+    </div>
+  )
+}
+
+/* ─── Quiz History ─────────────────────────────────────────────────────────── */
+
+function QuizHistory({ filmId }: { filmId: string }) {
+  const [history, setHistory] = useState<{ score: number; total: number; date: string; streak: number }[]>([])
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(`film_quiz_history_${filmId}`)
+      if (saved) setHistory(JSON.parse(saved).slice(-10).reverse())
+    } catch {}
+  }, [filmId])
+
+  if (history.length === 0) return null
+
+  return (
+    <div className="text-left animate-fade-in">
+      <div className="flex items-center gap-1.5 mb-2">
+        <BarChart3 size={12} className="text-gray-400" />
+        <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+          Test tarixi
+        </span>
+      </div>
+      <div className="space-y-1">
+        {history.map((h, i) => {
+          const pct = Math.round((h.score / h.total) * 100)
+          const date = new Date(h.date)
+          return (
+            <div key={i} className="flex items-center gap-2 text-[10px] text-gray-500 dark:text-gray-400">
+              <span className="w-16 text-gray-400">
+                {date.toLocaleDateString('uz-UZ', { month: 'short', day: 'numeric' })}
+              </span>
+              <div className="flex-1 h-1.5 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+                <div
+                  className={`h-full rounded-full ${pct >= 80 ? 'bg-emerald-500' : pct >= 50 ? 'bg-amber-500' : 'bg-red-500'}`}
+                  style={{ width: `${pct}%` }}
+                />
+              </div>
+              <span className="w-12 text-right font-medium">{h.score}/{h.total}</span>
+              {h.streak > 1 && (
+                <span className="flex items-center gap-0.5 text-amber-500">
+                  <Zap size={8} />{h.streak}
+                </span>
+              )}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
