@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, Film, ChevronRight, X, BarChart3, BookOpen, Sparkles } from 'lucide-react'
+import { Search, Film, ChevronRight, X, BarChart3, BookOpen, Sparkles, RefreshCw, CheckCircle, TrendingUp } from 'lucide-react'
 import { FILMS, searchFilms, type FilmVocabulary } from '../data/filmVocabulary'
 
 const LEVEL_COLORS: Record<string, { bg: string; text: string; bar: string }> = {
