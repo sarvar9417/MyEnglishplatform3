@@ -28,13 +28,6 @@ function getLastViewed(id: string): number | null {
   } catch { return null }
 }
 
-function getFilmQuizHistory(id: string): { score: number; total: number; date: string }[] {
-  try {
-    const saved = localStorage.getItem(`film_quiz_history_${id}`)
-    return saved ? JSON.parse(saved) : []
-  } catch { return [] }
-}
-
 function getTotalKnownWords(): number {
   let total = 0
   for (const film of FILMS) {
@@ -71,23 +64,23 @@ export default function FilmHub() {
     return result
   }, [query, levelFilter, sortBy, refreshKey])
 
-  const continueFilms = useMemo(() => {
-    return FILMS
-      .map(f => ({ film: f, progress: getFilmProgress(f.id), total: f.words.length }))
-      .filter(f => f.progress > 0 && f.progress < f.total)
-      .sort((a, b) => {
-        // Sort by last viewed first
-        const aLast = getLastViewed(a.film.id) || 0
-        const bLast = getLastViewed(b.film.id) || 0
-        return bLast - aLast
-      })
+  const filmProgressData = useMemo(() => {
+    return FILMS.map(f => {
+      const progress = getFilmProgress(f.id)
+      const lastViewed = getLastViewed(f.id)
+      return { film: f, progress, total: f.words.length, lastViewed }
+    })
   }, [refreshKey])
 
+  const continueFilms = useMemo(() => {
+    return filmProgressData
+      .filter(f => f.progress > 0 && f.progress < f.total)
+      .sort((a, b) => (b.lastViewed || 0) - (a.lastViewed || 0))
+  }, [filmProgressData])
+
   const completedFilms = useMemo(() => {
-    return FILMS
-      .map(f => ({ film: f, progress: getFilmProgress(f.id), total: f.words.length }))
-      .filter(f => f.progress >= f.total)
-  }, [refreshKey])
+    return filmProgressData.filter(f => f.progress >= f.total)
+  }, [filmProgressData])
 
   const stats = useMemo(() => {
     const total = FILMS.reduce((s, f) => s + f.words.length, 0)
@@ -162,10 +155,8 @@ export default function FilmHub() {
             <h2 className="text-sm font-bold text-gray-900 dark:text-gray-100">Davom etish</h2>
             <span className="text-[10px] text-gray-400 font-medium">{continueFilms.length} ta film</span>
           </div>
-          <div className="space-y-2">
-            {continueFilms.map(({ film, progress, total }) => {
+          <div className="space-y-2">              {continueFilms.map(({ film, progress, total, lastViewed }) => {
               const pct = Math.round((progress / total) * 100)
-              const lastViewed = getLastViewed(film.id)
               return (
                 <button
                   key={film.id}
