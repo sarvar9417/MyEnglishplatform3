@@ -56,8 +56,7 @@ export const inversionB2: DailyLesson = {
       "structure": "Only after + V-ing / clause + auxiliary + S + V\nOnly after finishing work did I relax.",
       explanation: "Faqat ma'lum sharoitda sodir bo'lganini bildiradi. 'Only + ...' dan keyingi asosiy gapda inversiya bo'ladi, lekin 'only' dan keyingi bo'lakda inversiya yo'q.",
       whenToUse: "Faqat ma'lum sharoitda narsa sodir bo'lganini ta'kidlashda. IELTS Writing da sabab-natija bog'lashda.",
-      example: "Only after finishing work did I relax. (Faqat ishni tugatgandan keyin dam oldim)" },
-    }
+      example: "Only after finishing work did I relax. (Faqat ishni tugatgandan keyin dam oldim)" }
   ],
   "rules": [
     "1️⃣ INVERSIYA NIMA VA QACHON ISHLATILADI?\n\nInversiya — gapda yordamchi fe'l (auxiliary)ni egadan oldin qo'yish orqali ma'noni kuchaytirish usuli. Normal tartib: S + V. Inversiya: Aux + S + V.\n\n📌 QACHON ISHLATILADI?\n• Salbiy ma'noli so'zlar gap boshida kelganda: Never, Rarely, Seldom, Hardly, No sooner, Not only\n• Faqatgina/only ma'nosidagi konstruksiyalar: Only after, Only when, Only then\n• So + adjective/adverb: So beautiful was the view...\n\n📌 MUHIM: Inversiya faqat gap boshida ishlatiladi! Oddiy gap tartibida inversiya bo'lmaydi.\n  → Never have I seen such a film. (Inversiya — kuchaytirilgan)\n  → I have never seen such a film. (Oddiy tartib)\n\n📌 IELTS TIP: Inversiya Writing Task 2 da yoki Speaking da yuqori ball (Band 7+) olish uchun juda muhim grammatik struktura hisoblanadi.",
