@@ -32,22 +32,31 @@ export const inversionB2: DailyLesson = {
     {
       "color": "blue",
       "label": "Not only...but also",
-      "structure": "Not only + auxiliary + S + V, but also + S + V\nNot only does he speak English, but he also speaks French."
-    },
+      "structure": "Not only + auxiliary + S + V, but also + S + V\nNot only does he speak English, but he also speaks French.",
+      explanation: "Ingliz tilida 'nafaqat...balki' ma'nosida ishlatiladi. 'Not only' gap boshida bo'lsa, inversiya MAJBURIY — yordamchi fe'l egadan oldin keladi. O'zbekchada inversiya talab qilinmaydi.",
+      whenToUse: "Ikki fikrni bog'lab, ikkalasini ham ta'kidlash uchun. IELTS Writing da argumentativ essaylarda.",
+      example: "Not only does he speak English, but he also speaks French. (U nafaqat ingliz, balki fransuz tilida ham gapiradi)" },
     {
       "color": "violet",
       "label": "Rarely/Never/Seldom",
-      "structure": "Rarely/Never/Seldom + auxiliary + S + V\nRarely have I seen such beauty."
-    },
+      "structure": "Rarely/Never/Seldom + auxiliary + S + V\nRarely have I seen such beauty.",
+      explanation: "Salbiy ma'noli so'zlar gap boshida kelganda inversiya majburiy. Never (hech qachon), Rarely (kamdan-kam), Seldom (kamdan-kam, rasmiyroq). Urg'u berish uchun ishlatiladi.",
+      whenToUse: "Kamdan-kam sodir bo'lgan hodisalarni ta'kidlashda. IELTS Speaking da, yuqori ball olish uchun.",
+      example: "Never have I seen such beauty. (Hech qachon bunday go'zallikni ko'rmaganman)" },
     {
       "color": "orange",
       "label": "Hardly...when / No sooner...than",
-      "structure": "Hardly + had + S + V₃ + when + S + V₂\nNo sooner had we left than it started raining."
-    },
+      "structure": "Hardly + had + S + V₃ + when + S + V₂\nNo sooner had we left than it started raining.",
+      explanation: "Ikkala struktura ham 'biror ish tugashi bilanoq boshqasi sodir bo'ldi' ma'nosini beradi. Hardly bilan when, No sooner bilan than ishlatiladi — bu ikkilarni adashtirmang!",
+      whenToUse: "Ketma-ket sodir bo'lgan hodisalarni ta'kidlashda, ularning tezligini ko'rsatishda.",
+      example: "Hardly had we arrived when the phone rang. (Biz zo'rg'a yetib kelgan edik, telefon jiringladi)" },
     {
       "color": "green",
       "label": "Only after / Only when",
-      "structure": "Only after + V-ing / clause + auxiliary + S + V\nOnly after finishing work did I relax."
+      "structure": "Only after + V-ing / clause + auxiliary + S + V\nOnly after finishing work did I relax.",
+      explanation: "Faqat ma'lum sharoitda sodir bo'lganini bildiradi. 'Only + ...' dan keyingi asosiy gapda inversiya bo'ladi, lekin 'only' dan keyingi bo'lakda inversiya yo'q.",
+      whenToUse: "Faqat ma'lum sharoitda narsa sodir bo'lganini ta'kidlashda. IELTS Writing da sabab-natija bog'lashda.",
+      example: "Only after finishing work did I relax. (Faqat ishni tugatgandan keyin dam oldim)" },
     }
   ],
   "rules": [

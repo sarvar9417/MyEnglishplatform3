@@ -31,23 +31,31 @@ export const relativeClausesB1: DailyLesson = {
     {
       color: "green",
       label: "Defining (aniqlovchi)",
-      structure: "who/which/that/where/when + clause\nThe man who lives next door is a doctor."
-    },
+      structure: "who/which/that/where/when + clause\nThe man who lives next door is a doctor.",
+      explanation: "Defining relative clause — otning qaysi odam yoki narsa ekanligini aniqlovchi gap. Virgulsiz yoziladi. Agar bu gap olib tashlansa, ma'no buziladi. 'Who' odamlar, 'which' narsalar, 'that' ikkalasi uchun, 'where' joy, 'when' vaqt uchun.",
+      whenToUse: "Ot haqida qo'shimcha ma'lumot berishda, lekin bu ma'lumot gap uchun zarur bo'lganda.",
+      example: "The man who lives next door is a doctor. (Yoningdagi yashaydigan odam shifokor)" },
     {
       color: "blue",
       label: "Non-defining (qo'shimcha)",
-      structure: ", who/which/where/when + clause,\nMy father, who is 60, works as a teacher."
-    },
+      structure: ", who/which/where/when + clause,\nMy father, who is 60, works as a teacher.",
+      explanation: "Non-defining relative clause — qo'shimcha ma'lumot beruvchi gap. Virguli bilan ajratiladi. Bu gap olib tashlansa, ma'no buzilmaydi. 'That' ishlatilmaydi!",
+      whenToUse: "Ot haqida qo'shimcha, lekin zarur bo'lmagan ma'lumot berishda.",
+      example: "My father, who is 60, works as a teacher. (Otam 60 yoshda, o'qituvchi)" },
     {
       color: "orange",
       label: "Whose (egalik)",
-      structure: "whose + noun + clause\nThe student whose bag was stolen is upset."
-    },
+      structure: "whose + noun + clause\nThe student whose bag was stolen is upset.",
+      explanation: "Whose — egalik bildiruvchi nisbiy bog'lovchi. Odamlar va narsalar uchun ishlatiladi. 'Of whom/which' o'rniga ishlatiladi.",
+      whenToUse: "Biror kishining yoki narsaning egasi haqida gapirganda.",
+      example: "The student whose bag was stolen is upset. (Summasi o'g'irlangan talaba g'azablangan)" },
     {
       color: "purple",
       label: "Whom (obekt)",
-      structure: "whom + clause (rasmiy)\nThe man whom I met was very kind."
-    }
+      structure: "whom + clause (rasmiy)\nThe man whom I met was very kind.",
+      explanation: "Whom — obekt vazifasidagi nisbiy bog'lovchi. Rasmiy uslubda ishlatiladi. Norasmiy nutqda 'who' yoki 'that' bilan almashtiriladi yoki umuman tushib qoladi.",
+      whenToUse: "Rasmiy yozuvda, obekt vazifasidagi odam haqida gapirganda.",
+      example: "The man whom I met was very kind. (Uchrashgan odam juda mehribon edi)" },
   ],
   rules: [
     "1 RELATIVE CLAUSES NIMA",
