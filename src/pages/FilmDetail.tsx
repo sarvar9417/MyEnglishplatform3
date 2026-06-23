@@ -4,7 +4,7 @@ import {
   ArrowLeft, Search, BookOpen, Shuffle, CheckCircle,
   XCircle, Volume2, ChevronLeft, ChevronRight, RotateCcw,
   X, Target, Film, Volume,
-  Eye, EyeOff, Zap, TrendingUp, Clock, BarChart3, Award,
+  Eye, EyeOff, Zap, TrendingUp, Clock, BarChart3,
 } from 'lucide-react'
 import { getFilmById, type FilmWord } from '../data/filmVocabulary'
 import { speak as ttsSpeak } from '../lib/tts'
@@ -1148,7 +1148,6 @@ function QuizMode({ words, filmId }: { words: FilmWord[]; filmId: string }) {
               <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 text-left">Xatolar:</p>
               <div className="space-y-1">
                 {wrongWords.map((a, i) => {
-                  const wordData = words.find(w => w.word === a.word)
                   return (
                     <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-red-50 dark:bg-red-900/10 text-left">
                       <span className="text-xs font-semibold text-gray-700 dark:text-gray-300 w-24 truncate">{a.word}</span>
