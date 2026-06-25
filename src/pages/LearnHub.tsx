@@ -17,6 +17,7 @@ import FriendLessonRecommendation from '../components/dailyLesson/FriendLessonRe
 import { DailyLessonSkeleton } from '../components/ui/PageSkeleton'
 import { LESSON_INDEX, type LessonMeta } from '../data/daily/lessonsIndex'
 import { getLessonCanDo } from '../data/cefrCanDo'
+import { loadAllLessons } from '../data/dailyLessons'
 const CrossLessonMixedReview = lazy(() => import('../components/dailyLesson/CrossLessonMixedReview'))
 type LearnTab = 'grammar' | 'speaking' | 'listening' | 'reading' | 'writing'
 
@@ -47,6 +48,8 @@ export default function LearnHub() {
   const [activeTab, setActiveTab] = useState<LearnTab>('grammar')
   const [selected, setSelected] = useState<string | null>(null)
   const [selectedReview, setSelectedReview] = useState<string | null>(null)
+  const [directLesson, setDirectLesson] = useState<DailyLesson | null>(null)
+  const [directReview, setDirectReview] = useState<ReviewLesson | null>(null)
   const { pendingOpponentDuels, loadDuels } = useTandemStore()
 
   const lessonScores    = useStore((s) => s.lessonProgress)
@@ -75,6 +78,18 @@ export default function LearnHub() {
     loadDuels()
   }, [lessonsFetched, lessonsLoading, fetchAndSetLessons, loadDuels])
 
+  // Agar lessons hali yuklanmagan bo'lsa — to'g'ridan-to'g'ri yuklash
+  const loadLessonDirectly = async (id: string) => {
+    try {
+      const all = await loadAllLessons()
+      const found = all.find(l => l.id === id)
+      if (found && 'formulas' in found) setDirectLesson(found as DailyLesson)
+      else if (found && 'type' in found && found.type === 'review') setDirectReview(found as ReviewLesson)
+    } catch {
+      // fallback: skeleton ko'rinadi
+    }
+  }
+
   useEffect(() => {
     if (lessonsFetched && lessons.length > 0) {
       fetchAllLessonProgress().then((progress) => {
@@ -87,17 +102,32 @@ export default function LearnHub() {
 
 
 
+  if (directLesson) {
+    return <LessonView key={directLesson.id} lesson={directLesson} onBack={() => { setDirectLesson(null); setSelected(null) }} />
+  }
+  if (directReview) {
+    return <ReviewView lesson={directReview} onBack={() => { setDirectReview(null); setSelectedReview(null) }} />
+  }
+
   if (selected) {
     const item = lessons.find((l) => l.id === selected)
     // Faqat DailyLesson (formulas maydoni bor) LessonView ga uzatiladi
     if (item && 'formulas' in item) return <LessonView key={item.id} lesson={item as DailyLesson} onBack={() => setSelected(null)} />
+    if (item && 'type' in item && (item as ReviewLesson).type === 'review') return <ReviewView lesson={item as ReviewLesson} onBack={() => setSelectedReview(null)} />
     // To'liq kontent hali fonda yuklanmoqda — yuklab turamiz, kelgach dars ochiladi
-    if (lessonsLoading || !lessonsFetched) return <DailyLessonSkeleton />
+    if (lessonsLoading || !lessonsFetched) {
+      // Birinchi marta yuklashni boshlaymiz
+      if (!directLesson && !directReview) loadLessonDirectly(selected)
+      return <DailyLessonSkeleton />
+    }
   }
   if (selectedReview) {
     const review = lessons.find((r) => r.id === selectedReview) as ReviewLesson | undefined
     if (review) return <ReviewView lesson={review} onBack={() => setSelectedReview(null)} />
-    if (lessonsLoading || !lessonsFetched) return <DailyLessonSkeleton />
+    if (lessonsLoading || !lessonsFetched) {
+      if (!directLesson && !directReview) loadLessonDirectly(selectedReview)
+      return <DailyLessonSkeleton />
+    }
   }
 
   function renderLessonsTab() {

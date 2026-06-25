@@ -90,10 +90,18 @@ export function clearLessonCache(): void {
 export async function fetchLessons(): Promise<(DailyLesson | ReviewLesson)[]> {
   if (cachedLessons) return cachedLessons
 
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 10_000)
   const { data, error } = await supabase
     .from('lessons')
     .select('*')
     .order('day', { ascending: true })
+    .abortSignal(controller.signal)
+    .catch((e) => {
+      if (e.name === 'AbortError') return { data: null, error: new Error('Supabase fetch timeout (10s)') }
+      return { data: null, error: e }
+    })
+    .finally(() => clearTimeout(timeoutId))
 
   if (error) {
     monitoring.captureMessage('Supabase lessons fetch failed, trying cache: ' + error.message, 'warn')
@@ -376,12 +384,17 @@ export async function fetchAllLessonProgress(): Promise<Record<string, number>> 
   const userId = session?.user?.id ?? 'anonymous'
   
   if (session) {
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 8_000)
     // Eng so'nggi natija olinadi (har bir lesson_id uchun oxirgi yozuv)
     const { data } = await supabase
       .from('lesson_progress')
       .select('lesson_id, score')
       .eq('user_id', session.user.id)
       .order('completed_at', { ascending: false })
+      .abortSignal(controller.signal)
+      .catch(() => ({ data: null }))
+      .finally(() => clearTimeout(timeoutId))
     if (data) {
       for (const row of data) {
         // Birinchi (eng so'nggi) yozuvni saqlaymiz, qolganlarni o'tkazib yuboramiz
@@ -753,9 +766,17 @@ interface LessonSkillsRow {
 }
 
 export async function fetchLessonSkills(): Promise<Record<string, { reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection }>> {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 8_000)
   const { data, error } = await supabase
     .from('lesson_skills')
     .select('*')
+    .abortSignal(controller.signal)
+    .catch((e) => {
+      if (e.name === 'AbortError') return { data: null, error: new Error('timeout') }
+      return { data: null, error: e }
+    })
+    .finally(() => clearTimeout(timeoutId))
 
   type LessonSkillsMap = Record<string, { reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection }>
 

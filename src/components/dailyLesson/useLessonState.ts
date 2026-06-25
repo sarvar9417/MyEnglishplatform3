@@ -63,16 +63,14 @@ export function useLessonState(lessonProp: DailyLesson) {
       })
   }, [])
 
-  const {
-    addXP,
-    addLearnedWords,
-    updateSkillProgress,
-    setLessonProgress,
-    saveLessonSession,
-    clearLessonSession,
-    lessonSessions,
-    loseHeart,
-  } = useStore()
+  const addXP = useStore((s) => s.addXP)
+  const addLearnedWords = useStore((s) => s.addLearnedWords)
+  const updateSkillProgress = useStore((s) => s.updateSkillProgress)
+  const setLessonProgress = useStore((s) => s.setLessonProgress)
+  const saveLessonSession = useStore((s) => s.saveLessonSession)
+  const clearLessonSession = useStore((s) => s.clearLessonSession)
+  const lessonSessions = useStore((s) => s.lessonSessions)
+  const loseHeart = useStore((s) => s.loseHeart)
   const savedSession = lessonSessions[lesson.id]
 
   const navigate = useNavigate()
