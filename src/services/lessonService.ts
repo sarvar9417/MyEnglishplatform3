@@ -87,21 +87,31 @@ export function clearLessonCache(): void {
   cachedLessons = null
 }
 
+function withTimeout<T>(promise: Promise<T>, ms: number, label = 'Operation'): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>((_, reject) =>
+      setTimeout(() => reject(new Error(`${label} timeout (${ms}ms)`)), ms)
+    ),
+  ])
+}
+
 export async function fetchLessons(): Promise<(DailyLesson | ReviewLesson)[]> {
   if (cachedLessons) return cachedLessons
 
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 10_000)
-  const { data, error } = await supabase
-    .from('lessons')
-    .select('*')
-    .order('day', { ascending: true })
-    .abortSignal(controller.signal)
-    .catch((e) => {
-      if (e.name === 'AbortError') return { data: null, error: new Error('Supabase fetch timeout (10s)') }
-      return { data: null, error: e }
-    })
-    .finally(() => clearTimeout(timeoutId))
+  let data: any = null
+  let error: any = null
+  try {
+    const result = await withTimeout(
+      supabase.from('lessons').select('*').order('day', { ascending: true }),
+      10_000,
+      'Supabase lessons fetch'
+    )
+    data = result.data
+    error = result.error
+  } catch (e: any) {
+    error = e
+  }
 
   if (error) {
     monitoring.captureMessage('Supabase lessons fetch failed, trying cache: ' + error.message, 'warn')
@@ -187,19 +197,19 @@ export async function fetchReviewLessons(): Promise<ReviewLesson[]> {
 }
 
 export async function fetchLesson(id: string): Promise<(DailyLesson | ReviewLesson) | null> {
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 8_000)
-  const { data, error } = await supabase
-    .from('lessons')
-    .select('*')
-    .eq('id', id)
-    .maybeSingle()
-    .abortSignal(controller.signal)
-    .catch((e) => {
-      if (e.name === 'AbortError') return { data: null, error: new Error('timeout') }
-      return { data: null, error: e }
-    })
-    .finally(() => clearTimeout(timeoutId))
+  let data: any = null
+  let error: any = null
+  try {
+    const result = await withTimeout(
+      supabase.from('lessons').select('*').eq('id', id).maybeSingle(),
+      8_000,
+      'Supabase lesson fetch'
+    )
+    data = result.data
+    error = result.error
+  } catch (e: any) {
+    error = e
+  }
 
   if (error || !data) {
     monitoring.captureMessage('Supabase lesson fetch failed, trying cache: ' + (error?.message ?? 'unknown'), 'warn')
@@ -392,24 +402,25 @@ export async function fetchAllLessonProgress(): Promise<Record<string, number>> 
   const userId = session?.user?.id ?? 'anonymous'
   
   if (session) {
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 8_000)
-    // Eng so'nggi natija olinadi (har bir lesson_id uchun oxirgi yozuv)
-    const { data } = await supabase
-      .from('lesson_progress')
-      .select('lesson_id, score')
-      .eq('user_id', session.user.id)
-      .order('completed_at', { ascending: false })
-      .abortSignal(controller.signal)
-      .catch(() => ({ data: null }))
-      .finally(() => clearTimeout(timeoutId))
-    if (data) {
-      for (const row of data) {
-        // Birinchi (eng so'nggi) yozuvni saqlaymiz, qolganlarni o'tkazib yuboramiz
-        if (!(row.lesson_id in result)) {
-          result[row.lesson_id] = row.score
+    try {
+      const { data } = await withTimeout(
+        supabase
+          .from('lesson_progress')
+          .select('lesson_id, score')
+          .eq('user_id', session.user.id)
+          .order('completed_at', { ascending: false }),
+        8_000,
+        'fetchAllLessonProgress'
+      )
+      if (data) {
+        for (const row of data) {
+          if (!(row.lesson_id in result)) {
+            result[row.lesson_id] = row.score
+          }
         }
       }
+    } catch {
+      // timeout — local fallback below
     }
   }
 
@@ -774,17 +785,19 @@ interface LessonSkillsRow {
 }
 
 export async function fetchLessonSkills(): Promise<Record<string, { reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection }>> {
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 8_000)
-  const { data, error } = await supabase
-    .from('lesson_skills')
-    .select('*')
-    .abortSignal(controller.signal)
-    .catch((e) => {
-      if (e.name === 'AbortError') return { data: null, error: new Error('timeout') }
-      return { data: null, error: e }
-    })
-    .finally(() => clearTimeout(timeoutId))
+  let data: any = null
+  let error: any = null
+  try {
+    const result = await withTimeout(
+      supabase.from('lesson_skills').select('*'),
+      8_000,
+      'fetchLessonSkills'
+    )
+    data = result.data
+    error = result.error
+  } catch (e: any) {
+    error = e
+  }
 
   type LessonSkillsMap = Record<string, { reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection }>
 
@@ -823,16 +836,24 @@ export async function fetchLessonSkills(): Promise<Record<string, { reading?: Re
 
 // Bitta darsning skillsini yuklaydi (tez — bitta qator)
 export async function fetchSingleLessonSkill(lessonId: string): Promise<{ reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection } | null> {
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 5_000)
-  const { data, error } = await supabase
-    .from('lesson_skills')
-    .select('reading, writing, listening')
-    .eq('lesson_id', lessonId)
-    .maybeSingle()
-    .abortSignal(controller.signal)
-    .catch(() => ({ data: null, error: new Error('timeout') }))
-    .finally(() => clearTimeout(timeoutId))
+  let data: any = null
+  let error: any = null
+  try {
+    const result = await withTimeout(
+      supabase
+        .from('lesson_skills')
+        .select('reading, writing, listening')
+        .eq('lesson_id', lessonId)
+        .maybeSingle(),
+      5_000,
+      'fetchSingleLessonSkill'
+    )
+    data = result.data
+    error = result.error
+  } catch {
+    // timeout
+    error = true
+  }
 
   if (error || !data) {
     // Lokal fallback

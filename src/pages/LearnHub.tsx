@@ -57,6 +57,7 @@ export default function LearnHub() {
   const lessonSessions  = useStore((s) => s.lessonSessions)
   const setLessonProgress  = useStore((s) => s.setLessonProgress)
   const currentDay   = useStore((s) => s.currentDay)
+  const currentLevel = useStore((s) => s.currentLevel)
 
   // Boshlang'ich daraja: foydalanuvchi currentDay'dagi darsning darajasi →
   // currentLevel (A2+ → A2) → A1 (fallback)
