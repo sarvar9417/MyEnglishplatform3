@@ -187,11 +187,19 @@ export async function fetchReviewLessons(): Promise<ReviewLesson[]> {
 }
 
 export async function fetchLesson(id: string): Promise<(DailyLesson | ReviewLesson) | null> {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 8_000)
   const { data, error } = await supabase
     .from('lessons')
     .select('*')
     .eq('id', id)
     .maybeSingle()
+    .abortSignal(controller.signal)
+    .catch((e) => {
+      if (e.name === 'AbortError') return { data: null, error: new Error('timeout') }
+      return { data: null, error: e }
+    })
+    .finally(() => clearTimeout(timeoutId))
 
   if (error || !data) {
     monitoring.captureMessage('Supabase lesson fetch failed, trying cache: ' + (error?.message ?? 'unknown'), 'warn')
@@ -811,6 +819,35 @@ export async function fetchLessonSkills(): Promise<Record<string, { reading?: Re
   }
 
   return result
+}
+
+// Bitta darsning skillsini yuklaydi (tez — bitta qator)
+export async function fetchSingleLessonSkill(lessonId: string): Promise<{ reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection } | null> {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 5_000)
+  const { data, error } = await supabase
+    .from('lesson_skills')
+    .select('reading, writing, listening')
+    .eq('lesson_id', lessonId)
+    .maybeSingle()
+    .abortSignal(controller.signal)
+    .catch(() => ({ data: null, error: new Error('timeout') }))
+    .finally(() => clearTimeout(timeoutId))
+
+  if (error || !data) {
+    // Lokal fallback
+    try {
+      const { LESSON_SKILLS } = await import('../data/lessonSkillsContent')
+      const local = (LESSON_SKILLS as Record<string, { reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection }>)[lessonId]
+      return local ?? null
+    } catch { return null }
+  }
+
+  const entry: { reading?: ReadingSection; writing?: WritingSection; listening?: ListeningSection } = {}
+  if (data.reading) entry.reading = db.jsonFrom<ReadingSection>(data.reading) ?? undefined
+  if (data.writing) entry.writing = db.jsonFrom<WritingSection>(data.writing) ?? undefined
+  if (data.listening) entry.listening = db.jsonFrom<ListeningSection>(data.listening) ?? undefined
+  return entry
 }
 
 export async function loadViewedTabsFromDB(lessonId: string): Promise<string[]> {

@@ -23,7 +23,7 @@ import {
   saveViewedTabsToDB,
   loadViewedTabsFromDB,
   loadExerciseAnswersFromDB,
-  fetchLessonSkills,
+  fetchSingleLessonSkill,
   clearExerciseAnswersFromDB,
   type LoadedExerciseAnswer,
 } from '../../services/lessonService'
@@ -56,10 +56,12 @@ export function useLessonState(lessonProp: DailyLesson) {
   }
 
   useEffect(() => {
-    fetchLessonSkills()
-      .then(setSkillsData)
+    fetchSingleLessonSkill(lessonProp.id)
+      .then((skill) => {
+        if (skill) setSkillsData({ [lessonProp.id]: skill })
+      })
       .catch(() => {
-        monitoring.captureMessage('Failed to fetch lesson skills from DB', 'warn')
+        monitoring.captureMessage('Failed to fetch lesson skill from DB', 'warn')
       })
   }, [])
 

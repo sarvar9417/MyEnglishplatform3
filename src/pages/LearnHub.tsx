@@ -18,6 +18,7 @@ import { DailyLessonSkeleton } from '../components/ui/PageSkeleton'
 import { LESSON_INDEX, type LessonMeta } from '../data/daily/lessonsIndex'
 import { getLessonCanDo } from '../data/cefrCanDo'
 import { loadAllLessons } from '../data/dailyLessons'
+import { fetchLesson } from '../services/lessonService'
 const CrossLessonMixedReview = lazy(() => import('../components/dailyLesson/CrossLessonMixedReview'))
 type LearnTab = 'grammar' | 'speaking' | 'listening' | 'reading' | 'writing'
 
@@ -54,13 +55,8 @@ export default function LearnHub() {
 
   const lessonScores    = useStore((s) => s.lessonProgress)
   const lessonSessions  = useStore((s) => s.lessonSessions)
-  const lessons         = useStore((s) => s.lessons)
-  const lessonsLoading  = useStore((s) => s.lessonsLoading)
-  const lessonsFetched  = useStore((s) => s.lessonsFetched)
-  const fetchAndSetLessons = useStore((s) => s.fetchAndSetLessons)
   const setLessonProgress  = useStore((s) => s.setLessonProgress)
   const currentDay   = useStore((s) => s.currentDay)
-  const currentLevel = useStore((s) => s.currentLevel)
 
   // Boshlang'ich daraja: foydalanuvchi currentDay'dagi darsning darajasi →
   // currentLevel (A2+ → A2) → A1 (fallback)
@@ -74,12 +70,34 @@ export default function LearnHub() {
   })
 
   useEffect(() => {
-    if (!lessonsFetched && !lessonsLoading) fetchAndSetLessons()
     loadDuels()
-  }, [lessonsFetched, lessonsLoading, fetchAndSetLessons, loadDuels])
+  }, [loadDuels])
+
+  // Lesson progress ni faqat kerak bo'lganda yuklaymiz (LESSON_INDEX allaqachon mavjud)
+  useEffect(() => {
+    fetchAllLessonProgress().then((progress) => {
+      for (const [lessonId, score] of Object.entries(progress)) {
+        setLessonProgress(lessonId, score)
+      }
+    }).catch(() => {})
+  }, [])
 
   // Agar lessons hali yuklanmagan bo'lsa — to'g'ridan-to'g'ri yuklash
   const loadLessonDirectly = async (id: string) => {
+    try {
+      // Avval Supabase'dan yuklash (tez)
+      const lesson = await fetchLesson(id)
+      if (lesson && 'formulas' in lesson) {
+        setDirectLesson(lesson as DailyLesson)
+        return
+      }
+      if (lesson && 'type' in lesson && (lesson as ReviewLesson).type === 'review') {
+        setDirectReview(lesson as ReviewLesson)
+        return
+      }
+    } catch {
+      // Supabase ishlamasa — lokal fallback
+    }
     try {
       const all = await loadAllLessons()
       const found = all.find(l => l.id === id)
@@ -90,17 +108,6 @@ export default function LearnHub() {
     }
   }
 
-  useEffect(() => {
-    if (lessonsFetched && lessons.length > 0) {
-      fetchAllLessonProgress().then((progress) => {
-        for (const [lessonId, score] of Object.entries(progress)) {
-          setLessonProgress(lessonId, score)
-        }
-      })
-    }
-  }, [lessonsFetched, lessons, setLessonProgress])
-
-
 
   if (directLesson) {
     return <LessonView key={directLesson.id} lesson={directLesson} onBack={() => { setDirectLesson(null); setSelected(null) }} />
@@ -110,24 +117,13 @@ export default function LearnHub() {
   }
 
   if (selected) {
-    const item = lessons.find((l) => l.id === selected)
-    // Faqat DailyLesson (formulas maydoni bor) LessonView ga uzatiladi
-    if (item && 'formulas' in item) return <LessonView key={item.id} lesson={item as DailyLesson} onBack={() => setSelected(null)} />
-    if (item && 'type' in item && (item as ReviewLesson).type === 'review') return <ReviewView lesson={item as ReviewLesson} onBack={() => setSelectedReview(null)} />
-    // To'liq kontent hali fonda yuklanmoqda — yuklab turamiz, kelgach dars ochiladi
-    if (lessonsLoading || !lessonsFetched) {
-      // Birinchi marta yuklashni boshlaymiz
-      if (!directLesson && !directReview) loadLessonDirectly(selected)
-      return <DailyLessonSkeleton />
-    }
+    // Doimo to'g'ridan-to'g'ri yuklash — store bo'sh bo'lsa ham ishlaydi
+    if (!directLesson && !directReview) loadLessonDirectly(selected)
+    return <DailyLessonSkeleton />
   }
   if (selectedReview) {
-    const review = lessons.find((r) => r.id === selectedReview) as ReviewLesson | undefined
-    if (review) return <ReviewView lesson={review} onBack={() => setSelectedReview(null)} />
-    if (lessonsLoading || !lessonsFetched) {
-      if (!directLesson && !directReview) loadLessonDirectly(selectedReview)
-      return <DailyLessonSkeleton />
-    }
+    if (!directLesson && !directReview) loadLessonDirectly(selectedReview)
+    return <DailyLessonSkeleton />
   }
 
   function renderLessonsTab() {
