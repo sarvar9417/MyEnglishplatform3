@@ -87,9 +87,9 @@ export function clearLessonCache(): void {
   cachedLessons = null
 }
 
-function withTimeout<T>(promise: Promise<T>, ms: number, label = 'Operation'): Promise<T> {
+function withTimeout<T>(promise: PromiseLike<T>, ms: number, label = 'Operation'): Promise<T> {
   return Promise.race([
-    promise,
+    Promise.resolve(promise),
     new Promise<T>((_, reject) =>
       setTimeout(() => reject(new Error(`${label} timeout (${ms}ms)`)), ms)
     ),
