@@ -7,6 +7,8 @@ import { possessives, someAnyNoEvery, verbPatterns, timePrepositions } from './a
 import { presentContinuousFuture, quantifiers, tooEnough, soSuch, a2Review2 } from './a2Part4'
 // A2 zamonlari — darajaga singdirildi (oldin alohida blok bo'lib oxirda turardi)
 import { pastContinuous, presentPerfect } from '../tenses/tensesData'
+// 6 zamon aralash takrorlash
+import { tensesMixedReview } from './tensesMixedReview'
 
 // A2 — pedagogik tartibda (soddadan murakkabga), zamonlar singdirilgan, takror oxirida:
 //   asoslar → sifat/comparatives → gerund → ZAMONLAR → passive/reported → qolgan → review
@@ -21,6 +23,7 @@ export const A2_LESSONS: DailyLesson[] = [
   gerundsInfinitives,
   pastContinuous,
   presentPerfect,
+  tensesMixedReview,
   passiveVoice,
   reportedSpeech,
   firstConditional,
