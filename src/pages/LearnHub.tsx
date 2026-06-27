@@ -46,7 +46,7 @@ function difficultyLabel(l: LessonMeta): { label: string; color: string } {
 
 export default function LearnHub() {
   const navigate = useNavigate()
-  const { lessonId } = useParams<{ lessonId: string }>()
+  const { lessonId, level: urlLevel } = useParams<{ lessonId: string; level: string }>()
   const [activeTab, setActiveTab] = useState<LearnTab>('grammar')
   const [directLesson, setDirectLesson] = useState<DailyLesson | null>(null)
   const [directReview, setDirectReview] = useState<ReviewLesson | null>(null)
@@ -58,16 +58,28 @@ export default function LearnHub() {
   const currentDay   = useStore((s) => s.currentDay)
   const currentLevel = useStore((s) => s.currentLevel)
 
-  // Boshlang'ich daraja: foydalanuvchi currentDay'dagi darsning darajasi →
-  // currentLevel (A2+ → A2) → A1 (fallback)
+  // Boshlang'ich daraja: URL parametri → currentDay → currentLevel → A1 (fallback)
   const { t } = useI18n()
 
-  const [activeLevel, setActiveLevel] = useState<string>(() => {
+  const getInitialLevel = (): string => {
+    // 1) URL dan o'qish
+    if (urlLevel && LEVELS.includes(urlLevel)) return urlLevel
+    // 2) currentDay bo'yicha
     const cur = LESSON_INDEX.find(l => l.day === currentDay)
     if (cur) return cur.level
+    // 3) currentLevel bo'yicha
     const want = currentLevel === 'A2+' ? 'A2' : currentLevel
     return LEVELS.includes(want as string) ? (want as string) : 'A1'
-  })
+  }
+
+  const [activeLevel, setActiveLevel] = useState<string>(getInitialLevel)
+
+  // URL level o'zgarsa — activeLevel ni yangilash
+  useEffect(() => {
+    if (urlLevel && LEVELS.includes(urlLevel) && urlLevel !== activeLevel) {
+      setActiveLevel(urlLevel)
+    }
+  }, [urlLevel])
 
   useEffect(() => {
     loadDuels()
@@ -122,10 +134,10 @@ export default function LearnHub() {
 
 
   if (directLesson) {
-    return <LessonView key={directLesson.id} lesson={directLesson} onBack={() => navigate('/lesson')} />
+    return <LessonView key={directLesson.id} lesson={directLesson} onBack={() => navigate(`/lesson/level/${activeLevel}`)} />
   }
   if (directReview) {
-    return <ReviewView lesson={directReview} onBack={() => navigate('/lesson')} />
+    return <ReviewView lesson={directReview} onBack={() => navigate(`/lesson/level/${activeLevel}`)} />
   }
 
   if (lessonId) {
@@ -156,7 +168,7 @@ export default function LearnHub() {
             return (
               <button
                 key={lv}
-                onClick={() => setActiveLevel(lv)}
+                onClick={() => navigate(`/lesson/level/${lv}`)}
                 aria-label={`${lv} darajasi — ${count} dars`}
                 aria-pressed={active}
                 className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-bold transition-all ${
