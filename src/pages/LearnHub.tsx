@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   RefreshCw, Sparkles, Trophy, ChevronRight, Lightbulb, Target,
   Clock, Mic, Headphones, Newspaper, PenLine, Shuffle,
@@ -46,9 +46,8 @@ function difficultyLabel(l: LessonMeta): { label: string; color: string } {
 
 export default function LearnHub() {
   const navigate = useNavigate()
+  const { lessonId } = useParams<{ lessonId: string }>()
   const [activeTab, setActiveTab] = useState<LearnTab>('grammar')
-  const [selected, setSelected] = useState<string | null>(null)
-  const [selectedReview, setSelectedReview] = useState<string | null>(null)
   const [directLesson, setDirectLesson] = useState<DailyLesson | null>(null)
   const [directReview, setDirectReview] = useState<ReviewLesson | null>(null)
   const { pendingOpponentDuels, loadDuels } = useTandemStore()
@@ -77,11 +76,23 @@ export default function LearnHub() {
   // Lesson progress ni faqat kerak bo'lganda yuklaymiz (LESSON_INDEX allaqachon mavjud)
   useEffect(() => {
     fetchAllLessonProgress().then((progress) => {
-      for (const [lessonId, score] of Object.entries(progress)) {
-        setLessonProgress(lessonId, score)
+      for (const [id, score] of Object.entries(progress)) {
+        setLessonProgress(id, score)
       }
     }).catch(() => {})
   }, [])
+
+  // URL parametr bo'lsa — darsni yuklash
+  useEffect(() => {
+    if (!lessonId) {
+      setDirectLesson(null)
+      setDirectReview(null)
+      return
+    }
+    // Agar allaqachon yuklangan bo'lsa — qayta yuklamaymiz
+    if (directLesson?.id === lessonId || directReview?.id === lessonId) return
+    loadLessonDirectly(lessonId)
+  }, [lessonId])
 
   // Agar lessons hali yuklanmagan bo'lsa — to'g'ridan-to'g'ri yuklash
   const loadLessonDirectly = async (id: string) => {
@@ -111,19 +122,13 @@ export default function LearnHub() {
 
 
   if (directLesson) {
-    return <LessonView key={directLesson.id} lesson={directLesson} onBack={() => { setDirectLesson(null); setSelected(null) }} />
+    return <LessonView key={directLesson.id} lesson={directLesson} onBack={() => navigate('/lesson')} />
   }
   if (directReview) {
-    return <ReviewView lesson={directReview} onBack={() => { setDirectReview(null); setSelectedReview(null) }} />
+    return <ReviewView lesson={directReview} onBack={() => navigate('/lesson')} />
   }
 
-  if (selected) {
-    // Doimo to'g'ridan-to'g'ri yuklash — store bo'sh bo'lsa ham ishlaydi
-    if (!directLesson && !directReview) loadLessonDirectly(selected)
-    return <DailyLessonSkeleton />
-  }
-  if (selectedReview) {
-    if (!directLesson && !directReview) loadLessonDirectly(selectedReview)
+  if (lessonId) {
     return <DailyLessonSkeleton />
   }
 
@@ -239,9 +244,9 @@ export default function LearnHub() {
         })()}
 
         {/* ── Do'stlaringiz o'tgan darslar ── */}
-        <FriendLessonRecommendation
-          onStartLesson={(id) => setSelected(id)}
-        />
+          <FriendLessonRecommendation
+            onStartLesson={(id) => navigate(`/lesson/${id}`)}
+          />
 
         {/* ── Cross-lesson mixed review ── */}
         {(() => {
@@ -269,7 +274,7 @@ export default function LearnHub() {
               return (
               <button
                 key={review.id}
-                onClick={() => setSelectedReview(review.id)}
+                onClick={() => navigate(`/lesson/${review.id}`)}
                 aria-label={`${review.title} — ${review.subtitle}`}
                 className="text-left flex flex-col gap-3 p-3 sm:p-5 rounded-2xl border border-amber-200 dark:border-amber-800 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
                 >
@@ -325,7 +330,7 @@ export default function LearnHub() {
             return (
               <button
                 key={lesson.id}
-                onClick={() => setSelected(lesson.id)}
+                onClick={() => navigate(`/lesson/${lesson.id}`)}
                 aria-label={`${lesson.title} — ${lesson.subtitle}`}
                 className="card-hover text-left flex flex-col gap-3 p-3 sm:p-5 group"
               >
