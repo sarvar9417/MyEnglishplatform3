@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { X, Flame } from 'lucide-react'
 import Confetti from '../ui/Confetti'
-import { STREAK_MILESTONES, type StreakMilestone } from '../../store/progressSlice'
+import { STREAK_MILESTONES } from '../../store/progressSlice'
 
 interface StreakCelebrationProps {
   show: boolean

@@ -7,7 +7,7 @@ import { LogOut, Flame, Zap } from 'lucide-react'
 
 export default function TopBar() {
   const { t } = useI18n()
-  const { currentLevel, currentWeek, currentDay, streak: localStreak, targetDate, userName: localName, avatarId, totalWordsLearned, totalXP } = useStore()
+  const { currentLevel, currentWeek, currentDay, streak: localStreak, userName: localName, avatarId, totalXP } = useStore()
   const { displayName, signOut } = useAuth()
   const { dbStreak } = useProgress()
 
@@ -16,11 +16,6 @@ export default function TopBar() {
 
   const dayNum = Math.max(1, currentDay || 1)
   const dayInWeek = ((dayNum - 1) % 7) + 1
-
-  const daysLeft = Math.max(
-    0,
-    Math.ceil((new Date(targetDate).getTime() - Date.now()) / 86_400_000)
-  )
 
   const level =
     totalXP >= 5000 ? { label: 'B2', color: 'from-purple-500 to-violet-600', emoji: '💎' } :

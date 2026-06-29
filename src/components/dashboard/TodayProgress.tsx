@@ -20,7 +20,6 @@ interface RingConfig {
 }
 
 function SkillRing({ pct, stroke, track, label, hours, Icon, iconColor, emoji, onClick }: Omit<RingConfig, 'key'> & { onClick?: () => void }) {
-  const { t } = useI18n()
   const SIZE = typeof window !== 'undefined' && window.innerWidth < 640 ? 68 : 88
   const R    = SIZE === 68 ? 26 : 36
   const C    = 2 * Math.PI * R
