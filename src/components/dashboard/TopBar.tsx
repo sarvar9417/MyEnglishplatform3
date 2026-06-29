@@ -3,11 +3,11 @@ import { useStore } from '../../store/useStore'
 import { useAuth } from '../../hooks/useAuth'
 import { useProgress } from '../../hooks/useProgress'
 import { AVATARS } from '../ui/AvatarSelector'
-import { LogOut } from 'lucide-react'
+import { LogOut, Flame, Zap } from 'lucide-react'
 
 export default function TopBar() {
   const { t } = useI18n()
-  const { currentLevel, currentWeek, currentDay, streak: localStreak, targetDate, userName: localName, avatarId, totalWordsLearned } = useStore()
+  const { currentLevel, currentWeek, currentDay, streak: localStreak, targetDate, userName: localName, avatarId, totalWordsLearned, totalXP } = useStore()
   const { displayName, signOut } = useAuth()
   const { dbStreak } = useProgress()
 
@@ -22,10 +22,13 @@ export default function TopBar() {
     Math.ceil((new Date(targetDate).getTime() - Date.now()) / 86_400_000)
   )
 
-  const levelColor =
-    currentLevel === 'B2'         ? 'bg-b2-100 text-b2-700 border-b2-200' :
-    currentLevel.startsWith('B1') ? 'bg-b1-100 text-b1-700 border-b1-200' :
-                                    'bg-primary-100 text-primary-700 border-primary-200'
+  const level =
+    totalXP >= 5000 ? { label: 'B2', color: 'from-purple-500 to-violet-600', emoji: '💎' } :
+    totalXP >= 2000 ? { label: 'B1+', color: 'from-blue-500 to-cyan-500', emoji: '⭐' } :
+    totalXP >= 1000 ? { label: 'B1', color: 'from-blue-400 to-blue-600', emoji: '🌟' } :
+    totalXP >= 500  ? { label: 'A2', color: 'from-primary-500 to-primary-600', emoji: '📚' } :
+    totalXP >= 100  ? { label: 'A1', color: 'from-green-400 to-emerald-500', emoji: '🌱' } :
+                      { label: 'A0', color: 'from-gray-400 to-gray-500', emoji: '🎯' }
 
   const hour = new Date().getHours()
   const greeting =
@@ -33,52 +36,58 @@ export default function TopBar() {
     hour < 18 ? t('dashboard.greetingAfternoon')  : t('dashboard.greetingEvening')
 
   return (
-    <header className="bg-white border-b border-gray-100 px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between flex-shrink-0 gap-2">
-      <div className="min-w-0">
-        <p className="text-xs text-gray-400 font-medium">{greeting}</p>
-        <h1 className="text-sm sm:text-base font-bold text-gray-900 leading-tight truncate flex items-center gap-1.5">
-          <span className="text-lg">{AVATARS.find(a => a.id === avatarId)?.emoji ?? '👤'}</span>
-          {t('dashboard.greetingUser', { name: userName || t('sidebar.userFallback') })}
-        </h1>
+    <header className="bg-white border-b border-gray-100 px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between flex-shrink-0 gap-2">
+      {/* Left: Avatar + Name */}
+      <div className="min-w-0 flex items-center gap-2.5">
+        <div className="relative shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center text-lg">
+            {AVATARS.find(a => a.id === avatarId)?.emoji ?? '👤'}
+          </div>
+          {streak > 0 && (
+            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white">
+              <Flame size={8} className="text-white" />
+            </div>
+          )}
+        </div>
+        <div className="min-w-0">
+          <p className="text-[10px] text-gray-400 font-medium leading-tight">{greeting}</p>
+          <h1 className="text-sm font-bold text-gray-900 leading-tight truncate">
+            {userName || t('sidebar.userFallback')}
+          </h1>
+        </div>
       </div>
 
-      <div className={`flex items-center gap-1 px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-full border font-semibold text-xs sm:text-sm flex-shrink-0 ${levelColor}`}>
-        <span>{t('dashboard.topBarLevel', { level: currentLevel })}</span>
-        <span className="text-xs opacity-60 hidden sm:inline">·</span>
-        <span className="text-xs font-medium opacity-80 hidden sm:inline">{t('dashboard.topBarWeek', { week: currentWeek })}</span>
-        <span className="text-xs opacity-60 hidden sm:inline">·</span>
-        <span className="text-xs font-medium opacity-80">{t('dashboard.topBarDay', { dayInWeek })}</span>
-      </div>
+      {/* Right: Stats */}
+      <div className="flex items-center gap-1.5 sm:gap-3">
+        {/* Streak */}
+        {streak > 0 && (
+          <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-orange-50 border border-orange-100">
+            <Flame size={12} className="text-orange-500" />
+            <span className="text-xs font-bold text-orange-600">{streak}</span>
+          </div>
+        )}
 
-      <div className="flex items-center gap-2 sm:gap-4">
-        <div className="flex items-center gap-1 sm:gap-1.5">
-          <span className="text-base sm:text-lg leading-none">🔥</span>
-          <div className="hidden sm:block">
-            <p className="text-sm font-bold text-gray-900 leading-tight">{t('dashboard.topBarStreak', { streak })}</p>
-            <p className="text-xs text-gray-400">{t('dashboard.streakLabel')}</p>
-          </div>
-          <span className="text-xs font-bold text-gray-900 sm:hidden">{streak}</span>
+        {/* XP */}
+        <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-violet-50 border border-violet-100">
+          <Zap size={12} className="text-violet-500" />
+          <span className="text-xs font-bold text-violet-600">{totalXP}</span>
         </div>
-        <div className="h-7 w-px bg-gray-100 hidden sm:block" />
-        <div className="text-right hidden sm:block">
-          <p className="text-sm font-bold text-gray-900 leading-tight">{t('dashboard.topBarDaysLeft', { daysLeft })}</p>
-          <p className="text-xs text-gray-400">{t('dashboard.daysLeftLabel')}</p>
+
+        {/* Level badge */}
+        <div className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gradient-to-r ${level.color} text-white`}>
+          <span className="text-xs">{level.emoji}</span>
+          <span className="text-xs font-bold">{currentLevel}</span>
+          <span className="text-[10px] opacity-70">W{currentWeek}·D{dayInWeek}</span>
         </div>
-        <div className="hidden sm:flex items-center gap-1.5">
-          <span className="text-base leading-none">📚</span>
-          <div>
-            <p className="text-sm font-bold text-gray-900 leading-tight">{totalWordsLearned}</p>
-            <p className="text-xs text-gray-400">{t('dashboard.totalWordsLabel')}</p>
-          </div>
-        </div>
-        <div className="h-7 w-px bg-gray-100" />
+
+        {/* Sign out */}
         <button
           onClick={signOut}
           title={t('dashboard.signOutTitle')}
           aria-label={t('dashboard.signOutTitle')}
-          className="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+          className="p-1.5 rounded-lg text-gray-300 hover:text-red-500 hover:bg-red-50 transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center"
         >
-          <LogOut size={18} />
+          <LogOut size={16} />
         </button>
       </div>
     </header>

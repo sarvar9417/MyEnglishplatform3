@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { Trophy, Star, RotateCcw, Check, ChevronLeft, ChevronRight, Target } from 'lucide-react'
 import type { DailyLesson } from '../../data/dailyLessons'
 import { getConfusablePairs } from './lessonHelpers'
@@ -14,6 +14,7 @@ import LessonHeader from './LessonHeader'
 import LessonNavigation from './LessonNavigation'
 import SelfAssessment from '../ui/SelfAssessment'
 import MixedReview from './MixedReview'
+import LessonCelebration from '../dashboard/LessonCelebration'
 import type { Tab } from './LessonNavigation'
 
 type Props = { lesson: DailyLesson; onBack: () => void }
@@ -66,6 +67,17 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
   } = useLessonState(lessonProp)
 
   // ── Step-by-step flow ──────────────────────────────────────────────────
+  const [showCelebration, setShowCelebration] = useState(false)
+  const prevAllDoneRef = useRef(allDone)
+
+  useEffect(() => {
+    if (allDone && !prevAllDoneRef.current) {
+      const timer = setTimeout(() => setShowCelebration(true), 300)
+      return () => clearTimeout(timer)
+    }
+    prevAllDoneRef.current = allDone
+  }, [allDone])
+
   const lessonSteps: StepDef[] = useMemo(() => {
     const steps: StepDef[] = [
       { tab: 'theory',    label: 'Nazariya',  icon: '📖' },
@@ -526,6 +538,16 @@ export default function LessonView({ lesson: lessonProp, onBack }: Props) {
           </div>
         </div>
       )}
+
+      {/* Lesson completion celebration */}
+      <LessonCelebration
+        show={showCelebration}
+        lessonTitle={lesson.title}
+        score={currentLessonScore ?? 0}
+        xpEarned={lesson.exercises.length * 10}
+        newWords={lesson.vocabulary.length}
+        onClose={() => setShowCelebration(false)}
+      />
     </div>
   )
 }

@@ -26,6 +26,8 @@ import CefrProgressCard from '../components/dashboard/CefrProgressCard'
 import StoryBeatCard from '../components/dashboard/StoryBeatCard'
 import SectionLabel from '../components/dashboard/SectionLabel'
 import CollapsibleSection from '../components/dashboard/CollapsibleSection'
+import MotivationalWidget from '../components/dashboard/MotivationalWidget'
+import StreakCelebration from '../components/dashboard/StreakCelebration'
 import type { QuickWeakSpot } from '../services/analyticsService'
 
 export default function Dashboard() {
@@ -35,17 +37,30 @@ export default function Dashboard() {
   const handleWeakSpotsLoaded = useCallback((_spots: QuickWeakSpot[]) => {}, [])
   const { pendingOpponentDuels, loadDuels } = useTandemStore()
   const [activeTab, setActiveTab] = useState<'today' | 'all'>('today')
+  const [showStreakCelebration, setShowStreakCelebration] = useState(false)
+  const streak = useStore((s) => s.streak)
 
   useEffect(() => {
     fetchAndSetLessons()
     loadDuels()
   }, [fetchAndSetLessons, loadDuels])
 
+  // Show streak celebration on mount if streak hit a milestone
+  useEffect(() => {
+    if (streak >= 3 && streak % 3 === 0) {
+      const timer = setTimeout(() => setShowStreakCelebration(true), 1500)
+      return () => clearTimeout(timer)
+    }
+  }, [])
+
   return (
     <div className="flex flex-col h-full">
       <TopBar />
       <div className="flex-1 overflow-y-auto scrollbar-hide mobile-safe-bottom">
         <div className="p-3 sm:p-5 space-y-3 sm:space-y-4 max-w-3xl mx-auto">
+          {/* Motivational greeting + stats */}
+          <MotivationalWidget />
+
           {/* Pending duel banner */}
           {pendingOpponentDuels.length > 0 && (
             <button
@@ -166,6 +181,13 @@ export default function Dashboard() {
           )}
         </div>
       </div>
+
+      {/* Streak celebration modal */}
+      <StreakCelebration
+        show={showStreakCelebration}
+        streak={streak}
+        onClose={() => setShowStreakCelebration(false)}
+      />
     </div>
   )
 }
