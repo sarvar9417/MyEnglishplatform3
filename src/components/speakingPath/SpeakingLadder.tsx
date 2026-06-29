@@ -165,7 +165,6 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
             <div className="space-y-1.5">
               {zoneDays.map((d, i) => {
                 const isCompleted = completed.has(d.day)
-                const isLocked = false
                 const isCurrent = d.day === unlockedDay && !isCompleted
                 const isExpanded = expandedDay === d.day
                 const dayProgress = progressMap.get(d.day)
@@ -185,33 +184,26 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                     {/* Asosiy karta */}
                     <button
                       data-day={d.day}
-                      onClick={() => !isLocked && onToggle(d.day)}
-                      disabled={isLocked}
+                      onClick={() => onToggle(d.day)}
                       className={`relative w-full flex items-center gap-3 p-3 rounded-2xl text-left transition-all border
-                        ${isLocked
-                          ? 'bg-gray-50/60 dark:bg-gray-800/30 border-gray-100 dark:border-gray-800 cursor-not-allowed opacity-70'
-                          : isCurrent
-                            ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-300 dark:border-primary-700 shadow-sm hover:shadow-md active:scale-[0.99]'
-                            : isCompleted
-                              ? 'bg-white dark:bg-gray-800 border-emerald-200 dark:border-emerald-800/50 hover:shadow-md active:scale-[0.99]'
-                              : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:shadow-md active:scale-[0.99]'
+                        ${isCurrent
+                          ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-300 dark:border-primary-700 shadow-sm hover:shadow-md active:scale-[0.99]'
+                          : isCompleted
+                            ? 'bg-white dark:bg-gray-800 border-emerald-200 dark:border-emerald-800/50 hover:shadow-md active:scale-[0.99]'
+                            : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:shadow-md active:scale-[0.99]'
                         }`}
                     >
                       {/* Raqam / holat doirasi */}
                       <div className={`w-[52px] h-[52px] rounded-2xl flex items-center justify-center shrink-0 font-black text-lg relative
                         ${isCompleted
                           ? 'bg-emerald-500 text-white'
-                          : isLocked
-                            ? 'bg-gray-200 dark:bg-gray-700 text-gray-400'
-                            : isCurrent
-                              ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white'
-                              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
+                          : isCurrent
+                            ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white'
+                            : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                         }`}
                       >
                         {isCompleted ? (
                           <CheckCircle2 size={24} />
-                        ) : isLocked ? (
-                          <Lock size={20} />
                         ) : (
                           d.day
                         )}
@@ -225,7 +217,7 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5 flex-wrap">
                           <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${CEFR_BADGE[d.cefr]}`}>{d.cefr}</span>
-                          <span className={`font-bold text-sm truncate ${isLocked ? 'text-gray-400' : 'text-gray-900 dark:text-gray-100'}`}>
+                          <span className={`font-bold text-sm truncate text-gray-900 dark:text-gray-100`}>
                             {d.day}-kun
                           </span>
                           {isCurrent && (
@@ -234,7 +226,7 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                             </span>
                           )}
                         </div>
-                        <p className={`text-xs mt-0.5 truncate ${isLocked ? 'text-gray-300 dark:text-gray-600' : 'text-gray-600 dark:text-gray-400'}`}>
+                        <p className={`text-xs mt-0.5 truncate text-gray-600 dark:text-gray-400`}>
                           {d.title}
                         </p>
                       </div>
@@ -251,19 +243,17 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                             </span>
                           </div>
                         )}
-                        {!isLocked && !isCompleted && (
+                        {!isCompleted && (
                           <span className="text-xs font-semibold text-gray-400 dark:text-gray-500">
                             ~{d.estMinutes} daq
                           </span>
                         )}
-                        {!isLocked && (
                           <ChevronDown size={16} className={`text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-                        )}
                       </div>
                     </button>
 
                     {/* Inline detal paneli */}
-                    {isExpanded && !isLocked && (
+                    {isExpanded && (
                       <div className="ml-[60px] mr-1 mt-1.5 mb-2 p-3 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-100 dark:border-gray-700 animate-slide-up space-y-2.5">
                         {/* Maqsad */}
                         <p className="text-xs font-semibold text-primary-700 dark:text-primary-300 flex items-center gap-1.5">
