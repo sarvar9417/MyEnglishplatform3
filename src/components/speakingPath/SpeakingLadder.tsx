@@ -2,7 +2,7 @@
 // To'liq narvon: CEFR zonlari, kengaytirilgan kun kartalari, boy inline detal paneli,
 // SpeakingDaySession ga uzviy bog'langan boshlash tugmasi.
 
-import { Lock, CheckCircle2, ChevronDown, Mic, Clock, Star, Sparkles } from 'lucide-react'
+import { CheckCircle2, ChevronDown, Mic, Clock, Star, Sparkles } from 'lucide-react'
 import type { SpeakingDay, SpeakingDayProgress } from '../../data/speakingPath/types'
 import { getCachedSrsMapSync } from '../../services/speakingPathService'
 import { getLevelRange, CEFR_ORDER } from '../../data/speakingPath'
@@ -136,7 +136,6 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
         const doneInZone = zoneDays.filter(d => completed.has(d.day)).length
         const totalInZone = zoneDays.length
         const zonePct = Math.round((doneInZone / totalInZone) * 100)
-        const isZoneUnlocked = zoneDays.some(d => d.day <= unlockedDay)
 
         return (
           <div key={zone.cefr + '-' + zone.dayMin}>
@@ -158,11 +157,6 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                   <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">
                     {doneInZone}/{totalInZone} kun
                   </span>
-                  {!isZoneUnlocked && (
-                    <span className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-0.5">
-                      <Lock size={10} /> Yopiq
-                    </span>
-                  )}
                 </div>
               </div>
             </div>
@@ -171,7 +165,7 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
             <div className="space-y-1.5">
               {zoneDays.map((d, i) => {
                 const isCompleted = completed.has(d.day)
-                const isLocked = d.day > unlockedDay
+                const isLocked = false
                 const isCurrent = d.day === unlockedDay && !isCompleted
                 const isExpanded = expandedDay === d.day
                 const dayProgress = progressMap.get(d.day)
@@ -352,7 +346,7 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                         </div>
 
                         {/* Boshlash tugmasi */}
-                        {isCurrent && (
+                        {!isCompleted && (
                           <button
                             onClick={(e) => { e.stopPropagation(); onStart?.(d.day) }}
                             className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold text-sm hover:from-primary-700 hover:to-primary-800 active:scale-[0.98] transition-all shadow-sm"
