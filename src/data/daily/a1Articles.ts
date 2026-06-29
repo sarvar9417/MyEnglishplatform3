@@ -5,6 +5,7 @@ export const articles: DailyLesson = {
   title: 'Articles: a/an/the',
   subtitle: "Artikllar: a/an/the — O'zbek tilida artikllar yo'q, shuning uchun bu juda muhim mavzu!",
   level: 'A1',
+  category: 'Artikllar',
   day: 1,
   formulas: [
     { label: 'A/AN + sanoqli ism (nomalum)', structure: 'a + undosh tovush (a cat, a book)\nan + unli tovush (an apple, an hour)', color: 'green' },

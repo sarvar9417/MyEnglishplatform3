@@ -5,6 +5,7 @@ export const greetingsAndIntroductions: DailyLesson = {
   title: 'Greetings & Introductions',
   subtitle: "Salomlashish va o'zini tanishtirish — Hello, My name is, How are you?",
   level: 'A1',
+  category: 'Salomlashish',
   day: 0, // loadAllLessons tomonidan tayinlanadi
   formulas: [
     { label: 'Greetings', structure: 'Hello! / Hi!\nGood morning! / Good afternoon! / Good evening! / Good night!', color: 'green' },

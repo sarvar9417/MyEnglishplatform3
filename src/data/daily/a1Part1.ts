@@ -5,6 +5,7 @@ export const alphabetAndGreetings: DailyLesson = {
   title: 'Alphabet & Greetings',
   subtitle: "Ingliz alifbosi va salomlashish — Hello, hi, good morning!",
   level: 'A1',
+  category: 'Alifbo va salomlashish',
   day: 1,
   formulas: [
     { label: 'Salomlashish (Greeting)', structure: 'Hello! / Hi!\nGood morning! / Good afternoon!\nGood evening! / Good night!', color: 'green',
@@ -254,6 +255,7 @@ export const numbers: DailyLesson = {
   title: 'Numbers 1-100',
   subtitle: "Sonlar 1-100, telefon raqami, yosh, narx",
   level: 'A1',
+  category: 'Sonlar',
   day: 2,
   formulas: [
     { label: '1-12 (asosiy)', structure: "1-one, 2-two, 3-three, 4-four, 5-five, 6-six, 7-seven, 8-eight, 9-nine, 10-ten, 11-eleven, 12-twelve", color: 'green' },
@@ -509,6 +511,7 @@ export const colorsAndShapes: DailyLesson = {
   title: 'Colors & Shapes',
   subtitle: "Ranglar va shakllar — red, blue, circle, square",
   level: 'A1',
+  category: 'Ranglar va shakllar',
   day: 3,
   formulas: [
     { label: "Asosiy ranglar (Basic)", structure: "red, blue, green, yellow, black, white", color: 'green' },
@@ -744,6 +747,7 @@ export const family: DailyLesson = {
   title: 'Family Members',
   subtitle: "Oila a'zolari — mother, father, brother, sister",
   level: 'A1',
+  category: 'Oila',
   day: 4,
   formulas: [
     { label: "Ota-ona (Parents)", structure: "father/dad, mother/mom, parent", color: 'green' },
@@ -992,6 +996,7 @@ export const daysAndMonths: DailyLesson = {
   title: 'Days, Months & Seasons',
   subtitle: "Hafta kunlari, oylar, fasllar — Monday, January, summer",
   level: 'A1',
+  category: 'Vaqt va fasllar',
   day: 5,
   formulas: [
     { label: "Hafta kunlari", structure: "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday", color: 'green' },
@@ -1232,6 +1237,7 @@ export const timeAndRoutines: DailyLesson = {
   title: 'Time & Daily Routines',
   subtitle: "Soat, vaqt, kunlik tartib — I wake up at 7 AM",
   level: 'A1',
+  category: 'Kunlik tartib',
   day: 6,
   formulas: [
     { label: "Soat aytish", structure: "What time is it? It is 7 o'clock.\n7:30 = half past seven\n7:15 = quarter past seven\n7:45 = quarter to eight", color: 'green' },
@@ -1465,6 +1471,7 @@ export const foodAndDrinks: DailyLesson = {
   title: 'Food & Drinks',
   subtitle: "Ovqat va ichimliklar — apple, water, rice, bread",
   level: 'A1',
+  category: 'Ovqat va ichimlik',
   day: 7,
   formulas: [
     { label: "Countable (sanaluvchi)", structure: "an apple, two apples\nIs there an apple? — Yes, there is.", color: 'green' },
@@ -1707,6 +1714,7 @@ export const animals: DailyLesson = {
   title: 'Animals',
   subtitle: "Hayvonlar — cat, dog, bird, fish, tiger",
   level: 'A1',
+  category: 'Hayvonlar',
   day: 8,
   formulas: [
     { label: "Uy hayvonlari", structure: "cat, dog, fish, bird, hamster", color: 'green' },
@@ -1948,6 +1956,7 @@ export const bodyParts: DailyLesson = {
   title: 'Body Parts',
   subtitle: "Tana a'zolari — head, hand, leg, eye, ear",
   level: 'A1',
+  category: "Tana a'zolari",
   day: 9,
   formulas: [
     { label: "Bosh qismi", structure: "head, face, hair, eye, ear, nose, mouth", color: 'green' },
@@ -2187,6 +2196,7 @@ export const clothes: DailyLesson = {
   title: 'Clothes',
   subtitle: "Kiyimlar — shirt, pants, shoes, hat, dress",
   level: 'A1',
+  category: 'Kiyimlar',
   day: 10,
   formulas: [
     { label: "Yuqori kiyim", structure: "shirt, T-shirt, blouse, sweater, jacket, coat", color: 'green' },

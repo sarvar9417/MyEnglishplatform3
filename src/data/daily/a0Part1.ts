@@ -5,6 +5,7 @@ export const greetingsAndNames: DailyLesson = {
   title: 'Salomlashish va ismlar',
   subtitle: 'Hello, My name is... — Birinchi qadamlar',
   level: 'A0',
+  category: 'Salomlashish',
   day: 1,
   formulas: [
     { label: 'Salomlashish', structure: 'Hello! / Hi!\nGood morning! / Good evening!', color: 'green' },
@@ -59,6 +60,7 @@ export const numbersAndAlphabet: DailyLesson = {
   title: 'Raqamlar va alifbo',
   subtitle: '1, 2, 3... A, B, C... — Asosiy bilimlar',
   level: 'A0',
+  category: 'Raqamlar',
   day: 2,
   formulas: [
     { label: 'Raqamlar 1-10', structure: '1 one, 2 two, 3 three\n4 four, 5 five, 6 six\n7 seven, 8 eight, 9 nine, 10 ten', color: 'green' },
@@ -111,6 +113,7 @@ export const familyAndMe: DailyLesson = {
   title: "Oilam va men",
   subtitle: "Family, mother, father — Mening oilam",
   level: 'A0',
+  category: 'Ranglar va narsalar',
   day: 3,
   formulas: [
     { label: 'Oila a\'zolari', structure: "mother (ona)\nfather (ota)\nbrother (aka/uka)\nsister (opa/singil)\ngrandmother (bobo/buvi)\ngrandfather (bobo/dada)", color: 'green' },

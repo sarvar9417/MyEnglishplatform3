@@ -5,6 +5,7 @@ export const pragmaticsFormalInformal: DailyLesson = {
   title: 'Rasmiy va norasmiy muloqot',
   subtitle: 'Formal vs Informal Communication — register, politeness va polite request forms',
   level: 'B1',
+  category: 'Muloqot',
   day: 1,
   formulas: [
     { label: 'Formal Register', structure: 'Could you + V1?\nWould you mind + V-ing?\nI would like to + V1\nI was wondering if + clause', color: 'blue',

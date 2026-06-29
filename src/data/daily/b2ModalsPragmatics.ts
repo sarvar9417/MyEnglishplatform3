@@ -5,6 +5,7 @@ export const modalsPragmaticsB2: DailyLesson = {
   title: 'Modals: Hedging & Softening',
   subtitle: "Modallar yordamida shakl bildirish va ehtiyotkorlik bilan gapirish",
   level: 'B2',
+  category: "Modal fe'llar",
   day: 1,
   formulas: [
     { label: 'Hedging Modals', structure: 'might / could / may\n+ verb = ehtimollikni kamaytirish', color: 'green',

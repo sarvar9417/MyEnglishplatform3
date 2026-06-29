@@ -5,6 +5,7 @@ export const demonstratives: DailyLesson = {
   title: 'Demonstratives: this, that, these, those',
   subtitle: "Bu, u, bular, ular — ko'rsatish olmoshlari",
   level: 'A1',
+  category: "Ko'rsatish olmoshlari",
   day: 11,
   formulas: [
     { label: "Birlik (yaqin/uzoq)", structure: "this (yaqin) — bu\nthat (uzoq) — u", color: 'green',
@@ -197,6 +198,7 @@ export const prepositionsOfPlace: DailyLesson = {
   title: 'Prepositions of Place — Joy old predloglari',
   subtitle: "in, on, under, next to, between, behind, in front of",
   level: 'A1',
+  category: 'Joy old predloglari',
   day: 12,
   image: 'Prepositions_of_Place.png',
   formulas: [
@@ -397,6 +399,7 @@ export const basicAdjectives: DailyLesson = {
   title: 'Basic Adjectives — Asosiy sifatlar',
   subtitle: "Big, small, old, young, hot, cold, happy, sad — tavsif so'zlari",
   level: 'A1',
+  category: 'Asosiy sifatlar',
   day: 13,
   formulas: [
     { label: "O'lcham (size)", structure: "big (katta) — small (kichik)\nlarge — little / tiny", color: 'green' },
@@ -596,6 +599,7 @@ export const thereIsAre: DailyLesson = {
   title: 'There is / There are — Bor / yo\'q',
   subtitle: "Mavjudlikni ko'rsatish — There is a book, There are books",
   level: 'A1',
+  category: 'Mavjudlik',
   day: 14,
   formulas: [
     { label: "There is (bitta)", structure: "There is + birlik ot + joy\nThere is a cat in the garden.", color: 'green' },
@@ -772,6 +776,7 @@ export const canCant: DailyLesson = {
   title: 'Can / Can\'t — Qobiliyat',
   subtitle: "Qila olaman, qila olmayman — I can swim, I can't fly",
   level: 'A1',
+  category: 'Qobiliyat',
   day: 15,
   formulas: [
     { label: "Can (qobiliyat)", structure: "Subject + can + V1\nI can swim.\nHe can play football.", color: 'green' },

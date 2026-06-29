@@ -7,6 +7,7 @@ export const relativeClausesB1: DailyLesson = {
   title: "Relative Clauses",
   subtitle: "Defining va Non-defining — who/which/that/where/when",
   level: "B1",
+  category: "Gap tuzilishi",
   day: 35,
   listening: {
     transcript: "Guide: This is the museum that attracts thousands of tourists. The man who designed it was famous.\nVisitor: Amazing! Is that the painting which won an award?\nGuide: Yes. The artist who painted it lived here. This is the room where she worked.\nVisitor: Beautiful. And the garden that we saw earlier?\nGuide: That's the garden which inspired her most. The bench where she sat is still there.\nVisitor: Lovely. Who is the woman that works at the desk?\nGuide: She's the curator whose knowledge is incredible.\nVisitor: I'd love to meet her. This is a place that I'll never forget!",
@@ -1003,6 +1004,7 @@ export const phrasalVerbsB1: DailyLesson = {
   title: "Phrasal Verbs",
   subtitle: "Separable va inseparable phrasal verbs: look after, give up, put off, etc.",
   level: "B1",
+  category: "Frasal fe'llar",
   day: 37,
   listening: {
     transcript: "Mum: Please turn off the TV and clean up your room.\nSon: OK. Can I go out after?\nMum: Yes, but be back by six. Don't stay out late.\nSon: Sure. I'll pick up some bread on the way home.\nMum: Good. And don't forget to take out the rubbish.\nSon: I won't. By the way, my friend is coming over tonight.\nMum: That's fine. Just tidy up afterwards.\nSon: Of course. Can you wake me up early tomorrow?\nMum: Yes. Now hurry up — we're running out of time!\nSon: OK, I'm getting ready now.",
