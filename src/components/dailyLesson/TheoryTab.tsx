@@ -93,20 +93,33 @@ export default function TheoryTab({ lesson, storyBeat, navigate, addXP, onVocabD
       <SpeakingPathLink lessonId={lesson.id} navigate={navigate} />
 
       {/* Grammar: Formulas */}
-      <div className="bg-gradient-to-br from-primary-600 to-b2-600 rounded-2xl p-5 text-white">
-        <p className="text-xs font-semibold opacity-70 mb-3 uppercase tracking-wider">Formulalar</p>
-        <div className="grid grid-cols-1 gap-2">
-          {lesson.formulas.map((row) => (
-            <FormulaRecallCard key={row.label} label={row.label} structure={row.structure} color={row.color} explanation={row.explanation} example={row.example} whenToUse={row.whenToUse} pronunciation={row.pronunciation} />
-          ))}
+      <div className="bg-gradient-to-br from-primary-600 to-b2-600 rounded-2xl p-5 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
+        <div className="relative z-10">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-lg">📐</span>
+            <p className="text-xs font-semibold opacity-70 uppercase tracking-wider">Formulalar</p>
+          </div>
+          <div className="grid grid-cols-1 gap-2">
+            {lesson.formulas.map((row) => (
+              <FormulaRecallCard key={row.label} label={row.label} structure={row.structure} color={row.color} explanation={row.explanation} example={row.example} whenToUse={row.whenToUse} pronunciation={row.pronunciation} />
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Grammar: Rules */}
       <div className="space-y-4">
-        <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
-          <BookOpen size={14} /> Qoidalar
-        </p>
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-lg bg-primary-100 dark:bg-primary-900/40 flex items-center justify-center">
+            <BookOpen size={14} className="text-primary-600" />
+          </div>
+          <div>
+            <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Qoidalar</p>
+            <p className="text-[10px] text-gray-400">{lesson.rules.length} ta qoida — har birini diqqat bilan o'qing</p>
+          </div>
+        </div>
         {lesson.rules.map((r, i) => <RuleCard key={i} rule={r} index={i} />)}
       </div>
 
@@ -153,9 +166,15 @@ export default function TheoryTab({ lesson, storyBeat, navigate, addXP, onVocabD
 
       {/* Vocabulary */}
       <div className="pt-2 border-t border-gray-100 dark:border-gray-700">
-        <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-          📝 Lug'at — {lesson.vocabulary.length} ta so'z
-        </p>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-lg">📝</span>
+          <div>
+            <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              Lug'at — {lesson.vocabulary.length} ta so'z
+            </p>
+            <p className="text-[10px] text-gray-400">Har bir so'zni o'qing va misollarni tinglang</p>
+          </div>
+        </div>
         <VocabLearner
           vocab={lesson.vocabulary}
           addXP={addXP}
@@ -166,14 +185,33 @@ export default function TheoryTab({ lesson, storyBeat, navigate, addXP, onVocabD
       </div>
 
       {/* Examples — with AudioButton for pronunciation */}
-      <ExamplesSection examples={lesson.examples} />
+      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl p-4 border border-emerald-100 dark:border-emerald-800/30">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-lg">💬</span>
+          <div>
+            <p className="text-xs font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider">
+              Misollar — {lesson.examples.length} ta
+            </p>
+            <p className="text-[10px] text-emerald-500/70">Tinglang va takrorlang</p>
+          </div>
+        </div>
+        <ExamplesSection examples={lesson.examples} />
+      </div>
 
       {/* Special Cases */}
       {lesson.specialCases.length > 0 && (
         <div className="pt-2 border-t border-gray-100 dark:border-gray-700">
-          <p className="text-xs font-bold text-primary-600 uppercase tracking-wider mb-3 flex items-center gap-1">
-            <Star size={14} /> Maxsus holatlar — yodda saqlash uchun alohida e'tibor
-          </p>
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center">
+              <Star size={14} className="text-amber-600" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-amber-600 uppercase tracking-wider">
+                Maxsus holatlar
+              </p>
+              <p className="text-[10px] text-gray-400">{lesson.specialCases.length} ta maxsus holat — yodda saqlash uchun</p>
+            </div>
+          </div>
           {lesson.specialCases.map((sc) => (
             <div key={sc.id} className="space-y-3">
               {sc.mnemonic && <MnemonicCard rule={sc.title} mnemonic={sc.mnemonic} />}
@@ -208,11 +246,20 @@ export default function TheoryTab({ lesson, storyBeat, navigate, addXP, onVocabD
       )}
 
       {/* Bottom info card */}
-      <div className="card bg-gradient-to-r from-primary-50 dark:from-primary-900/30 to-b2-50 dark:to-b2-900/30 border-primary-100 dark:border-primary-800">
-        <p className="text-sm text-primary-800 dark:text-primary-300 font-medium flex items-center gap-2">
-          <Lightbulb size={16} />
-          Keyingi bosqichda <strong>{lesson.vocabulary.length} ta so'z</strong> va <strong>{lesson.exercises.length} ta mashq</strong> bor. Har to'g'ri javob <strong>+10 XP</strong>.
-        </p>
+      <div className="bg-gradient-to-r from-primary-50 to-emerald-50 dark:from-primary-900/30 dark:to-emerald-900/30 rounded-2xl p-4 border border-primary-100 dark:border-primary-800">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/40 flex items-center justify-center shrink-0">
+            <span className="text-lg">🎯</span>
+          </div>
+          <div>
+            <p className="text-sm text-primary-800 dark:text-primary-200 font-bold">
+              Tayyormisiz?
+            </p>
+            <p className="text-xs text-primary-600/70 dark:text-primary-400/70">
+              Keyingi bosqichda <strong>{lesson.vocabulary.length} ta so'z</strong> va <strong>{lesson.exercises.length} ta mashq</strong> bor. Har to'g'ri javob <strong>+10 XP</strong>.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   )

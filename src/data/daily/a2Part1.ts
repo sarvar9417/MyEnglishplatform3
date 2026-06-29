@@ -4,6 +4,7 @@ export const modalVerbs: DailyLesson = {
   title: 'Modal Verbs',
   subtitle: "Can, must, should, might — imkoniyat, majburiyat, maslahat va ehtimollik",
   level: 'A2',
+  category: 'Grammatika asoslari',
   day: 25,
   listening: {
     transcript: "Mum: Ali, can you help me in the kitchen?\nAli: Sure, Mum. What can I do?\nMum: You can wash the vegetables. But be careful — the knife is sharp.\nAli: OK. Must I cut them too?\nMum: No, you don't have to cut them. I will do that. But you must wash your hands first.\nAli: Of course. Can I use the small bowl?\nMum: Yes, you can. We might have guests tonight, so we should cook a lot.\nAli: Really? Who might come?\nMum: Your uncle may visit. He isn't sure yet.\nAli: I hope he can come. He's very funny!",
@@ -279,6 +280,7 @@ export const articles: DailyLesson = {
   title: 'Articles',
   subtitle: "A, an, the va zero article — aniqlik va noaniqlik",
   level: 'A2',
+  category: 'Grammatika asoslari',
   day: 26,
   listening: {
     transcript: "Lola: I want to buy a new phone. Can you help me?\nJasur: Sure. There's a good shop near the bank. The shop is on Main Street.\nLola: Is it expensive?\nJasur: No, the prices are fair. I bought a laptop there last month.\nLola: Great. Do they sell headphones too?\nJasur: Yes. I got an excellent pair for my brother. The headphones were cheap.\nLola: Perfect. Let's go after lunch.\nJasur: OK. But the shop closes at six, so let's not be late.\nLola: Don't worry. The bus comes every ten minutes.\nJasur: Then we have time. Let's eat first!",
@@ -552,6 +554,7 @@ export const prepositions: DailyLesson = {
   title: 'Prepositions of Time & Place',
   subtitle: "At, in, on — vaqt va joy predloglari",
   level: 'A2',
+  category: 'Prepozitsiyalar',
   day: 27,
   listening: {
     transcript: "Sam: When is the meeting?\nDilnoza: It's on Monday, at ten o'clock, in the morning.\nSam: Where is it?\nDilnoza: In the big room on the second floor.\nSam: OK. I'll be there at nine to prepare.\nDilnoza: Good. The documents are on the table, in a blue folder.\nSam: Thanks. Is Mr. Karimov coming?\nDilnoza: Yes, he'll arrive in an hour. He lives in Tashkent, on Navoi Street.\nSam: Great. See you at the meeting.\nDilnoza: See you on Monday!",
@@ -785,6 +788,7 @@ export const questionsLesson: DailyLesson = {
   title: 'Questions',
   subtitle: "Yes/No, Wh- va Tag questions — so'roq gaplar",
   level: 'A2',
+  category: 'Savol shakllari',
   day: 28,
   listening: {
     transcript: "Interviewer: Good morning! What is your name?\nCandidate: My name is Sevara.\nInterviewer: Where do you live, Sevara?\nCandidate: I live in Tashkent, near the city centre.\nInterviewer: How long have you worked as a designer?\nCandidate: I have worked as a designer for three years.\nInterviewer: Why do you want this job?\nCandidate: Because I love your company, and I want to learn more.\nInterviewer: Do you speak English?\nCandidate: Yes, I do. I also speak a little Russian.\nInterviewer: When can you start?\nCandidate: I can start next Monday.\nInterviewer: Great. We will call you soon!",
@@ -1018,6 +1022,7 @@ export const countableUncountable: DailyLesson = {
   title: 'Countable & Uncountable Nouns',
   subtitle: "Some/any, much/many, a few/a little — sanaladigan va sanalmaydigan otlar",
   level: 'A2',
+  category: 'Soni olmoshlar',
   day: 29,
   listening: {
     transcript: "Mum: We need to buy some food for dinner. How much rice do we have?\nBek: Not much. We have a little, but not enough.\nMum: OK, buy some rice. How many eggs are there?\nBek: There are only two eggs. We need more.\nMum: Get a dozen eggs, then. Do we have any milk?\nBek: There isn't much milk. Maybe one glass.\nMum: Buy two bottles. And we need some bread and a few apples.\nBek: How many apples?\nMum: About six. Oh, and we have no sugar at all!\nBek: OK, I'll buy a kilo of sugar too. Anything else?\nMum: No, that's enough. Thank you, Bek!",

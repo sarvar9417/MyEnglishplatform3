@@ -4,6 +4,7 @@ export const adjectiveAdverb: DailyLesson = {
   title: 'Adjective vs Adverb',
   subtitle: "Sifat va ravish — qanday va qanchalik farqi",
   level: 'A2',
+  category: 'Sifat va ravish',
   day: 30,
   listening: {
     transcript: "Coach: You played really well today, Bekzod!\nBekzod: Thank you, coach. I tried hard.\nCoach: Yes, I can see that. You run very fast, and you passed the ball carefully.\nBekzod: I practise every day. But my shooting is still bad.\nCoach: That's not true. You shot the ball beautifully in the second half.\nBekzod: Really? I was nervous at first.\nCoach: You looked calm to me. You play like a professional.\nBekzod: That's a big compliment! I'll work harder.\nCoach: Good. If you train seriously, you'll become a great player.\nBekzod: I promise I will!",
@@ -242,6 +243,7 @@ export const gerundsInfinitives: DailyLesson = {
   title: 'Gerunds & Infinitives',
   subtitle: "V+ing va to+V1 — qachon qanday ishlatiladi",
   level: 'A2',
+  category: 'Fe'l shakllari',
   day: 31,
   listening: {
     transcript: "Aziza: What do you like doing at the weekend?\nTom: I love playing football, and I enjoy reading books. What about you?\nAziza: I like cooking, but I hate washing dishes!\nTom: Ha! Me too. Do you want to learn a new hobby?\nAziza: Yes. I've decided to start painting. I want to improve my skills.\nTom: That's nice. I hope to learn the guitar this year.\nAziza: Good luck! It's difficult, but it's worth trying.\nTom: True. I need to practise every day.\nAziza: Don't forget to enjoy it too!\nTom: I will. Learning should be fun.",
@@ -453,6 +455,7 @@ export const passiveVoice: DailyLesson = {
   title: 'Passive Voice',
   subtitle: "Simple Present va Past — ish-harakatning kim tomonidan bajarilishi muhim emas",
   level: 'A2',
+  category: 'Fe'l shakllari',
   day: 32,
   listening: {
     transcript: "Guide: Welcome to our museum. This building was built in 1850.\nTourist: Wow! Who built it?\nGuide: It was designed by a famous architect. These paintings were made by local artists.\nTourist: They are beautiful. Are they sold sometimes?\nGuide: No, they are never sold. They are protected by law.\nTourist: I see. Is the museum cleaned every day?\nGuide: Yes, it is cleaned every morning before we open. Photos are allowed, but flash is not permitted.\nTourist: OK, no flash. When was this statue brought here?\nGuide: It was brought from Samarkand last year. It is loved by all our visitors.\nTourist: Thank you for the tour!",
@@ -657,6 +660,7 @@ export const reportedSpeech: DailyLesson = {
   title: 'Reported Speech',
   subtitle: "Say/tell va tense backshift — kimningdir gapini aytib berish",
   level: 'A2',
+  category: 'Fe'l shakllari',
   day: 33,
   listening: {
     transcript: "Dilshod: I saw Nodira yesterday. She told me some news.\nMadina: Really? What did she say?\nDilshod: She said that she was moving to a new flat. She told me she had found a great place.\nMadina: That's wonderful! Did she say where?\nDilshod: She said it was near the park. She also said she would have a party next week.\nMadina: Nice! Did she invite us?\nDilshod: Yes, she asked if we were free on Saturday. She told us to bring some music.\nMadina: Of course! Did she say what time?\nDilshod: She said the party started at seven.\nMadina: Perfect. Let's not be late!",
@@ -861,6 +865,7 @@ export const firstConditional: DailyLesson = {
   title: 'First Conditional',
   subtitle: "If + Present Simple, will + V1 — real va mumkin bo'lgan shartlar",
   level: 'A2',
+  category: 'Gap tuzilishi',
   day: 34,
   listening: {
     transcript: "Coach: If it rains tomorrow, we will train indoors.\nPlayer: And if it's sunny?\nCoach: If it's sunny, we'll play in the park. If you arrive early, you'll get a good spot.\nPlayer: OK. What if I'm sick?\nCoach: If you're sick, you should stay home. If you rest, you'll get better faster.\nPlayer: Thanks, coach. Will we have a match this weekend?\nCoach: If everyone trains hard, we'll have a match on Sunday. If we win, we'll celebrate!\nPlayer: I hope we win!\nCoach: We will, if we work as a team. Remember: if you believe, you can succeed.",

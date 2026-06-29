@@ -5,6 +5,7 @@ export const presentContinuousFuture: DailyLesson = {
   title: 'Present Continuous for Future',
   subtitle: "Present Continuous (be + V-ing) — kelasi zamonda rejalashtirilgan ish-harakatlar uchun",
   level: 'A2',
+  category: 'Soni olmoshlar',
   day: 40,
   listening: {
     transcript: "Sara: What are you doing this evening?\nTom: I'm meeting my friends at seven. We're watching a film.\nSara: Nice! Are you going anywhere this weekend?\nTom: Yes, I'm visiting my grandparents on Saturday. They're cooking a big dinner.\nSara: Lovely. I'm starting a new job on Monday.\nTom: Congratulations! Are you feeling nervous?\nSara: A little. I'm taking the train at eight on Monday morning.\nTom: You'll be fine. Are we still meeting on Tuesday?\nSara: Yes, we're having lunch at noon, remember?\nTom: Of course! See you then.",
@@ -201,6 +202,7 @@ export const quantifiers: DailyLesson = {
   title: 'Quantifiers',
   subtitle: "Much, many, a lot of, a few, a little, some, any, no — miqdor so'zlari",
   level: 'A2',
+  category: 'Gap tuzilishi',
   day: 41,
   listening: {
     transcript: "Mum: How much money do we have for shopping?\nDad: Not much, but enough. We need a few things.\nMum: We have plenty of rice, but little oil.\nDad: OK. Let's buy some oil and a lot of vegetables.\nMum: How many tomatoes?\nDad: Several. And a little garlic.\nMum: There are too many sweets in the basket!\nDad: You're right. Let's take fewer sweets and more fruit.\nMum: Good. We have too much sugar at home already.\nDad: Then no sugar today. Let's go!",
@@ -397,6 +399,7 @@ export const tooEnough: DailyLesson = {
   title: 'Too and Enough',
   subtitle: "Too — juda (ortiqcha), Enough — yetarli — sifat va ravishdosh bilan ishlatilishi",
   level: 'A2',
+  category: 'Gap tuzilishi',
   day: 42,
   listening: {
     transcript: "Customer: This jacket is too small for me. Do you have a bigger one?\nAssistant: Yes. Is this one big enough?\nCustomer: Almost, but the sleeves are too long.\nAssistant: How about this? It's not too expensive.\nCustomer: I like it, but is it warm enough for winter?\nAssistant: Definitely. It's thick enough for cold weather.\nCustomer: Great. The colour is nice too. Is it too bright?\nAssistant: Not at all. It's perfect.\nCustomer: OK. Am I old enough for the student discount?\nAssistant: Sorry, that's only for students. But this price is good enough!",

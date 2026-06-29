@@ -6,6 +6,7 @@ export const verbPatterns: DailyLesson = {
   title: 'Verb Patterns',
   subtitle: "Fe'llardan keyin keladigan shakllar — V-ing, to V1, V1",
   level: 'A2',
+  category: 'Fe'l shakllari',
   day: 35,
   listening: {
     transcript: "Teacher: Class, let me explain today's homework. I want you to read chapter five.\nStudent: Do you expect us to write a summary too?\nTeacher: Yes, I'd like you to write a short summary. I also advise you to learn the new words.\nStudent: Should we ask our parents to help?\nTeacher: You can ask them to help, but try to do it yourself first. I encourage you to think carefully.\nStudent: What if we don't understand a word?\nTeacher: I allow you to use a dictionary. Remember, I want you to enjoy reading.\nStudent: OK. When do you need it?\nTeacher: I need you to finish by Friday. Don't make me wait!\nStudent: We won't! Thank you, teacher.",
@@ -193,6 +194,7 @@ export const timePrepositions: DailyLesson = {
   title: 'Time Prepositions',
   subtitle: "Vaqt old ko'makchilari — at, in, on, before, after, during va boshqalar",
   level: 'A2',
+  category: 'Prepozitsiyalar',
   day: 36,
   listening: {
     transcript: "Anvar: When is your birthday?\nZilola: It's on the 12th of June, in summer.\nAnvar: Nice! What time is the party?\nZilola: It starts at 6 p.m. and finishes at midnight.\nAnvar: Great. Do you have school in the morning?\nZilola: No, my exams finish in May, so I'm free in June.\nAnvar: Lucky you! I have an exam on Monday.\nZilola: Good luck! Study at night if it's quiet.\nAnvar: I will. By the way, I'll arrive at the party at seven.\nZilola: Perfect. See you in a few days!",
@@ -366,6 +368,7 @@ export const thereIsThereAre: DailyLesson = {
   title: 'There is / There are',
   subtitle: "Mavjudlik — biror narsaning bor yoki yo'qligini aytish",
   level: 'A2',
+  category: 'Olmoshlar',
   day: 37,
   listening: {
     transcript: "Agent: This is the flat. There is a big living room and there are two bedrooms.\nBuyer: Is there a balcony?\nAgent: Yes, there is a small balcony with a nice view. There are also two bathrooms.\nBuyer: How many windows are there in the living room?\nAgent: There are three large windows, so there is a lot of light.\nBuyer: Is there a lift in the building?\nAgent: Yes, there is. And there are some shops nearby.\nBuyer: Are there any schools close to here?\nAgent: There is one school and there are two parks within walking distance.\nBuyer: Perfect. There isn't anything I don't like!",
@@ -555,6 +558,7 @@ export const possessives: DailyLesson = {
   title: 'Possessives',
   subtitle: "Egalikni ifodalash — my, your, 's, whose va boshqalar",
   level: 'A2',
+  category: 'Olmoshlar',
   day: 38,
   listening: {
     transcript: "Dilbar: Whose bag is this? Is it yours?\nRustam: No, it isn't mine. Maybe it's Aziz's.\nDilbar: Let me check. There's a name inside — it says 'Laylo'.\nRustam: Oh, it's hers, then. Her bag is always full of books.\nDilbar: True. And whose keys are these?\nRustam: Those are ours — they're for our classroom.\nDilbar: Right. Is this pen yours or mine?\nRustam: It's mine. Yours is blue; this one is black.\nDilbar: You're right. The students left their things everywhere!\nRustam: Yes. Let's return everyone's things to them.",
