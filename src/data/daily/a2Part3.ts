@@ -6,7 +6,7 @@ export const verbPatterns: DailyLesson = {
   title: 'Verb Patterns',
   subtitle: "Fe'llardan keyin keladigan shakllar — V-ing, to V1, V1",
   level: 'A2',
-  category: 'Fe'l shakllari',
+  category: "Fe'l shakllari",
   day: 35,
   listening: {
     transcript: "Teacher: Class, let me explain today's homework. I want you to read chapter five.\nStudent: Do you expect us to write a summary too?\nTeacher: Yes, I'd like you to write a short summary. I also advise you to learn the new words.\nStudent: Should we ask our parents to help?\nTeacher: You can ask them to help, but try to do it yourself first. I encourage you to think carefully.\nStudent: What if we don't understand a word?\nTeacher: I allow you to use a dictionary. Remember, I want you to enjoy reading.\nStudent: OK. When do you need it?\nTeacher: I need you to finish by Friday. Don't make me wait!\nStudent: We won't! Thank you, teacher.",

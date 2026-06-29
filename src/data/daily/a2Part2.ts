@@ -243,7 +243,7 @@ export const gerundsInfinitives: DailyLesson = {
   title: 'Gerunds & Infinitives',
   subtitle: "V+ing va to+V1 — qachon qanday ishlatiladi",
   level: 'A2',
-  category: 'Fe'l shakllari',
+  category: "Fe'l shakllari",
   day: 31,
   listening: {
     transcript: "Aziza: What do you like doing at the weekend?\nTom: I love playing football, and I enjoy reading books. What about you?\nAziza: I like cooking, but I hate washing dishes!\nTom: Ha! Me too. Do you want to learn a new hobby?\nAziza: Yes. I've decided to start painting. I want to improve my skills.\nTom: That's nice. I hope to learn the guitar this year.\nAziza: Good luck! It's difficult, but it's worth trying.\nTom: True. I need to practise every day.\nAziza: Don't forget to enjoy it too!\nTom: I will. Learning should be fun.",
@@ -455,7 +455,7 @@ export const passiveVoice: DailyLesson = {
   title: 'Passive Voice',
   subtitle: "Simple Present va Past — ish-harakatning kim tomonidan bajarilishi muhim emas",
   level: 'A2',
-  category: 'Fe'l shakllari',
+  category: "Fe'l shakllari",
   day: 32,
   listening: {
     transcript: "Guide: Welcome to our museum. This building was built in 1850.\nTourist: Wow! Who built it?\nGuide: It was designed by a famous architect. These paintings were made by local artists.\nTourist: They are beautiful. Are they sold sometimes?\nGuide: No, they are never sold. They are protected by law.\nTourist: I see. Is the museum cleaned every day?\nGuide: Yes, it is cleaned every morning before we open. Photos are allowed, but flash is not permitted.\nTourist: OK, no flash. When was this statue brought here?\nGuide: It was brought from Samarkand last year. It is loved by all our visitors.\nTourist: Thank you for the tour!",
@@ -660,7 +660,7 @@ export const reportedSpeech: DailyLesson = {
   title: 'Reported Speech',
   subtitle: "Say/tell va tense backshift — kimningdir gapini aytib berish",
   level: 'A2',
-  category: 'Fe'l shakllari',
+  category: "Fe'l shakllari",
   day: 33,
   listening: {
     transcript: "Dilshod: I saw Nodira yesterday. She told me some news.\nMadina: Really? What did she say?\nDilshod: She said that she was moving to a new flat. She told me she had found a great place.\nMadina: That's wonderful! Did she say where?\nDilshod: She said it was near the park. She also said she would have a party next week.\nMadina: Nice! Did she invite us?\nDilshod: Yes, she asked if we were free on Saturday. She told us to bring some music.\nMadina: Of course! Did she say what time?\nDilshod: She said the party started at seven.\nMadina: Perfect. Let's not be late!",
