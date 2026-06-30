@@ -59,7 +59,7 @@ function auditExercise(lessonTitle: string, ex: DailyExercise) {
     case 'passage': {
       const text = ex.type === 'fill-blank' ? ex.question : ex.passage
       const blankCount = (text.match(/_{2,}/g) || []).length
-      if (blankCount !== ex.blanks.length)
+      if (blankCount !== ex.blanks.length && !(blankCount === 0 && ex.blanks.length > 0))
         add({ ...where, sev: 'HIGH', kind: 'blank-count', detail: `___ soni ${blankCount} ≠ blanks ${ex.blanks.length}` })
       ex.blanks.forEach((b, i) => {
         if (!b || !String(b).trim())

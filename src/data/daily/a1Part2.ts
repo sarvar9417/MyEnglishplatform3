@@ -114,7 +114,7 @@ export const demonstratives: DailyLesson = {
 
     // ── Interleaved Practice: Demonstratives + Plurals ──
     { id: 95491, type: 'fill-blank', instruction: "This/that va these/those:", question: "___ (yaqin, birlik) is a book. ___ (uzoq, ko'plik) are pens.", blanks: ['This', 'Those'], explanation: "Yaqin + birlik = This. Uzoq + ko'plik = Those." },
-    { id: 95492, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ a cat near me. ___ cats far away.", blanks: ["This is / Those are"], explanation: "Yaqin birlik → This is. Uzoq ko'plik → Those are." },
+    { id: 95492, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ a cat near me. ___ cats far away.", blanks: ['This is', 'Those are'], explanation: "Yaqin birlik → This is. Uzoq ko'plik → Those are." },
     { id: 95493, type: 'error-correction', instruction: "This/these xatosi:", question: "This are my books. These is my pen.", errorPart: 'This are / These is', correct: 'These are my books. This is my pen.', explanation: "This + is. These + are." },
     { id: 95494, type: 'fill-blank', instruction: "Demonstrative + possession:", question: "___ (shu/bu) is my car. ___ (ular/shular) are his cars.", blanks: ['This', 'Those'], explanation: "This is, Those are." },
     { id: 95495, type: 'transformation', instruction: "Birlikdan ko'plikka:", question: "This is a pen. → These ___.", hint: "These ___ pens.", correct: 'are', explanation: "This is → These are." }
@@ -315,7 +315,7 @@ export const prepositionsOfPlace: DailyLesson = {
 
     // ── Interleaved Practice: Prepositions + There is/are ──
     { id: 95501, type: 'fill-blank', instruction: "Predlog va there is/are:", question: "The book is ___ the table. There ___ a lamp on the desk.", blanks: ['on', 'is'], explanation: "Sirt → on. Singular → there is." },
-    { id: 95502, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The cat is ___ the box. The birds are ___ the tree.", blanks: ["in / in"], explanation: "Ichida → in (box, tree)." },
+    { id: 95502, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The cat is ___ the box. The birds are ___ the tree.", blanks: ['in', 'in'], explanation: "Ichida → in (box, tree)." },
     { id: 95503, type: 'error-correction', instruction: "Predlog xatosi:", question: "The pen is at the table. (sirtida)", errorPart: 'at', correct: 'The pen is on the table.', explanation: "Sirt → on, at emas." },
     { id: 95504, type: 'fill-blank', instruction: "There is/are + predlog:", question: "There ___ a cat under the chair. There ___ two dogs in the garden.", blanks: ['is', 'are'], explanation: "Singular → there is. Plural → there are." },
     { id: 95505, type: 'transformation', instruction: "Inkor va so'roq:", question: "There is a book on the table. → (inkor) There ___ a book...", hint: "There ___ a book on the table.", correct: 'isn\'t', explanation: "Inkor → there isn't." }
@@ -503,7 +503,7 @@ export const basicAdjectives: DailyLesson = {
     { id: 2452, type: 'error-correction', instruction: "Xatoni toping:", question: 'She has a interesting book.', errorPart: 'a', correct: 'She has an interesting book.', explanation: "an interesting — unli tovush" },
     { id: 2453, type: 'error-correction', instruction: "Xatoni toping:", question: 'I have a red big car.', errorPart: 'red big', correct: 'I have a big red car.', explanation: "O'lcham oldin rang" },
     { id: 2454, type: 'fill-blank', instruction: "A/An:", question: 'I ate ___ apple for breakfast.', blanks: ['an'], explanation: "'apple' unli tovush" },
-    { id: 2455, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'I am ___ and ___. (och, chanqoq)', blanks: ['hungry, thirsty'], explanation: 'hungry + thirsty' },
+    { id: 2455, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'I am ___ and ___. (och, chanqoq)', blanks: ['hungry', 'thirsty'], explanation: 'hungry + thirsty' },
     { id: 2456, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'She ___ happy. (tashqi ko\'rinish)', blanks: ['looks'], explanation: "looks = tashqi ko'rinish (is = haqiqat)" },
     { id: 2457, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'The soup ___ hot. (haqiqatan issiq)', blanks: ['is'], explanation: 'is = haqiqiy holat' },
     { id: 2458, type: 'fill-blank', instruction: "A/An:", question: 'I want ___ (qimmat) bag.', blanks: ['an expensive'], explanation: "expensive = unli tovush → an" },
@@ -515,7 +515,7 @@ export const basicAdjectives: DailyLesson = {
 
     // ── Interleaved Practice: Adjectives + be ──
     { id: 95511, type: 'fill-blank', instruction: "Sifat va be:", question: "The weather ___ (be) nice today. I ___ (be) happy.", blanks: ['is', 'am'], explanation: "The weather singular → is. I → am." },
-    { id: 95512, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "This is a ___ car. The car ___.", blanks: ["fast / is fast"], explanation: "Ot oldida: a fast car. Predikat: The car is fast." },
+    { id: 95512, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "This is a ___ car. The car ___.", blanks: ['fast', 'is fast'], explanation: "Ot oldida: a fast car. Predikat: The car is fast." },
     { id: 95513, type: 'error-correction', instruction: "Sifat va ravish:", question: "She is a beautifully girl. The girl is beautifully.", errorPart: 'beautifully', correct: 'She is a beautiful girl. The girl is beautiful.', explanation: "Sifat (beautiful) ot oldida va be dan keyin." },
     { id: 95514, type: 'fill-blank', instruction: "Sifat + am/is/are:", question: "They ___ (be) very tall. My mother ___ (be) kind.", blanks: ['are', 'is'], explanation: "They → are. My mother → is." },
     { id: 95515, type: 'transformation', instruction: "Gapni tuzing:", question: "She / be / a / good / student", hint: "She ___ a ___ student.", correct: 'is, good', explanation: "She is a good student." }
@@ -1045,7 +1045,7 @@ export const haveGot: DailyLesson = {
 
     // ── Interleaved Practice: Have got + Possessives ──
     { id: 95541, type: 'fill-blank', instruction: "Have got va possessive:", question: "I ___ (ega/bor) a sister. ___ (mening) sister is 8 years old.", blanks: ['have got', 'My'], explanation: "I → have got. I → my (possessive)." },
-    { id: 95542, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ a new bag. ___ bag is red. He ___ a brother.", blanks: ["has got / Her / has got"], explanation: "She → has got. Her (uning). He → has got." },
+    { id: 95542, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ a new bag. ___ bag is red. He ___ a brother.", blanks: ['has got', 'Her', 'has got'], explanation: "She → has got. Her (uning). He → has got." },
     { id: 95543, type: 'error-correction', instruction: "Have got xatosi:", question: "She have got a car. He has got a new bike, it's bike is blue.", errorPart: 'have got / it\'s bike', correct: 'She has got a car. He has got a new bike, his bike is blue.', explanation: "She → has got. His (uning — erkak)." },
     { id: 95544, type: 'fill-blank', instruction: "Have got + oila:", question: "We ___ (ega/bor) a big family. They ___ (ega/bor) two children.", blanks: ['have got', 'have got'], explanation: "We/They → have got." },
     { id: 95545, type: 'transformation', instruction: "I dan He ga:", question: "I have got a brother. → He ___ a brother.", hint: "He ___ a brother.", correct: 'has got', explanation: "He → has got (3-shaxs)." }
@@ -1224,7 +1224,7 @@ export const presentSimple: DailyLesson = {
 
     // ── Interleaved Practice: Present Simple + Frequency ──
     { id: 95551, type: 'fill-blank', instruction: "Present Simple va always/often:", question: "I ___ (always / wake) up at 6. She ___ (often / play) tennis.", blanks: ['always wake', 'often plays'], explanation: "Always/often + fe'l (3-shaxs +s)." },
-    { id: 95552, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He ___ never late. They ___ sometimes happy.", blanks: ["is / are"], explanation: "He → is. They → are. Adverb be dan keyin." },
+    { id: 95552, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He ___ never late. They ___ sometimes happy.", blanks: ['is', 'are'], explanation: "He → is. They → are. Adverb be dan keyin." },
     { id: 95553, type: 'error-correction', instruction: "3-shaxs qoidasi:", question: "She always eat breakfast at 7.", errorPart: 'eat', correct: 'She always eats breakfast at 7.', explanation: "3-shaxs → eats (+s)." },
     { id: 95554, type: 'fill-blank', instruction: "Present Simple inkor:", question: "He ___ (not / like) coffee. They ___ (not / live) here.", blanks: ['doesn\'t like', 'don\'t live'], explanation: "He → doesn't like. They → don't live." },
     { id: 95555, type: 'transformation', instruction: "Tasdiqdan inkorga:", question: "She likes tea. → She ___ like tea.", hint: "She ___ like tea.", correct: 'doesn\'t', explanation: "She likes → She doesn't like." }
@@ -1402,7 +1402,7 @@ export const questionWords: DailyLesson = {
 
     // ── Interleaved Practice: Question Words + Tenses ──
     { id: 95561, type: 'fill-blank', instruction: "Savol so'zi va zamon:", question: "___ do you live? (joy) ___ did you go yesterday? (vaqt)", blanks: ['Where', 'When'], explanation: "Where = joy. When = vaqt." },
-    { id: 95562, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ is your name? ___ is your teacher? ___ are you from?", blanks: ["What / Who / Where"], explanation: "What = nima. Who = kim. Where = qayerda." },
+    { id: 95562, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ is your name? ___ is your teacher? ___ are you from?", blanks: ['What', 'Who', 'Where'], explanation: "What = nima. Who = kim. Where = qayerda." },
     { id: 95563, type: 'error-correction', instruction: "Savol tartibi:", question: "Where you are from?", errorPart: 'you are', correct: 'Where are you from?', explanation: "Wh- + be + subject: Where are you?" },
     { id: 95564, type: 'fill-blank', instruction: "Do/Does savollari:", question: "___ she like pizza? ___ they play football?", blanks: ['Does', 'Do'], explanation: "She → Does. They → Do." },
     { id: 95565, type: 'transformation', instruction: "Gapni savolga:", question: "She lives in Tashkent. → Where ___ she ___?", hint: "Where ___ she ___?", correct: 'does, live', explanation: "Savol: Where does she live?" }
@@ -1571,7 +1571,7 @@ export const conjunctions: DailyLesson = {
     { id: 2730, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'She is ___ a teacher ___ a doctor.', blanks: ['either', 'or'], explanation: "either...or — yoki...yoki: tanlov bildiradi" },
     { id: 2731, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I am happy because because it is Friday.', errorPart: 'because because', correct: 'I am happy because it is Friday.', explanation: "bir marta because" },
     { id: 2732, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'He studied a lot, ___ he passed the exam.', blanks: ['so'], explanation: "SO = natija — tarjima" },
-    { id: 2733, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'She is ___ a teacher ___ a doctor.', blanks: ['either/or'], explanation: 'either...or = yo...yoki' },
+    { id: 2733, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'She is ___ a teacher ___ a doctor.', blanks: ['either', 'or'], explanation: 'either...or = yo...yoki' },
     { id: 2734, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "It is raining, ___ we stay home.", blanks: ['so'], explanation: "SO = natija (yomg'ir → uyda)" },
     { id: 2735, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: "I want travel, because I like new places.", errorPart: 'want travel', correct: "I want to travel, because I like new places.", explanation: "want + to + V1" },
     { id: 2736, type: 'fill-blank', instruction: "So yoki because?", question: "I was tired, ___ I slept early.", blanks: ['so'], explanation: "SO = result/natija, BECAUSE = sabab" },
@@ -1581,7 +1581,7 @@ export const conjunctions: DailyLesson = {
 
     // ── Interleaved Practice: Conjunctions + Present Simple ──
     { id: 95571, type: 'fill-blank', instruction: "And/but/because:", question: "I like tea ___ coffee. I like tea ___ I don't like coffee. I like tea ___ it's good.", blanks: ['and', 'but', 'because'], explanation: "And = va. But = lekin. Because = chunki." },
-    { id: 95572, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "It was raining, ___ I stayed home. I stayed home ___ it was raining.", blanks: ["so / because"], explanation: "So = natija. Because = sabab." },
+    { id: 95572, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "It was raining, ___ I stayed home. I stayed home ___ it was raining.", blanks: ['so', 'because'], explanation: "So = natija. Because = sabab." },
     { id: 95573, type: 'error-correction', instruction: "Or (yoki) va and (va):", question: "Do you want tea and coffee? (one choice)", errorPart: 'and', correct: 'Do you want tea or coffee?', explanation: "Tanlov → or." },
     { id: 95574, type: 'fill-blank', instruction: "Conjunction + Present Simple:", question: "She gets up early ___ (chunki/shuning uchun) she goes to school. She ___ (get) up at 7.", blanks: ['because', 'gets'], explanation: "Because = sabab. 3-shaxs → gets." },
     { id: 95575, type: 'transformation', instruction: "Ikki gapni birlashtiring:", question: "I am tired. I want to sleep. → I am tired ___ I want to sleep.", hint: "...", correct: 'so', explanation: "Natija → so." }
@@ -1748,7 +1748,7 @@ export const a1Review: DailyLesson = {
 
     // ── Interleaved Practice: A1 mixed review ──
     { id: 95581, type: 'fill-blank', instruction: "Am/is/are + have/has:", question: "I ___ (be) a student. She ___ (have) a book.", blanks: ['am', 'has'], explanation: "I am. She has." },
-    { id: 95582, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He ___ swim. He ___ every weekend.", blanks: ["can / swims"], explanation: "Can + V1. 3-shaxs → swims." },
+    { id: 95582, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He ___ swim. He ___ every weekend.", blanks: ['can', 'swims'], explanation: "Can + V1. 3-shaxs → swims." },
     { id: 95583, type: 'error-correction', instruction: "Be fe'li xatosi:", question: "They is happy. She are a teacher.", errorPart: 'is / are', correct: 'They are happy. She is a teacher.', explanation: "They → are. She → is." },
     { id: 95584, type: 'fill-blank', instruction: "There is/are + some/any:", question: "There ___ some milk. There aren't ___ eggs.", blanks: ['is', 'any'], explanation: "Uncountable (milk) → is. Inkor → any." },
     { id: 95585, type: 'transformation', instruction: "I dan She ga:", question: "I have got a car. → She ___ a car.", hint: "She ___ a car.", correct: 'has got', explanation: "She → has got." }

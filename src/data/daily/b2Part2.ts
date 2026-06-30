@@ -144,10 +144,10 @@ export const complexSentencesB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Complex Sentences + Relative Clauses ──
-    { id: 100369, type: 'fill-blank', instruction: 'Subordinate clause (although) va relative (which):', question: '_____ it was late, we continued. The plan, _____ took months, finally worked.', blanks: ['Although / which'], explanation: 'Ergash gap → Although. Non-defining relative → , which.' },
+    { id: 100369, type: 'fill-blank', instruction: 'Subordinate clause (although) va relative (which):', question: '_____ it was late, we continued. The plan, _____ took months, finally worked.', blanks: ['Although', 'which'], explanation: 'Ergash gap → Although. Non-defining relative → , which.' },
     { id: 100370, type: 'fill-blank', instruction: "Participle clause + main clause:", question: "_____ (walk) home, I saw an accident. _____ (finish) the task, she left.", blanks: ["Walking", "Having finished"], explanation: "Bir vaqtda → Walking (present participle). Avval tugagan → Having finished (perfect participle)." },
     { id: 100371, type: 'error-correction', instruction: "Fragment (tugallanmagan gap):", question: "Because the weather was bad. We stayed home.", errorPart: "Because the weather was bad. We", correct: "Because the weather was bad, we stayed home.", explanation: "Ergash gap yakka turolmaydi → asosiy gap bilan birlashtiriladi (vergul bilan)." },
-    { id: 100372, type: 'fill-blank', instruction: 'Whereas (qarama-qarshi) va while:', question: 'He likes tea, _____ she prefers coffee. _____ I cooked, he cleaned.', blanks: ['whereas / While'], explanation: 'Qarama-qarshilik → whereas. Bir vaqtda → While.' },
+    { id: 100372, type: 'fill-blank', instruction: 'Whereas (qarama-qarshi) va while:', question: 'He likes tea, _____ she prefers coffee. _____ I cooked, he cleaned.', blanks: ['whereas', 'While'], explanation: 'Qarama-qarshilik → whereas. Bir vaqtda → While.' },
     { id: 100373, type: 'transformation', instruction: "Ikki gapni relative clause bilan birlashtiring:", question: "The book is on the table. I bought it yesterday.", hint: "The book that ...", correct: "The book that I bought yesterday is on the table.", explanation: "Defining relative → that I bought yesterday." },
   
     { id: 100801, type: 'passage', instruction: "Matnni to'ldiring:",
@@ -679,10 +679,10 @@ export const contrastiveStructuresB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Contrastive + Linking ──
-    { id: 100379, type: 'fill-blank', instruction: 'Whereas/while (qarama-qarshi) va however:', question: 'Cities are busy, _____ villages are calm. It rained; _____, we still went.', blanks: ['whereas / however'], explanation: 'Ikki holatni qarama-qarshi qo\'yish → whereas. Gaplararo qarshilik → however.' },
+    { id: 100379, type: 'fill-blank', instruction: 'Whereas/while (qarama-qarshi) va however:', question: 'Cities are busy, _____ villages are calm. It rained; _____, we still went.', blanks: ['whereas', 'however'], explanation: 'Ikki holatni qarama-qarshi qo\'yish → whereas. Gaplararo qarshilik → however.' },
     { id: 100380, type: 'fill-blank', instruction: "In contrast / on the other hand:", question: "Tea calms you. _____ contrast, coffee energizes. On the other _____, it can disturb sleep.", blanks: ["In", "hand"], explanation: "In contrast, on the other hand — qarama-qarshi bog'lovchilar." },
     { id: 100381, type: 'error-correction', instruction: "Despite + ot (although + gap):", question: "Despite of the rain, we went out.", errorPart: "Despite of the rain", correct: "Despite the rain, we went out.", explanation: "Despite + ot ('of' siz). 'Despite of' noto'g'ri." },
-    { id: 100382, type: 'fill-blank', instruction: 'Unlike (+ ot) va although (+ gap):', question: '_____ his brother, he is shy. _____ he is shy, he spoke well.', blanks: ['Unlike / Although'], explanation: 'Unlike + ot (his brother). Although + gap (he is shy).' },
+    { id: 100382, type: 'fill-blank', instruction: 'Unlike (+ ot) va although (+ gap):', question: '_____ his brother, he is shy. _____ he is shy, he spoke well.', blanks: ['Unlike', 'Although'], explanation: 'Unlike + ot (his brother). Although + gap (he is shy).' },
     { id: 100383, type: 'transformation', instruction: "Although'ni 'despite' bilan yozing:", question: "Although she was tired, she finished.", hint: "Despite ...", correct: "Despite being tired, she finished.", explanation: "Despite + V-ing/ot (being tired)." },
   
     { id: 100813, type: 'passage', instruction: "Matnni to'ldiring:",
@@ -1210,10 +1210,10 @@ export const academicCollocationsB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Academic Collocations + Vocabulary ──
-    { id: 100389, type: 'fill-blank', instruction: 'Conduct research va draw a conclusion:', question: 'Scientists _____ research and then _____ a conclusion.', blanks: ['conduct / draw'], explanation: 'Akademik kollokatsiyalar: conduct research, draw a conclusion.' },
+    { id: 100389, type: 'fill-blank', instruction: 'Conduct research va draw a conclusion:', question: 'Scientists _____ research and then _____ a conclusion.', blanks: ['conduct', 'draw'], explanation: 'Akademik kollokatsiyalar: conduct research, draw a conclusion.' },
     { id: 100390, type: 'fill-blank', instruction: "Provide evidence / cite sources:", question: "You must _____ evidence and _____ reliable sources.", blanks: ["provide", "cite"], explanation: "Provide evidence, cite sources — akademik kollokatsiyalar." },
     { id: 100391, type: 'error-correction', instruction: "Make/reach a decision:", question: "The committee did an important decision.", errorPart: "did an important decision", correct: "The committee made an important decision.", explanation: "Make a decision (do emas)." },
-    { id: 100392, type: 'fill-blank', instruction: 'Akademik sifat + ot:', question: 'There is a _____ difference and a _____ increase.', blanks: ['significant / substantial'], explanation: 'Akademik: significant difference, substantial increase (big/large o\'rniga).' },
+    { id: 100392, type: 'fill-blank', instruction: 'Akademik sifat + ot:', question: 'There is a _____ difference and a _____ increase.', blanks: ['significant', 'substantial'], explanation: 'Akademik: significant difference, substantial increase (big/large o\'rniga).' },
     { id: 100393, type: 'transformation', instruction: "Oddiy so'zni akademik kollokatsiya bilan:", question: "The study shows a big change.", hint: "The study reveals a ...", correct: "The study reveals a significant change.", explanation: "Akademik: reveal + significant change." },
   
     { id: 100825, type: 'passage', instruction: "Matnni to'ldiring:",
@@ -1475,10 +1475,10 @@ export const criticalThinkingB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Critical Thinking + Hedging ──
-    { id: 100394, type: 'fill-blank', instruction: 'Assumption va bias:', question: 'The author makes an _____ that all readers agree. That is a _____.', blanks: ['assumption / bias'], explanation: 'Tanqidiy tahlil: assumption (faraz), bias (noxolislik).' },
+    { id: 100394, type: 'fill-blank', instruction: 'Assumption va bias:', question: 'The author makes an _____ that all readers agree. That is a _____.', blanks: ['assumption', 'bias'], explanation: 'Tanqidiy tahlil: assumption (faraz), bias (noxolislik).' },
     { id: 100395, type: 'fill-blank', instruction: "Correlation vs causation:", question: "This shows _____ (a link), but it doesn't prove _____ (cause and effect).", blanks: ["correlation", "causation"], explanation: "Tanqidiy fikrlash: correlation ≠ causation." },
     { id: 100396, type: 'error-correction', instruction: "Hedging — kuchli da'voni baholash:", question: "This source is definitely reliable and proves everything.", errorPart: "definitely reliable and proves everything", correct: "This source appears reliable but does not prove everything.", explanation: "Tanqidiy/hedged: appears reliable, does not prove everything." },
-    { id: 100397, type: 'fill-blank', instruction: 'Evaluate va question (fe\'l):', question: 'We should _____ the evidence and _____ the author\'s claims.', blanks: ['evaluate / question'], explanation: 'Tanqidiy fikrlash: evaluate evidence, question claims.' },
+    { id: 100397, type: 'fill-blank', instruction: 'Evaluate va question (fe\'l):', question: 'We should _____ the evidence and _____ the author\'s claims.', blanks: ['evaluate', 'question'], explanation: 'Tanqidiy fikrlash: evaluate evidence, question claims.' },
     { id: 100398, type: 'transformation', instruction: "Da'voni tanqidiy baholang:", question: "The article says coffee is good. (be critical/hedged)", hint: "The article claims coffee is good, but ...", correct: "The article claims coffee is good, but the evidence is limited.", explanation: "Tanqidiy: claims + but the evidence is limited (baholash)." },
   
     { id: 100831, type: 'passage', instruction: "Matnni to'ldiring:",
@@ -1739,10 +1739,10 @@ export const b2Review: DailyLesson = {
 
 
     // ── Interleaved Practice: B2 mixed review ──
-    { id: 100399, type: 'fill-blank', instruction: 'Mixed conditional va inversion:', question: '_____ I known, I would act differently now. If I _____ harder, I\'d be successful today.', blanks: ['Had / had worked'], explanation: 'Inversiya → Had I known. Mixed conditional → had worked (o\'tmish) → now/today.' },
+    { id: 100399, type: 'fill-blank', instruction: 'Mixed conditional va inversion:', question: '_____ I known, I would act differently now. If I _____ harder, I\'d be successful today.', blanks: ['Had', 'had worked'], explanation: 'Inversiya → Had I known. Mixed conditional → had worked (o\'tmish) → now/today.' },
     { id: 100400, type: 'fill-blank', instruction: "Subjunctive va nominalization:", question: "I recommend that the _____ (reduce) _____ (be) approved.", blanks: ["reduction", "be"], explanation: "Nominalization (reduce → reduction) + subjunctive (be approved)." },
     { id: 100401, type: 'error-correction', instruction: "Hedging va akademik uslub:", question: "This research definitely proves coffee improves all memory.", errorPart: "definitely proves coffee improves all memory", correct: "This research suggests coffee may improve memory.", explanation: "Akademik hedging: suggests, may improve (definitely/all/proves emas)." },
-    { id: 100402, type: 'fill-blank', instruction: 'Advanced modal va contrast:', question: 'You _____ have told me (regret). _____ I was busy, I would have helped.', blanks: ['should / Although'], explanation: 'O\'tmish afsus → should have told. Qarshilik → Although.' },
+    { id: 100402, type: 'fill-blank', instruction: 'Advanced modal va contrast:', question: 'You _____ have told me (regret). _____ I was busy, I would have helped.', blanks: ['should', 'Although'], explanation: 'O\'tmish afsus → should have told. Qarshilik → Although.' },
     { id: 100403, type: 'transformation', instruction: "Rasmiy, nominalizatsiya bilan yozing:", question: "Because prices increased, sales fell.", hint: "The increase ...", correct: "The increase in prices led to a fall in sales.", explanation: "Nominalization: increase, fall — rasmiy, ixcham uslub." },
   
     { id: 100837, type: 'passage', instruction: "Matnni to'ldiring:",

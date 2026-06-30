@@ -449,10 +449,10 @@ export const articles: DailyLesson = {
 
 
     // ── Interleaved Practice: Articles + Countable/Uncountable ──
-    { id: 95121, type: 'fill-blank', instruction: 'A/an (birinchi marta) va the (aniq):', question: 'I saw _____ cat in the garden. _____ cat was black.', blanks: ['a / The'], explanation: 'Birinchi eslatish → a cat. Endi aniq (o\'sha) → The cat.' },
+    { id: 95121, type: 'fill-blank', instruction: 'A/an (birinchi marta) va the (aniq):', question: 'I saw _____ cat in the garden. _____ cat was black.', blanks: ['a', 'The'], explanation: 'Birinchi eslatish → a cat. Endi aniq (o\'sha) → The cat.' },
     { id: 95122, type: 'fill-blank', instruction: "A va an (tovush qoidasi):", question: "She is _____ honest person and _____ university student.", blanks: ["an", "a"], explanation: "Tovush bo'yicha: honest [o] → an. University [yu] → a (undosh tovush)." },
     { id: 95123, type: 'error-correction', instruction: "Umumiy ma'noда the ishlatilmaydi (uncountable):", question: "The water is important for the health.", errorPart: "the health", correct: "The water is important for health.", explanation: "Umumiy tushuncha (health) → artiklsiz. Bu yerda 'the' kerak emas." },
-    { id: 95124, type: 'fill-blank', instruction: 'Zero article (umumiy ko\'plik) va the:', question: '_____ dogs are loyal animals. _____ dogs in this house are big.', blanks: ['Zero / The'], explanation: 'Umumiy (barcha itlar) → artiklsiz. Aniq (bu uydagi) → The dogs.' },
+    { id: 95124, type: 'fill-blank', instruction: 'Zero article (umumiy ko\'plik) va the:', question: '_____ dogs are loyal animals. _____ dogs in this house are big.', blanks: ['Zero', 'The'], explanation: 'Umumiy (barcha itlar) → artiklsiz. Aniq (bu uydagi) → The dogs.' },
     { id: 95125, type: 'transformation', instruction: "To'g'ri artikl bilan to'ldiring (birinchi eslatish):", question: "I bought ___ apple and ___ orange.", hint: "...", correct: "I bought an apple and an orange.", explanation: "Tovush bilan boshlanadi (apple, orange) → an." },
 
     // ── Productive Exercises: Passage, Connection, Vocab-Match ──
@@ -520,7 +520,7 @@ export const articles: DailyLesson = {
     { id: 14109, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'The' qachon ishlatiladi?", blanks: ["aniq narsa haqida"], explanation: "The — aniq artikl" },
     { id: 14110, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi so'z oldidan 'a' keladi?", blanks: ["university"], explanation: "University — yuu (undosh)" },
     { id: 14111, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Zero article' qachon ishlatiladi?", blanks: ["umumiy narsa"], explanation: "Umumiy ma'noda artikl kerak emas" },
-    { id: 14112, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I saw ___ bird. ___ bird was flying.", blanks: ["a/The"], explanation: "Birinchi marta a, keyin the" },
+    { id: 14112, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I saw ___ bird. ___ bird was flying.", blanks: ['a', 'The'], explanation: "Birinchi marta a, keyin the" },
     { id: 14113, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She is ___ honest woman.", blanks: ["an"], explanation: "Honest — h jim, unli tovush" },
     { id: 14114, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ sun rises in the east.", blanks: ["The"], explanation: "Sun — noyob narsa" },
     { id: 14115, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I like ___ dogs.", blanks: ["no article"], explanation: "Umumiy ko'plik — thesiz" },
@@ -721,7 +721,7 @@ export const prepositions: DailyLesson = {
     { id: 95131, type: 'fill-blank', instruction: 'Vaqt predloglari (at/on/in):', question: 'We have a meeting _____ Monday _____ 9 o\'clock _____ the morning.', blanks: ['on / at / in'], explanation: 'Kun → on Monday. Soat → at 9. Qism → in the morning.' },
     { id: 95132, type: 'fill-blank', instruction: "Joy predloglari (in/on/at):", question: "The keys are _____ the table. She lives _____ Tashkent _____ Navoi Street.", blanks: ["on", "in", "on"], explanation: "Sirt → on the table. Shahar → in Tashkent. Ko'cha → on Navoi Street." },
     { id: 95133, type: 'error-correction', instruction: "At + soat (in emas):", question: "The film starts in 8 o'clock.", errorPart: "in 8 o'clock", correct: "The film starts at 8 o'clock.", explanation: "Aniq soat → at 8 o'clock ('in' oy/yil uchun)." },
-    { id: 95134, type: 'fill-blank', instruction: 'Present Simple + predlog (jadval):', question: 'The train _____ at 7 and _____ in London at noon.', blanks: ['leaves / arrives'], explanation: 'Jadval → Present Simple 3-shaxs +s (leaves, arrives) + at/in.' },
+    { id: 95134, type: 'fill-blank', instruction: 'Present Simple + predlog (jadval):', question: 'The train _____ at 7 and _____ in London at noon.', blanks: ['leaves', 'arrives'], explanation: 'Jadval → Present Simple 3-shaxs +s (leaves, arrives) + at/in.' },
     { id: 95135, type: 'transformation', instruction: "To'g'ri predlog bilan yozing:", question: "My birthday is ___ June, ___ the 12th.", hint: "...", correct: "My birthday is in June, on the 12th.", explanation: "Oy → in June. Sana → on the 12th." },
     { id: 98501, type: 'passage', instruction: "Matnni to'ldiring:",
       passage: "My Daily Routine\n\nI wake up ___(1) 7 o'clock ___(2) the morning. I have breakfast ___(3) home and then I go to work ___(4) bus. I work ___(5) an office ___(6) the city centre. I always start work ___(7) 9 AM. I have lunch ___(8) noon ___(9) the canteen. I usually finish work ___(10) 5 PM. ___(11) the evening, I relax ___(12) home and read a book ___(13) bed.",
@@ -758,7 +758,7 @@ export const prepositions: DailyLesson = {
     { id: 14172, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She was born ___ July.", blanks: ["in"], explanation: "Oylar — in — oylarda: in January (yanvarda)" },
     { id: 14173, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I go to school ___ 8 AM.", blanks: ["at"], explanation: "Aniq soat — at" },
     { id: 14174, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He is sitting ___ the bus.", blanks: ["on"], explanation: "Avtobusda — on the bus" },
-    { id: 14175, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The meeting is ___ Monday ___ 3 PM.", blanks: ["on/at"], explanation: "Kun — on, soat — at" },
+    { id: 14175, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The meeting is ___ Monday ___ 3 PM.", blanks: ['on', 'at'], explanation: "Kun — on, soat — at" },
     { id: 14176, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ the end of the film, they got married.", blanks: ["At"], explanation: "Aniq nuqta — at the end" },
     { id: 14177, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ the end, they decided to stay home.", blanks: ["In"], explanation: "Yakuniy natija — in the end" },
     { id: 14178, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She is ___ hospital (she is a doctor).", blanks: ["at"], explanation: "Tashrif buyuruvchi — at the hospital" },
@@ -949,10 +949,10 @@ export const questionsLesson: DailyLesson = {
 
 
     // ── Interleaved Practice: Questions + Present/Past ──
-    { id: 95141, type: 'fill-blank', instruction: 'Present va Past savol (do/does/did):', question: '_____ she live here now? _____ you call me yesterday?', blanks: ['Does / Did'], explanation: 'Present 3-shaxs → Does she live. Past → Did you call.' },
+    { id: 95141, type: 'fill-blank', instruction: 'Present va Past savol (do/does/did):', question: '_____ she live here now? _____ you call me yesterday?', blanks: ['Does', 'Did'], explanation: 'Present 3-shaxs → Does she live. Past → Did you call.' },
     { id: 95142, type: 'fill-blank', instruction: "Savol so'zi (wh-) to'ldiring:", question: "_____ do you live? (place) _____ time does it start? (time)", blanks: ["Where", "What"], explanation: "Joy → Where. Vaqt → What time." },
     { id: 95143, type: 'error-correction', instruction: "Savolда so'z tartibi:", question: "Where you are going?", errorPart: "you are", correct: "Where are you going?", explanation: "Savol tartibi: wh- + auxiliary + subject → Where are you going?" },
-    { id: 95144, type: 'fill-blank', instruction: 'Yes/no savol — to be va to do:', question: '_____ they happy? _____ they like coffee?', blanks: ['Are / Do'], explanation: 'Sifat (happy) → Are they. Fe\'l (like) → Do they.' },
+    { id: 95144, type: 'fill-blank', instruction: 'Yes/no savol — to be va to do:', question: '_____ they happy? _____ they like coffee?', blanks: ['Are', 'Do'], explanation: 'Sifat (happy) → Are they. Fe\'l (like) → Do they.' },
     { id: 95145, type: 'transformation', instruction: "Gapni savolga aylantiring (Past):", question: "She went to the market.", hint: "Where ...", correct: "Where did she go?", explanation: "Past savol → did + subject + V1 (go), 'went' emas." },
     { id: 98502, type: 'passage', instruction: "Matnni to'ldiring:",
       passage: "A New Friend\n\nA: Hi! ___(1) is your name?\nB: My name is Dilorom. ___(2) are you from?\nA: I'm from Samarkand. ___(3) do you study?\nB: I study at Westminster University. ___(4) are you studying English?\nA: Because I want to work abroad. ___(5) long have you been learning English?\nB: For about two years. ___(6) do you usually study?\nA: I study at the library. It's quiet there.",
@@ -1182,10 +1182,10 @@ export const countableUncountable: DailyLesson = {
 
 
     // ── Interleaved Practice: Countable/Uncountable + Quantifiers ──
-    { id: 95151, type: 'fill-blank', instruction: 'Much (uncountable) va many (countable):', question: 'How _____ water do we need? How _____ apples are there?', blanks: ['much / many'], explanation: 'Uncountable (water) → much. Countable (apples) → many.' },
+    { id: 95151, type: 'fill-blank', instruction: 'Much (uncountable) va many (countable):', question: 'How _____ water do we need? How _____ apples are there?', blanks: ['much', 'many'], explanation: 'Uncountable (water) → much. Countable (apples) → many.' },
     { id: 95152, type: 'fill-blank', instruction: "Some (tasdiq) va any (inkor/savol):", question: "I need _____ sugar. There isn't _____ milk in the fridge.", blanks: ["some", "any"], explanation: "Tasdiq → some sugar. Inkor → not any milk." },
     { id: 95153, type: 'error-correction', instruction: "Uncountable bilan 'a' ishlatilmaydi:", question: "Can you give me an information?", errorPart: "an information", correct: "Can you give me some information?", explanation: "Information = uncountable → 'an' yo'q. → some information." },
-    { id: 95154, type: 'fill-blank', instruction: 'A few (countable) va a little (uncountable):', question: 'I have _____ friends here and _____ free time.', blanks: ['a few / a little'], explanation: 'Countable (friends) → a few. Uncountable (time) → a little.' },
+    { id: 95154, type: 'fill-blank', instruction: 'A few (countable) va a little (uncountable):', question: 'I have _____ friends here and _____ free time.', blanks: ['a few', 'a little'], explanation: 'Countable (friends) → a few. Uncountable (time) → a little.' },
     { id: 95155, type: 'transformation', instruction: "Uncountable otni 'a piece of' bilan sanang:", question: "I want to give you advice (make it countable).", hint: "I want to give you a ...", correct: "I want to give you a piece of advice.", explanation: "Uncountable (advice) → a piece of advice bilan sanaladi." },
     { id: 98503, type: 'passage', instruction: "Matnni to'ldiring:",
       passage: "At the Supermarket\n\nShopkeeper: Good morning! Can I help you?\nCustomer: Yes, please. I need ___(1) rice. How ___(2) rice do you have?\nShopkeeper: We have ___(3) rice. Do you need ___(4) eggs?\nCustomer: Yes, I need ___(5) eggs. How ___(6) eggs are there in a box?\nShopkeeper: There are twelve. Do you have ___(7) milk at home?\nCustomer: No, I don't have ___(8) milk. I'll take ___(9) bottles.\nShopkeeper: Would you like ___(10) bread too?\nCustomer: Yes, please. I need ___(11) bread for sandwiches.",

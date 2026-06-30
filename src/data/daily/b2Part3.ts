@@ -143,10 +143,10 @@ export const argumentStructureB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Argument Structure + Cohesion ──
-    { id: 100404, type: 'fill-blank', instruction: 'Claim va counterargument:', question: 'My _____ is that remote work helps. However, one might _____ that it weakens teams.', blanks: ['claim / argue'], explanation: 'Dalil tuzilishi: claim (asosiy fikr), one might argue (counterargument).' },
+    { id: 100404, type: 'fill-blank', instruction: 'Claim va counterargument:', question: 'My _____ is that remote work helps. However, one might _____ that it weakens teams.', blanks: ['claim', 'argue'], explanation: 'Dalil tuzilishi: claim (asosiy fikr), one might argue (counterargument).' },
     { id: 100405, type: 'fill-blank', instruction: "Furthermore / therefore (bog'lash):", question: "Costs fell. _____ (shuningdek), quality rose. _____ (shuning uchun), profits grew.", blanks: ["Furthermore", "Therefore"], explanation: "Qo'shimcha dalil → Furthermore. Natija → Therefore." },
     { id: 100406, type: 'error-correction', instruction: "Refute (qarshi dalilni rad etish):", question: "Some say it is risky. But this point is wrong because of evidence.", errorPart: "this point is wrong because of evidence", correct: "However, the evidence does not support this concern.", explanation: "Akademik refutation: the evidence does not support this concern." },
-    { id: 100407, type: 'fill-blank', instruction: 'Granted / nevertheless (concession):', question: '_____, the cost is high. _____, the benefits outweigh it.', blanks: ['Granted / Nevertheless'], explanation: 'Tan olish → Granted. Shunga qaramay → Nevertheless.' },
+    { id: 100407, type: 'fill-blank', instruction: 'Granted / nevertheless (concession):', question: '_____, the cost is high. _____, the benefits outweigh it.', blanks: ['Granted', 'Nevertheless'], explanation: 'Tan olish → Granted. Shunga qaramay → Nevertheless.' },
     { id: 100408, type: 'transformation', instruction: "Xulosani 'thus' bilan bog'lang:", question: "The benefits are clear. So we should adopt the plan.", hint: "The benefits are clear; thus, ...", correct: "The benefits are clear; thus, we should adopt the plan.", explanation: "Qoida: Rasmiy xulosa bog'lovchi → thus. 'Thus' rasmiy yozuvda 'shuning uchun' ma'nosida ishlatiladi: The results were positive; thus, we proceed." },
   
     { id: 100859, type: 'passage', instruction: "Matnni to'ldiring:",
@@ -422,10 +422,10 @@ export const stanceMarkersB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Stance Markers + Hedging ──
-    { id: 100409, type: 'fill-blank', instruction: 'Frankly va arguably:', question: '_____, I found it dull. It is _____ the best book this year, though many disagree.', blanks: ['Frankly / arguably'], explanation: 'Qoida: Frankly = ochig\'i (shaxsiy fikr), Arguably = bahsli da\'vo (munozarali). Akademik yozuvda ikkalasi ham stance marker sifatida.' },
+    { id: 100409, type: 'fill-blank', instruction: 'Frankly va arguably:', question: '_____, I found it dull. It is _____ the best book this year, though many disagree.', blanks: ['Frankly', 'arguably'], explanation: 'Qoida: Frankly = ochig\'i (shaxsiy fikr), Arguably = bahsli da\'vo (munozarali). Akademik yozuvda ikkalasi ham stance marker sifatida.' },
     { id: 100410, type: 'fill-blank', instruction: "Admittedly / undoubtedly:", question: "_____ (tan olish), the plot was weak. The acting was _____ (shubhasiz) excellent.", blanks: ["Admittedly", "undoubtedly"], explanation: "Tan olish → Admittedly. Shubhasiz → undoubtedly." },
     { id: 100411, type: 'error-correction', instruction: "Stance — kuchli da'voni yumshatish:", question: "Obviously everyone agrees this is true.", errorPart: "Obviously everyone agrees this is true", correct: "Arguably, many would agree with this.", explanation: "Ehtiyotkor stance: Arguably, many would agree (obviously/everyone emas)." },
-    { id: 100412, type: 'fill-blank', instruction: 'In my view va it seems:', question: '_____ my view, prices will rise. _____ that more time is needed.', blanks: ['In / It seems'], explanation: 'Pozitsiya: In my view. Hedging → It seems that.' },
+    { id: 100412, type: 'fill-blank', instruction: 'In my view va it seems:', question: '_____ my view, prices will rise. _____ that more time is needed.', blanks: ['In', 'It seems'], explanation: 'Pozitsiya: In my view. Hedging → It seems that.' },
     { id: 100413, type: 'transformation', instruction: "Fikrni stance marker bilan yumshating:", question: "This is the best solution.", hint: "Arguably, ...", correct: "Arguably, this is the best solution.", explanation: "Bahsli da'vo → Arguably (ehtiyotkor pozitsiya)." },
   
     { id: 100865, type: 'passage', instruction: "Matnni to'ldiring:",
@@ -1002,7 +1002,7 @@ export const advancedVerbPatternsB2: DailyLesson = {
     { id: 100419, type: 'fill-blank', instruction: 'Urge + obj + to V va avoid + V-ing:', question: 'I urge you _____ early, and I\'d avoid _____ to the last minute.', blanks: ['to apply / leaving'], explanation: 'Urge + object + to V (to apply). Avoid + V-ing (leaving).' },
     { id: 100420, type: 'fill-blank', instruction: "Look forward to + V-ing:", question: "I look forward _____ (hear) from you. She admitted _____ (make) a mistake.", blanks: ["to hearing", "making"], explanation: "Look forward to + V-ing (hearing). Admit + V-ing (making)." },
     { id: 100421, type: 'error-correction', instruction: "Recommend + V-ing (to'g'ri):", question: "I recommend to submit it early.", errorPart: "to submit", correct: "I recommend submitting it early.", explanation: "Qoida: Recommend + V-ing — 'recommend' dan keyin V-ing keladi, to V emas. Recommend submitting, not recommend to submit." },
-    { id: 100422, type: 'fill-blank', instruction: 'Remember + to V / + V-ing farqi:', question: 'Remember _____ the door (duty). I remember _____ it last night (memory).', blanks: ['to lock / locking'], explanation: 'Remember + to V (kelajak vazifa). Remember + V-ing (o\'tmish xotira).' },
+    { id: 100422, type: 'fill-blank', instruction: 'Remember + to V / + V-ing farqi:', question: 'Remember _____ the door (duty). I remember _____ it last night (memory).', blanks: ['to lock', 'locking'], explanation: 'Remember + to V (kelajak vazifa). Remember + V-ing (o\'tmish xotira).' },
     { id: 100423, type: 'transformation', instruction: "Suggest + V-ing bilan yozing:", question: "Her idea was that we should start tonight.", hint: "She suggested ...", correct: "She suggested starting tonight.", explanation: "Qoida: Suggest + V-ing — 'suggest' dan keyin V-ing keladi. Suggest starting, not suggest to start." },
   
     { id: 100871, type: 'passage', instruction: "Matnni to'ldiring:",
@@ -1276,10 +1276,10 @@ export const b2ComprehensiveReview: DailyLesson = {
 
 
     // ── Interleaved Practice: B2 comprehensive review ──
-    { id: 100424, type: 'fill-blank', instruction: 'Subjunctive, hedging, stance:', question: 'I recommend that it _____ reviewed. _____, this is the strongest option (stance).', blanks: ['be / Arguably'], explanation: 'Subjunctive (be reviewed) + ehtiyotkor stance (Arguably).' },
+    { id: 100424, type: 'fill-blank', instruction: 'Subjunctive, hedging, stance:', question: 'I recommend that it _____ reviewed. _____, this is the strongest option (stance).', blanks: ['be', 'Arguably'], explanation: 'Subjunctive (be reviewed) + ehtiyotkor stance (Arguably).' },
     { id: 100425, type: 'fill-blank', instruction: "Inversion va mixed conditional:", question: "_____ I known the risk, I wouldn't be here now. _____ it not for your help, I'd have failed.", blanks: ["Had", "Were"], explanation: "Had I known (inversiya, mixed). Were it not for (inversiya)." },
     { id: 100426, type: 'error-correction', instruction: "Akademik register va nominalization:", question: "Because they didn't plan, the project's failure happened.", errorPart: "Because they didn't plan, the project's failure happened", correct: "The lack of planning led to the project's failure.", explanation: "Nominalization + rasmiy: The lack of planning led to..." },
-    { id: 100427, type: 'fill-blank', instruction: 'Advanced modal va critical language:', question: 'The results _____ have been affected by bias; we should _____ the evidence carefully.', blanks: ['may / evaluate'], explanation: 'O\'tmish ehtimoli (may have) + tanqidiy (evaluate the evidence).' },
+    { id: 100427, type: 'fill-blank', instruction: 'Advanced modal va critical language:', question: 'The results _____ have been affected by bias; we should _____ the evidence carefully.', blanks: ['may', 'evaluate'], explanation: 'O\'tmish ehtimoli (may have) + tanqidiy (evaluate the evidence).' },
     { id: 100428, type: 'transformation', instruction: "Paraphrase + hedge bilan akademik qiling:", question: "Everyone knows this plan is the best.", hint: "It could be argued that ...", correct: "It could be argued that this plan is the most effective.", explanation: "Hedging + paraphrase: it could be argued, most effective." },
   
     { id: 100877, type: 'passage', instruction: "Matnni to'ldiring:",

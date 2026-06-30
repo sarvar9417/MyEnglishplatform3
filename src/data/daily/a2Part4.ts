@@ -151,10 +151,10 @@ export const presentContinuousFuture: DailyLesson = {
 
 
     // ── Interleaved Practice: PC Future + Will/Going to ──
-    { id: 95261, type: 'fill-blank', instruction: 'Arrangement (PC) va prediction (will):', question: 'I _____ my friend at 6 (arranged). I think it _____ a good evening.', blanks: ['am meeting / will be'], explanation: 'Kelishilgan uchrashuv → am meeting. Bashorat → will be.' },
+    { id: 95261, type: 'fill-blank', instruction: 'Arrangement (PC) va prediction (will):', question: 'I _____ my friend at 6 (arranged). I think it _____ a good evening.', blanks: ['am meeting', 'will be'], explanation: 'Kelishilgan uchrashuv → am meeting. Bashorat → will be.' },
     { id: 95262, type: 'fill-blank', instruction: "PC (reja) va going to (niyat):", question: "We _____ (fly) to Dubai on Monday (booked). I _____ (start) a diet soon.", blanks: ["are flying", "am going to start"], explanation: "Band qilingan reja → are flying (PC). Niyat → am going to start." },
     { id: 95263, type: 'error-correction', instruction: "Kelishilgan reja — PC, will emas:", question: "I will meet the doctor at 3 tomorrow, it's arranged.", errorPart: "will meet", correct: "I am meeting the doctor at 3 tomorrow, it's arranged.", explanation: "Aniq kelishilgan → Present Continuous (am meeting)." },
-    { id: 95264, type: 'fill-blank', instruction: 'Timetable (PS) va arrangement (PC):', question: 'The plane _____ at 9 (schedule). We _____ at 7 to be early (plan).', blanks: ['leaves / are arriving'], explanation: 'Jadval → leaves (PS). Kelishilgan reja → are arriving (PC).' },
+    { id: 95264, type: 'fill-blank', instruction: 'Timetable (PS) va arrangement (PC):', question: 'The plane _____ at 9 (schedule). We _____ at 7 to be early (plan).', blanks: ['leaves', 'are arriving'], explanation: 'Jadval → leaves (PS). Kelishilgan reja → are arriving (PC).' },
     { id: 95265, type: 'transformation', instruction: "Kelishilgan rejani PC bilan yozing:", question: "My plan is to visit grandma on Sunday. (arranged)", hint: "I ...", correct: "I am visiting grandma on Sunday.", explanation: "Aniq reja → Present Continuous (am visiting)." },
 
     // ── Productive Exercises: Present Continuous Future ──
@@ -348,10 +348,10 @@ export const quantifiers: DailyLesson = {
 
 
     // ── Interleaved Practice: Quantifiers + Countable/Uncountable ──
-    { id: 95271, type: 'fill-blank', instruction: 'Few (countable) va little (uncountable):', question: 'I have _____ friends but very _____ free time.', blanks: ['few / little'], explanation: 'Countable (friends) → few. Uncountable (time) → little.' },
+    { id: 95271, type: 'fill-blank', instruction: 'Few (countable) va little (uncountable):', question: 'I have _____ friends but very _____ free time.', blanks: ['few', 'little'], explanation: 'Countable (friends) → few. Uncountable (time) → little.' },
     { id: 95272, type: 'fill-blank', instruction: "A lot of (ikkalasi) va much/many:", question: "There is _____ of water and there are _____ of people.", blanks: ["a lot", "a lot"], explanation: "A lot of — countable va uncountable bilan ishlaydi (a lot of water, a lot of people)." },
     { id: 95273, type: 'error-correction', instruction: "Many + countable:", question: "I don't have much books.", errorPart: "much books", correct: "I don't have many books.", explanation: "Books = countable → many (much uncountable uchun)." },
-    { id: 95274, type: 'fill-blank', instruction: 'Too much / too many:', question: 'There is _____ noise and _____ cars in the city.', blanks: ['too much / too many'], explanation: 'Uncountable (noise) → too much. Countable (cars) → too many.' },
+    { id: 95274, type: 'fill-blank', instruction: 'Too much / too many:', question: 'There is _____ noise and _____ cars in the city.', blanks: ['too much', 'too many'], explanation: 'Uncountable (noise) → too much. Countable (cars) → too many.' },
     { id: 95275, type: 'transformation', instruction: "Enough bilan yozing:", question: "We don't have a sufficient number of chairs.", hint: "We don't have ...", correct: "We don't have enough chairs.", explanation: "Yetarli emas → enough chairs." },
 
     // ── Productive Exercises: Quantifiers ──
@@ -547,7 +547,7 @@ export const tooEnough: DailyLesson = {
     { id: 95281, type: 'fill-blank', instruction: 'Too (ortiqcha) va enough (yetarli):', question: 'This coffee is _____ hot to drink. It isn\'t cool _____.', blanks: ['too / enough'], explanation: 'Ortiqcha → too hot. Yetarli emas → not cool enough.' },
     { id: 95282, type: 'fill-blank', instruction: "Enough + ot va sifat + enough:", question: "He is old _____ to drive. We don't have _____ money.", blanks: ["enough", "enough"], explanation: "Sifatdan keyin → old enough. Otdan oldin → enough money." },
     { id: 95283, type: 'error-correction', instruction: "Enough sifatdan keyin keladi:", question: "She isn't enough tall for the team.", errorPart: "enough tall", correct: "She isn't tall enough for the team.", explanation: "Sifat + enough (tall enough), enough + sifat emas." },
-    { id: 95284, type: 'fill-blank', instruction: 'Too + sifat va comparative:', question: 'This box is _____ heavy. Can you find a _____ one?', blanks: ['too / lighter'], explanation: 'Ortiqcha → too heavy. Solishtirish → lighter one.' },
+    { id: 95284, type: 'fill-blank', instruction: 'Too + sifat va comparative:', question: 'This box is _____ heavy. Can you find a _____ one?', blanks: ['too', 'lighter'], explanation: 'Ortiqcha → too heavy. Solishtirish → lighter one.' },
     { id: 95285, type: 'transformation', instruction: "Too ... shaklida yozing:", question: "The bag is so heavy that I can't lift it.", hint: "The bag is ...", correct: "The bag is too heavy to lift.", explanation: "So...that → too + adjective + to V (too heavy to lift)." },
 
     // ── Productive Exercises: Too and Enough ──
@@ -739,10 +739,10 @@ export const soSuch: DailyLesson = {
 
 
     // ── Interleaved Practice: So/Such + Adjectives ──
-    { id: 95291, type: 'fill-blank', instruction: 'So (+ sifat) va such (+ ot):', question: 'The film was _____ good. It was _____ a good film.', blanks: ['so / such'], explanation: 'So + sifat (so good). Such + (a) + ot (such a good film).' },
+    { id: 95291, type: 'fill-blank', instruction: 'So (+ sifat) va such (+ ot):', question: 'The film was _____ good. It was _____ a good film.', blanks: ['so', 'such'], explanation: 'So + sifat (so good). Such + (a) + ot (such a good film).' },
     { id: 95292, type: 'fill-blank', instruction: "So + sifat ... that:", question: "It was _____ cold _____ we stayed home.", blanks: ["so", "that"], explanation: "So + adjective + that (natija): so cold that we stayed." },
     { id: 95293, type: 'error-correction', instruction: "Such + ot iborasi:", question: "It was so a beautiful day.", errorPart: "so a beautiful day", correct: "It was such a beautiful day.", explanation: "Ot iborasi (a beautiful day) → such, so emas." },
-    { id: 95294, type: 'fill-blank', instruction: 'So many / so much:', question: 'There were _____ people and _____ noise.', blanks: ['so many / so much'], explanation: 'Countable (people) → so many. Uncountable (noise) → so much.' },
+    { id: 95294, type: 'fill-blank', instruction: 'So many / so much:', question: 'There were _____ people and _____ noise.', blanks: ['so many', 'so much'], explanation: 'Countable (people) → so many. Uncountable (noise) → so much.' },
     { id: 95295, type: 'transformation', instruction: "Such ... that bilan yozing:", question: "The book was very interesting, so I finished it in a day.", hint: "It was such ...", correct: "It was such an interesting book that I finished it in a day.", explanation: "Such + a/an + adjective + noun + that (natija)." },
 
     // ── Productive Exercises: So and Such ──
@@ -903,10 +903,10 @@ export const a2Review2: DailyLesson = {
 
 
     // ── Interleaved Practice: A2 mixed review ──
-    { id: 95301, type: 'fill-blank', instruction: 'Used to va passive:', question: 'This castle _____ 500 years ago. People _____ live in it.', blanks: ['was built / used to'], explanation: 'Past passive → was built. O\'tgan odat → used to live.' },
+    { id: 95301, type: 'fill-blank', instruction: 'Used to va passive:', question: 'This castle _____ 500 years ago. People _____ live in it.', blanks: ['was built', 'used to'], explanation: 'Past passive → was built. O\'tgan odat → used to live.' },
     { id: 95302, type: 'fill-blank', instruction: "First conditional va comparative:", question: "If you study harder, you _____ get _____ marks (good).", blanks: ["will", "better"], explanation: "First conditional → will get. Comparative → better marks." },
     { id: 95303, type: 'error-correction', instruction: "Present perfect va for/since:", question: "I have lived here since five years.", errorPart: "since five years", correct: "I have lived here for five years.", explanation: "Davr (five years) → for, since boshlanish nuqtasi uchun." },
-    { id: 95304, type: 'fill-blank', instruction: 'Reported speech va modal:', question: 'She said she _____ swim. He told me he _____ come tomorrow.', blanks: ['could / would'], explanation: 'Reported: can → could, will → would.' },
+    { id: 95304, type: 'fill-blank', instruction: 'Reported speech va modal:', question: 'She said she _____ swim. He told me he _____ come tomorrow.', blanks: ['could', 'would'], explanation: 'Reported: can → could, will → would.' },
     { id: 95305, type: 'transformation', instruction: "Passivega aylantiring:", question: "Someone stole my bike yesterday.", hint: "My bike ...", correct: "My bike was stolen yesterday.", explanation: "Past passive → was stolen (agent muhim emas)." },
   
     // ── Productive Exercises: A2 Review ──

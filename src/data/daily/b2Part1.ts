@@ -144,10 +144,10 @@ export const unrealPastB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Unreal Past + Conditionals ──
-    { id: 95311, type: 'fill-blank', instruction: 'Wish (hozir) va wish (o\'tmish):', question: 'I wish I _____ richer now. I wish I _____ the chance last year.', blanks: ['were / had taken'], explanation: 'Hozirgi orzu → wish + Past (were). O\'tmish afsus → wish + Past Perfect (had taken).' },
+    { id: 95311, type: 'fill-blank', instruction: 'Wish (hozir) va wish (o\'tmish):', question: 'I wish I _____ richer now. I wish I _____ the chance last year.', blanks: ['were', 'had taken'], explanation: 'Hozirgi orzu → wish + Past (were). O\'tmish afsus → wish + Past Perfect (had taken).' },
     { id: 95312, type: 'fill-blank', instruction: "It's time + Past va would rather + Past:", question: "It's time we _____ (leave). I'd rather you _____ (not / smoke) here.", blanks: ["left", "didn't smoke"], explanation: "It's time + Past Simple (left). Would rather + Past Simple (didn't smoke) — boshqaning harakati." },
     { id: 95313, type: 'error-correction', instruction: "Wish + would (bezovta qiluvchi odat):", question: "I wish you will stop interrupting me.", errorPart: "will stop", correct: "I wish you would stop interrupting me.", explanation: "Boshqaning bezovta odati → wish + would (will emas)." },
-    { id: 95314, type: 'fill-blank', instruction: 'Unreal past va second conditional:', question: 'If only I _____ how! If I _____ how, I would help.', blanks: ['knew / knew'], explanation: 'Hozirgi real bo\'lmagan holat → Past Simple (knew) ikkalasi.' },
+    { id: 95314, type: 'fill-blank', instruction: 'Unreal past va second conditional:', question: 'If only I _____ how! If I _____ how, I would help.', blanks: ['knew', 'knew'], explanation: 'Hozirgi real bo\'lmagan holat → Past Simple (knew) ikkalasi.' },
     { id: 95315, type: 'transformation', instruction: "Real holatni wish bilan (hozir):", question: "I don't have a car, and it's a problem.", hint: "I wish I ...", correct: "I wish I had a car.", explanation: "Hozirgi yetishmovchilik orzusi → wish + Past Simple (had)." },
   
     { id: 56000, type: 'passage',
@@ -389,10 +389,10 @@ export const advancedConditionalsB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Advanced Conditionals + Unreal Past ──
-    { id: 95321, type: 'fill-blank', instruction: 'Mixed conditional (o\'tmish → hozir):', question: 'If I _____ harder at school, I _____ a better job now.', blanks: ['had studied / would have'], explanation: 'O\'tmish sharti (had studied) → hozirgi natija (would have) — mixed conditional.' },
+    { id: 95321, type: 'fill-blank', instruction: 'Mixed conditional (o\'tmish → hozir):', question: 'If I _____ harder at school, I _____ a better job now.', blanks: ['had studied', 'would have'], explanation: 'O\'tmish sharti (had studied) → hozirgi natija (would have) — mixed conditional.' },
     { id: 95322, type: 'fill-blank', instruction: "Inversion (if olib tashlanadi):", question: "_____ I known earlier, I would have come. _____ it not for you, I'd be lost.", blanks: ["Had", "Were"], explanation: "If I had → Had I. If it were not → Were it not (inversiya, formal)." },
     { id: 95323, type: 'error-correction', instruction: "Third conditional shakli:", question: "If she would have called, I would have answered.", errorPart: "would have called", correct: "If she had called, I would have answered.", explanation: "If qismida 'would have' ishlatilmaydi → had called (Past Perfect)." },
-    { id: 95324, type: 'fill-blank', instruction: 'Wish va third conditional:', question: 'I wish you _____ me. If you _____ me, I would have helped.', blanks: ['had told / had told'], explanation: 'Ikkalasi ham o\'tmish real bo\'lmagan → Past Perfect (had told).' },
+    { id: 95324, type: 'fill-blank', instruction: 'Wish va third conditional:', question: 'I wish you _____ me. If you _____ me, I would have helped.', blanks: ['had told', 'had told'], explanation: 'Ikkalasi ham o\'tmish real bo\'lmagan → Past Perfect (had told).' },
     { id: 95325, type: 'transformation', instruction: "Inversiya bilan yozing (if siz):", question: "If I had known, I would have stayed.", hint: "Had I ...", correct: "Had I known, I would have stayed.", explanation: "If I had → Had I (formal inversiya)." },
   
     { id: 56002, type: 'passage',
@@ -633,7 +633,7 @@ export const nominalizationB2: DailyLesson = {
     { id: 95331, type: 'fill-blank', instruction: 'Fe\'l va nominalizatsiya (rasmiy):', question: 'Informal: \'They decided to...\' Formal: \'The _____ was made to...\' (reduce → noun)', blanks: ['decision / reduction'], explanation: 'Rasmiy uslub: decide → decision, reduce → reduction (nominalizatsiya).' },
     { id: 95332, type: 'fill-blank', instruction: "Nominalizatsiya + passive:", question: "The _____ (implement) of the policy _____ (delay) until next year.", blanks: ["implementation", "was delayed"], explanation: "Implement → implementation (noun). Passive → was delayed." },
     { id: 95333, type: 'error-correction', instruction: "Nominalizatsiya — ot shakli:", question: "The analyse of the data took weeks.", errorPart: "analyse", correct: "The analysis of the data took weeks.", explanation: "Fe'l 'analyse' → ot 'analysis'." },
-    { id: 95334, type: 'fill-blank', instruction: 'Fe\'l → ot (rasmiy):', question: 'We must improve safety. → A _____ in safety is needed. We must protect it. → The _____ of it is vital.', blanks: ['improvement / protection'], explanation: 'Improve → improvement, protect → protection (nominalizatsiya).' },
+    { id: 95334, type: 'fill-blank', instruction: 'Fe\'l → ot (rasmiy):', question: 'We must improve safety. → A _____ in safety is needed. We must protect it. → The _____ of it is vital.', blanks: ['improvement', 'protection'], explanation: 'Improve → improvement, protect → protection (nominalizatsiya).' },
     { id: 95335, type: 'transformation', instruction: "Gapni nominalizatsiya bilan rasmiy qiling:", question: "Prices increased, which worried people.", hint: "The increase ...", correct: "The increase in prices worried people.", explanation: "Increase (fe'l) → the increase (ot) — rasmiy, ixcham." },
   
     { id: 56004, type: 'passage',
@@ -864,10 +864,10 @@ export const subjunctiveB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Subjunctive + Modals ──
-    { id: 95341, type: 'fill-blank', instruction: 'Subjunctive (recommend that ... be) va modal:', question: 'I recommend that he _____ early. He _____ arrive early to get a seat.', blanks: ['arrive / should'], explanation: 'Subjunktiv: recommend that he arrive (base form). Maslahat → should arrive.' },
+    { id: 95341, type: 'fill-blank', instruction: 'Subjunctive (recommend that ... be) va modal:', question: 'I recommend that he _____ early. He _____ arrive early to get a seat.', blanks: ['arrive', 'should'], explanation: 'Subjunktiv: recommend that he arrive (base form). Maslahat → should arrive.' },
     { id: 95342, type: 'fill-blank', instruction: "Insist/demand + that + V1:", question: "They insisted that she _____ (be) present. He demanded that it _____ (be) done now.", blanks: ["be", "be"], explanation: "Subjunktiv: insist/demand + that + base form (be) — barcha shaxslar." },
     { id: 95343, type: 'error-correction', instruction: "Subjunctive — base form:", question: "It is essential that everyone is on time.", errorPart: "is on time", correct: "It is essential that everyone be on time.", explanation: "It is essential that + base form (be), 'is' emas (subjunktiv)." },
-    { id: 95344, type: 'fill-blank', instruction: 'Suggest + that va should:', question: 'I suggest that we _____ the budget. You _____ check it twice.', blanks: ['review / should'], explanation: 'Subjunktiv: suggest that we review (base). Maslahat → should check.' },
+    { id: 95344, type: 'fill-blank', instruction: 'Suggest + that va should:', question: 'I suggest that we _____ the budget. You _____ check it twice.', blanks: ['review', 'should'], explanation: 'Subjunktiv: suggest that we review (base). Maslahat → should check.' },
     { id: 95345, type: 'transformation', instruction: "Subjunktiv bilan rasmiy yozing:", question: "The manager said the report must be finished by Friday. (use 'demanded that')", hint: "The manager demanded that ...", correct: "The manager demanded that the report be finished by Friday.", explanation: "Demand + that + base form (be finished)." },
   
     { id: 56006, type: 'passage',
@@ -1096,7 +1096,7 @@ export const hedgingB2: DailyLesson = {
     { id: 95351, type: 'fill-blank', instruction: 'Hedging (ehtiyotkor) va aniq bayonot:', question: 'Strong: \'This proves it.\' Hedged: \'This _____ to suggest...\' / \'It _____ be the case.\'', blanks: ['seems / may'], explanation: 'Ehtiyotkor til → seems to suggest, may be the case (kuchsizroq da\'vo).' },
     { id: 95352, type: 'fill-blank', instruction: "Tends to / appears:", question: "The data _____ (tend) to support this. It _____ (appear) that more research is needed.", blanks: ["tends", "appears"], explanation: "Hedging fe'llari: tends to, appears that — ehtiyotkor xulosa." },
     { id: 95353, type: 'error-correction', instruction: "Hedging — kuchli da'voni yumshatish:", question: "This definitely causes the problem in all cases.", errorPart: "definitely causes the problem in all cases", correct: "This may contribute to the problem in some cases.", explanation: "Akademik hedging: definitely/all → may/some (ehtiyotkor)." },
-    { id: 95354, type: 'fill-blank', instruction: 'It could be argued / arguably:', question: '_____ that prices will rise. This is _____ the best approach.', blanks: ['It could be argued / arguably'], explanation: 'Hedging: it could be argued, arguably — fikrni ehtiyotkor bildiradi.' },
+    { id: 95354, type: 'fill-blank', instruction: 'It could be argued / arguably:', question: '_____ that prices will rise. This is _____ the best approach.', blanks: ['It could be argued', 'arguably'], explanation: 'Hedging: it could be argued, arguably — fikrni ehtiyotkor bildiradi.' },
     { id: 95355, type: 'transformation', instruction: "Bayonotni hedge qiling (yumshating):", question: "Coffee improves memory.", hint: "Coffee may ...", correct: "Coffee may improve memory.", explanation: "May + V1 → ehtiyotkor, hedged da'vo." },
   
     { id: 56008, type: 'passage',
@@ -1318,10 +1318,10 @@ export const complexPrepositionsB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Complex Prepositions + Linking ──
-    { id: 95361, type: 'fill-blank', instruction: 'Due to (+ ot) va because (+ gap):', question: 'The delay was _____ heavy rain. We were late _____ it rained.', blanks: ['due to / because'], explanation: 'Due to + ot (heavy rain). Because + gap (it rained).' },
+    { id: 95361, type: 'fill-blank', instruction: 'Due to (+ ot) va because (+ gap):', question: 'The delay was _____ heavy rain. We were late _____ it rained.', blanks: ['due to', 'because'], explanation: 'Due to + ot (heavy rain). Because + gap (it rained).' },
     { id: 95362, type: 'fill-blank', instruction: "In terms of / with regard to:", question: "_____ regard _____ the budget, we have concerns. _____ terms _____ cost, it's high.", blanks: ["With", "to", "In", "of"], explanation: "With regard to / in terms of — rasmiy predlogli iboralar." },
     { id: 95363, type: 'error-correction', instruction: "Despite (+ ot) vs although (+ gap):", question: "Despite it was raining, we went out.", errorPart: "Despite it was raining", correct: "Despite the rain, we went out.", explanation: "Despite + ot (the rain). Gap uchun → although it was raining." },
-    { id: 95364, type: 'fill-blank', instruction: 'On behalf of / in addition to:', question: '_____ behalf of the team, I thank you. _____ addition to that, we need staff.', blanks: ['On / In'], explanation: 'On behalf of (nomidan). In addition to (bundan tashqari).' },
+    { id: 95364, type: 'fill-blank', instruction: 'On behalf of / in addition to:', question: '_____ behalf of the team, I thank you. _____ addition to that, we need staff.', blanks: ['On', 'In'], explanation: 'On behalf of (nomidan). In addition to (bundan tashqari).' },
     { id: 95365, type: 'transformation', instruction: "Because o'rniga 'due to' (ot bilan):", question: "The flight was cancelled because the weather was bad.", hint: "The flight was cancelled due to ...", correct: "The flight was cancelled due to bad weather.", explanation: "Due to + ot ibora (bad weather)." },
   
     { id: 56010, type: 'passage',
@@ -1545,10 +1545,10 @@ export const cohesionB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Cohesion + Reference ──
-    { id: 95371, type: 'fill-blank', instruction: 'The former va the latter:', question: 'Tea and coffee are popular. _____ is calming; _____ gives energy.', blanks: ['The former / the latter'], explanation: 'Birinchisi (tea) → the former. Ikkinchisi (coffee) → the latter.' },
+    { id: 95371, type: 'fill-blank', instruction: 'The former va the latter:', question: 'Tea and coffee are popular. _____ is calming; _____ gives energy.', blanks: ['The former', 'the latter'], explanation: 'Birinchisi (tea) → the former. Ikkinchisi (coffee) → the latter.' },
     { id: 95372, type: 'fill-blank', instruction: "Such + bog'lash:", question: "Prices rose sharply. _____ a change affected everyone. _____ is why we acted.", blanks: ["Such", "This"], explanation: "Such a change (oldingi fikrga ishora). This is why (sabab bog'lash)." },
     { id: 95373, type: 'error-correction', instruction: "Reference — 'it' vs 'this':", question: "Sales fell. It is because the economy slowed and prices rose.", errorPart: "It is because", correct: "This was because the economy slowed and prices rose.", explanation: "Oldingi butun fikrga ishora → This (kuchliroq kogeziya)." },
-    { id: 95374, type: 'fill-blank', instruction: 'Consequently / moreover (bog\'lash):', question: 'Costs rose. _____, profits fell. _____, staff left — a second problem.', blanks: ['Consequently / Moreover'], explanation: 'Natija → Consequently. Qo\'shimcha → Moreover.' },
+    { id: 95374, type: 'fill-blank', instruction: 'Consequently / moreover (bog\'lash):', question: 'Costs rose. _____, profits fell. _____, staff left — a second problem.', blanks: ['Consequently', 'Moreover'], explanation: 'Natija → Consequently. Qo\'shimcha → Moreover.' },
     { id: 95375, type: 'transformation', instruction: "Ikki gapni 'which' bilan bog'lang:", question: "The project failed. This surprised everyone.", hint: "The project failed, which ...", correct: "The project failed, which surprised everyone.", explanation: "Butun fikrga ishora → , which (kogeziya)." },
   
     { id: 56012, type: 'passage',

@@ -132,10 +132,10 @@ export const verbPatterns: DailyLesson = {
 
 
     // ── Interleaved Practice: Verb Patterns + Gerund/Infinitive ──
-    { id: 95211, type: 'fill-blank', instruction: 'Want + obj + to V va enjoy + V-ing:', question: 'I want you _____ early. I enjoy _____ in the morning.', blanks: ['to come / running'], explanation: 'Want + object + to V (you to come). Enjoy + V-ing (running).' },
+    { id: 95211, type: 'fill-blank', instruction: 'Want + obj + to V va enjoy + V-ing:', question: 'I want you _____ early. I enjoy _____ in the morning.', blanks: ['to come', 'running'], explanation: 'Want + object + to V (you to come). Enjoy + V-ing (running).' },
     { id: 95212, type: 'fill-blank', instruction: "Tell/ask + obj + to V:", question: "She asked me _____ (help). The teacher told us _____ (be) quiet.", blanks: ["to help", "to be"], explanation: "Ask/tell + object + to V (to help, to be)." },
     { id: 95213, type: 'error-correction', instruction: "Make + obj + V1 (to'siz):", question: "The film made me to cry.", errorPart: "to cry", correct: "The film made me cry.", explanation: "Make + object + V1 (cry), 'to' siz." },
-    { id: 95214, type: 'fill-blank', instruction: 'Let (to\'siz) va allow (to bilan):', question: 'My parents let me _____ out, and they allow me _____ late.', blanks: ['go / to stay'], explanation: 'Let + V1 (go). Allow + object + to V (to stay).' },
+    { id: 95214, type: 'fill-blank', instruction: 'Let (to\'siz) va allow (to bilan):', question: 'My parents let me _____ out, and they allow me _____ late.', blanks: ['go', 'to stay'], explanation: 'Let + V1 (go). Allow + object + to V (to stay).' },
     { id: 95215, type: 'transformation', instruction: "Want bilan qayta yozing:", question: "I would like you to call me. (use 'want')", hint: "I want ...", correct: "I want you to call me.", explanation: "Want + object + to V (you to call)." },
 
     // ── Productive Exercises: Verb Patterns ──
@@ -318,10 +318,10 @@ export const timePrepositions: DailyLesson = {
 
 
     // ── Interleaved Practice: Time Prepositions + Present Simple ──
-    { id: 95221, type: 'fill-blank', instruction: 'At/on/in (vaqt):', question: 'I wake up _____ 7 _____ weekdays, but I sleep late _____ summer.', blanks: ['at / on / in'], explanation: 'Soat → at 7. Kunlar → on weekdays. Fasl → in summer.' },
+    { id: 95221, type: 'fill-blank', instruction: 'At/on/in (vaqt):', question: 'I wake up _____ 7 _____ weekdays, but I sleep late _____ summer.', blanks: ['at', 'on', 'in'], explanation: 'Soat → at 7. Kunlar → on weekdays. Fasl → in summer.' },
     { id: 95222, type: 'fill-blank', instruction: "For (davomiylik) va since (boshlanish):", question: "I have lived here _____ five years, _____ 2019.", blanks: ["for", "since"], explanation: "Davr → for five years. Boshlanish nuqtasi → since 2019." },
     { id: 95223, type: 'error-correction', instruction: "On + sana:", question: "My birthday is in the 5th of May.", errorPart: "in the 5th", correct: "My birthday is on the 5th of May.", explanation: "Aniq sana → on the 5th." },
-    { id: 95224, type: 'fill-blank', instruction: 'During (davomida) va while (...payt):', question: 'I slept _____ the film. I fell asleep _____ I was watching.', blanks: ['during / while'], explanation: 'During + ot (the film). While + gap (I was watching).' },
+    { id: 95224, type: 'fill-blank', instruction: 'During (davomida) va while (...payt):', question: 'I slept _____ the film. I fell asleep _____ I was watching.', blanks: ['during', 'while'], explanation: 'During + ot (the film). While + gap (I was watching).' },
     { id: 95225, type: 'transformation', instruction: "To'g'ri predlog bilan:", question: "The meeting is ___ Friday ___ 3 pm.", hint: "...", correct: "The meeting is on Friday at 3 pm.", explanation: "Kun → on Friday. Soat → at 3 pm." },
 
     // ── Productive Exercises: Time Prepositions ──
@@ -506,10 +506,10 @@ export const thereIsThereAre: DailyLesson = {
 
 
     // ── Interleaved Practice: There is/are + Countable/Quantifiers ──
-    { id: 95231, type: 'fill-blank', instruction: 'There is (birlik/uncountable) va there are (ko\'plik):', question: '_____ a book on the desk. _____ some pens too.', blanks: ['There is / There are'], explanation: 'Birlik (a book) → There is. Ko\'plik (pens) → There are.' },
+    { id: 95231, type: 'fill-blank', instruction: 'There is (birlik/uncountable) va there are (ko\'plik):', question: '_____ a book on the desk. _____ some pens too.', blanks: ['There is', 'There are'], explanation: 'Birlik (a book) → There is. Ko\'plik (pens) → There are.' },
     { id: 95232, type: 'fill-blank', instruction: "There isn't any / there aren't any:", question: "There _____ any milk. There _____ any eggs.", blanks: ["isn't", "aren't"], explanation: "Uncountable (milk) → isn't any. Ko'plik (eggs) → aren't any." },
     { id: 95233, type: 'error-correction', instruction: "Uncountable bilan there is:", question: "There are some water in the bottle.", errorPart: "There are", correct: "There is some water in the bottle.", explanation: "Water = uncountable → There is (singular)." },
-    { id: 95234, type: 'fill-blank', instruction: 'How much/many + there:', question: 'How _____ chairs are there? How _____ furniture is there?', blanks: ['many / much'], explanation: 'Countable (chairs) → many. Uncountable (furniture) → much.' },
+    { id: 95234, type: 'fill-blank', instruction: 'How much/many + there:', question: 'How _____ chairs are there? How _____ furniture is there?', blanks: ['many', 'much'], explanation: 'Countable (chairs) → many. Uncountable (furniture) → much.' },
     { id: 95235, type: 'transformation', instruction: "There is/are bilan yozing:", question: "Two parks exist near my house.", hint: "There ...", correct: "There are two parks near my house.", explanation: "Ko'plik (two parks) → There are." },
 
     // ── Productive Exercises: There is / There are ──
@@ -697,10 +697,10 @@ export const possessives: DailyLesson = {
 
 
     // ── Interleaved Practice: Possessives + Pronouns ──
-    { id: 95241, type: 'fill-blank', instruction: 'Possessive adjective (my) va pronoun (mine):', question: 'This is _____ book. The book is _____.', blanks: ['my / mine'], explanation: 'Ot oldida → my book (adjective). Ot o\'rniga → it\'s mine (pronoun).' },
+    { id: 95241, type: 'fill-blank', instruction: 'Possessive adjective (my) va pronoun (mine):', question: 'This is _____ book. The book is _____.', blanks: ['my', 'mine'], explanation: 'Ot oldida → my book (adjective). Ot o\'rniga → it\'s mine (pronoun).' },
     { id: 95242, type: 'fill-blank', instruction: "Possessive 's (egalik):", question: "This is _____ (Alining) car. These are the _____ (bolalarning) toys.", blanks: ["Ali's", "children's"], explanation: "Egalik → Ali's car, children's toys (apostrof + s)." },
     { id: 95243, type: 'error-correction', instruction: "Its (egalik) va it's (it is):", question: "The dog wagged it's tail.", errorPart: "it's", correct: "The dog wagged its tail.", explanation: "Egalik → its (apostrofsiz). It's = it is." },
-    { id: 95244, type: 'fill-blank', instruction: 'Whose (kimning) va who\'s (who is):', question: '_____ bag is this? _____ coming to the party?', blanks: ['Whose / Who\'s'], explanation: 'Egalik savoli → Whose. Who is → Who\'s.' },
+    { id: 95244, type: 'fill-blank', instruction: 'Whose (kimning) va who\'s (who is):', question: '_____ bag is this? _____ coming to the party?', blanks: ['Whose', 'Who\\'], explanation: 'Egalik savoli → Whose. Who is → Who\'s.' },
     { id: 95245, type: 'transformation', instruction: "Of o'rniga 's ishlating:", question: "The car of my brother is new.", hint: "My ...", correct: "My brother's car is new.", explanation: "Egalik → brother's car ('s bilan)." },
 
     // ── Productive Exercises: Possessives ──
@@ -885,10 +885,10 @@ export const someAnyNoEvery: DailyLesson = {
 
 
     // ── Interleaved Practice: Some/Any/No + Countable ──
-    { id: 95251, type: 'fill-blank', instruction: 'Some (tasdiq) va any (savol/inkor):', question: 'I have _____ questions. Do you have _____ questions?', blanks: ['some / any'], explanation: 'Tasdiq → some. Savol → any.' },
+    { id: 95251, type: 'fill-blank', instruction: 'Some (tasdiq) va any (savol/inkor):', question: 'I have _____ questions. Do you have _____ questions?', blanks: ['some', 'any'], explanation: 'Tasdiq → some. Savol → any.' },
     { id: 95252, type: 'fill-blank', instruction: "No (= not any) va none:", question: "There is _____ sugar left. How many are left? _____.", blanks: ["no", "None"], explanation: "No + ot (no sugar). Otsiz javob → None." },
     { id: 95253, type: 'error-correction', instruction: "Something/anything:", question: "I don't have something to eat.", errorPart: "something", correct: "I don't have anything to eat.", explanation: "Inkorда → anything (something tasdiqда)." },
-    { id: 95254, type: 'fill-blank', instruction: 'Everybody + birlik fe\'l:', question: 'Everybody _____ here. Somebody _____ at the door.', blanks: ['is / is'], explanation: 'Everybody/somebody → birlik fe\'l (is).' },
+    { id: 95254, type: 'fill-blank', instruction: 'Everybody + birlik fe\'l:', question: 'Everybody _____ here. Somebody _____ at the door.', blanks: ['is', 'is'], explanation: 'Everybody/somebody → birlik fe\'l (is).' },
     { id: 95255, type: 'transformation', instruction: "Inkor gapни 'any' bilan yozing:", question: "I have no money.", hint: "I don't ...", correct: "I don't have any money.", explanation: "No → not any (don't have any money)." },
 
     // ── Productive Exercises: Some / Any / No / Every ──

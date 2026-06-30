@@ -426,7 +426,7 @@ export const numbers: DailyLesson = {
 
     // ── Interleaved Practice: Numbers + be verbs ──
     { id: 95401, type: 'fill-blank', instruction: "Yosh va sonlar:", question: "I am ___ years old. (25) My sister is ___ (18).", blanks: ['twenty-five', 'eighteen'], explanation: "25 = twenty-five, 18 = eighteen." },
-    { id: 95402, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "My phone number ___ 90-123-45-67. Twenty-five plus ten ___ thirty-five.", blanks: ["is / is"], explanation: "Phone number singular → is. 25+10=35 singular → is." },
+    { id: 95402, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "My phone number ___ 90-123-45-67. Twenty-five plus ten ___ thirty-five.", blanks: ['is', 'is'], explanation: "Phone number singular → is. 25+10=35 singular → is." },
     { id: 95403, type: 'error-correction', instruction: "Yosh xatosi:", question: "I am twenty-five age. She is fourty.", errorPart: 'age / fourty', correct: 'I am twenty-five years old. She is forty.', explanation: "Years old, not age. Forty (U yo'q)." },
     { id: 95404, type: 'fill-blank', instruction: "Son + am/is/are:", question: "There ___ (be) 50 students. I ___ (be) number 15.", blanks: ['are', 'am'], explanation: "50 students = plural → are. I → am." },
     { id: 95405, type: 'transformation', instruction: "Raqamni so'z bilan:", question: "35 + 12 = 47", hint: "Thirty-five plus twelve is ___.", correct: 'thirty-seven', explanation: "47 = forty-seven (chiziqcha bilan)." }
@@ -662,7 +662,7 @@ export const colorsAndShapes: DailyLesson = {
 
     // ── Interleaved Practice: Colors + This/That ──
     { id: 95411, type: 'fill-blank', instruction: "Rang va this/that:", question: "This apple ___ red. That cloud ___ white.", blanks: ['is', 'is'], explanation: "This/That + is + rang (artiklsiz)." },
-    { id: 95412, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ is a circle. ___ is a square. The circle ___ blue.", blanks: ["This / That / is"], explanation: "This (yaqin), That (uzoq), circle singular → is." },
+    { id: 95412, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ is a circle. ___ is a square. The circle ___ blue.", blanks: ['This', 'That', 'is'], explanation: "This (yaqin), That (uzoq), circle singular → is." },
     { id: 95413, type: 'error-correction', instruction: "Rang xatosi:", question: "The car is a red. It is a circle.", errorPart: 'a red / a circle', correct: 'The car is red. It is a circle.', explanation: "Rang predikatda artiklsiz. Shakl oldida a bor." },
     { id: 95414, type: 'fill-blank', instruction: "Ko'plik va rang:", question: "These stars ___ (be) yellow. Those circles ___ (be) blue.", blanks: ['are', 'are'], explanation: "These/Those + plural noun + are." },
     { id: 95415, type: 'transformation', instruction: "Birlikdan ko'plikka:", question: "This is a red circle. → These ___.", hint: "These ___ red circles.", correct: 'are', explanation: "This → These, is → are, a red circle → red circles." }
@@ -911,7 +911,7 @@ export const family: DailyLesson = {
 
     // ── Interleaved Practice: Family + have/has ──
     { id: 95421, type: 'fill-blank', instruction: "Oila va have/has:", question: "I ___ (bor/ega bo'lmoq) a brother. She ___ (bor/ega bo'lmoq) two sisters.", blanks: ['have', 'has'], explanation: "I have, She has — have/has qoidasi." },
-    { id: 95422, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ mother is a doctor. ___ brother is a student.", blanks: ["My / Her"], explanation: "My (mening), Her (uning — ayol)." },
+    { id: 95422, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ mother is a doctor. ___ brother is a student.", blanks: ['My', 'Her'], explanation: "My (mening), Her (uning — ayol)." },
     { id: 95423, type: 'error-correction', instruction: "Have/has va his/her:", question: "He have a sister. She name is Lola.", errorPart: 'have / She name', correct: 'He has a sister. Her name is Lola.', explanation: "He → has. She → Her (possessive)." },
     { id: 95424, type: 'fill-blank', instruction: "Oila va sonlar:", question: "My grandmother ___ (be) 70 years old. She ___ (have) three children.", blanks: ['is', 'has'], explanation: "Grandmother singular → is. She → has." },
     { id: 95425, type: 'transformation', instruction: "My dan His ga:", question: "My mother is 40. → (He) ___ mother is 40.", hint: "___ mother is 40.", correct: 'His', explanation: "He → His (uning — erkak)." }
@@ -1386,7 +1386,7 @@ export const timeAndRoutines: DailyLesson = {
 
     // ── Interleaved Practice: Time + Present Simple ──
     { id: 95441, type: 'fill-blank', instruction: "Vaqt va odat:", question: "I ___ (uyg'onmoq) up at 7 o'clock every day. She ___ (uyg'onmoq) up at 8.", blanks: ['wake', 'wakes'], explanation: "I wake, She wakes — 3-shaxs +s." },
-    { id: 95442, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ (go) to school at 8. They ___ (have) lunch at 12.", blanks: ["goes / have"], explanation: "She → goes (3-shaxs). They → have." },
+    { id: 95442, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ (go) to school at 8. They ___ (have) lunch at 12.", blanks: ['goes', 'have'], explanation: "She → goes (3-shaxs). They → have." },
     { id: 95443, type: 'error-correction', instruction: "3-shaxs qoidasi:", question: "He go to school at 8 o'clock.", errorPart: 'go', correct: 'He goes to school at 8 o\'clock.', explanation: "He → goes (3-shaxs birlik +s)." },
     { id: 95444, type: 'fill-blank', instruction: "Vaqtni aytish:", question: "It is half past seven = ___:___", blanks: ['7:30'], explanation: "Half past seven = 7:30." },
     { id: 95445, type: 'transformation', instruction: "I dan He ga:", question: "I wake up at 6. → He ___ at 6.", hint: "He ___ up at 6.", correct: 'wakes', explanation: "I wake → He wakes (3-shaxs +s)." }
@@ -1629,7 +1629,7 @@ export const foodAndDrinks: DailyLesson = {
 
     // ── Interleaved Practice: Food + some/any ──
     { id: 95451, type: 'fill-blank', instruction: "Ovqat va some/any:", question: "I want ___ water. Do you have ___ bread?", blanks: ['some', 'any'], explanation: "Tasdiq → some. Savol → any." },
-    { id: 95452, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I have ___ apple and ___ milk.", blanks: ["an / some"], explanation: "Apple countable → an. Milk uncountable → some." },
+    { id: 95452, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I have ___ apple and ___ milk.", blanks: ['an', 'some'], explanation: "Apple countable → an. Milk uncountable → some." },
     { id: 95453, type: 'error-correction', instruction: "Some/any xatosi:", question: "I don't have some money.", errorPart: 'some', correct: "I don't have any money.", explanation: "I have → some. I don't have → any." },
     { id: 95454, type: 'fill-blank', instruction: "Like + V-ing:", question: "I like ___ (eat) apples. She likes ___ (drink) tea.", blanks: ['eating', 'drinking'], explanation: "Like + V-ing (like eating, likes drinking)." },
     { id: 95455, type: 'transformation', instruction: "Tasdiqdan inkorga:", question: "I have some sugar. → I don't have ___ sugar.", hint: "...", correct: 'any', explanation: "Inkor → any (not some)." }
@@ -1842,7 +1842,7 @@ export const animals: DailyLesson = {
     { id: 1463, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Snakes ___ (be) dangerous animals.', blanks: ['are'], explanation: "ko'plik = are" },
     { id: 1464, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'The rabbit is cute. He likes carrots.', errorPart: 'He', correct: 'The rabbit is cute. It likes carrots.', explanation: "Hayvon = it (he emas)" },
     { id: 1465, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'Butterflies ___ (uchish) from flower to flower.', blanks: ['fly'], explanation: "ko'plik = fly (not flies)" },
-    { id: 1466, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'I have ___ cat. ___ is black.', blanks: ['a / It'], explanation: 'a cat (undosh) + it (hayvon = it)' },
+    { id: 1466, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'I have ___ cat. ___ is black.', blanks: ['a', 'It'], explanation: 'a cat (undosh) + it (hayvon = it)' },
   
     { id: 99775, type: 'passage', instruction: "Matnni to'ldiring:",
       passage: 'I have a ___(1) (dog/book). It is ___(2) (brown/long). It ___(3) (likes/plays) to play in the park. Cats are very ___(4) (cute/tall) animals. I also like ___(5) (birds/tables) because they can fly.',
@@ -1871,7 +1871,7 @@ export const animals: DailyLesson = {
 
     // ── Interleaved Practice: Animals + have got/can ──
     { id: 95461, type: 'fill-blank', instruction: "Hayvon va have got:", question: "A dog ___ (ega/bor) four legs. Cats ___ (qila olmoq) climb trees.", blanks: ['has got', 'can'], explanation: "A dog singular → has got. Can + V1." },
-    { id: 95462, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Birds ___ fly. A fish ___ fins.", blanks: ["can / has got"], explanation: "Qobiliyat → can fly. Egalik → has got fins." },
+    { id: 95462, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Birds ___ fly. A fish ___ fins.", blanks: ['can', 'has got'], explanation: "Qobiliyat → can fly. Egalik → has got fins." },
     { id: 95463, type: 'error-correction', instruction: "Can va have got:", question: "A cat can to climb. A dog have got a tail.", errorPart: 'can to / have got', correct: 'A cat can climb. A dog has got a tail.', explanation: "Can + V1 (to'siz). A dog → has got." },
     { id: 95464, type: 'fill-blank', instruction: "Hayvon va rang:", question: "My cat ___ (be) black. It ___ (have got) green eyes.", blanks: ['is', 'has got'], explanation: "My cat singular → is. It → has got." },
     { id: 95465, type: 'transformation', instruction: "Have got ni have ga:", question: "A rabbit has got long ears. → A rabbit ___ long ears.", hint: "...", correct: 'has', explanation: "Has got → has (bir xil ma'no)." }
@@ -2111,7 +2111,7 @@ export const bodyParts: DailyLesson = {
 
     // ── Interleaved Practice: Body Parts + have/has ──
     { id: 95471, type: 'fill-blank', instruction: "Tana va have/has:", question: "I ___ (bor/ega) two eyes. She ___ (bor/ega) blue eyes.", blanks: ['have', 'has'], explanation: "I have, She has." },
-    { id: 95472, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ eyes are brown. ___ hair is long.", blanks: ["His / Her"], explanation: "His (uning — erkak), Her (uning — ayol)." },
+    { id: 95472, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ eyes are brown. ___ hair is long.", blanks: ['His', 'Her'], explanation: "His (uning — erkak), Her (uning — ayol)." },
     { id: 95473, type: 'error-correction', instruction: "Have got va tana:", question: "He have got two hand.", errorPart: 'have / hand', correct: 'He has got two hands.', explanation: "He → has. Hands (ko'plik)." },
     { id: 95474, type: 'fill-blank', instruction: "Tana va sonlar:", question: "A person ___ (have) ___ (10) fingers and ___ (2) hands.", blanks: ['has', 'ten', 'two'], explanation: "A person singular → has. 10 = ten, 2 = two." },
     { id: 95475, type: 'transformation', instruction: "My dan His ga o'zgartiring:", question: "My head hurts. → (He) ___ head hurts.", hint: "___ head hurts.", correct: 'His', explanation: "My → His (uning — erkak)." }
@@ -2327,7 +2327,7 @@ export const clothes: DailyLesson = {
     { id: 1569, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'She is wearing a ___ (yubka).', blanks: ['skirt'], explanation: "skirt = yubka — tarjima" },
     { id: 1570, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'I am wear jeans today.', errorPart: 'wear', correct: 'I am wearing jeans today.', explanation: "am + wearing (-ing shakl kerak)" },
     { id: 1571, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'She wears ___ around her neck.', blanks: ['jewelry'], explanation: 'jewelry = taqinchoq — tarjima' },
-    { id: 1572, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'He wears a ___ and ___ for a wedding.', blanks: ['suit, tie'], explanation: 'To\'yda = suit (kostyum) va tie (galstuk)' },
+    { id: 1572, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'He wears a ___ and ___ for a wedding.', blanks: ['suit', 'tie'], explanation: 'To\'yda = suit (kostyum) va tie (galstuk)' },
     { id: 1573, type: 'fill-blank', instruction: "Ingliz tilida yozing:", question: 'I wear ___ (legins) at the gym.', blanks: ['leggings'], explanation: "leggings — leggings, tor shim, doimo ko'plik" },
     { id: 1574, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'I wear ___ to see better.', blanks: ['glasses'], explanation: 'Yaxshi ko\'rish = glasses (ko\'zoynak)' },
     { id: 1575, type: 'fill-blank', instruction: "Ingliz tilida yozing:", question: 'I wear ___ (shipak) at home.', blanks: ['slippers'], explanation: "slippers = shipak — tarjima" },
@@ -2358,7 +2358,7 @@ export const clothes: DailyLesson = {
 
     // ── Interleaved Practice: Clothes + Colors + This/These ──
     { id: 95481, type: 'fill-blank', instruction: "Kiyim va rang:", question: "This shirt ___ (be) blue. These shoes ___ (be) black.", blanks: ['is', 'are'], explanation: "This + singular → is. These + plural → are." },
-    { id: 95482, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ is my jacket (close). ___ are my pants (close).", blanks: ["This / These"], explanation: "Yaqin + birlik → This. Yaqin + ko'plik → These." },
+    { id: 95482, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ is my jacket (close). ___ are my pants (close).", blanks: ['This', 'These'], explanation: "Yaqin + birlik → This. Yaqin + ko'plik → These." },
     { id: 95483, type: 'error-correction', instruction: "This/these va be:", question: "This shoes are red. These dress is blue.", errorPart: 'This shoes / These dress', correct: 'These shoes are red. This dress is blue.', explanation: "Shoes ko'plik → These. Dress birlik → This." },
     { id: 95484, type: 'fill-blank', instruction: "Kiyim va possessive:", question: "I have a red dress. ___ (I) dress is red. ___ (She) coat is blue.", blanks: ['My', 'Her'], explanation: "I → My, She → Her." },
     { id: 95485, type: 'transformation', instruction: "Birlikdan ko'plikka:", question: "This is a white shirt. → These ___ white shirts.", hint: "These ___ white shirts.", correct: 'are', explanation: "This → These, is → are, a → (articlesiz ko'plik)." }
@@ -2388,7 +2388,7 @@ export const clothes: DailyLesson = {
     { id: 1589, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I have a new ___ (futbolka).', blanks: ['T-shirt'], explanation: "T-shirt — futbolka, T-shaklidagi kiyim" },
     { id: 1590, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I put my books in my ___.", blanks: ["backpack"], explanation: "Kitoblar = backpack — tarjima" },
     { id: 1591, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'My ___ (sock) are warm.', blanks: ['socks'], explanation: "socks — juft kiyim: socks (paypoq, doimo ko'plik)" },
-    { id: 1592, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I wear a ___ and ___ to a formal event.", blanks: ["suit, tie"], explanation: "Rasmiy = suit and tie" },
+    { id: 1592, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I wear a ___ and ___ to a formal event.", blanks: ['suit', 'tie'], explanation: "Rasmiy = suit and tie" },
     { id: 1593, type: 'fill-blank', instruction: "Ingliz tilida yozing:", question: 'She loves ___ (taqinchoq).', blanks: ['jewelry'], explanation: "jewelry = taqinchoq — tarjima" },
     { id: 1594, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I can see better with my ___.", blanks: ["glasses"], explanation: "Ko'zoynak = glasses" },
     { id: 1595, type: 'fill-blank', instruction: "Ingliz tilida yozing:", question: 'I wear ___ (shipak) at home.', blanks: ['slippers'], explanation: "slippers = shipak — tarjima" },

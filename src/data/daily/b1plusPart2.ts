@@ -148,7 +148,7 @@ export const linkingWordsAdvanced: DailyLesson = {
 
 
     // ── Interleaved Practice: Linking Words + Cohesion ──
-    { id: 95681, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The company is growing. ___, profits are rising. ___, we are expanding abroad.", blanks: ["Consequently / Furthermore"], explanation: "Natija → Consequently. Qo'shimcha → Furthermore." },
+    { id: 95681, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The company is growing. ___, profits are rising. ___, we are expanding abroad.", blanks: ['Consequently', 'Furthermore'], explanation: "Natija → Consequently. Qo'shimcha → Furthermore." },
     { id: 95682, type: 'fill-blank', instruction: "However/nevertheless (qarama-qarshilik):", question: "It was raining; ___ we went out. The task was hard; ___ she succeeded.", blanks: ['however', 'nevertheless'], explanation: "However (ammo). Nevertheless (shunga qaramay)." },
     { id: 95683, type: 'error-correction', instruction: "Punctuation — linking words:", question: "He was tired, however he continued. The plan failed therefore we changed it.", errorPart: ', however / therefore we', correct: 'He was tired; however, he continued. The plan failed; therefore, we changed it.', explanation: "Linking word oldidan ; (nuqtali vergul) kerak." },
     { id: 95684, type: 'fill-blank', instruction: "Such as vs for example:", question: "Many countries, ___ Japan, are developed. The plan has problems; ___ the budget is too small.", blanks: ['such as', 'for example'], explanation: "Such as (list oldida). For example (gap boshida)." },
@@ -367,7 +367,7 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
 
 
     // ── Interleaved Practice: Collocations + Verb Patterns ──
-    { id: 95691, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I need to ___ a decision. She needs to ___ her homework.", blanks: ["make / do"], explanation: "Make a decision. Do homework." },
+    { id: 95691, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I need to ___ a decision. She needs to ___ her homework.", blanks: ['make', 'do'], explanation: "Make a decision. Do homework." },
     { id: 95692, type: 'fill-blank', instruction: "Have vs Take:", question: "Let's ___ a break. I ___ a shower every morning.", blanks: ['take', 'have'], explanation: "Take a break (AmE) / have a break (BrE). Have a shower." },
     { id: 95693, type: 'error-correction', instruction: "Collocation xatolari:", question: "I need to make the laundry. She did a mistake.", errorPart: 'make the laundry / did a mistake', correct: 'I need to do the laundry. She made a mistake.', explanation: "Do the laundry. Make a mistake." },
     { id: 95694, type: 'fill-blank', instruction: "Collocations + V-ing:", question: "She enjoys ___ (make) photos. I look forward to ___ (have) dinner.", blanks: ['taking', 'having'], explanation: "Take a photo (make emas). Look forward to + V-ing." },
@@ -552,7 +552,7 @@ export const advancedPhrasalVerbs: DailyLesson = {
 
 
     // ── Interleaved Practice: Phrasal Verbs + Idioms ──
-    { id: 95701, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ up with a great idea. The exam was a ___ of cake.", blanks: ["came / piece"], explanation: "Come up with = o'ylab topmoq. Piece of cake = juda oson." },
+    { id: 95701, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ up with a great idea. The exam was a ___ of cake.", blanks: ['came', 'piece'], explanation: "Come up with = o'ylab topmoq. Piece of cake = juda oson." },
     { id: 95702, type: 'fill-blank', instruction: "Put up with / run out of:", question: "I can't ___ up with this noise. We've ___ out of sugar.", blanks: ['put', 'run'], explanation: "Put up with = chidamoq. Run out of = tugatmoq." },
     { id: 95703, type: 'error-correction', instruction: "Pronoun + phrasal verb:", question: "I picked up him from the station. Look forward to hear from you.", errorPart: 'picked up him / to hear', correct: 'I picked him up from the station. Look forward to hearing from you.', explanation: "Pronoun + separable phrasal verb. Look forward to + V-ing." },
     { id: 95704, type: 'fill-blank', instruction: "Look phrasal verbs:", question: "I look ___ to meeting you. She looks ___ her grandmother. I look ___ to my brother.", blanks: ['forward', 'after', 'up'], explanation: "Look forward to, look after, look up to." },
@@ -743,7 +743,7 @@ export const idiomsCommon: DailyLesson = {
 
 
     // ── Interleaved Practice: Idioms + Collocations ──
-    { id: 95711, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The exam was a ___ of cake (easy). He ___ the sack at 10 (go to bed).", blanks: ["piece / hit"], explanation: "Piece of cake = oson. Hit the sack = uxlash." },
+    { id: 95711, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The exam was a ___ of cake (easy). He ___ the sack at 10 (go to bed).", blanks: ['piece', 'hit'], explanation: "Piece of cake = oson. Hit the sack = uxlash." },
     { id: 95712, type: 'fill-blank', instruction: "Body idioms:", question: "The car cost an arm and a ___. Don't pull my ___.", blanks: ['leg', 'leg'], explanation: "Cost an arm and a leg = qimmat. Pull someone's leg = hazil." },
     { id: 95713, type: 'error-correction', instruction: "Idiom so'zma-so'z tarjima:", question: "It was raining cats and dogs = mushuk va it yomg'iri. Break a leg = oyog'ingni sindir.", errorPart: 'mushuk va it yomg\'iri / oyog\'ingni sindir', correct: "It's raining cats and dogs = kuchli yomg'ir. Break a leg = omad tilayman.", explanation: "Idioms so'zma-so'z tarjima qilinmaydi." },
     { id: 95714, type: 'fill-blank', instruction: "Situation idioms:", question: "I only go there once in a ___ moon. She's ___ the weather (ill).", blanks: ['blue', 'under'], explanation: "Once in a blue moon = kamdan-kam. Under the weather = kasal." },
@@ -1140,7 +1140,7 @@ export const wordFormation: DailyLesson = {
 
 
     // ── Interleaved Practice: Word Formation + Nominalization ──
-    { id: 95731, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "inform → inform___ ; employ → employ___ ; happy → happi___", blanks: ["ation / ment / ness"], explanation: "-tion, -ment, -ness eng keng tarqalgan noun suffixes." },
+    { id: 95731, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "inform → inform___ ; employ → employ___ ; happy → happi___", blanks: ['ation', 'ment', 'ness'], explanation: "-tion, -ment, -ness eng keng tarqalgan noun suffixes." },
     { id: 95732, type: 'fill-blank', instruction: "Adjective to noun:", question: "improve → improve___ ; protect → protect___ ; achieve → achieve___", blanks: ['ment', 'ion', 'ment'], explanation: "Improve → improvement. Protect → protection. Achieve → achievement." },
     { id: 95733, type: 'error-correction', instruction: "Negative prefixes:", question: "This is unpossible. The answer is unlegal.", errorPart: 'unpossible / unlegal', correct: 'This is impossible. The answer is illegal.', explanation: "Possible → impossible (im-). Legal → illegal (il-)." },
     { id: 95734, type: 'fill-blank', instruction: "Verb → noun (nominalization):", question: "They decided → They made a ___. She analysed → Her ___ was good.", blanks: ['decision', 'analysis'], explanation: "Decide → decision. Analyse → analysis." },
@@ -1336,7 +1336,7 @@ export const reportingVerbs: DailyLesson = {
 
 
     // ── Interleaved Practice: Reporting Verbs + Reported Speech ──
-    { id: 95741, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ that she was tired. She ___ me to help. She ___ if I was free.", blanks: ["said / told / asked"], explanation: "Say + that. Tell + object. Ask + if/whether." },
+    { id: 95741, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She ___ that she was tired. She ___ me to help. She ___ if I was free.", blanks: ['said', 'told', 'asked'], explanation: "Say + that. Tell + object. Ask + if/whether." },
     { id: 95742, type: 'fill-blank', instruction: "Reporting verb + to V:", question: "She advised me ___ (wait). He warned us ___ (not / go).", blanks: ['to wait', 'not to go'], explanation: "Advise + object + to V. Warn + object + not to V." },
     { id: 95743, type: 'error-correction', instruction: "Say vs tell:", question: "She told that she was happy. He said me the truth.", errorPart: 'told that / said me', correct: 'She said that she was happy. He told me the truth.', explanation: "Say + (that) - no object. Tell + object." },
     { id: 95744, type: 'fill-blank', instruction: "Reported + tense backshift:", question: "'I am tired.' → He said he ___ tired. 'I will come.' → She said she ___ come.", blanks: ['was', 'would'], explanation: "Present → past (am → was). Will → would." },
@@ -1527,7 +1527,7 @@ export const determinersAdvanced: DailyLesson = {
 
 
     // ── Interleaved Practice: Determiners + Article Usage ──
-    { id: 95751, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ student has their own desk. ___ child needs love.", blanks: ["Each / Every"], explanation: "Each = individual. Every = general (collective)." },
+    { id: 95751, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ student has their own desk. ___ child needs love.", blanks: ['Each', 'Every'], explanation: "Each = individual. Every = general (collective)." },
     { id: 95752, type: 'fill-blank', instruction: "All vs both:", question: "___ (barchasi) of them passed. ___ (ikkalasi) my parents are teachers.", blanks: ['All', 'Both'], explanation: "All = 3+. Both = exactly 2." },
     { id: 95753, type: 'error-correction', instruction: "Either/neither + verb:", question: "Either of the answers are correct. Neither of them are coming.", errorPart: 'are / are', correct: 'Either of the answers is correct. Neither of them is coming.', explanation: "Either/neither + singular verb." },
     { id: 95754, type: 'fill-blank', instruction: "Every + singular:", question: "Every student ___ (be) responsible. Every house ___ (have) a garden.", blanks: ['is', 'has'], explanation: "Every + singular noun + singular verb." },
@@ -1708,7 +1708,7 @@ export const b1plusReview: DailyLesson = {
 
 
     // ── Interleaved Practice: B1+ mixed review ──
-    { id: 95761, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "When I arrived, the film ___. She said that she ___ happy.", blanks: ["had already started / was"], explanation: "Past Perfect (had started). Reported → past (was)." },
+    { id: 95761, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "When I arrived, the film ___. She said that she ___ happy.", blanks: ['had already started', 'was'], explanation: "Past Perfect (had started). Reported → past (was)." },
     { id: 95762, type: 'fill-blank', instruction: "Relative clause + participle:", question: "The woman ___ lives next door is a doctor. The car ___ in 2020 is mine.", blanks: ['who', 'made'], explanation: "Who (relative). Made (past participle)." },
     { id: 95763, type: 'error-correction', instruction: "Gerund/infinitive + collocation:", question: "I enjoy to swim. She made a decision but did a mistake.", errorPart: 'to swim / did a mistake', correct: 'I enjoy swimming. She made a decision but made a mistake.', explanation: "Enjoy + V-ing. Make a mistake (do emas)." },
     { id: 95764, type: 'fill-blank', instruction: "Phrasal verb + idiom:", question: "She came ___ with a solution. The exam was a piece of ___.", blanks: ['up', 'cake'], explanation: "Come up with. Piece of cake." },
