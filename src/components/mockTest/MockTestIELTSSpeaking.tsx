@@ -24,9 +24,10 @@ export default function MockTestIELTSSpeaking({ prompts, onDone }: MockTestIELTS
   useEffect(() => { startRef.current() }, [])
 
   function startRec() {
-    const Ctor = window.SpeechRecognition || window.webkitSpeechRecognition
+    const win = window as Window & typeof globalThis & { SpeechRecognition?: new () => SpeechRec; webkitSpeechRecognition?: new () => SpeechRec }
+    const Ctor = win.SpeechRecognition || win.webkitSpeechRecognition
     if (!Ctor) return
-    const r = new Ctor() as unknown as SpeechRec
+    const r = new Ctor() as SpeechRec
     r.lang     = 'en-US'; r.continuous = true; r.interimResults = true
     r.onresult = (e) => {
       let t = ''

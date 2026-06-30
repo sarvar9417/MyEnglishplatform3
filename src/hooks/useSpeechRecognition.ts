@@ -152,7 +152,9 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     setPermissionError(false)
 
     // Avvalgi instansiyani to'xtatamiz (dublikat tanishni oldini olish)
-    try { recRef.current?.abort() } catch { /* noop */ }
+    try { recRef.current?.abort() } catch { 
+      monitoring.captureMessage('useSpeechRecognition: abort failed during start', 'warn')
+    }
 
     transcriptRef.current = ''
     interimRef.current = ''
@@ -197,7 +199,9 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     }
 
     recRef.current = rec
-    try { rec.start() } catch { /* noop */ }
+    try { rec.start() } catch { 
+      monitoring.captureMessage('useSpeechRecognition: start() failed', 'warn')
+    }
     setIsRecording(true)
   }, [])
 
@@ -209,7 +213,9 @@ export function useSpeechRecognition(): SpeechRecognitionState {
     }
     // Mobil Chrome'da stop() onend'ni ishonchli ishga tushirmaydi — shuning uchun
     // holatni darhol o'zimiz yangilaymiz (UI darrov javob beradi, natija yuboriladi).
-    try { recRef.current?.stop() } catch { /* noop */ }
+    try { recRef.current?.stop() } catch { 
+      monitoring.captureMessage('useSpeechRecognition: stop() failed', 'warn')
+    }
     setInterim('')
     setIsRecording(false)
     // Yozish tugagach shared stream'ni tozalaymiz — brauzer indikatori o'chishi uchun.
@@ -219,7 +225,9 @@ export function useSpeechRecognition(): SpeechRecognitionState {
   }, [])
 
   const reset = useCallback(() => {
-    try { recRef.current?.abort() } catch { /* noop */ }
+    try { recRef.current?.abort() } catch { 
+      monitoring.captureMessage('useSpeechRecognition: abort() failed during reset', 'warn')
+    }
     transcriptRef.current = ''
     interimRef.current = ''
     setTranscript('')

@@ -6,6 +6,7 @@
 // qolish ehtimoli) — Leitner tizimidan ancha aniqroq.
 // ═══════════════════════════════════════════════════════════════════════════
 
+import { monitoring } from './monitoring'
 import {
   type FSRSState,
   createDefaultFSRSState,
@@ -56,7 +57,9 @@ function loadAll(): Record<string, GrammarReview> {
 }
 
 function saveAll(data: Record<string, GrammarReview>): void {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)) } catch { /* ignore */ }
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)) } catch { 
+    monitoring.captureMessage('grammarSrs: save failed', 'warn')
+  }
 }
 
 function todayISO(): string {

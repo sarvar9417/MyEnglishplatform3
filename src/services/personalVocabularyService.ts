@@ -110,7 +110,7 @@ export async function updatePersonalWordInDB(
   const { error } = await supabase
     .from('personal_vocabulary')
     // part_of_speech column exists in DB but not yet in generated Supabase types
-    .update(payload as never)
+    .update(payload as any)
     .eq('user_id', userId)
     .eq('id', wordId)
 

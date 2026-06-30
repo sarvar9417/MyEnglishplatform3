@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { monitoring } from '../lib/monitoring'
 import {
   ArrowLeft, Search, BookOpen, Shuffle, CheckCircle,
   XCircle, Volume2, ChevronLeft, ChevronRight, RotateCcw,
@@ -42,7 +43,10 @@ export default function FilmDetail() {
     try {
       const saved = localStorage.getItem(`film_known_${id}`)
       return saved ? new Set(JSON.parse(saved)) : new Set()
-    } catch { return new Set() }
+    } catch { 
+      monitoring.captureMessage('FilmDetail: failed to load known words', 'warn')
+      return new Set() 
+    }
   })
 
   useEffect(() => {
@@ -1001,7 +1005,9 @@ function QuizMode({ words, filmId }: { words: FilmWord[]; filmId: string }) {
       })
       if (history.length > 20) history.shift()
       localStorage.setItem(`film_quiz_history_${filmId}`, JSON.stringify(history))
-    } catch {}
+    } catch { 
+      monitoring.captureMessage('FilmDetail: failed to save quiz history', 'warn')
+    }
   }
 
   const restart = (size?: number, mistakesOnly?: boolean) => {
@@ -1360,7 +1366,9 @@ function QuizHistory({ filmId }: { filmId: string }) {
     try {
       const saved = localStorage.getItem(`film_quiz_history_${filmId}`)
       if (saved) setHistory(JSON.parse(saved).slice(-10).reverse())
-    } catch {}
+    } catch { 
+      monitoring.captureMessage('FilmDetail: failed to load quiz history', 'warn')
+    }
   }, [filmId])
 
   if (history.length === 0) return null

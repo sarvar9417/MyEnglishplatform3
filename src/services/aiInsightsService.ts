@@ -6,6 +6,7 @@
 
 import { generateLearningInsights, type LearningInsights, type LearningSignals } from '../lib/claude'
 import { getWeakGrammarLessonIds } from '../lib/grammarSrs'
+import { monitoring } from '../lib/monitoring'
 
 const CACHE_KEY = 'ai-insights-v1'
 const STALE_MS = 7 * 24 * 60 * 60 * 1000  // 7 kun
@@ -37,6 +38,8 @@ export async function fetchAndCacheInsights(signals: LearningSignals): Promise<L
   const data = await generateLearningInsights(signals)
   try {
     localStorage.setItem(CACHE_KEY, JSON.stringify({ generatedAt: Date.now(), data }))
-  } catch { /* ignore */ }
+  } catch { 
+    monitoring.captureMessage('aiInsightsService: cache write failed', 'warn')
+  }
   return data
 }
