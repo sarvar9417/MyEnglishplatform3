@@ -118,7 +118,7 @@ function auditExercise(lessonTitle: string, ex: DailyExercise) {
   }
 
   // explanation (connection'da yo'q)
-  if (ex.type !== 'connection' && (!('explanation' in ex) || !ex.explanation || !ex.explanation.trim()))
+  if (ex.type !== 'connection' && ex.type !== 'elaborative' && (!('explanation' in ex) || !ex.explanation || !ex.explanation.trim()))
     add({ ...where, sev: 'LOW', kind: 'empty-explanation', detail: 'explanation bo\'sh' })
   else if (ex.type !== 'connection' && 'explanation' in ex && ex.explanation) {
     const len = ex.explanation.trim().length

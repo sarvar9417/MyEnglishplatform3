@@ -436,8 +436,8 @@ export const gerundsInfinitives: DailyLesson = {
     { id: 19084, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He suggested ___ to the park.", blanks: ["going"], explanation: "Suggest + V-ing" },
     { id: 19085, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I hope ___ you soon.", blanks: ["to see"], explanation: "Hope + to + V1" },
     { id: 19086, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She is good at ___.", blanks: ["singing"], explanation: "Predlogdan keyin V-ing" },
-    { id: 19087, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I stopped ___ smoking.", blanks: ["smoking"], explanation: "Stop + V-ing = tashlash" },
-    { id: 19088, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I stopped ___ smoke.", blanks: ["to smoke"], explanation: "Stop + to + V1 = maqsad" },
+    { id: 19087, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I stopped ___ (smoking).", blanks: ["smoking"], explanation: "Stop + V-ing = tashlash" },
+    { id: 19088, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I stopped ___ (smoke).", blanks: ["to smoke"], explanation: "Stop + to + V1 = maqsad" },
     { id: 19089, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I remember ___ her.", blanks: ["meeting"], explanation: "O'tganni eslash — V-ing" },
     { id: 19090, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I forgot ___ milk.", blanks: ["to buy"], explanation: "Qilishni unutdim — to + V1" },
     { id: 19091, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["I want to learn", "I want learn", "I want learning", "I want to learning"], correct: "I want to learn", explanation: "Want + to + V1 (to'g'ri)" },
@@ -602,7 +602,7 @@ export const passiveVoice: DailyLesson = {
 
 
     // ── Interleaved Practice: Passive + Active/Tenses ──
-    { id: 95181, type: 'fill-blank', instruction: 'Active va passive farqi:', question: 'Shakespeare _____ Hamlet. Hamlet _____ by Shakespeare.', blanks: ['wrote / was written'], explanation: 'Active: Shakespeare wrote. Passive: Hamlet was written by...' },
+    { id: 95181, type: 'fill-blank', instruction: 'Active va passive farqi:', question: 'Shakespeare _____ Hamlet. It _____ by Shakespeare.', blanks: ['wrote / was written'], explanation: 'Active: Shakespeare wrote. Passive: Hamlet was written by...' },
     { id: 95182, type: 'fill-blank', instruction: "Present va past passive:", question: "Rice _____ (grow) in Asia. This bridge _____ (build) in 1900.", blanks: ["is grown", "was built"], explanation: "Present passive → is grown. Past passive → was built." },
     { id: 95183, type: 'error-correction', instruction: "Passive V3 shakli:", question: "The window was break by the storm.", errorPart: "was break", correct: "The window was broken by the storm.", explanation: "Passive: be + V3 (broken), 'break' emas." },
     { id: 95184, type: 'fill-blank', instruction: 'Qachon passive (agent muhim emas):', question: 'My car _____ yesterday. Someone _____ it from the street.', blanks: ['was stolen / stole'], explanation: 'Kim qilgani noma\'lum/muhim emas → passive (was stolen). Active: someone stole.' },

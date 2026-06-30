@@ -1224,7 +1224,7 @@ export const countableUncountable: DailyLesson = {
     { id: 14287, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I need ___ information.", blanks: ["some"], explanation: "Information — sanalmaydigan" },
     { id: 14288, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Money is ___ in English.", blanks: ["uncountable"], explanation: "Money — sanalmaydigan" },
     { id: 14289, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A few vs A little: ___ apples", blanks: ["A few"], explanation: "Apples — sanaladigan" },
-    { id: 14290, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Few vs Little: ___ time (not enough)", blanks: ["Little"], explanation: "Little = yetarli emas" },
+    { id: 14290, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Few vs Little: say ___ time (not enough)", blanks: ["Little"], explanation: "Little = yetarli emas" },
     { id: 14291, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is UNCOUNTABLE?", blanks: ["news"], explanation: "News — sanalmaydigan" },
     { id: 14292, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I have ___ friends. I feel lonely.", blanks: ["few"], explanation: "Few = kam (salbiy)" },
     { id: 14293, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is CORRECT?", options: ["Much information", "Many information", "Much informations", "A lot informations"], correct: "Much information", explanation: "Information — sanalmaydigan" },

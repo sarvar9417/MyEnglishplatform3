@@ -1405,7 +1405,7 @@ export const timeAndRoutines: DailyLesson = {
     { id: 1365, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "It is 7:15.", blanks: ["quarter past seven"], explanation: "quarter past" },
     { id: 1366, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'He ___ (work) at a hospital.', blanks: ['works'], explanation: "work + s — 3-shaxs: work → works" },
     { id: 1367, type: 'fill-blank', instruction: "3-shaxs shaklini yozing:", question: 'She ___ (go) to work.', blanks: ['goes'], explanation: "go + es — 3-shaxs: go o'rniga goes yoziladi" },
-    { id: 1368, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What time is it? It is 5 PM.", blanks: ["5 o'clock"], explanation: "5 o'clock — besh soat (to'liq soat)" },
+    { id: 1368, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Look at the clock! It is 5 PM.", blanks: ["5 o'clock"], explanation: "5 o'clock — besh soat (to'liq soat)" },
     { id: 1369, type: 'fill-blank', instruction: "AM yoki PM?", question: '07:00 = 7 ___ (ertalab)', blanks: ['AM'], explanation: "07:00 = 7 AM" },
     { id: 1370, type: 'error-correction', instruction: "Xatoni toping va to'g'irlang:", question: 'She go to school at 8.', errorPart: 'go', correct: 'She goes to school at 8.', explanation: "go → goes — 3-shaxs: go o'rniga goes yoziladi" },
     { id: 1371, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: 'I ___ up at 7 AM and brush my teeth.', blanks: ['wake'], explanation: "wake up — uyg'onmoq, tongda turmoq" },

@@ -692,7 +692,7 @@ export const thereIsAre: DailyLesson = {
 
     // ── Interleaved Practice: There is/are + some/any ──
     { id: 95521, type: 'fill-blank', instruction: "There is/are va some/any:", question: "There ___ some water. There ___ any chairs.", blanks: ['is', 'aren\'t'], explanation: "Uncountable (water) → there is. Plural inkor → there aren't." },
-    { id: 95522, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "How ___ chairs are there? There ___ one chair.", blanks: ["many / is"], explanation: "Countable + many. Singular → there is." },
+    { id: 95522, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "How ___ chairs are there? There ___ one chair.", blanks: ["many"], explanation: "Countable noun bilan many ishlatiladi." },
     { id: 95523, type: 'error-correction', instruction: "There is/are xatosi:", question: "There is two cats in the garden.", errorPart: 'is', correct: 'There are two cats in the garden.', explanation: "Ko'plik → there are." },
     { id: 95524, type: 'fill-blank', instruction: "There is/are + joy:", question: "There ___ (be) a book on the table and there ___ (be) some pens.", blanks: ['is', 'are'], explanation: "Singular → is. Ko'plik → are." },
     { id: 95525, type: 'transformation', instruction: "Savolga aylantiring:", question: "There is a cat under the chair. → ___ a cat under the chair?", hint: "___ there a cat...", correct: 'Is', explanation: "Yes/no question → Is there...?" }

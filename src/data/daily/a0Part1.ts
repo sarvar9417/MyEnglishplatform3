@@ -39,7 +39,7 @@ export const greetingsAndNames: DailyLesson = {
   exercises: [
     { id: 100001, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Siz do'stingizga norasmiy salom ayting. Qaysi?", blanks: ["Hi"], explanation: "Hi — norasmiy salom. Do'stlarga ishlatiladi." },
     { id: 100002, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "My ___ is Ali.", blanks: ['name'], explanation: "My name is Ali — Mening ismim Ali." },
-    { id: 100003, type: 'fill-blank', instruction: "So'zni tarjima qiling:", question: 'I am a student. Student = ___', blanks: ['talaba'], explanation: 'Student = talaba' },
+    { id: 100003, type: 'fill-blank', instruction: "So'zni tarjima qiling:", question: 'Translate: Student = ___', blanks: ['talaba'], explanation: 'Student = talaba' },
     { id: 100004, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "It is 9 AM. You say:", blanks: ["Good morning"], explanation: "9 AM = morning — Good morning!" },
     { id: 100005, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi jumla to'g'ri?", options: ["My name is Ali.", "My name Ali.", "I name is Ali.", "My am Ali."], correct: "My name is Ali.", explanation: "To'g'ri: My name is Ali." },
   ],
@@ -90,8 +90,8 @@ export const numbersAndAlphabet: DailyLesson = {
   ],
   specialCases: [],
   exercises: [
-    { id: 100010, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "How do you write 3 in English?", blanks: ["three"], explanation: "3 = three" },
-    { id: 100011, type: 'multiple-choice', instruction: "'Seven' — bu nechchi?", question: "What number is 'seven'?", options: ['5', '6', '7', '8'], correct: '7', explanation: 'seven = 7' },
+    { id: 100010, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "How do you write 3 in English?", blanks: ["three"], explanation: "3 soni ingliz tilida three deb yoziladi." },
+    { id: 100011, type: 'multiple-choice', instruction: "'Seven' — bu nechchi?", question: "What number is 'seven'?", options: ['5', '6', '7', '8'], correct: '7', explanation: "Seven ingliz tilida 7 sonini bildiradi." },
     { id: 100012, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "How many letters are in the English alphabet?", blanks: ["26"], explanation: "Ingliz alifbosida 26 ta harf bor." },
     { id: 100013, type: 'multiple-choice', instruction: "Qaysi harf UNLI?", question: 'Which letter is a vowel?', options: ['B', 'E', 'F', 'G'], correct: 'E', explanation: 'E — unli harf (A, E, I, O, U).' },
     { id: 100014, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "There are ___ days in a week.", blanks: ['seven'], explanation: "Seven days = yeti kun (dushanba-yakshanba)." },
@@ -100,7 +100,7 @@ export const numbersAndAlphabet: DailyLesson = {
     { title: 'Raqamlar', desc: "Raqamlarni sinab ko'ring", color: 'green', icon: '🔢', ids: [100010, 100011, 100012, 100013, 100014] },
   ],
   tests: [
-    { id: 200010, type: 'multiple-choice', instruction: "'Five' nechchi?", question: "What is 'five' in numbers?", options: ['4', '5', '6', '7'], correct: '5', explanation: 'five = 5' },
+    { id: 200010, type: 'multiple-choice', instruction: "'Five' nechchi?", question: "What is 'five' in numbers?", options: ['4', '5', '6', '7'], correct: '5', explanation: "Five soni 5 ni anglatadi." },
     { id: 200011, type: 'multiple-choice', instruction: "Qaysi harf undosh?", question: 'Which letter is a consonant?', options: ['A', 'I', 'O', 'B'], correct: 'B', explanation: 'B — undosh. A, I, O — unli.' },
   ],
   testSections: [
