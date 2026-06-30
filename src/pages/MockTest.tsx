@@ -106,8 +106,13 @@ export default function MockTest() {
       weeklyTotal: total,
       overallBand: pct,
     }
-    const prevScore = await saveResult(data)
-    setResult({ ...data, prevScore })
+    try {
+      const prevScore = await saveResult(data)
+      setResult({ ...data, prevScore })
+    } catch (e) {
+      monitoring.captureException(e instanceof Error ? e : new Error(String(e)), { context: 'handleWeeklyDone' })
+      setResult(data)
+    }
     setView('result')
   }
 
@@ -139,13 +144,18 @@ export default function MockTest() {
     ]
     const overall = roundBand(bands.reduce((a, b) => a + b, 0) / bands.length)
     const data: ResultData = { type: 'ielts', ielts: sc, overallBand: overall }
-    const prevScore = await saveResult(data)
-    setResult({ ...data, prevScore })
+    try {
+      const prevScore = await saveResult(data)
+      setResult({ ...data, prevScore })
+    } catch (e) {
+      monitoring.captureException(e instanceof Error ? e : new Error(String(e)), { context: 'handleSpeakingDone' })
+      setResult(data)
+    }
     setView('result')
   }
 
   const selectedQuestions = mockData?.questions ?? []
-  const mins = testType === 'b1' ? 45 : 60
+  const mins = testType === 'a1' ? 25 : testType === 'b1' ? 45 : 60
 
   if (view === 'result' && result) {
     return <MockTestResultScreen data={result} onRetry={() => { setView('select'); setResult(null) }} />
