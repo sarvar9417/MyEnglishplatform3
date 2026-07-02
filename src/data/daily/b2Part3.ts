@@ -700,10 +700,10 @@ export const paraphrasingB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Paraphrasing + Academic Vocabulary ──
-    { id: 100414, type: 'fill-blank', instruction: 'Paraphrase (sinonim):', question: '\'The economy collapsed\' → \'The economy _____.\' \'numerous\' → \'_____\'', blanks: ['fell sharply / many'], explanation: 'Paraphrase: collapsed → fell sharply, numerous → many/a large number.' },
+    { id: 100414, type: 'fill-blank', instruction: 'Paraphrase (sinonim):', question: '\'The economy collapsed\' → \'The economy _____.\' \'numerous\' → \'_____\'', blanks: ['fell sharply', 'many'], explanation: 'Paraphrase: collapsed → fell sharply, numerous → many/a large number.' },
     { id: 100415, type: 'fill-blank', instruction: "In short / to sum up:", question: "_____ short, education reduces poverty. To _____ up, learning leads to jobs.", blanks: ["In", "sum"], explanation: "Qoida: Xulosa iboralari — In short = qisqacha aytganda, To sum up = umumlashtirib aytganda. Ikkalasi ham yakuniy xulosa uchun." },
     { id: 100416, type: 'error-correction', instruction: "Paraphrase — bir xil so'zni takrorlamaslik:", question: "The important point is that this point is important.", errorPart: "this point is important", correct: "The key issue is that it carries great weight.", explanation: "Paraphrase: takrorni sinonim bilan almashtirish (key issue, carries great weight)." },
-    { id: 100417, type: 'fill-blank', instruction: 'Rephrase (akademik sinonim):', question: '\'show\' → \'_____\'. \'big problem\' → \'_____ issue\'.', blanks: ['demonstrate / major'], explanation: 'Akademik paraphrase: show → demonstrate, big → major.' },
+    { id: 100417, type: 'fill-blank', instruction: 'Rephrase (akademik sinonim):', question: '\'show\' → \'_____\'. \'big problem\' → \'_____ issue\'.', blanks: ['demonstrate', 'major'], explanation: 'Akademik paraphrase: show → demonstrate, big → major.' },
     { id: 100418, type: 'transformation', instruction: "Gapni paraphrase qiling:", question: "Many people think the plan is very good.", hint: "Numerous individuals consider ...", correct: "Numerous individuals consider the plan highly effective.", explanation: "Paraphrase: many people → numerous individuals, very good → highly effective." },
 
     // ── Productive Exercises: Passage, Connection, Vocab-Match ──
@@ -999,7 +999,7 @@ export const advancedVerbPatternsB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Advanced Verb Patterns + Gerund/Infinitive ──
-    { id: 100419, type: 'fill-blank', instruction: 'Urge + obj + to V va avoid + V-ing:', question: 'I urge you _____ early, and I\'d avoid _____ to the last minute.', blanks: ['to apply / leaving'], explanation: 'Urge + object + to V (to apply). Avoid + V-ing (leaving).' },
+    { id: 100419, type: 'fill-blank', instruction: 'Urge + obj + to V va avoid + V-ing:', question: 'I urge you _____ early, and I\'d avoid _____ to the last minute.', blanks: ['to apply', 'leaving'], explanation: 'Urge + object + to V (to apply). Avoid + V-ing (leaving).' },
     { id: 100420, type: 'fill-blank', instruction: "Look forward to + V-ing:", question: "I look forward _____ (hear) from you. She admitted _____ (make) a mistake.", blanks: ["to hearing", "making"], explanation: "Look forward to + V-ing (hearing). Admit + V-ing (making)." },
     { id: 100421, type: 'error-correction', instruction: "Recommend + V-ing (to'g'ri):", question: "I recommend to submit it early.", errorPart: "to submit", correct: "I recommend submitting it early.", explanation: "Qoida: Recommend + V-ing — 'recommend' dan keyin V-ing keladi, to V emas. Recommend submitting, not recommend to submit." },
     { id: 100422, type: 'fill-blank', instruction: 'Remember + to V / + V-ing farqi:', question: 'Remember _____ the door (duty). I remember _____ it last night (memory).', blanks: ['to lock', 'locking'], explanation: 'Remember + to V (kelajak vazifa). Remember + V-ing (o\'tmish xotira).' },

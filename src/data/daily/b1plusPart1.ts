@@ -338,11 +338,11 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
     { id: 50071, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The hotel where we stayed there was nice.', errorPart: 'there', correct: 'The hotel where we stayed was nice.', explanation: "Where = there, ikkalasi birga kerak emas" },
     { id: 50072, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The woman whom called you is my aunt.', errorPart: 'whom', correct: 'The woman who called you is my aunt.', explanation: "Whom subject bo'lmaydi \u2014 who kerak (subject)" },
     { id: 50073, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'The person to who I spoke is the director.', errorPart: 'to who', correct: 'The person to whom I spoke is the director.', explanation: "Prepozitsiyadan keyin whom" },
-    { id: 50074, type: 'transformation', instruction: 'Birlashtiring:', question: 'I met a man. He is a famous actor.', hint: 'The man whom ...', correct: 'The man whom I met is a famous actor.', explanation: "Whom \u2014 object" },
-    { id: 50075, type: 'transformation', instruction: 'Birlashtiring:', question: 'We stayed at a hotel. It was expensive.', hint: 'The hotel where ...', correct: 'The hotel where we stayed was expensive.', explanation: "Where \u2014 joy" },
+    { id: 50074, type: 'transformation', instruction: 'Birlashtiring:', question: 'I met a man. He is a famous actor.', hint: 'The man whom ...', correct: 'The man whom I met is a famous actor.', explanation: 'Whom \\u2014 object (ingliz tilida shunday ishlatiladi)' },
+    { id: 50075, type: 'transformation', instruction: 'Birlashtiring:', question: 'We stayed at a hotel. It was expensive.', hint: 'The hotel where ...', correct: 'The hotel where we stayed was expensive.', explanation: 'Where \\u2014 joy (ingliz tilida shunday ishlatiladi)' },
     { id: 50076, type: 'transformation', instruction: "Whose bilan birlashtiring:", question: 'A girl called you. Her father is a doctor.', hint: 'The girl whose ...', correct: 'The girl whose father is a doctor called you.', explanation: "Whose \u2014 her father = whose father" },
-    { id: 50077, type: 'transformation', instruction: 'Birlashtiring:', question: 'I read a book. It was written by an Uzbek author.', hint: 'The book which ...', correct: 'The book which I read was written by an Uzbek author.', explanation: "Which \u2014 narsa" },
-    { id: 50078, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is CORRECT?", options: ["The man who called you is my brother.", "The man whom called you is my brother.", "The man which called you is my brother.", "The man whose called you is my brother."], correct: "The man who called you is my brother.", explanation: "Subject \u2014 who" },
+    { id: 50077, type: 'transformation', instruction: 'Birlashtiring:', question: 'I read a book. It was written by an Uzbek author.', hint: 'The book which ...', correct: 'The book which I read was written by an Uzbek author.', explanation: 'Which \\u2014 narsa (ingliz tilida shunday ishlatiladi)' },
+    { id: 50078, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is CORRECT?", options: ["The man who called you is my brother.", "The man whom called you is my brother.", "The man which called you is my brother.", "The man whose called you is my brother."], correct: "The man who called you is my brother.", explanation: 'Subject \\u2014 who (ingliz tilida shunday ishlatiladi)' },
  
     { id: 55007, type: 'passage', instruction: 'Matnni to\'ldiring:',
       passage: 'The teacher ___(1) (who/which) taught me English was from England. She was the person ___(2) (who/whom) I respected the most. The school ___(3) (where/when) we studied was very old. I\'ll never forget the day ___(4) (when/where) she gave us our diplomas.',
@@ -512,7 +512,7 @@ export const participleClausesB1plus: DailyLesson = {
         { en: 'The money found by the police was returned.', uz: "Politsiya tomonidan topilgan pul qaytarildi." }
     ],
       drills: [
-        { id: 50101, type: 'transformation', instruction: 'Relative \u2192 Participle:', question: 'The woman who lives next door is a doctor.', hint: 'The woman living ...', correct: 'The woman living next door is a doctor.', explanation: "Who lives \u2192 living" },
+        { id: 50101, type: 'transformation', instruction: 'Relative \u2192 Participle:', question: 'The woman who lives next door is a doctor.', hint: 'The woman living ...', correct: 'The woman living next door is a doctor.', explanation: "Who lives (who+verb) o\u2018rniga \u2018living\u2019 (V-ing) ishlatiladi" },
         { id: 50102, type: 'transformation', instruction: 'Relative \u2192 Participle:', question: 'The book which was written in 1990 is famous.', hint: 'The book written ...', correct: 'The book written in 1990 is famous.', explanation: "Which was written \u2192 written" },
         { id: 50103, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Can non-defining relative clauses be reduced?', options: ['Yes, always', 'No, never', 'Only with who', 'Only in informal speech'], correct: 'No, never', explanation: 'Non-defining qisqarmaydi (vergul bilan ajratilgan nisbiy gaplar). Qoida: My father, who is a teacher, works hard. (Otam, o\'qituvchi, qattiq ishlaydi.) Bu gapni qisqartirib bo\'lmaydi: \'My father, being a teacher\' XATO.' }
     ],
@@ -520,7 +520,7 @@ export const participleClausesB1plus: DailyLesson = {
     ],
   exercises: [
     { id: 50104, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: '___ (walk) home, I met an old friend.', blanks: ['Walking'], explanation: 'Walking \u2014 active, bir vaqtda' },
-    { id: 50105, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: '___ (exhaust) by the trip, she went to bed.', blanks: ['Exhausted'], explanation: "Exhausted \u2014 passive" },
+    { id: 50105, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: '___ (exhaust) by the trip, she went to bed.', blanks: ['Exhausted'], explanation: "Exhausted (holdan toydi) \u2014 passive ma\u2019noda ishlatiladi" },
     { id: 50106, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: '___ (finish) her work, she left the office.', blanks: ['Having finished'], explanation: 'Having finished \u2014 oldingi harakat' },
     { id: 50107, type: 'fill-blank', instruction: "To'g'ri shaklni qo'ying:", question: '___ (not/know) the answer, he kept silent.', blanks: ['Not knowing'], explanation: 'Not knowing \u2014 negative participle' },
     { id: 50108, type: 'fill-blank', instruction: "Participle qo'ying:", question: 'The girl ___ (sit) by the window is my sister.', blanks: ['sitting'], explanation: 'Sitting \u2014 relative clause qisqarmasi' },
@@ -577,7 +577,7 @@ export const participleClausesB1plus: DailyLesson = {
     { id: 50125, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Past Participle qanday yasaladi?", blanks: ["V3"], explanation: "Past Participle = V3" },
     { id: 50126, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Perfect Participle qanday ma'noni ifodalaydi?", blanks: ["oldingi harakat"], explanation: "Perfect Participle = oldingi harakat" },
     { id: 50127, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Participle clause ning subject i bilan asosiy gapning subject i ...", blanks: ["bir xil bo'lishi kerak"], explanation: "Subject bir xil bo'lmasa, dangling participle" },
-    { id: 50128, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Negative participle da not qayerda turadi?", blanks: ["participle dan oldin"], explanation: "Not + participle" },
+    { id: 50128, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Negative participle da not qayerda turadi?", blanks: ["participle dan oldin"], explanation: 'Not bilan participle birga ishlatiladi (grammatik qoida)' },
     { id: 50129, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ late, I took a taxi.", blanks: ["Being"], explanation: "Being late = kechikkani sabab. Qoida: Being late, she missed the bus. (Kechikkani uchun avtobusni boy berdi.) = Because she was late." },
     { id: 50130, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The window ___ in the storm needs replacing.", blanks: ["broken"], explanation: "The window was broken \u2014 passive, V3" },
     { id: 50131, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ breakfast, she went to work.", blanks: ["Having eaten"], explanation: "Avval breakfast, keyin work \u2192 Having eaten" },
@@ -628,7 +628,7 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
       { id: 50139, type: 'multiple-choice' as const, question: "'remembered promising' means she...", options: ["will promise later","recalls a past promise","forgot the promise","broke the promise"], correctIndex: 1, explanation: "'remember + -ing' — o'tgan xotira." },
       { id: 50140, type: 'multiple-choice' as const, question: "'stopped to think' means she...", options: ["stopped thinking","paused in order to think","never thought","thought too much"], correctIndex: 1, explanation: "'stop + to V' — maqsad." },
       { id: 50141, type: 'multiple-choice' as const, question: "'regretted not telling' refers to...", options: ["a future regret","regret about the past","a plan","a promise"], correctIndex: 1, explanation: "'regret + -ing' — o'tmish uchun afsus." },
-      { id: 50142, type: 'multiple-choice' as const, question: "'decided to follow' uses which form?", options: ["gerund","infinitive","past participle","base verb"], correctIndex: 1, explanation: "'decide + to V1'." }
+      { id: 50142, type: 'multiple-choice' as const, question: "'decided to follow' uses which form?", options: ["gerund","infinitive","past participle","base verb"], correctIndex: 1, explanation: '\'decide bilan to V1\'. birga ishlatiladi (grammatik qoida)' }
     ]
   },
   writing: {
@@ -972,12 +972,12 @@ export const modalPerfectsB1plus: DailyLesson = {
     { title: "🔀 Aralash", desc: "Modal perfects + Conditionals farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95631, 95632, 95633, 95634, 95635] },
   ],
   tests: [
-    { id: 50215, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Must have + V3 qanday ma'noni ifodalaydi?", blanks: ["ishonch (deduction)"], explanation: "Must have = ishonch" },
-    { id: 50216, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Might have + V3 qanday ma'no?", blanks: ["taxmin (possibility)"], explanation: "Might have = taxmin" },
-    { id: 50217, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Should have + V3 qanday ma'no?", blanks: ["afsus/tanqid"], explanation: "Should have = afsus" },
+    { id: 50215, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Must have + V3 qanday ma'noni ifodalaydi?", blanks: ["ishonch (deduction)"], explanation: 'Must have = ishonch — "Must have" so\'zining tarjimasi' },
+    { id: 50216, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Might have + V3 qanday ma'no?", blanks: ["taxmin (possibility)"], explanation: 'Might have = taxmin — "Might have" so\'zining tarjimasi' },
+    { id: 50217, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Should have + V3 qanday ma'no?", blanks: ["afsus/tanqid"], explanation: 'Should have = afsus — "Should have" so\'zining tarjimasi' },
     { id: 50218, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Could have + V3 qanday ma'no?", blanks: ["imkoniyat (lekin qilinmadi)"], explanation: "Could have = imkoniyat" },
     { id: 50219, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Would have + V3 qayerda ishlatiladi?", blanks: ["third conditional"], explanation: "Would have = third conditional" },
-    { id: 50220, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She looks pale. She ___ been ill.", blanks: ["must have"], explanation: "Ishonch \u2192 must have" },
+    { id: 50220, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She looks pale. She ___ been ill.", blanks: ["must have"], explanation: "Ishonch bildirganda \u2018must have\u2019 ishlatiladi (o\u2018tmishdagi ishonchli taxmin)" },
     { id: 50221, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I'm not sure why he's late. He ___ missed the bus.", blanks: ["might have"], explanation: "Aniq emas \u2192 might have" },
     { id: 50222, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "You ___ told me the truth from the start.", blanks: ["should have"], explanation: "Tanqid \u2192 should have" },
     { id: 50223, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "If we had left earlier, we ___ caught the train.", blanks: ["would have"], explanation: "Third conditional \u2192 would have" },
@@ -1497,7 +1497,7 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
     ],
       drills: [
         { id: 50327, type: 'fill-blank', instruction: "One yoki Ones bilan to'ldiring:", question: 'Which jacket? The blue ___ .', blanks: ['one'], explanation: 'Birlik = bitta (singular). Qoida: Ingliz tilida birlik ot bilan birlik fe\'l: one book IS. Ko\'plik ot bilan ko\'plik fe\'l: two books ARE.' },
-        { id: 50328, type: 'fill-blank', instruction: "One yoki Ones bilan to'ldiring:", question: 'Which apples? The green ___ .', blanks: ['ones'], explanation: "Ko'plik \u2014 ones" },
+        { id: 50328, type: 'fill-blank', instruction: "One yoki Ones bilan to'ldiring:", question: 'Which apples? The green ___ .', blanks: ['ones'], explanation: 'Ko\'plik \\u2014 ones (ingliz tilida shunday ishlatiladi)' },
         { id: 50329, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: 'Which is INCORRECT?', options: ['The red one', 'The blue ones', 'This water one', 'Which one?'], correct: 'This water one', explanation: "Sanalmaydigan \u2014 one ishlatilmaydi" }
     ],
     }
@@ -1517,12 +1517,12 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
     { id: 50341, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'I like this water one.', errorPart: 'one', correct: 'I like this water.', explanation: "Sanalmaydigan \u2014 one ishlatilmaydi" },
     { id: 50342, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'He said so, but I disagree.', errorPart: 'said so', correct: 'He said that, but I disagree.', explanation: 'Say + that + gap = aytmoq. Qoida: \'Say\' dan keyin \'so\' ishlatilmaydi, \'that\' ishlatiladi: He said that he was tired. (U charchaganini aytdi.) \'Say so\' XATO! \'Say that\' to\'g\'ri.' },
     { id: 50343, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She can sing better than I can sing.', errorPart: 'can sing (second)', correct: 'She can sing better than I can.', explanation: "Verb ellipsis \u2014 sing tushiriladi" },
-    { id: 50344, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Which books? The red one.', errorPart: 'one', correct: 'Which books? The red ones.', explanation: "Ko'plik \u2014 ones" },
+    { id: 50344, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Which books? The red one.', errorPart: 'one', correct: 'Which books? The red ones.', explanation: 'Ko\'plik \\u2014 ones (ingliz tilida shunday ishlatiladi)' },
     { id: 50345, type: 'transformation', instruction: "Qisqartiring:", question: 'She went home and she had dinner.', hint: 'She went home and ___', correct: 'She went home and had dinner.', explanation: 'Subject ellipsis: she tushirildi' },
     { id: 50346, type: 'transformation', instruction: "Do substitution qiling:", question: 'She likes coffee more than he likes coffee.', hint: 'She likes coffee more than he ___', correct: 'She likes coffee more than he does.', explanation: 'Does = likes coffee = \'does\' \'likes coffee\' o\'rnida. Qoida: \'Does\' oldingi fe\'l + object o\'rnida: He likes coffee, and she does too. (U kofeni yoqtiradi, u ham.)' },
     { id: 50347, type: 'transformation', instruction: "So bilan qisqartiring:", question: 'A: Is it true? B: I think it is true.', hint: 'I think ___', correct: 'I think so.', explanation: 'So = that it is true (shuning uchun to\'g\'ri). Qoida: \'So\' olmosh sifatida: Is he coming? I think so. (U kelyaptimi? Shunday deb o\'ylayman.) \'So\' oldingi gap o\'rnida.' },
     { id: 50348, type: 'transformation', instruction: "One bilan qisqartiring:", question: 'Which car is yours? The red car.', hint: 'The red ___', correct: 'The red one.', explanation: 'One = car (bironta avtomobil). One oldin aytilgan ot o\'rnida ishlatiladi, takrorlanmaslik uchun.' },
-    { id: 50349, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is CORRECT?", options: ["I think so.", "I think such.", "I think like that.", "I think thus."], correct: "I think so.", explanation: "Think so \u2014 to'g'ri" },
+    { id: 50349, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is CORRECT?", options: ["I think so.", "I think such.", "I think like that.", "I think thus."], correct: "I think so.", explanation: "Think so (shunday deb o\'ylayman) — to\'g\'ri javob" },
  
     { id: 55001, type: 'passage', instruction: 'Matnni to\'ldiring:',
       passage: 'A: Do you like coffee? B: Yes, I ___(1) (do/am). A: I think she passed the exam. B: I think ___(2) (so/too). A: He hasn\'t finished yet. B: But I ___(3) (have/has)! A: I love learning English. B: So ___(4) (do/am) I!',
@@ -1541,7 +1541,7 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
 
 
     // ── Interleaved Practice: Ellipsis + So/Neither ──
-    { id: 95661, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I like tea.' '___ do I.' 'I can't swim.' '___ can I.'", blanks: ["So / Neither"], explanation: "Tasdiqqa rozilik → So. Inkorga rozilik → Neither." },
+    { id: 95661, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I like tea.' '___ do I.' 'I can't swim.' '___ can I.'", blanks: ['So', 'Neither'], explanation: "Tasdiqqa rozilik → So. Inkorga rozilik → Neither." },
     { id: 95662, type: 'fill-blank', instruction: "Auxiliary ellipsis:", question: "She has finished and so ___ (do) he. They went home and so ___ (do) we.", blanks: ['has', 'did'], explanation: "Auxiliary zamonni mos qiladi: has → has, went → did." },
     { id: 95663, type: 'error-correction', instruction: "Ellipsis — auxiliary:", question: "'I am tired.' 'So I am.' (rozilik)", errorPart: 'So I am', correct: "'I am tired.' 'So am I.'", explanation: "Rozilikda inversiya: So + auxiliary + subject." },
     { id: 95664, type: 'fill-blank', instruction: "Not...either / neither:", question: "A: 'I don't like it.' B: 'I don't ___' / '___ do I.'", blanks: ['either', 'Neither'], explanation: "I don't either / Neither do I (ikkalasi to'g'ri)." },

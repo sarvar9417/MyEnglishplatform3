@@ -170,7 +170,7 @@ export const futureFormsReview: DailyLesson = {
 
 
     // ── Interleaved Practice: Future Forms (will / going to / PC / PS) ──
-    { id: 95051, type: 'fill-blank', instruction: 'Dalilli bashorat (going to) va va\'da (will):', question: 'Look at those clouds! It _____ rain. Don\'t worry, I _____ carry your bag.', blanks: ['is going to / will'], explanation: 'Hozirgi dalil → is going to rain. O\'sha onda berilgan va\'da → will carry.' },
+    { id: 95051, type: 'fill-blank', instruction: 'Dalilli bashorat (going to) va va\'da (will):', question: 'Look at those clouds! It _____ rain. Don\'t worry, I _____ carry your bag.', blanks: ['is going to', 'will'], explanation: 'Hozirgi dalil → is going to rain. O\'sha onda berilgan va\'da → will carry.' },
     { id: 95052, type: 'fill-blank', instruction: "Arrangement (PC) va timetable (PS):", question: "I _____ the dentist at 3 tomorrow (arranged). The film _____ at 7 pm (schedule).", blanks: ["am meeting", "starts"], explanation: "Kelishilgan uchrashuv → Present Continuous (am meeting). Jadval → Present Simple (starts)." },
     { id: 95053, type: 'error-correction', instruction: "Spontan qaror — will, going to emas:", question: "The phone is ringing. I am going to answer it.", errorPart: "am going to answer", correct: "The phone is ringing. I will answer it.", explanation: "O'sha onda qabul qilingan qaror → will. Going to oldindan rejalashtirilgan uchun." },
     { id: 95054, type: 'fill-blank', instruction: 'Reja (going to) va kelishuv (Present Continuous):', question: 'I _____ start a new course next month. We _____ dinner with friends on Friday.', blanks: ['am going to', 'are having'], explanation: 'Niyat/reja → am going to start. Aniq kelishilgan tadbir → are having dinner.' },
@@ -210,7 +210,7 @@ export const futureFormsReview: DailyLesson = {
     { id: 40047, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is correct? 'I ___ my dentist tomorrow at 5 PM.'", blanks: ["am seeing"], explanation: "Aniq kelishuv ? Present Continuous: 'am seeing'." },
     { id: 40048, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is correct? 'I promise I ___ you.'", blanks: ["will help"], explanation: "Va'da ? 'will help'. 'I promise' ? doim will bilan." },
     { id: 40049, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is correct? 'When she ___ , I will call you.'", blanks: ["arrives"], explanation: "Vaqt gapida (when) Present Simple ishlatiladi." },
-    { id: 40050, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Choose the best option: 'We ___ out of milk. I ___ and buy some.'", blanks: ["are running / will go"], explanation: "Hozir tugayapti (Present Continuous) ? spontan qaror (will go)." },
+    { id: 40050, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Choose the best option: 'We ___ out of milk. I ___ and buy some.'", blanks: ['are running', 'will go'], explanation: "Hozir tugayapti (Present Continuous) ? spontan qaror (will go)." },
     { id: 40051, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence uses 'will' for a prediction?", options: ["I think it will rain", "I will rain", "I think it rains", "I will be rain"], correct: "I think it will rain", explanation: "'I think it will rain' = bashorat. Qolganlari spontan qaror/va'da." },
     { id: 40052, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What is the difference between 'I am seeing the doctor' and 'I am going to see the doctor'?", blanks: ["First is arrangement, second is intention"], explanation: "Present Continuous = aniq kelishuv. Going to = niyat/intention." },
     { id: 40053, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is INCORRECT?", options: ["Look! It will snow!", "Look! It is going to snow!", "Look! It's snowing!", "Look! It snows!"], correct: "Look! It will snow!", explanation: "'Look!' aniq dalil ? 'it is going to snow', not 'will snow'." },
@@ -360,7 +360,7 @@ export const modalsObligation: DailyLesson = {
 
 
     // ── Interleaved Practice: Obligation + Speculation/Advice ──
-    { id: 95061, type: 'fill-blank', instruction: 'Must (majburiyat) va must (taxmin):', question: 'You _____ wear a helmet — it\'s the law. He\'s not answering; he _____ be asleep.', blanks: ['must / must'], explanation: 'Birinchi must = majburiyat (qonun). Ikkinchi must = ishonchli taxmin. Bir so\'z, ikki ma\'no.' },
+    { id: 95061, type: 'fill-blank', instruction: 'Must (majburiyat) va must (taxmin):', question: 'You _____ wear a helmet — it\'s the law. He\'s not answering; he _____ be asleep.', blanks: ['must', 'must'], explanation: 'Birinchi must = majburiyat (qonun). Ikkinchi must = ishonchli taxmin. Bir so\'z, ikki ma\'no.' },
     { id: 95062, type: 'fill-blank', instruction: "Mustn't (taqiq) va don't have to (majburiy emas):", question: "You _____ smoke here (it is forbidden), but you _____ wear a tie (it is optional).", blanks: ["mustn't", "don't have to"], explanation: "Taqiq → mustn't. Majburiy emas (ixtiyoriy) → don't have to. Ikkisi butunlay farq qiladi." },
     { id: 95063, type: 'error-correction', instruction: "Should (maslahat) vs must (majburiyat):", question: "You must drink more water if you want, it's just my advice.", errorPart: "must", correct: "You should drink more water if you want, it's just my advice.", explanation: "Maslahat → should. Must = kuchli majburiyat, maslahat uchun emas." },
     { id: 95064, type: 'fill-blank', instruction: 'Have to (tashqi majburiyat) va must (ichki/shaxsiy):', question: 'I _____ wear a uniform at work (company rule). I really _____ call my mother — I miss her.', blanks: ['have to', 'must'], explanation: 'Tashqi qoidalar → have to. Ichki, shaxsiy his → must.' },
@@ -555,7 +555,7 @@ export const modalsSpeculation: DailyLesson = {
     { id: 40119, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "He can't be at home yesterday.", errorPart: 'can\'t be', correct: "He can't have been at home yesterday.", explanation: "O'tgan zamon ? can't have been." },
     { id: 40120, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "She must went to the bank.", errorPart: 'must went', correct: "She must have gone to the bank.", explanation: "Must + have + V3 (o'tgan zamon taxmini)." },
     { id: 40121, type: 'transformation', instruction: "Must be bilan ifodalang:", question: 'I am 90% sure she is at work.', hint: 'She ...', correct: 'She must be at work.', explanation: "90% ishonch ? must be." },
-    { id: 40122, type: 'transformation', instruction: "Might be bilan ifodalang:", question: 'Perhaps she is stuck in traffic.', hint: 'She ...', correct: 'She might be stuck in traffic.', explanation: "Ehtimol ? might be." },
+    { id: 40122, type: 'transformation', instruction: "Might be bilan ifodalang:", question: 'Perhaps she is stuck in traffic.', hint: 'She ...', correct: 'She might be stuck in traffic.', explanation: 'Ehtimol ? might be. (ingliz tilida shunday ishlatiladi)' },
     { id: 40123, type: 'transformation', instruction: "Can't be bilan ifodalang:", question: 'I am sure he is not lying.', hint: 'He ...', correct: 'He can\'t be lying.', explanation: "Ishonch bilan mumkin emas ? can't be." },
     { id: 40124, type: 'transformation', instruction: "O'tgan zamonga o'zgartiring:", question: 'She must be at home.', hint: 'Yesterday, she ...', correct: 'She must have been at home yesterday.', explanation: "O'tgan zamon taxmini ? must have been." },
     { id: 40125, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "I can't find my keys. I _____ them at the office.", blanks: ['must have left'], explanation: "O'tgan zamon (topolmayapman) ? must have left." },
@@ -566,7 +566,7 @@ export const modalsSpeculation: DailyLesson = {
 
 
     // ── Interleaved Practice: Modals of Speculation + Obligation ──
-    { id: 95031, type: 'fill-blank', instruction: 'Speculation va obligation (bir xil so\'z, ikki ma\'no):', question: 'He _____ be at work now (I\'m sure). You _____ finish this by 5 PM (rule).', blanks: ['must / have to'], explanation: 'Must be = taxmin (100% ishonch). Have to finish = tashqi majburiyat.' },
+    { id: 95031, type: 'fill-blank', instruction: 'Speculation va obligation (bir xil so\'z, ikki ma\'no):', question: 'He _____ be at work now (I\'m sure). You _____ finish this by 5 PM (rule).', blanks: ['must', 'have to'], explanation: 'Must be = taxmin (100% ishonch). Have to finish = tashqi majburiyat.' },
     { id: 95032, type: 'fill-blank', instruction: "Can't (imkonsiz taxmin) ni to'ldiring:", question: "The lights are off, so they _____ be at home.", blanks: ["can't"], explanation: "Dalilga asoslangan imkonsizlik → can't be (mustn't emas — mustn't = taqiq)." },
     { id: 95033, type: 'error-correction', instruction: "Speculation xatosi — mustn't vs can't:", question: "She speaks perfect French, so she mustn't be a beginner.", errorPart: "mustn't be", correct: "She speaks perfect French, so she can't be a beginner.", explanation: "Imkonsiz taxmin → can't be. Mustn't = taqiq (ruxsat yo'q), taxmin emas." },
     { id: 95034, type: 'fill-blank', instruction: 'Might (ehtimol) va must (majburiyat):', question: 'It _____ rain later, take an umbrella. You _____ wear a seatbelt — it\'s the law.', blanks: ['might', 'must'], explanation: 'Ehtimollik → might rain. Qonuniy majburiyat → must wear.' },
@@ -753,7 +753,7 @@ export const pastHabits: DailyLesson = {
     { id: 40162, type: 'fill-blank', instruction: "Be used to bilan to'ldiring:", question: "I _____ in a noisy city. It doesn't bother me.", blanks: ['am used to living'], explanation: "O'rganib qolganman ? am used to + V-ing." },
     { id: 40163, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I would have a car when I was younger.", errorPart: 'would have', correct: "I used to have a car when I was younger.", explanation: "State (have) ? used to. Would faqat actions uchun." },
     { id: 40164, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "She didn't used to eat vegetables.", errorPart: 'didn\'t used to', correct: "She didn't use to eat vegetables.", explanation: "Kengaytirish ? didn't use to (d harfisiz)." },
-    { id: 40165, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I am used to wake up at 6 AM.", errorPart: 'wake up', correct: "I am used to waking up at 6 AM.", explanation: "Be used to + V-ing." },
+    { id: 40165, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I am used to wake up at 6 AM.", errorPart: 'wake up', correct: "I am used to waking up at 6 AM.", explanation: 'Be used to bilan V-ing. birga ishlatiladi (grammatik qoida)' },
     { id: 40166, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "Where did you used to live?", errorPart: 'did you used to', correct: "Where did you use to live?", explanation: "So'roq ? did + use to (d harfisiz)." },
     { id: 40167, type: 'transformation', instruction: "Used to bilan ifodalang:", question: 'I don\'t play football anymore, but I played it every day.', hint: 'I ...', correct: 'I used to play football every day.', explanation: "O'tmishda qilardim, hozir qilmayman ? used to." },
     { id: 40168, type: 'transformation', instruction: "Would bilan ifodalang:", question: 'Every morning, he went for a run.', hint: 'Every morning, he would ...', correct: 'Every morning, he would go for a run.', explanation: "Takrorlanuvchi harakat ? would go." },
@@ -976,9 +976,9 @@ export const causatives: DailyLesson = {
     { id: 40211, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I got my brother help me with the move.", errorPart: 'help', correct: "I got my brother to help me with the move.", explanation: "Get + person + to V1 (to kerak)." },
     { id: 40212, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "She made her hair cut at the salon.", errorPart: 'made', correct: "She had her hair cut at the salon.", explanation: "Causative ? have/get, make emas." },
     { id: 40213, type: 'transformation', instruction: "Causative bilan ifodalang:", question: 'A hairdresser cut her hair.', hint: 'She ...', correct: 'She had her hair cut.', explanation: "Passive causative: had + object + V3." },
-    { id: 40214, type: 'transformation', instruction: "Have + person bilan ifodalang:", question: 'She asked the hairdresser to cut her hair.', hint: 'She ...', correct: 'She had the hairdresser cut her hair.', explanation: "Have + person + V1." },
+    { id: 40214, type: 'transformation', instruction: "Have + person bilan ifodalang:", question: 'She asked the hairdresser to cut her hair.', hint: 'She ...', correct: 'She had the hairdresser cut her hair.', explanation: 'Have bilan person + V1. birga ishlatiladi (grammatik qoida)' },
     { id: 40215, type: 'transformation', instruction: "Get + person bilan ifodalang:", question: 'She persuaded her friend to drive her.', hint: 'She ...', correct: 'She got her friend to drive her.', explanation: "Get + person + to V1 (ko'ndirish)." },
-    { id: 40216, type: 'transformation', instruction: "Causative bilan ifodalang:", question: 'Someone checks my eyes every year.', hint: 'I ...', correct: 'I have my eyes checked every year.', explanation: "Have + object + V3." },
+    { id: 40216, type: 'transformation', instruction: "Causative bilan ifodalang:", question: 'Someone checks my eyes every year.', hint: 'I ...', correct: 'I have my eyes checked every year.', explanation: 'Have bilan object + V3. birga ishlatiladi (grammatik qoida)' },
     { id: 40217, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "You should _____ your teeth checked twice a year.", blanks: ['have'], explanation: "Should + have + object + V3." },
     { id: 40218, type: 'fill-blank', instruction: 'To\'g\'ri variant:', question: 'I got my friend ___ me with my homework.', blanks: ['to help'], explanation: 'Get + person + to V1.' },
     { id: 40219, type: 'fill-blank', instruction: "Present Perfect bilan:", question: "I _____.", blanks: ['have just had my car washed'], explanation: "Present perfect causative: have + had + object + V3." },
@@ -986,7 +986,7 @@ export const causatives: DailyLesson = {
 
 
     // ── Interleaved Practice: Causatives + Active/Passive ──
-    { id: 95011, type: 'fill-blank', instruction: 'Have something done va o\'zi qilish:', question: 'I can\'t cut hair myself, so I _____ at the salon. My sister _____ her own hair.', blanks: ['have it cut / cuts'], explanation: 'Boshqa qildiradi → have it cut (causative). O\'zi qiladi → cuts (oddiy active).' },
+    { id: 95011, type: 'fill-blank', instruction: 'Have something done va o\'zi qilish:', question: 'I can\'t cut hair myself, so I _____ at the salon. My sister _____ her own hair.', blanks: ['have it cut', 'cuts'], explanation: 'Boshqa qildiradi → have it cut (causative). O\'zi qiladi → cuts (oddiy active).' },
     { id: 95012, type: 'fill-blank', instruction: "Causative (have/get sth done) ni to'ldiring:", question: "We are _____ our house _____ next month (someone else does it).", blanks: ["having", "painted"], explanation: "Have + object + V3 = boshqaga qildirish: having our house painted." },
     { id: 95013, type: 'error-correction', instruction: "Causative tartibi xatosi:", question: "I had cut my hair yesterday by a barber.", errorPart: "had cut my hair", correct: "I had my hair cut yesterday by a barber.", explanation: "To'g'ri tartib: have + OBJECT + V3 → had my hair cut (object fe'ldan oldin)." },
     { id: 95014, type: 'fill-blank', instruction: 'Passive va Causative farqi:', question: 'The window _____ by a thief. Then we _____ by a professional.', blanks: ['was broken', 'had it repaired'], explanation: 'Oddiy passive (kim sindirgani noma\'lum) → was broken. Boshqaga tuzattirish → had it repaired.' },
@@ -1059,10 +1059,10 @@ export const causatives: DailyLesson = {
     { id: 40228, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is INCORRECT?", options: ["I had my friend to help", "I had my friend help", "I had my friend helped", "I had my friend helping"], correct: "I had my friend to help", explanation: "Have + person + V1 (to'siz). 'To help' xato." },
     { id: 40229, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I had my hair cut' vs 'I had the hairdresser cut my hair' — difference?", blanks: ["Same meaning, different focus"], explanation: "Bir xil ma'no. Birinchi sochga, ikkinchi sartaroshga e'tibor." },
     { id: 40230, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which uses 'get' for persuasion?", blanks: ["I got my friend to help"], explanation: "Get + person + to V1 = persuasion. Qolganlari get + object + V3." },
-    { id: 40231, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What is the correct passive causative form?", blanks: ["I had my watch repaired"], explanation: "Have + object + V3." },
+    { id: 40231, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What is the correct passive causative form?", blanks: ["I had my watch repaired"], explanation: 'Have bilan object + V3. birga ishlatiladi (grammatik qoida)' },
     { id: 40232, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'We must have the project finished by Friday' means:", blanks: ["We must arrange for it to be finished"], explanation: "Causative: boshqa odam tugatishi kerak." },
     { id: 40233, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence uses 'have something done' correctly?", options: ["I had my hair cut", "I had my hair to cut", "I had my hair cutting", "I had my hair cuts"], correct: "I had my hair cut", explanation: "'Had my hair cut' = causative. Qolganlari boshqa ma'noda." },
-    { id: 40234, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Correct: 'I ___ my suit ___ for the wedding.'", blanks: ["had / cleaned"], explanation: "Have + object + V3: had my suit cleaned." },
+    { id: 40234, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Correct: 'I ___ my suit ___ for the wedding.'", blanks: ['had', 'cleaned'], explanation: "Have + object + V3: had my suit cleaned." },
     { id: 40235, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is NOT a causative structure?", options: ["make + object + V1", "object + make + V1", "+ + object make V1", "make V1 object + +"], correct: "make + object + V1", explanation: "Make + object + V1 = majbur qilish (force), causative emas." },
   ],
   testSections: [
@@ -1175,10 +1175,10 @@ export const questionTags: DailyLesson = {
       ],
       drills: [
         { id: 40241, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "I am on time, _____?", blanks: ['aren\'t I'], explanation: "I am ? aren't I (amn't I emas)." },
-        { id: 40242, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "Let's watch a film, _____?", blanks: ['shall we'], explanation: "Let's ? shall we." },
+        { id: 40242, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "Let's watch a film, _____?", blanks: ['shall we'], explanation: 'Let\'s ? shall we. (ingliz tilida shunday ishlatiladi)' },
         { id: 40243, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "Pass me the salt, _____?", blanks: ['will you'], explanation: "Imperative ? will you." },
         { id: 40244, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I am correct, amn't I?", errorPart: 'amn\'t I', correct: "I am correct, aren't I?", explanation: "I am ? aren't I. 'Amn't I' mavjud emas." },
-        { id: 40245, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "Let's go to the park, don't we?", errorPart: 'don\'t we', correct: "Let's go to the park, shall we?", explanation: "Let's ? shall we." },
+        { id: 40245, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "Let's go to the park, don't we?", errorPart: 'don\'t we', correct: "Let's go to the park, shall we?", explanation: 'Let\'s ? shall we. (ingliz tilida shunday ishlatiladi)' },
         { id: 40246, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "She never comes late, doesn't she?", errorPart: 'doesn\'t she', correct: "She never comes late, does she?", explanation: "Never ? inkor ma'no ? tag musbat: does she." },
       ],
     },
@@ -1191,15 +1191,15 @@ export const questionTags: DailyLesson = {
     { id: 40251, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "She can swim, _____?", blanks: ['can\'t she'], explanation: "Modal (can) ? can't she." },
     { id: 40252, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "He doesn't smoke, _____?", blanks: ['does he'], explanation: "Kengaytirish (doesn't) ? musbat tag: does he." },
     { id: 40253, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "You have finished, _____?", blanks: ['haven\'t you'], explanation: "Present Perfect (have) ? haven't you." },
-    { id: 40254, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "Let's have a break, _____?", blanks: ['shall we'], explanation: "Let's ? shall we." },
+    { id: 40254, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "Let's have a break, _____?", blanks: ['shall we'], explanation: 'Let\'s ? shall we. (ingliz tilida shunday ishlatiladi)' },
     { id: 40255, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "She plays tennis, isn't she?", errorPart: 'isn\'t she', correct: "She plays tennis, doesn't she?", explanation: "Plays ? does (Present Simple). 'Isn't she' faqat 'She is' uchun." },
     { id: 40256, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "He didn't go, didn't he?", errorPart: 'didn\'t he', correct: "He didn't go, did he?", explanation: "Kengaytirish gap ? musbat tag: did he." },
-    { id: 40257, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I am right, amn't I?", errorPart: 'amn\'t I', correct: "I am right, aren't I?", explanation: "I am ? aren't I." },
+    { id: 40257, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "I am right, amn't I?", errorPart: 'amn\'t I', correct: "I am right, aren't I?", explanation: 'I am ? aren\'t I. (ingliz tilida shunday ishlatiladi)' },
     { id: 40258, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "She never eats meat, doesn't she?", errorPart: 'doesn\'t she', correct: "She never eats meat, does she?", explanation: "Never ? inkor ma'no ? musbat tag: does she." },
     { id: 40259, type: 'transformation', instruction: "Question tag qo'shing:", question: 'You like pizza.', hint: 'You like pizza, ...', correct: "You like pizza, don't you?", explanation: "Present Simple (like) ? don't you." },
     { id: 40260, type: 'transformation', instruction: "Question tag qo'shing:", question: "She isn't coming.", hint: 'She isn\'t coming, ...', correct: "She isn't coming, is she?", explanation: "Kengaytirish ? musbat: is she." },
     { id: 40261, type: 'transformation', instruction: "Question tag qo'shing:", question: 'Open the door.', hint: 'Open the door, ...', correct: "Open the door, will you?", explanation: "Imperative ? will you." },
-    { id: 40262, type: 'transformation', instruction: "Question tag qo'shing:", question: "I am early.", hint: 'I am early, ...', correct: "I am early, aren't I?", explanation: "I am ? aren't I." },
+    { id: 40262, type: 'transformation', instruction: "Question tag qo'shing:", question: "I am early.", hint: 'I am early, ...', correct: "I am early, aren't I?", explanation: 'I am ? aren\'t I. (ingliz tilida shunday ishlatiladi)' },
     { id: 40263, type: 'fill-blank', instruction: "Noto'g'ri tagni toping va to'g'irlang:", question: "Everybody is here, isn't everybody? → ___", blanks: ['aren\'t they'], explanation: "Everybody ? they: aren't they." },
     { id: 40264, type: 'fill-blank', instruction: 'To\'g\'ri variant:', question: 'Nobody called, ___?', blanks: ['did they'], explanation: 'Nobody ? inkor ? musbat tag + they: did they.' },
     { id: 40265, type: 'fill-blank', instruction: "To'g'ri shakl bilan to'ldiring:", question: "She hardly ever goes out, _____?", blanks: ['does she'], explanation: "Hardly ? inkor ma'no ? musbat tag: does she." },
@@ -1207,10 +1207,10 @@ export const questionTags: DailyLesson = {
 
 
     // ── Interleaved Practice: Question Tags + Direct/Indirect questions ──
-    { id: 95021, type: 'fill-blank', instruction: 'Tag question va direct question:', question: 'You are John, _____? and _____ you like coffee?', blanks: ['aren\'t you / Do'], explanation: 'Tasdiq gap → inkor tag (aren\'t you). Direct question → Do + subject + verb.' },
+    { id: 95021, type: 'fill-blank', instruction: 'Tag question va direct question:', question: 'You are John, _____? and _____ you like coffee?', blanks: ['aren\'t you', 'Do'], explanation: 'Tasdiq gap → inkor tag (aren\'t you). Direct question → Do + subject + verb.' },
     { id: 95022, type: 'fill-blank', instruction: "Tag qo'shing (inkor gap → tasdiq tag):", question: "She hasn't finished yet, _____?", blanks: ["has she"], explanation: "Inkor gap (hasn't) → tasdiq tag (has she). Auxiliary mosligi: have/has." },
     { id: 95023, type: 'error-correction', instruction: "Indirect question tartibi xatosi:", question: "Can you tell me where is the station?", errorPart: "where is the station", correct: "Can you tell me where the station is?", explanation: "Indirect question'da inversiya yo'q: where the station IS (subject + verb)." },
-    { id: 95024, type: 'fill-blank', instruction: 'Tag — to be va to do mosligi:', question: 'They went home early, _____? He doesn\'t smoke, _____?', blanks: ['didn\'t they / does he'], explanation: 'Past Simple (went) → didn\'t they. Present (doesn\'t) → does he. Tag auxiliary\'ga mos kelishi kerak.' },
+    { id: 95024, type: 'fill-blank', instruction: 'Tag — to be va to do mosligi:', question: 'They went home early, _____? He doesn\'t smoke, _____?', blanks: ['didn\'t they', 'does he'], explanation: 'Past Simple (went) → didn\'t they. Present (doesn\'t) → does he. Tag auxiliary\'ga mos kelishi kerak.' },
     { id: 95025, type: 'transformation', instruction: "Direct question ni indirect qiling:", question: "What time does the bus leave?", hint: "Do you know what time ...", correct: "Do you know what time the bus leaves?", explanation: "Indirect: inversiya yo'q, 's' qaytadi → what time the bus leaves." },
 
     // ── Productive Exercises: Passage, Connection, Vocab-Match ──
@@ -1254,12 +1254,12 @@ export const questionTags: DailyLesson = {
   tests: [
     { id: 40267, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Musbat gapga qanday tag qo'shiladi?", blanks: ["inkor tag"], explanation: "Musbat gap ? inkor tag." },
     { id: 40268, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Kengaytirish gapga qanday tag qo'shiladi?", blanks: ["musbat tag"], explanation: "Kengaytirish gap ? musbat tag." },
-    { id: 40269, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She is a teacher, ___?", blanks: ["isn't she"], explanation: "She is ? isn't she." },
+    { id: 40269, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She is a teacher, ___?", blanks: ["isn't she"], explanation: 'She is ? isn\'t she. (ingliz tilida shunday ishlatiladi)' },
     { id: 40270, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "You like football, ___?", blanks: ["don't you"], explanation: "Present Simple (like) ? don't you." },
     { id: 40271, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "He doesn't work, ___?", blanks: ["does he"], explanation: "Kengaytirish (doesn't) ? musbat: does he." },
     { id: 40272, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "They went home, ___?", blanks: ["didn't they"], explanation: "Past Simple (went) ? didn't they." },
-    { id: 40273, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Let's go, ___?", blanks: ["shall we"], explanation: "Let's ? shall we." },
-    { id: 40274, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I am right, ___?", blanks: ["aren't I"], explanation: "I am ? aren't I." },
+    { id: 40273, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Let's go, ___?", blanks: ["shall we"], explanation: 'Let\'s ? shall we. (ingliz tilida shunday ishlatiladi)' },
+    { id: 40274, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I am right, ___?", blanks: ["aren't I"], explanation: 'I am ? aren\'t I. (ingliz tilida shunday ishlatiladi)' },
     { id: 40275, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She never arrives late, ___?", blanks: ["does she"], explanation: "Never ? inkor ma'no ? musbat: does she." },
     { id: 40276, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Everybody knows the answer, ___?", blanks: ["don't they"], explanation: "Everybody ? they ? don't they." },
     { id: 40277, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Open the door, ___?", blanks: ["will you"], explanation: "Imperative ? will you." },
@@ -1384,7 +1384,7 @@ export const bothEitherNeither: DailyLesson = {
     },
   ],
   exercises: [
-    { id: 40293, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ students are here. (100%)', blanks: ['Both'], explanation: 'Ikkalasi ? Both.' },
+    { id: 40293, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ students are here. (100%)', blanks: ['Both'], explanation: 'Ikkalasi ? Both. (ingliz tilida shunday ishlatiladi)' },
     { id: 40294, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ answer is correct. You can choose any of the two.', blanks: ['Either'], explanation: 'Ikkalasidan biri ? Either. Tanlash mumkin.' },
     { id: 40295, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ answer is correct. Both are wrong.', blanks: ['Neither'], explanation: 'Ikkalasi ham xato ? Neither.' },
     { id: 40296, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ of them is ready yet.', blanks: ['Neither'], explanation: 'Ikkalasi ham tayyor emas ? Neither of.' },
@@ -1470,7 +1470,7 @@ export const bothEitherNeither: DailyLesson = {
     { title: "🔀 Aralash", desc: "Both/either/neither + Quantifiers (all/none/every) farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95071, 95072, 95073, 95074, 95075] },
   ],
   tests: [
-    { id: 40313, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi so'z 'ikkalasi' ma'nosini bildiradi?", blanks: ["both"], explanation: "Both = ikkalasi." },
+    { id: 40313, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi so'z 'ikkalasi' ma'nosini bildiradi?", blanks: ["both"], explanation: 'Both = ikkalasi. — "Both" so\'zining tarjimasi' },
     { id: 40314, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi so'z 'ikkalasidan biri' ma'nosini bildiradi?", blanks: ["either"], explanation: "Either = ikkalasidan biri (tanlash)." },
     { id: 40315, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Qaysi so'z 'ikkalasi ham emas' ma'nosini bildiradi?", blanks: ["neither"], explanation: "Neither = ikkalasi ham emas." },
     { id: 40316, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Neither of + plural noun + ___ verb", blanks: ["singular"], explanation: "Neither of ? singular verb." },
@@ -1478,11 +1478,11 @@ export const bothEitherNeither: DailyLesson = {
     { id: 40318, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "You can take ___ road. They both lead to the city.", blanks: ["either"], explanation: "Ikkala yo'ldan birini tanlash ? either." },
     { id: 40319, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ of them knows the answer. They are both clueless.", blanks: ["Neither"], explanation: "Ikkalasi ham bilmaydi ? Neither of." },
     { id: 40320, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "She is ___ intelligent ___ hardworking.", blanks: ['both', 'and'], explanation: "Both... and... = ham... ham..." },
-    { id: 40321, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Neither John ___ Mary is coming.", blanks: ["nor"], explanation: "Neither... nor..." },
+    { id: 40321, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Neither John ___ Mary is coming.", blanks: ["nor"], explanation: 'Neither... nor... (ingliz tilida shunday ishlatiladi)' },
     { id: 40322, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I don't like coffee. B: ___", blanks: ["Neither do I"], explanation: "Kengaytirish rozi ? Neither do I." },
     { id: 40323, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is correct?", options: ["Neither of them is here", "Neither of them are here", "Neither them is here", "Neither of them be here"], correct: "Neither of them is here", explanation: "Neither of + them + is (singular)." },
     { id: 40324, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "I don't like ___ of them. They are both rude.", blanks: ["either"], explanation: "Kengaytirish (don't) + either = neither ma'nosida." },
-    { id: 40325, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ the teacher ___ the students knew the answer.", blanks: ["all are possible with different meanings"], explanation: "Both/and (ikkalasi), either/or (biri), neither/nor (hech biri) — ma'no farqli." },
+    { id: 40325, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ the teacher ___ the students knew the answer.", blanks: ['Both', 'and'], explanation: "Both/and (ikkalasi), either/or (biri), neither/nor (hech biri) — ma'no farqli." },
     { id: 40326, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is CORRECT?", options: ["Neither of the answers is correct", "Neither of the answers are correct", "Neither of the answer is correct", "Neither the answers is correct"], correct: "Neither of the answers is correct", explanation: "Neither of + plural ? singular verb (is)." },
     { id: 40327, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I can swim. B: ___", blanks: ["both So can I and I can too"], explanation: "Ikkala javob ham to'g'ri: 'So can I' va 'I can too'." },
   ],
@@ -1619,8 +1619,8 @@ export const timeClauses: DailyLesson = {
     { id: 40352, type: 'transformation', instruction: "By the time bilan ifodalang:", question: 'I will finish. Then you will arrive.', hint: 'By the time ...', correct: 'By the time you arrive, I will have finished.', explanation: "By the time + Present Simple, Future Perfect." },
     { id: 40353, type: 'fill-blank', instruction: "While yoki When:", question: '_____ I was cooking, she was watching TV.', blanks: ['While'], explanation: "Davomiy (was cooking) ? While." },
     { id: 40354, type: 'fill-blank', instruction: 'To\'g\'ri variant:', question: 'I ___ you as soon as I arrive.', blanks: ['will call'], explanation: 'Bosh gap (will call) + as soon as + Present Simple.' },
-    { id: 40355, type: 'fill-blank', instruction: "Before + V-ing bilan:", question: '_____, check the windows.', blanks: ['Before leaving'], explanation: "Before + V-ing." },
-    { id: 40356, type: 'fill-blank', instruction: "After + V-ing bilan:", question: '_____ your homework, you can go out.', blanks: ['After finishing'], explanation: "After + V-ing." },
+    { id: 40355, type: 'fill-blank', instruction: "Before + V-ing bilan:", question: '_____, check the windows.', blanks: ['Before leaving'], explanation: 'Before bilan V-ing. birga ishlatiladi (grammatik qoida)' },
+    { id: 40356, type: 'fill-blank', instruction: "After + V-ing bilan:", question: '_____ your homework, you can go out.', blanks: ['After finishing'], explanation: 'After bilan V-ing. birga ishlatiladi (grammatik qoida)' },
     { id: 40357, type: 'transformation', instruction: "The moment bilan:", question: 'I saw her. I fell in love.', hint: 'The moment ...', correct: 'The moment I saw her, I fell in love.', explanation: "The moment + past simple, past simple." },
 
 
@@ -1679,7 +1679,7 @@ export const timeClauses: DailyLesson = {
     { id: 40364, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "___ I was walking, I saw an accident.", blanks: ["While"], explanation: "Davomiy (was walking) ? While." },
     { id: 40365, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "By the time he arrives, we ___ everything.", blanks: ["will have prepared"], explanation: "By the time ? Future Perfect." },
     { id: 40366, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence has the correct time clause?", options: ["I will call you when I arrive", "I will call you when I will arrive", "I call you when I arrive", "I will call you when I arrived"], correct: "I will call you when I arrive", explanation: "When + Present Simple, bosh gapda will." },
-    { id: 40367, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Before ___ , check the gas.", blanks: ["leaving"], explanation: "Before + V-ing." },
+    { id: 40367, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Before ___ , check the gas.", blanks: ["leaving"], explanation: 'Before bilan V-ing. birga ishlatiladi (grammatik qoida)' },
     { id: 40368, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I won't leave until you arrive' means:", blanks: ["I will leave after you arrive"], explanation: "Not... until = faqat ...dan keyin." },
     { id: 40369, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "The moment I ___ her, I knew she was the one.", blanks: ["saw"], explanation: "O'tgan zamon: The moment I saw her..." },
     { id: 40370, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is INCORRECT?", options: ["While she arrived, I was cooking", "While she was arriving, I was cooking", "While she arrived, I cooked", "While she was arriving, I cooked"], correct: "While she arrived, I was cooking", explanation: "While + continuous kerak (was arriving). 'While she arrived' xato." },
@@ -1827,10 +1827,10 @@ export const indirectQuestions: DailyLesson = {
 
 
     // ── Interleaved Practice: Indirect Questions + Reported Speech ──
-    { id: 95091, type: 'fill-blank', instruction: 'Direct va indirect question tartibi:', question: 'Direct: \'Where does she live?\' Indirect: \'Do you know where she _____?\' \'_____ she live near here?\' (direct)', blanks: ['lives / Does'], explanation: 'Indirect: inversiya yo\'q → where she lives. Direct: Does + subject + verb.' },
+    { id: 95091, type: 'fill-blank', instruction: 'Direct va indirect question tartibi:', question: 'Direct: \'Where does she live?\' Indirect: \'Do you know where she _____?\' \'_____ she live near here?\' (direct)', blanks: ['lives', 'Does'], explanation: 'Indirect: inversiya yo\'q → where she lives. Direct: Does + subject + verb.' },
     { id: 95092, type: 'fill-blank', instruction: "If/whether bilan indirect yes/no question:", question: "I wonder _____ the shop is open. Could you tell me _____ this bus goes to the centre.", blanks: ["if", "whether"], explanation: "Indirect yes/no question → if yoki whether bilan boshlanadi." },
     { id: 95093, type: 'error-correction', instruction: "Indirect question'da do/does olib tashlanadi:", question: "Can you tell me what time does the train leave?", errorPart: "does the train leave", correct: "Can you tell me what time the train leaves?", explanation: "Indirect: do/does yo'q, 's' qaytadi → what time the train leaves." },
-    { id: 95094, type: 'fill-blank', instruction: 'Indirect question vs question tag:', question: 'Do you know who _____ this? You don\'t know the answer, _____?', blanks: ['wrote / do you'], explanation: 'Indirect → who wrote (inversiyasiz). Inkor gap → tasdiq tag (do you).' },
+    { id: 95094, type: 'fill-blank', instruction: 'Indirect question vs question tag:', question: 'Do you know who _____ this? You don\'t know the answer, _____?', blanks: ['wrote', 'do you'], explanation: 'Indirect → who wrote (inversiyasiz). Inkor gap → tasdiq tag (do you).' },
     { id: 95095, type: 'transformation', instruction: "Direct question'ni indirect (polite) qiling:", question: "How much does this cost?", hint: "Could you tell me how much ...", correct: "Could you tell me how much this costs?", explanation: "Indirect: inversiyasiz, 's' qaytadi → how much this costs." },
   
     { id: 101232, type: 'connection',
@@ -1983,9 +1983,9 @@ export const soNeitherAuxiliaries: DailyLesson = {
         { en: 'A: He can swim. B: So can I. (can matches can)', uz: "Can ? can. So can I." },
       ],
       drills: [
-        { id: 40424, type: 'fill-blank', instruction: "So bilan rozi bo'ling:", question: 'A: I like coffee. B: _____', blanks: ['So do I'], explanation: "Like ? do. So do I." },
+        { id: 40424, type: 'fill-blank', instruction: "So bilan rozi bo'ling:", question: 'A: I like coffee. B: _____', blanks: ['So do I'], explanation: 'Like ? do. So do I. (ingliz tilida shunday ishlatiladi)' },
         { id: 40425, type: 'fill-blank', instruction: "Neither bilan rozi bo'ling:", question: 'A: I am not tired. B: _____', blanks: ['Neither am I'], explanation: "Am not ? am. Neither am I." },
-        { id: 40426, type: 'multiple-choice', instruction: "To'g'ri variant:", question: 'A: I went to the cinema. B: ___', options: ['So do I', 'So did I', 'So go I', 'So am I'], correct: 'So did I', explanation: "Went (past) ? did." },
+        { id: 40426, type: 'multiple-choice', instruction: "To'g'ri variant:", question: 'A: I went to the cinema. B: ___', options: ['So do I', 'So did I', 'So go I', 'So am I'], correct: 'So did I', explanation: 'Went (past) ? did. (ingliz tilida shunday ishlatiladi)' },
         { id: 40427, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'A: I am happy. B: So do I.', errorPart: 'So do I', correct: 'So am I', explanation: "Am ? am. 'So do I' xato, 'So am I' to'g'ri." },
         { id: 40428, type: 'fill-blank', instruction: "To'g'ri javob:", question: 'A: I can speak English. B: _____', blanks: ['So can I'], explanation: "Can ? can. So can I." },
         { id: 40429, type: 'transformation', instruction: "So/Neither dan foydalanib javob bering:", question: 'A: I don\'t like cold weather. B: (agree)', hint: 'Neither ...', correct: 'Neither do I', explanation: "Don't ? do. Neither do I." },
@@ -1996,10 +1996,10 @@ export const soNeitherAuxiliaries: DailyLesson = {
     { id: 40430, type: 'fill-blank', instruction: 'To\'g\'ri javobni tanlang:', question: 'A: I love coffee. B: ___', blanks: ['So do I'], explanation: 'Like/love ? do. So do I.' },
     { id: 40431, type: 'fill-blank', instruction: 'To\'g\'ri javobni tanlang:', question: 'A: I am tired. B: ___', blanks: ['So am I'], explanation: 'Am ? am. So am I / I am too.' },
     { id: 40432, type: 'fill-blank', instruction: 'To\'g\'ri javobni tanlang:', question: 'A: I don\'t like tea. B: ___', blanks: ['Neither do I'], explanation: 'Don\'t ? do. Neither do I.' },
-    { id: 40433, type: 'fill-blank', instruction: 'To\'g\'ri javobni tanlang:', question: 'A: I went to Samarkand. B: ___', blanks: ['So did I'], explanation: 'Went (past) ? did.' },
+    { id: 40433, type: 'fill-blank', instruction: 'To\'g\'ri javobni tanlang:', question: 'A: I went to Samarkand. B: ___', blanks: ['So did I'], explanation: 'Went (past) ? did. (ingliz tilida shunday ishlatiladi)' },
     { id: 40434, type: 'fill-blank', instruction: "So bilan javob bering:", question: 'A: I can swim. B: _____', blanks: ['So can I'], explanation: "Can — so'roq, can — javob: Can you swim? — Yes, I can." },
-    { id: 40435, type: 'fill-blank', instruction: "Neither bilan javob bering:", question: 'A: I haven\'t been there. B: _____', blanks: ['Neither have I'], explanation: "Haven't ? have." },
-    { id: 40436, type: 'fill-blank', instruction: "Too bilan javob bering:", question: 'A: I like pizza. B: _____', blanks: ['I do too'], explanation: "I do too = So do I." },
+    { id: 40435, type: 'fill-blank', instruction: "Neither bilan javob bering:", question: 'A: I haven\'t been there. B: _____', blanks: ['Neither have I'], explanation: 'Haven\'t ? have. (ingliz tilida shunday ishlatiladi)' },
+    { id: 40436, type: 'fill-blank', instruction: "Too bilan javob bering:", question: 'A: I like pizza. B: _____', blanks: ['I do too'], explanation: 'I do too = So do I. — "I do too" so\'zining tarjimasi' },
     { id: 40437, type: 'fill-blank', instruction: "Either bilan javob bering:", question: 'A: I don\'t smoke. B: _____', blanks: ['I don\'t either'], explanation: "I don't either = Neither do I." },
     { id: 40438, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'A: I am happy. B: So do I.', errorPart: 'So do I', correct: 'So am I', explanation: "Am ? am. 'So do I' xato." },
     { id: 40439, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'A: I don\'t like it. B: Neither don\'t I.', errorPart: 'Neither don\'t I', correct: 'Neither do I', explanation: "Neither o'zi inkor ? don't qo'shimcha kerak emas." },
@@ -2016,10 +2016,10 @@ export const soNeitherAuxiliaries: DailyLesson = {
 
 
     // ── Interleaved Practice: So/Neither + Auxiliary agreement ──
-    { id: 95101, type: 'fill-blank', instruction: 'So (tasdiq rozilik) va neither (inkor rozilik):', question: '\'I like tea.\' \'_____ I.\' \'I can\'t swim.\' \'_____ I.\'', blanks: ['So do / Neither can'], explanation: 'Tasdiqqa rozilik → So + auxiliary (do). Inkorga rozilik → Neither + auxiliary (can).' },
+    { id: 95101, type: 'fill-blank', instruction: 'So (tasdiq rozilik) va neither (inkor rozilik):', question: '\'I like tea.\' \'_____ I.\' \'I can\'t swim.\' \'_____ I.\'', blanks: ['So do', 'Neither can'], explanation: 'Tasdiqqa rozilik → So + auxiliary (do). Inkorga rozilik → Neither + auxiliary (can).' },
     { id: 95102, type: 'fill-blank', instruction: "Auxiliary zamonni mos qiladi:", question: "'I went to Paris.' 'So _____ I.' 'She has finished.' 'So _____ he.'", blanks: ["did", "has"], explanation: "Past Simple (went) → did. Present Perfect (has finished) → has. Auxiliary asl zamonga mos." },
     { id: 95103, type: 'error-correction', instruction: "So/neither dan keyin inversiya:", question: "'I am tired.' 'So I am.'", errorPart: "So I am", correct: "'I am tired.' 'So am I.'", explanation: "Rozilikda inversiya: So + auxiliary + subject → So am I. ('So I am' = boshqa ma'no)." },
-    { id: 95104, type: 'fill-blank', instruction: 'Neither (inkor) — auxiliary tanlash:', question: '\'I haven\'t seen it.\' \'_____ I.\' \'They won\'t come.\' \'_____ we.\'', blanks: ['Neither have / Neither will'], explanation: 'Present Perfect inkor (haven\'t) → Neither have. Future inkor (won\'t) → Neither will.' },
+    { id: 95104, type: 'fill-blank', instruction: 'Neither (inkor) — auxiliary tanlash:', question: '\'I haven\'t seen it.\' \'_____ I.\' \'They won\'t come.\' \'_____ we.\'', blanks: ['Neither have', 'Neither will'], explanation: 'Present Perfect inkor (haven\'t) → Neither have. Future inkor (won\'t) → Neither will.' },
     { id: 95105, type: 'transformation', instruction: "Roziligini 'So' bilan qisqa javob qiling:", question: "A: 'I would love to travel more.' B agrees (short answer).", hint: "So ...", correct: "So would I.", explanation: "Would + rozilik → So would I (auxiliary 'would' takrorlanadi)." },
 
     // ── Productive Exercises: Passage, Connection, Vocab-Match ──
@@ -2081,12 +2081,12 @@ export const soNeitherAuxiliaries: DailyLesson = {
   tests: [
     { id: 40450, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Musbat gapga rozilik bildirish uchun nima ishlatiladi?", blanks: ["So + auxiliary + I"], explanation: "So + auxiliary + I — musbat rozilik." },
     { id: 40451, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Kengaytirish gapga rozilik bildirish uchun nima ishlatiladi?", blanks: ["Neither + auxiliary + I"], explanation: "Neither + auxiliary + I — inkor rozilik." },
-    { id: 40452, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I love coffee. B: ___", blanks: ["So do I"], explanation: "Love ? do. So do I." },
-    { id: 40453, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I am a student. B: ___", blanks: ["So am I"], explanation: "Am ? am. So am I." },
+    { id: 40452, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I love coffee. B: ___", blanks: ["So do I"], explanation: 'Love ? do. So do I. (ingliz tilida shunday ishlatiladi)' },
+    { id: 40453, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I am a student. B: ___", blanks: ["So am I"], explanation: 'Am ? am. So am I. (ingliz tilida shunday ishlatiladi)' },
     { id: 40454, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I don't like cold weather. B: ___", blanks: ["Neither do I"], explanation: "Don't ? do. Neither do I." },
-    { id: 40455, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I went to Paris. B: ___", blanks: ["So did I"], explanation: "Went (past) ? did." },
+    { id: 40455, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I went to Paris. B: ___", blanks: ["So did I"], explanation: 'Went (past) ? did. (ingliz tilida shunday ishlatiladi)' },
     { id: 40456, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I can swim. B: ___", blanks: ["So can I"], explanation: "Can ? can. So can I." },
-    { id: 40457, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which has the SAME meaning as 'So do I'?", blanks: ["I do too"], explanation: "So do I = I do too." },
+    { id: 40457, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which has the SAME meaning as 'So do I'?", blanks: ["I do too"], explanation: 'So do I = I do too. — "So do I" so\'zining tarjimasi' },
     { id: 40458, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I haven't been there. B: ___", blanks: ["Neither have I"], explanation: "Haven't ? have. Neither have I." },
     { id: 40459, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "A: I should study more. B: ___", blanks: ["So should I"], explanation: "Should ? should. So should I." },
     { id: 40460, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is INCORRECT?", options: ["Neither am not I", "Neither am I", "Neither I am", "Neither I am not"], correct: "Neither am not I", explanation: "Neither o'zi inkor ? 'am not' xato. 'Neither am I' to'g'ri." },
@@ -2228,7 +2228,7 @@ export const wishesRegrets: DailyLesson = {
     { id: 40489, type: 'transformation', instruction: "I regret bilan ifodalang:", question: 'I didn\'t study enough.', hint: 'I regret ...', correct: 'I regret not studying enough.', explanation: "Regret + not + V-ing." },
     { id: 40490, type: 'transformation', instruction: "If only bilan ifodalang:", question: 'I am not rich.', hint: 'If only ...', correct: 'If only I were rich!', explanation: "Hozirgi orzu ? if only + past." },
     { id: 40491, type: 'fill-blank', instruction: "I wish + would (shikoyat):", question: 'I wish the children _____ quiet. I can\'t concentrate.', blanks: ['would be'], explanation: "Shikoyat ? would be." },
-    { id: 40492, type: 'fill-blank', instruction: 'To\'g\'ri variant:', question: 'I regret ___ him about the surprise.', blanks: ['telling'], explanation: 'Regret + V-ing.' },
+    { id: 40492, type: 'fill-blank', instruction: 'To\'g\'ri variant:', question: 'I regret ___ him about the surprise.', blanks: ['telling'], explanation: 'Regret bilan V-ing. birga ishlatiladi (grammatik qoida)' },
     { id: 40493, type: 'fill-blank', instruction: "I wish + could:", question: 'I wish I _____ speak Chinese.', blanks: ['could'], acceptedAnswers: [['could', 'knew']], explanation: "Can ? could (past) (lekin knew ham to'g'ri - 'I wish I knew Chinese')." },
     { id: 40494, type: 'transformation', instruction: "Wish + would bilan shikoyat:", question: 'You never help with the housework.', hint: 'I wish ...', correct: 'I wish you would help with the housework.', explanation: "Shikoyat ? wish + would." },
 
@@ -2282,11 +2282,11 @@ export const wishesRegrets: DailyLesson = {
     { id: 40495, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Hozirgi orzular uchun I wish dan keyin qanday zamon ishlatiladi?", blanks: ["Past Simple"], explanation: "Hozirgi orzu ? Past Simple (zamon orqaga)." },
     { id: 40496, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "O'tgan pushaymonliklar uchun I wish dan keyin qanday zamon ishlatiladi?", blanks: ["Past Perfect"], explanation: "O'tgan pushaymonlik ? Past Perfect." },
     { id: 40497, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Shikoyat uchun I wish dan keyin nima ishlatiladi?", blanks: ["would + V1"], explanation: "Shikoyat ? wish + would + V1." },
-    { id: 40498, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I regret' dan keyin nima keladi?", blanks: ["V-ing"], explanation: "Regret + V-ing." },
-    { id: 40499, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Correct: 'I wish I ___ taller.'", blanks: ["were"], explanation: "State (be) ? were." },
+    { id: 40498, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I regret' dan keyin nima keladi?", blanks: ["V-ing"], explanation: 'Regret bilan V-ing. birga ishlatiladi (grammatik qoida)' },
+    { id: 40499, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Correct: 'I wish I ___ taller.'", blanks: ["were"], explanation: 'State (be) ? were. (ingliz tilida shunday ishlatiladi)' },
     { id: 40500, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Correct: 'I wish I ___ the truth earlier.'", blanks: ["had known"], explanation: "O'tgan pushaymonlik (earlier) ? had known." },
     { id: 40501, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Correct: 'I wish you ___ making that noise!'", blanks: ["would stop"], explanation: "Shikoyat ? would stop." },
-    { id: 40502, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Correct: 'I regret ___ that job.'", blanks: ["leaving"], explanation: "Regret + V-ing." },
+    { id: 40502, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Correct: 'I regret ___ that job.'", blanks: ["leaving"], explanation: 'Regret bilan V-ing. birga ishlatiladi (grammatik qoida)' },
     { id: 40503, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is about a PAST regret?", options: ["I wish I had studied more", "I wish I hadn't studied more", "had wish I I studied more", "I had I wish studied more"], correct: "I wish I had studied more", explanation: "'I wish I had studied more' — o'tmishdagi afsus (past regret). 'Wish + Past Perfect' = o'tmishdagi afsusni ifodalaydi." },
     { id: 40504, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'I wish I could fly' means:", blanks: ["I cannot fly but I want to"], explanation: "Orzu (real emas) ? ucha olmayman, lekin istayman." },
     { id: 40505, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is INCORRECT?", options: ["I wish I would be rich", "I wish I were rich", "I wish I am rich", "I wish I had been rich"], correct: "I wish I would be rich", explanation: "'Would be' state bilan xato ? 'I wish I were rich' to'g'ri." },

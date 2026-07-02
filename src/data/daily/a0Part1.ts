@@ -39,7 +39,7 @@ export const greetingsAndNames: DailyLesson = {
   exercises: [
     { id: 100001, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Siz do'stingizga norasmiy salom ayting. Qaysi?", blanks: ["Hi"], explanation: "Hi — norasmiy salom. Do'stlarga ishlatiladi." },
     { id: 100002, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "My ___ is Ali.", blanks: ['name'], explanation: "My name is Ali — Mening ismim Ali." },
-    { id: 100003, type: 'fill-blank', instruction: "So'zni tarjima qiling:", question: 'Translate: Student = ___', blanks: ['talaba'], explanation: 'Student = talaba' },
+    { id: 100003, type: 'fill-blank', instruction: "So'zni tarjima qiling:", question: 'Translate: Student = ___', blanks: ['talaba'], explanation: 'Student = talaba — "Student" so\'zining tarjimasi' },
     { id: 100004, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "It is 9 AM. You say:", blanks: ["Good morning"], explanation: "9 AM = morning — Good morning!" },
     { id: 100005, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Qaysi jumla to'g'ri?", options: ["My name is Ali.", "My name Ali.", "I name is Ali.", "My am Ali."], correct: "My name is Ali.", explanation: "To'g'ri: My name is Ali." },
   ],
@@ -145,9 +145,9 @@ export const familyAndMe: DailyLesson = {
   ],
   specialCases: [],
   exercises: [
-    { id: 100020, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What does 'mother' mean?", blanks: ["Ona"], explanation: "Mother = ona" },
+    { id: 100020, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What does 'mother' mean?", blanks: ["Ona"], explanation: 'Mother = ona (ingliz tilida "ona" degan ma\'no)' },
     { id: 100021, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which sentence is correct?", options: ["I have a brother.", "I have brother.", "I have a brothers.", "I have the brother."], correct: "I have a brother.", explanation: "Artikl 'a' kerak: I have a brother." },
-    { id: 100022, type: 'fill-blank', instruction: '\'She is my ___\' (ona):', question: 'She is my ___. (ona)', blanks: ['mother'], explanation: 'mother = ona' },
+    { id: 100022, type: 'fill-blank', instruction: '\'She is my ___\' (ona):', question: 'She is my ___. (ona)', blanks: ['mother'], explanation: 'mother = ona (ingliz tilida "ona" degan ma\'no)' },
     { id: 100023, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "'Brother' = ?", blanks: ["Aka yoki uka"], explanation: "Ingliztilida brother = aka HAM, uka HAM." },
     { id: 100024, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "I ___ two sisters.", blanks: ['have'], explanation: "I have two sisters — Mening ikki opa-singlim bor." },
   ],
@@ -155,7 +155,7 @@ export const familyAndMe: DailyLesson = {
     { title: 'Oila', desc: "Oila a'zolarini sinab ko'ring", color: 'blue', icon: '👨‍👩‍👧‍👦', ids: [100020, 100021, 100022, 100023, 100024] },
   ],
   tests: [
-    { id: 200020, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What does 'father' mean?", blanks: ["Ota"], explanation: "Father = ota" },
+    { id: 200020, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What does 'father' mean?", blanks: ["Ota"], explanation: 'Father = ota (ingliz tilida "ota" degan ma\'no)' },
     { id: 200021, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is correct?", options: ["She is my mother.", "She is my mothers.", "She am my mother.", "She is mine mother."], correct: "She is my mother.", explanation: "To'g'ri: She is my mother." },
   ],
   testSections: [

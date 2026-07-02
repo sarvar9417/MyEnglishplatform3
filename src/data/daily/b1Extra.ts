@@ -221,7 +221,7 @@ export const relativeClausesB1: DailyLesson = {
             "who"
           ],
           question: "My mother, ___ is kind, helps everyone.",
-          explanation: "Non-defining -> who",
+          explanation: 'Non — defining -> who: Non defining -> who uchun ishlatiladi',
           instruction: "That or who:"
         },
         {
@@ -282,7 +282,7 @@ export const relativeClausesB1: DailyLesson = {
           correct: "The man who lives next door is a doctor.",
           question: "The man lives next door is a doctor.",
           errorPart: "lives",
-          explanation: "Ega -> who kerak",
+          explanation: 'Ega — > who kerak: Ega > who kerak uchun ishlatiladi',
           instruction: "Error correction:"
         },
         {
@@ -415,7 +415,7 @@ export const relativeClausesB1: DailyLesson = {
     },
     { id: 45014, type: 'fill-blank', instruction: 'Tanlang:', question: 'The man ___ called you is my brother.', blanks: ['who'], explanation: '\'Who\' is used for people — \'the man\' is a person.' },
     { id: 45015, type: 'fill-blank', instruction: 'Tanlang:', question: 'The film ___ we saw was boring.', blanks: ['which'], explanation: '\'Which\' is used for things — \'the film\' is a thing.' },
-    { id: 45016, type: 'fill-blank', instruction: 'Tanlang:', question: 'My sister, ___ lives in Paris, is coming.', blanks: ['who'], explanation: 'Non-defining -> who' },
+    { id: 45016, type: 'fill-blank', instruction: 'Tanlang:', question: 'My sister, ___ lives in Paris, is coming.', blanks: ['who'], explanation: 'Non — defining -> who: Non defining -> who uchun ishlatiladi' },
     { id: 45017, type: 'fill-blank', instruction: 'Tanlang:', question: 'The student ___ phone rang was embarrassed.', blanks: ['whose'], explanation: '\'Whose\' shows possession — the phone belongs to the student.' },
     {
       id: 45018,
@@ -428,7 +428,7 @@ export const relativeClausesB1: DailyLesson = {
         "My mother whose kind"
       ],
       question: "Non-defining uchun CORRECT?",
-      explanation: "Non-defining -> who",
+      explanation: 'Non — defining -> who: Non defining -> who uchun ishlatiladi',
       instruction: "Tanlang:"
     },
     {
@@ -437,7 +437,7 @@ export const relativeClausesB1: DailyLesson = {
       correct: "The book which I read was interesting.",
       question: "The book who I read was interesting.",
       errorPart: "who",
-      explanation: "Narsa -> which",
+      explanation: 'Narsa — > which: Narsa > which uchun ishlatiladi',
       instruction: "Error correction:"
     },
     {
@@ -446,7 +446,7 @@ export const relativeClausesB1: DailyLesson = {
       correct: "My father, who is 60, still works.",
       question: "My father, that is 60, still works.",
       errorPart: "that",
-      explanation: "Non-defining -> who",
+      explanation: 'Non — defining -> who: Non defining -> who uchun ishlatiladi',
       instruction: "Error correction:"
     },
     {
@@ -455,7 +455,7 @@ export const relativeClausesB1: DailyLesson = {
       correct: "The woman who won the prize is my aunt.",
       question: "The woman won the prize is my aunt.",
       errorPart: "won",
-      explanation: "Ega -> who kerak",
+      explanation: 'Ega — > who kerak: Ega > who kerak uchun ishlatiladi',
       instruction: "Error correction:"
     },
     {
@@ -491,7 +491,7 @@ export const relativeClausesB1: DailyLesson = {
       type: "transformation",
       correct: "My brother, who lives in Tashkent, is a doctor.",
       question: "My brother is a doctor. He lives in Tashkent.",
-      explanation: "Non-defining",
+      explanation: 'Non — defining: Non defining uchun ishlatiladi',
       instruction: "Non-defining:"
     },
     {
@@ -511,7 +511,7 @@ export const relativeClausesB1: DailyLesson = {
         "whose"
       ],
       question: "The family ___ house was destroyed got help.",
-      explanation: "Whose + house",
+      explanation: 'Whose bilan house birga ishlatiladi (grammatik qoida)',
       instruction: "Whose:"
     },
     {
@@ -525,7 +525,7 @@ export const relativeClausesB1: DailyLesson = {
         "The man whose lives next door is kind"
       ],
       question: "Which is CORRECT?",
-      explanation: "Who = ega — tarjima",
+      explanation: 'Who = ega — tarjima — "Who" so\'zining tarjimasi',
       instruction: "Tanlang:"
     },
     {
@@ -555,7 +555,7 @@ export const relativeClausesB1: DailyLesson = {
         "that"
     ],
     question: "Everything ___ you said is true.",
-    explanation: "Everything + that",
+    explanation: 'Everything bilan that birga ishlatiladi (grammatik qoida)',
     instruction: "That:"
 },
     {
@@ -623,7 +623,7 @@ export const relativeClausesB1: DailyLesson = {
     correct: "I liked the film which you recommended.",
     question: "I liked the film who you recommended.",
     errorPart: "who",
-    explanation: "Narsa -> which",
+    explanation: 'Narsa — > which: Narsa > which uchun ishlatiladi',
     instruction: "Error correction:"
 },
     {
@@ -862,7 +862,7 @@ export const relativeClausesB1: DailyLesson = {
         "whose"
       ],
       question: "My sister, ___ is a doctor, lives in London.",
-      explanation: "Non-defining -> who",
+      explanation: 'Non — defining -> who: Non defining -> who uchun ishlatiladi',
       instruction: "Ortacha"
     },
     {
@@ -1017,7 +1017,7 @@ export const phrasalVerbsB1: DailyLesson = {
     ],
     questions: [
       { id: 90821, type: 'multiple-choice', question: "What does Mum ask the son to turn off?", options: ["The light", "The TV", "The radio", "The computer"], correctIndex: 1, explanation: "'turn off the TV' — phrasal verb (separable)." },
-      { id: 90822, type: 'multiple-choice', question: "By what time must the son be back?", options: ["Five", "Six", "Seven", "Eight"], correctIndex: 1, explanation: "'be back by six.'" },
+      { id: 90822, type: 'multiple-choice', question: "By what time must the son be back?", options: ["Five", "Six", "Seven", "Eight"], correctIndex: 1, explanation: '\'be back by six.\' (ingliz tili qoidasi)' },
       { id: 90823, type: 'multiple-choice', question: "What will the son pick up on the way home?", options: ["Milk", "Bread", "Fruit", "A newspaper"], correctIndex: 1, explanation: "'I'll pick up some bread on the way home.'" },
       { id: 90824, type: 'true-false', question: "A friend is coming over tonight.", answer: true, explanation: "'my friend is coming over tonight' — come over = visit." },
       { id: 90825, type: 'multiple-choice', question: "What does the son ask Mum to do tomorrow?", options: ["Cook breakfast", "Wake him up early", "Drive him", "Buy bread"], correctIndex: 1, explanation: "'Can you wake me up early tomorrow?'" },
@@ -1213,7 +1213,7 @@ export const phrasalVerbsB1: DailyLesson = {
             "him up"
           ],
           question: "I picked ___ (up / him / him up).",
-          explanation: "Pronoun + particle",
+          explanation: 'Pronoun bilan particle birga ishlatiladi (grammatik qoida)',
           instruction: "Pronoun:"
         },
         {
@@ -1265,7 +1265,7 @@ export const phrasalVerbsB1: DailyLesson = {
             "to"
           ],
           question: "I look forward ___ hearing from you.",
-          explanation: "Look forward TO",
+          explanation: 'Look forward TO (ingliz tilida shunday ishlatiladi)',
           instruction: "Three-word:"
         },
         {
@@ -1386,7 +1386,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "him"
       ],
       question: "I picked ___ up at the station.",
-      explanation: "Pronoun before up",
+      explanation: 'Pronoun before up (ingliz tilida shunday ishlatiladi)',
       instruction: "Pronoun:"
     },
     {
@@ -1406,12 +1406,12 @@ export const phrasalVerbsB1: DailyLesson = {
         "to"
       ],
       question: "I'm looking forward ___ the party.",
-      explanation: "Look forward TO",
+      explanation: 'Look forward TO (ingliz tilida shunday ishlatiladi)',
       instruction: "Three-word:"
     },
     { id: 45080, type: 'fill-blank', instruction: 'Tanlang:', question: 'I ran ___ an old friend yesterday.', blanks: ['into'], explanation: 'Run into = tasodifan uchrashish' },
-    { id: 45081, type: 'fill-blank', instruction: 'Tanlang:', question: 'He gave ___ smoking last year.', blanks: ['up'], explanation: 'Give up = tashlamoq' },
-    { id: 45082, type: 'fill-blank', instruction: 'Tanlang:', question: 'Put ___ your jacket, its cold.', blanks: ['on'], explanation: 'Put on = kiymoq' },
+    { id: 45081, type: 'fill-blank', instruction: 'Tanlang:', question: 'He gave ___ smoking last year.', blanks: ['up'], explanation: 'Give up = tashlamoq — "Give up" so\'zining tarjimasi' },
+    { id: 45082, type: 'fill-blank', instruction: 'Tanlang:', question: 'Put ___ your jacket, its cold.', blanks: ['on'], explanation: 'Put on = kiymoq (ingliz tilida "kiymoq" degan ma\'no)' },
     { id: 45083, type: 'fill-blank', instruction: 'Tanlang:', question: 'I can\'t put ___ with this noise.', blanks: ['up'], explanation: 'Put up with = chidamoq' },
     { id: 45084, type: 'fill-blank', instruction: 'Tanlang:', question: 'She takes ___ her mother.', blanks: ['after'], explanation: 'Take after = oxshamoq' },
     {
@@ -1447,7 +1447,7 @@ export const phrasalVerbsB1: DailyLesson = {
       correct: "Turn it off before leaving.",
       question: "Turn off it before leaving.",
       errorPart: "off it",
-      explanation: "Pronoun -> orada",
+      explanation: 'Pronoun — > orada: Pronoun > orada uchun ishlatiladi',
       instruction: "Error correction:"
     },
     {
@@ -1465,7 +1465,7 @@ export const phrasalVerbsB1: DailyLesson = {
       type: "transformation",
       correct: "He gave up smoking.",
       question: "He stopped smoking. (use: give up)",
-      explanation: "Give up = tashlamoq",
+      explanation: 'Give up = tashlamoq — "Give up" so\'zining tarjimasi',
       instruction: "O'zgartiring:"
     },
     {
@@ -1484,7 +1484,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "up"
       ],
       question: "I picked my friend ___ after work.",
-      explanation: "Pick up = separable",
+      explanation: 'Pick up = separable — "Pick up" so\'zining tarjimasi',
       instruction: "Separable:"
     },
     {
@@ -1494,7 +1494,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "over"
       ],
       question: "He couldnt get ___ his illness quickly.",
-      explanation: "Get over = tuzalmoq",
+      explanation: 'Get over = tuzalmoq — "Get over" so\'zining tarjimasi',
       instruction: "Phrasal:"
     },
     {
@@ -1577,7 +1577,7 @@ export const phrasalVerbsB1: DailyLesson = {
     hint: "She came up with...",
     correct: "She came up with a brilliant idea.",
     question: "She thought of a brilliant idea. (use: come up with)",
-    explanation: "Come up with",
+    explanation: 'Come up with (ingliz tilida shunday ishlatiladi)',
     instruction: "O'zgartiring:"
 },
     {
@@ -1740,7 +1740,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "three-word"
       ],
       question: "Is 'give up' separable?",
-      explanation: "Give up = separable",
+      explanation: 'Give up = separable — "Give up" so\'zining tarjimasi',
       instruction: "Asosiy"
     },
     {
@@ -1838,7 +1838,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "Three-word"
       ],
       question: "Pick me up -> separable?",
-      explanation: "Pronoun -> orada",
+      explanation: 'Pronoun — > orada: Pronoun > orada uchun ishlatiladi',
       instruction: "Qiyin"
     },
     {
@@ -1880,7 +1880,7 @@ export const phrasalVerbsB1: DailyLesson = {
         "Pick I up"
       ],
       question: "Which is CORRECT?",
-      explanation: "Pronoun -> orada",
+      explanation: 'Pronoun — > orada: Pronoun > orada uchun ishlatiladi',
       instruction: "Murakkab"
     },
     {

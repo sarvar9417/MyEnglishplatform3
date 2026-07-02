@@ -238,7 +238,7 @@ Sardor: Next month I will travel to Russia for the first time.`,
       explanation: 'Past Simple: traveled, stayed, visited, saw, bought, thought, said, had. Past Continuous: was walking. Present Perfect: had never seen. Present Simple: want, promise (kelajak reja).'
     },
     { id: 5045, type: 'passage', instruction: 'Matndagi bo\'sh joylarni to\'ldiring — suhbat:', passage: 'Ali: What ___ (you/do) right now?\nBek: I ___ (prepare) dinner. What about you?\nAli: I ___ (read) an interesting book. I ___ (start) it last week and I ___ (already/read) 200 pages.\nBek: What ___ it ___ (be) about?\nAli: It ___ (be) about a man who ___ (travel) around the world.\nBek: That ___ (sound) interesting. I ___ (read) it when I ___ (finish) my current book.\nAli: You should! I ___ (think) you ___ (enjoy) it.',
-      blanks: ['are...doing', 'am preparing', 'am reading', 'started', 'have already read', 'is', 'is', 'travels', 'sounds', 'will read', 'finish', 'think', 'will enjoy'],
+      blanks: ['are', 'doing', 'am preparing', 'am reading', 'started', 'have already read', 'is', 'is', 'travels', 'sounds', 'will read', 'finish', 'think', 'will enjoy'],
       explanation: 'Present Continuous: are doing, am preparing, am reading. Past Simple: started. Present Perfect: have already read. Simple Present: is, travels, sounds, think. Future Simple: will read, will enjoy. Present Simple (shart): finish.'
     },
   ],

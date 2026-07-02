@@ -331,7 +331,7 @@ export const advancedConditionalsB2: DailyLesson = {
       drills: [
         { id: 54056, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "If I would have known, I would have come.", errorPart: 'would have known', correct: 'had known', explanation: "If dan keyin would ishlatilmaydi" },
         { id: 54057, type: 'fill-blank', instruction: "To'g'ri shakl:", question: "If I ___ rich, I would travel.", blanks: ['were'], explanation: "If + were (second conditional)" },
-        { id: 54058, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "If I ___ you, I would accept.", options: ['was', 'were', 'would be', 'am'], correct: 'were', explanation: "If I were you" },
+        { id: 54058, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "If I ___ you, I would accept.", options: ['was', 'were', 'would be', 'am'], correct: 'were', explanation: 'If I were you (ingliz tilida shunday ishlatiladi)' },
       ],
     },
     {
@@ -361,13 +361,13 @@ export const advancedConditionalsB2: DailyLesson = {
     { id: 54068, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: '___ I known earlier, I would have helped.', blanks: ['Had'], explanation: 'Had I known = If I had known' },
     { id: 54069, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'But ___ the rain, we would have won.', blanks: ['for'], explanation: 'But for = if not for' },
     { id: 54070, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'Supposing you ___ the lottery, what would you do?', blanks: ['won'], explanation: 'Supposing + past (hypothetical)' },
-    { id: 54071, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'You can go out, ___ that you finish homework.', blanks: ['provided'], explanation: 'Provided that = if' },
+    { id: 54071, type: 'fill-blank', instruction: 'To\'g\'ri variantni tanlang:', question: 'You can go out, ___ that you finish homework.', blanks: ['provided'], explanation: 'Provided that = if — "Provided that" so\'zining tarjimasi' },
     { id: 54072, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "If I would have known, I would have helped.", errorPart: 'would have known', correct: 'had known', explanation: "If dan keyin would ishlatilmaydi" },
-    { id: 54073, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "If I was you, I would accept.", errorPart: 'was', correct: 'were', explanation: "If I were you" },
+    { id: 54073, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "If I was you, I would accept.", errorPart: 'was', correct: 'were', explanation: 'If I were you (ingliz tilida shunday ishlatiladi)' },
     { id: 54074, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "If had I known, I would have come.", errorPart: 'If had I', correct: 'Had I', explanation: "Inversionda if ishlatilmaydi" },
     { id: 54075, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "Without of your help, I would fail.", errorPart: 'Without of', correct: 'Without', explanation: "Without + noun (of kerak emas)" },
     { id: 54076, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: "But of the rain, we would have won.", errorPart: 'But of', correct: 'But for', explanation: "But for (but of emas)" },
-    { id: 54077, type: 'transformation', instruction: "Mixed conditional:", question: "I didn't study. I'm not successful now. → If...", hint: "If I ___ studied, I ___ be successful now.", correct: 'had studied / would be', explanation: "Past→present mixed" },
+    { id: 54077, type: 'transformation', instruction: "Mixed conditional:", question: "I didn't study. I'm not successful now. → If...", hint: "If I ___ studied, I ___ be successful now.", correct: 'had studied / would be', explanation: 'Past → present mixed: bu qoidada present mixed ishlatiladi' },
     { id: 54078, type: 'transformation', instruction: "To'g'ri inversion yozing:", question: "If I had known → ___ I known", hint: "Inversion", correct: 'Had', explanation: "Had I known — o'tmish shart: Agar bilgan bo'lsam..." },
     { id: 54079, type: 'transformation', instruction: "Implied:", question: "If it hadn't rained → ___ the rain", hint: "But ___", correct: 'But for', explanation: "But for = if not for" },
     { id: 54080, type: 'transformation', instruction: "To'g'ri inversion yozing:", question: "If I were you → ___ I you", hint: "Inversion", correct: 'Were', explanation: "Were I you — shart: Agar men siz bo'lsam..." },
@@ -1093,7 +1093,7 @@ export const hedgingB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Hedging + Stance ──
-    { id: 95351, type: 'fill-blank', instruction: 'Hedging (ehtiyotkor) va aniq bayonot:', question: 'Strong: \'This proves it.\' Hedged: \'This _____ to suggest...\' / \'It _____ be the case.\'', blanks: ['seems / may'], explanation: 'Ehtiyotkor til → seems to suggest, may be the case (kuchsizroq da\'vo).' },
+    { id: 95351, type: 'fill-blank', instruction: 'Hedging (ehtiyotkor) va aniq bayonot:', question: 'Strong: \'This proves it.\' Hedged: \'This _____ to suggest...\' / \'It _____ be the case.\'', blanks: ['seems', 'may'], explanation: 'Ehtiyotkor til → seems to suggest, may be the case (kuchsizroq da\'vo).' },
     { id: 95352, type: 'fill-blank', instruction: "Tends to / appears:", question: "The data _____ (tend) to support this. It _____ (appear) that more research is needed.", blanks: ["tends", "appears"], explanation: "Hedging fe'llari: tends to, appears that — ehtiyotkor xulosa." },
     { id: 95353, type: 'error-correction', instruction: "Hedging — kuchli da'voni yumshatish:", question: "This definitely causes the problem in all cases.", errorPart: "definitely causes the problem in all cases", correct: "This may contribute to the problem in some cases.", explanation: "Akademik hedging: definitely/all → may/some (ehtiyotkor)." },
     { id: 95354, type: 'fill-blank', instruction: 'It could be argued / arguably:', question: '_____ that prices will rise. This is _____ the best approach.', blanks: ['It could be argued', 'arguably'], explanation: 'Hedging: it could be argued, arguably — fikrni ehtiyotkor bildiradi.' },
@@ -1122,11 +1122,11 @@ export const hedgingB2: DailyLesson = {
     { title: "🔀 Aralash", desc: "Hedging (ehtiyotkor til) + Stance/modal farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95351, 95352, 95353, 95354, 95355, 56008, 56009] },
   ],
   tests: [
-    { id: 54253, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '_____ expresses 50% probability: may, must, will, can.', blanks: ['may'], acceptedAnswers: [['may']], explanation: "'May' = 50%." },
-    { id: 54254, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She seems like happy.', errorPart: 'like happy', correct: 'She seems happy.', explanation: "'Seem' + adjective." },
+    { id: 54253, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '_____ expresses 50% probability: may, must, will, can.', blanks: ['may'], acceptedAnswers: [['may']], explanation: '\'May\' = 50%. (ingliz tilida "50%." degan ma\'no)' },
+    { id: 54254, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'She seems like happy.', errorPart: 'like happy', correct: 'She seems happy.', explanation: '\'Seem\' bilan adjective. birga ishlatiladi (grammatik qoida)' },
     { id: 54255, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'It _____ rain tomorrow.', blanks: ['may'], explanation: "'May' = 50% ehtimol." },
     { id: 54256, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "What does \"tend to\" mean?", blanks: ["usually"], explanation: "'Tend to' = odatda, moyil." },
-    { id: 54257, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'She _____ to be the manager.', blanks: ['appears'], explanation: "'Appears' + to V." },
+    { id: 54257, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'She _____ to be the manager.', blanks: ['appears'], explanation: '\'Appears\' bilan to V. birga ishlatiladi (grammatik qoida)' },
     { id: 54258, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "Which is hedging?", blanks: ["probably"], explanation: "'Probably' = 70-80%. Qolganlari boosting." },
     { id: 54259, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'This is _____ the best option.', blanks: ['arguably'], explanation: "'Arguably' = adverb form." },
     { id: 54260, type: 'fill-blank', instruction: "To'g'ri javobni yozing:", question: "\"Research ___ that stress causes illness.\"", blanks: ["suggests"], explanation: "'Suggests' = academic hedging (yumshoq)." },
@@ -1347,7 +1347,7 @@ export const complexPrepositionsB2: DailyLesson = {
     { title: "🔀 Aralash", desc: "Murakkab predloglar + Linking words farqi", color: 'bg-fuchsia-500', icon: '🔄', ids: [95361, 95362, 95363, 95364, 95365, 56010, 56011] },
   ],
   tests: [
-    { id: 54299, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '_____ the rain, we went outside.', blanks: ['Despite'], acceptedAnswers: [['Despite']], explanation: "'Despite' + noun." },
+    { id: 54299, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: '_____ the rain, we went outside.', blanks: ['Despite'], acceptedAnswers: [['Despite']], explanation: '\'Despite\' bilan noun. birga ishlatiladi (grammatik qoida)' },
     { id: 54300, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'He wrote _____ behalf of the committee.', blanks: ['on'], explanation: "'On behalf of' = nomidan." },
     { id: 54301, type: 'fill-blank', instruction: "Bo'sh joyni to'ldiring:", question: "'In terms of' = _____ (nuqtai nazaridan).", blanks: ['nuqtai nazaridan'], acceptedAnswers: [['nuqtai nazaridan']], explanation: "'In terms of' = nuqtai nazaridan." },
     { id: 54302, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: '_____ the event of an emergency, call 911.', blanks: ['In'], explanation: "'In the event of' = bo'lgan taqdirda." },
@@ -1355,7 +1355,7 @@ export const complexPrepositionsB2: DailyLesson = {
     { id: 54304, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which is WRONG?", options: ["Despite of the rain", "Despite of a rain", "the of Despite rain", "rain of the Despite"], correct: "Despite of the rain", explanation: "'Despite of the rain' — XATO! To'g'risi: 'Despite the rain' yoki 'In spite of the rain'. 'Despite' + noun (of'siz)." },
     { id: 54305, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: '_____ regard to your suggestion, we will consider it.', blanks: ['With'], explanation: "'With regard to' = ga kelsak." },
     { id: 54306, type: 'error-correction', instruction: "To'g'ri variantni tanlang:", question: 'With regards to your request, it has been approved.', errorPart: 'With regards to', correct: 'With regard to your request, it has been approved.', explanation: "'With regard to' — not 'regards'." },
-    { id: 54307, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Which means "sababli"? (in spite of / due to)', errorPart: '(in spite of -> due to)', correct: 'due to', explanation: "'Due to' = sababli." },
+    { id: 54307, type: 'error-correction', instruction: "Xatoni toping va to'g'rilang:", question: 'Which means "sababli"? (in spite of / due to)', errorPart: '(in spite of -> due to)', correct: 'due to', explanation: '\'Due to\' = sababli. — "\'Due to\'" so\'zining tarjimasi' },
     { id: 54308, type: 'transformation', instruction: "To'g'ri variantni tanlang:", question: 'Because of the storm, the flight was cancelled. (Use due to)', hint: 'The flight ...', correct: 'The flight was cancelled due to the storm.', explanation: "'Due to' + noun. 'Because of' → 'due to' (rasmiy)." },
     { id: 54309, type: 'multiple-choice', instruction: "To'g'ri variantni tanlang:", question: "Which expresses the formal register?", options: ["in the event of", "on the event of", "in a event of", "event the in of"], correct: "in the event of", explanation: "'in the event of' — rasmiy register. 'If' o'rniga rasmiy hujjatlarda 'in the event of' ishlatiladi." },
     { id: 54310, type: 'fill-blank', instruction: "To'g'ri variantni tanlang:", question: 'The information was transmitted _____ means of satellite.', blanks: ['by'], explanation: "'By means of' = yordamida." },
@@ -1770,10 +1770,10 @@ export const registerB2: DailyLesson = {
 
 
     // ── Interleaved Practice: Register + Reported Speech ──
-    { id: 95381, type: 'fill-blank', instruction: 'Norasmiy va rasmiy:', question: 'Informal: \'I wanna know...\' Formal: \'I would like _____ know...\' Informal: \'kids\' Formal: \'_____\'', blanks: ['to / children'], explanation: 'Rasmiy: would like to know, children (kids emas).' },
+    { id: 95381, type: 'fill-blank', instruction: 'Norasmiy va rasmiy:', question: 'Informal: \'I wanna know...\' Formal: \'I would like _____ know...\' Informal: \'kids\' Formal: \'_____\'', blanks: ['to', 'children'], explanation: 'Rasmiy: would like to know, children (kids emas).' },
     { id: 95382, type: 'fill-blank', instruction: "Rasmiy phrasal o'rniga lotin fe'l:", question: "Informal: 'find out'. Formal: '_____' (aniqlamoq). Informal: 'put off'. Formal: '_____' (keyinroqga qoldirmoq).", blanks: ["discover", "postpone"], explanation: "Rasmiy uslubda lotin fe'llar: discover, postpone (phrasal o'rniga)." },
     { id: 95383, type: 'error-correction', instruction: "Rasmiy xatda qisqartma yo'q:", question: "I'm writing to inform you that we can't proceed.", errorPart: "I'm writing", correct: "I am writing to inform you that we cannot proceed.", explanation: "Rasmiy register: qisqartmasiz (I am, cannot)." },
-    { id: 95384, type: 'fill-blank', instruction: 'Reported speech + rasmiy:', question: 'She said: \'I\'ll sort it out.\' Formal report: She stated that she _____ _____ the matter.', blanks: ['would resolve'], explanation: 'Reported (will → would) + rasmiy (sort out → resolve).' },
+    { id: 95384, type: 'fill-blank', instruction: 'Reported speech + rasmiy:', question: 'She said: \'I\'ll sort it out.\' Formal report: She stated that she _____ _____ the matter.', blanks: ['would', 'resolve'], explanation: 'Reported (will → would) + rasmiy (sort out → resolve).' },
     { id: 95385, type: 'transformation', instruction: "Norasmiy gapni rasmiy qiling:", question: "Can you help me out with this ASAP?", hint: "I would be grateful if ...", correct: "I would be grateful if you could assist me with this as soon as possible.", explanation: "Rasmiy register: would be grateful, assist, as soon as possible." },
   
     { id: 56014, type: 'passage',
