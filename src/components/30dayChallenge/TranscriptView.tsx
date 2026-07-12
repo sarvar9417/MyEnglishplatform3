@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useCallback } from 'react'
 import { Search, Clock, ChevronDown, ChevronUp, Volume2, Bookmark, Eye, EyeOff } from 'lucide-react'
-import type { TranscriptSection, TranscriptLine } from '../../data/30dayChallenge'
+import type { TranscriptSection } from '../../data/30dayChallenge'
 
 interface Props {
   transcript: string

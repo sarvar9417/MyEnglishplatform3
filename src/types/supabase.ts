@@ -73,6 +73,36 @@ export type Database = {
         }
         Relationships: []
       }
+      conversation_sessions: {
+        Row: {
+          id: string
+          user_id: string
+          topic_id: string
+          transcript: Json
+          feedback: Json | null
+          weak_grammar_points: string[] | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          topic_id: string
+          transcript?: Json
+          feedback?: Json | null
+          weak_grammar_points?: string[] | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          topic_id?: string
+          transcript?: Json
+          feedback?: Json | null
+          weak_grammar_points?: string[] | null
+          created_at?: string
+        }
+        Relationships: []
+      }
       daily_progress: {
         Row: {
           id: number
@@ -1093,6 +1123,51 @@ export type Database = {
         }
         Relationships: []
       }
+      sentence_cards: {
+        Row: {
+          id: string
+          topic_id: string
+          front_uz: string
+          back_en: string
+          audio_url: string | null
+          review_direction: string
+          ease_factor: number
+          interval_days: number
+          repetitions: number
+          next_review_date: string
+          user_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          topic_id: string
+          front_uz: string
+          back_en: string
+          audio_url?: string | null
+          review_direction?: string
+          ease_factor?: number
+          interval_days?: number
+          repetitions?: number
+          next_review_date?: string
+          user_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          topic_id?: string
+          front_uz?: string
+          back_en?: string
+          audio_url?: string | null
+          review_direction?: string
+          ease_factor?: number
+          interval_days?: number
+          repetitions?: number
+          next_review_date?: string
+          user_id?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
       roleplay_sessions: {
         Row: {
           id: string
@@ -1291,6 +1366,48 @@ export type Database = {
         }
         Relationships: []
       }
+      topics: {
+        Row: {
+          id: string
+          day_number: number
+          title_uz: string
+          title_en: string
+          grammar_focus: string | null
+          level: string
+          scenario_context: string | null
+          roleplay_script: Json | null
+          youtube_id: string | null
+          audio_url: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          day_number: number
+          title_uz: string
+          title_en: string
+          grammar_focus?: string | null
+          level?: string
+          scenario_context?: string | null
+          roleplay_script?: Json | null
+          youtube_id?: string | null
+          audio_url?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          day_number?: number
+          title_uz?: string
+          title_en?: string
+          grammar_focus?: string | null
+          level?: string
+          scenario_context?: string | null
+          roleplay_script?: Json | null
+          youtube_id?: string | null
+          audio_url?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
       tandem_pairs: {
         Row: {
           id: string
@@ -1351,6 +1468,33 @@ export type Database = {
           losses?: number
           draws?: number
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      user_facts: {
+        Row: {
+          id: string
+          user_id: string
+          fact_key: string
+          fact_value: string
+          learned_from_session_id: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          fact_key: string
+          fact_value: string
+          learned_from_session_id?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          fact_key?: string
+          fact_value?: string
+          learned_from_session_id?: string | null
+          created_at?: string
         }
         Relationships: []
       }
@@ -1438,6 +1582,54 @@ export type Database = {
           created_at?: string
           state?: Json
           invite_code?: string | null
+        }
+        Relationships: []
+      }
+      vocab_cards: {
+        Row: {
+          id: string
+          topic_id: string
+          word: string
+          meaning_uz: string
+          example_en: string
+          audio_url: string | null
+          review_direction: string
+          ease_factor: number
+          interval_days: number
+          repetitions: number
+          next_review_date: string
+          user_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          topic_id: string
+          word: string
+          meaning_uz: string
+          example_en: string
+          audio_url?: string | null
+          review_direction?: string
+          ease_factor?: number
+          interval_days?: number
+          repetitions?: number
+          next_review_date?: string
+          user_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          topic_id?: string
+          word?: string
+          meaning_uz?: string
+          example_en?: string
+          audio_url?: string | null
+          review_direction?: string
+          ease_factor?: number
+          interval_days?: number
+          repetitions?: number
+          next_review_date?: string
+          user_id?: string
+          created_at?: string
         }
         Relationships: []
       }
@@ -1798,6 +1990,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_weak_points: {
+        Row: {
+          user_id: string
+          grammar_point: string
+          error_count: number
+          last_seen: string
+        }
+        Insert: {
+          user_id: string
+          grammar_point: string
+          error_count?: number
+          last_seen?: string
+        }
+        Update: {
+          user_id?: string
+          grammar_point?: string
+          error_count?: number
+          last_seen?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -1849,6 +2062,22 @@ export type Database = {
             p_fsrs_difficulty?: number | null
             p_fsrs_reps?: number | null
             p_fsrs_lapses?: number | null
+          }; Returns: Json }
+      get_speaking_os_due_count: { Args: {
+            p_user_id: string
+          }; Returns: Json }
+      rate_speaking_os_card: { Args: {
+            p_card_id: string
+            p_rating: number
+            p_deck_type: string
+          }; Returns: Json }
+      upsert_weak_point: { Args: {
+            p_user_id: string
+            p_grammar_point: string
+          }; Returns: Json }
+      upsert_weak_points_batch: { Args: {
+            p_user_id: string
+            p_grammar_points: string[]
           }; Returns: Json }
     }
     Enums: {

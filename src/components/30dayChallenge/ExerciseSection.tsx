@@ -1,9 +1,13 @@
-import { useState, useCallback } from 'react'
-import { Volume2, Mic, Check, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
-import type { ChallengeExercise, DialogueLine } from '../../data/30dayChallenge'
+import { useState, useCallback, useRef, useEffect } from 'react'
+import { Volume2, Mic, ChevronLeft, ChevronRight, Sparkles, Bot, Loader2, Brain, Square } from 'lucide-react'
+import type { ChallengeExercise, DialogueLine, RoleplayExercise } from '../../data/30dayChallenge'
+import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
+import { evaluateQuestionAnswer } from '../../lib/claudeChat'
 
 interface Props {
   exercises: ChallengeExercise[]
+  onStartRoleplay?: (roleplay: RoleplayExercise) => void
+  level?: string
 }
 
 const EXERCISE_EMOJIS: Record<string, string> = {
@@ -20,12 +24,34 @@ const EXERCISE_LABELS: Record<string, string> = {
   'questions': 'Savollar',
 }
 
-export default function ExerciseSection({ exercises }: Props) {
+export default function ExerciseSection({ exercises, onStartRoleplay, level = 'A2' }: Props) {
   const [activeEx, setActiveEx] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [showResults, setShowResults] = useState<Record<string, boolean>>({})
   const [direction, setDirection] = useState<'left' | 'right'>('right')
   const [animating, setAnimating] = useState(false)
+
+  // Speech + AI state for questions
+  const sr = useSpeechRecognition()
+  const [recordingQIndex, setRecordingQIndex] = useState<number | null>(null)
+  const [questionTranscripts, setQuestionTranscripts] = useState<Record<number, string>>({})
+  const [questionFeedbacks, setQuestionFeedbacks] = useState<Record<number, string>>({})
+  const [evaluatingIndex, setEvaluatingIndex] = useState<number | null>(null)
+  const [textInputs, setTextInputs] = useState<Record<number, string>>({})
+  const feedbackAccumRef = useRef<Record<number, string>>({})
+
+  // When speech recognition stops, capture the transcript
+  const wasRecording = useRef(false)
+  useEffect(() => {
+    if (wasRecording.current && !sr.isRecording && recordingQIndex !== null) {
+      const t = sr.transcript.trim()
+      if (t) {
+        setQuestionTranscripts(prev => ({ ...prev, [recordingQIndex]: t }))
+      }
+      setRecordingQIndex(null)
+    }
+    wasRecording.current = sr.isRecording
+  }, [sr.isRecording, sr.transcript, recordingQIndex])
 
   const ex = exercises[activeEx]
 
@@ -51,15 +77,24 @@ export default function ExerciseSection({ exercises }: Props) {
 
   const switchExercise = useCallback((newIdx: number) => {
     if (newIdx === activeEx || newIdx < 0 || newIdx >= exercises.length) return
+    // Clean up speech recognition
+    if (sr.isRecording) sr.stop()
+    sr.reset()
     setDirection(newIdx > activeEx ? 'right' : 'left')
     setAnimating(true)
     setTimeout(() => {
       setActiveEx(newIdx)
       setAnswers({})
       setShowResults({})
+      setRecordingQIndex(null)
+      setQuestionTranscripts({})
+      setQuestionFeedbacks({})
+      setEvaluatingIndex(null)
+      setTextInputs({})
+      feedbackAccumRef.current = {}
       setAnimating(false)
     }, 200)
-  }, [activeEx, exercises.length])
+  }, [activeEx, exercises.length, sr])
 
   return (
     <div className="space-y-4">
@@ -185,10 +220,26 @@ export default function ExerciseSection({ exercises }: Props) {
                 ))}
               </div>
             )}
-            <div className="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 border border-amber-200 dark:border-amber-800">
-              <p className="text-sm font-medium text-amber-800 dark:text-amber-200 flex items-center gap-2">
-                <Mic size={16} />
-                Endi o'zingiz gapirib ko'ring! Speaking bo'limiga o'ting va amaliyot qiling.
+
+            {/* AI Role-play button */}
+            {onStartRoleplay && (
+              <button
+                onClick={() => onStartRoleplay(ex)}
+                className="group relative w-full overflow-hidden p-4 rounded-xl bg-gradient-to-br from-purple-600 to-fuchsia-700 text-white font-bold text-sm transition-all hover:shadow-xl hover:from-purple-700 hover:to-fuchsia-800 active:scale-[0.98]"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  <Bot size={18} />
+                  AI bilan role-play qilish
+                  <Sparkles size={16} className="text-yellow-300" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              </button>
+            )}
+
+            <div className="p-3 rounded-xl bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-700">
+              <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+                <Mic size={14} />
+                Yoki o'zingiz mustaqil gapirib ko'ring — Speaking bo'limiga o'ting.
               </p>
             </div>
           </div>
@@ -226,25 +277,194 @@ export default function ExerciseSection({ exercises }: Props) {
         {/* Questions */}
         {ex.type === 'questions' && (
           <div className="space-y-4">
-            {ex.questions.map((q: string, i: number) => (
-              <div key={i} className="p-4 rounded-xl bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-700 transition-all">
-                <p className="text-sm font-medium text-gray-800 dark:text-gray-200 mb-3">
-                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 text-xs font-bold mr-2">
-                    {i + 1}
-                  </span>
-                  {q}
-                </p>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => speakSentence(q)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-bold hover:bg-primary-200 dark:hover:bg-primary-900/50 transition-all active:scale-95"
-                  >
-                    <Volume2 size={12} /> Savolni eshitish
-                  </button>
-                  <span className="text-xs text-gray-400">→ Ovoz chiqarib javob bering</span>
+            {ex.questions.map((q: string, i: number) => {
+              const isRecordingThis = recordingQIndex === i && sr.isRecording
+              const transcript = questionTranscripts[i]
+              const feedback = questionFeedbacks[i]
+              const isEvaluating = evaluatingIndex === i
+
+              const handleMicClick = () => {
+                if (isRecordingThis) {
+                  sr.stop()
+                } else {
+                  if (sr.isRecording) {
+                    // Save current transcript before switching
+                    const prevTranscript = sr.transcript.trim()
+                    if (prevTranscript && recordingQIndex !== null && recordingQIndex !== i) {
+                      setQuestionTranscripts(prev => ({ ...prev, [recordingQIndex]: prevTranscript }))
+                    }
+                    sr.stop()
+                  }
+                  sr.reset()
+                  setRecordingQIndex(i)
+                  sr.start()
+                }
+              }
+
+              const handleAICheck = (answerText?: string) => {
+                const text = answerText || transcript
+                if (!text) return
+                setEvaluatingIndex(i)
+                feedbackAccumRef.current[i] = ''
+                setQuestionFeedbacks(prev => ({ ...prev, [i]: '' }))
+
+                evaluateQuestionAnswer(
+                  q,
+                  text,
+                  level,
+                  (token) => {
+                    feedbackAccumRef.current[i] += token
+                    setQuestionFeedbacks(prev => ({
+                      ...prev,
+                      [i]: feedbackAccumRef.current[i],
+                    }))
+                  },
+                  (full) => {
+                    setQuestionFeedbacks(prev => ({ ...prev, [i]: full }))
+                    setEvaluatingIndex(null)
+                  },
+                  () => {
+                    setEvaluatingIndex(null)
+                  }
+                )
+              }
+
+              return (
+                <div key={i} className="p-4 rounded-xl bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-700 transition-all">
+                  <p className="text-sm font-medium text-gray-800 dark:text-gray-200 mb-3">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 text-xs font-bold mr-2">
+                      {i + 1}
+                    </span>
+                    {q}
+                  </p>
+
+                  {/* Recording indicator */}
+                  {isRecordingThis && (
+                    <div className="mb-3 p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 animate-fade-in">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                        <span className="text-xs font-bold text-red-600 dark:text-red-400">Yozilmoqda...</span>
+                      </div>
+                      <p className="text-sm text-gray-700 dark:text-gray-300">
+                        {sr.transcript}
+                        {sr.interim && <span className="text-gray-400">{sr.interim}</span>}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Transcript after recording */}
+                  {!isRecordingThis && transcript && (
+                    <div className="mb-3 p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 animate-fade-in">
+                      <p className="text-xs font-bold text-green-700 dark:text-green-300 mb-1 flex items-center gap-1">
+                        <Mic size={12} /> Sizning javobingiz:
+                      </p>
+                      <p className="text-sm text-gray-700 dark:text-gray-300">"{transcript}"</p>
+                    </div>
+                  )}
+
+                  {/* Actions row */}
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      onClick={() => speakSentence(q)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-bold hover:bg-primary-200 dark:hover:bg-primary-900/50 transition-all active:scale-95"
+                    >
+                      <Volume2 size={12} /> Savolni eshitish
+                    </button>
+
+                    {!isRecordingThis && !transcript && sr.isSupported && (
+                      <button
+                        onClick={handleMicClick}
+                        disabled={recordingQIndex !== null && recordingQIndex !== i}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 text-xs font-bold hover:bg-rose-200 dark:hover:bg-rose-900/50 transition-all active:scale-95 disabled:opacity-40"
+                      >
+                        <Mic size={12} /> Javob yozish
+                      </button>
+                    )}
+
+                    {!isRecordingThis && !transcript && !sr.isSupported && (
+                      <div className="w-full space-y-2">
+                        <textarea
+                          value={textInputs[i] ?? ''}
+                          onChange={e => setTextInputs(prev => ({ ...prev, [i]: e.target.value }))}
+                          placeholder="Javobingizni yozing..."
+                          rows={2}
+                          className="w-full px-3 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all placeholder-gray-400 resize-none"
+                        />
+                        <button
+                          onClick={() => {
+                            const val = textInputs[i]?.trim()
+                            if (val) {
+                              setQuestionTranscripts(prev => ({ ...prev, [i]: val }))
+                              setTextInputs(prev => {
+                                const next = { ...prev }
+                                delete next[i]
+                                return next
+                              })
+                              handleAICheck(val)
+                            }
+                          }}
+                          disabled={!textInputs[i]?.trim()}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 text-white text-xs font-bold hover:from-violet-700 hover:to-purple-700 transition-all active:scale-95 disabled:opacity-40"
+                        >
+                          <Brain size={12} /> AI bilan tekshirish
+                        </button>
+                      </div>
+                    )}
+
+                    {isRecordingThis && (
+                      <button
+                        onClick={handleMicClick}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-500 text-white text-xs font-bold hover:bg-red-600 transition-all active:scale-95 animate-pulse"
+                      >
+                        <Square size={12} /> To'xtatish
+                      </button>
+                    )}
+
+                    {!isRecordingThis && transcript && !feedback && (
+                      <button
+                        onClick={handleAICheck}
+                        disabled={isEvaluating}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 text-white text-xs font-bold hover:from-violet-700 hover:to-purple-700 transition-all active:scale-95 disabled:opacity-40"
+                      >
+                        <Brain size={12} /> AI bilan tekshirish
+                      </button>
+                    )}
+                  </div>
+
+                  {/* AI Feedback streaming */}
+                  {isEvaluating && feedback !== undefined && (
+                    <div className="mt-3 p-3 rounded-lg bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20 border border-violet-200 dark:border-violet-800 animate-fade-in">
+                      <div className="flex items-center gap-1.5 mb-1.5">
+                        <Brain size={14} className="text-violet-600" />
+                        <span className="text-xs font-bold text-violet-700 dark:text-violet-300">
+                          {feedback ? 'AI tahlili' : 'Tahlil qilinmoqda...'}
+                        </span>
+                        {!feedback && <Loader2 size={12} className="animate-spin text-violet-500" />}
+                      </div>
+                      {feedback && (
+                        <pre className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap font-sans">
+                          {feedback}
+                          {isEvaluating && <span className="inline-block w-1 h-4 bg-violet-500 ml-0.5 animate-pulse align-middle" />}
+                        </pre>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Completed feedback */}
+                  {!isEvaluating && feedback && (
+                    <div className="mt-3 p-3 rounded-lg bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20 border border-violet-200 dark:border-violet-800 animate-fade-in">
+                      <div className="flex items-center gap-1.5 mb-1.5">
+                        <Brain size={14} className="text-violet-600" />
+                        <span className="text-xs font-bold text-violet-700 dark:text-violet-300">AI tahlili</span>
+                      </div>
+                      <pre className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap font-sans">
+                        {feedback}
+                      </pre>
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              )
+            })}
             {ex.hints && ex.hints.length > 0 && (
               <div className="p-4 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800">
                 <p className="text-xs font-bold text-blue-600 dark:text-blue-400 mb-2 uppercase flex items-center gap-1">

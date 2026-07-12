@@ -171,6 +171,48 @@ Use these measurements to inform your FLUENCY score. Fast speech with few pauses
   return streamResponse({ system, messages: [{ role: 'user', content: userPrompt }], maxTokens: 350 }, onDelta, onDone, onError)
 }
 
+// ── Evaluate Question Answer (for 30-Day Challenge questions) ────────────
+
+export async function evaluateQuestionAnswer(
+  question: string,
+  answer: string,
+  level: string,
+  onDelta: (token: string) => void,
+  onDone:  (full: string)  => void,
+  onError: (err: Error)    => void
+): Promise<void> {
+  const system = `You are an encouraging English teacher evaluating a ${level}-level student's spoken answer.
+
+The student answered an open-ended speaking question. Evaluate their response based on:
+1. Relevance — Did they actually answer the question?
+2. Grammar — Are the sentences grammatically correct?
+3. Vocabulary — Did they use appropriate words?
+
+Respond ONLY in this exact format — no other text before or after:
+
+✅ RELEVANCE: [checkmark if they answered / ❌ if off-topic]
+[One sentence about whether they addressed the question]
+
+📝 GRAMMAR: [1-10]
+[One sentence about grammatical accuracy. Mention specific errors if any.]
+
+📖 VOCABULARY: [1-10]
+[One sentence about word choice and range]
+
+💡 FEEDBACK:
+[2-3 encouraging sentences: highlight ONE genuine strength and give ONE specific, actionable tip to improve.]
+
+Be warm and constructive. The student is at ${level} level — praise effort and progress.`
+
+  const userPrompt = `Question: "${question}"
+
+Student's answer: "${answer || '(no answer given)'}"
+
+Please evaluate this answer and provide structured feedback in the specified format.`
+
+  return streamResponse({ system, messages: [{ role: 'user', content: userPrompt }], maxTokens: 350 }, onDelta, onDone, onError)
+}
+
 // ── Generate Examples ──────────────────────────────────────────────────────
 
 export async function generateExamples(
@@ -294,6 +336,114 @@ RULES:
   return streamResponse({ system, messages, maxTokens: 300 }, onDelta, onDone, onError)
 }
 
+// ── 30-Day Challenge Conversation (100% tailored to today's content) ────────
+
+interface DayContent {
+  day: number
+  title: string
+  level: string
+  vocabulary: { word: string; meaning: string; example: string; translation?: string }[]
+  sentenceBank: { categories: { category: string; phrases: { en: string; uz: string }[] }[] }
+  learningObjectives: string[]
+  speaking: { prompt: string; tips: string[] }
+  highlights: { title: string; points?: string[]; phrases?: { phrase: string; meaning: string }[] }[]
+}
+
+export async function startDayConversation(
+  dayContent: DayContent,
+  history: { role: 'user' | 'assistant'; content: string }[],
+  onDelta: (token: string) => void,
+  onDone:  (full: string)  => void,
+  onError: (err: Error)    => void,
+  userFacts?: string  // Life Memory facts text (e.g. "- lives in: Tashkent\n- occupation: student")
+): Promise<void> {
+  const { day, title, level, vocabulary, sentenceBank, learningObjectives, speaking, highlights } = dayContent
+
+  // ── Build user facts block ──────────────────────────────────────────────
+  const factsBlock = userFacts
+    ? `
+ABOUT THE STUDENT — Personal facts to make the conversation natural. Reference these naturally, but don't mention them all at once:
+${userFacts}
+
+If the student says something new about themselves, remember it for future conversations.`
+    : ''
+
+  // ── Build vocabulary block ──────────────────────────────────────────────
+  const vocabLines = vocabulary
+    .slice(0, 12)
+    .map((v, i) => `  ${i + 1}. "${v.word}" — ${v.meaning} — e.g. "${v.example}"`)
+    .join('\n')
+  const vocabBlock = vocabulary.length > 0
+    ? `
+TODAY'S VOCABULARY — Naturally weave these words into your replies:
+${vocabLines}
+
+If the student uses any of these words, acknowledge it positively.`
+    : ''
+
+  // ── Build sentence bank block ───────────────────────────────────────────
+  const keySentences = sentenceBank.categories
+    .slice(0, 4)
+    .map(c => `  [${c.category}] "${c.phrases.slice(0, 3).map(p => p.en).join('" / "')}"`)
+    .join('\n')
+  const sentenceBlock = sentenceBank.categories.length > 0
+    ? `
+KEY SENTENCE STRUCTURES — Model these naturally in your side of the conversation:
+${keySentences}`
+    : ''
+
+  // ── Build learning objectives block ─────────────────────────────────────
+  const objectivesBlock = learningObjectives.length > 0
+    ? `
+LEARNING OBJECTIVES — Steer the conversation to help practise these:
+${learningObjectives.map((o, i) => `  ${i + 1}. ${o}`).join('\n')}`
+    : ''
+
+  // ── Build speaking prompt block ─────────────────────────────────────────
+  const speakingBlock = speaking?.prompt
+    ? `
+SPEAKING PRACTICE CONTEXT — The student practised answering:
+  "${speaking.prompt}"
+  Tips they received: ${speaking.tips?.slice(0, 3).map(t => `"${t}"`).join(', ') || 'none'}
+
+  Ask them about their experience with this topic.`
+    : ''
+
+  // ── Build highlights block ──────────────────────────────────────────────
+  const highlightScenarios = highlights
+    ?.slice(0, 3)
+    .map(h => `  • ${h.title}: ${h.points?.slice(0, 2).join('; ') || ''}`)
+    .join('\n') || ''
+  const highlightsBlock = highlightScenarios
+    ? `
+SCENARIOS COVERED IN THE LESSON — You can role-play or reference these:
+${highlightScenarios}`
+    : ''
+
+  // ── Assemble system prompt ──────────────────────────────────────────────
+  const system = `You are a friendly English conversation partner for a ${level}-level learner who just completed Day ${day} of a 30-Day Speaking Challenge.
+
+TODAY'S TOPIC: ${title}${factsBlock}${vocabBlock}${sentenceBlock}${objectivesBlock}${speakingBlock}${highlightsBlock}
+
+CONVERSATION RULES:
+1. Speak conversationally — like a friend, NOT a teacher or examiner.
+2. Keep responses SHORT: 2-4 sentences max.
+3. Use ${level}-level English. If you need a harder word, define it immediately.
+4. NATURALLY INCORPORATE today's vocabulary words into your side of the conversation.
+5. If the student uses any of today's vocabulary, react warmly ("Great word!" / "Exactly!").
+6. End each turn with a natural follow-up question to keep the conversation flowing.
+7. Do NOT give scores, corrections, or grammar lessons during the conversation.
+8. If the student hesitates or makes a mistake, just respond naturally — never correct them.
+9. When relevant, draw from the scenarios (e.g. restaurant role-play, directions, meeting a friend).
+10. Use the student's personal facts to make conversation more natural — ask follow-up questions about their interests, studies, or experiences.`
+
+  const messages = history.length === 0
+    ? [{ role: 'user' as const, content: `The student just finished Day ${day}: "${title}". Start a friendly conversation about today's topic. Greet them warmly and ask a natural question to get them speaking about what they learned today.` }]
+    : history
+
+  return streamResponse({ system, messages, maxTokens: 350 }, onDelta, onDone, onError)
+}
+
 // ── Scenario Conversation ──────────────────────────────────────────────────
 
 export interface ScenarioContext {
@@ -333,6 +483,113 @@ RULES:
     (d, done, e) => streamResponse({ system, messages, maxTokens: 250 }, d, done, e),
     onDelta, onDone, onError,
   )
+}
+
+// ── 30-Day Challenge Role-Play ─────────────────────────────────────────
+
+export async function startDayRoleplay(
+  scenario: {
+    title: string
+    aiRole: string
+    userRole: string
+    opening: string
+  },
+  level: string,
+  dayTitle: string,
+  vocabulary: { word: string; meaning: string; example: string }[],
+  history: { role: 'user' | 'assistant'; content: string }[],
+  onDelta: (token: string) => void,
+  onDone:  (full: string)  => void,
+  onError: (err: Error)    => void
+): Promise<void> {
+  // Build vocabulary block
+  const vocabLines = vocabulary
+    .slice(0, 6)
+    .map((v, i) => `  ${i + 1}. "${v.word}" — ${v.meaning}`)
+    .join('\n')
+  const vocabBlock = vocabulary.length > 0
+    ? `\nTODAY'S VOCABULARY — Naturally weave these words into the role-play where relevant:\n${vocabLines}`
+    : ''
+
+  const system = `You are role-playing as ${scenario.aiRole}. The user is ${scenario.userRole}.
+
+SCENARIO: ${scenario.title}
+
+LESSON CONTEXT: This role-play is part of Day of "${dayTitle}" in a 30-Day English Speaking Challenge.${vocabBlock}
+
+RULES:
+1. STAY in character at all times — you ARE ${scenario.aiRole}, NOT an AI assistant or teacher.
+2. Speak natural, real-world English at ${level} level. Keep sentences short and simple.
+3. Keep each reply VERY SHORT: 1-3 sentences. React naturally to what the user says.
+4. Gently move the scene forward toward a natural conclusion.
+5. NEVER correct the student's grammar or break character.
+6. If the user makes a mistake but you understand, just respond naturally.
+7. When the task is clearly complete, give a warm closing line.`
+
+  const messages = history.length === 0
+    ? [
+        { role: 'assistant' as const, content: scenario.opening },
+        { role: 'user' as const, content: '(Begin)' },
+      ]
+    : history
+
+  return streamResponse({ system, messages, maxTokens: 250 }, onDelta, onDone, onError)
+}
+
+// ── Conversation Feedback (after free/role-play chat) ──────────────────
+
+export async function generateConversationFeedback(
+  userMessages: string[],
+  level: string,
+  dayTitle: string,
+  vocabulary: { word: string; meaning: string }[],
+  learningObjectives: string[],
+  onDelta: (token: string) => void,
+  onDone:  (full: string)  => void,
+  onError: (err: Error)    => void
+): Promise<void> {
+  const vocabWords = vocabulary.map(v => v.word).join(', ')
+
+  const transcript = userMessages
+    .map((m, i) => `[Student ${i + 1}] ${m}`)
+    .join('\n')
+
+  const system = `You are an encouraging English speaking coach evaluating a ${level}-level student's conversation.
+
+The student just finished a conversation as part of "${dayTitle}" in their 30-Day Speaking Challenge.
+
+Today's vocabulary words: ${vocabWords}
+Today's learning objectives: ${learningObjectives.join('; ')}
+
+Respond ONLY in this exact format — no other text before or after:
+
+GRAMMAR: [1-10]
+[One sentence about grammatical accuracy observed in the conversation. Be specific — mention what they did correctly or what tense/structure they used well.]
+
+VOCABULARY: [1-10]
+[One sentence about vocabulary range. Mention if they used any of today's words naturally.]
+
+FLUENCY: [1-10]
+[One sentence about how naturally the student expressed themselves — sentence length, hesitation, flow.]
+
+STRENGTHS:
+• [Strong point 1 — specific example from their messages]
+• [Strong point 2 — specific example from their messages]
+• [Strong point 3 — specific example if applicable]
+
+IMPROVE:
+• [One specific, actionable tip for grammar or vocabulary]
+• [One specific, actionable tip for fluency or confidence]
+
+ENCOURAGEMENT:
+[One warm, motivating sentence to keep them going. Use emojis sparingly.]`
+
+  const prompt = `Here is the student's conversation transcript. Please evaluate their performance and provide feedback.
+
+${transcript || '(The student did not send any messages.)'}\n
+Focus on what they did well and give practical advice for improvement.`
+
+  return streamResponse({ system, messages: [{ role: 'user', content: prompt }], maxTokens: 500 }, onDelta, onDone, onError)
 }
 
 // ── IELTS Writing Analysis ────────────────────────────────────────────────

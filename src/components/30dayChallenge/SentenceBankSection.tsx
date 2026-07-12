@@ -22,7 +22,7 @@ export default function SentenceBankSection({ sentenceBank }: Props) {
     if (!search.trim()) return source
 
     const q = search.toLowerCase()
-    return source.filter(s => s.toLowerCase().includes(q))
+    return source.filter(p => p.en.toLowerCase().includes(q) || p.uz.toLowerCase().includes(q))
   }, [search, activeCategory, categories, sentenceBank.all])
 
   const handleCopy = useCallback(async (text: string, id: string) => {
@@ -122,33 +122,38 @@ export default function SentenceBankSection({ sentenceBank }: Props) {
 
       {/* Sentences grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-        {filtered.map((s, i) => {
+        {filtered.map((p, i) => {
           const id = `sent-${activeCategory ?? 'all'}-${i}`
           return (
             <div
               key={id}
-              className="group relative flex items-center justify-between gap-2 p-3.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-700 hover:shadow-md transition-all duration-200"
+              className="group relative p-3.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-700 hover:shadow-md transition-all duration-200"
             >
-              <p className="text-sm text-gray-800 dark:text-gray-200 flex-1 leading-relaxed">{s}</p>
-              <div className="flex items-center gap-0.5 opacity-30 group-hover:opacity-100 transition-all duration-200">
-                <button
-                  onClick={() => handleSpeak(s)}
-                  className="p-2 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors active:scale-90"
-                  title="Ovoz chiqarib o'qish"
-                >
-                  <Volume2 size={14} />
-                </button>
-                <button
-                  onClick={() => handleCopy(s, id)}
-                  className="p-2 rounded-lg text-gray-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors active:scale-90"
-                  title="Nusxa olish"
-                >
-                  {copiedId === id ? (
-                    <Check size={14} className="text-green-600 animate-pop-in" />
-                  ) : (
-                    <Copy size={14} />
-                  )}
-                </button>
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100 leading-relaxed">{p.en}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">{p.uz}</p>
+                </div>
+                <div className="flex items-center gap-0.5 shrink-0 opacity-30 group-hover:opacity-100 transition-all duration-200">
+                  <button
+                    onClick={() => handleSpeak(p.en)}
+                    className="p-2 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors active:scale-90"
+                    title="Ovoz chiqarib o'qish"
+                  >
+                    <Volume2 size={14} />
+                  </button>
+                  <button
+                    onClick={() => handleCopy(p.en, id)}
+                    className="p-2 rounded-lg text-gray-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors active:scale-90"
+                    title="Nusxa olish"
+                  >
+                    {copiedId === id ? (
+                      <Check size={14} className="text-green-600 animate-pop-in" />
+                    ) : (
+                      <Copy size={14} />
+                    )}
+                  </button>
+                </div>
               </div>
 
               {/* Copy toast */}

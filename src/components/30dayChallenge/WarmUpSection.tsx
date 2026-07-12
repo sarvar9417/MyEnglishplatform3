@@ -55,6 +55,14 @@ export default function WarmUpSection({ day, onComplete }: Props) {
   const reviewComplete = isReviewing && reviewQueue.length === 0 && !currentCard
   const totalInSession = sessionSize
 
+  // Flip state for card reveal (defined at top level per React hooks rules)
+  const [flipped, setFlipped] = useState(false)
+
+  // Reset flip state when card changes
+  useEffect(() => {
+    setFlipped(false)
+  }, [currentCard?.id])
+
   // ── Review complete screen ──────────────────────────────────────────────
   if (reviewComplete) {
     return (
@@ -129,68 +137,85 @@ export default function WarmUpSection({ day, onComplete }: Props) {
           <span className="text-[10px] text-gray-400">Day {currentCard.dayNumber}</span>
         </div>
 
-        {/* Card */}
-        <div className="relative perspective-[1000px]">
-          <div className="relative w-full p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-lg transition-all min-h-[180px] flex flex-col items-center justify-center text-center">
-            {/* Front — O'zbekcha */}
-            <p className="text-xs font-bold text-gray-400 dark:text-gray-500 mb-3 uppercase tracking-wider">
-              Esingizdami?
-            </p>
-            <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 leading-relaxed mb-4">
-              {currentCard.front}
-            </p>
+        {/* Card — clickable to flip */}
+        <div
+          onClick={() => !flipped && setFlipped(true)}
+          className={`relative w-full p-6 rounded-2xl border shadow-lg transition-all duration-500 min-h-[200px] flex flex-col items-center justify-center text-center cursor-pointer select-none ${
+            flipped
+              ? 'bg-white dark:bg-gray-800 border-primary-200 dark:border-primary-700 scale-[1.02]'
+              : 'bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-700 hover:shadow-xl'
+          }`}
+        >
+          {/* Front — O'zbekcha / prompt */}
+          <p className="text-xs font-bold text-gray-400 dark:text-gray-500 mb-3 uppercase tracking-wider">
+            {flipped ? 'Javob' : 'Esingizdami?'}
+          </p>
+          <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 leading-relaxed mb-4">
+            {currentCard.front}
+          </p>
 
-            {/* Show answer or hint */}
-            <div className="mt-auto">
-              <p className="text-sm text-gray-500 dark:text-gray-400 italic">
-                {currentCard.type === 'vocab'
-                  ? `Example: ${currentCard.back}`
-                  : currentCard.back
-                }
+          {/* Back — revealed only when flipped */}
+          {flipped && (
+            <div className="mt-2 pt-4 border-t border-gray-100 dark:border-gray-700 w-full animate-fade-in">
+              <p className="text-xs font-bold text-primary-600 dark:text-primary-400 mb-2 uppercase tracking-wider">
+                To'g'ri javob:
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                {currentCard.back}
               </p>
             </div>
-          </div>
+          )}
+
+          {!flipped && (
+            <div className="mt-4 animate-bounce">
+              <p className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1">
+                <span>Javobni ko'rsatish uchun bosing</span>
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Topic */}
         <p className="text-xs text-gray-400 text-center">{currentCard.topicTitle}</p>
 
-        {/* Rating buttons */}
-        <div className="space-y-2">
-          <p className="text-xs font-bold text-center text-gray-500 dark:text-gray-400">
-            Qanchalik eslab qoldingiz?
-          </p>
-          <div className="grid grid-cols-4 gap-2">
-            <button
-              onClick={() => handleRate('bilmadim')}
-              className="p-3 rounded-xl bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800/50 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900/50 active:scale-95 transition-all"
-            >
-              <XCircle size={18} className="mx-auto mb-1" />
-              <span className="text-[10px] font-bold block">Unutdim</span>
-            </button>
-            <button
-              onClick={() => handleRate('qiynaldim')}
-              className="p-3 rounded-xl bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800/50 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/50 active:scale-95 transition-all"
-            >
-              <Brain size={18} className="mx-auto mb-1" />
-              <span className="text-[10px] font-bold block">Qiynaldim</span>
-            </button>
-            <button
-              onClick={() => handleRate('bildim')}
-              className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800/50 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 active:scale-95 transition-all"
-            >
-              <RotateCw size={18} className="mx-auto mb-1" />
-              <span className="text-[10px] font-bold block">Bildim</span>
-            </button>
-            <button
-              onClick={() => handleRate('yodladim')}
-              className="p-3 rounded-xl bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800/50 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-900/50 active:scale-95 transition-all"
-            >
-              <CheckCircle size={18} className="mx-auto mb-1" />
-              <span className="text-[10px] font-bold block">Yodladim</span>
-            </button>
+        {/* Rating buttons — only visible after flipping */}
+        {flipped && (
+          <div className="space-y-2 animate-slide-up">
+            <p className="text-xs font-bold text-center text-gray-500 dark:text-gray-400">
+              Qanchalik eslab qoldingiz?
+            </p>
+            <div className="grid grid-cols-4 gap-2">
+              <button
+                onClick={() => { handleRate('bilmadim'); setFlipped(false) }}
+                className="p-3 rounded-xl bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800/50 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900/50 active:scale-95 transition-all"
+              >
+                <XCircle size={18} className="mx-auto mb-1" />
+                <span className="text-[10px] font-bold block">Unutdim</span>
+              </button>
+              <button
+                onClick={() => { handleRate('qiynaldim'); setFlipped(false) }}
+                className="p-3 rounded-xl bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800/50 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/50 active:scale-95 transition-all"
+              >
+                <Brain size={18} className="mx-auto mb-1" />
+                <span className="text-[10px] font-bold block">Qiynaldim</span>
+              </button>
+              <button
+                onClick={() => { handleRate('bildim'); setFlipped(false) }}
+                className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800/50 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 active:scale-95 transition-all"
+              >
+                <RotateCw size={18} className="mx-auto mb-1" />
+                <span className="text-[10px] font-bold block">Bildim</span>
+              </button>
+              <button
+                onClick={() => { handleRate('yodladim'); setFlipped(false) }}
+                className="p-3 rounded-xl bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800/50 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-900/50 active:scale-95 transition-all"
+              >
+                <CheckCircle size={18} className="mx-auto mb-1" />
+                <span className="text-[10px] font-bold block">Yodladim</span>
+              </button>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Skip / end */}
         <button

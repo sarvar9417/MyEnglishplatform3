@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, ChevronUp, Lightbulb, Target, Star, Sparkles } from 'lucide-react'
+import { ChevronDown, ChevronUp, Lightbulb, Target, Sparkles } from 'lucide-react'
 import type { LessonHighlight } from '../../data/30dayChallenge'
 
 interface Props {

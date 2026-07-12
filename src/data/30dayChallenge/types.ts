@@ -68,12 +68,17 @@ export interface ChallengeVocab {
 
 export interface SentenceBank {
   categories: SentenceCategory[]
-  all: string[]      // Barcha jumlalar bitta massivda
+  all: Phrase[]      // Barcha jumlalar bitta massivda
 }
 
 export interface SentenceCategory {
   category: string
-  phrases: string[]
+  phrases: Phrase[]
+}
+
+export interface Phrase {
+  en: string
+  uz: string
 }
 
 // ── Mashqlar ────────────────────────────────────────────────────────────────
@@ -95,7 +100,7 @@ export interface DialogueLine {
   speaker: string
   text: string
   blank?: boolean
-  answer: string      // answer always required when blank is true
+  answer?: string      // answer only required when blank is true
 }
 
 export interface RoleplayExercise {

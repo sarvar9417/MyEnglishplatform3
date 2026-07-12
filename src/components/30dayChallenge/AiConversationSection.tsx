@@ -8,6 +8,7 @@ import { useLifeMemory } from '../../hooks/useLifeMemory'
 
 interface Props {
   day: ChallengeDay
+  pendingRoleplay?: RoleplayExercise | null
 }
 
 interface ChatMsg {
@@ -21,7 +22,6 @@ type ConversationMode = 'free' | 'roleplay'
 /** Infer scenario fields from a roleplay exercise */
 function inferScenario(ex: RoleplayExercise) {
   const s = ex.scenario.toLowerCase()
-  const i = ex.instruction.toLowerCase()
 
   let aiRole = 'a helpful person'
   let userRole = 'a student'
@@ -67,7 +67,7 @@ function inferScenario(ex: RoleplayExercise) {
   return { aiRole, userRole, title, opening }
 }
 
-export default function AiConversationSection({ day }: Props) {
+export default function AiConversationSection({ day, pendingRoleplay }: Props) {
   const [mode, setMode] = useState<ConversationMode>('free')
   const [activeRoleplay, setActiveRoleplay] = useState<RoleplayExercise | null>(null)
   const [showRoleplayPicker, setShowRoleplayPicker] = useState(true)
@@ -143,6 +143,15 @@ export default function AiConversationSection({ day }: Props) {
       },
     )
   }, [messages, day, sr, tts, isFeedbackLoading, lifeMemory])
+
+  // Auto-start roleplay from pendingRoleplay prop
+  useEffect(() => {
+    if (pendingRoleplay) {
+      const ex = roleplayExercises.find(r => r.id === pendingRoleplay.id) || pendingRoleplay
+      startRoleplay(ex)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingRoleplay?.id])
 
   // Cleanup on unmount — abort any in-flight stream
   useEffect(() => {
@@ -806,7 +815,7 @@ export default function AiConversationSection({ day }: Props) {
           </p>
         )}
 
-        {tts.isSpeaking && (
+        {tts.playing && (
           <p className="text-xs text-primary-500 font-semibold flex items-center gap-1.5 mt-1.5">
             <Volume2 size={12} className="animate-pulse" />
             AI gapiryapti...

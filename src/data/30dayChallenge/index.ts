@@ -14,11 +14,15 @@ export function getStaticDay(day: number) {
 }
 
 export async function getChallengeDay(day: number) {
-  const fromDB = await getChallengeDayFromDB(day)
+  // Try Supabase with a 5-second timeout — agar Supabase javob bermasa static data ga o'tadi
+  const fromDB = await Promise.race([
+    getChallengeDayFromDB(day),
+    new Promise<null>(resolve => setTimeout(() => resolve(null), 5000)),
+  ])
   if (fromDB) return fromDB
   return getStaticDay(day)
 }
 
 export { getChallengeDayFromDB } from '../../services/challengeDayService'
 
-export type { ChallengeDay, SentenceBank, SentenceCategory, ChallengeVocab, LessonHighlight, ChallengeExercise, RoleplayExercise, ChallengeQuiz, ChallengeSpeaking, ChallengeReview, ChallengeVideo, Timestamp, DialogueLine, TranscriptSection, TranscriptLine } from './types'
+export type { ChallengeDay, SentenceBank, SentenceCategory, ChallengeVocab, LessonHighlight, ChallengeExercise, RoleplayExercise, ChallengeQuiz, ChallengeSpeaking, ChallengeReview, ChallengeVideo, Timestamp, DialogueLine, TranscriptSection, TranscriptLine, Phrase } from './types'

@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowLeft, Trophy, Mic, Flame, Target, Sparkles, Zap, Loader2 } from 'lucide-react'
-import { STATIC_DAYS, TOTAL_CHALLENGE_DAYS, getChallengeDay, getStaticDay } from '../data/30dayChallenge'
+import { ArrowLeft, Trophy, Mic, Flame, Sparkles, Zap, Loader2 } from 'lucide-react'
+import { TOTAL_CHALLENGE_DAYS, getChallengeDay, getStaticDay } from '../data/30dayChallenge'
 import type { ChallengeDay } from '../data/30dayChallenge/types'
-import { useI18n } from '../i18n'
+import type { RoleplayExercise } from '../data/30dayChallenge'
 
 // Components
 import DaySelector from '../components/30dayChallenge/DaySelector'
@@ -64,18 +64,17 @@ const TABS: { key: Tab; icon: string; label: string; color: string }[] = [
 // ── Page ────────────────────────────────────────────────────────────────────
 
 export default function ThirtyDayChallenge() {
-  const { t } = useI18n()
   const navigate = useNavigate()
 
   const [progress, setProgress] = useState<ChallengeProgress>(loadProgress)
   const [currentDay, setCurrentDay] = useState(progress.currentDay)
   const [activeTab, setActiveTab] = useState<Tab>('video')
-  const [completedQuiz, setCompletedQuiz] = useState<Set<number>>(new Set())
   const [quizScore, setQuizScore] = useState(0)
   const [animatingTab, setAnimatingTab] = useState<Tab | null>(null)
   const [pageEntered, setPageEntered] = useState(false)
   const [day, setDay] = useState<ChallengeDay | null>(null)
   const [dayLoading, setDayLoading] = useState(true)
+  const [pendingRoleplay, setPendingRoleplay] = useState<RoleplayExercise | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const completedCount = progress.completedDays.length
@@ -127,7 +126,7 @@ export default function ThirtyDayChallenge() {
     if (n < 1 || n > TOTAL_CHALLENGE_DAYS) return
     setCurrentDay(n)
     setActiveTab('video')
-    setCompletedQuiz(new Set())
+    setPendingRoleplay(null)
     setQuizScore(0)
     setDayLoading(true)
     setDay(null)
@@ -155,6 +154,14 @@ export default function ThirtyDayChallenge() {
 
   const handleQuizComplete = useCallback((score: number) => {
     setQuizScore(score)
+  }, [])
+
+  // Handle starting a roleplay from the ExerciseSection
+  const handleStartRoleplay = useCallback((roleplay: RoleplayExercise) => {
+    setPendingRoleplay(roleplay)
+    setActiveTab('ai-chat')
+    // Clear pendingRoleplay after AiConversationSection has consumed it (200ms)
+    setTimeout(() => setPendingRoleplay(null), 200)
   }, [])
 
   // ── Render ──────────────────────────────────────────────────────────────
@@ -330,7 +337,7 @@ export default function ThirtyDayChallenge() {
 
         {activeTab === 'exercises' && (
           <div className="animate-slide-up">
-            <ExerciseSection exercises={day.exercises} />
+            <ExerciseSection exercises={day.exercises} onStartRoleplay={handleStartRoleplay} level={day.level} />
           </div>
         )}
 
@@ -348,7 +355,7 @@ export default function ThirtyDayChallenge() {
 
         {activeTab === 'ai-chat' && (
           <div className="animate-slide-up">
-            <AiConversationSection day={day} />
+            <AiConversationSection day={day} pendingRoleplay={pendingRoleplay} />
           </div>
         )}
 
