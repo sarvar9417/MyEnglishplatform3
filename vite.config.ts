@@ -117,9 +117,6 @@ export default defineConfig(({ command }) => ({
       ignored: ['**/node_modules/**', '**/src/data/**', '**/*.test.*', '**/__tests__/**'],
     },
   },
-  esbuild: {
-    target: 'esnext',
-  },
   optimizeDeps: {
     include: [
       'react',

@@ -40,14 +40,7 @@ function generateQuizQuestions(vocab: ChallengeVocab[]): QuizQuestion[] {
   })
 }
 
-const WORD_TYPES = ['noun', 'verb', 'adjective', 'adverb', 'phrase'] as const
-const WORD_TYPE_COLORS: Record<string, string> = {
-  noun: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
-  verb: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300',
-  adjective: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300',
-  adverb: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
-  phrase: 'bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300',
-}
+
 
 export default function VocabularySection({ vocabulary }: Props) {
   const [learned, setLearned] = useState<Set<string>>(new Set())

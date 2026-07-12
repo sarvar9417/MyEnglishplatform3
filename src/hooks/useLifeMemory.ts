@@ -85,7 +85,7 @@ export function useLifeMemory() {
   /** Extract facts from user messages using simple heuristics */
   const extractFactsFromMessages = useCallback((
     messages: string[],
-    context: string,
+    _context: string,
   ): Array<{ key: string; value: string }> => {
     const extracted: Array<{ key: string; value: string }> = []
     const lowerMsgs = messages.map(m => m.toLowerCase())

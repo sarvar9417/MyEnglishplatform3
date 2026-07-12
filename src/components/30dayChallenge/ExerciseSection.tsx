@@ -422,7 +422,7 @@ export default function ExerciseSection({ exercises, onStartRoleplay, level = 'A
 
                     {!isRecordingThis && transcript && !feedback && (
                       <button
-                        onClick={handleAICheck}
+                        onClick={() => handleAICheck()}
                         disabled={isEvaluating}
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 text-white text-xs font-bold hover:from-violet-700 hover:to-purple-700 transition-all active:scale-95 disabled:opacity-40"
                       >
