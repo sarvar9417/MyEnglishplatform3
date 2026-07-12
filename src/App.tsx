@@ -76,6 +76,7 @@ const lazyPages = {
   IeltsMockTest: lazyWithReload(() => import('./components/ielts/IeltsMockTest')),
   FilmHub: lazyWithReload(() => import('./pages/FilmHub')),
   FilmDetail: lazyWithReload(() => import('./pages/FilmDetail')),
+  ThirtyDayChallenge: lazyWithReload(() => import('./pages/ThirtyDayChallenge')),
 }
 
 // ─── App Shell ────────────────────────────────────────────────────────────────

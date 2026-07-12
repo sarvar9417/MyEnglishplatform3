@@ -1,0 +1,178 @@
+// ── 30-Day Speaking Challenge — Type'lar ────────────────────────────────────
+
+export interface ChallengeDay {
+  id: string                    // 'day-1'
+  day: number                   // 1-30
+  title: string                 // Sarlavha
+  level: string                 // CEFR: 'A1' | 'A2' | 'B1'
+
+  // Video
+  video?: ChallengeVideo
+
+  // Transkript
+  transcript: string            // To'liq matn (timestampsiz, backup sifatida)
+  timestamps?: Timestamp[]      // Vaqt tamg'alari
+  structuredTranscript?: TranscriptSection[]  // Strukturali dialog
+
+  // O'quv maqsadlari
+  learningObjectives: string[]
+
+  // Dars bo'limlari
+  highlights: LessonHighlight[]
+
+  // Lug'at
+  vocabulary: ChallengeVocab[]
+
+  // Barcha jumlalar — tanlanma emas, to'liq
+  sentenceBank: SentenceBank
+
+  // Mashqlar
+  exercises: ChallengeExercise[]
+
+  // Test
+  quiz: ChallengeQuiz[]
+
+  // Speaking
+  speaking: ChallengeSpeaking
+
+  // Takrorlash
+  review: ChallengeReview
+}
+
+export interface ChallengeVideo {
+  youtubeId: string
+  duration?: string
+  thumbnail?: string
+}
+
+export interface Timestamp {
+  time: string   // '0:03'
+  text: string   // Shu vaqtdagi matn
+}
+
+export interface LessonHighlight {
+  title: string
+  content: string
+  points?: string[]
+  phrases?: { phrase: string; meaning: string }[]
+}
+
+export interface ChallengeVocab {
+  word: string
+  meaning: string
+  example: string
+  translation?: string
+}
+
+// ── SentenceBank — Barcha jumlalar ──────────────────────────────────────────
+
+export interface SentenceBank {
+  categories: SentenceCategory[]
+  all: string[]      // Barcha jumlalar bitta massivda
+}
+
+export interface SentenceCategory {
+  category: string
+  phrases: string[]
+}
+
+// ── Mashqlar ────────────────────────────────────────────────────────────────
+
+export type ChallengeExercise =
+  | DialogueExercise
+  | RoleplayExercise
+  | ShadowingExercise
+  | QuestionsExercise
+
+export interface DialogueExercise {
+  id: number
+  type: 'dialogue-complete'
+  instruction: string
+  lines: DialogueLine[]
+}
+
+export interface DialogueLine {
+  speaker: string
+  text: string
+  blank?: boolean
+  answer: string      // answer always required when blank is true
+}
+
+export interface RoleplayExercise {
+  id: number
+  type: 'roleplay'
+  instruction: string
+  scenario: string
+  tips?: string[]
+}
+
+export interface ShadowingExercise {
+  id: number
+  type: 'shadowing'
+  instruction: string
+  sentences: string[]
+}
+
+export interface QuestionsExercise {
+  id: number
+  type: 'questions'
+  instruction: string
+  questions: string[]
+  hints?: string[]
+}
+
+// ── Test ────────────────────────────────────────────────────────────────────
+
+export type ChallengeQuiz =
+  | MultipleChoiceQuiz
+  | FillBlankQuiz
+
+export interface MultipleChoiceQuiz {
+  id: number
+  type: 'multiple-choice'
+  question: string
+  options: string[]
+  correct: number       // index (0-based)
+  explanation: string
+}
+
+export interface FillBlankQuiz {
+  id: number
+  type: 'fill-blank'
+  question: string      // Blank: 'I ___ up at 7'
+  options: string[]
+  correct: number       // index
+  explanation: string
+}
+
+// ── Strukturali Transkript ─────────────────────────────────────────────────
+
+export interface TranscriptSection {
+  id: string
+  title?: string              // Bo'lim nomi (masalan: "Situation one — At a restaurant")
+  icon?: string               // Emoji (masalan: "💬", "🎯")
+  lines: TranscriptLine[]
+}
+
+export interface TranscriptLine {
+  speaker?: string            // 'Massu' | 'Fizu' | boshqa
+  text: string
+  timestamp?: string          // '0:03'
+  isKey?: boolean             // Asosiy jumlalar uchun
+}
+
+// ── Speaking ────────────────────────────────────────────────────────────────
+
+export interface ChallengeSpeaking {
+  prompt: string
+  tips: string[]
+  practiceTime: number  // seconds
+}
+
+// ── Review ──────────────────────────────────────────────────────────────────
+
+export interface ChallengeReview {
+  vocabulary: string[]
+  keyPhrases: string[]
+  mainPoints: string[]
+}
