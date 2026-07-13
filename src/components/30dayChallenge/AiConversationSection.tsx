@@ -333,7 +333,6 @@ export default function AiConversationSection({ day }: Props) {
         showFeedback={showFeedback}
         isFeedbackLoading={isFeedbackLoading}
         sr={sr}
-        tts={tts}
         scrollRef={scrollRef}
         onRequestFeedback={requestFeedback}
         onShowRoleplayPicker={() => setShowRoleplayPicker(true)}

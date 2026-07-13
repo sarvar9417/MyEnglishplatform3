@@ -22,7 +22,7 @@ interface Props {
   showFeedback: boolean
   isFeedbackLoading: boolean
   sr: SpeechRecognitionShape
-  scrollRef: React.RefObject<HTMLDivElement | null>
+  scrollRef: React.RefObject<HTMLDivElement>
   onRequestFeedback: () => void
   onShowRoleplayPicker: () => void
   onSwitchToFree: () => void

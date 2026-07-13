@@ -18,7 +18,7 @@ interface Props {
   mode: ConversationMode
   sr: SpeechRecognitionShape
   tts: SpeechSynthesisShape
-  inputRef: React.RefObject<HTMLTextAreaElement | null>
+  inputRef: React.RefObject<HTMLTextAreaElement>
   onInputChange: (value: string) => void
   onSend: () => void
   onToggleMic: () => void
