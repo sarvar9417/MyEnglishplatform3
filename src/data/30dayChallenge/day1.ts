@@ -627,6 +627,10 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
           { en: 'I\'m not afraid of making mistakes.', uz: 'Men xato qilishdan qo\'rqmayman.' },
           { en: 'I decided to learn English because I want to travel.', uz: 'Sayohat qilishni xohlaganim uchun ingliz tilini o\'rganishga qaror qildim.' },
           { en: 'I want to feel confident when I speak.', uz: 'Gapirganimda o\'zimni ishonchli his qilishni xohlayman.' },
+          { en: 'I want to watch movies and understand them without subtitles.', uz: 'Men filmlarni subtitrlarsiz tomosha qilishni va tushunishni xohlayman.' },
+          { en: 'English is very important for my job, too.', uz: 'Ingliz tili ishim uchun ham juda muhim.' },
+          { en: 'I want to visit London someday.', uz: 'Men bir kun Londonga borishni xohlayman.' },
+          { en: 'At the beginning, I was nervous, but now I feel more confident.', uz: 'Avvaliga asabiylashardim, lekin hozir o\'zimni ishonchli his qilaman.' },
         ],
       },
       {
@@ -664,6 +668,10 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
           { en: 'At first, I feel nervous, but when I practice, I feel more confident.', uz: 'Avvaliga asabiylashaman, lekin mashq qilganimda o\'zimni ishonchliroq his qilaman.' },
           { en: 'My favorite way is to watch English videos and repeat the sentences.', uz: 'Eng sevimli usulim — ingliz tilidagi videolarni tomosha qilish va gaplarni takrorlash.' },
           { en: 'After this video, I will practice the sentences again and speak English every day.', uz: 'Ushbu videodan keyin gaplarni yana takrorlayman va har kuni ingliz tilida gapiraman.' },
+          // Dialogue-based missing phrases (day_1.txt bo'yicha)
+          { en: 'Actually, I like learning English, but sometimes it\'s difficult.', uz: 'Aslida, men ingliz tilini o\'rganishni yoqtiraman, lekin ba\'zida qiyin.' },
+          { en: 'I understand a lot, but when I try to speak, I feel nervous.', uz: 'Men ko\'p narsani tushunaman, lekin gapirishga urinsam, asabiylashaman.' },
+          { en: 'Fluency doesn\'t mean speaking perfectly. Fluency means speaking comfortably and naturally.', uz: 'Ravonlik mukammal gapirish degani emas. Ravonlik qulay va tabiiy gapirish demakdir.' },
         ],
       },
     ],
