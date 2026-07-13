@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
-import { Search, Copy, Check, Volume2, Filter, Mic, Square, RotateCcw, Loader2, MessageSquare, List, Edit3, Clock } from 'lucide-react'
+import { Search, Copy, Check, Volume2, Filter, Mic, Square, RotateCcw, Loader2, MessageSquare, List, Edit3, Clock, Eye } from 'lucide-react'
 import type { SentenceBank, TranscriptSection, Phrase, LessonHighlight, HighlightItem, HighlightPhrase } from '../../data/30dayChallenge'
 import { speak, stopSpeaking } from '../../lib/tts'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
@@ -118,6 +118,7 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [copiedId, setCopiedId] = useState<string | null>(null)
   const [showFilters, setShowFilters] = useState(false)
+  const [hideUzbek, setHideUzbek] = useState(false)
 
   const filtered = useMemo(() => {
     const source = activeCategory
@@ -453,9 +454,22 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
     )
   }
 
+  // ── Browse View constants ────────────────────────────────────────────────
+  const speakerConfig: Record<string, { color: string; accent: string; initial: string; darkColor: string }> = {
+    Massu:    { color: 'bg-blue-500',    accent: 'border-l-blue-500',    initial: 'M',  darkColor: 'dark:border-l-blue-400' },
+    Fizu:     { color: 'bg-purple-500',  accent: 'border-l-purple-500',  initial: 'F',  darkColor: 'dark:border-l-purple-400' },
+    Waiter:   { color: 'bg-amber-500',   accent: 'border-l-amber-500',   initial: 'W',  darkColor: 'dark:border-l-amber-400' },
+    Friend:   { color: 'bg-green-500',   accent: 'border-l-green-500',   initial: 'Fr', darkColor: 'dark:border-l-green-400' },
+    Stranger: { color: 'bg-teal-500',    accent: 'border-l-teal-500',    initial: 'S',  darkColor: 'dark:border-l-teal-400' },
+    Student:  { color: 'bg-rose-500',    accent: 'border-l-rose-500',    initial: 'St', darkColor: 'dark:border-l-rose-400' },
+  }
+
+  const defaultSpeaker = { color: 'bg-gray-500', accent: 'border-l-gray-500', initial: '?', darkColor: 'dark:border-l-gray-400' }
+
   // ── Render: Browse ──────────────────────────────────────────────────────
   const renderBrowse = () => (
-    <div className="space-y-3">
+    <div className="space-y-4">
+      {/* ── Search + Controls ──────────────────────────────────────────── */}
       <div className="relative group">
         <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary-500 transition-colors" />
         <input
@@ -476,15 +490,30 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
       </div>
 
       <div className="flex items-center justify-between flex-wrap gap-2">
-        <button
-          onClick={() => setShowFilters(!showFilters)}
-          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-            showFilters ? 'bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
-          }`}
-        >
-          <Filter size={12} />
-          Kategoriyalar
-        </button>
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+              showFilters ? 'bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+            }`}
+          >
+            <Filter size={12} />
+            Kategoriyalar
+          </button>
+          {/* ── Hide/Show Uzbek toggle ──────────────────────────────── */}
+          <button
+            onClick={() => setHideUzbek(h => !h)}
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              hideUzbek
+                ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 ring-2 ring-amber-400 dark:ring-amber-600'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+            }`}
+            title={hideUzbek ? 'Tarjimani ko\'rsatish' : 'Tarjimani yashirish (Active Recall)'}
+          >
+            <Eye size={12} />
+            {hideUzbek ? 'UZ' : 'EN/UZ'}
+          </button>
+        </div>
         {search && (
           <p className="text-xs text-gray-400">{filtered.length} ta natija topildi</p>
         )}
@@ -518,82 +547,104 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
         </div>
       )}
 
+      {/* ── Phrase cards (staggered entrance) ──────────────────────────── */}
       <div className="space-y-2">
         {browsePhrases.map((p, i) => {
           const id = `sent-${activeCategory ?? 'all'}-${i}`
           const isDialogue = p.speaker && p.timestamp
+          const isConsecutiveSameSpeaker = isDialogue && i > 0
+            && browsePhrases[i - 1].speaker === p.speaker
+            && browsePhrases[i - 1].timestamp !== 'hl'
+            && p.timestamp !== 'hl'
+
+          // Staggered animation delay
+          const delay = Math.min(i * 60, 1500)
 
           if (isDialogue) {
-            // ── Dialogue-style bubble ───────────────────────────────────
-            const speakerColors: Record<string, string> = {
-              Massu: 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800',
-              Fizu: 'bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800',
-              Waiter: 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800',
-              Friend: 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800',
-              Stranger: 'bg-teal-50 dark:bg-teal-900/20 border-teal-200 dark:border-teal-800',
-              Student: 'bg-rose-50 dark:bg-rose-900/20 border-rose-200 dark:border-rose-800',
-            }
-            const bubbleColor = speakerColors[p.speaker!] || 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700'
-            const speakerInitials: Record<string, string> = {
-              Massu: 'M', Fizu: 'F', Waiter: 'W', Friend: 'Fr', Stranger: 'S', Student: 'St',
-            }
+            // ── Dialogue-style bubble with timeline ────────────────────
+            const cfg = speakerConfig[p.speaker!] || defaultSpeaker
+            const accentClass = `${cfg.accent} ${cfg.darkColor}`
 
             return (
-              <div key={id} className="group">
-                <div className={`flex items-start gap-2.5 p-3 rounded-xl border ${bubbleColor} transition-all hover:shadow-md`}>
-                  {/* Speaker avatar */}
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white ${
-                    p.speaker === 'Massu' ? 'bg-blue-500' :
-                    p.speaker === 'Fizu' ? 'bg-purple-500' :
-                    p.speaker === 'Waiter' ? 'bg-amber-500' :
-                    p.speaker === 'Friend' ? 'bg-green-500' :
-                    p.speaker === 'Stranger' ? 'bg-teal-500' : 'bg-gray-500'
-                  }`}>
-                    {speakerInitials[p.speaker!] || p.speaker![0]}
-                  </div>
+              <div
+                key={id}
+                className="flex animate-slide-up"
+                style={{ animationDelay: `${delay}ms` }}
+              >
+                {/* Timeline column */}
+                <div className="relative flex flex-col items-center w-8 shrink-0">
+                  {/* Timeline line (conect to previous if same speaker) */}
+                  {isConsecutiveSameSpeaker && (
+                    <div className={`w-0.5 h-2 ${cfg.color.replace('500', '300')} dark:opacity-50`} />
+                  )}
+                  {/* Connector dot */}
+                  <div className={`w-2.5 h-2.5 rounded-full ${cfg.color} ring-2 ring-white dark:ring-gray-900 z-10 shrink-0`} />
+                  {/* Timeline line (downward) */}
+                  {i < browsePhrases.length - 1 && browsePhrases[i + 1].speaker === p.speaker && (
+                    <div className={`flex-1 w-0.5 min-h-[24px] ${cfg.color.replace('500', '300')} dark:opacity-50`} />
+                  )}
+                </div>
 
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{p.speaker}</span>
-                      {p.timestamp && p.timestamp !== 'hl' && (
-                        <span className="flex items-center gap-0.5 text-[10px] text-gray-400 dark:text-gray-500">
-                          <Clock size={10} />
-                          {p.timestamp}
+                {/* Card */}
+                <div className={`flex-1 ml-2 p-3.5 rounded-xl border-l-4 ${accentClass} bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group relative`}>
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      {/* Speaker name + timestamp */}
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold text-white ${cfg.color}`}>
+                          {cfg.initial}
                         </span>
+                        <span className="text-[11px] font-bold text-gray-600 dark:text-gray-300 uppercase tracking-wide">{p.speaker}</span>
+                        {p.timestamp && p.timestamp !== 'hl' && (
+                          <span className="flex items-center gap-0.5 text-[10px] text-gray-400 dark:text-gray-500 ml-auto">
+                            <Clock size={9} />
+                            {p.timestamp}
+                          </span>
+                        )}
+                      </div>
+                      {/* English — prominent */}
+                      <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-relaxed">{p.en}</p>
+                      {/* Uzbek — hideable for active recall */}
+                      {(!hideUzbek || p.uz) && (
+                        <p className={`text-xs leading-relaxed mt-1.5 transition-all duration-300 ${
+                          hideUzbek
+                            ? 'text-transparent bg-gray-200 dark:bg-gray-700 rounded-sm px-1 select-none cursor-pointer hover:text-gray-500 hover:bg-transparent hover:px-0'
+                            : 'text-gray-500 dark:text-gray-400'
+                        }`}
+                          onClick={() => hideUzbek ? setHideUzbek(false) : undefined}
+                        >
+                          {p.uz}
+                        </p>
                       )}
                     </div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100 leading-relaxed">{p.en}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed italic">{p.uz}</p>
+                    {/* Actions */}
+                    <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200 pt-1">
+                      <button
+                        onClick={() => handleSpeak(p.en)}
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors active:scale-90"
+                        title="Ovoz chiqarib o'qish"
+                      >
+                        <Volume2 size={13} />
+                      </button>
+                      <button
+                        onClick={() => handleCopy(p.en, id)}
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors active:scale-90"
+                        title="Nusxa olish"
+                      >
+                        {copiedId === id ? (
+                          <Check size={13} className="text-green-600 animate-pop-in" />
+                        ) : (
+                          <Copy size={13} />
+                        )}
+                      </button>
+                    </div>
                   </div>
-
-                  {/* Actions */}
-                  <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200">
-                    <button
-                      onClick={() => handleSpeak(p.en)}
-                      className="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-white/60 dark:hover:bg-gray-700/60 transition-colors active:scale-90"
-                      title="Ovoz chiqarib o'qish"
-                    >
-                      <Volume2 size={13} />
-                    </button>
-                    <button
-                      onClick={() => handleCopy(p.en, id)}
-                      className="p-1.5 rounded-lg text-gray-400 hover:text-green-600 hover:bg-white/60 dark:hover:bg-gray-700/60 transition-colors active:scale-90"
-                      title="Nusxa olish"
-                    >
-                      {copiedId === id ? (
-                        <Check size={13} className="text-green-600 animate-pop-in" />
-                      ) : (
-                        <Copy size={13} />
-                      )}
-                    </button>
-                  </div>
+                  {copiedId === id && (
+                    <div className="mt-1.5 px-2 py-0.5 rounded-md bg-green-600 text-white text-[10px] font-bold animate-pop-in shadow-lg w-fit">
+                      Nusxalandi!
+                    </div>
+                  )}
                 </div>
-                {copiedId === id && (
-                  <div className="ml-12 mt-1 px-2 py-0.5 rounded-md bg-green-600 text-white text-[10px] font-bold animate-pop-in shadow-lg w-fit">
-                    Nusxalandi!
-                  </div>
-                )}
               </div>
             )
           }
@@ -602,14 +653,27 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
           return (
             <div
               key={id}
-              className="group relative p-3.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-700 hover:shadow-md transition-all duration-200"
+              className="group relative p-3.5 rounded-xl border-l-4 border-l-primary-500 dark:border-l-primary-400 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 animate-slide-up"
+              style={{ animationDelay: `${delay}ms` }}
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100 leading-relaxed">{p.en}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">{p.uz}</p>
+                  {/* English — prominent */}
+                  <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-relaxed">{p.en}</p>
+                  {/* Uzbek — hideable for active recall */}
+                  {(!hideUzbek || p.uz) && (
+                    <p className={`text-xs leading-relaxed mt-1.5 transition-all duration-300 ${
+                      hideUzbek
+                        ? 'text-transparent bg-gray-200 dark:bg-gray-700 rounded-sm px-1 select-none cursor-pointer hover:text-gray-500 hover:bg-transparent hover:px-0'
+                        : 'text-gray-500 dark:text-gray-400'
+                    }`}
+                      onClick={() => hideUzbek ? setHideUzbek(false) : undefined}
+                    >
+                      {p.uz}
+                    </p>
+                  )}
                 </div>
-                <div className="flex items-center gap-0.5 shrink-0 opacity-30 group-hover:opacity-100 transition-all duration-200">
+                <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200">
                   <button
                     onClick={() => handleSpeak(p.en)}
                     className="p-2 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors active:scale-90"
@@ -641,7 +705,7 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
       </div>
 
       {browsePhrases.length === 0 && (
-        <div className="flex flex-col items-center justify-center py-12 text-gray-400 dark:text-gray-500">
+        <div className="flex flex-col items-center justify-center py-12 text-gray-400 dark:text-gray-500 animate-fade-in">
           <Search size={32} className="mb-3 text-gray-300 dark:text-gray-600" />
           <p className="font-medium text-sm">"{search}" bo'yicha hech narsa topilmadi</p>
           <button onClick={() => setSearch('')} className="mt-3 text-sm text-primary-600 hover:underline font-medium">
