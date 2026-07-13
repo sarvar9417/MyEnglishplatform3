@@ -54,7 +54,13 @@ export interface LessonHighlight {
   title: string
   content: string
   points?: string[]
-  phrases?: { phrase: string; meaning: string }[]
+  phrases?: HighlightPhrase[]
+}
+
+export interface HighlightPhrase {
+  speaker: string
+  text: string
+  translation?: string
 }
 
 export interface ChallengeVocab {

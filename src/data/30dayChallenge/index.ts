@@ -25,4 +25,4 @@ export async function getChallengeDay(day: number) {
 
 export { getChallengeDayFromDB } from '../../services/challengeDayService'
 
-export type { ChallengeDay, SentenceBank, SentenceCategory, ChallengeVocab, LessonHighlight, ChallengeExercise, RoleplayExercise, ChallengeQuiz, ChallengeSpeaking, ChallengeReview, ChallengeVideo, Timestamp, DialogueLine, TranscriptSection, TranscriptLine, Phrase } from './types'
+export type { ChallengeDay, SentenceBank, SentenceCategory, ChallengeVocab, LessonHighlight, HighlightPhrase, ChallengeExercise, RoleplayExercise, ChallengeQuiz, ChallengeSpeaking, ChallengeReview, ChallengeVideo, Timestamp, DialogueLine, TranscriptSection, TranscriptLine, Phrase } from './types'
