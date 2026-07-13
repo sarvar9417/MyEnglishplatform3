@@ -497,15 +497,25 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
         'His-tuyg\'ularni tasvirlash: "At first I feel nervous, but with practice I feel more confident."',
       ],
       phrases: [
-        { speaker: 'Massu', text: 'Question one. What do you do every morning?', translation: '1-savol. Har kuni ertalab nima qilasiz?' },
-        { speaker: 'Student', text: 'Every morning I wake up. I eat breakfast and I practice English.', translation: 'Har kuni ertalab uyg\'onaman, nonushta qilaman va ingliz tilini mashq qilaman.' },
-        { speaker: 'Massu', text: 'Perfect. Question two, why are you learning English?', translation: 'Ajoyib. 2-savol, nega ingliz tilini o\'rganyapsiz?' },
+        // 1 — Savol
+        { speaker: 'Massu', text: 'What do you do every morning?', translation: 'Har kuni ertalab nima qilasiz?' },
+        // 2 — Javob
+        { speaker: 'Student', text: 'Every morning I wake up, eat breakfast and practice English.', translation: 'Har kuni ertalab uyg\'onaman, nonushta qilaman va ingliz tilini mashq qilaman.' },
+        // 3 — Savol
+        { speaker: 'Massu', text: 'Why are you learning English?', translation: 'Nega ingliz tilini o\'rganyapsiz?' },
+        // 4 — Javob
         { speaker: 'Student', text: 'I\'m learning English because I want to travel and talk to people from different countries.', translation: 'Men ingliz tilini sayohat qilish va turli mamlakatlardan odamlar bilan gaplashish uchun o\'rganyapman.' },
-        { speaker: 'Massu', text: 'Excellent. Question three, how do you feel when you speak English?', translation: 'Zo\'r. 3-savol, ingliz tilida gapirganingizda o\'zingizni qanday his qilasiz?' },
+        // 5 — Savol
+        { speaker: 'Massu', text: 'How do you feel when you speak English?', translation: 'Ingliz tilida gapirganingizda o\'zingizni qanday his qilasiz?' },
+        // 6 — Javob
         { speaker: 'Student', text: 'At first, I feel nervous, but when I practice, I feel more confident.', translation: 'Avvaliga asabiylashaman, lekin mashq qilganimda o\'zimni ishonchliroq his qilaman.' },
-        { speaker: 'Massu', text: 'Great answer. Question four, what\'s your favorite way to practice English?', translation: 'Ajoyib javob. 4-savol, ingliz tilini mashq qilishning eng sevimli usulingiz qanday?' },
+        // 7 — Savol
+        { speaker: 'Massu', text: 'What\'s your favorite way to practice English?', translation: 'Ingliz tilini mashq qilishning eng sevimli usulingiz qanday?' },
+        // 8 — Javob
         { speaker: 'Student', text: 'My favorite way is to watch English videos and repeat the sentences.', translation: 'Eng sevimli usulim — ingliz tilidagi videolarni tomosha qilish va gaplarni takrorlash.' },
-        { speaker: 'Massu', text: 'Wonderful. Last question. What will you do after this video?', translation: 'Ajoyib. Oxirgi savol. Ushbu videodan keyin nima qilasiz?' },
+        // 9 — Savol
+        { speaker: 'Massu', text: 'What will you do after this video?', translation: 'Ushbu videodan keyin nima qilasiz?' },
+        // 10 — Javob
         { speaker: 'Student', text: 'After this video, I will practice the sentences again and speak English every day.', translation: 'Ushbu videodan keyin gaplarni yana takrorlayman va har kuni ingliz tilida gapiraman.' },
       ],
     },
