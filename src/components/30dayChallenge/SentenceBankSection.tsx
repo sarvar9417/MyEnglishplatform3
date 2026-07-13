@@ -1,11 +1,11 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
-import { Search, Copy, Check, Volume2, Filter, Mic, Square, RotateCcw, Loader2, MessageSquare, List, Edit3 } from 'lucide-react'
-import type { SentenceBank } from '../../data/30dayChallenge'
+import { Search, Copy, Check, Volume2, Filter, Mic, Square, RotateCcw, Loader2, MessageSquare, List, Edit3, Clock } from 'lucide-react'
+import type { SentenceBank, TranscriptSection, Phrase } from '../../data/30dayChallenge'
 import { speak, stopSpeaking } from '../../lib/tts'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { evaluateTranslation } from '../../lib/openaiChat'
 
-/** Fisher-Yates shuffle — `sort(() => Math.random() - 0.5)` not a valid comparator */
+/** Fisher-Yates shuffle */
 function fisherYatesShuffle<T>(arr: T[]): T[] {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {
@@ -15,8 +15,61 @@ function fisherYatesShuffle<T>(arr: T[]): T[] {
   return a
 }
 
+/** Phrase matnini normalizatsiya qilish (taqqoslash uchun) */
+function normalizeText(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9\s']/g, '').trim()
+}
+
+/** StructuredTranscript dan speaker/timestamp ma'lumotlarini phrase ga moslash */
+function enrichPhrasesWithDialogue(
+  phrases: Phrase[],
+  transcript?: TranscriptSection[]
+): (Phrase & { _sortKey?: string })[] {
+  if (!transcript || transcript.length === 0) return phrases
+
+  // Transcript lines dan lookup map yaratish
+  const lookup = new Map<string, { speaker: string; timestamp: string }>()
+  for (const section of transcript) {
+    for (const line of section.lines) {
+      if (line.speaker && line.timestamp) {
+        const key = normalizeText(line.text)
+        // Faqat birinchi moslikni saqlaymiz
+        if (!lookup.has(key)) {
+          lookup.set(key, { speaker: line.speaker, timestamp: line.timestamp })
+        }
+      }
+    }
+  }
+
+  return phrases.map(p => {
+    const key = normalizeText(p.en)
+    const match = lookup.get(key)
+    if (match) {
+      return { ...p, speaker: match.speaker, timestamp: match.timestamp, _sortKey: match.timestamp }
+    }
+    // Agar to'liq mos kelmasa, uzunroq matnni tekshiramiz (gap ichida qidirish)
+    for (const [lineKey, val] of lookup) {
+      if (key.includes(lineKey) || lineKey.includes(key)) {
+        return { ...p, speaker: val.speaker, timestamp: val.timestamp, _sortKey: val.timestamp }
+      }
+    }
+    // Timestampsiz phrase'lar category nomi bo'yicha sortlanadi
+    return { ...p, _sortKey: 'zzz_' + p.en.slice(0, 20) }
+  })
+}
+
+/** Timestamp string ni sanoqli daqiqalarga aylantirish ('2:35' → 155) */
+function timestampToSeconds(ts: string): number {
+  if (ts.startsWith('zzz_')) return 99999  // non-dialogue → eng oxiriga
+  const parts = ts.split(':').map(Number)
+  if (parts.length === 2) return parts[0] * 60 + parts[1]
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2]
+  return 0
+}
+
 interface Props {
   sentenceBank: SentenceBank
+  structuredTranscript?: TranscriptSection[]
   level?: string
 }
 
@@ -32,7 +85,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   edit: <Edit3 size={14} />,
 }
 
-export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Props) {
+export default function SentenceBankSection({ sentenceBank, structuredTranscript, level = 'A2' }: Props) {
   const [mode, setMode] = useState<Mode>('browse')
 
   const categories = sentenceBank.categories
@@ -55,6 +108,12 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
     const q = search.toLowerCase()
     return source.filter(p => p.en.toLowerCase().includes(q) || p.uz.toLowerCase().includes(q))
   }, [search, activeCategory, categories, allPhrases])
+
+  // ── Browse uchun dialogue-enriched va timestamp bo'yicha sorted view ───
+  const browsePhrases = useMemo(() => {
+    const enriched = enrichPhrasesWithDialogue(filtered, structuredTranscript)
+    return [...enriched].sort((a, b) => timestampToSeconds(a._sortKey!) - timestampToSeconds(b._sortKey!))
+  }, [filtered, structuredTranscript])
 
   const handleCopy = useCallback(async (text: string, id: string) => {
     try {
@@ -440,9 +499,87 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
         </div>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-        {filtered.map((p, i) => {
+      <div className="space-y-2">
+        {browsePhrases.map((p, i) => {
           const id = `sent-${activeCategory ?? 'all'}-${i}`
+          const isDialogue = p.speaker && p.timestamp
+
+          if (isDialogue) {
+            // ── Dialogue-style bubble ───────────────────────────────────
+            const speakerColors: Record<string, string> = {
+              Massu: 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800',
+              Fizu: 'bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800',
+              Waiter: 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800',
+              Friend: 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800',
+              Stranger: 'bg-teal-50 dark:bg-teal-900/20 border-teal-200 dark:border-teal-800',
+              Student: 'bg-rose-50 dark:bg-rose-900/20 border-rose-200 dark:border-rose-800',
+            }
+            const bubbleColor = speakerColors[p.speaker!] || 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700'
+            const speakerInitials: Record<string, string> = {
+              Massu: 'M', Fizu: 'F', Waiter: 'W', Friend: 'Fr', Stranger: 'S', Student: 'St',
+            }
+
+            return (
+              <div key={id} className="group">
+                <div className={`flex items-start gap-2.5 p-3 rounded-xl border ${bubbleColor} transition-all hover:shadow-md`}>
+                  {/* Speaker avatar */}
+                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white ${
+                    p.speaker === 'Massu' ? 'bg-blue-500' :
+                    p.speaker === 'Fizu' ? 'bg-purple-500' :
+                    p.speaker === 'Waiter' ? 'bg-amber-500' :
+                    p.speaker === 'Friend' ? 'bg-green-500' :
+                    p.speaker === 'Stranger' ? 'bg-teal-500' : 'bg-gray-500'
+                  }`}>
+                    {speakerInitials[p.speaker!] || p.speaker![0]}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{p.speaker}</span>
+                      {p.timestamp && (
+                        <span className="flex items-center gap-0.5 text-[10px] text-gray-400 dark:text-gray-500">
+                          <Clock size={10} />
+                          {p.timestamp}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100 leading-relaxed">{p.en}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed italic">{p.uz}</p>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200">
+                    <button
+                      onClick={() => handleSpeak(p.en)}
+                      className="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-white/60 dark:hover:bg-gray-700/60 transition-colors active:scale-90"
+                      title="Ovoz chiqarib o'qish"
+                    >
+                      <Volume2 size={13} />
+                    </button>
+                    <button
+                      onClick={() => handleCopy(p.en, id)}
+                      className="p-1.5 rounded-lg text-gray-400 hover:text-green-600 hover:bg-white/60 dark:hover:bg-gray-700/60 transition-colors active:scale-90"
+                      title="Nusxa olish"
+                    >
+                      {copiedId === id ? (
+                        <Check size={13} className="text-green-600 animate-pop-in" />
+                      ) : (
+                        <Copy size={13} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+                {copiedId === id && (
+                  <div className="ml-12 mt-1 px-2 py-0.5 rounded-md bg-green-600 text-white text-[10px] font-bold animate-pop-in shadow-lg w-fit">
+                    Nusxalandi!
+                  </div>
+                )}
+              </div>
+            )
+          }
+
+          // ── Normal (non-dialogue) card ────────────────────────────────
           return (
             <div
               key={id}
@@ -484,7 +621,7 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
         })}
       </div>
 
-      {filtered.length === 0 && (
+      {browsePhrases.length === 0 && (
         <div className="flex flex-col items-center justify-center py-12 text-gray-400 dark:text-gray-500">
           <Search size={32} className="mb-3 text-gray-300 dark:text-gray-600" />
           <p className="font-medium text-sm">"{search}" bo'yicha hech narsa topilmadi</p>

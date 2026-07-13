@@ -91,6 +91,8 @@ export interface SentenceCategory {
 export interface Phrase {
   en: string
   uz: string
+  speaker?: string    // Dialogdan olingan bo'lsa, kim gapirgan
+  timestamp?: string  // Videodagi vaqti (masalan: '2:35')
 }
 
 // ── Mashqlar ────────────────────────────────────────────────────────────────
