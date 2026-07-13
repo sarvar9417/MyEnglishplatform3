@@ -568,6 +568,12 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
       {
         category: 'Restaurant & Ordering Food',
         phrases: [
+          // Waiter — dialogue lines (to'liq dialog uchun)
+          { en: 'Good evening. Welcome to our restaurant. How many people are dining today?', uz: 'Xayrli kech. Restoranimizga xush kelibsiz. Bugun necha kishisiz?' },
+          { en: 'Great. Right this way, please. Here\'s your table. Can I get you something to drink?', uz: 'Yaxshi. Marhamat, bu yoqdan. Mana stolingiz. Sizga ichimlik olib kelsammi?' },
+          { en: 'Of course. And are you ready to order food or do you need a few more minutes?', uz: 'Albatta. Ovqat buyurtma berishga tayyormisiz yoki yana bir necha daqiqa kerakmi?' },
+          { en: 'No problem. Take your time. I\'ll be back in a moment.', uz: 'Muammo yo\'q. Shoshilmang. Bir daqiqada qaytaman.' },
+          // Customer — existing lines
           { en: 'Just one. Only me.', uz: 'Faqat bitta. Faqat men.' },
           { en: 'Yes, please. Can I have water?', uz: 'Ha, iltimos. Suv olsa bo\'ladimi?' },
           { en: 'Can I have a chicken sandwich, please?', uz: 'Tovuq sendvich olsa bo\'ladimi, iltimos?' },
@@ -592,6 +598,10 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
       {
         category: 'Asking for & Giving Directions',
         phrases: [
+          // Stranger — dialogue lines (to'liq dialog uchun)
+          { en: 'Yes. How can I help you?', uz: 'Ha. Sizga qanday yordam bera olaman?' },
+          { en: 'You\'re welcome. Have a great day!', uz: 'Arzimaydi. Kuningiz xayrli o\'tsin!' },
+          // Existing
           { en: 'I\'m looking for the train station.', uz: 'Men poyezd stansiyasini qidiryapman.' },
           { en: 'Go straight for two blocks, then turn left.', uz: 'Ikki ko\'cha to\'g\'ri yuring, keyin chapga buriling.' },
           { en: 'You\'ll see it on your right.', uz: 'Uni o\'ng tomonda ko\'rasiz.' },
@@ -641,12 +651,7 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
           { en: 'Never feel embarrassed. Just keep speaking.', uz: 'Hech qachon uyalmang. Shunchaki gapiravering.' },
           { en: 'Don\'t worry about grammar mistakes. Focus on communication.', uz: 'Grammatik xatolar haqida qayg\'urmang. Muloqotga e\'tibor qaring.' },
           { en: 'Fluency is not about perfection. It\'s about practice, confidence, and communication.', uz: 'Ravonlik mukammallik haqida emas. Bu amaliyot, ishonch va muloqot haqida.' },
-          { en: 'Good evening. Welcome to our restaurant. How many people are dining today?', uz: 'Xayrli kech. Restoranimizga xush kelibsiz. Bugun necha kishisiz?' },
-          { en: 'Right this way, please. Here\'s your table. Can I get you something to drink?', uz: 'Marhamat, bu yoqdan. Mana stolingiz. Sizga ichimlik olib kelsammi?' },
-          { en: 'Are you ready to order or do you need a few more minutes?', uz: 'Buyurtma berishga tayyormisiz yoki yana bir necha daqiqa kerakmi?' },
-          { en: 'No problem. Take your time.', uz: 'Muammo yo\'q. Shoshilmang.' },
           { en: 'I\'ve been busy with work, but I\'m doing well.', uz: 'Ish bilan band edim, lekin yaxshiman.' },
-          { en: 'Yes. How can I help you?', uz: 'Ha. Sizga qanday yordam bera olaman?' },
           { en: 'How do you feel?', uz: 'O\'zingizni qanday his qilyapsiz?' },
           { en: 'Believe in yourself.', uz: 'O\'zingizga ishoning.' },
           { en: 'How do you feel when you speak English?', uz: 'Ingliz tilida gapirganingizda o\'zingizni qanday his qilasiz?' },
