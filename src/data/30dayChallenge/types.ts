@@ -42,7 +42,6 @@ export interface ChallengeDay {
 export interface ChallengeVideo {
   youtubeId: string
   duration?: string
-  thumbnail?: string
 }
 
 export interface Timestamp {
@@ -81,7 +80,7 @@ export interface ChallengeVocab {
 
 export interface SentenceBank {
   categories: SentenceCategory[]
-  all: Phrase[]      // Barcha jumlalar bitta massivda
+  all?: Phrase[]      // ixtiyoriy — agar bo'lmasa categories dan hosil qilinadi
 }
 
 export interface SentenceCategory {
@@ -167,8 +166,8 @@ export interface FillBlankQuiz {
 
 export interface TranscriptSection {
   id: string
-  title?: string              // Bo'lim nomi (masalan: "Situation one — At a restaurant")
-  icon?: string               // Emoji (masalan: "💬", "🎯")
+  title: string              // Bo'lim nomi (masalan: "Situation one — At a restaurant")
+  icon: string               // Emoji (masalan: "💬", "🎯")
   lines: TranscriptLine[]
 }
 

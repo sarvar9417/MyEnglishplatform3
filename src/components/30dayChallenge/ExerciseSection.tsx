@@ -3,6 +3,7 @@ import { Volume2, Mic, ChevronLeft, ChevronRight, Sparkles, Bot, Loader2, Brain,
 import type { ChallengeExercise, DialogueLine, RoleplayExercise } from '../../data/30dayChallenge'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { evaluateQuestionAnswer } from '../../lib/openaiChat'
+import { speakText } from '../../lib/speak'
 
 interface Props {
   exercises: ChallengeExercise[]
@@ -66,13 +67,7 @@ export default function ExerciseSection({ exercises, onStartRoleplay, level = 'A
   }, [activeEx])
 
   const speakSentence = useCallback((text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel()
-      const u = new SpeechSynthesisUtterance(text)
-      u.lang = 'en-US'
-      u.rate = 0.85
-      window.speechSynthesis.speak(u)
-    }
+    speakText(text)
   }, [])
 
   const switchExercise = useCallback((newIdx: number) => {
@@ -420,11 +415,10 @@ export default function ExerciseSection({ exercises, onStartRoleplay, level = 'A
                       </button>
                     )}
 
-                    {!isRecordingThis && transcript && !feedback && (
+                    {!isRecordingThis && transcript && !feedback && !isEvaluating && (
                       <button
                         onClick={() => handleAICheck()}
-                        disabled={isEvaluating}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 text-white text-xs font-bold hover:from-violet-700 hover:to-purple-700 transition-all active:scale-95 disabled:opacity-40"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 text-white text-xs font-bold hover:from-violet-700 hover:to-purple-700 transition-all active:scale-95"
                       >
                         <Brain size={12} /> AI bilan tekshirish
                       </button>

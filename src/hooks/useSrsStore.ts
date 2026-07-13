@@ -44,7 +44,7 @@ export function generateDayCards(day: ChallengeDay): SrsCard[] {
 
   // Sentence cards — from sentenceBank (pick key ones, max 12)
   // Front: kalit so'z yoki qisqa prompt asosida esga olish
-  const keySentences = day.sentenceBank.all.slice(0, 12)
+  const keySentences = (day.sentenceBank.all ?? day.sentenceBank.categories.flatMap(c => c.phrases)).slice(0, 12)
   keySentences.forEach((phrase, i) => {
     // Extract first unique keyword as hint
     const words = phrase.en.replace(/[^a-zA-Z\s]/g, '').split(/\s+/).filter(Boolean)

@@ -1,7 +1,9 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
-import { Send, Volume2, Loader2, Sparkles, Shuffle } from 'lucide-react'
+import { Send, Volume2, Loader2, Sparkles, Shuffle, Mic, Square } from 'lucide-react'
 import { startVocabPractice } from '../../lib/openaiChat'
 import type { ChallengeVocab } from '../../data/30dayChallenge'
+import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
+import { useSpeechSynthesis } from '../../hooks/useSpeechSynthesis'
 
 interface Props {
   vocabulary: ChallengeVocab[]
@@ -18,6 +20,8 @@ function pickRandom<T>(arr: T[], exclude?: T): T {
 }
 
 export default function VocabPracticeChat({ vocabulary }: Props) {
+  const tts = useSpeechSynthesis()
+  const sr = useSpeechRecognition()
   const [messages, setMessages] = useState<ChatMsg[]>([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -25,13 +29,32 @@ export default function VocabPracticeChat({ vocabulary }: Props) {
   const [currentWord, setCurrentWord] = useState<ChallengeVocab | null>(null)
   const [practicedWords, setPracticedWords] = useState<Set<string>>(new Set())
   const [gameStarted, setGameStarted] = useState(false)
+  const [voiceEnabled, setVoiceEnabled] = useState(true)
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, streamingText])
 
+  // STT transcript → input
+  useEffect(() => {
+    if (sr.isRecording && sr.transcript) {
+      setInput(prev => {
+        const combined = (sr.transcript + ' ' + sr.interim).trim()
+        return combined || prev
+      })
+    }
+  }, [sr.transcript, sr.interim, sr.isRecording])
+
+  const speakAiText = useCallback((text: string) => {
+    if (voiceEnabled) {
+      tts.speak(text).catch(() => {})
+    }
+  }, [voiceEnabled, tts])
+
   const startGame = useCallback(() => {
+    tts.stop()
+    if (sr.isRecording) sr.stop()
     const word = pickRandom(vocabulary)
     setCurrentWord(word)
     setMessages([])
@@ -48,17 +71,19 @@ export default function VocabPracticeChat({ vocabulary }: Props) {
         setMessages([{ role: 'assistant', content: full }])
         setStreamingText('')
         setIsLoading(false)
+        speakAiText(full)
       },
       (err) => {
         setMessages(prev => [...prev, { role: 'assistant', content: `Xatolik yuz berdi: ${err.message}` }])
         setIsLoading(false)
       }
     )
-  }, [vocabulary])
+  }, [vocabulary, tts, sr, speakAiText])
 
   const sendMessage = useCallback(async () => {
     const text = input.trim()
     if (!text || isLoading || !currentWord) return
+    if (sr.isRecording) sr.stop()
     setInput('')
     setMessages(prev => [...prev, { role: 'user', content: text }])
     setIsLoading(true)
@@ -77,10 +102,10 @@ export default function VocabPracticeChat({ vocabulary }: Props) {
         setMessages(prev => [...prev, { role: 'assistant', content: full }])
         setStreamingText('')
         setIsLoading(false)
+        speakAiText(full)
 
-        // Check if AI moved to a new word
         const remaining = vocabulary.filter(v => !practicedWords.has(v.word) && v.word !== currentWord.word)
-        if (remaining.length > 0 && full.includes('keyingi') || full.includes('next word') || full.includes('yangi so\'z')) {
+        if ((remaining.length > 0 && full.includes('keyingi')) || full.includes('next word') || full.includes('yangi so\'z')) {
           const next = pickRandom(remaining)
           setPracticedWords(prev => new Set([...prev, currentWord.word]))
           setCurrentWord(next)
@@ -91,17 +116,18 @@ export default function VocabPracticeChat({ vocabulary }: Props) {
         setIsLoading(false)
       }
     )
-  }, [input, isLoading, currentWord, messages, vocabulary, practicedWords])
+  }, [input, isLoading, currentWord, messages, vocabulary, practicedWords, sr, speakAiText])
 
-  const speakText = useCallback((text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel()
-      const u = new SpeechSynthesisUtterance(text)
-      u.lang = 'en-US'
-      u.rate = 0.8
-      window.speechSynthesis.speak(u)
+  const toggleMic = useCallback(() => {
+    if (sr.isRecording) {
+      sr.stop()
+    } else {
+      tts.stop()
+      setInput('')
+      sr.reset()
+      sr.start()
     }
-  }, [])
+  }, [sr, tts])
 
   if (!gameStarted) {
     return (
@@ -153,12 +179,25 @@ export default function VocabPracticeChat({ vocabulary }: Props) {
             )}
           </div>
         </div>
-        <button
-          onClick={startGame}
-          className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 transition-all border border-gray-200 dark:border-gray-600"
-        >
-          <Shuffle size={12} /> Yangi o'yin
-        </button>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setVoiceEnabled(v => !v)}
+            className={`p-2 rounded-lg transition-all ${
+              voiceEnabled
+                ? 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600'
+                : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
+            }`}
+            title={voiceEnabled ? 'Ovoz o\'chirish' : 'Ovoz yoqish'}
+          >
+            <Volume2 size={16} />
+          </button>
+          <button
+            onClick={startGame}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 transition-all border border-gray-200 dark:border-gray-600"
+          >
+            <Shuffle size={12} /> Yangi o'yin
+          </button>
+        </div>
       </div>
 
       {/* Messages */}
@@ -174,14 +213,6 @@ export default function VocabPracticeChat({ vocabulary }: Props) {
                 <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 mb-1">AI Teacher</p>
               )}
               <p className="text-sm text-gray-800 dark:text-gray-200 whitespace-pre-wrap leading-relaxed">{m.content}</p>
-              {m.role === 'assistant' && (
-                <button
-                  onClick={() => speakText(m.content.replace(/[^a-zA-Z\s.!?]/g, ''))}
-                  className="mt-1 p-1 rounded-md text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-all"
-                >
-                  <Volume2 size={11} />
-                </button>
-              )}
             </div>
           </div>
         ))}
@@ -208,18 +239,61 @@ export default function VocabPracticeChat({ vocabulary }: Props) {
           </div>
         )}
 
+        {/* TTS playing indicator */}
+        {tts.playing && (
+          <div className="flex justify-start">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800">
+              <Volume2 size={12} className="animate-pulse text-indigo-500" />
+              <span className="text-xs text-indigo-600 dark:text-indigo-400">AI gapiryapti...</span>
+              <button onClick={() => tts.stop()} className="text-xs underline text-indigo-500 hover:text-indigo-700 ml-1">To'xtatish</button>
+            </div>
+          </div>
+        )}
+
+        {/* Recording indicator */}
+        {sr.isRecording && (
+          <div className="flex justify-center">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-xs text-red-600 dark:text-red-400">Gapiryapsiz... to'xtatish uchun 🎤 bosing</span>
+            </div>
+          </div>
+        )}
+
+        {/* Permission error */}
+        {sr.permissionError && (
+          <div className="flex justify-center">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+              <span className="text-xs text-amber-600 dark:text-amber-400">Mikrofon ruxsati yo'q</span>
+              <button onClick={() => { sr.reset(); sr.start() }} className="text-xs underline text-amber-600">Qayta urinish</button>
+            </div>
+          </div>
+        )}
+
         <div ref={bottomRef} />
       </div>
 
       {/* Input */}
       <div className="border-t border-gray-200 dark:border-gray-700 p-3">
         <div className="flex gap-2">
+          <button
+            onClick={toggleMic}
+            disabled={!sr.isSupported || isLoading}
+            className={`p-2.5 rounded-xl transition-all ${
+              sr.isRecording
+                ? 'bg-red-500 text-white animate-pulse'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+            } disabled:opacity-40`}
+            title={sr.isRecording ? 'To\'xtatish' : 'Mikrofon'}
+          >
+            {sr.isRecording ? <Square size={16} /> : <Mic size={16} />}
+          </button>
           <input
             type="text"
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage() } }}
-            placeholder="Javobingizni yozing..."
+            placeholder={sr.isRecording ? 'Gapiryapsiz...' : 'Javobingizni yozing...'}
             disabled={isLoading}
             className="flex-1 px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all placeholder-gray-400 disabled:opacity-50"
           />

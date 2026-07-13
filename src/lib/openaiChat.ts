@@ -116,8 +116,8 @@ export async function startVocabPractice(
 
 O'YIN QOIDALARI:
 1. O'quvchiga quyidagi so'zni o'rgatishingiz kerak: "${word.word}" (ma'nosi: ${word.meaning})
-2. Avval o'zbekcha gap tuzib bering — bu gapda "${word.word}" so'zi ishlatilgan bo'lsin.
-3. O'quvchi shu gapni ingliz tiliga tarjima qiladi.
+2. Avval ${word.meaning} MA'NOSIDA o'zbekcha gap tuzib bering — inglizcha so'zni aralashtirmang, faqat o'zbekcha gap bo'lsin.
+3. O'quvchi shu o'zbekcha gapni ingliz tiliga tarjima qiladi va "${word.word}" so'zini ishlatishi kerak.
 4. TEKSHIRISH:
    - AGAR TO'G'RI BO'LSA: maqtang va "Endi o'zingiz "${word.word}" so'zini ishlatib yangi gap tuzib ko'ring" deb so'rang.
    - AGAR XATO BO'LSA: o'zbekcha tushuntiring, nima xato ekanini ayting va qayta urinib ko'rishni so'rang.
@@ -134,9 +134,9 @@ MUHIM:
 
 NAMUNA:
 AI: Keling "${word.word}" so'zini o'rganamiz. Men o'zbekcha gap aytaman, siz ingliz tiliga tarjima qiling.
-AI: Men har kuni ingliz tilini "${word.word}" qilaman.
-(O'quvchi javobini kutish)
-AI: "I practice English every day." — Ajoyib! To'g'ri tarjima. Endi o'zingiz "${word.word}" so'zini ishlatib yangi gap tuzib ko'ring.`
+AI: Men har kuni ingliz tilini ravon (\`${word.word}\`) qilaman.
+(O'quvchi javobini kutish: "I practice English fluently" yoki "I make English fluent every day"?)
+AI: "I practice English every day" deb tarjima qildingiz, lekin "${word.word}" so'zini ishlatmadingiz. Qayta urinib ko'ring — gapda "${word.word}" so'zi bo'lishi kerak.`
 
   const messages = history.length === 0
     ? [{ role: 'user' as const, content: 'O\'yinni boshlaylik. Menga o\'zbekcha gap bering, men ingliz tiliga tarjima qilaman.' }]
@@ -174,16 +174,22 @@ export async function startDayRoleplay(
 
 SCENARIO: ${scenario.title}
 
-LESSON CONTEXT: This role-play is part of Day of "${dayTitle}" in a 30-Day English Speaking Challenge.${vocabBlock}
+LESSON CONTEXT: This role-play is part of Day "${dayTitle}" in a 30-Day English Speaking Challenge.${vocabBlock}
+
+ROLE-PLAY STRUCTURE:
+You will guide the user through a structured 4-step role-play:
+1. OPENING — Greet the user naturally and set the scene (1 sentence)
+2. QUESTIONS — Ask 3-4 clear, simple questions one at a time. Wait for the user's answer after each question before asking the next one.
+3. RESPONSE — React naturally to each answer. If the user answers well, acknowledge it ("Great!", "Perfect!"). If the user struggles, rephrase or give a gentle hint.
+4. CLOSING — After all questions are done, give a warm closing line.
 
 RULES:
-1. STAY in character at all times — you ARE ${scenario.aiRole}, NOT an AI assistant or teacher.
+1. STAY in character at all times — you ARE ${scenario.aiRole}, NOT an AI assistant.
 2. Speak natural, real-world English at ${level} level. Keep sentences short and simple.
-3. Keep each reply VERY SHORT: 1-3 sentences. React naturally to what the user says.
-4. Gently move the scene forward toward a natural conclusion.
-5. NEVER correct the student's grammar or break character.
-6. If the user makes a mistake but you understand, just respond naturally.
-7. When the task is clearly complete, give a warm closing line.`
+3. Ask ONE question at a time. Wait for the user's answer before the next question.
+4. React naturally to what the user says — acknowledge good answers and gently help with difficult ones.
+5. NEVER correct grammar explicitly. If you understand the meaning, just respond naturally.
+6. When finished, give a warm closing like "Thank you! You did great today!"`
 
   const messages = history.length === 0
     ? [
@@ -343,4 +349,132 @@ Student's answer: "${answer || '(no answer given)'}"
 Please evaluate this answer and provide structured feedback in the specified format.`
 
   return openaiStreamResponse({ system, messages: [{ role: 'user', content: userPrompt }], maxTokens: 350 }, onDelta, onDone, onError)
+}
+
+export async function evaluateDialogueLine(
+  context: string,
+  expectedLine: string,
+  userAttempt: string,
+  level: string,
+  onDelta: (token: string) => void,
+  onDone:  (full: string)  => void,
+  onError: (err: Error)    => void
+): Promise<void> {
+  const system = `You're a warm, natural English-speaking friend who helps with dialogue practice. You're NOT a robot — you speak like a real person helping a friend.
+
+The student is ${level} level. They're trying to say a specific line from a conversation. Compare it to the expected line.
+
+Speak naturally — like you're right there with them. Be warm, encouraging, and clear.
+
+CRITICAL RULE: This is SPEAKING practice, not writing. Punctuation, periods, commas, capitalization have ZERO meaning in speech. When comparing, strip ALL punctuation from both strings, then compare meaning. If they match in meaning, it is CORRECT — nothing else matters.
+
+Example: "Um just one only me" = "Um, just one. Only me." = "um just one only me" — ALL are CORRECT because the WORDS and MEANING are the same.
+
+Respond in this exact format:
+
+STATUS: [CORRECT / CLOSE / INCORRECT]
+
+💡 TIP:
+[Natural, warm feedback. If wrong: explain WHAT was wrong and HOW to fix it step by step. Be specific — point to the exact mistake. "You said X, but we need Y here because...". Speak like a real teacher, not a robot.]
+
+HINT:
+[If not CORRECT: give a small clue — first 2-3 words of the expected line, or paraphrase the idea]
+
+AI_RESPONSE:
+[Continue the conversation naturally as the character. Respond to what the user said as if you're in the scene with them. Keep it short, natural, and in character. This is NOT evaluation — it's dialogue. Skip this if STATUS is INCORRECT.]
+
+Rules:
+- CORRECT = same meaning. Strip all punctuation before comparing. Filler words (um, uh, like) are fine. Say "Perfect!" or "Exactly right!"
+- CLOSE = grammar or word choice needs a small fix. NEVER mention punctuation.
+- INCORRECT = wrong meaning or completely different sentence. Guide step by step.
+- Be encouraging and praise effort.
+- Expected: "${expectedLine}"`
+
+  const userPrompt = `Here's the conversation so far:
+${context}
+
+The student was supposed to respond as their character. Their attempt: "${userAttempt}"
+
+How did they do? Give warm, natural feedback like a real person would.`
+
+  return openaiStreamResponse({ system, messages: [{ role: 'user', content: userPrompt }], maxTokens: 300 }, onDelta, onDone, onError)
+}
+
+export async function evaluateTranslation(
+  userAnswer: string,
+  expected: string,
+  uzbekText: string,
+  level: string,
+): Promise<{ status: 'CORRECT' | 'CLOSE' | 'INCORRECT'; tip: string }> {
+  const system = `You evaluate English translations from Uzbek. The student was given the Uzbek sentence and wrote an English translation.
+
+Compare meaning, not exact wording. Accept contractions (I'm = I am, don't = do not), different word order, synonyms.
+
+Student level: ${level}
+
+CRITICAL: This is SPEAKING & WRITING practice — punctuation NEVER matters. Never deduct for commas, periods, capitalization.
+
+Respond in this exact format:
+STATUS: [CORRECT / CLOSE / INCORRECT]
+
+💡 TIP:
+[Brief natural feedback. If wrong, say exactly what to fix. 1-2 sentences max. Warm and encouraging.]
+
+Rules:
+- CORRECT = same meaning. "I am good thank you" = "I'm good, thank you" = CORRECT.
+- CLOSE = small grammar issue but meaning is clear. Give a quick tip.
+- INCORRECT = meaning is wrong. Guide briefly.`
+
+  const userPrompt = `Uzbek: "${uzbekText}"
+Expected English: "${expected}"
+Student wrote: "${userAnswer}"
+
+Evaluate their translation.`
+
+    return new Promise((resolve) => {
+    let full = ''
+    openaiStreamResponse(
+      { system, messages: [{ role: 'user', content: userPrompt }], maxTokens: 200 },
+      (token) => { full += token },
+      () => {
+        const statusMatch = full.match(/STATUS:\s*(CORRECT|CLOSE|INCORRECT)/)
+        const tipMatch = full.match(/💡 TIP:\s*([^\n]+)/)
+        resolve({
+          status: (statusMatch?.[1] as 'CORRECT' | 'CLOSE' | 'INCORRECT') || 'INCORRECT',
+          tip: tipMatch?.[1]?.trim() || '',
+        })
+      },
+      () => resolve({ status: 'INCORRECT', tip: '' })
+    )
+  })
+}
+
+export async function translateLines(lines: string[]): Promise<string[]> {
+  const system = `You are a translator. Translate each English sentence to natural Uzbek (O'zbekcha).
+Return ONLY a JSON array of strings — no other text.
+Example: ["Salom", "Qalaysiz?"]`
+
+  const userPrompt = `Translate these to Uzbek:
+${lines.map((l, i) => `${i + 1}. ${l}`).join('\n')}`
+
+  return new Promise((resolve, reject) => {
+    let full = ''
+    openaiStreamResponse(
+      { system, messages: [{ role: 'user', content: userPrompt }], maxTokens: 1000 },
+      (token) => { full += token },
+      () => {
+        try {
+          const parsed = JSON.parse(full)
+          if (Array.isArray(parsed) && parsed.length === lines.length) {
+            resolve(parsed.map(s => String(s)))
+          } else {
+            resolve(lines.map(() => ''))
+          }
+        } catch {
+          resolve(lines.map(() => ''))
+        }
+      },
+      () => reject(new Error('Translation failed'))
+    )
+  })
 }

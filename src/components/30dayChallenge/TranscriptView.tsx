@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef, useCallback } from 'react'
 import { Search, Clock, ChevronDown, ChevronUp, Volume2, Bookmark, Eye, EyeOff } from 'lucide-react'
 import type { TranscriptSection } from '../../data/30dayChallenge'
+import { speakText } from '../../lib/speak'
 
 interface Props {
   transcript: string
@@ -77,13 +78,7 @@ export default function TranscriptView({ transcript, timestamps, structuredTrans
   }, [])
 
   const speakLine = useCallback((text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel()
-      const u = new SpeechSynthesisUtterance(text)
-      u.lang = 'en-US'
-      u.rate = 0.85
-      window.speechSynthesis.speak(u)
-    }
+    speakText(text)
   }, [])
 
   const totalLines = useMemo(() => sections.reduce((sum, s) => sum + s.lines.length, 0), [sections])

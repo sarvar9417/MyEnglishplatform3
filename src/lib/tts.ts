@@ -46,19 +46,31 @@ if ('speechSynthesis' in window) {
 export function getBestVoice(lang = 'en-US'): SpeechSynthesisVoice | undefined {
   const voices = getVoices()
 
-  // 1. Google UK — eng tabiiy erkak/ayol ovoz
-  const googleUK = voices.find(v => v.name.includes('Google UK'))
-  if (googleUK) return googleUK
+  // Tabiiy premium ovozlar ro'yxati (eng tabiiydan pastga)
+  const premiumNames = [
+    'Google UK',
+    'Google US',
+    'Karen',       // en-AU — juda tabiiy
+    'Samantha',    // en-US — tabiiy ayol ovozi
+    'Daniel',      // en-GB — tabiiy erkak ovozi
+    'Moira',       // en-IE
+    'Tessa',       // en-ZA
+    'Fiona',       // en-GB
+  ]
+  for (const name of premiumNames) {
+    const found = voices.find(v => v.name.includes(name))
+    if (found) return found
+  }
 
-  // 2. Google US
-  const googleUS = voices.find(v => v.name.includes('Google US'))
-  if (googleUS) return googleUS
+  // O'xshash tilga mos (en-US, en-GB, en-AU)
+  const exact = voices.find(v => v.lang === lang)
+  if (exact) return exact
 
-  // 3. Berilayotgan tilga mos birinchi ovoz
+  // Berilayotgan tilga mos birinchi ovoz (masalan 'en')
   const langMatch = voices.find(v => v.lang.startsWith(lang.slice(0, 2)))
   if (langMatch) return langMatch
 
-  // 4. Default
+  // Default
   return voices.find(v => v.default) ?? voices[0]
 }
 
@@ -109,13 +121,19 @@ export function speak(text: string, options: TTSOptions = {}): Promise<void> {
       if (best) utterance.voice = best
     }
 
+    let settled = false
+
     utterance.onstart = () => { _isSpeaking = true }
     utterance.onend   = () => {
+      if (settled) return
+      settled = true
       _isSpeaking = false
       _currentUtterance = null
       resolve()
     }
     utterance.onerror = (e) => {
+      if (settled) return
+      settled = true
       _isSpeaking = false
       _currentUtterance = null
       // 'canceled' is normal when a new speak call interrupts — don't reject
@@ -134,6 +152,16 @@ export function speak(text: string, options: TTSOptions = {}): Promise<void> {
     try { window.speechSynthesis.resume() } catch { /* noop */ }
 
     window.speechSynthesis.speak(utterance)
+
+    // Xavfsizlik taymer — Chrome ba'zan onend'ni ishga tushirmaydi
+    const timeoutMs = Math.max(5000, text.length * 80)
+    setTimeout(() => {
+      if (settled) return
+      settled = true
+      _isSpeaking = false
+      _currentUtterance = null
+      resolve()
+    }, timeoutMs)
   })
 }
 

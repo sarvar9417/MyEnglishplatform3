@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback } from 'react'
 import { Volume2, Check, RotateCw, BookOpen, Shuffle, Brain, Trophy, Star, ChevronLeft, ChevronRight, Sparkles, Target, MessageCircle } from 'lucide-react'
 import type { ChallengeVocab } from '../../data/30dayChallenge'
 import VocabPracticeChat from './VocabPracticeChat'
+import { speakText } from '../../lib/speak'
 
 interface Props {
   vocabulary: ChallengeVocab[]
@@ -63,13 +64,7 @@ export default function VocabularySection({ vocabulary }: Props) {
   }, [])
 
   const speakWord = useCallback((text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel()
-      const u = new SpeechSynthesisUtterance(text)
-      u.lang = 'en-US'
-      u.rate = 0.8
-      window.speechSynthesis.speak(u)
-    }
+    speakText(text, 0.8)
   }, [])
 
   const progressPct = Math.round((learned.size / vocabulary.length) * 100)

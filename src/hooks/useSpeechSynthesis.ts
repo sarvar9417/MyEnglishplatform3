@@ -1,7 +1,7 @@
 // src/hooks/useSpeechSynthesis.ts
 // Reactive React hook wrapping src/lib/tts.ts — voice selection, speed control, speaking state
 import { monitoring } from '../lib/monitoring'
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { speak, stopSpeaking, getVoices, getBestVoice, isSpeaking, isSpeechSupported, type TTSOptions } from '../lib/tts'
 
 export interface VoiceOption {
@@ -173,7 +173,7 @@ export function useSpeechSynthesis(lang = 'en-US'): UseSpeechSynthesisReturn {
     return () => clearInterval(id)
   }, [playing])
 
-  return {
+  return useMemo(() => ({
     supported: isSpeechSupported(),
     playing,
     voices: voiceList,
@@ -184,5 +184,5 @@ export function useSpeechSynthesis(lang = 'en-US'): UseSpeechSynthesisReturn {
     speak: speakText,
     stop,
     autoSelectVoice,
-  }
+  }), [playing, voiceList, selectedVoice, speed, setVoice, setSpeed, speakText, stop, autoSelectVoice])
 }

@@ -3,19 +3,16 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, Trophy, Mic, Flame, Sparkles, Zap, Loader2 } from 'lucide-react'
 import { TOTAL_CHALLENGE_DAYS, getChallengeDay, getStaticDay } from '../data/30dayChallenge'
 import type { ChallengeDay } from '../data/30dayChallenge/types'
-import type { RoleplayExercise } from '../data/30dayChallenge'
+
 
 // Components
 import DaySelector from '../components/30dayChallenge/DaySelector'
 import ChallengeHeader from '../components/30dayChallenge/ChallengeHeader'
 import VideoPlayer from '../components/30dayChallenge/VideoPlayer'
-import TranscriptView from '../components/30dayChallenge/TranscriptView'
 import HighlightsSection from '../components/30dayChallenge/HighlightsSection'
 import VocabularySection from '../components/30dayChallenge/VocabularySection'
 import SentenceBankSection from '../components/30dayChallenge/SentenceBankSection'
-import ExerciseSection from '../components/30dayChallenge/ExerciseSection'
 import QuizSection from '../components/30dayChallenge/QuizSection'
-import SpeakingSection from '../components/30dayChallenge/SpeakingSection'
 import ReviewSection from '../components/30dayChallenge/ReviewSection'
 import AiConversationSection from '../components/30dayChallenge/AiConversationSection'
 import RoleplayGame from '../components/30dayChallenge/RoleplayGame'
@@ -46,19 +43,16 @@ function saveProgress(p: ChallengeProgress) {
 
 // ── Tabs ────────────────────────────────────────────────────────────────────
 
-type Tab = 'warmup' | 'video' | 'transcript' | 'highlights' | 'vocabulary' | 'sentences' | 'exercises' | 'roleplay-game' | 'quiz' | 'speaking' | 'review' | 'ai-chat'
+type Tab = 'warmup' | 'video' | 'highlights' | 'vocabulary' | 'sentences' | 'roleplay-game' | 'quiz' | 'review' | 'ai-chat'
 
 const TABS: { key: Tab; icon: string; label: string; color: string }[] = [
   { key: 'warmup',     icon: '🧠', label: 'Warm-up',   color: 'from-indigo-500 to-purple-600' },
   { key: 'video',      icon: '📺', label: 'Video',     color: 'from-red-500 to-orange-500' },
-  { key: 'transcript', icon: '📖', label: 'Transkript', color: 'from-blue-500 to-cyan-500' },
   { key: 'highlights', icon: '💡', label: 'Bo\'limlar', color: 'from-amber-500 to-yellow-500' },
   { key: 'vocabulary', icon: '📚', label: 'Lug\'at',   color: 'from-emerald-500 to-teal-500' },
   { key: 'sentences',  icon: '💬', label: 'Jumlalar',  color: 'from-violet-500 to-purple-500' },
-  { key: 'exercises',      icon: '✍️', label: 'Mashqlar',      color: 'from-orange-500 to-red-500' },
   { key: 'roleplay-game',  icon: '🎭', label: 'Role-play',    color: 'from-purple-500 to-fuchsia-500' },
   { key: 'quiz',           icon: '📝', label: 'Test',          color: 'from-pink-500 to-rose-500' },
-  { key: 'speaking',   icon: '🎤', label: 'Speaking',  color: 'from-indigo-500 to-blue-500' },
   { key: 'ai-chat',    icon: '🤖', label: 'AI Chat',   color: 'from-purple-500 to-fuchsia-500' },
   { key: 'review',     icon: '📋', label: 'Yakun',     color: 'from-green-500 to-emerald-500' },
 ]
@@ -76,7 +70,6 @@ export default function ThirtyDayChallenge() {
   const [pageEntered, setPageEntered] = useState(false)
   const [day, setDay] = useState<ChallengeDay | null>(null)
   const [dayLoading, setDayLoading] = useState(true)
-  const [pendingRoleplay, setPendingRoleplay] = useState<RoleplayExercise | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const completedCount = progress.completedDays.length
@@ -94,11 +87,12 @@ export default function ThirtyDayChallenge() {
       setDay(staticDay)
     }
 
-    // Then try Supabase
+    // Then try Supabase (with error handling)
     getChallengeDay(currentDay).then(d => {
       if (cancelled) return
       if (d) setDay(d)
-      setDayLoading(false)
+    }).catch(() => {}).finally(() => {
+      if (!cancelled) setDayLoading(false)
     })
 
     return () => { cancelled = true }
@@ -128,7 +122,6 @@ export default function ThirtyDayChallenge() {
     if (n < 1 || n > TOTAL_CHALLENGE_DAYS) return
     setCurrentDay(n)
     setActiveTab('video')
-    setPendingRoleplay(null)
     setQuizScore(0)
     setDayLoading(true)
     setDay(null)
@@ -158,13 +151,7 @@ export default function ThirtyDayChallenge() {
     setQuizScore(score)
   }, [])
 
-  // Handle starting a roleplay from the ExerciseSection
-  const handleStartRoleplay = useCallback((roleplay: RoleplayExercise) => {
-    setPendingRoleplay(roleplay)
-    setActiveTab('ai-chat')
-    // Clear pendingRoleplay after AiConversationSection has consumed it (200ms)
-    setTimeout(() => setPendingRoleplay(null), 200)
-  }, [])
+
 
   // ── Render ──────────────────────────────────────────────────────────────
 
@@ -313,12 +300,6 @@ export default function ThirtyDayChallenge() {
           </div>
         )}
 
-        {activeTab === 'transcript' && (
-          <div className="animate-slide-up">
-            <TranscriptView transcript={day.transcript} timestamps={day.timestamps} structuredTranscript={day.structuredTranscript} />
-          </div>
-        )}
-
         {activeTab === 'highlights' && (
           <div className="animate-slide-up">
             <HighlightsSection highlights={day.highlights} />
@@ -333,19 +314,13 @@ export default function ThirtyDayChallenge() {
 
         {activeTab === 'sentences' && (
           <div className="animate-slide-up">
-            <SentenceBankSection sentenceBank={day.sentenceBank} />
-          </div>
-        )}
-
-        {activeTab === 'exercises' && (
-          <div className="animate-slide-up">
-            <ExerciseSection exercises={day.exercises} onStartRoleplay={handleStartRoleplay} level={day.level} />
+            <SentenceBankSection sentenceBank={day.sentenceBank} level={day.level} />
           </div>
         )}
 
         {activeTab === 'roleplay-game' && (
           <div className="animate-slide-up">
-            <RoleplayGame exercises={day.exercises} />
+            <RoleplayGame day={day} />
           </div>
         )}
 
@@ -355,15 +330,9 @@ export default function ThirtyDayChallenge() {
           </div>
         )}
 
-        {activeTab === 'speaking' && (
-          <div className="animate-slide-up">
-            <SpeakingSection speaking={day.speaking} />
-          </div>
-        )}
-
         {activeTab === 'ai-chat' && (
           <div className="animate-slide-up">
-            <AiConversationSection day={day} pendingRoleplay={pendingRoleplay} />
+            <AiConversationSection day={day} />
           </div>
         )}
 
