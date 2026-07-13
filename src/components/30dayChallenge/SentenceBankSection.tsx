@@ -88,7 +88,9 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
       trSR.reset()
       trInputRef.current?.focus()
     }
-  }, [currentTr, trSR])
+    // trSR har renderda yangi reference → deps ga qo'yilsa micMode har safar o'chib qoladi
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentTr])
 
   useEffect(() => {
     if (trMicMode && trSR.transcript) {
@@ -129,14 +131,16 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
     setTrFinished(false)
     setTrMicMode(false)
     trSR.reset()
-  }, [trSR])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // ── Mode switch ─────────────────────────────────────────────────────────
   const switchMode = useCallback((m: Mode) => {
     setMode(m)
     stopSpeaking()
-    if (trSR.isRecording) trSR.stop()
-  }, [trSR])
+    trSR.stop() // safe when not recording — recRef.current?.stop() uses optional chaining
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // ── Render: Translate ──────────────────────────────────────────────────
   const renderTranslate = () => {
