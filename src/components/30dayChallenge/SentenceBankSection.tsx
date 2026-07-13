@@ -233,18 +233,18 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
           </div>
         </div>
 
-        <div className="flex gap-2">
-          <input
-            ref={trInputRef}
-            type="text"
-            value={trAnswer}
-            onChange={e => setTrAnswer(e.target.value)}
-            onKeyDown={e => { if (e.key === 'Enter' && !trResult) trCheckAnswer() }}
-            placeholder="Ingliz tilida yozing..."
-            className="flex-1 px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all placeholder-gray-400"
-            disabled={trResult !== null}
-          />
-          {trResult === null && (
+        {/* Input+buttons — result vaqtida yashirin (faqat result + action buttons) */}
+        {trResult === null && (
+          <div className="flex gap-2">
+            <input
+              ref={trInputRef}
+              type="text"
+              value={trAnswer}
+              onChange={e => setTrAnswer(e.target.value)}
+              onKeyDown={e => { if (e.key === 'Enter') trCheckAnswer() }}
+              placeholder="Ingliz tilida yozing..."
+              className="flex-1 px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all placeholder-gray-400"
+            />
             <button
               onClick={trCheckAnswer}
               disabled={!trAnswer.trim()}
@@ -252,57 +252,68 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
             >
               Tekshirish
             </button>
-          )}
-          <button
-            onClick={() => {
-              if (trSR.isRecording) {
-                trSR.stop()
-                setTrMicMode(false)
-              } else {
-                trSR.reset()
-                trSR.start()
-                setTrMicMode(true)
-              }
-            }}
-            className={`px-4 py-3 rounded-xl font-bold text-sm transition-all ${
-              trMicMode && trSR.isRecording
-                ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700 animate-pulse'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
-          >
-            <Mic size={18} />
-          </button>
-        </div>
+            <button
+              onClick={() => {
+                if (trSR.isRecording) {
+                  const captured = trSR.transcript || trSR.interim || ''
+                  trSR.stop()
+                  if (captured) setTrAnswer(captured)
+                  setTrMicMode(false)
+                } else {
+                  trSR.reset()
+                  trSR.start()
+                  setTrMicMode(true)
+                }
+              }}
+              className={`px-4 py-3 rounded-xl font-bold text-sm transition-all ${
+                trSR.isRecording
+                  ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700 animate-pulse'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
+            >
+              <Mic size={18} />
+            </button>
+          </div>
+        )}
 
-        {trMicMode && (
-          <div className="p-4 rounded-xl bg-gradient-to-br from-red-50 to-rose-50 dark:from-red-900/20 dark:to-rose-900/20 border border-red-200 dark:border-red-800 text-center">
-            {trSR.isRecording ? (
-              <div className="space-y-3">
-                <div className="flex items-center justify-center gap-3">
-                  <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500" />
-                  </span>
-                  <span className="text-red-600 dark:text-red-400 font-bold text-sm">Gapiryapsiz...<span className="text-xs font-normal ml-1">(yana bosish → to'xtatadi)</span></span>
-                </div>
-                {trSR.interim && (
-                  <p className="text-sm text-gray-600 dark:text-gray-400 italic">"{trSR.interim}"</p>
-                )}
-                <button
-                  onClick={() => { trSR.stop(); setTrMicMode(false) }}
-                  className="px-6 py-3 rounded-xl bg-red-500 text-white font-bold text-sm hover:bg-red-600 transition-all active:scale-95"
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    <Square size={14} />
-                    To'xtatish
-                  </span>
-                </button>
-              </div>
-            ) : trSR.permissionError ? (
-              <p className="text-sm text-red-600 dark:text-red-400 font-medium">
-                Mikrofonga ruxsat berilmagan. Brauzer sozlamalaridan ruxsat bering.
-              </p>
-            ) : null}
+        {/* Recording panel — faqat active recording paytida */}
+        {trSR.isRecording && trMicMode && (
+          <div className="p-4 rounded-xl bg-gradient-to-br from-red-50 to-rose-50 dark:from-red-900/20 dark:to-rose-900/20 border border-red-200 dark:border-red-800 space-y-3">
+            <div className="flex items-center justify-center gap-2">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500" />
+              </span>
+              <span className="text-red-600 dark:text-red-400 font-bold text-sm">Yozib olinmoqda...</span>
+            </div>
+            {trSR.interim && (
+              <p className="text-center text-sm text-gray-600 dark:text-gray-400 italic">"{trSR.interim}"</p>
+            )}
+            <div className="text-center">
+              <button
+                onClick={() => {
+                  const captured = trSR.transcript || trSR.interim || ''
+                  trSR.stop()
+                  if (captured) setTrAnswer(captured)
+                  setTrMicMode(false)
+                }}
+                className="px-6 py-2 rounded-lg bg-red-500 text-white font-bold text-sm hover:bg-red-600 transition-all active:scale-95"
+              >
+                <span className="flex items-center justify-center gap-1.5">
+                  <Square size={14} />
+                  To'xtatish
+                </span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Permission error */}
+        {trSR.permissionError && trMicMode && !trSR.isRecording && (
+          <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-center">
+            <p className="text-sm text-red-600 dark:text-red-400 font-medium">
+              Mikrofonga ruxsat berilmagan. Brauzer sozlamalaridan ruxsat bering.
+            </p>
           </div>
         )}
 
