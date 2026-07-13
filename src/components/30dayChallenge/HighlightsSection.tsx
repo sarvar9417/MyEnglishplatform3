@@ -1,15 +1,59 @@
 import { useState } from 'react'
 import { ChevronDown, ChevronUp, Lightbulb, Target, Sparkles } from 'lucide-react'
-import type { LessonHighlight } from '../../data/30dayChallenge'
+import type { LessonHighlight, ChallengeExercise, DialogueLine } from '../../data/30dayChallenge'
 
 interface Props {
   highlights: LessonHighlight[]
+  exercises?: ChallengeExercise[]
 }
 
 const HIGHLIGHT_ICONS = ['📘', '🗣️', '💡', '🎯', '⭐']
 
-export default function HighlightsSection({ highlights }: Props) {
-  const [expanded, setExpanded] = useState<number>(0) // First one open by default
+function SpeakerBubble({ speaker, text, translation }: { speaker: string; text: string; translation?: string }) {
+  const isUser = speaker === 'Fizu' || speaker === 'You' || speaker === 'Student'
+  return (
+    <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
+      <div className={`max-w-[85%] rounded-xl px-3.5 py-2 ${
+        isUser
+          ? 'bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 rounded-tr-sm'
+          : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-tl-sm'
+      }`}>
+        <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-0.5">{speaker}</p>
+        <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{text}</p>
+        {translation && (
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-1">{translation}</p>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function DialogueSection({ lines }: { lines: DialogueLine[] }) {
+  return (
+    <div className="space-y-2 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-750 rounded-xl p-3 border border-gray-200 dark:border-gray-700">
+      <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase flex items-center gap-1">
+        <Sparkles size={12} /> Dialog
+      </p>
+      <div className="space-y-2">
+        {lines.map((line, j) => {
+          const displayText = line.blank && line.answer ? line.text.replace(/_{2,}/, line.answer) : line.text
+          return <SpeakerBubble key={j} speaker={line.speaker} text={displayText} />
+        })}
+      </div>
+    </div>
+  )
+}
+
+export default function HighlightsSection({ highlights, exercises }: Props) {
+  const [expanded, setExpanded] = useState<number>(0)
+
+  const dialogueExercises = (exercises ?? []).filter(
+    (e): e is ChallengeExercise & { type: 'dialogue-complete' } => e.type === 'dialogue-complete'
+  )
+  function itemIndex(type: 'highlight' | 'dialogue', idx: number): number {
+    if (type === 'highlight') return idx
+    return highlights.length + idx
+  }
 
   return (
     <div className="space-y-3">
@@ -19,15 +63,15 @@ export default function HighlightsSection({ highlights }: Props) {
       </h3>
 
       <div className="space-y-2">
+        {/* ── Lesson Highlights ───────────────────────────────────────────── */}
         {highlights.map((h, i) => {
           const isOpen = expanded === i
 
           return (
             <div
-              key={i}
+              key={`h-${i}`}
               className="rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-200 hover:shadow-md"
             >
-              {/* Header button */}
               <button
                 onClick={() => setExpanded(isOpen ? -1 : i)}
                 className={`
@@ -42,13 +86,10 @@ export default function HighlightsSection({ highlights }: Props) {
                 </div>
               </button>
 
-              {/* Content */}
               {isOpen && (
                 <div className="p-4 space-y-4 animate-slide-down">
-                  {/* Description */}
                   <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{h.content}</p>
 
-                  {/* Key points */}
                   {h.points && h.points.length > 0 && (
                     <div className="space-y-1.5">
                       {h.points.map((p, j) => (
@@ -62,7 +103,6 @@ export default function HighlightsSection({ highlights }: Props) {
                     </div>
                   )}
 
-                  {/* Phrases / Dialogue */}
                   {h.phrases && h.phrases.length > 0 && (
                     <div className="space-y-2 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-750 rounded-xl p-3 border border-gray-200 dark:border-gray-700">
                       <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase flex items-center gap-1">
@@ -71,21 +111,7 @@ export default function HighlightsSection({ highlights }: Props) {
                       <div className="space-y-2">
                         {h.phrases.map((p, j) => {
                           if ('speaker' in p) {
-                            return (
-                              <div key={j} className={`flex ${p.speaker !== 'Fizu' && p.speaker !== 'You' && p.speaker !== 'Student' ? 'justify-start' : 'justify-end'}`}>
-                                <div className={`max-w-[85%] rounded-xl px-3.5 py-2 ${
-                                  p.speaker !== 'Fizu' && p.speaker !== 'You' && p.speaker !== 'Student'
-                                    ? 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-tl-sm'
-                                    : 'bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 rounded-tr-sm'
-                                }`}>
-                                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-0.5">{p.speaker}</p>
-                                  <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{p.text}</p>
-                                  {p.translation && (
-                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-1">{p.translation}</p>
-                                  )}
-                                </div>
-                              </div>
-                            )
+                            return <SpeakerBubble key={j} speaker={p.speaker} text={p.text} translation={p.translation} />
                           }
                           return (
                             <div key={j} className="flex items-center justify-between gap-2 text-sm py-1 border-b border-gray-100 dark:border-gray-700 last:border-0">
@@ -102,6 +128,43 @@ export default function HighlightsSection({ highlights }: Props) {
             </div>
           )
         })}
+
+        {/* ── Quiz Time Dialogues ─────────────────────────────────────────── */}
+        {dialogueExercises.length > 0 && (
+          <>
+            {dialogueExercises.map((de, di) => {
+              const idx = itemIndex('dialogue', di)
+              const isOpen = expanded === idx
+
+              return (
+                <div
+                  key={`d-${di}`}
+                  className="rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-200 hover:shadow-md"
+                >
+                  <button
+                    onClick={() => setExpanded(isOpen ? -1 : idx)}
+                    className={`
+                      w-full flex items-center gap-3 p-4 text-left transition-colors
+                      ${isOpen ? 'bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-b border-gray-200 dark:border-gray-700' : 'hover:bg-gray-50 dark:hover:bg-gray-750'}
+                    `}
+                  >
+                    <span className="text-xl shrink-0">💬</span>
+                    <span className="flex-1 font-bold text-sm sm:text-base text-gray-900 dark:text-gray-100">{de.instruction}</span>
+                    <div className={`p-1.5 rounded-lg transition-all ${isOpen ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600' : 'text-gray-400'}`}>
+                      {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                    </div>
+                  </button>
+
+                  {isOpen && (
+                    <div className="p-4 animate-slide-down">
+                      <DialogueSection lines={de.lines} />
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </>
+        )}
       </div>
     </div>
   )

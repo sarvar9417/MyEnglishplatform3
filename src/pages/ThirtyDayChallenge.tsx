@@ -319,7 +319,7 @@ export default function ThirtyDayChallenge() {
 
         {activeTab === 'highlights' && (
           <div className="animate-slide-up">
-            <HighlightsSection highlights={day.highlights} />
+            <HighlightsSection highlights={day.highlights} exercises={day.exercises} />
           </div>
         )}
 
