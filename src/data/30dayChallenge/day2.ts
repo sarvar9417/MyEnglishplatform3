@@ -300,12 +300,35 @@ Remember, fluency is not about being perfect. Fluency is about being confident, 
       {
         category: 'Questions & Conversation (Savol-Javob)',
         phrases: [
+          // ── Umumiy savollar ─────────────────────────────────
           { en: 'Are you ready?', uz: 'Tayyormisiz?' },
           { en: 'Fizu, how are you feeling today?', uz: 'Fizu, bugun o\'zingizni qanday his qilyapsiz?' },
           { en: 'Do you like studying English?', uz: 'Ingliz tilini o\'rganishni yoqtirasizmi?' },
           { en: 'So, what do you do?', uz: 'Nima ish qilasiz?' },
           { en: 'What color do you like?', uz: 'Qaysi rang yoqadi?' },
           { en: 'If you ever need help, feel free to ask me.', uz: 'Agar yordam kerak bo\'lsa, mendan so\'rashdan tortinmang.' },
+          // ── Quiz Time — Q-A juftliklari (10 ta jumla) ────────
+          // 1 — Savol
+          { en: 'How do you ask for food at a restaurant?', uz: 'Restoranda ovqatni qanday so\'raysiz?' },
+          // 1 — Javob
+          { en: 'Can I have a sandwich, please?', uz: 'Sendvich olsa bo\'ladimi, iltimos?' },
+          // 2 — Savol
+          { en: 'If someone asks you "How are you today?" what do you say?', uz: 'Agar kimdir sizdan "Bugun qandaysiz?" deb so\'rasa, nima deysiz?' },
+          // 2 — Javob
+          { en: 'I\'m good, thank you. How are you?', uz: 'Yaxshiman, rahmat. O\'zingiz-chi?' },
+          // 3 — Savol
+          { en: 'What does "fluently" mean?', uz: '"Fluently" nimani anglatadi?' },
+          // 3 — Javob
+          { en: 'Speaking smoothly and easily without stopping too much.', uz: 'To\'xtab qolmasdan, ravon va oson gapirish.' },
+          // 4 — Savol
+          { en: 'If you want to thank someone, what can you say?', uz: 'Agar kimgadir rahmat aytmoqchi bo\'lsangiz, nima deysiz?' },
+          // 4 — Javob
+          { en: 'Thank you so much or I really appreciate it.', uz: 'Katta rahmat yoki men buni juda qadrlayman.' },
+          // 5 — Savol
+          { en: 'What did you do yesterday?', uz: 'Kecha nima qildingiz?' },
+          // 5 — Javob
+          { en: 'Yesterday I studied English. I watched a video and I practiced speaking.', uz: 'Kecha ingliz tilini o\'rgandim. Video ko\'rdim va gapirishni mashq qildim.' },
+          // ── Boshqa foydali iboralar ─────────────────────────
           { en: 'Good evening. Are you ready to order?', uz: 'Xayrli kech. Buyurtma berishga tayyormisiz?' },
           { en: 'Would you like fries with that?', uz: 'Unga kartoshka-fri qo\'shilsinmi?' },
           { en: 'Good afternoon. How can I help you today?', uz: 'Xayrli kun. Sizga qanday yordam bera olaman?' },
@@ -315,8 +338,6 @@ Remember, fluency is not about being perfect. Fluency is about being confident, 
           { en: 'Think in English. Don\'t translate in your head.', uz: 'Ingliz tilida o\'ylang. Boshingizda tarjima qilmang.' },
           { en: 'Use what you learn immediately.', uz: 'O\'rgangan narsangizni darhol qo\'llang.' },
           { en: 'Be patient with yourself.', uz: 'O\'zingizga sabr qiling.' },
-          { en: 'How do you ask for food at a restaurant?', uz: 'Restoranda ovqatni qanday so\'raysiz?' },
-          { en: 'What does fluently mean?', uz: 'Fluently nimani anglatadi?' },
         ],
       },
     ],

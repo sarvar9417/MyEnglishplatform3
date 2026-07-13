@@ -656,32 +656,44 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
       {
         category: 'Questions & Conversation (Savol-Javob)',
         phrases: [
+          // ── Umumiy savollar ─────────────────────────────────
           { en: 'Are you ready?', uz: 'Tayyormisiz?' },
           { en: 'So, how are you today?', uz: 'Xo\'sh, bugun qandaysiz?' },
-          { en: 'What do you do every morning?', uz: 'Har kuni ertalab nima qilasiz?' },
           { en: 'Let me ask you, do you like learning English?', uz: 'Ayting-chi, ingliz tilini o\'rganishni yoqtirasizmi?' },
-          { en: 'Why are you learning English?', uz: 'Nega ingliz tilini o\'rganyapsiz?' },
           { en: 'Why did you decide to learn English?', uz: 'Nega ingliz tilini o\'rganishga qaror qildingiz?' },
           { en: 'Have you ever traveled to an English-speaking country?', uz: 'Hech qachon ingliz tilida gaplashiladigan mamlakatga borganmisiz?' },
+          { en: 'How do you feel?', uz: 'O\'zingizni qanday his qilyapsiz?' },
+          // ── Quiz Time — Q-A juftliklari (10 ta jumla) ────────
+          // 1 — Savol
+          { en: 'What do you do every morning?', uz: 'Har kuni ertalab nima qilasiz?' },
+          // 1 — Javob
+          { en: 'Every morning I wake up, eat breakfast and practice English.', uz: 'Har kuni ertalab uyg\'onaman, nonushta qilaman va ingliz tilini mashq qilaman.' },
+          // 2 — Savol
+          { en: 'Why are you learning English?', uz: 'Nega ingliz tilini o\'rganyapsiz?' },
+          // 2 — Javob
+          { en: 'I\'m learning English because I want to travel and talk to people from different countries.', uz: 'Men ingliz tilini sayohat qilish va turli mamlakatlardan odamlar bilan gaplashish uchun o\'rganyapman.' },
+          // 3 — Savol
+          { en: 'How do you feel when you speak English?', uz: 'Ingliz tilida gapirganingizda o\'zingizni qanday his qilasiz?' },
+          // 3 — Javob
+          { en: 'At first, I feel nervous, but when I practice, I feel more confident.', uz: 'Avvaliga asabiylashaman, lekin mashq qilganimda o\'zimni ishonchliroq his qilaman.' },
+          // 4 — Savol
+          { en: 'What\'s your favorite way to practice English?', uz: 'Ingliz tilini mashq qilishning eng sevimli usulingiz qanday?' },
+          // 4 — Javob
+          { en: 'My favorite way is to watch English videos and repeat the sentences.', uz: 'Eng sevimli usulim — ingliz tilidagi videolarni tomosha qilish va gaplarni takrorlash.' },
+          // 5 — Savol
+          { en: 'What will you do after this video?', uz: 'Ushbu videodan keyin nima qilasiz?' },
+          // 5 — Javob
+          { en: 'After this video, I will practice the sentences again and speak English every day.', uz: 'Ushbu videodan keyin gaplarni yana takrorlayman va har kuni ingliz tilida gapiraman.' },
+          // ── Boshqa foydali iboralar ─────────────────────────
           { en: 'Everyone makes mistakes. Mistakes help you learn.', uz: 'Hamma xato qiladi. Xatolar o\'rganishga yordam beradi.' },
           { en: 'Never feel embarrassed. Just keep speaking.', uz: 'Hech qachon uyalmang. Shunchaki gapiravering.' },
           { en: 'Don\'t worry about grammar mistakes. Focus on communication.', uz: 'Grammatik xatolar haqida qayg\'urmang. Muloqotga e\'tibor qaring.' },
           { en: 'Fluency is not about perfection. It\'s about practice, confidence, and communication.', uz: 'Ravonlik mukammallik haqida emas. Bu amaliyot, ishonch va muloqot haqida.' },
+          { en: 'Fluency doesn\'t mean speaking perfectly. Fluency means speaking comfortably and naturally.', uz: 'Ravonlik mukammal gapirish degani emas. Ravonlik qulay va tabiiy gapirish demakdir.' },
           { en: 'I\'ve been busy with work, but I\'m doing well.', uz: 'Ish bilan band edim, lekin yaxshiman.' },
-          { en: 'How do you feel?', uz: 'O\'zingizni qanday his qilyapsiz?' },
           { en: 'Believe in yourself.', uz: 'O\'zingizga ishoning.' },
-          { en: 'How do you feel when you speak English?', uz: 'Ingliz tilida gapirganingizda o\'zingizni qanday his qilasiz?' },
-          { en: 'What\'s your favorite way to practice English?', uz: 'Ingliz tilini mashq qilishning eng sevimli usulingiz qanday?' },
-          { en: 'What will you do after this video?', uz: 'Ushbu videodan keyin nima qilasiz?' },
-          // Quiz Time — Student answers (highlight'dan)
-          { en: 'I\'m learning English because I want to travel and talk to people from different countries.', uz: 'Men ingliz tilini sayohat qilish va turli mamlakatlardan odamlar bilan gaplashish uchun o\'rganyapman.' },
-          { en: 'At first, I feel nervous, but when I practice, I feel more confident.', uz: 'Avvaliga asabiylashaman, lekin mashq qilganimda o\'zimni ishonchliroq his qilaman.' },
-          { en: 'My favorite way is to watch English videos and repeat the sentences.', uz: 'Eng sevimli usulim — ingliz tilidagi videolarni tomosha qilish va gaplarni takrorlash.' },
-          { en: 'After this video, I will practice the sentences again and speak English every day.', uz: 'Ushbu videodan keyin gaplarni yana takrorlayman va har kuni ingliz tilida gapiraman.' },
-          // Dialogue-based missing phrases (day_1.txt bo'yicha)
           { en: 'Actually, I like learning English, but sometimes it\'s difficult.', uz: 'Aslida, men ingliz tilini o\'rganishni yoqtiraman, lekin ba\'zida qiyin.' },
           { en: 'I understand a lot, but when I try to speak, I feel nervous.', uz: 'Men ko\'p narsani tushunaman, lekin gapirishga urinsam, asabiylashaman.' },
-          { en: 'Fluency doesn\'t mean speaking perfectly. Fluency means speaking comfortably and naturally.', uz: 'Ravonlik mukammal gapirish degani emas. Ravonlik qulay va tabiiy gapirish demakdir.' },
         ],
       },
     ],

@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 import { Search, Copy, Check, Volume2, Filter, Mic, Square, RotateCcw, Loader2, MessageSquare, List, Edit3, Clock, Eye } from 'lucide-react'
-import type { SentenceBank, TranscriptSection, Phrase, LessonHighlight, HighlightItem, HighlightPhrase } from '../../data/30dayChallenge'
+import type { SentenceBank, TranscriptSection, Phrase, LessonHighlight, HighlightPhrase } from '../../data/30dayChallenge'
 import { speak, stopSpeaking } from '../../lib/tts'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { evaluateTranslation } from '../../lib/openaiChat'
@@ -120,8 +120,6 @@ function enrichPhrases(
 
   for (const p of phrases) {
     const key = normalizeText(p.en)
-    let enriched = false
-
     // 1) Exact match with transcript
     let match = tLines.find(tl => tl.norm === key)
     // 2) Word-order match with transcript
@@ -138,7 +136,6 @@ function enrichPhrases(
         _sectionIcon: match.sectionIcon,
         _isKey: match.isKey,
       })
-      enriched = true
       continue
     }
 
@@ -158,7 +155,6 @@ function enrichPhrases(
         _sectionIcon: '💡',
         _isKey: false,
       })
-      enriched = true
       continue
     }
 
