@@ -408,22 +408,25 @@ export async function evaluateTranslation(
 ): Promise<{ status: 'CORRECT' | 'CLOSE' | 'INCORRECT'; tip: string }> {
   const system = `You evaluate English translations from Uzbek. The student was given the Uzbek sentence and wrote an English translation.
 
-Compare meaning, not exact wording. Accept contractions (I'm = I am, don't = do not), different word order, synonyms.
+Compare meaning, not exact wording.
 
 Student level: ${level}
 
-CRITICAL: This is SPEAKING & WRITING practice — punctuation NEVER matters. Never deduct for commas, periods, capitalization.
+🚫 STRICT RULE: NEVER mention punctuation (periods, commas, question marks, exclamation points, apostrophes), capitalization (uppercase/lowercase), or spacing in your feedback. These are STRICTLY FORBIDDEN in the TIP. Focus ONLY on word choice, grammar structure, and meaning.
+
+✅ GOOD tip: "Good job! For a more natural sentence, add 'the' before 'best': 'This is the best day.'"
+❌ BAD tip: "Add a comma after 'well' and capitalize the first letter."
 
 Respond in this exact format:
 STATUS: [CORRECT / CLOSE / INCORRECT]
 
 💡 TIP:
-[Brief natural feedback. If wrong, say exactly what to fix. 1-2 sentences max. Warm and encouraging.]
+[Brief natural feedback about WORD CHOICE, GRAMMAR, or MEANING only. 1-2 sentences max. Warm and encouraging. NO punctuation/capitalization advice.]
 
 Rules:
-- CORRECT = same meaning. "I am good thank you" = "I'm good, thank you" = CORRECT.
-- CLOSE = small grammar issue but meaning is clear. Give a quick tip.
-- INCORRECT = meaning is wrong. Guide briefly.`
+- CORRECT = same meaning. Punctuation, capitalization, spacing differences are COMPLETELY IGNORED.
+- CLOSE = small grammar or word choice issue but meaning is clear.
+- INCORRECT = meaning is wrong or key words missing. Guide briefly.`
 
   const userPrompt = `Uzbek: "${uzbekText}"
 Expected English: "${expected}"
