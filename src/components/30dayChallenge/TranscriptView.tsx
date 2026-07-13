@@ -217,69 +217,73 @@ export default function TranscriptView({ transcript, timestamps, structuredTrans
 
                   {/* Section lines */}
                   {!isCollapsed && (
-                    <div className="divide-y divide-gray-50 dark:divide-gray-750">
+                    <div className="px-4 py-3 space-y-2">
                       {visibleLines.map((line, lineIdx) => {
                         const lineKey = `${section.id}-${lineIdx}`
                         const isBookmarked = bookmarkedLines.has(lineKey)
                         const isHighlighted = activeTimestamp === line.timestamp
+                        const isStudent = line.speaker === 'Fizu' || line.speaker === 'You'
 
                         return (
                           <div
                             key={lineIdx}
                             ref={el => { if (line.timestamp && el) lineRefs.current.set(line.timestamp, el) }}
-                            className={`flex items-start gap-3 px-4 py-2.5 transition-all ${
-                              isHighlighted
-                                ? 'bg-primary-50 dark:bg-primary-900/20'
-                                : 'hover:bg-gray-50 dark:hover:bg-gray-750'
+                            className={`flex ${isStudent ? 'justify-end' : 'justify-start'} transition-all ${
+                              isHighlighted ? 'opacity-100' : ''
                             }`}
                           >
-                            {/* Timestamp */}
-                            {line.timestamp && (
-                              <button
-                                onClick={() => scrollToTimestamp(line.timestamp!)}
-                                className="shrink-0 flex items-center gap-1 text-[10px] font-mono text-gray-400 dark:text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors mt-1"
-                              >
-                                <Clock size={10} />
-                                {line.timestamp}
-                              </button>
-                            )}
-
-                            {/* Speaker */}
-                            {line.speaker && (
-                              <span className={`shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full mt-0.5 ${getSpeakerColor(line.speaker)}`}>
-                                {line.speaker}
-                              </span>
-                            )}
-
-                            {/* Text */}
-                            <p className={`flex-1 text-sm leading-relaxed ${
-                              line.isKey
-                                ? 'text-gray-900 dark:text-gray-100 font-medium'
-                                : 'text-gray-700 dark:text-gray-300'
-                            }`}>
-                              {line.text}
-                            </p>
-
-                            {/* Actions */}
-                            <div className="shrink-0 flex items-center gap-1 mt-0.5">
-                              <button
-                                onClick={() => speakLine(line.text)}
-                                className="p-1 rounded-md text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-all"
-                                title="Eshitish"
-                              >
-                                <Volume2 size={12} />
-                              </button>
-                              <button
-                                onClick={() => toggleBookmark(lineKey)}
-                                className={`p-1 rounded-md transition-all ${
-                                  isBookmarked
-                                    ? 'text-amber-500 bg-amber-50 dark:bg-amber-900/30'
-                                    : 'text-gray-400 hover:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/30'
-                                }`}
-                                title="Saqlash"
-                              >
-                                <Bookmark size={12} fill={isBookmarked ? 'currentColor' : 'none'} />
-                              </button>
+                            <div className={`max-w-[90%] group relative ${isHighlighted ? 'ring-2 ring-primary-500 rounded-xl' : ''}`}>
+                              {/* Bubble */}
+                              <div className={`rounded-xl px-3.5 py-2 ${
+                                isStudent
+                                  ? 'bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 rounded-tr-sm'
+                                  : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-tl-sm'
+                              }`}>
+                                {/* Speaker + Timestamp row */}
+                                <div className="flex items-center justify-between gap-2 mb-1">
+                                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${getSpeakerColor(line.speaker || '')}`}>
+                                    {line.speaker}
+                                  </span>
+                                  {line.timestamp && (
+                                    <button
+                                      onClick={() => scrollToTimestamp(line.timestamp!)}
+                                      className="flex items-center gap-0.5 text-[10px] font-mono text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                                    >
+                                      <Clock size={9} />
+                                      {line.timestamp}
+                                    </button>
+                                  )}
+                                </div>
+                                {/* Text */}
+                                <p className={`text-sm leading-relaxed ${
+                                  line.isKey
+                                    ? 'text-gray-900 dark:text-gray-100 font-medium'
+                                    : 'text-gray-700 dark:text-gray-300'
+                                }`}>
+                                  {line.text}
+                                </p>
+                              </div>
+                              {/* Actions — show on hover */}
+                              <div className="flex items-center justify-end gap-0.5 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button
+                                  onClick={() => speakLine(line.text)}
+                                  className="p-1 rounded-md text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-all"
+                                  title="Eshitish"
+                                >
+                                  <Volume2 size={11} />
+                                </button>
+                                <button
+                                  onClick={() => toggleBookmark(lineKey)}
+                                  className={`p-1 rounded-md transition-all ${
+                                    isBookmarked
+                                      ? 'text-amber-500'
+                                      : 'text-gray-400 hover:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/30'
+                                  }`}
+                                  title="Saqlash"
+                                >
+                                  <Bookmark size={11} fill={isBookmarked ? 'currentColor' : 'none'} />
+                                </button>
+                              </div>
                             </div>
                           </div>
                         )
