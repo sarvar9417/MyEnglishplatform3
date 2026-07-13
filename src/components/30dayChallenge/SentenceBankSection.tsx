@@ -20,21 +20,45 @@ function normalizeText(s: string): string {
   return s.toLowerCase().replace(/[^a-z0-9\s']/g, '').trim()
 }
 
-/** StructuredTranscript + Highlights dan speaker/timestamp ma'lumotlarini phrase ga moslash */
+/** Enriched phrase — Barcha qo'shimcha maydonlar */
+interface EnrichedPhrase extends Phrase {
+  _sortKey: string
+  _sectionId?: string
+  _sectionTitle?: string
+  _sectionIcon?: string
+  _isKey?: boolean
+}
+
+/** StructuredTranscript + Highlights dan speaker/timestamp/section ma'lumotlarini phrase ga moslash */
 function enrichPhrasesWithDialogue(
   phrases: Phrase[],
   transcript?: TranscriptSection[],
   highlights?: LessonHighlight[]
-): (Phrase & { _sortKey?: string })[] {
-  // 1) Transcript lines dan lookup map yaratish
-  const lookup = new Map<string, { speaker: string; timestamp: string }>()
+): EnrichedPhrase[] {
+  // 1) Transcript lines dan lookup map yaratish (section info bilan)
+  const lookup = new Map<string, {
+    speaker: string
+    timestamp: string
+    sectionId: string
+    sectionTitle: string
+    sectionIcon: string
+    isKey: boolean
+  }>()
   if (transcript) {
     for (const section of transcript) {
       for (const line of section.lines) {
         if (line.speaker && line.timestamp) {
           const key = normalizeText(line.text)
+          // Faqat birinchi kelgan saqlanadi (oldindan lookup ga qo'yilgan bo'lsa o'tkazib yuboramiz)
           if (!lookup.has(key)) {
-            lookup.set(key, { speaker: line.speaker, timestamp: line.timestamp })
+            lookup.set(key, {
+              speaker: line.speaker,
+              timestamp: line.timestamp,
+              sectionId: section.id,
+              sectionTitle: section.title,
+              sectionIcon: section.icon,
+              isKey: line.isKey ?? false,
+            })
           }
         }
       }
@@ -50,25 +74,52 @@ function enrichPhrasesWithDialogue(
           const hp = item as HighlightPhrase
           const key = normalizeText(hp.text)
           if (!lookup.has(key)) {
-            lookup.set(key, { speaker: hp.speaker, timestamp: 'hl' })
+            lookup.set(key, {
+              speaker: hp.speaker,
+              timestamp: 'hl',
+              sectionId: 'hl-' + h.title.slice(0, 20),
+              sectionTitle: h.title,
+              sectionIcon: '💡',
+              isKey: false,
+            })
           }
         }
       }
     }
   }
 
-  if (lookup.size === 0) return phrases
+  if (lookup.size === 0) {
+    return phrases.map(p => ({ ...p, _sortKey: 'zzz_' + p.en.slice(0, 20) }))
+  }
 
   return phrases.map(p => {
     const key = normalizeText(p.en)
     const match = lookup.get(key)
     if (match) {
-      return { ...p, speaker: match.speaker, timestamp: match.timestamp || undefined, _sortKey: match.timestamp }
+      return {
+        ...p,
+        speaker: match.speaker,
+        timestamp: match.timestamp || undefined,
+        _sortKey: match.timestamp,
+        _sectionId: match.sectionId,
+        _sectionTitle: match.sectionTitle,
+        _sectionIcon: match.sectionIcon,
+        _isKey: match.isKey,
+      }
     }
-    // Substring fallback
+    // Substring fallback — lookup kaliti (normalized text) bilan solishtiramiz
     for (const [lineKey, val] of lookup) {
       if (key.includes(lineKey) || lineKey.includes(key)) {
-        return { ...p, speaker: val.speaker, timestamp: val.timestamp || undefined, _sortKey: val.timestamp }
+        return {
+          ...p,
+          speaker: val.speaker,
+          timestamp: val.timestamp || undefined,
+          _sortKey: val.timestamp,
+          _sectionId: val.sectionId,
+          _sectionTitle: val.sectionTitle,
+          _sectionIcon: val.sectionIcon,
+          _isKey: val.isKey,
+        }
       }
     }
     return { ...p, _sortKey: 'zzz_' + p.en.slice(0, 20) }
@@ -129,10 +180,50 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
     return source.filter(p => p.en.toLowerCase().includes(q) || p.uz.toLowerCase().includes(q))
   }, [search, activeCategory, categories, allPhrases])
 
-  // ── Browse uchun dialogue-enriched va timestamp bo'yicha sorted view ───
-  const browsePhrases = useMemo(() => {
+  // ── Browse uchun dialogue-enriched view ──────────────────────────────
+  // Section'larga ajratilgan: har bir section ichida timestamp bo'yicha sorted
+  const browseSections = useMemo(() => {
     const enriched = enrichPhrasesWithDialogue(filtered, structuredTranscript, highlights)
-    return [...enriched].sort((a, b) => timestampToSeconds(a._sortKey!) - timestampToSeconds(b._sortKey!))
+
+    // Section'larga ajratamiz
+    const sectionsMap = new Map<string, EnrichedPhrase[]>()
+    const noSection: EnrichedPhrase[] = []
+
+    for (const ep of enriched) {
+      if (ep._sectionId) {
+        const arr = sectionsMap.get(ep._sectionId)
+        if (arr) arr.push(ep)
+        else sectionsMap.set(ep._sectionId, [ep])
+      } else {
+        noSection.push(ep)
+      }
+    }
+
+    // Har bir section ichida timestamp bo'yicha sort
+    for (const [, arr] of sectionsMap) {
+      arr.sort((a, b) => timestampToSeconds(a._sortKey!) - timestampToSeconds(b._sortKey!))
+    }
+
+    // Section'larni birinchi timestamp bo'yicha sort qilamiz
+    const sortedSections = [...sectionsMap.entries()].sort(([, a], [, b]) => {
+      return timestampToSeconds(a[0]._sortKey!) - timestampToSeconds(b[0]._sortKey!)
+    })
+
+    // Section ma'lumotlarini olish uchun birinchi elementdan foydalanamiz
+    const sectionInfo = new Map<string, { title: string; icon: string }>()
+    for (const ep of enriched) {
+      if (ep._sectionId && !sectionInfo.has(ep._sectionId)) {
+        sectionInfo.set(ep._sectionId, {
+          title: ep._sectionTitle ?? '',
+          icon: ep._sectionIcon ?? '💬',
+        })
+      }
+    }
+
+    // Non-section phrase'larni timestamp bo'yicha sort qilamiz (eng oxirida chiqadi)
+    noSection.sort((a, b) => timestampToSeconds(a._sortKey!) - timestampToSeconds(b._sortKey!))
+
+    return { sections: sortedSections, noSection, sectionInfo }
   }, [filtered, structuredTranscript, highlights])
 
   const handleCopy = useCallback(async (text: string, id: string) => {
@@ -547,64 +638,143 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
         </div>
       )}
 
-      {/* ── Phrase cards (staggered entrance) ──────────────────────────── */}
-      <div className="space-y-2">
-        {browsePhrases.map((p, i) => {
-          const id = `sent-${activeCategory ?? 'all'}-${i}`
-          const isDialogue = p.speaker && p.timestamp
-          const isConsecutiveSameSpeaker = isDialogue && i > 0
-            && browsePhrases[i - 1].speaker === p.speaker
-            && browsePhrases[i - 1].timestamp !== 'hl'
-            && p.timestamp !== 'hl'
+      {/* ── Phrase cards — Section'larga ajratilgan (staggered entrance) ─── */}
+      <div className="space-y-5">
+        {browseSections.sections.map(([sectionId, phrases], sectionIdx) => {
+          const info = browseSections.sectionInfo.get(sectionId) ?? { title: '', icon: '💬' }
+          const globalStartIdx = browseSections.sections.slice(0, sectionIdx).reduce((acc, [, p]) => acc + p.length, 0)
 
-          // Staggered animation delay
-          const delay = Math.min(i * 60, 1500)
-
-          if (isDialogue) {
-            // ── Dialogue-style bubble with timeline ────────────────────
-            const cfg = speakerConfig[p.speaker!] || defaultSpeaker
-            const accentClass = `${cfg.accent} ${cfg.darkColor}`
-
-            return (
-              <div
-                key={id}
-                className="flex animate-slide-up"
-                style={{ animationDelay: `${delay}ms` }}
-              >
-                {/* Timeline column */}
-                <div className="relative flex flex-col items-center w-8 shrink-0">
-                  {/* Timeline line (conect to previous if same speaker) */}
-                  {isConsecutiveSameSpeaker && (
-                    <div className={`w-0.5 h-2 ${cfg.color.replace('500', '300')} dark:opacity-50`} />
-                  )}
-                  {/* Connector dot */}
-                  <div className={`w-2.5 h-2.5 rounded-full ${cfg.color} ring-2 ring-white dark:ring-gray-900 z-10 shrink-0`} />
-                  {/* Timeline line (downward) */}
-                  {i < browsePhrases.length - 1 && browsePhrases[i + 1].speaker === p.speaker && (
-                    <div className={`flex-1 w-0.5 min-h-[24px] ${cfg.color.replace('500', '300')} dark:opacity-50`} />
-                  )}
+          return (
+            <div key={sectionId} className="space-y-2">
+              {/* ── Section header ────────────────────────────────────── */}
+              <div className="flex items-center gap-2.5 px-1 animate-slide-up" style={{ animationDelay: `${Math.min(globalStartIdx * 60, 1500)}ms` }}>
+                <span className="text-lg">{info.icon}</span>
+                <div>
+                  <h4 className="text-xs font-bold text-gray-800 dark:text-gray-200 uppercase tracking-wider">{info.title}</h4>
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500">{phrases.length} ta jumla</p>
                 </div>
+              </div>
 
-                {/* Card */}
-                <div className={`flex-1 ml-2 p-3.5 rounded-xl border-l-4 ${accentClass} bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group relative`}>
+              {/* ── Cards within section ──────────────────────────────── */}
+              {phrases.map((p, i) => {
+                const id = `section-${sectionId}-${i}`
+                const isConsecutiveSameSpeaker = i > 0
+                  && phrases[i - 1].speaker === p.speaker
+                  && phrases[i - 1].timestamp !== 'hl'
+                  && p.timestamp !== 'hl'
+
+                const itemIdx = globalStartIdx + i
+                const delay = Math.min(itemIdx * 60, 1500)
+                const cfg = speakerConfig[p.speaker!] || defaultSpeaker
+                const accentClass = `${cfg.accent} ${cfg.darkColor}`
+
+                return (
+                  <div
+                    key={id}
+                    className="flex animate-slide-up"
+                    style={{ animationDelay: `${delay}ms` }}
+                  >
+                    {/* Timeline column */}
+                    <div className="relative flex flex-col items-center w-8 shrink-0">
+                      {isConsecutiveSameSpeaker && (
+                        <div className={`w-0.5 h-2 ${cfg.color.replace('500', '300')} dark:opacity-50`} />
+                      )}
+                      <div className={`w-2.5 h-2.5 rounded-full ${cfg.color} ring-2 ring-white dark:ring-gray-900 z-10 shrink-0 ${p._isKey ? 'ring-2 ring-yellow-400 dark:ring-yellow-500' : ''}`} />
+                      {i < phrases.length - 1 && phrases[i + 1].speaker === p.speaker && (
+                        <div className={`flex-1 w-0.5 min-h-[24px] ${cfg.color.replace('500', '300')} dark:opacity-50`} />
+                      )}
+                    </div>
+
+                    {/* Card */}
+                    <div className={`flex-1 ml-2 p-3.5 rounded-xl border-l-4 ${accentClass} bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group relative`}>
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1 min-w-0">
+                          {/* Speaker name + timestamp */}
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold text-white ${cfg.color}`}>
+                              {cfg.initial}
+                            </span>
+                            <span className="text-[11px] font-bold text-gray-600 dark:text-gray-300 uppercase tracking-wide">{p.speaker}</span>
+                            {p.timestamp && p.timestamp !== 'hl' && (
+                              <span className="flex items-center gap-0.5 text-[10px] text-gray-400 dark:text-gray-500 ml-auto">
+                                <Clock size={9} />
+                                {p.timestamp}
+                              </span>
+                            )}
+                          </div>
+                          {/* English — prominent */}
+                          <p className={`text-sm leading-relaxed ${p._isKey ? 'font-bold text-primary-700 dark:text-primary-300' : 'font-semibold text-gray-900 dark:text-gray-100'}`}>{p.en}</p>
+                          {/* Uzbek — hideable for active recall */}
+                          {(!hideUzbek || p.uz) && (
+                            <p className={`text-xs leading-relaxed mt-1.5 transition-all duration-300 ${
+                              hideUzbek
+                                ? 'text-transparent bg-gray-200 dark:bg-gray-700 rounded-sm px-1 select-none cursor-pointer hover:text-gray-500 hover:bg-transparent hover:px-0'
+                                : 'text-gray-500 dark:text-gray-400'
+                            }`}
+                              onClick={() => hideUzbek ? setHideUzbek(false) : undefined}
+                            >
+                              {p.uz}
+                            </p>
+                          )}
+                        </div>
+                        {/* Actions */}
+                        <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200 pt-1">
+                          <button
+                            onClick={() => handleSpeak(p.en)}
+                            className="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors active:scale-90"
+                            title="Ovoz chiqarib o'qish"
+                          >
+                            <Volume2 size={13} />
+                          </button>
+                          <button
+                            onClick={() => handleCopy(p.en, id)}
+                            className="p-1.5 rounded-lg text-gray-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors active:scale-90"
+                            title="Nusxa olish"
+                          >
+                            {copiedId === id ? (
+                              <Check size={13} className="text-green-600 animate-pop-in" />
+                            ) : (
+                              <Copy size={13} />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                      {copiedId === id && (
+                        <div className="mt-1.5 px-2 py-0.5 rounded-md bg-green-600 text-white text-[10px] font-bold animate-pop-in shadow-lg w-fit">
+                          Nusxalandi!
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          )
+        })}
+
+        {/* ── Non-dialogue phrases ──────────────────────────────────────── */}
+        {browseSections.noSection.length > 0 && (
+          <div className="space-y-2">
+            <div className="flex items-center gap-2.5 px-1 animate-slide-up" style={{ animationDelay: `${Math.min(browseSections.sections.reduce((acc, [, p]) => acc + p.length, 0) * 60, 1500)}ms` }}>
+              <span className="text-lg">📝</span>
+              <div>
+                <h4 className="text-xs font-bold text-gray-800 dark:text-gray-200 uppercase tracking-wider">Boshqa ifodalar</h4>
+                <p className="text-[10px] text-gray-400 dark:text-gray-500">{browseSections.noSection.length} ta ibora</p>
+              </div>
+            </div>
+            {browseSections.noSection.map((p, i) => {
+              const id = `no-section-${i}`
+              const delay = Math.min(i * 60, 1500)
+
+              return (
+                <div
+                  key={id}
+                  className="group relative p-3.5 rounded-xl border-l-4 border-l-primary-500 dark:border-l-primary-400 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 animate-slide-up"
+                  style={{ animationDelay: `${delay}ms` }}
+                >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1 min-w-0">
-                      {/* Speaker name + timestamp */}
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold text-white ${cfg.color}`}>
-                          {cfg.initial}
-                        </span>
-                        <span className="text-[11px] font-bold text-gray-600 dark:text-gray-300 uppercase tracking-wide">{p.speaker}</span>
-                        {p.timestamp && p.timestamp !== 'hl' && (
-                          <span className="flex items-center gap-0.5 text-[10px] text-gray-400 dark:text-gray-500 ml-auto">
-                            <Clock size={9} />
-                            {p.timestamp}
-                          </span>
-                        )}
-                      </div>
-                      {/* English — prominent */}
                       <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-relaxed">{p.en}</p>
-                      {/* Uzbek — hideable for active recall */}
                       {(!hideUzbek || p.uz) && (
                         <p className={`text-xs leading-relaxed mt-1.5 transition-all duration-300 ${
                           hideUzbek
@@ -617,94 +787,40 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
                         </p>
                       )}
                     </div>
-                    {/* Actions */}
-                    <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200 pt-1">
+                    <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200">
                       <button
                         onClick={() => handleSpeak(p.en)}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors active:scale-90"
+                        className="p-2 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors active:scale-90"
                         title="Ovoz chiqarib o'qish"
                       >
-                        <Volume2 size={13} />
+                        <Volume2 size={14} />
                       </button>
                       <button
                         onClick={() => handleCopy(p.en, id)}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors active:scale-90"
+                        className="p-2 rounded-lg text-gray-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors active:scale-90"
                         title="Nusxa olish"
                       >
                         {copiedId === id ? (
-                          <Check size={13} className="text-green-600 animate-pop-in" />
+                          <Check size={14} className="text-green-600 animate-pop-in" />
                         ) : (
-                          <Copy size={13} />
+                          <Copy size={14} />
                         )}
                       </button>
                     </div>
                   </div>
                   {copiedId === id && (
-                    <div className="mt-1.5 px-2 py-0.5 rounded-md bg-green-600 text-white text-[10px] font-bold animate-pop-in shadow-lg w-fit">
+                    <div className="absolute -top-2 right-2 px-2 py-0.5 rounded-md bg-green-600 text-white text-xs font-bold animate-pop-in shadow-lg">
                       Nusxalandi!
                     </div>
                   )}
                 </div>
-              </div>
-            )
-          }
-
-          // ── Normal (non-dialogue) card ────────────────────────────────
-          return (
-            <div
-              key={id}
-              className="group relative p-3.5 rounded-xl border-l-4 border-l-primary-500 dark:border-l-primary-400 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 animate-slide-up"
-              style={{ animationDelay: `${delay}ms` }}
-            >
-              <div className="flex items-start justify-between gap-2">
-                <div className="flex-1 min-w-0">
-                  {/* English — prominent */}
-                  <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-relaxed">{p.en}</p>
-                  {/* Uzbek — hideable for active recall */}
-                  {(!hideUzbek || p.uz) && (
-                    <p className={`text-xs leading-relaxed mt-1.5 transition-all duration-300 ${
-                      hideUzbek
-                        ? 'text-transparent bg-gray-200 dark:bg-gray-700 rounded-sm px-1 select-none cursor-pointer hover:text-gray-500 hover:bg-transparent hover:px-0'
-                        : 'text-gray-500 dark:text-gray-400'
-                    }`}
-                      onClick={() => hideUzbek ? setHideUzbek(false) : undefined}
-                    >
-                      {p.uz}
-                    </p>
-                  )}
-                </div>
-                <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200">
-                  <button
-                    onClick={() => handleSpeak(p.en)}
-                    className="p-2 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors active:scale-90"
-                    title="Ovoz chiqarib o'qish"
-                  >
-                    <Volume2 size={14} />
-                  </button>
-                  <button
-                    onClick={() => handleCopy(p.en, id)}
-                    className="p-2 rounded-lg text-gray-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors active:scale-90"
-                    title="Nusxa olish"
-                  >
-                    {copiedId === id ? (
-                      <Check size={14} className="text-green-600 animate-pop-in" />
-                    ) : (
-                      <Copy size={14} />
-                    )}
-                  </button>
-                </div>
-              </div>
-              {copiedId === id && (
-                <div className="absolute -top-2 right-2 px-2 py-0.5 rounded-md bg-green-600 text-white text-xs font-bold animate-pop-in shadow-lg">
-                  Nusxalandi!
-                </div>
-              )}
-            </div>
-          )
-        })}
+              )
+            })}
+          </div>
+        )}
       </div>
 
-      {browsePhrases.length === 0 && (
+      {browseSections.sections.length === 0 && browseSections.noSection.length === 0 && (
         <div className="flex flex-col items-center justify-center py-12 text-gray-400 dark:text-gray-500 animate-fade-in">
           <Search size={32} className="mb-3 text-gray-300 dark:text-gray-600" />
           <p className="font-medium text-sm">"{search}" bo'yicha hech narsa topilmadi</p>
