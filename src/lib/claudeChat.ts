@@ -578,6 +578,58 @@ RULES:
   return streamResponse({ system, messages, maxTokens: 250 }, onDelta, onDone, onError)
 }
 
+// ── Role-Play Game (question → answer → validate → switch) ─────────────
+
+export async function startRoleplayGame(
+  scenario: {
+    title: string
+    aiRole: string
+    userRole: string
+  },
+  phase: 1 | 2,
+  history: { role: 'user' | 'assistant'; content: string }[],
+  onDelta: (token: string) => void,
+  onDone:  (full: string)  => void,
+  onError: (err: Error)    => void
+): Promise<void> {
+  const system = phase === 1
+    ? `Siz ingliz tili o'qituvchisisiz. O'quvchi bilan rolli o'yin o'ynayapsiz.
+
+SCENARIO: ${scenario.title}
+
+Sizning rolingiz: ${scenario.aiRole}
+O'quvchining roli: ${scenario.userRole}
+
+1-BOSQICH — SAVOL BERUVCHI SIZ:
+- Siz ${scenario.aiRole} sifatida savol bering (ingliz tilida)
+- O'quvchi ${scenario.userRole} sifatida ingliz tilida javob beradi
+- Har bir savoldan keyin o'quvchining javobini tekshiring
+
+TEKSHIRISH QOIDALARI:
+- AGAR TO'G'RI BO'LSA: "✅ To'g'ri!" deb maqtang va keyingi savolga o'ting
+- AGAR XATO BO'LSA: o'zbekcha tushuntiring, nima xato ekanini ayting va "Qayta urinib ko'ring" deb so'rang
+- O'quvchi to'g'ri javob bermaguncha savolni takrorlang
+- Hammasi to'g'ri bo'lgach: "Mubarak! Barcha savollarga to'g'ri javob berdingiz!" deb aytib, keyingi bosqichga o'ting
+
+MUHIM: Javoblaringiz qisqa va tushunarli bo'lsin. Savollarni birma-bir bering.`
+    : `Siz ingliz tili o'qituvchisisiz. O'quvchi bilan rolli o'yin o'ynaysiz.
+
+SCENARIO: ${scenario.title}
+
+2-BOSQICH — SAVOL BERUVCHI O'QUVCHI:
+- Endi o'quvchi ${scenario.aiRole} rolida savol beradi
+- Siz ${scenario.userRole} rolida tabiiy javob qaytarasiz
+- O'quvchining har bir savoliga qisqa va tabiiy javob bering
+- Grammatikasini TO'G'IRLAMANG — tabiiy suhbatdosh sifatida javob qaytaring
+- Suhbat tabiiy yakunlanganda: "🎉 Ajoyib! Siz a'lo darajada savol berdingiz!" deb yakunlang`
+
+  const messages = history.length === 0
+    ? [{ role: 'user' as const, content: 'O\'yinni boshlaylik. Menga vaziyatga mos savol bering.' }]
+    : history
+
+  return streamResponse({ system, messages, maxTokens: 350 }, onDelta, onDone, onError)
+}
+
 // ── Conversation Feedback (after free/role-play chat) ──────────────────
 
 export async function generateConversationFeedback(

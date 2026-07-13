@@ -20,7 +20,7 @@ interface ChatMsg {
 type ConversationMode = 'free' | 'roleplay'
 
 /** Infer scenario fields from a roleplay exercise */
-function inferScenario(ex: RoleplayExercise) {
+export function inferScenario(ex: RoleplayExercise) {
   const s = ex.scenario.toLowerCase()
 
   let aiRole = 'a helpful person'

@@ -18,6 +18,7 @@ import QuizSection from '../components/30dayChallenge/QuizSection'
 import SpeakingSection from '../components/30dayChallenge/SpeakingSection'
 import ReviewSection from '../components/30dayChallenge/ReviewSection'
 import AiConversationSection from '../components/30dayChallenge/AiConversationSection'
+import RoleplayGame from '../components/30dayChallenge/RoleplayGame'
 import WarmUpSection from '../components/30dayChallenge/WarmUpSection'
 
 // ── Progress type ──────────────────────────────────────────────────────────
@@ -45,7 +46,7 @@ function saveProgress(p: ChallengeProgress) {
 
 // ── Tabs ────────────────────────────────────────────────────────────────────
 
-type Tab = 'warmup' | 'video' | 'transcript' | 'highlights' | 'vocabulary' | 'sentences' | 'exercises' | 'quiz' | 'speaking' | 'review' | 'ai-chat'
+type Tab = 'warmup' | 'video' | 'transcript' | 'highlights' | 'vocabulary' | 'sentences' | 'exercises' | 'roleplay-game' | 'quiz' | 'speaking' | 'review' | 'ai-chat'
 
 const TABS: { key: Tab; icon: string; label: string; color: string }[] = [
   { key: 'warmup',     icon: '🧠', label: 'Warm-up',   color: 'from-indigo-500 to-purple-600' },
@@ -54,8 +55,9 @@ const TABS: { key: Tab; icon: string; label: string; color: string }[] = [
   { key: 'highlights', icon: '💡', label: 'Bo\'limlar', color: 'from-amber-500 to-yellow-500' },
   { key: 'vocabulary', icon: '📚', label: 'Lug\'at',   color: 'from-emerald-500 to-teal-500' },
   { key: 'sentences',  icon: '💬', label: 'Jumlalar',  color: 'from-violet-500 to-purple-500' },
-  { key: 'exercises',  icon: '✍️', label: 'Mashqlar',  color: 'from-orange-500 to-red-500' },
-  { key: 'quiz',       icon: '📝', label: 'Test',      color: 'from-pink-500 to-rose-500' },
+  { key: 'exercises',      icon: '✍️', label: 'Mashqlar',      color: 'from-orange-500 to-red-500' },
+  { key: 'roleplay-game',  icon: '🎭', label: 'Role-play',    color: 'from-purple-500 to-fuchsia-500' },
+  { key: 'quiz',           icon: '📝', label: 'Test',          color: 'from-pink-500 to-rose-500' },
   { key: 'speaking',   icon: '🎤', label: 'Speaking',  color: 'from-indigo-500 to-blue-500' },
   { key: 'ai-chat',    icon: '🤖', label: 'AI Chat',   color: 'from-purple-500 to-fuchsia-500' },
   { key: 'review',     icon: '📋', label: 'Yakun',     color: 'from-green-500 to-emerald-500' },
@@ -338,6 +340,12 @@ export default function ThirtyDayChallenge() {
         {activeTab === 'exercises' && (
           <div className="animate-slide-up">
             <ExerciseSection exercises={day.exercises} onStartRoleplay={handleStartRoleplay} level={day.level} />
+          </div>
+        )}
+
+        {activeTab === 'roleplay-game' && (
+          <div className="animate-slide-up">
+            <RoleplayGame exercises={day.exercises} />
           </div>
         )}
 
