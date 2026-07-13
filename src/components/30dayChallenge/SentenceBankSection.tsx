@@ -254,10 +254,19 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
             </button>
           )}
           <button
-            onClick={() => setTrMicMode(m => !m)}
+            onClick={() => {
+              if (trSR.isRecording) {
+                trSR.stop()
+                setTrMicMode(false)
+              } else {
+                trSR.reset()
+                trSR.start()
+                setTrMicMode(true)
+              }
+            }}
             className={`px-4 py-3 rounded-xl font-bold text-sm transition-all ${
-              trMicMode
-                ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700'
+              trMicMode && trSR.isRecording
+                ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-2 border-red-300 dark:border-red-700 animate-pulse'
                 : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
             }`}
           >
@@ -267,30 +276,20 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
 
         {trMicMode && (
           <div className="p-4 rounded-xl bg-gradient-to-br from-red-50 to-rose-50 dark:from-red-900/20 dark:to-rose-900/20 border border-red-200 dark:border-red-800 text-center">
-            {!trSR.isRecording ? (
-              <button
-                onClick={() => { trSR.reset(); trSR.start() }}
-                className="px-6 py-3 rounded-xl bg-red-500 text-white font-bold text-sm hover:bg-red-600 transition-all active:scale-95"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  <Mic size={16} />
-                  Gapirishni boshlash
-                </span>
-              </button>
-            ) : (
+            {trSR.isRecording ? (
               <div className="space-y-3">
                 <div className="flex items-center justify-center gap-3">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500" />
                   </span>
-                  <span className="text-red-600 dark:text-red-400 font-bold text-sm">Gapiryapsiz...</span>
+                  <span className="text-red-600 dark:text-red-400 font-bold text-sm">Gapiryapsiz...<span className="text-xs font-normal ml-1">(yana bosish → to'xtatadi)</span></span>
                 </div>
                 {trSR.interim && (
                   <p className="text-sm text-gray-600 dark:text-gray-400 italic">"{trSR.interim}"</p>
                 )}
                 <button
-                  onClick={() => trSR.stop()}
+                  onClick={() => { trSR.stop(); setTrMicMode(false) }}
                   className="px-6 py-3 rounded-xl bg-red-500 text-white font-bold text-sm hover:bg-red-600 transition-all active:scale-95"
                 >
                   <span className="flex items-center justify-center gap-2">
@@ -299,7 +298,11 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
                   </span>
                 </button>
               </div>
-            )}
+            ) : trSR.permissionError ? (
+              <p className="text-sm text-red-600 dark:text-red-400 font-medium">
+                Mikrofonga ruxsat berilmagan. Brauzer sozlamalaridan ruxsat bering.
+              </p>
+            ) : null}
           </div>
         )}
 
