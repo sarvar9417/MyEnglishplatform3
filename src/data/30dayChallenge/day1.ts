@@ -644,7 +644,9 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
         phrases: [
           { en: 'Are you ready?', uz: 'Tayyormisiz?' },
           { en: 'So, how are you today?', uz: 'Xo\'sh, bugun qandaysiz?' },
+          { en: 'What do you do every morning?', uz: 'Har kuni ertalab nima qilasiz?' },
           { en: 'Let me ask you, do you like learning English?', uz: 'Ayting-chi, ingliz tilini o\'rganishni yoqtirasizmi?' },
+          { en: 'Why are you learning English?', uz: 'Nega ingliz tilini o\'rganyapsiz?' },
           { en: 'Why did you decide to learn English?', uz: 'Nega ingliz tilini o\'rganishga qaror qildingiz?' },
           { en: 'Have you ever traveled to an English-speaking country?', uz: 'Hech qachon ingliz tilida gaplashiladigan mamlakatga borganmisiz?' },
           { en: 'Everyone makes mistakes. Mistakes help you learn.', uz: 'Hamma xato qiladi. Xatolar o\'rganishga yordam beradi.' },
