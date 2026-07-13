@@ -1,12 +1,13 @@
 import { useState, useMemo, useCallback } from 'react'
-import { Volume2, Check, RotateCw, BookOpen, Shuffle, Brain, Trophy, Star, ChevronLeft, ChevronRight, Sparkles, Target } from 'lucide-react'
+import { Volume2, Check, RotateCw, BookOpen, Shuffle, Brain, Trophy, Star, ChevronLeft, ChevronRight, Sparkles, Target, MessageCircle } from 'lucide-react'
 import type { ChallengeVocab } from '../../data/30dayChallenge'
+import VocabPracticeChat from './VocabPracticeChat'
 
 interface Props {
   vocabulary: ChallengeVocab[]
 }
 
-type StudyMode = 'cards' | 'list' | 'quiz'
+type StudyMode = 'cards' | 'list' | 'quiz' | 'ai-practice'
 
 interface QuizQuestion {
   word: string
@@ -149,6 +150,7 @@ export default function VocabularySection({ vocabulary }: Props) {
           { key: 'cards' as StudyMode, icon: <BookOpen size={14} />, label: 'Kartalar' },
           { key: 'list' as StudyMode, icon: <RotateCw size={14} />, label: 'Ro\'yxat' },
           { key: 'quiz' as StudyMode, icon: <Brain size={14} />, label: 'Test' },
+          { key: 'ai-practice' as StudyMode, icon: <MessageCircle size={14} />, label: 'AI Amaliyot' },
         ]).map(m => (
           <button
             key={m.key}
@@ -401,6 +403,11 @@ export default function VocabularySection({ vocabulary }: Props) {
             )}
           </div>
         </div>
+      )}
+
+      {/* ── AI PRACTICE MODE ─────────────────────────────────────────────── */}
+      {studyMode === 'ai-practice' && (
+        <VocabPracticeChat vocabulary={vocabulary} />
       )}
     </div>
   )

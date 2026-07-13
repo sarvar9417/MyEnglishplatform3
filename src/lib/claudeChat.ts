@@ -444,6 +444,48 @@ CONVERSATION RULES:
   return streamResponse({ system, messages, maxTokens: 350 }, onDelta, onDone, onError)
 }
 
+// ── Vocabulary Practice Game ────────────────────────────────────────────────
+
+export async function startVocabPractice(
+  word: { word: string; meaning: string; example: string; translation?: string },
+  history: { role: 'user' | 'assistant'; content: string }[],
+  onDelta: (token: string) => void,
+  onDone:  (full: string)  => void,
+  onError: (err: Error)    => void,
+): Promise<void> {
+  const system = `Siz ingliz tili o'qituvchisisiz. O'quvchi bilan lug'at o'yini o'ynayapsiz.
+
+O'YIN QOIDALARI:
+1. O'quvchiga quyidagi so'zni o'rgatishingiz kerak: "${word.word}" (ma'nosi: ${word.meaning})
+2. Avval o'zbekcha gap tuzib bering — bu gapda "${word.word}" so'zi ishlatilgan bo'lsin.
+3. O'quvchi shu gapni ingliz tiliga tarjima qiladi.
+4. TEKSHIRISH:
+   - AGAR TO'G'RI BO'LSA: maqtang va "Endi o'zingiz "${word.word}" so'zini ishlatib yangi gap tuzib ko'ring" deb so'rang.
+   - AGAR XATO BO'LSA: o'zbekcha tushuntiring, nima xato ekanini ayting va qayta urinib ko'rishni so'rang.
+5. O'quvchi o'z gapini tuzganda:
+   - TO'G'RI BO'LSA: maqtang va keyingi bosqichga o'ting
+   - XATO BO'LSA: to'g'rilab, o'zbekcha izoh bering va qayta urinishni so'rang
+
+MUHIM:
+- Har doim o'zbekcha gap bering va o'zbekcha izoh bering
+- O'quvchining inglizcha javobini tekshirganda, to'liq tahlil qiling: grammatika, so'z tanlash, so'z tartibi
+- Xato bo'lsa, to'g'ri variantni ko'rsating va nima uchun xato ekanini o'zbekcha tushuntiring
+- Rag'batlantirib turing, lekin xatoni ham aniq ko'rsating
+- Javoblaringiz qisqa va tushunarli bo'lsin
+
+NAMUNA:
+AI: Keling "${word.word}" so'zini o'rganamiz. Men o'zbekcha gap aytaman, siz ingliz tiliga tarjima qiling.
+AI: Men har kuni ingliz tilini "${word.word}" qilaman.
+(O'quvchi javobini kutish)
+AI: "I practice English every day." — Ajoyib! To'g'ri tarjima. Endi o'zingiz "${word.word}" so'zini ishlatib yangi gap tuzib ko'ring.`
+
+  const messages = history.length === 0
+    ? [{ role: 'user' as const, content: 'O\'yinni boshlaylik. Menga o\'zbekcha gap bering, men ingliz tiliga tarjima qilaman.' }]
+    : history
+
+  return streamResponse({ system, messages, maxTokens: 300 }, onDelta, onDone, onError)
+}
+
 // ── Scenario Conversation ──────────────────────────────────────────────────
 
 export interface ScenarioContext {
