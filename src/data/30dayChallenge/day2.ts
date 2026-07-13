@@ -145,6 +145,27 @@ Remember, fluency is not about being perfect. Fluency is about being confident, 
         { phrase: 'I feel more confident now.', meaning: 'Endi o\'zimni ishonchliroq his qilyapman' },
       ],
     },
+    {
+      title: 'Quiz Time — Savol-Javob',
+      content: 'Videoning 15:47 daqiqasidagi savol-javob qismi. O\'rganilgan mavzular bo\'yicha tezkor savollarga javob berish orqali bilimlarni mustahkamlash.',
+      points: [
+        'Real vaziyatlarda savollarga tez javob berishni o\'rganing',
+        'O\'rgangan iboralaringizni amalda qo\'llang',
+        'Xato qilishdan qo\'rqmang — bu o\'rganish jarayonining bir qismi',
+      ],
+      phrases: [
+        { speaker: 'Massu', text: 'How do you ask for food at a restaurant?', translation: 'Restoranda ovqatni qanday so\'raysiz?' },
+        { speaker: 'Student', text: 'Can I have a sandwich, please?', translation: 'Sendvich olsa bo\'ladimi, iltimos?' },
+        { speaker: 'Massu', text: 'If someone asks you "How are you today?" what do you say?', translation: 'Agar kimdir sizdan "Bugun qandaysiz?" deb so\'rasa, nima deysiz?' },
+        { speaker: 'Student', text: 'I\'m good, thank you. How are you?', translation: 'Yaxshiman, rahmat. O\'zingiz-chi?' },
+        { speaker: 'Massu', text: 'What does "fluently" mean?', translation: '"Fluently" nimani anglatadi?' },
+        { speaker: 'Student', text: 'Speaking smoothly and easily without stopping too much.', translation: 'To\'xtab qolmasdan, ravon va oson gapirish.' },
+        { speaker: 'Massu', text: 'If you want to thank someone, what can you say?', translation: 'Agar kimgadir rahmat aytmoqchi bo\'lsangiz, nima deysiz?' },
+        { speaker: 'Student', text: 'Thank you so much or I really appreciate it.', translation: 'Katta rahmat yoki men buni juda qadrlayman.' },
+        { speaker: 'Massu', text: 'What did you do yesterday?', translation: 'Kecha nima qildingiz?' },
+        { speaker: 'Student', text: 'Yesterday I studied English. I watched a video and I practiced speaking.', translation: 'Kecha ingliz tilini o\'rgandim. Video ko\'rdim va gapirishni mashq qildim.' },
+      ],
+    },
   ],
 
   vocabulary: [
