@@ -346,7 +346,7 @@ interface DayContent {
   sentenceBank: { categories: { category: string; phrases: { en: string; uz: string }[] }[] }
   learningObjectives: string[]
   speaking: { prompt: string; tips: string[] }
-  highlights: { title: string; points?: string[]; phrases?: { speaker: string; text: string; translation?: string }[] }[]
+  highlights: { title: string; points?: string[] }[]
 }
 
 export async function startDayConversation(

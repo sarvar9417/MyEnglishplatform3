@@ -69,21 +69,31 @@ export default function HighlightsSection({ highlights }: Props) {
                         <Sparkles size={12} /> Muhim iboralar
                       </p>
                       <div className="space-y-2">
-                        {h.phrases.map((p, j) => (
-                          <div key={j} className={`flex ${p.speaker !== 'Fizu' && p.speaker !== 'You' && p.speaker !== 'Student' ? 'justify-start' : 'justify-end'}`}>
-                            <div className={`max-w-[85%] rounded-xl px-3.5 py-2 ${
-                              p.speaker !== 'Fizu' && p.speaker !== 'You' && p.speaker !== 'Student'
-                                ? 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-tl-sm'
-                                : 'bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 rounded-tr-sm'
-                            }`}>
-                              <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-0.5">{p.speaker}</p>
-                              <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{p.text}</p>
-                              {p.translation && (
-                                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-1">{p.translation}</p>
-                              )}
+                        {h.phrases.map((p, j) => {
+                          if ('speaker' in p) {
+                            return (
+                              <div key={j} className={`flex ${p.speaker !== 'Fizu' && p.speaker !== 'You' && p.speaker !== 'Student' ? 'justify-start' : 'justify-end'}`}>
+                                <div className={`max-w-[85%] rounded-xl px-3.5 py-2 ${
+                                  p.speaker !== 'Fizu' && p.speaker !== 'You' && p.speaker !== 'Student'
+                                    ? 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-tl-sm'
+                                    : 'bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 rounded-tr-sm'
+                                }`}>
+                                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-0.5">{p.speaker}</p>
+                                  <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{p.text}</p>
+                                  {p.translation && (
+                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed border-t border-gray-200 dark:border-gray-600 pt-1">{p.translation}</p>
+                                  )}
+                                </div>
+                              </div>
+                            )
+                          }
+                          return (
+                            <div key={j} className="flex items-center justify-between gap-2 text-sm py-1 border-b border-gray-100 dark:border-gray-700 last:border-0">
+                              <span className="text-primary-600 dark:text-primary-400 font-medium">{p.phrase}</span>
+                              <span className="text-gray-500 dark:text-gray-400 text-xs shrink-0 ml-2">{p.meaning}</span>
                             </div>
-                          </div>
-                        ))}
+                          )
+                        })}
                       </div>
                     </div>
                   )}
