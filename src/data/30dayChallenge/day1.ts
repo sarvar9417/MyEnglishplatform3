@@ -657,6 +657,11 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
           { en: 'How do you feel when you speak English?', uz: 'Ingliz tilida gapirganingizda o\'zingizni qanday his qilasiz?' },
           { en: 'What\'s your favorite way to practice English?', uz: 'Ingliz tilini mashq qilishning eng sevimli usulingiz qanday?' },
           { en: 'What will you do after this video?', uz: 'Ushbu videodan keyin nima qilasiz?' },
+          // Quiz Time — Student answers (highlight'dan)
+          { en: 'I\'m learning English because I want to travel and talk to people from different countries.', uz: 'Men ingliz tilini sayohat qilish va turli mamlakatlardan odamlar bilan gaplashish uchun o\'rganyapman.' },
+          { en: 'At first, I feel nervous, but when I practice, I feel more confident.', uz: 'Avvaliga asabiylashaman, lekin mashq qilganimda o\'zimni ishonchliroq his qilaman.' },
+          { en: 'My favorite way is to watch English videos and repeat the sentences.', uz: 'Eng sevimli usulim — ingliz tilidagi videolarni tomosha qilish va gaplarni takrorlash.' },
+          { en: 'After this video, I will practice the sentences again and speak English every day.', uz: 'Ushbu videodan keyin gaplarni yana takrorlayman va har kuni ingliz tilida gapiraman.' },
         ],
       },
     ],
