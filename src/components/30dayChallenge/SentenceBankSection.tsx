@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 import { Search, Copy, Check, Volume2, Filter, Mic, Square, RotateCcw, Loader2, MessageSquare, List, Edit3, Clock } from 'lucide-react'
-import type { SentenceBank, TranscriptSection, Phrase } from '../../data/30dayChallenge'
+import type { SentenceBank, TranscriptSection, Phrase, LessonHighlight, HighlightItem, HighlightPhrase } from '../../data/30dayChallenge'
 import { speak, stopSpeaking } from '../../lib/tts'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { evaluateTranslation } from '../../lib/openaiChat'
@@ -20,47 +20,65 @@ function normalizeText(s: string): string {
   return s.toLowerCase().replace(/[^a-z0-9\s']/g, '').trim()
 }
 
-/** StructuredTranscript dan speaker/timestamp ma'lumotlarini phrase ga moslash */
+/** StructuredTranscript + Highlights dan speaker/timestamp ma'lumotlarini phrase ga moslash */
 function enrichPhrasesWithDialogue(
   phrases: Phrase[],
-  transcript?: TranscriptSection[]
+  transcript?: TranscriptSection[],
+  highlights?: LessonHighlight[]
 ): (Phrase & { _sortKey?: string })[] {
-  if (!transcript || transcript.length === 0) return phrases
-
-  // Transcript lines dan lookup map yaratish
+  // 1) Transcript lines dan lookup map yaratish
   const lookup = new Map<string, { speaker: string; timestamp: string }>()
-  for (const section of transcript) {
-    for (const line of section.lines) {
-      if (line.speaker && line.timestamp) {
-        const key = normalizeText(line.text)
-        // Faqat birinchi moslikni saqlaymiz
-        if (!lookup.has(key)) {
-          lookup.set(key, { speaker: line.speaker, timestamp: line.timestamp })
+  if (transcript) {
+    for (const section of transcript) {
+      for (const line of section.lines) {
+        if (line.speaker && line.timestamp) {
+          const key = normalizeText(line.text)
+          if (!lookup.has(key)) {
+            lookup.set(key, { speaker: line.speaker, timestamp: line.timestamp })
+          }
         }
       }
     }
   }
 
+  // 2) Highlights dan HighlightPhrase larni ham lookup ga qo'shamiz (timestamp: 'hl')
+  if (highlights) {
+    for (const h of highlights) {
+      if (!h.phrases) continue
+      for (const item of h.phrases) {
+        if ('speaker' in item && 'text' in item) {
+          const hp = item as HighlightPhrase
+          const key = normalizeText(hp.text)
+          if (!lookup.has(key)) {
+            lookup.set(key, { speaker: hp.speaker, timestamp: 'hl' })
+          }
+        }
+      }
+    }
+  }
+
+  if (lookup.size === 0) return phrases
+
   return phrases.map(p => {
     const key = normalizeText(p.en)
     const match = lookup.get(key)
     if (match) {
-      return { ...p, speaker: match.speaker, timestamp: match.timestamp, _sortKey: match.timestamp }
+      return { ...p, speaker: match.speaker, timestamp: match.timestamp || undefined, _sortKey: match.timestamp }
     }
-    // Agar to'liq mos kelmasa, uzunroq matnni tekshiramiz (gap ichida qidirish)
+    // Substring fallback
     for (const [lineKey, val] of lookup) {
       if (key.includes(lineKey) || lineKey.includes(key)) {
-        return { ...p, speaker: val.speaker, timestamp: val.timestamp, _sortKey: val.timestamp }
+        return { ...p, speaker: val.speaker, timestamp: val.timestamp || undefined, _sortKey: val.timestamp }
       }
     }
-    // Timestampsiz phrase'lar category nomi bo'yicha sortlanadi
     return { ...p, _sortKey: 'zzz_' + p.en.slice(0, 20) }
   })
 }
 
-/** Timestamp string ni sanoqli daqiqalarga aylantirish ('2:35' → 155) */
+/** Timestamp string ni sanoqli daqiqalarga aylantirish ('2:35' → 155, 'hl' → 5000) */
 function timestampToSeconds(ts: string): number {
-  if (ts.startsWith('zzz_')) return 99999  // non-dialogue → eng oxiriga
+  if (ts === 'hl') return 5000    // highlights → dialog'dan keyin, non-dialog'dan oldin
+  if (ts.startsWith('zzz_')) return 99999
   const parts = ts.split(':').map(Number)
   if (parts.length === 2) return parts[0] * 60 + parts[1]
   if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2]
@@ -70,6 +88,7 @@ function timestampToSeconds(ts: string): number {
 interface Props {
   sentenceBank: SentenceBank
   structuredTranscript?: TranscriptSection[]
+  highlights?: LessonHighlight[]
   level?: string
 }
 
@@ -85,7 +104,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   edit: <Edit3 size={14} />,
 }
 
-export default function SentenceBankSection({ sentenceBank, structuredTranscript, level = 'A2' }: Props) {
+export default function SentenceBankSection({ sentenceBank, structuredTranscript, highlights, level = 'A2' }: Props) {
   const [mode, setMode] = useState<Mode>('browse')
 
   const categories = sentenceBank.categories
@@ -111,9 +130,9 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
 
   // ── Browse uchun dialogue-enriched va timestamp bo'yicha sorted view ───
   const browsePhrases = useMemo(() => {
-    const enriched = enrichPhrasesWithDialogue(filtered, structuredTranscript)
+    const enriched = enrichPhrasesWithDialogue(filtered, structuredTranscript, highlights)
     return [...enriched].sort((a, b) => timestampToSeconds(a._sortKey!) - timestampToSeconds(b._sortKey!))
-  }, [filtered, structuredTranscript])
+  }, [filtered, structuredTranscript, highlights])
 
   const handleCopy = useCallback(async (text: string, id: string) => {
     try {
@@ -537,7 +556,7 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
                       <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{p.speaker}</span>
-                      {p.timestamp && (
+                      {p.timestamp && p.timestamp !== 'hl' && (
                         <span className="flex items-center gap-0.5 text-[10px] text-gray-400 dark:text-gray-500">
                           <Clock size={10} />
                           {p.timestamp}

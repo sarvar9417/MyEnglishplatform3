@@ -314,7 +314,7 @@ export default function ThirtyDayChallenge() {
 
         {activeTab === 'sentences' && (
           <div className="animate-slide-up">
-            <SentenceBankSection sentenceBank={day.sentenceBank} structuredTranscript={day.structuredTranscript} level={day.level} />
+            <SentenceBankSection sentenceBank={day.sentenceBank} structuredTranscript={day.structuredTranscript} highlights={day.highlights} level={day.level} />
           </div>
         )}
 
