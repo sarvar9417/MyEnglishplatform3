@@ -289,20 +289,58 @@ STRENGTHS:
 • [Strong point 3 — specific example if applicable]
 
 IMPROVE:
-• [One actionable suggestion — what to focus on next and why]
-• [One specific practice tip related to today's topic]
+• [One specific, actionable tip for grammar or vocabulary]
+• [One specific, actionable tip for fluency or confidence]
 
-OVERALL_BAND: [1-9]
+ENCOURAGEMENT:
+[One warm, motivating sentence to keep them going. Use emojis sparingly.]`
 
-OVERALL_BAND_DESC: [One sentence summary of overall performance]
+  const prompt = `Here is the student's conversation transcript. Please evaluate their performance and provide feedback.
 
-FEEDBACK:
-[3-4 sentences in a warm, encouraging tone: highlight one key strength, one critical weakness, and the single most impactful change the student can make to raise their band by 0.5-1.0]
+${transcript || '(The student did not send any messages.)'}\n
+Focus on what they did well and give practical advice for improvement.`
 
-IMPROVED:
-[Rewrite the student's conversation at a band 7+ level — keep all original ideas and arguments intact, but improve expression, structure, and vocabulary. Show only the improved conversation text, no extra commentary.]`
+  return openaiStreamResponse({ system, messages: [{ role: 'user', content: prompt }], maxTokens: 500 }, onDelta, onDone, onError)
+}
 
-  const messages = [{ role: 'user' as const, content: transcript }]
+// ── Evaluate Question Answer ─────────────────────────────────────────────
 
-  return openaiStreamResponse({ system, messages, maxTokens: 1500 }, onDelta, onDone, onError)
+export async function evaluateQuestionAnswer(
+  question: string,
+  answer: string,
+  level: string,
+  onDelta: (token: string) => void,
+  onDone:  (full: string)  => void,
+  onError: (err: Error)    => void
+): Promise<void> {
+  const system = `You are an encouraging English teacher evaluating a ${level}-level student's spoken answer.
+
+The student answered an open-ended speaking question. Evaluate their response based on:
+1. Relevance — Did they actually answer the question?
+2. Grammar — Are the sentences grammatically correct?
+3. Vocabulary — Did they use appropriate words?
+
+Respond ONLY in this exact format — no other text before or after:
+
+✅ RELEVANCE: [checkmark if they answered / ❌ if off-topic]
+[One sentence about whether they addressed the question]
+
+📝 GRAMMAR: [1-10]
+[One sentence about grammatical accuracy. Mention specific errors if any.]
+
+📖 VOCABULARY: [1-10]
+[One sentence about word choice and range]
+
+💡 FEEDBACK:
+[2-3 encouraging sentences: highlight ONE genuine strength and give ONE specific, actionable tip to improve.]
+
+Be warm and constructive. The student is at ${level} level — praise effort and progress.`
+
+  const userPrompt = `Question: "${question}"
+
+Student's answer: "${answer || '(no answer given)'}"
+
+Please evaluate this answer and provide structured feedback in the specified format.`
+
+  return openaiStreamResponse({ system, messages: [{ role: 'user', content: userPrompt }], maxTokens: 350 }, onDelta, onDone, onError)
 }

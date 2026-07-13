@@ -2,7 +2,7 @@ import { useState, useCallback, useRef, useEffect } from 'react'
 import { Volume2, Mic, ChevronLeft, ChevronRight, Sparkles, Bot, Loader2, Brain, Square } from 'lucide-react'
 import type { ChallengeExercise, DialogueLine, RoleplayExercise } from '../../data/30dayChallenge'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
-import { evaluateQuestionAnswer } from '../../lib/claudeChat'
+import { evaluateQuestionAnswer } from '../../lib/openaiChat'
 
 interface Props {
   exercises: ChallengeExercise[]
