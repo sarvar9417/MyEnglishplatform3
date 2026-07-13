@@ -5,6 +5,16 @@ import { speak, stopSpeaking } from '../../lib/tts'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { evaluateTranslation } from '../../lib/openaiChat'
 
+/** Fisher-Yates shuffle — `sort(() => Math.random() - 0.5)` not a valid comparator */
+function fisherYatesShuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 interface Props {
   sentenceBank: SentenceBank
   level?: string
@@ -73,8 +83,7 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
   const trInputRef = useRef<HTMLInputElement>(null)
 
   const trList = useMemo(() => {
-    const list = [...filtered]
-    return trShuffled ? list.sort(() => Math.random() - 0.5) : list
+    return trShuffled ? fisherYatesShuffle(filtered) : filtered
   }, [filtered, trShuffled])
 
   const currentTr = trList[trIndex]
@@ -100,20 +109,38 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
 
   const trCheckAnswer = useCallback(() => {
     if (!currentTr || !trAnswer.trim()) return
-    const expected = currentTr.en.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim()
-    const answer = trAnswer.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim()
-    const isCorrect = expected === answer
-    setTrResult(isCorrect)
-    if (isCorrect) return
+
+    // Mic ni to'xtatamiz (agar yoqilgan bo'lsa)
+    trSR.stop()
+    setTrMicMode(false)
+
+    // 1) Quick exact-match (tinish belgilarsiz)
+    const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim()
+    if (normalize(trAnswer) === normalize(currentTr.en)) {
+      setTrResult(true)
+      return
+    }
+
+    // 2) AI evaluation — status maydonini ishlatamiz
     setTrAiLoading(true)
     setTrFeedback('')
-    evaluateTranslation(trAnswer, currentTr.en, currentTr.uz, level).then(fb => {
-      setTrFeedback(fb.tip)
-    }).catch(() => {
-      setTrFeedback('Xato. To\'g\'ri javob: ' + currentTr.en)
-    }).finally(() => {
-      setTrAiLoading(false)
-    })
+    evaluateTranslation(trAnswer, currentTr.en, currentTr.uz, level)
+      .then(fb => {
+        if (fb.status === 'CORRECT') {
+          setTrResult(true)
+        } else {
+          setTrResult(false)
+          setTrFeedback(fb.tip || `Xato. To'g'ri javob: ${currentTr.en}`)
+        }
+      })
+      .catch(() => {
+        setTrResult(false)
+        setTrFeedback(`Xato. To'g'ri javob: ${currentTr.en}`)
+      })
+      .finally(() => {
+        setTrAiLoading(false)
+      })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTr, trAnswer, level])
 
   const trNext = useCallback(() => {
@@ -304,21 +331,27 @@ export default function SentenceBankSection({ sentenceBank, level = 'A2' }: Prop
 
         {trResult !== null && (
           <div className="flex gap-2">
-            <button
-              onClick={() => { setTrResult(null); setTrAnswer(''); setTrFeedback(''); trInputRef.current?.focus() }}
-              className="flex-1 py-3 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold text-sm hover:border-gray-300 dark:hover:border-gray-600 transition-all active:scale-[0.98]"
-            >
-              <span className="flex items-center justify-center gap-2">
-                <RotateCcw size={14} />
-                Qayta urinish
-              </span>
-            </button>
+            {!trResult && (
+              <button
+                onClick={() => { setTrResult(null); setTrAnswer(''); setTrFeedback(''); trInputRef.current?.focus() }}
+                className="flex-1 py-3 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold text-sm hover:border-gray-300 dark:hover:border-gray-600 transition-all active:scale-[0.98]"
+              >
+                <span className="flex items-center justify-center gap-2">
+                  <RotateCcw size={14} />
+                  Qayta urinish
+                </span>
+              </button>
+            )}
             <button
               onClick={trNext}
-              className="flex-1 py-3 rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 text-white font-bold text-sm hover:from-primary-600 hover:to-primary-800 transition-all active:scale-[0.98] shadow-md"
+              className={`py-3 rounded-xl text-white font-bold text-sm transition-all active:scale-[0.98] shadow-md ${
+                trResult
+                  ? 'w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700'
+                  : 'flex-1 bg-gradient-to-r from-primary-500 to-primary-700 hover:from-primary-600 hover:to-primary-800'
+              }`}
             >
               <span className="flex items-center justify-center gap-2">
-                Keyingi
+                {trResult ? 'Davom etish' : 'Keyingi'}
                 <Check size={14} />
               </span>
             </button>
