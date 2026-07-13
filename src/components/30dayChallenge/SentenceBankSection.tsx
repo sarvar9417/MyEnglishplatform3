@@ -20,7 +20,29 @@ function normalizeText(s: string): string {
   return s.toLowerCase().replace(/[^a-z0-9\s']/g, '').trim()
 }
 
-/** Enriched phrase — Barcha qo'shimcha maydonlar */
+/**
+ * Word-order matching — phrase dagi barcha so'zlar line ichida bir xil ketma-ketlikda
+ * bormi, tekshiradi. Boshqa so'zlar orasida bo'lishi mumkin.
+ *
+ * Example: "Hey! Long time no see!" → words: [hey, long, time, no, see]
+ * "Hey, Fizu. Long time no see. How have you been?" → [hey, fizu, long, time, no, see, how, have, you, been]
+ * Match: hey→0, long→2, time→3, no→4, see→5 → TRUE ✓
+ */
+function wordOrderMatch(phraseNorm: string, lineNorm: string): boolean {
+  const pWords = phraseNorm.split(/\s+/).filter(Boolean)
+  const lWords = lineNorm.split(/\s+/).filter(Boolean)
+  if (pWords.length === 0 || pWords.length > lWords.length) return false
+
+  let li = 0
+  for (const pw of pWords) {
+    while (li < lWords.length && lWords[li] !== pw) li++
+    if (li >= lWords.length) return false
+    li++ // Move past matched word
+  }
+  return true
+}
+
+/** Enriched phrase — barcha qo'shimcha maydonlar */
 interface EnrichedPhrase extends Phrase {
   _sortKey: string
   _sectionId?: string
@@ -30,103 +52,121 @@ interface EnrichedPhrase extends Phrase {
 }
 
 /**
- * Transcript-first approach:
- * 1) structuredTranscript dagi BARCHA dialog qatorlari asos qilib olinadi
- * 2) sentenceBank dan faqat tarjima (uz) olish uchun foydalaniladi
- * 3) Mos kelmagan sentenceBank iboralari "Boshqa ifodalar" ga tushadi
- * 4) Highlights ham qo'shiladi
+ * SentenceBank-driven enrichment:
+ * 1) sentenceBank dan o'rganilishi kerak bo'lgan jumlalarni oladi
+ * 2) structuredTranscript dagi dialog qatorlari bilan solishtiradi
+ * 3) Agar mos kelsa → speaker/timestamp/section ma'lumotlarini qo'shadi
+ * 4) Mos kelmasa → oddiy card ko'rinishida qoldiradi
+ * 5) QO'SHIMCHA transcript qatorlari qo'shilmaydi — faqat sentenceBank dagilar
  */
-function buildDialoguePhrases(
-  sentenceBankPhrases: Phrase[],
+function enrichPhrases(
+  phrases: Phrase[],
   transcript?: TranscriptSection[],
   highlights?: LessonHighlight[]
 ): EnrichedPhrase[] {
-  // 1) SentenceBank dan lookup: normalized text → phrase (tez tarjima topish uchun)
-  const sbLookup = new Map<string, Phrase>()
-  for (const p of sentenceBankPhrases) {
-    const key = normalizeText(p.en)
-    if (!sbLookup.has(key)) sbLookup.set(key, p)
-  }
-
-  const result: EnrichedPhrase[] = []
-  const seenTexts = new Set<string>()
-
-  // 2) StructuredTranscript — BARCHA dialog qatorlari
+  // Transcript lines: { normKey, speaker, timestamp, section info }
+  const tLines: {
+    norm: string
+    speaker: string
+    timestamp: string
+    sectionId: string
+    sectionTitle: string
+    sectionIcon: string
+    isKey: boolean
+  }[] = []
   if (transcript) {
     for (const section of transcript) {
       for (const line of section.lines) {
-        if (!line.speaker || !line.timestamp) continue
-        const key = normalizeText(line.text)
-        if (seenTexts.has(key)) continue
-        seenTexts.add(key)
-
-        // SentenceBank dan tarjima topish
-        let uz = ''
-        const exact = sbLookup.get(key)
-        if (exact) {
-          uz = exact.uz
-        } else {
-          // Substring fallback
-          for (const [, sbPhrase] of sbLookup) {
-            const sbKey = normalizeText(sbPhrase.en)
-            if (key.includes(sbKey) || sbKey.includes(key)) {
-              uz = sbPhrase.uz
-              break
-            }
-          }
+        if (line.speaker && line.timestamp) {
+          tLines.push({
+            norm: normalizeText(line.text),
+            speaker: line.speaker,
+            timestamp: line.timestamp,
+            sectionId: section.id,
+            sectionTitle: section.title,
+            sectionIcon: section.icon,
+            isKey: line.isKey ?? false,
+          })
         }
-
-        result.push({
-          en: line.text,
-          uz,
-          speaker: line.speaker,
-          timestamp: line.timestamp,
-          _sortKey: line.timestamp,
-          _sectionId: section.id,
-          _sectionTitle: section.title,
-          _sectionIcon: section.icon,
-          _isKey: line.isKey ?? false,
-        })
       }
     }
   }
 
-  // 3) Highlights — qo'shimcha dialog qatorlari (timestamp: 'hl')
+  // Highlights lines (timestamp: 'hl')
+  const hlLines: {
+    norm: string
+    speaker: string
+    sectionId: string
+    sectionTitle: string
+  }[] = []
   if (highlights) {
     for (const h of highlights) {
       if (!h.phrases) continue
       for (const item of h.phrases) {
         if (!('speaker' in item && 'text' in item)) continue
         const hp = item as HighlightPhrase
-        const key = normalizeText(hp.text)
-        if (seenTexts.has(key)) continue
-        seenTexts.add(key)
-
-        result.push({
-          en: hp.text,
-          uz: hp.translation ?? '',
+        hlLines.push({
+          norm: normalizeText(hp.text),
           speaker: hp.speaker,
-          timestamp: 'hl',
-          _sortKey: 'hl',
-          _sectionId: 'hl-' + h.title.slice(0, 20),
-          _sectionTitle: h.title,
-          _sectionIcon: '💡',
-          _isKey: false,
+          sectionId: 'hl-' + h.title.slice(0, 20),
+          sectionTitle: h.title,
         })
       }
     }
   }
 
-  // 4) SentenceBank dagi mos kelmagan iboralar — "Boshqa ifodalar"
-  for (const p of sentenceBankPhrases) {
+  // Match each phrase from sentenceBank
+  const result: EnrichedPhrase[] = []
+
+  for (const p of phrases) {
     const key = normalizeText(p.en)
-    if (!seenTexts.has(key)) {
-      seenTexts.add(key)
+    let enriched = false
+
+    // 1) Exact match with transcript
+    let match = tLines.find(tl => tl.norm === key)
+    // 2) Word-order match with transcript
+    if (!match) match = tLines.find(tl => wordOrderMatch(key, tl.norm))
+
+    if (match) {
       result.push({
         ...p,
-        _sortKey: 'zzz_' + p.en.slice(0, 20),
+        speaker: match.speaker,
+        timestamp: match.timestamp,
+        _sortKey: match.timestamp,
+        _sectionId: match.sectionId,
+        _sectionTitle: match.sectionTitle,
+        _sectionIcon: match.sectionIcon,
+        _isKey: match.isKey,
       })
+      enriched = true
+      continue
     }
+
+    // 3) Exact match with highlights
+    let hlMatch = hlLines.find(hl => hl.norm === key)
+    // 4) Word-order match with highlights
+    if (!hlMatch) hlMatch = hlLines.find(hl => wordOrderMatch(key, hl.norm))
+
+    if (hlMatch) {
+      result.push({
+        ...p,
+        speaker: hlMatch.speaker,
+        timestamp: 'hl',
+        _sortKey: 'hl',
+        _sectionId: hlMatch.sectionId,
+        _sectionTitle: hlMatch.sectionTitle,
+        _sectionIcon: '💡',
+        _isKey: false,
+      })
+      enriched = true
+      continue
+    }
+
+    // 5) No match — no enrichment (Boshqa ifodalar)
+    result.push({
+      ...p,
+      _sortKey: 'zzz_' + p.en.slice(0, 20),
+    })
   }
 
   return result
@@ -134,7 +174,7 @@ function buildDialoguePhrases(
 
 /** Timestamp string ni sanoqli daqiqalarga aylantirish ('2:35' → 155, 'hl' → 5000) */
 function timestampToSeconds(ts: string): number {
-  if (ts === 'hl') return 5000    // highlights → dialog'dan keyin, non-dialog'dan oldin
+  if (ts === 'hl') return 5000
   if (ts.startsWith('zzz_')) return 99999
   const parts = ts.split(':').map(Number)
   if (parts.length === 2) return parts[0] * 60 + parts[1]
@@ -170,33 +210,37 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
     [categories, sentenceBank.all],
   )
 
-  // ── Browse state ─────────────────────────────────────────────────────────
+  // ── Browse / Translate state ─────────────────────────────────────────────
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [copiedId, setCopiedId] = useState<string | null>(null)
   const [showFilters, setShowFilters] = useState(false)
   const [hideUzbek, setHideUzbek] = useState(false)
 
-  // ── Browse uchun transcript-based phrase list ──────────────────────────
-  // Barcha dialog qatorlari + sentenceBank dagi qo'shimcha iboralar
-  const browsePhrases = useMemo(
-    () => buildDialoguePhrases(allPhrases, structuredTranscript, highlights),
-    [allPhrases, structuredTranscript, highlights],
+  // ── Filtered source (sentenceBank-based + category filter + search) ────
+  const filtered = useMemo(() => {
+    const source = activeCategory
+      ? categories.find(c => c.category === activeCategory)?.phrases ?? allPhrases
+      : allPhrases
+    if (!search.trim()) return source
+    const q = search.toLowerCase()
+    return source.filter(p => p.en.toLowerCase().includes(q) || p.uz.toLowerCase().includes(q))
+  }, [search, activeCategory, categories, allPhrases])
+
+  // ── Enrichment — speaker/timestamp/section ma'lumotlarini qo'shish ────
+  // sentenceBank dagi jumlalarni structuredTranscript bilan solishtirib,
+  // dialogga mos kelganlariga speaker/timestamp qo'shamiz
+  const enriched = useMemo(
+    () => enrichPhrases(filtered, structuredTranscript, highlights),
+    [filtered, structuredTranscript, highlights],
   )
 
-  // Qidiruv filteri
-  const searchedBrowse = useMemo(() => {
-    if (!search.trim()) return browsePhrases
-    const q = search.toLowerCase()
-    return browsePhrases.filter(p => p.en.toLowerCase().includes(q) || p.uz.toLowerCase().includes(q))
-  }, [search, browsePhrases])
-
-  // Section'larga ajratilgan view
+  // ── Section'larga ajratish ─────────────────────────────────────────────
   const browseSections = useMemo(() => {
     const sectionsMap = new Map<string, EnrichedPhrase[]>()
     const noSection: EnrichedPhrase[] = []
 
-    for (const ep of searchedBrowse) {
+    for (const ep of enriched) {
       if (ep._sectionId) {
         const arr = sectionsMap.get(ep._sectionId)
         if (arr) arr.push(ep)
@@ -218,7 +262,7 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
 
     // Section ma'lumotlari
     const sectionInfo = new Map<string, { title: string; icon: string }>()
-    for (const ep of searchedBrowse) {
+    for (const ep of enriched) {
       if (ep._sectionId && !sectionInfo.has(ep._sectionId)) {
         sectionInfo.set(ep._sectionId, {
           title: ep._sectionTitle ?? '',
@@ -230,32 +274,9 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
     noSection.sort((a, b) => timestampToSeconds(a._sortKey!) - timestampToSeconds(b._sortKey!))
 
     return { sections: sortedSections, noSection, sectionInfo }
-  }, [searchedBrowse])
+  }, [enriched])
 
-  // ── Translate uchun sentenceBank-based phrase list ────────────────────
-  const translatePhrases = useMemo(() => {
-    const source = activeCategory
-      ? categories.find(c => c.category === activeCategory)?.phrases ?? allPhrases
-      : allPhrases
-    if (!search.trim()) return source
-    const q = search.toLowerCase()
-    return source.filter(p => p.en.toLowerCase().includes(q) || p.uz.toLowerCase().includes(q))
-  }, [search, activeCategory, categories, allPhrases])
-
-  const handleCopy = useCallback(async (text: string, id: string) => {
-    try {
-      await navigator.clipboard.writeText(text)
-      setCopiedId(id)
-      setTimeout(() => setCopiedId(null), 1500)
-    } catch {}
-  }, [])
-
-  const handleSpeak = useCallback((text: string) => {
-    stopSpeaking()
-    speak(text, { rate: 0.85 })
-  }, [])
-
-  // ── Translate state ─────────────────────────────────────────────────────
+  // ── Translate uchun — tasodifiy tartib ─────────────────────────────────
   const [trIndex, setTrIndex] = useState(0)
   const [trAnswer, setTrAnswer] = useState('')
   const [trResult, setTrResult] = useState<boolean | null>(null)
@@ -269,8 +290,8 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
   const trInputRef = useRef<HTMLInputElement>(null)
 
   const trList = useMemo(() => {
-    return trShuffled ? fisherYatesShuffle(translatePhrases) : translatePhrases
-  }, [translatePhrases, trShuffled])
+    return trShuffled ? fisherYatesShuffle(filtered) : filtered
+  }, [filtered, trShuffled])
 
   const currentTr = trList[trIndex]
 
@@ -349,6 +370,19 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
     stopSpeaking()
     trSR.stop()
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const handleCopy = useCallback(async (text: string, id: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopiedId(id)
+      setTimeout(() => setCopiedId(null), 1500)
+    } catch {}
+  }, [])
+
+  const handleSpeak = useCallback((text: string) => {
+    stopSpeaking()
+    speak(text, { rate: 0.85 })
   }, [])
 
   // ── Render: Translate ──────────────────────────────────────────────────
@@ -591,7 +625,15 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
 
       <div className="flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-1.5">
-          {/* ── Hide/Show Uzbek toggle ──────────────────────────────── */}
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+              showFilters ? 'bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+            }`}
+          >
+            <Filter size={12} />
+            Kategoriyalar
+          </button>
           <button
             onClick={() => setHideUzbek(h => !h)}
             className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
@@ -606,9 +648,37 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
           </button>
         </div>
         {search && (
-          <p className="text-xs text-gray-400">{searchedBrowse.length} ta natija topildi</p>
+          <p className="text-xs text-gray-400">{enriched.length} ta natija topildi</p>
         )}
       </div>
+
+      {showFilters && (
+        <div className="flex gap-1.5 flex-wrap animate-slide-down">
+          <button
+            onClick={() => { setActiveCategory(null); setShowFilters(false) }}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              !activeCategory
+                ? 'bg-primary-600 text-white shadow-md'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+            }`}
+          >
+            Hammasi ({allPhrases.length})
+          </button>
+          {categories.map(c => (
+            <button
+              key={c.category}
+              onClick={() => { setActiveCategory(c.category); setShowFilters(false) }}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                activeCategory === c.category
+                  ? 'bg-primary-600 text-white shadow-md'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
+            >
+              {c.category} ({c.phrases.length})
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* ── Phrase cards — Section'larga ajratilgan ──────────────────── */}
       <div className="space-y-5">
@@ -618,7 +688,6 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
 
           return (
             <div key={sectionId} className="space-y-2">
-              {/* ── Section header ──────────────────────────────────── */}
               <div className="flex items-center gap-2.5 px-1 animate-slide-up" style={{ animationDelay: `${Math.min(globalStartIdx * 60, 1500)}ms` }}>
                 <span className="text-lg">{info.icon}</span>
                 <div>
@@ -627,7 +696,6 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
                 </div>
               </div>
 
-              {/* ── Cards within section ────────────────────────────── */}
               {phrases.map((p, i) => {
                 const id = `section-${sectionId}-${i}`
                 const isConsecutiveSameSpeaker = i > 0
@@ -646,7 +714,6 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
                     className="flex animate-slide-up"
                     style={{ animationDelay: `${delay}ms` }}
                   >
-                    {/* Timeline column */}
                     <div className="relative flex flex-col items-center w-8 shrink-0">
                       {isConsecutiveSameSpeaker && (
                         <div className={`w-0.5 h-2 ${cfg.color.replace('500', '300')} dark:opacity-50`} />
@@ -657,11 +724,9 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
                       )}
                     </div>
 
-                    {/* Card */}
                     <div className={`flex-1 ml-2 p-3.5 rounded-xl border-l-4 ${accentClass} bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group relative`}>
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex-1 min-w-0">
-                          {/* Speaker name + timestamp */}
                           <div className="flex items-center gap-2 mb-1.5">
                             <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold text-white ${cfg.color}`}>
                               {cfg.initial}
@@ -674,9 +739,7 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
                               </span>
                             )}
                           </div>
-                          {/* English — prominent */}
                           <p className={`text-sm leading-relaxed ${p._isKey ? 'font-bold text-primary-700 dark:text-primary-300' : 'font-semibold text-gray-900 dark:text-gray-100'}`}>{p.en}</p>
-                          {/* Uzbek — hideable for active recall */}
                           {(!hideUzbek || p.uz) && (
                             <p className={`text-xs leading-relaxed mt-1.5 transition-all duration-300 ${
                               hideUzbek
@@ -689,7 +752,6 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
                             </p>
                           )}
                         </div>
-                        {/* Actions */}
                         <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-200 pt-1">
                           <button
                             onClick={() => handleSpeak(p.en)}
@@ -724,7 +786,6 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
           )
         })}
 
-        {/* ── Non-dialogue phrases ────────────────────────────────────── */}
         {browseSections.noSection.length > 0 && (
           <div className="space-y-2">
             <div className="flex items-center gap-2.5 px-1 animate-slide-up" style={{ animationDelay: `${Math.min(browseSections.sections.reduce((acc, [, p]) => acc + p.length, 0) * 60, 1500)}ms` }}>
@@ -813,7 +874,7 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
         </div>
         <div>
           <h3 className="font-bold text-gray-900 dark:text-gray-100 text-sm">Jumlalar</h3>
-          <p className="text-xs text-gray-500 dark:text-gray-400">{browsePhrases.length} ta ibora</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{allPhrases.length} ta ibora</p>
         </div>
       </div>
 
