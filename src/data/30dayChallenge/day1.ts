@@ -488,6 +488,29 @@ Five powerful tips. Tip number one, speak English every single day, even if it's
         { phrase: 'Have a great day.', meaning: 'Yaxshi kun o\'tkazing' },
       ],
     },
+    {
+      title: 'Quiz Time — Savol-Javob',
+      content: 'Videoning 15:47 daqiqasidagi savol-javob bo\'limi. O\'tilgan mavzular bo\'yicha tezkor savollar orqali bilimlarni mustahkamlash.',
+      points: [
+        'O\'rgangan so\'z va iboralarni amalda qo\'llash',
+        'Savollarga tez va ishonchli javob berish',
+        'Xatolardan o\'rganish va davom etish',
+      ],
+      phrases: [
+        { speaker: 'Massu', text: 'What does "fluent" mean?', translation: '"Fluent" nimani anglatadi?' },
+        { speaker: 'Student', text: 'Speaking easily and smoothly.', translation: 'Oson va ravon gapirish.' },
+        { speaker: 'Massu', text: 'What should you do when you make a mistake?', translation: 'Xato qilganingizda nima qilish kerak?' },
+        { speaker: 'Student', text: 'Learn from it and keep practicing.', translation: 'Undan o\'rganing va mashq qilishda davom eting.' },
+        { speaker: 'Massu', text: 'What is "shadowing practice"?', translation: '"Shadowing" amaliyoti nima?' },
+        { speaker: 'Student', text: 'Listening and repeating immediately.', translation: 'Tinglab va darhol takrorlash.' },
+        { speaker: 'Massu', text: 'Which sentence is in past tense?', translation: 'Qaysi gap o\'tgan zamonda?' },
+        { speaker: 'Student', text: 'I ate breakfast this morning.', translation: 'Men bugun ertalab nonushta qildim.' },
+        { speaker: 'Massu', text: 'What is most important for fluency?', translation: 'Ravonlik uchun eng muhim nima?' },
+        { speaker: 'Student', text: 'Daily practice and consistency.', translation: 'Kundalik mashq va barqarorlik.' },
+        { speaker: 'Massu', text: 'How should you answer "How are you?" naturally?', translation: '"How are you?" ga qanday tabiiy javob berish kerak?' },
+        { speaker: 'Student', text: 'I\'m doing well, thanks for asking. How are you?', translation: 'Yaxshiman, so\'raganingiz uchun rahmat. O\'zingiz-chi?' },
+      ],
+    },
   ],
 
   vocabulary: [
