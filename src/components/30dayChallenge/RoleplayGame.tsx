@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { Send, Loader2, Shuffle, Volume2, ArrowLeftRight } from 'lucide-react'
-import { startRoleplayGame } from '../../lib/claudeChat'
+import { startRoleplayGame } from '../../lib/openaiChat'
 import type { ChallengeExercise, RoleplayExercise } from '../../data/30dayChallenge'
 import { inferScenario } from './AiConversationSection'
 

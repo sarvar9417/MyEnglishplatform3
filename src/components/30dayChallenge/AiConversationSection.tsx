@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { Send, Bot, User, Mic, Square, Volume2, Sparkles, Zap, AlertCircle, Drama, MessageCircle, ArrowLeft, Lightbulb, BarChart3, X, Heart, Trash2 } from 'lucide-react'
-import { startDayConversation, startDayRoleplay, generateConversationFeedback } from '../../lib/claudeChat'
+import { startDayConversation, startDayRoleplay, generateConversationFeedback } from '../../lib/openaiChat'
 import type { ChallengeDay, RoleplayExercise } from '../../data/30dayChallenge'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { useSpeechSynthesis } from '../../hooks/useSpeechSynthesis'

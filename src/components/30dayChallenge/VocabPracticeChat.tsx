@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { Send, Volume2, Loader2, Sparkles, Shuffle } from 'lucide-react'
-import { startVocabPractice } from '../../lib/claudeChat'
+import { startVocabPractice } from '../../lib/openaiChat'
 import type { ChallengeVocab } from '../../data/30dayChallenge'
 
 interface Props {

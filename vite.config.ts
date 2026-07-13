@@ -8,6 +8,7 @@ import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || process.env.VITE_ANTHROPIC_API_KEY || ''
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || ''
 
 // Vite dev serverda Anthropic API proxisi — API kalit serverda qoladi
 function anthropicProxyPlugin() {
@@ -80,10 +81,81 @@ function anthropicProxyPlugin() {
   }
 }
 
+// Vite dev serverda OpenAI API proxisi
+function openaiProxyPlugin() {
+  return {
+    name: 'openai-proxy',
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use('/api/openai', async (req: IncomingMessage, res: ServerResponse, _next: Function) => {
+        if (req.method !== 'POST') {
+          res.statusCode = 405
+          res.end(JSON.stringify({ error: 'Method not allowed' }))
+          return
+        }
+
+        if (!OPENAI_API_KEY || OPENAI_API_KEY === 'your_openai_api_key_here') {
+          res.statusCode = 500
+          res.end(JSON.stringify({ error: 'OpenAI API kaliti sozlanmagan. .env faylida OPENAI_API_KEY ni belgilang.' }))
+          return
+        }
+
+        let body = ''
+        req.on('data', (chunk: string) => { body += chunk })
+        req.on('end', async () => {
+          try {
+            const parsed = JSON.parse(body)
+            const model = parsed.model || 'gpt-4o'
+
+            const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${OPENAI_API_KEY}`,
+              },
+              body: JSON.stringify({ model, ...parsed }),
+            })
+
+            if (!parsed.stream) {
+              const data = await openaiRes.json()
+              res.statusCode = openaiRes.status
+              res.setHeader('Content-Type', 'application/json')
+              res.end(JSON.stringify(data))
+              return
+            }
+
+            res.setHeader('Content-Type', 'text/event-stream')
+            res.setHeader('Cache-Control', 'no-cache')
+            res.setHeader('Connection', 'keep-alive')
+            res.statusCode = 200
+
+            if (!openaiRes.body) {
+              res.statusCode = 500
+              res.end(JSON.stringify({ error: 'No response body from OpenAI API' }))
+              return
+            }
+            const reader = openaiRes.body.getReader()
+            const decoder = new TextDecoder()
+            while (true) {
+              const { done, value } = await reader.read()
+              if (done) break
+              res.write(decoder.decode(value))
+            }
+            res.end()
+          } catch (err) {
+            res.statusCode = 500
+            res.end(JSON.stringify({ error: err instanceof Error ? err.message : String(err) }))
+          }
+        })
+      })
+    },
+  }
+}
+
 export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     anthropicProxyPlugin(),
+    openaiProxyPlugin(),
     // Compression va PWA faqat production build'da — dev'da keraksiz yuk
     ...(command === 'build' ? [
       viteCompression({ algorithm: 'gzip', threshold: 10240 }),
