@@ -33,6 +33,10 @@ export async function getChallengeDay(day: number) {
       categories: mergedCategories,
       all: fromDB.sentenceBank?.all,
     }
+    // structuredTranscript ni static day dan olamiz (DB da structured_transcript bo'lmasligi mumkin)
+    if (!fromDB.structuredTranscript && staticDay.structuredTranscript) {
+      fromDB.structuredTranscript = staticDay.structuredTranscript
+    }
     return fromDB
   }
   if (fromDB) return fromDB
