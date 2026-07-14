@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback } from 'react'
 import { Volume2, Check, RotateCw, BookOpen, Shuffle, Brain, Trophy, Star, ChevronLeft, ChevronRight, Sparkles, Target, MessageCircle } from 'lucide-react'
 import type { ChallengeVocab } from '../../data/30dayChallenge'
 import VocabPracticeChat from './VocabPracticeChat'
+import { speakNatural } from '../../lib/openaiTts'
 import { speakText } from '../../lib/speak'
 
 interface Props {
@@ -63,8 +64,12 @@ export default function VocabularySection({ vocabulary }: Props) {
     })
   }, [])
 
-  const speakWord = useCallback((text: string) => {
-    speakText(text, 0.8)
+  const speakWord = useCallback(async (text: string) => {
+    try {
+      await speakNatural(text, 0.8)
+    } catch {
+      speakText(text, 0.8)
+    }
   }, [])
 
   const progressPct = Math.round((learned.size / vocabulary.length) * 100)

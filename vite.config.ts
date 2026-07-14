@@ -81,6 +81,93 @@ function anthropicProxyPlugin() {
   }
 }
 
+// Vite dev serverda OpenAI TTS proxisi (Text-to-Speech)
+function openaiTtsProxyPlugin() {
+  return {
+    name: 'openai-tts-proxy',
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use('/api/tts', async (req: IncomingMessage, res: ServerResponse, _next: Function) => {
+        if (req.method !== 'POST') {
+          res.statusCode = 405
+          res.end(JSON.stringify({ error: 'Method not allowed' }))
+          return
+        }
+
+        if (!OPENAI_API_KEY || OPENAI_API_KEY === 'your_openai_api_key_here') {
+          res.statusCode = 500
+          res.end(JSON.stringify({ error: 'OpenAI API kaliti sozlanmagan. .env faylida OPENAI_API_KEY ni belgilang.' }))
+          return
+        }
+
+        let body = ''
+        req.on('data', (chunk: string) => { body += chunk })
+        req.on('end', async () => {
+          try {
+            const parsed = JSON.parse(body)
+            const { input, voice = 'alloy', speed = 1.0 } = parsed
+
+            if (!input || typeof input !== 'string' || input.trim().length === 0) {
+              res.statusCode = 400
+              res.end(JSON.stringify({ error: 'input matni kerak' }))
+              return
+            }
+
+            if (input.length > 4096) {
+              res.statusCode = 400
+              res.end(JSON.stringify({ error: 'input juda uzun (maks 4096 belgi)' }))
+              return
+            }
+
+            const openaiRes = await fetch('https://api.openai.com/v1/audio/speech', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${OPENAI_API_KEY}`,
+              },
+              body: JSON.stringify({
+                model: 'tts-1',
+                input: input.trim(),
+                voice,
+                speed: Math.max(0.25, Math.min(4.0, speed)),
+                response_format: 'mp3',
+              }),
+            })
+
+            if (!openaiRes.ok) {
+              const errText = await openaiRes.text()
+              res.statusCode = openaiRes.status
+              res.setHeader('Content-Type', 'application/json')
+              res.end(JSON.stringify({ error: `OpenAI TTS xatosi (${openaiRes.status}): ${errText.slice(0, 200)}` }))
+              return
+            }
+
+            // Stream MP3 audio back
+            res.setHeader('Content-Type', 'audio/mpeg')
+            res.setHeader('Cache-Control', 'public, max-age=86400')
+            res.statusCode = 200
+
+            if (!openaiRes.body) {
+              res.statusCode = 500
+              res.end(JSON.stringify({ error: 'No response body from OpenAI TTS API' }))
+              return
+            }
+            const reader = openaiRes.body.getReader()
+            while (true) {
+              const { done, value } = await reader.read()
+              if (done) break
+              res.write(Buffer.from(value))
+            }
+            res.end()
+          } catch (err) {
+            res.statusCode = 500
+            res.end(JSON.stringify({ error: err instanceof Error ? err.message : String(err) }))
+          }
+        })
+      })
+    },
+  }
+}
+
 // Vite dev serverda OpenAI API proxisi
 function openaiProxyPlugin() {
   return {
@@ -155,6 +242,7 @@ export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     anthropicProxyPlugin(),
+    openaiTtsProxyPlugin(),
     openaiProxyPlugin(),
     // Compression va PWA faqat production build'da — dev'da keraksiz yuk
     ...(command === 'build' ? [

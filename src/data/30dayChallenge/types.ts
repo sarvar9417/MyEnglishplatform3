@@ -37,6 +37,9 @@ export interface ChallengeDay {
 
   // Takrorlash
   review: ChallengeReview
+
+  // Ish daftari (workbook)
+  workbook?: WorkbookSectionData[]
 }
 
 export interface ChallengeVideo {
@@ -194,4 +197,71 @@ export interface ChallengeReview {
   vocabulary: string[]
   keyPhrases: string[]
   mainPoints: string[]
+}
+
+// ── Ish daftari (Workbook) ──────────────────────────────────────────────────
+
+export interface WorkbookSectionData {
+  id: string
+  title: string
+  icon: string
+  items: WorkbookItem[]
+}
+
+export type WorkbookItem =
+  | WorkbookText
+  | WorkbookHeading
+  | WorkbookList
+  | WorkbookTable
+  | WorkbookDialogue
+  | WorkbookVocabList
+  | WorkbookTip
+  | WorkbookExercise
+
+export interface WorkbookText {
+  type: 'text'
+  text: string
+}
+
+export interface WorkbookHeading {
+  type: 'heading'
+  text: string
+  level?: 1 | 2 | 3
+}
+
+export interface WorkbookList {
+  type: 'list'
+  items: string[]
+  ordered?: boolean
+}
+
+export interface WorkbookTable {
+  type: 'table'
+  headers: string[]
+  rows: string[][]
+}
+
+export interface WorkbookDialogue {
+  type: 'dialogue'
+  lines: { speaker: string; text: string }[]
+}
+
+export interface WorkbookVocabList {
+  type: 'vocabulary'
+  items: { word: string; meaning: string; example: string }[]
+}
+
+export interface WorkbookTip {
+  type: 'tip'
+  text: string
+}
+
+export interface WorkbookExercise {
+  type: 'exercise'
+  exerciseType: 'mcq' | 'fill-blank' | 'true-false' | 'writing'
+  question: string
+  options?: string[]
+  correctAnswer?: string | number
+  explanation?: string
+  hint?: string
 }

@@ -17,6 +17,7 @@ import ReviewSection from '../components/30dayChallenge/ReviewSection'
 import AiConversationSection from '../components/30dayChallenge/AiConversationSection'
 import RoleplayGame from '../components/30dayChallenge/RoleplayGame'
 import WarmUpSection from '../components/30dayChallenge/WarmUpSection'
+import WorkbookSection from '../components/30dayChallenge/WorkbookSection'
 
 // ── Progress type ──────────────────────────────────────────────────────────
 
@@ -43,7 +44,7 @@ function saveProgress(p: ChallengeProgress) {
 
 // ── Tabs ────────────────────────────────────────────────────────────────────
 
-type Tab = 'warmup' | 'video' | 'highlights' | 'vocabulary' | 'sentences' | 'roleplay-game' | 'quiz' | 'review' | 'ai-chat'
+type Tab = 'warmup' | 'video' | 'highlights' | 'vocabulary' | 'sentences' | 'roleplay-game' | 'quiz' | 'review' | 'ai-chat' | 'workbook'
 
 const TABS: { key: Tab; icon: string; label: string; color: string }[] = [
   { key: 'warmup',     icon: '🧠', label: 'Warm-up',   color: 'from-indigo-500 to-purple-600' },
@@ -55,6 +56,7 @@ const TABS: { key: Tab; icon: string; label: string; color: string }[] = [
   { key: 'quiz',           icon: '📝', label: 'Test',          color: 'from-pink-500 to-rose-500' },
   { key: 'ai-chat',    icon: '🤖', label: 'AI Chat',   color: 'from-purple-500 to-fuchsia-500' },
   { key: 'review',     icon: '📋', label: 'Yakun',     color: 'from-green-500 to-emerald-500' },
+  { key: 'workbook',   icon: '📖', label: 'Daftar',    color: 'from-orange-500 to-amber-500' },
 ]
 
 // ── Page ────────────────────────────────────────────────────────────────────
@@ -79,12 +81,13 @@ export default function ThirtyDayChallenge() {
   useEffect(() => {
     let cancelled = false
     setDayLoading(true)
-    setDay(null)
 
-    // Show static day immediately for instant render
+    // Show static day immediately — no flash of 'not ready'
     const staticDay = getStaticDay(currentDay)
     if (staticDay) {
       setDay(staticDay)
+    } else {
+      setDay(null)
     }
 
     // Then try Supabase (with error handling)
@@ -124,9 +127,6 @@ export default function ThirtyDayChallenge() {
     setActiveTab('video')
     setQuizScore(0)
     setDayLoading(true)
-    setDay(null)
-    setPageEntered(false)
-    setTimeout(() => setPageEntered(true), 50)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
 
@@ -156,7 +156,9 @@ export default function ThirtyDayChallenge() {
   // ── Render ──────────────────────────────────────────────────────────────
 
   // Kun hali tayyor bo'lmasa (yoki yuklanayotgan bo'lsa)
-  if (!day) {
+  // day.day !== currentDay = eski day kontenti ko'rinmasligi uchun
+  const dayReady = day && day.day === currentDay
+  if (!dayReady) {
     return (
       <div className="max-w-4xl mx-auto p-4 space-y-4">
         <div className="flex items-center gap-3">
@@ -339,6 +341,12 @@ export default function ThirtyDayChallenge() {
         {activeTab === 'review' && (
           <div className="animate-slide-up">
             <ReviewSection review={day.review} />
+          </div>
+        )}
+
+        {activeTab === 'workbook' && day.workbook && (
+          <div className="animate-slide-up">
+            <WorkbookSection workbook={day.workbook} />
           </div>
         )}
       </div>

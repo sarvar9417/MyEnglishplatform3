@@ -1,8 +1,9 @@
 // src/hooks/useSpeechSynthesis.ts
-// Reactive React hook wrapping src/lib/tts.ts — voice selection, speed control, speaking state
+// Reactive React hook wrapping OpenAI TTS (with browser TTS fallback) — natural voice
 import { monitoring } from '../lib/monitoring'
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
-import { speak, stopSpeaking, getVoices, getBestVoice, isSpeaking, isSpeechSupported, type TTSOptions } from '../lib/tts'
+import { stopSpeaking, getVoices, getBestVoice, isSpeechSupported } from '../lib/tts'
+import { speakNatural, stopOpenAITTS } from '../lib/openaiTts'
 
 export interface VoiceOption {
   name: string
@@ -62,12 +63,12 @@ function savePrefs(prefs: { voiceName?: string; speed: number }) {
 }
 
 /**
- * React hook for speech synthesis with voice selection, speed control,
- * and localStorage persistence.
+ * React hook for speech synthesis with OpenAI TTS (natural voice) and
+ * browser TTS fallback. Voice selection, speed control, localStorage persistence.
  *
  * ```ts
  * const { playing, speak, stop, voices, speed, setSpeed } = useSpeechSynthesis()
- * speak('Hello world')
+ * speak('Hello world')  // Uses OpenAI TTS → fallback to browser TTS
  * ```
  */
 export function useSpeechSynthesis(lang = 'en-US'): UseSpeechSynthesisReturn {
@@ -132,19 +133,20 @@ export function useSpeechSynthesis(lang = 'en-US'): UseSpeechSynthesisReturn {
     const id = ++playCountRef.current
     setPlaying(true)
     try {
-      const opts: TTSOptions = { rate: overrideRate ?? speed }
-      if (selectedVoice) opts.voice = selectedVoice.voice
-      await speak(text, opts)
+      // OpenAI TTS (tabiiy ovoz) → agar ishlamasa browser TTS ga o'tadi
+      await speakNatural(text, overrideRate ?? speed)
     } finally {
       // Only update if this is still the latest call
-      if (id === playCountRef.current && !isSpeaking()) {
+      if (id === playCountRef.current) {
         setPlaying(false)
       }
     }
-  }, [speed, selectedVoice])
+  }, [speed])
 
   const stop = useCallback(() => {
     playCountRef.current++
+    // Stop both OpenAI TTS and browser TTS
+    stopOpenAITTS()
     stopSpeaking()
     setPlaying(false)
   }, [])
@@ -160,18 +162,6 @@ export function useSpeechSynthesis(lang = 'en-US'): UseSpeechSynthesisReturn {
       }
     }
   }, [voiceList, speed, lang])
-
-  // Poll isSpeaking as fallback (Chrome sometimes doesn't fire onend)
-  useEffect(() => {
-    if (!playing) return
-    const id = setInterval(() => {
-      if (!isSpeaking() && playCountRef.current > 0) {
-        setPlaying(false)
-        clearInterval(id)
-      }
-    }, 200)
-    return () => clearInterval(id)
-  }, [playing])
 
   return useMemo(() => ({
     supported: isSpeechSupported(),

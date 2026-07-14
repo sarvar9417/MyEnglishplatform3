@@ -452,6 +452,57 @@ Evaluate their translation.`
   })
 }
 
+// ── Workbook exercise evaluation ──────────────────────────────────────────
+
+export async function evaluateWorkbookAnswer(
+  userAnswer: string,
+  exercise: { question: string; exerciseType: string; options?: string[]; hint?: string },
+  level: string,
+): Promise<{ status: 'CORRECT' | 'CLOSE' | 'INCORRECT'; feedback: string; expected?: string }> {
+  const typeDesc: Record<string, string> = {
+    'fill-blank': 'Fill-in-the-blank — provide the missing word(s).',
+    'writing': 'Free-form writing — evaluate meaning, grammar, vocabulary.',
+  }
+
+  const system = `You evaluate English exercise answers. Student level: ${level}
+
+${typeDesc[exercise.exerciseType] || 'Evaluate the answer.'}
+
+🚫 STRICT: NEVER mention punctuation, capitalization, or spacing in feedback.
+Focus on word choice, grammar, meaning only.
+
+Respond in EXACT format:
+STATUS: [CORRECT / CLOSE / INCORRECT]
+💡 FEEDBACK: [1-2 sentence warm natural feedback]
+${exercise.exerciseType === 'fill-blank' ? 'EXPECTED: [the correct answer]' : ''}`
+
+  const userPrompt = `Question: "${exercise.question}"
+${exercise.options ? `Options: ${exercise.options.join(', ')}` : ''}
+${exercise.hint ? `Hint: ${exercise.hint}` : ''}
+Student answered: "${userAnswer}"
+
+Evaluate this answer.${exercise.exerciseType === 'writing' ? ' Give constructive feedback on grammar, vocabulary, and naturalness.' : ''}`
+
+  return new Promise((resolve) => {
+    let full = ''
+    openaiStreamResponse(
+      { system, messages: [{ role: 'user', content: userPrompt }], maxTokens: 300 },
+      (token) => { full += token },
+      () => {
+        const statusMatch = full.match(/STATUS:\s*(CORRECT|CLOSE|INCORRECT)/)
+        const feedbackMatch = full.match(/💡 FEEDBACK:\s*([^\n]+)/)
+        const expectedMatch = full.match(/EXPECTED:\s*([^\n]+)/)
+        resolve({
+          status: (statusMatch?.[1] as 'CORRECT' | 'CLOSE' | 'INCORRECT') || 'INCORRECT',
+          feedback: feedbackMatch?.[1]?.trim() || '',
+          expected: expectedMatch?.[1]?.trim(),
+        })
+      },
+      () => resolve({ status: 'INCORRECT', feedback: '' }),
+    )
+  })
+}
+
 export async function translateLines(lines: string[]): Promise<string[]> {
   const system = `You are a translator. Translate each English sentence to natural Uzbek (O'zbekcha).
 Return ONLY a JSON array of strings — no other text.

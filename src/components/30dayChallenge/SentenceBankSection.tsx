@@ -1,7 +1,8 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 import { Search, Copy, Check, Volume2, Filter, Mic, Square, RotateCcw, Loader2, MessageSquare, List, Edit3, Clock, Eye } from 'lucide-react'
 import type { SentenceBank, TranscriptSection, Phrase, LessonHighlight, HighlightPhrase } from '../../data/30dayChallenge'
-import { speak, stopSpeaking } from '../../lib/tts'
+import { stopSpeaking } from '../../lib/tts'
+import { speakNatural } from '../../lib/openaiTts'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
 import { evaluateTranslation } from '../../lib/openaiChat'
 
@@ -378,7 +379,7 @@ export default function SentenceBankSection({ sentenceBank, structuredTranscript
 
   const handleSpeak = useCallback((text: string) => {
     stopSpeaking()
-    speak(text, { rate: 0.85 })
+    speakNatural(text, 0.85)
   }, [])
 
   // ── Render: Translate ──────────────────────────────────────────────────
