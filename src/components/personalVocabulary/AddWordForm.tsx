@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import type { AddWordDTO, VocabCategory, PartOfSpeech } from '../../types/personalVocabulary'
 import { Sparkles, Loader2, Eye, EyeOff, CheckCircle2, BookMarked } from 'lucide-react'
 import { monitoring } from '../../lib/monitoring'
@@ -67,6 +67,7 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
   const [category, setCategory] = useState<VocabCategory>(editWord?.category || 'custom')
   const [level, setLevel] = useState<'A1' | 'A2' | 'B1' | 'B2'>(editWord?.level || 'A2')
   const [partOfSpeech, setPartOfSpeech] = useState<PartOfSpeech>(editWord?.part_of_speech || 'other')
+  const categoryUserSet = useRef(!!editWord)
   const [aiLoading, setAiLoading] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [showPreview, setShowPreview] = useState(false)
@@ -84,8 +85,8 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
       if (result.example && !example) setExample(result.example)
       if (result.example_uzbek && !exampleUzbek) setExampleUzbek(result.example_uzbek)
       if (result.level && VALID_LEVELS.has(result.level)) setLevel(result.level)
-      if (result.category && VALID_CATEGORIES.has(result.category as VocabCategory)) setCategory(result.category as VocabCategory)
       if (result.part_of_speech && VALID_POS.has(result.part_of_speech as PartOfSpeech)) setPartOfSpeech(result.part_of_speech as PartOfSpeech)
+      if (!categoryUserSet.current && result.category && VALID_CATEGORIES.has(result.category as VocabCategory)) setCategory(result.category as VocabCategory)
     } catch (e) {
       monitoring.captureMessage('AI translation failed: ' + (e instanceof Error ? e.message : String(e)), 'warn')
     } finally {
@@ -269,7 +270,7 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
             </label>
             <select
               value={category}
-              onChange={(e) => setCategory(e.target.value as VocabCategory)}
+              onChange={(e) => { categoryUserSet.current = true; setCategory(e.target.value as VocabCategory) }}
               className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm transition-shadow appearance-none"
             >
               {CATEGORIES.map((cat) => (
