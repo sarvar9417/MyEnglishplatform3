@@ -53,8 +53,6 @@ export async function addPersonalWordToDB(
       uzbek: wordData.uzbek,
       phonetic: wordData.phonetic || null,
       example: wordData.example || null,
-      // @ts-expect-error example_uzbek column may not exist in generated types yet
-      example_uzbek: wordData.example_uzbek || null,
       category: wordData.category || 'custom',
       level: wordData.level || 'A2',
       source: wordData.source || 'manual',
@@ -97,7 +95,6 @@ export async function updatePersonalWordInDB(
     uzbek?: string
     phonetic?: string
     example?: string
-    example_uzbek?: string
     category?: string
     level?: string
     part_of_speech?: string | null
@@ -106,7 +103,6 @@ export async function updatePersonalWordInDB(
   if (updates.uzbek !== undefined) payload.uzbek = updates.uzbek
   if (updates.phonetic !== undefined) payload.phonetic = updates.phonetic
   if (updates.example !== undefined) payload.example = updates.example
-  if (updates.example_uzbek !== undefined) payload.example_uzbek = updates.example_uzbek
   if (updates.category !== undefined) payload.category = updates.category
   if (updates.level !== undefined) payload.level = updates.level
   if (updates.part_of_speech !== undefined) payload.part_of_speech = updates.part_of_speech
