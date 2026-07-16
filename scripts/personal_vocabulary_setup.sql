@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS public.personal_vocabulary (
   example_uzbek    TEXT,
   category         TEXT    NOT NULL DEFAULT 'custom',
   level            TEXT    NOT NULL DEFAULT 'A2',
+  part_of_speech   TEXT,
   source           TEXT    NOT NULL DEFAULT 'manual',
   ai_suggested_translation TEXT,
   box              INTEGER NOT NULL DEFAULT 1,
