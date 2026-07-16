@@ -303,7 +303,11 @@ export async function generateAITranslation(
   context?: string
 ): Promise<{ uzbek: string; phonetic?: string; example?: string; level?: 'A1' | 'A2' | 'B1' | 'B2'; category?: string; part_of_speech?: string }> {
   try {
-    const prompt = `You are an English-Uzbek dictionary assistant. Translate the English word "${word}"${context ? ` in the context of "${context}"` : ''}.
+    const categoryContext = context ? ` in the context of "${context}"` : ''
+    const exampleInstruction = context
+      ? `Create a natural example sentence related to "${context}" that clearly shows the word's meaning`
+      : 'Create a simple English sentence showing the word in context'
+    const prompt = `You are an English-Uzbek dictionary assistant. Translate the English word "${word}"${categoryContext}.
 
 Respond with ONLY a valid JSON object (no markdown, no extra text):
 {
@@ -318,7 +322,7 @@ Respond with ONLY a valid JSON object (no markdown, no extra text):
 Rules:
 - uzbek: concise Uzbek translation (1-3 words max)
 - phonetic: IPA notation like /ˈwɜːrd/ or empty string if not applicable
-- example: a simple English sentence showing the word in context
+- example: ${exampleInstruction}
 - level: A1 (basic daily words like cat, go, big), A2 (elementary like comfortable, develop), B1 (intermediate like analyze, significant), B2 (advanced like ambivalent, pragmatic)
 - category: most relevant category from the list
 - part_of_speech: the grammatical role of the word
