@@ -28,12 +28,13 @@ import SectionLabel from '../components/dashboard/SectionLabel'
 import CollapsibleSection from '../components/dashboard/CollapsibleSection'
 import MotivationalWidget from '../components/dashboard/MotivationalWidget'
 import StreakCelebration from '../components/dashboard/StreakCelebration'
+import VocabDashboardWidget from '../components/personalVocabulary/VocabDashboardWidget'
 import type { QuickWeakSpot } from '../services/analyticsService'
 
 export default function Dashboard() {
   const { t } = useI18n()
   const navigate = useNavigate()
-  const { fetchAndSetLessons } = useStore()
+  const { fetchAndSetLessons, personalWords, personalWordsFetched } = useStore()
   const handleWeakSpotsLoaded = useCallback((_spots: QuickWeakSpot[]) => {}, [])
   const { pendingOpponentDuels, loadDuels } = useTandemStore()
   const [activeTab, setActiveTab] = useState<'today' | 'all'>('today')
@@ -138,6 +139,11 @@ export default function Dashboard() {
               <CollapsibleSection title={t('dashboard.sectionGrammarSrs')}>
                 <GrammarSrsCard />
               </CollapsibleSection>
+              {personalWordsFetched && (
+                <CollapsibleSection title="Shaxsiy lug'at">
+                  <VocabDashboardWidget words={personalWords} />
+                </CollapsibleSection>
+              )}
             </>
           ) : (
             <>

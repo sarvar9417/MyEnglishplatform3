@@ -9,6 +9,7 @@ interface WordListProps {
   onDelete: (id: number) => void
   onRate: (id: number, rating: VocabRating) => void
   onEdit?: (word: PersonalWord) => void
+  onWordClick?: (word: PersonalWord) => void
 }
 
 const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {
@@ -77,7 +78,7 @@ function getMasteryLevel(box: number, correctCount: number, totalCount: number):
   return { pct, label: 'Boshlang\'ich', color: 'bg-gray-400 dark:bg-gray-500' }
 }
 
-export default function WordList({ words, onDelete, onRate, onEdit }: WordListProps) {
+export default function WordList({ words, onDelete, onRate, onEdit, onWordClick }: WordListProps) {
   const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null)
   const [speakingWordId, setSpeakingWordId] = useState<number | null>(null)
   const [expandedId, setExpandedId] = useState<number | null>(null)
@@ -125,7 +126,8 @@ export default function WordList({ words, onDelete, onRate, onEdit }: WordListPr
         return (
           <div
             key={word.id}
-            className="group bg-white dark:bg-gray-800/90 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm hover:shadow-md hover:border-gray-200 dark:hover:border-gray-600 transition-all duration-200"
+            onClick={() => onWordClick?.(word)}
+            className="group bg-white dark:bg-gray-800/90 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm hover:shadow-md hover:border-gray-200 dark:hover:border-gray-600 transition-all duration-200 cursor-pointer"
             style={{ animationDelay: `${index * 30}ms` }}
           >
             {/* Main Content */}

@@ -11,7 +11,7 @@ import {
   Plus, Search, Download, Upload, BookOpen, Filter, Loader2, 
   ChevronLeft, ChevronRight, ArrowUpDown, 
   BookMarked, Brain, Trophy, GraduationCap, X as XIcon,
-  Clock, Sparkles, Languages
+  Clock, Sparkles, Languages, BarChart3
 } from 'lucide-react'
 import AddWordForm from './AddWordForm'
 import WordList from './WordList'
@@ -19,6 +19,9 @@ import FlashCardTest from './FlashCardTest'
 import QuickReview from './QuickReview'
 import MultipleChoiceQuiz from './MultipleChoiceQuiz'
 import ReviewDashboard from './ReviewDashboard'
+import VocabSmartFilters, { type SmartFilter } from './VocabSmartFilters'
+import VocabStatsWidget from './VocabStatsWidget'
+import WordDetailModal from './WordDetailModal'
 
 type ViewMode = 'list' | 'add' | 'test' | 'quick-review' | 'multiple-choice' | 'typing'
 type SortField = 'created_at' | 'english' | 'next_review' | 'level' | 'box'
@@ -120,6 +123,9 @@ export default function PersonalVocabularyPage() {
   const [editingWord, setEditingWord] = useState<PersonalWord | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [showFilters, setShowFilters] = useState(false)
+  const [smartFilter, setSmartFilter] = useState<SmartFilter>('all')
+  const [detailWord, setDetailWord] = useState<PersonalWord | null>(null)
+  const [showStats, setShowStats] = useState(false)
   const [translateLoading, setTranslateLoading] = useState(false)
   const [translateProgress, setTranslateProgress] = useState<{ completed: number; total: number; currentWord: string } | null>(null)
   const mountedRef = useRef(true)
@@ -151,7 +157,13 @@ export default function PersonalVocabularyPage() {
       const matchesCategory = filterCategory === 'all' || w.category === filterCategory
       const matchesLevel = filterLevel === 'all' || w.level === filterLevel
       const matchesDue = !showDueOnly || (!w.is_learned && w.next_review <= getTodayTashkent())
-      return matchesSearch && matchesCategory && matchesLevel && matchesDue
+      const today = getTodayTashkent()
+      const matchesSmart = smartFilter === 'all'
+        || (smartFilter === 'due' && !w.is_learned && w.next_review <= today)
+        || (smartFilter === 'struggling' && !w.is_learned && w.wrong_count > w.correct_count && (w.correct_count + w.wrong_count) >= 2)
+        || (smartFilter === 'new' && w.box <= 1 && !w.is_learned)
+        || (smartFilter === 'mastered' && w.box >= 5 && w.is_learned)
+      return matchesSearch && matchesCategory && matchesLevel && matchesDue && matchesSmart
     })
 
     result.sort((a, b) => {
@@ -178,7 +190,7 @@ export default function PersonalVocabularyPage() {
     })
 
     return result
-  }, [personalWords, searchQuery, filterCategory, filterLevel, showDueOnly, sortField, sortDirection])
+  }, [personalWords, searchQuery, filterCategory, filterLevel, showDueOnly, sortField, sortDirection, smartFilter])
 
   // Pagination
   const totalPages = Math.ceil(filteredWords.length / PAGE_SIZE)
@@ -346,6 +358,14 @@ export default function PersonalVocabularyPage() {
     setFilterCategory('all')
     setFilterLevel('all')
     setShowDueOnly(false)
+    setSmartFilter('all')
+  }
+
+  const handleWordDetailEdit = async (id: number, updates: Partial<PersonalWord>) => {
+    const userId = await getUserId()
+    await updatePersonalWord(id, updates as UpdateWordDTO, userId)
+    useToastStore.getState().toast("So'z yangilandi", 'success')
+    setDetailWord(prev => prev ? { ...prev, ...updates } : null)
   }
 
   const wordsNeedingTranslation = useMemo(() => 
@@ -535,7 +555,27 @@ export default function PersonalVocabularyPage() {
             <span className="w-2 h-2 rounded-full bg-primary-500" />
           )}
         </button>
+        {personalWords.length > 0 && (
+          <button
+            onClick={() => setShowStats(!showStats)}
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border transition-all text-sm font-medium ${
+              showStats
+                ? 'bg-violet-50 dark:bg-violet-900/20 border-violet-200 dark:border-violet-800 text-violet-700 dark:text-violet-300'
+                : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+            }`}
+          >
+            <BarChart3 size={16} />
+            Statistika
+          </button>
+        )}
       </div>
+
+      {/* Statistics Widget */}
+      {showStats && personalWords.length > 0 && (
+        <div className="animate-fadeIn">
+          <VocabStatsWidget words={personalWords} />
+        </div>
+      )}
 
       {/* Translation Progress Banner */}
       {translateLoading && translateProgress && (
@@ -562,6 +602,19 @@ export default function PersonalVocabularyPage() {
             />
           </div>
         </div>
+      )}
+
+      {/* Smart Filters */}
+      {personalWordsFetched && personalWords.length > 0 && (
+        <VocabSmartFilters
+          words={personalWords}
+          activeFilter={smartFilter}
+          onFilterChange={(f) => {
+            setSmartFilter(f)
+            if (f === 'due') setShowDueOnly(true)
+            else if (f !== 'all') setShowDueOnly(false)
+          }}
+        />
       )}
 
       {/* Search & Filters Panel */}
@@ -700,6 +753,7 @@ export default function PersonalVocabularyPage() {
             onDelete={handleDeleteWord}
             onRate={handleRateWord}
             onEdit={handleEditWord}
+            onWordClick={(word) => setDetailWord(word)}
           />
 
           {/* Pagination */}
@@ -777,6 +831,17 @@ export default function PersonalVocabularyPage() {
             </>
           )}
         </div>
+      )}
+
+      {/* Word Detail Modal */}
+      {detailWord && (
+        <WordDetailModal
+          word={detailWord}
+          onClose={() => setDetailWord(null)}
+          onRate={handleRateWord}
+          onEdit={handleWordDetailEdit}
+          onDelete={handleDeleteWord}
+        />
       )}
 
       {/* CSS Animations */}
