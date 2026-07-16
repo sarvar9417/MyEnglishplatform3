@@ -308,9 +308,10 @@ export async function generateAITranslation(
   context?: string
 ): Promise<{ uzbek: string; phonetic?: string; example?: string; example_uzbek?: string; level?: 'A1' | 'A2' | 'B1' | 'B2'; category?: string; part_of_speech?: string }> {
   try {
-    const categoryContext = context ? ` in the context of "${context}"` : ''
-    const exampleInstruction = context
-      ? `Create a natural example sentence related to "${context}" that clearly shows the word's meaning`
+    const isCategorySelected = !!context
+    const categoryContext = isCategorySelected ? ` related to "${context}"` : ''
+    const exampleInstruction = isCategorySelected
+      ? `The example sentence MUST be about "${context}". For example, if category is "Food", the sentence must describe food, cooking, eating, restaurants, or groceries. The word "${word}" must be used naturally within that ${context} scenario. DO NOT write a generic sentence that could apply to any category.`
       : 'Create a simple English sentence showing the word in context'
     const prompt = `You are an English-Uzbek dictionary assistant. Translate the English word "${word}"${categoryContext}.
 
