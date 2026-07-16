@@ -151,7 +151,7 @@ export default function WordList({ words, onDelete, onRate, onEdit, onWordClick 
                   {/* Word Header */}
                   <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                     <button
-                      onClick={() => toggleExpand(word.id)}
+                      onClick={(e) => { e.stopPropagation(); toggleExpand(word.id) }}
                       className="flex items-center gap-1.5 group/word cursor-pointer"
                     >
                       <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 group-hover/word:text-primary-600 dark:group-hover/word:text-primary-400 transition-colors truncate">
@@ -263,14 +263,14 @@ export default function WordList({ words, onDelete, onRate, onEdit, onWordClick 
                   {!word.is_learned && (
                     <div className="flex gap-1">
                       <button
-                        onClick={() => onRate(word.id, 'bildim')}
+                        onClick={(e) => { e.stopPropagation(); onRate(word.id, 'bildim') }}
                         className="p-1.5 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-900/40 hover:scale-105 transition-all active:scale-95"
                         title="Bildim"
                       >
                         <CheckCircle2 size={15} />
                       </button>
                       <button
-                        onClick={() => onRate(word.id, 'bilmadim')}
+                        onClick={(e) => { e.stopPropagation(); onRate(word.id, 'bilmadim') }}
                         className="p-1.5 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40 hover:scale-105 transition-all active:scale-95"
                         title="Bilmadim"
                       >
@@ -283,7 +283,7 @@ export default function WordList({ words, onDelete, onRate, onEdit, onWordClick 
                   <div className="flex gap-1">
                     {onEdit && (
                       <button
-                        onClick={() => onEdit(word)}
+                        onClick={(e) => { e.stopPropagation(); onEdit(word) }}
                         className="p-1.5 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105 transition-all active:scale-95"
                         title="Tahrirlash"
                       >
@@ -293,26 +293,26 @@ export default function WordList({ words, onDelete, onRate, onEdit, onWordClick 
                     {deleteConfirmId === word.id ? (
                       <div className="flex items-center gap-1 bg-red-50 dark:bg-red-900/20 rounded-lg p-0.5">
                         <button
-                          onClick={() => { onDelete(word.id); setDeleteConfirmId(null) }}
+                          onClick={(e) => { e.stopPropagation(); onDelete(word.id); setDeleteConfirmId(null) }}
                           className="p-1.5 rounded-md bg-red-500 text-white hover:bg-red-600 hover:scale-105 transition-all text-[10px] font-medium px-2"
                         >
                           Ha
                         </button>
                         <button
-                          onClick={() => setDeleteConfirmId(null)}
+                          onClick={(e) => { e.stopPropagation(); setDeleteConfirmId(null) }}
                           className="p-1.5 rounded-md bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500 transition-all text-[10px] font-medium px-2"
                         >
                           Yo'q
                         </button>
                       </div>
                     ) : (
-                      <button
-                        onClick={() => setDeleteConfirmId(word.id)}
-                        className="p-1.5 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 hover:scale-105 transition-all active:scale-95"
-                        title="O'chirish"
-                      >
-                        <Trash2 size={15} />
-                      </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setDeleteConfirmId(word.id) }}
+                      className="p-1.5 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 hover:scale-105 transition-all active:scale-95"
+                      title="O'chirish"
+                    >
+                      <Trash2 size={15} />
+                    </button>
                     )}
                   </div>
                 </div>
@@ -321,7 +321,7 @@ export default function WordList({ words, onDelete, onRate, onEdit, onWordClick 
               {/* Expand Toggle */}
               {totalAttempts > 0 && (
                 <button
-                  onClick={() => toggleExpand(word.id)}
+                  onClick={(e) => { e.stopPropagation(); toggleExpand(word.id) }}
                   className="mt-2 flex items-center gap-1 text-[10px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                 >
                   {isExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
