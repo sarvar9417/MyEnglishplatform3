@@ -7,6 +7,7 @@ interface FlashCardTestProps {
   words: PersonalWord[]
   onComplete: (results: WordSessionResult[]) => void
   onExit: () => void
+  initialMode?: TestMode
 }
 
 type TestMode = 'translation' | 'fill-blank' | 'type-answer' | 'definition'
@@ -166,10 +167,10 @@ function SessionSummary({ results, words, onFinish, onRestart }: {
   )
 }
 
-export default function FlashCardTest({ words, onComplete, onExit }: FlashCardTestProps) {
+export default function FlashCardTest({ words, onComplete, onExit, initialMode }: FlashCardTestProps) {
   const { t } = useI18n()
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [mode, setMode] = useState<TestMode>('translation')
+  const [mode, setMode] = useState<TestMode>(initialMode || 'translation')
   const [userAnswer, setUserAnswer] = useState('')
   const [showAnswer, setShowAnswer] = useState(false)
   const [results, setResults] = useState<WordSessionResult[]>([])

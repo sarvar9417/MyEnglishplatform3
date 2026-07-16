@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { useStore } from '../../store/useStore'
 import { useI18n } from '../../i18n'
 import { exportPersonalVocabulary, importPersonalVocabulary, generateAITranslation } from '../../services/personalVocabularyService'
@@ -8,19 +8,22 @@ import { useToastStore } from '../../utils/toastStore'
 import type { PersonalWord, AddWordDTO, UpdateWordDTO } from '../../types/personalVocabulary'
 import type { VocabRating } from '../../types/personalVocabulary'
 import { 
-  Plus, Search, Download, Upload, Play, BookOpen, Filter, Loader2, 
-  ChevronLeft, ChevronRight, LayoutGrid, List, ArrowUpDown, 
+  Plus, Search, Download, Upload, BookOpen, Filter, Loader2, 
+  ChevronLeft, ChevronRight, ArrowUpDown, 
   BookMarked, Brain, Trophy, GraduationCap, X as XIcon,
-  Clock, BarChart3
+  Clock
 } from 'lucide-react'
 import AddWordForm from './AddWordForm'
 import WordList from './WordList'
 import FlashCardTest from './FlashCardTest'
+import QuickReview from './QuickReview'
+import MultipleChoiceQuiz from './MultipleChoiceQuiz'
+import ReviewDashboard from './ReviewDashboard'
 
-type ViewMode = 'list' | 'add' | 'test'
+type ViewMode = 'list' | 'add' | 'test' | 'quick-review' | 'multiple-choice' | 'typing'
 type SortField = 'created_at' | 'english' | 'next_review' | 'level' | 'box'
 type SortDirection = 'asc' | 'desc'
-type ListLayout = 'list' | 'grid'
+
 
 const PAGE_SIZE = 20
 
@@ -57,7 +60,7 @@ const LEVEL_TAGS = [
 ]
 
 const SORT_OPTIONS: { value: SortField; label: string }[] = [
-  { value: 'created_at', label: 'Qo\'shilgan sana' },
+  { value: 'created_at', label: "Qo'shilgan sana" },
   { value: 'english', label: 'Alifbo' },
   { value: 'next_review', label: 'Takrorlash vaqti' },
   { value: 'level', label: 'Daraja' },
@@ -109,10 +112,11 @@ export default function PersonalVocabularyPage() {
   const [showDueOnly, setShowDueOnly] = useState(false)
   const [sortField, setSortField] = useState<SortField>('created_at')
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc')
-  const [layout, setLayout] = useState<ListLayout>('list')
   const [loading, setLoading] = useState(false)
   const [importLoading, setImportLoading] = useState(false)
   const [testWords, setTestWords] = useState<PersonalWord[]>([])
+  const [quizWords, setQuizWords] = useState<PersonalWord[]>([])
+  const [typingWords, setTypingWords] = useState<PersonalWord[]>([])
   const [editingWord, setEditingWord] = useState<PersonalWord | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [showFilters, setShowFilters] = useState(false)
@@ -185,8 +189,25 @@ export default function PersonalVocabularyPage() {
   const totalWords = personalWords.length
   const learnedWords = personalWords.filter(w => w.is_learned).length
   const dueWords = personalWords.filter(w => !w.is_learned && w.next_review <= getTodayTashkent()).length
-  const learningProgress = totalWords > 0 ? Math.round((learnedWords / totalWords) * 100) : 0
   const masteredWords = personalWords.filter(w => w.box >= 5 && w.is_learned).length
+
+  // Prepare words for practice modes
+  const prepareDueWords = useCallback(() => {
+    const today = getTodayTashkent()
+    const due = personalWords.filter(w => !w.is_learned && w.next_review <= today)
+    return due.length >= 5 ? due : personalWords.filter(w => !w.is_learned).slice(0, 20)
+  }, [personalWords])
+
+  const prepareQuizWords = useCallback(() => {
+    // Prioritize due words + words with high error rate
+    const today = getTodayTashkent()
+    const due = personalWords.filter(w => !w.is_learned && w.next_review <= today)
+    const highError = personalWords.filter(w => !w.is_learned && w.wrong_count > w.correct_count)
+    const combined = [...new Set([...due, ...highError].map(w => w.id))].map(id => 
+      [...due, ...highError].find(w => w.id === id)!
+    )
+    return combined.length >= 5 ? combined.slice(0, 20) : personalWords.filter(w => !w.is_learned).slice(0, 20)
+  }, [personalWords])
 
   const handleAddWord = async (wordData: AddWordDTO) => {
     const userId = await getUserId()
@@ -222,12 +243,39 @@ export default function PersonalVocabularyPage() {
     await ratePersonalWord(id, rating, userId)
   }
 
-  const handleStartTest = () => {
+  const handleBatchRate = async (results: { vocabId: number; result: string; rating?: VocabRating }[]) => {
+    const userId = await getUserId()
+    for (const r of results) {
+      if (r.result === 'correct' && r.rating) {
+        await ratePersonalWord(r.vocabId, r.rating as VocabRating, userId)
+      } else if (r.result === 'correct') {
+        await ratePersonalWord(r.vocabId, 'bildim' as VocabRating, userId)
+      } else {
+        await ratePersonalWord(r.vocabId, 'bilmadim' as VocabRating, userId)
+      }
+    }
+  }
+
+  const handleStartFlashcard = () => {
+    setTestWords(prepareDueWords())
+    setViewMode('test')
+  }
+
+  const handleStartQuickReview = () => {
+    setTestWords(prepareDueWords())
+    setViewMode('quick-review')
+  }
+
+  const handleStartMultipleChoice = () => {
+    setQuizWords(prepareQuizWords())
+    setViewMode('multiple-choice')
+  }
+
+  const handleStartTyping = () => {
     const today = getTodayTashkent()
     const due = personalWords.filter(w => !w.is_learned && w.next_review <= today)
-    const wordsToTest = due.length > 0 ? due : personalWords.slice(0, 10)
-    setTestWords(wordsToTest)
-    setViewMode('test')
+    setTypingWords(due.length >= 5 ? due.slice(0, 15) : personalWords.filter(w => !w.is_learned).slice(0, 15))
+    setViewMode('typing')
   }
 
   const handleExport = () => {
@@ -261,8 +309,8 @@ export default function PersonalVocabularyPage() {
     }
   }
 
-  const handleAITranslation = async (word: string, context?: string) => {
-    return await generateAITranslation(word, context)
+  const handleAITranslation = async (word: string) => {
+    return await generateAITranslation(word)
   }
 
   const toggleSortDirection = () => {
@@ -278,20 +326,55 @@ export default function PersonalVocabularyPage() {
 
   const hasActiveFilters = searchQuery || filterCategory !== 'all' || filterLevel !== 'all' || showDueOnly
 
+  // — Practice Mode Views —
   if (viewMode === 'test') {
     return (
       <FlashCardTest
         words={testWords}
         onComplete={(results) => {
-          results.forEach((r) => {
-            if (r.result === 'correct' && r.rating) {
-              handleRateWord(r.vocabId, r.rating as VocabRating)
-            } else if (r.result === 'correct') {
-              handleRateWord(r.vocabId, 'bildim')
-            } else {
-              handleRateWord(r.vocabId, 'bilmadim')
-            }
-          })
+          handleBatchRate(results)
+          setViewMode('list')
+        }}
+        onExit={() => setViewMode('list')}
+      />
+    )
+  }
+
+  if (viewMode === 'quick-review') {
+    return (
+      <QuickReview
+        words={testWords}
+        onComplete={(results) => {
+          handleBatchRate(results)
+          setViewMode('list')
+        }}
+        onExit={() => setViewMode('list')}
+      />
+    )
+  }
+
+  if (viewMode === 'multiple-choice') {
+    return (
+      <MultipleChoiceQuiz
+        words={quizWords}
+        allWords={personalWords}
+        onComplete={(results) => {
+          handleBatchRate(results)
+          setViewMode('list')
+        }}
+        onExit={() => setViewMode('list')}
+      />
+    )
+  }
+
+  if (viewMode === 'typing') {
+    // Reuse FlashCardTest in type-answer mode
+    return (
+      <FlashCardTest
+        words={typingWords}
+        initialMode="type-answer"
+        onComplete={(results) => {
+          handleBatchRate(results)
           setViewMode('list')
         }}
         onExit={() => setViewMode('list')}
@@ -312,7 +395,7 @@ export default function PersonalVocabularyPage() {
               {t('personalVocab.title') || "Shaxsiy Lug'atim"}
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              {t('personalVocab.subtitle') || "O'zingiz uchun shaxsiy lug'at yarating"}
+              {t('personalVocab.subtitle') || "So'zlarni yod oling va takrorlang"}
             </p>
           </div>
         </div>
@@ -380,25 +463,15 @@ export default function PersonalVocabularyPage() {
         </div>
       </div>
 
-      {/* Learning Progress Bar */}
-      {totalWords > 0 && (
-        <div className="bg-white dark:bg-gray-800/90 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700/50">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <BarChart3 size={15} className="text-gray-400" />
-              <span className="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">O'rganish jarayoni</span>
-            </div>
-            <span className="text-xs font-bold text-primary-600 dark:text-primary-400">{learningProgress}%</span>
-          </div>
-          <div className="w-full h-2.5 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-primary-500 to-primary-400 rounded-full transition-all duration-700 ease-out" style={{ width: `${learningProgress}%` }} />
-          </div>
-          <div className="flex justify-between mt-1.5 text-[10px] text-gray-400 dark:text-gray-500">
-            <span>0%</span>
-            <span>50%</span>
-            <span>100%</span>
-          </div>
-        </div>
+      {/* Review Dashboard */}
+      {personalWordsFetched && !loading && personalWords.length > 0 && (
+        <ReviewDashboard
+          words={personalWords}
+          onStartFlashcard={handleStartFlashcard}
+          onStartQuickReview={handleStartQuickReview}
+          onStartMultipleChoice={handleStartMultipleChoice}
+          onStartTyping={handleStartTyping}
+        />
       )}
 
       {/* Action Buttons */}
@@ -409,14 +482,6 @@ export default function PersonalVocabularyPage() {
         >
           <Plus size={18} />
           {t('personalVocab.addWord') || "So'z qo'shish"}
-        </button>
-        <button
-          onClick={handleStartTest}
-          disabled={personalWords.length === 0}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-b2-500 to-b2-600 text-white font-medium hover:from-b2-600 hover:to-b2-700 shadow-lg shadow-b2-500/20 hover:shadow-b2-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]"
-        >
-          <Play size={18} />
-          {t('personalVocab.startTest') || 'Flash card testi'}
         </button>
         <button
           onClick={() => setShowFilters(!showFilters)}
@@ -514,7 +579,7 @@ export default function PersonalVocabularyPage() {
         )}
       </div>
 
-      {/* Toolbar: Sort + Layout + Result Count */}
+      {/* Toolbar: Sort + Result Count */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500 dark:text-gray-400">
@@ -541,27 +606,9 @@ export default function PersonalVocabularyPage() {
             <button
               onClick={toggleSortDirection}
               className="p-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/90 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-              title={sortDirection === 'asc' ? 'O\'sish' : 'Kamayish'}
+              title={sortDirection === 'asc' ? "O'sish" : 'Kamayish'}
             >
-              <ArrowUpDown size={14} className={`transition-transform ${sortDirection === 'asc' ? 'rotate-180' : ''}`} />
-            </button>
-          </div>
-
-          {/* Layout Toggle */}
-          <div className="flex items-center border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-800/90">
-            <button
-              onClick={() => setLayout('list')}
-              className={`p-1.5 transition-colors ${layout === 'list' ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'}`}
-              title="Ro'yxat"
-            >
-              <List size={15} />
-            </button>
-            <button
-              onClick={() => setLayout('grid')}
-              className={`p-1.5 transition-colors ${layout === 'grid' ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'}`}
-              title="Katak"
-            >
-              <LayoutGrid size={15} />
+              <ArrowUpDown size={14} />
             </button>
           </div>
         </div>
