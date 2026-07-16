@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { useStore } from '../../store/useStore'
 import { useI18n } from '../../i18n'
-import { exportPersonalVocabulary, importPersonalVocabulary, generateAITranslation, batchGenerateExampleUzbek } from '../../services/personalVocabularyService'
+import { exportPersonalVocabulary, importPersonalVocabulary, generateAITranslation } from '../../services/personalVocabularyService'
 import { supabase } from '../../lib/supabase'
 import { getTodayTashkent } from '../../utils/tashkentDate'
 import { useToastStore } from '../../utils/toastStore'
@@ -11,7 +11,7 @@ import {
   Plus, Search, Download, Upload, BookOpen, Filter, Loader2, 
   ChevronLeft, ChevronRight, ArrowUpDown, 
   BookMarked, Brain, Trophy, GraduationCap, X as XIcon,
-  Clock, Sparkles, Languages, BarChart3
+  Clock, BarChart3
 } from 'lucide-react'
 import AddWordForm from './AddWordForm'
 import WordList from './WordList'
@@ -126,8 +126,6 @@ export default function PersonalVocabularyPage() {
   const [smartFilter, setSmartFilter] = useState<SmartFilter>('all')
   const [detailWord, setDetailWord] = useState<PersonalWord | null>(null)
   const [showStats, setShowStats] = useState(false)
-  const [translateLoading, setTranslateLoading] = useState(false)
-  const [translateProgress, setTranslateProgress] = useState<{ completed: number; total: number; currentWord: string } | null>(null)
   const mountedRef = useRef(true)
 
   // Fetch words on mount
@@ -327,28 +325,6 @@ export default function PersonalVocabularyPage() {
     return await generateAITranslation(word)
   }
 
-  const handleBatchTranslate = async () => {
-    setTranslateLoading(true)
-    setTranslateProgress({ completed: 0, total: wordsNeedingTranslation.length, currentWord: '...' })
-    try {
-      const userId = await getUserId()
-      await batchGenerateExampleUzbek(
-        userId,
-        personalWords,
-        (completed, total, currentWord) => {
-          setTranslateProgress({ completed, total, currentWord })
-        }
-      )
-      // Refresh data after translation
-      await fetchPersonalWords(userId)
-    } catch {
-      useToastStore.getState().toast('Tarjima jarayonida xatolik', 'error')
-    } finally {
-      setTranslateLoading(false)
-      setTranslateProgress(null)
-    }
-  }
-
   const toggleSortDirection = () => {
     setSortDirection(d => d === 'asc' ? 'desc' : 'asc')
   }
@@ -367,10 +343,6 @@ export default function PersonalVocabularyPage() {
     useToastStore.getState().toast("So'z yangilandi", 'success')
     setDetailWord(prev => prev ? { ...prev, ...updates } : null)
   }
-
-  const wordsNeedingTranslation = useMemo(() => 
-    personalWords.filter(w => w.example && !w.example_uzbek),
-  [personalWords])
 
   const hasActiveFilters = searchQuery || filterCategory !== 'all' || filterLevel !== 'all' || showDueOnly
 
@@ -531,16 +503,6 @@ export default function PersonalVocabularyPage() {
           <Plus size={18} />
           {t('personalVocab.addWord') || "So'z qo'shish"}
         </button>
-        {/* Batch Translate Button */}
-        {wordsNeedingTranslation.length > 0 && !translateLoading && (
-          <button
-            onClick={handleBatchTranslate}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 text-white font-medium hover:from-violet-600 hover:to-purple-700 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 transition-all active:scale-[0.98] text-sm"
-          >
-            <Languages size={16} />
-            Misol gaplarni tarjima qilish ({wordsNeedingTranslation.length})
-          </button>
-        )}
         <button
           onClick={() => setShowFilters(!showFilters)}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border transition-all text-sm font-medium ${
@@ -574,33 +536,6 @@ export default function PersonalVocabularyPage() {
       {showStats && personalWords.length > 0 && (
         <div className="animate-fadeIn">
           <VocabStatsWidget words={personalWords} />
-        </div>
-      )}
-
-      {/* Translation Progress Banner */}
-      {translateLoading && translateProgress && (
-        <div className="bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-900/10 dark:to-purple-900/10 rounded-2xl p-4 border border-violet-200 dark:border-violet-800/50 shadow-sm">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-8 h-8 rounded-lg bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
-              <Sparkles size={16} className="text-violet-600 dark:text-violet-400 animate-pulse" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-violet-800 dark:text-violet-300">
-                Misol gaplar tarjima qilinmoqda...
-              </p>
-              <p className="text-xs text-violet-600 dark:text-violet-400 mt-0.5 truncate">
-                {translateProgress.completed}/{translateProgress.total} · 
-                "{translateProgress.currentWord}"
-              </p>
-            </div>
-            <Loader2 size={18} className="text-violet-500 animate-spin shrink-0" />
-          </div>
-          <div className="w-full h-1.5 bg-violet-100 dark:bg-violet-900/30 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full transition-all duration-500"
-              style={{ width: `${(translateProgress.completed / translateProgress.total) * 100}%` }}
-            />
-          </div>
         </div>
       )}
 
