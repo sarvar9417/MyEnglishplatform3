@@ -53,6 +53,8 @@ export async function addPersonalWordToDB(
       uzbek: wordData.uzbek,
       phonetic: wordData.phonetic || null,
       example: wordData.example || null,
+      // @ts-expect-error example_uzbek column may not exist in generated types yet
+      example_uzbek: wordData.example_uzbek || null,
       category: wordData.category || 'custom',
       level: wordData.level || 'A2',
       source: wordData.source || 'manual',
@@ -95,6 +97,7 @@ export async function updatePersonalWordInDB(
     uzbek?: string
     phonetic?: string
     example?: string
+    example_uzbek?: string
     category?: string
     level?: string
     part_of_speech?: string | null
@@ -103,6 +106,7 @@ export async function updatePersonalWordInDB(
   if (updates.uzbek !== undefined) payload.uzbek = updates.uzbek
   if (updates.phonetic !== undefined) payload.phonetic = updates.phonetic
   if (updates.example !== undefined) payload.example = updates.example
+  if (updates.example_uzbek !== undefined) payload.example_uzbek = updates.example_uzbek
   if (updates.category !== undefined) payload.category = updates.category
   if (updates.level !== undefined) payload.level = updates.level
   if (updates.part_of_speech !== undefined) payload.part_of_speech = updates.part_of_speech
@@ -263,6 +267,7 @@ export async function batchAddPersonalWordsToDB(
     uzbek: w.uzbek,
     phonetic: w.phonetic || null,
     example: w.example || null,
+    example_uzbek: w.example_uzbek || null,
     category: w.category || 'custom',
     level: w.level || 'A2',
     source: w.source || 'imported',
@@ -301,7 +306,7 @@ export async function batchAddPersonalWordsToDB(
 export async function generateAITranslation(
   word: string,
   context?: string
-): Promise<{ uzbek: string; phonetic?: string; example?: string; level?: 'A1' | 'A2' | 'B1' | 'B2'; category?: string; part_of_speech?: string }> {
+): Promise<{ uzbek: string; phonetic?: string; example?: string; example_uzbek?: string; level?: 'A1' | 'A2' | 'B1' | 'B2'; category?: string; part_of_speech?: string }> {
   try {
     const categoryContext = context ? ` in the context of "${context}"` : ''
     const exampleInstruction = context
@@ -314,6 +319,7 @@ Respond with ONLY a valid JSON object (no markdown, no extra text):
   "uzbek": "Uzbek translation",
   "phonetic": "IPA pronunciation if applicable",
   "example": "Example sentence in English using this word",
+  "example_uzbek": "Uzbek translation of the example sentence",
   "level": "A1, A2, B1, or B2 based on word difficulty",
   "category": "one of: custom, grammar, travel, formal, ielts, business, food, health, education, social, work, shopping, relationships, environment, economy, culture, feelings, discussion, technology, communication",
   "part_of_speech": "noun, verb, adjective, adverb, preposition, conjunction, pronoun, interjection, or other"
@@ -323,6 +329,7 @@ Rules:
 - uzbek: concise Uzbek translation (1-3 words max)
 - phonetic: IPA notation like /ˈwɜːrd/ or empty string if not applicable
 - example: ${exampleInstruction}
+- example_uzbek: Natural Uzbek translation of the example sentence (grammatically correct, natural sounding)
 - level: A1 (basic daily words like cat, go, big), A2 (elementary like comfortable, develop), B1 (intermediate like analyze, significant), B2 (advanced like ambivalent, pragmatic)
 - category: most relevant category from the list
 - part_of_speech: the grammatical role of the word
@@ -355,6 +362,7 @@ Rules:
       uzbek: parsed.uzbek || '',
       phonetic: parsed.phonetic || undefined,
       example: parsed.example || undefined,
+      example_uzbek: parsed.example_uzbek || undefined,
       level: parsed.level || undefined,
       category: parsed.category || undefined,
       part_of_speech: parsed.part_of_speech || undefined,
@@ -368,6 +376,104 @@ Rules:
   }
 }
 
+// ─── Batch Example Translation ────────────────────────────────────────────
+
+/**
+ * AI yordamida mavjud so'zlarning misol gaplarini o'zbekchaga tarjima qiladi.
+ * Faqat `example` maydoni bor-u `example_uzbek` maydoni bo'lmagan so'zlar uchun.
+ * Har bir so'z alohida AI chaqiruvida, lekin parallel ravishda (5 tadan) ishlanadi.
+ */
+export async function batchGenerateExampleUzbek(
+  userId: string,
+  words: PersonalWord[],
+  onProgress?: (completed: number, total: number, currentWord: string) => void
+): Promise<number> {
+  const toTranslate = words.filter(w => w.example && !w.example_uzbek)
+  if (toTranslate.length === 0) {
+    useToastStore.getState().toast("Tarjima qilish uchun so'zlar topilmadi", 'info')
+    return 0
+  }
+
+  let completed = 0
+  const total = toTranslate.length
+  const BATCH_SIZE = 5
+
+  useToastStore.getState().toast(`${total} ta misol gap tarjima qilinmoqda...`, 'info', 4000)
+
+  // Process in batches to avoid overwhelming the API
+  for (let i = 0; i < total; i += BATCH_SIZE) {
+    const batch = toTranslate.slice(i, i + BATCH_SIZE)
+    const promises = batch.map(async (word) => {
+      try {
+        const translation = await translateExampleSentence(word.english, word.example!, word.uzbek)
+        if (translation) {
+          await updatePersonalWordInDB(userId, word.id, { example_uzbek: translation })
+          completed++
+          onProgress?.(completed, total, word.english)
+          return true
+        }
+      } catch (e) {
+        monitoring.captureMessage(
+          `translateExample failed for "${word.english}": ${e instanceof Error ? e.message : String(e)}`,
+          'warn'
+        )
+      }
+      return false
+    })
+
+    await Promise.allSettled(promises)
+  }
+
+  if (completed > 0) {
+    useToastStore.getState().toast(`${completed} ta misol gap tarjima qilindi`, 'success')
+  } else {
+    useToastStore.getState().toast('Hech qanday tarjima amalga oshirilmadi', 'warning')
+  }
+
+  return completed
+}
+
+/**
+ * Bitta misol gapni AI orqali o'zbekchaga tarjima qiladi.
+ * Prompt juda aniq va ixcham — faqat tarjima qaytaradi.
+ */
+async function translateExampleSentence(
+  word: string,
+  example: string,
+  uzbek: string
+): Promise<string | null> {
+  const prompt = `Translate this English sentence to natural Uzbek.
+
+The word "${word}" means "${uzbek}" in Uzbek.
+
+Sentence: "${example}"
+
+Rules:
+- Translate naturally, not word-by-word
+- Keep the same meaning
+- Use natural Uzbek grammar
+- Respond with ONLY the Uzbek translation, nothing else`
+
+  const response = await fetch('/api/claude', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      max_tokens: 150,
+      messages: [{ role: 'user', content: prompt }],
+    }),
+  })
+
+  if (!response.ok) {
+    throw new Error(`AI translation failed: ${response.status}`)
+  }
+
+  const data = await response.json()
+  const content = data.content?.[0]?.text ?? data.text ?? ''
+  const translation = content.replace(/^["']|["']$/g, '').trim()
+
+  return translation || null
+}
+
 // ─── Import/Export ─────────────────────────────────────────────────────────
 
 export function exportPersonalVocabulary(words: PersonalWord[]): string {
@@ -376,6 +482,7 @@ export function exportPersonalVocabulary(words: PersonalWord[]): string {
     uzbek: w.uzbek,
     phonetic: w.phonetic,
     example: w.example,
+    example_uzbek: w.example_uzbek,
     part_of_speech: w.part_of_speech,
     category: w.category,
     level: w.level,
@@ -393,6 +500,7 @@ export function importPersonalVocabulary(jsonString: string): AddWordDTO[] {
         uzbek: String(item.uzbek || '').trim(),
         phonetic: item.phonetic ? String(item.phonetic) : undefined,
         example: item.example ? String(item.example) : undefined,
+        example_uzbek: item.example_uzbek ? String(item.example_uzbek) : undefined,
         part_of_speech: (item.part_of_speech as PartOfSpeech) || undefined,
         category: (item.category as AddWordDTO['category']) || 'custom',
         level: (item.level as AddWordDTO['level']) || 'A2',

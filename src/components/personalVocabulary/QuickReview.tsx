@@ -244,9 +244,16 @@ export default function QuickReview({ words, onComplete, onExit }: QuickReviewPr
               {currentWord.uzbek}
             </p>
             {currentWord.example && (
-              <p className="text-sm text-gray-500 dark:text-gray-400 italic text-center mb-4 max-w-sm">
-                &ldquo;{currentWord.example.length > 100 ? currentWord.example.slice(0, 100) + '...' : currentWord.example}&rdquo;
-              </p>
+              <div className="text-center mb-4 max-w-sm space-y-1">
+                <p className="text-sm text-gray-500 dark:text-gray-400 italic">
+                  &ldquo;{currentWord.example.length > 100 ? currentWord.example.slice(0, 100) + '...' : currentWord.example}&rdquo;
+                </p>
+                {currentWord.example_uzbek && (
+                  <p className="text-xs text-gray-500 dark:text-gray-400 not-italic">
+                    📖 {currentWord.example_uzbek}
+                  </p>
+                )}
+              </div>
             )}
 
             {/* Rating Buttons */}

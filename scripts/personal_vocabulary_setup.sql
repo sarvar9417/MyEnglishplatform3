@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS public.personal_vocabulary (
   uzbek            TEXT    NOT NULL,
   phonetic         TEXT,
   example          TEXT,
+  example_uzbek    TEXT,
   category         TEXT    NOT NULL DEFAULT 'custom',
   level            TEXT    NOT NULL DEFAULT 'A2',
   source           TEXT    NOT NULL DEFAULT 'manual',

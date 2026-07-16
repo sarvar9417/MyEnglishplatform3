@@ -14,6 +14,7 @@ export interface PersonalWord {
   uzbek: string
   phonetic?: string
   example?: string
+  example_uzbek?: string
   part_of_speech?: PartOfSpeech
   category: VocabCategory
   level: 'A1' | 'A2' | 'B1' | 'B2'
@@ -48,6 +49,7 @@ export interface AddWordDTO {
   uzbek: string
   phonetic?: string
   example?: string
+  example_uzbek?: string
   part_of_speech?: PartOfSpeech
   category?: VocabCategory
   level?: 'A1' | 'A2' | 'B1' | 'B2'
@@ -60,6 +62,7 @@ export interface UpdateWordDTO {
   uzbek?: string
   phonetic?: string
   example?: string
+  example_uzbek?: string
   part_of_speech?: PartOfSpeech
   category?: VocabCategory
   level?: 'A1' | 'A2' | 'B1' | 'B2'

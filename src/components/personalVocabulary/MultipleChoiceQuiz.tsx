@@ -357,7 +357,12 @@ export default function MultipleChoiceQuiz({ words, allWords, onComplete, onExit
               )}
             </div>
             {currentWord.example && (
-              <p className="text-gray-500 dark:text-gray-400 italic mt-1">&ldquo;{currentWord.example}&rdquo;</p>
+              <div className="mt-1 space-y-0.5">
+                <p className="text-gray-500 dark:text-gray-400 italic">&ldquo;{currentWord.example}&rdquo;</p>
+                {currentWord.example_uzbek && (
+                  <p className="text-gray-500 dark:text-gray-400 not-italic text-[10px]">📖 {currentWord.example_uzbek}</p>
+                )}
+              </div>
             )}
             {/* Rating after feedback */}
             <div className="flex flex-wrap gap-1.5 mt-3 pt-2 border-t border-green-200 dark:border-green-800">

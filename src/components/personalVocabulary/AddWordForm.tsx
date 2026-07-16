@@ -6,8 +6,8 @@ import { monitoring } from '../../lib/monitoring'
 interface AddWordFormProps {
   onAdd: (wordData: AddWordDTO) => Promise<void>
   onCancel: () => void
-  onAITranslate: (word: string, context?: string) => Promise<{ uzbek: string; phonetic?: string; example?: string; level?: 'A1' | 'A2' | 'B1' | 'B2'; category?: string; part_of_speech?: string }>
-  editWord?: { english: string; uzbek: string; phonetic?: string; example?: string; category: VocabCategory; level: 'A1' | 'A2' | 'B1' | 'B2'; part_of_speech?: PartOfSpeech } | null
+  onAITranslate: (word: string, context?: string) => Promise<{ uzbek: string; phonetic?: string; example?: string; example_uzbek?: string; level?: 'A1' | 'A2' | 'B1' | 'B2'; category?: string; part_of_speech?: string }>
+  editWord?: { english: string; uzbek: string; phonetic?: string; example?: string; example_uzbek?: string; category: VocabCategory; level: 'A1' | 'A2' | 'B1' | 'B2'; part_of_speech?: PartOfSpeech } | null
 }
 
 const CATEGORIES: { value: VocabCategory; label: string; icon: string }[] = [
@@ -63,6 +63,7 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
   const [uzbek, setUzbek] = useState(editWord?.uzbek || '')
   const [phonetic, setPhonetic] = useState(editWord?.phonetic || '')
   const [example, setExample] = useState(editWord?.example || '')
+  const [exampleUzbek, setExampleUzbek] = useState(editWord?.example_uzbek || '')
   const [category, setCategory] = useState<VocabCategory>(editWord?.category || 'custom')
   const [level, setLevel] = useState<'A1' | 'A2' | 'B1' | 'B2'>(editWord?.level || 'A2')
   const [partOfSpeech, setPartOfSpeech] = useState<PartOfSpeech>(editWord?.part_of_speech || 'other')
@@ -81,6 +82,7 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
       if (result.uzbek && !uzbek) setUzbek(result.uzbek)
       if (result.phonetic && !phonetic) setPhonetic(result.phonetic)
       if (result.example && !example) setExample(result.example)
+      if (result.example_uzbek && !exampleUzbek) setExampleUzbek(result.example_uzbek)
       if (result.level && VALID_LEVELS.has(result.level)) setLevel(result.level)
       if (result.category && VALID_CATEGORIES.has(result.category as VocabCategory)) setCategory(result.category as VocabCategory)
       if (result.part_of_speech && VALID_POS.has(result.part_of_speech as PartOfSpeech)) setPartOfSpeech(result.part_of_speech as PartOfSpeech)
@@ -101,6 +103,7 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
         uzbek: uzbek.trim(),
         phonetic: phonetic.trim() || undefined,
         example: example.trim() || undefined,
+        example_uzbek: exampleUzbek.trim() || undefined,
         category,
         level,
         part_of_speech: partOfSpeech,
@@ -122,10 +125,11 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
     uzbek: uzbek || 'tarjima',
     phonetic: phonetic || undefined,
     example: example || undefined,
+    example_uzbek: exampleUzbek || undefined,
     level,
     category,
     part_of_speech: partOfSpeech,
-  }), [english, uzbek, phonetic, example, level, category, partOfSpeech])
+  }), [english, uzbek, phonetic, example, exampleUzbek, level, category, partOfSpeech])
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -230,17 +234,31 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
         </div>
 
         {/* Example */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-            Misol gap <span className="text-gray-400 dark:text-gray-500 font-normal">(ixtiyoriy)</span>
-          </label>
-          <input
-            type="text"
-            value={example}
-            onChange={(e) => setExample(e.target.value)}
-            placeholder="Masalan: Finding that rare book was a moment of serendipity."
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-shadow"
-          />
+        <div className="space-y-3">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+              Misol gap (inglizcha) <span className="text-gray-400 dark:text-gray-500 font-normal">(ixtiyoriy)</span>
+            </label>
+            <input
+              type="text"
+              value={example}
+              onChange={(e) => setExample(e.target.value)}
+              placeholder="Masalan: Finding that rare book was a moment of serendipity."
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-shadow"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+              Misol gap (o'zbekcha) <span className="text-gray-400 dark:text-gray-500 font-normal">(ixtiyoriy)</span>
+            </label>
+            <input
+              type="text"
+              value={exampleUzbek}
+              onChange={(e) => setExampleUzbek(e.target.value)}
+              placeholder="Masalan: Nodir kitobni topish bir lahzalik omad edi."
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base placeholder:text-gray-400 dark:placeholder:text-gray-500 transition-shadow"
+            />
+          </div>
         </div>
 
         {/* Category, Level & Part of Speech */}
@@ -319,7 +337,12 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{previewWord.uzbek}</p>
                 {previewWord.example && (
-                  <p className="text-xs text-gray-400 italic mb-2">&ldquo;{previewWord.example}&rdquo;</p>
+                  <div className="space-y-1 mb-2">
+                    <p className="text-xs text-gray-400 italic">&ldquo;{previewWord.example}&rdquo;</p>
+                    {previewWord.example_uzbek && (
+                      <p className="text-xs text-gray-500 not-italic">📖 {previewWord.example_uzbek}</p>
+                    )}
+                  </div>
                 )}
                 <div className="flex flex-wrap gap-1.5">
                   <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-800">{previewWord.level}</span>

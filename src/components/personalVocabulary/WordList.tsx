@@ -189,20 +189,27 @@ export default function WordList({ words, onDelete, onRate, onEdit }: WordListPr
 
                   {/* Example Sentence */}
                   {word.example && (
-                    <p className="text-xs text-gray-400 dark:text-gray-500 italic leading-relaxed mb-2.5">
-                      &ldquo;{word.example.length > 80 ? `${word.example.slice(0, 80)}...` : word.example}&rdquo;
-                      <button
-                        onClick={(e) => { e.stopPropagation(); speakExample(word) }}
-                        className={`inline-flex items-center ml-1 p-0.5 rounded transition-all align-middle ${
-                          speakingWordId === word.id
-                            ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-500 scale-110'
-                            : 'text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-500'
-                        }`}
-                        title="Misol gapni eshitish"
-                      >
-                        <Volume2 size={13} />
-                      </button>
-                    </p>
+                    <div className="space-y-1 mb-2.5">
+                      <p className="text-xs text-gray-400 dark:text-gray-500 italic leading-relaxed">
+                        &ldquo;{word.example.length > 80 ? `${word.example.slice(0, 80)}...` : word.example}&rdquo;
+                        <button
+                          onClick={(e) => { e.stopPropagation(); speakExample(word) }}
+                          className={`inline-flex items-center ml-1 p-0.5 rounded transition-all align-middle ${
+                            speakingWordId === word.id
+                              ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-500 scale-110'
+                              : 'text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-500'
+                          }`}
+                          title="Misol gapni eshitish"
+                        >
+                          <Volume2 size={13} />
+                        </button>
+                      </p>
+                      {word.example_uzbek && (
+                        <p className="text-xs text-gray-500 dark:text-gray-400 not-italic leading-relaxed">
+                          📖 {word.example_uzbek}
+                        </p>
+                      )}
+                    </div>
                   )}
 
                   {/* Tags Row */}

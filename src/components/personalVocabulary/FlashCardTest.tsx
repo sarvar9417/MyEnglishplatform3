@@ -492,9 +492,16 @@ export default function FlashCardTest({ words, onComplete, onExit, initialMode }
                 </p>
 
                 {currentWord.example && (
-                  <p className="text-sm text-gray-500 italic mb-4 text-center max-w-md">
-                    &ldquo;{currentWord.example}&rdquo;
-                  </p>
+                  <div className="mb-4 text-center max-w-md space-y-1">
+                    <p className="text-sm text-gray-500 italic">
+                      &ldquo;{currentWord.example}&rdquo;
+                    </p>
+                    {currentWord.example_uzbek && (
+                      <p className="text-xs text-gray-500 not-italic">
+                        📖 {currentWord.example_uzbek}
+                      </p>
+                    )}
+                  </div>
                 )}
 
                 <div className="flex items-center gap-2 text-xs text-gray-400 mb-6">
