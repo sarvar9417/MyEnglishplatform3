@@ -17,6 +17,8 @@ import {
 import { futurePerfectContinuous } from '../tenses/tensesData'
 // Kurikulum bo'shliqlari to'ldirildi (Supabase'dan): IELTS uchun muhim B2 mavzulari
 import { advancedPassiveB2, inversionB2, cleftSentencesB2, academicVocabularyB2 } from './b2Extra'
+// B2 Advanced Relative Clauses — reduced clauses, preposition+relative, compounds
+import { advancedRelativeClausesB2 } from './b2AdvancedRelativeClauses'
 
 // B2 — eng murakkab; yakuniy "Comprehensive Review" eng oxirda turishi shart
 export const B2_LESSONS_NEW: DailyLesson[] = [
@@ -31,6 +33,7 @@ export const B2_LESSONS_NEW: DailyLesson[] = [
   cohesionB2,
   registerB2,
   complexSentencesB2,
+  advancedRelativeClausesB2,
   advancedModalsB2,
   contrastiveStructuresB2,
   inversionB2,

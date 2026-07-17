@@ -28,6 +28,18 @@ export const relativeClausesB1: DailyLesson = {
     difficulty: 'medium',
     topic: "Nisbiy gaplar — who / which / that / where / whose",
   },
+  writing: {
+    prompt: "Describe a person, a place, and an object that are important to you. Use defining relative clauses with 'who', 'which', 'that', 'where', and 'when' to give more details about each one. Write at least 7 sentences.",
+    wordLimit: 100,
+    tips: [
+      "Use 'who' for people: 'The person who inspires me most is...'",
+      "Use 'which' for things: 'The book which changed my life is...'",
+      "Use 'that' for both people and things: 'The friend that I trust...'",
+      "Use 'where' for places: 'The city where I was born...'",
+      "Use 'when' for time: 'The year when I started university...'",
+      "In defining relative clauses, 'that' can replace 'who' and 'which'.",
+    ],
+  },
   formulas: [
     {
       color: "green",

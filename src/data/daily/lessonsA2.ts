@@ -5,6 +5,8 @@ import { adjectiveAdverb, gerundsInfinitives, passiveVoice, reportedSpeech, firs
 // thereIsThereAre — A1 'There is/are' (thereIsAre) bilan dublikat → ketma-ketlikdan chiqarildi
 import { possessives, someAnyNoEvery, verbPatterns, timePrepositions } from './a2Part3'
 import { presentContinuousFuture, quantifiers, tooEnough, soSuch, a2Review2 } from './a2Part4'
+// A2 Relative Clauses — asosiy who/which/that/where/when
+import { basicRelativeClausesA2 } from './a2RelativeClauses'
 // A2 zamonlari — darajaga singdirildi (oldin alohida blok bo'lib oxirda turardi)
 import { pastContinuous, presentPerfect } from '../tenses/tensesData'
 // 6 zamon aralash takrorlash
@@ -35,5 +37,6 @@ export const A2_LESSONS: DailyLesson[] = [
   quantifiers,
   tooEnough,
   soSuch,
+  basicRelativeClausesA2,
   a2Review2,
 ]

@@ -11,6 +11,8 @@ import {
 } from '../tenses/tensesData'
 // Kurikulum bo'shliqlari to'ldirildi (Supabase'dan): asosiy Relative Clauses va Phrasal Verbs
 import { relativeClausesB1, phrasalVerbsB1 } from './b1Extra'
+// B1 Second Conditional — unreal/hypothetical situations
+import { secondConditionalB1 } from './b1SecondConditional'
 import { pragmaticsFormalInformal } from './b1Pragmatics'
 
 // B1 — perfect/continuous zamonlari oldinroq, keyin modallar va murakkab tuzilmalar:
@@ -32,6 +34,7 @@ export const B1_LESSONS_NEW: DailyLesson[] = [
   bothEitherNeither,
   soNeitherAuxiliaries,
   timeClauses,
+  secondConditionalB1,
   phrasalVerbsB1,
   wishesRegrets,
   pragmaticsFormalInformal,
