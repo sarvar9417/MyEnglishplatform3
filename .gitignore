@@ -58,3 +58,6 @@ test-results/
 # Backup files
 *.bak
 !scripts/add_rls_policies.sql
+!scripts/seed-fixed-lessons.mjs
+!scripts/seed-fixed-lessons.sql
+!scripts/seed-fixed-lessons-clean.sql
