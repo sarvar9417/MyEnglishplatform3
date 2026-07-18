@@ -1053,25 +1053,15 @@ export const phrasalVerbsB1: DailyLesson = {
     }
   ],
   rules: [
-    "1 PHRASAL VERBS NIMA",
-    "Verb + particle (preposition/adverb) yangi mano",
-    "Boshqa so'z bilan aralashib ketmasin",
-    "2 INSEPARABLE PHRASAL VERBS",
-    "Look after, run into, get over, care for, depend on",
-    "Particle dan keyin obekt keladi",
-    "3 SEPARABLE PHRASAL VERBS",
-    "Pick up, turn off, put on, take off, give up, put away",
-    "Noun: verb + particle + noun YOKI verb + noun + particle",
-    "Pronoun: ALWAYS verb + pronoun + particle",
-    "4 COMMON PHRASAL VERBS",
-    "Get along with, find out, bring up, come across, carry out",
-    "Look forward to, put up with, go through, take after, break down",
-    "5 THREE-WORD PHRASAL VERBS",
-    "Verb + particle1 + particle2: doim inseparable",
-    "Run out of, get along with, look up to, put up with, come up with",
-    "6 PHRASAL VERBS IN CONTEXT",
-    "Doim kontekstga qarab tushuniladi",
-    "Rasmiy tilda single word verb afzal (investigate vs look into)"
+    "1️⃣ PHRASAL VERBS NIMA?\n\nPhrasal verb — bu verb + particle (preposition yoki adverb) birikmasi bo'lib, yangi ma'no hosil qiladi.\n\n📌 MUHIM: Phrasal verb ma'nosi uning tarkibidagi so'zlarning ma'nosidan farq qiladi!\n  → look = qaramoq / look after = qaramoq (birovga g'amxo'rlik qilish)\n  → give = bermoq / give up = tashlamoq, voz kechmoq\n\n📌 IKKI XIL TURI BOR:\n  • Inseparable (ajralmaydigan) — particle obektdan oldin keladi\n  • Separable (ajraladigan) — noun obekt particle dan oldin yoki keyin kela oladi",
+
+    "2️⃣ INSEPARABLE PHRASAL VERBS\n\nInseparable phrasal verb'larda particle obektdan AYRILMAYDI — har doim birga keladi.\n\n📌 MISOLLAR:\n  • look after → I look after my sister. (Singlimga qarayman)\n  • run into → I ran into an old friend. (Eski do'stimga tasodifan duch keldim)\n  • get over → She got over her illness. (U kasalligidan tuzaldi)\n  • care for → He cares for his parents. (U ota-onasiga qaraydi)\n  • depend on → It depends on the weather. (Ob-havoga bog'liq)\n\n🔴 QOIDA: Obekt particle dan keyin keladi. Verb va particle orasiga hech narsa qo'yib bo'lmaydi.\n  ✅ I look after my sister.\n  ❌ I look my sister after.",
+
+    "3️⃣ SEPARABLE PHRASAL VERBS\n\nSeparable phrasal verb'larda obekt (noun) verb va particle orasiga qo'yilishi mumkin.\n\n📌 NOUN BILAN — ikki xil variant:\n  • Verb + particle + noun: Turn off the TV.\n  • Verb + noun + particle: Turn the TV off.\n\n📌 PRONOUN BILAN — DOIM verb + pronoun + particle:\n  ✅ Turn it off.\n  ❌ Turn off it.\n\n📌 MISOLLAR:\n  • pick up / put down / turn on / take off / give up\n  → Pick up the book. / Pick the book up. / Pick it up.\n  → Put on your coat. / Put your coat on. / Put it on.\n\n🔴 Pronoun bilan ALWAYS verb orasida!",
+
+    "4️⃣ COMMON PHRASAL VERBS\n\nEng keng tarqalgan phrasal verb'lar:\n\n📌 INSEPARABLE:\n  • get along with — I get along with my colleagues.\n  • come across — I came across an interesting article.\n  • go through — She went through a difficult time.\n  • take after — He takes after his father.\n  • break down — The car broke down on the highway.\n\n📌 SEPARABLE:\n  • find out — Find out the truth. / Find the truth out.\n  • bring up — She brought up three children. / She brought them up.\n  • carry out — Carry out the plan. / Carry it out.\n  • put away — Put away your toys. / Put them away.\n\n📌 THREE-WORD (doim inseparable):\n  • look forward to — I look forward to meeting you.\n  • put up with — I can't put up with this noise.\n  • run out of — We ran out of milk.\n  • look up to — I look up to my teacher.\n  • come up with — She came up with a great idea.",
+
+    "5️⃣ PHRASAL VERBS IN CONTEXT\n\n📌 KONTEKST MUHIM: Phrasal verb'lar ko'p ma'noli bo'lishi mumkin. Ma'no kontekstga qarab tushuniladi.\n  • give up = tashlamoq: I gave up smoking. (Chekishni tashladim)\n  • give up = topshirmoq: He gave up his seat. (Joyini berdi)\n\n📌 RASMIY VA NORASMIY:\n  • Norasmiy (phrasal verb): investigate → look into\n  • Rasmiy (single verb): reduce → cut down on\n  • IELTS: Rasmiy yozuvda single verb afzal, speaking da phrasal verb tabiiy\n\n📌 ESLATMA: Phrasal verb'ni noto'g'ri ishlatish — keng tarqalgan xato. Har bir phrasal verb ni inseparable yoki separable ekanini alohida o'rganing!",
   ],
   vocabulary: [
     {
