@@ -71,28 +71,21 @@ export const relativeClausesB1: DailyLesson = {
       example: "The man whom I met was very kind. (Uchrashgan odam juda mehribon edi)" },
   ],
   rules: [
-    "1 RELATIVE CLAUSES NIMA",
-    "Relative clauses ot haqida qo'shimcha ma'lumot beradi",
-    "Defining (aniqlovchi) kim haqida ekanini aniqlaydi",
-    "Non-defining (qo'shimcha) qo'shimcha ma'lumot beradi",
-    "2 DEFINING RELATIVE CLAUSES",
-    "WHO odamlar, WHICH narsalar uchun",
-    "THAT defining da odam va narsa uchun ishlatiladi",
-    "WHERE joy, WHEN vaqt uchun",
-    "3 NON-DEFINING RELATIVE CLAUSES",
-    "Vergul bilan ajratiladi, THAT ishlatilmaydi",
-    "Qo'shimcha ma'lumot, busiz gap mantiqli",
-    "4 WHOSE VA WHOM",
-    "WHOSE egalik (kimningdir narsasi)",
-    "WHOM obekt (rasmiy), kundalikda who ishlatiladi",
-    "5 OBJEKTNI TUSHIRISH",
-    "Obekt vazifasidagini tushirish mumkin",
-    "Ega vazifasidagini tushirib bo'lmaydi",
-    "6 OZBEKCHA XATOLAR",
-    "Who va which ni aralashtirish",
-    "That ni non-defining da ishlatish",
-    "Vergulni unutish non-defining da",
-    "Whose ni unutish"
+    "1️⃣ RELATIVE CLAUSES NIMA?\n\nRelative clauses (nisbiy gaplar) — bir ot haqida qo'shimcha ma'lumot beradi.\n\n📌 DEFINING (aniqlovchi) — otning kim yoki nima ekanligini aniqlashtiradi. Busiz gap mantiqsiz. Vergulsiz yoziladi.\n  → The woman who lives next door is a doctor.\n\n📌 NON-DEFINING (qo'shimcha) — qo'shimcha ma'lumot beradi. Olib tashlansa ham gap mantiqli. Vergul bilan ajratiladi.\n  → My mother, who is a doctor, lives in London.\n\n🔴 Defining = gap uchun MUHIM / Non-defining = qo'shimcha ma'lumot",
+
+    "2️⃣ WHO VA WHICH\n\n📌 WHO — odamlar uchun (subject vazifasida)\n  → The man who called you is my brother.\n  → The woman who lives next door is kind.\n\n📌 WHICH — narsalar va hayvonlar uchun\n  → The book which I read was interesting.\n  → The car which is parked outside is mine.\n\n🔴 Who = odamlar / Which = narsalar. Aralashtirmang!\n  ❌ The book who I read was interesting.\n  ✅ The book which/that I read was interesting.",
+
+    "3️⃣ THAT — DEFINING DA IKKALASI UCHUN\n\n'That' odam va narsa uchun ishlatiladi (faqat DEFINING relative clause da).\n  → The man that called you is my brother.\n  → The book that I read was interesting.\n\n🔴 Non-defining da 'that' ishlatilmaydi!\n  ✅ My brother, who lives in London, is a doctor.\n  ❌ My brother, that lives in London, is a doctor.",
+
+    "4️⃣ WHERE VA WHEN\n\n📌 WHERE — joylar uchun\n  → The town where I grew up is small.\n  → The restaurant where we ate was amazing.\n\n📌 WHEN — vaqt uchun\n  → I remember the year when we travelled.\n  → The day when we first met was special.",
+
+    "5️⃣ WHOSE — EGALIK\n\n'Whose' egalik bildiradi (kimningdir narsasi). Odamlar va narsalar uchun ishlatiladi.\n  → The student whose bag was stolen was upset.\n  → The girl whose father is a doctor studies with me.\n  → The company whose CEO resigned is struggling.\n\n🔴 Whose o'rniga 'his/her/its' ishlatish XATO!\n  ❌ The man his car was stolen called police.\n  ✅ The man whose car was stolen called police.",
+
+    "6️⃣ WHOM — OBEKT (RASMIY)\n\n'Whom' obekt vazifasidagi nisbiy olmosh. Rasmiy uslubda ishlatiladi.\n  → The man whom I met yesterday is famous.\n  → The professor whom I respect most is Dr. Karimov.\n\n📌 Kundalik nutqda 'whom' o'rniga 'who' yoki 'that' ishlatiladi:\n  → The man (who) I met yesterday is famous. (kundalik)\n\n🔴 WHOM = rasmiy yozuvda / WHO = kundalik nutqda",
+
+    "7️⃣ OBYEKTNI TUSHIRISH (Omission)\n\nRelative pronounni tushirish faqat obekt vazifasida MUMKIN.\n\n📌 Pronoun + noun (obekt) → tushirish mumkin\n  → The book (that/which) I read was interesting.\n  → The man (who/whom) I met was kind.\n\n📌 Pronoun + verb (subject) → tushirib BO'LMAYDI\n  ✅ The woman who lives next door is a nurse.\n  ❌ The woman lives next door is a nurse.\n\n🔴 Qoida: Obekt = tushir mumkin / Subject = tushirib bo'lmaydi",
+
+    "8️⃣ DEFINING VS NON-DEFINING — FARQLARI\n\n📌 Defining: vergul YO'Q + that MUMKIN + gap uchun MUHIM\n  → The man who lives next door is a doctor.\n  → The book that I bought is interesting.\n\n📌 Non-defining: vergul BOR + that YO'Q + qo'shimcha ma'lumot\n  → My father, who is 60, works as a teacher.\n  → Paris, which is beautiful, attracts many tourists.\n\n🔴 Vergulni unutish (non-defining da) — keng tarqalgan xato!\n  ❌ My brother who lives in London is a doctor.\n  ✅ My brother, who lives in London, is a doctor.",
   ],
   vocabulary: [
     {
