@@ -77,6 +77,7 @@ const lazyPages = {
   FilmHub: lazyWithReload(() => import('./pages/FilmHub')),
   FilmDetail: lazyWithReload(() => import('./pages/FilmDetail')),
   ThirtyDayChallenge: lazyWithReload(() => import('./pages/ThirtyDayChallenge')),
+  WeeklyPlan: lazyWithReload(() => import('./pages/WeeklyPlan')),
 }
 
 // ─── App Shell ────────────────────────────────────────────────────────────────

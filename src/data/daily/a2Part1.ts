@@ -1,6 +1,17 @@
 ﻿import type { DailyLesson } from '../dailyLessons'
 export const modalVerbs: DailyLesson = {
   id: 'modal-verbs',
+  speaking: {
+    prompt: "Talk about yourself for one minute using modal verbs. Say what you CAN and CAN'T do, what you MUST do at home or work, and give one piece of advice with SHOULD.",
+    tips: [
+      "Qobiliyat: 'I can swim, but I can't drive.'",
+      "Majburiyat: 'I must wake up early every day.'",
+      "Maslahat: 'You should drink more water.'",
+      "Ehtimollik: 'I might travel next summer.'",
+      "Modaldan keyin fe'l ASL shaklda: 'can go', 'must study' (not 'to go').",
+    ],
+    sampleAnswer: "I can speak two languages — Uzbek and English — but I can't speak Russian well yet. Every morning I must wake up at seven o'clock because I have classes. At work, we must wear a uniform, but we can choose our own shoes. I think everyone should study English because it is very useful. This weekend I might visit my grandparents in the village. I should call them first to ask if they are home.",
+  },
   title: 'Modal Verbs',
   subtitle: "Can, must, should, might — imkoniyat, majburiyat, maslahat va ehtimollik",
   level: 'A2',
@@ -27,6 +38,7 @@ export const modalVerbs: DailyLesson = {
   },
   writing: {
     prompt: "Write about your abilities, rules, and advice. Say what you can do, what you must do at home or school, and give one piece of advice using 'should'.",
+    modelAnswer: "I can speak English and use a computer well, but I can't drive yet. At home, I must help my mother and I must do my homework every evening. At school, we must be quiet in the library, but we can talk in the yard. I think students should sleep early and shouldn't use their phones too much. If you want to learn English, you should practise every day. Next month I might join a speaking club.",
     wordLimit: 60,
     tips: [
       "Use 'can' for ability: 'I can swim.'",
@@ -277,6 +289,17 @@ export const modalVerbs: DailyLesson = {
 
 export const articles: DailyLesson = {
   id: 'articles',
+  speaking: {
+    prompt: "Describe your room or your favourite place. Speak for about one minute. Use 'a/an' for new things, 'the' for specific things, and no article for general or plural things.",
+    tips: [
+      "Yangi narsa (birinchi marta): 'There is A window.'",
+      "Aniq narsa (ma'lum): 'THE window is big.'",
+      "Umumiy/ko'plik: 'I like books.' (artiklsiz)",
+      "Unli tovushdan oldin 'an': 'an apple', 'an hour'.",
+      "Noyob narsalar 'the' bilan: 'the sun', 'the internet'.",
+    ],
+    sampleAnswer: "I want to describe my room. There is a bed near the window, and the bed is very comfortable. On the wall there is a big picture of mountains. I also have a desk where I do my homework. The desk is next to the door. I don't have a television in my room because I prefer books. Books are my favourite thing. In the evening, I open the window and look at the sky. It is the best place in our house.",
+  },
   title: 'Articles',
   subtitle: "A, an, the va zero article — aniqlik va noaniqlik",
   level: 'A2',
@@ -303,6 +326,7 @@ export const articles: DailyLesson = {
   },
   writing: {
     prompt: "Describe your favourite place in your city. Use 'a/an' for the first mention of a thing and 'the' for specific things. Remember zero article for general ideas.",
+    modelAnswer: "My favourite place in my city is a small park near the river. There is a big tree in the middle, and the tree gives good shade in summer. I usually sit on a bench and read a book. The air in the park is fresh, and the people are friendly. I love nature, and I don't need money to enjoy it. For me, the park is the best place to relax after a long day.",
     wordLimit: 60,
     tips: [
       "Use 'a/an' for one non-specific thing: 'a park'",
@@ -312,9 +336,9 @@ export const articles: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Indefinite (A/An)', structure: 'a + undosh tovush oldidan\nan + unli tovush oldidan', color: 'green' },
-    { label: 'Definite (The)', structure: "the + har qanday ot (aniq narsa)\nthe + unique things (quyosh, oy)", color: 'blue' },
-    { label: 'Zero Article', structure: "ot + s (ko'plik, umumiy)\nproper nouns, meals, sports", color: 'orange' },
+    { label: 'Indefinite (A/An)', structure: 'a + undosh tovush oldidan\nan + unli tovush oldidan', color: 'green', explanation: "Noaniq artikl — narsa birinchi marta yoki umumiy tilga olinganda. Undosh tovush oldidan 'a', unli tovush oldidan 'an'.", whenToUse: "Sanaladigan otni birinchi marta aytganda yoki 'bittasi' ma'nosida.", example: "I have a car and an old bike. (undosh → a, unli → an)" },
+    { label: 'Definite (The)', structure: "the + har qanday ot (aniq narsa)\nthe + unique things (quyosh, oy)", color: 'blue', explanation: "Aniq artikl — tinglovchi qaysi narsa haqida gap ketayotganini biladi, yoki noyob narsalar uchun.", whenToUse: "Ma'lum/aniq narsa, ikkinchi marta tilga olinganda, yoki yagona narsalar (the sun).", example: "The car I bought is red. The sun is bright." },
+    { label: 'Zero Article', structure: "ot + s (ko'plik, umumiy)\nproper nouns, meals, sports", color: 'orange', explanation: "Artiklsiz — ko'plik yoki sanalmaydigan otlar umumiy ma'noda, atoqli otlar, ovqat/sport nomlari.", whenToUse: "Umumiy tushunchalar, ko'plik otlar umuman, tillar, ovqatlar, sportlar bilan.", example: "I like music and play football. Cats are cute." },
   ],
   rules: [
     "1️⃣ ARTIKLLAR NIMA?\n\nO'zbek tilida artikl yo'q. Ingliz tilida otlar oldidan ko'pincha artikl ishlatiladi.\n\nA/AN — noaniq artikl (birinchi marta): I saw a dog. (bir it)\nTHE — aniq artikl (ma'lum): The dog is black. (o'sha it)\nZERO ARTICLE (artiklsiz) — umumiy: Dogs are animals.",
@@ -551,6 +575,17 @@ export const articles: DailyLesson = {
 
 export const prepositions: DailyLesson = {
   id: 'prepositions',
+  speaking: {
+    prompt: "Describe where things are in your house and talk about your daily schedule. Speak for about one minute. Use prepositions of place (in, on, under, next to, between) and time (at, on, in).",
+    tips: [
+      "Joy: 'The phone is ON the table.', 'The cat is UNDER the chair.'",
+      "Vaqt — soat: 'at 7 o'clock', 'at night'.",
+      "Vaqt — kun: 'on Monday', 'on my birthday'.",
+      "Vaqt — oy/yil: 'in July', 'in 2026', 'in the morning'.",
+      "Orasida/yonida: 'BETWEEN the bank and the shop', 'NEXT TO the door'.",
+    ],
+    sampleAnswer: "In my room, the bed is next to the window and my books are on the desk. Under the bed I keep my old shoes. I usually wake up at seven o'clock in the morning. On Monday I have English classes, and on Saturday I visit my friends. In the summer, in July, my family travels to the mountains. At night, I put my phone on the table and read a book in bed. Everything has its place and its time.",
+  },
   title: 'Prepositions of Time & Place',
   subtitle: "At, in, on — vaqt va joy predloglari",
   level: 'A2',
@@ -577,6 +612,7 @@ export const prepositions: DailyLesson = {
   },
   writing: {
     prompt: "Describe your weekly schedule and where you go. Use 'at', 'in', and 'on' for times and places.",
+    modelAnswer: "On weekdays I wake up at seven o'clock in the morning. I have English classes on Monday and Wednesday. At noon I eat lunch at home. In the afternoon I go to the library, and in the evening I do my homework. On Saturday I meet my friends in the city centre. I always rest on Sunday. I was born in May, so my birthday is in spring. I like my busy but happy week.",
     wordLimit: 55,
     tips: [
       "'at' for clock times: 'at 7 o'clock'",
@@ -586,10 +622,10 @@ export const prepositions: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'AT (vaqt)', structure: 'at + specific time (soat, kechasi)\nat 5 PM, at midnight, at night', color: 'green' },
-    { label: 'IN (vaqt)', structure: 'in + months, years, seasons, parts of day\nin June, in 2024, in summer, in the morning', color: 'blue' },
-    { label: 'ON (vaqt)', structure: 'on + days, dates\non Monday, on July 4th, on my birthday', color: 'orange' },
-    { label: 'AT/IN/ON (joy)', structure: 'at + specific point\nin + enclosed space\non + surface', color: 'purple' },
+    { label: 'AT (vaqt)', structure: 'at + specific time (soat, kechasi)\nat 5 PM, at midnight, at night', color: 'green', explanation: "Aniq vaqt nuqtasi uchun 'at' ishlatiladi.", whenToUse: "Soatlar, aniq daqiqalar va 'night', 'the weekend' bilan.", example: "The class starts at 8 o'clock. I sleep at night." },
+    { label: 'IN (vaqt)', structure: 'in + months, years, seasons, parts of day\nin June, in 2024, in summer, in the morning', color: 'blue', explanation: "Uzunroq davrlar — oy, yil, fasl va kun qismlari uchun 'in'.", whenToUse: "Oylar, yillar, fasllar va 'morning/afternoon/evening' bilan.", example: "I was born in April, in the morning." },
+    { label: 'ON (vaqt)', structure: 'on + days, dates\non Monday, on July 4th, on my birthday', color: 'orange', explanation: "Kunlar va sanalar uchun 'on' ishlatiladi.", whenToUse: "Hafta kunlari, aniq sanalar va bayramlar bilan.", example: "We meet on Monday and on 5 May." },
+    { label: 'AT/IN/ON (joy)', structure: 'at + specific point\nin + enclosed space\non + surface', color: 'purple', explanation: "Joy uchun: aniq nuqta = at, yopiq maydon = in, sirt = on.", whenToUse: "Manzil/nuqta (at), ichkarida (in), ustida (on) ni farqlaganda.", example: "She is at the door, in the room, on the chair." },
   ],
   rules: [
     "1️⃣ VAQT PREDLOGLARI\n\nAT — aniq vaqt: at 5 o'clock, at midnight, at noon, at night, at the weekend\nIN — uzoqroq vaqt: in July, in 2024, in summer, in the morning, in an hour\nON — kun va sana: on Monday, on July 4th, on my birthday\n\nO'zbek tilida hammasi '-da' (iyulda, dushanbada, soat 5 da). Ingliz tilida farqlanadi!",
@@ -785,6 +821,34 @@ export const prepositions: DailyLesson = {
 
 export const questionsLesson: DailyLesson = {
   id: 'questions',
+  reading: {
+    title: 'A Job Interview',
+    passage: "Last week, Kamola had her first job interview at a small IT company. She was nervous, but the manager was very kind. 'Where do you live?' he asked. 'I live in Chilanzar,' she answered. 'Why do you want to work here?' he continued. Kamola explained that she loves computers and wants to learn new skills.\n\nThen the manager asked, 'What can you do well?' She said she can design simple websites and speak English. 'How many languages do you speak?' 'Three — Uzbek, Russian, and English.' Finally, he asked, 'When can you start?' Kamola smiled and said, 'Next Monday!' Two days later, the company called her with good news: she got the job.",
+    vocabulary: [
+      { word: 'interview', definition: "suhbat (ish uchun)" },
+      { word: 'nervous', definition: "hayajonli, asabiy" },
+      { word: 'skills', definition: "ko'nikmalar" },
+      { word: 'design', definition: "loyihalash, yasash" },
+    ],
+    questions: [
+      { id: 90101, type: 'multiple-choice', question: "Where does Kamola live?", options: ['In an IT company', 'In Chilanzar', 'Next Monday', 'In three countries'], correctIndex: 1, explanation: "'I live in Chilanzar,' she answered." },
+      { id: 90102, type: 'multiple-choice', question: "Why does she want to work there?", options: ['She loves computers and wants new skills', 'She needs money', 'It is near her house', 'Her friend works there'], correctIndex: 0, explanation: "She 'loves computers and wants to learn new skills'." },
+      { id: 90103, type: 'multiple-choice', question: "How many languages does Kamola speak?", options: ['One', 'Two', 'Three', 'Four'], correctIndex: 2, explanation: "'Three — Uzbek, Russian, and English.'" },
+      { id: 90104, type: 'multiple-choice', question: "When can she start?", options: ['Last week', 'Two days later', 'Next Monday', 'Today'], correctIndex: 2, explanation: "'Next Monday!'" },
+      { id: 90105, type: 'multiple-choice', question: "What is the good news at the end?", options: ['She got the job', 'She learned English', 'She met the manager', 'She moved to Chilanzar'], correctIndex: 0, explanation: "'she got the job.'" },
+    ],
+  },
+  speaking: {
+    prompt: "Imagine you are meeting a new classmate. Ask them at least six questions to get to know them. Speak for about one minute. Use question words: What, Where, When, Who, Why, How, and Do/Does questions.",
+    tips: [
+      "What: 'What is your name?', 'What do you do?'",
+      "Where/When: 'Where do you live?', 'When do you study?'",
+      "Why/How: 'Why do you learn English?', 'How do you come to school?'",
+      "Yes/No: 'Do you like music?', 'Does your brother work?'",
+      "So'z tartibi: Question word + auxiliary + subject + verb.",
+    ],
+    sampleAnswer: "Hello! Nice to meet you. What is your name? Where do you live? I live near the market. When do you usually study English — in the morning or in the evening? Why do you want to learn English? For me, it is for travel and work. How do you come to school every day? Do you come by bus? Do you like sports? I love football. Who is your favourite player? It's great to meet a new friend. Let's practise English together!",
+  },
   title: 'Questions',
   subtitle: "Yes/No, Wh- va Tag questions — so'roq gaplar",
   level: 'A2',
@@ -811,6 +875,7 @@ export const questionsLesson: DailyLesson = {
   },
   writing: {
     prompt: "Write five questions you would ask a new classmate. Use Yes/No questions, Wh- questions, and at least one tag question.",
+    modelAnswer: "Here are some questions for a new classmate: What is your name? Where do you live? Do you like music? When do you usually study English? Why did you choose this school? How do you come here every day? You speak a little English, don't you? I would like to know more about you, so let's talk after class and practise together.",
     wordLimit: 55,
     tips: [
       "Yes/No: 'Do you...?', 'Are you...?'",
@@ -820,10 +885,10 @@ export const questionsLesson: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Yes/No Questions', structure: 'Auxiliary + subject + V1?\nDo you like tea?\nIs she a teacher?', color: 'green' },
-    { label: 'Wh- Questions', structure: 'Wh + auxiliary + subject + V1?\nWhere do you live?\nWhat is your name?', color: 'blue' },
-    { label: 'Tag Questions', structure: 'Positive statement, negative tag?\nYou like tea, don\'t you?\nShe is nice, isn\'t she?', color: 'orange' },
-    { label: 'Subject Questions', structure: 'Who/What + V (no auxiliary)\nWho lives here?\nWhat happened?', color: 'purple' },
+    { label: 'Yes/No Questions', structure: 'Auxiliary + subject + V1?\nDo you like tea?\nIs she a teacher?', color: 'green', explanation: "Ha/yo'q savoli — yordamchi fe'l (do/does/is/are) bilan boshlanadi.", whenToUse: "Javob 'ha' yoki 'yo'q' bo'ladigan savol berganda.", example: "Do you like tea? Is she a teacher?" },
+    { label: 'Wh- Questions', structure: 'Wh + auxiliary + subject + V1?\nWhere do you live?\nWhat is your name?', color: 'blue', explanation: "So'roq so'zi (what/where/when...) + yordamchi fe'l bilan ochiq savol.", whenToUse: "Ma'lumot (kim/nima/qayer/qachon/nega) so'raganda.", example: "Where do you live? What is your name?" },
+    { label: 'Tag Questions', structure: 'Positive statement, negative tag?\nYou like tea, don\'t you?\nShe is nice, isn\'t she?', color: 'orange', explanation: "Gap oxiridagi qisqa savol — tasdiq so'rash uchun. Ijobiy gap → inkor tag.", whenToUse: "Fikrni tasdiqlashni yoki rozilikni so'raganda.", example: "You like tea, don't you? She is nice, isn't she?" },
+    { label: 'Subject Questions', structure: 'Who/What + V (no auxiliary)\nWho lives here?\nWhat happened?', color: 'purple', explanation: "Ega haqida savol — yordamchi fe'lsiz, so'roq so'zi eganing o'rnida turadi.", whenToUse: "Kim yoki nima harakatni bajarganini so'raganda.", example: "Who lives here? What happened?" },
   ],
   rules: [
     "1️⃣ YES/NO QUESTIONS — Ha/Yo'q savollari\n\nTo Be: Am I right? Is she a doctor? Are they happy?\nDo/Does/Did: Do you like coffee? Does he speak English? Did they go?\nModals: Can you help me? Should I call her?\n\nQOIDA: Yordamchi fe'l egadan OLDIN keladi!",
@@ -1019,6 +1084,17 @@ export const questionsLesson: DailyLesson = {
 
 export const countableUncountable: DailyLesson = {
   id: 'countable-uncountable',
+  speaking: {
+    prompt: "Talk about the food you buy and eat. Speak for about one minute. Use countable nouns (apples, eggs) with 'many/a few' and uncountable nouns (rice, water, bread) with 'much/a little/some/any'.",
+    tips: [
+      "Sanaladigan (ko'plik): 'many apples', 'a few eggs', 'three bananas'.",
+      "Sanalmaydigan: 'much water', 'a little bread', 'some rice'.",
+      "Savol/inkor: 'How much sugar?', 'I don't have any milk.'",
+      "'some' — tasdiqda, 'any' — savol/inkorda.",
+      "Sanalmaydigan so'zlar birlikda: 'The water IS cold.' (not 'are').",
+    ],
+    sampleAnswer: "On Saturday I go to the market to buy food. I usually buy some vegetables, a few apples, and many eggs for the week. I also need some rice and a little bread. I don't buy much sugar because it isn't healthy. How much water do I drink every day? About two litres! There aren't any sweets in my bag today. I like to cook, so I always have some oil and a few onions at home. Buying food is easy when you make a list.",
+  },
   title: 'Countable & Uncountable Nouns',
   subtitle: "Some/any, much/many, a few/a little — sanaladigan va sanalmaydigan otlar",
   level: 'A2',
@@ -1045,6 +1121,7 @@ export const countableUncountable: DailyLesson = {
   },
   writing: {
     prompt: "Describe what is in your kitchen or fridge. Use 'some', 'any', 'much', 'many', 'a few', and 'a little'.",
+    modelAnswer: "In my fridge there is some milk and a little cheese. There are a few eggs and many tomatoes. There isn't much meat because we don't eat it every day. On the table there is some bread and a lot of fruit. How much water do I drink? About two litres a day. There aren't any sweets at home now, so tomorrow I will buy some sugar and a few apples.",
     wordLimit: 60,
     tips: [
       "'many' / 'a few' for countable: 'a few eggs'",
@@ -1054,9 +1131,9 @@ export const countableUncountable: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Countable (Sanaladigan)', structure: 'a/an + singular\nmany/few + plural\nHow many + plural?', color: 'green' },
-    { label: 'Uncountable (Sanalmaydigan)', structure: 'some/any + uncountable\nmuch/little + uncountable\nHow much + uncountable?', color: 'blue' },
-    { label: 'Some / Any', structure: 'some + positive\nany + negative/question', color: 'orange' },
+    { label: 'Countable (Sanaladigan)', structure: 'a/an + singular\nmany/few + plural\nHow many + plural?', color: 'green', explanation: "Sanaladigan otlar — birlik/ko'plik shakli bor, raqam bilan sanaladi.", whenToUse: "Alohida sanash mumkin bo'lgan narsalar (books, eggs) uchun.", example: "I have two books and many pens." },
+    { label: 'Uncountable (Sanalmaydigan)', structure: 'some/any + uncountable\nmuch/little + uncountable\nHow much + uncountable?', color: 'blue', explanation: "Sanalmaydigan otlar — ko'plik shakli yo'q, birlik fe'l oladi.", whenToUse: "Suyuqlik, material, mavhum tushunchalar (water, rice, money) uchun.", example: "There is some water and a little rice." },
+    { label: 'Some / Any', structure: 'some + positive\nany + negative/question', color: 'orange', explanation: "'some' — ijobiy gaplarda, 'any' — inkor va savollarda.", whenToUse: "Noaniq miqdorni bildirganda: some (tasdiq), any (savol/inkor).", example: "I have some milk. Is there any sugar?" },
   ],
   rules: [
     "1️⃣ SANALADIGAN VA SANALMAYDIGAN OTLAR\n\nCountable (sanaladigan) — sanash mumkin: one apple, two apples, three books\nUncountable (sanalmaydigan) — sanab bo'lmaydi: water, rice, music, information\n\nCountable: apple, book, car, dog, chair, cup, bottle, pen\nUncountable: water, milk, rice, bread, sugar, salt, money, news, information, homework, music, weather, advice",

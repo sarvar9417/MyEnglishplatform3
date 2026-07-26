@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import type { PersonalWord } from '../../types/personalVocabulary'
+import type { PersonalWord, PersonalVocabSession } from '../../types/personalVocabulary'
 import { getTodayTashkent, addDaysTashkent } from '../../utils/tashkentDate'
 import {
   BarChart3, PieChart, Activity,
@@ -8,6 +8,7 @@ import {
 
 interface VocabStatsWidgetProps {
   words: PersonalWord[]
+  sessions?: PersonalVocabSession[]
 }
 
 const BOX_LABELS = ['1', '2', '3', '4', '5', '6']
@@ -25,7 +26,7 @@ function formatNumber(n: number): string {
   return n.toLocaleString()
 }
 
-export default function VocabStatsWidget({ words }: VocabStatsWidgetProps) {
+export default function VocabStatsWidget({ words, sessions = [] }: VocabStatsWidgetProps) {
   const stats = useMemo(() => {
     const total = words.length
     if (total === 0) return null
@@ -40,7 +41,7 @@ export default function VocabStatsWidget({ words }: VocabStatsWidgetProps) {
     })
 
     // Mastery categories
-    const mastered = words.filter(w => w.box >= 5 && w.is_learned).length
+    const mastered = words.filter(w => w.box >= 6 && w.is_learned).length
     const learning = words.filter(w => !w.is_learned && w.box >= 2).length
     const newWords = words.filter(w => w.box <= 1 && !w.is_learned).length
     const due = words.filter(w => !w.is_learned && w.next_review <= today).length
@@ -69,18 +70,15 @@ export default function VocabStatsWidget({ words }: VocabStatsWidgetProps) {
       }
     })
 
-    // Review activity (mock data from actual review patterns)
+    // Review activity from immutable session rows.
     const recentActivity = Array.from({ length: 7 }, (_, i) => {
       const date = addDaysTashkent(-i)
-      const dayWords = words.filter(w => {
-        const updated = w.updated_at?.split('T')[0]
-        return updated === date
-      })
+      const daySessions = sessions.filter(session => session.session_date === date)
       return {
         date,
-        count: dayWords.length,
-        correct: dayWords.reduce((s, w) => s + w.correct_count, 0),
-        wrong: dayWords.reduce((s, w) => s + w.wrong_count, 0),
+        count: daySessions.length,
+        correct: daySessions.filter(session => session.result === 'correct').length,
+        wrong: daySessions.filter(session => session.result === 'wrong').length,
       }
     }).reverse()
 
@@ -95,7 +93,7 @@ export default function VocabStatsWidget({ words }: VocabStatsWidgetProps) {
       avgDifficulty: Math.round(avgDifficulty * 10) / 10,
       totalAttempts,
     }
-  }, [words])
+  }, [words, sessions])
 
   if (!stats) return null
 

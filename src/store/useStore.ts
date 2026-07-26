@@ -39,6 +39,7 @@ export const useStore = create<AppState>()(
           personalWords: _pw,
           personalWordsLoading: _pwl,
           personalWordsFetched: _pwf,
+          personalWordsError: _pwe,
           ...rest 
         } = s
         return rest as AppState

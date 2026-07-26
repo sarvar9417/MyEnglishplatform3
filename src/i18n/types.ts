@@ -28,6 +28,7 @@ export interface TranslationStrings {
   'nav.confusablePairs': string
   'nav.films': string
   'nav.thirtyDayChallenge': string
+  'nav.weeklyPlan': string
 
   /* ── Personal Vocabulary ── */
   'personalVocab.title': string

@@ -2,6 +2,23 @@
 
 export const presentContinuousFuture: DailyLesson = {
   id: 'present-continuous-future',
+  reading: {
+    title: 'Weekend Plans',
+    passage: "It is Thursday, and Dilfuza is talking about her weekend plans. 'I am meeting my friends on Saturday,' she says. 'We are going to the cinema in the evening.' She has already bought the tickets, so the plan is fixed.\n\nHer brother Jasur is busy too. 'I am playing football on Sunday morning,' he says. 'After that, I am visiting our grandmother.' Their mother is happy because the whole family is having lunch together on Sunday afternoon.\n\n'Are you doing anything special next week?' Dilfuza asks Jasur. 'Yes, I am starting a new English course on Monday!' he answers. Everyone in the family has plans, and they are all looking forward to a busy and happy weekend.",
+    vocabulary: [
+      { word: 'plans', definition: "rejalar" },
+      { word: 'fixed', definition: "belgilangan, aniq" },
+      { word: 'busy', definition: "band" },
+      { word: 'looking forward to', definition: "intiqlik bilan kutmoq" },
+    ],
+    questions: [
+      { id: 90701, type: 'multiple-choice', question: "What is Dilfuza doing on Saturday?", options: ['Playing football', 'Meeting her friends', 'Starting a course', 'Visiting grandmother'], correctIndex: 1, explanation: "'I am meeting my friends on Saturday.'" },
+      { id: 90702, type: 'multiple-choice', question: "Why do we use Present Continuous here (I am meeting)?", options: ['For a habit', 'For a fixed future arrangement', 'For a past action', 'For a general truth'], correctIndex: 1, explanation: "Present Continuous is used for fixed future plans/arrangements." },
+      { id: 90703, type: 'multiple-choice', question: "When is the family having lunch together?", options: ['Saturday evening', 'Sunday afternoon', 'Monday', 'Thursday'], correctIndex: 1, explanation: "'the whole family is having lunch together on Sunday afternoon.'" },
+      { id: 90704, type: 'multiple-choice', question: "What is Jasur starting on Monday?", options: ['A football match', 'A new English course', 'A trip', 'A job'], correctIndex: 1, explanation: "'I am starting a new English course on Monday!'" },
+      { id: 90705, type: 'multiple-choice', question: "How does the family feel about the weekend?", options: ['Bored', 'Looking forward to it', 'Worried', 'Angry'], correctIndex: 1, explanation: "'they are all looking forward to a busy and happy weekend.'" },
+    ],
+  },
   title: 'Present Continuous for Future',
   subtitle: "Present Continuous (be + V-ing) — kelasi zamonda rejalashtirilgan ish-harakatlar uchun",
   level: 'A2',
@@ -28,6 +45,7 @@ export const presentContinuousFuture: DailyLesson = {
   },
   writing: {
     prompt: "Write about your arrangements for next week. Use the present continuous (be + V-ing) for fixed future plans you have already made.",
+    modelAnswer: "I have several plans for next week. On Monday I am starting a new English course. I am meeting my friends on Tuesday evening, and we are going to the cinema. On Wednesday my brother is coming to visit us. I am not working on Thursday, so I am helping my mother at home. On Friday we are having a family dinner. On Saturday I am playing football with my team. I am really looking forward to next week!",
     wordLimit: 60,
     tips: [
       "Structure: 'I am meeting...', 'She is travelling...'",
@@ -199,6 +217,23 @@ export const presentContinuousFuture: DailyLesson = {
 
 export const quantifiers: DailyLesson = {
   id: 'quantifiers',
+  reading: {
+    title: 'A Small Village Shop',
+    passage: "There is a small shop in our village. It doesn't have many products, but it has enough for the people who live here. There are a lot of vegetables and a few kinds of bread. There isn't much meat, but there is plenty of rice and tea.\n\nThe shopkeeper, Uncle Rustam, knows everybody. 'How much sugar do you need?' he asks. 'Just a little,' the customers say. Some people buy a lot, and others buy only a little.\n\nThere aren't many customers in the morning, but there are lots of people after work. Uncle Rustam says, 'I don't earn much money, but I have many friends here.' For him, that is more important than money. The little shop is the heart of our village.",
+    vocabulary: [
+      { word: 'products', definition: "mahsulotlar" },
+      { word: 'enough', definition: "yetarli" },
+      { word: 'plenty of', definition: "ko'p, yetarlicha" },
+      { word: 'earn', definition: "ishlab topmoq" },
+    ],
+    questions: [
+      { id: 90801, type: 'multiple-choice', question: "Does the shop have many products?", options: ['Yes, thousands', "No, but it has enough", 'None at all', 'Only meat'], correctIndex: 1, explanation: "'It doesn't have many products, but it has enough.'" },
+      { id: 90802, type: 'multiple-choice', question: "Which quantifier is correct with an uncountable noun: 'How ___ sugar?'", options: ['many', 'much', 'few', 'a lot'], correctIndex: 1, explanation: "'much' is used with uncountable nouns (sugar); 'many' with countable." },
+      { id: 90803, type: 'multiple-choice', question: "When are there lots of customers?", options: ['In the morning', 'At night', 'After work', 'On holidays'], correctIndex: 2, explanation: "'there are lots of people after work.'" },
+      { id: 90804, type: 'multiple-choice', question: "What does Uncle Rustam value more than money?", options: ['His shop', 'His friends', 'His vegetables', 'His tea'], correctIndex: 1, explanation: "'I don't earn much money, but I have many friends here.'" },
+      { id: 90805, type: 'multiple-choice', question: "Which phrase means 'a large amount', used with rice and tea?", options: ['a few', 'plenty of', 'not many', 'a little'], correctIndex: 1, explanation: "'there is plenty of rice and tea' — plenty of = a large amount." },
+    ],
+  },
   title: 'Quantifiers',
   subtitle: "Much, many, a lot of, a few, a little, some, any, no — miqdor so'zlari",
   level: 'A2',
@@ -225,6 +260,7 @@ export const quantifiers: DailyLesson = {
   },
   writing: {
     prompt: "Describe how much free time, money, and how many friends you have. Use quantifiers: 'much', 'many', 'a lot of', 'a few', 'a little', 'some', 'any'.",
+    modelAnswer: "I don't have much free time during the week because I study a lot. I have a few close friends, but many classmates. I don't earn much money yet, so I spend only a little on entertainment. At the weekend I have some free time to relax. I read a lot of books and drink a little coffee every morning. I don't have many problems, and I have enough time for the things I love.",
     wordLimit: 60,
     tips: [
       "'many/a few' + countable: 'a few friends'",
@@ -396,6 +432,23 @@ export const quantifiers: DailyLesson = {
 
 export const tooEnough: DailyLesson = {
   id: 'too-enough',
+  reading: {
+    title: 'Learning to Drive',
+    passage: "Sardor wants to learn to drive, but there are some problems. He says the lessons are too expensive, and he doesn't have enough money yet. Also, he thinks he is too young — he is only seventeen, and in his country you must be eighteen to drive.\n\n'Don't worry,' his father says. 'You are old enough to start saving money now. And you are clever enough to pass the test easily.' Sardor is happy to hear this.\n\nEvery week Sardor saves a little money. Soon he will have enough to pay for the lessons. He is also reading the driving book. It is not too difficult for him. 'I am strong enough to reach my goal,' he says. 'I just need to be patient enough to wait a few more months.'",
+    vocabulary: [
+      { word: 'expensive', definition: "qimmat" },
+      { word: 'save', definition: "jamg'armoq, tejamoq" },
+      { word: 'clever', definition: "aqlli, zukko" },
+      { word: 'patient', definition: "sabrli" },
+    ],
+    questions: [
+      { id: 90901, type: 'multiple-choice', question: "Why can't Sardor take driving lessons now?", options: ['They are too expensive and he is too young', 'He is too old', 'He has enough money', 'He hates driving'], correctIndex: 0, explanation: "'the lessons are too expensive, and... he is too young.'" },
+      { id: 90902, type: 'multiple-choice', question: "In 'old enough', where does 'enough' go — before or after the adjective?", options: ['Before the adjective', 'After the adjective', 'It cannot go with adjectives', 'Only with nouns'], correctIndex: 1, explanation: "'enough' goes AFTER an adjective: old enough, clever enough." },
+      { id: 90903, type: 'multiple-choice', question: "What does 'too young' mean here?", options: ['Young in a good way', 'Not young at all', 'More young than necessary (a problem)', 'The best age'], correctIndex: 2, explanation: "'too + adjective' means more than necessary — a negative result." },
+      { id: 90904, type: 'multiple-choice', question: "How does Sardor plan to get enough money?", options: ['He asks his father', 'He saves a little every week', 'He sells his car', 'He borrows from friends'], correctIndex: 1, explanation: "'Every week Sardor saves a little money.'" },
+      { id: 90905, type: 'multiple-choice', question: "Is the driving book too difficult for him?", options: ['Yes, very', 'No, it is not too difficult', 'He cannot read it', 'The text does not say'], correctIndex: 1, explanation: "'It is not too difficult for him.'" },
+    ],
+  },
   title: 'Too and Enough',
   subtitle: "Too — juda (ortiqcha), Enough — yetarli — sifat va ravishdosh bilan ishlatilishi",
   level: 'A2',
@@ -422,6 +475,7 @@ export const tooEnough: DailyLesson = {
   },
   writing: {
     prompt: "Write about problems and solutions in your daily life. Use 'too' (more than you want) and 'enough' (the right amount).",
+    modelAnswer: "Sometimes my day is too busy. In the morning there is too much traffic, so I don't have enough time for breakfast. My English homework is not too difficult, but I need enough time to finish it. Last week I was too tired to study, so I slept early. Now I wake up early enough to prepare well. I am strong enough to solve my problems if I am patient enough to plan my day.",
     wordLimit: 55,
     tips: [
       "'too' + adjective: 'too expensive'",
@@ -592,6 +646,23 @@ export const tooEnough: DailyLesson = {
 
 export const soSuch: DailyLesson = {
   id: 'so-such',
+  reading: {
+    title: 'A Wonderful Trip',
+    passage: "Last summer, my family and I went to Bukhara. It was such a beautiful city! The weather was so hot that we walked only in the morning and evening. The old buildings were so amazing that we took hundreds of photos.\n\nWe stayed in such a nice hotel. The people were so friendly that we felt at home immediately. The food was such delicious food that we ate too much every day!\n\nOne evening, we saw such a wonderful sunset that everybody became quiet. My little sister said, 'This is so beautiful!' It was such a special moment. I will never forget that trip. Bukhara is such an interesting place, and I hope to go there again one day. It was so good that one week was not enough.",
+    vocabulary: [
+      { word: 'amazing', definition: "hayratlanarli, ajoyib" },
+      { word: 'friendly', definition: "do'stona, mehmondo'st" },
+      { word: 'immediately', definition: "darhol" },
+      { word: 'sunset', definition: "quyosh botishi" },
+    ],
+    questions: [
+      { id: 91001, type: 'multiple-choice', question: "Why did they walk only in the morning and evening?", options: ['The weather was so hot', 'The city was closed', 'They were tired', 'It was raining'], correctIndex: 0, explanation: "'The weather was so hot that we walked only in the morning and evening.'" },
+      { id: 91002, type: 'multiple-choice', question: "Which is correct: 'so' or 'such' before an adjective alone (hot)?", options: ["such hot", "so hot", "such a hot", "so a hot"], correctIndex: 1, explanation: "'so' + adjective (so hot); 'such' + (a/an) + adjective + noun." },
+      { id: 91003, type: 'multiple-choice', question: "Complete: 'It was ___ a nice hotel.'", options: ['so', 'such', 'very much', 'too'], correctIndex: 1, explanation: "'such' + a + adjective + noun: such a nice hotel." },
+      { id: 91004, type: 'multiple-choice', question: "How did the friendly people make the family feel?", options: ['At home immediately', 'Nervous', 'Bored', 'Cold'], correctIndex: 0, explanation: "'The people were so friendly that we felt at home immediately.'" },
+      { id: 91005, type: 'multiple-choice', question: "What is the main feeling in the text about the trip?", options: ['Disappointment', 'It was wonderful and memorable', 'It was too expensive', 'It was boring'], correctIndex: 1, explanation: "'I will never forget that trip... such an interesting place.'" },
+    ],
+  },
   title: 'So and Such',
   subtitle: "So va Such — kuchli daraja bildiruvchi so'zlar: so + adjective, such + (a/an) + adjective + noun",
   level: 'A2',
@@ -617,6 +688,7 @@ export const soSuch: DailyLesson = {
   },
   writing: {
     prompt: "Describe a memorable day or place using strong feelings. Use 'so' + adjective and 'such' + (a/an) + adjective + noun.",
+    modelAnswer: "Last summer I visited Bukhara, and it was such a wonderful trip. The city was so beautiful that I took many photos. We stayed in such a nice hotel, and the people were so friendly. The food was so delicious that I ate too much every day. One evening, we saw such an amazing sunset that everyone became quiet. It was such a special day that I will never forget it. I want to go there again!",
     wordLimit: 55,
     tips: [
       "'so' + adjective/adverb: 'so beautiful'",
@@ -787,6 +859,34 @@ export const soSuch: DailyLesson = {
 
 export const a2Review2: DailyLesson = {
   id: 'a2-review-2',
+  reading: {
+    title: 'From A2 to B1',
+    passage: "Gulnora started learning English two years ago. At first, she could only say simple sentences like 'My name is Gulnora' and 'I am from Fergana'. English was more difficult than she expected, but she didn't give up.\n\nEvery day she studied a little. She learned the past tense, so she could talk about yesterday. She learned comparatives, so she could compare things. If she didn't understand a word, she wrote it in her notebook. She has learned hundreds of new words since she began.\n\nNow Gulnora is finishing the A2 level. She can talk about the past, make plans for the future, and give her opinion. She is going to take the B1 exam next month. 'Learning English has changed my life,' she says. 'The most important thing is to practise every day.'",
+    vocabulary: [
+      { word: 'expected', definition: "kutgan edi" },
+      { word: 'give up', definition: "voz kechmoq" },
+      { word: 'notebook', definition: "daftar" },
+      { word: 'opinion', definition: "fikr" },
+    ],
+    questions: [
+      { id: 91101, type: 'multiple-choice', question: "When did Gulnora start learning English?", options: ['Last month', 'Two years ago', 'Yesterday', 'This week'], correctIndex: 1, explanation: "'Gulnora started learning English two years ago.'" },
+      { id: 91102, type: 'multiple-choice', question: "What did she do when she didn't understand a word?", options: ['She gave up', 'She wrote it in her notebook', 'She asked nobody', 'She stopped studying'], correctIndex: 1, explanation: "'If she didn't understand a word, she wrote it in her notebook.'" },
+      { id: 91103, type: 'multiple-choice', question: "Which sentence uses the Present Perfect correctly?", options: ['She learned hundreds of words since she began', 'She has learned hundreds of words since she began', 'She learning hundreds of words', 'She will learned words'], correctIndex: 1, explanation: "Present Perfect with 'since': 'She has learned... since she began.'" },
+      { id: 91104, type: 'multiple-choice', question: "What is Gulnora going to do next month?", options: ['Start A2', 'Take the B1 exam', 'Stop learning', 'Move to Fergana'], correctIndex: 1, explanation: "'She is going to take the B1 exam next month.'" },
+      { id: 91105, type: 'multiple-choice', question: "According to Gulnora, what is the most important thing?", options: ['To buy books', 'To practise every day', 'To take exams', 'To travel'], correctIndex: 1, explanation: "'The most important thing is to practise every day.'" },
+    ],
+  },
+  speaking: {
+    prompt: "Tell the story of a typical day in your life and your plans for the future. Speak for about one to two minutes. Mix the grammar you have learned: present tenses, past tenses, comparatives, modals, and 'going to / will' for the future.",
+    tips: [
+      "Kundalik: Present Simple — 'I usually wake up at seven.'",
+      "Kecha: Past Simple — 'Yesterday I visited my friend.'",
+      "Taqqoslash: comparatives — 'Today is busier than yesterday.'",
+      "Rejalar: 'I am going to...' / 'I will...'",
+      "Modallar: 'I can...', 'I must...', 'I should...'",
+    ],
+    sampleAnswer: "On a typical day, I wake up at seven o'clock and have breakfast with my family. Then I go to my English class, which is more interesting than my other lessons. Yesterday was a busy day — I studied in the morning and worked in the afternoon. I think I am getting better at English than last month. In the future, I am going to take an exam, and if I pass, I will study at university. I know I must work hard, but I believe the best results come from daily practice. That is my plan.",
+  },
   title: 'Review 2 — A2 takrorlash',
   subtitle: "Present Continuous for Future, Quantifiers, Too/Enough, So/Such — takrorlash va mustahkamlash",
   level: 'A2',
@@ -812,6 +912,7 @@ export const a2Review2: DailyLesson = {
   },
   writing: {
     prompt: "Write a short diary entry about your week. Try to use several A2 structures you have learned: future plans, quantifiers, 'too/enough', and 'so/such'.",
+    modelAnswer: "This was such a busy week! I had a lot of homework and too many classes, so I didn't have enough time to rest. On Monday I was so tired that I went to bed early. I made a few new friends at the English club, which was great. Next week I am meeting them again, and we are going to study together. I don't have much free time, but I am happy because I am learning so quickly. If I keep working, I will reach B1 soon!",
     wordLimit: 70,
     tips: [
       "Use present continuous for plans: 'I am visiting...'",
@@ -821,10 +922,10 @@ export const a2Review2: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Present Continuous Future', structure: 'Subject + am/is/are + V-ing + future time\nI am meeting John tomorrow.', color: 'green' },
-    { label: 'Quantifiers', structure: 'much + uncountable / many + countable\na few + countable / a little + uncountable\nsome/any/no + noun', color: 'blue' },
-    { label: 'Too / Enough', structure: 'too + adjective (excessive)\nadjective + enough (sufficient)\nenough + noun', color: 'orange' },
-    { label: 'So / Such', structure: 'so + adjective/adverb\nsuch + (a/an) + adjective + noun', color: 'red' },
+    { label: 'Present Continuous Future', structure: 'Subject + am/is/are + V-ing + future time\nI am meeting John tomorrow.', color: 'green', explanation: "Belgilangan kelajak rejalari uchun hozirgi davomli zamon.", whenToUse: "Oldindan kelishilgan aniq rejalar haqida gapirganda.", example: "I am meeting John tomorrow." },
+    { label: 'Quantifiers', structure: 'much + uncountable / many + countable\na few + countable / a little + uncountable\nsome/any/no + noun', color: 'blue', explanation: "Miqdor so'zlari sanaladigan va sanalmaydigan otlar bilan farqlanadi.", whenToUse: "Noaniq miqdorni ifodalaganda (much/many/a few/a little).", example: "much water, many books, a few friends, a little time" },
+    { label: 'Too / Enough', structure: 'too + adjective (excessive)\nadjective + enough (sufficient)\nenough + noun', color: 'orange', explanation: "'too' — kerakdan ortiq (salbiy), 'enough' — yetarli.", whenToUse: "Miqdor haddan oshgan yoki yetarli ekanini aytganda.", example: "too expensive, cheap enough, enough money" },
+    { label: 'So / Such', structure: 'so + adjective/adverb\nsuch + (a/an) + adjective + noun', color: 'red', explanation: "'so' + sifat/ravish; 'such' + (a/an) + sifat + ot.", whenToUse: "Kuchli his-tuyg'u yoki natijani ta'kidlaganda.", example: "so beautiful, such a nice day" },
   ],
   rules: [
     "1\uFE0F\u20E3 29-DARS: PRESENT CONTINUOUS FOR FUTURE\n\nRejalashtirilgan ish-harakatlar uchun Present Continuous (be + V-ing):\n  I am meeting my friend tomorrow.\n  She is flying to Paris next week.\n  We are having dinner at 8.\n\nMUHIM: Vaqt belgisi (tomorrow, next week) bo'lmasa, hozirgi zamon deb tushuniladi!\n\nJadvallar uchun Present Simple:\n  The train leaves at 6. (Poyezd jadvali)\n  The film starts at 8. (Kino jadvali)\n\nWill — hozir qaror qilish/bashorat:\n  I will help you. (Hozir qaror qildim)\n  I think it will rain. (Bashorat)\n\nBe going to — niyat / dalil asosida bashorat:\n  I am going to buy a car. (Niyat)\n  It is going to rain. (Qara, bulutlar!)",

@@ -980,6 +980,17 @@ export const simpleFuture: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const pastContinuous: DailyLesson = {
   id: 'past-continuous',
+  speaking: {
+    prompt: "Describe what you were doing at different times yesterday, and tell a short story about an action that interrupted another. Speak for about one minute. Use Past Continuous (was/were + -ing) and Past Simple together.",
+    tips: [
+      "Davom etayotgan o'tmish: 'At 8 o'clock I was having dinner.'",
+      "Uzilgan harakat: 'I was sleeping when the phone rang.'",
+      "was — I/he/she/it; were — you/we/they.",
+      "Fon tavsifi: 'It was raining and the birds were singing.'",
+      "'when' + Past Simple, 'while' + Past Continuous.",
+    ],
+    sampleAnswer: "Yesterday was an interesting day. At eight o'clock in the morning I was having breakfast while my brother was still sleeping. At noon I was studying English in the library. Then something funny happened: I was walking home when it suddenly started to rain. I didn't have an umbrella, so I was running to the bus stop when I saw my old friend. We were talking about school when the bus arrived. In the evening, while my family was watching TV, I was reading a book in my room. It was a busy but happy day.",
+  },
   title: 'Past Continuous Tense',
   subtitle: "O'tmishda bir vaqtda davom etgan harakatlar — 'MEN KELGANIMDA, U UXLAYOTGAN EDI'",
   level: 'A2',
@@ -1229,6 +1240,17 @@ export const pastContinuous: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const presentPerfect: DailyLesson = {
   id: 'present-perfect',
+  speaking: {
+    prompt: "Talk about your life experiences. Speak for about one minute. Use the Present Perfect (have/has + past participle) with 'ever', 'never', 'already', 'yet', 'for', and 'since'.",
+    tips: [
+      "Tajriba: 'I have visited Samarkand.', 'I have never eaten sushi.'",
+      "Savol: 'Have you ever travelled by plane?'",
+      "'for' + davomiylik: 'I have studied English for two years.'",
+      "'since' + boshlanish nuqtasi: 'since 2020', 'since Monday'.",
+      "Aniq o'tmish vaqti bilan ISHLATILMAYDI (yesterday → Past Simple).",
+    ],
+    sampleAnswer: "I have had many interesting experiences in my life. I have visited several cities in Uzbekistan, but I have never been abroad. Have you ever tried foreign food? I have eaten Korean food once, and I loved it. I have studied English for about two years now, and I have learned a lot since I started. I have already finished the A2 level, but I haven't taken the B1 exam yet. My family has lived in the same house since I was a child. I hope I have improved my speaking today!",
+  },
   title: 'Present Perfect Tense',
   subtitle: "O'tganda boshlanib hozir natijasi bor harakatlar — hozirgi vaqt bilan bog'liq o'tmish",
   level: 'A2',

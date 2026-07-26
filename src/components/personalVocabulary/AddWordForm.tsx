@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef } from 'react'
-import type { AddWordDTO, VocabCategory, PartOfSpeech } from '../../types/personalVocabulary'
+import type { AddWordDTO, VocabCategory, PartOfSpeech, PersonalWord } from '../../types/personalVocabulary'
 import { Sparkles, Loader2, Eye, EyeOff, CheckCircle2, BookMarked } from 'lucide-react'
 import { monitoring } from '../../lib/monitoring'
 
@@ -7,7 +7,7 @@ interface AddWordFormProps {
   onAdd: (wordData: AddWordDTO) => Promise<void>
   onCancel: () => void
   onAITranslate: (word: string, context?: string) => Promise<{ uzbek: string; phonetic?: string; example?: string; example_uzbek?: string; level?: 'A1' | 'A2' | 'B1' | 'B2'; category?: string; part_of_speech?: string }>
-  editWord?: { english: string; uzbek: string; phonetic?: string; example?: string; example_uzbek?: string; category: VocabCategory; level: 'A1' | 'A2' | 'B1' | 'B2'; part_of_speech?: PartOfSpeech } | null
+  editWord?: Pick<PersonalWord, 'english' | 'uzbek' | 'phonetic' | 'example' | 'example_uzbek' | 'category' | 'level' | 'part_of_speech'> | null
 }
 
 const CATEGORIES: { value: VocabCategory; label: string; icon: string }[] = [
@@ -102,9 +102,9 @@ export default function AddWordForm({ onAdd, onCancel, onAITranslate, editWord }
       await onAdd({
         english: english.trim(),
         uzbek: uzbek.trim(),
-        phonetic: phonetic.trim() || undefined,
-        example: example.trim() || undefined,
-        example_uzbek: exampleUzbek.trim() || undefined,
+        phonetic: phonetic.trim() || (isEditing ? null : undefined),
+        example: example.trim() || (isEditing ? null : undefined),
+        example_uzbek: exampleUzbek.trim() || (isEditing ? null : undefined),
         category,
         level,
         part_of_speech: partOfSpeech,

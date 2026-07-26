@@ -23,7 +23,7 @@ export default function VocabDashboardWidget({ words }: VocabDashboardWidgetProp
       const diff = new Date(today).getTime() - new Date(w.next_review).getTime()
       return diff > 3 * 24 * 60 * 60 * 1000
     }).length
-    const mastered = words.filter(w => w.box >= 5 && w.is_learned).length
+    const mastered = words.filter(w => w.box >= 6 && w.is_learned).length
     const masteryPct = total > 0 ? Math.round((mastered / total) * 100) : 0
     const accuracy = words.reduce((s, w) => {
       const t = w.correct_count + w.wrong_count

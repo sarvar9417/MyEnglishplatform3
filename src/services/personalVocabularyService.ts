@@ -4,7 +4,7 @@ import { addDaysTashkent, getTodayTashkent } from '../utils/tashkentDate'
 import { useToastStore } from '../utils/toastStore'
 import { monitoring } from '../lib/monitoring'
 import { createDefaultFSRSState, computeNextReviewFSRS } from '../lib/srs'
-import type { PersonalWord, AddWordDTO, UpdateWordDTO, VocabRating, PartOfSpeech } from '../types/personalVocabulary'
+import type { PersonalWord, AddWordDTO, UpdateWordDTO, VocabRating, PartOfSpeech, PersonalVocabularyImportResult, PersonalVocabSession } from '../types/personalVocabulary'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Personal Vocabulary Service
@@ -53,7 +53,6 @@ export async function addPersonalWordToDB(
       uzbek: wordData.uzbek,
       phonetic: wordData.phonetic || null,
       example: wordData.example || null,
-      // @ts-expect-error example_uzbek column may not exist in generated types yet
       example_uzbek: wordData.example_uzbek || null,
       category: wordData.category || 'custom',
       level: wordData.level || 'A2',
@@ -70,7 +69,6 @@ export async function addPersonalWordToDB(
       fsrs_lapses: 0,
       created_at: now,
       updated_at: now,
-      // @ts-expect-error part_of_speech column may not exist in generated types yet
       part_of_speech: wordData.part_of_speech || null,
     })
     .select()
@@ -91,13 +89,14 @@ export async function updatePersonalWordInDB(
   wordId: number,
   updates: UpdateWordDTO
 ): Promise<void> {
+  requireAuthedUser(userId)
   const payload: {
     updated_at: string
     english?: string
     uzbek?: string
-    phonetic?: string
-    example?: string
-    example_uzbek?: string
+    phonetic?: string | null
+    example?: string | null
+    example_uzbek?: string | null
     category?: string
     level?: string
     part_of_speech?: string | null
@@ -113,8 +112,7 @@ export async function updatePersonalWordInDB(
 
   const { error } = await supabase
     .from('personal_vocabulary')
-    // part_of_speech column exists in DB but not yet in generated Supabase types
-    .update(payload as any)
+    .update(payload)
     .eq('user_id', userId)
     .eq('id', wordId)
 
@@ -129,6 +127,7 @@ export async function deletePersonalWordFromDB(
   userId: string,
   wordId: number
 ): Promise<void> {
+  requireAuthedUser(userId)
   const { error } = await supabase
     .from('personal_vocabulary')
     .delete()
@@ -143,6 +142,7 @@ export async function deletePersonalWordFromDB(
 }
 
 export async function fetchPersonalWordsFromDB(userId: string): Promise<PersonalWord[]> {
+  requireAuthedUser(userId)
   const { data, error } = await supabase
     .from('personal_vocabulary')
     .select('*')
@@ -151,13 +151,14 @@ export async function fetchPersonalWordsFromDB(userId: string): Promise<Personal
 
   if (error) {
     monitoring.captureMessage('fetchPersonalWordsFromDB error: ' + (error instanceof Error ? error.message : String(error)), 'error')
-    return []
+    throw error instanceof Error ? error : new Error(String(error))
   }
 
   return (data ?? []) as PersonalWord[]
 }
 
 export async function fetchWordsForReviewFromDB(userId: string): Promise<PersonalWord[]> {
+  requireAuthedUser(userId)
   // Tashkent vaqti bilan (next_review ham Tashkent sanasi bilan o'rnatiladi) —
   // aks holda yarim tunda off-by-one bo'lardi.
   const today = getTodayTashkent()
@@ -172,10 +173,25 @@ export async function fetchWordsForReviewFromDB(userId: string): Promise<Persona
 
   if (error) {
     monitoring.captureMessage('fetchWordsForReviewFromDB error: ' + (error instanceof Error ? error.message : String(error)), 'error')
-    return []
+    throw error instanceof Error ? error : new Error(String(error))
   }
 
   return (data ?? []) as PersonalWord[]
+}
+
+export async function fetchPersonalVocabSessionsFromDB(
+  userId: string,
+  sinceDate: string
+): Promise<PersonalVocabSession[]> {
+  requireAuthedUser(userId)
+  const { data, error } = await supabase
+    .from('personal_vocabulary_sessions')
+    .select('*')
+    .eq('user_id', userId)
+    .gte('session_date', sinceDate)
+    .order('created_at', { ascending: false })
+  if (error) throw error
+  return (data ?? []) as PersonalVocabSession[]
 }
 
 export async function ratePersonalWordInDB(
@@ -234,11 +250,60 @@ export async function ratePersonalWordInDB(
   return db.cast<PersonalWord>(data)
 }
 
+export async function ratePersonalWordsBatchInDB(
+  userId: string,
+  ratings: { id: number; rating: VocabRating }[]
+): Promise<PersonalWord[]> {
+  requireAuthedUser(userId)
+  if (ratings.length === 0) return []
+
+  const uniqueRatings = [...new Map(ratings.map((item) => [item.id, item])).values()]
+  const ids = uniqueRatings.map((item) => item.id)
+  const { data: existing, error: fetchError } = await supabase
+    .from('personal_vocabulary')
+    .select('id, fsrs_stability, fsrs_difficulty, next_review, fsrs_reps, fsrs_lapses')
+    .eq('user_id', userId)
+    .in('id', ids)
+
+  if (fetchError) throw fetchError
+  const existingById = new Map((existing ?? []).map((word) => [word.id, word]))
+  const payload = uniqueRatings.map(({ id, rating }) => {
+    const word = existingById.get(id)
+    if (!word) throw new Error(`Word not found: ${id}`)
+    const fsrs = computeNextReviewFSRS({
+      stability: word.fsrs_stability ?? 0,
+      difficulty: word.fsrs_difficulty ?? 5,
+      due: word.next_review,
+      reps: word.fsrs_reps ?? 0,
+      lapses: word.fsrs_lapses ?? 0,
+    }, rating)
+    return {
+      word_id: id,
+      rating,
+      fsrs_stability: fsrs.state.stability,
+      fsrs_difficulty: fsrs.state.difficulty,
+      fsrs_reps: fsrs.state.reps,
+      fsrs_lapses: fsrs.state.lapses,
+    }
+  })
+
+  const { data, error } = await supabase.rpc('rate_personal_vocab_words_batch', {
+    p_user_id: userId,
+    p_results: payload,
+  })
+  if (error) {
+    monitoring.captureMessage(`ratePersonalWordsBatchInDB error: ${error.message ?? String(error)}`, 'error')
+    useToastStore.getState().toast("Natijalarni saqlashda xatolik", 'error')
+    throw error
+  }
+  return db.cast<PersonalWord[]>(data ?? [])
+}
+
 export async function batchAddPersonalWordsToDB(
   userId: string,
   wordsData: AddWordDTO[]
-): Promise<PersonalWord[]> {
-  if (wordsData.length === 0) return []
+): Promise<PersonalVocabularyImportResult> {
+  if (wordsData.length === 0) return { inserted: [], skipped: 0 }
   requireAuthedUser(userId)
 
   // Filter out duplicates: fetch existing words for this user
@@ -247,15 +312,22 @@ export async function batchAddPersonalWordsToDB(
     .select('english')
     .eq('user_id', userId)
   const existingSet = new Set((existing ?? []).map(e => e.english.toLowerCase().trim()))
-  const uniqueWords = wordsData.filter(w => !existingSet.has(w.english.toLowerCase().trim()))
+  const seen = new Set(existingSet)
+  const uniqueWords = wordsData.filter((w) => {
+    const normalized = w.english.toLowerCase().trim()
+    if (!normalized || seen.has(normalized)) return false
+    seen.add(normalized)
+    return true
+  })
+  const skipped = wordsData.length - uniqueWords.length
 
   if (uniqueWords.length === 0) {
     useToastStore.getState().toast("Barcha so'zlar allaqachon qo'shilgan", 'warning')
-    return []
+    return { inserted: [], skipped }
   }
 
-  if (uniqueWords.length < wordsData.length) {
-    useToastStore.getState().toast(`${wordsData.length - uniqueWords.length} ta dublikat o'tkazib yuborildi`, 'warning')
+  if (skipped > 0) {
+    useToastStore.getState().toast(`${skipped} ta dublikat o'tkazib yuborildi`, 'warning')
   }
 
   const now = new Date().toISOString()
@@ -298,7 +370,7 @@ export async function batchAddPersonalWordsToDB(
     throw error instanceof Error ? error : new Error(String(error))
   }
 
-  return (data ?? []) as PersonalWord[]
+  return { inserted: (data ?? []) as PersonalWord[], skipped }
 }
 
 // ─── AI Translation Helper ────────────────────────────────────────────────
@@ -495,18 +567,34 @@ export function importPersonalVocabulary(jsonString: string): AddWordDTO[] {
   try {
     const data = JSON.parse(jsonString)
     if (!Array.isArray(data)) throw new Error('Invalid format')
+    const categories = new Set([
+      'custom', 'grammar', 'travel', 'formal', 'ielts', 'business', 'food',
+      'health', 'education', 'social', 'work', 'shopping', 'relationships',
+      'environment', 'economy', 'culture', 'feelings', 'discussion',
+      'technology', 'communication',
+    ])
+    const levels = new Set(['A1', 'A2', 'B1', 'B2'])
+    const partsOfSpeech = new Set([
+      'noun', 'verb', 'adjective', 'adverb', 'preposition',
+      'conjunction', 'pronoun', 'interjection', 'other',
+    ])
     return data
-      .map((item: Record<string, unknown>) => ({
-        english: String(item.english || '').trim(),
-        uzbek: String(item.uzbek || '').trim(),
-        phonetic: item.phonetic ? String(item.phonetic) : undefined,
-        example: item.example ? String(item.example) : undefined,
-        example_uzbek: item.example_uzbek ? String(item.example_uzbek) : undefined,
-        part_of_speech: (item.part_of_speech as PartOfSpeech) || undefined,
-        category: (item.category as AddWordDTO['category']) || 'custom',
-        level: (item.level as AddWordDTO['level']) || 'A2',
-        source: 'imported' as const,
-      }))
+      .map((item: Record<string, unknown>) => {
+        const category = String(item.category || 'custom')
+        const level = String(item.level || 'A2')
+        const partOfSpeech = item.part_of_speech ? String(item.part_of_speech) : ''
+        return {
+          english: String(item.english || '').trim().slice(0, 200),
+          uzbek: String(item.uzbek || '').trim().slice(0, 500),
+          phonetic: item.phonetic ? String(item.phonetic).slice(0, 200) : undefined,
+          example: item.example ? String(item.example).slice(0, 2000) : undefined,
+          example_uzbek: item.example_uzbek ? String(item.example_uzbek).slice(0, 2000) : undefined,
+          part_of_speech: partsOfSpeech.has(partOfSpeech) ? partOfSpeech as PartOfSpeech : undefined,
+          category: categories.has(category) ? category as AddWordDTO['category'] : 'custom',
+          level: levels.has(level) ? level as AddWordDTO['level'] : 'A2',
+          source: 'imported' as const,
+        }
+      })
       // Bo'sh english/uzbek bo'lgan yozuvlarni o'tkazib yuboramiz
       .filter((w) => w.english.length > 0 && w.uzbek.length > 0)
   } catch (e) {

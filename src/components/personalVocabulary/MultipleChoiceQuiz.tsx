@@ -40,26 +40,26 @@ export default function MultipleChoiceQuiz({ words, allWords, onComplete, onExit
 
   // Generate options for current word
   const options = useMemo(() => {
-    if (!currentWord || allWords.length < 4) return []
+    if (!currentWord) return []
 
     const correctAnswer = direction === 'en→uz' ? currentWord.uzbek : currentWord.english
-    const otherWords = allWords.filter(w => w.id !== currentWord.id)
+    const otherWords = [...allWords].filter(w => w.id !== currentWord.id)
 
-    // Shuffle and pick 3 distractors
-    const distractors = otherWords
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3)
-      .map(w => direction === 'en→uz' ? w.uzbek : w.english)
-      .filter(d => d !== correctAnswer)
-
-    // If not enough distractors, add placeholders
-    while (distractors.length < 3) {
-      distractors.push('—')
+    // Fisher-Yates avoids mutating props and gives a stable-quality shuffle.
+    for (let i = otherWords.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[otherWords[i], otherWords[j]] = [otherWords[j], otherWords[i]]
     }
+    const distractors = [...new Set(
+      otherWords.map(w => direction === 'en→uz' ? w.uzbek : w.english)
+    )].filter(answer => answer !== correctAnswer).slice(0, 3)
 
-    // Combine and shuffle
-    const allOptions = [correctAnswer, ...distractors.slice(0, 3)]
-    return allOptions.sort(() => Math.random() - 0.5)
+    const allOptions = [correctAnswer, ...distractors]
+    for (let i = allOptions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[allOptions[i], allOptions[j]] = [allOptions[j], allOptions[i]]
+    }
+    return allOptions
   }, [currentWord, allWords, direction])
 
   // Toggle direction occasionally for variety
@@ -73,33 +73,6 @@ export default function MultipleChoiceQuiz({ words, allWords, onComplete, onExit
     setShowFeedback(false)
     pendingNextRef.current = false
   }, [currentIndex])
-
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (isComplete) return
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
-
-      if (showFeedback) {
-        if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') {
-          e.preventDefault()
-          goNext()
-        }
-        return
-      }
-
-      if (!selectedOption) {
-        const optionMap: Record<string, number> = { '1': 0, '2': 1, '3': 2, '4': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3 }
-        if (optionMap[e.key] !== undefined && optionMap[e.key] < options.length) {
-          e.preventDefault()
-          handleSelect(optionMap[e.key])
-        }
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [showFeedback, selectedOption, currentIndex, isComplete, options.length])
 
   const handleSelect = useCallback((optionIndex: number) => {
     if (selectedOption !== null || showFeedback) return
@@ -139,6 +112,30 @@ export default function MultipleChoiceQuiz({ words, allWords, onComplete, onExit
       setIsComplete(true)
     }
   }, [currentIndex, totalWords])
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isComplete) return
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
+      if (showFeedback) {
+        if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') {
+          e.preventDefault()
+          goNext()
+        }
+        return
+      }
+      if (selectedOption === null) {
+        const optionMap: Record<string, number> = { '1': 0, '2': 1, '3': 2, '4': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3 }
+        if (optionMap[e.key] !== undefined && optionMap[e.key] < options.length) {
+          e.preventDefault()
+          handleSelect(optionMap[e.key])
+        }
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [showFeedback, selectedOption, isComplete, options.length, goNext, handleSelect])
 
   const speakEnglish = useCallback(() => {
     if (currentWord?.english) {
@@ -251,7 +248,7 @@ export default function MultipleChoiceQuiz({ words, allWords, onComplete, onExit
             </span>
           )}
         </div>
-        <button onClick={onExit} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 transition-colors">
+        <button onClick={onExit} aria-label="Testdan chiqish" className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 transition-colors">
           <X size={18} />
         </button>
       </div>

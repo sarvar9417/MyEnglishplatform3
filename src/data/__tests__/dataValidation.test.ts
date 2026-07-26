@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { SEED_WORDS } from '../vocabularyWords'
+import { A1_LESSONS_NEW } from '../daily/a1Registry'
 import { A2_LESSONS } from '../daily/lessonsA2'
 import { B1_LESSONS_NEW as B1_LESSONS } from '../daily/lessonsB1'
 import { B1PLUS_LESSONS_NEW as B1PLUS_LESSONS } from '../daily/lessonsB1plus'
@@ -22,6 +23,9 @@ const ALL_LESSONS = [
   ...B1PLUS_LESSONS,
   ...B2_LESSONS,
 ]
+
+// Transcript integritet tekshiruvi uchun A1 ni ham qamraymiz
+const ALL_LESSONS_WITH_LISTENING = [...A1_LESSONS_NEW, ...ALL_LESSONS]
 
 describe('vocabularyWords data', () => {
   it('has at least 50 seed words', () => {
@@ -163,6 +167,32 @@ describe('daily lessons data', () => {
       // Runtime (LessonView.tsx) filters gracefully — data migration needed
       // eslint-disable-next-line no-console
       console.warn(`⚠️ ${missing.length} exerciseSection reference(s) missing. Data migration needed.`)
+    }
+  })
+})
+
+describe('daily lesson listening transcripts', () => {
+  // Audio transcriptdan TTS (SpeechSynthesis) orqali generatsiya qilinadi va
+  // listeningUtils.parseTranscript uni '\n' bo'yicha qatorlarga bo'ladi.
+  // Manba matnda IKKI teskari chiziqli '\\n' (literal backslash+n) bo'lsa,
+  // qatorlarga bo'linmaydi va TTS + transcript ko'rinishi buziladi (P0-1 bug klassi).
+  const withListening = ALL_LESSONS_WITH_LISTENING.filter(
+    (l): l is typeof l & { listening: { transcript: string } } =>
+      !!(l as Record<string, unknown>).listening,
+  )
+
+  it('no lesson transcript contains a literal double-escaped newline (\\n)', () => {
+    const bad: string[] = []
+    for (const l of withListening) {
+      const transcript = l.listening?.transcript ?? ''
+      if (transcript.includes('\\n')) bad.push(`${l.level} «${l.id}»`)
+    }
+    expect(bad, `Literal '\\\\n' topilgan darslar: ${bad.join(', ')}`).toEqual([])
+  })
+
+  it('every listening transcript is non-empty', () => {
+    for (const l of withListening) {
+      expect(l.listening?.transcript?.trim()).toBeTruthy()
     }
   })
 })

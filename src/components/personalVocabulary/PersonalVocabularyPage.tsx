@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { useStore } from '../../store/useStore'
 import { useI18n } from '../../i18n'
-import { exportPersonalVocabulary, importPersonalVocabulary, generateAITranslation } from '../../services/personalVocabularyService'
+import {
+  exportPersonalVocabulary, importPersonalVocabulary, generateAITranslation,
+  fetchPersonalVocabSessionsFromDB,
+} from '../../services/personalVocabularyService'
 import { supabase } from '../../lib/supabase'
 import { getTodayTashkent } from '../../utils/tashkentDate'
 import { useToastStore } from '../../utils/toastStore'
-import type { PersonalWord, AddWordDTO, UpdateWordDTO } from '../../types/personalVocabulary'
+import type { PersonalWord, AddWordDTO, UpdateWordDTO, PersonalVocabSession } from '../../types/personalVocabulary'
 import type { VocabRating } from '../../types/personalVocabulary'
 import { 
   Plus, Search, Download, Upload, BookOpen, Filter, Loader2, 
@@ -70,12 +73,9 @@ const SORT_OPTIONS: { value: SortField; label: string }[] = [
   { value: 'box', label: 'Box' },
 ]
 
-let cachedUserId: string | null = null
 async function getUserId(): Promise<string> {
-  if (cachedUserId) return cachedUserId
   const { data: { session } } = await supabase.auth.getSession()
-  cachedUserId = session?.user?.id ?? 'guest'
-  return cachedUserId
+  return session?.user?.id ?? 'guest'
 }
 
 function LoadingSkeleton() {
@@ -106,7 +106,11 @@ function LoadingSkeleton() {
 
 export default function PersonalVocabularyPage() {
   const { t } = useI18n()
-  const { personalWords, personalWordsFetched, deletePersonalWord, ratePersonalWord, updatePersonalWord, fetchPersonalWords, batchAddPersonalWords } = useStore()
+  const {
+    personalWords, personalWordsFetched, personalWordsError,
+    deletePersonalWord, ratePersonalWord, ratePersonalWords, updatePersonalWord,
+    fetchPersonalWords, batchAddPersonalWords, clearPersonalVocabulary,
+  } = useStore()
   
   const [viewMode, setViewMode] = useState<ViewMode>('list')
   const [searchQuery, setSearchQuery] = useState('')
@@ -126,30 +130,57 @@ export default function PersonalVocabularyPage() {
   const [smartFilter, setSmartFilter] = useState<SmartFilter>('all')
   const [detailWord, setDetailWord] = useState<PersonalWord | null>(null)
   const [showStats, setShowStats] = useState(false)
+  const [activitySessions, setActivitySessions] = useState<PersonalVocabSession[]>([])
   const mountedRef = useRef(true)
 
-  // Fetch words on mount
+  // Fetch on mount and isolate state whenever the authenticated user changes.
   useEffect(() => {
     mountedRef.current = true
-    if (!personalWordsFetched) {
+    let activeUserId: string | null = null
+
+    const loadForUser = async (userId: string | null) => {
+      if (activeUserId !== userId) {
+        clearPersonalVocabulary()
+        activeUserId = userId
+      }
+      if (!userId) {
+        if (mountedRef.current) setLoading(false)
+        return
+      }
       setLoading(true)
-      getUserId().then((userId) => {
-        if (mountedRef.current) fetchPersonalWords(userId).finally(() => {
-          if (mountedRef.current) setLoading(false)
-        })
-      })
+      try {
+        await fetchPersonalWords(userId)
+        const since = new Date(Date.now() - 7 * 86400_000).toISOString().split('T')[0]
+        const sessions = await fetchPersonalVocabSessionsFromDB(userId, since)
+        if (mountedRef.current) setActivitySessions(sessions)
+      } catch {
+        // Store exposes the error; the page renders a retry state below.
+      } finally {
+        if (mountedRef.current) setLoading(false)
+      }
     }
-    return () => { mountedRef.current = false }
-  }, [personalWordsFetched, fetchPersonalWords])
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (mountedRef.current) void loadForUser(session?.user?.id ?? null)
+    })
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (mountedRef.current) void loadForUser(session?.user?.id ?? null)
+    })
+
+    return () => {
+      mountedRef.current = false
+      subscription.unsubscribe()
+    }
+  }, [fetchPersonalWords, clearPersonalVocabulary])
 
   // Reset page when filters change
   useEffect(() => {
     setCurrentPage(1)
-  }, [searchQuery, filterCategory, filterLevel, showDueOnly, sortField, sortDirection])
+  }, [searchQuery, filterCategory, filterLevel, showDueOnly, sortField, sortDirection, smartFilter])
 
   // Filter and sort words
   const filteredWords = useMemo(() => {
-    let result = personalWords.filter((w) => {
+    const result = personalWords.filter((w) => {
       const q = searchQuery.toLowerCase()
       const matchesSearch = !q || w.english.toLowerCase().includes(q) || w.uzbek.toLowerCase().includes(q)
       const matchesCategory = filterCategory === 'all' || w.category === filterCategory
@@ -160,7 +191,7 @@ export default function PersonalVocabularyPage() {
         || (smartFilter === 'due' && !w.is_learned && w.next_review <= today)
         || (smartFilter === 'struggling' && !w.is_learned && w.wrong_count > w.correct_count && (w.correct_count + w.wrong_count) >= 2)
         || (smartFilter === 'new' && w.box <= 1 && !w.is_learned)
-        || (smartFilter === 'mastered' && w.box >= 5 && w.is_learned)
+        || (smartFilter === 'mastered' && w.box >= 6 && w.is_learned)
       return matchesSearch && matchesCategory && matchesLevel && matchesDue && matchesSmart
     })
 
@@ -201,7 +232,7 @@ export default function PersonalVocabularyPage() {
   const totalWords = personalWords.length
   const learnedWords = personalWords.filter(w => w.is_learned).length
   const dueWords = personalWords.filter(w => !w.is_learned && w.next_review <= getTodayTashkent()).length
-  const masteredWords = personalWords.filter(w => w.box >= 5 && w.is_learned).length
+  const masteredWords = personalWords.filter(w => w.box >= 6 && w.is_learned).length
 
   // Prepare words for practice modes
   const prepareDueWords = useCallback(() => {
@@ -246,8 +277,12 @@ export default function PersonalVocabularyPage() {
 
   const handleDeleteWord = async (id: number) => {
     const userId = await getUserId()
-    await deletePersonalWord(id, userId)
-    useToastStore.getState().toast("So'z o'chirildi", 'info')
+    try {
+      await deletePersonalWord(id, userId)
+      useToastStore.getState().toast("So'z o'chirildi", 'info')
+    } catch {
+      useToastStore.getState().toast("So'zni o'chirishda xatolik", 'error')
+    }
   }
 
   const handleRateWord = async (id: number, rating: VocabRating) => {
@@ -257,14 +292,18 @@ export default function PersonalVocabularyPage() {
 
   const handleBatchRate = async (results: { vocabId: number; result: string; rating?: VocabRating }[]) => {
     const userId = await getUserId()
-    for (const r of results) {
-      if (r.result === 'correct' && r.rating) {
-        await ratePersonalWord(r.vocabId, r.rating as VocabRating, userId)
-      } else if (r.result === 'correct') {
-        await ratePersonalWord(r.vocabId, 'bildim' as VocabRating, userId)
-      } else {
-        await ratePersonalWord(r.vocabId, 'bilmadim' as VocabRating, userId)
-      }
+    const ratings = results.map((result) => ({
+      id: result.vocabId,
+      rating: result.rating ?? (result.result === 'correct' ? 'bildim' : 'bilmadim'),
+    })) as { id: number; rating: VocabRating }[]
+    try {
+      await ratePersonalWords(ratings, userId)
+      const since = new Date(Date.now() - 7 * 86400_000).toISOString().split('T')[0]
+      setActivitySessions(await fetchPersonalVocabSessionsFromDB(userId, since))
+      useToastStore.getState().toast(`${ratings.length} ta natija saqlandi`, 'success')
+    } catch {
+      useToastStore.getState().toast('Natijalarni saqlab bo‘lmadi. Qayta urinib ko‘ring.', 'error')
+      throw new Error('Practice results were not saved')
     }
   }
 
@@ -304,6 +343,11 @@ export default function PersonalVocabularyPage() {
   const handleImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
+    if (file.size > 2 * 1024 * 1024) {
+      useToastStore.getState().toast('Import fayli 2 MB dan kichik bo‘lishi kerak', 'error')
+      e.target.value = ''
+      return
+    }
     setImportLoading(true)
     try {
       const text = await file.text()
@@ -313,16 +357,23 @@ export default function PersonalVocabularyPage() {
         return
       }
       const userId = await getUserId()
-      await batchAddPersonalWords(words, userId)
-      useToastStore.getState().toast(`${words.length} ta so'z import qilindi`, 'success')
+      const result = await batchAddPersonalWords(words, userId)
+      if (result.inserted.length > 0) {
+        useToastStore.getState().toast(
+          `${result.inserted.length} ta so'z import qilindi${result.skipped ? `, ${result.skipped} ta o'tkazib yuborildi` : ''}`,
+          'success'
+        )
+      }
+    } catch {
+      useToastStore.getState().toast("So'zlarni import qilishda xatolik", 'error')
     } finally {
       setImportLoading(false)
       e.target.value = ''
     }
   }
 
-  const handleAITranslation = async (word: string) => {
-    return await generateAITranslation(word)
+  const handleAITranslation = async (word: string, context?: string) => {
+    return await generateAITranslation(word, context)
   }
 
   const toggleSortDirection = () => {
@@ -344,15 +395,15 @@ export default function PersonalVocabularyPage() {
     setDetailWord(prev => prev ? { ...prev, ...updates } : null)
   }
 
-  const hasActiveFilters = searchQuery || filterCategory !== 'all' || filterLevel !== 'all' || showDueOnly
+  const hasActiveFilters = !!searchQuery || filterCategory !== 'all' || filterLevel !== 'all' || showDueOnly || smartFilter !== 'all'
 
   // — Practice Mode Views —
   if (viewMode === 'test') {
     return (
       <FlashCardTest
         words={testWords}
-        onComplete={(results) => {
-          handleBatchRate(results)
+        onComplete={async (results) => {
+          await handleBatchRate(results)
           setViewMode('list')
         }}
         onExit={() => setViewMode('list')}
@@ -364,8 +415,8 @@ export default function PersonalVocabularyPage() {
     return (
       <QuickReview
         words={testWords}
-        onComplete={(results) => {
-          handleBatchRate(results)
+        onComplete={async (results) => {
+          await handleBatchRate(results)
           setViewMode('list')
         }}
         onExit={() => setViewMode('list')}
@@ -378,8 +429,8 @@ export default function PersonalVocabularyPage() {
       <MultipleChoiceQuiz
         words={quizWords}
         allWords={personalWords}
-        onComplete={(results) => {
-          handleBatchRate(results)
+        onComplete={async (results) => {
+          await handleBatchRate(results)
           setViewMode('list')
         }}
         onExit={() => setViewMode('list')}
@@ -393,8 +444,8 @@ export default function PersonalVocabularyPage() {
       <FlashCardTest
         words={typingWords}
         initialMode="type-answer"
-        onComplete={(results) => {
-          handleBatchRate(results)
+        onComplete={async (results) => {
+          await handleBatchRate(results)
           setViewMode('list')
         }}
         onExit={() => setViewMode('list')}
@@ -491,6 +542,7 @@ export default function PersonalVocabularyPage() {
           onStartQuickReview={handleStartQuickReview}
           onStartMultipleChoice={handleStartMultipleChoice}
           onStartTyping={handleStartTyping}
+          sessions={activitySessions}
         />
       )}
 
@@ -535,7 +587,7 @@ export default function PersonalVocabularyPage() {
       {/* Statistics Widget */}
       {showStats && personalWords.length > 0 && (
         <div className="animate-fadeIn">
-          <VocabStatsWidget words={personalWords} />
+          <VocabStatsWidget words={personalWords} sessions={activitySessions} />
         </div>
       )}
 
@@ -547,7 +599,7 @@ export default function PersonalVocabularyPage() {
           onFilterChange={(f) => {
             setSmartFilter(f)
             if (f === 'due') setShowDueOnly(true)
-            else if (f !== 'all') setShowDueOnly(false)
+            else setShowDueOnly(false)
           }}
         />
       )}
@@ -668,6 +720,20 @@ export default function PersonalVocabularyPage() {
       </div>
 
       {/* Content Area */}
+      {personalWordsError && !loading && (
+        <div role="alert" className="rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4 flex items-center justify-between gap-3">
+          <p className="text-sm text-red-700 dark:text-red-300">Lug'atni yuklab bo'lmadi. Internetni tekshirib, qayta urinib ko'ring.</p>
+          <button
+            onClick={async () => {
+              const userId = await getUserId()
+              if (userId !== 'guest') void fetchPersonalWords(userId)
+            }}
+            className="shrink-0 px-3 py-2 rounded-lg bg-red-600 text-white text-sm font-medium"
+          >
+            Qayta urinish
+          </button>
+        </div>
+      )}
       {viewMode === 'add' && (
         <div className="animate-fadeIn">
           <AddWordForm
@@ -679,7 +745,7 @@ export default function PersonalVocabularyPage() {
         </div>
       )}
 
-      {loading ? (
+      {!personalWordsError && viewMode === 'list' && (loading ? (
         <LoadingSkeleton />
       ) : filteredWords.length > 0 ? (
         <>
@@ -766,7 +832,7 @@ export default function PersonalVocabularyPage() {
             </>
           )}
         </div>
-      )}
+      ))}
 
       {/* Word Detail Modal */}
       {detailWord && (

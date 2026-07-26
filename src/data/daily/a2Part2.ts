@@ -1,6 +1,23 @@
 ﻿import type { DailyLesson } from '../dailyLessons'
 export const adjectiveAdverb: DailyLesson = {
   id: 'adjective-adverb',
+  reading: {
+    title: 'The Careful Driver',
+    passage: "Bobur is a careful driver. He drives slowly and always follows the rules. His car is old but clean. Every morning he checks it carefully before he leaves home.\n\nHis brother Sardor is different. He is a fast driver and sometimes he drives dangerously. He thinks he is a good driver, but he does not drive well. Last month he had a small accident because he was driving quickly in the rain.\n\nTheir mother is always worried. 'Please drive carefully,' she says to Sardor. 'A good driver is a slow driver, not a fast one.' Now Sardor tries hard to drive more safely, and his mother is happier.",
+    vocabulary: [
+      { word: 'careful', definition: "ehtiyotkor" },
+      { word: 'slowly', definition: "sekin (ravish)" },
+      { word: 'dangerously', definition: "xavfli tarzda" },
+      { word: 'accident', definition: "avariya, baxtsiz hodisa" },
+    ],
+    questions: [
+      { id: 90201, type: 'multiple-choice', question: "How does Bobur drive?", options: ['Quickly and dangerously', 'Slowly and carefully', 'Badly', 'Never'], correctIndex: 1, explanation: "'He drives slowly and always follows the rules.'" },
+      { id: 90202, type: 'multiple-choice', question: "Which word is an adjective in 'He is a careful driver'?", options: ['careful', 'drives', 'slowly', 'is'], correctIndex: 0, explanation: "'careful' describes the noun 'driver' — it is an adjective." },
+      { id: 90203, type: 'multiple-choice', question: "Why did Sardor have an accident?", options: ['His car was clean', 'He was driving quickly in the rain', 'He drove slowly', 'His mother was worried'], correctIndex: 1, explanation: "'because he was driving quickly in the rain.'" },
+      { id: 90204, type: 'multiple-choice', question: "What does the mother mean by 'A good driver is a slow driver'?", options: ['Fast driving is safe', 'Careful, slow driving is better', 'Old cars are bad', 'Sardor is the best driver'], correctIndex: 1, explanation: "She advises careful, slow driving over fast driving." },
+      { id: 90205, type: 'multiple-choice', question: "How does Sardor try to drive now?", options: ['More dangerously', 'More safely', 'More quickly', 'He stopped driving'], correctIndex: 1, explanation: "'Sardor tries hard to drive more safely.'" },
+    ],
+  },
   title: 'Adjective vs Adverb',
   subtitle: "Sifat va ravish — qanday va qanchalik farqi",
   level: 'A2',
@@ -27,6 +44,7 @@ export const adjectiveAdverb: DailyLesson = {
   },
   writing: {
     prompt: "Describe a person you know and how they do things. Use adjectives to describe the person and adverbs to describe their actions.",
+    modelAnswer: "My best friend Aziz is a calm and friendly person. He is very patient, and he always speaks quietly. He is a good student because he studies hard and works carefully. When he plays football, he runs fast and plays well. He is also a careful driver — he drives slowly and never gets angry. I like him because he treats everyone kindly. He is honest, and he always helps his friends happily.",
     wordLimit: 60,
     tips: [
       "Adjective describes a noun: 'a careful driver'",
@@ -240,9 +258,26 @@ export const adjectiveAdverb: DailyLesson = {
 
 export const gerundsInfinitives: DailyLesson = {
   id: 'gerunds-infinitives',
+  reading: {
+    title: 'My Free Time',
+    passage: "My name is Nigora, and I love learning new things. In my free time, I enjoy reading books and listening to music. I also like cooking, especially making national dishes for my family.\n\nLast year I decided to study English. At first it was difficult, and I wanted to give up. But my teacher told me to keep practising every day. Now I don't mind doing grammar exercises, and I have started to speak more confidently.\n\nMy dream is to travel abroad. I hope to visit London one day. To reach my goal, I need to work hard. I have promised myself to study for at least one hour every evening. Learning is not always easy, but it is always worth it.",
+    vocabulary: [
+      { word: 'enjoy', definition: "zavq olmoq, yoqtirmoq" },
+      { word: 'give up', definition: "tashlab qo'ymoq, voz kechmoq" },
+      { word: "don't mind", definition: "qarshi emas, xafa bo'lmaydi" },
+      { word: 'goal', definition: "maqsad" },
+    ],
+    questions: [
+      { id: 90301, type: 'multiple-choice', question: "What does Nigora enjoy doing in her free time?", options: ['Reading and listening to music', 'Sleeping and eating', 'Working abroad', 'Nothing'], correctIndex: 0, explanation: "'I enjoy reading books and listening to music.'" },
+      { id: 90302, type: 'multiple-choice', question: "What did her teacher tell her to do?", options: ['To give up', 'To keep practising every day', 'To travel abroad', 'To stop studying'], correctIndex: 1, explanation: "'my teacher told me to keep practising every day.'" },
+      { id: 90303, type: 'multiple-choice', question: "After 'enjoy', 'like', and 'don't mind', which form do we use?", options: ['to + verb', 'verb + -ing (gerund)', 'past simple', 'will + verb'], correctIndex: 1, explanation: "These verbs are followed by the -ing form: 'enjoy reading', 'don't mind doing'." },
+      { id: 90304, type: 'multiple-choice', question: "What is Nigora's dream?", options: ['To cook every day', 'To visit London', 'To stop learning', 'To give up English'], correctIndex: 1, explanation: "'I hope to visit London one day.'" },
+      { id: 90305, type: 'multiple-choice', question: "How long has she promised to study each evening?", options: ['One hour', 'Ten minutes', 'All night', 'One week'], correctIndex: 0, explanation: "'to study for at least one hour every evening.'" },
+    ],
+  },
   title: 'Gerunds & Infinitives',
   subtitle: "V+ing va to+V1 — qachon qanday ishlatiladi",
-  level: 'A2',
+  level: 'B1',
   category: "Fe'l shakllari",
   day: 31,
   listening: {
@@ -266,6 +301,7 @@ export const gerundsInfinitives: DailyLesson = {
   },
   writing: {
     prompt: "Write about your hobbies and goals. Say what you enjoy doing and what you want to do. Use both -ing forms and 'to + verb'.",
+    modelAnswer: "In my free time I enjoy reading books and listening to music. I like cooking, and I don't mind cleaning the house. I have decided to study English because I want to travel abroad. My goal is to visit London one day. I hope to pass the B1 exam next year. Sometimes it is difficult to study after work, but I have promised myself to practise every evening. I love learning new things.",
     wordLimit: 60,
     tips: [
       "After 'enjoy/like/finish' use -ing: 'I enjoy reading.'",
@@ -275,10 +311,10 @@ export const gerundsInfinitives: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Gerund (V+ing)', structure: 'verb + -ing (as noun)\nI enjoy reading.\nSwimming is fun.', color: 'green' },
-    { label: 'Infinitive (to+V1)', structure: 'to + base verb\nI want to go.\nShe needs to study.', color: 'blue' },
-    { label: 'Verb + Gerund', structure: 'enjoy/like/love/hate + V-ing\nfinish/stop/avoid + V-ing', color: 'orange' },
-    { label: 'Verb + Infinitive', structure: 'want/need/hope/plan + to+V1\ndecide/learn/promise + to+V1', color: 'purple' },
+    { label: 'Gerund (V+ing)', structure: 'verb + -ing (as noun)\nI enjoy reading.\nSwimming is fun.', color: 'green', explanation: "Gerund — fe'lning -ing shakli, gapda ot vazifasini bajaradi.", whenToUse: "Fe'l ega yoki to'ldiruvchi bo'lganda va ba'zi fe'llardan keyin.", example: "I enjoy reading. Swimming is good exercise." },
+    { label: 'Infinitive (to+V1)', structure: 'to + base verb\nI want to go.\nShe needs to study.', color: 'blue', explanation: "Infinitiv — 'to + fe'l' shakli, maqsad yoki xohishni bildiradi.", whenToUse: "want/need/hope kabi fe'llardan keyin va maqsad ifodalaganda.", example: "I want to go. She needs to study." },
+    { label: 'Verb + Gerund', structure: 'enjoy/like/love/hate + V-ing\nfinish/stop/avoid + V-ing', color: 'orange', explanation: "Ba'zi fe'llardan keyin doim -ing shakli keladi.", whenToUse: "enjoy, like, finish, stop, avoid, mind fe'llaridan keyin.", example: "I finished doing my homework. She avoids eating late." },
+    { label: 'Verb + Infinitive', structure: 'want/need/hope/plan + to+V1\ndecide/learn/promise + to+V1', color: 'purple', explanation: "Ba'zi fe'llardan keyin doim 'to + fe'l' keladi.", whenToUse: "want, need, hope, plan, decide, learn, promise fe'llaridan keyin.", example: "I decided to study. He promised to help." },
   ],
   rules: [
     "1️⃣ GERUND (V+ing) NIMA?\n\nGerund — fe'lning -ing shakli, lekin ot vazifasini bajaradi.\n\nSwimming is fun. (Suzish qiziqarli) — ega\nI enjoy reading. (Men o'qishni yoqtiraman) — ob'ekt\nHe is good at singing. (U qo'shiq aytishda yaxshi) — predlogdan keyin",
@@ -454,7 +490,7 @@ export const passiveVoice: DailyLesson = {
   id: 'passive-voice',
   title: 'Passive Voice',
   subtitle: "Simple Present va Past — ish-harakatning kim tomonidan bajarilishi muhim emas",
-  level: 'A2',
+  level: 'B1',
   category: "Fe'l shakllari",
   day: 32,
   listening: {
@@ -478,6 +514,7 @@ export const passiveVoice: DailyLesson = {
   },
   writing: {
     prompt: "Describe how a simple thing is made, or where products in your home come from. Use the passive voice in the present or past.",
+    modelAnswer: "Bread is made from flour, water, and salt. First, the dough is prepared, and then it is baked in a hot oven. In our home, most products are bought at the local market. Our furniture was made in Uzbekistan, but my phone was made in another country. The streets in our city are cleaned every morning. Last year, a new school was built near our house. Many useful things are produced by hard-working people.",
     wordLimit: 60,
     tips: [
       "Structure: be + past participle: 'Tea is grown in...'",
@@ -487,9 +524,9 @@ export const passiveVoice: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Present Passive', structure: 'am/is/are + V3 (past participle)\nEnglish is spoken here.\nThe room is cleaned daily.', color: 'green' },
-    { label: 'Past Passive', structure: 'was/were + V3 (past participle)\nThe car was repaired.\nThe letters were sent.', color: 'blue' },
-    { label: 'By + agent', structure: 'The cake was made by my mother.\nThe window was broken by the boy.', color: 'orange' },
+    { label: 'Present Passive', structure: 'am/is/are + V3 (past participle)\nEnglish is spoken here.\nThe room is cleaned daily.', color: 'green', explanation: "Hozirgi passiv — harakatni kim bajarishidan ko'ra harakatning o'zi muhim bo'lganda.", whenToUse: "Hozirgi zamonda bajaruvchi noma'lum yoki muhim bo'lmaganda.", example: "English is spoken here. The room is cleaned daily." },
+    { label: 'Past Passive', structure: 'was/were + V3 (past participle)\nThe car was repaired.\nThe letters were sent.', color: 'blue', explanation: "O'tgan passiv — was/were + V3. Harakat obyektga qaratilganda.", whenToUse: "O'tgan zamonda bajaruvchi noma'lum yoki muhim bo'lmaganda.", example: "The car was repaired. The letters were sent." },
+    { label: 'By + agent', structure: 'The cake was made by my mother.\nThe window was broken by the boy.', color: 'orange', explanation: "Agar bajaruvchi muhim bo'lsa, 'by' bilan ko'rsatiladi.", whenToUse: "Kim bajarganini alohida ta'kidlash kerak bo'lganda.", example: "The cake was made by my mother." },
   ],
   rules: [
     "1️⃣ PASSIVE VOICE NIMA?\n\nActive (fa'l) — bajaruvchi muhim:\n  John cleans the room every day. (Jon har kuni xonani tozalaydi)\n\nPassive (majhul) — harakatning o'zi muhim, kim bajargani muhim emas:\n  The room is cleaned every day. (Xona har kuni tozalanadi)\n\nQachon ishlatiladi?\n  • Bajaruvchi noma'lum: My bike was stolen. (Velosipedim o'g'irlangan)\n  • Bajaruvchi muhim emas: English is spoken here.\n  • Bajaruvchi aniq, lekin harakat muhimroq: The President was elected.",
@@ -659,7 +696,7 @@ export const reportedSpeech: DailyLesson = {
   id: 'reported-speech',
   title: 'Reported Speech',
   subtitle: "Say/tell va tense backshift — kimningdir gapini aytib berish",
-  level: 'A2',
+  level: 'B1',
   category: "Fe'l shakllari",
   day: 33,
   listening: {
@@ -683,6 +720,7 @@ export const reportedSpeech: DailyLesson = {
   },
   writing: {
     prompt: "Tell a friend what someone said to you yesterday. Report at least four statements using 'said' and 'told'.",
+    modelAnswer: "Yesterday my friend Kamola told me some news. She said that she was very happy. She told me that she had passed her English exam. She said that she was going to study at university next year. She also told me that her brother had found a new job. Kamola said that she would visit me on Saturday. I was glad to hear that everything was going well for her family.",
     wordLimit: 60,
     tips: [
       "Use 'told' + person: 'She told me...'",
@@ -692,9 +730,9 @@ export const reportedSpeech: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Say vs Tell', structure: 'say + (that) + clause\nHe said (that) he was tired.\ntell + person + (that) + clause\nHe told me (that) he was tired.', color: 'green' },
-    { label: 'Tense Backshift', structure: 'present → past\npast → past perfect\nwill → would\ncan → could', color: 'blue' },
-    { label: 'Questions in Reported', structure: 'He asked + if/whether + statement\nShe asked where I lived.', color: 'orange' },
+    { label: 'Say vs Tell', structure: 'say + (that) + clause\nHe said (that) he was tired.\ntell + person + (that) + clause\nHe told me (that) he was tired.', color: 'green', explanation: "'say' dan keyin shaxs kelmaydi, 'tell' dan keyin doim shaxs (me/him) keladi.", whenToUse: "Kimningdir gapini boshqasiga yetkazganda.", example: "He said he was tired. He told me he was tired." },
+    { label: 'Tense Backshift', structure: 'present → past\npast → past perfect\nwill → would\ncan → could', color: 'blue', explanation: "Ko'chirma gap egri gapga o'tganda zamon bir pog'ona orqaga suriladi.", whenToUse: "Bosh gap fe'li o'tgan zamonda (said/told) bo'lganda.", example: "'I am busy' → He said he was busy." },
+    { label: 'Questions in Reported', structure: 'He asked + if/whether + statement\nShe asked where I lived.', color: 'orange', explanation: "Egri savolda so'z tartibi darak gapdek; yes/no savol 'if/whether' bilan.", whenToUse: "Savolni boshqasiga yetkazganda.", example: "She asked where I lived. He asked if I was ready." },
   ],
   rules: [
     "1️⃣ REPORTED SPEECH NIMA?\n\nDirect speech — kimningdir gapini aynan keltirish:\n  She said: 'I am tired.' (U: 'Men charchadim' dedi)\n\nReported speech — kimningdir gapini o'z so'zlaring bilan aytib berish:\n  She said that she was tired. (U charchaganini aytdi)\n\n📌 SAY vs TELL farqi:\n  say + (that) + clause: He said (that) he was tired.\n  tell + person + (that): He told me (that) he was tired.\n\n  ❌ He told that he was tired. (tell + person kerak: told me / told her)\n  ✅ He said that he was tired. (say ga person kerak emas)",
@@ -862,9 +900,20 @@ export const reportedSpeech: DailyLesson = {
 
 export const firstConditional: DailyLesson = {
   id: 'first-conditional',
+  speaking: {
+    prompt: "Talk about your real plans and their results. Speak for about one minute. Use the First Conditional: If + Present Simple, ... will + verb. Talk about this weekend, your studies, or the weather.",
+    tips: [
+      "Shart qismi — Present Simple: 'If it rains...'",
+      "Natija qismi — will + fe'l: '...I will stay home.'",
+      "'if' qismida 'will' ISHLATILMAYDI: If it rains (not 'if it will rain').",
+      "'unless' = 'if not': 'Unless I study, I will fail.'",
+      "Real, mumkin bo'lgan vaziyatlar uchun (Second Conditional — xayoliy).",
+    ],
+    sampleAnswer: "I have some plans for this weekend. If the weather is good, I will go to the park with my friends. If it rains, we will watch a film at home instead. I also need to study. If I finish my homework early, I will have more free time. My teacher said that if I pass the next test, I will move to the B1 group. So I will work hard this week. Unless I practise every day, my English won't improve. If I keep learning, I will speak fluently one day.",
+  },
   title: 'First Conditional',
   subtitle: "If + Present Simple, will + V1 — real va mumkin bo'lgan shartlar",
-  level: 'A2',
+  level: 'B1',
   category: 'Gap tuzilishi',
   day: 34,
   listening: {
@@ -888,6 +937,7 @@ export const firstConditional: DailyLesson = {
   },
   writing: {
     prompt: "Write about your plans for the weekend and their conditions. Use the first conditional: 'If + present simple, will + verb'.",
+    modelAnswer: "I have some plans for the weekend. If the weather is good, I will go to the park with my friends. If it rains, we will watch a film at home. If I finish my homework early, I will have more free time on Sunday. My mother said that if I help her in the morning, she will make my favourite food. If I study hard this week, I will be ready for the test. Unless I practise, I won't improve.",
     wordLimit: 60,
     tips: [
       "Structure: 'If it is sunny, I will go out.'",
@@ -897,9 +947,9 @@ export const firstConditional: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'First Conditional', structure: 'If + Present Simple, will + V1\nIf it rains, I will stay home.\nIf you study, you will pass.', color: 'green' },
-    { label: 'Negative Condition', structure: "If + don't/doesn't + V1, won't + V1\nIf you don't study, you won't pass.", color: 'red' },
-    { label: 'Question Form', structure: 'Will + subject + V1 + if + Present Simple?\nWill you go if it rains?', color: 'blue' },
+    { label: 'First Conditional', structure: 'If + Present Simple, will + V1\nIf it rains, I will stay home.\nIf you study, you will pass.', color: 'green', explanation: "Real, mumkin bo'lgan kelajak shartlari uchun: If + Present, will + V1.", whenToUse: "Kelajakda ehtimoli bor real vaziyatlar haqida gapirganda.", example: "If it rains, I will stay home." },
+    { label: 'Negative Condition', structure: "If + don't/doesn't + V1, won't + V1\nIf you don't study, you won't pass.", color: 'red', explanation: "Shart yoki natija inkorda bo'lishi mumkin. 'unless' = 'if not'.", whenToUse: "Shart bajarilmasa nima bo'lishini aytganda.", example: "If you don't study, you won't pass. = Unless you study, you won't pass." },
+    { label: 'Question Form', structure: 'Will + subject + V1 + if + Present Simple?\nWill you go if it rains?', color: 'blue', explanation: "Natija qismini savolga aylantirib, shart 'if' bilan qo'shiladi.", whenToUse: "Shartli vaziyatda savol berganda.", example: "Will you go if it rains?" },
   ],
   rules: [
     "1️⃣ FIRST CONDITIONAL NIMA?\n\nFirst Conditional — real va mumkin bo'lgan vaziyatlarni ifodalaydi. Agar biror narsa bo'lsa, boshqa narsa bo'ladi.\n\nIf + Present Simple, will + V1\n  If it rains, I will stay home. (Agar yomg'ir yog'sa, uyda qolaman)\n  If you study, you will pass the exam. (Agar o'qisang, imtihondan o'tasan)\n  If she comes, we will be happy. (Agar kelsa, biz baxtli bo'lamiz)\n\n📌 If dan keyin DOIM Present Simple (will KELMAYDI!):\n  ❌ If it will rain, I will stay. (NOTO'G'RI)\n  ✅ If it rains, I will stay. (TO'G'RI)",

@@ -83,12 +83,12 @@ export default function WordDetailModal({ word, onClose, onRate, onEdit, onDelet
   useEffect(() => {
     let cancelled = false
     supabase
-      .from('personal_vocabulary_sessions' as any)
+      .from('personal_vocabulary_sessions')
       .select('*')
       .eq('vocab_id', word.id)
-      .order('created_at', { ascending: false } as any)
+      .order('created_at', { ascending: false })
       .limit(20)
-      .then(({ data }: any) => {
+      .then(({ data }) => {
         if (!cancelled) {
           setSessions((data ?? []) as PersonalVocabSession[])
           setLoadingSessions(false)
@@ -100,6 +100,7 @@ export default function WordDetailModal({ word, onClose, onRate, onEdit, onDelet
 
   // Close on Escape
   useEffect(() => {
+    modalRef.current?.focus()
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
     }
@@ -117,12 +118,12 @@ export default function WordDetailModal({ word, onClose, onRate, onEdit, onDelet
     await onEdit(word.id, {
       english: editEnglish.trim(),
       uzbek: editUzbek.trim(),
-      phonetic: editPhonetic.trim() || undefined,
-      example: editExample.trim() || undefined,
-      example_uzbek: editExampleUzbek.trim() || undefined,
+      phonetic: editPhonetic.trim() || null,
+      example: editExample.trim() || null,
+      example_uzbek: editExampleUzbek.trim() || null,
       category: editCategory as VocabCategory,
       level: editLevel as 'A1' | 'A2' | 'B1' | 'B2',
-      part_of_speech: (editPos || undefined) as PartOfSpeech | undefined,
+      part_of_speech: (editPos || null) as PartOfSpeech | null,
     })
     setSaving(false)
     setIsEditing(false)
@@ -155,6 +156,10 @@ export default function WordDetailModal({ word, onClose, onRate, onEdit, onDelet
     >
       <div 
         ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="personal-word-dialog-title"
+        tabIndex={-1}
         className="w-full max-w-2xl bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 animate-scale-in overflow-hidden"
       >
         {/* Header */}
@@ -170,10 +175,11 @@ export default function WordDetailModal({ word, onClose, onRate, onEdit, onDelet
                     autoFocus
                   />
                 ) : (
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 truncate">{word.english}</h2>
+                  <h2 id="personal-word-dialog-title" className="text-xl font-bold text-gray-900 dark:text-gray-100 truncate">{word.english}</h2>
                 )}
                 <button 
                   onClick={() => handleSpeak(word.english)}
+                  aria-label={`${word.english} talaffuzini eshitish`}
                   className="p-1.5 rounded-lg text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-500 transition-all shrink-0"
                 >
                   <Volume2 size={16} />
@@ -355,7 +361,7 @@ export default function WordDetailModal({ word, onClose, onRate, onEdit, onDelet
                   <label className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1">Kategoriya</label>
                   <select
                     value={editCategory}
-                    onChange={e => setEditCategory(e.target.value as any)}
+                    onChange={e => setEditCategory(e.target.value as VocabCategory)}
                     className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-primary-500"
                   >
                     {CATEGORIES_FOR_SELECT.map(c => (
@@ -367,7 +373,7 @@ export default function WordDetailModal({ word, onClose, onRate, onEdit, onDelet
                   <label className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1">Daraja</label>
                   <select
                     value={editLevel}
-                    onChange={e => setEditLevel(e.target.value as any)}
+                    onChange={e => setEditLevel(e.target.value as 'A1' | 'A2' | 'B1' | 'B2')}
                     className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-primary-500"
                   >
                     {LEVELS.map(l => (

@@ -17,6 +17,7 @@ describe('personalVocabularySlice', () => {
     expect(slice.personalWords).toEqual([])
     expect(slice.personalWordsLoading).toBe(false)
     expect(slice.personalWordsFetched).toBe(false)
+    expect(slice.personalWordsError).toBeNull()
   })
 
   it('setPersonalWords calls set with updated words', () => {
@@ -33,7 +34,12 @@ describe('personalVocabularySlice', () => {
     const get = vi.fn(() => ({}))
     const slice = createPersonalVocabularySlice(set as never, get as never, {} as never)
     slice.clearPersonalVocabulary()
-    expect(set).toHaveBeenCalledWith({ personalWords: [], personalWordsFetched: false })
+    expect(set).toHaveBeenCalledWith({
+      personalWords: [],
+      personalWordsFetched: false,
+      personalWordsLoading: false,
+      personalWordsError: null,
+    })
   })
 
   it('addPersonalWord sets loading and calls service', async () => {

@@ -29,6 +29,7 @@ export const verbPatterns: DailyLesson = {
   },
   writing: {
     prompt: "Write about your daily choices and feelings. Combine verbs correctly using -ing, 'to + verb', or the base verb after modals.",
+    modelAnswer: "Every day I make many small choices. In the morning I decide to wake up early because I want to study. I enjoy having breakfast with my family. I must go to class at eight, so I try to be on time. Sometimes I feel like sleeping more, but I keep working. After lessons I like relaxing with music. In the evening I need to finish my homework, and I always plan to read before bed.",
     wordLimit: 60,
     tips: [
       "'enjoy/avoid' + -ing",
@@ -38,10 +39,10 @@ export const verbPatterns: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Verb + V-ing', structure: 'Subject + verb + V-ing\nI enjoy reading books.\nShe avoids going out late.', color: 'green' },
-    { label: 'Verb + to V1', structure: 'Subject + verb + to + V1\nI want to learn English.\nShe needs to study more.', color: 'blue' },
-    { label: 'Verb + person + to V1', structure: 'Subject + verb + person + to + V1\nShe told me to come.\nHe wants you to help.', color: 'red' },
-    { label: 'Verb + V1 (modals)', structure: 'Subject + modal + V1\nI can swim.\nYou must go.\nShe should study.', color: 'orange' },
+    { label: 'Verb + V-ing', structure: 'Subject + verb + V-ing\nI enjoy reading books.\nShe avoids going out late.', color: 'green', explanation: "Ba'zi fe'llardan keyin ikkinchi fe'l -ing shaklida keladi.", whenToUse: "enjoy, avoid, finish, mind, keep fe'llaridan keyin.", example: "I enjoy reading. She avoids going out late." },
+    { label: 'Verb + to V1', structure: 'Subject + verb + to + V1\nI want to learn English.\nShe needs to study more.', color: 'blue', explanation: "Ba'zi fe'llardan keyin ikkinchi fe'l 'to + V1' shaklida keladi.", whenToUse: "want, need, hope, decide, learn fe'llaridan keyin.", example: "I want to learn English. She needs to study." },
+    { label: 'Verb + person + to V1', structure: 'Subject + verb + person + to + V1\nShe told me to come.\nHe wants you to help.', color: 'red', explanation: "Ba'zi fe'llar shaxs + 'to + V1' talab qiladi.", whenToUse: "tell, want, ask, advise fe'llaridan keyin shaxs kelganda.", example: "She told me to come. He wants you to help." },
+    { label: 'Verb + V1 (modals)', structure: 'Subject + modal + V1\nI can swim.\nYou must go.\nShe should study.', color: 'orange', explanation: "Modal fe'llardan keyin fe'l ASL shaklda ('to' siz) keladi.", whenToUse: "can, must, should, might kabi modallardan keyin.", example: "I can swim. You must go. She should study." },
   ],
   rules: [
     "1️⃣ VERB PATTERNS NIMA?\n\nVerb patterns — bir fe'ldan keyin ikkinchi fe'l qanday shaklda kelishini belgilaydi. Ingliz tilida fe'llardan keyin 4 xil shakl kelishi mumkin:\n\n📌 V-ing (gerund): enjoy, avoid, suggest, finish, mind, practice, keep\n  I enjoy reading. (Men o'qishdan zavqlanaman)\n  She avoids going out late. (U kech chiqishdan qochadi)\n\n📌 to V1 (infinitive): want, need, decide, hope, plan, promise, learn\n  I want to learn English. (Men ingliz tilini o'rganmoqchiman)\n  She needs to study more. (U ko'proq o'qishi kerak)\n\n📌 Person + to V1: tell, ask, want, expect, advise, remind\n  She told me to come. (U menga kelishimni aytdi)\n  He wants you to help. (U sizning yordam berishingizni xohlaydi)\n\n📌 V1 (bare infinitive): modals (can, must, should, might, will)\n  I can swim. (Men suza olaman)\n  You must go. (Siz ketishingiz kerak)\n\n🔴 MUHIM: Fe'lning ma'nosiga qarab, undan keyin V-ing yoki to V1 kelishini BILIB OLISH KERAK!",
@@ -191,6 +192,23 @@ export const verbPatterns: DailyLesson = {
 // ─── LESSON 5: TIME PREPOSITIONS ──────────────────────────────────────
 export const timePrepositions: DailyLesson = {
   id: 'time-prepositions',
+  reading: {
+    title: 'A Busy Week',
+    passage: "Aziz is a student, and he has a busy week. On Monday he has English classes in the morning. At two o'clock in the afternoon he works at a café. He finishes work at nine o'clock at night.\n\nOn Wednesday and Friday he goes to the gym. He was born in April, so his birthday is in spring. This year his birthday is on the fifteenth of April, and it is on a Saturday.\n\nIn the summer, Aziz has a holiday. He usually travels in July or August. At the weekend, he likes to rest at home. He always calls his parents on Sunday evening. Aziz is tired during the week, but he is happy because he learns a lot.",
+    vocabulary: [
+      { word: 'busy', definition: "band, mashg'ul" },
+      { word: 'holiday', definition: "ta'til, dam olish" },
+      { word: 'rest', definition: "dam olmoq" },
+      { word: 'during', definition: "davomida, mobaynida" },
+    ],
+    questions: [
+      { id: 90401, type: 'multiple-choice', question: "When does Aziz have English classes?", options: ['On Monday morning', 'At night', 'In August', 'On Sunday'], correctIndex: 0, explanation: "'On Monday he has English classes in the morning.'" },
+      { id: 90402, type: 'multiple-choice', question: "Which preposition do we use with 'two o'clock'?", options: ['on', 'in', 'at', 'during'], correctIndex: 2, explanation: "We use 'at' with clock times: at two o'clock." },
+      { id: 90403, type: 'multiple-choice', question: "In which month is Aziz's birthday?", options: ['July', 'April', 'August', 'January'], correctIndex: 1, explanation: "'He was born in April.'" },
+      { id: 90404, type: 'multiple-choice', question: "Which preposition goes with months and seasons, like 'April' and 'summer'?", options: ['at', 'on', 'in', 'to'], correctIndex: 2, explanation: "We use 'in' with months and seasons: in April, in summer." },
+      { id: 90405, type: 'multiple-choice', question: "When does Aziz call his parents?", options: ['On Sunday evening', 'On Monday', 'At the gym', 'In July'], correctIndex: 0, explanation: "'He always calls his parents on Sunday evening.'" },
+    ],
+  },
   title: 'Time Prepositions',
   subtitle: "Vaqt old ko'makchilari — at, in, on, before, after, during va boshqalar",
   level: 'A2',
@@ -217,6 +235,7 @@ export const timePrepositions: DailyLesson = {
   },
   writing: {
     prompt: "Describe a typical day from morning to night. Use time prepositions: 'at', 'in', 'on', 'before', 'after', and 'during'.",
+    modelAnswer: "On a typical day, I wake up at six o'clock in the morning. Before breakfast, I do some exercises. I go to school at eight, and I have classes in the morning. At noon I have lunch, and after that I study in the library. In the afternoon I work for two hours. During the evening I relax with my family. I usually go to bed at eleven o'clock at night. On Sunday I rest at home.",
     wordLimit: 60,
     tips: [
       "'in the morning', 'at night'",
@@ -226,10 +245,10 @@ export const timePrepositions: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'AT', structure: 'AT + specific time / night / weekend\nat 5 o\'clock\nat midnight\nat the weekend', color: 'green' },
-    { label: 'IN', structure: 'IN + months / years / seasons / parts of day\nin May\nin 2024\nin summer\nin the morning', color: 'blue' },
-    { label: 'ON', structure: 'ON + days / dates / specific day parts\non Monday\non 5 May\non Friday morning', color: 'red' },
-    { label: 'BEFORE / AFTER / DURING', structure: 'Before + noun\nAfter + noun\nDuring + noun\nbefore lunch\nafter work\nduring the meeting', color: 'orange' },
+    { label: 'AT', structure: 'AT + specific time / night / weekend\nat 5 o\'clock\nat midnight\nat the weekend', color: 'green', explanation: "Aniq vaqt nuqtasi uchun 'at' ishlatiladi.", whenToUse: "Soatlar, 'night' va 'the weekend' bilan.", example: "at 5 o'clock, at night, at the weekend" },
+    { label: 'IN', structure: 'IN + months / years / seasons / parts of day\nin May\nin 2024\nin summer\nin the morning', color: 'blue', explanation: "Uzun davrlar — oy, yil, fasl va kun qismlari uchun 'in'.", whenToUse: "Oylar, yillar, fasllar va 'morning/afternoon/evening' bilan.", example: "in May, in 2024, in summer, in the morning" },
+    { label: 'ON', structure: 'ON + days / dates / specific day parts\non Monday\non 5 May\non Friday morning', color: 'red', explanation: "Kunlar va sanalar uchun 'on' ishlatiladi.", whenToUse: "Hafta kunlari, sanalar va aniq kun qismlari bilan.", example: "on Monday, on 5 May, on Friday morning" },
+    { label: 'BEFORE / AFTER / DURING', structure: 'Before + noun\nAfter + noun\nDuring + noun\nbefore lunch\nafter work\nduring the meeting', color: 'orange', explanation: "Vaqt bog'lovchilari: before (oldin), after (keyin), during (davomida).", whenToUse: "Bir voqeaning boshqasiga nisbatan vaqtini ko'rsatganda.", example: "before lunch, after work, during the meeting" },
   ],
   rules: [
     "1️⃣ AT / IN / ON — ASOSIY QOIDALAR\n\nAT, IN, ON — vaqt old ko'makchilari. Ular qachon sodir bo'lishini ko'rsatadi:\n\n📌 AT — aniq vaqt va qisqa davrlar:\n  at 5 o'clock (soat 5 da)\n  at midnight (yarim tunda)\n  at night (kechasi)\n  at the weekend (dam olish kunlari, UK)\n  at lunchtime (tushlik paytida)\n  at the moment (hoziroq)\n\n📌 IN — uzoqroq davrlar:\n  in May (may oyida)\n  in 2024 (2024 yilda)\n  in summer (yozda)\n  in the morning (ertalab)\n  in the 20th century (20-asrda)\n  in the future (kelajakda)\n\n📌 ON — kunlar va sanalar:\n  on Monday (dushanba kuni)\n  on 5 May (5 mayda)\n  on Christmas Day (Rojdestvo kunida)\n  on Friday morning (juma kuni ertalab)\n  on my birthday (tug'ilgan kunimda)\n  on New Year's Eve (Yangi yil arafasida)",
@@ -555,6 +574,23 @@ export const thereIsThereAre: DailyLesson = {
 // ─── LESSON 2: POSSESSIVES ──────────────────────────────────────────────
 export const possessives: DailyLesson = {
   id: 'possessives',
+  reading: {
+    title: 'Whose Things Are These?',
+    passage: "The Karimov family has a big house. Every person has their own room. This is my room, and that one is my sister's room. Her room is bigger than mine, but my room is nicer.\n\nMy parents' car is in the garage. It is their favourite thing. My father says the car is his, but my mother says it is hers too! In the living room there are many things. The books on the table are mine, and the phone is my brother's.\n\n'Whose keys are these?' my mother asked yesterday. 'They are not mine,' I said. 'They are yours, Mum!' We all laughed. In our family, we share our things, but everyone knows what is theirs.",
+    vocabulary: [
+      { word: 'own', definition: "o'ziniki, shaxsiy" },
+      { word: 'garage', definition: "garaj" },
+      { word: 'whose', definition: "kimniki" },
+      { word: 'share', definition: "bo'lishmoq" },
+    ],
+    questions: [
+      { id: 90501, type: 'multiple-choice', question: "Whose room is bigger?", options: ["The narrator's room", "The sister's room", "The parents' room", "The brother's room"], correctIndex: 1, explanation: "'Her room is bigger than mine.'" },
+      { id: 90502, type: 'multiple-choice', question: "Where is the parents' car?", options: ['In the living room', 'In the garage', 'On the table', 'At school'], correctIndex: 1, explanation: "'My parents' car is in the garage.'" },
+      { id: 90503, type: 'multiple-choice', question: "Which word correctly completes: 'The books are ___ (belong to me).'", options: ['my', 'mine', 'me', "mine's"], correctIndex: 1, explanation: "Possessive pronoun (no noun after) = 'mine'." },
+      { id: 90504, type: 'multiple-choice', question: "Whose keys were on the table?", options: ["The narrator's", "The mother's", "The father's", "The sister's"], correctIndex: 1, explanation: "'They are yours, Mum!'" },
+      { id: 90505, type: 'multiple-choice', question: "What does the family do with their things?", options: ['They sell them', 'They share them', 'They lose them', 'They hide them'], correctIndex: 1, explanation: "'we share our things.'" },
+    ],
+  },
   title: 'Possessives',
   subtitle: "Egalikni ifodalash — my, your, 's, whose va boshqalar",
   level: 'A2',
@@ -581,6 +617,7 @@ export const possessives: DailyLesson = {
   },
   writing: {
     prompt: "Describe your family and their belongings. Show possession using 'my/your/his/her', the apostrophe 's', and 'whose'.",
+    modelAnswer: "This is my family. The tall man is my father, and his car is in the garage. My mother's kitchen is her favourite room. This bag is mine, and that one is my sister's. 'Whose books are these?' my brother asked. They are his, not mine. In our house, everyone has their own things, but we share them. My grandparents' house is bigger than ours, and I love visiting it every weekend.",
     wordLimit: 55,
     tips: [
       "Possessive adjectives: 'my, your, his, her, our, their'",
@@ -590,10 +627,10 @@ export const possessives: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Possessive Adjectives', structure: 'my / your / his / her / its / our / their + noun\nThis is my book.', color: 'green' },
-    { label: "Possessive 's", structure: "Noun + 's + noun\nJohn's car\nMy mother's house", color: 'blue' },
-    { label: "Plural with '", structure: "Plural noun + '\nThe students' classroom\nMy parents' house", color: 'red' },
-    { label: 'Whose', structure: "Whose + noun + is/are + ...?\nWhose book is this? / It's mine.", color: 'orange' },
+    { label: 'Possessive Adjectives', structure: 'my / your / his / her / its / our / their + noun\nThis is my book.', color: 'green', explanation: "Egalik sifatlari otdan oldin keladi va narsa kimga tegishli ekanini bildiradi.", whenToUse: "Otdan oldin egalikni ko'rsatganda.", example: "This is my book. That is her bag." },
+    { label: "Possessive 's", structure: "Noun + 's + noun\nJohn's car\nMy mother's house", color: 'blue', explanation: "Jonli/shaxs otiga 's qo'shib egalik yasaladi.", whenToUse: "Birlik otning egaligini ko'rsatganda.", example: "John's car. My mother's house." },
+    { label: "Plural with '", structure: "Plural noun + '\nThe students' classroom\nMy parents' house", color: 'red', explanation: "Ko'plik ot -s bilan tugasa, faqat apostrof (') qo'shiladi.", whenToUse: "Ko'plik otning egaligini ko'rsatganda.", example: "The students' classroom. My parents' house." },
+    { label: 'Whose', structure: "Whose + noun + is/are + ...?\nWhose book is this? / It's mine.", color: 'orange', explanation: "'Whose' — narsa kimga tegishli ekanini so'rash uchun.", whenToUse: "Egalik haqida savol berganda.", example: "Whose book is this? — It's mine." },
   ],
   rules: [
     "1️⃣ POSSESSIVE ADJECTIVES (EGALIK SIFATLARI)\n\nPossessive adjectives — kimningdir nimagadir egalik qilishini ko'rsatadi. Ular doim OTDAN OLDIN keladi:\n\n📌 I → my: This is my book. (Bu mening kitobim)\n📌 You → your: Is this your pen? (Bu sizning ruchkangizmi?)\n📌 He → his: That is his car. (Bu uning mashinasi)\n📌 She → her: She loves her job. (U o'z ishini yaxshi ko'radi)\n📌 It → its: The cat is playing with its toy. (Mushuk o'z o'yinchog'i bilan o'ynamoqda)\n📌 We → our: Our house is big. (Bizning uyimiz katta)\n📌 They → their: Their children are smart. (Ularning bolalari aqlli)\n\n🔴 MUHIM: 'Its' hech qachon apostrof bilan yozilmaydi! 'It's' = It is qisqartmasi.\n  ✅ The dog wagged its tail. (It duminini likillatdi)\n  ❌ The dog wagged it's tail.",
@@ -746,6 +783,23 @@ export const possessives: DailyLesson = {
 // ─── LESSON 3: SOME / ANY / NO / EVERY ─────────────────────────────────
 export const someAnyNoEvery: DailyLesson = {
   id: 'some-any-no-every',
+  reading: {
+    title: 'The Empty Fridge',
+    passage: "It was Sunday morning, and Malika wanted to make breakfast. She opened the fridge, but there was almost nothing inside. 'Is there any milk?' she thought. No, there wasn't any milk. There were some eggs, but there was no bread.\n\n'Every shop is open on Sunday,' she said, 'so I can buy something.' She took some money and went to the market. At the market, everything was fresh. She bought some bread, some fruit, and a few tomatoes. She didn't buy any meat because it was expensive.\n\nWhen she came home, she made breakfast for everyone in her family. Everybody was happy. 'There is something special about a family breakfast,' Malika said with a smile.",
+    vocabulary: [
+      { word: 'fridge', definition: "muzlatgich" },
+      { word: 'fresh', definition: "yangi, taza" },
+      { word: 'empty', definition: "bo'sh" },
+      { word: 'special', definition: "maxsus, alohida" },
+    ],
+    questions: [
+      { id: 90601, type: 'multiple-choice', question: "Was there any milk in the fridge?", options: ['Yes, a lot', "No, there wasn't any", 'Only a little', 'The text does not say'], correctIndex: 1, explanation: "'No, there wasn't any milk.'" },
+      { id: 90602, type: 'multiple-choice', question: "Which word do we use in negatives and questions, like 'Is there ___ milk?'", options: ['some', 'any', 'every', 'no'], correctIndex: 1, explanation: "'any' is used in questions and negatives; 'some' in positives." },
+      { id: 90603, type: 'multiple-choice', question: "What did Malika NOT buy?", options: ['Bread', 'Fruit', 'Meat', 'Tomatoes'], correctIndex: 2, explanation: "'She didn't buy any meat because it was expensive.'" },
+      { id: 90604, type: 'multiple-choice', question: "'Every shop is open' — which verb form is correct after 'every'?", options: ['are open', 'is open', 'were open', 'be open'], correctIndex: 1, explanation: "'every' takes a singular verb: every shop IS open." },
+      { id: 90605, type: 'multiple-choice', question: "How did the family feel after breakfast?", options: ['Angry', 'Happy', 'Hungry', 'Tired'], correctIndex: 1, explanation: "'Everybody was happy.'" },
+    ],
+  },
   title: 'Some / Any / No / Every',
   subtitle: "Noaniq miqdor va mavjudlik — some, any, no, every va ularning hosilalari",
   level: 'A2',
@@ -771,6 +825,7 @@ export const someAnyNoEvery: DailyLesson = {
   },
   writing: {
     prompt: "Write about a party or a busy place. Use 'some', 'any', 'no', and 'every' (and words like 'someone', 'anything', 'everywhere').",
+    modelAnswer: "Last Saturday there was a party at my friend's house. There were some sandwiches and a lot of fruit on the table. Everyone brought something to eat. I didn't know anybody at first, but soon I made some new friends. There wasn't any loud music, so we could talk easily. Every guest was friendly. Someone played the guitar, and everybody sang together. There was nothing boring about the evening — it was a great party!",
     wordLimit: 60,
     tips: [
       "'some' in positives, 'any' in questions/negatives",
@@ -780,10 +835,10 @@ export const someAnyNoEvery: DailyLesson = {
     ],
   },
   formulas: [
-    { label: 'Some', structure: 'Some + countable/uncountable (ijobiy)\nI have some books.\nThere is some milk.', color: 'green' },
-    { label: 'Any', structure: 'Any + countable/uncountable (inkor/savol)\nI don\'t have any books.\nIs there any milk?', color: 'blue' },
-    { label: 'No', structure: 'No + noun = Not any\nI have no books.\nThere is no milk.', color: 'red' },
-    { label: 'Every', structure: 'Every + singular noun\nEvery student has a book.\nEvery day is a new day.', color: 'orange' },
+    { label: 'Some', structure: 'Some + countable/uncountable (ijobiy)\nI have some books.\nThere is some milk.', color: 'green', explanation: "'some' — ijobiy gaplarda noaniq miqdor uchun.", whenToUse: "Tasdiq gaplarda (va taklif/so'rovda) miqdor bildirganda.", example: "I have some books. There is some milk." },
+    { label: 'Any', structure: 'Any + countable/uncountable (inkor/savol)\nI don\'t have any books.\nIs there any milk?', color: 'blue', explanation: "'any' — inkor va savollarda noaniq miqdor uchun.", whenToUse: "Inkor va savol gaplarida.", example: "I don't have any books. Is there any milk?" },
+    { label: 'No', structure: 'No + noun = Not any\nI have no books.\nThere is no milk.', color: 'red', explanation: "'no + ot' = 'not any' — mutlaq inkor (fe'l ijobiy qoladi).", whenToUse: "Biror narsa umuman yo'qligini ta'kidlaganda.", example: "I have no books. There is no milk." },
+    { label: 'Every', structure: 'Every + singular noun\nEvery student has a book.\nEvery day is a new day.', color: 'orange', explanation: "'every + birlik ot' — guruhning har bir a'zosi, birlik fe'l oladi.", whenToUse: "Guruhdagi har bir narsani umumlashtirganda.", example: "Every student has a book. Every day is new." },
   ],
   rules: [
     "1️⃣ SOME / ANY / NO — ASOSIY QOIDALAR\n\nSome, any, no — noaniq miqdor va mavjudlikni bildiradi:\n\n📌 SOME (ijobiy gaplarda — bir oz, bir nechta):\n  I have some friends in London. (Mening Londonda do'stlarim bor)\n  There is some milk in the fridge. (Muzlatgichda sut bor)\n  She bought some apples. (U olmalar sotib oldi)\n\n📌 ANY (inkor va savollarda — hech qanday, bironta):\n  I don't have any money. (Mening pulim yo'q)\n  Do you have any questions? (Savollaringiz bormi?)\n  There isn't any sugar. (Shakar yo'q)\n\n📌 NO (inkor — hech qanday ... yo'q, umuman yo'q):\n  I have no money. (Mening pulim umuman yo'q)\n  There is no sugar. (Shakar umuman yo'q)\n  No problem! (Muammo yo'q!)\n\n🔴 MUHIM: 'No' inkorning o'zi, shuning uchun 'not' bilan ishlatilmaydi!\n  ✅ I have no money.\n  ❌ I don't have no money. (double negative)",

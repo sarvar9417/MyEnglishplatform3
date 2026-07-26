@@ -208,40 +208,12 @@ export default function FlashCardTest({ words, onComplete, onExit, initialMode }
     resetCard()
   }, [currentIndex, resetCard])
 
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
-
-      if (!showAnswer) {
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault()
-          handleShowAnswer()
-        }
-      } else {
-        const ratingMap: Record<string, VocabRating> = {
-          '1': 'bilmadim',
-          '2': 'qiynaldim',
-          '3': 'bildim',
-          '4': 'yodladim',
-        }
-        if (ratingMap[e.key]) {
-          e.preventDefault()
-          handleRate(ratingMap[e.key])
-        }
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [showAnswer])
-
-  const handleShowAnswer = () => {
+  const handleShowAnswer = useCallback(() => {
     setShowAnswer(true)
     setIsFlipped(true)
-  }
+  }, [])
 
-  const handleRate = (rating: VocabRating) => {
+  const handleRate = useCallback((rating: VocabRating) => {
     const result: WordSessionResult = {
       vocabId: currentWord.id,
       english: currentWord.english,
@@ -260,7 +232,30 @@ export default function FlashCardTest({ words, onComplete, onExit, initialMode }
       setTimerActive(false)
       setShowSummary(true)
     }
-  }
+  }, [currentIndex, currentWord, results, totalWords])
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
+      if (!showAnswer) {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault()
+          handleShowAnswer()
+        }
+      } else {
+        const ratingMap: Record<string, VocabRating> = {
+          '1': 'bilmadim', '2': 'qiynaldim', '3': 'bildim', '4': 'yodladim',
+        }
+        if (ratingMap[e.key]) {
+          e.preventDefault()
+          handleRate(ratingMap[e.key])
+        }
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [showAnswer, handleShowAnswer, handleRate])
 
   const handleSkip = () => {
     const result: WordSessionResult = {
@@ -362,6 +357,7 @@ export default function FlashCardTest({ words, onComplete, onExit, initialMode }
           </div>
           <button
             onClick={onExit}
+            aria-label="Flash card testidan chiqish"
             className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 transition-colors"
           >
             <X size={20} />

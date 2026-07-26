@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import type { PersonalWord } from '../../types/personalVocabulary'
+import type { PersonalWord, PersonalVocabSession } from '../../types/personalVocabulary'
 import { getTodayTashkent } from '../../utils/tashkentDate'
 import { Zap, Trophy, BookOpen, PlayCircle, ListChecks, Sparkles, Target, TrendingUp } from 'lucide-react'
 
@@ -9,6 +9,7 @@ interface ReviewDashboardProps {
   onStartQuickReview: () => void
   onStartMultipleChoice: () => void
   onStartTyping: () => void
+  sessions?: PersonalVocabSession[]
 }
 
 function getDaysAgo(dateStr: string): number {
@@ -20,7 +21,7 @@ function getDaysAgo(dateStr: string): number {
 
 export default function ReviewDashboard({
   words, onStartFlashcard, onStartQuickReview,
-  onStartMultipleChoice, onStartTyping,
+  onStartMultipleChoice, onStartTyping, sessions = [],
 }: ReviewDashboardProps) {
   const today = getTodayTashkent()
 
@@ -30,12 +31,9 @@ export default function ReviewDashboard({
     const due = words.filter(w => !w.is_learned && w.next_review <= today).length
     const overdue = words.filter(w => !w.is_learned && getDaysAgo(w.next_review) > 2).length
     const newWords = words.filter(w => w.box <= 1 && !w.is_learned).length
-    const mastered = words.filter(w => w.box >= 5 && w.is_learned).length
+    const mastered = words.filter(w => w.box >= 6 && w.is_learned).length
     const needsReview = words.filter(w => !w.is_learned && w.wrong_count > w.correct_count && w.correct_count + w.wrong_count >= 3).length
-    const weeklyReviewed = words.filter(w => {
-      const daysSinceReview = getDaysAgo(w.updated_at)
-      return daysSinceReview <= 7 && !w.is_learned
-    }).length
+    const weeklyReviewed = new Set(sessions.map(session => session.vocab_id)).size
     
     const avgAccuracy = words.reduce((sum, w) => {
       const total = w.correct_count + w.wrong_count
@@ -43,7 +41,7 @@ export default function ReviewDashboard({
     }, 0) / Math.max(words.filter(w => w.correct_count + w.wrong_count > 0).length, 1)
 
     return { total, learned, due, overdue, newWords, mastered, needsReview, weeklyReviewed, avgAccuracy }
-  }, [words, today])
+  }, [words, today, sessions])
 
   if (stats.total === 0) {
     return null
@@ -79,6 +77,7 @@ export default function ReviewDashboard({
       shadow: 'shadow-violet-500/20',
       action: onStartMultipleChoice,
       badge: stats.total > 0 ? `${Math.min(20, stats.total)} ta` : undefined,
+      disabled: stats.total < 2,
     },
     {
       id: 'typing',
@@ -89,6 +88,7 @@ export default function ReviewDashboard({
       shadow: 'shadow-emerald-500/20',
       action: onStartTyping,
       badge: stats.total > 0 ? `${Math.min(20, stats.total)} ta` : undefined,
+      disabled: false,
     },
   ]
 
@@ -187,7 +187,9 @@ export default function ReviewDashboard({
             <button
               key={mode.id}
               onClick={mode.action}
-              className="group relative flex items-start gap-4 bg-white dark:bg-gray-800/90 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700/50 hover:shadow-md hover:border-gray-200 dark:hover:border-gray-600 transition-all text-left"
+              disabled={mode.disabled}
+              title={mode.disabled ? "Test uchun kamida 2 ta turli so'z kerak" : undefined}
+              className="group relative flex items-start gap-4 bg-white dark:bg-gray-800/90 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700/50 hover:shadow-md hover:border-gray-200 dark:hover:border-gray-600 transition-all text-left disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${mode.color} flex items-center justify-center text-white shadow-lg ${mode.shadow} group-hover:scale-105 transition-transform`}>
                 {mode.icon}

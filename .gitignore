@@ -37,6 +37,11 @@ nul
 
 # Supabase CLI
 supabase/
+!supabase/
+supabase/*
+!supabase/migrations/
+supabase/migrations/*
+!supabase/migrations/20260720000000_complete_personal_vocabulary.sql
 
 # Claude agent settings — local machine config
 .claude/

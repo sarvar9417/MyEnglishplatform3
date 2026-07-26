@@ -14,10 +14,14 @@ import { relativeClausesB1, phrasalVerbsB1 } from './b1Extra'
 // B1 Second Conditional — unreal/hypothetical situations
 import { secondConditionalB1 } from './b1SecondConditional'
 import { pragmaticsFormalInformal } from './b1Pragmatics'
+// CEFR bo'yicha B1 darslar — A2 registridan ko'chirildi (fayl joyi a2Part2.ts da qoldi)
+import { gerundsInfinitives, firstConditional, passiveVoice, reportedSpeech } from './a2Part2'
 
 // B1 — perfect/continuous zamonlari oldinroq, keyin modallar va murakkab tuzilmalar:
 //   perfect zamonlar → past habits → kelasi zamonlar → modallar → relative → struktura → phrasal → wishes
 export const B1_LESSONS_NEW: DailyLesson[] = [
+  gerundsInfinitives,
+  firstConditional,
   presentPerfectContinuous,
   pastPerfect,
   pastPerfectContinuous,
@@ -28,6 +32,8 @@ export const B1_LESSONS_NEW: DailyLesson[] = [
   modalsObligation,
   modalsSpeculation,
   causatives,
+  passiveVoice,
+  reportedSpeech,
   relativeClausesB1,
   questionTags,
   indirectQuestions,

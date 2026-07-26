@@ -37,37 +37,6 @@ export default function QuickReview({ words, onComplete, onExit }: QuickReviewPr
     setLastRating(null)
   }, [currentIndex])
 
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (isComplete) return
-
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
-
-      if (!showAnswer) {
-        if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') {
-          e.preventDefault()
-          setShowAnswer(true)
-        }
-        return
-      }
-
-      const ratingMap: Record<string, VocabRating> = {
-        '1': 'bilmadim',
-        '2': 'qiynaldim',
-        '3': 'bildim',
-        '4': 'yodladim',
-      }
-      if (ratingMap[e.key]) {
-        e.preventDefault()
-        handleRate(ratingMap[e.key])
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [showAnswer, currentIndex, isComplete])
-
   const handleRate = useCallback((rating: VocabRating) => {
     setLastRating(rating)
     
@@ -94,6 +63,30 @@ export default function QuickReview({ words, onComplete, onExit }: QuickReviewPr
       }
     }, 150)
   }, [currentIndex, currentWord, results, totalWords])
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isComplete) return
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
+      if (!showAnswer) {
+        if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') {
+          e.preventDefault()
+          setShowAnswer(true)
+        }
+        return
+      }
+      const ratingMap: Record<string, VocabRating> = {
+        '1': 'bilmadim', '2': 'qiynaldim', '3': 'bildim', '4': 'yodladim',
+      }
+      if (ratingMap[e.key]) {
+        e.preventDefault()
+        handleRate(ratingMap[e.key])
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [showAnswer, isComplete, handleRate])
 
   const speakEnglish = useCallback(() => {
     if (currentWord?.english) {
@@ -182,7 +175,7 @@ export default function QuickReview({ words, onComplete, onExit }: QuickReviewPr
           <span className="text-green-600 dark:text-green-400 font-medium">{correctSoFar}✓</span>
           {wrongSoFar > 0 && <span className="text-red-500 font-medium">{wrongSoFar}✗</span>}
         </div>
-        <button onClick={onExit} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 transition-colors">
+        <button onClick={onExit} aria-label="Takrorlashdan chiqish" className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 transition-colors">
           <X size={18} />
         </button>
       </div>

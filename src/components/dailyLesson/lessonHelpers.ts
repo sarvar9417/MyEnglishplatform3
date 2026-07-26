@@ -10,9 +10,18 @@ export function resolveSectionItems<T extends { id: number }>(
   if (!section) return []
   const byId = pool.filter((it) => section.ids.includes(it.id))
   if (byId.length > 0) return byId
+  // Fallback: section.ids qiymatlari mashq ID'lariga mos kelmasa (eski data'da
+  // fix-exercise-ids global ID'larga o'tkazgan, sectionlar yangilanmagan), pozitsion
+  // bo'lib beramiz. MUHIM: oxirgi section qolgan BARCHA mashqlarni yutib yuboradi —
+  // shunda section.ids.length yig'indisi source.length dan kam bo'lsa ham
+  // (51 darsda shunday) hech bir mashq "yetim" qolib ko'rinmay qolmaydi.
   let cursor = 0
   for (let i = 0; i < sections.length; i++) {
-    if (i === sectionIndex) return source.slice(cursor, cursor + sections[i].ids.length)
+    const isLast = i === sections.length - 1
+    if (i === sectionIndex) {
+      const end = isLast ? source.length : cursor + sections[i].ids.length
+      return source.slice(cursor, Math.max(cursor, end))
+    }
     cursor += sections[i].ids.length
   }
   return []

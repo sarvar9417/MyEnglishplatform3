@@ -36,6 +36,7 @@ export const narrativeTensesB1plus: DailyLesson = {
   },
   writing: {
     prompt: "Tell a short story about a memorable day or an unexpected event. Set the scene, describe what was happening, and explain what had happened before. Use Past Simple, Past Continuous, and Past Perfect.",
+    modelAnswer: "It was a cold winter evening, and I was walking home from work when something unexpected happened. The streets were quiet, and it had been snowing all day. As I turned the corner, I saw that a small crowd had gathered outside my building. My heart started beating fast because I had left my grandmother alone at home, and I feared the worst. When I finally pushed through the crowd, I realised what had happened: my neighbours had organised a surprise party. I had completely forgotten it was my own birthday! I will never forget that day.",
     wordLimit: 100,
     tips: [
       "Past Continuous for background: 'The sun was shining...'",
@@ -231,6 +232,7 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
   },
   writing: {
     prompt: "Describe a person, a place, and an object that are important to you. Add extra information using defining and non-defining relative clauses with 'who', 'whom', 'whose', 'where', and 'when'.",
+    modelAnswer: "The person who has influenced me most is my grandfather, whose calm wisdom I still remember. He was a teacher, and the students whom he taught still visit our family. The place where I feel happiest is our old garden, which he planted many years ago. There is one object that means everything to me: an old watch, which he gave me on the day when I finished school. These are the people, places, and things that have shaped who I am today.",
     wordLimit: 90,
     tips: [
       "Defining (no commas): 'the teacher who helped me'",
@@ -437,6 +439,7 @@ export const participleClausesB1plus: DailyLesson = {
   },
   writing: {
     prompt: "Describe a busy scene or a process. Make your writing shorter and more elegant by joining ideas with participle clauses (-ing, -ed, having + past participle).",
+    modelAnswer: "Walking through the market on a Saturday morning, I always feel alive. Surrounded by colourful stalls, the visitors move slowly, stopping to taste fresh fruit. Vendors, shouting their prices, compete for attention. Having arrived early, I usually find the best vegetables. The bread, baked that morning, smells wonderful. Tired but satisfied, I return home with heavy bags. Made fresh every week, these markets are the heart of our neighbourhood. Joining the crowd, I feel part of something old and beautiful.",
     wordLimit: 90,
     tips: [
       "Present participle for active actions: 'Walking home, I saw...'",
@@ -633,6 +636,7 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
   },
   writing: {
     prompt: "Write about choices and changes in your life. Use verbs whose meaning changes with -ing or 'to' — for example 'remember', 'stop', 'try', 'regret', and 'forget'.",
+    modelAnswer: "Last year I decided to change my life. I remember starting my first English course, nervous but excited. At first I tried studying late at night, but I was always tired, so I stopped doing that. Now I try to study early instead. I will never forget meeting my classmates, who became good friends. Sometimes I regret not starting sooner, but I don't regret to say that learning English was the best decision I ever made. I always remember to practise every day.",
     wordLimit: 85,
     tips: [
       "'remember to do' (duty) vs 'remember doing' (memory)",
@@ -830,6 +834,7 @@ export const modalPerfectsB1plus: DailyLesson = {
   },
   writing: {
     prompt: "Think about a past situation that did not go as planned. Speculate about what happened and express regret using 'must have', 'might have', 'should have', 'could have', and 'would have'.",
+    modelAnswer: "Last week I missed an important job interview, and I still think about what went wrong. I must have set my alarm incorrectly, because I woke up an hour late. I should have prepared my documents the night before, but I didn't. I could have taken a taxi, yet I decided to walk and got lost. The manager might have chosen me if I had arrived on time. If I had been more careful, everything would have been different. I have certainly learned my lesson.",
     wordLimit: 90,
     tips: [
       "'must have' = you are sure: 'He must have forgotten.'",
@@ -1032,6 +1037,7 @@ export const emphasisDoesB1plus: DailyLesson = {
   },
   writing: {
     prompt: "Write a paragraph defending an opinion or correcting a misunderstanding. Use emphatic 'do/does/did' to make your statements stronger.",
+    modelAnswer: "Some people say that I don't work hard, but I do care about my studies very much. It is true that I failed one test, but I did prepare for it carefully. My teacher does understand my situation, and she does believe in me. I may make mistakes, but I do learn from them. People often misunderstand quiet students; however, we do think deeply, and we do want to succeed. So please, do give me a second chance — I promise I will not disappoint you.",
     wordLimit: 80,
     tips: [
       "Add 'do/does/did' before the base verb: 'I do like it!'",
@@ -1226,6 +1232,7 @@ export const frontingB1plus: DailyLesson = {
   },
   writing: {
     prompt: "Write a descriptive or dramatic paragraph. Move some phrases to the front of your sentences for emphasis and style (place, time, or negative adverbials).",
+    modelAnswer: "Never had I seen such a beautiful sunset. On the horizon glowed a deep orange light. Slowly, the sun sank behind the mountains. In the valley below stood an old village, silent and peaceful. Only then did I understand why my grandfather loved this place. Rarely do we stop to notice such moments. There, among the quiet hills, I felt completely at peace. So powerful was the scene that I could not speak. That evening I will always remember.",
     wordLimit: 85,
     tips: [
       "Front a place phrase: 'On the hill stood an old house.'",
@@ -1421,6 +1428,7 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
   },
   writing: {
     prompt: "Write a natural dialogue between two friends making plans. Avoid repeating words by using ellipsis and substitution ('one', 'so', 'do', 'too').",
+    modelAnswer: "'Are you free this weekend?' asked Nodir. 'I am, and Aziz is too,' I replied. 'Shall we go to the cinema?' 'Yes, let's. I'd love to.' 'Which film do you want to see?' 'The new one.' 'I think Aziz wants to see it too.' 'So do I.' 'Do you want to eat before the film?' 'I'd rather not.' 'Okay, we'll eat after, then.' 'Sounds good. See you at six?' 'See you then!'",
     wordLimit: 80,
     tips: [
       "Substitute with 'one/ones': 'I'll take the red one.'",
@@ -1616,6 +1624,7 @@ export const concessionB1plus: DailyLesson = {
   },
   writing: {
     prompt: "Write about a difficult decision with arguments on both sides. Show contrast using 'although', 'even though', 'despite', 'in spite of', and 'however'.",
+    modelAnswer: "Deciding whether to study abroad was very difficult. Although it offered a better education, it also meant leaving my family. Even though I was excited, I felt afraid of being alone. Despite the high cost, my parents encouraged me to go. In spite of my worries, I knew it was a rare opportunity. The distance would be hard; however, modern technology makes it easy to stay in touch. Although the decision was painful, I finally chose to accept the challenge and grow.",
     wordLimit: 90,
     tips: [
       "'although/even though' + clause: 'Although it was hard...'",

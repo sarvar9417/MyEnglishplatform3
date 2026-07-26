@@ -127,6 +127,15 @@ export default function WordList({ words, onDelete, onRate, onEdit, onWordClick 
           <div
             key={word.id}
             onClick={() => onWordClick?.(word)}
+            onKeyDown={(event) => {
+              if (onWordClick && (event.key === 'Enter' || event.key === ' ')) {
+                event.preventDefault()
+                onWordClick(word)
+              }
+            }}
+            role={onWordClick ? 'group' : undefined}
+            tabIndex={onWordClick ? 0 : undefined}
+            aria-label={onWordClick ? `${word.english} so'zi tafsilotlarini ochish` : undefined}
             className="group bg-white dark:bg-gray-800/90 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm hover:shadow-md hover:border-gray-200 dark:hover:border-gray-600 transition-all duration-200 cursor-pointer"
             style={{ animationDelay: `${index * 30}ms` }}
           >

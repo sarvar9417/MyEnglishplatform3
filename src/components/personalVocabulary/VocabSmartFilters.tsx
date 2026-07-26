@@ -29,7 +29,7 @@ export default function VocabSmartFilters({ words, activeFilter, onFilterChange 
       due: words.filter(w => !w.is_learned && w.next_review <= today).length,
       struggling: words.filter(w => !w.is_learned && w.wrong_count > w.correct_count && (w.correct_count + w.wrong_count) >= 2).length,
       new: words.filter(w => w.box <= 1 && !w.is_learned).length,
-      mastered: words.filter(w => w.box >= 5 && w.is_learned).length,
+      mastered: words.filter(w => w.box >= 6 && w.is_learned).length,
     }
   }, [words])
 

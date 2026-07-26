@@ -12,10 +12,10 @@ export interface PersonalWord {
   user_id: string
   english: string
   uzbek: string
-  phonetic?: string
-  example?: string
-  example_uzbek?: string
-  part_of_speech?: PartOfSpeech
+  phonetic?: string | null
+  example?: string | null
+  example_uzbek?: string | null
+  part_of_speech?: PartOfSpeech | null
   category: VocabCategory
   level: 'A1' | 'A2' | 'B1' | 'B2'
   source: VocabSource
@@ -47,10 +47,10 @@ export interface PersonalVocabSession {
 export interface AddWordDTO {
   english: string
   uzbek: string
-  phonetic?: string
-  example?: string
-  example_uzbek?: string
-  part_of_speech?: PartOfSpeech
+  phonetic?: string | null
+  example?: string | null
+  example_uzbek?: string | null
+  part_of_speech?: PartOfSpeech | null
   category?: VocabCategory
   level?: 'A1' | 'A2' | 'B1' | 'B2'
   source?: VocabSource
@@ -60,12 +60,17 @@ export interface AddWordDTO {
 export interface UpdateWordDTO {
   english?: string
   uzbek?: string
-  phonetic?: string
-  example?: string
-  example_uzbek?: string
-  part_of_speech?: PartOfSpeech
+  phonetic?: string | null
+  example?: string | null
+  example_uzbek?: string | null
+  part_of_speech?: PartOfSpeech | null
   category?: VocabCategory
   level?: 'A1' | 'A2' | 'B1' | 'B2'
+}
+
+export interface PersonalVocabularyImportResult {
+  inserted: PersonalWord[]
+  skipped: number
 }
 
 export interface WordSessionResult {

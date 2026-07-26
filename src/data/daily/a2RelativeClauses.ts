@@ -13,7 +13,7 @@ export const basicRelativeClausesA2: DailyLesson = {
   day: 55,
   category: 'Gap tuzilishi',
   listening: {
-    transcript: "Aziz: This is a photo of my family. The man who is standing next to me is my father.\\nLola: Oh, he looks kind! And who is the woman who is sitting?\\nAziz: That's my grandmother. She's the person who taught me to cook plov.\\nLola: Nice! What about the girl who is wearing a red dress?\\nAziz: That's my sister. She's the one who loves reading books.\\nLola: And this is a photo of a place that I love — the park which is near my house.\\nAziz: Beautiful! Is that the restaurant where we ate last week?\\nLola: Yes! And this is the day when we first met.\\nAziz: I remember that day! That was the summer when I started learning English.",
+    transcript: "Aziz: This is a photo of my family. The man who is standing next to me is my father.\nLola: Oh, he looks kind! And who is the woman who is sitting?\nAziz: That's my grandmother. She's the person who taught me to cook plov.\nLola: Nice! What about the girl who is wearing a red dress?\nAziz: That's my sister. She's the one who loves reading books.\nLola: And this is a photo of a place that I love — the park which is near my house.\nAziz: Beautiful! Is that the restaurant where we ate last week?\nLola: Yes! And this is the day when we first met.\nAziz: I remember that day! That was the summer when I started learning English.",
     vocabulary: [
       { word: 'photo', definition: 'fotosurat, rasm' },
       { word: 'kind', definition: 'mehribon' },
@@ -33,6 +33,7 @@ export const basicRelativeClausesA2: DailyLesson = {
   },
   writing: {
     prompt: "Describe a photo of your family or friends. Write 5-7 sentences using relative clauses with 'who', 'which', 'that', 'where', or 'when'. Tell who each person is, what they do, and where the photo was taken.",
+    modelAnswer: "This is a photo of my family, which we took last summer. The man who is standing on the left is my father, who works as a teacher. The woman who is next to him is my mother, who loves cooking. The girl who is wearing a red dress is my sister, who studies medicine. The little boy who is smiling is my cousin, whose father lives abroad. The place where we took this photo is a park that is near our house. It was a day when we were all very happy.",
     wordLimit: 80,
     tips: [
       "Use 'who' for people: 'The woman who is sitting next to me is my mother.'",

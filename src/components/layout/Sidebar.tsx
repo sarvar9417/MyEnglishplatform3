@@ -11,7 +11,7 @@ import {
   ChevronLeft, ChevronRight, ChevronDown, Zap, Flame,
   Trophy, Sun, Moon, Monitor, X, User, Users,
   BookText, MessageCircle, Mic, Brain, BookmarkCheck,
-  Download, Film, Target,
+  Download, Film, Target, CalendarRange,
 } from 'lucide-react'
 import { cycleTheme, getThemePreference, subscribeToTheme } from '../../utils/theme'
 
@@ -24,6 +24,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { to: '/',              icon: <LayoutDashboard size={20} />, label: 'Dashboard' },
   { to: '/lesson',        icon: <BookOpen size={20} />,        label: 'Darslar' },
+  { to: '/weekly-plan',   icon: <CalendarRange size={20} />,   label: 'Haftalik reja' },
   { to: '/speaking-path', icon: <Mic size={20} />,             label: 'Speaking' },
   { to: '/30-day-challenge', icon: <Target size={20} />,       label: '30-Day Challenge' },
   { to: '/vocabulary',    icon: <BookMarked size={20} />,      label: "Lug'at & Iboralar" },
@@ -53,6 +54,7 @@ const LEVEL_COLORS: Record<string, string> = {
 const ROUTE_T_KEY: Record<string, keyof import('../../i18n').TranslationStrings> = {
   '/': 'nav.dashboard',
   '/lesson': 'nav.lessons',
+  '/weekly-plan': 'nav.weeklyPlan',
   '/speaking-path': 'nav.speakingPath',
   '/30-day-challenge': 'nav.thirtyDayChallenge',
   '/vocabulary': 'nav.vocabulary',

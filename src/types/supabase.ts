@@ -808,6 +808,135 @@ export type Database = {
         }
         Relationships: []
       }
+      weekly_units: {
+        Row: {
+          id: number
+          user_id: string
+          week_no: number
+          title: string
+          subtitle: string | null
+          objective: string | null
+          success_criteria: string[]
+          phase: string | null
+          start_date: string | null
+          end_date: string | null
+          status: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          user_id: string
+          week_no: number
+          title: string
+          subtitle?: string | null
+          objective?: string | null
+          success_criteria?: string[]
+          phase?: string | null
+          start_date?: string | null
+          end_date?: string | null
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          user_id?: string
+          week_no?: number
+          title?: string
+          subtitle?: string | null
+          objective?: string | null
+          success_criteria?: string[]
+          phase?: string | null
+          start_date?: string | null
+          end_date?: string | null
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      weekly_lessons: {
+        Row: {
+          id: number
+          user_id: string
+          unit_id: number
+          day_no: number
+          title: string
+          objective: string | null
+          mode: string
+          duration_min: number
+          blocks: Json
+          status: string
+          notes: string | null
+          completed_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          user_id: string
+          unit_id: number
+          day_no: number
+          title: string
+          objective?: string | null
+          mode?: string
+          duration_min?: number
+          blocks?: Json
+          status?: string
+          notes?: string | null
+          completed_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          user_id?: string
+          unit_id?: number
+          day_no?: number
+          title?: string
+          objective?: string | null
+          mode?: string
+          duration_min?: number
+          blocks?: Json
+          status?: string
+          notes?: string | null
+          completed_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      personal_vocabulary_sessions: {
+        Row: {
+          id: number
+          user_id: string
+          vocab_id: number
+          session_date: string
+          result: string
+          rating: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: number
+          user_id: string
+          vocab_id: number
+          session_date?: string
+          result: string
+          rating?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: number
+          user_id?: string
+          vocab_id?: number
+          session_date?: string
+          result?: string
+          rating?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
       personal_vocabulary: {
         Row: {
           id: number
@@ -816,6 +945,8 @@ export type Database = {
           uzbek: string
           phonetic: string | null
           example: string | null
+          example_uzbek: string | null
+          part_of_speech: string | null
           category: string
           level: string
           source: string
@@ -840,6 +971,8 @@ export type Database = {
           uzbek: string
           phonetic?: string | null
           example?: string | null
+          example_uzbek?: string | null
+          part_of_speech?: string | null
           category: string
           level: string
           source: string
@@ -864,6 +997,8 @@ export type Database = {
           uzbek?: string
           phonetic?: string | null
           example?: string | null
+          example_uzbek?: string | null
+          part_of_speech?: string | null
           category?: string
           level?: string
           source?: string
@@ -2063,6 +2198,10 @@ export type Database = {
             p_fsrs_reps?: number | null
             p_fsrs_lapses?: number | null
           }; Returns: Json }
+      rate_personal_vocab_words_batch: { Args: {
+            p_user_id: string
+            p_results: Json
+          }; Returns: Database['public']['Tables']['personal_vocabulary']['Row'][] }
       get_speaking_os_due_count: { Args: {
             p_user_id: string
           }; Returns: Json }

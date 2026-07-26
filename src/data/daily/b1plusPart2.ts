@@ -2,6 +2,23 @@
 
 export const linkingWordsAdvanced: DailyLesson = {
   id: 'linking-words-advanced-b1plus',
+  reading: {
+    title: 'Is City Life Better?',
+    passage: "Many young people move to big cities in search of opportunity. Cities certainly offer advantages: there are more jobs, and public services are usually better. Furthermore, cultural life is richer, with theatres, museums, and events for every taste. Moreover, education and healthcare tend to be of higher quality.\n\nHowever, city life also has serious drawbacks. The cost of living is high; consequently, many people struggle to save money. Pollution and noise affect health, and the fast pace can be stressful. Nevertheless, most residents believe the benefits outweigh the problems.\n\nThe countryside offers peace and clean air; hence, some families prefer it. In the end, the right choice depends on personal priorities. Whether one values convenience or calm, both lifestyles have something valuable to offer.",
+    vocabulary: [
+      { word: 'opportunity', definition: 'imkoniyat' },
+      { word: 'advantages', definition: 'afzalliklar' },
+      { word: 'drawbacks', definition: 'kamchiliklar' },
+      { word: 'priorities', definition: 'ustuvorliklar' },
+    ],
+    questions: [
+      { id: 92101, type: 'multiple-choice', question: "What is one advantage of city life mentioned?", options: ['Cleaner air', 'More jobs and better services', 'A slower pace', 'Lower cost of living'], correctIndex: 1, explanation: "'there are more jobs, and public services are usually better.'" },
+      { id: 92102, type: 'multiple-choice', question: "Which linker introduces a result: 'The cost of living is high; ___, many struggle to save.'", options: ['furthermore', 'consequently', 'nevertheless', 'moreover'], correctIndex: 1, explanation: "'consequently' shows a result/consequence." },
+      { id: 92103, type: 'multiple-choice', question: "What do most city residents believe?", options: ['The problems are worse than the benefits', 'The benefits outweigh the problems', 'City life is unhealthy', 'They should move away'], correctIndex: 1, explanation: "'most residents believe the benefits outweigh the problems.'" },
+      { id: 92104, type: 'multiple-choice', question: "Why do some families prefer the countryside?", options: ['More jobs', 'Peace and clean air', 'Better museums', 'Higher salaries'], correctIndex: 1, explanation: "'The countryside offers peace and clean air.'" },
+      { id: 92105, type: 'multiple-choice', question: "What does the writer conclude?", options: ['The city is always better', 'The countryside is always better', 'The right choice depends on personal priorities', 'Nobody should move'], correctIndex: 2, explanation: "'the right choice depends on personal priorities.'" },
+    ],
+  },
   title: 'Linking Words (Advanced)',
   subtitle: "Furthermore, moreover, consequently, hence, nevertheless � bog'lovchi so'zlar",
   level: 'B1+',
@@ -27,6 +44,7 @@ export const linkingWordsAdvanced: DailyLesson = {
   },
   writing: {
     prompt: "Write a short formal paragraph giving your opinion on a topic such as technology, study, or city life. Connect your ideas with advanced linkers: 'furthermore', 'moreover', 'consequently', 'hence', and 'nevertheless'.",
+    modelAnswer: "Modern technology has transformed the way we study. Online courses make learning accessible to everyone; furthermore, they allow students to learn at their own pace. Moreover, digital tools provide instant feedback, which helps learners improve quickly. Some people spend too much time on screens; consequently, they lose focus. Technology must therefore be used wisely; hence, balance is essential. It is not a perfect solution; nevertheless, its benefits clearly outweigh its drawbacks. In my opinion, technology, when used responsibly, is one of the greatest tools for education today.",
     wordLimit: 95,
     tips: [
       "Add ideas: 'furthermore', 'moreover'",
@@ -188,6 +206,23 @@ export const linkingWordsAdvanced: DailyLesson = {
 
 export const collocationsMakeDoHaveTake: DailyLesson = {
   id: 'collocations-make-do-have-take-b1plus',
+  reading: {
+    title: "A Manager's Busy Week",
+    passage: "As a project manager, Laylo has to make important decisions every day. On Monday she had a meeting with her team to make plans for the new season. She did some research before the meeting so that she could make a good impression on the clients.\n\nDuring the week, she took responsibility for a difficult problem and made an effort to solve it quickly. Although she was tired, she rarely had time to take a rest. On Wednesday she had an argument with a supplier, but she managed to make peace and do business as usual.\n\nBy Friday, the team had made great progress. Laylo took a short break, had a cup of coffee, and felt proud. 'Hard work always pays off,' she said, 'as long as you take care of the details.'",
+    vocabulary: [
+      { word: 'responsibility', definition: "mas'uliyat" },
+      { word: 'supplier', definition: 'yetkazib beruvchi' },
+      { word: 'progress', definition: 'taraqqiyot' },
+      { word: 'details', definition: 'tafsilotlar' },
+    ],
+    questions: [
+      { id: 92201, type: 'multiple-choice', question: "What does Laylo do every day?", options: ['Take a rest', 'Make important decisions', 'Have arguments', 'Do the shopping'], correctIndex: 1, explanation: "'Laylo has to make important decisions every day.'" },
+      { id: 92202, type: 'multiple-choice', question: "Complete the collocation: 'make a good ___ on the clients.'", options: ['impression', 'decision', 'progress', 'business'], correctIndex: 0, explanation: "'make a good impression' is the correct collocation." },
+      { id: 92203, type: 'multiple-choice', question: "What happened on Wednesday?", options: ['She took a holiday', 'She had an argument but made peace', 'She hired a new manager', 'She lost a client'], correctIndex: 1, explanation: "'she had an argument with a supplier, but she managed to make peace.'" },
+      { id: 92204, type: 'multiple-choice', question: "What had the team done by Friday?", options: ['Made great progress', 'Given up', 'Taken a long holiday', 'Done nothing'], correctIndex: 0, explanation: "'the team had made great progress.'" },
+      { id: 92205, type: 'multiple-choice', question: "What is Laylo's advice?", options: ['Never rest', 'Hard work pays off if you take care of the details', 'Avoid meetings', 'Change jobs often'], correctIndex: 1, explanation: "'Hard work always pays off... as long as you take care of the details.'" },
+    ],
+  },
   title: 'Collocations: Make, Do, Have, Take',
   subtitle: "Make a decision, do business, have a rest, take a break — kollokatsiyalar",
   level: 'B1+',
@@ -213,6 +248,7 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
   },
   writing: {
     prompt: "Write about a typical working or study day. Use natural collocations with 'make', 'do', 'have', and 'take' (for example make a decision, do business, have a rest, take a break).",
+    modelAnswer: "On a typical working day, I have to make many decisions. First, I take a quick shower and have breakfast with my family. At the office, I do business with clients and make phone calls all morning. Around noon I take a break and have lunch with my colleagues. In the afternoon, we make progress on our projects and do research for new ideas. Before I leave, I make sure everything is ready for tomorrow. Then I take the bus home and finally have a rest.",
     wordLimit: 85,
     tips: [
       "'make' + decision/mistake/plan/progress",
@@ -408,6 +444,23 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
 
 export const advancedPhrasalVerbs: DailyLesson = {
   id: 'advanced-phrasal-verbs-b1plus',
+  reading: {
+    title: 'The Startup That Almost Failed',
+    passage: "When Bekzod and his friends came up with the idea for their app, they were full of energy. However, they soon ran into problems. After six months, they had almost run out of money, and two team members dropped out.\n\nBekzod refused to give up. He looked into new sources of funding and came across an investor who believed in the project. It was not easy — they had to put up with criticism and work long hours. Slowly, things began to look up.\n\nThe app finally took off last year. Now the company is doing well, and Bekzod is looking forward to expanding abroad. 'You will face many obstacles,' he says, 'but if you keep going, you can pull through almost anything.'",
+    vocabulary: [
+      { word: 'funding', definition: 'moliyalashtirish' },
+      { word: 'investor', definition: 'investor, sarmoyador' },
+      { word: 'criticism', definition: 'tanqid' },
+      { word: 'obstacles', definition: "to'siqlar" },
+    ],
+    questions: [
+      { id: 92301, type: 'multiple-choice', question: "What did the friends do at the start?", options: ['Ran out of money', 'Came up with the idea for their app', 'Gave up', 'Moved abroad'], correctIndex: 1, explanation: "'When Bekzod and his friends came up with the idea for their app...'" },
+      { id: 92302, type: 'multiple-choice', question: "What does 'run out of money' mean?", options: ['To earn a lot of money', 'To have no money left', 'To invest money', 'To find money'], correctIndex: 1, explanation: "'run out of' = to have none left." },
+      { id: 92303, type: 'multiple-choice', question: "How did Bekzod find an investor?", options: ['His family gave money', 'He looked into funding and came across one', 'He sold the app', 'He borrowed from a bank'], correctIndex: 1, explanation: "'He looked into new sources of funding and came across an investor.'" },
+      { id: 92304, type: 'multiple-choice', question: "When did the app become successful?", options: ['At the very start', 'It took off last year', 'It never did', 'After the team dropped out'], correctIndex: 1, explanation: "'The app finally took off last year.'" },
+      { id: 92305, type: 'multiple-choice', question: "What is Bekzod's message?", options: ['Give up when things are hard', 'If you keep going, you can pull through obstacles', 'Avoid starting a business', 'Money is everything'], correctIndex: 1, explanation: "'if you keep going, you can pull through almost anything.'" },
+    ],
+  },
   title: 'Advanced Phrasal Verbs',
   subtitle: "Run out of, look forward to, put up with, come up with — murakkab phrasal verbs",
   level: 'B1+',
@@ -433,6 +486,7 @@ export const advancedPhrasalVerbs: DailyLesson = {
   },
   writing: {
     prompt: "Tell a story or describe a project where things went wrong and then improved. Use phrasal verbs like 'run out of', 'look forward to', 'put up with', and 'come up with'.",
+    modelAnswer: "Last month our team started an important project, but things did not go smoothly at first. Halfway through, we ran out of money, and morale was low. For weeks we had to put up with long hours and constant stress. However, our leader refused to give up. She came up with a clever new plan that saved the project. Slowly, we turned things around and caught up with our schedule. Now we are looking forward to presenting our results, and I am proud of what we pulled off.",
     wordLimit: 90,
     tips: [
       "'run out of' = have no more: 'We ran out of time.'",
@@ -593,6 +647,23 @@ export const advancedPhrasalVerbs: DailyLesson = {
 
 export const idiomsCommon: DailyLesson = {
   id: 'idioms-common-b1plus',
+  reading: {
+    title: 'My First Day at Work',
+    passage: "My first day at the new office was nerve-racking. I didn't know anyone, and I felt like a fish out of water. During the morning meeting, I tried to break the ice by making a small joke, and luckily it worked.\n\nMy manager told me not to worry and said that learning the job would be a piece of cake once I got used to it. That put my mind at rest. In the afternoon, a colleague helped me with a difficult task; she really saved the day.\n\nBy the evening, I felt much better. I realised that starting a new job is never easy, but sometimes you just have to bite the bullet. As they say, every cloud has a silver lining, and my nervous first day turned into the beginning of a great job.",
+    vocabulary: [
+      { word: 'nerve-racking', definition: 'asabni buzadigan' },
+      { word: 'colleague', definition: 'hamkasb' },
+      { word: 'task', definition: 'vazifa' },
+      { word: 'realise', definition: 'anglamoq, tushunib yetmoq' },
+    ],
+    questions: [
+      { id: 92401, type: 'multiple-choice', question: "How did the writer feel at first?", options: ['Confident and relaxed', 'Nervous, like a fish out of water', 'Bored', 'Angry'], correctIndex: 1, explanation: "'I felt like a fish out of water.'" },
+      { id: 92402, type: 'multiple-choice', question: "What does 'break the ice' mean here?", options: ['To feel cold', 'To make people relax and start talking', 'To break something', 'To leave early'], correctIndex: 1, explanation: "He broke the ice 'by making a small joke' to relax people." },
+      { id: 92403, type: 'multiple-choice', question: "What did the manager say about the job?", options: ['It would be impossible', 'It would be a piece of cake once he got used to it', 'It was dangerous', 'It was boring'], correctIndex: 1, explanation: "'learning the job would be a piece of cake once I got used to it.'" },
+      { id: 92404, type: 'multiple-choice', question: "Who 'saved the day'?", options: ['The manager', 'A colleague who helped with a difficult task', 'The writer', 'A client'], correctIndex: 1, explanation: "'a colleague helped me... she really saved the day.'" },
+      { id: 92405, type: 'multiple-choice', question: "What does 'every cloud has a silver lining' mean here?", options: ['It will rain soon', 'Something good came from a hard situation', 'Clouds are beautiful', 'The job was bad'], correctIndex: 1, explanation: "The nervous first day led to a great job — good from difficulty." },
+    ],
+  },
   title: 'Common Idioms (20)',
   subtitle: "Break the ice, hit the nail on the head, once in a blue moon — 20 ta idiom",
   level: 'B1+',
@@ -618,6 +689,7 @@ export const idiomsCommon: DailyLesson = {
   },
   writing: {
     prompt: "Write a short personal story and include at least four English idioms naturally (for example 'break the ice', 'hit the nail on the head', 'once in a blue moon').",
+    modelAnswer: "When I moved to a new city, I knew nobody, so I had to break the ice at my first class. It wasn't easy — I only make new friends once in a blue moon. During a group discussion, one student hit the nail on the head when he said we all felt nervous. That comment broke the tension, and everyone laughed. By the end of the day, I felt at home. Sometimes you just have to bite the bullet and take the first step.",
     wordLimit: 85,
     tips: [
       "Use idioms only where they fit the meaning",
@@ -783,6 +855,23 @@ export const idiomsCommon: DailyLesson = {
 
 export const prepositionalPhrases: DailyLesson = {
   id: 'prepositional-phrases-b1plus',
+  reading: {
+    title: 'Staying Organised',
+    passage: "In my opinion, good organisation is the key to success. I always try to plan my tasks in advance rather than doing everything at the last minute. As a rule, I write a list every evening for the next day.\n\nOf course, things do not always go according to plan. Sometimes I make mistakes by accident, and once I sent an important email to the wrong person. When an emergency happens, I deal with it at once instead of leaving it for later. I never delete files on purpose, but accidents still happen.\n\nOn the whole, staying calm under pressure is essential. By and large, people who prepare in advance handle surprises better. In short, a little planning today can save you a lot of trouble tomorrow.",
+    vocabulary: [
+      { word: 'organisation', definition: 'tashkil etish, tartib' },
+      { word: 'emergency', definition: 'favqulodda holat' },
+      { word: 'essential', definition: 'zarur, muhim' },
+      { word: 'pressure', definition: 'bosim' },
+    ],
+    questions: [
+      { id: 92501, type: 'multiple-choice', question: "What does the writer think is the key to success?", options: ['Luck', 'Good organisation', 'Money', 'Speed'], correctIndex: 1, explanation: "'good organisation is the key to success.'" },
+      { id: 92502, type: 'multiple-choice', question: "When does the writer prepare a task list?", options: ['At the last minute', 'Every evening for the next day', 'Once a month', 'Never'], correctIndex: 1, explanation: "'I write a list every evening for the next day.'" },
+      { id: 92503, type: 'multiple-choice', question: "What does the phrase 'by accident' mean?", options: ['On purpose', 'Without intending to', 'In advance', 'At once'], correctIndex: 1, explanation: "'by accident' = unintentionally, by mistake." },
+      { id: 92504, type: 'multiple-choice', question: "How does the writer deal with an emergency?", options: ['Leaves it for later', 'Deals with it at once', 'Ignores it', 'Asks someone else'], correctIndex: 1, explanation: "'I deal with it at once instead of leaving it for later.'" },
+      { id: 92505, type: 'multiple-choice', question: "What is the main message?", options: ['Planning is a waste of time', 'A little planning today saves trouble tomorrow', 'Never make lists', 'Emergencies cannot be handled'], correctIndex: 1, explanation: "'a little planning today can save you a lot of trouble tomorrow.'" },
+    ],
+  },
   title: 'Prepositional Phrases',
   subtitle: "By accident, in advance, on purpose, at once — predlogli iboralar",
   level: 'B1+',
@@ -808,6 +897,7 @@ export const prepositionalPhrases: DailyLesson = {
   },
   writing: {
     prompt: "Describe how you organise your time and handle surprises. Use fixed prepositional phrases such as 'by accident', 'in advance', 'on purpose', and 'at once'.",
+    modelAnswer: "I like to organise my time carefully. I always plan my week in advance and book everything ahead of time. Of course, surprises still happen. Last week I deleted an important file by accident, and I had to redo the work at once. My friend joked that I had done it on purpose to avoid a meeting, but that wasn't true! In general, I try to stay calm under pressure and deal with problems on time, step by step, without panicking.",
     wordLimit: 80,
     tips: [
       "'in advance' = before the time",
@@ -999,6 +1089,23 @@ export const prepositionalPhrases: DailyLesson = {
 
 export const wordFormation: DailyLesson = {
   id: 'word-formation-b1plus',
+  reading: {
+    title: 'The Power of Education',
+    passage: "Education is one of the most powerful tools for personal development. It gives people the knowledge and confidence to improve their lives. The transformation that learning brings is often remarkable.\n\nWith determination and hard work, a student can achieve great success. Every improvement, however small, builds motivation. Of course, failure is a natural part of the process, but it teaches valuable lessons about patience and responsibility.\n\nModern technology has increased the accessibility of education. Nowadays, the possibility of studying online means that distance is no longer a barrier. This development is truly wonderful. In conclusion, education is not only about qualifications; it is about growth, curiosity, and the freedom to shape a better future.",
+    vocabulary: [
+      { word: 'development', definition: 'rivojlanish' },
+      { word: 'knowledge', definition: 'bilim' },
+      { word: 'motivation', definition: 'motivatsiya, rag\'bat' },
+      { word: 'curiosity', definition: 'qiziquvchanlik' },
+    ],
+    questions: [
+      { id: 92601, type: 'multiple-choice', question: "What does education give people?", options: ['Money and power', 'Knowledge and confidence to improve their lives', 'Free time', 'Fame'], correctIndex: 1, explanation: "'It gives people the knowledge and confidence to improve their lives.'" },
+      { id: 92602, type: 'multiple-choice', question: "Which noun is formed from the verb 'improve'?", options: ['improvation', 'improvement', 'improvity', 'improvness'], correctIndex: 1, explanation: "improve → improvement (suffix -ment)." },
+      { id: 92603, type: 'multiple-choice', question: "According to the text, what does failure teach?", options: ['Nothing useful', 'Patience and responsibility', 'How to give up', 'That success is impossible'], correctIndex: 1, explanation: "'it teaches valuable lessons about patience and responsibility.'" },
+      { id: 92604, type: 'multiple-choice', question: "How has technology changed education?", options: ['Made it more expensive', 'Increased its accessibility through online study', 'Made it harder', 'Removed the need for teachers'], correctIndex: 1, explanation: "'technology has increased the accessibility of education... studying online.'" },
+      { id: 92605, type: 'multiple-choice', question: "What is education about, in conclusion?", options: ['Only qualifications', 'Growth, curiosity, and a better future', 'Passing tests only', 'Earning certificates'], correctIndex: 1, explanation: "'it is about growth, curiosity, and the freedom to shape a better future.'" },
+    ],
+  },
   title: 'Word Formation',
   subtitle: "Suffixes: -tion, -ment, -ness, -ity, -ous, -al, -ize, -ful — so'z yasash",
   level: 'B1+',
@@ -1024,6 +1131,7 @@ export const wordFormation: DailyLesson = {
   },
   writing: {
     prompt: "Write about a personal achievement or goal. Show your vocabulary range by using words built with suffixes like -tion, -ment, -ness, -ity, -ous, and -al.",
+    modelAnswer: "Reaching my goal required great determination and a lot of preparation. My biggest achievement was passing a difficult examination after months of hard work. The improvement in my confidence was enormous. At first, the possibility of failure filled me with nervousness, but I stayed positive. My success brought me happiness and a sense of personal growth. It was a marvellous feeling. This experience taught me that with patience and dedication, any dream is achievable. Education truly changes lives in a powerful and lasting way.",
     wordLimit: 85,
     tips: [
       "Nouns: 'decision', 'development', 'happiness'",
@@ -1180,6 +1288,23 @@ export const wordFormation: DailyLesson = {
 
 export const reportingVerbs: DailyLesson = {
   id: 'reporting-verbs-b1plus',
+  reading: {
+    title: 'The Team Meeting',
+    passage: "Last Friday, our department held a meeting to discuss the new marketing plan. The director began by explaining the goals for the next three months. She suggested focusing on social media, and she recommended hiring a young designer.\n\nAt first, one manager complained that the budget was too small. He admitted, however, that the idea itself was good. Another colleague insisted that we needed more time, but the director warned that the deadline could not be changed.\n\nIn the end, everyone agreed to try the new approach. The director promised to support the team and reminded us to report our progress every week. She thanked us for our hard work and encouraged us to share our ideas freely. I left the meeting feeling motivated.",
+    vocabulary: [
+      { word: 'department', definition: "bo'lim" },
+      { word: 'budget', definition: 'byudjet' },
+      { word: 'deadline', definition: 'muddat, oxirgi sana' },
+      { word: 'approach', definition: 'yondashuv' },
+    ],
+    questions: [
+      { id: 92701, type: 'multiple-choice', question: "Why was the meeting held?", options: ['To hire a director', 'To discuss the new marketing plan', 'To close the department', 'To celebrate success'], correctIndex: 1, explanation: "'a meeting to discuss the new marketing plan.'" },
+      { id: 92702, type: 'multiple-choice', question: "What did the director recommend?", options: ['Reducing the team', 'Hiring a young designer', 'Cancelling the project', 'Working weekends'], correctIndex: 1, explanation: "'she recommended hiring a young designer.'" },
+      { id: 92703, type: 'multiple-choice', question: "What did the manager admit?", options: ['That he was late', 'That the idea itself was good', 'That he wanted to leave', 'That the plan was bad'], correctIndex: 1, explanation: "'He admitted... that the idea itself was good.'" },
+      { id: 92704, type: 'multiple-choice', question: "What did the director warn about?", options: ['The deadline could not be changed', 'The office would close', 'Salaries would fall', 'The team was too big'], correctIndex: 0, explanation: "'the director warned that the deadline could not be changed.'" },
+      { id: 92705, type: 'multiple-choice', question: "How did the writer feel afterwards?", options: ['Bored', 'Motivated', 'Angry', 'Confused'], correctIndex: 1, explanation: "'I left the meeting feeling motivated.'" },
+    ],
+  },
   title: 'Reporting Verbs',
   subtitle: "Suggest, recommend, admit, deny, insist, claim, warn — boshqalarning gapini aytish",
   level: 'B1+',
@@ -1205,6 +1330,7 @@ export const reportingVerbs: DailyLesson = {
   },
   writing: {
     prompt: "Report a conversation or a meeting you had. Instead of only 'said', use reporting verbs like 'suggest', 'recommend', 'admit', 'deny', 'insist', and 'warn'.",
+    modelAnswer: "Yesterday our team had an important meeting about the new project. The manager suggested starting earlier than planned. My colleague recommended hiring another designer to save time. At first, one member denied that there was any problem, but later he admitted that he was behind schedule. The manager insisted on setting clear deadlines and warned us not to waste time. Finally, everyone agreed to work together, and she promised to review our progress every week. I left the meeting feeling motivated and confident about our future.",
     wordLimit: 90,
     tips: [
       "'suggest/recommend' + -ing or a 'that' clause",
@@ -1376,6 +1502,23 @@ export const reportingVerbs: DailyLesson = {
 
 export const determinersAdvanced: DailyLesson = {
   id: 'determiners-advanced-b1plus',
+  reading: {
+    title: 'Choosing a University',
+    passage: "Last year, all of my classmates had to choose a university, and each of us faced a difficult decision. Both of the top universities in our city were excellent, but neither was cheap. Every student wanted the best option, yet none of us could agree on which one that was.\n\nSome preferred the larger university because of its facilities; others chose the smaller one for its friendly atmosphere. Either choice had advantages. In the end, each person made a decision based on personal goals.\n\nI realised that there is no perfect university — only the right one for each individual. All of us worried too much, but looking back, both options would have led to success. The important thing is not the name of the university but the effort each student puts in.",
+    vocabulary: [
+      { word: 'facilities', definition: 'qulayliklar, jihozlar' },
+      { word: 'atmosphere', definition: 'muhit' },
+      { word: 'individual', definition: 'shaxs, alohida odam' },
+      { word: 'effort', definition: 'harakat, sa\'y' },
+    ],
+    questions: [
+      { id: 92801, type: 'multiple-choice', question: "What decision did the classmates face?", options: ['Choosing a job', 'Choosing a university', 'Choosing a city', 'Choosing a teacher'], correctIndex: 1, explanation: "'all of my classmates had to choose a university.'" },
+      { id: 92802, type: 'multiple-choice', question: "Complete: '___ of the top universities was cheap' (both were expensive).", options: ['Both', 'Neither', 'Either', 'All'], correctIndex: 1, explanation: "'neither was cheap' — neither = not one and not the other." },
+      { id: 92803, type: 'multiple-choice', question: "Why did some students prefer the larger university?", options: ['It was cheaper', 'Because of its facilities', 'It was smaller', 'It was closer'], correctIndex: 1, explanation: "'Some preferred the larger university because of its facilities.'" },
+      { id: 92804, type: 'multiple-choice', question: "What did the writer realise?", options: ['One university is best for everyone', 'There is no perfect university, only the right one for each person', 'Universities are all the same', 'Nobody should study'], correctIndex: 1, explanation: "'there is no perfect university — only the right one for each individual.'" },
+      { id: 92805, type: 'multiple-choice', question: "What matters most, according to the writer?", options: ['The name of the university', 'The effort each student puts in', 'The size of the campus', 'The cost'], correctIndex: 1, explanation: "'not the name of the university but the effort each student puts in.'" },
+    ],
+  },
   title: 'Determiners (Advanced)',
   subtitle: "All, both, each, every, either, neither, none, no — aniqlovchilar",
   level: 'B1+',
@@ -1401,6 +1544,7 @@ export const determinersAdvanced: DailyLesson = {
   },
   writing: {
     prompt: "Compare groups of people or things you know — classmates, choices, options. Use determiners precisely: 'all', 'both', 'each', 'every', 'either', 'neither', 'none', and 'no'.",
+    modelAnswer: "In my class, all of the students are hardworking, but each one has a different style. Both of my closest friends prefer studying in the morning, while I don't. Every lesson brings something new. When choosing a project, either topic would be fine for me; neither is difficult. Some students finished early, but none of them left the room, because there was no reason to rush. In the end, all of us passed, and each of us learned something valuable about teamwork.",
     wordLimit: 85,
     tips: [
       "'each/every' + singular noun",
@@ -1567,6 +1711,23 @@ export const determinersAdvanced: DailyLesson = {
 
 export const b1plusReview: DailyLesson = {
   id: 'b1plus-review',
+  reading: {
+    title: "A Language Learner's Journey",
+    passage: "Reflecting on the past year, Sardor cannot believe how far he has come. When he began studying at B1+ level, he could barely express complex ideas. Having practised every day, he can now tell stories, argue his opinion, and write formal essays.\n\nThere were difficult moments. He remembers failing a speaking test that he should have prepared for more carefully. He might have given up; nevertheless, he kept going. Encouraged by his teacher, he turned his weaknesses into strengths.\n\nSardor believes that learning a language is a journey without an end. 'You must be patient,' he says. 'Progress is slow, but it is real.' Now, looking forward to the B2 level, he feels proud of his achievement and grateful for every lesson that brought him here.",
+    vocabulary: [
+      { word: 'reflect', definition: 'mulohaza qilmoq' },
+      { word: 'complex', definition: 'murakkab' },
+      { word: 'weaknesses', definition: 'zaif tomonlar' },
+      { word: 'grateful', definition: 'minnatdor' },
+    ],
+    questions: [
+      { id: 92901, type: 'multiple-choice', question: "How did Sardor feel about his ability at the start of B1+?", options: ['He could express complex ideas easily', 'He could barely express complex ideas', 'He was already fluent', 'He hated English'], correctIndex: 1, explanation: "'he could barely express complex ideas.'" },
+      { id: 92902, type: 'multiple-choice', question: "What can Sardor do now?", options: ['Only read', 'Tell stories, argue opinions, and write essays', 'Nothing new', 'Only speak'], correctIndex: 1, explanation: "'he can now tell stories, argue his opinion, and write formal essays.'" },
+      { id: 92903, type: 'multiple-choice', question: "What does 'He might have given up' suggest?", options: ['He definitely gave up', 'Giving up was possible, but he did not', 'He never thought about it', 'He gave up and returned'], correctIndex: 1, explanation: "'might have + V3' shows a past possibility that did not happen." },
+      { id: 92904, type: 'multiple-choice', question: "What is Sardor's view of language learning?", options: ['It ends at B2', 'It is a journey without an end', 'It is easy', 'It is a waste of time'], correctIndex: 1, explanation: "'learning a language is a journey without an end.'" },
+      { id: 92905, type: 'multiple-choice', question: "How does Sardor feel now?", options: ['Disappointed', 'Proud and grateful, looking forward to B2', 'Bored', 'Worried'], correctIndex: 1, explanation: "'he feels proud of his achievement and grateful... looking forward to the B2 level.'" },
+    ],
+  },
   title: 'B1+ Review',
   subtitle: 'Narrative Tenses, Participle Clauses, Modal Perfects, Linking Words, Phrasal Verbs va boshqalar',
   level: 'B1+',
@@ -1592,6 +1753,7 @@ export const b1plusReview: DailyLesson = {
   },
   writing: {
     prompt: "Write a reflective paragraph about what you have learned at B1+ level. Combine several structures: narrative tenses, modal perfects, participle clauses, and advanced linking words.",
+    modelAnswer: "Looking back at my time at B1+ level, I realise how much I have grown. When I started, I could barely link my ideas; now I write with confidence. Having studied hard for months, I have learned to tell stories using narrative tenses and to speculate about the past with modal perfects. At first I struggled; nevertheless, I never gave up. I should have practised speaking more, but I did improve my writing greatly. Furthermore, I have discovered that learning a language is a journey, not a destination. Encouraged by my progress, I am now ready to take on the B2 challenge.",
     wordLimit: 100,
     tips: [
       "Use narrative tenses to describe your progress",
