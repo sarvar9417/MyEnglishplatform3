@@ -4,6 +4,16 @@ import type { DailyLesson } from '../dailyLessons'
 // ════════════════════════════════════════════════════════════════════════════
 export const simplePresent: DailyLesson = {
   id: 'simple-present',
+  speaking: {
+    prompt: "Talk about your daily routine and habits. Speak for about one minute. Use the Present Simple (I wake up, she works, they play).",
+    tips: [
+      "I/you/we/they + V1: 'I work.'",
+      "he/she/it + V+s: 'She works.'",
+      "'every day', 'usually', 'always'.",
+      "Odat va takrorlanadigan harakatlar uchun.",
+    ],
+    sampleAnswer: "Every day, I wake up at seven o'clock. I have breakfast and go to school. I study English every morning. My mother works in a hospital, and my father drives a taxi. In the evening, I do my homework and watch TV. On Sunday, I visit my grandparents. I usually go to bed at ten o'clock. I like my daily routine because it is simple and happy.",
+  },
   title: 'Simple Present Tense',
   subtitle: 'Har kuni takrorlaniladigan harakatlar, odatiy vakiyalar va to\'liq haqiqatlar',
   level: 'A1',
@@ -247,6 +257,16 @@ export const simplePresent: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const presentContinuous: DailyLesson = {
   id: 'present-continuous',
+  speaking: {
+    prompt: "Describe what you and people around you are doing right now. Speak for about one minute. Use the Present Continuous (I am reading, she is cooking).",
+    tips: [
+      "'am/is/are + V-ing'.",
+      "'right now', 'at the moment'.",
+      "Hozir sodir bo'layotgan harakatlar uchun.",
+      "'What are you doing?' — 'I am studying.'",
+    ],
+    sampleAnswer: "Right now, I am practising my English. At the moment, I am sitting in my room. My mother is cooking dinner in the kitchen, and I can smell it. My little brother is playing with his toys. My father is watching the news on TV. Outside, it is raining, and some children are running home. I am feeling happy today. What are you doing right now? I hope you are having a good time!",
+  },
   title: 'Present Continuous Tense',
   subtitle: 'Hozir aynan sodir bo\'layotgan harakatlar — "HOZIR, AYNAN SHU PAYTDA"',
   level: 'A1',
@@ -486,6 +506,16 @@ export const presentContinuous: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const simplePast: DailyLesson = {
   id: 'simple-past',
+  speaking: {
+    prompt: "Talk about what you did yesterday or last weekend. Speak for about one minute. Use the Past Simple (I went, she played, they watched).",
+    tips: [
+      "Regular: V+ed: 'played', 'watched'.",
+      "Irregular: go→went, have→had, see→saw.",
+      "'yesterday', 'last week', 'two days ago'.",
+      "Tugagan o'tmish harakatlari uchun.",
+    ],
+    sampleAnswer: "Yesterday was a nice day. I woke up early and had breakfast with my family. Then I went to the market and bought some fruit. In the afternoon, I met my friends, and we played football in the park. Later, I watched a film at home. In the evening, I studied English for one hour. I was a little tired, so I went to bed early. I really enjoyed my day. What did you do yesterday?",
+  },
   title: 'Simple Past Tense',
   subtitle: "O'tgan vaqtda tugagan harakatlar va voqealar — 'KECHA QILDIM, O'TGAN HAFTA BO'LDI'",
   level: 'A1',
@@ -730,6 +760,16 @@ export const simplePast: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const simpleFuture: DailyLesson = {
   id: 'simple-future',
+  speaking: {
+    prompt: "Talk about your plans and predictions for the future. Speak for about one minute. Use 'will' and 'going to' (I will study, I am going to travel).",
+    tips: [
+      "'will + V1' — bashorat yoki hozirgi qaror.",
+      "'going to' — oldindan qilingan reja.",
+      "'tomorrow', 'next week', 'next year'.",
+      "'I think it will...' — bashorat.",
+    ],
+    sampleAnswer: "I have some plans for the future. Tomorrow, I am going to study for my exam. Next week, I will meet my friends. I think it will be sunny at the weekend, so we are going to have a picnic. Next year, I am going to start university. I believe I will become a good engineer one day. I will travel to many countries and learn new things. I am sure my future will be bright if I work hard!",
+  },
   title: 'Simple Future Tense (will / going to)',
   subtitle: "Kelajakda sodir bo'ladigan harakatlar, bashoratlar, va'dalar va rejalar — 'MEN ERTA KELAMAN'",
   level: 'A1',

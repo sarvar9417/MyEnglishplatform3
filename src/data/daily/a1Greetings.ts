@@ -2,6 +2,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const greetingsAndIntroductions: DailyLesson = {
   id: 'greetings-introductions',
+  speaking: {
+    prompt: "Meet a new person and have a short introduction conversation. Speak for about one minute. Greet them, introduce yourself, and ask polite questions.",
+    tips: [
+      "'Hi, I'm... / How are you?'",
+      "'Where are you from?'",
+      "'What do you do?'",
+      "'Nice to meet you!'",
+    ],
+    sampleAnswer: "Hi, I'm Sardor. Nice to meet you! How are you today? I'm fine, thank you. I'm a student, and I study English. Where are you from? I'm from Tashkent. Where do you live now? What do you do? It's really nice to talk to you. I hope we can be friends. Have a great day! See you soon.",
+  },
   title: 'Greetings & Introductions',
   subtitle: "Salomlashish va o'zini tanishtirish — Hello, My name is, How are you?",
   level: 'A1',

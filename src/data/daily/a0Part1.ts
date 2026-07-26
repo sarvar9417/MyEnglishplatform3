@@ -2,6 +2,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const greetingsAndNames: DailyLesson = {
   id: 'greetings-names',
+  speaking: {
+    prompt: "Introduce yourself. Say hello, tell your name, where you are from, and ask someone their name. Speak for about 30-60 seconds.",
+    tips: [
+      "'Hello! My name is...'",
+      "'I am from...'",
+      "'Nice to meet you.'",
+      "'What is your name?'",
+    ],
+    sampleAnswer: "Hello! My name is Dilnoza. Nice to meet you. I am from Uzbekistan. I am a student. What is your name? Where are you from? I am very happy to meet you. Goodbye, see you later!",
+  },
   title: 'Salomlashish va ismlar',
   subtitle: 'Hello, My name is... — Birinchi qadamlar',
   level: 'A0',
@@ -57,6 +67,16 @@ export const greetingsAndNames: DailyLesson = {
 
 export const numbersAndAlphabet: DailyLesson = {
   id: 'numbers-alphabet',
+  speaking: {
+    prompt: "Count from one to ten, spell your name, and say your age. Speak for about 30-60 seconds.",
+    tips: [
+      "'One, two, three...'",
+      "Spell: 'My name is Ali — A, L, I.'",
+      "'I am ... years old.'",
+      "Alifboni ayting: A, B, C, D...",
+    ],
+    sampleAnswer: "Let me count: one, two, three, four, five, six, seven, eight, nine, ten. My name is Ali — A, L, I. I am nineteen years old. My favourite number is seven. Let me say the alphabet: A, B, C, D, E, F, G. That is easy! Thank you.",
+  },
   title: 'Raqamlar va alifbo',
   subtitle: '1, 2, 3... A, B, C... — Asosiy bilimlar',
   level: 'A0',
@@ -110,6 +130,16 @@ export const numbersAndAlphabet: DailyLesson = {
 
 export const familyAndMe: DailyLesson = {
   id: 'family-me',
+  speaking: {
+    prompt: "Talk about your family. Say who is in your family and their names. Speak for about 30-60 seconds.",
+    tips: [
+      "'I have a mother, a father...'",
+      "'This is my mother.'",
+      "'Her name is... / His name is...'",
+      "'I love my family.'",
+    ],
+    sampleAnswer: "I want to tell you about my family. I have a mother, a father, and two sisters. My mother's name is Nigora, and my father's name is Bobur. My sisters are Malika and Zilola. I love my family very much. We live in a small house. My family is happy. This is my family!",
+  },
   title: "Oilam va men",
   subtitle: "Family, mother, father — Mening oilam",
   level: 'A0',

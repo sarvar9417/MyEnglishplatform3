@@ -2,6 +2,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const tensesMixedReview: DailyLesson = {
   id: 'tenses-mixed-review',
+  speaking: {
+    prompt: "Talk about your life — your past, your present, and your future. Speak for about one minute. Mix the tenses: Past Simple for yesterday, Present Simple for routines, and 'going to' or 'will' for plans.",
+    tips: [
+      "O'tmish: 'Yesterday I studied.'",
+      "Hozir (odat): 'I usually wake up at seven.'",
+      "Kelajak: 'I am going to travel.' / 'I will pass.'",
+      "Zamonlarni to'g'ri aralashtiring.",
+    ],
+    sampleAnswer: "Let me tell you about my life. These days, I usually wake up at seven o'clock and study English every morning. Yesterday was a busy day — I went to class and then worked in the afternoon. Last year, I started learning English, and I have improved a lot since then. Right now, I am preparing for an exam. Next month, I am going to take the test, and I think I will pass it. In the future, I want to work in an international company. I believe that if I keep studying, I will reach my goals.",
+  },
   title: '6 Zamon Aralash Takrorlash',
   subtitle: 'Present Simple, Present Continuous, Present Perfect, Past Simple, Past Continuous, Future Simple — barchasini birga mustahkamlang',
   level: 'A2',

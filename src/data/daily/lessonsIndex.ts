@@ -40,7 +40,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": false,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "numbers-alphabet",
@@ -57,7 +57,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": false,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "family-me",
@@ -74,7 +74,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": false,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-1",
@@ -112,7 +112,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": false,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "alphabet-greetings",
@@ -485,7 +485,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "present-continuous",
@@ -501,7 +501,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-5",
@@ -540,7 +540,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "simple-future",
@@ -556,7 +556,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "question-words",
@@ -751,7 +751,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "comparatives-superlatives",
@@ -837,7 +837,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "verb-patterns",
@@ -854,7 +854,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "time-prepositions",
@@ -871,7 +871,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "possessives",
@@ -888,7 +888,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "some-any-no-every",
@@ -904,7 +904,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "present-continuous-future",
@@ -921,7 +921,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-9",
@@ -961,7 +961,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "too-enough",
@@ -978,7 +978,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "so-such",
@@ -994,7 +994,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "basic-relative-clauses-a2",
@@ -1011,7 +1011,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-10",

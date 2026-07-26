@@ -3,6 +3,16 @@
 // ─── LESSON 1: THERE IS / THERE ARE ──────────────────────────────────
 export const verbPatterns: DailyLesson = {
   id: 'verb-patterns',
+  speaking: {
+    prompt: "Talk about your daily choices, likes, and plans. Speak for about one minute. Combine verbs correctly: -ing after 'enjoy' and 'finish', and 'to + verb' after 'want' and 'decide'.",
+    tips: [
+      "'enjoy/finish/mind + V-ing'.",
+      "'want/decide/need/hope + to + V1'.",
+      "Modaldan keyin asl fe'l: 'can swim'.",
+      "'like' ikkalasi bilan ishlaydi.",
+    ],
+    sampleAnswer: "Every day I make small choices. In the morning, I decide to wake up early because I want to study. I enjoy having breakfast with my family. I must go to class at eight, so I try to be on time. Sometimes I feel like sleeping more, but I keep working. After my lessons, I like relaxing with music, and I don't mind doing my homework. In the evening, I need to prepare for the next day. I have decided to practise English every day because I want to become fluent.",
+  },
   title: 'Verb Patterns',
   subtitle: "Fe'llardan keyin keladigan shakllar — V-ing, to V1, V1",
   level: 'A2',
@@ -192,6 +202,16 @@ export const verbPatterns: DailyLesson = {
 // ─── LESSON 5: TIME PREPOSITIONS ──────────────────────────────────────
 export const timePrepositions: DailyLesson = {
   id: 'time-prepositions',
+  speaking: {
+    prompt: "Describe a typical day and week, from morning to night. Speak for about one minute. Use time prepositions: 'at' for clock times, 'in' for months and parts of the day, 'on' for days.",
+    tips: [
+      "'at 7 o'clock', 'at night'.",
+      "'in the morning', 'in July', 'in summer'.",
+      "'on Monday', 'on my birthday'.",
+      "Kun tartibini ketma-ket ayting.",
+    ],
+    sampleAnswer: "On a typical day, I wake up at six o'clock in the morning. I have breakfast, and then I go to school at eight. In the afternoon, I study in the library. On Monday and Wednesday, I have English classes. On Saturday, I meet my friends, and on Sunday I rest at home. In the evening, I do my homework, and I usually go to bed at eleven o'clock at night. I was born in May, so my birthday is in spring. I like my busy but happy week.",
+  },
   reading: {
     title: 'A Busy Week',
     passage: "Aziz is a student, and he has a busy week. On Monday he has English classes in the morning. At two o'clock in the afternoon he works at a café. He finishes work at nine o'clock at night.\n\nOn Wednesday and Friday he goes to the gym. He was born in April, so his birthday is in spring. This year his birthday is on the fifteenth of April, and it is on a Saturday.\n\nIn the summer, Aziz has a holiday. He usually travels in July or August. At the weekend, he likes to rest at home. He always calls his parents on Sunday evening. Aziz is tired during the week, but he is happy because he learns a lot.",
@@ -574,6 +594,16 @@ export const thereIsThereAre: DailyLesson = {
 // ─── LESSON 2: POSSESSIVES ──────────────────────────────────────────────
 export const possessives: DailyLesson = {
   id: 'possessives',
+  speaking: {
+    prompt: "Describe your family and their things. Speak for about one minute. Use possessive adjectives (my, his, her), the apostrophe 's (my brother's), possessive pronouns (mine, hers), and 'whose'.",
+    tips: [
+      "'my/his/her + ot': 'my book', 'her bag'.",
+      "'s egalik: 'my sister's phone'.",
+      "Pronouns: 'mine, yours, hers, ours'.",
+      "'Whose is this?' — kimniki.",
+    ],
+    sampleAnswer: "Let me tell you about my family. This is my father, and his car is in the garage. My mother's kitchen is her favourite room. My sister has a bag; that bag is hers, not mine. My brother's room is bigger than mine, but my room is tidier. 'Whose books are these?' my mother asked yesterday. They are mine! In our house, everyone has their own things, but we share them. My grandparents' house is in the village, and I love visiting it every summer.",
+  },
   reading: {
     title: 'Whose Things Are These?',
     passage: "The Karimov family has a big house. Every person has their own room. This is my room, and that one is my sister's room. Her room is bigger than mine, but my room is nicer.\n\nMy parents' car is in the garage. It is their favourite thing. My father says the car is his, but my mother says it is hers too! In the living room there are many things. The books on the table are mine, and the phone is my brother's.\n\n'Whose keys are these?' my mother asked yesterday. 'They are not mine,' I said. 'They are yours, Mum!' We all laughed. In our family, we share our things, but everyone knows what is theirs.",
@@ -783,6 +813,16 @@ export const possessives: DailyLesson = {
 // ─── LESSON 3: SOME / ANY / NO / EVERY ─────────────────────────────────
 export const someAnyNoEvery: DailyLesson = {
   id: 'some-any-no-every',
+  speaking: {
+    prompt: "Talk about food shopping or a party. Speak for about one minute. Use 'some' in positive sentences, 'any' in questions and negatives, 'no', and 'every' (and words like 'someone', 'anything').",
+    tips: [
+      "'some' — tasdiq: 'I have some bread.'",
+      "'any' — savol/inkor: 'Is there any milk?'",
+      "'no + ot' = 'not any'.",
+      "'every + birlik ot': 'Every shop is open.'",
+    ],
+    sampleAnswer: "On Saturday, I usually go to the market. I buy some vegetables and some bread, but I don't buy any meat because it is expensive. Is there any milk at home? No, there is no milk, so I need to buy some. Every shop in our area is open on Saturday. Last week there was a party at my friend's house. Everyone brought something to eat. I didn't know anybody at first, but soon I made some new friends. There was nothing boring about the evening — it was great!",
+  },
   reading: {
     title: 'The Empty Fridge',
     passage: "It was Sunday morning, and Malika wanted to make breakfast. She opened the fridge, but there was almost nothing inside. 'Is there any milk?' she thought. No, there wasn't any milk. There were some eggs, but there was no bread.\n\n'Every shop is open on Sunday,' she said, 'so I can buy something.' She took some money and went to the market. At the market, everything was fresh. She bought some bread, some fruit, and a few tomatoes. She didn't buy any meat because it was expensive.\n\nWhen she came home, she made breakfast for everyone in her family. Everybody was happy. 'There is something special about a family breakfast,' Malika said with a smile.",

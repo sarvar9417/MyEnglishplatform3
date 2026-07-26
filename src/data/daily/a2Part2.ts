@@ -1,6 +1,16 @@
 ﻿import type { DailyLesson } from '../dailyLessons'
 export const adjectiveAdverb: DailyLesson = {
   id: 'adjective-adverb',
+  speaking: {
+    prompt: "Describe a person you know and how they do things. Speak for about one minute. Use adjectives to describe the person (kind, tall) and adverbs to describe their actions (carefully, quickly, well).",
+    tips: [
+      "Sifat + ot: 'a careful driver', 'a kind person'.",
+      "Ravish fe'l bilan: 'drives carefully', 'speaks quietly'.",
+      "'good' → 'well': 'She sings well.'",
+      "'fast', 'hard' — sifat va ravish bir xil.",
+    ],
+    sampleAnswer: "My friend Aziz is a very kind and hardworking person. He is quiet, and he always speaks politely. He studies hard and does his homework carefully. When he plays football, he runs fast and plays well. He is a good cook, and he cooks quickly. He never gets angry, and he always helps his friends happily. I think he is honest and friendly. That is why everyone likes him. I try to be more like him because he does everything so carefully and calmly.",
+  },
   reading: {
     title: 'The Careful Driver',
     passage: "Bobur is a careful driver. He drives slowly and always follows the rules. His car is old but clean. Every morning he checks it carefully before he leaves home.\n\nHis brother Sardor is different. He is a fast driver and sometimes he drives dangerously. He thinks he is a good driver, but he does not drive well. Last month he had a small accident because he was driving quickly in the rain.\n\nTheir mother is always worried. 'Please drive carefully,' she says to Sardor. 'A good driver is a slow driver, not a fast one.' Now Sardor tries hard to drive more safely, and his mother is happier.",

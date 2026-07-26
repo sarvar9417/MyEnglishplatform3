@@ -7,6 +7,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const basicRelativeClausesA2: DailyLesson = {
   id: 'basic-relative-clauses-a2',
+  speaking: {
+    prompt: "Describe your family and friends in a photo. Speak for about one minute. Use relative clauses with 'who' (for people), 'which/that' (for things), and 'where' (for places).",
+    tips: [
+      "'who' — odamlar: 'the man who is standing'.",
+      "'which/that' — narsalar: 'the house which we built'.",
+      "'where' — joylar: 'the city where I live'.",
+      "Qo'shimcha ma'lumot qo'shadi.",
+    ],
+    sampleAnswer: "This is a photo which I really love. The man who is standing on the left is my father, who works as a teacher. The woman who is next to him is my mother, who loves cooking. The girl who is wearing a red dress is my sister, who studies at university. This is the house where we live, and behind it is the garden that my grandfather planted. It was a sunny day when we took this photo. These are the people who mean everything to me.",
+  },
   title: 'Basic Relative Clauses',
   subtitle: "Who, which, that, where, when — nisbiy gaplar bilan tanishtirish",
   level: 'A2',

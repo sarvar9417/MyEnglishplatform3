@@ -2,6 +2,16 @@
 
 export const presentContinuousFuture: DailyLesson = {
   id: 'present-continuous-future',
+  speaking: {
+    prompt: "Talk about your plans and arrangements for next week. Speak for about one minute. Use the present continuous for fixed future plans (I am meeting..., we are going...).",
+    tips: [
+      "'am/is/are + V-ing + kelajak vaqti'.",
+      "Oldindan kelishilgan aniq rejalar uchun.",
+      "'I'm meeting a friend tomorrow.'",
+      "Vaqt so'zlari: tomorrow, on Monday, next week.",
+    ],
+    sampleAnswer: "I have some exciting plans for next week. On Monday, I am starting a new English course. On Tuesday evening, I am meeting my friends, and we are going to the cinema. On Wednesday, my cousin is visiting us from another city. I am not working on Thursday, so I am helping my mother at home. On Friday, we are having a family dinner. On Saturday, I am playing football with my team. As you can see, I am doing something every day — I am really looking forward to next week!",
+  },
   reading: {
     title: 'Weekend Plans',
     passage: "It is Thursday, and Dilfuza is talking about her weekend plans. 'I am meeting my friends on Saturday,' she says. 'We are going to the cinema in the evening.' She has already bought the tickets, so the plan is fixed.\n\nHer brother Jasur is busy too. 'I am playing football on Sunday morning,' he says. 'After that, I am visiting our grandmother.' Their mother is happy because the whole family is having lunch together on Sunday afternoon.\n\n'Are you doing anything special next week?' Dilfuza asks Jasur. 'Yes, I am starting a new English course on Monday!' he answers. Everyone in the family has plans, and they are all looking forward to a busy and happy weekend.",
@@ -217,6 +227,16 @@ export const presentContinuousFuture: DailyLesson = {
 
 export const quantifiers: DailyLesson = {
   id: 'quantifiers',
+  speaking: {
+    prompt: "Talk about how much free time and money you have, and how many friends. Speak for about one minute. Use quantifiers: 'much' and 'a little' with uncountable nouns, 'many' and 'a few' with countable nouns.",
+    tips: [
+      "'much/a little' — sanalmaydigan (time, money).",
+      "'many/a few' — sanaladigan (friends, books).",
+      "'a lot of' — ikkalasi bilan.",
+      "'How much...?' / 'How many...?'",
+    ],
+    sampleAnswer: "I don't have much free time during the week because I study a lot. I have a few close friends, but many classmates. I don't earn much money yet, so I spend only a little on entertainment. At the weekend, I have some free time to relax. I read a lot of books and drink a little coffee every morning. I don't have many problems, and I have enough time for the things I love. In general, I think it is important to spend a little time every day on something you enjoy.",
+  },
   reading: {
     title: 'A Small Village Shop',
     passage: "There is a small shop in our village. It doesn't have many products, but it has enough for the people who live here. There are a lot of vegetables and a few kinds of bread. There isn't much meat, but there is plenty of rice and tea.\n\nThe shopkeeper, Uncle Rustam, knows everybody. 'How much sugar do you need?' he asks. 'Just a little,' the customers say. Some people buy a lot, and others buy only a little.\n\nThere aren't many customers in the morning, but there are lots of people after work. Uncle Rustam says, 'I don't earn much money, but I have many friends here.' For him, that is more important than money. The little shop is the heart of our village.",
@@ -432,6 +452,16 @@ export const quantifiers: DailyLesson = {
 
 export const tooEnough: DailyLesson = {
   id: 'too-enough',
+  speaking: {
+    prompt: "Talk about problems in your daily life and how you solve them. Speak for about one minute. Use 'too' (more than you want) and 'enough' (the right amount).",
+    tips: [
+      "'too + sifat': 'too expensive', 'too tired'.",
+      "'sifat + enough': 'old enough', 'good enough'.",
+      "'enough + ot': 'enough time', 'enough money'.",
+      "'too ... to': 'too tired to study'.",
+    ],
+    sampleAnswer: "Sometimes my day is too busy. In the morning, there is too much traffic, so I don't have enough time for breakfast. My homework is not too difficult, but I need enough time to finish it. Last week, I was too tired to study, so I slept early. Now I wake up early enough to prepare well. I think I am strong enough to solve my problems if I plan carefully. The most important thing is to have enough rest, because if you are too tired, you cannot work well.",
+  },
   reading: {
     title: 'Learning to Drive',
     passage: "Sardor wants to learn to drive, but there are some problems. He says the lessons are too expensive, and he doesn't have enough money yet. Also, he thinks he is too young — he is only seventeen, and in his country you must be eighteen to drive.\n\n'Don't worry,' his father says. 'You are old enough to start saving money now. And you are clever enough to pass the test easily.' Sardor is happy to hear this.\n\nEvery week Sardor saves a little money. Soon he will have enough to pay for the lessons. He is also reading the driving book. It is not too difficult for him. 'I am strong enough to reach my goal,' he says. 'I just need to be patient enough to wait a few more months.'",
@@ -646,6 +676,16 @@ export const tooEnough: DailyLesson = {
 
 export const soSuch: DailyLesson = {
   id: 'so-such',
+  speaking: {
+    prompt: "Describe a memorable day or place with strong feelings. Speak for about one minute. Use 'so' + adjective (so beautiful) and 'such' + (a) + adjective + noun (such a nice day).",
+    tips: [
+      "'so + sifat/ravish': 'so beautiful', 'so quickly'.",
+      "'such + (a/an) + sifat + ot': 'such a nice day'.",
+      "'so ... that': 'so tired that I slept'.",
+      "'such ... that': 'such a good film that...'",
+    ],
+    sampleAnswer: "Last summer, I visited Samarkand, and it was such a wonderful trip. The city was so beautiful that I took hundreds of photos. We stayed in such a nice hotel, and the people were so friendly. The food was so delicious that I ate too much every day. One evening, we saw such an amazing sunset that everyone became quiet. It was such a special day that I will never forget it. Samarkand is such an interesting place, and I really want to go there again one day.",
+  },
   reading: {
     title: 'A Wonderful Trip',
     passage: "Last summer, my family and I went to Bukhara. It was such a beautiful city! The weather was so hot that we walked only in the morning and evening. The old buildings were so amazing that we took hundreds of photos.\n\nWe stayed in such a nice hotel. The people were so friendly that we felt at home immediately. The food was such delicious food that we ate too much every day!\n\nOne evening, we saw such a wonderful sunset that everybody became quiet. My little sister said, 'This is so beautiful!' It was such a special moment. I will never forget that trip. Bukhara is such an interesting place, and I hope to go there again one day. It was so good that one week was not enough.",
