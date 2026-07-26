@@ -2,6 +2,16 @@
 
 export const linkingWordsAdvanced: DailyLesson = {
   id: 'linking-words-advanced-b1plus',
+  speaking: {
+    prompt: "Give your opinion on an important topic — technology, education, or the environment. Speak for about one minute. Connect your ideas smoothly using advanced linkers: 'furthermore', 'moreover', 'consequently', 'nevertheless', and 'therefore'.",
+    tips: [
+      "Qo'shimcha: 'furthermore', 'moreover', 'in addition'.",
+      "Natija: 'consequently', 'therefore', 'as a result'.",
+      "Qarama-qarshilik: 'nevertheless', 'however'.",
+      "Xulosa: 'to sum up', 'in conclusion'.",
+    ],
+    sampleAnswer: "In my opinion, technology has improved education enormously. Firstly, it makes knowledge available to everyone; furthermore, it allows people to learn at their own pace. Moreover, online tools give instant feedback, which helps students improve quickly. Of course, there are risks. Many people spend too long on their phones; consequently, they lose concentration. Technology must therefore be used carefully. It is not perfect; nevertheless, its benefits clearly outweigh its problems. To sum up, I firmly believe that, when used wisely, technology is one of the most powerful tools for building a better future.",
+  },
   reading: {
     title: 'Is City Life Better?',
     passage: "Many young people move to big cities in search of opportunity. Cities certainly offer advantages: there are more jobs, and public services are usually better. Furthermore, cultural life is richer, with theatres, museums, and events for every taste. Moreover, education and healthcare tend to be of higher quality.\n\nHowever, city life also has serious drawbacks. The cost of living is high; consequently, many people struggle to save money. Pollution and noise affect health, and the fast pace can be stressful. Nevertheless, most residents believe the benefits outweigh the problems.\n\nThe countryside offers peace and clean air; hence, some families prefer it. In the end, the right choice depends on personal priorities. Whether one values convenience or calm, both lifestyles have something valuable to offer.",
@@ -206,6 +216,16 @@ export const linkingWordsAdvanced: DailyLesson = {
 
 export const collocationsMakeDoHaveTake: DailyLesson = {
   id: 'collocations-make-do-have-take-b1plus',
+  speaking: {
+    prompt: "Describe a typical busy day at work or study. Speak for about one minute. Use natural collocations with 'make', 'do', 'have', and 'take' (make a decision, do research, have a break, take responsibility).",
+    tips: [
+      "make: a decision, a mistake, progress, an effort.",
+      "do: research, business, homework, your best.",
+      "have: a break, a rest, a meeting, lunch.",
+      "take: a break, responsibility, a risk, notes.",
+    ],
+    sampleAnswer: "On a typical day, I have to make many decisions from the moment I wake up. In the morning, I have breakfast quickly and take a bus to work. As soon as I arrive, I make a to-do list and do some research for my projects. Around noon, I take a short break and have lunch with my colleagues. In the afternoon, we make progress on important tasks, although sometimes we make mistakes and have to fix them. Before I leave, I make sure everything is ready. Finally, I take the bus home and have a well-deserved rest.",
+  },
   reading: {
     title: "A Manager's Busy Week",
     passage: "As a project manager, Laylo has to make important decisions every day. On Monday she had a meeting with her team to make plans for the new season. She did some research before the meeting so that she could make a good impression on the clients.\n\nDuring the week, she took responsibility for a difficult problem and made an effort to solve it quickly. Although she was tired, she rarely had time to take a rest. On Wednesday she had an argument with a supplier, but she managed to make peace and do business as usual.\n\nBy Friday, the team had made great progress. Laylo took a short break, had a cup of coffee, and felt proud. 'Hard work always pays off,' she said, 'as long as you take care of the details.'",
@@ -444,6 +464,16 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
 
 export const advancedPhrasalVerbs: DailyLesson = {
   id: 'advanced-phrasal-verbs-b1plus',
+  speaking: {
+    prompt: "Tell a story about a challenge you faced and overcame. Speak for about one minute. Use advanced phrasal verbs like 'come up with', 'put up with', 'run out of', 'look forward to', and 'carry on'.",
+    tips: [
+      "'come up with' — g'oya o'ylab topmoq.",
+      "'put up with' — chidamoq, toqat qilmoq.",
+      "'run out of' — tugab qolmoq.",
+      "'carry on' — davom etmoq.",
+    ],
+    sampleAnswer: "A few years ago, I decided to set up a small business with my friends. At first, we came up with lots of exciting ideas. However, we soon ran into problems and almost ran out of money. For months, we had to put up with stress and long hours. Many people told us to give up, but we carried on. Eventually, one of us came up with a brilliant solution that turned things around. Now the business is doing well, and I am looking forward to expanding it. Looking back, I'm proud that we never backed down.",
+  },
   reading: {
     title: 'The Startup That Almost Failed',
     passage: "When Bekzod and his friends came up with the idea for their app, they were full of energy. However, they soon ran into problems. After six months, they had almost run out of money, and two team members dropped out.\n\nBekzod refused to give up. He looked into new sources of funding and came across an investor who believed in the project. It was not easy — they had to put up with criticism and work long hours. Slowly, things began to look up.\n\nThe app finally took off last year. Now the company is doing well, and Bekzod is looking forward to expanding abroad. 'You will face many obstacles,' he says, 'but if you keep going, you can pull through almost anything.'",
@@ -647,6 +677,16 @@ export const advancedPhrasalVerbs: DailyLesson = {
 
 export const idiomsCommon: DailyLesson = {
   id: 'idioms-common-b1plus',
+  speaking: {
+    prompt: "Tell a personal story and include several English idioms naturally. Speak for about one minute. Use idioms like 'break the ice', 'once in a blue moon', 'hit the nail on the head', and 'a piece of cake'.",
+    tips: [
+      "'break the ice' — muloqotni boshlash/tanglikni yozish.",
+      "'a piece of cake' — juda oson.",
+      "'once in a blue moon' — juda kamdan-kam.",
+      "Idiomlarni tabiiy, o'z o'rnida ishlating.",
+    ],
+    sampleAnswer: "When I started my new course, I was very shy. On the first day, our teacher told a joke to break the ice, and everyone relaxed. At first, I thought speaking English would be a piece of cake, but I soon realised it was harder than I expected. I only spoke up once in a blue moon. One day, a classmate hit the nail on the head when she said we all learn by making mistakes. That changed my attitude completely. Now I speak whenever I can. As they say, practice makes perfect, and I am living proof of that.",
+  },
   reading: {
     title: 'My First Day at Work',
     passage: "My first day at the new office was nerve-racking. I didn't know anyone, and I felt like a fish out of water. During the morning meeting, I tried to break the ice by making a small joke, and luckily it worked.\n\nMy manager told me not to worry and said that learning the job would be a piece of cake once I got used to it. That put my mind at rest. In the afternoon, a colleague helped me with a difficult task; she really saved the day.\n\nBy the evening, I felt much better. I realised that starting a new job is never easy, but sometimes you just have to bite the bullet. As they say, every cloud has a silver lining, and my nervous first day turned into the beginning of a great job.",
@@ -855,6 +895,16 @@ export const idiomsCommon: DailyLesson = {
 
 export const prepositionalPhrases: DailyLesson = {
   id: 'prepositional-phrases-b1plus',
+  speaking: {
+    prompt: "Explain how you organise your time and handle unexpected problems. Speak for about one minute. Use fixed prepositional phrases such as 'in advance', 'at once', 'by accident', 'on purpose', and 'on time'.",
+    tips: [
+      "'in advance' — oldindan.",
+      "'at once' — darhol.",
+      "'by accident' vs 'on purpose' — tasodifan / ataylab.",
+      "'on time' — o'z vaqtida.",
+    ],
+    sampleAnswer: "I believe that good planning makes life easier. I always prepare my tasks in advance and try to arrive on time for everything. When an urgent problem appears, I deal with it at once instead of putting it off. Of course, mistakes happen. Last week I deleted an important file by accident, and I had to redo the work in a hurry. My colleague joked that I had done it on purpose to avoid a boring meeting! On the whole, I stay calm under pressure. By and large, being organised in advance saves me a lot of stress.",
+  },
   reading: {
     title: 'Staying Organised',
     passage: "In my opinion, good organisation is the key to success. I always try to plan my tasks in advance rather than doing everything at the last minute. As a rule, I write a list every evening for the next day.\n\nOf course, things do not always go according to plan. Sometimes I make mistakes by accident, and once I sent an important email to the wrong person. When an emergency happens, I deal with it at once instead of leaving it for later. I never delete files on purpose, but accidents still happen.\n\nOn the whole, staying calm under pressure is essential. By and large, people who prepare in advance handle surprises better. In short, a little planning today can save you a lot of trouble tomorrow.",
@@ -1089,6 +1139,16 @@ export const prepositionalPhrases: DailyLesson = {
 
 export const wordFormation: DailyLesson = {
   id: 'word-formation-b1plus',
+  speaking: {
+    prompt: "Talk about a personal achievement or an important goal. Speak for about one minute. Show your vocabulary range by using words built with suffixes like -tion, -ment, -ness, -ity, and -ous.",
+    tips: [
+      "-tion: determination, preparation, education.",
+      "-ment: achievement, improvement, development.",
+      "-ness: happiness, nervousness, kindness.",
+      "-ity / -ous: possibility, curiosity / marvellous.",
+    ],
+    sampleAnswer: "My greatest achievement was passing a very difficult examination last year. It required real determination and months of preparation. At the beginning, the possibility of failure filled me with nervousness. However, with patience and dedication, I made steady improvement. My success brought me great happiness and a strong sense of personal growth. It was a marvellous feeling. This experience taught me that education truly has the power to transform a person's life. Now I approach every new challenge with confidence and curiosity, because I know that hard work always leads to development and, eventually, to success.",
+  },
   reading: {
     title: 'The Power of Education',
     passage: "Education is one of the most powerful tools for personal development. It gives people the knowledge and confidence to improve their lives. The transformation that learning brings is often remarkable.\n\nWith determination and hard work, a student can achieve great success. Every improvement, however small, builds motivation. Of course, failure is a natural part of the process, but it teaches valuable lessons about patience and responsibility.\n\nModern technology has increased the accessibility of education. Nowadays, the possibility of studying online means that distance is no longer a barrier. This development is truly wonderful. In conclusion, education is not only about qualifications; it is about growth, curiosity, and the freedom to shape a better future.",
@@ -1288,6 +1348,16 @@ export const wordFormation: DailyLesson = {
 
 export const reportingVerbs: DailyLesson = {
   id: 'reporting-verbs-b1plus',
+  speaking: {
+    prompt: "Report an important conversation or meeting you had recently. Speak for about one minute. Instead of only 'said', use reporting verbs like 'suggest', 'recommend', 'admit', 'insist', 'warn', and 'promise'.",
+    tips: [
+      "'suggest / recommend + V-ing' yoki 'that...'.",
+      "'admit / deny + V-ing'.",
+      "'insist on + V-ing', 'warn (sb) not to...'.",
+      "'promise / offer / refuse + to + V1'.",
+    ],
+    sampleAnswer: "Last week, our team had an important meeting, and I'd like to tell you what happened. The manager suggested changing our whole strategy. She recommended focusing on younger customers. At first, one colleague complained that we didn't have enough time, but later he admitted that the plan was good. Another insisted that we needed more staff. The manager warned us not to waste money, but she promised to support us fully. In the end, everyone agreed to work together. She thanked us for our effort and encouraged us to share ideas freely. I left the meeting feeling truly motivated.",
+  },
   reading: {
     title: 'The Team Meeting',
     passage: "Last Friday, our department held a meeting to discuss the new marketing plan. The director began by explaining the goals for the next three months. She suggested focusing on social media, and she recommended hiring a young designer.\n\nAt first, one manager complained that the budget was too small. He admitted, however, that the idea itself was good. Another colleague insisted that we needed more time, but the director warned that the deadline could not be changed.\n\nIn the end, everyone agreed to try the new approach. The director promised to support the team and reminded us to report our progress every week. She thanked us for our hard work and encouraged us to share our ideas freely. I left the meeting feeling motivated.",
@@ -1502,6 +1572,16 @@ export const reportingVerbs: DailyLesson = {
 
 export const determinersAdvanced: DailyLesson = {
   id: 'determiners-advanced-b1plus',
+  speaking: {
+    prompt: "Compare a group of people or options you know well — classmates, friends, or choices. Speak for about one minute. Use determiners precisely: 'all', 'both', 'each', 'every', 'either', 'neither', and 'none'.",
+    tips: [
+      "'all / none of' + ko'plik.",
+      "'both' — ikkalasi, 'neither' — ikkalasi ham emas.",
+      "'each / every' + birlik ot va fe'l.",
+      "'either' — ikkisidan biri.",
+    ],
+    sampleAnswer: "Let me tell you about my classmates. All of them are hardworking, but each one has a different personality. Both of my closest friends love studying in the morning, while I don't. Every student in our group has a special talent. When we choose a project topic, either option is usually fine, and neither is too difficult. Some students finished the last task early, but none of them left the room, because there was no reason to hurry. In the end, all of us passed the exam, and each of us learned something valuable about teamwork and patience.",
+  },
   reading: {
     title: 'Choosing a University',
     passage: "Last year, all of my classmates had to choose a university, and each of us faced a difficult decision. Both of the top universities in our city were excellent, but neither was cheap. Every student wanted the best option, yet none of us could agree on which one that was.\n\nSome preferred the larger university because of its facilities; others chose the smaller one for its friendly atmosphere. Either choice had advantages. In the end, each person made a decision based on personal goals.\n\nI realised that there is no perfect university — only the right one for each individual. All of us worried too much, but looking back, both options would have led to success. The important thing is not the name of the university but the effort each student puts in.",
@@ -1711,6 +1791,16 @@ export const determinersAdvanced: DailyLesson = {
 
 export const b1plusReview: DailyLesson = {
   id: 'b1plus-review',
+  speaking: {
+    prompt: "Reflect on your language-learning journey and how much you have improved. Speak for one to two minutes. Combine several structures: narrative tenses, modal perfects, participle clauses, and advanced linking words.",
+    tips: [
+      "Narrative tenses: 'When I started... I had never...'",
+      "Modal perfects: 'I should have practised more.'",
+      "Participle clauses: 'Having studied hard, I...'",
+      "Linkers: 'furthermore', 'nevertheless', 'as a result'.",
+    ],
+    sampleAnswer: "Looking back at my journey, I can hardly believe how far I have come. When I started, I could barely make a sentence; now I express complex ideas with confidence. Having studied hard for months, I have learned to tell stories, argue my opinions, and speak more naturally. There were difficult moments. I remember failing a test that I should have prepared for more carefully. I might have given up; nevertheless, I carried on. Encouraged by my teacher, I turned my weaknesses into strengths. Furthermore, I have realised that learning a language is a journey without an end. Now, looking forward to the B2 level, I feel proud and grateful for everything I have achieved.",
+  },
   reading: {
     title: "A Language Learner's Journey",
     passage: "Reflecting on the past year, Sardor cannot believe how far he has come. When he began studying at B1+ level, he could barely express complex ideas. Having practised every day, he can now tell stories, argue his opinion, and write formal essays.\n\nThere were difficult moments. He remembers failing a speaking test that he should have prepared for more carefully. He might have given up; nevertheless, he kept going. Encouraged by his teacher, he turned his weaknesses into strengths.\n\nSardor believes that learning a language is a journey without an end. 'You must be patient,' he says. 'Progress is slow, but it is real.' Now, looking forward to the B2 level, he feels proud of his achievement and grateful for every lesson that brought him here.",

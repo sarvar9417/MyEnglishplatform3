@@ -2,6 +2,16 @@
 
 export const narrativeTensesB1plus: DailyLesson = {
   id: 'narrative-tenses-b1plus',
+  speaking: {
+    prompt: "Tell a story about a dramatic or important event in your life. Speak for about one minute. Set the scene with the Past Continuous, tell the main events with the Past Simple, and give background with the Past Perfect.",
+    tips: [
+      "Past Continuous — fon: 'It was raining and I was walking...'",
+      "Past Simple — asosiy voqealar: 'Suddenly, I saw...'",
+      "Past Perfect — avvalroq bo'lgan: 'I had forgotten my keys.'",
+      "Vaqt so'zlari: when, while, suddenly, by the time.",
+    ],
+    sampleAnswer: "I will never forget the day I got lost in a big city. I was travelling alone, and I was feeling excited. I had planned everything carefully, but I had forgotten to charge my phone. While I was walking through the old town, I suddenly realised that I didn't know the way back. It was getting dark, and I started to panic. Luckily, a kind old man who was selling books noticed me. He showed me the way, and I finally found my hotel. That night, I learned never to travel without a map again.",
+  },
   title: 'Narrative Tenses',
   subtitle: "Past Simple, Past Continuous, Past Perfect, Past Perfect Continuous — hikoya qilish san'ati",
   level: 'B1+',
@@ -198,6 +208,16 @@ export const narrativeTensesB1plus: DailyLesson = {
 
 export const advancedRelativeClausesB1plus: DailyLesson = {
   id: 'advanced-relative-clauses-b1plus',
+  speaking: {
+    prompt: "Describe three important people in your life, adding extra details about each. Speak for about one minute. Use defining and non-defining relative clauses, including 'whom', 'whose', and preposition + which/whom.",
+    tips: [
+      "Non-defining (vergul bilan) — qo'shimcha ma'lumot: 'My mother, who...'",
+      "'whom' — rasmiy, to'ldiruvchi: 'the person whom I met'.",
+      "Preposition + whom/which: 'the man to whom I spoke'.",
+      "'whose' — egalik: 'the writer whose books I love'.",
+    ],
+    sampleAnswer: "Let me describe three people I admire. The first is my mother, who has always supported me, and whose kindness I will never forget. The second is my old teacher, from whom I learned the value of hard work. He was a man to whom I owe much of my success. The third is my closest friend, with whom I share all my secrets. She is someone whose advice I always trust. These are the people who have shaped my character and to whom I feel deeply grateful.",
+  },
   title: 'Advanced Relative Clauses',
   subtitle: 'Defining, Non-defining, Whom, Whose, Where, When \u2014 murakkab gap qurilishi',
   level: 'B1+',
@@ -405,6 +425,16 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
 
 export const participleClausesB1plus: DailyLesson = {
   id: 'participle-clauses-b1plus',
+  speaking: {
+    prompt: "Describe a busy or memorable scene — a market, a festival, or a celebration. Speak for about one minute. Make your description elegant using participle clauses (-ing, -ed, having + past participle).",
+    tips: [
+      "-ing (aktiv): 'Walking home, I saw...'",
+      "-ed (passiv): 'Tired, she sat down.'",
+      "'Having + V3': 'Having finished, we left.'",
+      "Ikki gapni bittaga birlashtiring.",
+    ],
+    sampleAnswer: "Arriving at the wedding, I was amazed by the celebration. Hundreds of guests, dressed in colourful clothes, were dancing in the garden. Music, played by a live band, filled the air. Having greeted the hosts, I joined my friends at the table. The food, prepared by the best cooks in the village, was delicious. Children, laughing and running everywhere, added to the joy. Exhausted but happy, I left late at night. Looking back, I realise it was one of the most beautiful celebrations I have ever attended.",
+  },
   title: 'Participle Clauses',
   subtitle: 'Present Participle, Past Participle, Perfect Participle \u2014 qisqa va samarali gap tuzish',
   level: 'B1+',
@@ -602,6 +632,16 @@ export const participleClausesB1plus: DailyLesson = {
 
 export const infinitiveGerundAdvancedB1plus: DailyLesson = {
   id: 'infinitive-gerund-advanced-b1plus',
+  speaking: {
+    prompt: "Talk about important choices and changes in your life. Speak for about one minute. Use verbs that change meaning with -ing or 'to' — 'remember', 'forget', 'stop', 'try', and 'regret'.",
+    tips: [
+      "'remember doing' (o'tmish) vs 'remember to do' (kelajak).",
+      "'stop doing' (to'xtatmoq) vs 'stop to do' (buning uchun to'xtamoq).",
+      "'try doing' (sinab ko'rmoq) vs 'try to do' (harakat qilmoq).",
+      "'regret doing' (afsus) vs 'regret to say' (rasmiy xabar).",
+    ],
+    sampleAnswer: "I have made many choices in my life. I still remember starting my first job, feeling nervous and excited. Last year I stopped working at a shop to focus on my studies. Sometimes I regret to say that I wasted time in the past, but I don't regret changing my path. I always try to study every day, and recently I tried using flashcards, which really helped. I must remember to thank my teacher, who never let me forget how important education is. I will never forget learning these valuable lessons.",
+  },
   title: 'Infinitive vs Gerund Advanced',
   subtitle: 'To + V, V-ing \u2014 murakkab verb patternlar va ma\u2019no farqlari',
   level: 'B1+',
@@ -800,6 +840,16 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
 
 export const modalPerfectsB1plus: DailyLesson = {
   id: 'modal-perfects-b1plus',
+  speaking: {
+    prompt: "Think about a past situation that went wrong and speculate about it. Speak for about one minute. Use modal perfects — 'must have', 'might have', 'could have', 'should have', and 'would have'.",
+    tips: [
+      "'must have + V3' — deyarli aniq deduksiya.",
+      "'might/could have + V3' — ehtimol.",
+      "'should have + V3' — afsus / to'g'ri qilinmagan.",
+      "'would have + V3' — shartli natija.",
+    ],
+    sampleAnswer: "Last month my friend didn't come to my birthday party, and I still wonder why. He might have forgotten the date, or he could have been busy with work. He must have had a good reason, because he is usually reliable. I should have called him to remind him, but I didn't. If I had invited him earlier, he would have come for sure. Maybe he didn't get my message — his phone might have been broken. I shouldn't have worried so much; I could have simply asked him the next day.",
+  },
   title: 'Modal Perfects',
   subtitle: 'Must have, Might have, Should have, Could have, Would have \u2014 o\u2018tmish haqida taxmin va afsus',
   level: 'B1+',
@@ -1003,6 +1053,16 @@ export const modalPerfectsB1plus: DailyLesson = {
 
 export const emphasisDoesB1plus: DailyLesson = {
   id: 'emphasis-does-b1plus',
+  speaking: {
+    prompt: "Defend an opinion that people often disagree with, or correct a misunderstanding about yourself. Speak for about one minute. Use emphatic 'do', 'does', and 'did' to make your points stronger.",
+    tips: [
+      "'I DO believe...' — ishonchni kuchaytiradi.",
+      "'She DOES work hard' — shubhani rad etadi.",
+      "'I DID tell you' — o'tmish tasdig'i.",
+      "Odatda gapga urg'u/ehtiros qo'shish uchun.",
+    ],
+    sampleAnswer: "People often say that young people don't read books, but I do disagree. I do read every day, and my friends do too. Some think that learning grammar is boring, yet I do find it fascinating. My teacher once doubted me, but I did prove her wrong by passing the exam. It is true that I failed once; however, I did learn from that failure. I do believe that anyone can succeed with effort. So when people say English is too difficult, I always reply: 'It does take time, but it does get easier.'",
+  },
   title: 'Emphasis: do/does/did',
   subtitle: 'Do, Does, Did \u2014 gapga kuch va urg\u2018u berish san\u2018ati',
   level: 'B1+',
@@ -1198,6 +1258,16 @@ export const emphasisDoesB1plus: DailyLesson = {
 
 export const frontingB1plus: DailyLesson = {
   id: 'fronting-b1plus',
+  speaking: {
+    prompt: "Describe a powerful or dramatic scene from nature or a memory, using an elevated, literary style. Speak for about one minute. Move phrases to the front of your sentences for emphasis (place, time, and negative adverbials with inversion).",
+    tips: [
+      "Negative fronting + inversion: 'Never have I seen...'",
+      "Joy fronting: 'On the hill stood a house.'",
+      "'Only then did I understand...'",
+      "'Rarely do we...' — urg'u va uslub uchun.",
+    ],
+    sampleAnswer: "Never had I experienced such a storm. Across the dark sky flashed bright lightning. In the distance rolled the deep sound of thunder. Slowly, the rain began to fall, and soon it was pouring. Only when the wind stopped did I dare to look outside. There, on the wet street, lay fallen branches. Rarely do we witness the true power of nature. So frightened was I that I could not sleep. Little did I know that by morning the sun would shine again, and the world would look completely new.",
+  },
   title: 'Fronting',
   subtitle: 'Gap bo\u2018laklarini oldinga chiqarish \u2014 urg\u2018u va stilistik ta\u2019sir',
   level: 'B1+',
@@ -1394,6 +1464,16 @@ export const frontingB1plus: DailyLesson = {
 
 export const ellipsisSubstitutionB1plus: DailyLesson = {
   id: 'ellipsis-substitution-b1plus',
+  speaking: {
+    prompt: "Have a natural conversation with a friend about weekend plans. Speak for about one minute. Sound natural by avoiding repetition — use ellipsis and substitution ('one', 'so', 'do', 'too', 'neither').",
+    tips: [
+      "'I think so' / 'I hope not' — butun gap o'rniga.",
+      "'the red one' — otni takrorlamaslik uchun 'one'.",
+      "'Me too' / 'So do I' / 'Neither do I'.",
+      "Takrorlanadigan so'zlarni tushiring.",
+    ],
+    sampleAnswer: "'Do you want to go to the cinema tonight?' 'Yes, I'd love to.' 'Which film — the action one or the comedy?' 'The comedy, I think.' 'Me too. Shall we invite Aziz?' 'Yes, let's. And Malika, if she's free.' 'Do you think she is?' 'I hope so.' 'Should we eat before or after?' 'After, I'd say.' 'So would I. Where shall we meet?' 'At the usual place?' 'Sounds good.' 'Great, see you at seven, then.' 'See you!'",
+  },
   title: 'Ellipsis & Substitution',
   subtitle: "So'zlarni tushirib qoldirish va o'rniga boshqa so'z ishlatish \u2014 qisqa va tabiiy gap",
   level: 'B1+',
@@ -1590,6 +1670,16 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
 
 export const concessionB1plus: DailyLesson = {
   id: 'concession-b1plus',
+  speaking: {
+    prompt: "Talk about a difficult decision or a controversial topic, showing both sides. Speak for about one minute. Use concession — 'although', 'even though', 'despite', 'in spite of', 'however', and 'nevertheless'.",
+    tips: [
+      "'Although / Even though' + to'liq gap.",
+      "'Despite / In spite of' + ot yoki V-ing.",
+      "'however / nevertheless' — vergul bilan, gap boshida.",
+      "Ikki qarama-qarshi tomonni muvozanatlang.",
+    ],
+    sampleAnswer: "Whether to live in a big city or a small town is a difficult question. Although cities offer more opportunities, they are often stressful. Despite the high cost of living, many people still prefer them. Even though small towns are peaceful, they can be boring for young people. In spite of the quiet, some feel isolated there. Cities are exciting; however, they can be lonely too. Nevertheless, most young people choose the city for its energy. Although I understand both sides, I believe the right choice depends entirely on what each person values most.",
+  },
   title: 'Concession',
   subtitle: "Although, Even though, Despite, In spite of, However \u2014 qarama-qarshilik va to'siqsizlik",
   level: 'B1+',

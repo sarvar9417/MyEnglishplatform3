@@ -1561,7 +1561,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "advanced-relative-clauses-b1plus",
@@ -1578,7 +1578,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "participle-clauses-b1plus",
@@ -1595,7 +1595,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "infinitive-gerund-advanced-b1plus",
@@ -1612,7 +1612,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "modal-perfects-b1plus",
@@ -1629,7 +1629,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-15",
@@ -1669,7 +1669,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "fronting-b1plus",
@@ -1686,7 +1686,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "ellipsis-substitution-b1plus",
@@ -1703,7 +1703,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "concession-b1plus",
@@ -1720,7 +1720,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "linking-words-advanced-b1plus",
@@ -1737,7 +1737,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-16",
@@ -1777,7 +1777,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "advanced-phrasal-verbs-b1plus",
@@ -1794,7 +1794,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "idioms-common-b1plus",
@@ -1811,7 +1811,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "prepositional-phrases-b1plus",
@@ -1828,7 +1828,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "word-formation-b1plus",
@@ -1845,7 +1845,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-17",
@@ -1885,7 +1885,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "determiners-advanced-b1plus",
@@ -1902,7 +1902,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "b1plus-review",
@@ -1919,7 +1919,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "unreal-past-b2",
