@@ -1066,7 +1066,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "first-conditional",
@@ -1099,7 +1099,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "past-perfect",
@@ -1115,7 +1115,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "past-perfect-continuous",
@@ -1131,7 +1131,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-11",
@@ -1171,7 +1171,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "future-forms-review",
@@ -1188,7 +1188,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "future-continuous",
@@ -1204,7 +1204,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "future-perfect",
@@ -1220,7 +1220,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": false,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "modals-obligation",
@@ -1237,7 +1237,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "modals-speculation",
@@ -1254,7 +1254,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "causatives",
@@ -1271,7 +1271,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-12",
@@ -1311,7 +1311,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "reported-speech",
@@ -1328,7 +1328,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "relative-clauses-b1",
@@ -1345,7 +1345,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "question-tags",
@@ -1362,7 +1362,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "indirect-questions",
@@ -1379,7 +1379,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-13",
@@ -1419,7 +1419,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "so-neither-auxiliaries",
@@ -1436,7 +1436,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "time-clauses",
@@ -1453,7 +1453,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "second-conditional-b1",
@@ -1470,7 +1470,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "phrasal-verbs-b1",
@@ -1487,7 +1487,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": false,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "auto-review-14",
@@ -1527,7 +1527,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": true,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "pragmatics-formal-informal",
@@ -1544,7 +1544,7 @@ export const LESSON_INDEX: LessonMeta[] = [
     "hasReading": true,
     "hasWriting": true,
     "hasListening": false,
-    "hasSpeaking": false
+    "hasSpeaking": true
   },
   {
     "id": "narrative-tenses-b1plus",

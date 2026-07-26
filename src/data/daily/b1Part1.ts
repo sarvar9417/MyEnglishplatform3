@@ -2,6 +2,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const futureFormsReview: DailyLesson = {
   id: 'future-forms-review',
+  speaking: {
+    prompt: "Talk about your future — your plans, decisions, and predictions. Speak for about one minute. Use 'will', 'going to', and the present continuous for the future correctly.",
+    tips: [
+      "'going to' — oldindan qaror qilingan reja: 'I'm going to study medicine.'",
+      "'will' — hozir qaror / bashorat: 'I think it will rain.'",
+      "Present continuous — belgilangan uchrashuv: 'I'm meeting a friend tonight.'",
+      "Bashorat uchun dalil: 'Look at those clouds — it's going to rain.'",
+    ],
+    sampleAnswer: "I have many plans for the future. Next year I am going to start university because I have already made that decision. This evening I am meeting my study group to prepare for an exam. I think I will pass it easily if I work hard. In ten years, I believe technology will change our lives completely. As for tonight, I haven't decided yet — maybe I will just relax at home. One thing is certain: I am going to keep learning English until I am fluent.",
+  },
   title: 'Future Forms Review',
   subtitle: "Will, Going to, Present Continuous va Present Simple — kelasi zamon shakllarini taqqoslash",
   level: 'B1',
@@ -236,6 +246,16 @@ export const futureFormsReview: DailyLesson = {
 
 export const modalsObligation: DailyLesson = {
   id: 'modals-obligation',
+  speaking: {
+    prompt: "Describe the rules at your school, workplace, or home. Speak for about one minute. Use 'must', 'have to', 'should', 'mustn't', and 'don't have to' to talk about obligation and permission.",
+    tips: [
+      "'must' / 'have to' — majburiyat: 'We have to wear a uniform.'",
+      "'mustn't' — taqiq: 'You mustn't use your phone in class.'",
+      "'don't have to' — shart emas: 'We don't have to work on Sunday.'",
+      "'should' — maslahat: 'You should arrive on time.'",
+    ],
+    sampleAnswer: "There are several rules at my college. We have to arrive before nine o'clock, and we must show our student card at the door. We mustn't smoke anywhere on campus. During lessons, we should turn off our phones, although we don't have to if the teacher allows it. In the library, you must be quiet. I think most of the rules are fair, but I believe students should have more free time. In general, if you follow the rules, life at college is easy and pleasant.",
+  },
   title: 'Modals of Obligation',
   subtitle: "Must, Have to, Should, Ought to — majburiyat va maslahat fe'llari",
   level: 'B1',
@@ -441,6 +461,16 @@ export const modalsObligation: DailyLesson = {
 
 export const modalsSpeculation: DailyLesson = {
   id: 'modals-speculation',
+  speaking: {
+    prompt: "Look at people or situations around you and guess about them. Speak for about one minute. Use 'must be', 'might/may/could be', and 'can't be' to make deductions with different levels of certainty.",
+    tips: [
+      "'must be' — deyarli aniq: 'She must be tired — she worked all night.'",
+      "'might/may/could be' — ehtimol: 'He might be at home.'",
+      "'can't be' — imkonsiz: 'That can't be true!'",
+      "Dalilga tayaning: 'The lights are off, so they must be out.'",
+    ],
+    sampleAnswer: "Let me guess about my neighbours. The family upstairs must be rich, because they have three cars. The man next door might be a doctor — he leaves very early every morning. I can hear music from the flat below, so someone could be having a party. My friend hasn't answered his phone all day; he must be very busy, or his battery may be dead. That new restaurant is always full, so the food must be delicious. Of course, I can't be sure — I'm only guessing!",
+  },
   title: 'Modals of Speculation',
   subtitle: "Must be, Might/May/Could be, Can't be — taxmin va ehtimollik fe'llari",
   level: 'B1',
@@ -647,6 +677,16 @@ export const modalsSpeculation: DailyLesson = {
 
 export const pastHabits: DailyLesson = {
   id: 'past-habits',
+  speaking: {
+    prompt: "Talk about your childhood and how your life has changed. Speak for about one minute. Use 'used to' and 'would' for past habits, and compare them with your life now.",
+    tips: [
+      "'used to' + V1 — o'tmishdagi holat/odat: 'I used to live in a village.'",
+      "'would' + V1 — takrorlangan o'tmish harakati: 'We would play outside all day.'",
+      "'didn't use to' — o'tmishda bo'lmagan odat.",
+      "Hozir bilan solishtiring: 'Now I live in the city.'",
+    ],
+    sampleAnswer: "When I was a child, my life was very different. I used to live in a small village with my grandparents. Every summer, my cousins and I would play outside all day and swim in the river. I didn't use to worry about anything. We would help on the farm and listen to my grandfather's stories in the evening. I never used to like vegetables, but now I love them! These days I live in the city and study hard, but I still remember those happy days.",
+  },
   title: 'Past Habits',
   subtitle: "Used to, Would, Past Simple — o'tgan odatlar va takrorlanadigan harakatlar",
   level: 'B1',
@@ -865,6 +905,16 @@ export const pastHabits: DailyLesson = {
 
 export const causatives: DailyLesson = {
   id: 'causatives',
+  speaking: {
+    prompt: "Talk about services you use — things other people do for you. Speak for about one minute. Use the causative 'have/get something done' (for example 'I have my hair cut').",
+    tips: [
+      "'have + object + V3': 'I have my car repaired every year.'",
+      "'get + object + V3' (norasmiy): 'I got my photo taken.'",
+      "O'tmish: 'I had my house painted last month.'",
+      "Farqi: 'I cut my hair' (o'zim) vs 'I have my hair cut' (sartarosh).",
+    ],
+    sampleAnswer: "There are many things I don't do myself. Every month I have my hair cut at a salon near my house. Last year I had my old phone repaired instead of buying a new one. When my computer broke, I got it fixed by a specialist. My family is building a house, so we are having the walls painted this week. I also need to get my eyes tested soon because I sit at a screen all day. Paying experts to do these jobs saves me a lot of time and trouble.",
+  },
   title: 'Causatives',
   subtitle: "Have/Get something done — biror ishni boshqaga qildirish",
   level: 'B1',
@@ -1085,6 +1135,16 @@ export const causatives: DailyLesson = {
 
 export const questionTags: DailyLesson = {
   id: 'question-tags',
+  speaking: {
+    prompt: "Have a friendly conversation where you check information and invite agreement. Speak for about one minute. Use question tags (isn't it?, don't you?, aren't they?) naturally.",
+    tips: [
+      "Ijobiy gap → inkor tag: 'You live here, don't you?'",
+      "Inkor gap → ijobiy tag: 'She isn't ready, is she?'",
+      "Yordamchi fe'lni to'g'ri tanlang: do/does/did, is/are, have/has.",
+      "Ohang: tasdiq so'rasangiz — pasayuvchi ohang.",
+    ],
+    sampleAnswer: "It's a beautiful day today, isn't it? You come to this café often, don't you? The coffee here is really good, isn't it? You're studying English too, aren't you? I've seen you in the library before, haven't I? You don't live far from here, do you? We should study together sometime, shouldn't we? It's nice to make new friends, isn't it? I hope I'm not talking too much, am I? Let's exchange numbers, shall we?",
+  },
   title: 'Question Tags',
   subtitle: "To'g'ri va inkor savol qo'shimchalari — tasdiqni tekshirish",
   level: 'B1',
@@ -1288,6 +1348,16 @@ export const questionTags: DailyLesson = {
 
 export const bothEitherNeither: DailyLesson = {
   id: 'both-either-neither',
+  speaking: {
+    prompt: "Compare two friends, two cities, or two choices you have. Speak for about one minute. Use 'both', 'either', and 'neither' to talk about two things together.",
+    tips: [
+      "'both' — ikkalasi ham: 'Both of my friends are kind.'",
+      "'neither' — ikkalasi ham emas: 'Neither city is boring.'",
+      "'either' — ikkisidan biri: 'Either option is fine.'",
+      "'both ... and', 'either ... or', 'neither ... nor'.",
+    ],
+    sampleAnswer: "I want to compare my two best friends, Aziz and Bek. Both of them are very kind, and both like football. Neither of them is lazy — they both study hard. When we make plans, either option they suggest is usually fun. Aziz is good at maths, and Bek is too, so I can ask either of them for help. Neither Aziz nor Bek likes horror films, but both enjoy comedies. I'm lucky, because both of my friends are honest and always there for me.",
+  },
   title: 'Both / Either / Neither',
   subtitle: "Both, Either, Neither — ikki narsa haqida gapirish",
   level: 'B1',
@@ -1506,6 +1576,16 @@ export const bothEitherNeither: DailyLesson = {
 
 export const timeClauses: DailyLesson = {
   id: 'time-clauses',
+  speaking: {
+    prompt: "Talk about your plans and routines using time expressions. Speak for about one minute. Use time clauses with 'when', 'as soon as', 'before', 'after', 'until', and 'while' (remember: present tense for future time).",
+    tips: [
+      "Kelasi zamon uchun present: 'When I finish school, I will travel.' (not 'will finish')",
+      "'as soon as' — darhol: 'I'll call you as soon as I arrive.'",
+      "'until' — gacha: 'I'll wait until you come.'",
+      "'while' — bir vaqtda: 'I listen to music while I study.'",
+    ],
+    sampleAnswer: "I have a clear plan for this year. As soon as I finish my English course, I will look for a job. Before I start working, I want to improve my speaking. When I have enough money, I will buy a laptop. I won't stop studying until I reach the B2 level. While I study, I always drink tea and listen to soft music. After I pass my exams, I am going to take a short holiday. I believe that when you plan your time well, you can achieve anything.",
+  },
   title: 'Time Clauses',
   subtitle: "When, While, As soon as, Until, Before, After, By the time — vaqt ergash gaplari",
   level: 'B1',
@@ -1706,6 +1786,16 @@ export const timeClauses: DailyLesson = {
 
 export const indirectQuestions: DailyLesson = {
   id: 'indirect-questions',
+  speaking: {
+    prompt: "Imagine you are a tourist in a new city asking strangers for help. Speak for about one minute. Ask politely using indirect questions ('Could you tell me...', 'Do you know...', 'I was wondering if...').",
+    tips: [
+      "'Could you tell me where the station is?' (not 'where is the station')",
+      "Indirect savolda so'z tartibi darak gapdek bo'ladi.",
+      "Yes/No uchun 'if/whether': 'Do you know if the shop is open?'",
+      "Muloyim boshlanish: 'Excuse me, I was wondering...'",
+    ],
+    sampleAnswer: "Excuse me, could you tell me where the nearest metro station is? I was wondering if there is a good restaurant near here. Do you know what time the museum opens? I'd like to know how much a ticket costs. Could you tell me whether this bus goes to the city centre? I was also wondering if you could recommend a nice place to visit. Do you happen to know where I can find a pharmacy? Thank you so much for your help — you've been very kind.",
+  },
   title: 'Indirect Questions',
   subtitle: "Can you tell me, Do you know, I wonder — egri so'roq gaplari",
   level: 'B1',
@@ -1894,6 +1984,16 @@ export const indirectQuestions: DailyLesson = {
 
 export const soNeitherAuxiliaries: DailyLesson = {
   id: 'so-neither-auxiliaries',
+  speaking: {
+    prompt: "Have a conversation where you find things in common with a friend. Speak for about one minute. Show agreement using 'So do I', 'Neither do I', 'So am I', 'Neither can I', etc.",
+    tips: [
+      "Ijobiy rozilik: 'I love tea.' — 'So do I.'",
+      "Inkor rozilik: 'I don't like coffee.' — 'Neither do I.'",
+      "Yordamchini gapga moslang: am/is, do/does, can, have.",
+      "So/Neither + auxiliary + subject (teskari tartib).",
+    ],
+    sampleAnswer: "My friend and I have so much in common. 'I love travelling,' she said. 'So do I!' I replied. 'I've never been abroad, though.' 'Neither have I.' 'I can speak two languages.' 'So can I.' 'I don't like getting up early.' 'Neither do I!' We laughed a lot. 'I'm studying for the B1 exam.' 'So am I.' 'I wasn't good at grammar before.' 'Neither was I.' It's wonderful to meet someone so similar to me — we agree about almost everything!",
+  },
   title: 'So / Neither + Auxiliaries',
   subtitle: "So do I, Neither do I — rozi bo'lish va rozi bo'lmaslik",
   level: 'B1',
@@ -2115,6 +2215,16 @@ export const soNeitherAuxiliaries: DailyLesson = {
 
 export const wishesRegrets: DailyLesson = {
   id: 'wishes-regrets',
+  speaking: {
+    prompt: "Talk about things you would like to change about your life or the world. Speak for about one minute. Use 'I wish' and 'If only' with the past tense (present wishes) and 'would' (complaints).",
+    tips: [
+      "Hozirgi istak: 'I wish I had more time.' (Past Simple)",
+      "'If only' — kuchliroq istak: 'If only I were taller!'",
+      "'wish + would' — bezovtalik/shikoyat: 'I wish it would stop raining.'",
+      "'were' barcha shaxslar uchun: 'I wish I were rich.'",
+    ],
+    sampleAnswer: "There are several things I wish were different. I wish I had more free time, because I am always busy. If only I lived closer to my university! I also wish I could speak English perfectly, but I know that takes time. My neighbours are very noisy at night — I wish they would be quieter. If only I had started learning English earlier! Sometimes I wish I were braver in speaking with foreigners. Still, I don't have many regrets, because every mistake teaches me something new.",
+  },
   title: 'Wishes & Regrets',
   subtitle: "I wish, If only, I regret — orzu-niyatlar va pushaymonliklar",
   level: 'B1',

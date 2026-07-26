@@ -2,6 +2,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const pragmaticsFormalInformal: DailyLesson = {
   id: 'pragmatics-formal-informal',
+  speaking: {
+    prompt: "Role-play the same message in two ways — once formally and once informally. Speak for about one minute. Show how language changes between polite/formal and friendly/informal situations.",
+    tips: [
+      "Rasmiy: 'Could you possibly...', 'I would be grateful if...'",
+      "Norasmiy: 'Can you...', 'Hey, could you...'",
+      "Rasmiy salomlashish: 'Dear...', norasmiy: 'Hi/Hey'.",
+      "Vaziyatga qarab ohang va so'z tanlovi o'zgaradi.",
+    ],
+    sampleAnswer: "The way we speak depends on the situation. If I write to my professor, I say: 'Dear Professor, I am writing to request a short meeting. I would be grateful if you could reply when convenient.' But if I text my friend about the same thing, I just say: 'Hey, can we meet up later? Let me know!' In a formal interview, I would say 'I would be delighted to join your company.' With friends, I would simply say 'Yeah, I'd love to!' Knowing when to be formal or informal is a very important skill in any language.",
+  },
   title: 'Rasmiy va norasmiy muloqot',
   subtitle: 'Formal vs Informal Communication — register, politeness va polite request forms',
   level: 'B1',

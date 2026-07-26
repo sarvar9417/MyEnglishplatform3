@@ -1484,6 +1484,16 @@ export const presentPerfect: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const presentPerfectContinuous: DailyLesson = {
   id: 'present-perfect-continuous',
+  speaking: {
+    prompt: "Talk about activities you have been doing recently and how long you have been doing them. Speak for about one minute. Use the Present Perfect Continuous (have/has been + V-ing).",
+    tips: [
+      "have/has been + V-ing: 'I have been studying English for two years.'",
+      "'for' + davomiylik / 'since' + boshlanish: 'since Monday'.",
+      "Yaqinda va hali davom etayotgan harakatlar uchun.",
+      "Natijaga urg'u: 'I'm tired because I have been working all day.'",
+    ],
+    sampleAnswer: "These days I have been very busy. I have been studying English for about two years, and lately I have been practising speaking every evening. I have been reading a lot of articles to improve my vocabulary. My eyes are tired because I have been looking at my screen all day. I have also been going to the gym since January, so I feel healthier. My friend and I have been meeting twice a week to practise together. All this hard work has been paying off — my English is definitely getting better.",
+  },
   title: 'Present Perfect Continuous Tense',
   subtitle: "O'tmishda boshlanib hozirgacha davom etgan harakatlar — 'MEN 3 SOATDAN BERI O'QIYAPMAN'",
   level: 'B1',
@@ -1714,6 +1724,16 @@ export const presentPerfectContinuous: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const pastPerfect: DailyLesson = {
   id: 'past-perfect',
+  speaking: {
+    prompt: "Tell a story about a time when something had already happened before another past event. Speak for about one minute. Use the Past Perfect (had + V3) with the Past Simple.",
+    tips: [
+      "had + V3 — birinchi bo'lgan harakat: 'When I arrived, the train had left.'",
+      "Ikki o'tmish harakati tartibini ko'rsatadi.",
+      "'by the time', 'after', 'before', 'already' bilan.",
+      "Past Perfect (avvalroq) + Past Simple (keyinroq).",
+    ],
+    sampleAnswer: "Last year I had a stressful but funny experience. I arrived at the airport feeling relaxed, but when I got to the gate, the plane had already left. I had forgotten to check the new departure time! By the time I realised my mistake, it was too late. I had never missed a flight before, so I was shocked. Luckily, the airline gave me another ticket. When I finally got home, my family had already heard the story and they couldn't stop laughing. I had learned an important lesson: always double-check the time.",
+  },
   title: 'Past Perfect Tense',
   subtitle: "O'tgan zamonning o'tgan zamoni — birinchi bo'lib sodir bo'lgan harakat",
   level: 'B1',
@@ -1942,6 +1962,16 @@ export const pastPerfect: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const pastPerfectContinuous: DailyLesson = {
   id: 'past-perfect-continuous',
+  speaking: {
+    prompt: "Describe a past situation and explain how long something had been happening before it. Speak for about one minute. Use the Past Perfect Continuous (had been + V-ing).",
+    tips: [
+      "had been + V-ing: 'I had been waiting for an hour when she arrived.'",
+      "O'tmishdagi nuqtagacha davom etgan harakat davomiyligi.",
+      "Ko'pincha natija/sabab bilan: 'I was tired because I had been running.'",
+      "'for' + vaqt bilan yaxshi ishlaydi.",
+    ],
+    sampleAnswer: "I remember a difficult day last winter. I had been waiting for the bus for almost an hour when it finally came. It was freezing, and I had been standing in the snow the whole time. My feet were cold because I had been walking around to keep warm. When I got to class, I was exhausted — I had been travelling since early morning. My teacher understood, because it had been snowing heavily all week. That evening I slept very well, because I had been feeling tired for days.",
+  },
   title: 'Past Perfect Continuous Tense',
   subtitle: "O'tmishda davom etib, boshqa harakat sodir bo'lguniga qadar bo'lgan jarayonlar",
   level: 'B1',
@@ -2171,6 +2201,16 @@ export const pastPerfectContinuous: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const futureContinuous: DailyLesson = {
   id: 'future-continuous',
+  speaking: {
+    prompt: "Imagine your life at a specific time in the future — tomorrow, next week, this time next year. Speak for about one minute. Use the Future Continuous (will be + V-ing) to describe actions in progress.",
+    tips: [
+      "will be + V-ing: 'This time tomorrow, I will be flying to Dubai.'",
+      "Kelajakning ma'lum bir vaqtida davom etayotgan harakat.",
+      "Muloyim savol: 'Will you be using the car tonight?'",
+      "Vaqt ko'rsatkichlari: 'at 8 o'clock', 'this time next week'.",
+    ],
+    sampleAnswer: "Let me imagine my future. This time tomorrow, I will be taking my English exam, so I will be feeling a little nervous. Next week, I will be relaxing after all my hard work. This time next year, I hope I will be studying at university. In five years, I will probably be working in an international company and using English every day. Tonight, while my friends will be watching television, I will be revising my notes. It's exciting to think about all the things I will be doing in the future.",
+  },
   title: 'Future Continuous Tense',
   subtitle: "Kelajakda bir vaqtda sodir bo'ladigan davomiy harakatlar — 'SOAT 3 DA MEN O'QIYAPMAN BO'LAMAN'",
   level: 'B1',
@@ -2404,6 +2444,16 @@ export const futureContinuous: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const futurePerfect: DailyLesson = {
   id: 'future-perfect',
+  speaking: {
+    prompt: "Talk about your goals and what you will have achieved by a certain time in the future. Speak for about one minute. Use the Future Perfect (will have + V3).",
+    tips: [
+      "will have + V3: 'By next year, I will have finished my course.'",
+      "'by' + kelajak vaqti: 'by 2030', 'by the end of the month'.",
+      "Kelajakning ma'lum nuqtasigacha tugagan harakat.",
+      "Rejalar va yutuqlar haqida ishonch bilan gapiring.",
+    ],
+    sampleAnswer: "I have set myself clear goals. By the end of this year, I will have completed the B1 level. By next summer, I will have saved enough money to buy a laptop. In three years, I hope I will have graduated from university. By the time I am thirty, I will have visited at least five countries. By tonight, I will have finished all my homework, so I can relax. Setting goals like this motivates me. I am sure that if I keep working, I will have achieved my dreams sooner than I expect.",
+  },
   title: 'Future Perfect Tense',
   subtitle: "Kelajakdagi bir vaqtga qadar tugatilgan bo'ladigan harakatlar — 'BY NEXT MONDAY I WILL HAVE FINISHED'",
   level: 'B1',

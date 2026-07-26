@@ -258,6 +258,16 @@ export const adjectiveAdverb: DailyLesson = {
 
 export const gerundsInfinitives: DailyLesson = {
   id: 'gerunds-infinitives',
+  speaking: {
+    prompt: "Talk about your hobbies, plans, and decisions. Speak for about one minute. Use gerunds (-ing) after verbs like 'enjoy' and 'finish', and infinitives (to + verb) after verbs like 'want', 'decide', and 'hope'.",
+    tips: [
+      "enjoy/finish/mind + V-ing: 'I enjoy reading.'",
+      "want/decide/hope/plan + to + V1: 'I want to travel.'",
+      "'like' ikkalasi bilan: 'I like cooking / I like to cook.'",
+      "Maqsad uchun 'to': 'I study to get a good job.'",
+    ],
+    sampleAnswer: "I really enjoy learning languages, and I have decided to become fluent in English. In my free time, I like reading and I don't mind practising grammar. Last year I finished studying at a language centre, and now I want to continue on my own. I hope to travel abroad one day, so I have started to save money. I find speaking difficult, but I keep trying because I refuse to give up. My biggest goal is to work in an international company, and I am ready to work hard to achieve it.",
+  },
   reading: {
     title: 'My Free Time',
     passage: "My name is Nigora, and I love learning new things. In my free time, I enjoy reading books and listening to music. I also like cooking, especially making national dishes for my family.\n\nLast year I decided to study English. At first it was difficult, and I wanted to give up. But my teacher told me to keep practising every day. Now I don't mind doing grammar exercises, and I have started to speak more confidently.\n\nMy dream is to travel abroad. I hope to visit London one day. To reach my goal, I need to work hard. I have promised myself to study for at least one hour every evening. Learning is not always easy, but it is always worth it.",
@@ -488,6 +498,16 @@ export const gerundsInfinitives: DailyLesson = {
 
 export const passiveVoice: DailyLesson = {
   id: 'passive-voice',
+  speaking: {
+    prompt: "Describe how something is made, or how things are done in your city. Speak for about one minute. Use the passive voice (is/are/was/were + past participle).",
+    tips: [
+      "Present: is/are + V3: 'Bread is baked every morning.'",
+      "Past: was/were + V3: 'The bridge was built last year.'",
+      "Bajaruvchi muhim bo'lmasa passiv ishlating.",
+      "'by' — bajaruvchini ko'rsatish uchun: 'made by hand'.",
+    ],
+    sampleAnswer: "Let me describe how bread is made in our country. First, the dough is prepared with flour and water. Then it is shaped by hand and baked in a hot clay oven called a tandir. In my city, the streets are cleaned every morning, and the parks are looked after by local workers. Last year, a beautiful new bridge was built near our house. Many traditional products are still made by hand here. I think these old methods should be protected, because they are an important part of our culture.",
+  },
   title: 'Passive Voice',
   subtitle: "Simple Present va Past — ish-harakatning kim tomonidan bajarilishi muhim emas",
   level: 'B1',
@@ -694,6 +714,16 @@ export const passiveVoice: DailyLesson = {
 
 export const reportedSpeech: DailyLesson = {
   id: 'reported-speech',
+  speaking: {
+    prompt: "Tell a friend about a conversation you had with someone. Speak for about one minute. Report what they said using 'said', 'told', and 'asked', with correct tense changes.",
+    tips: [
+      "'said (that)' / 'told me (that)' + backshift: 'She said she was busy.'",
+      "Zamon orqaga suriladi: am→was, will→would, can→could.",
+      "Savollar uchun 'asked' + if/where/what.",
+      "Olmoshlar o'zgaradi: 'I' → 'she/he'.",
+    ],
+    sampleAnswer: "Yesterday I met my old teacher, and I want to tell you what she said. She told me that she was very proud of my progress. She said that my English had improved a lot. Then she asked me where I was studying now, and I told her about my new course. She advised me to practise speaking every day. She also said that she would help me if I needed anything. Finally, she asked whether I was planning to take the B2 exam. It was a lovely conversation, and I felt very motivated afterwards.",
+  },
   title: 'Reported Speech',
   subtitle: "Say/tell va tense backshift — kimningdir gapini aytib berish",
   level: 'B1',

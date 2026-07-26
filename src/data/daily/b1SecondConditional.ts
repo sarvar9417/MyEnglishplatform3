@@ -7,6 +7,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const secondConditionalB1: DailyLesson = {
   id: 'second-conditional-b1',
+  speaking: {
+    prompt: "Talk about imaginary situations — what you would do if your life were different. Speak for about one minute. Use the Second Conditional (If + Past Simple, would + verb).",
+    tips: [
+      "If + Past Simple, would + V1: 'If I had money, I would travel.'",
+      "'If I were you, I would...' — maslahat.",
+      "'were' barcha shaxslar uchun: 'If I were rich...'",
+      "Xayoliy, real bo'lmagan hozirgi/kelajak vaziyatlar.",
+    ],
+    sampleAnswer: "Let me imagine a different life. If I had a lot of money, I would travel around the world and help my family. If I could live anywhere, I would choose a city by the sea. If I were the president, I would make education free for everyone. Honestly, if I had more free time, I would learn to play the guitar. If I were you, I would always follow my dreams. Of course, these are just dreams, but if we didn't dream, life would be boring. If I could change one thing, I would be more confident.",
+  },
   title: 'Second Conditional',
   subtitle: "If + Past Simple, would + V¹ — xayoliy va gipotetik vaziyatlar",
   level: 'B1',

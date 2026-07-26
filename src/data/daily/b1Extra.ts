@@ -4,6 +4,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const relativeClausesB1: DailyLesson = {
   id: "relative-clauses-b1",
+  speaking: {
+    prompt: "Describe your family, your favourite place, and an important object using relative clauses. Speak for about one minute. Use 'who', 'which', 'that', 'where', and 'whose'.",
+    tips: [
+      "'who' — odamlar: 'My friend who lives abroad...'",
+      "'which/that' — narsalar: 'the book which I love'.",
+      "'where' — joylar / 'when' — vaqt.",
+      "'whose' — egalik: 'the man whose car is red'.",
+    ],
+    sampleAnswer: "Let me tell you about the people and things that matter to me. My best friend, who I have known since childhood, is someone that I trust completely. The place where I feel happiest is my grandmother's house, which is in a quiet village. She has an old carpet that her mother made, and it is something which I hope to keep one day. My father, whose advice I always follow, taught me to work hard. These are the people and places that have made me who I am today.",
+  },
   title: "Relative Clauses",
   subtitle: "Defining va Non-defining — who/which/that/where/when",
   level: "B1",
@@ -1006,6 +1016,16 @@ export const relativeClausesB1: DailyLesson = {
 
 export const phrasalVerbsB1: DailyLesson = {
   id: "phrasal-verbs-b1",
+  speaking: {
+    prompt: "Tell a short story about your day or a project using phrasal verbs. Speak for about one minute. Use phrasal verbs like 'get up', 'look for', 'give up', 'find out', 'carry on', and 'look forward to'.",
+    tips: [
+      "Kundalik: 'get up', 'wake up', 'hang out'.",
+      "Muammo: 'come up', 'deal with', 'sort out'.",
+      "Ba'zi phrasal verblar ajraladi: 'turn it off'.",
+      "'look forward to' + V-ing: 'I look forward to seeing you.'",
+    ],
+    sampleAnswer: "Let me tell you about my week. I usually get up at seven o'clock and look for something quick to eat. A few days ago, I was working on a difficult project and I almost gave up. But I carried on, and eventually I found out the solution. When problems come up, I try to deal with them calmly. In the evening, I like to wind down by listening to music. Sometimes my friends drop by, and we hang out together. I always look forward to the weekend, when I can catch up on my rest.",
+  },
   title: "Phrasal Verbs",
   subtitle: "Separable va inseparable phrasal verbs: look after, give up, put off, etc.",
   level: "B1",
