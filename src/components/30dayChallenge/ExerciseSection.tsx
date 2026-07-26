@@ -54,10 +54,6 @@ export default function ExerciseSection({ exercises, onStartRoleplay, level = 'A
     wasRecording.current = sr.isRecording
   }, [sr.isRecording, sr.transcript, recordingQIndex])
 
-  const ex = exercises[activeEx]
-
-  if (!ex) return null
-
   const handleInputChange = useCallback((idx: number, val: string) => {
     setAnswers(prev => ({ ...prev, [`${activeEx}-${idx}`]: val }))
   }, [activeEx])
@@ -90,6 +86,10 @@ export default function ExerciseSection({ exercises, onStartRoleplay, level = 'A
       setAnimating(false)
     }, 200)
   }, [activeEx, exercises.length, sr])
+
+  const ex = exercises[activeEx]
+
+  if (!ex) return null
 
   return (
     <div className="space-y-4">

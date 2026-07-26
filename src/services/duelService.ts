@@ -244,10 +244,8 @@ export async function submitDuelAnswers(
   })
 
   // AI hakam bahosi (fire-and-forget)
-  if (true) {
-    saveDuelVerdict(duelId, userId, duel.mode as DuelMode, correctCount, questions.length)
-      .catch((e) => monitoring.captureMessage('saveDuelVerdict fire-and-forget failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
-  }
+  saveDuelVerdict(duelId, userId, duel.mode as DuelMode, correctCount, questions.length)
+    .catch((e) => monitoring.captureMessage('saveDuelVerdict fire-and-forget failed: ' + (e instanceof Error ? e.message : String(e)), 'warn'))
 
   // XP Bonus
   const xpEarned = correctCount * 10

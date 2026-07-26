@@ -269,8 +269,8 @@ export const basicRelativeClausesA2: DailyLesson = {
       { id: 77071, type: 'multiple-choice' as const, question: "Who is the father in the new family?", options: ["A teacher", "A doctor", "A market seller", "A student"], correctIndex: 1, explanation: "The father, who is a doctor — 'who' gives extra information about the father." },
       { id: 77072, type: 'multiple-choice' as const, question: "What does the cafe serve?", options: ["Fresh fruits", "Delicious cakes", "Vegetables", "Books"], correctIndex: 1, explanation: "'a cafe which serves delicious cakes' — 'which' for things." },
       { id: 77073, type: 'multiple-choice' as const, question: "What relative pronoun describes the market? (line 3)", options: ["Who", "Which", "Where", "When"], correctIndex: 1, explanation: "'a market which is near our houses' — 'which' for things." },
-      { id: 77074, type: 'multiple-choice' as const, question: "What does Malika do on the first meeting day?", options: ["Says nothing", "Says 'Hi, I\'m your new neighbour!'", "Ignores the writer", "Runs away"], correctIndex: 1, explanation: "'I remember the day when we first met. Malika said, 'Hi!'' — 'when' for time." },
-      { id: 77075, type: 'multiple-choice' as const, question: "What is the writer\'s feeling about the neighbourhood?", options: ["Dislikes it", "Loves it", "Feels bored", "Wants to leave"], correctIndex: 1, explanation: "'My neighbourhood is a place that I really love.'" },
+      { id: 77074, type: 'multiple-choice' as const, question: "What does Malika do on the first meeting day?", options: ["Says nothing", "Says 'Hi, I'm your new neighbour!'", "Ignores the writer", "Runs away"], correctIndex: 1, explanation: "'I remember the day when we first met. Malika said, 'Hi!'' — 'when' for time." },
+      { id: 77075, type: 'multiple-choice' as const, question: "What is the writer's feeling about the neighbourhood?", options: ["Dislikes it", "Loves it", "Feels bored", "Wants to leave"], correctIndex: 1, explanation: "'My neighbourhood is a place that I really love.'" },
     ],
   },
   dialogues: [

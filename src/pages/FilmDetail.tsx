@@ -69,24 +69,9 @@ export default function FilmDetail() {
     }
   }, [id])
 
-  if (!film) {
-    return (
-      <div className="p-6 text-center animate-fade-in">
-        <div className="w-16 h-16 rounded-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-4">
-          <Film size={28} className="text-gray-300 dark:text-gray-600" />
-        </div>
-        <p className="text-gray-500 dark:text-gray-400 mb-4 font-medium">Film topilmadi</p>
-        <button onClick={() => navigate('/films')}
-          className="btn-primary text-sm">
-          Filmlar ro'yxatiga qaytish
-        </button>
-      </div>
-    )
-  }
-
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
-    let result = film.words.filter((w) => {
+    let result = (film?.words ?? []).filter((w) => {
       if (levelFilter !== 'all' && w.level !== levelFilter) return false
       if (knownFilter === 'known' && !knownWords.has(w.word)) return false
       if (knownFilter === 'unknown' && knownWords.has(w.word)) return false
@@ -104,22 +89,37 @@ export default function FilmDetail() {
       result = [...result].sort((a, b) => a.level.localeCompare(b.level))
     }
     return result
-  }, [film.words, query, levelFilter, knownFilter, sortOrder, knownWords])
+  }, [film?.words, query, levelFilter, knownFilter, sortOrder, knownWords])
 
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
   const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const levels = useMemo(() => {
-    return Array.from(new Set(film.words.map(w => w.level))).sort()
-  }, [film.words])
+    return Array.from(new Set((film?.words ?? []).map(w => w.level))).sort()
+  }, [film?.words])
 
   const levelCounts = useMemo(() => {
     const counts: Record<string, number> = {}
-    film.words.forEach(w => { counts[w.level] = (counts[w.level] || 0) + 1 })
+    ;(film?.words ?? []).forEach(w => { counts[w.level] = (counts[w.level] || 0) + 1 })
     return counts
-  }, [film.words])
+  }, [film?.words])
 
   const knownCount = knownWords.size
+
+  if (!film) {
+    return (
+      <div className="p-6 text-center animate-fade-in">
+        <div className="w-16 h-16 rounded-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-4">
+          <Film size={28} className="text-gray-300 dark:text-gray-600" />
+        </div>
+        <p className="text-gray-500 dark:text-gray-400 mb-4 font-medium">Film topilmadi</p>
+        <button onClick={() => navigate('/films')}
+          className="btn-primary text-sm">
+          Filmlar ro'yxatiga qaytish
+        </button>
+      </div>
+    )
+  }
 
   return (
     <div className="p-3 sm:p-6 max-w-4xl mx-auto">
@@ -1184,7 +1184,7 @@ function QuizMode({ words, filmId }: { words: FilmWord[]; filmId: string }) {
       <div className="flex items-center gap-2 mb-4">
         <div className="flex-1 flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-xl">
           <button
-            onClick={() => { setDirection('en-uz'); reviewMode || restart() }}
+            onClick={() => { setDirection('en-uz'); if (!reviewMode) restart() }}
             className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all
               ${direction === 'en-uz'
                 ? 'bg-white dark:bg-gray-900 text-primary-600 shadow-sm'
@@ -1194,7 +1194,7 @@ function QuizMode({ words, filmId }: { words: FilmWord[]; filmId: string }) {
             EN → UZ
           </button>
           <button
-            onClick={() => { setDirection('uz-en'); reviewMode || restart() }}
+            onClick={() => { setDirection('uz-en'); if (!reviewMode) restart() }}
             className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all
               ${direction === 'uz-en'
                 ? 'bg-white dark:bg-gray-900 text-primary-600 shadow-sm'

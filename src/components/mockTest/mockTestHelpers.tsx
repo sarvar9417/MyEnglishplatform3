@@ -56,6 +56,7 @@ export interface SpeechRec {
 }
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- global Window augmentation
   interface Window extends SpeechTypes {}
 }
 
