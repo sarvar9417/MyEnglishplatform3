@@ -3,6 +3,16 @@ import type { DailyLesson } from '../dailyLessons'
 // ─── Day 95: Argument Structure ───────────────────────────────────────────
 export const argumentStructureB2: DailyLesson = {
   id: 'argument-structure-b2',
+  speaking: {
+    prompt: "Present a balanced argument on a debatable topic. Speak for about one to two minutes. Structure it clearly: state your position, give reasons with evidence, acknowledge the opposing view (concession), then rebut it.",
+    tips: [
+      "Fikr: 'I firmly believe that...'",
+      "Dalil: 'Firstly... Moreover...'",
+      "Concession: 'Admittedly, some argue that...'",
+      "Rebuttal: 'However, this overlooks the fact that...'",
+    ],
+    sampleAnswer: "I firmly believe that studying abroad benefits young people. Firstly, it exposes them to new cultures and ideas, which broadens their perspective. Moreover, it develops independence and language skills that are highly valued by employers. Admittedly, some argue that studying abroad is expensive and that students may feel lonely. However, this overlooks the fact that scholarships are increasingly available and that the long-term benefits far outweigh the temporary difficulties. While the cost is a genuine concern, it should be seen as an investment rather than an expense. In conclusion, despite certain challenges, studying abroad remains one of the most valuable experiences a young person can have.",
+  },
   title: 'Argument Structure',
   subtitle: 'Akademik bahs va dalil keltirish — claim, evidence, refutation',
   level: 'B2',
@@ -284,6 +294,16 @@ export const argumentStructureB2: DailyLesson = {
 
 export const stanceMarkersB2: DailyLesson = {
   id: 'stance-markers-b2',
+  speaking: {
+    prompt: "Express your attitude and level of certainty on a topic. Speak for about one minute. Use stance markers — 'clearly', 'undoubtedly', 'presumably', 'apparently', 'in my view', 'to be honest'.",
+    tips: [
+      "Ishonch: 'clearly', 'undoubtedly', 'without doubt'.",
+      "Ehtimol: 'presumably', 'apparently', 'seemingly'.",
+      "Shaxsiy: 'in my view', 'personally', 'to be honest'.",
+      "Munosabatingizni aniq bildiring.",
+    ],
+    sampleAnswer: "In my view, learning English is undoubtedly one of the best investments a young person can make. Clearly, it opens doors to education and career opportunities worldwide. Apparently, most international companies now require it, and presumably this trend will only continue. To be honest, I used to find grammar frustrating, but I have certainly come to appreciate its value. Personally, I believe that consistency matters more than talent. Admittedly, progress can be slow; nevertheless, it is definitely worth the effort. Frankly speaking, anyone who is willing to practise regularly will, in all likelihood, achieve fluency in time.",
+  },
   title: 'Stance Markers',
   subtitle: 'Munosabat va baho bildirish — epistemic, evaluative, approximators',
   level: 'B2',
@@ -564,6 +584,16 @@ export const stanceMarkersB2: DailyLesson = {
 // ─── Day 97: Paraphrasing ──────────────────────────────────────────────────
 export const paraphrasingB2: DailyLesson = {
   id: 'paraphrasing-b2',
+  speaking: {
+    prompt: "Explain an idea, then say it again in different words. Speak for about one minute. Show your ability to paraphrase — use synonyms, change the word form, and switch between active and passive.",
+    tips: [
+      "Sinonimlar: 'important' → 'crucial/vital'.",
+      "So'z shaklini o'zgartiring: 'decide' → 'make a decision'.",
+      "Aktiv ↔ passiv: 'They built it' → 'It was built'.",
+      "'In other words...', 'To put it differently...'",
+    ],
+    sampleAnswer: "Education is extremely important for economic growth. In other words, a well-educated population is crucial for a country's prosperity. To put it differently, when people are given good schooling, the whole nation benefits. The government has increased its spending on schools; that is to say, more funding has been allocated to education by the authorities. This decision will, in essence, improve opportunities for young people. Put simply, investing in knowledge today creates a stronger economy tomorrow. As the saying goes, a nation that values learning values its own future — and I could not agree more with that idea.",
+  },
   title: 'Paraphrasing & Summarising',
   subtitle: "Qayta ifodalash va xulosa — plagiarizmsiz akademik yozuv",
   level: 'B2',
@@ -858,6 +888,16 @@ export const paraphrasingB2: DailyLesson = {
 
 export const advancedVerbPatternsB2: DailyLesson = {
   id: 'advanced-verb-patterns-b2',
+  speaking: {
+    prompt: "Talk about your experiences and opinions using advanced verb patterns. Speak for about one minute. Use structures like 'verb + object + to-infinitive', 'verb + -ing', 'have something done', and passive reporting ('is said to').",
+    tips: [
+      "'I would encourage everyone to...'",
+      "'is said/believed/thought to + V1'.",
+      "'have/get something done' (causative).",
+      "'I can't help + V-ing', 'I look forward to + V-ing'.",
+    ],
+    sampleAnswer: "I would encourage everyone to learn a second language. English is said to be the most useful language for international careers, and it is believed to improve memory and thinking. I remember struggling at first, but I couldn't help feeling proud as I improved. Last year I had my writing corrected by a tutor, which helped enormously. I look forward to reaching an advanced level. Experts recommend practising every day, and they advise learners to speak as much as possible. Reflecting on my journey, I can honestly say that deciding to study English was one of the wisest choices I have ever made.",
+  },
   title: 'Advanced Verb Patterns',
   subtitle: "stop/remember/try + ing vs to — ma'no farqi va murakkab tuzilmalar",
   level: 'B2',
@@ -1141,6 +1181,16 @@ export const advancedVerbPatternsB2: DailyLesson = {
 // ─── Day 99: B2 Comprehensive Review ──────────────────────────────────────
 export const b2ComprehensiveReview: DailyLesson = {
   id: 'b2-comprehensive-review',
+  speaking: {
+    prompt: "Give a polished two-minute talk reflecting on your English journey and your goals, demonstrating the full range of B2 grammar. Combine inversion, advanced conditionals, hedging, passives, and formal cohesion.",
+    tips: [
+      "Inversion: 'Never before have I felt so confident.'",
+      "Advanced conditional: 'Had I not started, I would...'",
+      "Hedging + stance: 'arguably', 'in my view'.",
+      "Silliq bog'lash: 'furthermore', 'consequently', 'to conclude'.",
+    ],
+    sampleAnswer: "Never before have I felt so confident about my English. Had I not decided to study seriously, I would still be struggling with basic sentences. Over the past years, a great deal of effort has been invested, and the results are clear. It could be argued that motivation, rather than talent, has been the key to my progress. Furthermore, having practised all four skills, I now express complex ideas with relative ease. Were I to advise a beginner, I would say that consistency is everything. Consequently, I am optimistic about my future. To conclude, learning English has not only improved my prospects but has also, in many ways, transformed the way I see the world.",
+  },
   title: 'B2 Comprehensive Review',
   subtitle: "Barcha B2 mavzularini takrorlash — IELTS tayyor",
   level: 'B2',

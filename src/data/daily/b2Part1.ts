@@ -2,6 +2,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const unrealPastB2: DailyLesson = {
   id: 'unreal-past-b2',
+  speaking: {
+    prompt: "Talk about regrets and things you wish were different, using unreal past structures. Speak for about one minute. Use 'I wish', 'if only', 'would rather', and 'it's (high) time' + past tense.",
+    tips: [
+      "'I wish I had...' — o'tmishga afsus.",
+      "'It's high time we + past' — 'It's time we left.'",
+      "'I'd rather you didn't...' — afzallik.",
+      "'if only' — kuchli istak/afsus.",
+    ],
+    sampleAnswer: "Looking back, there are several things I wish I had done differently. If only I had started learning English earlier — I would be fluent by now. I wish I hadn't wasted so much time as a teenager. Sometimes I'd rather my younger self had listened to my parents' advice. It's high time I took my future more seriously, and honestly, it's time I stopped making excuses. I wish I could go back and study harder, but since I can't, I'd rather focus on what I can change today.",
+  },
   title: 'Unreal Past',
   subtitle: "Wish, if only, would rather, it's time — xayoliy vaziyatlar",
   level: 'B2',
@@ -251,6 +261,16 @@ export const unrealPastB2: DailyLesson = {
 
 export const advancedConditionalsB2: DailyLesson = {
   id: 'advanced-conditionals-b2',
+  speaking: {
+    prompt: "Discuss hypothetical situations and their consequences. Speak for about one minute. Use mixed conditionals and inverted conditionals ('Had I known...', 'Were I to...').",
+    tips: [
+      "Mixed: 'If I had studied medicine, I would be a doctor now.'",
+      "Inversion: 'Had I known, I would have acted differently.'",
+      "'Were I to...' — rasmiy shart.",
+      "O'tmish shart → hozirgi natija (yoki aksincha).",
+    ],
+    sampleAnswer: "Life is full of what-ifs. If I had chosen a different career, I might be living in another country now. Had I known how useful English would be, I would have started years earlier. Were I to win the lottery tomorrow, I would invest in education. If I weren't so busy this year, I would have travelled more. Had my grandfather not encouraged me, I wouldn't be studying today. Sometimes I think that, were things different, my whole life would have taken another direction. Still, I believe every choice has led me exactly where I needed to be.",
+  },
   title: 'Advanced Conditionals',
   subtitle: 'Mixed, inverted, implied conditionals — murakkab shart gaplar',
   level: 'B2',
@@ -498,6 +518,16 @@ export const advancedConditionalsB2: DailyLesson = {
 
 export const nominalizationB2: DailyLesson = {
   id: 'nominalization-b2',
+  speaking: {
+    prompt: "Discuss a social or economic issue in a formal, academic style. Speak for about one minute. Use nominalization — turn verbs and adjectives into nouns (for example 'develop' → 'the development of').",
+    tips: [
+      "'to improve' → 'the improvement of'.",
+      "'introduce' → 'the introduction of'.",
+      "'reduce' → 'a reduction in'.",
+      "Akademik, rasmiy uslub uchun.",
+    ],
+    sampleAnswer: "The rapid development of technology has led to significant changes in education. The introduction of online learning has resulted in greater accessibility for students in rural areas. However, the reduction in face-to-face interaction has caused some concern among educators. The implementation of new digital tools requires careful consideration. In my view, the modernisation of the education system is essential, but the preservation of traditional teaching methods is equally important. Ultimately, the success of any reform depends on the cooperation of teachers, students, and the government. A balanced approach will ensure the improvement of learning for future generations.",
+  },
   title: 'Nominalization',
   subtitle: "Turning verbs and adjectives into nouns — so'z turkumini o'zgartirish",
   level: 'B2',
@@ -736,6 +766,16 @@ export const nominalizationB2: DailyLesson = {
 
 export const subjunctiveB2: DailyLesson = {
   id: 'subjunctive-b2',
+  speaking: {
+    prompt: "Talk about what you think should be done about an important issue, using the subjunctive. Speak for about one minute. Use the subjunctive after 'suggest', 'recommend', 'insist', 'demand', and 'it is essential that'.",
+    tips: [
+      "'I suggest that he BE...' (be, not is).",
+      "'It is essential that everyone ATTEND.' (attend, not attends)",
+      "'I insist that she STAY.'",
+      "Barcha shaxslar uchun asl fe'l shakli.",
+    ],
+    sampleAnswer: "There are several changes I would recommend for our education system. First, I suggest that every student be given equal access to technology. It is essential that no child be left behind. I would insist that teachers receive better training and that their salaries be increased. It is vital that the government invest more in rural schools. I also recommend that English be taught from an early age. Were I a policymaker, I would demand that these reforms be implemented immediately. It is high time that education became the top priority of our nation.",
+  },
   title: 'Subjunctive Mood',
   subtitle: "I suggest that he be... / It is essential that... — subjunktiv fe'llar",
   level: 'B2',
@@ -971,6 +1011,16 @@ export const subjunctiveB2: DailyLesson = {
 
 export const hedgingB2: DailyLesson = {
   id: 'hedging-b2',
+  speaking: {
+    prompt: "Give your opinion on a debatable topic in a cautious, academic way. Speak for about one minute. Use hedging language — 'it seems', 'it could be argued', 'tends to', 'to some extent', 'arguably', 'may well'.",
+    tips: [
+      "Ehtiyotkor: 'It appears that...', 'This may suggest...'",
+      "'to a certain extent', 'to some degree'.",
+      "'one could argue that...', 'arguably'.",
+      "Qat'iy da'volardan qoching — akademik ohang.",
+    ],
+    sampleAnswer: "The question of whether social media is harmful is rather complex. It could be argued that it tends to reduce face-to-face communication, at least to some extent. It seems that young people, in particular, may well be affected by constant comparison online. However, it would perhaps be unfair to blame technology alone. Arguably, the problem lies partly in how we use these tools. There appears to be some evidence that moderate use is not harmful. On the whole, it is difficult to draw firm conclusions, but I am inclined to believe that balance, rather than avoidance, is the key.",
+  },
   title: 'Hedging',
   subtitle: "Seems to, tends to, appears to, may/might/could — ehtiyotkorlik bilan fikr bildirish",
   level: 'B2',
@@ -1197,6 +1247,16 @@ export const hedgingB2: DailyLesson = {
 
 export const complexPrepositionsB2: DailyLesson = {
   id: 'complex-prepositions-b2',
+  speaking: {
+    prompt: "Discuss a topic formally, connecting ideas with complex prepositional phrases. Speak for about one minute. Use 'despite', 'in spite of', 'with regard to', 'in terms of', and 'as a result of'.",
+    tips: [
+      "'with regard to' — mavzuga oid.",
+      "'in terms of' — jihatdan.",
+      "'as a result of' / 'on account of' — sabab.",
+      "'despite / in spite of' + ot yoki V-ing.",
+    ],
+    sampleAnswer: "With regard to the economy, our country has made real progress in recent years. In terms of technology, many young people are now working in the IT sector. Despite the challenges of the past, businesses continue to grow. In spite of limited resources, our universities are improving. As a result of government support, more students can study abroad. However, in terms of the environment, there is still much to be done. On account of climate change, water management has become a serious issue. In light of these facts, I believe that careful planning is essential for our future.",
+  },
   title: 'Complex Prepositions',
   subtitle: "In spite of, by means of, in terms of, with regard to, on behalf of, in the event of",
   level: 'B2',
@@ -1422,6 +1482,16 @@ export const complexPrepositionsB2: DailyLesson = {
 
 export const cohesionB2: DailyLesson = {
   id: 'cohesion-b2',
+  speaking: {
+    prompt: "Tell a well-organised story or explain a process, focusing on smooth flow. Speak for about one minute. Use cohesive devices — reference words ('this', 'such', 'the former/the latter'), substitution, and linkers.",
+    tips: [
+      "'this/that/these' — oldingi fikrga ishora.",
+      "'the former ... the latter' — birinchisi/ikkinchisi.",
+      "'such a...', 'doing so' — takrorni oldini oladi.",
+      "Fikrlarni silliq bog'lang.",
+    ],
+    sampleAnswer: "Learning a language involves several stages, and each of these builds on the last. First, you learn vocabulary; without this, you cannot form sentences. Grammar comes next, and mastering it takes patience. Some learners focus on speaking, while others prefer writing; the former builds confidence, whereas the latter improves accuracy. Both are important, and combining them is the best approach. When you make a mistake, learning from it is essential — doing so helps you improve. Such an attitude makes all the difference. This, in my opinion, is why consistent practice, rather than talent, leads to real success.",
+  },
   title: 'Cohesion',
   subtitle: "Reference, substitution, ellipsis, lexical chains, conjunctions — matn uyg'unligi",
   level: 'B2',
@@ -1649,6 +1719,16 @@ export const cohesionB2: DailyLesson = {
 
 export const registerB2: DailyLesson = {
   id: 'register-b2',
+  speaking: {
+    prompt: "Explain the same idea in two registers — formal and informal — and discuss when each is appropriate. Speak for about one minute. Show how vocabulary and tone change between casual and academic English.",
+    tips: [
+      "Norasmiy 'find out' → rasmiy 'discover/obtain'.",
+      "'get' → 'receive/obtain'; 'kids' → 'children'.",
+      "Qisqartmalar (I'm, don't) — norasmiy.",
+      "Passiv va nominalizatsiya — rasmiy.",
+    ],
+    sampleAnswer: "Choosing the right register is an essential skill. In a casual conversation, I might say, 'I need to find out more about this job.' But in a formal email, I would write, 'I would like to obtain further information regarding this position.' With friends, we say 'kids' and 'a lot of'; in academic writing, we prefer 'children' and 'a considerable number of'. Informal English uses contractions and phrasal verbs, whereas formal English favours single, Latinate verbs and the passive voice. Knowing when to be formal and when to be relaxed shows true mastery of a language, and it helps you communicate appropriately in any situation.",
+  },
   title: 'Register',
   subtitle: "Formal vs informal, colloquial vs academic, contractions, phrasal verbs vs Latinate",
   level: 'B2',

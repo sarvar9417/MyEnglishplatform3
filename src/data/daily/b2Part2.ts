@@ -2,6 +2,16 @@
 
 export const complexSentencesB2: DailyLesson = {
   id: 'complex-sentences-b2',
+  speaking: {
+    prompt: "Discuss a complex topic, combining your ideas into sophisticated sentences. Speak for about one minute. Use subordinate clauses, relative clauses, and linking words to build complex sentences rather than short simple ones.",
+    tips: [
+      "Ergash gaplar: because, although, while, since.",
+      "Relative clauses: 'students who master English...'",
+      "Ikki-uch fikrni bitta gapga bog'lang.",
+      "Qisqa sodda gaplar o'rniga murakkab tuzilma.",
+    ],
+    sampleAnswer: "Education, which is the foundation of any successful society, has changed dramatically in recent decades. While traditional classrooms still play an important role, online platforms, which offer flexibility and access, have transformed how people learn. Although some argue that technology isolates students, I believe that, when used wisely, it connects them to a world of knowledge that was once out of reach. Because opportunities are now global, students who master English gain a significant advantage. What matters most, in my opinion, is not where you study but how committed you are, since motivation, rather than resources, ultimately determines success.",
+  },
   title: 'Complex Sentences',
   subtitle: 'Multi-clause, subordination, coordination — murakkab gaplar',
   level: 'B2',
@@ -283,6 +293,16 @@ export const complexSentencesB2: DailyLesson = {
 
 export const advancedModalsB2: DailyLesson = {
   id: 'advanced-modals-b2',
+  speaking: {
+    prompt: "Talk about obligations, criticism, and expectations using advanced modal structures. Speak for about one minute. Use 'needn't have', 'ought to have', 'was supposed to', and 'be to'.",
+    tips: [
+      "'needn't have + V3' — kerak emas edi (lekin qildim).",
+      "'ought to have + V3' — qilish kerak edi (afsus).",
+      "'was/were supposed to' — kutilgan.",
+      "'be to' — rasmiy reja: 'We are to submit by Friday.'",
+    ],
+    sampleAnswer: "Reflecting on last week, I realise I needn't have worried so much about my exam — it was easier than expected. I ought to have started revising earlier, though. I was supposed to meet my study group on Monday, but I missed it. According to the schedule, we are to submit our projects by Friday. My teacher said we should have practised speaking more often. In future, I really must manage my time better. I shouldn't have left everything until the last minute. All things considered, I ought to be more organised, and I am determined to improve.",
+  },
   title: 'Advanced Modals',
   subtitle: "Needn't have, didn't need to, would rather, had better, be supposed to, dare",
   level: 'B2',
@@ -548,6 +568,16 @@ export const advancedModalsB2: DailyLesson = {
 
 export const contrastiveStructuresB2: DailyLesson = {
   id: 'contrastive-structures-b2',
+  speaking: {
+    prompt: "Compare and contrast two things — two generations, two cities, or two lifestyles. Speak for about one minute. Use contrastive structures like 'whereas', 'while', 'unlike', 'on the other hand', and 'conversely'.",
+    tips: [
+      "'whereas / while' — ikki fikrni qarama-qarshi qo'yadi.",
+      "'unlike + ot' — 'Unlike my brother, I...'",
+      "'on the other hand' — boshqa tomondan.",
+      "'conversely' — aksincha (rasmiy).",
+    ],
+    sampleAnswer: "Life today is very different from life in the past. Whereas my grandparents grew up without electricity, I cannot imagine a day without the internet. Unlike previous generations, young people now communicate instantly across the world. While technology has made life more convenient, it has also created new problems. My grandmother valued patience; I, on the other hand, expect everything immediately. Some people romanticise the past; conversely, others believe the present is far better. In my opinion, each era has its advantages. The older generation had community and calm, while ours has knowledge and opportunity — both precious in their own way.",
+  },
   title: 'Contrastive Structures',
   subtitle: 'While, whereas, unlike, in contrast to, by contrast, on the contrary',
   level: 'B2',
@@ -819,6 +849,16 @@ export const contrastiveStructuresB2: DailyLesson = {
 
 export const punctuationB2: DailyLesson = {
   id: 'punctuation-b2',
+  speaking: {
+    prompt: "Explain the importance of correct punctuation and give examples. Speak for about one minute. Talk about how commas, semicolons, colons, and apostrophes can change meaning.",
+    tips: [
+      "Vergul ma'noni o'zgartiradi: 'Let's eat, Grandma.'",
+      "Nuqtali vergul (;) ikki bog'liq gapni ulaydi.",
+      "Ikki nuqta (:) ro'yxat/izohni kiritadi.",
+      "'its' (egalik) vs 'it's' (it is).",
+    ],
+    sampleAnswer: "Punctuation may seem like a small detail, but it can completely change the meaning of a sentence. Consider the difference between 'Let's eat, Grandma' and 'Let's eat Grandma' — one comma saves a life! A semicolon links two related ideas; it is stronger than a comma but softer than a full stop. A colon introduces a list or an explanation: for example, this one. Many learners confuse 'its' and 'it's': the first shows possession, while the second means 'it is'. In formal writing, correct punctuation shows attention to detail. Therefore, mastering it is just as important as mastering grammar and vocabulary.",
+  },
   title: 'Punctuation',
   subtitle: 'Colons, semicolons, dashes, parentheses, quotation marks, apostrophes',
   level: 'B2',
@@ -1084,6 +1124,16 @@ export const punctuationB2: DailyLesson = {
 
 export const academicCollocationsB2: DailyLesson = {
   id: 'academic-collocations-b2',
+  speaking: {
+    prompt: "Discuss a research topic or an academic subject using formal collocations. Speak for about one minute. Use academic collocations such as 'conduct research', 'play a key role', 'draw a conclusion', and 'raise awareness'.",
+    tips: [
+      "'conduct/carry out research'.",
+      "'play a key/vital role'.",
+      "'draw a conclusion', 'gather data'.",
+      "'raise awareness', 'address an issue'.",
+    ],
+    sampleAnswer: "In recent years, scientists have conducted extensive research into climate change. The studies carried out have played a key role in raising public awareness. Researchers have gathered data, analysed the results, and drawn important conclusions. It is widely acknowledged that human activity poses a serious threat to the environment. Governments must take measures to address this issue and implement effective policies. Education also plays a vital role, since it enables people to make informed decisions. To sum up, if we are to solve such global problems, we must combine scientific research with strong political will and public cooperation.",
+  },
   title: 'Academic Collocations',
   subtitle: 'Conduct research, reach a conclusion, draw a distinction, make an assumption',
   level: 'B2',
@@ -1349,6 +1399,16 @@ export const academicCollocationsB2: DailyLesson = {
 
 export const criticalThinkingB2: DailyLesson = {
   id: 'critical-thinking-b2',
+  speaking: {
+    prompt: "Analyse a claim or argument critically. Speak for about one minute. Use critical-thinking language — 'this suggests', 'the evidence implies', 'it does not necessarily follow', 'on the other hand', 'to what extent'.",
+    tips: [
+      "'this suggests / implies that...'",
+      "'it does not necessarily follow that...'",
+      "'to what extent...?' — darajani baholang.",
+      "Dalil va qarama-qarshi fikrni ko'rsating.",
+    ],
+    sampleAnswer: "Let us examine the claim that money brings happiness. At first glance, this seems reasonable, since wealth provides comfort and security. However, it does not necessarily follow that rich people are happier. The evidence suggests that, beyond a certain point, more money has little effect on well-being. On the other hand, poverty clearly causes stress. To what extent, then, does money matter? I would argue that it is a means, not an end. This implies that relationships, purpose, and health are equally important. In conclusion, while money certainly helps, it would be an oversimplification to say that it guarantees happiness.",
+  },
   title: 'Critical Thinking Language',
   subtitle: 'Argue, claim, refute, imply, infer, challenge, question',
   level: 'B2',
@@ -1614,6 +1674,16 @@ export const criticalThinkingB2: DailyLesson = {
 
 export const b2Review: DailyLesson = {
   id: 'b2-review',
+  speaking: {
+    prompt: "Give a short, well-structured talk on a topic of your choice, showing off your B2 skills. Speak for one to two minutes. Combine advanced structures: conditionals, passives, hedging, and formal linkers.",
+    tips: [
+      "Kirish–tana–xulosa tuzilishi.",
+      "Advanced conditionals: 'Had people... they would have...'",
+      "Hedging: 'it could be argued', 'arguably'.",
+      "Rasmiy linkerlar: 'consequently', 'to sum up'.",
+    ],
+    sampleAnswer: "I would like to talk about the importance of lifelong learning. It could be argued that, in today's fast-changing world, education should never really end. Had people in the past had access to the internet, they would have learned far more easily. Nowadays, knowledge is being created faster than ever before; consequently, those who stop learning are quickly left behind. While formal qualifications are valued, curiosity and adaptability are arguably even more important. If I were to give one piece of advice, it would be this: never stop being a student. To sum up, learning is not a stage of life but a lifelong journey that enriches us in countless ways.",
+  },
   title: 'B2 Review',
   subtitle: 'All B2 topics review \u2014 takrorlash va mustahkamlash',
   level: 'B2',

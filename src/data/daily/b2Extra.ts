@@ -4,6 +4,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const inversionB2: DailyLesson = {
   "id": "inversion-b2",
+  speaking: {
+    prompt: "Describe a memorable experience or make an emphatic point using inversion. Speak for about one minute. Use inverted structures like 'Never have I...', 'Not only... but also...', 'Rarely...', and 'No sooner... than...'.",
+    tips: [
+      "'Never have I seen...' (yordamchi + ega).",
+      "'Not only did he..., but he also...'",
+      "'No sooner had I... than...'",
+      "'Rarely / Seldom / Little did I...'",
+    ],
+    sampleAnswer: "Never have I experienced a moment as proud as my graduation day. Not only had I passed all my exams, but I had also won a scholarship. Rarely does one feel such a mixture of relief and joy. No sooner had the ceremony ended than my family rushed to congratulate me. Little did I know that this achievement would open so many doors. Seldom do we appreciate how much effort success requires. Only after years of hard work did I truly understand the value of education. Not until that day had I realised how far determination could take me.",
+  },
   "title": "Inversion — Emphatic Structures",
   "subtitle": "Inversiya: gap tuzilishini o'zgartirib, ma'noni kuchaytirish",
   "level": "B2",
@@ -873,6 +883,16 @@ export const inversionB2: DailyLesson = {
 
 export const cleftSentencesB2: DailyLesson = {
   "id": "cleft-sentences-b2",
+  speaking: {
+    prompt: "Emphasise the important part of your message using cleft sentences. Speak for about one minute. Use structures like 'It is... that/who...' and 'What... is...'.",
+    tips: [
+      "'It was English that changed my life.'",
+      "'What I need is more practice.'",
+      "'It is my family who support me.'",
+      "Gapning muhim qismini ajratib ko'rsatadi.",
+    ],
+    sampleAnswer: "It was my grandmother who first inspired me to learn English. What she taught me was the value of never giving up. It is patience, more than talent, that leads to success. What I enjoy most about learning is the feeling of progress. It was only after years of practice that I became confident. What really motivates me is the chance to connect with people around the world. It is not money that I am chasing, but knowledge and opportunity. What I would tell any beginner is this: it is consistency that makes all the difference.",
+  },
   "title": "Cleft Sentences — It is/was...that/who",
   "subtitle": "Ajratilgan gaplar: biror bo'lakni alohida ta'kidlash",
   "level": "B2",
@@ -1741,6 +1761,16 @@ export const cleftSentencesB2: DailyLesson = {
 
 export const advancedPassiveB2: DailyLesson = {
   "id": "advanced-passive-b2",
+  speaking: {
+    prompt: "Discuss a topic formally, using advanced passive structures. Speak for about one minute. Use passive reporting ('is said to', 'is believed to'), the get-passive, and 'have something done'.",
+    tips: [
+      "'It is said/believed that...' / 'is thought to be...'",
+      "'get + V3' — norasmiy passiv.",
+      "'have something done' — kauzativ.",
+      "Bajaruvchi noma'lum/muhim emas bo'lganda.",
+    ],
+    sampleAnswer: "English is widely regarded as the most important language for international communication. It is estimated that over a billion people are learning it right now. The language is believed to have been shaped by many cultures over centuries. In my own experience, a lot can be achieved if lessons are taken seriously. Last year, I had my essays checked by a professional, and my writing was greatly improved as a result. Mistakes should not be feared; rather, they should be seen as opportunities. It is often said that practice makes perfect, and this, I think, is a truth that cannot be denied.",
+  },
   "title": "Advanced Passive — Complex Forms",
   "subtitle": "Murakkab passiv tuzilmalar: infinitiv, gerundiy, kauzativ va reporting verb'lar",
   "level": "B2",
@@ -2620,6 +2650,16 @@ export const advancedPassiveB2: DailyLesson = {
 
 export const academicVocabularyB2: DailyLesson = {
   "id": "academic-vocabulary-b2",
+  speaking: {
+    prompt: "Discuss an academic topic using formal, high-level vocabulary. Speak for about one minute. Use academic words such as 'significant', 'establish', 'consequently', 'demonstrate', 'sufficient', and 'implement'.",
+    tips: [
+      "'a significant impact / role'.",
+      "'demonstrate / illustrate / indicate'.",
+      "'establish / implement / acquire'.",
+      "'consequently / furthermore / therefore'.",
+    ],
+    sampleAnswer: "Education has a significant impact on a country's development. Numerous studies demonstrate that nations which invest sufficiently in schools tend to prosper. Consequently, it is essential that governments establish strong educational systems. When effective policies are implemented, the benefits become evident within a generation. Furthermore, access to quality education enables individuals to acquire the skills required by a modern economy. It is widely acknowledged that knowledge is a crucial resource. In order to address global challenges, we must, therefore, prioritise learning. To conclude, sustained investment in education is not merely beneficial but absolutely fundamental to long-term prosperity.",
+  },
   "title": "Academic Vocabulary — Top 50 IELTS Words",
   "subtitle": "Akademik so'z boyligi: AWL (Academic Word List) — 50 ta eng muhim so'z",
   "level": "B2",

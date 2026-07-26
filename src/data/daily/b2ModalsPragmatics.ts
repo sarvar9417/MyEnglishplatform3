@@ -2,6 +2,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const modalsPragmaticsB2: DailyLesson = {
   id: 'modals-pragmatics-b2',
+  speaking: {
+    prompt: "Practise being polite and diplomatic in difficult situations. Speak for about one minute. Soften your requests, disagreements, and suggestions using modals and hedging ('would you mind', 'I was wondering if', 'perhaps we could').",
+    tips: [
+      "'Would you mind + V-ing?' — muloyim so'rov.",
+      "'I was wondering if you could...'",
+      "'Perhaps we could...' — yumshoq taklif.",
+      "'I'm afraid I don't quite agree' — yumshoq e'tiroz.",
+    ],
+    sampleAnswer: "In professional situations, being polite is essential. Instead of saying 'Give me the report', I would say, 'I was wondering if you could send me the report when you have a moment.' If I disagree, I don't say 'You're wrong'; rather, I say, 'I'm afraid I don't quite see it that way.' When making a suggestion, I might say, 'Perhaps we could consider another option.' If I need a favour, I ask, 'Would you mind helping me with this?' Softening our language in this way shows respect. It could be argued that, in English, how you say something matters just as much as what you say.",
+  },
   title: 'Modals: Hedging & Softening',
   subtitle: "Modallar yordamida shakl bildirish va ehtiyotkorlik bilan gapirish",
   level: 'B2',

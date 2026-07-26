@@ -2678,6 +2678,16 @@ export const futurePerfect: DailyLesson = {
 // ════════════════════════════════════════════════════════════════════════════
 export const futurePerfectContinuous: DailyLesson = {
   id: 'future-perfect-continuous',
+  speaking: {
+    prompt: "Talk about how long you will have been doing something by a certain point in the future. Speak for about one minute. Use the Future Perfect Continuous (will have been + V-ing).",
+    tips: [
+      "will have been + V-ing: 'By next year, I will have been studying for three years.'",
+      "'by' + kelajak nuqtasi + 'for' + davomiylik.",
+      "Kelajakdagi nuqtagacha davom etadigan harakat davomiyligi.",
+      "Davomiylik va harakatga urg'u beradi.",
+    ],
+    sampleAnswer: "Time passes so quickly. By the end of this year, I will have been studying English for three years. By next summer, I will have been working at my company for a decade. This time next month, I will have been living in this city for five years. When I finally take my B2 exam, I will have been preparing for several months. By the time I graduate, I will have been learning new skills almost every day. It is amazing to think that, by 2030, I will have been using English in my career for a very long time.",
+  },
   title: 'Future Perfect Continuous Tense',
   subtitle: "Kelajakda bir vaqtga qadar davom etib kelayotgan harakatlar — 'BY 5 PM I WILL HAVE BEEN WORKING FOR 8 HOURS'",
   level: 'B2',

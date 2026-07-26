@@ -9,6 +9,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const advancedRelativeClausesB2: DailyLesson = {
   id: 'advanced-relative-clauses-b2',
+  speaking: {
+    prompt: "Describe a place, an institution, or a group of people using advanced relative clauses. Speak for about one minute. Use reduced relatives, preposition + which/whom, quantifier + of whom/which, and 'whereby'.",
+    tips: [
+      "Reduced: 'the man sitting there' (= who is sitting).",
+      "'many of whom', 'most of which'.",
+      "'the person to whom I spoke' (rasmiy).",
+      "'the system whereby...' — usul/mexanizm.",
+    ],
+    sampleAnswer: "Let me describe my university, which I am very proud of. It has thousands of students, many of whom come from other countries. The professors, most of whom have studied abroad, are highly experienced. There is a special system whereby students can choose their own subjects. The building standing at the entrance, which was built a century ago, is beautiful. The people with whom I study have become close friends. The library, in which I spend most of my time, is enormous. It is a place that has shaped my future, and for which I will always be grateful.",
+  },
   title: 'Advanced Relative Clauses (B2)',
   subtitle: "Reduced clauses, preposition+relative, compounds — murakkab nisbiy gaplar",
   level: 'B2',

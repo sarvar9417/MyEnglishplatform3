@@ -2,6 +2,16 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const britishAmericanDifferencesB2: DailyLesson = {
   id: 'british-american-differences',
+  speaking: {
+    prompt: "Talk about the differences between British and American English, and which you prefer. Speak for about one minute. Give examples of vocabulary, spelling, and grammar differences.",
+    tips: [
+      "Vocab: 'flat/apartment', 'lift/elevator', 'lorry/truck'.",
+      "Spelling: 'colour/color', 'organise/organize'.",
+      "Grammar: 'have got' (BrE) vs 'have' (AmE).",
+      "Ikkalasi ham to'g'ri — kontekstga qarab.",
+    ],
+    sampleAnswer: "British and American English differ in several interesting ways. In vocabulary, the British say 'flat', 'lift', and 'lorry', whereas Americans say 'apartment', 'elevator', and 'truck'. Spelling is different too: the British write 'colour' and 'organise', while Americans write 'color' and 'organize'. Even grammar varies slightly — the British often say 'I have got', but Americans prefer 'I have'. Pronunciation is another difference; the two accents can sound quite distinct. Personally, I learned British English at school, so I am more used to it. However, I believe both varieties are equally correct, and understanding both makes you a more flexible communicator.",
+  },
   title: 'British vs American English',
   subtitle: "British va American farqlari — lug'at, imlo va grammatika",
   level: 'B2',
