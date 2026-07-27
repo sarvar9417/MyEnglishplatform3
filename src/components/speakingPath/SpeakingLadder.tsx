@@ -2,7 +2,7 @@
 // To'liq narvon: CEFR zonlari, kengaytirilgan kun kartalari, boy inline detal paneli,
 // SpeakingDaySession ga uzviy bog'langan boshlash tugmasi.
 
-import { CheckCircle2, ChevronDown, Mic, Clock, Star, Sparkles } from 'lucide-react'
+import { CheckCircle2, ChevronDown, Mic, Clock, Star, Sparkles, Lock } from 'lucide-react'
 import type { SpeakingDay, SpeakingDayProgress } from '../../data/speakingPath/types'
 import { getCachedSrsMapSync } from '../../services/speakingPathService'
 import { getLevelRange, CEFR_ORDER } from '../../data/speakingPath'
@@ -136,6 +136,8 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
         const doneInZone = zoneDays.filter(d => completed.has(d.day)).length
         const totalInZone = zoneDays.length
         const zonePct = Math.round((doneInZone / totalInZone) * 100)
+        // Zona qulflangan: barcha kunlari unlockedDay dan keyin (hech biri ochilmagan/tugallanmagan)
+        const zoneLocked = Math.min(...zoneDays.map(d => d.day)) > unlockedDay
 
         return (
           <div key={zone.cefr + '-' + zone.dayMin}>
@@ -146,6 +148,11 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                 <div className="flex items-center gap-2">
                   <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${CEFR_BADGE[zone.cefr]}`}>{zone.cefr}</span>
                   <span className={`text-sm font-bold ${zone.textClass}`}>{zone.label}</span>
+                  {zoneLocked && (
+                    <span className="text-xs font-bold px-1.5 py-0.5 rounded-full bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400 flex items-center gap-0.5">
+                      <Lock size={9} /> Yopiq
+                    </span>
+                  )}
                 </div>
                 <div className="flex items-center gap-2 mt-0.5">
                   <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden max-w-[120px]">
@@ -166,6 +173,7 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
               {zoneDays.map((d, i) => {
                 const isCompleted = completed.has(d.day)
                 const isCurrent = d.day === unlockedDay && !isCompleted
+                const isLocked = d.day > unlockedDay && !isCompleted
                 const isExpanded = expandedDay === d.day
                 const dayProgress = progressMap.get(d.day)
                 const score = dayProgress?.bestSpeakScore
@@ -184,9 +192,10 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                     {/* Asosiy karta */}
                     <button
                       data-day={d.day}
-                      onClick={() => onToggle(d.day)}
+                      disabled={isLocked}
+                      onClick={() => { if (!isLocked) onToggle(d.day) }}
                       className={`relative w-full flex items-center gap-3 p-3 rounded-2xl text-left transition-all border
-                        ${isCurrent
+                        ${isLocked ? 'opacity-50 cursor-not-allowed ' : ''}${isCurrent
                           ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-300 dark:border-primary-700 shadow-sm hover:shadow-md active:scale-[0.99]'
                           : isCompleted
                             ? 'bg-white dark:bg-gray-800 border-emerald-200 dark:border-emerald-800/50 hover:shadow-md active:scale-[0.99]'
@@ -243,10 +252,13 @@ export default function SpeakingLadder({ days, unlockedDay, completed, progress,
                             </span>
                           </div>
                         )}
-                        {!isCompleted && (
+                        {!isCompleted && !isLocked && (
                           <span className="text-xs font-semibold text-gray-400 dark:text-gray-500">
                             ~{d.estMinutes} daq
                           </span>
+                        )}
+                        {isLocked && (
+                          <Lock size={13} className="text-gray-400 dark:text-gray-500" />
                         )}
                           <ChevronDown size={16} className={`text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                       </div>
