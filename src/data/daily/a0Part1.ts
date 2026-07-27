@@ -2,6 +2,30 @@ import type { DailyLesson } from '../dailyLessons'
 
 export const greetingsAndNames: DailyLesson = {
   id: 'greetings-names',
+  reading: {
+    title: 'Hello!',
+    passage: "Hello! My name is Anvar. I am from Uzbekistan. I am a student. This is my friend. Her name is Dilnoza. She is from Tashkent. Nice to meet you!",
+    vocabulary: [
+      { word: 'name', definition: 'ism' },
+      { word: 'friend', definition: "do'st" },
+      { word: 'student', definition: 'talaba, o\'quvchi' },
+    ],
+    questions: [
+      { id: 93001, type: 'multiple-choice', question: "What is the boy's name?", options: ['Dilnoza', 'Anvar', 'Aziz', 'Bek'], correctIndex: 1, explanation: "'My name is Anvar.'" },
+      { id: 93002, type: 'multiple-choice', question: "Where is Anvar from?", options: ['Tashkent', 'Uzbekistan', 'Russia', 'England'], correctIndex: 1, explanation: "'I am from Uzbekistan.'" },
+      { id: 93003, type: 'multiple-choice', question: "What is his friend's name?", options: ['Dilnoza', 'Nigora', 'Malika', 'Zebo'], correctIndex: 0, explanation: "'Her name is Dilnoza.'" },
+    ],
+  },
+  writing: {
+    prompt: "Write three short sentences. Say hello, tell your name, and say where you are from.",
+    wordLimit: 30,
+    tips: [
+      "'Hello! My name is ...'",
+      "'I am from ...'",
+      "'Nice to meet you!'",
+    ],
+    modelAnswer: "Hello! My name is Aziz. I am from Uzbekistan. Nice to meet you!",
+  },
   speaking: {
     prompt: "Introduce yourself. Say hello, tell your name, where you are from, and ask someone their name. Speak for about 30-60 seconds.",
     tips: [
@@ -67,6 +91,30 @@ export const greetingsAndNames: DailyLesson = {
 
 export const numbersAndAlphabet: DailyLesson = {
   id: 'numbers-alphabet',
+  reading: {
+    title: 'My Numbers',
+    passage: "My name is Bek. B-E-K. I am ten years old. I have two cats and three dogs. I have five books. My favourite number is seven. I like numbers!",
+    vocabulary: [
+      { word: 'number', definition: 'raqam, son' },
+      { word: 'old', definition: 'yosh (necha yoshda)' },
+      { word: 'favourite', definition: 'sevimli' },
+    ],
+    questions: [
+      { id: 93004, type: 'multiple-choice', question: "How old is Bek?", options: ['Seven', 'Ten', 'Five', 'Two'], correctIndex: 1, explanation: "'I am ten years old.'" },
+      { id: 93005, type: 'multiple-choice', question: "How many cats does Bek have?", options: ['Two', 'Three', 'Five', 'Ten'], correctIndex: 0, explanation: "'I have two cats.'" },
+      { id: 93006, type: 'multiple-choice', question: "What is his favourite number?", options: ['Five', 'Ten', 'Seven', 'Two'], correctIndex: 2, explanation: "'My favourite number is seven.'" },
+    ],
+  },
+  writing: {
+    prompt: "Write about numbers. How old are you? How many books do you have? Write your name letter by letter.",
+    wordLimit: 30,
+    tips: [
+      "'I am ... years old.'",
+      "'I have ... books.'",
+      "Spell your name: A-Z-I-Z.",
+    ],
+    modelAnswer: "My name is Aziz. A-Z-I-Z. I am nine years old. I have five books and two pens.",
+  },
   speaking: {
     prompt: "Count from one to ten, spell your name, and say your age. Speak for about 30-60 seconds.",
     tips: [
@@ -130,6 +178,30 @@ export const numbersAndAlphabet: DailyLesson = {
 
 export const familyAndMe: DailyLesson = {
   id: 'family-me',
+  reading: {
+    title: 'My Family',
+    passage: "This is my family. My father is Bobur. My mother is Nigora. I have one sister. Her name is Malika. She is seven years old. I love my family very much.",
+    vocabulary: [
+      { word: 'family', definition: 'oila' },
+      { word: 'father', definition: 'ota' },
+      { word: 'sister', definition: 'opa/singil' },
+    ],
+    questions: [
+      { id: 93007, type: 'multiple-choice', question: "Who is the father?", options: ['Nigora', 'Bobur', 'Malika', 'Anvar'], correctIndex: 1, explanation: "'My father is Bobur.'" },
+      { id: 93008, type: 'multiple-choice', question: "What is the sister's name?", options: ['Nigora', 'Malika', 'Dilnoza', 'Zebo'], correctIndex: 1, explanation: "'Her name is Malika.'" },
+      { id: 93009, type: 'multiple-choice', question: "How old is the sister?", options: ['Five', 'Seven', 'Ten', 'Nine'], correctIndex: 1, explanation: "'She is seven years old.'" },
+    ],
+  },
+  writing: {
+    prompt: "Write about your family. Write the names of your mother, father, and one more person.",
+    wordLimit: 35,
+    tips: [
+      "'This is my family.'",
+      "'My father is ... My mother is ...'",
+      "'I have one brother/sister.'",
+    ],
+    modelAnswer: "This is my family. My father is Aziz. My mother is Zebo. I have one brother. His name is Sardor. I love my family.",
+  },
   speaking: {
     prompt: "Talk about your family. Say who is in your family and their names. Speak for about 30-60 seconds.",
     tips: [
