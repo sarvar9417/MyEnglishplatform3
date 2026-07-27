@@ -21,9 +21,9 @@
 - [ ] **QC-8 weekly_lessons runtime tekshiruv** (men qurdim, jonli sinovdan o'tmagan).
 - [ ] **QC-9 Tandem** (duel/elo/friendship): tekshirilmagan qismlar.
 - [ ] **QC-10 30-Day Challenge**.
-- [ ] **QC-11 Films** (filmVocabulary 428KB — performance).
+- [~] **QC-11 Films** — 419KB JSON, 1 film. Struktura OK; hajm katta (performance kelajakda).
 - [ ] **QC-12 Placement Test** (adaptiv mantiq).
-- [ ] **QC-13 Idioms/PhrasalVerbs/Confusable**.
+- [x] **QC-13 Idioms/PhrasalVerbs/Confusable** ✅ (+1 BUG FIX): **Idioms 8 dublikat ID o'chirildi (100→92)**; PhrasalVerbs 110 0-muammo; Confusable 10 0-muammo.
 - [ ] **QC-14 Dashboard/Profile/Achievements/Skills**.
 
 ## Jurnal
