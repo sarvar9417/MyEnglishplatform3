@@ -328,10 +328,10 @@ export const advancedModalsB2: DailyLesson = {
   },
   category: 'Advanced Grammar',
   formulas: [
-    { label: "Needn't have", structure: "Needn't have + V\u2083 (past unnecessary action)\nI needn't have brought an umbrella.", color: 'green' },
-    { label: "Had better", structure: "Had better + V (strong advice)\nYou'd better see a doctor.", color: 'blue' },
-    { label: 'Be supposed to', structure: "Be supposed to + V (expected/obliged)\nWe're supposed to be there at 8.", color: 'red' },
-    { label: 'Dare', structure: "Dare + V (have courage)\nI daren't tell him the truth.", color: 'purple' },
+    { label: "Needn't have", structure: "Needn't have + V\u2083 (past unnecessary action)\nI needn't have brought an umbrella.", explanation: "'needn't have + V3' — o'tmishda keraksiz qilingan ish.", whenToUse: "Kerak bo'lmagan, lekin qilingan ishda.", example: "You needn't have paid.", color: 'green' },
+    { label: "Had better", structure: "Had better + V (strong advice)\nYou'd better see a doctor.", explanation: "'had better + V' — kuchli maslahat/ogohlantirish.", whenToUse: "Zudlik bilan maslahat berganda.", example: "You'd better leave now.", color: 'blue' },
+    { label: 'Be supposed to', structure: "Be supposed to + V (expected/obliged)\nWe're supposed to be there at 8.", explanation: "'be supposed to + V' — kutilgan/majbur.", whenToUse: "Kutilgan yoki rejalashtirilgan ishda.", example: "We are supposed to finish today.", color: 'red' },
+    { label: 'Dare', structure: "Dare + V (have courage)\nI daren't tell him the truth.", explanation: "'dare + V' — jur'at qilish.", whenToUse: "Jur'at/tavakkal haqida.", example: "How dare you say that!", color: 'purple' },
   ],
   rules: [
     "1\uFE0F\u20E3 NEEDN'T HAVE VS DIDN'T NEED TO\n\nNeedn't have + V\u2083: qilganman, lekin kerak emas edi (I did it but it was unnecessary)\n  I needn't have bought so much food.\n  (I bought a lot, but it was unnecessary)\n\nDidn't need to + V: qilmaganman, chunki kerak emas edi (I didn't do it because it wasn't necessary)\n  I didn't need to buy any food.\n  (I didn't buy it because I had enough)\n\n\uD83D\uDD34 Farq:\n  Needn't have done = I did it (unnecessary)\n  Didn't need to do = I didn't do it (unnecessary)\n\n\uD83D\uDD34 Needn't have = regret or relief about a past action",
@@ -603,10 +603,10 @@ export const contrastiveStructuresB2: DailyLesson = {
   },
   category: 'Advanced Grammar',
   formulas: [
-    { label: 'While / Whereas', structure: 'While/Whereas + clause, clause\nWhile he is tall, his brother is short.', color: 'green' },
-    { label: 'Unlike / In contrast to', structure: 'Unlike + noun, clause\nUnlike his brother, he is tall.', color: 'blue' },
-    { label: 'By contrast / On the other hand', structure: 'Clause. By contrast, clause\nHe is tall. By contrast, his brother is short.', color: 'red' },
-    { label: 'On the contrary', structure: 'Clause. On the contrary, clause\nHe is not short. On the contrary, he is tall.', color: 'purple' },
+    { label: 'While / Whereas', structure: 'While/Whereas + clause, clause\nWhile he is tall, his brother is short.', explanation: "'while/whereas' — ikki fikrni qiyoslash.", whenToUse: "Ikki narsani zid qo'yganda.", example: "While I like tea, he likes coffee.", color: 'green' },
+    { label: 'Unlike / In contrast to', structure: 'Unlike + noun, clause\nUnlike his brother, he is tall.', explanation: "'unlike + ot' — farqni ko'rsatish.", whenToUse: "Ot bilan qiyoslaganda.", example: "Unlike his brother, he is shy.", color: 'blue' },
+    { label: 'By contrast / On the other hand', structure: 'Clause. By contrast, clause\nHe is tall. By contrast, his brother is short.', explanation: "Alohida gaplar orasida qarama-qarshilik.", whenToUse: "Ikkinchi tomonni ko'rsatganda.", example: "By contrast, sales fell in June.", color: 'red' },
+    { label: 'On the contrary', structure: 'Clause. On the contrary, clause\nHe is not short. On the contrary, he is tall.', explanation: "'on the contrary' — aksincha (rad etish).", whenToUse: "Oldingi fikrni rad etganda.", example: "It's not boring; on the contrary, it's fun.", color: 'purple' },
   ],
   rules: [
     '1\uFE0F\u20E3 CONTRASTIVE STRUCTURES NIMA?\n\nContrastive structures \u2014 ikki narsa yoki fikr o\'rtasidagi farqni ko\'rsatish uchun ishlatiladi. B2 IELTS Writing da juda muhim.\n\n\uD83D\uDCCC WHILE / WHEREAS \u2014 ikki gapni solishtirish:\n  While he is rich, his brother is poor.\n\n\uD83D\uDCCC UNLIKE / IN CONTRAST TO \u2014 noun bilan farq:\n  Unlike his brother, he is hardworking.\n\n\uD83D\uDCCC BY CONTRAST / ON THE OTHER HAND \u2014 mustaqil gap:\n  He is outgoing. By contrast, his sister is shy.\n\n\uD83D\uDCCC ON THE CONTRARY \u2014 oldingi fikrni inkor qiladi:\n  He isn\'t lazy. On the contrary, he is very hardworking.',
@@ -884,10 +884,10 @@ export const punctuationB2: DailyLesson = {
   },
   category: 'Writing',
   formulas: [
-    { label: 'Colon', structure: "Main clause: explanation/list\nI love three fruits: apples, bananas, oranges.", color: 'green' },
-    { label: 'Semicolon', structure: "Independent clause; independent clause\nI came home; she was already there.", color: 'blue' },
-    { label: 'Dash', structure: "Main clause \u2014 interruption/emphasis\nHe was \u2014 how can I put this \u2014 unusual.", color: 'red' },
-    { label: 'Parentheses', structure: "Sentence (additional info) continues.\nHe (the manager) approved the plan.", color: 'purple' },
+    { label: 'Colon', structure: "Main clause: explanation/list\nI love three fruits: apples, bananas, oranges.", explanation: "Ikki nuqta (:) — ro'yxat/izoh kiritadi.", whenToUse: "Tushuntirish yoki ro'yxatdan oldin.", example: "I need three things: pen, paper, ink.", color: 'green' },
+    { label: 'Semicolon', structure: "Independent clause; independent clause\nI came home; she was already there.", explanation: "Nuqtali vergul (;) — ikki bog'liq gapni ulaydi.", whenToUse: "Ikki mustaqil, bog'liq gapni birlashtirganda.", example: "It rained; we stayed home.", color: 'blue' },
+    { label: 'Dash', structure: "Main clause \u2014 interruption/emphasis\nHe was \u2014 how can I put this \u2014 unusual.", explanation: "Tire — uzilish/urg'u.", whenToUse: "Fikrni ta'kidlab uzganda.", example: "She was right — as always.", color: 'red' },
+    { label: 'Parentheses', structure: "Sentence (additional info) continues.\nHe (the manager) approved the plan.", explanation: "Qavslar () — qo'shimcha ma'lumot.", whenToUse: "Ikkinchi darajali ma'lumot berganda.", example: "The book (from 2020) is popular.", color: 'purple' },
   ],
   rules: [
     '1\uFE0F\u20E3 COLON (:) \u2014 IKKI NUQTA\n\nColon \u2014 birinchi gap ikkinchisini tushuntiradi yoki ro\'yxatni kiritadi:\n\n\uD83D\uDCCC RO\'YXAT: I need three things: water, food, and shelter.\n\uD83D\uDCCC TUSHUNTIRISH: He had one goal: to win the championship.\n\uD83D\uDCCC IKTIBOS: The teacher said: \'Work hard.\'\n\n\uD83D\uDD34 Colon dan oldin must be a COMPLETE clause:\n  \u2713 I need: water and food. (XATO \u2014 \'I need\' complete clause emas)\n  \u2713 I need three things: water and food. (TO\'G\'RI)\n\n\uD83D\uDD34 Colon dan keyin: list, explanation, or quotation.\n\uD83D\uDD34 Colon dan keyin kichik harf bilan (BrE) yoki katta harf bilan (AmE) boshlash mumkin.',
@@ -1159,10 +1159,10 @@ export const academicCollocationsB2: DailyLesson = {
   },
   category: 'Academic English',
   formulas: [
-    { label: 'Research Collocations', structure: 'conduct / carry out / undertake + research\nThe team conducted extensive research.', color: 'green' },
-    { label: 'Conclusion Collocations', structure: 'reach / draw / come to + a conclusion\nWe reached a surprising conclusion.', color: 'blue' },
-    { label: 'Argument Collocations', structure: 'make / put forward / support + an argument\nShe put forward a compelling argument.', color: 'red' },
-    { label: 'Assumption Collocations', structure: 'make / challenge / question + an assumption\nIt is wrong to make that assumption.', color: 'purple' },
+    { label: 'Research Collocations', structure: 'conduct / carry out / undertake + research\nThe team conducted extensive research.', explanation: "'conduct/carry out research' kollokatsiyalari.", whenToUse: "Tadqiqot haqida yozganda.", example: "They conducted extensive research.", color: 'green' },
+    { label: 'Conclusion Collocations', structure: 'reach / draw / come to + a conclusion\nWe reached a surprising conclusion.', explanation: "'reach/draw a conclusion' kollokatsiyalari.", whenToUse: "Xulosa haqida yozganda.", example: "We can draw a clear conclusion.", color: 'blue' },
+    { label: 'Argument Collocations', structure: 'make / put forward / support + an argument\nShe put forward a compelling argument.', explanation: "'make/put forward an argument'.", whenToUse: "Dalil keltirganda.", example: "She put forward a strong argument.", color: 'red' },
+    { label: 'Assumption Collocations', structure: 'make / challenge / question + an assumption\nIt is wrong to make that assumption.', explanation: "'make/challenge an assumption'.", whenToUse: "Taxmin haqida yozganda.", example: "We must challenge this assumption.", color: 'purple' },
   ],
   rules: [
     '1\uFE0F\u20E3 ACADEMIC COLLOCATIONS NIMA?\n\nCollocations \u2014 so\'zlarning bir-biri bilan tabiiy bog\'lanib kelishi. Academic collocations \u2014 ilmiy/akademik matnlarda ko\'p qo\'llaniladigan so\'z birikmalari.\n\n\uD83D\uDCCC MUHIM: Ingliz tilida \'make research\' emas, \'conduct research\' deyiladi!\n\n\uD83D\uDCCC Eng muhim academic collocations:\n  \u2022 conduct / carry out / undertake + research\n  \u2022 reach / draw / come to + a conclusion\n  \u2022 make / put forward / support + an argument\n  \u2022 make / challenge / question + an assumption\n  \u2022 draw / make / establish + a distinction\n  \u2022 have / show / demonstrate + an impact\n  \u2022 play / assume + a role\n  \u2022 serve / provide + a function',
@@ -1434,10 +1434,10 @@ export const criticalThinkingB2: DailyLesson = {
   },
   category: 'Academic English',
   formulas: [
-    { label: 'Arguing', structure: 'S + argue(s) that + clause\nMany scholars argue that climate change is urgent.', color: 'green' },
-    { label: 'Claiming', structure: 'S + claim(s) that + clause\nCritics claim the policy is ineffective.', color: 'blue' },
-    { label: 'Refuting', structure: 'S + refute(s) + noun\nShe refuted the counterargument with data.', color: 'red' },
-    { label: 'Implying/Inferring', structure: 'S + imply/infer that + clause\nThe data imply a strong correlation.', color: 'purple' },
+    { label: 'Arguing', structure: 'S + argue(s) that + clause\nMany scholars argue that climate change is urgent.', explanation: "'argue that + gap' — dalil bilan da'vo.", whenToUse: "Fikrni asoslab bildirganda.", example: "She argues that prices will rise.", color: 'green' },
+    { label: 'Claiming', structure: 'S + claim(s) that + clause\nCritics claim the policy is ineffective.', explanation: "'claim that + gap' — isbotsiz da'vo.", whenToUse: "Tasdiqlanmagan da'vo bildirganda.", example: "He claims that he is innocent.", color: 'blue' },
+    { label: 'Refuting', structure: 'S + refute(s) + noun\nShe refuted the counterargument with data.', explanation: "'refute + ot' — rad etish/inkor.", whenToUse: "Da'voni dalil bilan rad etganda.", example: "The study refutes this theory.", color: 'red' },
+    { label: 'Implying/Inferring', structure: 'S + imply/infer that + clause\nThe data imply a strong correlation.', explanation: "'imply' (ishora) / 'infer' (xulosa).", whenToUse: "Yashirin ma'no yoki xulosada.", example: "This implies a deeper problem.", color: 'purple' },
   ],
   rules: [
     '1\uFE0F\u20E3 CRITICAL THINKING LANGUAGE NIMA?\n\nCritical thinking language \u2014 akademik matnlarda fikrni tahlil qilish, baholash va munozara qilish uchun ishlatiladigan til. B2 darajasida argumentativ essay va munozaralar uchun juda muhim.\n\n\uD83D\uDCCC ARGUE = ishonchli dalillar bilan fikrni himoya qilish\n\uD83D\uDCCC CLAIM = biror haqiqatni tasdiqlash (isbot bilan yoki isbotsiz)\n\uD83D\uDCCC REFUTE = noto\'g\'ri ekanligini isbotlash\n\uD83D\uDCCC IMPLY = bilvosita ma\'no berish (so\'zlovchi)\n\uD83D\uDCCC INFER = xulosa chiqarish (tinglovchi/o\'quvchi)\n\uD83D\uDCCC CHALLENGE = shubha ostiga olish, e\'tiroz bildirish\n\uD83D\uDCCC QUESTION = so\'roq qilish, shubhalanish',
@@ -1709,10 +1709,10 @@ export const b2Review: DailyLesson = {
   },
   category: 'Review',
   formulas: [
-    { label: 'Unreal Past', structure: 'I wish I knew. / I wish I had studied.\nIt\'s time we left. / I\'d rather you stayed.', color: 'green' },
-    { label: 'Advanced Conditionals', structure: 'Mixed: If I had studied, I would be rich now.\nInverted: Had I known, I would have come.', color: 'blue' },
-    { label: 'Subjunctive', structure: 'I suggest that he go.\nIt is essential that she be present.', color: 'red' },
-    { label: 'Hedging', structure: 'may / might / could / seems / appears to\nThe data suggest that the theory is valid.', color: 'purple' },
+    { label: 'Unreal Past', structure: 'I wish I knew. / I wish I had studied.\nIt\'s time we left. / I\'d rather you stayed.', explanation: "Xayoliy o'tmish (wish, if only) umumlashmasi.", whenToUse: "Istak/afsus bildirganda.", example: "I wish I had studied.", color: 'green' },
+    { label: 'Advanced Conditionals', structure: 'Mixed: If I had studied, I would be rich now.\nInverted: Had I known, I would have come.', explanation: "Aralash/inverted shartlar umumlashmasi.", whenToUse: "Murakkab shartli vaziyatda.", example: "Had I known, I would have come.", color: 'blue' },
+    { label: 'Subjunctive', structure: 'I suggest that he go.\nIt is essential that she be present.', explanation: "Subjunktiv mayl umumlashmasi.", whenToUse: "suggest/insist that dan keyin.", example: "I suggest that he go.", color: 'red' },
+    { label: 'Hedging', structure: 'may / might / could / seems / appears to\nThe data suggest that the theory is valid.', explanation: "Ehtiyotkor til umumlashmasi.", whenToUse: "Qat'iy bo'lmagan akademik da'voda.", example: "This may well be the case.", color: 'purple' },
   ],
   rules: [
     '1\uFE0F\u20E3 B2 REVIEW \u2014 BARCHA MAVZULAR\n\nUshbu dars B2 darajasidagi barcha mavzularni takrorlash uchun:\n\n1. UNREAL PAST: Wish, if only, would rather, it\'s time\n2. ADVANCED CONDITIONALS: Mixed, inverted, implied\n3. NOMINALIZATION: Verb/Adjective \u2192 Noun\n4. SUBJUNCTIVE: That + base verb, were-subjunctive\n5. HEDGING: May, might, seem, appear, suggest\n6. COMPLEX PREPOSITIONS: In spite of, by means of, in terms of\n7. COMPLEX SENTENCES: Subordination, coordination, relative clauses\n8. ADVANCED MODALS: Needn\'t have, had better, dare\n9. CONTRASTIVE STRUCTURES: While, whereas, unlike\n10. PUNCTUATION: Colons, semicolons, dashes\n11. ACADEMIC COLLOCATIONS: Conduct research, reach a conclusion\n12. CRITICAL THINKING: Argue, claim, refute, imply, infer',

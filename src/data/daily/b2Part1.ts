@@ -296,10 +296,10 @@ export const advancedConditionalsB2: DailyLesson = {
   },
   category: 'Advanced Grammar',
   formulas: [
-    { label: 'Mixed Conditional', structure: 'If + past perfect, would + V (past→present)\nIf I had studied, I would be successful now.', color: 'green' },
-    { label: 'Inverted Conditional', structure: 'Had I known, I would have come.\nWere I you, I would accept.', color: 'blue' },
-    { label: 'Implied Conditional', structure: 'Without your help, I would have failed.\nBut for the rain, we would have won.', color: 'red' },
-    { label: 'Other Variations', structure: 'If + were to, should you, etc.\nIf you were to ask, I would say yes.', color: 'purple' },
+    { label: 'Mixed Conditional', structure: 'If + past perfect, would + V (past→present)\nIf I had studied, I would be successful now.', explanation: "Aralash shart — o'tmish sharti, hozirgi natija (yoki aksincha).", whenToUse: "O'tmishdagi ish hozirgi natijaga ta'sir qilganda.", example: "If I had studied medicine, I would be a doctor now.", color: 'green' },
+    { label: 'Inverted Conditional', structure: 'Had I known, I would have come.\nWere I you, I would accept.', explanation: "'if' tushib, yordamchi oldinga chiqadi (rasmiy).", whenToUse: "Rasmiy uslubda shartni ifodalaganda.", example: "Had I known, I would have come.", color: 'blue' },
+    { label: 'Implied Conditional', structure: 'Without your help, I would have failed.\nBut for the rain, we would have won.', explanation: "Shart 'if'siz, ibora orqali bildiriladi.", whenToUse: "Without / but for kabi iboralar bilan.", example: "Without your help, I would have failed.", color: 'red' },
+    { label: 'Other Variations', structure: 'If + were to, should you, etc.\nIf you were to ask, I would say yes.', explanation: "'if were to', 'should you' kabi variantlar.", whenToUse: "Rasmiy yoki kam ehtimolli shartda.", example: "Should you need help, call me.", color: 'purple' },
   ],
   rules: [
     "1\uFE0F\u20E3 MIXED CONDITIONALS\n\nMixed conditional — ikki xil zamonni birlashtiradi:\n\nPAST CONDITION + PRESENT RESULT:\n  If + had + V₃, would + V\n  If I had studied medicine, I would be a doctor now.\n  (I didn't study → I'm not a doctor)\n\nPRESENT CONDITION + PAST RESULT (kamroq):\n  If + past simple, would have + V₃\n  If I were more careful, I wouldn't have made that mistake.\n  (I'm not careful → I made the mistake)\n\n\uD83D\uDD34 3rd conditional (past→past) vs mixed (past→present):\n  3rd: If I had studied, I would have passed. (past→past)\n  Mixed: If I had studied, I would be a doctor now. (past→present)",
@@ -553,10 +553,10 @@ export const nominalizationB2: DailyLesson = {
   },
   category: 'Academic English',
   formulas: [
-    { label: 'Verb → Noun', structure: 'Verb → Noun (-tion, -ment, -ence)\nInvest → Investment, Decide → Decision', color: 'green' },
-    { label: 'Adjective → Noun', structure: 'Adj → Noun (-ity, -ness, -ence)\nAccurate → Accuracy, Happy → Happiness', color: 'blue' },
-    { label: 'The + Noun + of', structure: 'The + (noun) + of + noun\nThe development of technology', color: 'red' },
-    { label: 'The fact that', structure: 'The fact that + clause\nThe fact that he passed surprised me.', color: 'purple' },
+    { label: 'Verb → Noun', structure: 'Verb → Noun (-tion, -ment, -ence)\nInvest → Investment, Decide → Decision', explanation: "Fe'lni otga aylantirish (-tion, -ment, -ence).", whenToUse: "Akademik, rasmiy uslubda.", example: "develop -> the development of", color: 'green' },
+    { label: 'Adjective → Noun', structure: 'Adj → Noun (-ity, -ness, -ence)\nAccurate → Accuracy, Happy → Happiness', explanation: "Sifatni otga aylantirish (-ity, -ness).", whenToUse: "Mavhum tushunchani ifodalaganda.", example: "able -> the ability", color: 'blue' },
+    { label: 'The + Noun + of', structure: 'The + (noun) + of + noun\nThe development of technology', explanation: "'the + ot + of + ot' nominalizatsiya qolipi.", whenToUse: "Jarayonni otli ibora bilan bildirganda.", example: "the introduction of new rules", color: 'red' },
+    { label: 'The fact that', structure: 'The fact that + clause\nThe fact that he passed surprised me.', explanation: "'The fact that + gap' — gapni ot vazifasida.", whenToUse: "Butun fikrni ega qilib olganda.", example: "The fact that he lied surprised us.", color: 'purple' },
   ],
   rules: [
     "1\uFE0F\u20E3 NOMINALIZATION NIMA?\n\nNominalization — verb yoki adjectiveni noun ga aylantirish. B2 va akademik ingliz tilida juda muhim.\n\nVerb → Noun:\n  discover → discovery\n  develop → development\n  decide → decision\n  invest → investment\n  fail → failure\n  succeed → success\n\nAdjective → Noun:\n  happy → happiness\n  accurate → accuracy\n  free → freedom\n  deep → depth\n  proud → pride\n  strong → strength\n\n\uD83D\uDD34 Nominalization matnni rasmiy va ob'ektiv qiladi.",
@@ -801,10 +801,10 @@ export const subjunctiveB2: DailyLesson = {
   },
   category: 'Advanced Grammar',
   formulas: [
-    { label: 'That + base verb', structure: 'Verb/Adj + that + S + (base verb)\nI suggest that he go now.', color: 'green' },
-    { label: 'It + be + adj + that', structure: 'It + be + adj + that + S + V\nIt is essential that she be present.', color: 'blue' },
-    { label: 'Were-subjunctive', structure: 'If + S + were... / Were + S...\nIf I were you, I would go.', color: 'red' },
-    { label: 'Fixed expressions', structure: 'God save the King! / Long live the Queen!', color: 'purple' },
+    { label: 'That + base verb', structure: 'Verb/Adj + that + S + (base verb)\nI suggest that he go now.', explanation: "Subjunctive: 'suggest that + ega + asl fe'l'.", whenToUse: "suggest, recommend, insist fe'llaridan keyin.", example: "I suggest that he be here.", color: 'green' },
+    { label: 'It + be + adj + that', structure: 'It + be + adj + that + S + V\nIt is essential that she be present.', explanation: "'It is essential that + ega + asl fe'l'.", whenToUse: "Zaruriyat/muhimlikni bildirganda.", example: "It is vital that everyone attend.", color: 'blue' },
+    { label: 'Were-subjunctive', structure: 'If + S + were... / Were + S...\nIf I were you, I would go.', explanation: "'If I were' — subjunktiv 'were' barcha shaxs uchun.", whenToUse: "Xayoliy shart yoki maslahatda.", example: "If I were you, I would go.", color: 'red' },
+    { label: 'Fixed expressions', structure: 'God save the King! / Long live the Queen!', explanation: "Turg'un subjunktiv iboralar.", whenToUse: "An'anaviy tilak/iboralarda.", example: "Long live the Queen!", color: 'purple' },
   ],
   rules: [
     "1\uFE0F\u20E3 SUBJUNCTIVE NIMA?\n\nSubjunctive — xohish, tavsiya, zarurat yoki xayoliy vaziyatlarni ifodalash uchun ishlatiladigan maxsus fe'l shakli. B2 darajasida asosan that + base verb va were-subjunctive ni o'rganamiz.\n\n\uD83D\uDCCC THAT + BASE VERB (subjunctive present):\n  I suggest that he GO now. (not goes!)\n  It is essential that she BE present. (not is!)\n\n\uD83D\uDCCC WERE-SUBJUNCTIVE (xayoliy vaziyatlar):\n  If I WERE you, I would accept.\n  If she WERE here, she would help.\n\n\uD83D\uDCCC FIXED EXPRESSIONS:\n  God save the King!\n  Long live the Queen!\n  Heaven forbid!\n  So be it.",
@@ -1046,9 +1046,9 @@ export const hedgingB2: DailyLesson = {
   },
   category: 'Academic Writing',
   formulas: [
-    { label: 'Modal Hedging', structure: 'may / might / could + V\nIt may rain later.', color: 'green' },
-    { label: 'Appear/Seem/Tend', structure: 'S + appear/seem/tend + to V\nShe seems to know the answer.', color: 'blue' },
-    { label: 'Adverb Hedging', structure: 'possibly / probably / arguably + V\nThis is arguably the best option.', color: 'red' },
+    { label: 'Modal Hedging', structure: 'may / might / could + V\nIt may rain later.', explanation: "Modal fe'llar bilan ehtiyotkor til.", whenToUse: "Qat'iy bo'lmagan da'vo bildirganda.", example: "This may well be true.", color: 'green' },
+    { label: 'Appear/Seem/Tend', structure: 'S + appear/seem/tend + to V\nShe seems to know the answer.', explanation: "'appear/seem/tend to' bilan yumshatish.", whenToUse: "Ehtiyotkor kuzatish bildirganda.", example: "It tends to rain here.", color: 'blue' },
+    { label: 'Adverb Hedging', structure: 'possibly / probably / arguably + V\nThis is arguably the best option.', explanation: "'possibly, probably, arguably' ravishlari.", whenToUse: "Ishonch darajasini yumshatganda.", example: "This is arguably the best.", color: 'red' },
   ],
   rules: [
     "1️⃣ HEDGING NIMA?\n\nHedging — fikrni qat'iy emas, ehtiyotkorlik bilan ifodalash. B2 darajasida ilmiy va akademik yozishda juda muhim. Hedging so'zlari: may, might, could, seem, appear, tend, suggest, indicate, possibly, probably, arguably.\n\n📌 NEGA HEDGING KERAK?\n  • Academic writing: qat'iy da'volardan qochish\n  • Politeness: muloyimlik bilan fikr bildirish\n  • Uncertainty: noaniqlikni ifodalash\n\n📌 HEDGING = 'it is definitely true' EMAS, balki 'it seems to be true' yoki 'it might be true'",
@@ -1282,9 +1282,9 @@ export const complexPrepositionsB2: DailyLesson = {
   },
   category: 'Advanced Grammar',
   formulas: [
-    { label: 'Contrast / Concession', structure: 'in spite of / despite + noun/gerund\nIn spite of the rain, we went out.', color: 'green' },
-    { label: 'Method / Means', structure: 'by means of + noun/gerund\nWe solved it by means of analysis.', color: 'blue' },
-    { label: 'Reference / Topic', structure: 'in terms of / with regard to + noun\nIn terms of cost, it is cheap.', color: 'red' },
+    { label: 'Contrast / Concession', structure: 'in spite of / despite + noun/gerund\nIn spite of the rain, we went out.', explanation: "'in spite of / despite + ot/gerund'.", whenToUse: "Ziddiyatni ot bilan bildirganda.", example: "Despite the rain, we went out.", color: 'green' },
+    { label: 'Method / Means', structure: 'by means of + noun/gerund\nWe solved it by means of analysis.', explanation: "'by means of + ot' — usul.", whenToUse: "Qanday usulda bajarilganini aytganda.", example: "by means of technology", color: 'blue' },
+    { label: 'Reference / Topic', structure: 'in terms of / with regard to + noun\nIn terms of cost, it is cheap.', explanation: "'in terms of / with regard to + ot'.", whenToUse: "Mavzuga murojaat qilganda.", example: "with regard to the budget", color: 'red' },
   ],
   rules: [
     "1️⃣ COMPLEX PREPOSITIONS NIMA?\n\nComplex prepositions (murakkab predloglar) — ikki yoki undan ortiq so'zdan tashkil topgan predloglar. B2 darajasida rasmiy va akademik matnlarda ko'p ishlatiladi.\n\n📌 Eng muhim complex prepositions:\n  • in spite of / despite = qaramay\n  • by means of = yordamida, orqali\n  • in terms of = nuqtai nazaridan\n  • with regard to / regarding = ga nisbatan, haqida\n  • on behalf of = nomidan\n  • in the event of = vaziyatda, holda\n  • due to / owing to = sababli\n  • in addition to = qo'shimcha ravishda\n  • in case of = agar... bo'lsa",
@@ -1517,9 +1517,9 @@ export const cohesionB2: DailyLesson = {
   },
   category: 'Academic Writing',
   formulas: [
-    { label: 'Reference', structure: 'Pronouns / determiners replacing nouns\nShe → the woman. This → the idea.', color: 'green' },
-    { label: 'Substitution & Ellipsis', structure: 'One/ones/do/so instead of repetition\nI like the red one. She does too.', color: 'blue' },
-    { label: 'Lexical Chains', structure: 'Related words across a text\nDoctor → hospital → patient → medicine', color: 'red' },
+    { label: 'Reference', structure: 'Pronouns / determiners replacing nouns\nShe → the woman. This → the idea.', explanation: "Olmosh/aniqlovchilar oldingi so'zga ishora.", whenToUse: "Takrorlamaslik uchun 'this/that/it' bilan.", example: "This shows its importance.", color: 'green' },
+    { label: 'Substitution & Ellipsis', structure: 'One/ones/do/so instead of repetition\nI like the red one. She does too.', explanation: "'one/do/so' yoki so'z tushirish.", whenToUse: "Takrorni oldini olganda.", example: "I think so.", color: 'blue' },
+    { label: 'Lexical Chains', structure: 'Related words across a text\nDoctor → hospital → patient → medicine', explanation: "Matn bo'ylab bog'liq so'zlar zanjiri.", whenToUse: "Mavzuni izchil rivojlantirganda.", example: "car ... vehicle ... engine", color: 'red' },
   ],
   rules: [
     "1️⃣ COHESION NIMA?\n\nCohesion — matnning turli qismlari o'rtasidagi bog'liqlik. B2 darajasida matnni silliq va tushunarli qilish uchun cohesion vositalarini o'rganamiz.\n\n📌 Cohesion vs Coherence:\n  Cohesion = grammatik va leksik bog'liqlik (sirt)\n  Coherence = mantiqiy bog'liqlik (ichki ma'no)\n\n📌 5 types of cohesion (Halliday & Hasan):\n  1. Reference (ishora)\n  2. Substitution (o'zgartirish)\n  3. Ellipsis (tushirib qoldirish)\n  4. Conjunction (bog'lovchi)\n  5. Lexical cohesion (leksik bog'liqlik)",
@@ -1754,9 +1754,9 @@ export const registerB2: DailyLesson = {
   },
   category: 'Academic Writing',
   formulas: [
-    { label: 'Formal vs Informal', structure: 'Formal: academic vocabulary, no contractions\nInformal: phrasal verbs, contractions', color: 'green' },
-    { label: 'Colloquial vs Academic', structure: 'Colloquial: gonna, wanna, kinda\nAcademic: going to, want to, kind of', color: 'blue' },
-    { label: 'Latinate vs Phrasal', structure: 'Latinate: investigate, tolerate, postpone\nPhrasal: look into, put up with, put off', color: 'red' },
+    { label: 'Formal vs Informal', structure: 'Formal: academic vocabulary, no contractions\nInformal: phrasal verbs, contractions', explanation: "Rasmiy va norasmiy uslub farqi.", whenToUse: "Vaziyatga mos uslub tanlaganda.", example: "obtain (formal) vs get (informal)", color: 'green' },
+    { label: 'Colloquial vs Academic', structure: 'Colloquial: gonna, wanna, kinda\nAcademic: going to, want to, kind of', explanation: "So'zlashuv va akademik til.", whenToUse: "Yozma akademik matnda.", example: "children (not kids)", color: 'blue' },
+    { label: 'Latinate vs Phrasal', structure: 'Latinate: investigate, tolerate, postpone\nPhrasal: look into, put up with, put off', explanation: "Lotin ildizli fe'l vs phrasal verb.", whenToUse: "Rasmiy matnda lotin fe'lni afzal ko'rganda.", example: "investigate (not look into)", color: 'red' },
   ],
   rules: [
     "1️⃣ REGISTER NIMA?\n\nRegister — tilning turli vaziyatlarga moslashishi. B2 darajasida formal va informal uslublarni farqlash va to'g'ri qo'llash muhim.\n\n📌 Register turlari:\n  • Formal (rasmiy): akademik yozuv, biznes maktublar, rasmiy nutqlar\n  • Informal (norasmiy): do'stlar bilan suhbat, SMS, ijtimoiy tarmoqlar\n  • Neutral (neytral): har ikki vaziyatda ham ishlatiladi\n\n📌 Registerni belgilovchi omillar:\n  • Audience (kimga) → formal = kattalar/rasmiy, informal = do'stlar\n  • Purpose (nima uchun) → formal = report, essay; informal = chat, email\n  • Context (qayerda) → formal = conference, exam; informal = party, home",

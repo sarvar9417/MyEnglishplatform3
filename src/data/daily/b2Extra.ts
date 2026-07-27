@@ -921,22 +921,34 @@ export const cleftSentencesB2: DailyLesson = {
     {
       "color": "blue",
       "label": "It is/was...that/who",
-      "structure": "It is/was + S/O + that/who + V\nIt was John who won the prize."
+      "structure": "It is/was + S/O + that/who + V\nIt was John who won the prize.",
+      "explanation": "Cleft: 'It is/was + qism + that/who' — muhim qismni ajratadi.",
+      "whenToUse": "Gapning bir qismini kuchli ta'kidlaganda.",
+      "example": "It was John who won."
     },
     {
       "color": "green",
       "label": "What...is/was",
-      "structure": "What + S + V + is/was + (that) + ...\nWhat I need is a good rest."
+      "structure": "What + S + V + is/was + (that) + ...\nWhat I need is a good rest.",
+      "explanation": "'What + ... + is/was' — muhim fikrni ajratish.",
+      "whenToUse": "Nimani ta'kidlamoqchi ekaningizni ochganda.",
+      "example": "What I need is more time."
     },
     {
       "color": "orange",
       "label": "All...is/was",
-      "structure": "All + (that) + S + V + is/was + ...\nAll I want is your happiness."
+      "structure": "All + (that) + S + V + is/was + ...\nAll I want is your happiness.",
+      "explanation": "'All + ... + is/was' — 'faqat' ma'nosida ajratish.",
+      "whenToUse": "Yagona narsani ta'kidlaganda.",
+      "example": "All I want is peace."
     },
     {
       "color": "violet",
       "label": "The thing / The reason / The person",
-      "structure": "The thing that + V + is/was + ...\nThe reason why I left was the noise."
+      "structure": "The thing that + V + is/was + ...\nThe reason why I left was the noise.",
+      "explanation": "'The thing/reason that... is' — ajratuvchi qolip.",
+      "whenToUse": "Aniq jihatni (sabab/narsa/shaxs) ta'kidlaganda.",
+      "example": "The reason why I came is to help."
     }
   ],
   "rules": [
@@ -1799,22 +1811,34 @@ export const advancedPassiveB2: DailyLesson = {
     {
       "color": "blue",
       "label": "Passive Infinitive",
-      "structure": "S + is/was + believed/reported/said + to + V₁ / have + V₃\nHe is believed to be wealthy. / She is said to have left."
+      "structure": "S + is/was + believed/reported/said + to + V₁ / have + V₃\nHe is believed to be wealthy. / She is said to have left.",
+      "explanation": "'is said/believed to + V' — passiv reporting.",
+      "whenToUse": "Manba noaniq da'voni rasmiy bildirganda.",
+      "example": "He is believed to be wealthy."
     },
     {
       "color": "green",
       "label": "Passive Gerund",
-      "structure": "S + V + being + V₃\nI dislike being told what to do.\nShe avoided being seen."
+      "structure": "S + V + being + V₃\nI dislike being told what to do.\nShe avoided being seen.",
+      "explanation": "'being + V3' — passiv gerund.",
+      "whenToUse": "Passiv harakat gerund vazifasida bo'lganda.",
+      "example": "I dislike being told what to do."
     },
     {
       "color": "orange",
       "label": "Causative (have/get)",
-      "structure": "S + have/get + O + V₃\nI had my car repaired.\nShe got her hair cut."
+      "structure": "S + have/get + O + V₃\nI had my car repaired.\nShe got her hair cut.",
+      "explanation": "'have/get + O + V3' — ishni boshqaga qildirish.",
+      "whenToUse": "Xizmatdan foydalanganda.",
+      "example": "I had my car repaired."
     },
     {
       "color": "violet",
       "label": "Reporting Verbs Passive",
-      "structure": "It + is/was + said/believed/reported + that...\nS + is/was + said/believed + to...\nIt is said that he is rich. / He is said to be rich."
+      "structure": "It + is/was + said/believed/reported + that...\nS + is/was + said/believed + to...\nIt is said that he is rich. / He is said to be rich.",
+      "explanation": "'It is said/believed that...' — shaxssiz passiv.",
+      "whenToUse": "Umumiy fikrni manbasiz bildirganda.",
+      "example": "It is said that time heals."
     }
   ],
   "rules": [
@@ -2688,22 +2712,34 @@ export const academicVocabularyB2: DailyLesson = {
     {
       "color": "blue",
       "label": "Formal vs Informal",
-      "structure": "Informal: get / Formal: obtain\nInformal: show / Formal: demonstrate\nInformal: use / Formal: utilize"
+      "structure": "Informal: get / Formal: obtain\nInformal: show / Formal: demonstrate\nInformal: use / Formal: utilize",
+      "explanation": "Rasmiy va norasmiy so'z juftlari.",
+      "whenToUse": "Akademik yozuvda rasmiy so'zni tanlaganda.",
+      "example": "obtain (not get)"
     },
     {
       "color": "green",
       "label": "Collocations",
-      "structure": "reach + a conclusion\nconduct + research\nplay + a role\nmake + an impact"
+      "structure": "reach + a conclusion\nconduct + research\nplay + a role\nmake + an impact",
+      "explanation": "Akademik kollokatsiyalar.",
+      "whenToUse": "Rasmiy matnda tabiiy birikmalar uchun.",
+      "example": "conduct research, draw a conclusion"
     },
     {
       "color": "orange",
       "label": "Sentence Patterns",
-      "structure": "It is + adj + that...\nThere is + noun + in...\nThis + noun + suggests that..."
+      "structure": "It is + adj + that...\nThere is + noun + in...\nThis + noun + suggests that...",
+      "explanation": "Akademik gap qoliplari.",
+      "whenToUse": "Rasmiy fikrni tuzilishli bildirganda.",
+      "example": "It is clear that..."
     },
     {
       "color": "violet",
       "label": "Register Shift",
-      "structure": "Speaking: loads of / Writing: a significant number of\nSpeaking: get better / Writing: improve"
+      "structure": "Speaking: loads of / Writing: a significant number of\nSpeaking: get better / Writing: improve",
+      "explanation": "So'zlashuvdan yozma uslubga o'tish.",
+      "whenToUse": "Nutqni akademik yozuvga moslaganda.",
+      "example": "loads of -> a significant number of"
     }
   ],
   "rules": [
