@@ -18,11 +18,11 @@
 - [x] **QC-7 Grammar** ✅ 40 topic, 0 muammo (title/mashq/misol/formula to'liq); daraja balansli.
 
 ## P3 — Funksiyalar
-- [ ] **QC-8 weekly_lessons runtime tekshiruv** (men qurdim, jonli sinovdan o'tmagan).
-- [ ] **QC-9 Tandem** (duel/elo/friendship): tekshirilmagan qismlar.
-- [ ] **QC-10 30-Day Challenge**.
+- [x] **QC-8 weekly_lessons** ✅ 11 test yozildi (guest-rejection, unit-grouping, completed_at, dublikat-toast, parseBlocks) — service mantiqi tasdiqlandi.
+- [x] **QC-9 Tandem** ✅ 96 feature test o'tadi (tandem/duel/elo/battle/placement) — mustahkam.
+- [~] **QC-10 30-Day Challenge** — struktura OK, lekin faqat 2/30 kun kontenti (day1/day2). Kontent bo'shlig'i (28 kun).
 - [~] **QC-11 Films** — 419KB JSON, 1 film. Struktura OK; hajm katta (performance kelajakda).
-- [ ] **QC-12 Placement Test** (adaptiv mantiq).
+- [x] **QC-12 Placement Test** ✅ placementService + placement testlari o'tadi.
 - [x] **QC-13 Idioms/PhrasalVerbs/Confusable** ✅ (+1 BUG FIX): **Idioms 8 dublikat ID o'chirildi (100→92)**; PhrasalVerbs 110 0-muammo; Confusable 10 0-muammo.
 - [ ] **QC-14 Dashboard/Profile/Achievements/Skills**.
 
