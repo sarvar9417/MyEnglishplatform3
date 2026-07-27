@@ -28,7 +28,6 @@ export interface Idiom {
 }
 
 export const IDIOMS: Idiom[] = [
-  // ─── TIME (10) ────────────────────────────────────────────────────────────
   {
     id: 'once-in-a-blue-moon',
     idiom: 'once in a blue moon',
@@ -169,7 +168,6 @@ export const IDIOMS: Idiom[] = [
     level: 'B2',
     category: 'time',
   },
-  // ─── WORK (10) ────────────────────────────────────────────────────────────
   {
     id: 'get-down-to-business',
     idiom: 'get down to business',
@@ -310,7 +308,6 @@ export const IDIOMS: Idiom[] = [
     level: 'B1+',
     category: 'work',
   },
-  // ─── FOOD (10) ────────────────────────────────────────────────────────────
   {
     id: 'piece-of-cake',
     idiom: 'piece of cake',
@@ -451,7 +448,6 @@ export const IDIOMS: Idiom[] = [
     level: 'B2',
     category: 'food',
   },
-  // ─── ANIMALS (10) ─────────────────────────────────────────────────────────
   {
     id: 'let-the-cat-out-of-the-bag',
     idiom: 'let the cat out of the bag',
@@ -592,7 +588,6 @@ export const IDIOMS: Idiom[] = [
     level: 'B2',
     category: 'animals',
   },
-  // ─── BODY (10) ────────────────────────────────────────────────────────────
   {
     id: 'cost-an-arm-and-a-leg',
     idiom: 'cost an arm and a leg',
@@ -733,8 +728,6 @@ export const IDIOMS: Idiom[] = [
     level: 'B2',
     category: 'body',
   },
-
-  // ── Money ───────────────────────────────────────────────────────────────
   {
     id: 'break-the-bank',
     idiom: 'break the bank',
@@ -806,20 +799,6 @@ export const IDIOMS: Idiom[] = [
     category: 'money',
   },
   {
-    id: 'cost-an-arm-and-a-leg',
-    idiom: 'cost an arm and a leg',
-    literalMeaning: 'qo\'l va oyoq turmoq',
-    actualMeaning: 'to be very expensive',
-    translation: 'juda qimmat turmoq',
-    examples: [
-      'This phone cost me an arm and a leg.',
-      'A college education these days costs an arm and a leg.',
-    ],
-    origin: 'From the idea of paying an extreme, almost physical price.',
-    level: 'B1+',
-    category: 'money',
-  },
-  {
     id: 'bring-home-the-bacon',
     idiom: 'bring home the bacon',
     literalMeaning: 'pishloqni uyga olib kelmoq',
@@ -831,20 +810,6 @@ export const IDIOMS: Idiom[] = [
     ],
     origin: 'From 12th-century English fairs, where a greased pig was awarded as a prize.',
     level: 'B2',
-    category: 'money',
-  },
-  {
-    id: 'bread-and-butter',
-    idiom: 'bread and butter',
-    literalMeaning: 'non va saryog\'',
-    actualMeaning: 'a person\'s main source of income',
-    translation: 'asosiy daromad manbai',
-    examples: [
-      'Teaching is my bread and butter.',
-      'These small jobs are our bread and butter for now.',
-    ],
-    origin: 'From bread and butter being a basic, everyday food.',
-    level: 'B1+',
     category: 'money',
   },
   {
@@ -875,8 +840,6 @@ export const IDIOMS: Idiom[] = [
     level: 'B2',
     category: 'money',
   },
-
-  // ── Color ────────────────────────────────────────────────────────────────
   {
     id: 'green-with-envy',
     idiom: 'green with envy',
@@ -948,20 +911,6 @@ export const IDIOMS: Idiom[] = [
     category: 'color',
   },
   {
-    id: 'once-in-a-blue-moon',
-    idiom: 'once in a blue moon',
-    literalMeaning: 'ko\'k oy ichida bir marta',
-    actualMeaning: 'very rarely',
-    translation: 'juda kamdan-kam',
-    examples: [
-      'I see my old friends once in a blue moon.',
-      'He visits us once in a blue moon.',
-    ],
-    origin: 'A "blue moon" is the rare second full moon in a calendar month.',
-    level: 'B1+',
-    category: 'color',
-  },
-  {
     id: 'tickled-pink',
     idiom: 'tickled pink',
     literalMeaning: 'pushti rangga bo\'yalmoq',
@@ -1017,8 +966,6 @@ export const IDIOMS: Idiom[] = [
     level: 'B1+',
     category: 'color',
   },
-
-  // ── Weather ──────────────────────────────────────────────────────────────
   {
     id: 'under-the-weather',
     idiom: 'under the weather',
@@ -1159,22 +1106,6 @@ export const IDIOMS: Idiom[] = [
     level: 'B1+',
     category: 'weather',
   },
-
-  // ── Communication ────────────────────────────────────────────────────────
-  {
-    id: 'speak-of-the-devil',
-    idiom: 'speak of the devil',
-    literalMeaning: 'shayton haqida gapirish',
-    actualMeaning: 'said when a person you\'re talking about appears',
-    translation: 'gaplashayotgan odam to\'satdan kelib qolsa',
-    examples: [
-      'Speak of the devil — there\'s John now!',
-      'Well, speak of the devil, we were just talking about you.',
-    ],
-    origin: 'From the superstition that speaking of the devil would summon him.',
-    level: 'B1+',
-    category: 'communication',
-  },
   {
     id: 'food-for-thought',
     idiom: 'food for thought',
@@ -1186,20 +1117,6 @@ export const IDIOMS: Idiom[] = [
       'Your suggestion is food for thought.',
     ],
     origin: 'From "thought" being compared to nourishment for the mind.',
-    level: 'B1+',
-    category: 'communication',
-  },
-  {
-    id: 'on-the-same-page',
-    idiom: 'on the same page',
-    literalMeaning: 'bir sahifada',
-    actualMeaning: 'in agreement or having the same understanding',
-    translation: 'bir fikrda, tushunish bir xil',
-    examples: [
-      'Let\'s make sure we\'re on the same page before we start.',
-      'Are we on the same page about the deadline?',
-    ],
-    origin: 'From reading the same page of a book as another person.',
     level: 'B1+',
     category: 'communication',
   },
@@ -1301,8 +1218,6 @@ export const IDIOMS: Idiom[] = [
     level: 'B1+',
     category: 'communication',
   },
-
-  // ── Action ───────────────────────────────────────────────────────────────
   {
     id: 'jump-on-bandwagon',
     idiom: 'jump on the bandwagon',
@@ -1315,20 +1230,6 @@ export const IDIOMS: Idiom[] = [
     ],
     origin: 'From 19th-century US politician Tippecanoe\'s bandwagon during his campaign.',
     level: 'B2',
-    category: 'action',
-  },
-  {
-    id: 'cut-corners',
-    idiom: 'cut corners',
-    literalMeaning: 'burchaklarni kesmoq',
-    actualMeaning: 'to do something poorly to save time or money',
-    translation: 'tez va sifatsiz qilmoq',
-    examples: [
-      'Don\'t cut corners when building a house.',
-      'He cut corners and the report was full of errors.',
-    ],
-    origin: 'From cutting across corners instead of going around them.',
-    level: 'B1+',
     category: 'action',
   },
   {
@@ -1356,34 +1257,6 @@ export const IDIOMS: Idiom[] = [
       'Be careful not to bite off more than you can chew.',
     ],
     origin: 'From the act of chewing too much food at once.',
-    level: 'B2',
-    category: 'action',
-  },
-  {
-    id: 'go-the-extra-mile',
-    idiom: 'go the extra mile',
-    literalMeaning: 'qo\'shimcha mil yurmoq',
-    actualMeaning: 'to do more than what is expected',
-    translation: 'kutilganidan ko\'proq qilmoq',
-    examples: [
-      'She always goes the extra mile for her clients.',
-      'Going the extra mile will get you noticed at work.',
-    ],
-    origin: 'From the Bible, Matthew 5:41 — walking two miles when asked for one.',
-    level: 'B1+',
-    category: 'action',
-  },
-  {
-    id: 'pull-your-weight',
-    idiom: 'pull your weight',
-    literalMeaning: 'vazningni tortmoq',
-    actualMeaning: 'to do your fair share of work',
-    translation: 'ulushingni qilmoq',
-    examples: [
-      'If everyone pulls their weight, we\'ll finish on time.',
-      'He doesn\'t pull his weight around here.',
-    ],
-    origin: 'From rowing, where each rower must pull their oar with equal force.',
     level: 'B2',
     category: 'action',
   },
