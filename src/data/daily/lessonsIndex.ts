@@ -37,8 +37,8 @@ export const LESSON_INDEX: LessonMeta[] = [
     "vocabulary": 10,
     "exercises": 5,
     "tests": 2,
-    "hasReading": false,
-    "hasWriting": false,
+    "hasReading": true,
+    "hasWriting": true,
     "hasListening": false,
     "hasSpeaking": true
   },
@@ -54,8 +54,8 @@ export const LESSON_INDEX: LessonMeta[] = [
     "vocabulary": 10,
     "exercises": 5,
     "tests": 2,
-    "hasReading": false,
-    "hasWriting": false,
+    "hasReading": true,
+    "hasWriting": true,
     "hasListening": false,
     "hasSpeaking": true
   },
@@ -71,8 +71,8 @@ export const LESSON_INDEX: LessonMeta[] = [
     "vocabulary": 10,
     "exercises": 5,
     "tests": 2,
-    "hasReading": false,
-    "hasWriting": false,
+    "hasReading": true,
+    "hasWriting": true,
     "hasListening": false,
     "hasSpeaking": true
   },
