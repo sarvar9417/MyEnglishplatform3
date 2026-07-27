@@ -1054,22 +1054,34 @@ export const phrasalVerbsB1: DailyLesson = {
     {
       color: "green",
       label: "Inseparable",
-      structure: "Verb + particle (together)\nI look after my sister."
+      structure: "Verb + particle (together)\nI look after my sister.",
+      explanation: "Ajralmaydigan phrasal verb — zarra fe'ldan keyin, to'ldiruvchi butun birikmadan keyin keladi.",
+      whenToUse: "look after, get over, run into kabi ajralmaydigan fe'llarda.",
+      example: "I look after my little sister."
     },
     {
       color: "blue",
       label: "Separable (noun)",
-      structure: "Verb + noun + particle\nI picked my friend up."
+      structure: "Verb + noun + particle\nI picked my friend up.",
+      explanation: "Ajraladigan phrasal verb — ot to'ldiruvchi zarradan oldin yoki keyin kela oladi.",
+      whenToUse: "Ot to'ldiruvchi bilan (ikkala joy ham to'g'ri).",
+      example: "I picked my friend up. / I picked up my friend."
     },
     {
       color: "red",
       label: "Separable (pronoun)",
-      structure: "Verb + pronoun + particle\nI picked him up."
+      structure: "Verb + pronoun + particle\nI picked him up.",
+      explanation: "Olmosh to'ldiruvchi bo'lsa, DOIM fe'l va zarra orasida keladi.",
+      whenToUse: "To'ldiruvchi olmosh (him/it/them) bo'lganda.",
+      example: "I picked him up. (not 'picked up him')"
     },
     {
       color: "orange",
       label: "Three-word phrasal verb",
-      structure: "Verb + particle1 + particle2\nI look forward to meeting you."
+      structure: "Verb + particle1 + particle2\nI look forward to meeting you.",
+      explanation: "Uch so'zli phrasal verb — ajralmaydi, to'ldiruvchi oxirida keladi.",
+      whenToUse: "look forward to, come up with, put up with kabi.",
+      example: "I look forward to meeting you."
     }
   ],
   rules: [
