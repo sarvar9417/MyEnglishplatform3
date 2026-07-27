@@ -37,6 +37,7 @@ export const futureFormsReview: DailyLesson = {
   },
   writing: {
     prompt: "Write about your plans and predictions for next weekend. Include one fixed arrangement, one plan or intention, and one prediction. Use 'will', 'going to', Present Continuous, and Present Simple for a timetable.",
+    modelAnswer: "I have some plans for next weekend. On Saturday, I am meeting my friends at six o'clock — it is already arranged. I am going to start a new book because I want to relax. I think it will be sunny, so we will probably go to the park. The match starts at eight on Sunday. Next weekend will be great!",
     wordLimit: 80,
     tips: [
       "Use 'going to' for decided plans: 'I am going to...'",
@@ -281,6 +282,7 @@ export const modalsObligation: DailyLesson = {
   },
   writing: {
     prompt: "Describe the rules at your school or workplace. Write what people must do, what they have to do, and what they should or shouldn't do. Mention at least one thing that is not necessary.",
+    modelAnswer: "There are several rules at my college. We must arrive before nine o'clock. We have to wear a uniform every day. Students mustn't use their phones during lessons. We should always be polite to our teachers. However, we don't have to attend the evening clubs — they are optional. I think the rules are fair.",
     wordLimit: 80,
     tips: [
       "Use 'must' / 'have to' for strong obligation",
@@ -496,6 +498,7 @@ export const modalsSpeculation: DailyLesson = {
   },
   writing: {
     prompt: "Imagine you see a stranger on the street or an unknown object in a room. Make three or four guesses about it: what it might be, what it must be, and what it can't be.",
+    modelAnswer: "I can see a man standing outside the shop. He must be waiting for someone, because he keeps looking at his watch. He might be a businessman, as he is wearing a suit. He could be lost, but I'm not sure. He can't be a tourist, because he isn't taking any photos. Maybe he is meeting a friend.",
     wordLimit: 70,
     tips: [
       "Use 'must be' when you are almost sure",
@@ -712,6 +715,7 @@ export const pastHabits: DailyLesson = {
   },
   writing: {
     prompt: "Write about your childhood. Describe habits and things that were true in the past but are different now. Use 'used to' and 'would' for repeated past actions.",
+    modelAnswer: "When I was a child, my life was very different. I used to live in a small village with my grandparents. Every summer, we would swim in the river and play outside all day. I used to be afraid of the dark, but now I am not. I didn't use to like vegetables, but now I love them. My grandmother would tell us stories every night.",
     wordLimit: 80,
     tips: [
       "Use 'used to' for past states and habits: 'I used to live in...'",
@@ -940,6 +944,7 @@ export const causatives: DailyLesson = {
   },
   writing: {
     prompt: "Write about services you arrange for yourself. Describe things you have done by other people — a haircut, a car repair, a delivery — using 'have / get something done'.",
+    modelAnswer: "There are many things I don't do myself. Every month, I have my hair cut at a salon. Last week, I had my old phone repaired instead of buying a new one. When my computer broke, I got it fixed by a specialist. We are having our house painted this summer. I also need to get my eyes tested soon.",
     wordLimit: 70,
     tips: [
       "Structure: have + object + past participle: 'I have my hair cut.'",
@@ -1170,6 +1175,7 @@ export const questionTags: DailyLesson = {
   },
   writing: {
     prompt: "Write a short dialogue in which you check information with a friend. Use at least four question tags to confirm what you think is true.",
+    modelAnswer: "'You're coming to the party tonight, aren't you?' 'Yes, I am. It starts at eight, doesn't it?' 'That's right. Aziz is coming too, isn't he?' 'I think so. He lives near you, doesn't he?' 'Yes, he does. We should bring a gift, shouldn't we?' 'Good idea. You have the address, don't you?'",
     wordLimit: 70,
     tips: [
       "Positive sentence -> negative tag: 'You're coming, aren't you?'",
@@ -1383,6 +1389,7 @@ export const bothEitherNeither: DailyLesson = {
   },
   writing: {
     prompt: "Compare two friends, two cities, or two films you know. Write about their similarities and differences using 'both', 'either', and 'neither'.",
+    modelAnswer: "Let me compare my two best friends, Aziz and Bek. Both of them are kind and hardworking. Both like football. Neither of them is lazy. When we make plans, either option they suggest is fun. Neither Aziz nor Bek likes horror films, but both enjoy comedies. I'm lucky, because both of my friends are honest.",
     wordLimit: 70,
     tips: [
       "'Both' + plural verb: 'Both cities are beautiful.'",
@@ -1611,6 +1618,7 @@ export const timeClauses: DailyLesson = {
   },
   writing: {
     prompt: "Describe your morning routine and your plans for tomorrow. Connect your actions using time clauses: 'when', 'while', 'as soon as', 'before', 'after', 'until', and 'by the time'.",
+    modelAnswer: "Every morning, as soon as I wake up, I drink a glass of water. While I have breakfast, I listen to the news. Before I leave home, I always check my bag. Tomorrow, when I finish my classes, I will go to the library. I will study until it closes. By the time I go to bed, I will have finished all my homework.",
     wordLimit: 85,
     tips: [
       "Use Present Simple after time words for the future: 'When I arrive, I will...'",
@@ -1821,6 +1829,7 @@ export const indirectQuestions: DailyLesson = {
   },
   writing: {
     prompt: "Imagine you are a polite tourist in a new city. Write four indirect questions to ask for directions, the time, prices, and a recommendation.",
+    modelAnswer: "Excuse me, could you tell me where the nearest metro station is? I was wondering if you could tell me what time the museum opens. Do you know how much a ticket to the old city costs? Finally, could you tell me whether there is a good restaurant near here? Thank you very much for your help.",
     wordLimit: 70,
     tips: [
       "Start with 'Could you tell me...', 'Do you know...', 'I wonder...'",
@@ -2019,6 +2028,7 @@ export const soNeitherAuxiliaries: DailyLesson = {
   },
   writing: {
     prompt: "Write a conversation in which you and a friend discover things you have in common, and a few differences. Agree and disagree using 'So do I', 'Neither do I', and similar structures.",
+    modelAnswer: "My friend and I have a lot in common. 'I love travelling,' she said. 'So do I!' I replied. 'I've never been abroad, though.' 'Neither have I.' 'I can't speak French.' 'Neither can I.' But we have differences too. 'I like coffee.' 'Oh, I don't.' Still, we agree about most things, and that is why we are good friends.",
     wordLimit: 70,
     tips: [
       "Agree with positive: 'So do I', 'So am I', 'So can I'",
@@ -2250,6 +2260,7 @@ export const wishesRegrets: DailyLesson = {
   },
   writing: {
     prompt: "Write about things you wish were different in your life now and things you regret about the past. Use 'I wish', 'If only', and 'I regret'.",
+    modelAnswer: "There are several things I wish were different. I wish I had more free time, because I am always busy. If only I lived closer to my university! I also wish I could speak English perfectly. I regret not starting to learn it earlier. I wish I hadn't wasted so much time on my phone last year. Still, I learn from my mistakes.",
     wordLimit: 80,
     tips: [
       "Wish about now: 'I wish' + past simple: 'I wish I had more time.'",

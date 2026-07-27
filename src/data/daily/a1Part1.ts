@@ -235,6 +235,7 @@ export const alphabetAndGreetings: DailyLesson = {
   },
   writing: {
     prompt: "Introduce yourself in English. Write your name, where you are from, what you are, and say hello and goodbye. Use \"Hello\", \"My name is\", \"I am from\", \"Nice to meet you\".",
+    modelAnswer: "Hello! My name is Aziz. I am from Uzbekistan. I am a student. I am seventeen years old. Nice to meet you! Goodbye. See you later!",
     wordLimit: 50,
     tips: [
       'Start with "Hello! My name is ..."',
@@ -491,6 +492,7 @@ export const numbers: DailyLesson = {
   },
   writing: {
     prompt: "Write about things in your bag or room. How many books do you have? How many pens? How many pencils? Use numbers and \"There is / There are\" or \"I have\".",
+    modelAnswer: "There are many things in my bag. I have three books and five pens. There are two pencils and one ruler. I have one phone and four notebooks. There is one bottle of water. In total, there are about sixteen things!",
     wordLimit: 50,
     tips: [
       "Use \"I have [number] [things]\" — e.g. \"I have three books\"",
@@ -727,6 +729,7 @@ export const colorsAndShapes: DailyLesson = {
   },
   writing: {
     prompt: "Describe your favorite things and their colors. What is your favorite color? What things do you have in that color? Describe your room or clothes using color words.",
+    modelAnswer: "My favourite colour is blue. I have a blue bag and a blue jacket. My room has white walls and a brown desk. My phone is black. I have a red pen and a green notebook. My favourite shape is the circle. I like blue because it is calm.",
     wordLimit: 50,
     tips: [
       "Use color words: blue, red, yellow, green, black, white",
@@ -976,6 +979,7 @@ export const family: DailyLesson = {
   },
   writing: {
     prompt: "Write about your family. Who is in your family? What are their names? How old are they? What do they do? Write at least five sentences about different family members.",
+    modelAnswer: "There are five people in my family. My father's name is Bobur. He is forty-five and he is a doctor. My mother's name is Nigora. She is forty and she is a teacher. I have one brother and one sister. My brother is twelve and my sister is nine. I love my family.",
     wordLimit: 60,
     tips: [
       "Use family words: mother, father, brother, sister, grandmother",
@@ -1217,6 +1221,7 @@ export const daysAndMonths: DailyLesson = {
   },
   writing: {
     prompt: "Write about your favorite day of the week and your favorite month. What do you do on that day? Why do you like it? When is your birthday? What is your favorite season?",
+    modelAnswer: "My favourite day is Saturday. On Saturday, I meet my friends and play football. I like it because I do not go to school. My favourite month is June because the weather is warm. My birthday is in June. My favourite season is summer.",
     wordLimit: 60,
     tips: [
       "Use day names: Monday, Tuesday, etc.",
@@ -1451,6 +1456,7 @@ export const timeAndRoutines: DailyLesson = {
   },
   writing: {
     prompt: "Write about what you do every day from morning to evening. What time do you wake up? When do you eat breakfast? What do you do during the day? Write at least six sentences.",
+    modelAnswer: "I wake up at seven o'clock. I brush my teeth and wash my face. I eat breakfast at half past seven. Then I go to school at eight. In the afternoon, I study and do my homework. In the evening, I have dinner with my family. I watch TV and go to bed at ten.",
     wordLimit: 80,
     tips: [
       "Use time words: in the morning, at 7 o'clock, in the evening",
@@ -1694,6 +1700,7 @@ export const foodAndDrinks: DailyLesson = {
   },
   writing: {
     prompt: "Write about your favorite foods and drinks. What do you like to eat for breakfast, lunch, and dinner? What fruits do you like? What do you drink every day? What foods do you not like?",
+    modelAnswer: "For breakfast, I like bread, eggs, and tea. For lunch, I usually eat rice or soup. For dinner, my family eats meat and vegetables. My favourite fruits are apples and grapes. I drink water and green tea every day. I do not like fast food. I love my mother's plov!",
     wordLimit: 60,
     tips: [
       "Use food words: bread, eggs, rice, meat, soup, fruit",
@@ -1936,6 +1943,7 @@ export const animals: DailyLesson = {
   },
   writing: {
     prompt: "Write about animals you like. Do you have a pet? What animals do you like? What animals live on a farm? What color are they? Why do you like them?",
+    modelAnswer: "I like animals very much. I have a pet cat. Her name is Luna and she is white and grey. On a farm, there are cows, horses, sheep, and chickens. The cow is big and brown. My favourite wild animal is the lion because it is strong. I like animals because they are friendly.",
     wordLimit: 60,
     tips: [
       "Use animal words: cat, dog, horse, cow, sheep, bird, fish",
@@ -2176,6 +2184,7 @@ export const bodyParts: DailyLesson = {
   },
   writing: {
     prompt: "Describe yourself. What color are your eyes and hair? How tall are you? Describe your face and body using body part words. Write at least five sentences.",
+    modelAnswer: "I am not very tall. I have short black hair and brown eyes. My face is round and I have a small nose. I have two ears and one mouth. I have two hands and ten fingers. My legs are strong because I play football. I think I look like my father.",
     wordLimit: 60,
     tips: [
       "Use body words: eyes, ears, nose, mouth, hair, hands, feet",
@@ -2430,6 +2439,7 @@ export const clothes: DailyLesson = {
   },
   writing: {
     prompt: "Describe what you wear to school or work. What clothes do you wear? What colors are they? What do you wear in summer? What do you wear in winter? Write at least five sentences.",
+    modelAnswer: "I wear a white shirt and black trousers to school. My shoes are brown. In summer, I wear a T-shirt and shorts because it is hot. In winter, I wear a warm coat, a hat, and gloves because it is cold. My favourite colour for clothes is blue. I always wear comfortable clothes.",
     wordLimit: 60,
     tips: [
       "Use clothing words: shirt, pants, dress, shoes, coat, hat, scarf",

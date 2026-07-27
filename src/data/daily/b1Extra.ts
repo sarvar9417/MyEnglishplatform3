@@ -40,6 +40,7 @@ export const relativeClausesB1: DailyLesson = {
   },
   writing: {
     prompt: "Describe a person, a place, and an object that are important to you. Use defining relative clauses with 'who', 'which', 'that', 'where', and 'when' to give more details about each one. Write at least 7 sentences.",
+    modelAnswer: "The person who has influenced me most is my grandfather, who was a teacher. He is the man that taught me to read. My favourite place is the village where I grew up, which is near the mountains. There is an old house where we spent every summer. The object that means the most to me is a watch which my grandfather gave me. I will always remember the day when he handed it to me.",
     wordLimit: 100,
     tips: [
       "Use 'who' for people: 'The person who inspires me most is...'",

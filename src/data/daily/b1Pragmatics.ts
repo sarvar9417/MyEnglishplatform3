@@ -154,6 +154,7 @@ export const pragmaticsFormalInformal: DailyLesson = {
   ],
   writing: {
     prompt: "Write a formal email to your manager requesting a day off next week. Use formal register, polite requests, and proper email opening and closing.",
+    modelAnswer: "Dear Mr Karimov,\n\nI am writing to request a day off next Wednesday, the 15th of May. I have an important personal appointment that I am unable to reschedule. I have completed all my current tasks, and I would be happy to prepare anything in advance. I would be very grateful if you could approve my request. Thank you for your understanding.\n\nKind regards,\nAziz Rahimov",
     wordLimit: 80,
     tips: [
       "Start with 'Dear Mr/Mrs + surname,'",

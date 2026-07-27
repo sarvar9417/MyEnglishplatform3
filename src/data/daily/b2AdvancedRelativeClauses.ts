@@ -45,6 +45,7 @@ export const advancedRelativeClausesB2: DailyLesson = {
   },
   writing: {
     prompt: "Write a formal paragraph (100-120 words) about a person who has influenced your life. Use at least two reduced relative clauses (e.g., 'The person inspiring me...'), one preposition + relative pronoun structure (e.g., 'the person to whom I look up'), and one sentence with 'which' referring to a whole clause.",
+    modelAnswer: "The person who has shaped my character most is my grandmother, a woman admired by everyone in our village. Raised in difficult times, she learned the value of patience. She was someone to whom I could always turn for advice. The lessons taught by her, which I still remember today, have guided every important decision in my life. She encouraged me to study hard, which completely changed my future. She remains the person on whom my values are built.",
     wordLimit: 120,
     tips: [
       "Use reduced relatives: 'The person inspiring me most is...'",

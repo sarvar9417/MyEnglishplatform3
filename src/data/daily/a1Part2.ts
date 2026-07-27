@@ -178,6 +178,7 @@ export const demonstratives: DailyLesson = {
   },
   writing: {
     prompt: "Look around the room where you are. Write about things that are near you and things that are far from you. Use \"this\", \"that\", \"these\", and \"those\" in your sentences.",
+    modelAnswer: "This is my pen and this is my notebook. These are my books on the desk. That is the window and that is the door over there. Those are my classmates near the wall. This chair is comfortable, but that chair is old. I like these things around me.",
     wordLimit: 50,
     tips: [
       "Use \"this\" and \"these\" for things near you",
@@ -379,6 +380,7 @@ export const prepositionsOfPlace: DailyLesson = {
   },
   writing: {
     prompt: "Describe your room or your house. Where are things? Use prepositions like \"in\", \"on\", \"under\", \"next to\", \"behind\", and \"in front of\". Write at least six sentences.",
+    modelAnswer: "My room is small but nice. My bed is next to the window. There is a desk in front of the bed. My books are on the desk. My bag is under the chair. The lamp is on the table. My clothes are in the wardrobe, behind the door. Everything has its place.",
     wordLimit: 60,
     tips: [
       "Use \"in\" for inside things: \"The book is in my bag\"",
@@ -579,6 +581,7 @@ export const basicAdjectives: DailyLesson = {
   },
   writing: {
     prompt: "Describe a person you know well, like your mother, father, or friend. What do they look like? What is their personality? Use adjectives like \"tall\", \"young\", \"happy\", \"kind\", and \"beautiful\".",
+    modelAnswer: "My mother is a wonderful person. She is not very tall, and she has long black hair. She is forty years old, but she looks young. She is very kind and friendly. She is always happy and patient. She is beautiful and clever. I love my mother because she is caring.",
     wordLimit: 60,
     tips: [
       "Use size adjectives: tall, short, big, small",
@@ -756,6 +759,7 @@ export const thereIsAre: DailyLesson = {
   },
   writing: {
     prompt: "Describe your favourite place, like a park, a cafe, or a classroom. What is there? What is not there? Use \"There is\", \"There are\", \"There is no\", and \"There are no\".",
+    modelAnswer: "My favourite place is the park near my house. There is a big tree in the middle. There are many benches and flowers. There is a small lake with ducks. There are no cars, so it is quiet. There is no noise. I love this park because there is fresh air and friendly people.",
     wordLimit: 60,
     tips: [
       'Use "There is" for one thing: "There is a fountain"',
@@ -934,6 +938,7 @@ export const canCant: DailyLesson = {
   },
   writing: {
     prompt: "Write about things you can do and things you cannot do. What are your skills? What can your family members do? Use \"can\" and \"can't\" (cannot) in your sentences.",
+    modelAnswer: "I can speak Uzbek and English, but I can't speak Russian well. I can swim and ride a bike. I can play football, but I can't play the guitar. My father can drive a car, but he can't cook. My sister can dance very well. I can't sing, but I can draw nice pictures.",
     wordLimit: 60,
     tips: [
       "Use \"can\" for abilities: \"I can swim\"",
@@ -1111,6 +1116,7 @@ export const haveGot: DailyLesson = {
   },
   writing: {
     prompt: "Write about things you have and things you do not have. What possessions do you have? What do your family members have? Use \"have got\", \"has got\", \"haven't got\", and \"hasn't got\".",
+    modelAnswer: "I have got a bicycle and a phone. I have got many books, but I haven't got a car. My father has got a computer and a nice watch. My sister has got a doll, but she hasn't got a bike. We have got a big garden, but we haven't got a pool. I am happy with what I have got.",
     wordLimit: 60,
     tips: [
       "Use \"have got\" for I/you/we/they: \"I have got a phone\"",
@@ -1466,6 +1472,7 @@ export const questionWords: DailyLesson = {
   },
   writing: {
     prompt: "Write six questions you want to ask a new friend. Use different question words: what, where, when, who, why, how. Then write short answers for each question.",
+    modelAnswer: "What is your name? — My name is Sardor. Where do you live? — I live in Tashkent. When is your birthday? — It is in May. Who is your best friend? — His name is Jasur. Why do you learn English? — Because I want to travel. How do you come to school? — By bus.",
     wordLimit: 60,
     tips: [
       "Use \"What\" for things: \"What is your favorite food?\"",
@@ -1645,6 +1652,7 @@ export const conjunctions: DailyLesson = {
   },
   writing: {
     prompt: "Write about your preferences and choices. Use conjunctions \"and\", \"but\", \"or\", \"so\", and \"because\" to connect your ideas. Write at least six compound sentences.",
+    modelAnswer: "I like tea and coffee, but I prefer tea. I want to travel, so I am learning English. I can play football or basketball. I study hard because I want a good job. My brother likes films, but I like books. I am tired, so I will sleep early. Do you want tea or juice?",
     wordLimit: 60,
     tips: [
       "Use \"and\" to add information: \"I like tea and coffee\"",
@@ -1811,6 +1819,7 @@ export const a1Review: DailyLesson = {
   },
   writing: {
     prompt: "Write a paragraph about yourself and your life. Include: your name and where you are from, your family, things you can do, what you have, your daily routine, and why you like your city or town. Use everything you learned!",
+    modelAnswer: "Hello! My name is Aziz and I am from Namangan. There are five people in my family. I can speak two languages and I can play football. I have got a bike and many books. Every day, I wake up at seven, go to school, and study hard. In the evening, I help my family. I like my city because it is quiet and my friends are here.",
     wordLimit: 100,
     tips: [
       "Introduce yourself: name, age, city",

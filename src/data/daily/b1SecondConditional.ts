@@ -43,6 +43,7 @@ export const secondConditionalB1: DailyLesson = {
   },
   writing: {
     prompt: "Write about what you would do in these three hypothetical situations: (1) If you won a million dollars, (2) If you could live anywhere in the world, and (3) If you could meet any famous person. Use the Second Conditional structure (If + Past Simple, would + V¹) in each sentence. Write 6-8 sentences.",
+    modelAnswer: "If I won a million dollars, I would buy a house for my parents and travel the world. I would also give some money to help poor children. If I could live anywhere in the world, I would choose a quiet city near the sea, because I love calm places. If I could meet any famous person, I would meet a great scientist and ask him about the future. If we didn't dream, life would be boring.",
     wordLimit: 100,
     tips: [
       "Use 'If + Past Simple' for the condition: 'If I won...'",
