@@ -9,13 +9,13 @@
       SRS = FSRS (lib/srs.ts) + phrases Leitner; 183 test o'tdi (12 fayl).
       Kichik: daraja disbalansi (A1 62% — 218/353).
 - [x] **QC-2 Mock Test** ✅ O'TDI: 279 savol (170→279), 0 dublikat/0 muammo; daraja A1:20/A2:60/B1:95/B2:104; bo'lim grammar:127/vocab:92/reading:60; IELTS kontent bor. Kichik: A1 kam.
-- [ ] **QC-3 Speaking** (speakingPrompts, conversation, pronunciation): prompt sifati, grammar-map, AI baholash.
+- [x] **QC-3 Speaking** ✅ O'TDI (+1 REAL BUG FIX): 99 prompt (41→99) 0 muammo; 9 conversation, 6 pronunciation kategoriya toza. **BUG:** SpeakingLadder qulflangan kunlar gating ishlamayotgan edi (bosilardi) — tuzatildi (test 12→16/16). Kichik: B1+ prompt kam (6); grammar-map day 104-108 CEFR warning (validation o'tadi).
 
 ## P2 — Qo'llab-quvvatlovchi ko'nikma
-- [ ] **QC-4 Standalone Listening** (listeningLessons 149KB): youtubeId, transcript, savol.
-- [ ] **QC-5 Standalone Reading**: passaj, correct-index, daraja.
-- [ ] **QC-6 Standalone Writing** (writingPrompts): tur, modelAnswer, IELTS format.
-- [ ] **QC-7 Grammar** (grammar, glossary): topic sifati, bog'lanish.
+- [x] **QC-4 Listening** ✅ 56 dars (27→56), 0 muammo (youtubeId+transcript to'liq).
+- [x] **QC-5 Reading** ✅ 26 matn, 0 muammo, daraja balansli.
+- [x] **QC-6 Writing** ✅ 79 prompt (11→79), 13 tur, 0 muammo; AI-feedback baholaydi (modelAnswer ixtiyoriy, 0 — kichik).
+- [x] **QC-7 Grammar** ✅ 40 topic, 0 muammo (title/mashq/misol/formula to'liq); daraja balansli.
 
 ## P3 — Funksiyalar
 - [ ] **QC-8 weekly_lessons runtime tekshiruv** (men qurdim, jonli sinovdan o'tmagan).
