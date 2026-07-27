@@ -65,10 +65,10 @@ export const linkingWordsAdvanced: DailyLesson = {
   },
   category: 'Linking Words',
   formulas: [
-    { label: 'Adding Information', structure: 'Furthermore, Moreover, In addition,\nFurthermore, the project was successful.', color: 'green' },
-    { label: 'Cause and Effect', structure: 'Therefore, Consequently, As a result,\nHe was late; therefore, he missed the bus.', color: 'blue' },
-    { label: 'Contrast', structure: 'Nevertheless, Nonetheless, However,\nIt was raining; nevertheless, we went out.', color: 'red' },
-    { label: 'Giving Examples', structure: 'For instance, For example, Such as,\nMany animals, such as dogs, are friendly.', color: 'purple' }
+    { label: 'Adding Information', structure: 'Furthermore, Moreover, In addition,\nFurthermore, the project was successful.', explanation: "Qo'shimcha ma'lumot/dalil qo'shuvchi bog'lovchilar.", whenToUse: "Fikringizga yana dalil qo'shganda.", example: "Furthermore, the project was successful.", color: 'green' },
+    { label: 'Cause and Effect', structure: 'Therefore, Consequently, As a result,\nHe was late; therefore, he missed the bus.', explanation: "Sabab-natija bog'lovchilari.", whenToUse: "Bir narsa natijasini ko'rsatganda.", example: "He was late; therefore, he missed the bus.", color: 'blue' },
+    { label: 'Contrast', structure: 'Nevertheless, Nonetheless, However,\nIt was raining; nevertheless, we went out.', explanation: "Qarama-qarshilik bog'lovchilari (rasmiy).", whenToUse: "Kutilmagan yoki zid fikrni bog'laganda.", example: "It was raining; nevertheless, we went out.", color: 'red' },
+    { label: 'Giving Examples', structure: 'For instance, For example, Such as,\nMany animals, such as dogs, are friendly.', explanation: "Misol keltiruvchi iboralar.", whenToUse: "Fikringizni misol bilan aniqlaganda.", example: "Many animals, such as dogs, are friendly.", color: 'purple' }
     ],
   rules: [
     "1\uFE0F\u20E3 LINKING WORDS NIMA?\n\nLinking words � matn ichida fikrlarni bog'lash uchun ishlatiladigan so'z va iboralar. Ular matnni silliq va mantiqiy qiladi. B1+ darajasida oddiy bog'lovchilardan (and, but, so) murakkabroq linking words ga o'tamiz.\n\n\uD83D\uDCCC ADDING (qo'shimcha):\n  Furthermore, Moreover, In addition, Besides\n\n\uD83D\uDCCC CAUSE AND EFFECT (sabab-natija):\n  Therefore, Consequently, As a result, Hence, Thus\n\n\uD83D\uDCCC CONTRAST (qarama-qarshilik):\n  Nevertheless, Nonetheless, However, On the other hand\n\n\uD83D\uDCCC EXAMPLE (misol):\n  For instance, For example, Such as, In particular",
@@ -279,10 +279,10 @@ export const collocationsMakeDoHaveTake: DailyLesson = {
   },
   category: 'Collocations',
   formulas: [
-    { label: 'Make', structure: 'Make + noun (create/produce)\nmake a decision, make progress', color: 'green' },
-    { label: 'Do', structure: 'Do + noun (activity/work)\ndo business, do homework', color: 'blue' },
-    { label: 'Have', structure: 'Have + noun (experience/possession)\nhave a rest, have a conversation', color: 'red' },
-    { label: 'Take', structure: 'Take + noun (action/ movement)\ntake a break, take a photo', color: 'purple' }
+    { label: 'Make', structure: 'Make + noun (create/produce)\nmake a decision, make progress', explanation: "'make' — yaratish/ishlab chiqarish kollokatsiyalari.", whenToUse: "make a decision, make progress kabi.", example: "She made an important decision.", color: 'green' },
+    { label: 'Do', structure: 'Do + noun (activity/work)\ndo business, do homework', explanation: "'do' — faoliyat/ish kollokatsiyalari.", whenToUse: "do business, do homework kabi.", example: "I have to do my homework.", color: 'blue' },
+    { label: 'Have', structure: 'Have + noun (experience/possession)\nhave a rest, have a conversation', explanation: "'have' — tajriba/ega bo'lish kollokatsiyalari.", whenToUse: "have a rest, have a conversation kabi.", example: "Let's have a short rest.", color: 'red' },
+    { label: 'Take', structure: 'Take + noun (action/ movement)\ntake a break, take a photo', explanation: "'take' — harakat/olish kollokatsiyalari.", whenToUse: "take a break, take a photo kabi.", example: "We took a break at noon.", color: 'purple' }
     ],
   rules: [
     "1\uFE0F\u20E3 COLLOCATIONS NIMA?\n\nCollocations — so'zlarning birgalikda ishlatiladigan tabiiy birikmalari. B1+ darajasida make, do, have, take fe'llari bilan eng ko'p ishlatiladigan kollokatsiyalarni o'rganamiz.\n\n\uD83D\uDCCC MAKE (yaratish, hosil qilish):\n  Make a decision, make a mistake, make progress,\n  make a plan, make a promise, make a suggestion,\n  make an effort, make sure, make a difference,\n  make money, make a choice, make an appointment\n\n\uD83D\uDCCC DO (ish, faoliyat, vazifa):\n  Do business, do homework, do housework,\n  do research, do a favour, do your best,\n  do the shopping, do exercise, do well/poorly,\n  do nothing, do a course\n\n\uD83D\uDCCC HAVE (tajriba, mulk, munosabat):\n  Have a rest, have a conversation, have a meal,\n  have a drink, have a problem, have a good time,\n  have a shower/bath, have a break,\n  have a relationship, have a baby\n\n\uD83D\uDCCC TAKE (harakat, vaqt olish):\n  Take a break, take a photo, take a look,\n  take care of, take part in, take your time,\n  take a seat, take a chance, take responsibility,\n  take an exam, take a test, take notes",
@@ -527,10 +527,10 @@ export const advancedPhrasalVerbs: DailyLesson = {
   },
   category: 'Phrasal Verbs',
   formulas: [
-    { label: 'Transitive', structure: 'Verb + particle + object\nI came up with a great idea.', color: 'green' },
-    { label: 'Intransitive', structure: 'Verb + particle (no object)\nThe meeting broke up late.', color: 'blue' },
-    { label: 'Separable', structure: 'Verb + object + particle\nI picked him up at 5.', color: 'red' },
-    { label: 'Inseparable', structure: 'Verb + particle + object\nI ran into an old friend.', color: 'purple' }
+    { label: 'Transitive', structure: 'Verb + particle + object\nI came up with a great idea.', explanation: "To'ldiruvchi talab qiladigan phrasal verb.", whenToUse: "Harakat obyektga qaratilganda.", example: "I came up with a great idea.", color: 'green' },
+    { label: 'Intransitive', structure: 'Verb + particle (no object)\nThe meeting broke up late.', explanation: "To'ldiruvchisiz phrasal verb.", whenToUse: "Obyekt kerak bo'lmaganda.", example: "The meeting broke up late.", color: 'blue' },
+    { label: 'Separable', structure: 'Verb + object + particle\nI picked him up at 5.', explanation: "Fe'l va zarra orasiga to'ldiruvchi kirishi mumkin.", whenToUse: "Olmosh bo'lsa doim ajraladi ('pick him up').", example: "I picked him up at 5.", color: 'red' },
+    { label: 'Inseparable', structure: 'Verb + particle + object\nI ran into an old friend.', explanation: "Fe'l va zarra ajralmaydi.", whenToUse: "To'ldiruvchi doim zarradan keyin keladi.", example: "I ran into an old friend.", color: 'purple' }
     ],
   rules: [
     "1\uFE0F\u20E3 PHRASAL VERBS NIMA?\n\nPhrasal verb = verb + particle (preposition yoki adverb). Ma'nosi ko'pincha verbning o'z ma'nosidan farq qiladi.\n\n\uD83D\uDCCC Transitive — ob'ekt talab qiladi:\n  She turned down the job. (rad etdi)\n\n\uD83D\uDCCC Intransitive — ob'ektsiz:\n  The plane took off. (uchib ketdi)\n\n\uD83D\uDCCC Separable — ob'ekt o'rtaga qo'yilishi mumkin:\n  I picked up my brother. / I picked my brother up.\n\n\uD83D\uDCCC Inseparable — ob'ekt faqat keyin keladi:\n  I ran into my teacher. (I ran my teacher into EMAS)",
@@ -740,10 +740,10 @@ export const idiomsCommon: DailyLesson = {
   },
   category: 'Idioms',
   formulas: [
-    { label: 'Body Idioms', structure: "Body part + meaning\nIt cost an arm and a leg = very expensive", color: 'green' },
-    { label: 'Action Idioms', structure: 'Verb + object (figurative)\nBreak the ice = make people feel comfortable', color: 'blue' },
-    { label: 'Time/Frequency', structure: 'Time expression (figurative)\nOnce in a blue moon = very rarely', color: 'red' },
-    { label: 'Comparison Idioms', structure: 'As + adj + as + noun\nAs easy as pie = very easy', color: 'purple' }
+    { label: 'Body Idioms', structure: "Body part + meaning\nIt cost an arm and a leg = very expensive", explanation: "Tana a'zolari bilan bog'liq majoziy idiomalar.", whenToUse: "Tana a'zosi ishtirok etgan idiomada.", example: "It cost an arm and a leg = juda qimmat.", color: 'green' },
+    { label: 'Action Idioms', structure: 'Verb + object (figurative)\nBreak the ice = make people feel comfortable', explanation: "Harakatli, majoziy ma'noli idiomalar.", whenToUse: "Kundalik nutqda majoziy fikr bildirganda.", example: "Break the ice = muloqotni boshlash.", color: 'blue' },
+    { label: 'Time/Frequency', structure: 'Time expression (figurative)\nOnce in a blue moon = very rarely', explanation: "Vaqt/chastota bildiruvchi idiomalar.", whenToUse: "Qanchalik tez-tez bo'lishini majoziy aytganda.", example: "Once in a blue moon = juda kamdan-kam.", color: 'red' },
+    { label: 'Comparison Idioms', structure: 'As + adj + as + noun\nAs easy as pie = very easy', explanation: "'as + sifat + as' qolipidagi qiyos idiomalar.", whenToUse: "Sifatni kuchli majoziy qiyoslaganda.", example: "As easy as pie = juda oson.", color: 'purple' }
     ],
   rules: [
     "1\uFE0F\u20E3 IDIOMS NIMA?\n\nIdioms — so'zma-so'z tarjima qilib bo'lmaydigan, ko'chma ma'noga ega iboralar. Har bir tilning o'ziga xos idiomalari bor.\n\n\uD83D\uDCCC BODY IDIOMS (badan qismlari bilan):\n  Cost an arm and a leg — juda qimmat\n  Pull someone's leg — hazillashmoq\n  Keep an eye on — kuzatmoq, qarab turmoq\n  By heart — yoddan\n\n\uD83D\uDCCC ACTION IDIOMS (harakat bilan):\n  Break the ice — muzni yormoq (suhbatni boshlash)\n  Hit the nail on the head — to'g'ri topmoq\n  Let the cat out of the bag — sirni ochmoq\n\n\uD83D\uDCCC TIME IDIOMS (vaqt bilan):\n  Once in a blue moon — juda kamdan-kam\n  The early bird catches the worm — erta turgan odam muvaffaqiyatli\n  Better late than never — hechdan kech yaxshi\n\n\uD83D\uDCCC COMPARISON IDIOMS (solishtirish bilan):\n  As easy as pie — juda oson\n  As busy as a bee — juda band\n  As quiet as a mouse — juda jim",
@@ -958,10 +958,10 @@ export const prepositionalPhrases: DailyLesson = {
   },
   category: 'Prepositional Phrases',
   formulas: [
-    { label: 'By + noun', structure: 'By + noun (method/circumstance)\nby accident, by chance, by heart', color: 'green' },
-    { label: 'In + noun', structure: 'In + noun (state/condition)\nin advance, in common, in trouble', color: 'blue' },
-    { label: 'On + noun', structure: 'On + noun (purpose/state)\non purpose, on fire, on holiday', color: 'red' },
-    { label: 'At + noun', structure: 'At + noun (time/state)\nat once, at last, at risk', color: 'purple' }
+    { label: 'By + noun', structure: 'By + noun (method/circumstance)\nby accident, by chance, by heart', explanation: "'by' bilan usul/holat barqaror iboralari.", whenToUse: "by accident, by heart kabi.", example: "I learned the poem by heart.", color: 'green' },
+    { label: 'In + noun', structure: 'In + noun (state/condition)\nin advance, in common, in trouble', explanation: "'in' bilan holat/vaziyat iboralari.", whenToUse: "in advance, in trouble kabi.", example: "Please book in advance.", color: 'blue' },
+    { label: 'On + noun', structure: 'On + noun (purpose/state)\non purpose, on fire, on holiday', explanation: "'on' bilan maqsad/holat iboralari.", whenToUse: "on purpose, on holiday kabi.", example: "He did it on purpose.", color: 'red' },
+    { label: 'At + noun', structure: 'At + noun (time/state)\nat once, at last, at risk', explanation: "'at' bilan vaqt/holat iboralari.", whenToUse: "at once, at risk kabi.", example: "Come here at once.", color: 'purple' }
     ],
   rules: [
     "1\uFE0F\u20E3 PREPOSITIONAL PHRASES NIMA?\n\nPrepositional phrases — predlog + noun dan tashkil topgan turg'un iboralar. Ma'nosi ko'pincha so'zma-so'z emas, balki bir butun sifatida o'rganiladi.\n\n\uD83D\uDCCC BY + noun:\n  by accident — tasodifan\n  by chance — tasodifan\n  by heart — yoddan\n  by mistake — xato bilan\n  by nature — tabiatan\n  by the way — aytgancha\n  by far — eng (kuchaytiruvchi)\n\n\uD83D\uDCCC IN + noun:\n  in advance — oldindan\n  in common — umumiy\n  in danger — xavf ostida\n  in fact — aslida\n  in love (with) — sevib qolgan\n  in public — omma oldida\n  in trouble — muammoda\n  in time — o'z vaqtida\n  in general — umuman\n  in particular — ayniqsa\n  in practice — amalda\n  in theory — nazariyada",
@@ -1202,10 +1202,10 @@ export const wordFormation: DailyLesson = {
   },
   category: 'Word Formation',
   formulas: [
-    { label: 'Noun suffixes', structure: 'Verb/Adj + suffix = Noun\neducate + tion = education', color: 'green' },
-    { label: 'Adjective suffixes', structure: 'Noun/Verb + suffix = Adj\nbeauty + ful = beautiful', color: 'blue' },
-    { label: 'Verb suffixes', structure: 'Adj/Noun + suffix = Verb\nmodern + ize = modernize', color: 'red' },
-    { label: 'Adverb suffix', structure: 'Adj + suffix = Adv\ncareful + ly = carefully', color: 'purple' }
+    { label: 'Noun suffixes', structure: 'Verb/Adj + suffix = Noun\neducate + tion = education', explanation: "Fe'l/sifatga qo'shimcha qo'shib ot yasash.", whenToUse: "-tion, -ment, -ness, -ity bilan.", example: "educate -> education.", color: 'green' },
+    { label: 'Adjective suffixes', structure: 'Noun/Verb + suffix = Adj\nbeauty + ful = beautiful', explanation: "Ot/fe'lga qo'shimcha qo'shib sifat yasash.", whenToUse: "-ful, -ous, -al, -ive bilan.", example: "beauty -> beautiful.", color: 'blue' },
+    { label: 'Verb suffixes', structure: 'Adj/Noun + suffix = Verb\nmodern + ize = modernize', explanation: "Sifat/otga qo'shimcha qo'shib fe'l yasash.", whenToUse: "-ize, -ify, -en bilan.", example: "modern -> modernize.", color: 'red' },
+    { label: 'Adverb suffix', structure: 'Adj + suffix = Adv\ncareful + ly = carefully', explanation: "Sifatga '-ly' qo'shib ravish yasash.", whenToUse: "Sifatdan tarz-ravish yasaganda.", example: "careful -> carefully.", color: 'purple' }
     ],
   rules: [
     "1\uFE0F\u20E3 WORD FORMATION NIMA?\n\nWord formation — so'zlarga suffix qo'shib yangi so'z yasash. Suffixlar so'zning turkumini o'zgartiradi.\n\n\uD83D\uDCCC NOUN SUFFIXES (ot yasovchi):\n  -tion: educate → education, inform → information\n  -sion: decide → decision, conclude → conclusion\n  -ment: develop → development, govern → government\n  -ness: happy → happiness, kind → kindness\n  -ity: active → activity, possible → possibility\n  -ence/-ance: differ → difference, appear → appearance\n  -er/-or: teach → teacher, act → actor\n  -ist: science → scientist, art → artist\n  -ship: friend → friendship, leader → leadership\n  -dom: free → freedom, wise → wisdom",
@@ -1411,10 +1411,10 @@ export const reportingVerbs: DailyLesson = {
   },
   category: 'Reporting Verbs',
   formulas: [
-    { label: 'Verb + that + clause', structure: 'Verb + that + subject + verb\nHe admitted that he was wrong.', color: 'green' },
-    { label: 'Verb + object + to-infinitive', structure: 'Verb + object + to + verb\nShe advised me to stay.', color: 'blue' },
-    { label: 'Verb + -ing form', structure: 'Verb + -ing\nHe denied stealing the money.', color: 'red' },
-    { label: 'Verb + preposition + -ing', structure: 'Verb + preposition + -ing\nShe insisted on paying.', color: 'purple' }
+    { label: 'Verb + that + clause', structure: 'Verb + that + subject + verb\nHe admitted that he was wrong.', explanation: "Reporting fe'l + 'that' + gap.", whenToUse: "admit, explain, claim fe'llaridan keyin.", example: "He admitted that he was wrong.", color: 'green' },
+    { label: 'Verb + object + to-infinitive', structure: 'Verb + object + to + verb\nShe advised me to stay.', explanation: "Reporting fe'l + shaxs + 'to + V'.", whenToUse: "advise, tell, warn, ask fe'llaridan keyin.", example: "She advised me to stay.", color: 'blue' },
+    { label: 'Verb + -ing form', structure: 'Verb + -ing\nHe denied stealing the money.', explanation: "Reporting fe'l + -ing.", whenToUse: "deny, suggest, admit fe'llaridan keyin.", example: "He denied stealing the money.", color: 'red' },
+    { label: 'Verb + preposition + -ing', structure: 'Verb + preposition + -ing\nShe insisted on paying.', explanation: "Reporting fe'l + predlog + -ing.", whenToUse: "insist on, apologise for kabi.", example: "She insisted on paying.", color: 'purple' }
     ],
   rules: [
     "1\uFE0F\u20E3 REPORTING VERBS NIMA?\n\nReporting verbs — boshqa odamning gapini, fikrini yoki his-tuyg'usini aytish uchun ishlatiladigan fe'llar. To'g'ridan-to'g'ri nutq (direct speech) ni bilvosita nutq (reported speech) ga o'zgartirish uchun ishlatiladi.\n\n\uD83D\uDCCC To'g'ri: She said, 'I am tired.'\n\uD83D\uDCCC Bilvosita: She said that she was tired.\n\nReporting verbs 4 xil strukturada keladi:\n1. Verb + that + clause\n2. Verb + object + to-infinitive\n3. Verb + -ing\n4. Verb + preposition + -ing\n\n\uD83D\uDCCC ENG KO'P ISHLATILADIGAN REPORTING VERBS:\n  Say, Tell, Ask, Advise, Agree, Claim, Admit,\n  Deny, Suggest, Recommend, Insist, Promise,\n  Refuse, Threaten, Warn, Offer, Complain,\n  Explain, Announce, Mention, Propose",
@@ -1635,10 +1635,10 @@ export const determinersAdvanced: DailyLesson = {
   },
   category: 'Determiners',
   formulas: [
-    { label: 'All / Both', structure: 'All/Both + of + determiner + noun\nAll of the students passed.', color: 'green' },
-    { label: 'Each / Every', structure: 'Each/Every + singular noun\nEach student has a book.', color: 'blue' },
-    { label: 'Either / Neither', structure: 'Either/Neither + of + noun\nNeither of them came.', color: 'red' },
-    { label: 'None / No', structure: 'None of + noun / No + noun\nNone of the money was spent.', color: 'purple' }
+    { label: 'All / Both', structure: 'All/Both + of + determiner + noun\nAll of the students passed.', explanation: "'all/both + of + aniqlovchi + ot'.", whenToUse: "Butun guruh (all) yoki ikkitasi (both) haqida.", example: "All of the students passed.", color: 'green' },
+    { label: 'Each / Every', structure: 'Each/Every + singular noun\nEach student has a book.', explanation: "'each/every + birlik ot' (birlik fe'l).", whenToUse: "Guruhning har bir a'zosi haqida.", example: "Each student has a book.", color: 'blue' },
+    { label: 'Either / Neither', structure: 'Either/Neither + of + noun\nNeither of them came.', explanation: "'either/neither + of + ot' — biri/hech biri.", whenToUse: "Ikki variant orasida tanlov yoki inkor.", example: "Neither of them came.", color: 'red' },
+    { label: 'None / No', structure: 'None of + noun / No + noun\nNone of the money was spent.', explanation: "'none of + ot' / 'no + ot' — hech biri/yo'q.", whenToUse: "Umumiy inkorni bildirganda.", example: "None of the money was spent.", color: 'purple' }
     ],
   rules: [
     "1\uFE0F\u20E3 DETERMINERS NIMA?\n\nDeterminers — otlardan oldin kelib, ularni aniqlaydigan so'zlar. B1+ darajasida all, both, each, every, either, neither, none, no kabi murakkab determinerlarni o'rganamiz.\n\n\uD83D\uDCCC ALL — hamma (3+):\n  All students must take the exam.\n  All of the students passed.\n\n\uD83D\uDCCC BOTH — ikkalasi (2):\n  Both parents attended the meeting.\n  Both of them are excellent.\n\n\uD83D\uDCCC EACH — har bir (individual):\n  Each student received a certificate.\n\n\uD83D\uDCCC EVERY — har bir (general):\n  Every student must register.\n\n\uD83D\uDCCC EITHER — ikkala + tanlov:\n  Either option is fine.\n\n\uD83D\uDCCC NEITHER — ikkala ham emas:\n  Neither answer is correct.\n\n\uD83D\uDCCC NONE — hech biri:\n  None of the answers was correct.\n\n\uD83D\uDCCC NO — hech qanday:\n  No student was late.",
@@ -1854,10 +1854,10 @@ export const b1plusReview: DailyLesson = {
   },
   category: 'Review',
   formulas: [
-    { label: 'Narrative Tenses', structure: 'Past Simple / Past Cont / Past Perfect / Past Perfect Cont\nShe had already left when I arrived.', color: 'green' },
-    { label: 'Participle Clauses', structure: 'Present/Past/Participle + main clause\nHaving finished work, she went home.', color: 'blue' },
-    { label: 'Modal Perfects', structure: 'Modal + have + past participle\nYou should have told me earlier.', color: 'red' },
-    { label: 'Linking Words', structure: 'Furthermore, Moreover, Nevertheless,\nConsequently, etc.', color: 'purple' }
+    { label: 'Narrative Tenses', structure: 'Past Simple / Past Cont / Past Perfect / Past Perfect Cont\nShe had already left when I arrived.', explanation: "O'tmish hikoya zamonlari umumlashmasi.", whenToUse: "Hikoyada barcha o'tmish zamonlarini birlashtirganda.", example: "She had already left when I arrived.", color: 'green' },
+    { label: 'Participle Clauses', structure: 'Present/Past/Participle + main clause\nHaving finished work, she went home.', explanation: "Participle bilan gap qisqartirish umumlashmasi.", whenToUse: "Ikki gapni ixcham birlashtirganda.", example: "Having finished work, she went home.", color: 'blue' },
+    { label: 'Modal Perfects', structure: 'Modal + have + past participle\nYou should have told me earlier.', explanation: "'modal + have + V3' umumlashmasi.", whenToUse: "O'tmish haqida taxmin/afsus bildirganda.", example: "You should have told me earlier.", color: 'red' },
+    { label: 'Linking Words', structure: 'Furthermore, Moreover, Nevertheless,\nConsequently, etc.', explanation: "Ilg'or bog'lovchilar umumlashmasi.", whenToUse: "Rasmiy matnda fikrlarni bog'laganda.", example: "Consequently, the plan succeeded.", color: 'purple' }
     ],
   rules: [
     "1\uFE0F\u20E3 B1+ REVIEW — NIMA O'RGANDIK?\n\nB1+ darajasida 18 ta asosiy mavzuni o'rgandik. Bu review darsida hamma mavzulardan test savollari berilgan.\n\n\uD83D\uDCCC B1+ MAVZULARI:\n1. Narrative Tenses (Past Simple/Cont/Perfect/Past Perf Cont)\n2. Advanced Relative Clauses (defining/non-defining)\n3. Participle Clauses (present/past/perfect)\n4. Infinitive vs Gerund Advanced\n5. Modal Perfects (must have, should have, etc.)\n6. Emphasis (do/does/did, oneself)\n7. Fronting (Inversion for emphasis)\n8. Ellipsis & Substitution\n9. Concession (although, despite, nevertheless)\n10. Linking Words Advanced\n11. Collocations: Make/Do/Have/Take\n12. Advanced Phrasal Verbs\n13. Common Idioms (20)\n14. Prepositional Phrases\n15. Word Formation\n16. Reporting Verbs\n17. Determiners Advanced\n18. B1+ Review (this lesson)",

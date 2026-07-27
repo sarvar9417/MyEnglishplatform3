@@ -57,10 +57,10 @@ export const narrativeTensesB1plus: DailyLesson = {
   },
   category: 'Storytelling',
   formulas: [
-    { label: 'Past Simple', structure: 'Subject + V2 (V+ed / irregular)\nI walked to the store.\nShe saw a strange man.', color: 'green' },
-    { label: 'Past Continuous', structure: 'Subject + was/were + V-ing\nI was walking home when...\nThe sun was shining.', color: 'blue' },
-    { label: 'Past Perfect', structure: 'Subject + had + V3\nShe had already left when I arrived.\nI had never seen such a thing.', color: 'purple' },
-    { label: 'Past Perfect Continuous', structure: 'Subject + had been + V-ing\nWe had been waiting for hours.\nShe had been working all day.', color: 'orange' }
+    { label: 'Past Simple', structure: 'Subject + V2 (V+ed / irregular)\nI walked to the store.\nShe saw a strange man.', explanation: "Hikoyadagi asosiy, ketma-ket voqealar uchun (V2).", whenToUse: "O'tmishda tugagan asosiy voqealarni aytganda.", example: "He opened the door and walked in.", color: 'green' },
+    { label: 'Past Continuous', structure: 'Subject + was/were + V-ing\nI was walking home when...\nThe sun was shining.', explanation: "Voqea paytidagi davom etayotgan fon harakati (was/were + V-ing).", whenToUse: "Asosiy voqea foni yoki uzilgan harakatni ko'rsatganda.", example: "The sun was shining when I left.", color: 'blue' },
+    { label: 'Past Perfect', structure: 'Subject + had + V3\nShe had already left when I arrived.\nI had never seen such a thing.', explanation: "Boshqa o'tmish voqeasidan OLDIN bo'lgan harakat (had + V3).", whenToUse: "Ikki o'tmish voqeasi tartibini ko'rsatganda.", example: "She had already left when I arrived.", color: 'purple' },
+    { label: 'Past Perfect Continuous', structure: 'Subject + had been + V-ing\nWe had been waiting for hours.\nShe had been working all day.', explanation: "O'tmishdagi nuqtagacha davom etgan harakat (had been + V-ing).", whenToUse: "Davomiylikni urg'ulaganda.", example: "We had been waiting for hours.", color: 'orange' }
     ],
   rules: [
     "1\uFE0F\u20E3 NARRATIVE TENSES NIMA?\n\nNarrative tenses � hikoya va voqealarni aytib berish uchun ishlatiladigan o'tgan zamon shakllari. Ingliz tilida to'rtta narrative tense bor:\n\n\uD83D\uDCCC Past Simple � asosiy voqealar (main events):\n  He opened the door and walked in.\n\n\uD83D\uDCCC Past Continuous � orqa fon (background):\n  The sun was shining and birds were singing.\n\n\uD83D\uDCCC Past Perfect � oldingi voqealar (earlier actions):\n  She had already eaten when I arrived.\n\n\uD83D\uDCCC Past Perfect Continuous � davomiylik (duration before something):\n  They had been travelling for six hours before they stopped.",
@@ -263,10 +263,10 @@ export const advancedRelativeClausesB1plus: DailyLesson = {
   },
   category: 'Complex Structures',
   formulas: [
-    { label: 'Defining', structure: 'Subject + who/which/that + V\nThe woman who lives next door is a doctor.', color: 'green' },
-    { label: 'Non-defining', structure: 'Noun, + who/which + V, ...\nMy sister, who lives in Paris, is a designer.', color: 'blue' },
-    { label: 'Whom / Whose', structure: '... whom + S + V (object)\n... whose + N + V\nThe man whom I met is a professor.', color: 'purple' },
-    { label: 'Where / When / Why', structure: 'place + where + S + V\ntime + when + S + V\nreason + why + S + V', color: 'orange' }
+    { label: 'Defining', structure: 'Subject + who/which/that + V\nThe woman who lives next door is a doctor.', explanation: "Otni aniqlaydigan, ma'no uchun zarur nisbiy gap (vergulsiz).", whenToUse: "Qaysi shaxs/narsa ekanini aniqlash zarur bo'lganda.", example: "The woman who lives next door is a doctor.", color: 'green' },
+    { label: 'Non-defining', structure: 'Noun, + who/which + V, ...\nMy sister, who lives in Paris, is a designer.', explanation: "Qo'shimcha ma'lumot beruvchi nisbiy gap (vergul bilan, 'that' yo'q).", whenToUse: "Ot allaqachon aniq bo'lsa, qo'shimcha ma'lumot berganda.", example: "My sister, who lives in Paris, is a designer.", color: 'blue' },
+    { label: 'Whom / Whose', structure: '... whom + S + V (object)\n... whose + N + V\nThe man whom I met is a professor.', explanation: "'whom' — to'ldiruvchi (rasmiy); 'whose' — egalik.", whenToUse: "Rasmiy uslubda to'ldiruvchi yoki egalikni ko'rsatganda.", example: "The man whom I met is a professor.", color: 'purple' },
+    { label: 'Where / When / Why', structure: 'place + where + S + V\ntime + when + S + V\nreason + why + S + V', explanation: "Joy (where), vaqt (when), sabab (why) uchun nisbiy so'zlar.", whenToUse: "Joy, vaqt yoki sababga oid ma'lumot berganda.", example: "This is the house where I was born.", color: 'orange' }
     ],
   rules: [
     "1\uFE0F\u20E3 NISBIY GAPLAR NIMA?\n\nRelative clauses (nisbiy gaplar) bir ot yoki olmoshni aniqlashtirish yoki qo\u2019shimcha ma\u2019lumot berish uchun ishlatiladi. Ikki turi bor:\n\n\uD83D\uDCCC Defining (aniqlovchi) \u2014 gapning ma\u2019nosi uchun zarur:\n  The woman who lives next door is a doctor.\n\n\uD83D\uDCCC Non-defining (qo\u2019shimcha) \u2014 vergul bilan ajratiladi:\n  My sister, who lives in London, is a doctor.\n\nAsosiy farq: definingda vergul YO\u2018Q, non-definingda vergul BOR.",
@@ -480,10 +480,10 @@ export const participleClausesB1plus: DailyLesson = {
   },
   category: 'Complex Structures',
   formulas: [
-    { label: 'Present Participle', structure: 'V-ing + ... (active)\nWalking home, I saw an accident.\nBeing tired, he went to bed early.', color: 'green' },
-    { label: 'Past Participle', structure: 'V3 + ... (passive)\nExhausted by the trip, she fell asleep.\nWritten in simple English, the book is easy to read.', color: 'blue' },
-    { label: 'Perfect Participle', structure: 'Having + V3 + ... (before main action)\nHaving finished work, she went home.\nHaving been warned, they stayed inside.', color: 'purple' },
-    { label: 'Negative Participle', structure: 'Not + V-ing / Not having + V3 + ...\nNot knowing the answer, he kept silent.\nNot having seen her before, I introduced myself.', color: 'orange' }
+    { label: 'Present Participle', structure: 'V-ing + ... (active)\nWalking home, I saw an accident.\nBeing tired, he went to bed early.', explanation: "-ing shakli aktiv ma'noda ikki gapni qisqartiradi.", whenToUse: "Bir vaqtdagi yoki sabab bo'lgan aktiv harakatni ixchamlaganda.", example: "Walking home, I saw an accident.", color: 'green' },
+    { label: 'Past Participle', structure: 'V3 + ... (passive)\nExhausted by the trip, she fell asleep.\nWritten in simple English, the book is easy to read.', explanation: "V3 shakli passiv ma'noda gapni qisqartiradi.", whenToUse: "Passiv/holat ma'nosini ixcham berganda.", example: "Exhausted by the trip, she fell asleep.", color: 'blue' },
+    { label: 'Perfect Participle', structure: 'Having + V3 + ... (before main action)\nHaving finished work, she went home.\nHaving been warned, they stayed inside.', explanation: "'Having + V3' — asosiy harakatdan oldin tugagan ish.", whenToUse: "Bir harakat boshqasidan oldin tugaganini ko'rsatganda.", example: "Having finished work, she went home.", color: 'purple' },
+    { label: 'Negative Participle', structure: 'Not + V-ing / Not having + V3 + ...\nNot knowing the answer, he kept silent.\nNot having seen her before, I introduced myself.', explanation: "'Not + V-ing' yoki 'Not having + V3' — inkor participle.", whenToUse: "Participle gapni inkor qilganda.", example: "Not knowing the answer, he kept silent.", color: 'orange' }
     ],
   rules: [
     "1\uFE0F\u20E3 PARTICIPLE CLAUSES NIMA?\n\nParticiple clauses \u2014 ikki gapni birlashtirishning qisqa va samarali usuli. Ular zamon, sabab, shart yoki natijani ifodalaydi:\n\n  Because she was tired, she went to bed. (full clause)\n  Being tired, she went to bed. (participle clause)\n  (Charchaganligi sababli, u uxlashga ketdi.)\n\n\uD83D\uDCCC Present Participle (V-ing) \u2014 active ma\u2019no: Walking home...\n\uD83D\uDCCC Past Participle (V3) \u2014 passive ma\u2019no: Written in 1990...\n\uD83D\uDCCC Perfect Participle (Having + V3) \u2014 oldingi harakat: Having eaten...",
@@ -687,10 +687,10 @@ export const infinitiveGerundAdvancedB1plus: DailyLesson = {
   },
   category: 'Verb Patterns',
   formulas: [
-    { label: 'Gerund (V-ing)', structure: 'Verb + V-ing (general/liking)\nI enjoy reading.\nShe avoids going there.\nHe suggested taking a break.', color: 'green' },
-    { label: 'Infinitive (to + V)', structure: 'Verb + to + V (goal/desire)\nI want to learn.\nShe decided to leave.\nHe promised to help.', color: 'blue' },
-    { label: 'Verb + Object + Infinitive', structure: 'Verb + noun/pronoun + to + V\nShe told me to wait.\nThey advised him to study.\nI want you to help.', color: 'purple' },
-    { label: 'Meaning Change', structure: 'Same verb, different meaning:\nRemember + V-ing = eslash (past)\nRemember + to V = unutmaslik (future)\nStop + V-ing = to\u2018xtatish\nStop + to V = to\u2018xtab qilish', color: 'orange' }
+    { label: 'Gerund (V-ing)', structure: 'Verb + V-ing (general/liking)\nI enjoy reading.\nShe avoids going there.\nHe suggested taking a break.', explanation: "Fe'lning -ing shakli ot vazifasida; ba'zi fe'llardan keyin.", whenToUse: "enjoy, avoid, suggest, mind fe'llaridan keyin.", example: "She suggested taking a break.", color: 'green' },
+    { label: 'Infinitive (to + V)', structure: 'Verb + to + V (goal/desire)\nI want to learn.\nShe decided to leave.\nHe promised to help.', explanation: "'to + fe'l' maqsad/xohishni bildiradi.", whenToUse: "want, decide, promise, hope fe'llaridan keyin.", example: "She decided to leave.", color: 'blue' },
+    { label: 'Verb + Object + Infinitive', structure: 'Verb + noun/pronoun + to + V\nShe told me to wait.\nThey advised him to study.\nI want you to help.', explanation: "Fe'l + shaxs + 'to + V' tuzilishi.", whenToUse: "tell, advise, want, ask fe'llaridan keyin shaxs kelganda.", example: "She told me to wait.", color: 'purple' },
+    { label: 'Meaning Change', structure: 'Same verb, different meaning:\nRemember + V-ing = eslash (past)\nRemember + to V = unutmaslik (future)\nStop + V-ing = to\u2018xtatish\nStop + to V = to\u2018xtab qilish', explanation: "Ba'zi fe'llar -ing va 'to' bilan ma'nosini o'zgartiradi.", whenToUse: "remember, stop, try, regret, forget fe'llarida.", example: "Remember to call (kelajak) / Remember calling (o'tmish).", color: 'orange' }
     ],
   rules: [
     "1\uFE0F\u20E3 GERUND VA INFINITIVE \u2014 UMUMIY\n\nBa\u2019zi fe\u2019llardan keyin faqat GERUND (V-ing), ba\u2019zilaridan keyin faqat INFINITIVE (to + V) keladi. Ba\u2019zi fe\u2019llar ikkalasini ham oladi, lekin ma\u2019no o\u2018zgaradi.\n\nGerund: I enjoy reading books. (Kitob o\u2018qishdan zavqlanaman.)\nInfinitive: I want to read this book. (Bu kitobni o\u2018qimoqchiman.)\n\n\uD83D\uDCCC Gerund = faoliyat, umumiy ma\u2019no\n\uD83D\uDCCC Infinitive = maqsad, istak, kelajak",
@@ -895,10 +895,10 @@ export const modalPerfectsB1plus: DailyLesson = {
   },
   category: 'Modals',
   formulas: [
-    { label: 'Must have + V3', structure: 'Must have + V3 \u2014 strong certainty about past\nSubject + must have + past participle\nShe must have left early.\nIt must have rained last night.', color: 'green' },
-    { label: 'Might/May/Could have + V3', structure: 'Might/May/Could + have + V3 \u2014 possibility about past\nSubject + might/may/could + have + V3\nHe might have missed the bus.\nShe may have forgotten.', color: 'blue' },
-    { label: 'Should have + V3', structure: 'Should/ought to + have + V3 \u2014 regret/criticism about past\nSubject + should/ought to + have + V3\nI should have studied harder.\nYou should have told me.', color: 'purple' },
-    { label: 'Could have / Would have', structure: 'Could have + V3 \u2014 past ability/possibility\nWould have + V3 \u2014 hypothetical past\nI could have helped you.\nShe would have come if invited.', color: 'orange' }
+    { label: 'Must have + V3', structure: 'Must have + V3 \u2014 strong certainty about past\nSubject + must have + past participle\nShe must have left early.\nIt must have rained last night.', explanation: "O'tmish haqida kuchli ishonch/deduksiya.", whenToUse: "O'tmishdagi narsaga deyarli aminlik bildirganda.", example: "She must have left early.", color: 'green' },
+    { label: 'Might/May/Could have + V3', structure: 'Might/May/Could + have + V3 \u2014 possibility about past\nSubject + might/may/could + have + V3\nHe might have missed the bus.\nShe may have forgotten.', explanation: "O'tmish haqida ehtimol.", whenToUse: "O'tmishda nima bo'lgan bo'lishi mumkinligini taxmin qilganda.", example: "He might have missed the bus.", color: 'blue' },
+    { label: 'Should have + V3', structure: 'Should/ought to + have + V3 \u2014 regret/criticism about past\nSubject + should/ought to + have + V3\nI should have studied harder.\nYou should have told me.', explanation: "O'tmishdagi afsus yoki tanqid.", whenToUse: "Qilinishi kerak bo'lgan, lekin qilinmagan ish haqida.", example: "I should have studied harder.", color: 'purple' },
+    { label: 'Could have / Would have', structure: 'Could have + V3 \u2014 past ability/possibility\nWould have + V3 \u2014 hypothetical past\nI could have helped you.\nShe would have come if invited.', explanation: "'could have' — o'tmish imkoniyati; 'would have' — shartli o'tmish natijasi.", whenToUse: "O'tmishdagi imkoniyat yoki xayoliy natijani bildirganda.", example: "She would have come if invited.", color: 'orange' }
     ],
   rules: [
     "1\uFE0F\u20E3 MODAL PERFECTS NIMA?\n\nModal Perfects \u2014 modal fe\u2018llar + have + V3 (past participle) birikmasi. O\u2018tmishdagi harakatlarga nisbatan taxmin, afsus, tanqid yoki imkoniyatni ifodalaydi:\n\n  She must have forgotten about the meeting.\n  (U uchrashuvni unutgan bo\u2018lishi kerak.)\n\n\uD83D\uDCCC Must have = ishonch (90-100%)\n\uD83D\uDCCC Might/May/Could have = taxmin (30-70%)\n\uD83D\uDCCC Should have = afsus, tanqid\n\uD83D\uDCCC Could have = imkoniyat (lekin qilmadi)\n\uD83D\uDCCC Would have = faraziy (if ...)",
@@ -1108,10 +1108,10 @@ export const emphasisDoesB1plus: DailyLesson = {
   },
   category: 'Emphasis',
   formulas: [
-    { label: 'Present Emphasis', structure: 'Subject + do/does + V1\nI do understand your point.\nShe does work very hard.\nWe do want to help.', color: 'green' },
-    { label: 'Past Emphasis', structure: 'Subject + did + V1\nI did see him yesterday.\nShe did finish the project.\nThey did arrive on time.', color: 'blue' },
-    { label: 'Imperative Emphasis', structure: 'Do + V1 (polite invitation/emphasis)\nDo sit down.\nDo help yourself.\nDo be careful!', color: 'purple' },
-    { label: 'Negative Emphasis', structure: 'Subject + do/does/did + not + V1 (contrast)\nI do not agree with you at all.\nShe does not like him, not at all.\nWe did not expect this result.', color: 'orange' }
+    { label: 'Present Emphasis', structure: 'Subject + do/does + V1\nI do understand your point.\nShe does work very hard.\nWe do want to help.', explanation: "'do/does + fe'l' hozirgi gapni kuchaytiradi.", whenToUse: "Fikrni qat'iy ta'kidlaganda yoki shubhani rad etganda.", example: "I do understand your point.", color: 'green' },
+    { label: 'Past Emphasis', structure: 'Subject + did + V1\nI did see him yesterday.\nShe did finish the project.\nThey did arrive on time.', explanation: "'did + fe'l' o'tmish gapini kuchaytiradi.", whenToUse: "O'tmish harakatini ta'kidlab tasdiqlaganda.", example: "I did see him yesterday.", color: 'blue' },
+    { label: 'Imperative Emphasis', structure: 'Do + V1 (polite invitation/emphasis)\nDo sit down.\nDo help yourself.\nDo be careful!', explanation: "'Do + fe'l' buyruqni muloyim yoki ta'kidli qiladi.", whenToUse: "Muloyim taklif yoki kuchli iltimos qilganda.", example: "Do sit down.", color: 'purple' },
+    { label: 'Negative Emphasis', structure: 'Subject + do/does/did + not + V1 (contrast)\nI do not agree with you at all.\nShe does not like him, not at all.\nWe did not expect this result.', explanation: "'do/does/did not' inkorni kuchaytiradi.", whenToUse: "Qat'iy inkor yoki qarama-qarshilikni ta'kidlaganda.", example: "I do not agree at all.", color: 'orange' }
     ],
   rules: [
     "1\uFE0F\u20E3 EMPHATIC DO NIMA?\n\nEmphatic do \u2014 gapga kuch va urg\u2018u berish uchun ishlatiladi. Odatda do savol va inkorlarda ishlatiladi, lekin TASDIQ gaplarda ham kuch berish uchun qo\u2018llanadi:\n\n  I do like this song! (Men bu qo\u2018shiqni YAXSHI KO\u2018RAMAN!)\n  \u2192 Oddiy: I like this song.\n  \u2192 Emphatic: I DO like this song! (kuchli)\n\n\uD83D\uDCCC Do/Does \u2014 present tense\n\uD83D\uDCCC Did \u2014 past tense\n\uD83D\uDCCC Asosiy fe\u2018l V1 (base form) shaklida qoladi",
@@ -1313,10 +1313,10 @@ export const frontingB1plus: DailyLesson = {
   },
   category: 'Emphasis',
   formulas: [
-    { label: 'Object Fronting', structure: 'Object + Subject + Verb\nThat book I have already read.\nThis problem we must solve first.\nHis name I can\u2019t remember.', color: 'green' },
-    { label: 'Adverb Fronting', structure: 'Adverb/Phrase + Subject + Verb\nNever have I seen such beauty.\nOnly then did she understand.\nNot until Monday will we know.', color: 'blue' },
-    { label: 'Adjective/Complement Fronting', structure: 'Adjective/Complement + Verb + Subject\nBeautiful is the only word for it.\nStrange as it may seem, he was right.\nHappy are those who help others.', color: 'purple' },
-    { label: 'Negative Adverb Fronting', structure: 'Negative adverb + auxiliary + S + V\nSeldom do we see such talent.\nRarely does he complain.\nHardly had I arrived when...', color: 'orange' }
+    { label: 'Object Fronting', structure: 'Object + Subject + Verb\nThat book I have already read.\nThis problem we must solve first.\nHis name I can\u2019t remember.', explanation: "To'ldiruvchini gap boshiga chiqarib urg'ulash.", whenToUse: "Muayyan obyektni ta'kidlaganda.", example: "That book I have already read.", color: 'green' },
+    { label: 'Adverb Fronting', structure: 'Adverb/Phrase + Subject + Verb\nNever have I seen such beauty.\nOnly then did she understand.\nNot until Monday will we know.', explanation: "Ravish/iborani oldga chiqarish (ko'pincha inversiya bilan).", whenToUse: "Vaqt/tarzni ta'kidlab uslubni ko'targanda.", example: "Only then did she understand.", color: 'blue' },
+    { label: 'Adjective/Complement Fronting', structure: 'Adjective/Complement + Verb + Subject\nBeautiful is the only word for it.\nStrange as it may seem, he was right.\nHappy are those who help others.', explanation: "Sifat/to'ldiruvchini gap boshiga chiqarish.", whenToUse: "Sifatni kuchli ta'kidlaganda (adabiy uslub).", example: "Strange as it may seem, he was right.", color: 'purple' },
+    { label: 'Negative Adverb Fronting', structure: 'Negative adverb + auxiliary + S + V\nSeldom do we see such talent.\nRarely does he complain.\nHardly had I arrived when...', explanation: "Inkor ravish + yordamchi + ega (inversiya).", whenToUse: "Seldom, rarely, hardly bilan.", example: "Seldom do we see such talent.", color: 'orange' }
     ],
   rules: [
     "1\uFE0F\u20E3 FRONTING NIMA?\n\nFronting \u2014 gap bo\u2018lagini odatdagi o\u2018rnidan olib, gap boshiga qo\u2018yish. Bu urg\u2018u va stilistik ta\u2019sir yaratadi:\n\n  Normal: I have already read that book.\n  Fronting: That book I have already read.\n  (O\u2018sha kitobni men allaqachon o\u2018qiganman.)\n  \u2192 \u201cthat book\u201d ga urg\u2018u tushadi.\n\n\uD83D\uDCCC Fronting \u2014 yozma ingliz tilida keng ishlatiladi.\n\uD83D\uDCCC So\u2018zlashuvda kam, faqat kuchli urg\u2018u uchun.",
@@ -1519,10 +1519,10 @@ export const ellipsisSubstitutionB1plus: DailyLesson = {
   },
   category: 'Discourse',
   formulas: [
-    { label: 'Ellipsis', structure: "Omitting repeated words\nA: Are you coming? B: Yes, I am (coming).\nShe went home and (she) went to bed.\nHe can swim faster than I can (swim).", color: 'green' },
-    { label: 'So / Not substitution', structure: "Replacing clauses with so/not\nA: Is he coming? B: I think so.\nA: Will it rain? B: I hope not.\nDo you think so? I believe so.", color: 'blue' },
-    { label: 'Do substitution', structure: "Replacing verb with do/does/did\nShe runs faster than he does.\nA: Who broke it? B: I did.\nI don't like coffee but he does.", color: 'purple' },
-    { label: 'One/Ones substitution', structure: "Replacing noun with one/ones\nWhich car do you like? The red one.\nI prefer the blue ones.\nThis book is better than that one.", color: 'orange' }
+    { label: 'Ellipsis', structure: "Omitting repeated words\nA: Are you coming? B: Yes, I am (coming).\nShe went home and (she) went to bed.\nHe can swim faster than I can (swim).", explanation: "Takrorlanadigan so'zlarni tushirib qoldirish.", whenToUse: "Kontekstdan tushunarli so'zlarni takrorlamaslik uchun.", example: "A: Are you coming? B: Yes, I am.", color: 'green' },
+    { label: 'So / Not substitution', structure: "Replacing clauses with so/not\nA: Is he coming? B: I think so.\nA: Will it rain? B: I hope not.\nDo you think so? I believe so.", explanation: "Butun gapni 'so' yoki 'not' bilan almashtirish.", whenToUse: "think, hope, believe fe'llaridan keyin.", example: "A: Will it rain? B: I hope not.", color: 'blue' },
+    { label: 'Do substitution', structure: "Replacing verb with do/does/did\nShe runs faster than he does.\nA: Who broke it? B: I did.\nI don't like coffee but he does.", explanation: "Fe'lni 'do/does/did' bilan almashtirish.", whenToUse: "Fe'lni takrorlamaslik uchun.", example: "She runs faster than he does.", color: 'purple' },
+    { label: 'One/Ones substitution', structure: "Replacing noun with one/ones\nWhich car do you like? The red one.\nI prefer the blue ones.\nThis book is better than that one.", explanation: "Otni 'one/ones' bilan almashtirish.", whenToUse: "Sanaladigan otni takrorlamaslik uchun.", example: "Which car? The red one.", color: 'orange' }
     ],
   rules: [
     "1\uFE0F\u20E3 ELLIPSIS VA SUBSTITUTION NIMA?\n\nEllipsis \u2014 takrorlanadigan so\u2018zlarni TUSHIRIB QOLDIRISH:\n  She went home and (she) went to bed.\n  (U uyga keldi va uxlashga ketdi.)\n  \u2192 \u201cshe\u201d takrorlanmaydi.\n\nSubstitution \u2014 takrorlanadigan so\u2018z o\u2018rniga BOSHQA SO\u2018Z ishlatish:\n  A: Do you like coffee? B: Yes, I do. (like coffee \u2192 do)\n  \u2192 \u201clike coffee\u201d o\u2018rniga \u201cdo\u201d.\n\n\uD83D\uDCCC Ellipsis = tushirish (omit)\n\uD83D\uDCCC Substitution = almashtirish (replace)\n\uD83D\uDCCC Ikkala holatda ham gap qisqa va tabiiy bo\u2018ladi.",
@@ -1725,10 +1725,10 @@ export const concessionB1plus: DailyLesson = {
   },
   category: 'Linking Words',
   formulas: [
-    { label: 'Although / Though / Even though', structure: 'Although/Though/Even though + clause, main clause\nAlthough it rained, we went out.\nThough he was tired, he kept working.\nEven though she was ill, she came to work.', color: 'green' },
-    { label: 'Despite / In spite of', structure: 'Despite/In spite of + noun/V-ing, main clause\nDespite the rain, we enjoyed the trip.\nIn spite of being tired, he continued.\nDespite the heat, she wore a jacket.', color: 'blue' },
-    { label: 'However / Nevertheless', structure: 'Main clause. However/Nevertheless, main clause\nIt rained. However, we still went out.\nHe was tired. Nevertheless, he kept working.\nShe was late. However, she apologised.', color: 'purple' },
-    { label: 'While / Whereas', structure: 'While/Whereas + clause, main clause (contrast)\nWhile I prefer tea, my brother likes coffee.\nWhereas some enjoy winter, others prefer summer.\nHe is outgoing, while his sister is shy.', color: 'orange' }
+    { label: 'Although / Though / Even though', structure: 'Although/Though/Even though + clause, main clause\nAlthough it rained, we went out.\nThough he was tired, he kept working.\nEven though she was ill, she came to work.', explanation: "Qarama-qarshilikni bog'lovchi (to'liq gap bilan).", whenToUse: "Kutilmagan natijani ko'rsatganda.", example: "Although it rained, we went out.", color: 'green' },
+    { label: 'Despite / In spite of', structure: 'Despite/In spite of + noun/V-ing, main clause\nDespite the rain, we enjoyed the trip.\nIn spite of being tired, he continued.\nDespite the heat, she wore a jacket.', explanation: "Qarama-qarshilik (ot yoki V-ing bilan).", whenToUse: "Ot/gerund bilan ziddiyat bildirganda.", example: "Despite the rain, we enjoyed the trip.", color: 'blue' },
+    { label: 'However / Nevertheless', structure: 'Main clause. However/Nevertheless, main clause\nIt rained. However, we still went out.\nHe was tired. Nevertheless, he kept working.\nShe was late. However, she apologised.', explanation: "Ikki mustaqil gapni bog'lovchi qarama-qarshilik.", whenToUse: "Alohida gaplar orasida ziddiyat ko'rsatganda.", example: "It rained. However, we went out.", color: 'purple' },
+    { label: 'While / Whereas', structure: 'While/Whereas + clause, main clause (contrast)\nWhile I prefer tea, my brother likes coffee.\nWhereas some enjoy winter, others prefer summer.\nHe is outgoing, while his sister is shy.', explanation: "Ikki fikrni qiyoslab qarama-qarshi qo'yish.", whenToUse: "Ikki narsani solishtirib farqlaganda.", example: "While I prefer tea, my brother likes coffee.", color: 'orange' }
     ],
   rules: [
     "1\uFE0F\u20E3 CONCESSION NIMA?\n\nConcession \u2014 biror qarama-qarshilikka qaramay sodir bo\u2018lgan harakatni ifodalaydi. \u201c...ga qaramay\u201d, \u201c...bo\u2018lsa ham\u201d ma\u2019nolarini beradi:\n\n  Although it was cold, she went swimming.\n  (Sovuq bo\u2018lsa ham, u suzishga ketdi.)\n  \u2192 Sovuq \u2014 lekin suzishga ketdi (qarama-qarshilik).\n\n\uD83D\uDCCC Although/Though/Even though + clause (S + V)\n\uD83D\uDCCC Despite/In spite of + noun / V-ing\n\uD83D\uDCCC However/Nevertheless \u2014 ikkinchi gapda\n\uD83D\uDCCC While/Whereas \u2014 ikki narsani solishtirish",
