@@ -258,10 +258,10 @@ export const numbers: DailyLesson = {
   category: 'Sonlar',
   day: 2,
   formulas: [
-    { label: '1-12 (asosiy)', structure: "1-one, 2-two, 3-three, 4-four, 5-five, 6-six, 7-seven, 8-eight, 9-nine, 10-ten, 11-eleven, 12-twelve", color: 'green' },
-    { label: '13-19 (-teen)', structure: "13-thirteen, 14-fourteen, 15-fifteen, 16-sixteen, 17-seventeen, 18-eighteen, 19-nineteen", color: 'blue' },
-    { label: "20, 30, ... 90 (-ty)", structure: "20-twenty, 30-thirty, 40-forty, 50-fifty, 60-sixty, 70-seventy, 80-eighty, 90-ninety", color: 'orange' },
-    { label: "21-99 (composite)", structure: "twenty-one, twenty-two, ..., ninety-nine", color: 'purple' },
+    { label: '1-12 (asosiy)', structure: "1-one, 2-two, 3-three, 4-four, 5-five, 6-six, 7-seven, 8-eight, 9-nine, 10-ten, 11-eleven, 12-twelve", explanation: "1 dan 12 gacha asosiy sanoq sonlar.", whenToUse: "Narsalarni sanaganda.", example: "I have three books.", color: 'green' },
+    { label: '13-19 (-teen)', structure: "13-thirteen, 14-fourteen, 15-fifteen, 16-sixteen, 17-seventeen, 18-eighteen, 19-nineteen", explanation: "13-19 sonlar '-teen' bilan.", whenToUse: "O'n uch-o'n to'qqizni aytganda.", example: "She is fifteen.", color: 'blue' },
+    { label: "20, 30, ... 90 (-ty)", structure: "20-twenty, 30-thirty, 40-forty, 50-fifty, 60-sixty, 70-seventy, 80-eighty, 90-ninety", explanation: "O'nliklar '-ty' bilan.", whenToUse: "Yumaloq o'nliklarni aytganda.", example: "There are thirty students.", color: 'orange' },
+    { label: "21-99 (composite)", structure: "twenty-one, twenty-two, ..., ninety-nine", explanation: "Qo'shma sonlar: o'nlik-birlik.", whenToUse: "21-99 sonlarni aytganda.", example: "He is twenty-one.", color: 'purple' },
   ],
   rules: [
     "1️⃣ SONLAR KATEGORIYALARI\n\n📌 1-12: o'ziga xos nomlar (one, two, three, ...)\n  Bu sonlar alohida so'zlar bo'lib, qoida yo'q — faqat yodlash kerak.\n\n📌 13-19: '-teen' qo'shimchasi (thirteen-nineteen)\n  thirteen = 3 + teen\n  fourteen = 4 + teen\n  eighteen = 8 + teen (bitta 't')\n\n🔴 Eng ko'p xatolar:\n  ❌ threeteen ❌ (to'g'ri: thirteen)\n  ❌ fourtine ❌ (to'g'ri: fourteen)\n  ❌ eightteen ❌ (to'g'ri: eighteen — bitta 't')",
@@ -514,10 +514,10 @@ export const colorsAndShapes: DailyLesson = {
   category: 'Ranglar va shakllar',
   day: 3,
   formulas: [
-    { label: "Asosiy ranglar (Basic)", structure: "red, blue, green, yellow, black, white", color: 'green' },
-    { label: "Qo'shimcha ranglar", structure: "orange, pink, purple, brown, gray", color: 'blue' },
-    { label: "Asosiy shakllar (Shapes)", structure: "circle, square, triangle, rectangle, star", color: 'orange' },
-    { label: "What color/shape...?", structure: "What color is it? — It is red.\nWhat shape is it? — It is a circle.", color: 'purple' },
+    { label: "Asosiy ranglar (Basic)", structure: "red, blue, green, yellow, black, white", explanation: "Asosiy ranglar nomlari.", whenToUse: "Rangni aytganda.", example: "The sky is blue.", color: 'green' },
+    { label: "Qo'shimcha ranglar", structure: "orange, pink, purple, brown, gray", explanation: "Qo'shimcha ranglar nomlari.", whenToUse: "Kamroq uchraydigan ranglarni aytganda.", example: "I like orange and purple.", color: 'blue' },
+    { label: "Asosiy shakllar (Shapes)", structure: "circle, square, triangle, rectangle, star", explanation: "Asosiy geometrik shakllar.", whenToUse: "Shaklni aytganda.", example: "The plate is a circle.", color: 'orange' },
+    { label: "What color/shape...?", structure: "What color is it? — It is red.\nWhat shape is it? — It is a circle.", explanation: "Rang/shakl savol-javobi.", whenToUse: "Rang yoki shaklni so'raganda.", example: "What colour is it? It is red.", color: 'purple' },
   ],
   rules: [
     "1️⃣ ASOSIY RANGLAR (10 TA)\n\n📌 QIZIL OILASI:\n  • red — qizil\n  • orange — apelsinrang\n  • pink — pushti\n  • brown — jigarrang\n\n📌 KO'K OILASI:\n  • blue — ko'k\n  • green — yashil\n  • purple — binafsha\n  • gray — kulrang\n\n📌 ASOSIY:\n  • yellow — sariq\n  • black — qora\n  • white — oq",
@@ -750,10 +750,10 @@ export const family: DailyLesson = {
   category: 'Oila',
   day: 4,
   formulas: [
-    { label: "Ota-ona (Parents)", structure: "father/dad, mother/mom, parent", color: 'green' },
-    { label: "Bolalar (Children)", structure: "son, daughter, child (children - ko'plik)", color: 'blue' },
-    { label: "Aka-uka va opa-singil", structure: "brother, sister, sibling", color: 'orange' },
-    { label: "Kengaytirilgan oila", structure: "grandfather, grandmother, uncle, aunt, cousin", color: 'purple' },
+    { label: "Ota-ona (Parents)", structure: "father/dad, mother/mom, parent", explanation: "Ota-ona so'zlari.", whenToUse: "Ota-onangiz haqida gapirganda.", example: "My father is a teacher.", color: 'green' },
+    { label: "Bolalar (Children)", structure: "son, daughter, child (children - ko'plik)", explanation: "Farzand so'zlari.", whenToUse: "Bolalar haqida gapirganda.", example: "They have two children.", color: 'blue' },
+    { label: "Aka-uka va opa-singil", structure: "brother, sister, sibling", explanation: "Aka-uka, opa-singil so'zlari.", whenToUse: "Aka-uka/opa-singil haqida.", example: "I have one brother.", color: 'orange' },
+    { label: "Kengaytirilgan oila", structure: "grandfather, grandmother, uncle, aunt, cousin", explanation: "Qarindoshlar (bobo, buvi, amaki...).", whenToUse: "Qarindoshlar haqida gapirganda.", example: "My grandmother lives with us.", color: 'purple' },
   ],
   rules: [
     "1️⃣ YAQIN OIL A'ZOLARI\n\n📌 OTA-ONA:\n  father / dad / daddy — ota\n  mother / mom / mommy — ona\n  parent — ota yoki ona (umumiy)\n\n📌 BOLALAR:\n  son — o'g'il\n  daughter — qiz\n  child — bola (1)\n  children — bolalar (ko'p)\n  kid — bola (norasmiy)\n  baby — chaqaloq\n\n📌 AKA-UKA, OPA-SINGIL:\n  brother — aka yoki uka\n  sister — opa yoki singil\n  sibling — aka yoki opa-singil (umumiy)",
@@ -999,10 +999,10 @@ export const daysAndMonths: DailyLesson = {
   category: 'Vaqt va fasllar',
   day: 5,
   formulas: [
-    { label: "Hafta kunlari", structure: "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday", color: 'green' },
-    { label: "Oylar (12 ta)", structure: "January, February, March, April, May, June, July, August, September, October, November, December", color: 'blue' },
-    { label: "Fasllar", structure: "spring (bahor), summer (yoz), autumn/fall (kuz), winter (qish)", color: 'orange' },
-    { label: "In/on/at bilan", structure: "on + Monday, in + January, in + summer", color: 'purple' },
+    { label: "Hafta kunlari", structure: "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday", explanation: "Haftaning yetti kuni.", whenToUse: "Kunni aytganda.", example: "I have class on Monday.", color: 'green' },
+    { label: "Oylar (12 ta)", structure: "January, February, March, April, May, June, July, August, September, October, November, December", explanation: "Yilning 12 oyi.", whenToUse: "Oy yoki sanani aytganda.", example: "My birthday is in June.", color: 'blue' },
+    { label: "Fasllar", structure: "spring (bahor), summer (yoz), autumn/fall (kuz), winter (qish)", explanation: "Yilning to'rt fasli.", whenToUse: "Fasl haqida gapirganda.", example: "Summer is hot here.", color: 'orange' },
+    { label: "In/on/at bilan", structure: "on + Monday, in + January, in + summer", explanation: "Vaqt predloglari: in/on/at.", whenToUse: "Vaqtni predlog bilan aytganda.", example: "I get up at seven on Monday.", color: 'purple' },
   ],
   rules: [
     "1️⃣ HAFTA KUNLARI (7 TA)\n\n📌 ISH KUNLARI (weekdays):\n  • Monday — dushanba\n  • Tuesday — seshanba\n  • Wednesday — chorshanba\n  • Thursday — payshanba\n  • Friday — juma\n\n📌 DAM OLISH KUNLARI (weekend):\n  • Saturday — shanba\n  • Sunday — yakshanba\n\n📌 'On' bilan:\n  on Monday — dushanba kuni\n  on Friday — juma kuni\n  I work on Monday. (Men dushanba kuni ishlayman)\n\n🔴 Artikl 'the' ishlatilmaydi kunlar bilan:\n  ✅ on Monday ❌ on the Monday",
@@ -1240,10 +1240,10 @@ export const timeAndRoutines: DailyLesson = {
   category: 'Kunlik tartib',
   day: 6,
   formulas: [
-    { label: "Soat aytish", structure: "What time is it? It is 7 o'clock.\n7:30 = half past seven\n7:15 = quarter past seven\n7:45 = quarter to eight", color: 'green' },
-    { label: "AM va PM", structure: "7 AM = ertalab (07:00)\n7 PM = kechqurun (19:00)", color: 'blue' },
-    { label: "Kunlik tartib", structure: "I wake up at 7. I brush my teeth. I have breakfast.", color: 'orange' },
-    { label: "Present Simple (3-shaxs)", structure: "I work / He works\nI go / She goes\nI have / He has", color: 'purple' },
+    { label: "Soat aytish", structure: "What time is it? It is 7 o'clock.\n7:30 = half past seven\n7:15 = quarter past seven\n7:45 = quarter to eight", explanation: "Soatni aytish qolipi.", whenToUse: "Vaqtni aytganda.", example: "It is seven o'clock.", color: 'green' },
+    { label: "AM va PM", structure: "7 AM = ertalab (07:00)\n7 PM = kechqurun (19:00)", explanation: "AM (ertalab), PM (tushdan keyin).", whenToUse: "12 soatlik vaqtni aniqlaganda.", example: "The class starts at 9 AM.", color: 'blue' },
+    { label: "Kunlik tartib", structure: "I wake up at 7. I brush my teeth. I have breakfast.", explanation: "Kundalik ish-harakatlar.", whenToUse: "Kunlik tartibni tasvirlaganda.", example: "I wake up at seven.", color: 'orange' },
+    { label: "Present Simple (3-shaxs)", structure: "I work / He works\nI go / She goes\nI have / He has", explanation: "3-shaxs birlikda fe'lga -s.", whenToUse: "he/she/it bilan odatni aytganda.", example: "She works in a bank.", color: 'purple' },
   ],
   rules: [
     "1️⃣ SOAT AYTISH\n\n📌 To'liq soat: 7:00 = seven o'clock\n  1:00 = one o'clock\n  13:00 = one o'clock (yoki thirteen hundred)\n\n📌 YARIM SOAT: 7:30 = half past seven\n  'half past' = yarim soat o'tdi\n\n📌 CHORAK:\n  7:15 = quarter past seven (chorak o'tdi)\n  7:45 = quarter to eight (sakkizga chorak bor)\n\n📌 MINUTLAR:\n  7:05 = five past seven (yoki seven oh five)\n  7:10 = ten past seven\n  7:25 = twenty-five past seven\n  7:55 = five to eight",
@@ -1474,10 +1474,10 @@ export const foodAndDrinks: DailyLesson = {
   category: 'Ovqat va ichimlik',
   day: 7,
   formulas: [
-    { label: "Countable (sanaluvchi)", structure: "an apple, two apples\nIs there an apple? — Yes, there is.", color: 'green' },
-    { label: "Uncountable (sanalmas)", structure: "water, rice, bread, milk\nIs there any water? — Yes, there is.", color: 'blue' },
-    { label: "Some / Any", structure: "some (ijobiy, so'roq): some water, some apples\nany (inkor, savol): any water? I don't have any.", color: 'orange' },
-    { label: "A/An bilan", structure: "a + undosh: a banana\nan + unli: an orange", color: 'purple' },
+    { label: "Countable (sanaluvchi)", structure: "an apple, two apples\nIs there an apple? — Yes, there is.", explanation: "Sanaladigan otlar.", whenToUse: "Sanash mumkin narsalar uchun.", example: "I have two apples.", color: 'green' },
+    { label: "Uncountable (sanalmas)", structure: "water, rice, bread, milk\nIs there any water? — Yes, there is.", explanation: "Sanalmaydigan otlar.", whenToUse: "Suyuqlik/material uchun.", example: "There is some water.", color: 'blue' },
+    { label: "Some / Any", structure: "some (ijobiy, so'roq): some water, some apples\nany (inkor, savol): any water? I don't have any.", explanation: "'some' ijobiy, 'any' savol/inkor.", whenToUse: "Noaniq miqdorni bildirganda.", example: "Is there any bread?", color: 'orange' },
+    { label: "A/An bilan", structure: "a + undosh: a banana\nan + unli: an orange", explanation: "'a' undosh, 'an' unli oldidan.", whenToUse: "Otni birinchi marta aytganda.", example: "a dog and an elephant", color: 'purple' },
   ],
   rules: [
     "1️⃣ SANALUVCHI (COUNTABLE) — SANASH MUMKIN\n\n📌 Mevalar:\n  apple, banana, orange, mango, lemon\n  I eat an apple every day.\n\n📌 Sabzavotlar:\n  tomato, potato, carrot, onion\n  There are three tomatoes.\n\n📌 Boshqa:\n  egg, sandwich, cookie, cake\n  I have two eggs for breakfast.\n\n📌 -S qo'shish:\n  apple → apples\n  banana → bananas\n  box → boxes (x + es)\n  tomato → tomatoes (o + es)",
@@ -1717,10 +1717,10 @@ export const animals: DailyLesson = {
   category: 'Hayvonlar',
   day: 8,
   formulas: [
-    { label: "Uy hayvonlari", structure: "cat, dog, fish, bird, hamster", color: 'green' },
-    { label: "Qishloq hayvonlari", structure: "cow, horse, sheep, chicken, duck", color: 'blue' },
-    { label: "Yovvoyi hayvonlar", structure: "lion, tiger, elephant, monkey, bear", color: 'orange' },
-    { label: "Have/has + hayvon", structure: "I have a cat.\nShe has a dog.\nIt has four legs.", color: 'purple' },
+    { label: "Uy hayvonlari", structure: "cat, dog, fish, bird, hamster", explanation: "Uy hayvonlari nomlari.", whenToUse: "Uy hayvonlari haqida.", example: "I have a cat.", color: 'green' },
+    { label: "Qishloq hayvonlari", structure: "cow, horse, sheep, chicken, duck", explanation: "Xo'jalik hayvonlari.", whenToUse: "Fermadagi hayvonlar haqida.", example: "The cow gives milk.", color: 'blue' },
+    { label: "Yovvoyi hayvonlar", structure: "lion, tiger, elephant, monkey, bear", explanation: "Yovvoyi hayvonlar.", whenToUse: "Tabiat/hayvonot bog'i haqida.", example: "The lion is strong.", color: 'orange' },
+    { label: "Have/has + hayvon", structure: "I have a cat.\nShe has a dog.\nIt has four legs.", explanation: "'have/has' bilan hayvonga egalik.", whenToUse: "Qanday hayvoningiz borligini aytganda.", example: "She has a parrot.", color: 'purple' },
   ],
   rules: [
     "1️⃣ UY HAYVONLARI (PETS)\n\n📌 Eng keng tarqalgan:\n  cat — mushuk\n  dog — it\n  fish — baliq\n  bird — qush\n  hamster — xamster\n  rabbit — quyon\n\n📌 Gaplar:\n  I have a cat. (Mening mushugim bor)\n  She has a dog. (Uning iti bor)\n  My cat is black. (Mening mushugim qora)\n\n🔴 A/An to'g'ri qo'llaniladi:\n  ✅ I have a cat. ❌ I have cat.\n  ✅ I have an iguana. (unli tovush)",
@@ -1959,10 +1959,10 @@ export const bodyParts: DailyLesson = {
   category: "Tana a'zolari",
   day: 9,
   formulas: [
-    { label: "Bosh qismi", structure: "head, face, hair, eye, ear, nose, mouth", color: 'green' },
-    { label: "Tana", structure: "neck, shoulder, arm, hand, finger, chest, back", color: 'blue' },
-    { label: "Oyoqlar", structure: "leg, knee, foot (feet), toe, hip", color: 'orange' },
-    { label: "Have/has + tana azolari", structure: "I have two eyes.\nShe has long hair.\nMy cat has four legs.", color: 'purple' },
+    { label: "Bosh qismi", structure: "head, face, hair, eye, ear, nose, mouth", explanation: "Bosh/yuz a'zolari.", whenToUse: "Yuz a'zolarini tasvirlaganda.", example: "My eyes are brown.", color: 'green' },
+    { label: "Tana", structure: "neck, shoulder, arm, hand, finger, chest, back", explanation: "Tananing yuqori a'zolari.", whenToUse: "Tana a'zolarini nomlaganda.", example: "He raised his hand.", color: 'blue' },
+    { label: "Oyoqlar", structure: "leg, knee, foot (feet), toe, hip", explanation: "Oyoq a'zolari.", whenToUse: "Oyoq qismlarini nomlaganda.", example: "My leg hurts.", color: 'orange' },
+    { label: "Have/has + tana azolari", structure: "I have two eyes.\nShe has long hair.\nMy cat has four legs.", explanation: "'have/has' bilan tana a'zolari.", whenToUse: "Tana a'zolari sonini aytganda.", example: "We have two hands.", color: 'purple' },
   ],
   rules: [
     "1️⃣ BOSH QISMI (HEAD)\n\n📌 Bosh:\n  head — bosh\n  face — yuz\n  hair — soch\n  forehead — peshona\n\n📌 Yuz azolari:\n  eye — ko'z (ko'plik: eyes)\n  ear — quloq (ears)\n  nose — burun (noses)\n  mouth — og'iz (mouths)\n  lip — lab (lips)\n  tooth — tish (teeth)\n  tongue — til (tongues)\n  chin — engak (chins)",
@@ -2199,10 +2199,10 @@ export const clothes: DailyLesson = {
   category: 'Kiyimlar',
   day: 10,
   formulas: [
-    { label: "Yuqori kiyim", structure: "shirt, T-shirt, blouse, sweater, jacket, coat", color: 'green' },
-    { label: "Pastki kiyim", structure: "pants, jeans, skirt, shorts, dress", color: 'blue' },
-    { label: "Oyoq kiyim", structure: "shoes, boots, sneakers, sandals, socks", color: 'orange' },
-    { label: "Aksesuarlar", structure: "hat, cap, scarf, gloves, belt, bag", color: 'purple' },
+    { label: "Yuqori kiyim", structure: "shirt, T-shirt, blouse, sweater, jacket, coat", explanation: "Ust kiyim nomlari.", whenToUse: "Kiyimni tasvirlaganda.", example: "He wears a blue shirt.", color: 'green' },
+    { label: "Pastki kiyim", structure: "pants, jeans, skirt, shorts, dress", explanation: "Pastki kiyim nomlari.", whenToUse: "Shim/yubka aytganda.", example: "She wears jeans.", color: 'blue' },
+    { label: "Oyoq kiyim", structure: "shoes, boots, sneakers, sandals, socks", explanation: "Oyoq kiyim nomlari.", whenToUse: "Poyabzal haqida.", example: "I need new shoes.", color: 'orange' },
+    { label: "Aksesuarlar", structure: "hat, cap, scarf, gloves, belt, bag", explanation: "Kiyim aksessuarlari.", whenToUse: "Shlyapa/sumka aytganda.", example: "She wears a red hat.", color: 'purple' },
   ],
   rules: [
     "1️⃣ YUQORI KIYIM (TOP)\n\n📌 Kundalik:\n  shirt — ko'ylak (uzun yengli)\n  T-shirt — futbolka\n  blouse — ayollar ko'ylagi\n  sweater — sviter (issiq)\n  hoodie — xudi (kapyushonli)\n\n📌 Rasmiy:\n  suit — kostyum\n  tie — galstuk\n  jacket — paltoga o'xshash (yengli)\n  coat — palto (qishki, uzun)\n\n📌 Gaplar:\n  I wear a shirt. (Men ko'ylak kiyaman)\n  He wears a suit. (U kostyum kiyadi)\n  My T-shirt is red. (Mening futbolkam qizil)",

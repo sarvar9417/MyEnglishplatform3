@@ -202,10 +202,10 @@ export const prepositionsOfPlace: DailyLesson = {
   day: 12,
   image: 'Prepositions_of_Place.png',
   formulas: [
-    { label: "IN (ichida)", structure: "The cat is IN the box.\nThe book is IN the bag.\nShe is IN the room.", color: 'green' },
-    { label: "ON (ustida)", structure: "The book is ON the table.\nThe picture is ON the wall.\nHe is ON the chair.", color: 'blue' },
-    { label: "UNDER (ostida)", structure: "The cat is UNDER the table.\nThe ball is UNDER the bed.\nThe dog is UNDER the tree.", color: 'orange' },
-    { label: "NEXT TO, BETWEEN, BEHIND, IN FRONT OF", structure: "The bank is NEXT TO the school.\nThe cat is BETWEEN the boxes.\nThe garden is BEHIND the house.\nThe car is IN FRONT OF the building.", color: 'purple' },
+    { label: "IN (ichida)", structure: "The cat is IN the box.\nThe book is IN the bag.\nShe is IN the room.", explanation: "'in' — ichida.", whenToUse: "Narsa yopiq joyda bo'lganda.", example: "The cat is in the box.", color: 'green' },
+    { label: "ON (ustida)", structure: "The book is ON the table.\nThe picture is ON the wall.\nHe is ON the chair.", explanation: "'on' — sirt ustida.", whenToUse: "Narsa sirtda bo'lganda.", example: "The book is on the table.", color: 'blue' },
+    { label: "UNDER (ostida)", structure: "The cat is UNDER the table.\nThe ball is UNDER the bed.\nThe dog is UNDER the tree.", explanation: "'under' — ostida.", whenToUse: "Narsa ostida bo'lganda.", example: "The ball is under the chair.", color: 'orange' },
+    { label: "NEXT TO, BETWEEN, BEHIND, IN FRONT OF", structure: "The bank is NEXT TO the school.\nThe cat is BETWEEN the boxes.\nThe garden is BEHIND the house.\nThe car is IN FRONT OF the building.", explanation: "Joy predloglari: yonida/orasida/orqasida/oldida.", whenToUse: "Narsalar joyini aytganda.", example: "The bank is next to the school.", color: 'purple' },
   ],
   rules: [
     "1️⃣ IN — ICHIDA\n\n📌 3D yopiq joylar (xona, quti, sumka, mashina):\n  The cat is in the box. (Mushuk qutida)\n  She is in the room. (U xonada)\n  The keys are in my bag. (Kalitlar sumkamda)\n  He is in the car. (U mashinada)\n\n📌 Hududlar, shaharlar, davlatlar:\n  I live in Tashkent. (Men Toshkentda yashayman)\n  It is cold in Russia. (Rossiyada sovuq)\n  She works in a hospital. (U kasalxonada ishlaydi)",
@@ -402,10 +402,10 @@ export const basicAdjectives: DailyLesson = {
   category: 'Asosiy sifatlar',
   day: 13,
   formulas: [
-    { label: "O'lcham (size)", structure: "big (katta) — small (kichik)\nlarge — little / tiny", color: 'green' },
-    { label: "Yosh (age)", structure: "old (eski/keksa) — young (yosh)\nnew (yangi)", color: 'blue' },
-    { label: "Rang + sifat", structure: "a big red car\na small black cat\nan old white house", color: 'orange' },
-    { label: "His (feeling)", structure: "happy (xursand) — sad (g'amgin)\nhot (issiq) — cold (sovuq)", color: 'purple' },
+    { label: "O'lcham (size)", structure: "big (katta) — small (kichik)\nlarge — little / tiny", explanation: "O'lcham sifatlari.", whenToUse: "Kattalikni tasvirlaganda.", example: "This is a big house.", color: 'green' },
+    { label: "Yosh (age)", structure: "old (eski/keksa) — young (yosh)\nnew (yangi)", explanation: "Yosh/eski sifatlari.", whenToUse: "Yoshni tasvirlaganda.", example: "He is an old man.", color: 'blue' },
+    { label: "Rang + sifat", structure: "a big red car\na small black cat\nan old white house", explanation: "Sifatlar tartibi: o'lcham+rang+ot.", whenToUse: "Bir necha sifat bilan.", example: "a big red car", color: 'orange' },
+    { label: "His (feeling)", structure: "happy (xursand) — sad (g'amgin)\nhot (issiq) — cold (sovuq)", explanation: "His-tuyg'u sifatlari.", whenToUse: "Kayfiyatni tasvirlaganda.", example: "She is happy today.", color: 'purple' },
   ],
   rules: [
     "1️⃣ SIFATLAR — ASOSIY QOIDA\n\n📌 Sifat = narsaning belgisini ko'rsatadi:\n  a big house (katta uy)\n  a small cat (kichik mushuk)\n  a happy child (xursand bola)\n  a cold day (sovuq kun)\n\n📌 Sifatlar odatda OT dan OLDIN keladi (a/an + sifat + ot):\n  a + big + car (katta mashina)\n  an + old + house (eski uy) — 'old' undoshli, lekin an undoshdan keyin 'a'\n  a + happy + girl (xursand qiz)\n  a + cold + day (sovuq kun)\n\n🔴 A/An tanlashi: 'a' undosh tovushdan oldin, 'an' unli tovushdan oldin:\n  a big car (b — undosh) ✅\n  an old house (o — unli) ✅\n  an interesting book (i — unli) ✅",
@@ -602,10 +602,10 @@ export const thereIsAre: DailyLesson = {
   category: 'Mavjudlik',
   day: 14,
   formulas: [
-    { label: "There is (bitta)", structure: "There is + birlik ot + joy\nThere is a cat in the garden.", color: 'green' },
-    { label: "There are (ko'p)", structure: "There are + ko'plik ot + joy\nThere are three cats in the garden.", color: 'blue' },
-    { label: "Sanalmas (uncountable)", structure: "There is + sanalmas ot\nThere is some water on the table.", color: 'orange' },
-    { label: "Savol va inkor", structure: "Is there a cat? \u2014 Yes, there is.\nAre there cats? \u2014 Yes, there are.\nThere is no cat. (yo'q)", color: 'purple' },
+    { label: "There is (bitta)", structure: "There is + birlik ot + joy\nThere is a cat in the garden.", explanation: "'There is' + birlik ot.", whenToUse: "Bitta narsa borligini aytganda.", example: "There is a book here.", color: 'green' },
+    { label: "There are (ko'p)", structure: "There are + ko'plik ot + joy\nThere are three cats in the garden.", explanation: "'There are' + ko'plik ot.", whenToUse: "Bir nechta narsa borligini aytganda.", example: "There are three books.", color: 'blue' },
+    { label: "Sanalmas (uncountable)", structure: "There is + sanalmas ot\nThere is some water on the table.", explanation: "Sanalmas ot bilan 'There is'.", whenToUse: "Sanalmas narsa borligini aytganda.", example: "There is some water.", color: 'orange' },
+    { label: "Savol va inkor", structure: "Is there a cat? \u2014 Yes, there is.\nAre there cats? \u2014 Yes, there are.\nThere is no cat. (yo'q)", explanation: "There is/are savol-inkori.", whenToUse: "Narsa bor-yo'qligini so'raganda.", example: "Is there a cat? No, there isn't.", color: 'purple' },
   ],
   rules: [
     "1\uFE0F\u20E3 'THERE IS' \u2014 BIRLIK YOKI SANALMAS\n\n\uD83D\uDCCC Birlik (countable singular):\n  There is a book on the table. (Stolda kitob bor)\n  There is a cat in the garden. (Bog'da mushuk bor)\n  There is an apple in the bag. (Sumkada olma bor)\n\n\uD83D\uDCCC Sanalmas (uncountable):\n  There is some water in the glass. (Stakanda suv bor)\n  There is rice on the plate. (Patnisda guruch bor)\n  There is bread on the table. (Stolda non bor)\n\n\uD83D\uDD34 'There is' + birlik yoki sanalmas (ko'plik emas)",
@@ -779,10 +779,10 @@ export const canCant: DailyLesson = {
   category: 'Qobiliyat',
   day: 15,
   formulas: [
-    { label: "Can (qobiliyat)", structure: "Subject + can + V1\nI can swim.\nHe can play football.", color: 'green' },
-    { label: "Can't (inkor)", structure: "Subject + can't + V1\nI can't fly.\nShe can't speak Chinese.", color: 'blue' },
-    { label: "Savol", structure: "Can + subject + V1?\nCan you help me?\nWhat can you do?", color: 'orange' },
-    { label: "Ruxsat", structure: "Can I ...?\nCan I open the window?\nYou can go now.", color: 'purple' },
+    { label: "Can (qobiliyat)", structure: "Subject + can + V1\nI can swim.\nHe can play football.", explanation: "'can + V1' — qobiliyat.", whenToUse: "Nima qila olishni aytganda.", example: "I can swim.", color: 'green' },
+    { label: "Can't (inkor)", structure: "Subject + can't + V1\nI can't fly.\nShe can't speak Chinese.", explanation: "'can't + V1' — qila olmaslik.", whenToUse: "Nima qila olmaslikni aytganda.", example: "She can't drive.", color: 'blue' },
+    { label: "Savol", structure: "Can + subject + V1?\nCan you help me?\nWhat can you do?", explanation: "Savol — yordamchi fe'l bilan.", whenToUse: "Savol berganda.", example: "Can you help me?", color: 'orange' },
+    { label: "Ruxsat", structure: "Can I ...?\nCan I open the window?\nYou can go now.", explanation: "'Can I...?' — ruxsat.", whenToUse: "Ruxsat so'raganda.", example: "Can I open the window?", color: 'purple' },
   ],
   rules: [
     "1️⃣ 'CAN' — QOBILIYAT\n\n📌 Qobiliyat (ability):\n  I can swim. (Men suza olaman)\n  She can play the piano. (U pianino chala oladi)\n  He can run fast. (U tez yugura oladi)\n  Birds can fly. (Qushlar ucha oladi)\n\n📌 Shakli:\n  can + V1 (to'siz fe'l)\n  I can + swim ✅\n  I can + to swim ❌ (to kerak emas)\n  I can + swimming ❌ (-ing kerak emas)\n  He can + swim ✅\n\n🔴 'Can' dan keyin V1 (fe'lning asosiy shakli, to'siz, -siz)",
@@ -956,10 +956,10 @@ export const haveGot: DailyLesson = {
   level: 'A1',
   day: 16,
   formulas: [
-    { label: "Have got (I/you/we/they)", structure: "I/You/We/They + have got + ot\nI have got a car.\nThey have got two cats.", color: 'green' },
-    { label: "Has got (he/she/it)", structure: "He/She/It + has got + ot\nHe has got a sister.\nMy cat has got four legs.", color: 'blue' },
-    { label: "Inkor (haven't/hasn't)", structure: "I haven't got a car.\nShe hasn't got a brother.", color: 'orange' },
-    { label: "Qisqartma (got)", structure: "I've got a car.\nHe's got a brother.", color: 'purple' },
+    { label: "Have got (I/you/we/they)", structure: "I/You/We/They + have got + ot\nI have got a car.\nThey have got two cats.", explanation: "'have got' — egalik (I/you/we/they).", whenToUse: "Egalikni aytganda (BrE).", example: "I have got a bike.", color: 'green' },
+    { label: "Has got (he/she/it)", structure: "He/She/It + has got + ot\nHe has got a sister.\nMy cat has got four legs.", explanation: "'has got' — egalik (he/she/it).", whenToUse: "3-shaxs egaligini aytganda.", example: "She has got a cat.", color: 'blue' },
+    { label: "Inkor (haven't/hasn't)", structure: "I haven't got a car.\nShe hasn't got a brother.", explanation: "'haven't/hasn't got' — inkor.", whenToUse: "Ega emasligini aytganda.", example: "I haven't got a car.", color: 'orange' },
+    { label: "Qisqartma (got)", structure: "I've got a car.\nHe's got a brother.", explanation: "Qisqartma: I've got, she's got.", whenToUse: "Norasmiy nutqda egalikni aytganda.", example: "I've got two brothers.", color: 'purple' },
   ],
   rules: [
     "1️⃣ 'HAVE GOT' — I/YOU/WE/THEY\n\n📌 Ijobiy:\n  I have got a car. (Menda mashina bor)\n  You have got a pen. (Sizda ruchka bor)\n  We have got a big house. (Bizda katta uy bor)\n  They have got two cats. (Ularda ikki mushuk bor)\n\n📌 Qisqartma:\n  I have got = I've got\n  You have got = You've got\n  We have got = We've got\n  They have got = They've got\n\n🔴 'Have' ga -s qo'shilMAYDI:\n  ✅ I have got ❌ I has got\n  ✅ They have got ❌ They has got",
@@ -1133,10 +1133,10 @@ export const presentSimple: DailyLesson = {
   level: 'A1',
   day: 17,
   formulas: [
-    { label: "Ijobiy (I/you/we/they)", structure: "Subject + V1\nI work every day.\nThey play football.", color: 'green' },
-    { label: "Ijobiy (he/she/it)", structure: "Subject + V1 + -s/-es\nHe works. She plays. He goes.", color: 'blue' },
-    { label: "Inkor", structure: "Subject + don't/doesn't + V1\nI don't work. He doesn't work.", color: 'orange' },
-    { label: "Savol", structure: "Do/Does + subject + V1?\nDo you work? Does he work?", color: 'purple' },
+    { label: "Ijobiy (I/you/we/they)", structure: "Subject + V1\nI work every day.\nThey play football.", explanation: "Present Simple ijobiy (I/you/we/they).", whenToUse: "Odatni aytganda.", example: "I work every day.", color: 'green' },
+    { label: "Ijobiy (he/she/it)", structure: "Subject + V1 + -s/-es\nHe works. She plays. He goes.", explanation: "Present Simple 3-shaxs: V1+-s.", whenToUse: "he/she/it odatini aytganda.", example: "She works in a shop.", color: 'blue' },
+    { label: "Inkor", structure: "Subject + don't/doesn't + V1\nI don't work. He doesn't work.", explanation: "Present Simple inkor: don't/doesn't.", whenToUse: "Odatni inkor qilganda.", example: "He doesn't like coffee.", color: 'orange' },
+    { label: "Savol", structure: "Do/Does + subject + V1?\nDo you work? Does he work?", explanation: "Savol — yordamchi fe'l bilan.", whenToUse: "Savol berganda.", example: "Can you help me?", color: 'purple' },
   ],
   rules: [
     "1️⃣ PRESENT SIMPLE — QACHON?\n\n📌 Kundalik odatlar:\n  I wake up at 7 AM. (Men har kuni 7 da uyg'onaman)\n  She drinks coffee every morning. (U har ertalab kofe ichadi)\n  We go to school. (Biz maktabga boramiz)\n\n📌 Umumiy haqiqatlar:\n  The sun rises in the east. (Quyosh sharqdan chiqadi)\n  Water boils at 100°C. (Suv 100°C da qaynaydi)\n\n📌 Doimiy holatlar:\n  I live in Tashkent. (Men Toshkentda yashayman)\n  She works at a hospital. (U kasalxonada ishlaydi)",
@@ -1311,10 +1311,10 @@ export const questionWords: DailyLesson = {
   level: 'A1',
   day: 18,
   formulas: [
-    { label: "Asosiy so'roq so'zlari", structure: "What — nima\nWhere — qayerda\nWho — kim\nWhen — qachon\nWhy — nega", color: 'green' },
-    { label: "How so'roq so'zlari", structure: "How — qanday\nHow old — necha yosh\nHow many — nechta", color: 'blue' },
-    { label: "Choice savol", structure: "Do you like tea or coffee?\nIs it red or blue?", color: 'orange' },
-    { label: "Yes/No savol", structure: "Do you like tea? — Yes, I do.\nIs she a teacher? — Yes, she is.", color: 'purple' },
+    { label: "Asosiy so'roq so'zlari", structure: "What — nima\nWhere — qayerda\nWho — kim\nWhen — qachon\nWhy — nega", explanation: "So'roq so'zlar: what/where/when/who.", whenToUse: "Ma'lumot so'raganda.", example: "Where do you live?", color: 'green' },
+    { label: "How so'roq so'zlari", structure: "How — qanday\nHow old — necha yosh\nHow many — nechta", explanation: "'how' bilan so'roq (how much/many/old).", whenToUse: "Miqdor/yosh/tarz so'raganda.", example: "How old are you?", color: 'blue' },
+    { label: "Choice savol", structure: "Do you like tea or coffee?\nIs it red or blue?", explanation: "Tanlov savoli — 'or' bilan.", whenToUse: "Ikki variant orasida so'raganda.", example: "Tea or coffee?", color: 'orange' },
+    { label: "Yes/No savol", structure: "Do you like tea? — Yes, I do.\nIs she a teacher? — Yes, she is.", explanation: "Ha/yo'q savoli.", whenToUse: "Ha/yo'q javobli savol berganda.", example: "Do you like tea? Yes, I do.", color: 'purple' },
   ],
   rules: [
     "1️⃣ 'WHAT' — NIMA?\n\n📌 What is this? (Bu nima?)\n  It is a book. (Bu kitob)\n\n📌 What do you do? (Nima ish qilasiz?)\n  I am a student. (Men talabaman)\n\n📌 What is your name? (Ismingiz nima?)\n  My name is Ali. (Ismim Ali)\n\n📌 What time is it? (Soat nechchi?)\n  It is 7 o'clock. (Soat 7)\n\n📌 What is your favourite color? (Sevimli rangingiz?)\n  Blue. (Ko'k)",
@@ -1488,10 +1488,10 @@ export const conjunctions: DailyLesson = {
   level: 'A1',
   day: 19,
   formulas: [
-    { label: "And (va)", structure: "Gap + and + gap\nI like tea and coffee.", color: 'green' },
-    { label: "But (lekin)", structure: "Gap + but + gap\nI like tea but I don't like coffee.", color: 'blue' },
-    { label: "Or (yoki)", structure: "Choice: tea or coffee?\nNegative: don't ... or ...", color: 'orange' },
-    { label: "Because (chunki)", structure: "Gap + because + gap\nI am happy because it is Friday.", color: 'purple' },
+    { label: "And (va)", structure: "Gap + and + gap\nI like tea and coffee.", explanation: "'and' — qo'shimcha bog'lovchi.", whenToUse: "Ikki fikrni birlashtirganda.", example: "tea and coffee", color: 'green' },
+    { label: "But (lekin)", structure: "Gap + but + gap\nI like tea but I don't like coffee.", explanation: "'but' — qarama-qarshilik.", whenToUse: "Zid fikrni bog'laganda.", example: "I like tea but not coffee.", color: 'blue' },
+    { label: "Or (yoki)", structure: "Choice: tea or coffee?\nNegative: don't ... or ...", explanation: "'or' — tanlov.", whenToUse: "Variantlar orasida.", example: "tea or coffee?", color: 'orange' },
+    { label: "Because (chunki)", structure: "Gap + because + gap\nI am happy because it is Friday.", explanation: "'because' — sabab.", whenToUse: "Sababni tushuntirganda.", example: "I'm happy because it's sunny.", color: 'purple' },
   ],
   rules: [
     "1️⃣ 'AND' — VA\n\n📌 Ikkita narsani qo'shish:\n  I like tea and coffee. (Men choy va kofeni yoqtiraman)\n  I have a brother and a sister. (Akam va singlim bor)\n  She speaks English and Russian. (U inglizcha va ruscha gapiradi)\n\n📌 Ro'yxatda (oxirgisidan oldin):\n  I like apples, oranges, and bananas. (olma, apelsin va banan)\n\n📌 Ikki fe'lni bog'lash:\n  I wake up and brush my teeth. (Uyg'onaman va tish yuvaman)\n  She reads and writes every day. (U har kuni o'qiydi va yozadi)",
@@ -1667,10 +1667,10 @@ export const a1Review: DailyLesson = {
   level: 'A1',
   day: 20,
   formulas: [
-    { label: "Am/is/are", structure: "I am, He/She/It is, You/We/They are", color: 'green' },
-    { label: "Have/has", structure: "I/You/We/They have, He/She/It has", color: 'blue' },
-    { label: "Can/can't", structure: "can + V1 (o'zgarmas, 3-shaxsda -s yo'q)", color: 'orange' },
-    { label: "Present simple", structure: "I/You/We/They + V1, He/She/It + V1+s", color: 'purple' },
+    { label: "Am/is/are", structure: "I am, He/She/It is, You/We/They are", explanation: "'be' hozirgi shakllari.", whenToUse: "Holat/kasbni aytganda.", example: "I am a student.", color: 'green' },
+    { label: "Have/has", structure: "I/You/We/They have, He/She/It has", explanation: "'have/has' — egalik fe'li.", whenToUse: "Egalikni aytganda.", example: "They have two cars.", color: 'blue' },
+    { label: "Can/can't", structure: "can + V1 (o'zgarmas, 3-shaxsda -s yo'q)", explanation: "'can/can't' — 3-shaxsda -s yo'q.", whenToUse: "Qobiliyatni aytganda.", example: "He can run fast.", color: 'orange' },
+    { label: "Present simple", structure: "I/You/We/They + V1, He/She/It + V1+s", explanation: "Present Simple umumlashmasi.", whenToUse: "Kundalik odatlarni aytganda.", example: "We study every day.", color: 'purple' },
   ],
   rules: [
     "1️⃣ A1 DARajasI XULOSASI\n\nA1 darajasida o'rganganlaringiz:\n\n📌 GRAMMATIKA:\n  • Am/is/are (to be)\n  • Have/has got\n  • Can/can't (modal)\n  • Present simple (3-shaxs -s)\n  • There is/are\n  • Demonstratives (this/that/these/those)\n  • Possessives (my, your, his, her, our, their)\n  • Question words (what, where, who, when, why, how)\n  • Conjunctions (and, but, or, because, so)\n  • Frequency adverbs (always, usually, often, sometimes, never)\n\n📌 MAVZULAR (VOCABULARY):\n  • Salomlashish\n  • Sonlar, ranglar, shakllar\n  • Oilа, kunlar, oylar, fasllar\n  • Soat, kunlik tartib\n  • Ovqat, hayvonlar, tana azolari, kiyimlar\n  • Predloglar (in, on, at, under, next to, behind, between)",

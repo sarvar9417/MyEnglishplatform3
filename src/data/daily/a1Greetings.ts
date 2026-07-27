@@ -18,9 +18,9 @@ export const greetingsAndIntroductions: DailyLesson = {
   category: 'Salomlashish',
   day: 0, // loadAllLessons tomonidan tayinlanadi
   formulas: [
-    { label: 'Greetings', structure: 'Hello! / Hi!\nGood morning! / Good afternoon! / Good evening! / Good night!', color: 'green' },
-    { label: "Introductions", structure: "My name is ...\nI am from ...\nNice to meet you!", color: 'blue' },
-    { label: 'Farewells', structure: 'Goodbye! / Bye!\nSee you later! / See you tomorrow!', color: 'orange' },
+    { label: 'Greetings', structure: 'Hello! / Hi!\nGood morning! / Good afternoon! / Good evening! / Good night!', explanation: "Salomlashish iboralari.", whenToUse: "Uchrashganda.", example: "Good morning! How are you?", color: 'green' },
+    { label: "Introductions", structure: "My name is ...\nI am from ...\nNice to meet you!", explanation: "Tanishtirish iboralari.", whenToUse: "Tanishayotganda.", example: "My name is Ali. Nice to meet you.", color: 'blue' },
+    { label: 'Farewells', structure: 'Goodbye! / Bye!\nSee you later! / See you tomorrow!', explanation: "Xayrlashish iboralari.", whenToUse: "Ketayotganda.", example: "See you later!", color: 'orange' },
   ],
   rules: [
     "1️⃣ SALOMLASHISH VAQTLARI\n\n📌 GOOD MORNING (06:00-12:00):\n  Good morning, teacher! (Xayrli tong, o'qituvchi!)\n\n📌 GOOD AFTERNOON (12:00-18:00):\n  Good afternoon! Nice to see you. (Xayrli kun! Ko'rishganimdan xursandman.)\n\n📌 GOOD EVENING (18:00-22:00):\n  Good evening! How was your day? (Xayrli kech! Kuningiz qanday o'tdi?)\n\n📌 GOOD NIGHT (22:00+ / yotishdan oldin):\n  Good night! Sleep well! (Xayrli tun! Yaxshi uxlang!)\n\n🔴 'Good night' — bu XAYRLASHISH, salomlashish EMAS!",

@@ -18,9 +18,9 @@ export const greetingsAndNames: DailyLesson = {
   category: 'Salomlashish',
   day: 1,
   formulas: [
-    { label: 'Salomlashish', structure: 'Hello! / Hi!\nGood morning! / Good evening!', color: 'green' },
-    { label: "O'zini tanishtirish", structure: "My name is ...\nI am ...", color: 'blue' },
-    { label: 'Xayrlashish', structure: 'Goodbye! / Bye!\nSee you!', color: 'orange' },
+    { label: 'Salomlashish', structure: 'Hello! / Hi!\nGood morning! / Good evening!', explanation: "Salom berish iboralari.", whenToUse: "Kimnidir uchratganda.", example: "Hello! Good morning!", color: 'green' },
+    { label: "O'zini tanishtirish", structure: "My name is ...\nI am ...", explanation: "O'zini tanishtirish iboralari.", whenToUse: "Yangi odam bilan tanishganda.", example: "My name is Ali.", color: 'blue' },
+    { label: 'Xayrlashish', structure: 'Goodbye! / Bye!\nSee you!', explanation: "Xayrlashish iboralari.", whenToUse: "Ketayotganda.", example: "Goodbye! See you!", color: 'orange' },
   ],
   rules: [
     "1️⃣ HELLO — eng oddiy salom. Har qanday vaziyatda ishlatiladi.\nHello! My name is Ali. (Salom! Mening ismim Ali.)\n\n2️⃣ HI — biroz norasmiyroq. Do'stlarga.\nHi! How are you? (Salom! Qandaysan?)\n\n3️⃣ GOOD MORNING — ertalab (06:00-12:00).\nGood morning, teacher! (Xayrli tong, o'qituvchi!)\n\n4️⃣ GOOD EVENING — kechqurun (18:00+).\nGood evening! How are you? (Xayrli kech! Qandaysiz?)",
@@ -83,8 +83,8 @@ export const numbersAndAlphabet: DailyLesson = {
   category: 'Raqamlar',
   day: 2,
   formulas: [
-    { label: 'Raqamlar 1-10', structure: '1 one, 2 two, 3 three\n4 four, 5 five, 6 six\n7 seven, 8 eight, 9 nine, 10 ten', color: 'green' },
-    { label: 'Alifbo', structure: '26 letters: A-Z\n5 vowels: A, E, I, O, U\n21 consonants', color: 'blue' },
+    { label: 'Raqamlar 1-10', structure: '1 one, 2 two, 3 three\n4 four, 5 five, 6 six\n7 seven, 8 eight, 9 nine, 10 ten', explanation: "1 dan 10 gacha sonlar.", whenToUse: "Sanaganda.", example: "I have three books.", color: 'green' },
+    { label: 'Alifbo', structure: '26 letters: A-Z\n5 vowels: A, E, I, O, U\n21 consonants', explanation: "Ingliz alifbosi (26 harf).", whenToUse: "So'zni harflab aytganda.", example: "How do you spell your name?", color: 'blue' },
   ],
   rules: [
     "1️⃣ RAQAMLAR 1-10:\n1 = one (uan)\n2 = two (tu)\n3 = three (sri)\n4 = four (for)\n5 = five (fayv)\n6 = six (siks)\n7 = seven (sevn)\n8 = eight (eyt)\n9 = nine (nayn)\n10 = ten (ten)\n\n2️⃣ MUHIM: O'zbek tilida '3' — 'uch', ingliztilida 'three' — 'sri'. O'xshamaydi!",
@@ -146,9 +146,9 @@ export const familyAndMe: DailyLesson = {
   category: 'Ranglar va narsalar',
   day: 3,
   formulas: [
-    { label: 'Oila a\'zolari', structure: "mother (ona)\nfather (ota)\nbrother (aka/uka)\nsister (opa/singil)\ngrandmother (bobo/buvi)\ngrandfather (bobo/dada)", color: 'green' },
-    { label: 'I have ...', structure: "I have a brother.\nI have two sisters.\nI don't have a pet.", color: 'blue' },
-    { label: "She is ... / He is ...", structure: "She is my mother.\nHe is my father.\nShe is a teacher.", color: 'orange' },
+    { label: 'Oila a\'zolari', structure: "mother (ona)\nfather (ota)\nbrother (aka/uka)\nsister (opa/singil)\ngrandmother (bobo/buvi)\ngrandfather (bobo/dada)", explanation: "Oila a'zolari nomlari.", whenToUse: "Oilangiz haqida gapirganda.", example: "This is my mother.", color: 'green' },
+    { label: 'I have ...', structure: "I have a brother.\nI have two sisters.\nI don't have a pet.", explanation: "'have' bilan egalik.", whenToUse: "Nima borligini aytganda.", example: "I have a brother.", color: 'blue' },
+    { label: "She is ... / He is ...", structure: "She is my mother.\nHe is my father.\nShe is a teacher.", explanation: "'be' bilan tanishtirish.", whenToUse: "Kimnidir tanishtirganda.", example: "She is my sister.", color: 'orange' },
   ],
   rules: [
     "1️⃣ OILA A'ZOLARI:\n\n mother — ona ( mama )\n father — ota ( papa )\n brother — aka, uka\n sister — opa, singil\n grandmother — buvi, boba\n grandfather — boba, dada\n\n2️⃣ MUHIM: Ingliztilida 'brother' — aka HAM, uka HAM. 'Sister' — opa HAM, singil HAM. Farq yo'q!",

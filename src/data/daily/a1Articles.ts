@@ -8,9 +8,9 @@ export const articles: DailyLesson = {
   category: 'Artikllar',
   day: 1,
   formulas: [
-    { label: 'A/AN + sanoqli ism (nomalum)', structure: 'a + undosh tovush (a cat, a book)\nan + unli tovush (an apple, an hour)', color: 'green' },
-    { label: 'THE + ma\'lum/nomalum ism', structure: 'the + aniq, ma\'lum narsa\nthe cat = (oshnagan) mushuk', color: 'blue' },
-    { label: 'ARTIKLSIZ (∅) — mamlakatlar, shaharlar, tillar', structure: '∅ + mamlakatlar (Uzbekistan)\n∅ + shaharlar (Tashkent)\n∅ + tillar (English)\n∅ + umumiy ko\'plik (cats are animals)', color: 'orange' },
+    { label: 'A/AN + sanoqli ism (nomalum)', structure: 'a + undosh tovush (a cat, a book)\nan + unli tovush (an apple, an hour)', explanation: "Noaniq artikl 'a/an'.", whenToUse: "Yangi/nomalum narsani aytganda.", example: "a cat and an apple", color: 'green' },
+    { label: 'THE + ma\'lum/nomalum ism', structure: 'the + aniq, ma\'lum narsa\nthe cat = (oshnagan) mushuk', explanation: "Aniq artikl 'the'.", whenToUse: "Ma'lum, aniq narsa uchun.", example: "The sun is bright.", color: 'blue' },
+    { label: 'ARTIKLSIZ (∅) — mamlakatlar, shaharlar, tillar', structure: '∅ + mamlakatlar (Uzbekistan)\n∅ + shaharlar (Tashkent)\n∅ + tillar (English)\n∅ + umumiy ko\'plik (cats are animals)', explanation: "Artiklsiz — mamlakat/til/umumiy.", whenToUse: "Atoqli ot va umumiy ko'plik uchun.", example: "I speak English.", color: 'orange' },
   ],
   rules: [
     "1️⃣ 'A' UNDOSH TOVUSH OLDIDA, 'AN' UNLI TOVUSH OLDIDA\n\n📌 A — undosh (b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z) oldida:\n  a cat (mushuk)\n  a book (kitob)\n  a university (universitet — 'yu' tovushi unli)\n  a European (evropalik — 'yu' tovushi unli)\n\n📌 AN — unli (a, e, i, o, u) oldida:\n  an apple (olma)\n  an egg (tuxum)\n  an ice cream (muzqaymoq)\n  an hour (soat — 'h' eshitilmaydi!)\n\n🔴 DIQQAT: 'A' yoki 'AN' harfga emas, TOVUSHGA qarab tanlanadi!\n  ❌ a apple ❌ (unli tovush — an apple)\n  ❌ an book ❌ (undosh tovush — a book)\n  ❌ a hour ❌ (h eshitilmaydi — an hour)\n  ❌ an university ❌ ('yu' tovushi — a university)",
