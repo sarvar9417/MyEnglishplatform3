@@ -48,7 +48,6 @@ export function buildRoutes(lazyPages: Record<string, React.LazyExoticComponent<
     { path: '/review', element: safe(<P.GrammarReview />) },
     { path: '/reset-password', element: safe(<P.ResetPassword />) },
     { path: '/ielts', element: safe(<P.IeltsMockTest />) },
-    { path: '/30-day-challenge', element: safe(<P.ThirtyDayChallenge />) },
     { path: '/weekly-plan', element: safe(<P.WeeklyPlan />) },
   ]
 
@@ -61,6 +60,8 @@ export function buildRoutes(lazyPages: Record<string, React.LazyExoticComponent<
     { path: '/friends', element: <Navigate to="/" replace /> },
     { path: '/practice', element: <Navigate to="/vocabulary" replace /> },
     { path: '/business-english', element: <Navigate to="/lesson" replace /> },
+    // 30-Day Challenge — hozircha arxivda (sahifa/data kodi saqlangan, nav va route yashirilgan)
+    { path: '/30-day-challenge', element: <Navigate to="/" replace /> },
   ]
 
   return (

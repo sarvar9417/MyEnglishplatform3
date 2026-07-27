@@ -14,7 +14,6 @@ import {
   BookText,
   MessageCircle,
   Film,
-  Target,
 } from 'lucide-react'
 
 const ROUTE_T_KEY: Record<string, keyof import('../../i18n').TranslationStrings> = {
@@ -32,7 +31,6 @@ const RESOURCE_ITEMS = [
   { to: '/phrasal-verbs',       icon: BookText,      labelKey: 'nav.phrasalVerbs' as const },
   { to: '/idioms',              icon: MessageCircle, labelKey: 'nav.idioms' as const },
   { to: '/films',               icon: Film,          labelKey: 'nav.films' as const },
-  { to: '/30-day-challenge',    icon: Target,        labelKey: 'nav.thirtyDayChallenge' as const },
 ]
 
 const NAV_ITEMS = [
