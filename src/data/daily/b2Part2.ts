@@ -750,7 +750,7 @@ export const contrastiveStructuresB2: DailyLesson = {
   
     { id: 56020, type: 'passage',
       instruction: 'Qarama-qarshi bog\'lovchilarni to\'ldiring:',
-      passage: '__(1) (Whereas) his brother is outgoing, he is very shy. ___(2) (While) I enjoy classical music, my sister prefers pop. The film was boring; ___(3) (however), the acting was excellent. Uzbekistan is dry, ___(4) (whereas) Indonesia is tropical. ___(5) (Unlike) tea, coffee contains caffeine. He passed the exam, ___(6) (although) he did not study much. ___(7) (In contrast to) last year, this year has been hot.',
+      passage: '___(1) (Whereas) his brother is outgoing, he is very shy. ___(2) (While) I enjoy classical music, my sister prefers pop. The film was boring; ___(3) (however), the acting was excellent. Uzbekistan is dry, ___(4) (whereas) Indonesia is tropical. ___(5) (Unlike) tea, coffee contains caffeine. He passed the exam, ___(6) (although) he did not study much. ___(7) (In contrast to) last year, this year has been hot.',
       blanks: ['Whereas', 'While', 'however', 'whereas', 'Unlike', 'although', 'In contrast to'],
       acceptedAnswers: [['Whereas', 'While'], ['While', 'Whereas'], ['however', 'nevertheless'], ['whereas', 'while'], ['Unlike'], ['although', 'though'], ['In contrast to', 'Unlike']],
       explanation: 'Whereas/while = ...ga qarshi. However = ammo. Unlike = farqli olaroq. Although = ...ga qaramay. In contrast to = ...dan farqli.'
@@ -1026,7 +1026,7 @@ export const punctuationB2: DailyLesson = {
   
     { id: 56022, type: 'passage',
       instruction: 'Tinish belgilarini to\'ldiring:',
-      passage: 'I need to buy the following items__(1) (:) milk, bread, eggs, and butter. The meeting has been cancelled__(2) (;) therefore, we can go home early. He has one goal__(3) (:) to become a doctor. She was late__(4) (;) however, she apologised. The weather was terrible__(5) (;) nevertheless, we enjoyed our trip. There are three options__(6) (:) stay, leave, or compromise. I lived in London__(7) (;) during that time, I learned a lot.',
+      passage: 'I need to buy the following items___(1) (:) milk, bread, eggs, and butter. The meeting has been cancelled___(2) (;) therefore, we can go home early. He has one goal___(3) (:) to become a doctor. She was late___(4) (;) however, she apologised. The weather was terrible___(5) (;) nevertheless, we enjoyed our trip. There are three options___(6) (:) stay, leave, or compromise. I lived in London___(7) (;) during that time, I learned a lot.',
       blanks: [':', ';', ':', ';', ';', ':', ';'],
       acceptedAnswers: [[':'], [';'], [':'], [';'], [';'], [':'], [';']],
       explanation: 'Colon (:) = royhat/tushuntirish oldidan. Semicolon (;) = ikki bogliq gapni boghlash uchun, ayniqsa however/therefore bilan.'

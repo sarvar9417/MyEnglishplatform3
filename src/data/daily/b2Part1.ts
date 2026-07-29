@@ -1386,7 +1386,7 @@ export const complexPrepositionsB2: DailyLesson = {
   
     { id: 56010, type: 'passage',
       instruction: 'Matnni to\'ldiring:',
-      passage: '__(1) (In spite of) the heavy rain, the festival continued. The event was a success, thanks ___(2) the hard work of the volunteers. ___(3) (In addition to) the main stage, there were several smaller tents. ___(4) (Due to) the weather, attendance was lower than expected. ___(5) (In terms of) food, there were many options. The organisers, ___(6) (on behalf of) the community, thanked everyone. ___(7) (In contrast to) last year, this year had more activities. ___(8) (According to) the survey, 90% were satisfied.',
+      passage: '___(1) (In spite of) the heavy rain, the festival continued. The event was a success, thanks ___(2) the hard work of the volunteers. ___(3) (In addition to) the main stage, there were several smaller tents. ___(4) (Due to) the weather, attendance was lower than expected. ___(5) (In terms of) food, there were many options. The organisers, ___(6) (on behalf of) the community, thanked everyone. ___(7) (In contrast to) last year, this year had more activities. ___(8) (According to) the survey, 90% were satisfied.',
       blanks: ['In spite of', 'to', 'In addition to', 'Due to', 'In terms of', 'on behalf of', 'In contrast to', 'According to'],
       acceptedAnswers: [['In spite of', 'Despite'], ['to'], ['In addition to', 'Besides'], ['Due to', 'Because of', 'Owing to'], ['In terms of'], ['on behalf of'], ['In contrast to', 'Unlike'], ['According to']],
       explanation: 'Complex prepositions: in spite of/despite = qaramay, due to = sababli, in addition to = qoshimcha, in terms of = nuqtai nazardan, on behalf of = nomidan, according to = kora.'
